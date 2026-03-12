@@ -394,7 +394,7 @@ section { position: relative; }
   <div class="export-box">
     <div class="count" id="exportCount">0</div>
     <h2>Kommentare bereit</h2>
-    <p>Laden Sie Ihre Änderungsvorschläge als Datei herunter und senden Sie diese an Ihr Projektteam.</p>
+    <p>Alle Ihre Änderungsvorschläge für alle Seiten in einer Datei. Laden Sie sie herunter und senden Sie diese an Ihr Projektteam.</p>
     <button class="btn-export" onclick="exportFeedback()">Als Datei herunterladen</button>
     <button class="btn-close-overlay" onclick="closeExportOverlay()">Schließen</button>
   </div>
@@ -403,99 +403,168 @@ section { position: relative; }
 (function() {
   var PROJECT = 'dk';
   var PAGE = 'finanzierung';
-  var STORAGE_KEY = '2p-feedback-' + PROJECT + '-' + PAGE;
-  function loadFeedback() {
-    var saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+  var PAGE_TITLE = 'Finanzierung';
+  var STORAGE_KEY = '2p-feedback-' + PROJECT;
+
+  function getAllFeedback() {
+    return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+  }
+
+  function getPageFeedback() {
+    var all = getAllFeedback();
+    return all[PAGE] || {};
+  }
+
+  function savePageFeedback(pageData) {
+    var all = getAllFeedback();
+    if (Object.keys(pageData).length === 1 && pageData._title) {
+      delete all[PAGE];
+    } else {
+      all[PAGE] = pageData;
+    }
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(all));
+  }
+
+  function getTotalCount() {
+    var all = getAllFeedback();
     var count = 0;
-    for (var blockId in saved) {
+    for (var page in all) {
+      for (var key in all[page]) {
+        if (key !== '_title') count++;
+      }
+    }
+    return count;
+  }
+
+  function loadFeedback() {
+    var pageData = getPageFeedback();
+    for (var blockId in pageData) {
+      if (blockId === '_title') continue;
+      var entry = pageData[blockId];
+      var text = (typeof entry === 'object') ? entry.text : entry;
       var textarea = document.getElementById('feedback-text-' + blockId);
       var btn = document.querySelector('#block-' + blockId + ' .feedback-btn');
       var deleteBtn = document.getElementById('delete-btn-' + blockId);
-      if (textarea) textarea.value = saved[blockId];
+      if (textarea) textarea.value = text;
       if (btn) { btn.classList.add('has-comment'); btn.textContent = '\u270f\ufe0f Kommentar bearbeiten'; }
       if (deleteBtn) deleteBtn.style.display = 'inline-block';
-      count++;
     }
-    updateCounter(count);
+    updateCounter();
   }
+
   window.toggleFeedback = function(blockId) {
     var panel = document.getElementById('feedback-panel-' + blockId);
     panel.classList.toggle('open');
-    if (panel.classList.contains('open')) document.getElementById('feedback-text-' + blockId).focus();
+    if (panel.classList.contains('open')) {
+      document.getElementById('feedback-text-' + blockId).focus();
+    }
   };
+
   window.saveFeedback = function(blockId) {
     var text = document.getElementById('feedback-text-' + blockId).value.trim();
     if (!text) return;
-    var saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
-    saved[blockId] = text;
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(saved));
+
+    var blockEl = document.getElementById('block-' + blockId);
+    var labelEl = blockEl ? blockEl.querySelector('.block-label') : null;
+    var label = labelEl ? labelEl.textContent : ('Block ' + blockId);
+
+    var pageData = getPageFeedback();
+    pageData._title = PAGE_TITLE;
+    pageData[blockId] = { text: text, label: label };
+    savePageFeedback(pageData);
+
     var btn = document.querySelector('#block-' + blockId + ' .feedback-btn');
     btn.classList.add('has-comment');
     btn.textContent = '\u270f\ufe0f Kommentar bearbeiten';
+
     document.getElementById('delete-btn-' + blockId).style.display = 'inline-block';
+
     var indicator = document.getElementById('saved-' + blockId);
     indicator.style.display = 'flex';
     setTimeout(function() { indicator.style.display = 'none'; }, 2000);
-    updateCounter(Object.keys(saved).length);
+
+    updateCounter();
     setTimeout(function() { window.toggleFeedback(blockId); }, 1500);
   };
+
   window.deleteFeedback = function(blockId) {
-    var saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
-    delete saved[blockId];
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(saved));
+    var pageData = getPageFeedback();
+    delete pageData[blockId];
+    savePageFeedback(pageData);
+
     document.getElementById('feedback-text-' + blockId).value = '';
     var btn = document.querySelector('#block-' + blockId + ' .feedback-btn');
     btn.classList.remove('has-comment');
     btn.textContent = '\u270f\ufe0f Vorschlag';
     document.getElementById('delete-btn-' + blockId).style.display = 'none';
-    updateCounter(Object.keys(saved).length);
+
+    updateCounter();
     window.toggleFeedback(blockId);
   };
-  function updateCounter(count) {
-    var el = document.getElementById('feedbackCounter');
-    if (!el) return;
+
+  function updateCounter() {
+    var count = getTotalCount();
+    var counterEl = document.getElementById('feedbackCounter');
     if (count > 0) {
-      el.classList.add('has-feedback');
-      el.innerHTML = '\ud83d\udce5 Feedback: ' + count + ' Kommentar' + (count > 1 ? 'e' : '');
+      counterEl.classList.add('has-feedback');
+      counterEl.innerHTML = '\ud83d\udce5 Feedback: ' + count + ' Kommentar' + (count > 1 ? 'e' : '');
     } else {
-      el.classList.remove('has-feedback');
-      el.innerHTML = 'Feedback: 0 Kommentare';
+      counterEl.classList.remove('has-feedback');
+      counterEl.innerHTML = 'Feedback: 0 Kommentare';
     }
   }
+
   window.openExportOverlay = function() {
-    var saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
-    var count = Object.keys(saved).length;
+    var count = getTotalCount();
     if (count === 0) return;
     document.getElementById('exportCount').textContent = count;
     document.getElementById('exportOverlay').classList.add('open');
   };
-  window.closeExportOverlay = function() { document.getElementById('exportOverlay').classList.remove('open'); };
+
+  window.closeExportOverlay = function() {
+    document.getElementById('exportOverlay').classList.remove('open');
+  };
+
   window.exportFeedback = function() {
-    var saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+    var all = getAllFeedback();
+    var totalCount = getTotalCount();
+
     var text = 'FEEDBACK \u2014 ' + PROJECT.toUpperCase() + '\n';
-    text += 'Seite: ' + PAGE + '\n';
     text += 'Datum: ' + new Date().toLocaleDateString('de-DE') + '\n';
+    text += totalCount + ' Kommentar(e) insgesamt\n';
     text += '==================================================\n\n';
-    for (var blockId in saved) {
-      var blockEl = document.getElementById('block-' + blockId);
-      var labelEl = blockEl ? blockEl.querySelector('.block-label') : null;
-      var label = labelEl ? labelEl.textContent : ('Block ' + blockId);
-      text += '\ud83d\udccc ' + label + '\n';
-      text += '----------------------------------------\n';
-      text += saved[blockId] + '\n\n';
+
+    for (var page in all) {
+      var pageData = all[page];
+      var pageTitle = pageData._title || page;
+      text += '\u2501\u2501\u2501 ' + pageTitle + ' \u2501\u2501\u2501\n\n';
+
+      for (var blockId in pageData) {
+        if (blockId === '_title') continue;
+        var entry = pageData[blockId];
+        var commentText = (typeof entry === 'object') ? entry.text : entry;
+        var label = (typeof entry === 'object' && entry.label) ? entry.label : ('Block ' + blockId);
+
+        text += '\ud83d\udccc ' + label + '\n';
+        text += '----------------------------------------\n';
+        text += commentText + '\n\n';
+      }
     }
+
     text += '==================================================\n';
     text += 'Erstellt am ' + new Date().toLocaleString('de-DE') + '\n';
-    text += Object.keys(saved).length + ' Kommentar(e) insgesamt\n';
+
     var blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
     var url = URL.createObjectURL(blob);
     var a = document.createElement('a');
     a.href = url;
-    a.download = 'feedback_' + PROJECT + '_' + PAGE + '_' + new Date().toISOString().slice(0,10) + '.txt';
+    a.download = 'feedback_' + PROJECT + '_' + new Date().toISOString().slice(0,10) + '.txt';
     a.click();
     URL.revokeObjectURL(url);
+
     window.closeExportOverlay();
   };
+
   loadFeedback();
 })();
 </script>
