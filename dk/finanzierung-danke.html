@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Vielen Dank für Ihre Anfrage | DK Finance</title>
+    <meta name="description" content="Ihre Finanzierungsanfrage wurde erfolgreich übermittelt. Wir melden uns innerhalb von 24 Stunden bei Ihnen.">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Thank You Page Specific Styles */
+        .success-hero {
+            text-align: center;
+            padding: var(--spacing-xl) 0;
+            background: linear-gradient(135deg, #f0f9f0 0%, #e8f5e9 100%);
+            border-radius: var(--radius);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .success-icon {
+            font-size: 4rem;
+            color: var(--success);
+            margin-bottom: var(--spacing-md);
+            animation: scaleIn 0.5s ease-out;
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .success-hero h1 {
+            color: var(--success);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .success-hero .intro {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: var(--text);
+        }
+
+        .timeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-md);
+            margin: var(--spacing-lg) 0;
+        }
+
+        .timeline-step {
+            background: var(--bg-light);
+            padding: var(--spacing-md);
+            border-radius: var(--radius);
+            border-left: 4px solid var(--accent);
+            position: relative;
+        }
+
+        .timeline-step .step-number {
+            position: absolute;
+            top: -12px;
+            left: var(--spacing-md);
+            background: var(--accent);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.125rem;
+        }
+
+        .timeline-step h3 {
+            margin-top: var(--spacing-sm);
+            font-size: 1.25rem;
+            color: var(--secondary);
+        }
+
+        .timeline-step p {
+            color: var(--text-light);
+            margin: 0;
+        }
+
+        .nav-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-md);
+            margin: var(--spacing-lg) 0;
+        }
+
+        .nav-card {
+            background: var(--primary);
+            padding: var(--spacing-md);
+            border-radius: var(--radius);
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+            display: block;
+            border: 2px solid var(--accent);
+        }
+
+        .nav-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+
+        .nav-card h3 {
+            color: var(--secondary);
+            font-size: 1.125rem;
+            margin: 0;
+        }
+
+        .contact-box {
+            background: var(--bg-light);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius);
+            border: 2px solid var(--accent);
+            text-align: center;
+            margin: var(--spacing-lg) 0;
+        }
+
+        .contact-box h3 {
+            color: var(--secondary);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+            font-size: 1.125rem;
+        }
+
+        .contact-info a {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .trust-badges-thankyou {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: var(--spacing-sm);
+            margin: var(--spacing-lg) 0;
+            text-align: center;
+        }
+
+        .trust-badge {
+            padding: var(--spacing-sm);
+            background: white;
+            border-radius: var(--radius-sm);
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .trust-badge span {
+            color: var(--success);
+            font-size: 1.25rem;
+            display: block;
+            margin-bottom: var(--spacing-xs);
+        }
+    </style>
+</head>
+<body>
+    <nav class="sticky-nav">
+        <div class="nav-container">
+            <span class="nav-logo">DK Website 2026</span>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="finanzierung.html">Finanzierung</a>
+                <a href="finanzierung-danke.html" class="active">Thank You</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="page-content">
+        <div class="meta-bar">
+            <span class="meta-item"><strong>URL:</strong> /finanzierung/danke/</span>
+            <span class="meta-item"><strong>Title:</strong> Vielen Dank für Ihre Anfrage | DK Finance</span>
+            <span class="meta-item"><strong>SEO:</strong> noindex, nofollow</span>
+        </div>
+
+        <!-- BLOCK 1: SUCCESS HERO -->
+        <section class="success-hero">
+            <div class="success-icon">✓</div>
+            <h1>Vielen Dank für Ihre Anfrage!</h1>
+            <p class="intro">Ihre Finanzierungsanfrage wurde erfolgreich übermittelt. Unser Team von DK Finance wird sich innerhalb von 24 Stunden mit Ihnen in Verbindung setzen, um Ihr individuelles Finanzierungskonzept zu besprechen.</p>
+        </section>
+
+        <!-- BLOCK 2: NEXT STEPS / TIMELINE -->
+        <section class="generic">
+            <h2 style="text-align: center;">Wie geht es weiter?</h2>
+            <div class="timeline">
+                <div class="timeline-step">
+                    <div class="step-number">1</div>
+                    <h3>✓ Prüfung Ihrer Angaben</h3>
+                    <p>Unser Finanzierungsexperte prüft Ihre Angaben und Wünsche (innerhalb von 24 Stunden).</p>
+                </div>
+                <div class="timeline-step">
+                    <div class="step-number">2</div>
+                    <h3>✓ Persönliche Kontaktaufnahme</h3>
+                    <p>Wir melden uns telefonisch oder per E-Mail bei Ihnen, um Details zu klären.</p>
+                </div>
+                <div class="timeline-step">
+                    <div class="step-number">3</div>
+                    <h3>✓ Erstellung Ihres Finanzierungskonzepts</h3>
+                    <p>Wir erstellen ein individuelles Finanzierungskonzept, maßgeschneidert auf Ihre Situation.</p>
+                </div>
+                <div class="timeline-step">
+                    <div class="step-number">4</div>
+                    <h3>✓ Präsentation der besten Konditionen</h3>
+                    <p>Sie erhalten Angebote mit den besten Konditionen aus unserem Netzwerk von über 550 Banken.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- BLOCK 3: NAVIGATION / ADDITIONAL INFO -->
+        <section class="generic">
+            <h2 style="text-align: center;">In der Zwischenzeit...</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto var(--spacing-lg);">Möchten Sie mehr über unsere Dienstleistungen erfahren? Entdecken Sie unsere weiteren Angebote und erfahren Sie, wie wir Ihnen bei der Verwirklichung Ihrer Immobilienpläne helfen können.</p>
+
+            <div class="nav-cards">
+                <a href="/" class="nav-card">
+                    <h3>🏠 Zur Startseite</h3>
+                </a>
+                <a href="/bewerten" class="nav-card">
+                    <h3>📊 Immobilienbewertung</h3>
+                </a>
+                <a href="/investment" class="nav-card">
+                    <h3>💼 Investment</h3>
+                </a>
+                <a href="/referenzen" class="nav-card">
+                    <h3>⭐ Referenzen</h3>
+                </a>
+            </div>
+        </section>
+
+        <!-- BLOCK 4: CONTACT INFO -->
+        <section class="contact-box">
+            <h3>Haben Sie noch Fragen?</h3>
+            <p style="margin-bottom: var(--spacing-md); color: var(--text-light);">Bei dringenden Fragen oder zusätzlichem Informationsbedarf erreichen Sie uns gerne direkt:</p>
+
+            <div class="contact-info">
+                <div><strong>Telefon:</strong> <a href="tel:+49XXXXXXXXX">[TELEFONNUMMER]</a></div>
+                <div><strong>E-Mail:</strong> <a href="mailto:finance@dk360.de">finance@dk360.de</a></div>
+                <div><strong>Büro:</strong> Berlin</div>
+            </div>
+
+            <p style="margin-top: var(--spacing-md); font-weight: 600; color: var(--secondary);">Ihr Team von DK Finance</p>
+        </section>
+
+        <!-- BLOCK 5: TRUST BADGES (optional) -->
+        <section class="generic">
+            <div class="trust-badges-thankyou">
+                <div class="trust-badge">
+                    <span>✓</span>
+                    Über 550 Banken im Vergleich
+                </div>
+                <div class="trust-badge">
+                    <span>✓</span>
+                    Bankenunabhängige Beratung
+                </div>
+                <div class="trust-badge">
+                    <span>✓</span>
+                    Kostenfreie Erstberatung
+                </div>
+                <div class="trust-badge">
+                    <span>✓</span>
+                    Schnelle Zusage
+                </div>
+            </div>
+        </section>
+
+        <!-- CLOSING -->
+        <section class="closing">
+            <p>Wir freuen uns darauf, Sie auf dem Weg zu Ihrer optimalen Immobilienfinanzierung zu begleiten — transparent, effizient und immer mit Blick auf Ihre individuelle Situation.</p>
+        </section>
+
+        <!-- TRACKING NOTE FOR DEVELOPER -->
+        <div style="background: #fff9c4; border: 2px dashed #ffc107; padding: var(--spacing-md); border-radius: var(--radius); margin-top: var(--spacing-lg);">
+            <h3 style="color: #f57c00; margin-bottom: var(--spacing-sm);">🔧 FÜR ENTWICKLER: TRACKING EVENTS</h3>
+            <p style="margin: 0; font-size: 0.95rem; color: #666;">Diese Seite ist der Conversion-Trigger! Beim Laden müssen folgende Events ausgelöst werden:</p>
+            <ul style="margin: var(--spacing-sm) 0 0; padding-left: var(--spacing-md); font-size: 0.9rem; color: #666;">
+                <li>Google Analytics 4: <code>gtag('event', 'lead_finanzierung_submitted')</code></li>
+                <li>Google Ads Conversion: <code>gtag('event', 'conversion', ...)</code></li>
+                <li>Meta Pixel: <code>fbq('track', 'Lead', ...)</code></li>
+                <li>Bitrix24: Lead bereits beim Form Submit erstellt (via webhook)</li>
+            </ul>
+        </div>
+    </main>
+
+    <div class="version-badge">Thank You V1.0</div>
+
+    <!-- TRACKING SCRIPTS (Placeholder — wird beim Build eingefügt) -->
+    <script>
+        // Google Analytics 4
+        // gtag('event', 'lead_finanzierung_submitted', {
+        //   'event_category': 'Lead Generation',
+        //   'event_label': 'Finanzierung Leadmagnet',
+        //   'value': 1
+        // });
+
+        // Google Ads Conversion
+        // gtag('event', 'conversion', {
+        //   'send_to': 'AW-XXXXXXXXX/CONVERSION_ID',
+        //   'value': 1.0,
+        //   'currency': 'EUR'
+        // });
+
+        // Meta Pixel
+        // fbq('track', 'Lead', {
+        //   content_category: 'Finanzierung',
+        //   content_name: 'Leadmagnet Form'
+        // });
+
+        console.log('✓ Thank You Page loaded — Tracking events should fire here');
+    </script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DK Website 2026 — Preview Index</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .page-card { padding: 1.5rem; background: var(--bg-light); border-radius: var(--radius); margin-bottom: 1rem; border-left: 4px solid var(--accent); display: flex; justify-content: space-between; align-items: center; }
+        .page-card:hover { background: var(--primary); }
+        .page-card h3 { margin: 0 0 0.25rem 0; font-size: 1.2rem; }
+        .page-card h3 a { color: var(--secondary); }
+        .page-card .page-url { font-size: 0.85rem; color: var(--text-light); font-family: monospace; }
+        .page-card .page-status { font-size: 0.75rem; padding: 3px 10px; border-radius: 10px; font-weight: 600; white-space: nowrap; }
+        .status-updated { background: #ff6b35; color: white; }
+        .status-new { background: var(--success); color: white; }
+        .status-unchanged { background: var(--border); color: var(--text-light); }
+        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
+    </style>
+</head>
+<body>
+    <main class="page-content">
+        <section class="hero">
+            <h1>DK Website 2026 — Content Preview v2</h1>
+            <p class="intro">HTML-превью всех страниц для визуальной проверки контента v2 (Meeting-Feedback 11.03.2026)</p>
+            <p class="intro"><strong>6 страниц обновлены</strong> · Новые секции отмечены <span style="display:inline-block;background:#ff6b35;color:white;font-size:0.7rem;padding:2px 8px;border-radius:10px;font-weight:600;">NEU v2</span></p>
+        </section>
+
+        <section class="generic">
+            <h2>Страницы сайта</h2>
+
+            <div class="page-card">
+                <div>
+                    <h3><a href="homepage.html">Homepage</a></h3>
+                    <span class="page-url">dk360.de/</span>
+                </div>
+                <span class="page-status status-updated">v2 Обновлена</span>
+            </div>
+
+            <div class="page-card">
+                <div>
+                    <h3><a href="kaufen.html">Kaufen</a></h3>
+                    <span class="page-url">dk360.de/immobilien-kaufen-in-berlin/</span>
+                </div>
+                <span class="page-status status-updated">v2 Обновлена</span>
+            </div>
+
+            <div class="page-card">
+                <div>
+                    <h3><a href="finanzierung.html">Finanzierung — DK Finance</a></h3>
+                    <span class="page-url">dk360.de/immobilienfinanzierung-berlin/</span>
+                </div>
+                <span class="page-status status-updated">v2 Обновлена</span>
+            </div>
+
+            <div class="page-card">
+                <div>
+                    <h3><a href="verkaufen.html">Verkaufen</a></h3>
+                    <span class="page-url">dk360.de/immobilie-verkaufen-in-berlin/</span>
+                </div>
+                <span class="page-status status-new">Новая</span>
+            </div>
+
+            <div class="page-card">
+                <div>
+                    <h3><a href="investment.html">Investment</a></h3>
+                    <span class="page-url">dk360.de/investment/</span>
+                </div>
+                <span class="page-status status-new">Новая</span>
+            </div>
+
+            <div class="page-card">
+                <div>
+                    <h3><a href="bewertung.html">Bewertung</a></h3>
+                    <span class="page-url">dk360.de/immobilienbewertung-berlin/</span>
+                </div>
+                <span class="page-status status-updated">v2 Обновлена</span>
+            </div>
+
+            <div class="page-card">
+                <div>
+                    <h3><a href="finanzierung-danke.html">Thank You — Finanzierung</a></h3>
+                    <span class="page-url">dk360.de/danke-finanzierung/</span>
+                </div>
+                <span class="page-status status-unchanged">Без изменений</span>
+            </div>
+        </section>
+
+        <section class="generic">
+            <h2>Что изменилось в v2 (Meeting 11.03.2026)</h2>
+            <div class="info-grid">
+                <div class="trust-item">
+                    <h3>Finanzierung</h3>
+                    <p>Полная перестройка: Verkäufer/Käufer-Split (5+4 USPs), Restnutzungsdauergutachten (€30-40k), обновлённый FAQ</p>
+                </div>
+                <div class="trust-item">
+                    <h3>Verkaufen</h3>
+                    <p>4 новых секции: Haustechniker, Alleinauftrag, Psychologin/Mediation, Dashboard с 3 метриками</p>
+                </div>
+                <div class="trust-item">
+                    <h3>Investment</h3>
+                    <p>5 новых секций: Live-Netzwerk, Bestandsoptimierung, 100% Diskret, Zielakquise, Inhouse-Architektin</p>
+                </div>
+                <div class="trust-item">
+                    <h3>Homepage</h3>
+                    <p>Problemlöser-Block (Erbstreit, Mieter, 550 Banken), aufgelockerter Ton, Finanzierung Cross-Sell</p>
+                </div>
+                <div class="trust-item">
+                    <h3>Kaufen</h3>
+                    <p>9 Änderungen: Keyword-H1, 6 Technologie-Kacheln (von /know-how/ integriert), 5-Schritte Kaufprozess, Finanzierung Cross-Sell</p>
+                </div>
+                <div class="trust-item">
+                    <h3>Bewertung</h3>
+                    <p>7 Änderungen: H1-Fix (2→1), 4 neue H2s, Wertfaktoren-Section, Finanzierung Cross-Sell, FAQ-Überschrift</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="generic">
+            <h2>Для дизайнера (Andrey Kovyrkin)</h2>
+            <div class="trust-item">
+                <h3>Как использовать</h3>
+                <p>1. Откройте каждую страницу → изучите структуру и тексты</p>
+                <p>2. Оранжевые бейджи <strong>NEU v2</strong> = новые секции из Meeting-Feedback</p>
+                <p>3. Серые пунктирные блоки = существующие секции без изменений</p>
+                <p>4. Все тексты <strong>copy-ready</strong> — можно использовать напрямую</p>
+            </div>
+
+            <div class="trust-item">
+                <h3>Цветовая схема</h3>
+                <p><strong>Primary:</strong> Beige #f5e6d3 · <strong>Secondary:</strong> Navy #1a3a52 · <strong>Accent:</strong> Gold #c9a96e</p>
+                <p><strong>Стиль:</strong> Премиальный, минималистичный, с белым пространством</p>
+            </div>
+        </section>
+
+        <section class="cta">
+            <h2>Файлы проекта</h2>
+            <p><strong>Контент:</strong> content/DK_*_CONTENT_FINAL.md (7 файлов)</p>
+            <p><strong>Preview:</strong> preview/*.html (7 страниц + index)</p>
+            <p><strong>Styles:</strong> preview/style.css</p>
+            <p><strong>Источник:</strong> Meeting 11.03.2026 (Dennis Kowtzun + Dorian Rouhani)</p>
+        </section>
+    </main>
+
+    <div class="version-badge">Preview Index V2.0 | 2026-03-12</div>
+</body>
+</html>
