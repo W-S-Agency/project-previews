@@ -21,196 +21,54 @@
         @media (max-width: 768px) { .metrics-row { grid-template-columns: 1fr; } }
     
 /* === FEEDBACK UI === */
-:root {
-  --feedback-bg: #fef3c7;
-  --feedback-border: #f59e0b;
-  --success: #10b981;
-}
-.feedback-counter {
-  background: var(--accent, #f59e0b);
-  color: var(--primary, #1e3a5f);
-  padding: 6px 16px;
-  border-radius: 20px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: transform 0.2s;
-  font-size: 13px;
-  white-space: nowrap;
-}
+:root { --feedback-bg: #fef3c7; --feedback-border: #f59e0b; --success: #10b981; }
+.feedback-counter { background: var(--accent, #c9a96e); color: white; padding: 6px 16px; border-radius: 20px; font-weight: 700; cursor: pointer; transition: transform 0.2s; font-size: 13px; white-space: nowrap; }
 .feedback-counter:hover { transform: scale(1.05); }
 .feedback-counter.has-feedback { animation: fb-pulse 2s infinite; }
-@keyframes fb-pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(245,158,11,0.4); }
-  50% { box-shadow: 0 0 0 8px rgba(245,158,11,0); }
-}
-.feedback-btn {
-  position: absolute;
-  top: 12px;
-  right: 24px;
-  background: white;
-  border: 1px solid var(--border, #e2e8f0);
-  padding: 6px 14px;
-  border-radius: 20px;
-  cursor: pointer;
-  font-size: 13px;
-  color: var(--text-light, #64748b);
-  transition: all 0.2s;
-  z-index: 10;
-}
-.feedback-btn:hover {
-  border-color: var(--feedback-border);
-  color: var(--feedback-border);
-  background: var(--feedback-bg);
-}
-.feedback-btn.has-comment {
-  background: var(--feedback-bg);
-  border-color: var(--feedback-border);
-  color: var(--primary, #1e3a5f);
-}
+@keyframes fb-pulse { 0%,100%{box-shadow:0 0 0 0 rgba(201,169,110,0.4)} 50%{box-shadow:0 0 0 8px rgba(201,169,110,0)} }
+.feedback-btn { position:absolute; top:12px; right:24px; background:white; border:1px solid var(--border,#e2e8f0); padding:6px 14px; border-radius:20px; cursor:pointer; font-size:13px; color:var(--text-light,#64748b); transition:all 0.2s; z-index:10; }
+.feedback-btn:hover { border-color:var(--feedback-border); color:var(--feedback-border); background:var(--feedback-bg); }
+.feedback-btn.has-comment { background:var(--feedback-bg); border-color:var(--feedback-border); color:var(--primary,#1e3a5f); }
 section { position: relative; }
-.feedback-panel {
-  display: none;
-  margin-top: 24px;
-  background: var(--feedback-bg);
-  border: 2px solid var(--feedback-border);
-  border-radius: var(--radius, 8px);
-  padding: 20px;
-  animation: fb-slideDown 0.3s ease;
-}
-.feedback-panel.open { display: block; }
-@keyframes fb-slideDown {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.feedback-panel label {
-  display: block;
-  font-weight: 600;
-  margin-bottom: 8px;
-  color: var(--primary, #1e3a5f);
-  font-size: 14px;
-}
-.feedback-panel textarea {
-  width: 100%;
-  min-height: 100px;
-  padding: 12px;
-  border: 1px solid var(--border, #e2e8f0);
-  border-radius: var(--radius, 8px);
-  font-family: inherit;
-  font-size: 15px;
-  resize: vertical;
-  line-height: 1.5;
-  box-sizing: border-box;
-}
-.feedback-panel textarea:focus {
-  outline: none;
-  border-color: var(--primary-light, #2563eb);
-  box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
-}
-.feedback-actions {
-  display: flex;
-  gap: 12px;
-  margin-top: 12px;
-  align-items: center;
-}
-.btn-save {
-  background: var(--primary, #1e3a5f);
-  color: white;
-  border: none;
-  padding: 8px 20px;
-  border-radius: var(--radius, 8px);
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 600;
-}
-.btn-cancel {
-  background: transparent;
-  border: 1px solid var(--border, #e2e8f0);
-  padding: 8px 20px;
-  border-radius: var(--radius, 8px);
-  cursor: pointer;
-  font-size: 14px;
-  color: var(--text-light, #64748b);
-}
-.btn-delete {
-  background: transparent;
-  border: none;
-  padding: 8px 12px;
-  cursor: pointer;
-  font-size: 14px;
-  color: #ef4444;
-  margin-left: auto;
-}
-.saved-indicator {
-  display: none;
-  color: var(--success);
-  font-size: 13px;
-  align-items: center;
-  gap: 4px;
-}
-.export-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.5);
-  z-index: 200;
-  justify-content: center;
-  align-items: center;
-}
-.export-overlay.open { display: flex; }
-.export-box {
-  background: white;
-  border-radius: 12px;
-  padding: 32px;
-  max-width: 500px;
-  width: 90%;
-  text-align: center;
-}
-.export-box h2 { margin-bottom: 16px; font-size: 22px; }
-.export-box p { color: var(--text-light, #64748b); margin-bottom: 24px; }
-.export-box .count { font-size: 48px; font-weight: 800; color: var(--primary-light, #2563eb); }
-.btn-export {
-  display: inline-block;
-  background: var(--primary-light, #2563eb);
-  color: white;
-  padding: 14px 32px;
-  border-radius: var(--radius, 8px);
-  border: none;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  margin: 8px;
-}
-.btn-export:hover { background: var(--primary, #1e3a5f); }
-.btn-close-overlay {
-  display: inline-block;
-  background: transparent;
-  border: 1px solid var(--border, #e2e8f0);
-  padding: 14px 32px;
-  border-radius: var(--radius, 8px);
-  font-size: 16px;
-  cursor: pointer;
-  margin: 8px;
-  color: var(--text-light, #64748b);
-}
-@media (max-width: 768px) {
-  .feedback-btn { top: auto; bottom: -16px; right: 16px; font-size: 12px; }
-  .feedback-panel { padding: 16px; }
-}
+.feedback-panel { display:none; margin-top:24px; background:var(--feedback-bg); border:2px solid var(--feedback-border); border-radius:var(--radius,8px); padding:20px; animation:fb-slideDown 0.3s ease; }
+.feedback-panel.open { display:block; }
+@keyframes fb-slideDown { from{opacity:0;transform:translateY(-10px)} to{opacity:1;transform:translateY(0)} }
+.feedback-panel label { display:block; font-weight:600; margin-bottom:8px; color:var(--primary,#1e3a5f); font-size:14px; }
+.feedback-panel textarea { width:100%; min-height:100px; padding:12px; border:1px solid var(--border,#e2e8f0); border-radius:var(--radius,8px); font-family:inherit; font-size:15px; resize:vertical; line-height:1.5; box-sizing:border-box; }
+.feedback-panel textarea:focus { outline:none; border-color:var(--primary-light,#2563eb); box-shadow:0 0 0 3px rgba(37,99,235,0.1); }
+.feedback-actions { display:flex; gap:12px; margin-top:12px; align-items:center; }
+.btn-save { background:var(--primary,#1e3a5f); color:white; border:none; padding:8px 20px; border-radius:var(--radius,8px); cursor:pointer; font-size:14px; font-weight:600; }
+.btn-cancel { background:transparent; border:1px solid var(--border,#e2e8f0); padding:8px 20px; border-radius:var(--radius,8px); cursor:pointer; font-size:14px; color:var(--text-light,#64748b); }
+.btn-delete { background:transparent; border:none; padding:8px 12px; cursor:pointer; font-size:14px; color:#ef4444; margin-left:auto; }
+.saved-indicator { display:none; color:var(--success); font-size:13px; align-items:center; gap:4px; }
+.export-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:200; justify-content:center; align-items:center; }
+.export-overlay.open { display:flex; }
+.export-box { background:white; border-radius:12px; padding:32px; max-width:500px; width:90%; text-align:center; }
+.export-box h2 { margin-bottom:16px; font-size:22px; }
+.export-box p { color:var(--text-light,#64748b); margin-bottom:24px; }
+.export-box .count { font-size:48px; font-weight:800; color:var(--primary-light,#2563eb); }
+.btn-export { display:inline-block; background:var(--primary-light,#2563eb); color:white; padding:14px 32px; border-radius:var(--radius,8px); border:none; font-size:16px; font-weight:600; cursor:pointer; margin:8px; }
+.btn-export:hover { background:var(--primary,#1e3a5f); }
+.btn-close-overlay { display:inline-block; background:transparent; border:1px solid var(--border,#e2e8f0); padding:14px 32px; border-radius:var(--radius,8px); font-size:16px; cursor:pointer; margin:8px; color:var(--text-light,#64748b); }
+@media(max-width:768px) { .feedback-btn{top:auto;bottom:-16px;right:16px;font-size:12px} .feedback-panel{padding:16px} .nav-links{flex-wrap:wrap;gap:4px} .nav-links a{font-size:12px;padding:4px 8px} }
 
 </style>
 </head>
 <body>
-    <nav class="sticky-nav">
+        <nav class="sticky-nav">
         <div class="nav-container">
-            <span class="nav-logo">DK Website 2026</span>
+            <span class="nav-logo">DK Real Estate — Preview</span>
             <div class="nav-links">
-                <a href="index.html">Home</a>
+                <a href="index.html">Übersicht</a>
                 <a href="homepage.html">Homepage</a>
+                <a href="kaufen.html">Kaufen</a>
                 <a href="finanzierung.html">Finanzierung</a>
                 <a href="verkaufen.html" class="active">Verkaufen</a>
                 <a href="investment.html">Investment</a>
+                <a href="bewertung.html">Bewertung</a>
+                <a href="finanzierung-danke.html">Danke</a>
             </div>
-                <div class="feedback-counter" id="feedbackCounter" onclick="openExportOverlay()">Feedback: <span id="feedbackCount">0</span> Kommentare</div>
+            <div class="feedback-counter" id="feedbackCounter" onclick="openExportOverlay()">Feedback: 0 Kommentare</div>
         </div>
     </nav>
 
@@ -237,7 +95,8 @@ section { position: relative; }
     <button class="btn-delete" onclick="deleteFeedback(1)" style="display:none" id="delete-btn-1">Löschen</button>
     <span class="saved-indicator" id="saved-1">&#10003; Gespeichert</span>
   </div>
-</div></section>
+</div>
+</section>
 
         <!-- PLACEHOLDER: Bestehende Sections -->
         <div class="placeholder-section">
@@ -246,7 +105,7 @@ section { position: relative; }
 
         <!-- SECTION 3: LEISTUNGEN -->
         <section id="block-2" class="trust-bar">
-            <span class="block-label" style="display:none">Was wir wirklich tun – Leistungen, die den Unterschied ma...</span>
+            <span class="block-label" style="display:none">Was wir wirklich tun – Leistungen, die den Unterschied mache...</span>
             <button class="feedback-btn" onclick="toggleFeedback(2)">&#9999;&#65039; Vorschlag</button>
             <h2>Was wir wirklich tun – Leistungen, die den Unterschied machen <span class="change-badge">NEU v2</span></h2>
             <p class="intro">Drohnenaufnahmen und virtuelle Rundgänge? Das ist heute Standard. Was uns unterscheidet, sind die Leistungen, die kein anderer Makler in Berlin Inhouse erbringt.</p>
@@ -270,7 +129,7 @@ section { position: relative; }
             </div>
         
             <div class="feedback-panel" id="feedback-panel-2">
-  <label>Ihr Vorschlag für Was wir wirklich tun – Leistungen, die den Unterschied ma...:</label>
+  <label>Ihr Vorschlag für Was wir wirklich tun – Leistungen, die den Unterschied mache...:</label>
   <textarea id="feedback-text-2" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
   <div class="feedback-actions">
     <button class="btn-save" onclick="saveFeedback(2)">Speichern</button>
@@ -278,7 +137,8 @@ section { position: relative; }
     <button class="btn-delete" onclick="deleteFeedback(2)" style="display:none" id="delete-btn-2">Löschen</button>
     <span class="saved-indicator" id="saved-2">&#10003; Gespeichert</span>
   </div>
-</div></section>
+</div>
+</section>
 
         <!-- SECTION 4: ALLEINAUFTRAG -->
         <section id="block-3" class="generic alleinauftrag">
@@ -297,11 +157,12 @@ section { position: relative; }
     <button class="btn-delete" onclick="deleteFeedback(3)" style="display:none" id="delete-btn-3">Löschen</button>
     <span class="saved-indicator" id="saved-3">&#10003; Gespeichert</span>
   </div>
-</div></section>
+</div>
+</section>
 
         <!-- SECTION 5: MEDIATION -->
         <section id="block-4" class="generic">
-            <span class="block-label" style="display:none">Wenn es menschlich wird: Mediation und Konfliktlösung Inh...</span>
+            <span class="block-label" style="display:none">Wenn es menschlich wird: Mediation und Konfliktlösung Inhous...</span>
             <button class="feedback-btn" onclick="toggleFeedback(4)">&#9999;&#65039; Vorschlag</button>
             <h2>Wenn es menschlich wird: Mediation und Konfliktlösung Inhouse <span class="change-badge">NEU v2</span></h2>
             <p>Nicht jeder Immobilienverkauf läuft glatt. Erbengemeinschaften, die sich nicht einigen. Paare, die sich trennen und gemeinsames Eigentum auflösen müssen. Nachbarn mit ungeklärten Grenzverhältnissen. In solchen Situationen reicht ein guter Makler allein nicht aus.</p>
@@ -309,7 +170,7 @@ section { position: relative; }
             <p>Das ist kein Bonus. Das ist kein Zusatzservice. Das ist ein Teil unserer Arbeit.</p>
         
             <div class="feedback-panel" id="feedback-panel-4">
-  <label>Ihr Vorschlag für Wenn es menschlich wird: Mediation und Konfliktlösung Inh...:</label>
+  <label>Ihr Vorschlag für Wenn es menschlich wird: Mediation und Konfliktlösung Inhous...:</label>
   <textarea id="feedback-text-4" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
   <div class="feedback-actions">
     <button class="btn-save" onclick="saveFeedback(4)">Speichern</button>
@@ -317,11 +178,12 @@ section { position: relative; }
     <button class="btn-delete" onclick="deleteFeedback(4)" style="display:none" id="delete-btn-4">Löschen</button>
     <span class="saved-indicator" id="saved-4">&#10003; Gespeichert</span>
   </div>
-</div></section>
+</div>
+</section>
 
         <!-- SECTION 6: DASHBOARD -->
         <section id="block-5" class="dashboard-block">
-            <span class="block-label" style="display:none">Sie sehen live, was passiert – Ihr persönliches Verkaufs-...</span>
+            <span class="block-label" style="display:none">Sie sehen live, was passiert – Ihr persönliches Verkaufs-Das...</span>
             <button class="feedback-btn" onclick="toggleFeedback(5)">&#9999;&#65039; Vorschlag</button>
             <h2>Sie sehen live, was passiert – Ihr persönliches Verkaufs-Dashboard <span class="change-badge">NEU v2</span></h2>
             <p>Viele Verkäufer haben das gleiche Problem: Sie beauftragen einen Makler – und hören dann wochenlang nichts. Bei uns ist das anders. Über Ihr persönliches Verkaufs-Dashboard sehen Sie jederzeit den aktuellen Stand Ihres Verkaufsprozesses.</p>
@@ -342,7 +204,7 @@ section { position: relative; }
             <p>Dazu meldet sich Ihr persönlicher Ansprechpartner regelmäßig per Anruf bei Ihnen – mit einem Update, einer Einschätzung und den nächsten Schritten. Sie sind nie im Dunkeln.</p>
         
             <div class="feedback-panel" id="feedback-panel-5">
-  <label>Ihr Vorschlag für Sie sehen live, was passiert – Ihr persönliches Verkaufs-...:</label>
+  <label>Ihr Vorschlag für Sie sehen live, was passiert – Ihr persönliches Verkaufs-Das...:</label>
   <textarea id="feedback-text-5" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
   <div class="feedback-actions">
     <button class="btn-save" onclick="saveFeedback(5)">Speichern</button>
@@ -350,11 +212,12 @@ section { position: relative; }
     <button class="btn-delete" onclick="deleteFeedback(5)" style="display:none" id="delete-btn-5">Löschen</button>
     <span class="saved-indicator" id="saved-5">&#10003; Gespeichert</span>
   </div>
-</div></section>
+</div>
+</section>
 
         <!-- SECTION 7: FINANZIERUNG CROSS-SELL -->
         <section id="block-6" class="cta">
-            <span class="block-label" style="display:none">Verkauf und Neukauf in einem Schritt? Wir unterstützen au...</span>
+            <span class="block-label" style="display:none">Verkauf und Neukauf in einem Schritt? Wir unterstützen auch ...</span>
             <button class="feedback-btn" onclick="toggleFeedback(6)">&#9999;&#65039; Vorschlag</button>
             <h2>Verkauf und Neukauf in einem Schritt? Wir unterstützen auch bei der Finanzierung <span class="change-badge">NEU</span></h2>
             <p>Sie verkaufen Ihre Immobilie und planen gleichzeitig einen Neukauf? Dann profitieren Sie von unserem integrierten Ansatz: Verkauf, Kaufberatung und Finanzierung aus einer Hand.</p>
@@ -366,7 +229,7 @@ section { position: relative; }
             <a href="finanzierung.html" class="cta-button">Mehr zur Finanzierungsberatung &rarr;</a>
         
             <div class="feedback-panel" id="feedback-panel-6">
-  <label>Ihr Vorschlag für Verkauf und Neukauf in einem Schritt? Wir unterstützen au...:</label>
+  <label>Ihr Vorschlag für Verkauf und Neukauf in einem Schritt? Wir unterstützen auch ...:</label>
   <textarea id="feedback-text-6" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
   <div class="feedback-actions">
     <button class="btn-save" onclick="saveFeedback(6)">Speichern</button>
@@ -374,7 +237,8 @@ section { position: relative; }
     <button class="btn-delete" onclick="deleteFeedback(6)" style="display:none" id="delete-btn-6">Löschen</button>
     <span class="saved-indicator" id="saved-6">&#10003; Gespeichert</span>
   </div>
-</div></section>
+</div>
+</section>
 
         <!-- SECTION 8: FAQ -->
         <section id="block-7" class="faq">
@@ -402,7 +266,8 @@ section { position: relative; }
     <button class="btn-delete" onclick="deleteFeedback(7)" style="display:none" id="delete-btn-7">Löschen</button>
     <span class="saved-indicator" id="saved-7">&#10003; Gespeichert</span>
   </div>
-</div></section>
+</div>
+</section>
 
         <!-- PLACEHOLDER: Kontaktformular -->
         <div class="placeholder-section">
@@ -412,7 +277,6 @@ section { position: relative; }
     </main>
 
     <div class="version-badge">V2.0 | 2026-03-12</div>
-
 <div class="export-overlay" id="exportOverlay">
   <div class="export-box">
     <div class="count" id="exportCount">0</div>
@@ -422,13 +286,11 @@ section { position: relative; }
     <button class="btn-close-overlay" onclick="closeExportOverlay()">Schließen</button>
   </div>
 </div>
-
 <script>
 (function() {
   var PROJECT = 'dk';
   var PAGE = 'verkaufen';
   var STORAGE_KEY = '2p-feedback-' + PROJECT + '-' + PAGE;
-
   function loadFeedback() {
     var saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
     var count = 0;
@@ -443,15 +305,11 @@ section { position: relative; }
     }
     updateCounter(count);
   }
-
   window.toggleFeedback = function(blockId) {
     var panel = document.getElementById('feedback-panel-' + blockId);
     panel.classList.toggle('open');
-    if (panel.classList.contains('open')) {
-      document.getElementById('feedback-text-' + blockId).focus();
-    }
+    if (panel.classList.contains('open')) document.getElementById('feedback-text-' + blockId).focus();
   };
-
   window.saveFeedback = function(blockId) {
     var text = document.getElementById('feedback-text-' + blockId).value.trim();
     if (!text) return;
@@ -468,7 +326,6 @@ section { position: relative; }
     updateCounter(Object.keys(saved).length);
     setTimeout(function() { window.toggleFeedback(blockId); }, 1500);
   };
-
   window.deleteFeedback = function(blockId) {
     var saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
     delete saved[blockId];
@@ -481,19 +338,17 @@ section { position: relative; }
     updateCounter(Object.keys(saved).length);
     window.toggleFeedback(blockId);
   };
-
   function updateCounter(count) {
-    var counterEl = document.getElementById('feedbackCounter');
-    if (!counterEl) return;
+    var el = document.getElementById('feedbackCounter');
+    if (!el) return;
     if (count > 0) {
-      counterEl.classList.add('has-feedback');
-      counterEl.innerHTML = '\ud83d\udce5 Feedback: ' + count + ' Kommentar' + (count > 1 ? 'e' : '');
+      el.classList.add('has-feedback');
+      el.innerHTML = '\ud83d\udce5 Feedback: ' + count + ' Kommentar' + (count > 1 ? 'e' : '');
     } else {
-      counterEl.classList.remove('has-feedback');
-      counterEl.innerHTML = 'Feedback: 0 Kommentare';
+      el.classList.remove('has-feedback');
+      el.innerHTML = 'Feedback: 0 Kommentare';
     }
   }
-
   window.openExportOverlay = function() {
     var saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
     var count = Object.keys(saved).length;
@@ -501,14 +356,10 @@ section { position: relative; }
     document.getElementById('exportCount').textContent = count;
     document.getElementById('exportOverlay').classList.add('open');
   };
-
-  window.closeExportOverlay = function() {
-    document.getElementById('exportOverlay').classList.remove('open');
-  };
-
+  window.closeExportOverlay = function() { document.getElementById('exportOverlay').classList.remove('open'); };
   window.exportFeedback = function() {
     var saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
-    var text = 'FEEDBACK — ' + PROJECT.toUpperCase() + '\n';
+    var text = 'FEEDBACK \u2014 ' + PROJECT.toUpperCase() + '\n';
     text += 'Seite: ' + PAGE + '\n';
     text += 'Datum: ' + new Date().toLocaleDateString('de-DE') + '\n';
     text += '==================================================\n\n';
@@ -532,7 +383,6 @@ section { position: relative; }
     URL.revokeObjectURL(url);
     window.closeExportOverlay();
   };
-
   loadFeedback();
 })();
 </script>

@@ -37,196 +37,54 @@
         @media (max-width: 768px) { .dual-cta { grid-template-columns: 1fr; } .stats-row { grid-template-columns: 1fr 1fr; } }
     
 /* === FEEDBACK UI === */
-:root {
-  --feedback-bg: #fef3c7;
-  --feedback-border: #f59e0b;
-  --success: #10b981;
-}
-.feedback-counter {
-  background: var(--accent, #f59e0b);
-  color: var(--primary, #1e3a5f);
-  padding: 6px 16px;
-  border-radius: 20px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: transform 0.2s;
-  font-size: 13px;
-  white-space: nowrap;
-}
+:root { --feedback-bg: #fef3c7; --feedback-border: #f59e0b; --success: #10b981; }
+.feedback-counter { background: var(--accent, #c9a96e); color: white; padding: 6px 16px; border-radius: 20px; font-weight: 700; cursor: pointer; transition: transform 0.2s; font-size: 13px; white-space: nowrap; }
 .feedback-counter:hover { transform: scale(1.05); }
 .feedback-counter.has-feedback { animation: fb-pulse 2s infinite; }
-@keyframes fb-pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(245,158,11,0.4); }
-  50% { box-shadow: 0 0 0 8px rgba(245,158,11,0); }
-}
-.feedback-btn {
-  position: absolute;
-  top: 12px;
-  right: 24px;
-  background: white;
-  border: 1px solid var(--border, #e2e8f0);
-  padding: 6px 14px;
-  border-radius: 20px;
-  cursor: pointer;
-  font-size: 13px;
-  color: var(--text-light, #64748b);
-  transition: all 0.2s;
-  z-index: 10;
-}
-.feedback-btn:hover {
-  border-color: var(--feedback-border);
-  color: var(--feedback-border);
-  background: var(--feedback-bg);
-}
-.feedback-btn.has-comment {
-  background: var(--feedback-bg);
-  border-color: var(--feedback-border);
-  color: var(--primary, #1e3a5f);
-}
+@keyframes fb-pulse { 0%,100%{box-shadow:0 0 0 0 rgba(201,169,110,0.4)} 50%{box-shadow:0 0 0 8px rgba(201,169,110,0)} }
+.feedback-btn { position:absolute; top:12px; right:24px; background:white; border:1px solid var(--border,#e2e8f0); padding:6px 14px; border-radius:20px; cursor:pointer; font-size:13px; color:var(--text-light,#64748b); transition:all 0.2s; z-index:10; }
+.feedback-btn:hover { border-color:var(--feedback-border); color:var(--feedback-border); background:var(--feedback-bg); }
+.feedback-btn.has-comment { background:var(--feedback-bg); border-color:var(--feedback-border); color:var(--primary,#1e3a5f); }
 section { position: relative; }
-.feedback-panel {
-  display: none;
-  margin-top: 24px;
-  background: var(--feedback-bg);
-  border: 2px solid var(--feedback-border);
-  border-radius: var(--radius, 8px);
-  padding: 20px;
-  animation: fb-slideDown 0.3s ease;
-}
-.feedback-panel.open { display: block; }
-@keyframes fb-slideDown {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.feedback-panel label {
-  display: block;
-  font-weight: 600;
-  margin-bottom: 8px;
-  color: var(--primary, #1e3a5f);
-  font-size: 14px;
-}
-.feedback-panel textarea {
-  width: 100%;
-  min-height: 100px;
-  padding: 12px;
-  border: 1px solid var(--border, #e2e8f0);
-  border-radius: var(--radius, 8px);
-  font-family: inherit;
-  font-size: 15px;
-  resize: vertical;
-  line-height: 1.5;
-  box-sizing: border-box;
-}
-.feedback-panel textarea:focus {
-  outline: none;
-  border-color: var(--primary-light, #2563eb);
-  box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
-}
-.feedback-actions {
-  display: flex;
-  gap: 12px;
-  margin-top: 12px;
-  align-items: center;
-}
-.btn-save {
-  background: var(--primary, #1e3a5f);
-  color: white;
-  border: none;
-  padding: 8px 20px;
-  border-radius: var(--radius, 8px);
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 600;
-}
-.btn-cancel {
-  background: transparent;
-  border: 1px solid var(--border, #e2e8f0);
-  padding: 8px 20px;
-  border-radius: var(--radius, 8px);
-  cursor: pointer;
-  font-size: 14px;
-  color: var(--text-light, #64748b);
-}
-.btn-delete {
-  background: transparent;
-  border: none;
-  padding: 8px 12px;
-  cursor: pointer;
-  font-size: 14px;
-  color: #ef4444;
-  margin-left: auto;
-}
-.saved-indicator {
-  display: none;
-  color: var(--success);
-  font-size: 13px;
-  align-items: center;
-  gap: 4px;
-}
-.export-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.5);
-  z-index: 200;
-  justify-content: center;
-  align-items: center;
-}
-.export-overlay.open { display: flex; }
-.export-box {
-  background: white;
-  border-radius: 12px;
-  padding: 32px;
-  max-width: 500px;
-  width: 90%;
-  text-align: center;
-}
-.export-box h2 { margin-bottom: 16px; font-size: 22px; }
-.export-box p { color: var(--text-light, #64748b); margin-bottom: 24px; }
-.export-box .count { font-size: 48px; font-weight: 800; color: var(--primary-light, #2563eb); }
-.btn-export {
-  display: inline-block;
-  background: var(--primary-light, #2563eb);
-  color: white;
-  padding: 14px 32px;
-  border-radius: var(--radius, 8px);
-  border: none;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  margin: 8px;
-}
-.btn-export:hover { background: var(--primary, #1e3a5f); }
-.btn-close-overlay {
-  display: inline-block;
-  background: transparent;
-  border: 1px solid var(--border, #e2e8f0);
-  padding: 14px 32px;
-  border-radius: var(--radius, 8px);
-  font-size: 16px;
-  cursor: pointer;
-  margin: 8px;
-  color: var(--text-light, #64748b);
-}
-@media (max-width: 768px) {
-  .feedback-btn { top: auto; bottom: -16px; right: 16px; font-size: 12px; }
-  .feedback-panel { padding: 16px; }
-}
+.feedback-panel { display:none; margin-top:24px; background:var(--feedback-bg); border:2px solid var(--feedback-border); border-radius:var(--radius,8px); padding:20px; animation:fb-slideDown 0.3s ease; }
+.feedback-panel.open { display:block; }
+@keyframes fb-slideDown { from{opacity:0;transform:translateY(-10px)} to{opacity:1;transform:translateY(0)} }
+.feedback-panel label { display:block; font-weight:600; margin-bottom:8px; color:var(--primary,#1e3a5f); font-size:14px; }
+.feedback-panel textarea { width:100%; min-height:100px; padding:12px; border:1px solid var(--border,#e2e8f0); border-radius:var(--radius,8px); font-family:inherit; font-size:15px; resize:vertical; line-height:1.5; box-sizing:border-box; }
+.feedback-panel textarea:focus { outline:none; border-color:var(--primary-light,#2563eb); box-shadow:0 0 0 3px rgba(37,99,235,0.1); }
+.feedback-actions { display:flex; gap:12px; margin-top:12px; align-items:center; }
+.btn-save { background:var(--primary,#1e3a5f); color:white; border:none; padding:8px 20px; border-radius:var(--radius,8px); cursor:pointer; font-size:14px; font-weight:600; }
+.btn-cancel { background:transparent; border:1px solid var(--border,#e2e8f0); padding:8px 20px; border-radius:var(--radius,8px); cursor:pointer; font-size:14px; color:var(--text-light,#64748b); }
+.btn-delete { background:transparent; border:none; padding:8px 12px; cursor:pointer; font-size:14px; color:#ef4444; margin-left:auto; }
+.saved-indicator { display:none; color:var(--success); font-size:13px; align-items:center; gap:4px; }
+.export-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:200; justify-content:center; align-items:center; }
+.export-overlay.open { display:flex; }
+.export-box { background:white; border-radius:12px; padding:32px; max-width:500px; width:90%; text-align:center; }
+.export-box h2 { margin-bottom:16px; font-size:22px; }
+.export-box p { color:var(--text-light,#64748b); margin-bottom:24px; }
+.export-box .count { font-size:48px; font-weight:800; color:var(--primary-light,#2563eb); }
+.btn-export { display:inline-block; background:var(--primary-light,#2563eb); color:white; padding:14px 32px; border-radius:var(--radius,8px); border:none; font-size:16px; font-weight:600; cursor:pointer; margin:8px; }
+.btn-export:hover { background:var(--primary,#1e3a5f); }
+.btn-close-overlay { display:inline-block; background:transparent; border:1px solid var(--border,#e2e8f0); padding:14px 32px; border-radius:var(--radius,8px); font-size:16px; cursor:pointer; margin:8px; color:var(--text-light,#64748b); }
+@media(max-width:768px) { .feedback-btn{top:auto;bottom:-16px;right:16px;font-size:12px} .feedback-panel{padding:16px} .nav-links{flex-wrap:wrap;gap:4px} .nav-links a{font-size:12px;padding:4px 8px} }
 
 </style>
 </head>
 <body>
-    <nav class="sticky-nav">
+        <nav class="sticky-nav">
         <div class="nav-container">
-            <span class="nav-logo">DK Website 2026</span>
+            <span class="nav-logo">DK Real Estate — Preview</span>
             <div class="nav-links">
-                <a href="index.html">Home</a>
+                <a href="index.html">Übersicht</a>
                 <a href="homepage.html">Homepage</a>
+                <a href="kaufen.html">Kaufen</a>
                 <a href="finanzierung.html">Finanzierung</a>
                 <a href="verkaufen.html">Verkaufen</a>
                 <a href="investment.html" class="active">Investment</a>
+                <a href="bewertung.html">Bewertung</a>
+                <a href="finanzierung-danke.html">Danke</a>
             </div>
-                <div class="feedback-counter" id="feedbackCounter" onclick="openExportOverlay()">Feedback: <span id="feedbackCount">0</span> Kommentare</div>
+            <div class="feedback-counter" id="feedbackCounter" onclick="openExportOverlay()">Feedback: 0 Kommentare</div>
         </div>
     </nav>
 
@@ -254,11 +112,12 @@ section { position: relative; }
     <button class="btn-delete" onclick="deleteFeedback(1)" style="display:none" id="delete-btn-1">Löschen</button>
     <span class="saved-indicator" id="saved-1">&#10003; Gespeichert</span>
   </div>
-</div></section>
+</div>
+</section>
 
         <!-- SECTION 2: NETZWERK -->
         <section id="block-2" class="generic">
-            <span class="block-label" style="display:none">Unser Netzwerk – Wir wissen live, wer kauft und was er za...</span>
+            <span class="block-label" style="display:none">Unser Netzwerk – Wir wissen live, wer kauft und was er zahlt...</span>
             <button class="feedback-btn" onclick="toggleFeedback(2)">&#9999;&#65039; Vorschlag</button>
             <h2>Unser Netzwerk – Wir wissen live, wer kauft und was er zahlt <span class="change-badge">NEU v2</span></h2>
             <p>Der größte Vorteil beim Investment-Verkauf ist nicht die Reichweite – sondern die Präzision. Wir kennen die aktiven Käufer persönlich und wissen, welche Objekte sie derzeit suchen, welche Preise sie zahlen und wie schnell sie entscheiden.</p>
@@ -270,7 +129,7 @@ section { position: relative; }
             <p>Das Entscheidende: Wir wissen live, was die stärksten fünf Investoren derzeit suchen – und können Ihr Objekt gezielt platzieren, bevor es den Markt erreicht.</p>
         
             <div class="feedback-panel" id="feedback-panel-2">
-  <label>Ihr Vorschlag für Unser Netzwerk – Wir wissen live, wer kauft und was er za...:</label>
+  <label>Ihr Vorschlag für Unser Netzwerk – Wir wissen live, wer kauft und was er zahlt...:</label>
   <textarea id="feedback-text-2" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
   <div class="feedback-actions">
     <button class="btn-save" onclick="saveFeedback(2)">Speichern</button>
@@ -278,11 +137,12 @@ section { position: relative; }
     <button class="btn-delete" onclick="deleteFeedback(2)" style="display:none" id="delete-btn-2">Löschen</button>
     <span class="saved-indicator" id="saved-2">&#10003; Gespeichert</span>
   </div>
-</div></section>
+</div>
+</section>
 
         <!-- SECTION 3: BESTANDSOPTIMIERUNG -->
         <section id="block-3" class="trust-bar">
-            <span class="block-label" style="display:none">Mehr Erlös durch Bestandsoptimierung – vor dem Verkauf NE...</span>
+            <span class="block-label" style="display:none">Mehr Erlös durch Bestandsoptimierung – vor dem Verkauf NEU v...</span>
             <button class="feedback-btn" onclick="toggleFeedback(3)">&#9999;&#65039; Vorschlag</button>
             <h2>Mehr Erlös durch Bestandsoptimierung – vor dem Verkauf <span class="change-badge">NEU v2</span></h2>
             <p>Viele Eigentümer verkaufen unter Wert, weil das Potenzial ihres Objekts nicht sichtbar ist. Wir analysieren jede Immobilie vor dem Verkauf und zeigen auf, wie sich der Erlös durch gezielte Maßnahmen steigern lässt.</p>
@@ -306,7 +166,7 @@ section { position: relative; }
             </div>
         
             <div class="feedback-panel" id="feedback-panel-3">
-  <label>Ihr Vorschlag für Mehr Erlös durch Bestandsoptimierung – vor dem Verkauf NE...:</label>
+  <label>Ihr Vorschlag für Mehr Erlös durch Bestandsoptimierung – vor dem Verkauf NEU v...:</label>
   <textarea id="feedback-text-3" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
   <div class="feedback-actions">
     <button class="btn-save" onclick="saveFeedback(3)">Speichern</button>
@@ -314,7 +174,8 @@ section { position: relative; }
     <button class="btn-delete" onclick="deleteFeedback(3)" style="display:none" id="delete-btn-3">Löschen</button>
     <span class="saved-indicator" id="saved-3">&#10003; Gespeichert</span>
   </div>
-</div></section>
+</div>
+</section>
 
         <!-- SECTION 4: DISKRET -->
         <div class="diskret-block">
@@ -330,7 +191,7 @@ section { position: relative; }
 
         <!-- SECTION 5: ZIELAKQUISE -->
         <section id="block-4" class="steps-block">
-            <span class="block-label" style="display:none">Zielakquise – Wir finden das richtige Objekt für Ihr Port...</span>
+            <span class="block-label" style="display:none">Zielakquise – Wir finden das richtige Objekt für Ihr Portfol...</span>
             <button class="feedback-btn" onclick="toggleFeedback(4)">&#9999;&#65039; Vorschlag</button>
             <h2>Zielakquise – Wir finden das richtige Objekt für Ihr Portfolio <span class="change-badge">NEU v2</span></h2>
             <div class="steps-grid">
@@ -353,7 +214,7 @@ section { position: relative; }
             </div>
         
             <div class="feedback-panel" id="feedback-panel-4">
-  <label>Ihr Vorschlag für Zielakquise – Wir finden das richtige Objekt für Ihr Port...:</label>
+  <label>Ihr Vorschlag für Zielakquise – Wir finden das richtige Objekt für Ihr Portfol...:</label>
   <textarea id="feedback-text-4" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
   <div class="feedback-actions">
     <button class="btn-save" onclick="saveFeedback(4)">Speichern</button>
@@ -361,11 +222,12 @@ section { position: relative; }
     <button class="btn-delete" onclick="deleteFeedback(4)" style="display:none" id="delete-btn-4">Löschen</button>
     <span class="saved-indicator" id="saved-4">&#10003; Gespeichert</span>
   </div>
-</div></section>
+</div>
+</section>
 
         <!-- SECTION 6: ARCHITEKTIN -->
         <section id="block-5" class="generic">
-            <span class="block-label" style="display:none">Inhouse-Architektin – Bebauung prüfen, bevor Sie kaufen N...</span>
+            <span class="block-label" style="display:none">Inhouse-Architektin – Bebauung prüfen, bevor Sie kaufen NEU ...</span>
             <button class="feedback-btn" onclick="toggleFeedback(5)">&#9999;&#65039; Vorschlag</button>
             <h2>Inhouse-Architektin – Bebauung prüfen, bevor Sie kaufen <span class="change-badge">NEU v2</span></h2>
             <p>Bevor Sie investieren, prüft unsere Inhouse-Architektin das bauliche Potenzial jedes Objekts. So wissen Sie vor dem Kauf, was möglich ist – und was nicht.</p>
@@ -377,7 +239,7 @@ section { position: relative; }
             </ul>
         
             <div class="feedback-panel" id="feedback-panel-5">
-  <label>Ihr Vorschlag für Inhouse-Architektin – Bebauung prüfen, bevor Sie kaufen N...:</label>
+  <label>Ihr Vorschlag für Inhouse-Architektin – Bebauung prüfen, bevor Sie kaufen NEU ...:</label>
   <textarea id="feedback-text-5" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
   <div class="feedback-actions">
     <button class="btn-save" onclick="saveFeedback(5)">Speichern</button>
@@ -385,11 +247,12 @@ section { position: relative; }
     <button class="btn-delete" onclick="deleteFeedback(5)" style="display:none" id="delete-btn-5">Löschen</button>
     <span class="saved-indicator" id="saved-5">&#10003; Gespeichert</span>
   </div>
-</div></section>
+</div>
+</section>
 
         <!-- SECTION 7: INVESTMENT-SERVICES -->
         <section id="block-6" class="generic">
-            <span class="block-label" style="display:none">Unsere Investment-Services – Von der Akquise bis zum Absc...</span>
+            <span class="block-label" style="display:none">Unsere Investment-Services – Von der Akquise bis zum Abschlu...</span>
             <button class="feedback-btn" onclick="toggleFeedback(6)">&#9999;&#65039; Vorschlag</button>
             <h2>Unsere Investment-Services – Von der Akquise bis zum Abschluss</h2>
             <ul>
@@ -408,7 +271,7 @@ section { position: relative; }
             </ul>
         
             <div class="feedback-panel" id="feedback-panel-6">
-  <label>Ihr Vorschlag für Unsere Investment-Services – Von der Akquise bis zum Absc...:</label>
+  <label>Ihr Vorschlag für Unsere Investment-Services – Von der Akquise bis zum Abschlu...:</label>
   <textarea id="feedback-text-6" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
   <div class="feedback-actions">
     <button class="btn-save" onclick="saveFeedback(6)">Speichern</button>
@@ -416,7 +279,8 @@ section { position: relative; }
     <button class="btn-delete" onclick="deleteFeedback(6)" style="display:none" id="delete-btn-6">Löschen</button>
     <span class="saved-indicator" id="saved-6">&#10003; Gespeichert</span>
   </div>
-</div></section>
+</div>
+</section>
 
         <!-- SECTION 8: WARUM BERLIN -->
         <section id="block-7" class="trust-bar">
@@ -442,17 +306,18 @@ section { position: relative; }
     <button class="btn-delete" onclick="deleteFeedback(7)" style="display:none" id="delete-btn-7">Löschen</button>
     <span class="saved-indicator" id="saved-7">&#10003; Gespeichert</span>
   </div>
-</div></section>
+</div>
+</section>
 
         <!-- SECTION 9: POTENZIALANALYSE -->
         <section id="block-8" class="generic">
-            <span class="block-label" style="display:none">Potenzialanalyse &amp; Due Diligence – Renditeobjekte sic...</span>
+            <span class="block-label" style="display:none">Potenzialanalyse &amp; Due Diligence – Renditeobjekte sicher...</span>
             <button class="feedback-btn" onclick="toggleFeedback(8)">&#9999;&#65039; Vorschlag</button>
             <h2>Potenzialanalyse &amp; Due Diligence – Renditeobjekte sicher bewerten</h2>
             <p>Jedes Investment beginnt mit einer fundierten Analyse. Unser Architektur- und Planungsteam prüft jedes Objekt auf Herz und Nieren – von der baulichen Substanz über die Mietstruktur bis hin zu Entwicklungspotenzialen. So treffen Sie Ihre Investitionsentscheidung auf Basis belastbarer Zahlen und realistischer Szenarien.</p>
         
             <div class="feedback-panel" id="feedback-panel-8">
-  <label>Ihr Vorschlag für Potenzialanalyse &amp; Due Diligence – Renditeobjekte sic...:</label>
+  <label>Ihr Vorschlag für Potenzialanalyse &amp; Due Diligence – Renditeobjekte sicher...:</label>
   <textarea id="feedback-text-8" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
   <div class="feedback-actions">
     <button class="btn-save" onclick="saveFeedback(8)">Speichern</button>
@@ -460,11 +325,12 @@ section { position: relative; }
     <button class="btn-delete" onclick="deleteFeedback(8)" style="display:none" id="delete-btn-8">Löschen</button>
     <span class="saved-indicator" id="saved-8">&#10003; Gespeichert</span>
   </div>
-</div></section>
+</div>
+</section>
 
         <!-- SECTION 10: OBJEKTTYPEN -->
         <section id="block-9" class="generic">
-            <span class="block-label" style="display:none">Investment-Objekttypen – Von Mehrfamilienhäusern bis Gewe...</span>
+            <span class="block-label" style="display:none">Investment-Objekttypen – Von Mehrfamilienhäusern bis Gewerbe...</span>
             <button class="feedback-btn" onclick="toggleFeedback(9)">&#9999;&#65039; Vorschlag</button>
             <h2>Investment-Objekttypen – Von Mehrfamilienhäusern bis Gewerbeimmobilien</h2>
             <div class="cards-grid">
@@ -491,7 +357,7 @@ section { position: relative; }
             </div>
         
             <div class="feedback-panel" id="feedback-panel-9">
-  <label>Ihr Vorschlag für Investment-Objekttypen – Von Mehrfamilienhäusern bis Gewe...:</label>
+  <label>Ihr Vorschlag für Investment-Objekttypen – Von Mehrfamilienhäusern bis Gewerbe...:</label>
   <textarea id="feedback-text-9" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
   <div class="feedback-actions">
     <button class="btn-save" onclick="saveFeedback(9)">Speichern</button>
@@ -499,17 +365,18 @@ section { position: relative; }
     <button class="btn-delete" onclick="deleteFeedback(9)" style="display:none" id="delete-btn-9">Löschen</button>
     <span class="saved-indicator" id="saved-9">&#10003; Gespeichert</span>
   </div>
-</div></section>
+</div>
+</section>
 
         <!-- SECTION 11: NACHHALTIGKEIT -->
         <section id="block-10" class="generic">
-            <span class="block-label" style="display:none">Nachhaltig investieren – Zukunftssichere Immobilien in Be...</span>
+            <span class="block-label" style="display:none">Nachhaltig investieren – Zukunftssichere Immobilien in Berli...</span>
             <button class="feedback-btn" onclick="toggleFeedback(10)">&#9999;&#65039; Vorschlag</button>
             <h2>Nachhaltig investieren – Zukunftssichere Immobilien in Berlin</h2>
             <p>Nachhaltigkeit ist kein Trend, sondern ein Werttreiber. Investoren, die auf energetische Effizienz, nachhaltige Bauweise und ökologische Verantwortung setzen, sichern sich nicht nur Fördermittel und steuerliche Vorteile – sie investieren in Objekte, die langfristig wettbewerbsfähig bleiben. Wir beraten Sie zu ESG-Kriterien, Energieausweisen und Sanierungskonzepten, die den Wert Ihrer Immobilie nachhaltig steigern.</p>
         
             <div class="feedback-panel" id="feedback-panel-10">
-  <label>Ihr Vorschlag für Nachhaltig investieren – Zukunftssichere Immobilien in Be...:</label>
+  <label>Ihr Vorschlag für Nachhaltig investieren – Zukunftssichere Immobilien in Berli...:</label>
   <textarea id="feedback-text-10" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
   <div class="feedback-actions">
     <button class="btn-save" onclick="saveFeedback(10)">Speichern</button>
@@ -517,11 +384,12 @@ section { position: relative; }
     <button class="btn-delete" onclick="deleteFeedback(10)" style="display:none" id="delete-btn-10">Löschen</button>
     <span class="saved-indicator" id="saved-10">&#10003; Gespeichert</span>
   </div>
-</div></section>
+</div>
+</section>
 
         <!-- SECTION 12: FINANZIERUNG (CTA Cross-Sell) -->
         <section id="block-11" class="cta">
-            <span class="block-label" style="display:none">Finanzierung für Kapitalanleger – Optimale Konditionen fü...</span>
+            <span class="block-label" style="display:none">Finanzierung für Kapitalanleger – Optimale Konditionen für I...</span>
             <button class="feedback-btn" onclick="toggleFeedback(11)">&#9999;&#65039; Vorschlag</button>
             <h2>Finanzierung für Kapitalanleger – Optimale Konditionen für Ihr Investment</h2>
             <p>Mit DK Finance bieten wir Ihnen eine bankenunabhängige Finanzierungsberatung, die speziell auf die Anforderungen von Kapitalanlegern zugeschnitten ist. Ob Bestandsimmobilie, Neubau oder Portfolio-Erweiterung – wir finden die passende Finanzierungsstruktur für Ihr Vorhaben.</p>
@@ -535,7 +403,7 @@ section { position: relative; }
             <p><a href="finanzierung.html" class="cta-link"><strong>Finanzierungsberatung für Investoren anfragen &rarr;</strong></a></p>
         
             <div class="feedback-panel" id="feedback-panel-11">
-  <label>Ihr Vorschlag für Finanzierung für Kapitalanleger – Optimale Konditionen fü...:</label>
+  <label>Ihr Vorschlag für Finanzierung für Kapitalanleger – Optimale Konditionen für I...:</label>
   <textarea id="feedback-text-11" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
   <div class="feedback-actions">
     <button class="btn-save" onclick="saveFeedback(11)">Speichern</button>
@@ -543,7 +411,8 @@ section { position: relative; }
     <button class="btn-delete" onclick="deleteFeedback(11)" style="display:none" id="delete-btn-11">Löschen</button>
     <span class="saved-indicator" id="saved-11">&#10003; Gespeichert</span>
   </div>
-</div></section>
+</div>
+</section>
 
         <!-- SECTION 13: VOLUMEN (Stats) -->
         <section id="block-12" class="generic">
@@ -578,11 +447,12 @@ section { position: relative; }
     <button class="btn-delete" onclick="deleteFeedback(12)" style="display:none" id="delete-btn-12">Löschen</button>
     <span class="saved-indicator" id="saved-12">&#10003; Gespeichert</span>
   </div>
-</div></section>
+</div>
+</section>
 
         <!-- SECTION 14: DUAL CTA -->
         <section id="block-13" class="generic">
-            <span class="block-label" style="display:none">Für Investoren</span>
+            <span class="block-label" style="display:none">Block 13</span>
             <button class="feedback-btn" onclick="toggleFeedback(13)">&#9999;&#65039; Vorschlag</button>
             <div class="dual-cta">
                 <div class="dual-cta-item">
@@ -598,7 +468,7 @@ section { position: relative; }
             </div>
         
             <div class="feedback-panel" id="feedback-panel-13">
-  <label>Ihr Vorschlag für Für Investoren:</label>
+  <label>Ihr Vorschlag für Block 13:</label>
   <textarea id="feedback-text-13" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
   <div class="feedback-actions">
     <button class="btn-save" onclick="saveFeedback(13)">Speichern</button>
@@ -606,12 +476,12 @@ section { position: relative; }
     <button class="btn-delete" onclick="deleteFeedback(13)" style="display:none" id="delete-btn-13">Löschen</button>
     <span class="saved-indicator" id="saved-13">&#10003; Gespeichert</span>
   </div>
-</div></section>
+</div>
+</section>
 
     </main>
 
     <div class="version-badge">V2.0 | 2026-03-12</div>
-
 <div class="export-overlay" id="exportOverlay">
   <div class="export-box">
     <div class="count" id="exportCount">0</div>
@@ -621,13 +491,11 @@ section { position: relative; }
     <button class="btn-close-overlay" onclick="closeExportOverlay()">Schließen</button>
   </div>
 </div>
-
 <script>
 (function() {
   var PROJECT = 'dk';
   var PAGE = 'investment';
   var STORAGE_KEY = '2p-feedback-' + PROJECT + '-' + PAGE;
-
   function loadFeedback() {
     var saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
     var count = 0;
@@ -642,15 +510,11 @@ section { position: relative; }
     }
     updateCounter(count);
   }
-
   window.toggleFeedback = function(blockId) {
     var panel = document.getElementById('feedback-panel-' + blockId);
     panel.classList.toggle('open');
-    if (panel.classList.contains('open')) {
-      document.getElementById('feedback-text-' + blockId).focus();
-    }
+    if (panel.classList.contains('open')) document.getElementById('feedback-text-' + blockId).focus();
   };
-
   window.saveFeedback = function(blockId) {
     var text = document.getElementById('feedback-text-' + blockId).value.trim();
     if (!text) return;
@@ -667,7 +531,6 @@ section { position: relative; }
     updateCounter(Object.keys(saved).length);
     setTimeout(function() { window.toggleFeedback(blockId); }, 1500);
   };
-
   window.deleteFeedback = function(blockId) {
     var saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
     delete saved[blockId];
@@ -680,19 +543,17 @@ section { position: relative; }
     updateCounter(Object.keys(saved).length);
     window.toggleFeedback(blockId);
   };
-
   function updateCounter(count) {
-    var counterEl = document.getElementById('feedbackCounter');
-    if (!counterEl) return;
+    var el = document.getElementById('feedbackCounter');
+    if (!el) return;
     if (count > 0) {
-      counterEl.classList.add('has-feedback');
-      counterEl.innerHTML = '\ud83d\udce5 Feedback: ' + count + ' Kommentar' + (count > 1 ? 'e' : '');
+      el.classList.add('has-feedback');
+      el.innerHTML = '\ud83d\udce5 Feedback: ' + count + ' Kommentar' + (count > 1 ? 'e' : '');
     } else {
-      counterEl.classList.remove('has-feedback');
-      counterEl.innerHTML = 'Feedback: 0 Kommentare';
+      el.classList.remove('has-feedback');
+      el.innerHTML = 'Feedback: 0 Kommentare';
     }
   }
-
   window.openExportOverlay = function() {
     var saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
     var count = Object.keys(saved).length;
@@ -700,14 +561,10 @@ section { position: relative; }
     document.getElementById('exportCount').textContent = count;
     document.getElementById('exportOverlay').classList.add('open');
   };
-
-  window.closeExportOverlay = function() {
-    document.getElementById('exportOverlay').classList.remove('open');
-  };
-
+  window.closeExportOverlay = function() { document.getElementById('exportOverlay').classList.remove('open'); };
   window.exportFeedback = function() {
     var saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
-    var text = 'FEEDBACK — ' + PROJECT.toUpperCase() + '\n';
+    var text = 'FEEDBACK \u2014 ' + PROJECT.toUpperCase() + '\n';
     text += 'Seite: ' + PAGE + '\n';
     text += 'Datum: ' + new Date().toLocaleDateString('de-DE') + '\n';
     text += '==================================================\n\n';
@@ -731,7 +588,6 @@ section { position: relative; }
     URL.revokeObjectURL(url);
     window.closeExportOverlay();
   };
-
   loadFeedback();
 })();
 </script>
