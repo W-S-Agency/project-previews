@@ -24,7 +24,185 @@
         .steuer-box .hint-box { background: rgba(255,255,255,0.1); border-left: 4px solid var(--accent); padding: var(--spacing-md); border-radius: var(--radius-sm); margin-top: var(--spacing-md); }
         .trust-badges { display: flex; justify-content: center; gap: var(--spacing-md); margin-top: var(--spacing-md); flex-wrap: wrap; }
         .trust-badge-item { background: white; padding: var(--spacing-sm) var(--spacing-md); border-radius: var(--radius); font-weight: 600; font-size: 0.95rem; color: var(--secondary); box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
-    </style>
+    
+/* === FEEDBACK UI === */
+:root {
+  --feedback-bg: #fef3c7;
+  --feedback-border: #f59e0b;
+  --success: #10b981;
+}
+.feedback-counter {
+  background: var(--accent, #f59e0b);
+  color: var(--primary, #1e3a5f);
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s;
+  font-size: 13px;
+  white-space: nowrap;
+}
+.feedback-counter:hover { transform: scale(1.05); }
+.feedback-counter.has-feedback { animation: fb-pulse 2s infinite; }
+@keyframes fb-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(245,158,11,0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(245,158,11,0); }
+}
+.feedback-btn {
+  position: absolute;
+  top: 12px;
+  right: 24px;
+  background: white;
+  border: 1px solid var(--border, #e2e8f0);
+  padding: 6px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--text-light, #64748b);
+  transition: all 0.2s;
+  z-index: 10;
+}
+.feedback-btn:hover {
+  border-color: var(--feedback-border);
+  color: var(--feedback-border);
+  background: var(--feedback-bg);
+}
+.feedback-btn.has-comment {
+  background: var(--feedback-bg);
+  border-color: var(--feedback-border);
+  color: var(--primary, #1e3a5f);
+}
+section { position: relative; }
+.feedback-panel {
+  display: none;
+  margin-top: 24px;
+  background: var(--feedback-bg);
+  border: 2px solid var(--feedback-border);
+  border-radius: var(--radius, 8px);
+  padding: 20px;
+  animation: fb-slideDown 0.3s ease;
+}
+.feedback-panel.open { display: block; }
+@keyframes fb-slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.feedback-panel label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--primary, #1e3a5f);
+  font-size: 14px;
+}
+.feedback-panel textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 12px;
+  border: 1px solid var(--border, #e2e8f0);
+  border-radius: var(--radius, 8px);
+  font-family: inherit;
+  font-size: 15px;
+  resize: vertical;
+  line-height: 1.5;
+  box-sizing: border-box;
+}
+.feedback-panel textarea:focus {
+  outline: none;
+  border-color: var(--primary-light, #2563eb);
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+}
+.feedback-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+  align-items: center;
+}
+.btn-save {
+  background: var(--primary, #1e3a5f);
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: var(--radius, 8px);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+}
+.btn-cancel {
+  background: transparent;
+  border: 1px solid var(--border, #e2e8f0);
+  padding: 8px 20px;
+  border-radius: var(--radius, 8px);
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--text-light, #64748b);
+}
+.btn-delete {
+  background: transparent;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #ef4444;
+  margin-left: auto;
+}
+.saved-indicator {
+  display: none;
+  color: var(--success);
+  font-size: 13px;
+  align-items: center;
+  gap: 4px;
+}
+.export-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 200;
+  justify-content: center;
+  align-items: center;
+}
+.export-overlay.open { display: flex; }
+.export-box {
+  background: white;
+  border-radius: 12px;
+  padding: 32px;
+  max-width: 500px;
+  width: 90%;
+  text-align: center;
+}
+.export-box h2 { margin-bottom: 16px; font-size: 22px; }
+.export-box p { color: var(--text-light, #64748b); margin-bottom: 24px; }
+.export-box .count { font-size: 48px; font-weight: 800; color: var(--primary-light, #2563eb); }
+.btn-export {
+  display: inline-block;
+  background: var(--primary-light, #2563eb);
+  color: white;
+  padding: 14px 32px;
+  border-radius: var(--radius, 8px);
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 8px;
+}
+.btn-export:hover { background: var(--primary, #1e3a5f); }
+.btn-close-overlay {
+  display: inline-block;
+  background: transparent;
+  border: 1px solid var(--border, #e2e8f0);
+  padding: 14px 32px;
+  border-radius: var(--radius, 8px);
+  font-size: 16px;
+  cursor: pointer;
+  margin: 8px;
+  color: var(--text-light, #64748b);
+}
+@media (max-width: 768px) {
+  .feedback-btn { top: auto; bottom: -16px; right: 16px; font-size: 12px; }
+  .feedback-panel { padding: 16px; }
+}
+
+</style>
 </head>
 <body>
     <nav class="sticky-nav">
@@ -37,6 +215,7 @@
                 <a href="verkaufen.html">Verkaufen</a>
                 <a href="investment.html">Investment</a>
             </div>
+                <div class="feedback-counter" id="feedbackCounter" onclick="openExportOverlay()">Feedback: <span id="feedbackCount">0</span> Kommentare</div>
         </div>
     </nav>
 
@@ -48,16 +227,30 @@
         </div>
 
         <!-- SECTION 1: HERO -->
-        <section class="hero">
+        <section id="block-1" class="hero">
+            <span class="block-label" style="display:none">Finanzierung, die wirklich für Sie arbeitet</span>
+            <button class="feedback-btn" onclick="toggleFeedback(1)">&#9999;&#65039; Vorschlag</button>
             <h1>Immobilienfinanzierung Berlin – Ihr Vorteil als Verkäufer und Käufer</h1>
             <h2>Finanzierung, die wirklich für Sie arbeitet</h2>
             <p class="intro">DK Real Estate ist kein klassisches Maklerbüro. Wir sind ein Full-Service-Makler mit eigener Finanzierungsabteilung, Architektin und Energieberater im Haus. Das bedeutet: Ihre Immobilie wird nicht nur vermarktet, sondern so aufbereitet und finanzierbar gemacht, dass Verkäufer den bestmöglichen Preis erzielen und Käufer die bestmögliche Finanzierung erhalten.</p>
             <p class="intro">Ob Sie verkaufen oder kaufen – unsere Finanzierungsexpertise schafft klare Vorteile für beide Seiten.</p>
             <button class="cta-button">Jetzt kostenlose Finanzierungsberatung anfragen</button>
-        </section>
+        
+            <div class="feedback-panel" id="feedback-panel-1">
+  <label>Ihr Vorschlag für Finanzierung, die wirklich für Sie arbeitet:</label>
+  <textarea id="feedback-text-1" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+  <div class="feedback-actions">
+    <button class="btn-save" onclick="saveFeedback(1)">Speichern</button>
+    <button class="btn-cancel" onclick="toggleFeedback(1)">Abbrechen</button>
+    <button class="btn-delete" onclick="deleteFeedback(1)" style="display:none" id="delete-btn-1">Löschen</button>
+    <span class="saved-indicator" id="saved-1">&#10003; Gespeichert</span>
+  </div>
+</div></section>
 
         <!-- SECTION 2: VERKÄUFER-VORTEILE -->
-        <section class="trust-bar verkaufer-vorteile">
+        <section id="block-2" class="trust-bar verkaufer-vorteile">
+            <span class="block-label" style="display:none">Als Verkäufer: Wie unsere Finanzierungsexpertise Ihren Ve...</span>
+            <button class="feedback-btn" onclick="toggleFeedback(2)">&#9999;&#65039; Vorschlag</button>
             <h2>Als Verkäufer: Wie unsere Finanzierungsexpertise Ihren Verkaufspreis steigert <span class="change-badge">NEU v2</span></h2>
             <p style="text-align: center; max-width: 800px; margin: 0 auto var(--spacing-lg); color: var(--text-light);">Viele Makler vermitteln – wir optimieren. Unsere Finanzierungsabteilung arbeitet aktiv daran, den Wert Ihrer Immobilie für die Bank und damit für den Käufer zu steigern.</p>
             <div class="trust-items">
@@ -82,10 +275,22 @@
                     <p>Wenn die Bank eine Immobilie höher bewertet, kann der Käufer mehr finanzieren. Wenn der Käufer mehr finanzieren kann, können Sie einen höheren Preis erzielen. So einfach ist die Rechnung – und genau dafür sorgen wir.</p>
                 </div>
             </div>
-        </section>
+        
+            <div class="feedback-panel" id="feedback-panel-2">
+  <label>Ihr Vorschlag für Als Verkäufer: Wie unsere Finanzierungsexpertise Ihren Ve...:</label>
+  <textarea id="feedback-text-2" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+  <div class="feedback-actions">
+    <button class="btn-save" onclick="saveFeedback(2)">Speichern</button>
+    <button class="btn-cancel" onclick="toggleFeedback(2)">Abbrechen</button>
+    <button class="btn-delete" onclick="deleteFeedback(2)" style="display:none" id="delete-btn-2">Löschen</button>
+    <span class="saved-indicator" id="saved-2">&#10003; Gespeichert</span>
+  </div>
+</div></section>
 
         <!-- SECTION 3: KÄUFER-VORTEILE -->
-        <section class="trust-bar kaufer-vorteile">
+        <section id="block-3" class="trust-bar kaufer-vorteile">
+            <span class="block-label" style="display:none">Als Käufer: Schnell, sicher und mit dem besten Angebot zu...</span>
+            <button class="feedback-btn" onclick="toggleFeedback(3)">&#9999;&#65039; Vorschlag</button>
             <h2>Als Käufer: Schnell, sicher und mit dem besten Angebot zum Abschluss <span class="change-badge">NEU v2</span></h2>
             <p style="text-align: center; max-width: 800px; margin: 0 auto var(--spacing-lg); color: var(--text-light);">Wenn Sie über DK Real Estate kaufen, profitieren Sie von einem Prozess, der auf Geschwindigkeit, Transparenz und optimale Konditionen ausgelegt ist.</p>
             <div class="trust-items">
@@ -106,10 +311,22 @@
                     <p>Sie erfahren, wie die Bank die Immobilie bewertet – nicht nur, was der Verkäufer verlangt. Dieser Einblick gibt Ihnen ein sicheres Gefühl für Ihre Kaufentscheidung und schützt Sie vor überhöhten Preisen.</p>
                 </div>
             </div>
-        </section>
+        
+            <div class="feedback-panel" id="feedback-panel-3">
+  <label>Ihr Vorschlag für Als Käufer: Schnell, sicher und mit dem besten Angebot zu...:</label>
+  <textarea id="feedback-text-3" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+  <div class="feedback-actions">
+    <button class="btn-save" onclick="saveFeedback(3)">Speichern</button>
+    <button class="btn-cancel" onclick="toggleFeedback(3)">Abbrechen</button>
+    <button class="btn-delete" onclick="deleteFeedback(3)" style="display:none" id="delete-btn-3">Löschen</button>
+    <span class="saved-indicator" id="saved-3">&#10003; Gespeichert</span>
+  </div>
+</div></section>
 
         <!-- SECTION 4: ALLES INHOUSE -->
-        <section class="inhouse-block">
+        <section id="block-4" class="inhouse-block">
+            <span class="block-label" style="display:none">Alles unter einem Dach: Kein Wartezimmer, kein Weiterleit...</span>
+            <button class="feedback-btn" onclick="toggleFeedback(4)">&#9999;&#65039; Vorschlag</button>
             <h2 style="text-align: center;">Alles unter einem Dach: Kein Wartezimmer, kein Weiterleiten <span class="change-badge">NEU v2</span></h2>
             <p style="text-align: center; max-width: 800px; margin: 0 auto var(--spacing-md); color: var(--text-light);">Bei DK Real Estate werden alle relevanten Schritte intern bearbeitet. Keine externen Dienstleister, keine Wartezeiten durch Dritte, keine Kommunikationslücken. Unsere Finanzierungsabteilung, unsere Architektin und unser Energieberater arbeiten Hand in Hand – direkt im Haus.</p>
             <div class="icons-row">
@@ -129,10 +346,22 @@
                     <p>Wohnflächenberechnung, Energieausweis und bauliche Einschätzungen erfolgen direkt bei uns – für eine fundierte Bewertung Ihrer Immobilie.</p>
                 </div>
             </div>
-        </section>
+        
+            <div class="feedback-panel" id="feedback-panel-4">
+  <label>Ihr Vorschlag für Alles unter einem Dach: Kein Wartezimmer, kein Weiterleit...:</label>
+  <textarea id="feedback-text-4" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+  <div class="feedback-actions">
+    <button class="btn-save" onclick="saveFeedback(4)">Speichern</button>
+    <button class="btn-cancel" onclick="toggleFeedback(4)">Abbrechen</button>
+    <button class="btn-delete" onclick="deleteFeedback(4)" style="display:none" id="delete-btn-4">Löschen</button>
+    <span class="saved-indicator" id="saved-4">&#10003; Gespeichert</span>
+  </div>
+</div></section>
 
         <!-- SECTION 5: STEUERLICHE OPTIMIERUNG -->
-        <section class="steuer-box">
+        <section id="block-5" class="steuer-box">
+            <span class="block-label" style="display:none">Bis zu 6 % Abschreibung statt 2 %: Wie Käufer legal deutl...</span>
+            <button class="feedback-btn" onclick="toggleFeedback(5)">&#9999;&#65039; Vorschlag</button>
             <h2>Bis zu 6 % Abschreibung statt 2 %: Wie Käufer legal deutlich weniger Steuern zahlen <span class="change-badge">NEU v2</span></h2>
             <p>Viele Käufer wissen nicht, dass sie mit einem sogenannten Restnutzungsdauergutachten die steuerliche Abschreibung (AfA) ihrer Immobilie erheblich steigern können. Statt der üblichen 2 % lineare AfA sind in vielen Fällen 5 bis 6 % möglich – und das völlig legal.</p>
             <p><strong>Rechenbeispiel:</strong> Bei einem Gebäudewert von 1.000.000 € ergibt sich folgende jährliche Abschreibung:</p>
@@ -143,10 +372,22 @@
             <div class="hint-box">
                 <p><strong>Wichtiger Hinweis:</strong> Wir erstellen selbst keine steuerliche Beratung und keine Restnutzungsdauergutachten. Wir arbeiten jedoch eng mit erfahrenen Steuerberatern und Juristen zusammen, die wir Ihnen auf Wunsch gerne vermitteln. Die steuerliche Optimierung ist ein wichtiger Baustein – und wir sorgen dafür, dass Sie die richtigen Ansprechpartner kennen.</p>
             </div>
-        </section>
+        
+            <div class="feedback-panel" id="feedback-panel-5">
+  <label>Ihr Vorschlag für Bis zu 6 % Abschreibung statt 2 %: Wie Käufer legal deutl...:</label>
+  <textarea id="feedback-text-5" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+  <div class="feedback-actions">
+    <button class="btn-save" onclick="saveFeedback(5)">Speichern</button>
+    <button class="btn-cancel" onclick="toggleFeedback(5)">Abbrechen</button>
+    <button class="btn-delete" onclick="deleteFeedback(5)" style="display:none" id="delete-btn-5">Löschen</button>
+    <span class="saved-indicator" id="saved-5">&#10003; Gespeichert</span>
+  </div>
+</div></section>
 
         <!-- SECTION 6: FAQ -->
-        <section class="faq">
+        <section id="block-6" class="faq">
+            <span class="block-label" style="display:none">Häufig gestellte Fragen zur Immobilienfinanzierung</span>
+            <button class="feedback-btn" onclick="toggleFeedback(6)">&#9999;&#65039; Vorschlag</button>
             <h2>Häufig gestellte Fragen zur Immobilienfinanzierung</h2>
             <div class="faq-items">
                 <div class="faq-item">
@@ -199,10 +440,22 @@
                     </div>
                 </div>
             </div>
-        </section>
+        
+            <div class="feedback-panel" id="feedback-panel-6">
+  <label>Ihr Vorschlag für Häufig gestellte Fragen zur Immobilienfinanzierung:</label>
+  <textarea id="feedback-text-6" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+  <div class="feedback-actions">
+    <button class="btn-save" onclick="saveFeedback(6)">Speichern</button>
+    <button class="btn-cancel" onclick="toggleFeedback(6)">Abbrechen</button>
+    <button class="btn-delete" onclick="deleteFeedback(6)" style="display:none" id="delete-btn-6">Löschen</button>
+    <span class="saved-indicator" id="saved-6">&#10003; Gespeichert</span>
+  </div>
+</div></section>
 
         <!-- SECTION 7: CTA + FORM -->
-        <section class="contact-form">
+        <section id="block-7" class="contact-form">
+            <span class="block-label" style="display:none">Jetzt beraten lassen – kostenlos und unverbindlich</span>
+            <button class="feedback-btn" onclick="toggleFeedback(7)">&#9999;&#65039; Vorschlag</button>
             <h2>Jetzt beraten lassen – kostenlos und unverbindlich</h2>
             <p>Ob Sie verkaufen oder kaufen möchten – wir zeigen Ihnen, wie unsere Finanzierungsexpertise Ihnen einen echten Vorteil verschafft. Füllen Sie das Formular aus und wir melden uns innerhalb von 24 Stunden bei Ihnen.</p>
 
@@ -259,9 +512,143 @@
                 <div class="trust-badge-item">🏦 550+ Bankpartner</div>
                 <div class="trust-badge-item">⚡ Finanzierungszusage in 1–2 Wochen</div>
             </div>
-        </section>
+        
+            <div class="feedback-panel" id="feedback-panel-7">
+  <label>Ihr Vorschlag für Jetzt beraten lassen – kostenlos und unverbindlich:</label>
+  <textarea id="feedback-text-7" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+  <div class="feedback-actions">
+    <button class="btn-save" onclick="saveFeedback(7)">Speichern</button>
+    <button class="btn-cancel" onclick="toggleFeedback(7)">Abbrechen</button>
+    <button class="btn-delete" onclick="deleteFeedback(7)" style="display:none" id="delete-btn-7">Löschen</button>
+    <span class="saved-indicator" id="saved-7">&#10003; Gespeichert</span>
+  </div>
+</div></section>
     </main>
 
     <div class="version-badge">V2.0 | 2026-03-12</div>
+
+<div class="export-overlay" id="exportOverlay">
+  <div class="export-box">
+    <div class="count" id="exportCount">0</div>
+    <h2>Kommentare bereit</h2>
+    <p>Laden Sie Ihre Änderungsvorschläge als Datei herunter und senden Sie diese an Ihr Projektteam.</p>
+    <button class="btn-export" onclick="exportFeedback()">Als Datei herunterladen</button>
+    <button class="btn-close-overlay" onclick="closeExportOverlay()">Schließen</button>
+  </div>
+</div>
+
+<script>
+(function() {
+  var PROJECT = 'dk';
+  var PAGE = 'finanzierung';
+  var STORAGE_KEY = '2p-feedback-' + PROJECT + '-' + PAGE;
+
+  function loadFeedback() {
+    var saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+    var count = 0;
+    for (var blockId in saved) {
+      var textarea = document.getElementById('feedback-text-' + blockId);
+      var btn = document.querySelector('#block-' + blockId + ' .feedback-btn');
+      var deleteBtn = document.getElementById('delete-btn-' + blockId);
+      if (textarea) textarea.value = saved[blockId];
+      if (btn) { btn.classList.add('has-comment'); btn.textContent = '\u270f\ufe0f Kommentar bearbeiten'; }
+      if (deleteBtn) deleteBtn.style.display = 'inline-block';
+      count++;
+    }
+    updateCounter(count);
+  }
+
+  window.toggleFeedback = function(blockId) {
+    var panel = document.getElementById('feedback-panel-' + blockId);
+    panel.classList.toggle('open');
+    if (panel.classList.contains('open')) {
+      document.getElementById('feedback-text-' + blockId).focus();
+    }
+  };
+
+  window.saveFeedback = function(blockId) {
+    var text = document.getElementById('feedback-text-' + blockId).value.trim();
+    if (!text) return;
+    var saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+    saved[blockId] = text;
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(saved));
+    var btn = document.querySelector('#block-' + blockId + ' .feedback-btn');
+    btn.classList.add('has-comment');
+    btn.textContent = '\u270f\ufe0f Kommentar bearbeiten';
+    document.getElementById('delete-btn-' + blockId).style.display = 'inline-block';
+    var indicator = document.getElementById('saved-' + blockId);
+    indicator.style.display = 'flex';
+    setTimeout(function() { indicator.style.display = 'none'; }, 2000);
+    updateCounter(Object.keys(saved).length);
+    setTimeout(function() { window.toggleFeedback(blockId); }, 1500);
+  };
+
+  window.deleteFeedback = function(blockId) {
+    var saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+    delete saved[blockId];
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(saved));
+    document.getElementById('feedback-text-' + blockId).value = '';
+    var btn = document.querySelector('#block-' + blockId + ' .feedback-btn');
+    btn.classList.remove('has-comment');
+    btn.textContent = '\u270f\ufe0f Vorschlag';
+    document.getElementById('delete-btn-' + blockId).style.display = 'none';
+    updateCounter(Object.keys(saved).length);
+    window.toggleFeedback(blockId);
+  };
+
+  function updateCounter(count) {
+    var counterEl = document.getElementById('feedbackCounter');
+    if (!counterEl) return;
+    if (count > 0) {
+      counterEl.classList.add('has-feedback');
+      counterEl.innerHTML = '\ud83d\udce5 Feedback: ' + count + ' Kommentar' + (count > 1 ? 'e' : '');
+    } else {
+      counterEl.classList.remove('has-feedback');
+      counterEl.innerHTML = 'Feedback: 0 Kommentare';
+    }
+  }
+
+  window.openExportOverlay = function() {
+    var saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+    var count = Object.keys(saved).length;
+    if (count === 0) return;
+    document.getElementById('exportCount').textContent = count;
+    document.getElementById('exportOverlay').classList.add('open');
+  };
+
+  window.closeExportOverlay = function() {
+    document.getElementById('exportOverlay').classList.remove('open');
+  };
+
+  window.exportFeedback = function() {
+    var saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+    var text = 'FEEDBACK — ' + PROJECT.toUpperCase() + '\n';
+    text += 'Seite: ' + PAGE + '\n';
+    text += 'Datum: ' + new Date().toLocaleDateString('de-DE') + '\n';
+    text += '==================================================\n\n';
+    for (var blockId in saved) {
+      var blockEl = document.getElementById('block-' + blockId);
+      var labelEl = blockEl ? blockEl.querySelector('.block-label') : null;
+      var label = labelEl ? labelEl.textContent : ('Block ' + blockId);
+      text += '\ud83d\udccc ' + label + '\n';
+      text += '----------------------------------------\n';
+      text += saved[blockId] + '\n\n';
+    }
+    text += '==================================================\n';
+    text += 'Erstellt am ' + new Date().toLocaleString('de-DE') + '\n';
+    text += Object.keys(saved).length + ' Kommentar(e) insgesamt\n';
+    var blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'feedback_' + PROJECT + '_' + PAGE + '_' + new Date().toISOString().slice(0,10) + '.txt';
+    a.click();
+    URL.revokeObjectURL(url);
+    window.closeExportOverlay();
+  };
+
+  loadFeedback();
+})();
+</script>
 </body>
 </html>
