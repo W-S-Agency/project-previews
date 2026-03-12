@@ -16,6 +16,12 @@
         .status-new { background: var(--success); color: white; }
         .status-unchanged { background: var(--border); color: var(--text-light); }
         .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
+    
+        .feedback-guide { background: var(--bg-light, #f8f6f3); border: 1px solid var(--border, #e2e8f0); border-radius: var(--radius, 8px); padding: 1.5rem 2rem; margin-bottom: 1.5rem; }
+        .feedback-guide h3 { margin: 0 0 1rem 0; font-size: 1.1rem; color: var(--secondary, #1a3a52); }
+        .feedback-guide ol { margin: 0; padding-left: 1.5rem; }
+        .feedback-guide li { margin-bottom: 0.5rem; line-height: 1.5; }
+        .feedback-guide em { color: var(--text-light, #64748b); font-size: 0.9rem; }
     </style>
 </head>
 <body>
@@ -38,6 +44,18 @@
             <h1>DK Website 2026 — Content Preview v2</h1>
             <p class="intro">HTML-Vorschau aller Seiten zur visuellen Content-Prüfung v2 (Meeting-Feedback 11.03.2026)</p>
             <p class="intro"><strong>6 Seiten aktualisiert</strong> · Neue Abschnitte markiert mit <span style="display:inline-block;background:#ff6b35;color:white;font-size:0.7rem;padding:2px 8px;border-radius:10px;font-weight:600;">NEU v2</span></p>
+        </section>
+
+        <section class="feedback-guide">
+            <h3>So geben Sie Feedback</h3>
+            <ol>
+                <li><strong>Seite öffnen</strong> — Klicken Sie auf eine Seite oben. Alle Seiten sind über die Navigation erreichbar.</li>
+                <li><strong>Kommentar hinterlassen</strong> — Neben jedem Textblock sehen Sie „✏️ Vorschlag". Klicken Sie darauf, schreiben Sie Ihren Kommentar und klicken Sie auf „Speichern".</li>
+                <li><strong>Mehrere Seiten kommentieren</strong> — Kommentare werden seitenübergreifend gespeichert. Sie können beliebig zwischen den Seiten wechseln.</li>
+                <li><strong>Feedback exportieren</strong> — Oben rechts: „Feedback: X Kommentare" → klicken → „Als Datei herunterladen". Sie erhalten eine .txt-Datei mit allen Kommentaren.</li>
+                <li><strong>Datei an uns senden</strong> — Schicken Sie die Datei per E-Mail, WhatsApp oder wie es Ihnen am liebsten ist.</li>
+            </ol>
+            <p><em>Hinweis: Ihre Kommentare werden lokal in Ihrem Browser gespeichert und bleiben erhalten, auch wenn Sie die Seite schließen.</em></p>
         </section>
 
         <section class="generic">
