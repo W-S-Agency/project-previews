@@ -179,8 +179,8 @@ html { font-size: 20px; }
 @media (max-width: 768px) {
   html { font-size: 16px; }
 
-  /* Slide padding */
-  .slide { padding-left: 24px !important; padding-right: 24px !important; padding-top: 56px !important; padding-bottom: 56px !important; min-height: auto !important; height: auto !important; }
+  /* Slide padding & height */
+  .slide { padding-left: 24px !important; padding-right: 24px !important; padding-top: 56px !important; padding-bottom: 56px !important; min-height: 100vh !important; height: auto !important; }
   .slide.active { display: flex; }
 
   /* Override Tailwind grids */
@@ -198,6 +198,7 @@ html { font-size: 20px; }
 
   /* Navigation */
   .nav-dots { display: none; }
+  .sn { display: none; }
   .nav-arrow { width: 40px; height: 40px; bottom: 16px; border-radius: 10px; font-size: 16px; }
   #btn-prev { right: 68px; }
   #btn-next { right: 20px; }
@@ -240,7 +241,7 @@ html { font-size: 20px; }
 @media (max-width: 480px) {
   html { font-size: 14px; }
 
-  .slide { padding-left: 16px !important; padding-right: 16px !important; padding-top: 48px !important; padding-bottom: 48px !important; }
+  .slide { padding-left: 16px !important; padding-right: 16px !important; padding-top: 48px !important; padding-bottom: 48px !important; min-height: 100vh !important; height: auto !important; }
 
   /* All Tailwind grids to single column */
   .grid.grid-cols-3,
