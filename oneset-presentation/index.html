@@ -253,7 +253,9 @@ html { font-size: 20px; }
   .flex.gap-12,
   .flex.gap-6 { flex-wrap: wrap; justify-content: center; }
 
-  /* S04/S12 partner logos row */
+  /* S04/S12 partner logos row: stack vertically */
+  #s04 .flex.gap-12.items-center { flex-direction: column !important; gap: 12px !important; }
+  #s04 .flex.gap-12.items-center span { display: none; }
   .flex.gap-12.items-center { gap: 16px !important; flex-wrap: wrap; justify-content: center; }
 
   /* S11 AI cards: stack */
