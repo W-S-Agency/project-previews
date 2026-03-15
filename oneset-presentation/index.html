@@ -903,6 +903,17 @@ html { font-size: 20px; }
     if(e.key==='End')  { e.preventDefault(); goto(total-1); }
   });
 
+  // Touch swipe
+  var tx = 0, ty = 0;
+  document.addEventListener('touchstart', function(e){ tx = e.touches[0].clientX; ty = e.touches[0].clientY; }, {passive:true});
+  document.addEventListener('touchend', function(e){
+    var dx = e.changedTouches[0].clientX - tx;
+    var dy = e.changedTouches[0].clientY - ty;
+    if(Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)*1.5){
+      if(dx < 0) goto(cur+1); else goto(cur-1);
+    }
+  }, {passive:true});
+
   // Init
   goto(0);
 })();
