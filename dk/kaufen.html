@@ -27,6 +27,15 @@
         .cta ul { list-style: none; padding: 0; margin: var(--spacing-md) auto; max-width: 500px; text-align: left; }
         .cta ul li { padding: var(--spacing-xs) 0; padding-left: 1.5rem; position: relative; }
         .cta ul li::before { content: "\2713"; position: absolute; left: 0; color: var(--accent); }
+        .faq-items .faq-item { border-bottom: 1px solid #eee; }
+        .faq-items .faq-item:last-child { border-bottom: none; }
+        .faq-question { display: flex; justify-content: space-between; align-items: center; cursor: pointer; padding: var(--spacing-md) 0; }
+        .faq-question h3 { margin: 0; font-size: 1.05rem; }
+        .faq-question .toggle { font-size: 1.5rem; color: var(--accent); transition: transform 0.3s; flex-shrink: 0; margin-left: 1rem; }
+        .faq-item.active .faq-question .toggle { transform: rotate(45deg); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; }
+        .faq-item.active .faq-answer { max-height: 500px; padding-bottom: var(--spacing-md); }
+        .faq-answer p { color: var(--text-light, #666); line-height: 1.7; margin: 0; }
         .v3-note { background: #fff3cd; border: 1px solid #ffc107; border-radius: 6px; padding: 0.75rem 1rem; margin-bottom: var(--spacing-md); font-size: 0.9rem; color: #856404; }
         @media (max-width: 768px) {
             .vorteile-columns { grid-template-columns: 1fr; }
@@ -334,6 +343,70 @@ section { position: relative; }
     <button class="btn-cancel" onclick="toggleFeedback(7)">Abbrechen</button>
     <button class="btn-delete" onclick="deleteFeedback(7)" style="display:none" id="delete-btn-7">Löschen</button>
     <span class="saved-indicator" id="saved-7">&#10003; Gespeichert</span>
+  </div>
+</div>
+</section>
+
+        <!-- SECTION 8: FAQ (NEU — SEO-optimiert) -->
+        <section id="block-8" class="faq">
+            <span class="block-label" style="display:none">Häufig gestellte Fragen zum Immobilienkauf in Berlin</span>
+            <button class="feedback-btn" onclick="toggleFeedback(8)">&#9999;&#65039; Vorschlag</button>
+            <h2>Häufig gestellte Fragen zum Immobilienkauf in Berlin</h2>
+            <div class="faq-items">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+                        <h3>Wie finde ich die richtige Wohnung in Berlin?</h3>
+                        <span class="toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Am Anfang steht ein persönliches Beratungsgespräch, in dem wir gemeinsam Ihr Suchprofil definieren – Lage, Größe, Budget und Objekttyp. Auf dieser Basis präsentieren wir Ihnen passende Immobilien, darunter auch exklusive Off-Market-Angebote, die nicht öffentlich inseriert sind. Dank unserer engen Kontakte zu Eigentümern in Berlin erhalten Sie Zugang zu Objekten, die Sie bei anderen Maklern nicht finden.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+                        <h3>Welche Kosten kommen beim Immobilienkauf auf mich zu?</h3>
+                        <span class="toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Neben dem Kaufpreis fallen in Berlin folgende Kaufnebenkosten an: Grunderwerbsteuer (6 %), Notar- und Grundbuchkosten (ca. 1,5–2 %) sowie ggf. eine Maklerprovision. Insgesamt sollten Sie mit ca. 10–15 % des Kaufpreises an Nebenkosten rechnen. Wir beraten Sie transparent zu allen Kosten und helfen Ihnen, die optimale Finanzierung zu finden – neutral und unabhängig.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+                        <h3>Kann DK Real Estate auch bei der Finanzierung helfen?</h3>
+                        <span class="toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Ja – und genau das unterscheidet uns von anderen Maklern. Bei DK Real Estate erhalten Sie Immobilie und Finanzierung aus einer Hand. Wir beraten Sie neutral und vergleichen Angebote von über 550 Banken, um die besten Konditionen für Sie zu finden. Die Erstberatung ist kostenlos und unverbindlich – unabhängig davon, ob Sie ein Objekt aus unserem Portfolio oder anderweitig erwerben.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+                        <h3>Was bedeutet Off-Market und welche Vorteile hat das für Käufer?</h3>
+                        <span class="toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Off-Market bedeutet, dass eine Immobilie diskret und ohne öffentliche Inserate angeboten wird. Als Käufer profitieren Sie von weniger Konkurrenz, einer entspannteren Verhandlungsposition und Zugang zu hochwertigen Objekten, die nie auf den großen Portalen erscheinen. Durch unser Netzwerk in Berlin können wir Ihnen regelmäßig solche exklusiven Angebote vorstellen.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+                        <h3>Wie lange dauert der Kaufprozess in Berlin?</h3>
+                        <span class="toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Die Dauer variiert je nach Immobilientyp und Finanzierung. In der Regel vergehen vom ersten Beratungsgespräch bis zur Schlüsselübergabe 2–4 Monate. Die Immobiliensuche selbst kann je nach Ihren Anforderungen schneller gehen – insbesondere wenn wir passende Off-Market-Objekte für Sie haben. Die Finanzierungszusage erhalten Sie bei uns in der Regel innerhalb von 1–2 Wochen.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="feedback-panel" id="feedback-panel-8">
+  <label>Ihr Vorschlag für Häufig gestellte Fragen zum Immobilienkauf in Berlin:</label>
+  <textarea id="feedback-text-8" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+  <div class="feedback-actions">
+    <button class="btn-save" onclick="saveFeedback(8)">Speichern</button>
+    <button class="btn-cancel" onclick="toggleFeedback(8)">Abbrechen</button>
+    <button class="btn-delete" onclick="deleteFeedback(8)" style="display:none" id="delete-btn-8">Löschen</button>
+    <span class="saved-indicator" id="saved-8">&#10003; Gespeichert</span>
   </div>
 </div>
 </section>
