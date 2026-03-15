@@ -1,0 +1,757 @@
+﻿<!DOCTYPE html>
+<html lang="ru" class="h-full">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>One.Set — Системный маркетинг</title>
+
+<!-- Tailwind v4 Browser CDN -->
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+<style type="text/tailwindcss">
+  @theme {
+    --color-bg:     #16181e;
+    --color-surf:   #1d2029;
+    --color-surf2:  #252933;
+    --color-text:   #dadbe0;
+    --color-muted:  #6b6f7a;
+    --color-border: rgba(218,219,224,0.08);
+    --color-blue:   #a8d0d9;
+    --color-lilac:  #a2aedd;
+    --color-green:  #6ed98f;
+    --color-sand:   #cec9c5;
+    --font-mono:    'Courier New', monospace;
+  }
+
+  @layer base {
+    html { scroll-behavior: smooth; }
+    body { background: var(--color-bg); color: var(--color-text); }
+  }
+
+  @layer components {
+    .slide {
+      @apply relative flex flex-col justify-center items-center;
+      @apply h-screen min-h-[600px] px-20 py-16 overflow-hidden;
+    }
+    .label {
+      @apply text-[15px] tracking-[.12em] uppercase font-mono text-[var(--color-muted)];
+      @apply mb-5;
+    }
+    .pill {
+      @apply inline-block px-3 py-1 rounded-full text-[10px] tracking-[.08em] uppercase font-mono;
+    }
+    .pill-blue  { @apply bg-[rgba(168,208,217,.14)] text-[var(--color-blue)];  }
+    .pill-green { @apply bg-[rgba(110,217,143,.14)] text-[var(--color-green)]; }
+    .pill-sand  { @apply bg-[rgba(206,201,197,.14)] text-[var(--color-sand)];  }
+    .pill-lilac { @apply bg-[rgba(162,174,221,.14)] text-[var(--color-lilac)]; }
+    .card {
+      @apply bg-[var(--color-surf)] rounded-xl p-7;
+      @apply border border-[var(--color-border)];
+    }
+    .sn {
+      @apply absolute bottom-7 left-20 font-mono text-[10px] text-[var(--color-muted)] tracking-[.1em];
+    }
+  }
+</style>
+
+<style>
+/* ── Base font scale for presentation readability ── */
+html { font-size: 20px; }
+
+/* One.Set logo SVG inherits --fill-0 as near-white */
+:root { --fill-0: #dadbe0; }
+
+/* Slide visibility — JS controls this */
+.slide { display: none; }
+.slide.active { display: flex; }
+
+/* Arrow buttons */
+.nav-arrow {
+  position: fixed;
+  bottom: 32px;
+  background: rgba(29,32,41,.85);
+  border: 1px solid rgba(218,219,224,.12);
+  color: #dadbe0;
+  width: 48px; height: 48px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: all .18s;
+  font-size: 18px;
+  backdrop-filter: blur(8px);
+  z-index: 100;
+  user-select: none;
+}
+.nav-arrow:hover { background: rgba(168,208,217,.15); border-color: rgba(168,208,217,.3); color: #a8d0d9; }
+.nav-arrow:disabled { opacity: .25; cursor: default; }
+#btn-prev { right: 100px; }
+#btn-next { right: 44px;  }
+
+/* Side dots */
+.nav-dots {
+  position: fixed; right: 18px; top: 50%;
+  transform: translateY(-50%);
+  display: flex; flex-direction: column; gap: 7px;
+  z-index: 100;
+}
+.nd {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: #6b6f7a; cursor: pointer; border: none;
+  transition: all .2s;
+}
+.nd.on, .nd:hover { background: #dadbe0; transform: scale(1.5); }
+
+/* Slide counter */
+#slide-counter {
+  position: fixed; bottom: 36px; left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Courier New', monospace;
+  font-size: 11px; color: #6b6f7a; letter-spacing: .1em;
+  z-index: 100;
+}
+
+/* Chain break visual */
+.chain { display: flex; align-items: center; gap: 0; width: 100%; max-width: 980px; }
+.cblock {
+  flex: 1; text-align: center; padding: 32px 12px;
+  background: #1d2029; border-radius: 12px;
+  font-size: 1rem; font-weight: 600;
+  border: 1px solid rgba(218,219,224,.07);
+}
+.carr { width: 28px; flex-shrink: 0; text-align: center; color: #6b6f7a; font-size: 1.1rem; }
+.cbrk { width: 40px; flex-shrink: 0; text-align: center; color: #ff6b6b; font-size: 1.6rem; }
+.cok  { border-color: rgba(110,217,143,.3) !important; background: rgba(110,217,143,.05) !important; }
+
+/* Timeline */
+.tline-item { display: flex; gap: 18px; }
+.tline-col  { display: flex; flex-direction: column; align-items: center; }
+.tdot { width: 8px; height: 8px; border-radius: 50%; background: #a8d0d9; flex-shrink: 0; margin-top: 6px; }
+.tconn { width: 1px; flex: 1; background: rgba(168,208,217,.18); min-height: 28px; }
+
+/* Layers */
+.lblock {
+  display: flex; align-items: center; gap: 18px;
+  background: #1d2029; border-radius: 10px;
+  padding: 18px 24px;
+  border: 1px solid rgba(218,219,224,.07);
+}
+.lblock.active { border-color: rgba(168,208,217,.3); background: rgba(168,208,217,.04); }
+.lblock.dim    { opacity: .35; }
+
+/* Wofür/Was/Wer/Ergebnis grid */
+.ww4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; }
+.wlabel { font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; font-family: monospace; color: #6b6f7a; margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px solid rgba(218,219,224,.08); }
+.wbig   { font-weight: 700; font-size: 1.1rem; margin-bottom: 8px; }
+.wdesc  { font-size: .92rem; color: #6b6f7a; line-height: 1.65; }
+
+/* Case layout */
+.case-wrap { display: grid; grid-template-columns: 1fr 1.3fr; gap: 52px; align-items: start; max-width: 940px; width: 100%; }
+.csvc { display: flex; gap: 12px; align-items: flex-start; }
+.cdot { width: 5px; height: 5px; border-radius: 50%; background: #a8d0d9; flex-shrink: 0; margin-top: 8px; }
+
+/* Pillars */
+.pillar { padding: 32px 24px; text-align: center; border-radius: 12px; border: 1px solid rgba(218,219,224,.07); }
+.pillar.dim { opacity: .62; }
+.pillar.hi  { border-color: rgba(168,208,217,.7); background: rgba(168,208,217,.1); box-shadow: 0 0 32px rgba(168,208,217,.08); }
+
+/* AI cards */
+.acard { text-align: center; padding: 32px 20px; background: #1d2029; border-radius: 12px; border: 1px solid rgba(218,219,224,.07); }
+
+/* Stat blocks */
+.stat-num { font-size: clamp(3rem,6vw,5.5rem); font-weight: 800; line-height: 1; }
+
+/* Logo wrappers */
+.logo-wk { background: #fff; border-radius: 8px; padding: 6px 12px; display: inline-flex; align-items: center; }
+</style>
+</head>
+<body class="h-full font-sans">
+
+<!-- ── SIDE DOTS ──────────────────────────────── -->
+<nav class="nav-dots" id="dots"></nav>
+
+<!-- ── SLIDE COUNTER ──────────────────────────── -->
+<div id="slide-counter">01 · 16</div>
+
+<!-- ── ARROW NAV ──────────────────────────────── -->
+<button class="nav-arrow" id="btn-prev" title="Назад">&#8592;</button>
+<button class="nav-arrow" id="btn-next" title="Вперёд">&#8594;</button>
+
+<!-- ════════════════════════════════════════════════
+     S01 — HOOK · БОЛЬ КЛИЕНТА
+═════════════════════════════════════════════════ -->
+<section class="slide active" id="s01">
+  <div class="label">One.Set · Маркетинг · Веб · CRM · Автоматизация</div>
+  <h1 class="text-[clamp(2.5rem,5vw,4rem)] font-extrabold leading-[1.08] max-w-[860px] text-center" style="letter-spacing:-.02em;">
+    Каждый делает своё.<br>У каждого — своя версия успеха.<br><span style="color:#a8d0d9;">За итог не отвечает никто.</span>
+  </h1>
+  <p class="mt-6 text-[1.2rem] text-center max-w-[700px]" style="color:#6b6f7a;">
+    Подрядчики, in-house команды, агентства — все работают. Деньги уходят. Результат теряется в стыках между ними.
+  </p>
+  <div class="sn">01 · 16</div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     S02 — ТРИ ОПОРЫ
+═════════════════════════════════════════════════ -->
+<section class="slide" id="s02">
+  <div class="label">Три опоры бизнеса</div>
+  <h2 class="text-[clamp(2rem,3.5vw,2.8rem)] font-bold mb-10">Где находится ваша точка роста?</h2>
+  <div class="grid grid-cols-3 gap-6 max-w-[960px] w-full">
+    <div class="pillar dim">
+      <div class="text-3xl mb-4">🏗️</div>
+      <h3 class="font-bold mb-3">Профессиональная<br>основа</h3>
+      <p class="text-sm leading-relaxed" style="color:#6b6f7a;">Ваш продукт, экспертиза, команда. То, что вы делаете лучше других — это ваша территория.</p>
+      <div class="mt-5"><span class="pill pill-sand">ваша зона</span></div>
+    </div>
+    <div class="pillar dim">
+      <div class="text-3xl mb-4">💰</div>
+      <h3 class="font-bold mb-3">Финансовая<br>основа</h3>
+      <p class="text-sm leading-relaxed" style="color:#6b6f7a;">Учёт, cash flow, инвестиции, масштабирование через капитал.</p>
+      <div class="mt-5"><span class="pill pill-sand">ваша зона</span></div>
+    </div>
+    <div class="pillar hi">
+      <div class="text-3xl mb-4">🌐</div>
+      <h3 class="font-bold mb-3" style="color:#a8d0d9;">Цифровая<br>экосистема</h3>
+      <p class="text-sm leading-relaxed" style="color:#9bb8c2;">Маркетинг · Веб · CRM · Автоматизация · AI · Интеграции — всё, что нужно бизнесу в цифровой среде.</p>
+      <div class="mt-5"><span class="pill pill-blue">наша экспертиза</span></div>
+    </div>
+  </div>
+  <div class="sn">02 · 16</div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     S03 — ГДЕ ТЕРЯЕТСЯ РЕЗУЛЬТАТ
+═════════════════════════════════════════════════ -->
+<section class="slide" id="s03">
+  <div class="label">Диагноз</div>
+  <h2 class="text-[clamp(2rem,3.5vw,2.8rem)] font-bold text-center mb-2">Эффективность теряется в стыках</h2>
+  <p class="text-center mb-12" style="color:#6b6f7a; font-size:1.1rem;">Каждое звено работает в своих данных — общей картины нет, обмена данными нет, сквозной ответственности нет</p>
+  <div class="chain">
+    <div class="cblock">📣<br><span class="text-sm block mt-2" style="color:#6b6f7a;">Маркетинг</span></div>
+    <div class="cbrk">⚡</div>
+    <div class="cblock">🌐<br><span class="text-sm block mt-2" style="color:#6b6f7a;">Цифровая среда</span></div>
+    <div class="cbrk">⚡</div>
+    <div class="cblock">🗄️<br><span class="text-sm block mt-2" style="color:#6b6f7a;">CRM / ERP</span></div>
+    <div class="cbrk">⚡</div>
+    <div class="cblock">⚙️<br><span class="text-sm block mt-2" style="color:#6b6f7a;">Операции</span></div>
+    <div class="carr">→</div>
+    <div class="cblock cok">✅<br><span class="text-sm block mt-2" style="color:#6ed98f;">Результат</span></div>
+  </div>
+  <p class="mt-8 text-center text-sm italic" style="color:#6b6f7a;max-width:760px;">⚡ — разрыв в трёх измерениях: разные данные, разные протоколы, разные правила игры. Каждый работает хорошо — но каждый в своей системе координат. Без единой среды, общих данных и сквозных правил результат всегда теряется на переходах.</p>
+  <div class="sn">03 · 16</div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     S04 — HERO · ONE.SET
+═════════════════════════════════════════════════ -->
+<section class="slide" id="s04">
+  <img style="height:52px;width:auto;margin-bottom:28px;"
+    src="materials/oneset-logo.svg"
+    alt="One.Set">
+  <h2 class="text-[clamp(2rem,3.5vw,3rem)] font-bold text-center max-w-[700px] mb-3" style="color:#dadbe0;">
+    Один партнёр закрывает всё.<br><span style="color:#a8d0d9;">Маркетинг · Веб · CRM · Автоматизация · AI.</span>
+  </h2>
+  <p class="text-center max-w-[620px] mb-10" style="color:#6b6f7a; font-size:1.1rem;">
+    Три уровня. Один результат. Одна ответственность.
+  </p>
+  <div class="flex gap-12 items-center" style="opacity:.9;">
+    <img src="materials/WS-logo-w (2).svg" style="height:60px;" alt="WS Agency">
+    <span style="color:#6b6f7a; font-size:1.6rem;">+</span>
+    <img src="materials/Logo-F.svg" style="height:50px;" alt="2Penguins">
+    <span style="color:#6b6f7a; font-size:1.6rem;">+</span>
+    <div class="logo-wk"><img src="materials/site-logo.svg" style="height:38px;" alt="WK Connect"></div>
+  </div>
+  <div class="sn">04 · 16</div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     S05 — ПРОИСХОЖДЕНИЕ
+═════════════════════════════════════════════════ -->
+<section class="slide" id="s05">
+  <div class="grid grid-cols-2 gap-16 items-start max-w-[940px] w-full">
+    <div>
+      <div class="label">Как появился One.Set</div>
+      <div class="flex flex-col gap-0">
+        <div class="tline-item">
+          <div class="tline-col"><div class="tdot"></div><div class="tconn"></div></div>
+          <div class="pb-7">
+            <div class="text-[.82rem] font-mono mb-1" style="color:#6b6f7a;letter-spacing:.06em;">НАЧАЛО</div>
+            <div class="text-[1.05rem] leading-relaxed">Одна команда маркетологов, веб-разработчиков и автоматизаторов работала вместе — внутри одной структуры, на одни проекты.</div>
+          </div>
+        </div>
+        <div class="tline-item">
+          <div class="tline-col"><div class="tdot"></div><div class="tconn"></div></div>
+          <div class="pb-7">
+            <div class="text-[.82rem] font-mono mb-1" style="color:#6b6f7a;letter-spacing:.06em;">РОСТ</div>
+            <div class="text-[1.05rem] leading-relaxed">Команда выросла. Специализации углубились. Появились отдельные юридические лица: WS Agency, 2Penguins, WK Connect.</div>
+          </div>
+        </div>
+        <div class="tline-item">
+          <div class="tline-col"><div class="tdot"></div><div class="tconn"></div></div>
+          <div class="pb-7">
+            <div class="text-[.82rem] font-mono mb-1" style="color:#6b6f7a;letter-spacing:.06em;">СЕЙЧАС</div>
+            <div class="text-[1.05rem] leading-relaxed">Три отдельные компании — но <strong>сквозной метод сохранился</strong>. Работаем как один организм: общий контекст, общая ответственность, общий результат.</div>
+          </div>
+        </div>
+        <div class="tline-item">
+          <div class="tline-col"><div class="tdot"></div></div>
+          <div class="pb-0">
+            <div class="text-[.82rem] font-mono mb-1" style="color:#6b6f7a;letter-spacing:.06em;">ПРОВЕРКА</div>
+            <div class="text-[1.05rem] leading-relaxed">Всё новое — инструменты, подходы, AI — сначала проходит проверку на собственных бизнесах в четырёх направлениях. На рынок выходит только то, что работает.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col justify-center gap-5">
+      <div class="card">
+        <div class="text-[.84rem] font-mono mb-2" style="color:#6b6f7a;letter-spacing:.08em;">В ЧЁМ РАЗНИЦА</div>
+        <div class="font-bold text-lg mb-3" style="color:#a8d0d9;">Три независимые компании.<br>Один сквозной метод.</div>
+        <div class="text-sm leading-relaxed" style="color:#6b6f7a;">WS Agency, 2Penguins и WK Connect — самостоятельные юридические лица. Но они выросли из одной команды и по-прежнему работают по единым стандартам: общие данные, общие протоколы, единый KPI — ваш результат.</div>
+      </div>
+      <div class="flex gap-6">
+        <div class="text-center">
+          <div class="stat-num" style="font-size:2.4rem;line-height:1;color:#a8d0d9;">20<span style="font-size:.5em;color:#6b6f7a;">+</span></div>
+          <div class="text-[.72rem] font-mono mt-1" style="color:#6b6f7a;">лет в Германии</div>
+        </div>
+        <div class="text-center">
+          <div class="stat-num" style="font-size:2.4rem;line-height:1;color:#a2aedd;">15<span style="font-size:.5em;color:#6b6f7a;">+</span></div>
+          <div class="text-[.72rem] font-mono mt-1" style="color:#6b6f7a;">лет в маркетинге</div>
+        </div>
+        <div class="text-center">
+          <div class="stat-num" style="font-size:2.4rem;line-height:1;color:#cec9c5;">15<span style="font-size:.5em;color:#6b6f7a;">+</span></div>
+          <div class="text-[.72rem] font-mono mt-1" style="color:#6b6f7a;">лет в разработке</div>
+        </div>
+        <div class="text-center">
+          <div class="stat-num" style="font-size:2.4rem;line-height:1;color:#6ed98f;">100<span style="font-size:.5em;color:#6b6f7a;">+</span></div>
+          <div class="text-[.72rem] font-mono mt-1" style="color:#6b6f7a;">клиентских проектов</div>
+        </div>
+      </div>
+      <div class="text-[.78rem] font-mono" style="color:#6b6f7a;letter-spacing:.06em;">Партнёрская сеть · Немецкий рынок · Немецкий Mittelstand</div>
+    </div>
+  </div>
+  <div class="sn">05 · 16</div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     S06 — ЧТО ТАКОЕ ONE.SET
+═════════════════════════════════════════════════ -->
+<section class="slide" id="s06">
+  <div class="label">Партнёрская сеть</div>
+  <h2 class="text-[clamp(1.9rem,3.2vw,2.8rem)] font-bold text-center mb-3">One.Set — <span style="color:#a8d0d9;">не агентство.</span><br>Партнёрская сеть экспертов.</h2>
+  <p class="text-center text-sm mb-10" style="color:#6b6f7a;max-width:520px;">Каждый партнёр — эксперт в своей области. Вместе они закрывают весь путь от привлечения до удержания клиента.</p>
+  <div class="grid grid-cols-3 gap-6 max-w-[900px] w-full">
+    <div class="card flex flex-col items-center text-center gap-4">
+      <img src="materials/WS-logo-w (2).svg" alt="WS Agency" style="height:36px;">
+      <div class="text-[.84rem] font-mono leading-relaxed" style="color:#6b6f7a;">Маркетинг · Стратегия · Бренд<br>Performance (Meta, Google) · SMM<br>Контент · PR · Репутация</div>
+    </div>
+    <div class="card flex flex-col items-center text-center gap-4">
+      <img src="materials/Logo-F.svg" alt="2Penguins" style="height:32px;">
+      <div class="text-[.84rem] font-mono leading-relaxed" style="color:#6b6f7a;">Веб · E-commerce · SEO & KI<br>Разработка ПО · Конверсия · Аналитика</div>
+    </div>
+    <div class="card flex flex-col items-center text-center gap-4">
+      <div class="logo-wk"><img src="materials/site-logo.svg" alt="WK Connect" style="height:24px;"></div>
+      <div class="text-[.84rem] font-mono leading-relaxed" style="color:#6b6f7a;">Автоматизация · CRM/ERP<br>Интеграции · AI-процессы</div>
+    </div>
+  </div>
+  <div class="sn">06 · 16</div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     S07 — ТРИ УРОВНЯ
+═════════════════════════════════════════════════ -->
+<section class="slide" id="s07">
+  <div class="label">Системная архитектура</div>
+  <h2 class="text-[clamp(1.9rem,3.2vw,2.8rem)] font-bold mb-10">Три уровня — <span style="color:#a8d0d9;">один поток</span></h2>
+  <div class="flex flex-col gap-3 max-w-[680px] w-full">
+    <div class="lblock" style="border-left:3px solid #a8d0d9;background:rgba(168,208,217,.07);">
+      <div class="font-semibold flex-1" style="color:#dadbe0;">Видимость и привлечение</div>
+      <img src="materials/WS-logo-w (2).svg" style="height:22px;opacity:.9;">
+    </div>
+    <div class="flex items-center gap-3 justify-center">
+      <span style="color:#a8d0d9;font-size:1.6rem;line-height:1;">↓</span>
+      <span class="font-mono text-[.72rem]" style="color:#6b6f7a;">лиды попадают в систему</span>
+    </div>
+    <div class="lblock" style="border-left:3px solid #6ed98f;background:rgba(110,217,143,.07);">
+      <div class="font-semibold flex-1" style="color:#dadbe0;">Конверсия и цифровая среда</div>
+      <img src="materials/Logo-F.svg" style="height:18px;opacity:.9;">
+    </div>
+    <div class="flex items-center gap-3 justify-center">
+      <span style="color:#6ed98f;font-size:1.6rem;line-height:1;">↓</span>
+      <span class="font-mono text-[.72rem]" style="color:#6b6f7a;">клиент обслуживается автоматически</span>
+    </div>
+    <div class="lblock" style="border-left:3px solid #cec9c5;background:rgba(206,201,197,.07);">
+      <div class="font-semibold flex-1" style="color:#dadbe0;">Операции и автоматизация</div>
+      <div class="logo-wk"><img src="materials/site-logo.svg" style="height:16px;opacity:.9;"></div>
+    </div>
+  </div>
+  <p class="mt-8 text-sm text-center max-w-[700px]" style="color:#6b6f7a;">Сбой на одном уровне влияет на все остальные. Поэтому мы управляем всеми тремя — как единой системой.</p>
+  <div class="sn">07 · 16</div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     S08 — УРОВЕНЬ 1 · WS AGENCY
+═════════════════════════════════════════════════ -->
+<section class="slide" id="s08">
+  <div class="max-w-[940px] w-full">
+    <div class="flex items-center gap-5 mb-10">
+      <img src="materials/WS-logo-w (2).svg" alt="WS Agency" style="height:32px;">
+      <span class="pill pill-blue">Видимость · Привлечение</span>
+    </div>
+    <div class="ww4">
+      <div>
+        <div class="wlabel">Зачем</div>
+        <div class="wbig">Привлечь целевых клиентов раньше конкурентов</div>
+        <div class="wdesc">Клиент должен найти вас до того, как начал активно искать. Стратегическое присутствие в правильных каналах.</div>
+      </div>
+      <div>
+        <div class="wlabel">Что</div>
+        <div class="wbig">Маркетинг-система</div>
+        <div class="wdesc">Стратегия и позиционирование · Бренд · SMM · Контент и SEO · Performance-реклама (Meta, Google) · PR и репутация</div>
+      </div>
+      <div>
+        <div class="wlabel">Кто</div>
+        <div class="wbig">WS Agency</div>
+        <div class="wdesc">Маркетинговое агентство полного цикла. Отвечает за весь путь от узнаваемости до первого квалифицированного касания.</div>
+      </div>
+      <div>
+        <div class="wlabel">Результат</div>
+        <div class="wbig" style="color:#a8d0d9;">Стабильный поток квалифицированных запросов</div>
+        <div class="wdesc">Предсказуемое количество входящих лидов — без зависимости от сезона и личных связей.</div>
+      </div>
+    </div>
+  </div>
+  <div class="sn">08 · 16</div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     S09 — УРОВЕНЬ 2 · 2PENGUINS
+═════════════════════════════════════════════════ -->
+<section class="slide" id="s09">
+  <div class="max-w-[940px] w-full">
+    <div class="flex items-center gap-5 mb-10">
+      <img src="materials/Logo-F.svg" alt="2Penguins" style="height:28px;">
+      <span class="pill pill-green">Конверсия · Цифровая среда</span>
+    </div>
+    <div class="ww4">
+      <div>
+        <div class="wlabel">Зачем</div>
+        <div class="wbig">Превратить интерес в действие, действие — в клиента</div>
+        <div class="wdesc">Входящий трафик ничего не стоит без среды, которая конвертирует. Каждый лид должен попасть в систему.</div>
+      </div>
+      <div>
+        <div class="wlabel">Что</div>
+        <div class="wbig">Цифровая инфраструктура</div>
+        <div class="wdesc">Веб · E-commerce · SEO & KI · Разработка ПО · Конверсия · Аналитика</div>
+      </div>
+      <div>
+        <div class="wlabel">Кто</div>
+        <div class="wbig">2Penguins</div>
+        <div class="wdesc">Веб-студия и технологическая команда. Строит цифровую среду, в которой лиды фиксируются и обрабатываются без потерь.</div>
+      </div>
+      <div>
+        <div class="wlabel">Результат</div>
+        <div class="wbig" style="color:#6ed98f;">Каждый лид фиксируется. Ни один не теряется.</div>
+        <div class="wdesc">Все заявки в системе, обрабатываются по заданному сценарию — без ручного труда и потерь на переходах.</div>
+      </div>
+    </div>
+  </div>
+  <div class="sn">09 · 16</div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     S10 — УРОВЕНЬ 3 · WK CONNECT
+═════════════════════════════════════════════════ -->
+<section class="slide" id="s10">
+  <div class="max-w-[940px] w-full">
+    <div class="flex items-center gap-5 mb-10">
+      <div class="logo-wk"><img src="materials/site-logo.svg" alt="WK Connect" style="height:24px;"></div>
+      <span class="pill pill-sand">Операции · Автоматизация</span>
+    </div>
+    <div class="ww4">
+      <div>
+        <div class="wlabel">Зачем</div>
+        <div class="wbig">Держать бизнес под контролем без ручного труда</div>
+        <div class="wdesc">Рост без операционной системы = хаос. Нужна структура, которая масштабируется вместе с объёмом.</div>
+      </div>
+      <div>
+        <div class="wlabel">Что</div>
+        <div class="wbig">Операционная система</div>
+        <div class="wdesc">CRM/ERP · Бизнес-автоматизация · Интеграции · AI-процессы · Отчётность</div>
+      </div>
+      <div>
+        <div class="wlabel">Кто</div>
+        <div class="wbig">WK Connect</div>
+        <div class="wdesc">Специалисты по автоматизации бизнес-процессов. Строят операционную основу, на которой держится весь рост.</div>
+      </div>
+      <div>
+        <div class="wlabel">Результат</div>
+        <div class="wbig" style="color:#cec9c5;">Бизнес работает по правилам, а не по настроению</div>
+        <div class="wdesc">Стандартизированные процессы, минимум ручного труда, прозрачный контроль цифрами.</div>
+      </div>
+    </div>
+  </div>
+  <div class="sn">10 · 16</div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     S11 — AI · КАК МЫ РАБОТАЕМ
+═════════════════════════════════════════════════ -->
+<section class="slide" id="s11">
+  <div class="label">AI-подход сети</div>
+  <h2 class="text-[clamp(1.9rem,3.2vw,2.8rem)] font-bold text-center mb-3">Сначала данные.<br><span style="color:#a2aedd;">Потом интеллект.</span></h2>
+  <p class="text-center text-sm mb-10 max-w-[600px]" style="color:#6b6f7a;">AI без нормализованных данных — это мозг без пищи. Он галлюцинирует. Мы выстраиваем систему данных сначала — и только потом подключаем интеллект.</p>
+  <div class="flex gap-6 max-w-[820px] w-full">
+    <div class="acard flex-1">
+      <div class="text-3xl mb-4">🍽️</div>
+      <div class="font-bold text-base mb-2" style="color:#a2aedd;">Пища — данные</div>
+      <div class="text-sm leading-relaxed" style="color:#6b6f7a;">Все данные бизнеса собраны в одном месте, нормализированы и связаны между собой. Без разрывов, без "своей версии правды" у каждого отдела.</div>
+    </div>
+    <div class="flex items-center" style="color:#a2aedd;font-size:1.8rem;">→</div>
+    <div class="acard flex-1">
+      <div class="text-3xl mb-4">🤲</div>
+      <div class="font-bold text-base mb-2" style="color:#a2aedd;">Ручки — агенты</div>
+      <div class="text-sm leading-relaxed" style="color:#6b6f7a;">Агенты и инструменты работают с этими данными точно и предсказуемо. Автоматизация, аналитика, генерация — без галлюцинаций.</div>
+    </div>
+    <div class="flex items-center" style="color:#6ed98f;font-size:1.8rem;">→</div>
+    <div class="acard flex-1">
+      <div class="text-3xl mb-4">🧠</div>
+      <div class="font-bold text-base mb-2" style="color:#6ed98f;">Результат</div>
+      <div class="text-sm leading-relaxed" style="color:#6b6f7a;">AI работает так, как должен. Бизнес получает реальную автоматизацию — не эксперимент, а рабочий инструмент.</div>
+    </div>
+  </div>
+  <p class="mt-8 text-sm text-center" style="color:#6b6f7a;">Мы выстроили это на собственных бизнесах. Теперь внедряем клиентам — проверено на практике, не в теории.</p>
+  <div class="sn">11 · 16</div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     S12 — ДОКАЗАТЕЛЬСТВО
+═════════════════════════════════════════════════ -->
+<section class="slide" id="s12">
+  <div class="label">Проверено на себе</div>
+  <h2 class="text-[clamp(2rem,3.5vw,3rem)] font-bold text-center mb-2">Всё, что мы предлагаем клиентам,<br><span style="color:#a8d0d9;">сначала работает у нас.</span></h2>
+  <p class="text-center text-sm mb-8 max-w-[660px]" style="color:#6b6f7a;">Четыре собственных бизнеса на немецком рынке — наш тестовый полигон. Только то, что работает в реальных условиях Германии, выходит к клиентам.</p>
+
+  <div class="grid grid-cols-4 gap-4 max-w-[900px] w-full mb-8">
+    <div class="card flex flex-col gap-3">
+      <div class="text-2xl">🏗️</div>
+      <div class="font-semibold text-sm">Производство<br>и монтаж</div>
+      <div class="text-[.72rem] font-mono" style="color:#6ed98f;">● работает</div>
+      <div class="text-[.68rem] font-mono" style="color:#6b6f7a;">Deutschland</div>
+    </div>
+    <div class="card flex flex-col gap-3">
+      <div class="text-2xl">🛒</div>
+      <div class="font-semibold text-sm">E-commerce</div>
+      <div class="text-[.72rem] font-mono" style="color:#6ed98f;">● работает</div>
+      <div class="text-[.68rem] font-mono" style="color:#6b6f7a;">Deutschland</div>
+    </div>
+    <div class="card flex flex-col gap-3">
+      <div class="text-2xl">🚚</div>
+      <div class="font-semibold text-sm">Логистика</div>
+      <div class="text-[.72rem] font-mono" style="color:#6ed98f;">● работает</div>
+      <div class="text-[.68rem] font-mono" style="color:#6b6f7a;">Deutschland</div>
+    </div>
+    <div class="card flex flex-col gap-3">
+      <div class="text-2xl">🤝</div>
+      <div class="font-semibold text-sm">Услуги</div>
+      <div class="text-[.72rem] font-mono" style="color:#6ed98f;">● работает</div>
+      <div class="text-[.68rem] font-mono" style="color:#6b6f7a;">Deutschland</div>
+    </div>
+  </div>
+
+  <div class="flex gap-12 items-center">
+    <div class="text-center">
+      <div class="stat-num" style="color:#a8d0d9;">100<span style="font-size:.5em;color:#6b6f7a;">+</span></div>
+      <div class="text-sm mt-1" style="color:#6b6f7a;">клиентских проектов<br>на немецком рынке</div>
+    </div>
+    <div style="width:1px;height:60px;background:rgba(218,219,224,.1);flex-shrink:0;"></div>
+    <div class="text-center">
+      <div class="stat-num" style="color:#cec9c5;">0</div>
+      <div class="text-sm mt-1" style="color:#6b6f7a;">кейсов «из воздуха» —<br>только реальный опыт</div>
+    </div>
+    <div style="width:1px;height:60px;background:rgba(218,219,224,.1);flex-shrink:0;"></div>
+    <div class="text-center">
+      <div class="stat-num" style="color:#6ed98f;">20<span style="font-size:.5em;color:#6b6f7a;">+</span></div>
+      <div class="text-sm mt-1" style="color:#6b6f7a;">лет экспертизы<br>в Германии</div>
+    </div>
+  </div>
+  <div class="sn">12 · 16</div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     S13 — КЕЙС 01 · GOLDINSIDE AESTHETICS
+═════════════════════════════════════════════════ -->
+<section class="slide" id="s13">
+  <div class="case-wrap">
+    <div class="card flex flex-col gap-4" style="min-height:260px;">
+      <div class="text-[.82rem] font-mono" style="color:#6b6f7a;letter-spacing:.08em;text-transform:uppercase;">Ästhetische Medizin · Düsseldorf</div>
+      <div class="text-xl font-bold">GoldInside<br>Aesthetics</div>
+      <div class="text-sm" style="color:#6b6f7a;">goldinside-aesthetics.de</div>
+      <div class="flex flex-wrap gap-2 mt-2">
+        <span class="pill pill-blue">CRM</span>
+        <span class="pill pill-green">Meta Ads</span>
+        <span class="pill pill-green">Google Ads</span>
+        <span class="pill pill-lilac">Social Media</span>
+      </div>
+      <p class="text-sm mt-2 leading-relaxed" style="color:#6b6f7a;">Beauty &amp; Aesthetic Clinic. Комплексное сопровождение: от инфраструктуры до привлечения клиентов.</p>
+    </div>
+    <div>
+      <div class="text-[.84rem] font-mono mb-5" style="color:#6b6f7a;text-transform:uppercase;letter-spacing:.08em;">Что было сделано</div>
+      <div class="flex flex-col gap-4">
+        <div class="csvc"><div class="cdot"></div><div><div class="font-semibold text-sm mb-1">CRM &amp; Процессы</div><div class="text-sm leading-relaxed" style="color:#6b6f7a;">Настройка CRM для управления клиентами, онлайн-записи и автоматической коммуникации.</div></div></div>
+        <div class="csvc"><div class="cdot"></div><div><div class="font-semibold text-sm mb-1">Сайт &amp; Лендинги</div><div class="text-sm leading-relaxed" style="color:#6b6f7a;">Современный дизайн, конверсионные лендинги под каждую процедуру.</div></div></div>
+        <div class="csvc"><div class="cdot"></div><div><div class="font-semibold text-sm mb-1">Performance Marketing</div><div class="text-sm leading-relaxed" style="color:#6b6f7a;">Постоянные кампании Meta Ads и Google Ads для привлечения новых клиентов в регионе.</div></div></div>
+        <div class="csvc"><div class="cdot"></div><div><div class="font-semibold text-sm mb-1">Social Media</div><div class="text-sm leading-relaxed" style="color:#6b6f7a;">Контент-стратегия, создание материалов, community management.</div></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="sn">13 · 16</div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     S14 — КЕЙС 02 · D.K. REAL ESTATE
+═════════════════════════════════════════════════ -->
+<section class="slide" id="s14">
+  <div class="case-wrap">
+    <div class="card flex flex-col gap-4" style="min-height:260px;">
+      <div class="text-[.82rem] font-mono" style="color:#6b6f7a;letter-spacing:.08em;text-transform:uppercase;">Immobilien · Berlin</div>
+      <div class="text-xl font-bold">D.K. Real Estate<br>GmbH</div>
+      <div class="text-sm" style="color:#6b6f7a;">dk360.de</div>
+      <div class="flex flex-wrap gap-2 mt-2">
+        <span class="pill pill-blue">Website-Relaunch</span>
+        <span class="pill pill-lilac">AI-Automatisierung</span>
+        <span class="pill pill-green">Google Ads</span>
+        <span class="pill pill-sand">Newsletter</span>
+      </div>
+      <p class="text-sm mt-2 leading-relaxed" style="color:#6b6f7a;">Берлинский агент по недвижимости. Несколько лет сотрудничества — поэтапная цифровизация и модернизация.</p>
+    </div>
+    <div>
+      <div class="text-[.84rem] font-mono mb-5" style="color:#6b6f7a;text-transform:uppercase;letter-spacing:.08em;">Что делается</div>
+      <div class="flex flex-col gap-4">
+        <div class="csvc"><div class="cdot"></div><div><div class="font-semibold text-sm mb-1">Редизайн сайта <span class="pill pill-lilac" style="font-size:.6rem;">в работе</span></div><div class="text-sm leading-relaxed" style="color:#6b6f7a;">Новое цифровое присутствие — современный дизайн, оптимизированное портфолио объектов.</div></div></div>
+        <div class="csvc"><div class="cdot"></div><div><div class="font-semibold text-sm mb-1">AI-автоматизация процессов</div><div class="text-sm leading-relaxed" style="color:#6b6f7a;">Внедрение AI-инструментов для автоматизации внутренних задач — меньше ручного труда.</div></div></div>
+        <div class="csvc"><div class="cdot"></div><div><div class="font-semibold text-sm mb-1">Google Ads</div><div class="text-sm leading-relaxed" style="color:#6b6f7a;">Кампании для целевой видимости по релевантным запросам на берлинском рынке.</div></div></div>
+        <div class="csvc"><div class="cdot"></div><div><div class="font-semibold text-sm mb-1">Newsletter</div><div class="text-sm leading-relaxed" style="color:#6b6f7a;">Регулярные email-кампании для удержания базы и рыночного позиционирования.</div></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="sn">14 · 16</div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     S15 — КЕЙС 03 · LAER GRUPPE
+═════════════════════════════════════════════════ -->
+<section class="slide" id="s15">
+  <div class="case-wrap">
+    <div class="card flex flex-col gap-4" style="min-height:260px;">
+      <div class="text-[.82rem] font-mono" style="color:#6b6f7a;letter-spacing:.08em;text-transform:uppercase;">Mietparks · Projektentwicklung · DE/FR/AT/SK</div>
+      <div class="text-xl font-bold">Laer Gruppe /<br>MEGA Mietpark</div>
+      <div class="text-sm" style="color:#6b6f7a;">mega-mietpark.de · georg-laer.de</div>
+      <div class="flex flex-wrap gap-2 mt-2">
+        <span class="pill pill-blue">218+ Projekte</span>
+        <span class="pill pill-blue">210 Standorte</span>
+        <span class="pill pill-sand">660.000 m²</span>
+      </div>
+      <p class="text-sm mt-2 leading-relaxed" style="color:#6b6f7a;">Пионер концепции крупных гаражных парков в Германии. Группа компаний: MEGA Mietpark, Laer Bauplanung, Formica Team.</p>
+    </div>
+    <div>
+      <div class="text-[.84rem] font-mono mb-5" style="color:#6b6f7a;text-transform:uppercase;letter-spacing:.08em;">Что делается</div>
+      <div class="flex flex-col gap-4">
+        <div class="csvc"><div class="cdot"></div><div><div class="font-semibold text-sm mb-1">Маркетинговая стратегия</div><div class="text-sm leading-relaxed" style="color:#6b6f7a;">Комплексная стратегия для всех брендов и каналов группы.</div></div></div>
+        <div class="csvc"><div class="cdot"></div><div><div class="font-semibold text-sm mb-1">Редизайн сайтов (3 бренда)</div><div class="text-sm leading-relaxed" style="color:#6b6f7a;">Новые концепции для MEGA Mietpark, Laer Gruppe и личного бренда основателя.</div></div></div>
+        <div class="csvc"><div class="cdot"></div><div><div class="font-semibold text-sm mb-1">Personal Branding · LinkedIn</div><div class="text-sm leading-relaxed" style="color:#6b6f7a;">Позиционирование основателя как эксперта по Mietpark-концепциям — 20 лет опыта.</div></div></div>
+        <div class="csvc"><div class="cdot"></div><div><div class="font-semibold text-sm mb-1">Google Ads</div><div class="text-sm leading-relaxed" style="color:#6b6f7a;">Кампании для видимости объектов по всей Германии.</div></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="sn">15 · 16</div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     S16 — CTA
+═════════════════════════════════════════════════ -->
+<section class="slide" id="s16">
+  <div class="label">Следующий шаг</div>
+  <h2 class="text-[clamp(2rem,3.5vw,3rem)] font-bold text-center max-w-[600px] mb-3">
+    Перестаньте терять клиентов<br>в стыках между командами.
+  </h2>
+  <p class="text-center text-sm mb-10 max-w-[640px]" style="color:#6b6f7a;">Одна точка входа. Три уровня экспертизы. Один результат.</p>
+  <div class="flex gap-5 max-w-[780px] w-full">
+    <div class="card flex-1">
+      <div class="text-[.8rem] font-mono mb-3" style="color:#6b6f7a;letter-spacing:.08em;">ШАГ 01</div>
+      <div class="font-bold mb-2">Диагностика</div>
+      <div class="text-sm leading-relaxed" style="color:#6b6f7a;">Разбираем, где рвётся ваша цепочка — маркетинг, сайт или операции. Бесплатно, без обязательств.</div>
+    </div>
+    <div class="card flex-1">
+      <div class="text-[.8rem] font-mono mb-3" style="color:#6b6f7a;letter-spacing:.08em;">ШАГ 02</div>
+      <div class="font-bold mb-2">Системный план</div>
+      <div class="text-sm leading-relaxed" style="color:#6b6f7a;">Показываем конкретные точки роста и предлагаем, с какого уровня начать — даже при ограниченном бюджете.</div>
+    </div>
+    <div class="card flex-1">
+      <div class="text-[.8rem] font-mono mb-3" style="color:#6b6f7a;letter-spacing:.08em;">ШАГ 03</div>
+      <div class="font-bold mb-2">Запуск</div>
+      <div class="text-sm leading-relaxed" style="color:#6b6f7a;">Начинаем с одного уровня — и постепенно выстраиваем полную трёхуровневую систему.</div>
+    </div>
+  </div>
+  <p class="mt-8 text-sm" style="color:#6b6f7a;">
+    <a href="mailto:info@oneset.de" style="color:#a8d0d9;text-decoration:none;">info@oneset.de</a>
+    &nbsp;·&nbsp;
+    <a href="https://oneset.de" style="color:#a8d0d9;text-decoration:none;">oneset.de</a>
+  </p>
+  <div class="sn">16 · 16</div>
+</section>
+
+<!-- ── SCRIPT ──────────────────────────────────────── -->
+<script>
+(function(){
+  var slides = document.querySelectorAll('.slide');
+  var total  = slides.length;
+  var cur    = 0;
+
+  var dots    = document.getElementById('dots');
+  var counter = document.getElementById('slide-counter');
+  var btnPrev = document.getElementById('btn-prev');
+  var btnNext = document.getElementById('btn-next');
+
+  // Build dots
+  slides.forEach(function(_, i){
+    var b = document.createElement('button');
+    b.className = 'nd';
+    b.title = 'Слайд ' + (i+1);
+    b.onclick = function(){ goto(i); };
+    dots.appendChild(b);
+  });
+
+  var dotEls = dots.querySelectorAll('.nd');
+
+  function goto(n){
+    n = Math.max(0, Math.min(total-1, n));
+    slides[cur].classList.remove('active');
+    dotEls[cur].classList.remove('on');
+    cur = n;
+    slides[cur].classList.add('active');
+    dotEls[cur].classList.add('on');
+    counter.textContent = String(cur+1).padStart(2,'0') + ' · ' + String(total).padStart(2,'0');
+    btnPrev.disabled = cur === 0;
+    btnNext.disabled = cur === total-1;
+  }
+
+  btnPrev.onclick = function(){ goto(cur-1); };
+  btnNext.onclick = function(){ goto(cur+1); };
+
+  document.addEventListener('keydown', function(e){
+    if(e.key==='ArrowRight'||e.key==='ArrowDown'||e.key===' '||e.key==='PageDown'){
+      e.preventDefault(); goto(cur+1);
+    }
+    if(e.key==='ArrowLeft'||e.key==='ArrowUp'||e.key==='PageUp'){
+      e.preventDefault(); goto(cur-1);
+    }
+    if(e.key==='Home'){ e.preventDefault(); goto(0); }
+    if(e.key==='End')  { e.preventDefault(); goto(total-1); }
+  });
+
+  // Init
+  goto(0);
+})();
+</script>
+</body>
+</html>
