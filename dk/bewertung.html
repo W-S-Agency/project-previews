@@ -7,8 +7,7 @@
     <meta name="description" content="Kostenlose Immobilienbewertung in Berlin von DK Real Estate. Fundierte Marktwertanalyse mit Potenzialanalyse für Verkauf oder Finanzierung. Jetzt Wert ermitteln!">
     <link rel="stylesheet" href="style.css">
     <style>
-.placeholder-section { border: 2px dashed #ccc; padding: 2rem; text-align: center; color: #999; border-radius: 8px; margin: 2rem 0; font-style: italic; }
-        .h1-fix-note { background: #fff3cd; border-left: 4px solid #ffc107; padding: 1rem; margin: 1rem 0; font-size: 0.9rem; border-radius: 0 4px 4px 0; }
+.h1-fix-note { background: #fff3cd; border-left: 4px solid #ffc107; padding: 1rem; margin: 1rem 0; font-size: 0.9rem; border-radius: 0 4px 4px 0; }
         .vorteile-list { list-style: none; padding: 0; max-width: 700px; margin: var(--spacing-md) auto; }
         .vorteile-list li { padding: var(--spacing-sm) 0; padding-left: 2rem; position: relative; font-size: 1.05rem; line-height: 1.6; }
         .vorteile-list li::before { content: "\2713"; position: absolute; left: 0; color: var(--accent); font-weight: 700; font-size: 1.1rem; }
@@ -171,11 +170,33 @@ section { position: relative; }
 </div>
 </section>
 
-        <!-- PLACEHOLDER: So funktioniert es (bestehende Section — unverändert) -->
-        <div class="placeholder-section">
-            <strong>Bestehende Section:</strong> "So funktioniert es" — 3-Schritte-Prozess<br>
-            (H2 + 3 Schritte — bleibt unverändert)
-        </div>
+        <!-- BESTEHEND: So funktioniert es -->
+        <section class="generic" style="padding: var(--spacing-lg) var(--spacing-md);">
+            <h2 style="text-align: center;">So funktioniert es</h2>
+            <div style="max-width: 700px; margin: var(--spacing-md) auto;">
+                <div style="display:flex; gap:1.5rem; align-items:flex-start; margin-bottom: var(--spacing-md);">
+                    <div style="flex-shrink:0; width:48px; height:48px; background:var(--secondary); color:white; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1.25rem;">01</div>
+                    <div>
+                        <h3 style="margin-bottom:0.25rem;">Online-Formular ausfüllen</h3>
+                        <p style="color:var(--text-light); margin:0;">Nennen Sie uns die wichtigsten Angaben zu Ihrer Immobilie. Hierbei sind Faktoren wie die Objektart und Ausstattung sowie die Lage besonders wichtig. Der gesamte Prozess ist für Sie vollkommen unverbindlich und kostenfrei.</p>
+                    </div>
+                </div>
+                <div style="display:flex; gap:1.5rem; align-items:flex-start; margin-bottom: var(--spacing-md);">
+                    <div style="flex-shrink:0; width:48px; height:48px; background:var(--secondary); color:white; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1.25rem;">02</div>
+                    <div>
+                        <h3 style="margin-bottom:0.25rem;">Details im persönlichen Gespräch klären</h3>
+                        <p style="color:var(--text-light); margin:0;">Aufbauend auf den ersten Informationen besprechen wir in einem persönlichen Gespräch weitere Details. Ein Vor-Ort-Termin ist vorteilhaft, um die Besonderheiten sowie substantielle Eigenschaften der Immobilie erfassen zu können.</p>
+                    </div>
+                </div>
+                <div style="display:flex; gap:1.5rem; align-items:flex-start;">
+                    <div style="flex-shrink:0; width:48px; height:48px; background:var(--secondary); color:white; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1.25rem;">03</div>
+                    <div>
+                        <h3 style="margin-bottom:0.25rem;">Kostenlose Immobilienbewertung erhalten</h3>
+                        <p style="color:var(--text-light); margin:0;">Nach sorgfältiger Prüfung aller vorliegenden Informationen erhalten Sie unsere detaillierte Immobilienbewertung – kostenlos, unverbindlich, transparent und realistisch. Auf Wunsch arbeiten wir gern weiter zusammen.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <!-- SECTION 4: VORTEILE (war block-3) -->
         <section id="block-4" class="trust">
@@ -255,7 +276,7 @@ section { position: relative; }
                         <span class="toggle">+</span>
                     </div>
                     <div class="faq-answer">
-                        <p>[Bestehende FAQ — Content unverändert aus der aktuellen Seite]</p>
+                        <p>Unsere Immobilienbewertung in Berlin ist für Sie absolut kostenlos und unverbindlich. Sehr gern beraten wir Sie umfangreich zu Ihrem Verkaufsvorhaben und entwickeln mit Ihnen gemeinsam ein individuelles Vermarktungskonzept.</p>
                     </div>
                 </div>
 
@@ -265,7 +286,7 @@ section { position: relative; }
                         <span class="toggle">+</span>
                     </div>
                     <div class="faq-answer">
-                        <p>[Bestehende FAQ — Content unverändert aus der aktuellen Seite]</p>
+                        <p>Die erste Online-Preiseinschätzung anhand Ihrer Informationen basiert auf statistischen Daten und kann zeitnah erstellt werden. Für eine fundierte Marktwertanalyse mit Vor-Ort-Besichtigung planen wir in der Regel wenige Tage ein – abhängig von der Terminverfügbarkeit und der Komplexität Ihres Objekts.</p>
                     </div>
                 </div>
 
@@ -275,7 +296,7 @@ section { position: relative; }
                         <span class="toggle">+</span>
                     </div>
                     <div class="faq-answer">
-                        <p>[Bestehende FAQ — Content unverändert aus der aktuellen Seite]</p>
+                        <p>Für eine erste Einschätzung genügen die Angaben aus unserem Online-Formular. Für die detaillierte Bewertung sind Grundrisse, Energieausweis, Teilungserklärung (bei Eigentumswohnungen), aktuelle Nebenkostenabrechnungen und ggf. Mietverträge hilfreich. Keine Sorge – wir unterstützen Sie bei der Beschaffung fehlender Unterlagen.</p>
                     </div>
                 </div>
 
@@ -285,7 +306,7 @@ section { position: relative; }
                         <span class="toggle">+</span>
                     </div>
                     <div class="faq-answer">
-                        <p>[Bestehende FAQ — Content unverändert aus der aktuellen Seite]</p>
+                        <p>Grundsätzlich gibt es unterschiedliche Methoden zur Bewertung von Immobilien: Das <strong>Vergleichswertverfahren</strong> eignet sich für Wohnimmobilien mit vergleichbaren Objekten am Markt. Das <strong>Sachwertverfahren</strong> berechnet, was ein Neubau kosten würde, abzüglich der Nutzung. Das <strong>Ertragswertverfahren</strong> berechnet bei vermieteten und gewerblichen Objekten die erwarteten Erträge. Unsere Experten wählen das passende Verfahren für Ihre Immobilie.</p>
                     </div>
                 </div>
 
@@ -295,7 +316,7 @@ section { position: relative; }
                         <span class="toggle">+</span>
                     </div>
                     <div class="faq-answer">
-                        <p>[Bestehende FAQ — Content unverändert aus der aktuellen Seite]</p>
+                        <p>Der Wert Ihrer Immobilie wird durch viele Merkmale beeinflusst. Besonders wichtig sind die Lage, das Baujahr, der Zustand sowie die Ausstattung. Darüber hinaus spielt die aktuelle Nachfrage am Berliner Immobilienmarkt eine wichtige Rolle. Unsere erfahrenen Experten analysieren alle relevanten Kriterien für eine präzise Bewertung.</p>
                     </div>
                 </div>
             </div>
@@ -312,26 +333,63 @@ section { position: relative; }
 </div>
 </section>
 
-        <!-- PLACEHOLDER: Unchanged sections -->
-        <div class="placeholder-section">
-            <strong>Bestehende Section:</strong> Bewertungsformular (Immobilientyp-Auswahl)<br>
-            (bleibt unverändert)
-        </div>
+        <!-- BESTEHEND: Bewertungsformular -->
+        <section class="cta" style="text-align: center; background: var(--bg-light); padding: var(--spacing-lg) var(--spacing-md); border-radius: var(--radius);">
+            <h2>Erfahren Sie den Wert Ihrer Immobilie</h2>
+            <p>Welche Immobilie möchten Sie bewerten?</p>
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; max-width: 600px; margin: var(--spacing-md) auto;">
+                <div style="background: white; border: 2px solid var(--accent); border-radius: var(--radius); padding: var(--spacing-md); cursor: pointer; text-align: center;">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🏢</div>
+                    <strong>Wohnung</strong>
+                </div>
+                <div style="background: white; border: 2px solid #e2e8f0; border-radius: var(--radius); padding: var(--spacing-md); cursor: pointer; text-align: center;">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🏠</div>
+                    <strong>Haus</strong>
+                </div>
+                <div style="background: white; border: 2px solid #e2e8f0; border-radius: var(--radius); padding: var(--spacing-md); cursor: pointer; text-align: center;">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🌳</div>
+                    <strong>Grundstück</strong>
+                </div>
+                <div style="background: white; border: 2px solid #e2e8f0; border-radius: var(--radius); padding: var(--spacing-md); cursor: pointer; text-align: center;">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🏗️</div>
+                    <strong>Gewerbe</strong>
+                </div>
+            </div>
+            <button class="cta-button" style="margin-top: var(--spacing-md);">Jetzt kostenlos bewerten →</button>
+        </section>
 
-        <div class="placeholder-section">
-            <strong>Bestehende Section:</strong> Diskreter Verkauf Block<br>
-            (bleibt unverändert)
-        </div>
+        <!-- BESTEHEND: Diskreter Verkauf -->
+        <section class="generic" style="background: white; padding: var(--spacing-lg) var(--spacing-md);">
+            <h2>Immobilien diskret Verkaufen</h2>
+            <h3 style="color: var(--accent); font-size: 1.1rem; margin-bottom: var(--spacing-sm);">Ihr Makler des Vertrauens in Berlin</h3>
+            <p>Unsere diskrete Vermarktungsstrategie basiert auf einem fundierten Marktwissen, unserer jahrelangen Erfahrung im Immobilienmarkt, unserer breiten Kundendatenbank sowie unserer Diskretion und Verlässlichkeit.</p>
+            <p>Mit unserem umfangreichen Know-How sowie einer objektiven Preiseinschätzung finden wir durch persönliche und zielgerichtete Ansprache den passenden Käufer für unsere Kunden. Durch sorgfältige Pflege unseres Kundennetzwerks sprechen wir bonitätsgeprüfte Kaufinteressenten diskret an.</p>
+            <a href="verkaufen.html" class="cta-button">Mehr erfahren →</a>
+        </section>
 
-        <div class="placeholder-section">
-            <strong>Bestehende Section:</strong> Kontaktformular<br>
-            (bleibt unverändert)
-        </div>
+        <!-- BESTEHEND: Kontaktformular -->
+        <section class="cta" style="text-align: center; padding: var(--spacing-lg) var(--spacing-md);">
+            <h2>Kostenlose Immobilienbewertung in Berlin</h2>
+            <p>Der erste Schritt zum erfolgreichen Verkauf Ihrer Immobilie. Hinterlassen Sie Ihre Kontaktdaten und wir nehmen schnellstmöglich Kontakt mit Ihnen auf.</p>
+            <div style="max-width: 500px; margin: var(--spacing-md) auto; text-align: left;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                    <input type="text" placeholder="Vorname" style="padding: 12px; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 15px;" disabled>
+                    <input type="text" placeholder="Nachname" style="padding: 12px; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 15px;" disabled>
+                </div>
+                <input type="email" placeholder="Email" style="width: 100%; padding: 12px; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 15px; margin-bottom: 1rem; box-sizing: border-box;" disabled>
+                <input type="tel" placeholder="Telefon" style="width: 100%; padding: 12px; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 15px; margin-bottom: 1rem; box-sizing: border-box;" disabled>
+                <textarea placeholder="Weitere Informationen" style="width: 100%; padding: 12px; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 15px; min-height: 100px; box-sizing: border-box;" disabled></textarea>
+                <button class="cta-button" style="margin-top: 1rem; width: 100%;" disabled>Einreichen</button>
+            </div>
+        </section>
 
-        <div class="placeholder-section">
-            <strong>Bestehende Section:</strong> Footer<br>
-            (bleibt unverändert)
-        </div>
+        <!-- BESTEHEND: Footer -->
+        <footer style="background: var(--secondary); color: white; padding: var(--spacing-lg) var(--spacing-md); margin-top: var(--spacing-lg); text-align: center;">
+            <p style="font-weight: 600; font-size: 1.1rem; margin-bottom: var(--spacing-sm);">D.K. Real Estate GmbH</p>
+            <p style="opacity: 0.8; margin-bottom: 4px;">Hubertusallee 76, 14193 Berlin</p>
+            <p style="opacity: 0.8; margin-bottom: 4px;">+49 30 / 120 841 86 · kontakt@dk360.de</p>
+            <p style="opacity: 0.6; font-size: 0.85rem; margin-top: var(--spacing-md);">© D.K. Real Estate GmbH · AGB · Impressum · Datenschutzerklärung</p>
+        </footer>
     </main>
 <script>
         document.querySelectorAll('.faq-question').forEach(q => {
