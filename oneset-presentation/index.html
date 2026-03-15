@@ -166,6 +166,139 @@ html { font-size: 20px; }
 
 /* Logo wrappers */
 .logo-wk { background: #fff; border-radius: 8px; padding: 6px 12px; display: inline-flex; align-items: center; }
+
+/* ── RESPONSIVE ─────────────────────────────────── */
+
+/* Tablet landscape / small desktop */
+@media (max-width: 1024px) {
+  html { font-size: 18px; }
+  .case-wrap { gap: 32px; }
+}
+
+/* Tablet portrait */
+@media (max-width: 768px) {
+  html { font-size: 16px; }
+
+  /* Slide padding */
+  .slide { padding-left: 24px !important; padding-right: 24px !important; padding-top: 56px !important; padding-bottom: 56px !important; min-height: auto !important; height: auto !important; }
+  .slide.active { display: flex; }
+
+  /* Override Tailwind grids */
+  .grid.grid-cols-3 { grid-template-columns: 1fr !important; gap: 12px !important; }
+  .grid.grid-cols-4 { grid-template-columns: repeat(2, 1fr) !important; gap: 10px !important; }
+  .grid.grid-cols-2 { grid-template-columns: 1fr !important; gap: 16px !important; }
+
+  /* Flex gaps */
+  .flex.gap-12 { gap: 24px !important; }
+  .flex.gap-6 { gap: 12px !important; }
+  .flex.gap-16 { gap: 16px !important; }
+
+  /* Max widths */
+  [class*="max-w-["] { max-width: 100% !important; }
+
+  /* Navigation */
+  .nav-dots { display: none; }
+  .nav-arrow { width: 40px; height: 40px; bottom: 16px; border-radius: 10px; font-size: 16px; }
+  #btn-prev { right: 68px; }
+  #btn-next { right: 20px; }
+  #slide-counter { bottom: 20px; font-size: 10px; }
+
+  /* Global logo */
+  a[href="https://oneset.de"][style*="position:fixed"] { top: 16px !important; left: 16px !important; }
+  a[href="https://oneset.de"][style*="position:fixed"] img { height: 18px !important; }
+
+  /* S02 pillars: stack */
+  .pillar { padding: 20px 16px; }
+
+  /* S03 chain: wrap to 2 rows */
+  .chain { flex-wrap: wrap; justify-content: center; gap: 4px; }
+  .cblock { flex: 0 0 calc(50% - 24px); padding: 18px 8px; font-size: .85rem; }
+  .cbrk { width: 24px; font-size: 1.2rem; }
+  .carr { width: 24px; font-size: .9rem; }
+
+  /* S05 timeline: stack */
+  .tline-item { gap: 12px; }
+
+  /* S07 layers */
+  .lblock { padding: 14px 16px; gap: 12px; }
+
+  /* S08-S10 grid: single column */
+  .ww4 { grid-template-columns: 1fr; gap: 12px; }
+  .ww4 > div { padding: 16px 18px; }
+
+  /* S11 AI cards */
+  .acard { padding: 20px 14px; }
+
+  /* S13-S15 case layout: stack */
+  .case-wrap { grid-template-columns: 1fr; gap: 24px; }
+
+  /* Stat numbers */
+  .stat-num { font-size: clamp(2rem,8vw,3.5rem); }
+}
+
+/* Phone */
+@media (max-width: 480px) {
+  html { font-size: 14px; }
+
+  .slide { padding-left: 16px !important; padding-right: 16px !important; padding-top: 48px !important; padding-bottom: 48px !important; }
+
+  /* All Tailwind grids to single column */
+  .grid.grid-cols-3,
+  .grid.grid-cols-4,
+  .grid.grid-cols-2 { grid-template-columns: 1fr !important; }
+
+  /* Flex rows: wrap */
+  .flex.gap-12,
+  .flex.gap-6 { flex-wrap: wrap; justify-content: center; }
+
+  /* S04/S12 partner logos row */
+  .flex.gap-12.items-center { gap: 16px !important; flex-wrap: wrap; justify-content: center; }
+
+  /* S11 AI cards: stack */
+  #s11 .flex.gap-6 { flex-direction: column !important; align-items: stretch !important; }
+  #s11 .flex.gap-6 .acard { width: 100%; }
+  #s11 .flex.gap-6 > .flex.items-center { display: none; }
+
+  /* S16 step cards: stack */
+  #s16 .flex.gap-5 { flex-direction: column !important; }
+  #s16 .flex.gap-5 .card { width: 100%; }
+
+  /* Nav arrows smaller */
+  .nav-arrow { width: 36px; height: 36px; bottom: 12px; font-size: 14px; border-radius: 8px; }
+  #btn-prev { right: 58px; }
+  #btn-next { right: 16px; }
+  #slide-counter { bottom: 16px; }
+
+  /* S02 pillars */
+  .pillar { padding: 16px 12px; }
+  .pillar h3 { font-size: .9rem; }
+  .pillar p { font-size: .78rem; }
+
+  /* S03 chain: fully vertical */
+  .chain { flex-direction: column; align-items: stretch; }
+  .cblock { flex: none; padding: 14px 10px; font-size: .82rem; }
+  .cbrk { width: auto; height: 20px; font-size: 1rem; }
+  .carr { width: auto; height: 20px; font-size: .8rem; transform: rotate(90deg); }
+
+  /* S04 partner logos */
+  .logo-wk { padding: 4px 8px; }
+
+  /* S05: stack columns */
+  .card { padding: 16px; }
+
+  /* S07 layers */
+  .lblock { padding: 12px 14px; gap: 10px; font-size: .88rem; }
+  .lblock img { height: 16px !important; }
+
+  /* S08-S10 */
+  .wbig { font-size: .95rem; }
+  .wdesc { font-size: .78rem; }
+
+  /* S12 business cards: 2 columns */
+
+  /* S16 step cards */
+  .acard { padding: 16px 12px; }
+}
 </style>
 </head>
 <body class="h-full font-sans">
