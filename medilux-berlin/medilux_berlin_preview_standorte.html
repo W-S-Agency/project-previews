@@ -233,7 +233,39 @@ details.faq[open] summary::after{content:'−';background:var(--blue);color:#fff
   .hero{padding:40px 20px}.hero h1{font-size:24px}
   .sec,.site-map,.stats-row{padding:24px 20px;margin:0 0 12px}
   .footer{grid-template-columns:1fr}
+  .feedback-btn{top:auto;bottom:-16px;right:16px;font-size:12px}
+  .feedback-panel{padding:16px}
 }
+
+/* === FEEDBACK UI === */
+:root{--fb-accent:#f59e0b;--fb-accent-border:#d97706;--fb-accent-hover:#d97706;--fb-saved:#10b981;--fb-saved-border:#059669;--fb-save:#2563eb;--fb-save-border:#1d4ed8;--fb-save-hover:#1d4ed8;--fb-panel-bg:#fef3c7;--fb-panel-border:#f59e0b;--fb-delete:#dc2626;--fb-delete-bg:#fef2f2;--fb-delete-border:#fca5a5;}
+.feedback-counter{background:var(--fb-accent);color:#1e293b;padding:5px 14px;border-radius:20px;font-weight:700;cursor:pointer;transition:transform 0.2s;font-size:13px;white-space:nowrap}
+.feedback-counter:hover{transform:scale(1.05)}
+.feedback-counter.has-feedback{animation:fb-pulse 2s infinite}
+@keyframes fb-pulse{0%,100%{box-shadow:0 0 0 0 rgba(245,158,11,0.4)}50%{box-shadow:0 0 0 8px transparent}}
+.feedback-btn{position:absolute;top:12px;right:24px;background:var(--fb-accent);border:2px solid var(--fb-accent-border);padding:5px 12px;border-radius:20px;cursor:pointer;font-size:12px;color:#1e293b;font-weight:600;transition:all 0.2s;z-index:10}
+.feedback-btn:hover{background:var(--fb-accent-hover);color:white}
+.feedback-btn.has-comment{background:var(--fb-saved);border-color:var(--fb-saved-border);color:white}
+.feedback-panel{display:none;margin-top:20px;background:var(--fb-panel-bg);border:2px solid var(--fb-panel-border);border-radius:8px;padding:20px;animation:fb-slideDown 0.3s ease}
+.feedback-panel.open{display:block}
+@keyframes fb-slideDown{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+.feedback-panel label{display:block;font-weight:600;margin-bottom:8px;color:var(--primary);font-size:14px}
+.feedback-panel textarea{width:100%;min-height:90px;padding:10px;border:1px solid #d1d5db;border-radius:6px;font-family:inherit;font-size:14px;resize:vertical}
+.feedback-actions{display:flex;gap:10px;margin-top:10px;align-items:center;flex-wrap:wrap}
+.btn-save{background:var(--fb-save);color:white;border:2px solid var(--fb-save-border);padding:7px 18px;border-radius:6px;cursor:pointer;font-size:13px;font-weight:600}
+.btn-save:hover{background:var(--fb-save-hover)}
+.btn-cancel{background:white;border:2px solid #94a3b8;padding:7px 18px;border-radius:6px;cursor:pointer;font-size:13px;color:#334155;font-weight:500}
+.btn-cancel:hover{background:#f1f5f9}
+.btn-delete{background:var(--fb-delete-bg);border:2px solid var(--fb-delete-border);padding:7px 14px;border-radius:6px;cursor:pointer;font-size:13px;color:var(--fb-delete);font-weight:500;margin-left:auto}
+.saved-indicator{display:none;color:#10b981;font-size:13px;align-items:center;gap:4px}
+.export-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:200;justify-content:center;align-items:center}
+.export-overlay.open{display:flex}
+.export-box{background:white;border-radius:12px;padding:32px;max-width:500px;width:90%;text-align:center}
+.export-box h2{margin-bottom:16px;font-size:22px}
+.export-box p{color:#64748b;margin-bottom:24px}
+.export-box .count{font-size:48px;font-weight:800;color:var(--fb-save)}
+.btn-export{display:inline-block;background:var(--fb-save);color:white;padding:13px 28px;border-radius:8px;border:none;font-size:15px;font-weight:600;cursor:pointer;margin:6px}
+.btn-close-overlay{display:inline-block;background:transparent;border:1px solid #e2e8f0;padding:13px 28px;border-radius:8px;font-size:15px;cursor:pointer;margin:6px;color:#64748b}
 </style>
 </head>
 <body>
@@ -265,6 +297,7 @@ details.faq[open] summary::after{content:'−';background:var(--blue);color:#fff
     <span class="nav-dot"></span>
     <a href="medilux_berlin_preview_kontakt.html">Kontakt</a>
     <a href="medilux_berlin_preview_kontakt.html" class="nav-cta">Beratung →</a>
+    <div class="feedback-counter" id="feedbackCounter" onclick="openExportOverlay()">Feedback: <span id="feedbackCount">0</span> Kommentare</div>
   </div>
 </nav>
 <div class="page">
@@ -272,26 +305,26 @@ details.faq[open] summary::after{content:'−';background:var(--blue);color:#fff
   <strong>STANDORTE v0.9</strong> | Status: Draft
   <br><span style="color:#856404;font-weight:600">&#9888; 4 Placeholders auf dieser Seite</span>
 </div>
-<div class="sec sec-alt">
+<div id="block-1" style="position:relative"><button class="feedback-btn" onclick="toggleFeedback(1)">✏️ Vorschlag</button><div class="sec sec-alt">
 <div class="ai-snippet" style="background:var(--bg);border-radius:var(--r12);padding:20px 24px;border-left:4px solid var(--yellow);max-width:none">
   <div class="ai-label" style="color:var(--gray)">AI-SNIPPET / MARQUEE — für Google AI Overviews (50–80 Wörter)</div>
   <p style="margin:8px 0 0;font-size:14px;line-height:1.7">MEDILUX Berlin betreibt zwei Pflegestandorte: Die Villa Civitas in Zehlendorf bietet 35 Pflegeplätze in vier spezialisierten Wohngemeinschaften — darunter Demenz- und Intensivpflege. Die Residenz Heerstraße in Spandau vereint 24 Pflege-WG-Plätze mit 42 betreuten Wohneinheiten unter einem Dach. Beide Standorte bieten 24-Stunden-Betreuung, barrierefreie Räume und examiniertes Fachpersonal. Besichtigungen nach Vereinbarung.</p>
 </div>
 </div>
-<section class="hero">
+<div class="feedback-panel" id="feedback-panel-1"><label>Ihr Vorschlag für „AI-Snippet (50–80 Wörter)":</label><textarea id="feedback-text-1" placeholder="Änderungsvorschlag oder Kommentar…"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(1)">Speichern</button><button class="btn-cancel" onclick="toggleFeedback(1)">Abbrechen</button><button class="btn-delete" onclick="deleteFeedback(1)" style="display:none" id="delete-btn-1">Löschen</button><span class="saved-indicator" id="saved-1">✓ Gespeichert</span></div></div></div><div id="block-2" style="position:relative"><button class="feedback-btn" onclick="toggleFeedback(2)">✏️ Vorschlag</button><section class="hero">
   <h1>Unsere Standorte in Berlin — Pflege-WG und betreutes Wohnen in Zehlendorf und Spandau</h1>
   <div style="margin-top:8px">
     <a href="#cta" class="btn">Besichtigungstermin vereinbaren</a>
   </div>
 </section>
-<div class="sec sec-alt">
+<div class="feedback-panel" id="feedback-panel-2"><label>Ihr Vorschlag für „Block 1: Hero":</label><textarea id="feedback-text-2" placeholder="Änderungsvorschlag oder Kommentar…"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(2)">Speichern</button><button class="btn-cancel" onclick="toggleFeedback(2)">Abbrechen</button><button class="btn-delete" onclick="deleteFeedback(2)" style="display:none" id="delete-btn-2">Löschen</button><span class="saved-indicator" id="saved-2">✓ Gespeichert</span></div></div></div><div id="block-3" style="position:relative"><button class="feedback-btn" onclick="toggleFeedback(3)">✏️ Vorschlag</button><div class="sec sec-alt">
 <h2>Block 2: Auf einen Blick — Vergleichstabelle</h2>
 <h4>Überschrift</h4>
 <p><strong>Zwei Standorte — auf einen Blick</strong></p>
 <table class="price-table"><thead><tr><th>Merkmal</th><th>Villa Civitas</th><th>Residenz Heerstraße</th></tr></thead><tbody><tr><td><strong>Bezirk</strong></td><td>Berlin-Zehlendorf</td><td>Berlin-Spandau</td></tr><tr><td><strong>Adresse</strong></td><td>Lindenthaler Allee 20, 14163 Berlin</td><td>Gärtnereiring 56, 13593 Berlin</td></tr><tr><td><strong>Pflege-WG-Plätze</strong></td><td>35 (in 4 WGs)</td><td>24 (in 2 WGs à 12 Plätze)</td></tr><tr><td><strong>Betreutes Wohnen</strong></td><td>Vorhanden</td><td>42 Wohneinheiten (18–48 m²)</td></tr><tr><td><strong>Gesamtkapazität</strong></td><td>35+ Bewohner</td><td>66 Bewohner</td></tr><tr><td><strong>Spezialisierung</strong></td><td>Demenz, Intensivpflege, Palliativ, Junge Pflege</td><td>Demenz (beschützter Bereich), Verhinderungspflege</td></tr><tr><td><strong>Zimmer WG</strong></td><td>12–20 m², Einzelzimmer + 3 Doppelzimmer</td><td>15–22 m², überwiegend mit eigenem Bad</td></tr><tr><td><strong>Aufnahme</strong></td><td>Ab Pflegegrad 2</td><td>Ab Pflegegrad 2 (WG) · ohne PG (Betreutes Wohnen)</td></tr><tr><td><strong>Besonderheit</strong></td><td>Historische Villa im Grünen, alter Baumbestand</td><td>Pflege-WG + Betreutes Wohnen unter einem Dach</td></tr><tr><td><strong>Beratung</strong></td><td>Mo–Fr 8:00–16:30 Uhr</td><td>Mo–Fr 8:00–16:30 Uhr</td></tr></tbody></table>
 <p><strong>CTA:</strong> Welcher Standort passt? → Lassen Sie sich beraten</p>
 </div>
-<div class="sec">
+<div class="feedback-panel" id="feedback-panel-3"><label>Ihr Vorschlag für „Block 2: Auf einen Blick — Vergleichstabelle":</label><textarea id="feedback-text-3" placeholder="Änderungsvorschlag oder Kommentar…"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(3)">Speichern</button><button class="btn-cancel" onclick="toggleFeedback(3)">Abbrechen</button><button class="btn-delete" onclick="deleteFeedback(3)" style="display:none" id="delete-btn-3">Löschen</button><span class="saved-indicator" id="saved-3">✓ Gespeichert</span></div></div></div><div id="block-4" style="position:relative"><button class="feedback-btn" onclick="toggleFeedback(4)">✏️ Vorschlag</button><div class="sec">
 <h2>Block 3: Villa Civitas — Zehlendorf</h2>
 <h4>H2</h4>
 <p><strong>Villa Civitas — Pflege-Wohngemeinschaften in Berlin-Zehlendorf</strong></p>
@@ -351,7 +384,7 @@ details.faq[open] summary::after{content:'−';background:var(--blue);color:#fff
 </ul>
 <p><strong>CTA:</strong> Villa Civitas besichtigen → Termin vereinbaren</p>
 </div>
-<div class="sec">
+<div class="feedback-panel" id="feedback-panel-4"><label>Ihr Vorschlag für „Block 3: Villa Civitas — Zehlendorf (Detailkarte)":</label><textarea id="feedback-text-4" placeholder="Änderungsvorschlag oder Kommentar…"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(4)">Speichern</button><button class="btn-cancel" onclick="toggleFeedback(4)">Abbrechen</button><button class="btn-delete" onclick="deleteFeedback(4)" style="display:none" id="delete-btn-4">Löschen</button><span class="saved-indicator" id="saved-4">✓ Gespeichert</span></div></div></div><div id="block-5" style="position:relative"><button class="feedback-btn" onclick="toggleFeedback(5)">✏️ Vorschlag</button><div class="sec">
 <h2>Block 4: Residenz Heerstraße — Spandau</h2>
 <h4>H2</h4>
 <p><strong>Residenz Heerstraße — Pflege-WG und betreutes Wohnen in Berlin-Spandau</strong></p>
@@ -418,7 +451,7 @@ details.faq[open] summary::after{content:'−';background:var(--blue);color:#fff
 </ul>
 <p><strong>CTA:</strong> Residenz Heerstraße besichtigen → Termin vereinbaren</p>
 </div>
-<div class="sec sec-alt">
+<div class="feedback-panel" id="feedback-panel-5"><label>Ihr Vorschlag für „Block 4: Residenz Heerstraße — Spandau (Detailkarte)":</label><textarea id="feedback-text-5" placeholder="Änderungsvorschlag oder Kommentar…"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(5)">Speichern</button><button class="btn-cancel" onclick="toggleFeedback(5)">Abbrechen</button><button class="btn-delete" onclick="deleteFeedback(5)" style="display:none" id="delete-btn-5">Löschen</button><span class="saved-indicator" id="saved-5">✓ Gespeichert</span></div></div></div><div id="block-6" style="position:relative"><button class="feedback-btn" onclick="toggleFeedback(6)">✏️ Vorschlag</button><div class="sec sec-alt">
 <h2>Block 5: Warum MEDILUX Berlin — an beiden Standorten</h2>
 <h4>H2</h4>
 <p><strong>Was beide Standorte verbindet</strong></p>
@@ -434,7 +467,7 @@ details.faq[open] summary::after{content:'−';background:var(--blue);color:#fff
 </ul>
 <p><span class="ph">&#9998; PH #3: Qualitätsnachweise — MDK-Bewertung, TÜV-Zertifikat, Qualitätssiegel. Wird nach Kundencall ergänzt.</span></p>
 </div>
-<div class="sec">
+<div class="feedback-panel" id="feedback-panel-6"><label>Ihr Vorschlag für „Block 5: Warum MEDILUX Berlin — an beiden Standorten":</label><textarea id="feedback-text-6" placeholder="Änderungsvorschlag oder Kommentar…"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(6)">Speichern</button><button class="btn-cancel" onclick="toggleFeedback(6)">Abbrechen</button><button class="btn-delete" onclick="deleteFeedback(6)" style="display:none" id="delete-btn-6">Löschen</button><span class="saved-indicator" id="saved-6">✓ Gespeichert</span></div></div></div><div id="block-7" style="position:relative"><button class="feedback-btn" onclick="toggleFeedback(7)">✏️ Vorschlag</button><div class="sec">
 <h2>Block 6: Kontakt und Besichtigung</h2>
 <h4>H2</h4>
 <p><strong>Besuchen Sie uns — wir zeigen Ihnen alles persönlich</strong></p>
@@ -449,7 +482,7 @@ details.faq[open] summary::after{content:'−';background:var(--blue);color:#fff
 <p><strong>Link:</strong> /kontakt</p>
 <p><strong>Subtext:</strong> Unverbindlich · Beide Standorte · Auch für Angehörige</p>
 </div>
-<div class="sec sec-alt">
+<div class="feedback-panel" id="feedback-panel-7"><label>Ihr Vorschlag für „Block 6: Kontakt und Besichtigung":</label><textarea id="feedback-text-7" placeholder="Änderungsvorschlag oder Kommentar…"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(7)">Speichern</button><button class="btn-cancel" onclick="toggleFeedback(7)">Abbrechen</button><button class="btn-delete" onclick="deleteFeedback(7)" style="display:none" id="delete-btn-7">Löschen</button><span class="saved-indicator" id="saved-7">✓ Gespeichert</span></div></div></div><div id="block-8" style="position:relative"><button class="feedback-btn" onclick="toggleFeedback(8)">✏️ Vorschlag</button><div class="sec sec-alt">
 <h2>Block 7: FAQ — Häufige Fragen zu unseren Standorten</h2>
 <h4>Überschrift</h4>
 <p><strong>Häufige Fragen zu unseren Standorten</strong></p>
@@ -468,7 +501,7 @@ details.faq[open] summary::after{content:'−';background:var(--blue);color:#fff
 <h4>Frage 7: Sind Haustiere erlaubt?</h4>
 <p><strong>Antwort:</strong> In der Villa Civitas sind Haustiere willkommen. In der Residenz Heerstraße ist die Haltung nach Absprache möglich. Sprechen Sie uns bei der Besichtigung darauf an — wir finden gemeinsam eine Lösung.</p>
 </div>
-
+<div class="feedback-panel" id="feedback-panel-8"><label>Ihr Vorschlag für „Block 7: FAQ — Häufige Fragen zu unseren Standorten":</label><textarea id="feedback-text-8" placeholder="Änderungsvorschlag oder Kommentar…"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(8)">Speichern</button><button class="btn-cancel" onclick="toggleFeedback(8)">Abbrechen</button><button class="btn-delete" onclick="deleteFeedback(8)" style="display:none" id="delete-btn-8">Löschen</button><span class="saved-indicator" id="saved-8">✓ Gespeichert</span></div></div></div>
 <footer class="footer">
   <div>
     <div class="f-label">Telefon</div>
@@ -494,15 +527,50 @@ details.faq[open] summary::after{content:'−';background:var(--blue);color:#fff
 </div>
 <div class="ver-badge">v0.9</div>
 <div class="src-badge">2p-preview &middot; 16.03.2026</div>
+<div class="export-overlay" id="exportOverlay">
+  <div class="export-box">
+    <div class="count" id="exportCount">0</div>
+    <h2>Kommentare bereit</h2>
+    <p>Alle Ihre Änderungsvorschläge in einer Datei. Laden Sie sie herunter und senden Sie diese an Ihr Projektteam.</p>
+    <button class="btn-export" onclick="exportFeedback()">Als Datei herunterladen</button>
+    <button class="btn-close-overlay" onclick="closeExportOverlay()">Schließen</button>
+  </div>
+</div>
 <script>
-  /* Close <details> dropdown when clicking outside */
-  document.addEventListener('click', function(e) {
-    if (!e.target.closest('details.nav-dd')) {
-      document.querySelectorAll('details.nav-dd[open]').forEach(function(d) {
-        d.removeAttribute('open');
-      });
-    }
-  });
+(function(){
+  var PROJECT='medilux-berlin';
+  var PAGE='standorte';
+  var PAGE_TITLE='Standorte';
+  var STORAGE_KEY='2p-feedback-'+PROJECT;
+  function getAll(){return JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}');}
+  function getPage(){var a=getAll();return a[PAGE]||{};}
+  function savePage(d){var a=getAll();if(Object.keys(d).length===1&&d._title){delete a[PAGE];}else{a[PAGE]=d;}localStorage.setItem(STORAGE_KEY,JSON.stringify(a));}
+  function total(){var a=getAll(),c=0;for(var p in a)for(var k in a[p])if(k!=='_title')c++;return c;}
+  function updateCounter(){var c=total(),el=document.getElementById('feedbackCounter');if(!el)return;if(c>0){el.classList.add('has-feedback');el.innerHTML='📥 Feedback: '+c+' Kommentar'+(c>1?'e':'');}else{el.classList.remove('has-feedback');el.innerHTML='Feedback: 0 Kommentare';}}
+  function loadFeedback(){var d=getPage();for(var id in d){if(id==='_title')continue;var e=d[id];var t=typeof e==='object'?e.text:e;var ta=document.getElementById('feedback-text-'+id);var btn=document.querySelector('#block-'+id+' .feedback-btn');var del=document.getElementById('delete-btn-'+id);if(ta)ta.value=t;if(btn){btn.classList.add('has-comment');btn.textContent='✏️ Kommentar bearbeiten';}if(del)del.style.display='inline-block';}updateCounter();}
+  window.toggleFeedback=function(id){var p=document.getElementById('feedback-panel-'+id);p.classList.toggle('open');if(p.classList.contains('open'))document.getElementById('feedback-text-'+id).focus();};
+  window.saveFeedback=function(id){var t=document.getElementById('feedback-text-'+id).value.trim();if(!t)return;var el=document.getElementById('block-'+id);var lbl=el?(el.querySelector('.block-label,h2,h3')||{}).textContent||('Block '+id):('Block '+id);var d=getPage();d._title=PAGE_TITLE;d[id]={text:t,label:'Block '+id+' — '+(lbl.length>40?lbl.slice(0,40)+'…':lbl)};savePage(d);var btn=document.querySelector('#block-'+id+' .feedback-btn');btn.classList.add('has-comment');btn.textContent='✏️ Kommentar bearbeiten';document.getElementById('delete-btn-'+id).style.display='inline-block';var s=document.getElementById('saved-'+id);s.style.display='flex';setTimeout(function(){s.style.display='none';},2000);updateCounter();setTimeout(function(){window.toggleFeedback(id);},1500);};
+  window.deleteFeedback=function(id){var d=getPage();delete d[id];savePage(d);document.getElementById('feedback-text-'+id).value='';var btn=document.querySelector('#block-'+id+' .feedback-btn');btn.classList.remove('has-comment');btn.textContent='✏️ Vorschlag';document.getElementById('delete-btn-'+id).style.display='none';updateCounter();window.toggleFeedback(id);};
+  window.openExportOverlay=function(){var c=total();if(c===0)return;document.getElementById('exportCount').textContent=c;document.getElementById('exportOverlay').classList.add('open');};
+  window.closeExportOverlay=function(){document.getElementById('exportOverlay').classList.remove('open');};
+  window.exportFeedback=function(){var a=getAll(),c=total();var t='FEEDBACK — MEDILUX BERLIN
+Datum: '+new Date().toLocaleDateString('de-DE')+'
+'+c+' Kommentar(e) insgesamt
+'+'='.repeat(50)+'
+
+';for(var page in a){var pd=a[page];t+='━━━ '+(pd._title||page)+' ━━━
+
+';for(var bid in pd){if(bid==='_title')continue;var entry=pd[bid];var txt=typeof entry==='object'?entry.text:entry;var lbl=typeof entry==='object'&&entry.label?entry.label:('Block '+bid);t+='📌 '+lbl+'
+'+'-'.repeat(40)+'
+'+txt+'
+
+';}}t+='='.repeat(50)+'
+Erstellt am '+new Date().toLocaleString('de-DE')+'
+';var blob=new Blob([t],{type:'text/plain;charset=utf-8'});var url=URL.createObjectURL(blob);var a2=document.createElement('a');a2.href=url;a2.download='feedback_medilux-berlin_'+new Date().toISOString().slice(0,10)+'.txt';a2.click();URL.revokeObjectURL(url);window.closeExportOverlay();};
+  /* Close nav dropdown on outside click */
+  document.addEventListener('click',function(e){if(!e.target.closest('details.nav-dd'))document.querySelectorAll('details.nav-dd[open]').forEach(function(d){d.removeAttribute('open');});});
+  loadFeedback();
+})();
 </script>
 </body>
 </html>
