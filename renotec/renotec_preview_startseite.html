@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sanitär &amp; Heizung Berlin – Meisterbetrieb für Wärmepumpen &amp; Bad | RenoTec — Preview</title>
+  <style>
+:root {
+  --primary: #1e3a5f;
+  --primary-light: #2563eb;
+  --secondary: #f8fafc;
+  --accent: #2563eb;
+  --text: #1e293b;
+  --text-light: #64748b;
+  --bg: #ffffff;
+  --bg-alt: #f1f5f9;
+  --border: #e2e8f0;
+  --radius: 8px;
+  --shadow: 0 1px 3px rgba(0,0,0,0.1);
+  --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
+  /* Feedback UI — контрастны к сине-белой схеме */
+  --fb-accent: #f59e0b;
+  --fb-accent-border: #d97706;
+  --fb-accent-hover: #d97706;
+  --fb-saved: #10b981;
+  --fb-saved-border: #059669;
+  --fb-save: #7c3aed;
+  --fb-save-border: #6d28d9;
+  --fb-save-hover: #6d28d9;
+  --fb-panel-bg: #fef3c7;
+  --fb-panel-border: #f59e0b;
+  --fb-delete: #dc2626;
+  --fb-delete-bg: #fef2f2;
+  --fb-delete-border: #fca5a5;
+  --success: #10b981;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+/* === NAV === */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--primary);
+  color: white;
+  box-shadow: var(--shadow-md);
+}
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  height: 56px;
+}
+.nav-logo {
+  font-weight: 700;
+  font-size: 18px;
+  color: white;
+  text-decoration: none;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  list-style: none;
+}
+.nav-links > li { position: relative; }
+.nav-links > li > a {
+  display: block;
+  padding: 16px 14px;
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.nav-links > li > a:hover,
+.nav-links > li > a.active { color: white; background: rgba(255,255,255,0.1); }
+
+/* Dropdown */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  border-radius: 0 0 var(--radius) var(--radius);
+  box-shadow: var(--shadow-md);
+  min-width: 240px;
+  z-index: 101;
+  list-style: none;
+  padding: 4px 0;
+}
+.dropdown:hover .dropdown-menu { display: block; }
+.dropdown-menu a {
+  display: block;
+  padding: 10px 20px;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 14px;
+  transition: background 0.15s;
+}
+.dropdown-menu a:hover { background: var(--bg-alt); }
+.dropdown-menu a.active { color: var(--accent); font-weight: 600; }
+
+/* Mobile nav */
+.nav-toggle { display: none; background: none; border: none; color: white; font-size: 24px; cursor: pointer; }
+@media (max-width: 768px) {
+  .nav-toggle { display: block; }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 56px;
+    left: 0;
+    right: 0;
+    background: var(--primary);
+    flex-direction: column;
+    padding: 8px 0;
+    box-shadow: var(--shadow-md);
+  }
+  .nav-links.open { display: flex; }
+  .nav-links > li > a { padding: 12px 24px; }
+  .dropdown-menu {
+    position: static;
+    box-shadow: none;
+    background: rgba(0,0,0,0.15);
+  }
+  .dropdown-menu a { color: rgba(255,255,255,0.85); padding-left: 40px; }
+  .dropdown-menu a:hover { background: rgba(255,255,255,0.1); }
+  .dropdown-menu a.active { color: white; }
+  .dropdown:hover .dropdown-menu { display: none; }
+  .dropdown.open .dropdown-menu { display: block; }
+}
+
+/* === PREVIEW BAR === */
+.preview-bar {
+  background: var(--bg-alt);
+  border-bottom: 1px solid var(--border);
+  padding: 8px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--text-light);
+}
+.preview-bar .project-name { font-weight: 700; color: var(--text); }
+.preview-bar .meta-info { font-size: 12px; }
+.source-badge {
+  display: inline-block;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 2px 10px;
+  font-size: 11px;
+  color: var(--text-light);
+  margin-left: 8px;
+}
+
+/* === META BAR === */
+.meta-bar {
+  max-width: 1200px;
+  margin: 16px auto;
+  padding: 12px 24px;
+  background: #f0f9ff;
+  border: 1px solid #bae6fd;
+  border-radius: var(--radius);
+  font-size: 13px;
+  color: var(--text-light);
+}
+.meta-bar strong { color: var(--text); }
+
+/* === CONTENT === */
+.page-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px 60px;
+}
+
+/* === BLOCKS === */
+.block {
+  position: relative;
+  margin: 32px 0;
+  padding: 32px;
+  background: var(--bg);
+  border-radius: var(--radius);
+}
+.block:nth-child(even) { background: var(--bg-alt); }
+.block-label {
+  display: none; /* hidden, used by feedback JS */
+}
+
+/* Hero */
+.block-hero {
+  background: linear-gradient(135deg, var(--primary) 0%, #0f2744 100%);
+  color: white;
+  padding: 60px 40px;
+  border-radius: var(--radius);
+  text-align: center;
+}
+.block-hero h1 { font-size: 32px; margin-bottom: 16px; line-height: 1.3; }
+.block-hero .hero-sub { font-size: 18px; opacity: 0.9; margin-bottom: 24px; max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.6; }
+.block-hero .hero-badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  padding: 8px 20px;
+  border-radius: 24px;
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+.block-hero .hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 24px; }
+.block-hero .btn {
+  display: inline-block;
+  padding: 12px 28px;
+  border-radius: var(--radius);
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 15px;
+  transition: transform 0.2s;
+}
+.block-hero .btn:hover { transform: translateY(-2px); }
+.block-hero .btn-primary { background: var(--fb-accent); color: var(--text); }
+.block-hero .btn-secondary { background: rgba(255,255,255,0.15); color: white; border: 1px solid rgba(255,255,255,0.3); }
+
+/* Trust bar */
+.block-trust {
+  background: var(--bg-alt);
+  padding: 24px 32px;
+  border-radius: var(--radius);
+}
+.trust-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+}
+.trust-item {
+  text-align: center;
+  flex: 1;
+  min-width: 180px;
+  padding: 16px;
+}
+.trust-item .trust-icon { font-size: 28px; margin-bottom: 8px; }
+.trust-item strong { display: block; font-size: 15px; margin-bottom: 4px; }
+.trust-item p { font-size: 13px; color: var(--text-light); }
+
+/* Cards */
+.block-cards h2 { text-align: center; margin-bottom: 32px; }
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+.card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  transition: box-shadow 0.2s;
+}
+.card:hover { box-shadow: var(--shadow-md); }
+.card h3 { font-size: 18px; margin-bottom: 8px; color: var(--primary); }
+.card p { font-size: 14px; color: var(--text-light); margin-bottom: 12px; }
+.card .card-link { color: var(--accent); text-decoration: none; font-weight: 600; font-size: 14px; }
+.card .card-link:hover { text-decoration: underline; }
+
+/* Steps */
+.block-steps h2 { text-align: center; margin-bottom: 32px; }
+.steps-list { max-width: 700px; margin: 0 auto; }
+.step {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 24px;
+  align-items: flex-start;
+}
+.step-num {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  background: var(--accent);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 16px;
+}
+.step-content h3 { font-size: 16px; margin-bottom: 4px; }
+.step-content p { font-size: 14px; color: var(--text-light); }
+
+/* FAQ */
+.block-faq h2 { text-align: center; margin-bottom: 32px; }
+.faq-list { max-width: 800px; margin: 0 auto; }
+.faq-item {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 8px;
+  overflow: hidden;
+}
+.faq-q {
+  padding: 16px 20px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  transition: background 0.15s;
+  font-size: 15px;
+}
+.faq-q:hover { background: var(--bg-alt); }
+.faq-q::after { content: '+'; font-size: 20px; color: var(--text-light); transition: transform 0.2s; }
+.faq-item.open .faq-q::after { transform: rotate(45deg); }
+.faq-a {
+  display: none;
+  padding: 0 20px 16px;
+  font-size: 14px;
+  color: var(--text-light);
+  line-height: 1.7;
+}
+.faq-item.open .faq-a { display: block; }
+
+/* CTA */
+.block-cta {
+  background: var(--primary);
+  color: white;
+  padding: 48px 40px;
+  border-radius: var(--radius);
+  text-align: center;
+}
+.block-cta h2 { margin-bottom: 16px; font-size: 26px; }
+.block-cta p { opacity: 0.9; margin-bottom: 24px; max-width: 600px; margin-left: auto; margin-right: auto; }
+.block-cta .contact-lines { font-size: 15px; margin-bottom: 20px; line-height: 2; }
+.block-cta .btn { display: inline-block; background: var(--fb-accent); color: var(--text); padding: 14px 32px; border-radius: var(--radius); font-weight: 600; text-decoration: none; font-size: 16px; }
+
+/* Form */
+.block-form { background: var(--bg-alt); padding: 40px; border-radius: var(--radius); }
+.block-form h2 { margin-bottom: 24px; }
+.form-preview { max-width: 600px; margin: 0 auto; }
+.form-field {
+  margin-bottom: 16px;
+}
+.form-field label {
+  display: block;
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 6px;
+  color: var(--text);
+}
+.form-field input, .form-field textarea, .form-field select {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 15px;
+  font-family: inherit;
+  background: white;
+}
+.form-field textarea { min-height: 100px; resize: vertical; }
+.form-field .hint { font-size: 12px; color: var(--text-light); margin-top: 4px; }
+.form-submit {
+  display: inline-block;
+  background: var(--accent);
+  color: white;
+  padding: 12px 28px;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: not-allowed;
+  opacity: 0.7;
+  margin-top: 8px;
+}
+
+/* Proof / numbers */
+.block-proof { text-align: center; padding: 40px 32px; }
+.proof-items { display: flex; flex-wrap: wrap; gap: 32px; justify-content: center; }
+.proof-item { flex: 1; min-width: 160px; }
+.proof-num { font-size: 36px; font-weight: 800; color: var(--accent); }
+.proof-label { font-size: 14px; color: var(--text-light); margin-top: 4px; }
+
+/* Logos */
+.block-logos { text-align: center; padding: 32px; }
+.block-logos h2 { margin-bottom: 24px; }
+.logos-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+.logo-item {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px 20px;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--text-light);
+}
+
+/* Generic */
+.block-generic { padding: 32px; }
+.block-generic h2 { margin-bottom: 16px; font-size: 24px; }
+.block-generic h3 { margin: 20px 0 8px; font-size: 18px; color: var(--primary); }
+.block-generic p { margin-bottom: 12px; font-size: 15px; color: var(--text); line-height: 1.7; }
+.block-generic ul, .block-generic ol { margin: 12px 0; padding-left: 24px; }
+.block-generic li { margin-bottom: 8px; font-size: 15px; line-height: 1.6; }
+.block-generic strong { color: var(--text); }
+.block-generic blockquote {
+  border-left: 3px solid var(--accent);
+  padding: 12px 20px;
+  margin: 16px 0;
+  background: var(--bg-alt);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  font-size: 14px;
+  color: var(--text-light);
+}
+.block-generic table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+}
+.block-generic th, .block-generic td {
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  font-size: 14px;
+  text-align: left;
+}
+.block-generic th { background: var(--bg-alt); font-weight: 600; }
+.block-generic a { color: var(--accent); }
+
+/* Solution cards */
+.block-solution .solution-card {
+  border-left: 4px solid var(--accent);
+  background: white;
+  padding: 20px 24px;
+  margin-bottom: 16px;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  box-shadow: var(--shadow);
+}
+.block-solution .solution-card h3 { margin-bottom: 8px; color: var(--primary); }
+.block-solution .solution-card p { font-size: 14px; color: var(--text-light); }
+
+/* Placeholder highlight */
+.placeholder {
+  background: #fef3c7;
+  border: 1px dashed #f59e0b;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+/* === FOOTER === */
+.site-footer {
+  background: #0f1f33;
+  color: rgba(255,255,255,0.7);
+  padding: 48px 24px 24px;
+  margin-top: 60px;
+}
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 32px;
+}
+.footer-col h4 { color: white; font-size: 15px; margin-bottom: 12px; }
+.footer-col p, .footer-col a { font-size: 13px; line-height: 1.8; }
+.footer-col a { color: rgba(255,255,255,0.7); text-decoration: none; }
+.footer-col a:hover { color: white; }
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 4px; }
+.footer-bottom {
+  max-width: 1200px;
+  margin: 32px auto 0;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* === FEEDBACK UI === */
+.feedback-counter {
+  background: var(--fb-accent);
+  color: #1e293b;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s;
+  font-size: 13px;
+  white-space: nowrap;
+}
+.feedback-counter:hover { transform: scale(1.05); }
+.feedback-counter.has-feedback { animation: fb-pulse 2s infinite; }
+@keyframes fb-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(245,158,11,0.4); }
+  50% { box-shadow: 0 0 0 8px transparent; }
+}
+.feedback-btn {
+  position: absolute;
+  top: 12px;
+  right: 24px;
+  background: var(--fb-accent);
+  border: 2px solid var(--fb-accent-border);
+  padding: 6px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 13px;
+  color: #1e293b;
+  font-weight: 600;
+  transition: all 0.2s;
+  z-index: 10;
+}
+.feedback-btn:hover { background: var(--fb-accent-hover); border-color: var(--fb-accent-border); color: white; }
+.feedback-btn.has-comment { background: var(--fb-saved); border-color: var(--fb-saved-border); color: white; }
+.feedback-panel {
+  display: none;
+  margin-top: 24px;
+  background: var(--fb-panel-bg);
+  border: 2px solid var(--fb-panel-border);
+  border-radius: var(--radius);
+  padding: 20px;
+  animation: fb-slideDown 0.3s ease;
+}
+.feedback-panel.open { display: block; }
+@keyframes fb-slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.feedback-panel label { display: block; font-weight: 600; margin-bottom: 8px; color: var(--primary); font-size: 14px; }
+.feedback-panel textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-family: inherit;
+  font-size: 15px;
+  resize: vertical;
+  line-height: 1.5;
+}
+.feedback-panel textarea:focus { outline: none; border-color: var(--primary-light); box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
+.feedback-actions { display: flex; gap: 12px; margin-top: 12px; align-items: center; }
+.btn-save { background: var(--fb-save); color: white; border: 2px solid var(--fb-save-border); padding: 8px 20px; border-radius: var(--radius); cursor: pointer; font-size: 14px; font-weight: 600; }
+.btn-save:hover { background: var(--fb-save-hover); }
+.btn-cancel { background: white; border: 2px solid #94a3b8; padding: 8px 20px; border-radius: var(--radius); cursor: pointer; font-size: 14px; color: #334155; font-weight: 500; }
+.btn-cancel:hover { background: #f1f5f9; }
+.btn-delete { background: var(--fb-delete-bg); border: 2px solid var(--fb-delete-border); padding: 8px 16px; border-radius: var(--radius); cursor: pointer; font-size: 14px; color: var(--fb-delete); font-weight: 500; margin-left: auto; }
+.btn-delete:hover { background: #fee2e2; border-color: var(--fb-delete); }
+.saved-indicator { display: none; color: var(--success); font-size: 13px; align-items: center; gap: 4px; }
+.export-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 200; justify-content: center; align-items: center; }
+.export-overlay.open { display: flex; }
+.export-box { background: white; border-radius: 12px; padding: 32px; max-width: 500px; width: 90%; text-align: center; }
+.export-box h2 { margin-bottom: 16px; font-size: 22px; }
+.export-box p { color: var(--text-light); margin-bottom: 24px; }
+.export-box .count { font-size: 48px; font-weight: 800; color: var(--fb-save); }
+.btn-export { display: inline-block; background: var(--fb-save); color: white; padding: 14px 32px; border-radius: var(--radius); border: none; font-size: 16px; font-weight: 600; cursor: pointer; margin: 8px; }
+.btn-export:hover { background: var(--fb-save-hover); }
+.btn-export.btn-copy { background: var(--fb-accent); color: #1e293b; }
+.btn-export.btn-copy:hover { background: var(--fb-accent-border); }
+.btn-close-overlay { display: inline-block; background: transparent; border: 1px solid var(--border); padding: 14px 32px; border-radius: var(--radius); font-size: 16px; cursor: pointer; margin: 8px; color: var(--text-light); }
+
+@media (max-width: 768px) {
+  .feedback-btn { top: auto; bottom: -16px; right: 16px; font-size: 12px; }
+  .block-hero { padding: 40px 20px; }
+  .block-hero h1 { font-size: 24px; }
+  .cards-grid { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr; }
+  .preview-bar { flex-wrap: wrap; gap: 8px; }
+}
+</style>
+</head>
+<body>
+  
+    <nav class="nav">
+      <div class="nav-inner">
+        <a class="nav-logo" href="renotec_preview_index.html">RenoTec</a>
+        <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+        <ul class="nav-links">
+          <li><a href="renotec_preview_startseite.html" class="active">Startseite</a></li>
+        <li class="dropdown">
+          <a href="renotec_preview_leistungen.html">Leistungen ▾</a>
+          <ul class="dropdown-menu">
+            <li><a href="renotec_preview_leistungen.html">Übersicht</a></li>
+            <li><a href="renotec_preview_waermepumpen.html">Wärmepumpen</a></li><li><a href="renotec_preview_badsanierung.html">Badsanierung</a></li><li><a href="renotec_preview_heizungsinstallationen.html">Heizungsinstallation</a></li><li><a href="renotec_preview_sanitaerinstallationen.html">Sanitärinstallation</a></li><li><a href="renotec_preview_rohrreinigung.html">Rohrreinigung</a></li><li><a href="renotec_preview_sonstige.html">Sonstige Bauleistungen</a></li>
+          </ul>
+        </li><li><a href="renotec_preview_bewertungen.html">Bewertungen</a></li><li><a href="renotec_preview_kontakt.html">Kontakt</a></li>
+        </ul>
+      </div>
+    </nav>
+  
+    <div class="preview-bar">
+      <div>
+        <span class="project-name">RenoTec</span>
+        <span class="meta-info"> — Startseite — Preview</span>
+      </div>
+      <div class="feedback-counter" id="feedbackCounter" onclick="openExportOverlay()">
+        Feedback: 0 Kommentare
+      </div>
+    </div>
+  
+    <div class="meta-bar">
+      <strong>Title Tag:</strong> Sanitär &amp; Heizung Berlin – Meisterbetrieb für Wärmepumpen &amp; Bad | RenoTec<br>
+      <strong>Meta Description:</strong> RenoTec – Ihr SHK-Meisterbetrieb in Berlin. Über 15 Jahre Erfahrung. Wärmepumpen, Badsanierung, Heizung, Sanitär. Jetzt kostenlos anfragen!
+      <span class="source-badge">Spec</span>
+    </div>
+  <main class="page-content">
+    
+    <div class="block block-generic" id="block-1">
+      <span class="block-label" style="display:none">Block 1 — </span>
+      <button class="feedback-btn" onclick="toggleFeedback(1)">✏️ Vorschlag</button>
+      <h2></h2>
+      
+      <div class="feedback-panel" id="feedback-panel-1">
+        <label>Ihr Vorschlag für Block 1 — :</label>
+        <textarea id="feedback-text-1" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+        <div class="feedback-actions">
+          <button class="btn-save" onclick="saveFeedback(1)">Speichern</button>
+          <button class="btn-cancel" onclick="toggleFeedback(1)">Abbrechen</button>
+          <button class="btn-delete" onclick="deleteFeedback(1)" style="display:none" id="delete-btn-1">Löschen</button>
+          <span class="saved-indicator" id="saved-1">✓ Gespeichert</span>
+        </div>
+      </div>
+    </div>
+    <div class="block block-hero" id="block-2">
+      <span class="block-label" style="display:none">Block 2 — Hero</span>
+      <button class="feedback-btn" onclick="toggleFeedback(2)">✏️ Vorschlag</button>
+      <div class="hero-badge">🏅 Meisterbetrieb – eingetragen bei der Handwerkskammer Berlin</div>
+      <h1>RenoTec – Ihr zuverlässiger SHK-Meisterbetrieb in Berlin.</h1>
+      <div class="hero-sub">Ob Wärmepumpe, Badsanierung oder Heizungsmodernisierung: Wir planen, installieren und warten Ihre Sanitär- und Heizungsanlagen mit Meisterpräzision. Mit über 15 Jahren Erfahrung im SHK-Bereich und als eingetragener Meisterbetrieb der Handwerkskammer Berlin stehen wir für fachgerechte Ausführung und persönliche Betreuung. Schildern Sie uns Ihr Vorhaben – die Erstberatung ist kostenlos und unverbindlich.</div>
+      <div class="hero-ctas"><span class="btn btn-primary">💬 <a href="#whatsapp"><strong>WhatsApp: Anfrage senden</strong></a></span><span class="btn btn-secondary">📞 <strong>Telefon:</strong> <span class="placeholder">[PLATZHALTER]</span></span><span class="btn btn-secondary">📋 <a href="/kontakt/"><strong>Jetzt kostenlos anfragen</strong></a></span></div>
+      <div class="feedback-panel" id="feedback-panel-2">
+        <label>Ihr Vorschlag für Block 2 — Hero:</label>
+        <textarea id="feedback-text-2" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+        <div class="feedback-actions">
+          <button class="btn-save" onclick="saveFeedback(2)">Speichern</button>
+          <button class="btn-cancel" onclick="toggleFeedback(2)">Abbrechen</button>
+          <button class="btn-delete" onclick="deleteFeedback(2)" style="display:none" id="delete-btn-2">Löschen</button>
+          <span class="saved-indicator" id="saved-2">✓ Gespeichert</span>
+        </div>
+      </div>
+    </div>
+    <div class="block block-trust" id="block-3">
+      <span class="block-label" style="display:none">Block 3 — Warum RenoTec? – Ihr Vorteil auf einen Blick</span>
+      <button class="feedback-btn" onclick="toggleFeedback(3)">✏️ Vorschlag</button>
+      <h2>Warum RenoTec? – Ihr Vorteil auf einen Blick</h2>
+      <p>Wenn es um Sanitär und Heizung in Berlin geht, zählt nicht nur Fachwissen – sondern auch Verlässlichkeit, ehrliche Beratung und ein Handwerker, der wirklich zuhört. RenoTec verbindet über 15 Jahre Erfahrung im SHK-Bereich mit dem Anspruch, Ihnen stets die beste technische und wirtschaftliche Lösung für Ihr Zuhause zu bieten. Wir arbeiten ausschließlich mit geprüften Premiumprodukten führender Hersteller und geben diesen Qualitätsanspruch direkt an unsere Kunden weiter. Unser Meisterbetrieb ist bei der Handwerkskammer Berlin eingetragen – das ist für Sie nicht nur eine formale Garantie, sondern ein aktives Qualitätsversprechen.</p>
+      <div class="trust-items">
+                <div class="trust-item">
+                  <strong>🔧 Über 15 Jahre Meistererfahrung im SHK-Bereich</strong>
+                </div>
+                <div class="trust-item">
+                  <strong>🏅 Meisterbetrieb HWK Berlin</strong>
+                </div>
+                <div class="trust-item">
+                  <strong>🤝 8 Premium-Herstellerpartner</strong>
+                </div></div>
+      <div class="feedback-panel" id="feedback-panel-3">
+        <label>Ihr Vorschlag für Block 3 — Warum RenoTec? – Ihr Vorteil auf einen Blick:</label>
+        <textarea id="feedback-text-3" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+        <div class="feedback-actions">
+          <button class="btn-save" onclick="saveFeedback(3)">Speichern</button>
+          <button class="btn-cancel" onclick="toggleFeedback(3)">Abbrechen</button>
+          <button class="btn-delete" onclick="deleteFeedback(3)" style="display:none" id="delete-btn-3">Löschen</button>
+          <span class="saved-indicator" id="saved-3">✓ Gespeichert</span>
+        </div>
+      </div>
+    </div>
+    <div class="block block-cards" id="block-4">
+      <span class="block-label" style="display:none">Block 4 — Unsere Leistungen in Berlin</span>
+      <button class="feedback-btn" onclick="toggleFeedback(4)">✏️ Vorschlag</button>
+      <h2>Unsere Leistungen in Berlin</h2>
+      <p>Von der modernen Wärmepumpe über die komplette Badsanierung bis zur schnellen Rohrreinigung – RenoTec bietet Ihnen das gesamte Spektrum des SHK-Handwerks aus einer Hand. Alle Arbeiten werden fachgerecht nach Meisterstandard ausgeführt. So erhalten Sie nicht nur handwerklich einwandfreie Ergebnisse, sondern auch die nötige Rechtssicherheit für Förderanträge, Versicherungen und Gewährleistungsansprüche.</p>
+      <div class="cards-grid">
+        <div class="card">
+          <h3>Wärmepumpen</h3>
+          <p>Wärmepumpen sind die Heiztechnologie der Zukunft – effizient, umweltfreundlich und in vielen Fällen staatlich gefördert. Wir beraten Sie zur richtigen Wärmepumpenart, übernehmen die fachgerechte Installation und unterstützen Sie bei der BAFA-Förderung.</p>
+          <a class="card-link" href="/waermepumpen/">Mehr erfahren → Wärmepumpen</a>
+        </div>
+        <div class="card">
+          <h3>Badsanierung</h3>
+          <p>Ein neues Badezimmer ist mehr als Optik – es ist Lebensqualität. Wir planen und realisieren Ihre Badsanierung in Berlin von der Entwässerung bis zur Fliese, inklusive barrierefreier Umbau auf Wunsch.</p>
+          <a class="card-link" href="/badsanierung/">Mehr erfahren → Badsanierung</a>
+        </div>
+        <div class="card">
+          <h3>Heizungsinstallation & -modernisierung</h3>
+          <p>Ob Neuinstallation, Austausch einer veralteten Anlage oder hydraulischer Abgleich – wir sorgen dafür, dass Ihre Heizung zuverlässig, effizient und normgerecht läuft.</p>
+          <a class="card-link" href="/heizungsinstallationen/">Mehr erfahren → Heizungsinstallation</a>
+        </div>
+        <div class="card">
+          <h3>Sanitärinstallation</h3>
+          <p>Von der Einzelreparatur bis zur kompletten Neu-Installation: Wir übernehmen alle Sanitärarbeiten in Ihrem Berliner Objekt fachgerecht und terminzuverlässig.</p>
+          <a class="card-link" href="/sanitaerinstallationen/">Mehr erfahren → Sanitärinstallation</a>
+        </div>
+        <div class="card">
+          <h3>Rohrreinigung</h3>
+          <p>Verstopfte Abflüsse und Rohre können schnell zu größeren Schäden führen. Wir führen professionelle Rohrreinigungen durch – gründlich, sauber und mit moderner Technik.</p>
+          <a class="card-link" href="/rohrreinigung/">Mehr erfahren → Rohrreinigung</a>
+        </div>
+        <div class="card">
+          <h3>Sonstige Bauleistungen</h3>
+          <p>Für weitere Bauleistungen wie Innenausbau, Trockenbau oder Malerarbeiten empfehlen wir unseren Partner Renovira.
+
+
+
+---</p>
+          <a class="card-link" href="https://renovira.de">Alle Leistungen ansehen → renovira.de</a>
+        </div></div>
+      <div class="feedback-panel" id="feedback-panel-4">
+        <label>Ihr Vorschlag für Block 4 — Unsere Leistungen in Berlin:</label>
+        <textarea id="feedback-text-4" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+        <div class="feedback-actions">
+          <button class="btn-save" onclick="saveFeedback(4)">Speichern</button>
+          <button class="btn-cancel" onclick="toggleFeedback(4)">Abbrechen</button>
+          <button class="btn-delete" onclick="deleteFeedback(4)" style="display:none" id="delete-btn-4">Löschen</button>
+          <span class="saved-indicator" id="saved-4">✓ Gespeichert</span>
+        </div>
+      </div>
+    </div>
+    <div class="block block-generic" id="block-5">
+      <span class="block-label" style="display:none">Block 5 — Das sagen unsere Kunden</span>
+      <button class="feedback-btn" onclick="toggleFeedback(5)">✏️ Vorschlag</button>
+      <h2>Das sagen unsere Kunden</h2>
+      <blockquote>
+<p>Bewertungen werden nach Abschluss der ersten Projekte hier veröffentlicht. Wir freuen uns auf Ihr Vertrauen als einer unserer ersten Kunden in Berlin!</p>
+</blockquote>
+<p><a href="/bewertungen/">Alle Bewertungen ansehen →</a></p>
+      <div class="feedback-panel" id="feedback-panel-5">
+        <label>Ihr Vorschlag für Block 5 — Das sagen unsere Kunden:</label>
+        <textarea id="feedback-text-5" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+        <div class="feedback-actions">
+          <button class="btn-save" onclick="saveFeedback(5)">Speichern</button>
+          <button class="btn-cancel" onclick="toggleFeedback(5)">Abbrechen</button>
+          <button class="btn-delete" onclick="deleteFeedback(5)" style="display:none" id="delete-btn-5">Löschen</button>
+          <span class="saved-indicator" id="saved-5">✓ Gespeichert</span>
+        </div>
+      </div>
+    </div>
+    <div class="block block-steps" id="block-6">
+      <span class="block-label" style="display:none">Block 6 — Ihre Anfrage in 5 Schritten – einfach &amp; kostenlos</span>
+      <button class="feedback-btn" onclick="toggleFeedback(6)">✏️ Vorschlag</button>
+      <h2>Ihre Anfrage in 5 Schritten – einfach & kostenlos</h2>
+      <p>Wir wissen, dass Handwerkersuche oft mit Unsicherheiten verbunden ist. Deshalb haben wir unseren Anfrageprozess so einfach und transparent wie möglich gestaltet. Von Ihrer ersten Kontaktaufnahme bis zum fertigen Angebot begleiten wir Sie Schritt für Schritt – ohne versteckte Kosten und ohne Verpflichtung.</p>
+      <div class="steps-list">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <h3>Anfrage stellen</h3>
+            <p>Per WhatsApp, Telefon oder Formular: Schildern Sie uns kurz Ihr Anliegen.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <h3>Kostenlose Erstberatung</h3>
+            <p>Wir melden uns bei Ihnen und klären erste Fragen unverbindlich.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <h3>Vor-Ort-Termin</h3>
+            <p>Wir besichtigen Ihr Objekt, nehmen alles auf und beraten Sie persönlich.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <h3>Individuelles Angebot</h3>
+            <p>Sie erhalten ein klares, detailliertes Angebot ohne Überraschungen.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">5</div>
+          <div class="step-content">
+            <h3>Ausführung & Abnahme</h3>
+            <p>Wir führen die Arbeiten fachgerecht aus und nehmen das Ergebnis gemeinsam mit Ihnen ab.
+
+<a href="/anfrage/"><strong>Jetzt kostenlos anfragen →</strong></a>
+
+---</p>
+          </div>
+        </div></div>
+      <div class="feedback-panel" id="feedback-panel-6">
+        <label>Ihr Vorschlag für Block 6 — Ihre Anfrage in 5 Schritten – einfach &amp; kostenlos:</label>
+        <textarea id="feedback-text-6" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+        <div class="feedback-actions">
+          <button class="btn-save" onclick="saveFeedback(6)">Speichern</button>
+          <button class="btn-cancel" onclick="toggleFeedback(6)">Abbrechen</button>
+          <button class="btn-delete" onclick="deleteFeedback(6)" style="display:none" id="delete-btn-6">Löschen</button>
+          <span class="saved-indicator" id="saved-6">✓ Gespeichert</span>
+        </div>
+      </div>
+    </div>
+    <div class="block block-steps" id="block-7">
+      <span class="block-label" style="display:none">Block 7 — So arbeiten wir zusammen – Unser Ablauf</span>
+      <button class="feedback-btn" onclick="toggleFeedback(7)">✏️ Vorschlag</button>
+      <h2>So arbeiten wir zusammen – Unser Ablauf</h2>
+      <p>Gute Handwerksarbeit beginnt lange vor dem ersten Handgriff. Wir nehmen uns die Zeit, Ihr Vorhaben wirklich zu verstehen – denn nur so können wir Ihnen eine Lösung empfehlen, die technisch sinnvoll, wirtschaftlich fair und langfristig zuverlässig ist. Als Meisterbetrieb begleiten wir jedes Projekt von der ersten Beratung über die Planung bis zur Abnahme. Wir halten Sie während der gesamten Ausführung auf dem Laufenden, damit Sie stets wissen, was auf Ihrer Baustelle passiert. Nach Abschluss der Arbeiten stehen wir Ihnen für Rückfragen und im Rahmen unserer Gewährleistung weiterhin zur Verfügung.</p>
+<div style="background: var(--bg-alt); padding: 16px; border-radius: var(--radius); margin: 12px 0; font-family: monospace; font-size: 13px; white-space: pre-wrap; overflow-x: auto;">
+Anfrage → Beratung → Planung → Ausführung → Abnahme → Nachbetreuung
+<br>
+</div>
+      <div class="steps-list"></div>
+      <div class="feedback-panel" id="feedback-panel-7">
+        <label>Ihr Vorschlag für Block 7 — So arbeiten wir zusammen – Unser Ablauf:</label>
+        <textarea id="feedback-text-7" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+        <div class="feedback-actions">
+          <button class="btn-save" onclick="saveFeedback(7)">Speichern</button>
+          <button class="btn-cancel" onclick="toggleFeedback(7)">Abbrechen</button>
+          <button class="btn-delete" onclick="deleteFeedback(7)" style="display:none" id="delete-btn-7">Löschen</button>
+          <span class="saved-indicator" id="saved-7">✓ Gespeichert</span>
+        </div>
+      </div>
+    </div>
+    <div class="block block-logos" id="block-8">
+      <span class="block-label" style="display:none">Block 8 — Partner &amp; Hersteller</span>
+      <button class="feedback-btn" onclick="toggleFeedback(8)">✏️ Vorschlag</button>
+      <h2>Partner & Hersteller</h2>
+      <p>Wir setzen auf geprüfte Qualität von führenden Herstellern der SHK-Branche. Diese Partnerschaften ermöglichen es uns, Ihnen aktuelle Technologien, zuverlässige Produkte und herstellergerechte Installation aus einer Hand anzubieten.</p>
+      <h3>Premium-Hersteller</h3><div class="logos-grid"><div class="logo-item">Vaillant</div><div class="logo-item">Viessmann</div><div class="logo-item">Bosch</div><div class="logo-item">Buderus</div><div class="logo-item">Geberit</div><div class="logo-item">Grohe</div><div class="logo-item">hansgrohe</div><div class="logo-item">TECE</div></div><h3>Fachhändler & Großhandelspartner</h3><div class="logos-grid"><div class="logo-item">ABEX</div><div class="logo-item">Wiedemann</div><div class="logo-item">Bergmann &amp; Franz</div><div class="logo-item">ATALA</div><div class="logo-item">ELEMENTS</div></div>
+      <div class="feedback-panel" id="feedback-panel-8">
+        <label>Ihr Vorschlag für Block 8 — Partner &amp; Hersteller:</label>
+        <textarea id="feedback-text-8" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+        <div class="feedback-actions">
+          <button class="btn-save" onclick="saveFeedback(8)">Speichern</button>
+          <button class="btn-cancel" onclick="toggleFeedback(8)">Abbrechen</button>
+          <button class="btn-delete" onclick="deleteFeedback(8)" style="display:none" id="delete-btn-8">Löschen</button>
+          <span class="saved-indicator" id="saved-8">✓ Gespeichert</span>
+        </div>
+      </div>
+    </div>
+    <div class="block block-faq" id="block-9">
+      <span class="block-label" style="display:none">Block 9 — Häufige Fragen (FAQ)</span>
+      <button class="feedback-btn" onclick="toggleFeedback(9)">✏️ Vorschlag</button>
+      <h2>Häufige Fragen (FAQ)</h2>
+      <div class="faq-list">
+        <div class="faq-item" onclick="this.classList.toggle('open')">
+          <div class="faq-q">Welche Leistungen bietet RenoTec an?</div>
+          <div class="faq-a"><p>Wir sind spezialisiert auf Wärmepumpen, Badsanierung, Heizungsinstallation, Sanitärarbeiten und Rohrreinigung in Berlin und Umgebung. Auch bei weiteren Aufgaben im SHK-Bereich sind wir der richtige Ansprechpartner – sprechen Sie uns gerne an.</p></div>
+        </div>
+        <div class="faq-item" onclick="this.classList.toggle('open')">
+          <div class="faq-q">Ist RenoTec ein Meisterbetrieb?</div>
+          <div class="faq-a"><p>Ja, RenoTec ist ein bei der Handwerkskammer Berlin eingetragener Meisterbetrieb mit über 15 Jahren Erfahrung im SHK-Bereich. Die Eintragung als Meisterbetrieb ist für Sie als Kunde eine wichtige Qualitäts- und Rechtssicherheit, insbesondere bei Förderanträgen und Gewährleistungsfragen.</p></div>
+        </div>
+        <div class="faq-item" onclick="this.classList.toggle('open')">
+          <div class="faq-q">In welcher Region arbeitet RenoTec?</div>
+          <div class="faq-a"><p>Wir sind in ganz Berlin und dem Großraum Berlin tätig. Bitte geben Sie bei der Anfrage Ihre Postleitzahl an, damit wir Ihnen schnell eine Aussage zur Verfügbarkeit machen können.</p></div>
+        </div>
+        <div class="faq-item" onclick="this.classList.toggle('open')">
+          <div class="faq-q">Wie kann ich RenoTec kontaktieren?</div>
+          <div class="faq-a"><p>Per WhatsApp, Telefon, E-Mail oder über unser Online-Formular. Wir melden uns schnellstmöglich bei Ihnen. <!-- <span class="placeholder">[КЛИЕНТ: Reaktionszeit bestätigen]</span> --></p></div>
+        </div>
+        <div class="faq-item" onclick="this.classList.toggle('open')">
+          <div class="faq-q">Bietet RenoTec kostenlose Beratung an?</div>
+          <div class="faq-a"><p>Ja, die Erstberatung ist kostenlos und unverbindlich. Kontaktieren Sie uns per WhatsApp oder Telefon und schildern Sie uns Ihr Anliegen – wir beraten Sie gerne, bevor irgendeine Verpflichtung entsteht.</p></div>
+        </div>
+        <div class="faq-item" onclick="this.classList.toggle('open')">
+          <div class="faq-q">Mit welchen Herstellern arbeitet RenoTec zusammen?</div>
+          <div class="faq-a"><p>Wir arbeiten mit führenden Herstellern der SHK-Branche: Vaillant, Viessmann, Bosch, Buderus, Geberit, Grohe, hansgrohe und TECE. Durch unsere Partnerschaften mit regionalen Fachhändlern wie ABEX, Wiedemann, Bergmann & Franz, ATALA und ELEMENTS können wir Ihnen Markenwaren zuverlässig und schnell bereitstellen.</p></div>
+        </div>
+        <div class="faq-item" onclick="this.classList.toggle('open')">
+          <div class="faq-q">Unterstützt RenoTec bei der BAFA-Förderung?</div>
+          <div class="faq-a"><p>Ja, wir beraten zur aktuellen Förderung für Heizungsmodernisierungen und Wärmepumpen, unterstützen bei der Antragstellung und vermitteln bei Bedarf zertifizierte Energieberater. Eine förderfähige Installation setzt einen zugelassenen Fachbetrieb voraus – als eingetragener Meisterbetrieb erfüllen wir diese Voraussetzung.</p></div>
+        </div>
+        <div class="faq-item" onclick="this.classList.toggle('open')">
+          <div class="faq-q">Was kostet eine Anfrage bei RenoTec?</div>
+          <div class="faq-a"><p>Die Anfrage und Erstberatung sind für Sie vollständig kostenlos und unverbindlich. Wir erstellen individuelle Angebote nach persönlicher Besichtigung vor Ort – ohne Pauschalen und ohne versteckte Kosten.</p></div>
+        </div></div>
+      <div class="feedback-panel" id="feedback-panel-9">
+        <label>Ihr Vorschlag für Block 9 — Häufige Fragen (FAQ):</label>
+        <textarea id="feedback-text-9" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+        <div class="feedback-actions">
+          <button class="btn-save" onclick="saveFeedback(9)">Speichern</button>
+          <button class="btn-cancel" onclick="toggleFeedback(9)">Abbrechen</button>
+          <button class="btn-delete" onclick="deleteFeedback(9)" style="display:none" id="delete-btn-9">Löschen</button>
+          <span class="saved-indicator" id="saved-9">✓ Gespeichert</span>
+        </div>
+      </div>
+    </div>
+    <div class="block block-cta" id="block-10">
+      <span class="block-label" style="display:none">Block 10 — Kontakt – Jetzt kostenlos anfragen</span>
+      <button class="feedback-btn" onclick="toggleFeedback(10)" style="color:#1e293b;">✏️ Vorschlag</button>
+      <h2>Kontakt – Jetzt kostenlos anfragen</h2>
+      <p>Sie haben ein Projekt geplant oder eine dringende Frage zu Ihrer Heizung oder Sanitäranlage? Wir freuen uns auf Ihre Nachricht. Die Erstberatung ist kostenlos, unverbindlich und schnell. <strong>RenoTec – SHK-Meisterbetrieb Berlin</strong> 🏅 Eingetragener Meisterbetrieb · Handwerkskammer Berlin</p>
+      <div class="contact-lines">📍 Pohlstraße 71, 10785 Berlin<br>📞 Telefon: <span class="placeholder">[PLATZHALTER]</span><br>📧 E-Mail: kontakt@renotec-shk.de<br>💬 <a href="#whatsapp">WhatsApp: Anfrage senden</a></div>
+      
+      <div class="feedback-panel" id="feedback-panel-10">
+        <label>Ihr Vorschlag für Block 10 — Kontakt – Jetzt kostenlos anfragen:</label>
+        <textarea id="feedback-text-10" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+        <div class="feedback-actions">
+          <button class="btn-save" onclick="saveFeedback(10)">Speichern</button>
+          <button class="btn-cancel" onclick="toggleFeedback(10)">Abbrechen</button>
+          <button class="btn-delete" onclick="deleteFeedback(10)" style="display:none" id="delete-btn-10">Löschen</button>
+          <span class="saved-indicator" id="saved-10">✓ Gespeichert</span>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-col">
+          <h4>RenoTec</h4>
+          <p>SHK-Meisterbetrieb Berlin</p>
+          <p>Eingetragen bei der<br>Handwerkskammer Berlin</p>
+        </div>
+        <div class="footer-col">
+          <h4>Kontakt</h4>
+          <p>📍 Pohlstraße 71, 10785 Berlin</p>
+          <p>📞 [PLATZHALTER]</p>
+          <p>📧 kontakt@renotec-shk.de</p>
+        </div>
+        <div class="footer-col">
+          <h4>Leistungen</h4>
+          <ul>
+            <li><a href="#">Wärmepumpen</a></li>
+            <li><a href="#">Badsanierung</a></li>
+            <li><a href="#">Heizungsinstallation</a></li>
+            <li><a href="#">Sanitärinstallation</a></li>
+            <li><a href="#">Rohrreinigung</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul><li><a href="#">Startseite</a></li><li><a href="#">Leistungen</a></li><li><a href="#">Bewertungen</a></li><li><a href="#">Kontakt</a></li></ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 RenoTec · Alle Rechte vorbehalten</span>
+        <span>
+          <a href="#">Impressum</a> · <a href="#">Datenschutz</a>
+        </span>
+      </div>
+    </footer>
+  
+    <div class="export-overlay" id="exportOverlay">
+      <div class="export-box">
+        <div class="count" id="exportCount">0</div>
+        <h2>Kommentare bereit</h2>
+        <p>Alle Ihre Änderungsvorschläge für alle Seiten in einer Datei. Laden Sie sie herunter und senden Sie diese an Ihr Projektteam.</p>
+        <button class="btn-export" onclick="exportFeedback()">📥 Als Datei herunterladen</button>
+        <button class="btn-export btn-copy" onclick="copyFeedback()">📋 In Zwischenablage kopieren</button>
+        <button class="btn-close-overlay" onclick="closeExportOverlay()">Schließen</button>
+      </div>
+    </div>
+  <script>
+(function() {
+  var PROJECT = 'renotec';
+  var PAGE = 'startseite';
+  var PAGE_TITLE = 'Startseite';
+  var STORAGE_KEY = '2p-feedback-' + PROJECT;
+
+  function getAllFeedback() {
+    return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+  }
+  function getPageFeedback() {
+    var all = getAllFeedback();
+    return all[PAGE] || {};
+  }
+  function savePageFeedback(pageData) {
+    var all = getAllFeedback();
+    if (Object.keys(pageData).length === 1 && pageData._title) {
+      delete all[PAGE];
+    } else {
+      all[PAGE] = pageData;
+    }
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(all));
+  }
+  function getTotalCount() {
+    var all = getAllFeedback();
+    var count = 0;
+    for (var page in all) {
+      for (var key in all[page]) {
+        if (key !== '_title') count++;
+      }
+    }
+    return count;
+  }
+  function loadFeedback() {
+    var pageData = getPageFeedback();
+    for (var blockId in pageData) {
+      if (blockId === '_title') continue;
+      var entry = pageData[blockId];
+      var text = (typeof entry === 'object') ? entry.text : entry;
+      var textarea = document.getElementById('feedback-text-' + blockId);
+      var btn = document.querySelector('#block-' + blockId + ' .feedback-btn');
+      var deleteBtn = document.getElementById('delete-btn-' + blockId);
+      if (textarea) textarea.value = text;
+      if (btn) { btn.classList.add('has-comment'); btn.textContent = '✏️ Kommentar bearbeiten'; }
+      if (deleteBtn) deleteBtn.style.display = 'inline-block';
+    }
+    updateCounter();
+  }
+  window.toggleFeedback = function(blockId) {
+    var panel = document.getElementById('feedback-panel-' + blockId);
+    panel.classList.toggle('open');
+    if (panel.classList.contains('open')) {
+      document.getElementById('feedback-text-' + blockId).focus();
+    }
+  };
+  window.saveFeedback = function(blockId) {
+    var text = document.getElementById('feedback-text-' + blockId).value.trim();
+    if (!text) return;
+    var blockEl = document.getElementById('block-' + blockId);
+    var labelEl = blockEl ? blockEl.querySelector('.block-label') : null;
+    var label = labelEl ? labelEl.textContent : ('Block ' + blockId);
+    var pageData = getPageFeedback();
+    pageData._title = PAGE_TITLE;
+    pageData[blockId] = { text: text, label: label };
+    savePageFeedback(pageData);
+    var btn = document.querySelector('#block-' + blockId + ' .feedback-btn');
+    btn.classList.add('has-comment');
+    btn.textContent = '✏️ Kommentar bearbeiten';
+    document.getElementById('delete-btn-' + blockId).style.display = 'inline-block';
+    var indicator = document.getElementById('saved-' + blockId);
+    indicator.style.display = 'flex';
+    setTimeout(function() { indicator.style.display = 'none'; }, 2000);
+    updateCounter();
+    setTimeout(function() { window.toggleFeedback(blockId); }, 1500);
+  };
+  window.deleteFeedback = function(blockId) {
+    var pageData = getPageFeedback();
+    delete pageData[blockId];
+    savePageFeedback(pageData);
+    document.getElementById('feedback-text-' + blockId).value = '';
+    var btn = document.querySelector('#block-' + blockId + ' .feedback-btn');
+    btn.classList.remove('has-comment');
+    btn.textContent = '✏️ Vorschlag';
+    document.getElementById('delete-btn-' + blockId).style.display = 'none';
+    updateCounter();
+    window.toggleFeedback(blockId);
+  };
+  function updateCounter() {
+    var count = getTotalCount();
+    var counterEl = document.getElementById('feedbackCounter');
+    if (count > 0) {
+      counterEl.classList.add('has-feedback');
+      counterEl.innerHTML = '📥 Feedback: ' + count + ' Kommentar' + (count > 1 ? 'e' : '');
+    } else {
+      counterEl.classList.remove('has-feedback');
+      counterEl.innerHTML = 'Feedback: 0 Kommentare';
+    }
+  }
+  window.openExportOverlay = function() {
+    var count = getTotalCount();
+    if (count === 0) return;
+    document.getElementById('exportCount').textContent = count;
+    document.getElementById('exportOverlay').classList.add('open');
+  };
+  window.closeExportOverlay = function() {
+    document.getElementById('exportOverlay').classList.remove('open');
+  };
+  function buildFeedbackText() {
+    var all = getAllFeedback();
+    var totalCount = getTotalCount();
+    var text = 'FEEDBACK — ' + PROJECT.toUpperCase() + '\n';
+    text += 'Datum: ' + new Date().toLocaleDateString('de-DE') + '\n';
+    text += totalCount + ' Kommentar(e) insgesamt\n';
+    text += '==================================================\n\n';
+    for (var page in all) {
+      var pageData = all[page];
+      var pageTitle = pageData._title || page;
+      text += '━━━ ' + pageTitle + ' ━━━\n\n';
+      for (var blockId in pageData) {
+        if (blockId === '_title') continue;
+        var entry = pageData[blockId];
+        var commentText = (typeof entry === 'object') ? entry.text : entry;
+        var label = (typeof entry === 'object' && entry.label) ? entry.label : ('Block ' + blockId);
+        text += '📌 ' + label + '\n';
+        text += '----------------------------------------\n';
+        text += commentText + '\n\n';
+      }
+    }
+    text += '==================================================\n';
+    text += 'Erstellt am ' + new Date().toLocaleString('de-DE') + '\n';
+    return text;
+  }
+  window.exportFeedback = function() {
+    var text = buildFeedbackText();
+    var blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'feedback_' + PROJECT + '_' + new Date().toISOString().slice(0,10) + '.txt';
+    a.click();
+    URL.revokeObjectURL(url);
+    window.closeExportOverlay();
+  };
+  window.copyFeedback = function() {
+    var text = buildFeedbackText();
+    navigator.clipboard.writeText(text).then(function() {
+      var btn = document.querySelector('.btn-copy');
+      var original = btn.textContent;
+      btn.textContent = '✅ Kopiert!';
+      setTimeout(function() { btn.textContent = original; }, 2000);
+    });
+  };
+  loadFeedback();
+})();
+</script>
+</body>
+</html>
