@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="de" class="h-full">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EDELMET GmbH | Strategiepräsentation 2026</title>
+
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<style type="text/tailwindcss">
+  @theme {
+    --color-bg:      #1a1c22;
+    --color-surf:    #22252d;
+    --color-surf2:   #2a2e38;
+    --color-text:    #e8e9ec;
+    --color-muted:   #6b6f7a;
+    --color-border:  rgba(218,219,224,0.08);
+    --color-accent:  #f96c40;
+    --color-accent2: #ff8a65;
+    --color-warn:    #fbbf24;
+    --color-green:   #4ade80;
+    --color-red:     #fa4362;
+    --font-mono:     'Courier New', monospace;
+  }
+
+  @layer base {
+    html { scroll-behavior: smooth; }
+    body { background: var(--color-bg); color: var(--color-text); }
+  }
+
+  @layer components {
+    .slide {
+      @apply relative flex flex-col justify-center items-center;
+      @apply h-screen min-h-[600px] px-20 py-16 overflow-hidden;
+    }
+    .label {
+      @apply text-[13px] tracking-[.14em] uppercase font-mono text-[var(--color-muted)];
+      @apply mb-4;
+    }
+    .pill {
+      @apply inline-block px-3 py-1 rounded-full text-[9px] tracking-[.08em] uppercase font-mono;
+    }
+    .pill-accent { @apply bg-[rgba(249,108,64,.12)] text-[var(--color-accent)]; }
+    .pill-warn   { @apply bg-[rgba(251,191,36,.10)] text-[var(--color-warn)]; }
+    .pill-red    { @apply bg-[rgba(250,67,98,.10)] text-[var(--color-red)]; }
+    .pill-gray   { @apply bg-[rgba(107,111,122,.12)] text-[var(--color-muted)]; }
+    .pill-green  { @apply bg-[rgba(74,222,128,.10)] text-[var(--color-green)]; }
+    .card {
+      @apply bg-[var(--color-surf)] rounded-xl p-6;
+      @apply border border-[var(--color-border)];
+    }
+    .card-accent {
+      @apply border-[rgba(249,108,64,.25)] bg-[rgba(249,108,64,.04)];
+    }
+    .sn {
+      @apply absolute bottom-7 left-20 font-mono text-[10px] text-[var(--color-muted)] tracking-[.1em];
+    }
+  }
+</style>
+
+<style>
+html { font-size: 18px; }
+:root { --fill-0: #e8e9ec; }
+
+.slide { display: none; }
+.slide.active { display: flex; }
+
+/* Navigation arrows */
+.nav-arrow {
+  position: fixed; bottom: 28px;
+  background: rgba(34,37,45,.85);
+  border: 1px solid rgba(218,219,224,.12);
+  color: #e8e9ec; width: 44px; height: 44px;
+  border-radius: 10px; display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: all .18s; font-size: 16px;
+  backdrop-filter: blur(8px); z-index: 100; user-select: none;
+}
+.nav-arrow:hover { background: rgba(249,108,64,.15); border-color: rgba(249,108,64,.3); color: #f96c40; }
+.nav-arrow:disabled { opacity: .25; cursor: default; }
+#btn-prev { right: 80px; }
+#btn-next { right: 28px; }
+
+/* Side dots */
+.nav-dots {
+  position: fixed; right: 16px; top: 50%;
+  transform: translateY(-50%);
+  display: flex; flex-direction: column; gap: 7px; z-index: 100;
+}
+.nd {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: #6b6f7a; cursor: pointer; border: none; padding: 0;
+  transition: all .2s;
+}
+.nd.on, .nd:hover { background: #f96c40; transform: scale(1.5); }
+
+/* Slide counter */
+#slide-counter {
+  position: fixed; bottom: 34px; left: 50%; transform: translateX(-50%);
+  font-family: 'Courier New', monospace; font-size: 11px; color: #6b6f7a;
+  letter-spacing: .1em; z-index: 100;
+}
+
+/* Checklist */
+.ck { display: flex; align-items: flex-start; gap: 10px; font-size: .88rem; line-height: 1.55; color: #e8e9ec; }
+.ck::before { content: '→'; color: #f96c40; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+.ck.no::before { content: '×'; color: #fa4362; }
+.ck.warn::before { content: '◦'; color: #fbbf24; }
+
+/* Segment row */
+.seg { display: flex; align-items: center; gap: 14px; padding: 12px 16px; border-bottom: 1px solid rgba(218,219,224,.06); }
+.seg:last-child { border-bottom: none; }
+.seg-n { width: 24px; height: 24px; border-radius: 50%; border: 1px solid rgba(249,108,64,.35); color: #f96c40; font-size: 10px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+
+/* Layer row */
+.lyr { display: flex; align-items: center; gap: 14px; padding: 10px 16px; border-bottom: 1px solid rgba(218,219,224,.06); }
+.lyr:last-child { border-bottom: none; }
+
+/* Competitor row */
+.cmp { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid rgba(218,219,224,.06); flex-wrap: wrap; }
+.cmp:last-child { border-bottom: none; }
+.cdot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+
+/* Quote */
+.qblock { border-left: 2px solid #f96c40; padding: 12px 20px; }
+.qblock p { font-style: italic; color: #e8e9ec; font-size: 1rem; line-height: 1.5; }
+
+/* Timeline */
+.tl { display: flex; gap: 0; }
+.tl-p { flex: 1; padding: 18px; border: 1px solid rgba(218,219,224,.08); border-right: none; background: var(--color-surf); }
+.tl-p:first-child { border-radius: 12px 0 0 12px; }
+.tl-p:last-child  { border-radius: 0 12px 12px 0; border-right: 1px solid rgba(218,219,224,.08); }
+.tl-p.hi { background: rgba(249,108,64,.05); border-color: rgba(249,108,64,.2); }
+
+/* Stat number */
+.stat-n { font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 900; line-height: 1; color: #f96c40; }
+
+/* Score row */
+.scr { display: flex; justify-content: space-between; font-size: .78rem; padding: 3px 0; }
+
+/* Step block */
+.stp { display: flex; gap: 12px; align-items: flex-start; padding: 14px 18px; background: var(--color-surf); border: 1px solid rgba(218,219,224,.08); border-radius: 10px; }
+.stp-n { width: 28px; height: 28px; border-radius: 50%; background: #f96c40; color: #1a1c22; font-weight: 900; font-size: .8rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) { html { font-size: 17px; } }
+@media (max-width: 768px) {
+  html { font-size: 15px; }
+  .slide { padding: 48px 24px !important; min-height: 100vh !important; height: auto !important; }
+  .slide.active { display: flex; }
+  .nav-dots { display: none; }
+  .sn { display: none !important; }
+  .nav-arrow { width: 38px; height: 38px; bottom: 14px; border-radius: 8px; font-size: 14px; }
+  #btn-prev { right: 60px; }
+  #btn-next { right: 14px; }
+  #slide-counter { bottom: 18px; font-size: 10px; }
+  .grid.grid-cols-3 { grid-template-columns: 1fr !important; gap: 10px !important; }
+  .grid.grid-cols-4 { grid-template-columns: repeat(2, 1fr) !important; }
+  .grid.grid-cols-2 { grid-template-columns: 1fr !important; gap: 12px !important; }
+  [class*="max-w-["] { max-width: 100% !important; }
+  .tl { flex-direction: column !important; }
+  .tl-p { border-right: 1px solid rgba(218,219,224,.08) !important; border-bottom: none; }
+  .tl-p:first-child { border-radius: 12px 12px 0 0 !important; }
+  .tl-p:last-child  { border-radius: 0 0 12px 12px !important; }
+  .seg { padding: 10px 12px; gap: 10px; }
+}
+@media (max-width: 480px) {
+  html { font-size: 14px; }
+  .slide { padding: 40px 16px !important; }
+  .grid.grid-cols-3, .grid.grid-cols-4, .grid.grid-cols-2 { grid-template-columns: 1fr !important; }
+}
+</style>
+</head>
+<body class="h-full font-sans">
+
+<!-- NAVIGATION -->
+<nav class="nav-dots" id="dots"></nav>
+<div id="slide-counter">01 · 10</div>
+<button class="nav-arrow" id="btn-prev" aria-label="Zurück">&#8592;</button>
+<button class="nav-arrow" id="btn-next" aria-label="Weiter">&#8594;</button>
+
+<!-- ════════════════════════════════════════
+     S01 — COVER
+════════════════════════════════════════ -->
+<section class="slide active" id="s01" style="background:radial-gradient(ellipse 50% 55% at 85% 15%, rgba(249,108,64,.06) 0%, transparent 70%);">
+  <div class="label">Strategiepräsentation · März 2026</div>
+  <h1 class="text-[clamp(2.8rem,6vw,5rem)] font-black leading-[1.02] text-center uppercase tracking-tight">
+    EDELMET<br><span style="color:var(--color-accent);">GmbH</span>
+  </h1>
+  <p class="mt-5 text-[1rem] text-center max-w-[560px]" style="color:#6b6f7a;">
+    Strategische Markteintrittsanalyse &amp; Kommunikationskonzept NRW/Deutschland
+  </p>
+  <div class="flex gap-8 mt-10 pt-6" style="border-top:1px solid rgba(218,219,224,.08); flex-wrap:wrap; justify-content:center;">
+    <div class="text-center">
+      <div class="font-mono text-[9px] tracking-[.14em] uppercase mb-1" style="color:#6b6f7a;">Auftraggeber</div>
+      <div class="text-[.82rem] font-semibold">Eduard Pfaffenrot · EDELMET GmbH</div>
+    </div>
+    <div class="text-center">
+      <div class="font-mono text-[9px] tracking-[.14em] uppercase mb-1" style="color:#6b6f7a;">Erstellt von</div>
+      <div class="text-[.82rem] font-semibold">2Penguins · Alexander Wirt</div>
+    </div>
+    <div class="text-center">
+      <div class="font-mono text-[9px] tracking-[.14em] uppercase mb-1" style="color:#6b6f7a;">Stand</div>
+      <div class="text-[.82rem] font-semibold">März 2026 · <span class="pill pill-warn">In Abstimmung</span></div>
+    </div>
+  </div>
+  <div class="sn">01 · 10</div>
+</section>
+
+<!-- ════════════════════════════════════════
+     S02 — AUSGANGSLAGE
+════════════════════════════════════════ -->
+<section class="slide" id="s02">
+  <div class="label">Ausgangslage</div>
+  <h2 class="text-[clamp(1.6rem,3vw,2.4rem)] font-bold text-center mb-8">
+    Vom Materialankäufer zum <span style="color:var(--color-accent);">zertifizierten B2B-Entsorger</span>
+  </h2>
+  <div class="grid grid-cols-2 gap-6 max-w-[880px] w-full">
+    <div class="card">
+      <div class="mb-3"><span class="pill pill-gray">Heute</span></div>
+      <div class="flex flex-col gap-2">
+        <div class="ck no">Website wirkt wie B2C-Ankaufshop</div>
+        <div class="ck no">Kein systematischer B2B-Vertrieb</div>
+        <div class="ck no">Kein Datenlösch-Zertifikat (DIN 66399)</div>
+        <div class="ck">Ankauf von Platinen und Elektronikschrott</div>
+        <div class="ck">Fokus auf margenträchtige Edelmetallfraktionen</div>
+        <div class="ck">8.500 m² Standort Hagen, eigener Fuhrpark</div>
+        <div class="ck">EfbV-Zertifikat vorhanden (bis 02/2027)</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="mb-3"><span class="pill pill-accent">Ziel · 12 Monate</span></div>
+      <div class="flex flex-col gap-2">
+        <div class="ck">50–80 aktive B2B-Stammkunden in NRW</div>
+        <div class="ck">Full-Service: Abholung + Datenlöschung + Nachweis</div>
+        <div class="ck">Klare B2B-Website mit Compliance-Fokus</div>
+        <div class="ck">DIN 66399 Zertifizierung abgeschlossen</div>
+        <div class="ck">BImSchG-Genehmigung läuft (~Sept. 2026)</div>
+        <div class="ck warn">Danach: zertifizierte Erstbehandlungsanlage</div>
+      </div>
+    </div>
+  </div>
+  <div class="qblock mt-6 max-w-[880px] w-full">
+    <p>„Wir spielen Darts: aber wir sollten Schach spielen."</p>
+    <div class="font-mono text-[.68rem] mt-2" style="color:#6b6f7a;">Eduard Pfaffenrot, Geschäftsführer · Meeting Februar 2026</div>
+  </div>
+  <div class="mt-3 max-w-[880px] w-full text-[.78rem] font-mono" style="color:#6b6f7a;">
+    Investitionsbedarf: <strong style="color:var(--color-text);">~350.000–400.000 €</strong> · Umsatzziel: <strong style="color:var(--color-text);">350.000–500.000 €</strong>
+  </div>
+  <div class="sn">02 · 10</div>
+</section>
+
+<!-- ════════════════════════════════════════
+     S03 — MARKTDATEN
+════════════════════════════════════════ -->
+<section class="slide" id="s03">
+  <div class="label">Marktpotenzial</div>
+  <h2 class="text-[clamp(1.6rem,3vw,2.4rem)] font-bold text-center mb-8">
+    Der Markt ist groß: und <span style="color:var(--color-accent);">wächst durch Regulierung</span>
+  </h2>
+  <div class="grid grid-cols-3 gap-5 max-w-[920px] w-full">
+    <div class="card text-center">
+      <div class="stat-n">906k t</div>
+      <div class="text-[.78rem] mt-2" style="color:#6b6f7a;">Elektroaltgeräte in Erstbehandlung (DE, 2023)</div>
+      <div class="font-mono text-[.62rem] mt-2" style="color:#6b6f7a;">Quelle: Destatis 2025</div>
+    </div>
+    <div class="card text-center">
+      <div class="stat-n">30,3 Mrd.</div>
+      <div class="text-[.78rem] mt-2" style="color:#6b6f7a;">USD E-Waste-Markt Europa (2025) · +5% CAGR bis 2030</div>
+      <div class="font-mono text-[.62rem] mt-2" style="color:#6b6f7a;">Quelle: Research 2025</div>
+    </div>
+    <div class="card text-center">
+      <div class="stat-n">25.000</div>
+      <div class="text-[.78rem] mt-2" style="color:#6b6f7a;">IKT-Unternehmen in NRW: Deutschlands größter IT-Markt</div>
+      <div class="font-mono text-[.62rem] mt-2" style="color:#6b6f7a;">Quelle: DOCX-Analyse</div>
+    </div>
+  </div>
+  <div class="grid grid-cols-2 gap-5 max-w-[920px] w-full mt-4">
+    <div class="card card-accent flex items-center gap-5 flex-wrap">
+      <div>
+        <div class="stat-n" style="font-size:1.6rem;">29,5%</div>
+        <div class="text-[.72rem] mt-1" style="color:#6b6f7a;">Sammelquote DE (Ziel: 65%)</div>
+      </div>
+      <div class="flex-1 min-w-[140px] text-[.82rem]" style="color:#6b6f7a;line-height:1.5;">
+        Über <strong style="color:var(--color-text);">1 Mio. t</strong> fließen jährlich nicht über offizielle Kanäle:
+        <strong style="color:var(--color-accent);">der formale B2B-Kanal ist unterversorgt.</strong>
+      </div>
+      <div>
+        <div class="stat-n" style="font-size:1.6rem;">2.000</div>
+        <div class="text-[.72rem] mt-1" style="color:#6b6f7a;">Rechenzentren DE (&gt;100 kW)</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="font-mono text-[9px] tracking-[.14em] uppercase mb-2" style="color:var(--color-accent);">Marktattraktivitäts-Scoring</div>
+      <div class="scr"><span>Marktgröße &amp; Wachstum</span><span style="color:var(--color-accent);font-weight:700;">8/10</span></div>
+      <div class="scr"><span>Wettbewerbsintensität</span><span style="color:var(--color-warn);font-weight:700;">5–6/10</span></div>
+      <div class="scr"><span>Regulatorisches Umfeld</span><span style="color:var(--color-warn);font-weight:700;">6–7/10</span></div>
+      <div class="scr"><span>Kundenzugänglichkeit</span><span style="color:var(--color-accent);font-weight:700;">7/10</span></div>
+      <div class="scr"><span>Infrastruktur-Bereitschaft</span><span style="color:var(--color-accent);font-weight:700;">8/10</span></div>
+      <div class="scr" style="border-top:1px solid rgba(218,219,224,.08);margin-top:4px;padding-top:6px;font-weight:800;font-size:.86rem;">
+        <span>Gesamtscore</span><span style="color:var(--color-accent);">7,0 / 10</span>
+      </div>
+    </div>
+  </div>
+  <div class="sn">03 · 10</div>
+</section>
+
+<!-- ════════════════════════════════════════
+     S04 — REGULATORIK
+════════════════════════════════════════ -->
+<section class="slide" id="s04">
+  <div class="label">Regulatorisches Umfeld</div>
+  <h2 class="text-[clamp(1.6rem,3vw,2.4rem)] font-bold text-center mb-8">
+    Drei Gesetze schaffen <span style="color:var(--color-accent);">Handlungsdruck bei Firmenkunden</span>
+  </h2>
+  <div class="grid grid-cols-3 gap-5 max-w-[960px] w-full">
+    <div class="card" style="border-top:2px solid var(--color-accent);">
+      <div class="text-[1.2rem] font-black mb-2" style="color:var(--color-accent);">NIS-2</div>
+      <div class="font-bold text-[.88rem] uppercase tracking-wide mb-2">Dokumentierte Datenvernichtung</div>
+      <p class="text-[.82rem]" style="color:#6b6f7a;">Seit Oktober 2024 Pflicht für kritische Infrastrukturen. Erzwingt nachweisbare IT-Disposal-Prozesse.</p>
+      <div class="mt-3 pt-3" style="border-top:1px solid rgba(218,219,224,.06);">
+        <div class="font-mono text-[.62rem]" style="color:#6b6f7a;">BETROFFENE BRANCHEN</div>
+        <div class="text-[.76rem] mt-1">Energie · Finanzen · Gesundheit · IT · Transport · Wasser</div>
+      </div>
+    </div>
+    <div class="card" style="border-top:2px solid var(--color-accent);">
+      <div class="text-[1.2rem] font-black mb-2" style="color:var(--color-accent);">DSGVO</div>
+      <div class="font-bold text-[.88rem] uppercase tracking-wide mb-2">Bußgelder bis 20 Mio. €</div>
+      <p class="text-[.82rem]" style="color:#6b6f7a;">Personenbezogene Daten auf Altgeräten sind Haftungsrisiko. Jeder IT-Leiter muss Löschnachweis vorlegen.</p>
+      <div class="mt-3 pt-3" style="border-top:1px solid rgba(218,219,224,.06);">
+        <div class="font-mono text-[.62rem]" style="color:#6b6f7a;">KONSEQUENZ</div>
+        <div class="text-[.76rem] mt-1">Kein Unternehmen kann Alt-Hardware ohne Zertifikat entsorgen</div>
+      </div>
+    </div>
+    <div class="card" style="border-top:2px solid var(--color-accent);">
+      <div class="text-[1.2rem] font-black mb-2" style="color:var(--color-accent);">CSRD</div>
+      <div class="font-bold text-[.88rem] uppercase tracking-wide mb-2">ESG-Reporting Pflicht</div>
+      <p class="text-[.82rem]" style="color:#6b6f7a;">Nachhaltigkeitsberichterstattung ab 2025 für &gt;250 Mitarbeiter. CO₂-Einsparungsnachweis aus Recycling gefordert.</p>
+      <div class="mt-3 pt-3" style="border-top:1px solid rgba(218,219,224,.06);">
+        <div class="font-mono text-[.62rem]" style="color:#6b6f7a;">CHANCE FÜR EDELMET</div>
+        <div class="text-[.76rem] mt-1">ESG-Zertifikat pro Auftrag als Differenzierungsmerkmal</div>
+      </div>
+    </div>
+  </div>
+  <div class="card card-accent mt-5 max-w-[960px] w-full">
+    <p class="text-[.86rem]"><strong style="color:var(--color-accent);">Fazit:</strong> Regulierung schafft <strong>Nachfrage, die nicht weggehen wird</strong>. B2B-Kunden suchen nicht nach „günstig", sie suchen nach „sicher, zertifiziert, nachweisbar".</p>
+  </div>
+  <div class="sn">04 · 10</div>
+</section>
+
+<!-- ════════════════════════════════════════
+     S05 — STÄRKEN
+════════════════════════════════════════ -->
+<section class="slide" id="s05">
+  <div class="label">Ausgangsbasis</div>
+  <h2 class="text-[clamp(1.6rem,3vw,2.4rem)] font-bold text-center mb-8">
+    Edelmet startet mit <span style="color:var(--color-accent);">seltener Kombination</span>
+  </h2>
+  <div class="grid grid-cols-2 gap-5 max-w-[880px] w-full">
+    <div class="card">
+      <div class="flex items-center gap-3 mb-3">
+        <i data-lucide="shield-check" style="width:1.4rem;height:1.4rem;color:var(--color-accent);"></i>
+        <div><div class="font-mono text-[9px] uppercase tracking-[.12em]" style="color:var(--color-accent);">Zertifizierung</div><div class="font-bold">EfbV-Zertifikat</div></div>
+        <span class="pill pill-accent ml-auto">Bestätigt</span>
+      </div>
+      <p class="text-[.82rem]" style="color:#6b6f7a;">§56 KrWG: die größte regulatorische Hürde. Öffnet sofort die Tür zu öffentlichen Ausschreibungen. Gültig bis 02/2027. BImSchG-Antrag läuft → Erstbehandlungsanlage ~Sept. 2026.</p>
+    </div>
+    <div class="card">
+      <div class="flex items-center gap-3 mb-3">
+        <i data-lucide="warehouse" style="width:1.4rem;height:1.4rem;color:var(--color-accent);"></i>
+        <div><div class="font-mono text-[9px] uppercase tracking-[.12em]" style="color:var(--color-accent);">Infrastruktur</div><div class="font-bold">8.500 m² Hagen</div></div>
+      </div>
+      <p class="text-[.82rem]" style="color:#6b6f7a;">Industriestandort im Herzen NRWs. Anlage zur Lagerung von Elektroaltgeräten zertifiziert. Strategisch ideal für NRW-weite Logistik.</p>
+    </div>
+    <div class="card">
+      <div class="flex items-center gap-3 mb-3">
+        <i data-lucide="truck" style="width:1.4rem;height:1.4rem;color:var(--color-accent);"></i>
+        <div><div class="font-mono text-[9px] uppercase tracking-[.12em]" style="color:var(--color-accent);">Logistik</div><div class="font-bold">Eigener Fuhrpark</div></div>
+      </div>
+      <p class="text-[.82rem]" style="color:#6b6f7a;">Kein Fremdlogistiker nötig. Direkte Kontrolle über Abholtermine, Lademenge und Dokumentation. Grundlage für Express-Service in NRW.</p>
+    </div>
+    <div class="card">
+      <div class="flex items-center gap-3 mb-3">
+        <i data-lucide="gem" style="width:1.4rem;height:1.4rem;color:var(--color-accent);"></i>
+        <div><div class="font-mono text-[9px] uppercase tracking-[.12em]" style="color:var(--color-accent);">Kompetenz</div><div class="font-bold">Edelmetall-Expertise</div></div>
+      </div>
+      <p class="text-[.82rem]" style="color:#6b6f7a;">500 gebrauchte Laptops bringen über Remarketing ca. 100 €/Stück (50.000 € gesamt), als Schrott nur ca. 1 €/kg. Edelmet maximiert den Materialwert.</p>
+    </div>
+  </div>
+  <p class="mt-5 text-[.8rem] font-mono text-center" style="color:#6b6f7a;">
+    EfbV + Fläche + Fuhrpark + Materialexpertise: <strong style="color:var(--color-text);">von keinem NRW-Wettbewerber vollständig replizierbar.</strong>
+  </p>
+  <div class="sn">05 · 10</div>
+</section>
+
+<!-- ════════════════════════════════════════
+     S06 — ZIELGRUPPEN
+════════════════════════════════════════ -->
+<section class="slide" id="s06" style="justify-content:flex-start; padding-top:48px;">
+  <div class="label" style="margin-bottom:6px;">Zielgruppen</div>
+  <h2 class="text-[clamp(1.4rem,2.6vw,2rem)] font-bold text-center mb-1">
+    6 Kernsegmente: <span style="color:var(--color-accent);">unterschiedliche Trigger, gleicher Bedarf</span>
+  </h2>
+  <p class="text-[.76rem] text-center mb-4" style="color:var(--color-muted);">Weitere Branchen in Analyse für Ausbaustufe 2</p>
+  <div class="card max-w-[900px] w-full" style="padding:0;overflow:hidden;">
+    <div class="seg" style="padding:8px 16px;"><div class="seg-n">1</div><div class="flex-1"><div class="font-bold text-[.82rem]">IT-Abteilungen Mittelstand (KMU)</div><div class="text-[.68rem]" style="color:#6b6f7a;">Windows-10-EOL · Hardware-Refresh · Büroumzug</div></div><span class="pill pill-red">Priorität 1</span></div>
+    <div class="seg" style="padding:8px 16px;"><div class="seg-n">2</div><div class="flex-1"><div class="font-bold text-[.82rem]">Rechenzentrumsbetreiber</div><div class="text-[.68rem]" style="color:#6b6f7a;">Server-Lifecycle · RZ-Boom NRW · ESG-Reporting</div></div><span class="pill pill-red">Priorität 1</span></div>
+    <div class="seg" style="padding:8px 16px;"><div class="seg-n">3</div><div class="flex-1"><div class="font-bold text-[.82rem]">Filialisten / Handelsketten</div><div class="text-[.68rem]" style="color:#6b6f7a;">IT-Rollout · Filialschließung · POS-Refresh</div></div><span class="pill pill-warn">Priorität 2</span></div>
+    <div class="seg" style="padding:8px 16px;"><div class="seg-n">4</div><div class="flex-1"><div class="font-bold text-[.82rem]">Kommunen / öffentliche Hand</div><div class="text-[.68rem]" style="color:#6b6f7a;">Ausschreibungen · DigitalPakt · EfbV-Pflicht</div></div><span class="pill pill-red">Priorität 1</span></div>
+    <div class="seg" style="padding:8px 16px;"><div class="seg-n">5</div><div class="flex-1"><div class="font-bold text-[.82rem]">Bildungseinrichtungen</div><div class="text-[.68rem]" style="color:#6b6f7a;">DigitalPakt-Welle · Schüler-DSGVO · Träger-Entscheidung</div></div><span class="pill pill-gray">ab Q4 2026</span></div>
+    <div class="seg" style="padding:8px 16px;"><div class="seg-n">6</div><div class="flex-1"><div class="font-bold text-[.82rem]">Versicherungen / Finanzdienstleister</div><div class="text-[.68rem]" style="color:#6b6f7a;">Filialreduzierung · BaFin · NIS-2-Pflicht</div></div><span class="pill pill-gray">ab Q4 2026</span></div>
+  </div>
+  <div class="card card-accent mt-3 max-w-[900px] w-full" style="padding:8px 14px;">
+    <p class="text-[.78rem]"><strong style="color:var(--color-accent);">Segmente 3, 5, 6</strong> werden aktuell von keinem NRW-Wettbewerber explizit adressiert — strategische Marktlücke. Segmente 5–6 starten wir bewusst erst nach erreichtem Erstbehandlungsanlagen-Status (~Q3/Q4 2026).</p>
+  </div>
+  <div class="mt-3 max-w-[900px] w-full" style="border:1px dashed rgba(251,191,36,.3); border-radius:10px; padding:10px 14px; background:rgba(251,191,36,.03);">
+    <div class="flex items-center gap-2 mb-2">
+      <span class="pill pill-warn">Radar</span>
+      <span class="text-[.68rem] font-bold" style="color:var(--color-warn);">Weitere potenzielle Segmente (Phase 2 — noch nicht mit Kunden validiert)</span>
+    </div>
+    <div class="flex gap-3 items-center">
+      <div style="padding:5px 10px; background:var(--color-surf); border-radius:8px; border:1px solid rgba(218,219,224,.06); flex:1;">
+        <div class="font-bold text-[.76rem]">Automotive-Zulieferer</div>
+        <div class="text-[.62rem]" style="color:#6b6f7a;">TISAX-Pflicht</div>
+      </div>
+      <div style="padding:5px 10px; background:var(--color-surf); border-radius:8px; border:1px solid rgba(218,219,224,.06); flex:1;">
+        <div class="font-bold text-[.76rem]">Energie / Versorger</div>
+        <div class="text-[.62rem]" style="color:#6b6f7a;">KRITIS</div>
+      </div>
+      <div style="padding:5px 10px; background:var(--color-surf); border-radius:8px; border:1px solid rgba(218,219,224,.06); flex:1;">
+        <div class="font-bold text-[.76rem]">Handel / Retouren</div>
+        <div class="text-[.62rem]" style="color:#6b6f7a;">Retouren-Vernichtung</div>
+      </div>
+    </div>
+    <div class="text-[.64rem] mt-1" style="color:var(--color-muted);">Gleiche Compliance-Logik, gleicher Bedarf — im nächsten Call mit Eduard validieren.</div>
+  </div>
+  <div class="sn">06 · 10</div>
+</section>
+
+<!-- ════════════════════════════════════════
+     S07 — WETTBEWERB
+════════════════════════════════════════ -->
+<section class="slide" id="s07">
+  <div class="label">Wettbewerbsanalyse</div>
+  <h2 class="text-[clamp(1.6rem,3vw,2.4rem)] font-bold text-center mb-8">
+    Die Lücke: <span style="color:var(--color-accent);">Compliance + Digital</span>: niemand hat beides
+  </h2>
+  <div class="grid grid-cols-2 gap-6 max-w-[960px] w-full" style="align-items:start;">
+    <div>
+      <div class="font-mono text-[9px] uppercase tracking-[.14em] mb-3" style="color:#6b6f7a;">Hauptwettbewerber NRW</div>
+      <div class="card" style="padding:0 16px;">
+        <div class="cmp"><div class="cdot" style="background:var(--color-red);"></div><div class="font-bold text-[.84rem]" style="width:90px;">ELOREC</div><div class="flex-1 text-[.74rem]" style="color:#6b6f7a;">48h Express, Mittelstand + Kommunen</div><span class="pill pill-red">Doppelgänger</span></div>
+        <div class="cmp"><div class="cdot" style="background:var(--color-red);"></div><div class="font-bold text-[.84rem]" style="width:90px;">ProCoReX</div><div class="flex-1 text-[.74rem]" style="color:#6b6f7a;">Multi-Domain SEO, „kostenlos"-Trigger</div><span class="pill pill-red">SEO-Bedrohung</span></div>
+        <div class="cmp"><div class="cdot" style="background:var(--color-red);"></div><div class="font-bold text-[.84rem]" style="width:90px;">Corebo</div><div class="flex-1 text-[.74rem]" style="color:#6b6f7a;">50+ Stadt-Seiten, NRW-SEO-Dominanz</div><span class="pill pill-warn">Digital stark</span></div>
+        <div class="cmp"><div class="cdot" style="background:var(--color-warn);"></div><div class="font-bold text-[.84rem]" style="width:90px;">Hamarec</div><div class="flex-1 text-[.74rem]" style="color:#6b6f7a;">ISO 9001/14001, Kundenportal</div><span class="pill pill-gray">Mittel</span></div>
+        <div class="cmp"><div class="cdot" style="background:var(--color-green);"></div><div class="font-bold text-[.84rem]" style="width:90px;">REFONDA</div><div class="flex-1 text-[.74rem]" style="color:#6b6f7a;">TÜV, Erstbehandlungsanlage, etabliert</div><span class="pill pill-gray">Benchmark</span></div>
+      </div>
+    </div>
+    <div>
+      <div class="font-mono text-[9px] uppercase tracking-[.14em] mb-3" style="color:#6b6f7a;">Edelmets Lücken</div>
+      <div class="flex flex-col gap-3">
+        <div class="card" style="padding:12px 16px;">
+          <div class="font-mono text-[9px] uppercase tracking-[.10em] mb-1" style="color:var(--color-accent);">Unbesetzte Nische</div>
+          <div class="font-bold text-[.86rem]">NIS-2 als Dienstleistung</div>
+          <div class="text-[.72rem]" style="color:#6b6f7a;">Nur ProCoReX erwähnt NIS-2, sonst niemand</div>
+        </div>
+        <div class="card" style="padding:12px 16px;">
+          <div class="font-mono text-[9px] uppercase tracking-[.10em] mb-1" style="color:var(--color-accent);">Unbesetzte Nische</div>
+          <div class="font-bold text-[.86rem]">Filialisten / Handelsketten</div>
+          <div class="text-[.72rem]" style="color:#6b6f7a;">Kein Wettbewerber adressiert explizit</div>
+        </div>
+        <div class="card" style="padding:12px 16px;">
+          <div class="font-mono text-[9px] uppercase tracking-[.10em] mb-1" style="color:var(--color-accent);">Positionierungslücke</div>
+          <div class="font-bold text-[.86rem]">Compliance + Digital + Regional</div>
+          <div class="text-[.72rem]" style="color:#6b6f7a;">Beide Stärken zusammen: kein Wettbewerber hat beides</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="sn">07 · 10</div>
+</section>
+
+<!-- ════════════════════════════════════════
+     S08 — SERVICESCHICHTEN
+════════════════════════════════════════ -->
+<section class="slide" id="s08">
+  <div class="label">Leistungsportfolio</div>
+  <h2 class="text-[clamp(1.6rem,3vw,2.4rem)] font-bold text-center mb-8">
+    7 Serviceschichten: <span style="color:var(--color-accent);">vom Abholen bis zum ESG-Report</span>
+  </h2>
+  <div class="grid grid-cols-2 gap-6 max-w-[960px] w-full" style="align-items:start;">
+    <div class="card" style="padding:0 14px;">
+      <div class="lyr"><div class="font-mono text-[10px] font-bold" style="color:var(--color-accent);width:14px;text-align:right;">1</div><div class="font-bold text-[.84rem] flex-1">Logistik + Containerservice</div><div class="text-[.72rem]" style="color:#6b6f7a;">GPS-Tracking · NRW-weit</div></div>
+      <div class="lyr"><div class="font-mono text-[10px] font-bold" style="color:var(--color-accent);width:14px;text-align:right;">2</div><div class="font-bold text-[.84rem] flex-1">Zertifizierte Datenlöschung</div><div class="text-[.72rem]" style="color:#6b6f7a;">DIN 66399 · BSI-konform</div><span class="pill pill-accent">40–60% Marge</span></div>
+      <div class="lyr"><div class="font-mono text-[10px] font-bold" style="color:var(--color-accent);width:14px;text-align:right;">3</div><div class="font-bold text-[.84rem] flex-1">Lückenlose Dokumentation</div><div class="text-[.72rem]" style="color:#6b6f7a;">Zertifikat pro SN · eANV</div></div>
+      <div class="lyr"><div class="font-mono text-[10px] font-bold" style="color:var(--color-accent);width:14px;text-align:right;">4</div><div class="font-bold text-[.84rem] flex-1">Datentrennung (Secure Stream)</div><div class="text-[.72rem]" style="color:#6b6f7a;">versiegelt · nachvollziehbar</div></div>
+      <div class="lyr"><div class="font-mono text-[10px] font-bold" style="color:var(--color-accent);width:14px;text-align:right;">5</div><div class="font-bold text-[.84rem] flex-1">Remarketing / Trade-In</div><div class="text-[.72rem]" style="color:#6b6f7a;">69% ReUse möglich</div><span class="pill pill-accent">Erlösstory</span></div>
+      <div class="lyr"><div class="font-mono text-[10px] font-bold" style="color:var(--color-accent);width:14px;text-align:right;">6</div><div class="font-bold text-[.84rem] flex-1">ESG-Reporting</div><div class="text-[.72rem]" style="color:#6b6f7a;">CO₂-Nachweis · CSRD-tauglich</div></div>
+      <div class="lyr"><div class="font-mono text-[10px] font-bold" style="color:var(--color-accent);width:14px;text-align:right;">7</div><div class="font-bold text-[.84rem] flex-1">Digitale Kundenplattform</div><div class="text-[.72rem]" style="color:#6b6f7a;">Echtzeit-Tracking · Self-Service</div><span class="pill pill-accent">Differenzierung</span></div>
+    </div>
+    <div class="flex flex-col gap-4">
+      <div class="card card-accent">
+        <div class="font-mono text-[9px] uppercase tracking-[.12em] mb-2" style="color:var(--color-accent);">Kernbotschaft</div>
+        <div class="font-bold text-[1rem] mb-2" style="line-height:1.3;">„Wir eliminieren Ihr Compliance-Risiko"</div>
+        <div class="text-[.76rem]" style="color:#6b6f7a;">Kein anderer NRW-Anbieter verbindet Schichten 2+3+6+7 vollständig.</div>
+      </div>
+      <div class="card" style="padding:14px 16px;">
+        <div class="font-mono text-[9px] uppercase tracking-[.10em] mb-2" style="color:#6b6f7a;">Sofort verfügbar</div>
+        <div class="ck" style="font-size:.78rem;">Schicht 1: Logistik</div>
+        <div class="ck" style="font-size:.78rem;">Schicht 5: Remarketing</div>
+        <div class="font-mono text-[9px] uppercase tracking-[.10em] mt-3 mb-2" style="color:#6b6f7a;">In Umsetzung</div>
+        <div class="ck warn" style="font-size:.78rem;">Schicht 2+3+4: DIN 66399</div>
+        <div class="ck warn" style="font-size:.78rem;">Schicht 6+7: Digital</div>
+      </div>
+    </div>
+  </div>
+  <div class="sn">08 · 10</div>
+</section>
+
+<!-- ════════════════════════════════════════
+     S09 — HYBRIDSTRATEGIE
+════════════════════════════════════════ -->
+<section class="slide" id="s09">
+  <div class="label">Einstiegsstrategie</div>
+  <h2 class="text-[clamp(1.6rem,3vw,2.4rem)] font-bold text-center mb-8">
+    Hybrid-Ansatz: <span style="color:var(--color-accent);">Eigenmarke + Partner + Digital-First</span>
+  </h2>
+  <div class="tl max-w-[920px] w-full">
+    <div class="tl-p">
+      <div class="font-mono text-[9px] tracking-[.14em] uppercase mb-2" style="color:var(--color-accent);">Phase 1 · Monat 0–3</div>
+      <div class="font-bold text-[.86rem] uppercase tracking-wide mb-2">Digital-Repositionierung</div>
+      <div class="text-[.74rem]" style="color:#6b6f7a;line-height:1.7;">Neue B2B-Website live<br>SEO NRW-Städte-Seiten<br>Google Ads B2B-fokussiert<br>EfbV-Zertifikat prominent<br>Erste 10 Referenzkunden</div>
+    </div>
+    <div class="tl-p hi">
+      <div class="font-mono text-[9px] tracking-[.14em] uppercase mb-2" style="color:var(--color-accent);">Phase 2 · Monat 3–9</div>
+      <div class="font-bold text-[.86rem] uppercase tracking-wide mb-2">Compliance-Aufbau</div>
+      <div class="text-[.74rem]" style="color:#6b6f7a;line-height:1.7;">DIN 66399 Zertifizierung<br>Partnerschaften ITAD<br>Ausschreibungen Kommunen<br>50–80 B2B-Kunden Ziel<br>BImSchG Antrag läuft</div>
+    </div>
+    <div class="tl-p">
+      <div class="font-mono text-[9px] tracking-[.14em] uppercase mb-2" style="color:var(--color-accent);">Phase 3 · ab Sept. 2026</div>
+      <div class="font-bold text-[.86rem] uppercase tracking-wide mb-2">Erstbehandlungsanlage</div>
+      <div class="text-[.74rem]" style="color:#6b6f7a;line-height:1.7;">BImSchG-Genehmigung<br>Erstbehandlungsanlage aktiv<br>EFB-Zertifikat erweitert<br>Segmente 5+6 aktiviert<br>Full-Service End-to-End</div>
+    </div>
+  </div>
+  <div class="grid grid-cols-3 gap-4 max-w-[920px] w-full mt-6">
+    <div class="stp">
+      <div class="stp-n">1</div>
+      <div><div class="font-bold text-[.84rem] uppercase tracking-wide mb-1">Website + SEO</div><div class="text-[.74rem]" style="color:#6b6f7a;">B2B-Sprache, Compliance-Fokus, NRW. <strong style="color:var(--color-text);">~40–60k €</strong></div></div>
+    </div>
+    <div class="stp">
+      <div class="stp-n">2</div>
+      <div><div class="font-bold text-[.84rem] uppercase tracking-wide mb-1">DIN 66399 + Equipment</div><div class="text-[.74rem]" style="color:#6b6f7a;">Datenlösch-Zertifizierung + Hardware. <strong style="color:var(--color-text);">~20–40k €</strong></div></div>
+    </div>
+    <div class="stp">
+      <div class="stp-n">3</div>
+      <div><div class="font-bold text-[.84rem] uppercase tracking-wide mb-1">B2B-Vertrieb</div><div class="text-[.74rem]" style="color:#6b6f7a;">Erfahrener Vertriebler Entsorgung. <strong style="color:var(--color-text);">~50–80k €/J</strong></div></div>
+    </div>
+  </div>
+  <div class="sn">09 · 10</div>
+</section>
+
+<!-- ════════════════════════════════════════
+     S10 — NEXT STEPS
+════════════════════════════════════════ -->
+<section class="slide" id="s10">
+  <div class="label">Nächste Schritte</div>
+  <h2 class="text-[clamp(1.6rem,3vw,2.4rem)] font-bold text-center mb-8">
+    Offene Fragen &amp; <span style="color:var(--color-accent);">Entscheidungen</span>
+  </h2>
+  <div class="grid grid-cols-2 gap-6 max-w-[920px] w-full" style="align-items:start;">
+    <div>
+      <div class="font-mono text-[9px] uppercase tracking-[.14em] mb-3" style="color:#6b6f7a;">Für diesen Call zu klären</div>
+      <div class="flex flex-col gap-3">
+        <div class="card" style="padding:12px 16px;">
+          <div class="font-mono text-[9px] uppercase tracking-[.10em] mb-1" style="color:var(--color-accent);">Frage 1</div>
+          <div class="font-bold text-[.86rem]">Zielgruppen-Priorisierung</div>
+          <div class="text-[.72rem]" style="color:#6b6f7a;">Nur IT-Mittelstand Phase 1, oder auch Kommunen von Anfang an?</div>
+        </div>
+        <div class="card" style="padding:12px 16px;">
+          <div class="font-mono text-[9px] uppercase tracking-[.10em] mb-1" style="color:var(--color-accent);">Frage 2</div>
+          <div class="font-bold text-[.86rem]">DIN 66399 Zeitplan</div>
+          <div class="text-[.72rem]" style="color:#6b6f7a;">Wann startet die Zertifizierung? Partner oder eigen?</div>
+        </div>
+        <div class="card" style="padding:12px 16px;">
+          <div class="font-mono text-[9px] uppercase tracking-[.10em] mb-1" style="color:var(--color-accent);">Frage 3</div>
+          <div class="font-bold text-[.86rem]">Partnerschaft REFONDA</div>
+          <div class="text-[.72rem]" style="color:#6b6f7a;">Als Backend für Erstbehandlung bis Sept. 2026, bestätigt?</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="font-mono text-[9px] uppercase tracking-[.14em] mb-3" style="color:#6b6f7a;">Sofortmaßnahmen</div>
+      <div class="flex flex-col gap-2">
+        <div class="ck">Website-Brief für neue B2B-Seite vorbereiten</div>
+        <div class="ck">DIN 66399 Zertifizierungsanbieter anfragen (2–4k €, 3–6 Monate)</div>
+        <div class="ck">Erste 5 Zielkunden definieren (IT-Leiter Mittelstand NRW)</div>
+        <div class="ck">Google Ads auf B2B-Keywords umstellen</div>
+        <div class="ck warn">Kundenliste aus Bitrix24 segmentieren: welche Branchen kommen schon?</div>
+      </div>
+      <div class="qblock mt-5">
+        <p class="text-[.88rem]">„Die kritische Erkenntnis: Edelmet muss kein Startup-Problem lösen, sondern ein Positionierungsproblem."</p>
+        <div class="font-mono text-[.68rem] mt-2" style="color:#6b6f7a;">DOCX-Analyse, Februar 2026</div>
+      </div>
+    </div>
+  </div>
+  <div class="sn">10 · 10</div>
+</section>
+
+<!-- ════════════════════════════════════════
+     SCRIPT
+════════════════════════════════════════ -->
+<script>
+(function(){
+  var slides = document.querySelectorAll('.slide');
+  var total = slides.length, cur = 0;
+  var dots = document.getElementById('dots');
+  var counter = document.getElementById('slide-counter');
+  var btnPrev = document.getElementById('btn-prev');
+  var btnNext = document.getElementById('btn-next');
+
+  slides.forEach(function(_,i){
+    var b = document.createElement('button');
+    b.className = 'nd';
+    b.setAttribute('aria-label', 'Slide ' + (i+1));
+    b.onclick = function(){ goto(i); };
+    dots.appendChild(b);
+  });
+  var dotEls = dots.querySelectorAll('.nd');
+
+  function goto(n){
+    n = Math.max(0, Math.min(total-1, n));
+    slides[cur].classList.remove('active');
+    dotEls[cur].classList.remove('on');
+    cur = n;
+    slides[cur].classList.add('active');
+    dotEls[cur].classList.add('on');
+    counter.textContent = String(cur+1).padStart(2,'0') + ' · ' + String(total).padStart(2,'0');
+    btnPrev.disabled = cur === 0;
+    btnNext.disabled = cur === total-1;
+  }
+
+  btnPrev.onclick = function(){ goto(cur-1); };
+  btnNext.onclick = function(){ goto(cur+1); };
+
+  document.addEventListener('keydown', function(e){
+    if(e.key==='ArrowRight'||e.key==='ArrowDown'||e.key===' '||e.key==='PageDown'){
+      e.preventDefault(); goto(cur+1);
+    }
+    if(e.key==='ArrowLeft'||e.key==='ArrowUp'||e.key==='PageUp'){
+      e.preventDefault(); goto(cur-1);
+    }
+    if(e.key==='Home'){ e.preventDefault(); goto(0); }
+    if(e.key==='End'){ e.preventDefault(); goto(total-1); }
+  });
+
+  var tx=0, ty=0;
+  document.addEventListener('touchstart', function(e){
+    tx=e.touches[0].clientX; ty=e.touches[0].clientY;
+  }, {passive:true});
+  document.addEventListener('touchend', function(e){
+    var dx=e.changedTouches[0].clientX-tx, dy=e.changedTouches[0].clientY-ty;
+    if(Math.abs(dx)>50 && Math.abs(dx)>Math.abs(dy)*1.5){
+      if(dx<0) goto(cur+1); else goto(cur-1);
+    }
+  }, {passive:true});
+
+  goto(0);
+})();
+</script>
+<script>lucide.createIcons({attrs:{'stroke-width':1.5}});</script>
+</body>
+</html>
