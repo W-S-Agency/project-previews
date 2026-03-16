@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kostenrechner — MEDILUX Berlin Preview</title>
+<style>
+:root {
+  --primary: #1A1A1A;
+  --blue:    #2B55C0;
+  --mid:     #4C7CDA;
+  --yellow:  #E8C830;
+  --bg:      #ECF3F7;
+  --white:   #FFFFFF;
+  --text:    #333333;
+  --gray:    #7A8A9E;
+  --line:    #D9E3EC;
+  --r8: 8px; --r12: 12px; --r16: 16px; --r30: 30px;
+  --ph-bg:  #FFF3CD;
+  --ph-bdr: #FFD93D;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  background:var(--bg);color:var(--text);line-height:1.6}
+.page{max-width:1200px;margin:0 auto;background:var(--white);min-height:100vh;
+  box-shadow:0 0 40px rgba(0,0,0,.08)}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.94);
+  backdrop-filter:blur(12px);border-bottom:1px solid var(--line);
+  padding:0 40px;height:52px;display:flex;align-items:center}
+.nav-logo{font-size:18px;font-weight:800;color:var(--blue);letter-spacing:2px;text-decoration:none}
+.nav-links{display:flex;align-items:center;gap:4px;margin-left:auto}
+.nav-links a{padding:5px 12px;border-radius:var(--r30);text-decoration:none;
+  font-size:12px;font-weight:500;color:var(--gray)}
+.nav-links a:hover{color:var(--blue)}
+.nav-links a.active{background:var(--blue);color:#fff}
+.nav-dot{width:4px;height:4px;background:var(--yellow);border-radius:50%}
+.nav-cta{background:var(--blue)!important;color:#fff!important;font-weight:600!important}
+/* DROPDOWN — native <details> toggle, no JS needed for open/close */
+details.nav-dd{position:relative;list-style:none}
+details.nav-dd > summary{padding:5px 12px;border-radius:var(--r30);
+  font-size:12px;font-weight:500;color:var(--gray);cursor:pointer;
+  list-style:none;user-select:none}
+details.nav-dd > summary::-webkit-details-marker{display:none}
+details.nav-dd > summary.active{background:var(--blue);color:#fff}
+details.nav-dd > summary:hover{color:var(--blue)}
+.nav-dd-menu{position:absolute;top:calc(100% + 4px);left:0;background:#fff;
+  border:1px solid var(--line);border-radius:var(--r12);padding:6px 0;
+  min-width:180px;box-shadow:0 4px 16px rgba(0,0,0,.12);z-index:200}
+.nav-dd-menu a{display:block;padding:8px 16px;font-size:12px;color:var(--text);
+  text-decoration:none;font-weight:500}
+.nav-dd-menu a:hover{background:var(--bg)}
+.nav-dd-menu a.dd-act{color:var(--blue);font-weight:700}
+
+/* META BAR */
+.meta-bar{background:var(--bg);border-left:4px solid var(--blue);
+  padding:12px 18px;margin:12px 40px;border-radius:var(--r12);
+  font-size:11px;line-height:1.8}
+.meta-bar strong{color:var(--blue)}
+.meta-kw{display:inline-block;background:var(--blue);color:#fff;
+  font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;margin-left:6px}
+.meta-url{font-family:monospace;font-size:10px;color:var(--gray);background:var(--bg);
+  padding:2px 6px;border-radius:4px;margin-left:4px}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,#1a1a2e 0%,#2a2a4e 50%,#1a2a3e 100%);
+  color:#fff;border-radius:0 0 var(--r16) var(--r16);
+  padding:72px 40px 48px;overflow:hidden}
+.hero h1{font-size:32px;line-height:1.1;font-weight:700;max-width:700px;margin-bottom:18px}
+.hero .sub{font-size:15px;opacity:.88;line-height:1.5;max-width:640px;margin-bottom:28px}
+.hero .btn{display:inline-flex;align-items:center;gap:10px;background:var(--mid);color:#fff;
+  padding:10px 24px;border-radius:var(--r30);font-weight:600;font-size:13px;
+  text-decoration:none;margin-right:12px}
+.hero .btn-out{background:transparent;border:1px solid rgba(255,255,255,.4)}
+.hero .ai-snippet{margin-top:28px;background:rgba(255,255,255,.1);border-radius:var(--r12);
+  padding:16px 20px;font-size:13px;line-height:1.7;opacity:.9;max-width:740px;border-left:3px solid var(--yellow)}
+.hero .ai-label{font-size:10px;font-weight:700;letter-spacing:1px;opacity:.7;margin-bottom:6px}
+
+/* SECTIONS */
+.sec{padding:32px 40px}
+.sec-alt{background:var(--bg)}
+.sec h2{font-size:24px;font-weight:700;color:var(--primary);margin-bottom:16px}
+.sec h3{font-size:17px;font-weight:700;margin:20px 0 8px;color:var(--primary)}
+.sec h4{font-size:14px;font-weight:700;margin:14px 0 6px;color:var(--primary)}
+.sec p{font-size:14px;color:var(--text);line-height:1.6;margin-bottom:10px;max-width:780px}
+.sec ul,.sec ol{padding-left:22px;margin-bottom:14px}
+.sec li{font-size:14px;margin-bottom:6px;line-height:1.5}
+
+/* TRUST STRIP */
+.trust-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:20px 0}
+.trust-item{background:linear-gradient(135deg,#EFF4F6,#DAEAF6);border-radius:var(--r16);
+  padding:20px;text-align:center}
+.trust-item .icon{font-size:28px;margin-bottom:8px}
+.trust-item .t{font-size:13px;font-weight:700;color:var(--primary)}
+.trust-item .s{font-size:11px;color:var(--gray);margin-top:4px}
+
+/* CARDS */
+.card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0}
+.card{background:linear-gradient(135deg,#EFF4F6,#DAEAF6);border-radius:var(--r16);
+  padding:24px 20px;display:flex;flex-direction:column}
+.card h3{font-size:17px;font-weight:700;color:var(--primary);margin:0 0 10px}
+.card p{font-size:13px;color:var(--text);line-height:1.5}
+.card .tag{font-size:11px;color:var(--blue);font-weight:600;margin-top:14px;
+  padding-top:12px;border-top:1px dashed var(--line)}
+.card .cta-lnk{color:var(--blue);font-weight:600;font-size:12px;
+  text-decoration:none;margin-top:10px;display:inline-block}
+
+/* STEPS */
+.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0}
+.step{padding:20px;border:1px solid var(--line);border-radius:var(--r16)}
+.step-n{display:flex;align-items:center;justify-content:center;
+  width:32px;height:32px;background:var(--blue);color:#fff;
+  border-radius:50%;font-size:14px;font-weight:700;margin-bottom:12px}
+.step h3{font-size:15px;margin:0 0 8px}
+.step p{font-size:13px;color:var(--text)}
+
+/* LOCATION */
+.loc-card{border:1px solid var(--line);border-radius:var(--r16);padding:24px;margin:14px 0}
+.loc-card h3{font-size:18px;color:var(--primary);margin-bottom:4px}
+.loc-card .addr{font-size:13px;color:var(--gray);margin-bottom:14px}
+.loc-card ul{padding-left:20px}
+.loc-card li{font-size:13px;margin-bottom:5px}
+.loc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:16px 0}
+
+/* PRICE TABLE */
+.price-table{width:100%;border-collapse:collapse;font-size:13px;margin:16px 0}
+.price-table th{background:var(--blue);color:#fff;padding:10px 14px;text-align:left;font-weight:600}
+.price-table td{padding:10px 14px;border-bottom:1px solid var(--line)}
+.price-table tr:nth-child(even) td{background:var(--bg)}
+.price-table .hl td{background:#e8f5e9;font-weight:600}
+
+/* FAQ */
+details.faq{border-bottom:1px solid var(--line)}
+details.faq summary{padding:14px 0;font-weight:700;font-size:14px;cursor:pointer;
+  list-style:none;display:flex;justify-content:space-between;align-items:center;color:var(--primary)}
+details.faq summary::-webkit-details-marker{display:none}
+details.faq summary::after{content:'+';display:flex;align-items:center;justify-content:center;
+  width:24px;height:24px;background:var(--bg);border-radius:50%;
+  font-size:14px;color:var(--blue);flex-shrink:0}
+details.faq[open] summary::after{content:'−';background:var(--blue);color:#fff}
+.faq-a{padding:0 0 14px;font-size:13px;color:var(--text);line-height:1.7}
+
+/* CTA BANNER */
+.cta-banner{background:var(--blue);color:#fff;padding:36px;
+  border-radius:var(--r16);margin:32px 40px;text-align:center}
+.cta-banner h2{font-size:22px;color:#fff;margin-bottom:12px}
+.cta-banner p{font-size:14px;opacity:.92;max-width:600px;margin:0 auto 20px;color:#fff}
+.cta-banner .btn{display:inline-flex;background:#fff;color:var(--blue);
+  padding:10px 24px;border-radius:var(--r30);font-weight:700;font-size:14px;
+  text-decoration:none;margin:0 6px}
+.cta-banner .btn-out{background:transparent;border:1px solid rgba(255,255,255,.5);color:#fff}
+
+/* CONTACT FORM */
+.form-wrap{background:var(--bg);border-radius:var(--r16);padding:28px;margin:20px 0}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.form-field label{display:block;font-size:11px;font-weight:600;color:var(--gray);margin-bottom:4px}
+.form-field input,.form-field textarea,.form-field select{
+  width:100%;padding:10px 14px;border:1px solid var(--line);border-radius:var(--r8);
+  font-size:13px;background:#fff;color:var(--text)}
+.form-field textarea{min-height:80px;resize:vertical}
+.form-submit{background:var(--blue);color:#fff;padding:12px 28px;
+  border-radius:var(--r30);border:none;font-weight:700;font-size:14px;cursor:pointer;margin-top:12px}
+
+/* PLACEHOLDER */
+.ph{background:var(--ph-bg);border:1px dashed var(--ph-bdr);
+  border-radius:6px;padding:8px 14px;font-size:12px;
+  font-style:italic;color:#856404;margin:8px 0;display:inline-block}
+
+/* FOOTER */
+.footer{background:linear-gradient(180deg,#ECF3F7 0%,#fff 100%);
+  border-radius:var(--r16) var(--r16) 0 0;padding:28px 40px 16px;
+  margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.f-label{font-size:11px;color:var(--gray);margin-bottom:2px}
+.f-val{font-size:15px;font-weight:500;color:var(--blue);margin-bottom:10px}
+.f-links{display:flex;gap:16px;margin-top:8px;flex-wrap:wrap}
+.f-links a{font-size:11px;color:var(--gray);text-decoration:none}
+.f-links a:hover{color:var(--blue)}
+.f-copy{grid-column:1/-1;font-size:10px;color:var(--gray);
+  border-top:1px dashed var(--line);padding-top:10px;margin-top:6px}
+
+/* BADGE */
+.ver-badge{position:fixed;bottom:14px;right:14px;background:var(--blue);
+  color:#fff;padding:5px 12px;border-radius:var(--r30);font-size:10px;font-weight:700;z-index:200}
+.src-badge{position:fixed;bottom:14px;left:14px;background:#6b7280;
+  color:#fff;padding:4px 10px;border-radius:var(--r30);font-size:9px;z-index:200}
+
+/* INDEX-SPECIFIC */
+.site-map{padding:32px 40px}
+.group-header{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2px;
+  color:var(--gray);margin:28px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+.page-card{border:1px solid var(--line);border-radius:var(--r12);
+  margin:10px 0;overflow:hidden;transition:box-shadow .15s}
+.page-card:hover{box-shadow:0 4px 16px rgba(0,0,0,.1)}
+.page-card-header{display:flex;align-items:center;gap:12px;padding:16px 20px;
+  background:#fff;text-decoration:none;color:var(--primary);cursor:pointer}
+.page-card-header:hover{background:var(--bg)}
+.page-card-title{font-weight:700;font-size:16px;flex:1}
+.ver-pill{font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px}
+.ph-count{font-size:11px;color:#856404;background:#FFF3CD;padding:3px 8px;
+  border-radius:20px;font-weight:600}
+.block-list{padding:12px 20px 16px;background:var(--bg);border-top:1px solid var(--line)}
+.block-row{display:flex;align-items:center;gap:10px;padding:5px 0;
+  border-bottom:1px solid rgba(0,0,0,.04)}
+.block-row:last-child{border-bottom:none}
+.block-type{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;
+  padding:2px 7px;border-radius:20px;min-width:54px;text-align:center}
+.bt-hero{background:#dbeafe;color:#1d4ed8}
+.bt-faq{background:#d1fae5;color:#065f46}
+.bt-cta{background:#fce7f3;color:#9d174d}
+.bt-trust{background:#fef3c7;color:#92400e}
+.bt-cards{background:#ede9fe;color:#5b21b6}
+.bt-steps{background:#e0f2fe;color:#0369a1}
+.bt-form{background:#fef9c3;color:#713f12}
+.bt-skip{background:#f3f4f6;color:#9ca3af}
+.bt-section{background:#f3f4f6;color:#374151}
+.block-name{font-size:13px;font-weight:500;color:var(--text);flex:1}
+.block-preview{font-size:11px;color:var(--gray);white-space:nowrap;
+  overflow:hidden;text-overflow:ellipsis;max-width:320px}
+
+/* INDEX STATS */
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;
+  margin:0 40px 24px;padding:0}
+.stat-box{background:#fff;border:1px solid var(--line);border-radius:var(--r12);
+  padding:16px 20px;text-align:center}
+.stat-n{font-size:32px;font-weight:800;color:var(--blue)}
+.stat-l{font-size:11px;color:var(--gray);margin-top:2px}
+
+/* RESPONSIVE */
+@media(max-width:800px){
+  .card-grid,.steps-grid,.loc-grid,.form-row,.trust-strip{grid-template-columns:1fr}
+  .nav{flex-wrap:wrap;height:auto;padding:8px 12px}
+  .hero{padding:40px 20px}.hero h1{font-size:24px}
+  .sec,.site-map,.stats-row{padding:24px 20px;margin:0 0 12px}
+  .footer{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a href="medilux_berlin_preview_index.html" class="nav-logo">MEDILUX</a>
+  <div class="nav-links">
+    <a href="medilux_berlin_preview_startseite.html">Startseite</a>
+    <span class="nav-dot"></span>
+    <a href="medilux_berlin_preview_leistungen.html">Leistungen</a>
+    <span class="nav-dot"></span>
+    <details class="nav-dd">
+      <summary class="nav-dd-btn">Für wen? &#9662;</summary>
+      <div class="nav-dd-menu">
+        <a href="medilux_berlin_preview_fuer_angehoerige.html">Für Angehörige</a>
+        <a href="medilux_berlin_preview_fuer_senioren.html">Für Senioren</a>
+        <a href="medilux_berlin_preview_fuer_berufsbetreuer.html">Für Berufsbetreuer</a>
+        <a href="medilux_berlin_preview_fuer_aerzte.html">Für Ärzte</a>
+        <a href="medilux_berlin_preview_fuer_sozialdienste.html">Für Sozialdienste</a>
+        <a href="medilux_berlin_preview_fuer_pflegeberater.html">Für Pflegeberater</a>
+        <a href="medilux_berlin_preview_fuer_sozialamter.html">Für Sozialämter</a>
+      </div>
+    </details>
+    <span class="nav-dot"></span>
+    <a href="medilux_berlin_preview_standorte.html">Standorte</a>
+    <span class="nav-dot"></span>
+    <a href="medilux_berlin_preview_ueber_uns.html">Über uns</a>
+    <span class="nav-dot"></span>
+    <a href="medilux_berlin_preview_karriere.html">Karriere</a>
+    <span class="nav-dot"></span>
+    <a href="medilux_berlin_preview_kontakt.html">Kontakt</a>
+    <a href="medilux_berlin_preview_kontakt.html" class="nav-cta">Beratung →</a>
+  </div>
+</nav>
+<div class="page">
+<div class="meta-bar">
+  <strong>KOSTENRECHNER v0.1</strong> | Status: Draft
+  <br><span style="color:#856404;font-weight:600">&#9888; 3 Placeholders auf dieser Seite</span>
+</div>
+<div class="sec sec-alt">
+<div class="ai-snippet" style="background:var(--bg);border-radius:var(--r12);padding:20px 24px;border-left:4px solid var(--yellow);max-width:none">
+  <div class="ai-label" style="color:var(--gray)">AI-SNIPPET / MARQUEE — für Google AI Overviews (50–80 Wörter)</div>
+  <p style="margin:8px 0 0;font-size:14px;line-height:1.7">Der MEDILUX Berlin Pflegekostenrechner zeigt Ihnen in wenigen Sekunden, was ein Platz in unserer Pflege-WG monatlich kostet. Wählen Sie einfach Ihren Pflegegrad — wir berechnen den Gesamtpreis inklusive Unterkunft, Verpflegung und Investitionskosten. Bei noch nicht beantragtm Pflegegrad erhalten Sie ebenfalls eine direkte Übersicht. Jetzt kostenlos berechnen.</p>
+</div>
+</div>
+<section class="hero">
+  <h1>Intro-Text:</h1>
+  <p class="sub">Berechnen Sie jetzt Ihre individuellen Pflegekosten — in 10 Sekunden.</p>
+</section>
+<div class="sec">
+<h2>Der Rechner</h2>
+<p><strong>Widget-Titel:</strong> Ihren Pflegepreis berechnen</p>
+<p><strong>Schritt 1 — Pflegegrad wählen:</strong></p>
+<table class="price-table"><thead><tr><th>Option</th><th>Auswahl</th></tr></thead><tbody><tr><td>○</td><td>Kein Pflegegrad</td></tr><tr><td>○</td><td>Pflegegrad 1</td></tr><tr><td>○</td><td>Pflegegrad 2</td></tr><tr><td>○</td><td>Pflegegrad 3</td></tr><tr><td>○</td><td>Pflegegrad 4</td></tr><tr><td>○</td><td>Pflegegrad 5</td></tr></tbody></table>
+<p><strong>Bei Auswahl "Kein Pflegegrad" → Zusatzfrage einblenden:</strong></p>
+<p><strong>Ergebnis-Anzeige (Beispiel PG 3):</strong></p>
+<p>Ihr monatlicher Pflegepreis:</p>
+<p>═══════════════════════════</p>
+<p>Gesamtkosten:     3.400 €/Monat</p>
+<p>(inkl. Unterkunft, Verpflegung, Investitionskosten)</p>
+<p>[PLACEHOLDER: Eigenanteil-Berechnung nach KK-Abrechnung — Kirill bestätigen]</p>
+<p>[Button: Jetzt unverbindlich anfragen →]</p>
+</div>
+<div class="sec sec-alt">
+<h2>Vollständige Preisübersicht</h2>
+<h4>Interne Berechnungslogik (nicht öffentlich sichtbar)</h4>
+<p><strong>Formel:</strong> <code>Zimmerpreis(PG, Größe) = Basispreis_PG2(Größe) + Zuschlag(PG)</code></p>
+<table class="price-table"><thead><tr><th>Pflegegrad</th><th>Zuschlag vs. PG2</th><th>klein</th><th>mittel</th><th>groß</th></tr></thead><tbody><tr><td>Kein PG</td><td>PG1 + 100 €</td><td>5.050 €</td><td>5.150 €</td><td>5.450 €</td></tr><tr><td>PG 1</td><td>+ 1.500 €</td><td>4.950 €</td><td>5.050 €</td><td>5.350 €</td></tr><tr><td><strong>PG 2 (Basis)</strong></td><td>± 0 €</td><td><strong>3.450 €</strong></td><td><strong>3.550 €</strong></td><td><strong>3.850 €</strong></td></tr><tr><td>PG 3</td><td>− 50 €</td><td>3.400 €</td><td>3.500 €</td><td>3.800 €</td></tr><tr><td>PG 4</td><td>− 100 €</td><td>3.350 €</td><td>3.450 €</td><td>3.750 €</td></tr><tr><td>PG 5</td><td>− 150 €</td><td>3.300 €</td><td>3.400 €</td><td>3.700 €</td></tr></tbody></table>
+<p><strong>Quelle:</strong> E-Mail Kirill Litvin → 2Penguins, 15.07.2025 (Bitrix24 Aktivität #30871)</p>
+<p><strong>Status:</strong> ✅ Von Kirill bestätigt</p>
+</div>
+<div class="sec sec-alt">
+<h2>Was ist im Preis enthalten?</h2>
+<p><strong>Headline:</strong> Das ist im Monatspreis enthalten</p>
+<table class="price-table"><thead><tr><th>Leistung</th><th>Enthalten</th></tr></thead><tbody><tr><td>Unterkunft (Einzelzimmer)</td><td>✅</td></tr><tr><td>Verpflegung (3 Mahlzeiten)</td><td>✅</td></tr><tr><td>Investitionskosten</td><td>✅</td></tr><tr><td>24-Stunden-Betreuung</td><td>✅</td></tr><tr><td>Grundpflege (Körperpflege, Mobilität)</td><td>✅</td></tr><tr><td>Behandlungspflege (SGB V)</td><td>Über Pflegekasse</td></tr><tr><td>Medikamente</td><td>Individuell</td></tr></tbody></table>
+</div>
+<div class="sec">
+<h2>[PLACEHOLDER: Eigenanteil nach Pflegekasse]</h2>
+<p><strong>Platzhalter-Text (bis Bestätigung):</strong></p>
+</div>
+<div class="sec">
+<h2>FAQ</h2>
+<details class="faq" open>
+  <summary>F: Was ist im Monatspreis enthalten?</summary>
+  <div class="faq-a">A: Der Preis beinhaltet Unterkunft, Verpflegung und Investitionskosten. Die pflegerischen Leistungen werden über Ihre Pflegekasse abgerechnet.</div>
+</details>
+<details class="faq">
+  <summary>F: Was passiert, wenn ich noch keinen Pflegegrad habe?</summary>
+  <div class="faq-a">A: Kein Problem — wir unterstützen Sie bei der Antragstellung. Geben Sie im Rechner „Kein Pflegegrad" an und wählen Sie, ob der Antrag bereits gestellt wurde.</div>
+</details>
+<details class="faq">
+  <summary>F: Kann ich die Kosten probeweise berechnen lassen?</summary>
+  <div class="faq-a">A: Ja, der Rechner ist kostenlos und unverbindlich nutzbar.</div>
+</details>
+<details class="faq">
+  <summary>F: Gibt es Zusatzkosten?</summary>
+  <div class="faq-a">A: [PLACEHOLDER — Kirill bestätigen: Gibt es gesondert abgerechnete Zusatzleistungen?]</div>
+</details>
+<details class="faq">
+  <summary>F: Wie beantrage ich einen Pflegegrad?</summary>
+  <div class="faq-a">A: Den Antrag stellen Sie beim Medizinischen Dienst (MD) oder bei Ihrer Pflegekasse. Gerne beraten wir Sie persönlich.</div>
+</details>
+</div>
+<div class="cta-banner" id="cta">
+  <h2>CTA</h2>
+  <div>
+    <a href="tel:+491738334531" class="btn">+49 173 8334531 anrufen</a>
+    <a href="#" class="btn btn-out">Kontaktformular</a>
+  </div>
+</div>
+<div class="sec">
+<h2>⚠️ OFFENE FRAGEN — für Kirill-Bestätigung</h2>
+<table class="price-table"><thead><tr><th>#</th><th>Frage</th><th>Kontext</th></tr></thead><tbody><tr><td>1</td><td>Welcher Zimmerpreis wird angezeigt (klein/mittel/groß)?</td><td>Nutzer sieht keine Zimmergröße, aber intern gibt es 3 Preise</td></tr><tr><td>2</td><td>Soll Eigenanteil nach KK berechnet werden?</td><td>JES: "ähnlich Magdeburger Webseite" — Eigenanteil zeigen</td></tr><tr><td>3</td><td>Preise für Residenz Heerstraße?</td><td>Bisher nur Villa Civitas-Preise bestätigt</td></tr><tr><td>4</td><td>Zusatzleistungen separat abgerechnet?</td><td>Z.B. Friseur, Ausflüge, Sonderbetreuung</td></tr><tr><td>5</td><td>Formidable Forms oder anderes Plugin?</td><td>Technische Umsetzung (aus MainDoc.md: Formidable Forms geplant)</td></tr></tbody></table>
+<p><strong>Ende KOSTENRECHNER_v01.md — Status: Entwurf, wartet auf Kirill-Freigabe</strong></p>
+</div>
+
+<footer class="footer">
+  <div>
+    <div class="f-label">Telefon</div>
+    <div class="f-val">+49 173 8334531</div>
+    <div class="f-label">E-Mail</div>
+    <div class="f-val">medilux@live.de</div>
+  </div>
+  <div>
+    <div class="f-label">Standorte</div>
+    <div style="font-size:12px;color:var(--text);line-height:1.8">
+      Villa Civitas &mdash; Lindenthaler Allee 20, 14163 Berlin-Zehlendorf<br>
+      Residenz Heerstra&szlig;e &mdash; G&auml;rtnereiring 56, 13593 Berlin-Spandau
+    </div>
+    <div class="f-links">
+      <a href="medilux_berlin_preview_kosten.html">Kosten &amp; Finanzierung</a>
+      <a href="#">Mediatek</a>
+      <a href="#">Impressum</a>
+      <a href="#">Datenschutz</a>
+    </div>
+  </div>
+  <div class="f-copy">&copy; 2026 MEDILUX GmbH &mdash; Content Preview v0.1 &middot; Nur zur internen Pr&uuml;fung &middot; 2p-preview skill</div>
+</footer>
+</div>
+<div class="ver-badge">v0.1</div>
+<div class="src-badge">2p-preview &middot; 16.03.2026</div>
+<script>
+  /* Close <details> dropdown when clicking outside */
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('details.nav-dd')) {
+      document.querySelectorAll('details.nav-dd[open]').forEach(function(d) {
+        d.removeAttribute('open');
+      });
+    }
+  });
+</script>
+</body>
+</html>

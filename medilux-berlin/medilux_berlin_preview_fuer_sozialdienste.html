@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Für Sozialdienste — MEDILUX Berlin Preview</title>
+<style>
+:root {
+  --primary: #1A1A1A;
+  --blue:    #2B55C0;
+  --mid:     #4C7CDA;
+  --yellow:  #E8C830;
+  --bg:      #ECF3F7;
+  --white:   #FFFFFF;
+  --text:    #333333;
+  --gray:    #7A8A9E;
+  --line:    #D9E3EC;
+  --r8: 8px; --r12: 12px; --r16: 16px; --r30: 30px;
+  --ph-bg:  #FFF3CD;
+  --ph-bdr: #FFD93D;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  background:var(--bg);color:var(--text);line-height:1.6}
+.page{max-width:1200px;margin:0 auto;background:var(--white);min-height:100vh;
+  box-shadow:0 0 40px rgba(0,0,0,.08)}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.94);
+  backdrop-filter:blur(12px);border-bottom:1px solid var(--line);
+  padding:0 40px;height:52px;display:flex;align-items:center}
+.nav-logo{font-size:18px;font-weight:800;color:var(--blue);letter-spacing:2px;text-decoration:none}
+.nav-links{display:flex;align-items:center;gap:4px;margin-left:auto}
+.nav-links a{padding:5px 12px;border-radius:var(--r30);text-decoration:none;
+  font-size:12px;font-weight:500;color:var(--gray)}
+.nav-links a:hover{color:var(--blue)}
+.nav-links a.active{background:var(--blue);color:#fff}
+.nav-dot{width:4px;height:4px;background:var(--yellow);border-radius:50%}
+.nav-cta{background:var(--blue)!important;color:#fff!important;font-weight:600!important}
+/* DROPDOWN — native <details> toggle, no JS needed for open/close */
+details.nav-dd{position:relative;list-style:none}
+details.nav-dd > summary{padding:5px 12px;border-radius:var(--r30);
+  font-size:12px;font-weight:500;color:var(--gray);cursor:pointer;
+  list-style:none;user-select:none}
+details.nav-dd > summary::-webkit-details-marker{display:none}
+details.nav-dd > summary.active{background:var(--blue);color:#fff}
+details.nav-dd > summary:hover{color:var(--blue)}
+.nav-dd-menu{position:absolute;top:calc(100% + 4px);left:0;background:#fff;
+  border:1px solid var(--line);border-radius:var(--r12);padding:6px 0;
+  min-width:180px;box-shadow:0 4px 16px rgba(0,0,0,.12);z-index:200}
+.nav-dd-menu a{display:block;padding:8px 16px;font-size:12px;color:var(--text);
+  text-decoration:none;font-weight:500}
+.nav-dd-menu a:hover{background:var(--bg)}
+.nav-dd-menu a.dd-act{color:var(--blue);font-weight:700}
+
+/* META BAR */
+.meta-bar{background:var(--bg);border-left:4px solid var(--blue);
+  padding:12px 18px;margin:12px 40px;border-radius:var(--r12);
+  font-size:11px;line-height:1.8}
+.meta-bar strong{color:var(--blue)}
+.meta-kw{display:inline-block;background:var(--blue);color:#fff;
+  font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;margin-left:6px}
+.meta-url{font-family:monospace;font-size:10px;color:var(--gray);background:var(--bg);
+  padding:2px 6px;border-radius:4px;margin-left:4px}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,#1a1a2e 0%,#2a2a4e 50%,#1a2a3e 100%);
+  color:#fff;border-radius:0 0 var(--r16) var(--r16);
+  padding:72px 40px 48px;overflow:hidden}
+.hero h1{font-size:32px;line-height:1.1;font-weight:700;max-width:700px;margin-bottom:18px}
+.hero .sub{font-size:15px;opacity:.88;line-height:1.5;max-width:640px;margin-bottom:28px}
+.hero .btn{display:inline-flex;align-items:center;gap:10px;background:var(--mid);color:#fff;
+  padding:10px 24px;border-radius:var(--r30);font-weight:600;font-size:13px;
+  text-decoration:none;margin-right:12px}
+.hero .btn-out{background:transparent;border:1px solid rgba(255,255,255,.4)}
+.hero .ai-snippet{margin-top:28px;background:rgba(255,255,255,.1);border-radius:var(--r12);
+  padding:16px 20px;font-size:13px;line-height:1.7;opacity:.9;max-width:740px;border-left:3px solid var(--yellow)}
+.hero .ai-label{font-size:10px;font-weight:700;letter-spacing:1px;opacity:.7;margin-bottom:6px}
+
+/* SECTIONS */
+.sec{padding:32px 40px}
+.sec-alt{background:var(--bg)}
+.sec h2{font-size:24px;font-weight:700;color:var(--primary);margin-bottom:16px}
+.sec h3{font-size:17px;font-weight:700;margin:20px 0 8px;color:var(--primary)}
+.sec h4{font-size:14px;font-weight:700;margin:14px 0 6px;color:var(--primary)}
+.sec p{font-size:14px;color:var(--text);line-height:1.6;margin-bottom:10px;max-width:780px}
+.sec ul,.sec ol{padding-left:22px;margin-bottom:14px}
+.sec li{font-size:14px;margin-bottom:6px;line-height:1.5}
+
+/* TRUST STRIP */
+.trust-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:20px 0}
+.trust-item{background:linear-gradient(135deg,#EFF4F6,#DAEAF6);border-radius:var(--r16);
+  padding:20px;text-align:center}
+.trust-item .icon{font-size:28px;margin-bottom:8px}
+.trust-item .t{font-size:13px;font-weight:700;color:var(--primary)}
+.trust-item .s{font-size:11px;color:var(--gray);margin-top:4px}
+
+/* CARDS */
+.card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0}
+.card{background:linear-gradient(135deg,#EFF4F6,#DAEAF6);border-radius:var(--r16);
+  padding:24px 20px;display:flex;flex-direction:column}
+.card h3{font-size:17px;font-weight:700;color:var(--primary);margin:0 0 10px}
+.card p{font-size:13px;color:var(--text);line-height:1.5}
+.card .tag{font-size:11px;color:var(--blue);font-weight:600;margin-top:14px;
+  padding-top:12px;border-top:1px dashed var(--line)}
+.card .cta-lnk{color:var(--blue);font-weight:600;font-size:12px;
+  text-decoration:none;margin-top:10px;display:inline-block}
+
+/* STEPS */
+.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0}
+.step{padding:20px;border:1px solid var(--line);border-radius:var(--r16)}
+.step-n{display:flex;align-items:center;justify-content:center;
+  width:32px;height:32px;background:var(--blue);color:#fff;
+  border-radius:50%;font-size:14px;font-weight:700;margin-bottom:12px}
+.step h3{font-size:15px;margin:0 0 8px}
+.step p{font-size:13px;color:var(--text)}
+
+/* LOCATION */
+.loc-card{border:1px solid var(--line);border-radius:var(--r16);padding:24px;margin:14px 0}
+.loc-card h3{font-size:18px;color:var(--primary);margin-bottom:4px}
+.loc-card .addr{font-size:13px;color:var(--gray);margin-bottom:14px}
+.loc-card ul{padding-left:20px}
+.loc-card li{font-size:13px;margin-bottom:5px}
+.loc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:16px 0}
+
+/* PRICE TABLE */
+.price-table{width:100%;border-collapse:collapse;font-size:13px;margin:16px 0}
+.price-table th{background:var(--blue);color:#fff;padding:10px 14px;text-align:left;font-weight:600}
+.price-table td{padding:10px 14px;border-bottom:1px solid var(--line)}
+.price-table tr:nth-child(even) td{background:var(--bg)}
+.price-table .hl td{background:#e8f5e9;font-weight:600}
+
+/* FAQ */
+details.faq{border-bottom:1px solid var(--line)}
+details.faq summary{padding:14px 0;font-weight:700;font-size:14px;cursor:pointer;
+  list-style:none;display:flex;justify-content:space-between;align-items:center;color:var(--primary)}
+details.faq summary::-webkit-details-marker{display:none}
+details.faq summary::after{content:'+';display:flex;align-items:center;justify-content:center;
+  width:24px;height:24px;background:var(--bg);border-radius:50%;
+  font-size:14px;color:var(--blue);flex-shrink:0}
+details.faq[open] summary::after{content:'−';background:var(--blue);color:#fff}
+.faq-a{padding:0 0 14px;font-size:13px;color:var(--text);line-height:1.7}
+
+/* CTA BANNER */
+.cta-banner{background:var(--blue);color:#fff;padding:36px;
+  border-radius:var(--r16);margin:32px 40px;text-align:center}
+.cta-banner h2{font-size:22px;color:#fff;margin-bottom:12px}
+.cta-banner p{font-size:14px;opacity:.92;max-width:600px;margin:0 auto 20px;color:#fff}
+.cta-banner .btn{display:inline-flex;background:#fff;color:var(--blue);
+  padding:10px 24px;border-radius:var(--r30);font-weight:700;font-size:14px;
+  text-decoration:none;margin:0 6px}
+.cta-banner .btn-out{background:transparent;border:1px solid rgba(255,255,255,.5);color:#fff}
+
+/* CONTACT FORM */
+.form-wrap{background:var(--bg);border-radius:var(--r16);padding:28px;margin:20px 0}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.form-field label{display:block;font-size:11px;font-weight:600;color:var(--gray);margin-bottom:4px}
+.form-field input,.form-field textarea,.form-field select{
+  width:100%;padding:10px 14px;border:1px solid var(--line);border-radius:var(--r8);
+  font-size:13px;background:#fff;color:var(--text)}
+.form-field textarea{min-height:80px;resize:vertical}
+.form-submit{background:var(--blue);color:#fff;padding:12px 28px;
+  border-radius:var(--r30);border:none;font-weight:700;font-size:14px;cursor:pointer;margin-top:12px}
+
+/* PLACEHOLDER */
+.ph{background:var(--ph-bg);border:1px dashed var(--ph-bdr);
+  border-radius:6px;padding:8px 14px;font-size:12px;
+  font-style:italic;color:#856404;margin:8px 0;display:inline-block}
+
+/* FOOTER */
+.footer{background:linear-gradient(180deg,#ECF3F7 0%,#fff 100%);
+  border-radius:var(--r16) var(--r16) 0 0;padding:28px 40px 16px;
+  margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.f-label{font-size:11px;color:var(--gray);margin-bottom:2px}
+.f-val{font-size:15px;font-weight:500;color:var(--blue);margin-bottom:10px}
+.f-links{display:flex;gap:16px;margin-top:8px;flex-wrap:wrap}
+.f-links a{font-size:11px;color:var(--gray);text-decoration:none}
+.f-links a:hover{color:var(--blue)}
+.f-copy{grid-column:1/-1;font-size:10px;color:var(--gray);
+  border-top:1px dashed var(--line);padding-top:10px;margin-top:6px}
+
+/* BADGE */
+.ver-badge{position:fixed;bottom:14px;right:14px;background:var(--blue);
+  color:#fff;padding:5px 12px;border-radius:var(--r30);font-size:10px;font-weight:700;z-index:200}
+.src-badge{position:fixed;bottom:14px;left:14px;background:#6b7280;
+  color:#fff;padding:4px 10px;border-radius:var(--r30);font-size:9px;z-index:200}
+
+/* INDEX-SPECIFIC */
+.site-map{padding:32px 40px}
+.group-header{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2px;
+  color:var(--gray);margin:28px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+.page-card{border:1px solid var(--line);border-radius:var(--r12);
+  margin:10px 0;overflow:hidden;transition:box-shadow .15s}
+.page-card:hover{box-shadow:0 4px 16px rgba(0,0,0,.1)}
+.page-card-header{display:flex;align-items:center;gap:12px;padding:16px 20px;
+  background:#fff;text-decoration:none;color:var(--primary);cursor:pointer}
+.page-card-header:hover{background:var(--bg)}
+.page-card-title{font-weight:700;font-size:16px;flex:1}
+.ver-pill{font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px}
+.ph-count{font-size:11px;color:#856404;background:#FFF3CD;padding:3px 8px;
+  border-radius:20px;font-weight:600}
+.block-list{padding:12px 20px 16px;background:var(--bg);border-top:1px solid var(--line)}
+.block-row{display:flex;align-items:center;gap:10px;padding:5px 0;
+  border-bottom:1px solid rgba(0,0,0,.04)}
+.block-row:last-child{border-bottom:none}
+.block-type{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;
+  padding:2px 7px;border-radius:20px;min-width:54px;text-align:center}
+.bt-hero{background:#dbeafe;color:#1d4ed8}
+.bt-faq{background:#d1fae5;color:#065f46}
+.bt-cta{background:#fce7f3;color:#9d174d}
+.bt-trust{background:#fef3c7;color:#92400e}
+.bt-cards{background:#ede9fe;color:#5b21b6}
+.bt-steps{background:#e0f2fe;color:#0369a1}
+.bt-form{background:#fef9c3;color:#713f12}
+.bt-skip{background:#f3f4f6;color:#9ca3af}
+.bt-section{background:#f3f4f6;color:#374151}
+.block-name{font-size:13px;font-weight:500;color:var(--text);flex:1}
+.block-preview{font-size:11px;color:var(--gray);white-space:nowrap;
+  overflow:hidden;text-overflow:ellipsis;max-width:320px}
+
+/* INDEX STATS */
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;
+  margin:0 40px 24px;padding:0}
+.stat-box{background:#fff;border:1px solid var(--line);border-radius:var(--r12);
+  padding:16px 20px;text-align:center}
+.stat-n{font-size:32px;font-weight:800;color:var(--blue)}
+.stat-l{font-size:11px;color:var(--gray);margin-top:2px}
+
+/* RESPONSIVE */
+@media(max-width:800px){
+  .card-grid,.steps-grid,.loc-grid,.form-row,.trust-strip{grid-template-columns:1fr}
+  .nav{flex-wrap:wrap;height:auto;padding:8px 12px}
+  .hero{padding:40px 20px}.hero h1{font-size:24px}
+  .sec,.site-map,.stats-row{padding:24px 20px;margin:0 0 12px}
+  .footer{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a href="medilux_berlin_preview_index.html" class="nav-logo">MEDILUX</a>
+  <div class="nav-links">
+    <a href="medilux_berlin_preview_startseite.html">Startseite</a>
+    <span class="nav-dot"></span>
+    <a href="medilux_berlin_preview_leistungen.html">Leistungen</a>
+    <span class="nav-dot"></span>
+    <details class="nav-dd">
+      <summary class="nav-dd-btn active">Für wen? &#9662;</summary>
+      <div class="nav-dd-menu">
+        <a href="medilux_berlin_preview_fuer_angehoerige.html">Für Angehörige</a>
+        <a href="medilux_berlin_preview_fuer_senioren.html">Für Senioren</a>
+        <a href="medilux_berlin_preview_fuer_berufsbetreuer.html">Für Berufsbetreuer</a>
+        <a href="medilux_berlin_preview_fuer_aerzte.html">Für Ärzte</a>
+        <a href="medilux_berlin_preview_fuer_sozialdienste.html" class="dd-act">Für Sozialdienste</a>
+        <a href="medilux_berlin_preview_fuer_pflegeberater.html">Für Pflegeberater</a>
+        <a href="medilux_berlin_preview_fuer_sozialamter.html">Für Sozialämter</a>
+      </div>
+    </details>
+    <span class="nav-dot"></span>
+    <a href="medilux_berlin_preview_standorte.html">Standorte</a>
+    <span class="nav-dot"></span>
+    <a href="medilux_berlin_preview_ueber_uns.html">Über uns</a>
+    <span class="nav-dot"></span>
+    <a href="medilux_berlin_preview_karriere.html">Karriere</a>
+    <span class="nav-dot"></span>
+    <a href="medilux_berlin_preview_kontakt.html">Kontakt</a>
+    <a href="medilux_berlin_preview_kontakt.html" class="nav-cta">Beratung →</a>
+  </div>
+</nav>
+<div class="page">
+<div class="meta-bar">
+  <strong>FÜR SOZIALDIENSTE v0.9</strong> <span class="meta-url">https://medilux.berlin/fuer-wen/sozialdienste/</span> <span class="meta-kw">** Pflege-WG Berlin / pflege wg berlin (20/140 SV/mo, KD 13%)</span> | Status: Draft
+  <br><strong>SEO Title:</strong> Pflege-WG & Betreutes Wohnen Berlin — Für Klinik-Sozialdienste | MEDILUX (64 Zeichen)
+  <br><strong>Meta Desc:</strong> Entlassmanagement: MEDILUX Berlin bietet Sozialdiensten freie Pflegeplätze in Pflege-WGs und betreutem Wohnen. 59 Plätze, 2 Standorte, kurzfristige Aufnahme möglich. (160 Zeichen)
+  <br><span style="color:#856404;font-weight:600">&#9888; 5 Placeholders auf dieser Seite</span>
+</div>
+<section class="hero">
+  <h1>Pflege-WG und betreutes Wohnen in Berlin — Plätze für Ihr Entlassmanagement</h1>
+  <div style="margin-top:8px">
+    <a href="#cta" class="btn">Freie Plätze anfragen</a>
+    <a href="#cta" class="btn btn-out">+49 173 8334531 anrufen</a>
+  </div>
+</section>
+<div class="sec">
+<h2>Problemverständnis</h2>
+<h4>H2: Was Sozialdienste bei der Entlassung unter Druck setzt</h4>
+<p>Der Patient liegt auf Station, die Verweildauer ist ausgereizt, das DRG-System tickt. Ihr Auftrag: eine sichere Anschlussversorgung organisieren. Der Patient und die Familie verlassen sich auf Sie.</p>
+<p><strong>Was die Arbeit erschwert:</strong></p>
+<p><strong>Kein Pflegeplatz verfügbar — Wartelisten überall</strong></p>
+<p>Sie telefonieren Pflegedienste und Einrichtungen ab. Besetzt, Warteliste, kein Rückruf. Der Patient bleibt auf Station, weil die poststationäre Versorgung nicht steht. Das belastet alle Beteiligten — und das Budget.</p>
+<p><strong>Fehlende Kapazitätsinformationen</strong></p>
+<p>Sie brauchen jetzt eine Antwort: Gibt es einen Platz? Für welchen Pflegegrad? In welchem Bezirk? Die meisten Anbieter können das nicht ad hoc beantworten. Sie müssen mehrfach nachhaken.</p>
+<p><strong>Aufnahme-Bürokratie verzögert den Übergang</strong></p>
+<p>Aufnahmebögen, Pflegegradprüfung, Kostenklärung — alles dauert. Und währenddessen wartet der Patient. Ein reibungsloser Übergang erfordert einen Anbieter, der den Klinik-Rhythmus versteht.</p>
+</div>
+<div class="sec">
+<h2>Lösung: MEDILUX als Entlasspartner</h2>
+<h4>H2: Wie MEDILUX Berlin mit Ihrem Sozialdienst zusammenarbeitet</h4>
+<h4>H3: Schnelle Verfügbarkeitsprüfung</h4>
+<p>Wenn Sie bei MEDILUX Berlin anrufen, erhalten Sie eine klare Auskunft:</p>
+<ul>
+<li><strong>Verfügbarkeit</strong> — sofortige Prüfung beider Standorte</li>
+<li><strong>Aufnahmemöglichkeit</strong> — Pflegegrad, Spezialisierung (Demenz, Intensivpflege, Palliativ)</li>
+<li><strong>Zeitrahmen</strong> — wann eine Aufnahme realistisch ist</li>
+<li><strong>Rückmeldung</strong> innerhalb eines Werktages, bei Dringlichkeit schneller</li>
+</ul>
+<h4>H3: Drei Versorgungsoptionen für Ihre Patienten</h4>
+<p><strong>Pflege-Wohngemeinschaft (59 Plätze)</strong></p>
+<p>Für Patienten mit regelmäßigem Pflegebedarf ab Pflegegrad 2. Kleine Gruppen (6–12 Bewohner), 24-Stunden-Betreuung, examinierte Pflegekräfte. Spezialisiert auf Demenz, Palliativ, Intensivpflege und Junge Pflege.</p>
+<ul>
+<li>Villa Civitas: 35 Plätze, 4 WGs, Berlin-Zehlendorf</li>
+<li>Residenz Heerstraße: 24 Plätze, 2 WGs, Berlin-Spandau</li>
+</ul>
+<p><strong>Betreutes Wohnen (42 Wohneinheiten)</strong></p>
+<p>Für Patienten, die nach der Entlassung selbstständig wohnen können, aber ein Sicherheitsnetz brauchen. Barrierefreie Wohnungen (18–48 m²) mit 24h-Notruf.</p>
+<ul>
+<li>Standort: Residenz Heerstraße, Gärtnereiring 56, Berlin-Spandau</li>
+</ul>
+<p><strong>Ambulante Pflege</strong></p>
+<p>Für Patienten, die nach Hause entlassen werden und ambulante Behandlungs- oder Grundpflege benötigen. Direkte Abrechnung mit der Pflegekasse.</p>
+<h4>H3: Unterstützung bei der Überleitung</h4>
+<p>Wir wissen, dass Sie unter Zeitdruck arbeiten. Deshalb unterstützen wir den Übergang aktiv:</p>
+<ul>
+<li><strong>Antragsunterstützung</strong> — Pflegegrad, Sozialhilfe, Wohngruppenzuschlag</li>
+<li><strong>Dokumentation</strong> — alle Aufnahmeunterlagen vorbereitet</li>
+<li><strong>Koordination</strong> — Abstimmung mit Station, Familie und ggf. behandelndem Arzt</li>
+<li><strong>Besichtigung</strong> — auch kurzfristig möglich, für Patient und Angehörige</li>
+</ul>
+</div>
+<div class="sec">
+<h2>Entlassungs-Workflow</h2>
+<h4>H2: Der Weg von der Klinik zu MEDILUX — Schritt für Schritt</h4>
+<p><strong>Schritt 1: Verfügbarkeit anfragen</strong></p>
+<p>Sie rufen an oder schreiben. Schildern Sie den Patienten: Pflegegrad, Diagnose, besondere Anforderungen (Demenz, Intensivpflege, Mobilität), gewünschte Wohnform. Wir prüfen sofort beide Standorte.</p>
+<p><strong>Schritt 2: Aufnahme klären</strong></p>
+<p>Wir besprechen Aufnahmevoraussetzungen, Kosten und Zeitrahmen. Bei Bedarf organisieren wir kurzfristig eine Besichtigung — auch für die Angehörigen. Alle Unterlagen erhalten Sie gebündelt.</p>
+<p><strong>Schritt 3: Überleitungstermin abstimmen</strong></p>
+<p>Sobald Aufnahme und Formalitäten geklärt sind, stimmen wir den Übergang mit Ihrer Station ab. Bei Dringlichkeit ist eine Aufnahme innerhalb weniger Tage möglich.</p>
+<p><span class="ph">&#9998; PH #21: Typische Zeitrahmen für Aufnahme nach Klinikentlassung</span></p>
+<p><strong>Schritt 4: Patient ist versorgt — Rückmeldung an Sozialdienst</strong></p>
+<p>Nach der Aufnahme erhalten Sie auf Wunsch eine Bestätigung. Der Patient ist versorgt, die Anschlussversorgung steht.</p>
+<p><strong>Kontakt:</strong> +49 173 8334531 · Mo–Fr 8:00–16:30</p>
+</div>
+<div class="sec sec-alt">
+<h2>Verfügbare Plätze nach Standort</h2>
+<h4>H2: Zwei Standorte — Platzübersicht für Sozialdienste</h4>
+<h4>H3: Villa Civitas — Berlin-Zehlendorf</h4>
+<table class="price-table"><thead><tr><th>Information</th><th>Details</th></tr></thead><tbody><tr><td><strong>Adresse</strong></td><td>Lindenthaler Allee 20, 14163 Berlin</td></tr><tr><td><strong>Kapazität</strong></td><td>35 Plätze in 4 WGs</td></tr><tr><td><strong>Aufnahme ab</strong></td><td>Pflegegrad 2</td></tr><tr><td><strong>Spezialisierung</strong></td><td>Intensivpflege-WG (4–12 Plätze), Demenz-WG 24h, Senioren-WG 24h, Senioren-WG amb. Pflege</td></tr><tr><td><strong>Besonderheit</strong></td><td>Historische Villa, ruhige Lage, großzügige Außenfläche</td></tr><tr><td><strong>Erreichbarkeit</strong></td><td>S-Bahn Mexikoplatz, Busse</td></tr></tbody></table>
+<p><code></code></p>
+<h4>H3: Residenz Heerstraße — Berlin-Spandau</h4>
+<table class="price-table"><thead><tr><th>Information</th><th>Details</th></tr></thead><tbody><tr><td><strong>Adresse</strong></td><td>Gärtnereiring 56, 13593 Berlin</td></tr><tr><td><strong>Kapazität</strong></td><td>24 WG-Plätze (2×12) + 42 betreute Wohneinheiten</td></tr><tr><td><strong>Aufnahme ab</strong></td><td>PG 2 (WG), ohne PG möglich (Betreutes Wohnen)</td></tr><tr><td><strong>Spezialisierung</strong></td><td>Senioren-WG 24h, Senioren-WG amb. Pflege, Betreutes Wohnen, Demenzpflege (beschützter Bereich), Verhinderungspflege</td></tr><tr><td><strong>Besonderheit</strong></td><td>Modernes Gebäude, Dachterrasse, beschützter Demenzbereich</td></tr><tr><td><strong>Erreichbarkeit</strong></td><td>Gute ÖPNV-Anbindung, Besucherparkplatz</td></tr></tbody></table>
+<p><code></code></p>
+<p><span class="ph">&#9998; PH #8: Aktuelle Verfügbarkeit — freie Plätze je Standort und WG-Typ, letzte Aktualisierung</span></p>
+</div>
+<div class="sec sec-alt">
+<h2>Kostensätze für Sozialdienste</h2>
+<h4>H2: Kostensätze und Abrechnung — Ihre Planungsgrundlage</h4>
+<h4>H3: Pflege-WG — Eigenanteil für Ihre Patienten</h4>
+<table class="price-table"><thead><tr><th>Standort</th><th>Eigenanteil (ca.)</th><th>Inklusivleistungen</th></tr></thead><tbody><tr><td>Villa Civitas (PG 2)</td><td>€3.450–3.850/mo</td><td>Betreuung 24h, Unterkunft, Verpflegung</td></tr><tr><td>Residenz Heerstraße (PG 2)</td><td>€2.200–2.600/mo</td><td>Betriebskosten, Versorgung, alle Pflegemaßnahmen</td></tr></tbody></table>
+<p><code></code></p>
+<h4>H3: Pflegekasse-Leistungen (Referenzübersicht)</h4>
+<table class="price-table"><thead><tr><th>Pflegegrad</th><th>Pflegegeld</th><th>Sachleistung</th><th>Bemerkung</th></tr></thead><tbody><tr><td>PG 2</td><td>332 €/mo</td><td>761 €/mo</td><td>Mindest-PG für WG-Aufnahme</td></tr><tr><td>PG 3</td><td>573 €/mo</td><td>1.432 €/mo</td><td></td></tr><tr><td>PG 4</td><td>765 €/mo</td><td>1.778 €/mo</td><td></td></tr><tr><td>PG 5</td><td>947 €/mo</td><td>2.200 €/mo</td><td></td></tr></tbody></table>
+<p><code></code></p>
+<h4>H3: Ambulante Pflege — Kassenabrechnung</h4>
+<p>Ambulante Pflegeleistungen (Behandlungspflege, Grundpflege, Hauswirtschaft) werden direkt mit der Pflegekasse des Patienten abgerechnet. Für Ihren Patienten entstehen bei Regelleistungen keine zusätzlichen Kosten.</p>
+<p>Noch kein Pflegegrad beantragt? Wir unterstützen Ihre Patienten und deren Angehörige bei der Antragstellung.</p>
+</div>
+<div class="sec">
+<h2>Verlässlichkeit</h2>
+<h4>H2: Warum Sozialdienste mit uns zusammenarbeiten</h4>
+<p><span class="ph">&#9998; PH #3: Qualitätsnachweise — MDK-Bewertung, Zertifikate, Qualitätssiegel falls vorhanden</span></p>
+<p><strong>Was wir Sozialdiensten zusichern:</strong></p>
+<ul>
+<li>Erreichbarkeit Mo–Fr 8:00–16:30 — schnelle Rückmeldung, auch bei kurzfristigen Anfragen</li>
+<li>Examinierte Pflegekräfte an beiden Standorten, mit Spezialisierung auf Demenz, Intensiv und Palliativ</li>
+<li>Nachtbereitschaft und 24h-Betreuung in allen Pflege-WGs</li>
+<li>Transparente Kostensätze — nutzbar für Ihre Beratungsgespräche mit Patienten und Angehörigen</li>
+<li>Unterstützung bei Anträgen (Pflegegrad, Sozialhilfe, Wohngruppenzuschlag)</li>
+</ul>
+<p><strong>Ansprechpartner:</strong> Herr Joe Schermer (Prokurist)</p>
+<p><strong>Telefon:</strong> +49 173 8334531</p>
+<p><strong>Erreichbarkeit:</strong> Mo–Fr 8:00–16:30</p>
+<p><code></code></p>
+</div>
+<div class="sec">
+<h2>FAQ für Sozialdienste</h2>
+<details class="faq" open>
+  <summary>Wie schnell kann ein Patient nach der Entlassung aufgenommen werden?</summary>
+  <div class="faq-a">Das hängt von der Verfügbarkeit und der Pflegesituation ab. Rufen Sie uns an — wir prüfen sofort. Bei dringenden Fällen bemühen wir uns um eine Aufnahme innerhalb weniger Tage. Voraussetzung ist mindestens Pflegegrad 2 oder ein laufender Antrag. <span class="ph">&#9998; PH #21: Typische Aufnahmezeiten bei Klinikentlassung</span></div>
+</details>
+<details class="faq">
+  <summary>Welche Unterlagen brauche ich für die Aufnahmeanfrage?</summary>
+  <div class="faq-a">Idealerweise: Pflegegrad (oder Antragsstatus), Diagnose, aktuelle Medikamentenliste und besondere Anforderungen (Demenz, Intensivpflege, Mobilität). Im Erstgespräch klären wir, was noch fehlt — wir wissen, dass nicht alle Unterlagen sofort vorliegen.</div>
+</details>
+<details class="faq">
+  <summary>Können Sie auch Patienten ohne bestehenden Pflegegrad aufnehmen?</summary>
+  <div class="faq-a">Für die Pflege-WGs ist mindestens Pflegegrad 2 erforderlich (oder ein laufender Antrag). Für das betreute Wohnen ist kein Pflegegrad notwendig. Wir unterstützen bei der Antragstellung.</div>
+</details>
+<details class="faq">
+  <summary>Gibt es einen festen Ansprechpartner für wiederkehrende Zusammenarbeit?</summary>
+  <div class="faq-a">Ja. Wenn Ihr Sozialdienst regelmäßig Patienten bei uns platziert, erhalten Sie einen festen Ansprechpartner. So können Sie bei neuen Fällen direkt anrufen, ohne Ihre Situation jedes Mal neu zu erklären.</div>
+</details>
+<details class="faq">
+  <summary>Wie werden die Angehörigen einbezogen?</summary>
+  <div class="faq-a">Wir bieten Besichtigungen auch kurzfristig an — für Angehörige und, wenn möglich, für den Patienten. Die Aufnahmeentscheidung wird gemeinsam getroffen. Wir erklären Kosten, Leistungen und beantworten alle Fragen.</div>
+</details>
+<details class="faq">
+  <summary>Können Sie Patienten mit Demenz oder Intensivpflegebedarf aufnehmen?</summary>
+  <div class="faq-a">Ja. Die Villa Civitas hat eine spezialisierte Intensivpflege-WG und eine Demenz-WG. Die Residenz Heerstraße verfügt über einen beschützten Demenzbereich. Beide Standorte arbeiten mit spezialisierten Pflegekräften.</div>
+</details>
+<details class="faq">
+  <summary>Unterstützen Sie bei der Antragstellung für Sozialhilfe?</summary>
+  <div class="faq-a">Ja. Wenn der Eigenanteil des Patienten nicht gedeckt ist, unterstützen wir bei der Beantragung von Hilfe zur Pflege (Sozialhilfe nach SGB XII). Wir stellen die nötigen Unterlagen bereit.</div>
+</details>
+</div>
+<div class="cta-banner" id="cta">
+  <h2>Freie Plätze prüfen — direkt und unkompliziert</h2>
+  <p>Sie haben einen Patienten, der zeitnah einen Pflegeplatz braucht? Rufen Sie an. Wir prüfen sofort die Verfügbarkeit an beiden Standorten und sagen Ihnen, was möglich ist.</p>
+  <div>
+    <a href="#" class="btn">Freie Plätze jetzt anfragen</a>
+    <a href="#" class="btn btn-out">+49 173 8334531 anrufen</a>
+  </div>
+</div>
+
+<footer class="footer">
+  <div>
+    <div class="f-label">Telefon</div>
+    <div class="f-val">+49 173 8334531</div>
+    <div class="f-label">E-Mail</div>
+    <div class="f-val">medilux@live.de</div>
+  </div>
+  <div>
+    <div class="f-label">Standorte</div>
+    <div style="font-size:12px;color:var(--text);line-height:1.8">
+      Villa Civitas &mdash; Lindenthaler Allee 20, 14163 Berlin-Zehlendorf<br>
+      Residenz Heerstra&szlig;e &mdash; G&auml;rtnereiring 56, 13593 Berlin-Spandau
+    </div>
+    <div class="f-links">
+      <a href="medilux_berlin_preview_kosten.html">Kosten &amp; Finanzierung</a>
+      <a href="#">Mediatek</a>
+      <a href="#">Impressum</a>
+      <a href="#">Datenschutz</a>
+    </div>
+  </div>
+  <div class="f-copy">&copy; 2026 MEDILUX GmbH &mdash; Content Preview v0.9 &middot; Nur zur internen Pr&uuml;fung &middot; 2p-preview skill</div>
+</footer>
+</div>
+<div class="ver-badge">v0.9</div>
+<div class="src-badge">2p-preview &middot; 16.03.2026</div>
+<script>
+  /* Close <details> dropdown when clicking outside */
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('details.nav-dd')) {
+      document.querySelectorAll('details.nav-dd[open]').forEach(function(d) {
+        d.removeAttribute('open');
+      });
+    }
+  });
+</script>
+</body>
+</html>
