@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Häufige Fragen zum Pflegedienst — Panacea Pflege — Preview</title>
+<style>
+:root {
+  --primary: #810080;
+  --primary-light: #a020a0;
+  --secondary: #000098;
+  --accent: #ff00ff;
+  --text: #1e293b;
+  --text-light: #64748b;
+  --bg: #ffffff;
+  --bg-alt: #f8f5f9;
+  --border: #e2e8f0;
+  --radius: 8px;
+  /* feedback */
+  --fb-accent: #f59e0b;
+  --fb-accent-border: #d97706;
+  --fb-accent-hover: #d97706;
+  --fb-saved: #10b981;
+  --fb-saved-border: #059669;
+  --fb-save: #2563eb;
+  --fb-save-border: #1d4ed8;
+  --fb-save-hover: #1d4ed8;
+  --fb-panel-bg: #fef3c7;
+  --fb-panel-border: #f59e0b;
+  --fb-delete: #dc2626;
+  --fb-delete-bg: #fef2f2;
+  --fb-delete-border: #fca5a5;
+}
+*, *::before, *::after { box-sizing: border-box; margin:0; padding:0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; color: var(--text); background: var(--bg); line-height: 1.6; }
+
+/* ── Nav ── */
+.nav { position: sticky; top: 0; z-index: 1000; background: var(--bg); border-bottom: 1px solid var(--border); box-shadow: 0 1px 4px rgba(0,0,0,.06); }
+.nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 1.5rem; height: 56px; }
+.nav-brand { font-weight: 700; font-size: 1.1rem; color: var(--primary); text-decoration: none; white-space: nowrap; }
+.nav-links { display: flex; align-items: center; gap: .25rem; flex-wrap: wrap; }
+.nav-links a { text-decoration: none; color: var(--text); padding: .4rem .75rem; border-radius: var(--radius); font-size: .9rem; transition: background .15s; }
+.nav-links a:hover { background: var(--bg-alt); }
+.nav-links a.active { background: var(--primary); color: #fff; }
+.nav-dd { position: relative; }
+.nav-dd > a { cursor: pointer; }
+.nav-dd-menu { display: none; position: absolute; top: 100%; left: 0; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: 0 4px 12px rgba(0,0,0,.1); min-width: 160px; z-index: 1001; }
+.nav-dd-menu a { display: block; padding: .5rem 1rem; }
+.nav-dd:hover .nav-dd-menu { display: block; }
+.nav-counter { font-size: .8rem; color: var(--text-light); white-space: nowrap; }
+
+/* ── Meta bar ── */
+.meta-bar { background: var(--bg-alt); border-bottom: 1px solid var(--border); padding: .75rem 1.5rem; font-size: .82rem; color: var(--text-light); }
+.meta-bar-inner { max-width: 1200px; margin: 0 auto; }
+.meta-bar strong { color: var(--text); }
+.source-badge { display: inline-block; background: #eef2ff; border: 1px solid #c7d2fe; color: #4338ca; padding: .15rem .5rem; border-radius: 4px; font-size: .75rem; margin-top: .35rem; }
+
+/* ── Blocks (shared) ── */
+.block-wrapper { position: relative; padding: 3rem 1.5rem; }
+.block-wrapper:nth-child(even) { background: var(--bg-alt); }
+.block-inner { max-width: 1000px; margin: 0 auto; }
+.block-label { display: none; }
+h1 { font-size: 2.2rem; color: var(--primary); margin-bottom: .75rem; line-height: 1.25; }
+h2 { font-size: 1.6rem; color: var(--primary); margin-bottom: 1.25rem; text-align: center; }
+.subline { font-size: 1.1rem; color: var(--text-light); max-width: 700px; margin-bottom: 1.5rem; }
+
+/* ── Hero ── */
+.hero { padding: 4rem 1.5rem 3rem; background: linear-gradient(135deg, #f8f5f9 0%, #efe0f5 100%); }
+.hero .block-inner { max-width: 800px; text-align: left; }
+.hero h1 { font-size: 2.5rem; }
+.hero .cta-group { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem; }
+
+/* ── CTA buttons ── */
+.btn-primary { display: inline-block; background: var(--primary); color: #fff; padding: .7rem 1.5rem; border-radius: var(--radius); text-decoration: none; font-weight: 600; border: none; cursor: pointer; font-size: .95rem; transition: background .15s; }
+.btn-primary:hover { background: var(--primary-light); }
+.btn-secondary { display: inline-block; background: transparent; color: var(--primary); border: 2px solid var(--primary); padding: .65rem 1.5rem; border-radius: var(--radius); text-decoration: none; font-weight: 600; font-size: .95rem; transition: background .15s; }
+.btn-secondary:hover { background: var(--bg-alt); }
+
+/* ── Cards ── */
+.cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 1rem; }
+.card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; transition: box-shadow .15s; }
+.card:hover { box-shadow: 0 4px 12px rgba(129,0,128,.08); }
+.card .card-icon { font-size: .85rem; color: var(--primary-light); margin-bottom: .5rem; display: inline-block; background: #f3e8f4; padding: .25rem .6rem; border-radius: 4px; }
+.card h3 { font-size: 1.05rem; color: var(--text); margin-bottom: .5rem; }
+.card p { font-size: .92rem; color: var(--text-light); }
+
+/* ── Steps ── */
+.steps { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; margin-top: 1.5rem; counter-reset: step; }
+.step { flex: 1 1 220px; max-width: 300px; text-align: center; position: relative; }
+.step-num { width: 48px; height: 48px; border-radius: 50%; background: var(--primary); color: #fff; display: inline-flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 700; margin-bottom: .75rem; }
+.step h3 { font-size: 1rem; margin-bottom: .4rem; }
+.step p { font-size: .9rem; color: var(--text-light); }
+
+/* ── FAQ accordion ── */
+.faq-list { max-width: 780px; margin: 0 auto; }
+.faq-item { border: 1px solid var(--border); border-radius: var(--radius); margin-bottom: .75rem; overflow: hidden; }
+.faq-q { padding: 1rem 1.25rem; cursor: pointer; font-weight: 600; display: flex; justify-content: space-between; align-items: center; background: var(--bg); transition: background .15s; }
+.faq-q:hover { background: var(--bg-alt); }
+.faq-q::after { content: '+'; font-size: 1.3rem; color: var(--primary); transition: transform .2s; }
+.faq-item.open .faq-q::after { content: '−'; }
+.faq-a { padding: 0 1.25rem; max-height: 0; overflow: hidden; transition: max-height .3s ease, padding .3s ease; font-size: .93rem; color: var(--text-light); }
+.faq-item.open .faq-a { max-height: 600px; padding: .5rem 1.25rem 1rem; }
+
+/* ── Placeholder highlights ── */
+.ph-klient { background: #fef3c7; border: 1px solid #f59e0b; padding: .1rem .35rem; border-radius: 3px; font-size: .88rem; }
+.ph-foto { display: block; background: #f1f5f9; border: 2px dashed #94a3b8; border-radius: var(--radius); padding: 2.5rem 1rem; text-align: center; color: #64748b; font-size: .9rem; margin: 1rem 0; }
+.ph-widget { display: block; background: linear-gradient(135deg, #f0e6f6 0%, #e8e0f0 100%); border: 2px dashed var(--primary-light); border-radius: var(--radius); padding: 3rem 1rem; text-align: center; color: var(--primary); font-weight: 600; font-size: 1rem; margin: 1rem 0; }
+
+/* ── Contact columns ── */
+.contact-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1rem; }
+@media (max-width: 600px) { .contact-cols { grid-template-columns: 1fr; } }
+.contact-col h3 { font-size: 1.1rem; color: var(--primary); margin-bottom: .75rem; }
+.contact-col p { font-size: .92rem; margin-bottom: .35rem; }
+
+/* ── Form mockup ── */
+.form-mock { max-width: 600px; margin: 1rem auto 0; }
+.form-field { margin-bottom: 1rem; }
+.form-field label { display: block; font-size: .88rem; font-weight: 600; margin-bottom: .3rem; }
+.form-field input, .form-field select, .form-field textarea { width: 100%; padding: .6rem .8rem; border: 1px solid var(--border); border-radius: var(--radius); font-size: .92rem; background: var(--bg); }
+.form-field textarea { min-height: 100px; resize: vertical; }
+
+/* ── Job listing ── */
+.job-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; margin-bottom: 1.5rem; }
+.job-card h3 { color: var(--primary); margin-bottom: .5rem; }
+.job-meta { font-size: .88rem; color: var(--text-light); margin-bottom: .75rem; }
+.job-section-title { font-weight: 600; font-size: .92rem; margin: .75rem 0 .35rem; }
+.job-card ul { padding-left: 1.25rem; font-size: .9rem; color: var(--text-light); }
+.job-card li { margin-bottom: .2rem; }
+.job-note { font-style: italic; color: var(--text-light); font-size: .9rem; margin-top: 1rem; }
+
+/* ── Feedback UI ── */
+.fb-btn { position: absolute; top: .75rem; right: .75rem; background: var(--fb-accent); color: #fff; border: 1px solid var(--fb-accent-border); padding: .3rem .7rem; border-radius: 4px; font-size: .78rem; cursor: pointer; z-index: 10; transition: background .15s; }
+.fb-btn:hover { background: var(--fb-accent-hover); }
+.fb-btn.has-feedback { background: var(--fb-saved); border-color: var(--fb-saved-border); }
+.fb-panel { display: none; background: var(--fb-panel-bg); border: 1px solid var(--fb-panel-border); border-radius: var(--radius); padding: 1rem; margin-top: 1rem; }
+.fb-panel.open { display: block; }
+.fb-panel textarea { width: 100%; min-height: 80px; padding: .5rem; border: 1px solid var(--border); border-radius: 4px; font-size: .88rem; resize: vertical; margin-bottom: .5rem; }
+.fb-actions { display: flex; gap: .5rem; flex-wrap: wrap; }
+.fb-save { background: var(--fb-save); color: #fff; border: 1px solid var(--fb-save-border); padding: .35rem .8rem; border-radius: 4px; cursor: pointer; font-size: .82rem; }
+.fb-save:hover { background: var(--fb-save-hover); }
+.fb-cancel { background: #f1f5f9; color: var(--text); border: 1px solid var(--border); padding: .35rem .8rem; border-radius: 4px; cursor: pointer; font-size: .82rem; }
+.fb-delete { background: var(--fb-delete-bg); color: var(--fb-delete); border: 1px solid var(--fb-delete-border); padding: .35rem .8rem; border-radius: 4px; cursor: pointer; font-size: .82rem; }
+
+/* ── Nav counter (clickable) ── */
+.nav-counter { cursor: pointer; transition: transform .15s; }
+.nav-counter:hover { transform: scale(1.05); }
+.nav-counter.has-feedback { animation: fb-pulse 2s infinite; }
+@keyframes fb-pulse { 0%,100%{ box-shadow:0 0 0 0 rgba(245,158,11,.4); } 50%{ box-shadow:0 0 0 8px transparent; } }
+
+/* ── Export overlay ── */
+.export-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.5); z-index: 2000; align-items: center; justify-content: center; }
+.export-overlay.open { display: flex; }
+.export-box { background: var(--bg); border-radius: var(--radius); padding: 2rem; max-width: 600px; width: 90%; max-height: 80vh; overflow: auto; }
+.export-box h3 { margin-bottom: 1rem; }
+.export-box pre { background: #f8fafc; border: 1px solid var(--border); padding: 1rem; border-radius: 4px; font-size: .82rem; white-space: pre-wrap; max-height: 400px; overflow: auto; }
+.export-box .btn-row { margin-top: 1rem; display: flex; gap: .5rem; }
+
+/* ── Footer ── */
+.footer { background: #1e1b2e; color: #cbd5e1; padding: 2.5rem 1.5rem 1.5rem; margin-top: 2rem; font-size: .88rem; }
+.footer-inner { max-width: 1000px; margin: 0 auto; }
+.footer h4 { color: #fff; font-size: 1rem; margin-bottom: .5rem; }
+.footer p { margin-bottom: .3rem; }
+.footer-links { margin-top: 1rem; display: flex; flex-wrap: wrap; gap: .5rem; }
+.footer-links a { color: #a5b4fc; text-decoration: none; }
+.footer-links a:hover { text-decoration: underline; }
+.footer-bottom { margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid #334155; text-align: center; font-size: .8rem; color: #64748b; }
+
+/* ── Index page ── */
+.index-hero { text-align: center; padding: 3rem 1.5rem; }
+.index-hero h1 { font-size: 2rem; }
+.version-table { max-width: 800px; margin: 2rem auto; border-collapse: collapse; width: 100%; }
+.version-table th, .version-table td { padding: .6rem 1rem; border: 1px solid var(--border); text-align: left; font-size: .9rem; }
+.version-table th { background: var(--bg-alt); font-weight: 600; }
+.version-table a { color: var(--primary); }
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .hero h1 { font-size: 1.8rem; }
+  h1 { font-size: 1.7rem; }
+  h2 { font-size: 1.3rem; }
+  .nav-inner { flex-wrap: wrap; height: auto; padding: .5rem 1rem; }
+  .nav-links { gap: .15rem; }
+  .contact-cols { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="panacea_preview_index.html" class="nav-brand">Panacea Pflege</a>
+    <div class="nav-links">
+      <a href="panacea_preview_startseite.html">Startseite</a>
+<div class="nav-dd">
+      <a class="nav-dd-toggle">Standorte ▾</a>
+      <div class="nav-dd-menu">
+        <a href="panacea_preview_muenchen.html" class="">München</a>
+        <a href="panacea_preview_olching.html" class="">Olching</a>
+      </div>
+    </div>
+<a href="panacea_preview_faq.html" class="active">FAQ</a>
+<a href="panacea_preview_karriere.html">Karriere</a>
+<a href="panacea_preview_kontakt.html">Kontakt</a>
+    </div>
+    <span class="nav-counter">📥 Feedback: <span class="fb-counter-num">0</span> Kommentare</span>
+  </div>
+</nav>
+
+<!-- Meta bar -->
+<div class="meta-bar">
+  <div class="meta-bar-inner">
+    <strong>Title Tag:</strong> Häufige Fragen zum Pflegedienst — Panacea Pflege<br>
+    <strong>Meta Description:</strong> Antworten auf Ihre Fragen: Kosten, Leistungen, Pflegegrad, Ablauf. Ambulanter Pflegedienst in München und Umgebung. Jetzt informieren!<br>
+    <span class="source-badge">📋 Quelle: Internal Spec</span>
+  </div>
+</div>
+
+<!-- Content -->
+
+    <div class="hero block-wrapper" id="block-1" data-block="block-1">
+      <span class="block-label">Block 1 — HEADER</span>
+      <div class="block-inner">
+        <h1>Ihre Fragen — unsere Antworten</h1>
+        <p class="subline">Hier finden Sie Antworten auf die häufigsten Fragen rund um ambulante Pflege, Kosten und Leistungen. Sie haben eine Frage, die hier nicht beantwortet wird? Rufen Sie uns einfach an.</p>
+      </div>
+      
+      <button class="fb-btn" title="Feedback geben">✏️ Vorschlag</button>
+      <div class="fb-panel">
+        <textarea placeholder="Ihr Vorschlag oder Kommentar zu diesem Block…"></textarea>
+        <div class="fb-actions">
+          <button class="fb-save">Speichern</button>
+          <button class="fb-cancel">Abbrechen</button>
+          <button class="fb-delete">Löschen</button>
+        </div>
+      </div>
+    
+    </div>
+    
+    <div class="block-wrapper" id="block-2" data-block="block-2">
+      <span class="block-label">Block 2 — FAQ: KOSTEN &amp; FINANZIERUNG</span>
+      <div class="block-inner">
+        <h2>Kosten und Finanzierung</h2>
+        <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-q">Was kostet ein ambulanter Pflegedienst?</div>
+          <div class="faq-a">Die Kosten richten sich nach Ihrem Pflegegrad und den Leistungen, die Sie benötigen. Die Pflegekasse übernimmt einen Großteil der Kosten. Als privater Träger arbeiten wir mit besonders günstigen Sätzen — so bekommen Sie mehr Leistung für Ihr Budget. Nutzen Sie unseren Kostenrechner für eine erste Einschätzung.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Welche Leistungen übernimmt die Pflegekasse?</div>
+          <div class="faq-a">Die Pflegekasse übernimmt Leistungen der Grundpflege und Behandlungspflege, je nach Pflegegrad. Dazu kommen Entlastungsleistungen und Verhinderungspflege. Wir beraten Sie, welche Leistungen Ihnen zustehen — und helfen bei der Beantragung.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Was ist der Entlastungsbetrag und wie nutze ich ihn?</div>
+          <div class="faq-a">Jeder Pflegebedürftige mit Pflegegrad 1 bis 5 hat Anspruch auf 125 Euro monatlich für Entlastungsleistungen. Dieser Betrag kann für hauswirtschaftliche Hilfe oder Betreuung genutzt werden. Nicht genutzte Beträge können angespart werden. Wir helfen Ihnen, den Entlastungsbetrag sinnvoll einzusetzen.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Wie funktioniert die Verhinderungspflege?</div>
+          <div class="faq-a">Wenn eine pflegende Angehörige verhindert ist — durch Urlaub, Krankheit oder andere Gründe — übernimmt die Pflegekasse die Kosten für eine Ersatzpflege. Ab Pflegegrad 2 stehen Ihnen bis zu 1.612 Euro pro Jahr zu. Wir organisieren die Vertretung und rechnen direkt mit der Kasse ab.</div>
+        </div>
+        </div>
+      </div>
+      
+      <button class="fb-btn" title="Feedback geben">✏️ Vorschlag</button>
+      <div class="fb-panel">
+        <textarea placeholder="Ihr Vorschlag oder Kommentar zu diesem Block…"></textarea>
+        <div class="fb-actions">
+          <button class="fb-save">Speichern</button>
+          <button class="fb-cancel">Abbrechen</button>
+          <button class="fb-delete">Löschen</button>
+        </div>
+      </div>
+    
+    </div>
+    
+    <div class="block-wrapper" id="block-3" data-block="block-3">
+      <span class="block-label">Block 3 — FAQ: LEISTUNGEN</span>
+      <div class="block-inner">
+        <h2>Leistungen</h2>
+        <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-q">Welche Pflegeleistungen bieten Sie an?</div>
+          <div class="faq-a">Wir bieten das volle Spektrum ambulanter Pflege: Körperpflege und Hygiene, medizinische Versorgung (Wundversorgung, Medikamente, Injektionen), Hauswirtschaft (Einkäufe, Reinigung, Kochen), Betreuung und Begleitung sowie Beratung zu Pflegegrad und Sozialleistungen.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Bieten Sie auch Hauswirtschaftshilfe an?</div>
+          <div class="faq-a">Ja — Einkäufe, Reinigung, Wäsche, Kochen gehören zu unseren Leistungen. Diese können über den Entlastungsbetrag abgerechnet werden.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Können Sie auch abends oder am Wochenende kommen?</div>
+          <div class="faq-a">Ja. Wir bieten flexible Einsatzzeiten — morgens, mittags, abends und nachts, auch an Wochenenden und Feiertagen. Die Zeiten stimmen wir individuell mit Ihnen ab.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Was ist der Unterschied zwischen Grundpflege und Behandlungspflege?</div>
+          <div class="faq-a">Grundpflege umfasst die Unterstützung bei alltäglichen Verrichtungen wie Körperpflege, Ernährung und Mobilität. Behandlungspflege sind medizinische Leistungen, die von einem Arzt verordnet werden — zum Beispiel Wundversorgung, Medikamentengabe oder Injektionen.</div>
+        </div>
+        </div>
+      </div>
+      
+      <button class="fb-btn" title="Feedback geben">✏️ Vorschlag</button>
+      <div class="fb-panel">
+        <textarea placeholder="Ihr Vorschlag oder Kommentar zu diesem Block…"></textarea>
+        <div class="fb-actions">
+          <button class="fb-save">Speichern</button>
+          <button class="fb-cancel">Abbrechen</button>
+          <button class="fb-delete">Löschen</button>
+        </div>
+      </div>
+    
+    </div>
+    
+    <div class="block-wrapper" id="block-4" data-block="block-4">
+      <span class="block-label">Block 4 — FAQ: ABLAUF &amp; ORGANISATION</span>
+      <div class="block-inner">
+        <h2>Ablauf und Organisation</h2>
+        <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-q">Wie schnell können Sie mit der Pflege beginnen?</div>
+          <div class="faq-a">Nach einem persönlichen Beratungsgespräch kann die Pflege innerhalb weniger Tage starten. Bei dringendem Bedarf reagieren wir auch kurzfristig — rufen Sie uns an.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Wie beantrage ich einen Pflegegrad?</div>
+          <div class="faq-a">Der Antrag wird bei Ihrer Pflegekasse gestellt. Anschließend begutachtet der Medizinische Dienst (MD) den Pflegebedarf. Wir unterstützen Sie bei der Vorbereitung auf die Begutachtung und bei allen Formalitäten — von der Erstbeantragung bis zur Höherstufung.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Können Sie bei der Pflegegrad-Erhöhung helfen?</div>
+          <div class="faq-a">Ja. Wenn sich der Pflegebedarf verändert hat, kann eine Höherstufung beantragt werden. Wir beraten Sie, ob eine Höherstufung sinnvoll ist, und begleiten Sie durch den gesamten Prozess.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Was brauche ich für den ersten Termin?</div>
+          <div class="faq-a">Beim Erstgespräch schauen wir uns Ihre Situation gemeinsam an. Hilfreich ist, wenn Sie Ihre Pflegegrad-Bescheinigung und den Medikamentenplan bereithalten. Alles Weitere klären wir vor Ort.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Kann ich den Pflegedienst wechseln?</div>
+          <div class="faq-a">Ja, ein Wechsel ist jederzeit möglich — auch ohne Wartezeit. Wir kümmern uns um eine reibungslose Übernahme und stimmen uns mit Ihrem Arzt und der Pflegekasse ab.</div>
+        </div>
+        </div>
+      </div>
+      
+      <button class="fb-btn" title="Feedback geben">✏️ Vorschlag</button>
+      <div class="fb-panel">
+        <textarea placeholder="Ihr Vorschlag oder Kommentar zu diesem Block…"></textarea>
+        <div class="fb-actions">
+          <button class="fb-save">Speichern</button>
+          <button class="fb-cancel">Abbrechen</button>
+          <button class="fb-delete">Löschen</button>
+        </div>
+      </div>
+    
+    </div>
+    
+    <div class="block-wrapper" id="block-5" data-block="block-5">
+      <span class="block-label">Block 5 — FAQ: STANDORTE</span>
+      <div class="block-inner">
+        <h2>Standorte und Einzugsgebiet</h2>
+        <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-q">In welchen Gebieten sind Sie tätig?</div>
+          <div class="faq-a">Wir betreuen Patientinnen und Patienten in München und im Raum Olching — einschließlich Gröbenzell, Puchheim und umliegender Gemeinden. <span class="ph-klient">[KLIENT: vollständige Ortsliste]</span></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Eröffnen Sie weitere Standorte?</div>
+          <div class="faq-a">Ja — wir wachsen. Neben unseren bestehenden Standorten prüfen wir laufend die Möglichkeit, unser Einzugsgebiet zu erweitern. Sobald ein neuer Standort feststeht, informieren wir Sie hier.</div>
+        </div>
+        </div>
+      </div>
+      
+      <button class="fb-btn" title="Feedback geben">✏️ Vorschlag</button>
+      <div class="fb-panel">
+        <textarea placeholder="Ihr Vorschlag oder Kommentar zu diesem Block…"></textarea>
+        <div class="fb-actions">
+          <button class="fb-save">Speichern</button>
+          <button class="fb-cancel">Abbrechen</button>
+          <button class="fb-delete">Löschen</button>
+        </div>
+      </div>
+    
+    </div>
+    
+    <div class="block-wrapper" id="block-6" data-block="block-6" style="background: linear-gradient(135deg, #f8f5f9 0%, #efe0f5 100%);">
+      <span class="block-label">Block 6 — CTA</span>
+      <div class="block-inner" style="text-align:center;">
+        <h2>Ihre Frage ist nicht dabei?</h2>
+        <p style="color:var(--text-light);max-width:600px;margin:0 auto 1rem;">Rufen Sie uns an — wir nehmen uns Zeit für Sie. Kostenlos und unverbindlich.</p>
+        
+        <div class="cta-group" style="justify-content:center;margin-top:1.5rem;"><a href="#" class="btn-primary">Kostenlose Beratung anfragen</a><a href="#" class="btn-secondary">☎ <span class="ph-klient">[KLIENT: Telefonnummer]</span></a></div>
+      </div>
+      
+      <button class="fb-btn" title="Feedback geben">✏️ Vorschlag</button>
+      <div class="fb-panel">
+        <textarea placeholder="Ihr Vorschlag oder Kommentar zu diesem Block…"></textarea>
+        <div class="fb-actions">
+          <button class="fb-save">Speichern</button>
+          <button class="fb-cancel">Abbrechen</button>
+          <button class="fb-delete">Löschen</button>
+        </div>
+      </div>
+    
+    </div>
+    
+
+<!-- Footer -->
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <h4>Panacea Home Care GmbH</h4>
+        <p>München: <span class="ph-klient">[KLIENT: Adresse]</span> | ☎ <span class="ph-klient">[KLIENT: Telefon]</span></p>
+        <p>Olching: <span class="ph-klient">[KLIENT: Adresse]</span> | ☎ <span class="ph-klient">[KLIENT: Telefon]</span></p>
+        <div class="footer-links">
+          <a href="panacea_preview_startseite.html">Startseite</a>
+          <a href="panacea_preview_muenchen.html">München</a>
+          <a href="panacea_preview_olching.html">Olching</a>
+          <a href="panacea_preview_faq.html">FAQ</a>
+          <a href="panacea_preview_karriere.html">Karriere</a>
+          <a href="panacea_preview_kontakt.html">Kontakt</a>
+          <a href="#">Impressum</a>
+          <a href="#">Datenschutz</a>
+        </div>
+        <div class="footer-bottom">&copy; 2026 Panacea Home Care GmbH</div>
+      </div>
+    </footer>
+    
+
+<!-- Export overlay -->
+<div id="export-overlay" class="export-overlay">
+  <div class="export-box">
+    <div class="export-count" style="font-size:3rem;font-weight:800;color:var(--fb-save);text-align:center;">0</div>
+    <h3 style="text-align:center;margin:.5rem 0;">Kommentare bereit</h3>
+    <p style="text-align:center;color:var(--text-light);margin-bottom:1.5rem;">Alle Ihre Änderungsvorschläge für alle Seiten. Laden Sie sie herunter oder kopieren Sie den Text.</p>
+    <div class="btn-row" style="justify-content:center;">
+      <button class="btn-primary export-download">📥 Als Datei herunterladen</button>
+      <button class="btn-primary export-clipboard" style="background:var(--fb-accent);border-color:var(--fb-accent-border);">📋 In Zwischenablage kopieren</button>
+      <button class="btn-secondary export-close">Schließen</button>
+    </div>
+  </div>
+</div>
+
+
+<script>
+(function(){
+  const STORAGE_KEY = '2p-feedback-panacea';
+  const PAGE = 'faq';
+
+  function loadAll(){ try { return JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}'); } catch(e){ return {}; } }
+  function saveAll(d){ localStorage.setItem(STORAGE_KEY, JSON.stringify(d)); }
+  function getPage(){ const d=loadAll(); if(!d[PAGE]) d[PAGE]={}; return d; }
+
+  function updateCounter(){
+    const d=loadAll(); let c=0;
+    Object.values(d).forEach(p=>{ Object.keys(p).forEach(k=>{ if(k!=='_title') c++; }); });
+    const el=document.querySelector('.fb-counter-num');
+    if(el) el.textContent=c;
+    const counter=document.querySelector('.nav-counter');
+    if(counter){ counter.classList.toggle('has-feedback',c>0); }
+  }
+
+  function initFeedback(){
+    document.querySelectorAll('.block-wrapper[data-block]').forEach(wrapper=>{
+      const bid=wrapper.dataset.block;
+      const btn=wrapper.querySelector('.fb-btn');
+      const panel=wrapper.querySelector('.fb-panel');
+      const ta=panel.querySelector('textarea');
+      const saveBtn=panel.querySelector('.fb-save');
+      const cancelBtn=panel.querySelector('.fb-cancel');
+      const delBtn=panel.querySelector('.fb-delete');
+
+      // load existing
+      const d=getPage();
+      if(d[PAGE] && d[PAGE][bid]){
+        const entry=d[PAGE][bid];
+        ta.value=(typeof entry==='object')?entry.text:entry;
+        btn.classList.add('has-feedback');
+        btn.textContent='✏️ Kommentar bearbeiten';
+      }
+
+      btn.addEventListener('click',()=>{
+        panel.classList.toggle('open');
+      });
+      cancelBtn.addEventListener('click',()=>{
+        panel.classList.remove('open');
+      });
+      saveBtn.addEventListener('click',()=>{
+        const val=ta.value.trim();
+        const d=getPage();
+        const labelEl=wrapper.querySelector('.block-label');
+        const labelText=labelEl?labelEl.textContent:('Block '+bid);
+        d[PAGE]._title=document.title.replace(/ — Preview$/,'');
+        if(val){ d[PAGE][bid]={text:val,label:labelText}; btn.classList.add('has-feedback'); btn.textContent='✏️ Kommentar bearbeiten'; }
+        else { delete d[PAGE][bid]; btn.classList.remove('has-feedback'); btn.textContent='✏️ Vorschlag'; }
+        saveAll(d);
+        panel.classList.remove('open');
+        updateCounter();
+      });
+      delBtn.addEventListener('click',()=>{
+        ta.value='';
+        const d=getPage();
+        delete d[PAGE][bid];
+        saveAll(d);
+        btn.classList.remove('has-feedback'); btn.textContent='✏️ Vorschlag';
+        panel.classList.remove('open');
+        updateCounter();
+      });
+    });
+    updateCounter();
+  }
+
+  // FAQ accordion
+  function initFAQ(){
+    document.querySelectorAll('.faq-q').forEach(q=>{
+      q.addEventListener('click',()=>{
+        q.parentElement.classList.toggle('open');
+      });
+    });
+  }
+
+  // Export overlay — cross-page
+  function buildFeedbackText(){
+    const d=loadAll();
+    let c=0; Object.values(d).forEach(p=>{ Object.keys(p).forEach(k=>{ if(k!=='_title') c++; }); });
+    let txt='FEEDBACK — PANACEA\nDatum: '+new Date().toLocaleDateString('de-DE')+'\n'+c+' Kommentar(e) insgesamt\n'+'='.repeat(50)+'\n\n';
+    Object.entries(d).forEach(([page,pd])=>{
+      const title=pd._title||page;
+      txt+='\u2501\u2501\u2501 '+title+' \u2501\u2501\u2501\n\n';
+      Object.entries(pd).forEach(([bid,entry])=>{
+        if(bid==='_title') return;
+        const text=(typeof entry==='object')?entry.text:entry;
+        const label=(typeof entry==='object'&&entry.label)?entry.label:('Block '+bid);
+        txt+='\ud83d\udccc '+label+'\n'+'-'.repeat(40)+'\n'+text+'\n\n';
+      });
+    });
+    txt+='='.repeat(50)+'\nErstellt am '+new Date().toLocaleString('de-DE')+'\n';
+    return txt;
+  }
+
+  function initExport(){
+    const counter=document.querySelector('.nav-counter');
+    const overlay=document.getElementById('export-overlay');
+    if(!counter||!overlay) return;
+
+    counter.style.cursor='pointer';
+    counter.addEventListener('click',()=>{
+      const d=loadAll(); let c=0;
+      Object.values(d).forEach(p=>{ Object.keys(p).forEach(k=>{ if(k!=='_title') c++; }); });
+      if(c===0) return;
+      overlay.querySelector('.export-count').textContent=c;
+      overlay.classList.add('open');
+    });
+
+    overlay.querySelector('.export-close').addEventListener('click',()=>{ overlay.classList.remove('open'); });
+    overlay.addEventListener('click',(e)=>{ if(e.target===overlay) overlay.classList.remove('open'); });
+
+    overlay.querySelector('.export-download').addEventListener('click',()=>{
+      const txt=buildFeedbackText();
+      const blob=new Blob([txt],{type:'text/plain;charset=utf-8'});
+      const url=URL.createObjectURL(blob);
+      const a=document.createElement('a'); a.href=url;
+      a.download='feedback_panacea_'+new Date().toISOString().slice(0,10)+'.txt';
+      a.click(); URL.revokeObjectURL(url);
+      overlay.classList.remove('open');
+    });
+
+    overlay.querySelector('.export-clipboard').addEventListener('click',()=>{
+      const txt=buildFeedbackText();
+      navigator.clipboard.writeText(txt).then(()=>{
+        const btn=overlay.querySelector('.export-clipboard');
+        const orig=btn.textContent;
+        btn.textContent='\u2705 Kopiert!';
+        setTimeout(()=>{ btn.textContent=orig; },2000);
+      });
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded',()=>{ initFeedback(); initFAQ(); initExport(); });
+})();
+</script>
+
+</body>
+</html>
