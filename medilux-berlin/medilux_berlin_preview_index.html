@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MEDILUX Berlin — Site Structure &amp; Content Map</title>
+<style>
+:root {
+  --primary: #1A1A1A;
+  --blue:    #2B55C0;
+  --mid:     #4C7CDA;
+  --yellow:  #E8C830;
+  --bg:      #ECF3F7;
+  --white:   #FFFFFF;
+  --text:    #333333;
+  --gray:    #7A8A9E;
+  --line:    #D9E3EC;
+  --r8: 8px; --r12: 12px; --r16: 16px; --r30: 30px;
+  --ph-bg:  #FFF3CD;
+  --ph-bdr: #FFD93D;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  background:var(--bg);color:var(--text);line-height:1.6}
+.page{max-width:1200px;margin:0 auto;background:var(--white);min-height:100vh;
+  box-shadow:0 0 40px rgba(0,0,0,.08)}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.94);
+  backdrop-filter:blur(12px);border-bottom:1px solid var(--line);
+  padding:0 40px;height:52px;display:flex;align-items:center}
+.nav-logo{font-size:18px;font-weight:800;color:var(--blue);letter-spacing:2px;text-decoration:none}
+.nav-links{display:flex;align-items:center;gap:4px;margin-left:auto}
+.nav-links a{padding:5px 12px;border-radius:var(--r30);text-decoration:none;
+  font-size:12px;font-weight:500;color:var(--gray)}
+.nav-links a:hover{color:var(--blue)}
+.nav-links a.active{background:var(--blue);color:#fff}
+.nav-dot{width:4px;height:4px;background:var(--yellow);border-radius:50%}
+.nav-cta{background:var(--blue)!important;color:#fff!important;font-weight:600!important}
+/* DROPDOWN — native <details> toggle, no JS needed for open/close */
+details.nav-dd{position:relative;list-style:none}
+details.nav-dd > summary{padding:5px 12px;border-radius:var(--r30);
+  font-size:12px;font-weight:500;color:var(--gray);cursor:pointer;
+  list-style:none;user-select:none}
+details.nav-dd > summary::-webkit-details-marker{display:none}
+details.nav-dd > summary.active{background:var(--blue);color:#fff}
+details.nav-dd > summary:hover{color:var(--blue)}
+.nav-dd-menu{position:absolute;top:calc(100% + 4px);left:0;background:#fff;
+  border:1px solid var(--line);border-radius:var(--r12);padding:6px 0;
+  min-width:180px;box-shadow:0 4px 16px rgba(0,0,0,.12);z-index:200}
+.nav-dd-menu a{display:block;padding:8px 16px;font-size:12px;color:var(--text);
+  text-decoration:none;font-weight:500}
+.nav-dd-menu a:hover{background:var(--bg)}
+.nav-dd-menu a.dd-act{color:var(--blue);font-weight:700}
+
+/* META BAR */
+.meta-bar{background:var(--bg);border-left:4px solid var(--blue);
+  padding:12px 18px;margin:12px 40px;border-radius:var(--r12);
+  font-size:11px;line-height:1.8}
+.meta-bar strong{color:var(--blue)}
+.meta-kw{display:inline-block;background:var(--blue);color:#fff;
+  font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;margin-left:6px}
+.meta-url{font-family:monospace;font-size:10px;color:var(--gray);background:var(--bg);
+  padding:2px 6px;border-radius:4px;margin-left:4px}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,#1a1a2e 0%,#2a2a4e 50%,#1a2a3e 100%);
+  color:#fff;border-radius:0 0 var(--r16) var(--r16);
+  padding:72px 40px 48px;overflow:hidden}
+.hero h1{font-size:32px;line-height:1.1;font-weight:700;max-width:700px;margin-bottom:18px}
+.hero .sub{font-size:15px;opacity:.88;line-height:1.5;max-width:640px;margin-bottom:28px}
+.hero .btn{display:inline-flex;align-items:center;gap:10px;background:var(--mid);color:#fff;
+  padding:10px 24px;border-radius:var(--r30);font-weight:600;font-size:13px;
+  text-decoration:none;margin-right:12px}
+.hero .btn-out{background:transparent;border:1px solid rgba(255,255,255,.4)}
+.hero .ai-snippet{margin-top:28px;background:rgba(255,255,255,.1);border-radius:var(--r12);
+  padding:16px 20px;font-size:13px;line-height:1.7;opacity:.9;max-width:740px;border-left:3px solid var(--yellow)}
+.hero .ai-label{font-size:10px;font-weight:700;letter-spacing:1px;opacity:.7;margin-bottom:6px}
+
+/* SECTIONS */
+.sec{padding:32px 40px}
+.sec-alt{background:var(--bg)}
+.sec h2{font-size:24px;font-weight:700;color:var(--primary);margin-bottom:16px}
+.sec h3{font-size:17px;font-weight:700;margin:20px 0 8px;color:var(--primary)}
+.sec h4{font-size:14px;font-weight:700;margin:14px 0 6px;color:var(--primary)}
+.sec p{font-size:14px;color:var(--text);line-height:1.6;margin-bottom:10px;max-width:780px}
+.sec ul,.sec ol{padding-left:22px;margin-bottom:14px}
+.sec li{font-size:14px;margin-bottom:6px;line-height:1.5}
+
+/* TRUST STRIP */
+.trust-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:20px 0}
+.trust-item{background:linear-gradient(135deg,#EFF4F6,#DAEAF6);border-radius:var(--r16);
+  padding:20px;text-align:center}
+.trust-item .icon{font-size:28px;margin-bottom:8px}
+.trust-item .t{font-size:13px;font-weight:700;color:var(--primary)}
+.trust-item .s{font-size:11px;color:var(--gray);margin-top:4px}
+
+/* CARDS */
+.card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0}
+.card{background:linear-gradient(135deg,#EFF4F6,#DAEAF6);border-radius:var(--r16);
+  padding:24px 20px;display:flex;flex-direction:column}
+.card h3{font-size:17px;font-weight:700;color:var(--primary);margin:0 0 10px}
+.card p{font-size:13px;color:var(--text);line-height:1.5}
+.card .tag{font-size:11px;color:var(--blue);font-weight:600;margin-top:14px;
+  padding-top:12px;border-top:1px dashed var(--line)}
+.card .cta-lnk{color:var(--blue);font-weight:600;font-size:12px;
+  text-decoration:none;margin-top:10px;display:inline-block}
+
+/* STEPS */
+.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0}
+.step{padding:20px;border:1px solid var(--line);border-radius:var(--r16)}
+.step-n{display:flex;align-items:center;justify-content:center;
+  width:32px;height:32px;background:var(--blue);color:#fff;
+  border-radius:50%;font-size:14px;font-weight:700;margin-bottom:12px}
+.step h3{font-size:15px;margin:0 0 8px}
+.step p{font-size:13px;color:var(--text)}
+
+/* LOCATION */
+.loc-card{border:1px solid var(--line);border-radius:var(--r16);padding:24px;margin:14px 0}
+.loc-card h3{font-size:18px;color:var(--primary);margin-bottom:4px}
+.loc-card .addr{font-size:13px;color:var(--gray);margin-bottom:14px}
+.loc-card ul{padding-left:20px}
+.loc-card li{font-size:13px;margin-bottom:5px}
+.loc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:16px 0}
+
+/* PRICE TABLE */
+.price-table{width:100%;border-collapse:collapse;font-size:13px;margin:16px 0}
+.price-table th{background:var(--blue);color:#fff;padding:10px 14px;text-align:left;font-weight:600}
+.price-table td{padding:10px 14px;border-bottom:1px solid var(--line)}
+.price-table tr:nth-child(even) td{background:var(--bg)}
+.price-table .hl td{background:#e8f5e9;font-weight:600}
+
+/* FAQ */
+details.faq{border-bottom:1px solid var(--line)}
+details.faq summary{padding:14px 0;font-weight:700;font-size:14px;cursor:pointer;
+  list-style:none;display:flex;justify-content:space-between;align-items:center;color:var(--primary)}
+details.faq summary::-webkit-details-marker{display:none}
+details.faq summary::after{content:'+';display:flex;align-items:center;justify-content:center;
+  width:24px;height:24px;background:var(--bg);border-radius:50%;
+  font-size:14px;color:var(--blue);flex-shrink:0}
+details.faq[open] summary::after{content:'−';background:var(--blue);color:#fff}
+.faq-a{padding:0 0 14px;font-size:13px;color:var(--text);line-height:1.7}
+
+/* CTA BANNER */
+.cta-banner{background:var(--blue);color:#fff;padding:36px;
+  border-radius:var(--r16);margin:32px 40px;text-align:center}
+.cta-banner h2{font-size:22px;color:#fff;margin-bottom:12px}
+.cta-banner p{font-size:14px;opacity:.92;max-width:600px;margin:0 auto 20px;color:#fff}
+.cta-banner .btn{display:inline-flex;background:#fff;color:var(--blue);
+  padding:10px 24px;border-radius:var(--r30);font-weight:700;font-size:14px;
+  text-decoration:none;margin:0 6px}
+.cta-banner .btn-out{background:transparent;border:1px solid rgba(255,255,255,.5);color:#fff}
+
+/* CONTACT FORM */
+.form-wrap{background:var(--bg);border-radius:var(--r16);padding:28px;margin:20px 0}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.form-field label{display:block;font-size:11px;font-weight:600;color:var(--gray);margin-bottom:4px}
+.form-field input,.form-field textarea,.form-field select{
+  width:100%;padding:10px 14px;border:1px solid var(--line);border-radius:var(--r8);
+  font-size:13px;background:#fff;color:var(--text)}
+.form-field textarea{min-height:80px;resize:vertical}
+.form-submit{background:var(--blue);color:#fff;padding:12px 28px;
+  border-radius:var(--r30);border:none;font-weight:700;font-size:14px;cursor:pointer;margin-top:12px}
+
+/* PLACEHOLDER */
+.ph{background:var(--ph-bg);border:1px dashed var(--ph-bdr);
+  border-radius:6px;padding:8px 14px;font-size:12px;
+  font-style:italic;color:#856404;margin:8px 0;display:inline-block}
+
+/* FOOTER */
+.footer{background:linear-gradient(180deg,#ECF3F7 0%,#fff 100%);
+  border-radius:var(--r16) var(--r16) 0 0;padding:28px 40px 16px;
+  margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.f-label{font-size:11px;color:var(--gray);margin-bottom:2px}
+.f-val{font-size:15px;font-weight:500;color:var(--blue);margin-bottom:10px}
+.f-links{display:flex;gap:16px;margin-top:8px;flex-wrap:wrap}
+.f-links a{font-size:11px;color:var(--gray);text-decoration:none}
+.f-links a:hover{color:var(--blue)}
+.f-copy{grid-column:1/-1;font-size:10px;color:var(--gray);
+  border-top:1px dashed var(--line);padding-top:10px;margin-top:6px}
+
+/* BADGE */
+.ver-badge{position:fixed;bottom:14px;right:14px;background:var(--blue);
+  color:#fff;padding:5px 12px;border-radius:var(--r30);font-size:10px;font-weight:700;z-index:200}
+.src-badge{position:fixed;bottom:14px;left:14px;background:#6b7280;
+  color:#fff;padding:4px 10px;border-radius:var(--r30);font-size:9px;z-index:200}
+
+/* INDEX-SPECIFIC */
+.site-map{padding:32px 40px}
+.group-header{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2px;
+  color:var(--gray);margin:28px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+.page-card{border:1px solid var(--line);border-radius:var(--r12);
+  margin:10px 0;overflow:hidden;transition:box-shadow .15s}
+.page-card:hover{box-shadow:0 4px 16px rgba(0,0,0,.1)}
+.page-card-header{display:flex;align-items:center;gap:12px;padding:16px 20px;
+  background:#fff;text-decoration:none;color:var(--primary);cursor:pointer}
+.page-card-header:hover{background:var(--bg)}
+.page-card-title{font-weight:700;font-size:16px;flex:1}
+.ver-pill{font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px}
+.ph-count{font-size:11px;color:#856404;background:#FFF3CD;padding:3px 8px;
+  border-radius:20px;font-weight:600}
+.block-list{padding:12px 20px 16px;background:var(--bg);border-top:1px solid var(--line)}
+.block-row{display:flex;align-items:center;gap:10px;padding:5px 0;
+  border-bottom:1px solid rgba(0,0,0,.04)}
+.block-row:last-child{border-bottom:none}
+.block-type{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;
+  padding:2px 7px;border-radius:20px;min-width:54px;text-align:center}
+.bt-hero{background:#dbeafe;color:#1d4ed8}
+.bt-faq{background:#d1fae5;color:#065f46}
+.bt-cta{background:#fce7f3;color:#9d174d}
+.bt-trust{background:#fef3c7;color:#92400e}
+.bt-cards{background:#ede9fe;color:#5b21b6}
+.bt-steps{background:#e0f2fe;color:#0369a1}
+.bt-form{background:#fef9c3;color:#713f12}
+.bt-skip{background:#f3f4f6;color:#9ca3af}
+.bt-section{background:#f3f4f6;color:#374151}
+.block-name{font-size:13px;font-weight:500;color:var(--text);flex:1}
+.block-preview{font-size:11px;color:var(--gray);white-space:nowrap;
+  overflow:hidden;text-overflow:ellipsis;max-width:320px}
+
+/* INDEX STATS */
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;
+  margin:0 40px 24px;padding:0}
+.stat-box{background:#fff;border:1px solid var(--line);border-radius:var(--r12);
+  padding:16px 20px;text-align:center}
+.stat-n{font-size:32px;font-weight:800;color:var(--blue)}
+.stat-l{font-size:11px;color:var(--gray);margin-top:2px}
+
+/* RESPONSIVE */
+@media(max-width:800px){
+  .card-grid,.steps-grid,.loc-grid,.form-row,.trust-strip{grid-template-columns:1fr}
+  .nav{flex-wrap:wrap;height:auto;padding:8px 12px}
+  .hero{padding:40px 20px}.hero h1{font-size:24px}
+  .sec,.site-map,.stats-row{padding:24px 20px;margin:0 0 12px}
+  .footer{grid-template-columns:1fr}
+  .feedback-btn{top:auto;bottom:-16px;right:16px;font-size:12px}
+  .feedback-panel{padding:16px}
+}
+
+/* === FEEDBACK UI === */
+:root{--fb-accent:#f59e0b;--fb-accent-border:#d97706;--fb-accent-hover:#d97706;--fb-saved:#10b981;--fb-saved-border:#059669;--fb-save:#2563eb;--fb-save-border:#1d4ed8;--fb-save-hover:#1d4ed8;--fb-panel-bg:#fef3c7;--fb-panel-border:#f59e0b;--fb-delete:#dc2626;--fb-delete-bg:#fef2f2;--fb-delete-border:#fca5a5;}
+.feedback-counter{background:var(--fb-accent);color:#1e293b;padding:5px 14px;border-radius:20px;font-weight:700;cursor:pointer;transition:transform 0.2s;font-size:13px;white-space:nowrap}
+.feedback-counter:hover{transform:scale(1.05)}
+.feedback-counter.has-feedback{animation:fb-pulse 2s infinite}
+@keyframes fb-pulse{0%,100%{box-shadow:0 0 0 0 rgba(245,158,11,0.4)}50%{box-shadow:0 0 0 8px transparent}}
+.feedback-btn{position:absolute;top:12px;right:24px;background:var(--fb-accent);border:2px solid var(--fb-accent-border);padding:5px 12px;border-radius:20px;cursor:pointer;font-size:12px;color:#1e293b;font-weight:600;transition:all 0.2s;z-index:10}
+.feedback-btn:hover{background:var(--fb-accent-hover);color:white}
+.feedback-btn.has-comment{background:var(--fb-saved);border-color:var(--fb-saved-border);color:white}
+.feedback-panel{display:none;margin-top:20px;background:var(--fb-panel-bg);border:2px solid var(--fb-panel-border);border-radius:8px;padding:20px;animation:fb-slideDown 0.3s ease}
+.feedback-panel.open{display:block}
+@keyframes fb-slideDown{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+.feedback-panel label{display:block;font-weight:600;margin-bottom:8px;color:var(--primary);font-size:14px}
+.feedback-panel textarea{width:100%;min-height:90px;padding:10px;border:1px solid #d1d5db;border-radius:6px;font-family:inherit;font-size:14px;resize:vertical}
+.feedback-actions{display:flex;gap:10px;margin-top:10px;align-items:center;flex-wrap:wrap}
+.btn-save{background:var(--fb-save);color:white;border:2px solid var(--fb-save-border);padding:7px 18px;border-radius:6px;cursor:pointer;font-size:13px;font-weight:600}
+.btn-save:hover{background:var(--fb-save-hover)}
+.btn-cancel{background:white;border:2px solid #94a3b8;padding:7px 18px;border-radius:6px;cursor:pointer;font-size:13px;color:#334155;font-weight:500}
+.btn-cancel:hover{background:#f1f5f9}
+.btn-delete{background:var(--fb-delete-bg);border:2px solid var(--fb-delete-border);padding:7px 14px;border-radius:6px;cursor:pointer;font-size:13px;color:var(--fb-delete);font-weight:500;margin-left:auto}
+.saved-indicator{display:none;color:#10b981;font-size:13px;align-items:center;gap:4px}
+.export-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:200;justify-content:center;align-items:center}
+.export-overlay.open{display:flex}
+.export-box{background:white;border-radius:12px;padding:32px;max-width:500px;width:90%;text-align:center}
+.export-box h2{margin-bottom:16px;font-size:22px}
+.export-box p{color:#64748b;margin-bottom:24px}
+.export-box .count{font-size:48px;font-weight:800;color:var(--fb-save)}
+.btn-export{display:inline-block;background:var(--fb-save);color:white;padding:13px 28px;border-radius:8px;border:none;font-size:15px;font-weight:600;cursor:pointer;margin:6px}
+.btn-close-overlay{display:inline-block;background:transparent;border:1px solid #e2e8f0;padding:13px 28px;border-radius:8px;font-size:15px;cursor:pointer;margin:6px;color:#64748b}
+
+/* INDEX EXTRAS */
+body > nav.nav { position: fixed; }
+.index-hero { background: linear-gradient(135deg,#1a1a2e 0%,#1d4ed8 100%);
+  color: #fff; padding: 80px 40px 40px; }
+.index-hero h1 { font-size: 30px; font-weight: 800; margin-bottom: 6px }
+.index-hero p { opacity: .8; font-size: 15px; max-width: 640px }
+.index-hero .chips { display: flex; gap: 10px; margin-top: 16px; flex-wrap: wrap }
+.chip { background: rgba(255,255,255,.15); border-radius: 20px; padding: 4px 14px;
+  font-size: 12px; font-weight: 600; }
+.chip.warn { background: #fbbf24; color: #1a1a1a }
+.chip.ok { background: #34d399; color: #064e3b }
+</style>
+</head>
+<body>
+<nav class="nav" style="position:fixed">
+  <a href="medilux_berlin_preview_index.html" class="nav-logo">MEDILUX</a>
+  <div class="nav-links">
+    <a href="medilux_berlin_preview_startseite.html">Startseite</a>
+    <span class="nav-dot"></span>
+    <a href="medilux_berlin_preview_leistungen.html">Leistungen</a>
+    <span class="nav-dot"></span>
+    <span style="font-size:11px;color:var(--gray)">Site Map &middot; 16.03.2026</span>
+  </div>
+</nav>
+<div style="height:52px"></div>
+
+<div class="index-hero">
+  <h1>MEDILUX Berlin — Site Structure &amp; Content Map</h1>
+  <p>Vollständige Übersicht aller Seiten, Content-Blöcke und Placeholders. Generiert mit 2p-preview Skill.</p>
+  <div class="chips">
+    <span class="chip">15 / 15 Seiten fertig</span>
+    <span class="chip warn">70 Placeholders offen</span>
+    <span class="chip ok">0 Seiten placeholder-frei</span>
+    <span class="chip">128 Content-Blöcke</span>
+    <span class="chip">Kundencall 11.03.2026</span>
+  </div>
+</div>
+
+<div style="max-width:860px;margin:0 auto 32px;padding:0 24px">
+  <details open style="background:#f0f9ff;border:2px solid #bae6fd;border-radius:12px;padding:20px 24px">
+    <summary style="font-weight:700;font-size:16px;cursor:pointer;color:#0369a1;list-style:none;display:flex;align-items:center;gap:8px">
+      📝 So geben Sie Feedback — Kurzanleitung
+      <span style="font-size:12px;font-weight:400;color:#64748b;margin-left:auto">Zum Einklappen klicken</span>
+    </summary>
+    <ol style="margin-top:16px;padding-left:20px;line-height:2;color:#1e3a5f;font-size:15px">
+      <li><strong>Seite öffnen</strong> — Klicken Sie unten auf eine Seite. Alle Seiten sind über die Navigation erreichbar.</li>
+      <li><strong>Kommentar hinterlassen</strong> — Neben jedem Textblock sehen Sie <strong>✏️ Vorschlag</strong>. Klicken Sie darauf, schreiben Sie Ihren Kommentar und klicken Sie auf <strong>Speichern</strong>.</li>
+      <li><strong>Mehrere Seiten kommentieren</strong> — Kommentare werden seitenübergreifend gespeichert. Sie können beliebig zwischen den Seiten wechseln.</li>
+      <li><strong>Feedback exportieren</strong> — Oben rechts: <strong>📥 Feedback: X Kommentare</strong> → klicken → <strong>Als Datei herunterladen</strong>. Sie erhalten eine .txt-Datei mit allen Kommentaren.</li>
+      <li><strong>Datei an uns senden</strong> — Schicken Sie die Datei per E-Mail, WhatsApp oder wie es Ihnen am liebsten ist.</li>
+    </ol>
+    <p style="margin-top:12px;font-size:13px;color:#64748b;font-style:italic">Hinweis: Ihre Kommentare werden lokal in Ihrem Browser gespeichert und bleiben erhalten, auch wenn Sie die Seite schließen.</p>
+  </details>
+</div>
+
+
+<div class="stats-row">
+  <div class="stat-box"><div class="stat-n">15</div><div class="stat-l">Seiten fertig</div></div>
+  <div class="stat-box"><div class="stat-n">128</div><div class="stat-l">Content-Blöcke total</div></div>
+  <div class="stat-box"><div class="stat-n" style="color:#d97706">70</div><div class="stat-l">Offene Placeholders</div></div>
+  <div class="stat-box"><div class="stat-n" style="color:#059669">0</div><div class="stat-l">Seiten PH-frei</div></div>
+</div>
+
+<div class="site-map">
+  <h2 style="margin-bottom:20px;font-size:20px">Seitenstruktur &amp; Block-Übersicht</h2>
+  <p style="font-size:12px;color:var(--gray);margin-bottom:20px">
+    Klick auf Seitenname → vollständige Page Preview mit allen Texten.
+    Spalten: Block-Typ · Block-Name · Content-Vorschau
+  </p>
+<div class="group-header" style="border-color:#1d4ed8;color:#1d4ed8">Hauptseiten</div>
+<div class="page-card">
+  <a href="medilux_berlin_preview_startseite.html" class="page-card-header" style="border-left:4px solid #1d4ed8">
+    <span class="page-card-title">Startseite</span>
+    <span class="ver-pill" style="background:#6366f1;color:#fff">v0.8.1</span>
+    <span class="ph-count">&#9888; 6 PH</span>
+    <span style="font-size:11px;color:var(--gray);margin-left:8px">10 Blöcke</span>
+    <span style="font-size:12px;color:var(--gray);margin-left:8px">→</span>
+  </a>
+  <div class="block-list">
+    <div class="block-row">
+        <span class="block-type bt-hero">hero</span>
+        <span class="block-name">Block 1: Hero Section</span>
+        <span class="block-preview">Pflege-WG, betreutes Wohnen und Pflegedienst in Berlin – ein Zuhause, das mitden</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-hero">snippet</span>
+        <span class="block-name">Block 2: Marquee / AI-Snippet</span>
+        <span class="block-preview">Format: Laufband/Ticker-Element (horizontal scrolling) Text: MEDILUX Berlin biet</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-trust">audience</span>
+        <span class="block-name">Block 3: Navigation für die Zielgruppe</span>
+        <span class="block-preview">Für wen wir da sind</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-trust">trust</span>
+        <span class="block-name">Block 4: Trust-Signale</span>
+        <span class="block-preview">Ohne Überschrift – nur 4 Icon-Karten nebeneinander Icon: Checkmark/Shield</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-cards">cards</span>
+        <span class="block-name">Block 5: Unsere Leistungen</span>
+        <span class="block-preview">Unsere Leistungen</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-cards">location</span>
+        <span class="block-name">Block 6: Unsere Standorte</span>
+        <span class="block-preview">Unsere Standorte in Berlin {#standorte} Design-Anforderung: Slider mit 2 Slides </span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-cta">cta</span>
+        <span class="block-name">Block 7: Kostenrechner CTA-Banner</span>
+        <span class="block-preview">Was kostet ein Pflegeplatz?</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-steps">testimonials</span>
+        <span class="block-name">Block 8: Kundenmeinungen</span>
+        <span class="block-preview">Das sagen unsere Bewohner und Angehörigen Content: [PLACEHOLDER: 3 Testimonials]</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-steps">blog</span>
+        <span class="block-name">Block 9: Ratgeber & News</span>
+        <span class="block-preview">Ratgeber & aktuelle Informationen</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-faq">faq</span>
+        <span class="block-name">Block 10: FAQ</span>
+        <span class="block-preview">Häufig gestellte Fragen</span>
+      </div>
+
+  </div>
+</div>
+<div class="page-card">
+  <a href="medilux_berlin_preview_leistungen.html" class="page-card-header" style="border-left:4px solid #1d4ed8">
+    <span class="page-card-title">Leistungen</span>
+    <span class="ver-pill" style="background:#6366f1;color:#fff">v0.8.1</span>
+    <span class="ph-count">&#9888; 16 PH</span>
+    <span style="font-size:11px;color:var(--gray);margin-left:8px">8 Blöcke</span>
+    <span style="font-size:12px;color:var(--gray);margin-left:8px">→</span>
+  </a>
+  <div class="block-list">
+    <div class="block-row">
+        <span class="block-type bt-section">section</span>
+        <span class="block-name">Block 1: Intro Section</span>
+        <span class="block-preview">AI-Snippet (50-80 Wörter):</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-section">section</span>
+        <span class="block-name">Leistungsübersicht</span>
+        <span class="block-preview">Springen Sie direkt zu: - [🩺 Ambulante Pflege](#ambulante-pflege) - [🏡 Pflege-</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-section">section</span>
+        <span class="block-name">Block 2: 🩺 Ambulante Pflege in Berlin {#ambulante-pflege}</span>
+        <span class="block-preview">Bleiben Sie in Ihren eigenen vier Wänden – wir kommen zu Ihnen.</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-section">section</span>
+        <span class="block-name">Block 3: 🏡 Pflege-Wohngemeinschaften in Berlin {#pflege-wohngemeinschaften}</span>
+        <span class="block-preview">Leben in Gemeinschaft – individuell betreut, rund um die Uhr.</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-section">section</span>
+        <span class="block-name">Block 4: 🏠 Betreutes Wohnen in Berlin {#betreutes-wohnen}</span>
+        <span class="block-preview">Leben Sie selbstbestimmt in Ihrer eigenen Wohnung – mit Betreuung, wann immer Si</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-section">section</span>
+        <span class="block-name">Block 5: 💰 Kosten & Finanzierung {#kosten-finanzierung}</span>
+        <span class="block-preview">Pflege ist teuer – aber Sie sind nicht allein mit den Kosten.</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-faq">faq</span>
+        <span class="block-name">Block 6: ❓ Häufige Fragen {#faq}</span>
+        <span class="block-preview">Das hängt von Ihrem Pflegebedarf und Ihren Wünschen ab:</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-cta">cta</span>
+        <span class="block-name">Jetzt Kontakt aufnehmen</span>
+        <span class="block-preview">🔵 Beratungstermin vereinbaren 🔵 Besichtigung buchen</span>
+      </div>
+
+  </div>
+</div>
+<div class="group-header" style="border-color:#059669;color:#059669">Für wen? — B2C Landing Pages</div>
+<div class="page-card">
+  <a href="medilux_berlin_preview_fuer_angehoerige.html" class="page-card-header" style="border-left:4px solid #059669">
+    <span class="page-card-title">Für Angehörige</span>
+    <span class="ver-pill" style="background:var(--blue);color:#fff">v0.9</span>
+    <span class="ph-count">&#9888; 6 PH</span>
+    <span style="font-size:11px;color:var(--gray);margin-left:8px">9 Blöcke</span>
+    <span style="font-size:12px;color:var(--gray);margin-left:8px">→</span>
+  </a>
+  <div class="block-list">
+    <div class="block-row">
+        <span class="block-type bt-hero">hero</span>
+        <span class="block-name">Hero</span>
+        <span class="block-preview">AI-Snippet (68 Wörter): MEDILUX Berlin unterstützt pflegende Angehörige mit drei</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-section">section</span>
+        <span class="block-name">Problem/Pain: Die Realität der Pflege</span>
+        <span class="block-preview">Sie haben sich entschieden, für Ihre Mutter, Ihren Vater oder Ihren Partner da z</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-section">section</span>
+        <span class="block-name">Lösung: Drei Wege, die entlasten</span>
+        <span class="block-preview">Jede Familie ist anders. Deshalb bieten wir nicht eine Lösung, sondern drei — ab</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-section">section</span>
+        <span class="block-name">So funktioniert der Weg zu uns</span>
+        <span class="block-preview">Schritt 1: Erstgespräch — kostenlos und unverbindlich Rufen Sie uns an oder schr</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-cards">location</span>
+        <span class="block-name">Unsere Standorte: Orte zum Besuchen</span>
+        <span class="block-preview">—</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-section">section</span>
+        <span class="block-name">Kosten: Transparent und planbar</span>
+        <span class="block-preview">Über Geld zu sprechen, ist unangenehm. Aber für eine gute Entscheidung brauchen </span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-section">section</span>
+        <span class="block-name">Stimmen von Angehörigen</span>
+        <span class="block-preview">[PLACEHOLDER #4: Testimonial — Angehörigen-Perspektive, z.B. Tochter/Sohn über E</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-faq">faq</span>
+        <span class="block-name">FAQ für Angehörige</span>
+        <span class="block-preview">Mein Angehöriger hat noch keinen Pflegegrad. Können wir trotzdem zu Ihnen? Ja. W</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-cta">cta</span>
+        <span class="block-name">Abschluss-CTA</span>
+        <span class="block-preview">Der erste Schritt ist oft der schwerste. Aber er muss kein großer sein: Ein Anru</span>
+      </div>
+
+  </div>
+</div>
+<div class="page-card">
+  <a href="medilux_berlin_preview_fuer_senioren.html" class="page-card-header" style="border-left:4px solid #059669">
+    <span class="page-card-title">Für Senioren</span>
+    <span class="ver-pill" style="background:var(--blue);color:#fff">v0.9</span>
+    <span class="ph-count">&#9888; 5 PH</span>
+    <span style="font-size:11px;color:var(--gray);margin-left:8px">9 Blöcke</span>
+    <span style="font-size:12px;color:var(--gray);margin-left:8px">→</span>
+  </a>
+  <div class="block-list">
+    <div class="block-row">
+        <span class="block-type bt-hero">hero</span>
+        <span class="block-name">Hero</span>
+        <span class="block-preview">AI-Snippet (72 Wörter): MEDILUX Berlin bietet Senioren drei Wohn- und Pflegeform</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-section">section</span>
+        <span class="block-name">Einstieg: Die Frage, die sich stellt</span>
+        <span class="block-preview">Vielleicht stellen Sie sich diese Frage zum ersten Mal. Oder Sie denken schon lä</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-section">section</span>
+        <span class="block-name">Drei Wohnformen im Überblick</span>
+        <span class="block-preview">—</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-section">section</span>
+        <span class="block-name">So kommen Sie zu uns</span>
+        <span class="block-preview">Schritt 1: Anrufen oder schreiben Erzählen Sie uns, was Sie suchen. Ein Beratung</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-cards">location</span>
+        <span class="block-name">Standorte im Detail</span>
+        <span class="block-preview">—</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-section">section</span>
+        <span class="block-name">Kosten: Was Sie wissen sollten</span>
+        <span class="block-preview">Wir nennen Ihnen die Kosten offen. Das tun nur wenige Pflegeanbieter in Berlin.</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-section">section</span>
+        <span class="block-name">Erfahrungen</span>
+        <span class="block-preview">[PLACEHOLDER #4: Testimonial — Senior über das Leben in der Pflege-WG, Alltag, G</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-faq">faq</span>
+        <span class="block-name">FAQ für Senioren</span>
+        <span class="block-preview">Kann ich meine eigenen Möbel und persönlichen Gegenstände mitbringen? Ja. In all</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-cta">cta</span>
+        <span class="block-name">Abschluss-CTA</span>
+        <span class="block-preview">Ein Gespräch am Telefon ist gut. Vor Ort sein ist besser. Sehen Sie die Räume, d</span>
+      </div>
+
+  </div>
+</div>
+<div class="page-card">
+  <a href="medilux_berlin_preview_fuer_berufsbetreuer.html" class="page-card-header" style="border-left:4px solid #059669">
+    <span class="page-card-title">Für Berufsbetreuer</span>
+    <span class="ver-pill" style="background:var(--blue);color:#fff">v0.9</span>
+    <span class="ph-count">&#9888; 3 PH</span>
+    <span style="font-size:11px;color:var(--gray);margin-left:8px">9 Blöcke</span>
+    <span style="font-size:12px;color:var(--gray);margin-left:8px">→</span>
+  </a>
+  <div class="block-list">
+    <div class="block-row">
+        <span class="block-type bt-hero">hero</span>
+        <span class="block-name">Hero</span>
+        <span class="block-preview">AI-Snippet (74 Wörter): MEDILUX Berlin bietet Berufsbetreuern feste Ansprechpart</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-section">section</span>
+        <span class="block-name">Problemverständnis</span>
+        <span class="block-preview">Sie kennen das: Ein Betreuter braucht einen Pflegeplatz. Schnell. Und der Platz </span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-section">section</span>
+        <span class="block-name">Lösung: MEDILUX als Partner</span>
+        <span class="block-preview">—</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-section">section</span>
+        <span class="block-name">Zusammenarbeit in der Praxis</span>
+        <span class="block-preview">Schritt 1: Anfrage mit Betreuungssituation Rufen Sie an oder schreiben Sie. Schi</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-cards">location</span>
+        <span class="block-name">Standorte: Relevante Details für Betreuer</span>
+        <span class="block-preview">—</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-section">section</span>
+        <span class="block-name">Pflegekasse-Leistungen</span>
+        <span class="block-preview">Eine Übersicht für Ihre Arbeit und Berichte:</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-trust">trust</span>
+        <span class="block-name">Vertrauen</span>
+        <span class="block-preview">[PLACEHOLDER #3: Qualitätsnachweise — MDK-Bewertung, Zertifikate, Qualitätssiege</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-faq">faq</span>
+        <span class="block-name">FAQ für Berufsbetreuer</span>
+        <span class="block-preview">Welche Unterlagen benötige ich für die Aufnahme eines Betreuten? In der Regel: B</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-cta">cta</span>
+        <span class="block-name">Abschluss-CTA</span>
+        <span class="block-preview">Sie haben einen konkreten Fall oder möchten sich generell über unsere Kapazitäte</span>
+      </div>
+
+  </div>
+</div>
+<div class="group-header" style="border-color:#7c3aed;color:#7c3aed">Für wen? — B2B Landing Pages</div>
+<div class="page-card">
+  <a href="medilux_berlin_preview_fuer_aerzte.html" class="page-card-header" style="border-left:4px solid #7c3aed">
+    <span class="page-card-title">Für Haus- & Fachärzte</span>
+    <span class="ver-pill" style="background:var(--blue);color:#fff">v0.9</span>
+    <span class="ph-count">&#9888; 4 PH</span>
+    <span style="font-size:11px;color:var(--gray);margin-left:8px">9 Blöcke</span>
+    <span style="font-size:12px;color:var(--gray);margin-left:8px">→</span>
+  </a>
+  <div class="block-list">
+    <div class="block-row">
+        <span class="block-type bt-hero">hero</span>
+        <span class="block-name">Hero</span>
+        <span class="block-preview">AI-Snippet (72 Wörter): MEDILUX Berlin setzt ärztliche Verordnungen zur häuslich</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-section">section</span>
+        <span class="block-name">Problemverständnis</span>
+        <span class="block-preview">Sie kennen Ihre Patienten. Sie wissen, welche Versorgung nötig ist. Was Sie brau</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-section">section</span>
+        <span class="block-name">Lösung: MEDILUX als medizinischer Partner</span>
+        <span class="block-preview">—</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-section">section</span>
+        <span class="block-name">Verordnungs-Workflow</span>
+        <span class="block-preview">Schritt 1: HKP-Verordnung ausstellen Sie stellen die Verordnung zur häuslichen K</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-cards">location</span>
+        <span class="block-name">Medizinische Kapazitäten nach Standort</span>
+        <span class="block-preview">—</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-section">section</span>
+        <span class="block-name">Abrechnungsinformationen für Ärzte</span>
+        <span class="block-preview">—</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-section">section</span>
+        <span class="block-name">Fachliche Qualifikation</span>
+        <span class="block-preview">[PLACEHOLDER #3: Qualitätsnachweise — MDK-Bewertung, Zertifikate, Qualitätssiege</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-faq">faq</span>
+        <span class="block-name">FAQ für Ärzte</span>
+        <span class="block-preview">Wie übermittle ich eine HKP-Verordnung an MEDILUX Berlin? Per Fax, per Post oder</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-cta">cta</span>
+        <span class="block-name">Abschluss-CTA</span>
+        <span class="block-preview">Sie suchen einen zuverlässigen Pflegedienst für Ihre Patienten in Berlin? Wir se</span>
+      </div>
+
+  </div>
+</div>
+<div class="page-card">
+  <a href="medilux_berlin_preview_fuer_sozialdienste.html" class="page-card-header" style="border-left:4px solid #7c3aed">
+    <span class="page-card-title">Für Sozialdienste</span>
+    <span class="ver-pill" style="background:var(--blue);color:#fff">v0.9</span>
+    <span class="ph-count">&#9888; 5 PH</span>
+    <span style="font-size:11px;color:var(--gray);margin-left:8px">9 Blöcke</span>
+    <span style="font-size:12px;color:var(--gray);margin-left:8px">→</span>
+  </a>
+  <div class="block-list">
+    <div class="block-row">
+        <span class="block-type bt-hero">hero</span>
+        <span class="block-name">Hero</span>
+        <span class="block-preview">AI-Snippet (73 Wörter): MEDILUX Berlin unterstützt Klinik-Sozialdienste bei der </span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-section">section</span>
+        <span class="block-name">Problemverständnis</span>
+        <span class="block-preview">Der Patient liegt auf Station, die Verweildauer ist ausgereizt, das DRG-System t</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-section">section</span>
+        <span class="block-name">Lösung: MEDILUX als Entlasspartner</span>
+        <span class="block-preview">—</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-section">section</span>
+        <span class="block-name">Entlassungs-Workflow</span>
+        <span class="block-preview">Schritt 1: Verfügbarkeit anfragen Sie rufen an oder schreiben. Schildern Sie den</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-cards">location</span>
+        <span class="block-name">Verfügbare Plätze nach Standort</span>
+        <span class="block-preview">—</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-section">section</span>
+        <span class="block-name">Kostensätze für Sozialdienste</span>
+        <span class="block-preview">—</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-section">section</span>
+        <span class="block-name">Verlässlichkeit</span>
+        <span class="block-preview">[PLACEHOLDER #3: Qualitätsnachweise — MDK-Bewertung, Zertifikate, Qualitätssiege</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-faq">faq</span>
+        <span class="block-name">FAQ für Sozialdienste</span>
+        <span class="block-preview">Wie schnell kann ein Patient nach der Entlassung aufgenommen werden? Das hängt v</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-cta">cta</span>
+        <span class="block-name">Abschluss-CTA</span>
+        <span class="block-preview">Sie haben einen Patienten, der zeitnah einen Pflegeplatz braucht? Rufen Sie an. </span>
+      </div>
+
+  </div>
+</div>
+<div class="page-card">
+  <a href="medilux_berlin_preview_fuer_pflegeberater.html" class="page-card-header" style="border-left:4px solid #7c3aed">
+    <span class="page-card-title">Für Pflegeberater</span>
+    <span class="ver-pill" style="background:var(--blue);color:#fff">v0.9</span>
+    <span class="ph-count">&#9888; 3 PH</span>
+    <span style="font-size:11px;color:var(--gray);margin-left:8px">9 Blöcke</span>
+    <span style="font-size:12px;color:var(--gray);margin-left:8px">→</span>
+  </a>
+  <div class="block-list">
+    <div class="block-row">
+        <span class="block-type bt-hero">hero</span>
+        <span class="block-name">Hero</span>
+        <span class="block-preview">AI-Snippet (71 Wörter): MEDILUX Berlin bietet Pflegeberatern eine strukturierte </span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-section">section</span>
+        <span class="block-name">Problemverständnis</span>
+        <span class="block-preview">Sie kennen die Pflegebedürftigen und ihre Familien. Sie kennen die Optionen — th</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-section">section</span>
+        <span class="block-name">Lösung: MEDILUX als Empfehlungsgrundlage</span>
+        <span class="block-preview">—</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-section">section</span>
+        <span class="block-name">Beratungsablauf mit MEDILUX</span>
+        <span class="block-preview">Schritt 1: Beratungssituation schildern Rufen Sie uns an oder schreiben Sie. Bes</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-cards">location</span>
+        <span class="block-name">Standortvergleich für Berater</span>
+        <span class="block-preview">| Merkmal | Villa Civitas (Zehlendorf) | Residenz Heerstraße (Spandau) | |------</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-section">section</span>
+        <span class="block-name">Kosten für die Beratung</span>
+        <span class="block-preview">—</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-trust">trust</span>
+        <span class="block-name">Vertrauen und Qualität</span>
+        <span class="block-preview">[PLACEHOLDER #3: Qualitätsnachweise — MDK-Bewertung, Zertifikate, Qualitätssiege</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-faq">faq</span>
+        <span class="block-name">FAQ für Pflegeberater</span>
+        <span class="block-preview">Kann ich als Pflegeberater eine Besichtigung vereinbaren — auch ohne konkreten K</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-cta">cta</span>
+        <span class="block-name">Abschluss-CTA</span>
+        <span class="block-preview">Sie möchten MEDILUX Berlin als Option für Ihre Klienten prüfen? Rufen Sie an ode</span>
+      </div>
+
+  </div>
+</div>
+<div class="page-card">
+  <a href="medilux_berlin_preview_fuer_sozialamter.html" class="page-card-header" style="border-left:4px solid #7c3aed">
+    <span class="page-card-title">Für Sozialämter</span>
+    <span class="ver-pill" style="background:var(--blue);color:#fff">v0.9</span>
+    <span class="ph-count">&#9888; 4 PH</span>
+    <span style="font-size:11px;color:var(--gray);margin-left:8px">9 Blöcke</span>
+    <span style="font-size:12px;color:var(--gray);margin-left:8px">→</span>
+  </a>
+  <div class="block-list">
+    <div class="block-row">
+        <span class="block-type bt-hero">hero</span>
+        <span class="block-name">Hero</span>
+        <span class="block-preview">AI-Snippet (69 Wörter): MEDILUX Berlin bietet Sozialämtern eine transparente Kos</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-section">section</span>
+        <span class="block-name">Problemverständnis</span>
+        <span class="block-preview">Sie bewilligen Hilfe zur Pflege für Menschen, die sich die Versorgung nicht aus </span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-section">section</span>
+        <span class="block-name">Lösung: MEDILUX als behördlicher Partner</span>
+        <span class="block-preview">—</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-section">section</span>
+        <span class="block-name">Ablauf der Zusammenarbeit</span>
+        <span class="block-preview">Schritt 1: Kostenauskunft einholen Sie oder der Antragsteller kontaktieren uns. </span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-cards">location</span>
+        <span class="block-name">Standorte mit Kostenstruktur</span>
+        <span class="block-preview">—</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-section">section</span>
+        <span class="block-name">Kostenübernahme und Finanzierung</span>
+        <span class="block-preview">—</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-section">section</span>
+        <span class="block-name">Qualität und Aufsicht</span>
+        <span class="block-preview">[PLACEHOLDER #3: Qualitätsnachweise — MDK-Bewertung, Zertifikate, Qualitätssiege</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-faq">faq</span>
+        <span class="block-name">FAQ für Sozialämter</span>
+        <span class="block-preview">Wie erhalte ich eine Kostenaufstellung für einen konkreten Antrag? Rufen Sie uns</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-cta">cta</span>
+        <span class="block-name">Abschluss-CTA</span>
+        <span class="block-preview">Sie prüfen einen Antrag auf Hilfe zur Pflege und brauchen eine belastbare Kosten</span>
+      </div>
+
+  </div>
+</div>
+<div class="group-header" style="border-color:#b45309;color:#b45309">Info- & Marken-Seiten (Phase 2)</div>
+<div class="page-card">
+  <a href="medilux_berlin_preview_standorte.html" class="page-card-header" style="border-left:4px solid #b45309">
+    <span class="page-card-title">Standorte</span>
+    <span class="ver-pill" style="background:var(--blue);color:#fff">v0.9</span>
+    <span class="ph-count">&#9888; 4 PH</span>
+    <span style="font-size:11px;color:var(--gray);margin-left:8px">8 Blöcke</span>
+    <span style="font-size:12px;color:var(--gray);margin-left:8px">→</span>
+  </a>
+  <div class="block-list">
+    <div class="block-row">
+        <span class="block-type bt-hero">snippet</span>
+        <span class="block-name">AI-Snippet</span>
+        <span class="block-preview">MEDILUX Berlin betreibt zwei Pflegestandorte: Die Villa Civitas in Zehlendorf bi</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-hero">hero</span>
+        <span class="block-name">Block 1: Hero</span>
+        <span class="block-preview">Unsere Standorte in Berlin — Pflege-WG und betreutes Wohnen in Zehlendorf und Sp</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-cards">pricing</span>
+        <span class="block-name">Block 2: Auf einen Blick — Vergleichstabelle</span>
+        <span class="block-preview">Zwei Standorte — auf einen Blick | Merkmal | Villa Civitas | Residenz Heerstraße</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-section">section</span>
+        <span class="block-name">Block 3: Villa Civitas — Zehlendorf</span>
+        <span class="block-preview">Villa Civitas — Pflege-Wohngemeinschaften in Berlin-Zehlendorf</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-section">section</span>
+        <span class="block-name">Block 4: Residenz Heerstraße — Spandau</span>
+        <span class="block-preview">Residenz Heerstraße — Pflege-WG und betreutes Wohnen in Berlin-Spandau</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-cards">location</span>
+        <span class="block-name">Block 5: Warum MEDILUX Berlin — an beiden Standorten</span>
+        <span class="block-preview">Was beide Standorte verbindet Unabhängig davon, welcher Standort besser zu Ihnen</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-section">section</span>
+        <span class="block-name">Block 6: Kontakt und Besichtigung</span>
+        <span class="block-preview">Besuchen Sie uns — wir zeigen Ihnen alles persönlich Ein Pflegeplatz ist eine En</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-cards">location</span>
+        <span class="block-name">Block 7: FAQ — Häufige Fragen zu unseren Standorten</span>
+        <span class="block-preview">Häufige Fragen zu unseren Standorten</span>
+      </div>
+
+  </div>
+</div>
+<div class="page-card">
+  <a href="medilux_berlin_preview_kosten.html" class="page-card-header" style="border-left:4px solid #b45309">
+    <span class="page-card-title">Kosten & Finanzierung</span>
+    <span class="ver-pill" style="background:var(--blue);color:#fff">v0.9</span>
+    <span class="ph-count">&#9888; 2 PH</span>
+    <span style="font-size:11px;color:var(--gray);margin-left:8px">8 Blöcke</span>
+    <span style="font-size:12px;color:var(--gray);margin-left:8px">→</span>
+  </a>
+  <div class="block-list">
+    <div class="block-row">
+        <span class="block-type bt-hero">snippet</span>
+        <span class="block-name">AI-Snippet</span>
+        <span class="block-preview">Die Kosten für einen Pflegeplatz bei MEDILUX Berlin richten sich nach Standort, </span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-hero">hero</span>
+        <span class="block-name">Block 1: Hero</span>
+        <span class="block-preview">Kosten und Finanzierung — was Pflege bei MEDILUX Berlin kostet und wer dafür auf</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-cards">pricing</span>
+        <span class="block-name">Block 2: Kostenübersicht nach Wohnform</span>
+        <span class="block-preview">Was kostet ein Platz bei MEDILUX Berlin? Die monatlichen Kosten hängen von drei </span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-section">section</span>
+        <span class="block-name">Block 3: Was die Pflegekasse übernimmt</span>
+        <span class="block-preview">Leistungen der Pflegekasse — diese Zuschüsse stehen Ihnen zu Die Pflegekasse übe</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-section">section</span>
+        <span class="block-name">Block 4: Rechenbeispiel — so sieht es konkret aus</span>
+        <span class="block-preview">Rechenbeispiel: Pflege-WG in der Residenz Heerstraße (Pflegegrad 3) | Position |</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-section">section</span>
+        <span class="block-name">Block 5: Sozialhilfe und Hilfe zur Pflege</span>
+        <span class="block-preview">Wenn das Einkommen nicht reicht — Hilfe zur Pflege nach SGB XII Nicht jeder kann</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-cta">cta</span>
+        <span class="block-name">Block 6: Kostenrechner CTA</span>
+        <span class="block-preview">Was kostet es in Ihrem Fall? Jede Situation ist anders. Deshalb berechnen wir Ih</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-faq">faq</span>
+        <span class="block-name">Block 7: FAQ — Häufige Fragen zu Kosten</span>
+        <span class="block-preview">Häufige Fragen zu Kosten und Finanzierung</span>
+      </div>
+
+  </div>
+</div>
+<div class="page-card">
+  <a href="medilux_berlin_preview_ueber_uns.html" class="page-card-header" style="border-left:4px solid #b45309">
+    <span class="page-card-title">Über uns</span>
+    <span class="ver-pill" style="background:var(--blue);color:#fff">v0.9</span>
+    <span class="ph-count">&#9888; 3 PH</span>
+    <span style="font-size:11px;color:var(--gray);margin-left:8px">8 Blöcke</span>
+    <span style="font-size:12px;color:var(--gray);margin-left:8px">→</span>
+  </a>
+  <div class="block-list">
+    <div class="block-row">
+        <span class="block-type bt-hero">snippet</span>
+        <span class="block-name">AI-Snippet</span>
+        <span class="block-preview">MEDILUX Berlin ist Teil der MEDILUX GmbH mit über 17 Jahren Erfahrung in der Pfl</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-hero">hero</span>
+        <span class="block-name">Block 1: Hero</span>
+        <span class="block-preview">Über MEDILUX Berlin — Pflege mit Erfahrung, Nähe und Verantwortung</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-section">section</span>
+        <span class="block-name">Block 2: Unsere Geschichte</span>
+        <span class="block-preview">Von Magdeburg nach Berlin — über 17 Jahre Pflege-Erfahrung Die MEDILUX GmbH wurd</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-section">section</span>
+        <span class="block-name">Block 3: Mission & Werte</span>
+        <span class="block-preview">Woran wir uns messen lassen Pflege ist kein Produkt. Es ist eine Beziehung zwisc</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-steps">team</span>
+        <span class="block-name">Block 4: Unser Team</span>
+        <span class="block-preview">Die Menschen hinter MEDILUX Berlin</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-section">section</span>
+        <span class="block-name">Block 5: Qualität & Zulassungen</span>
+        <span class="block-preview">Qualitätssicherung bei MEDILUX Berlin</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-cards">location</span>
+        <span class="block-name">Block 6: Unsere Standorte</span>
+        <span class="block-preview">Zwei Häuser — ein Anspruch | | Villa Civitas | Residenz Heerstraße |</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-cta">cta</span>
+        <span class="block-name">Block 7: CTA</span>
+        <span class="block-preview">Lernen Sie uns kennen — nicht nur unsere Website Zahlen und Texte vermitteln ein</span>
+      </div>
+
+  </div>
+</div>
+<div class="page-card">
+  <a href="medilux_berlin_preview_karriere.html" class="page-card-header" style="border-left:4px solid #b45309">
+    <span class="page-card-title">Karriere</span>
+    <span class="ver-pill" style="background:var(--blue);color:#fff">v0.9</span>
+    <span class="ph-count">&#9888; 2 PH</span>
+    <span style="font-size:11px;color:var(--gray);margin-left:8px">7 Blöcke</span>
+    <span style="font-size:12px;color:var(--gray);margin-left:8px">→</span>
+  </a>
+  <div class="block-list">
+    <div class="block-row">
+        <span class="block-type bt-hero">snippet</span>
+        <span class="block-name">AI-Snippet</span>
+        <span class="block-preview">MEDILUX Berlin sucht Pflegekräfte, die Pflege als persönliche Aufgabe verstehen.</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-hero">hero</span>
+        <span class="block-name">Block 1: Hero</span>
+        <span class="block-preview">Pflege-Jobs in Berlin — arbeiten, wo man Menschen noch kennt</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-section">section</span>
+        <span class="block-name">Block 2: Warum MEDILUX Berlin?</span>
+        <span class="block-preview">Warum Pflegekräfte bei uns bleiben Wir wissen: Der Pflegearbeitsmarkt in Berlin </span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-section">section</span>
+        <span class="block-name">Block 3: Wen wir suchen</span>
+        <span class="block-preview">Wer zu uns passt Wir suchen Menschen, die Pflege als Berufung verstehen — nicht </span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-section">section</span>
+        <span class="block-name">Block 4: Offene Stellen {#stellen}</span>
+        <span class="block-preview">Aktuelle Stellenangebote [PLACEHOLDER: Offene Stellen — wird nach Kundencall erg</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-steps">steps</span>
+        <span class="block-name">Block 5: Bewerbungsprozess</span>
+        <span class="block-preview">So bewerben Sie sich bei uns</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-cta">cta</span>
+        <span class="block-name">Block 6: CTA</span>
+        <span class="block-preview">Bereit für Pflege, die sich persönlich anfühlt? Ob examinierte Fachkraft, Betreu</span>
+      </div>
+
+  </div>
+</div>
+<div class="page-card">
+  <a href="medilux_berlin_preview_kontakt.html" class="page-card-header" style="border-left:4px solid #b45309">
+    <span class="page-card-title">Kontakt</span>
+    <span class="ver-pill" style="background:var(--blue);color:#fff">v0.9</span>
+    <span class="ph-count">&#9888; 4 PH</span>
+    <span style="font-size:11px;color:var(--gray);margin-left:8px">7 Blöcke</span>
+    <span style="font-size:12px;color:var(--gray);margin-left:8px">→</span>
+  </a>
+  <div class="block-list">
+    <div class="block-row">
+        <span class="block-type bt-hero">snippet</span>
+        <span class="block-name">AI-Snippet</span>
+        <span class="block-preview">Sie möchten sich über Pflege-Wohngemeinschaften oder betreutes Wohnen bei MEDILU</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-hero">hero</span>
+        <span class="block-name">Block 1: Hero</span>
+        <span class="block-preview">Kontakt — wir beraten Sie persönlich und unverbindlich</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-section">section</span>
+        <span class="block-name">Block 2: Drei Wege, uns zu erreichen</span>
+        <span class="block-preview">So erreichen Sie uns</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-form">form</span>
+        <span class="block-name">Block 3: Kontaktformular</span>
+        <span class="block-preview">Schreiben Sie uns — wir melden uns bei Ihnen Formularfelder:</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-cards">location</span>
+        <span class="block-name">Block 4: Unsere Standorte — Anfahrt</span>
+        <span class="block-preview">Besuchen Sie uns</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-section">section</span>
+        <span class="block-name">Block 5: Ansprechpartner</span>
+        <span class="block-preview">Ihr Ansprechpartner Herr Joe Schermer</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-faq">faq</span>
+        <span class="block-name">Block 6: Häufige Fragen zum Kontakt</span>
+        <span class="block-preview">Häufige Fragen</span>
+      </div>
+
+  </div>
+</div>
+<div class="group-header" style="border-color:#0891b2;color:#0891b2">Tools & Rechner</div>
+<div class="page-card">
+  <a href="medilux_berlin_preview_kostenrechner.html" class="page-card-header" style="border-left:4px solid #0891b2">
+    <span class="page-card-title">Kostenrechner</span>
+    <span class="ver-pill" style="background:#6366f1;color:#fff">v0.1</span>
+    <span class="ph-count">&#9888; 3 PH</span>
+    <span style="font-size:11px;color:var(--gray);margin-left:8px">9 Blöcke</span>
+    <span style="font-size:12px;color:var(--gray);margin-left:8px">→</span>
+  </a>
+  <div class="block-list">
+    <div class="block-row">
+        <span class="block-type bt-hero">snippet</span>
+        <span class="block-name">AI-Snippet</span>
+        <span class="block-preview">Der MEDILUX Berlin Pflegekostenrechner zeigt Ihnen in wenigen Sekunden, was ein </span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-hero">hero</span>
+        <span class="block-name">Hero / Intro</span>
+        <span class="block-preview">Headline: Was kostet ein Platz bei MEDILUX Berlin? Subheadline: Berechnen Sie je</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-section">section</span>
+        <span class="block-name">Der Rechner</span>
+        <span class="block-preview">Widget-Titel: Ihren Pflegepreis berechnen Schritt 1 — Pflegegrad wählen:</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-cards">pricing</span>
+        <span class="block-name">Vollständige Preisübersicht</span>
+        <span class="block-preview">> ⚠️ HINWEIS: Zimmergrößen werden NICHT angezeigt (Kirill-Entscheidung 15.07.202</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-section">section</span>
+        <span class="block-name">Was ist im Preis enthalten?</span>
+        <span class="block-preview">Headline: Das ist im Monatspreis enthalten | Leistung | Enthalten | |---------|-</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-section">section</span>
+        <span class="block-name">[PLACEHOLDER: Eigenanteil nach Pflegekasse]</span>
+        <span class="block-preview">> ⚠️ OPEN: Eigenanteil-Berechnung — Kirill bestätigen > > JES (Kundencall 11.03.</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-faq">faq</span>
+        <span class="block-name">FAQ</span>
+        <span class="block-preview">F: Was ist im Monatspreis enthalten? A: Der Preis beinhaltet Unterkunft, Verpfle</span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-cta">cta</span>
+        <span class="block-name">CTA</span>
+        <span class="block-preview">Headline: Haben Sie noch Fragen zu den Kosten? Text: Unser Team berät Sie gerne </span>
+      </div>
+<div class="block-row">
+        <span class="block-type bt-faq">faq</span>
+        <span class="block-name">⚠️ OFFENE FRAGEN — für Kirill-Bestätigung</span>
+        <span class="block-preview">| # | Frage | Kontext | |---|-------|---------| | 1 | Welcher Zimmerpreis wird a</span>
+      </div>
+
+  </div>
+</div>
+
+
+  <div style="margin-top:40px;padding:20px;background:var(--bg);border-radius:var(--r12);font-size:12px;color:var(--gray)">
+    <strong>Block-Typ Legende:</strong>
+    <span class="block-type bt-hero" style="margin:2px">hero</span> Hero Section &nbsp;&nbsp; <span class="block-type bt-hero" style="margin:2px">snippet</span> AI-Snippet/Marquee &nbsp;&nbsp; <span class="block-type bt-trust" style="margin:2px">trust</span> Trust-Signale &nbsp;&nbsp; <span class="block-type bt-trust" style="margin:2px">audience</span> Zielgruppen-Nav &nbsp;&nbsp; <span class="block-type bt-cards" style="margin:2px">cards</span> Service-Karten &nbsp;&nbsp; <span class="block-type bt-cards" style="margin:2px">location</span> Standort-Info &nbsp;&nbsp; <span class="block-type bt-steps" style="margin:2px">steps</span> Prozess-Schritte &nbsp;&nbsp; <span class="block-type bt-steps" style="margin:2px">testimonials</span> Testimonials &nbsp;&nbsp; <span class="block-type bt-steps" style="margin:2px">blog</span> Blog/Ratgeber &nbsp;&nbsp; <span class="block-type bt-faq" style="margin:2px">faq</span> FAQ &nbsp;&nbsp; <span class="block-type bt-cta" style="margin:2px">cta</span> CTA-Banner &nbsp;&nbsp; <span class="block-type bt-form" style="margin:2px">form</span> Kontaktformular &nbsp;&nbsp; <span class="block-type bt-cards" style="margin:2px">pricing</span> Preistabelle &nbsp;&nbsp; <span class="block-type bt-section" style="margin:2px">section</span> Text-Sektion
+  </div>
+
+  <p style="text-align:center;margin-top:40px;font-size:11px;color:var(--gray)">
+    &copy; 2026 MEDILUX GmbH &mdash; 15 von 15 Seiten fertig &middot;
+    N&auml;chster Schritt: Kundencall &rarr; 70 Placeholders l&ouml;sen &rarr; v1.0
+    &middot; 2p-preview &middot; 16.03.2026
+  </p>
+</div>
+<div class="ver-badge">v0.9</div>
+<div class="src-badge">2p-preview &middot; 16.03.2026</div>
+<script>
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('details.nav-dd')) {
+      document.querySelectorAll('details.nav-dd[open]').forEach(function(d) {
+        d.removeAttribute('open');
+      });
+    }
+  });
+</script>
+</body>
+</html>

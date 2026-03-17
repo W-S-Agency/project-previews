@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Für Senioren — MEDILUX Berlin Preview</title>
+<style>
+:root {
+  --primary: #1A1A1A;
+  --blue:    #2B55C0;
+  --mid:     #4C7CDA;
+  --yellow:  #E8C830;
+  --bg:      #ECF3F7;
+  --white:   #FFFFFF;
+  --text:    #333333;
+  --gray:    #7A8A9E;
+  --line:    #D9E3EC;
+  --r8: 8px; --r12: 12px; --r16: 16px; --r30: 30px;
+  --ph-bg:  #FFF3CD;
+  --ph-bdr: #FFD93D;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  background:var(--bg);color:var(--text);line-height:1.6}
+.page{max-width:1200px;margin:0 auto;background:var(--white);min-height:100vh;
+  box-shadow:0 0 40px rgba(0,0,0,.08)}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.94);
+  backdrop-filter:blur(12px);border-bottom:1px solid var(--line);
+  padding:0 40px;height:52px;display:flex;align-items:center}
+.nav-logo{font-size:18px;font-weight:800;color:var(--blue);letter-spacing:2px;text-decoration:none}
+.nav-links{display:flex;align-items:center;gap:4px;margin-left:auto}
+.nav-links a{padding:5px 12px;border-radius:var(--r30);text-decoration:none;
+  font-size:12px;font-weight:500;color:var(--gray)}
+.nav-links a:hover{color:var(--blue)}
+.nav-links a.active{background:var(--blue);color:#fff}
+.nav-dot{width:4px;height:4px;background:var(--yellow);border-radius:50%}
+.nav-cta{background:var(--blue)!important;color:#fff!important;font-weight:600!important}
+/* DROPDOWN — native <details> toggle, no JS needed for open/close */
+details.nav-dd{position:relative;list-style:none}
+details.nav-dd > summary{padding:5px 12px;border-radius:var(--r30);
+  font-size:12px;font-weight:500;color:var(--gray);cursor:pointer;
+  list-style:none;user-select:none}
+details.nav-dd > summary::-webkit-details-marker{display:none}
+details.nav-dd > summary.active{background:var(--blue);color:#fff}
+details.nav-dd > summary:hover{color:var(--blue)}
+.nav-dd-menu{position:absolute;top:calc(100% + 4px);left:0;background:#fff;
+  border:1px solid var(--line);border-radius:var(--r12);padding:6px 0;
+  min-width:180px;box-shadow:0 4px 16px rgba(0,0,0,.12);z-index:200}
+.nav-dd-menu a{display:block;padding:8px 16px;font-size:12px;color:var(--text);
+  text-decoration:none;font-weight:500}
+.nav-dd-menu a:hover{background:var(--bg)}
+.nav-dd-menu a.dd-act{color:var(--blue);font-weight:700}
+
+/* META BAR */
+.meta-bar{background:var(--bg);border-left:4px solid var(--blue);
+  padding:12px 18px;margin:12px 40px;border-radius:var(--r12);
+  font-size:11px;line-height:1.8}
+.meta-bar strong{color:var(--blue)}
+.meta-kw{display:inline-block;background:var(--blue);color:#fff;
+  font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;margin-left:6px}
+.meta-url{font-family:monospace;font-size:10px;color:var(--gray);background:var(--bg);
+  padding:2px 6px;border-radius:4px;margin-left:4px}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,#1a1a2e 0%,#2a2a4e 50%,#1a2a3e 100%);
+  color:#fff;border-radius:0 0 var(--r16) var(--r16);
+  padding:72px 40px 48px;overflow:hidden}
+.hero h1{font-size:32px;line-height:1.1;font-weight:700;max-width:700px;margin-bottom:18px}
+.hero .sub{font-size:15px;opacity:.88;line-height:1.5;max-width:640px;margin-bottom:28px}
+.hero .btn{display:inline-flex;align-items:center;gap:10px;background:var(--mid);color:#fff;
+  padding:10px 24px;border-radius:var(--r30);font-weight:600;font-size:13px;
+  text-decoration:none;margin-right:12px}
+.hero .btn-out{background:transparent;border:1px solid rgba(255,255,255,.4)}
+.hero .ai-snippet{margin-top:28px;background:rgba(255,255,255,.1);border-radius:var(--r12);
+  padding:16px 20px;font-size:13px;line-height:1.7;opacity:.9;max-width:740px;border-left:3px solid var(--yellow)}
+.hero .ai-label{font-size:10px;font-weight:700;letter-spacing:1px;opacity:.7;margin-bottom:6px}
+
+/* SECTIONS */
+.sec{padding:32px 40px}
+.sec-alt{background:var(--bg)}
+.sec h2{font-size:24px;font-weight:700;color:var(--primary);margin-bottom:16px}
+.sec h3{font-size:17px;font-weight:700;margin:20px 0 8px;color:var(--primary)}
+.sec h4{font-size:14px;font-weight:700;margin:14px 0 6px;color:var(--primary)}
+.sec p{font-size:14px;color:var(--text);line-height:1.6;margin-bottom:10px;max-width:780px}
+.sec ul,.sec ol{padding-left:22px;margin-bottom:14px}
+.sec li{font-size:14px;margin-bottom:6px;line-height:1.5}
+
+/* TRUST STRIP */
+.trust-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:20px 0}
+.trust-item{background:linear-gradient(135deg,#EFF4F6,#DAEAF6);border-radius:var(--r16);
+  padding:20px;text-align:center}
+.trust-item .icon{font-size:28px;margin-bottom:8px}
+.trust-item .t{font-size:13px;font-weight:700;color:var(--primary)}
+.trust-item .s{font-size:11px;color:var(--gray);margin-top:4px}
+
+/* CARDS */
+.card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0}
+.card{background:linear-gradient(135deg,#EFF4F6,#DAEAF6);border-radius:var(--r16);
+  padding:24px 20px;display:flex;flex-direction:column}
+.card h3{font-size:17px;font-weight:700;color:var(--primary);margin:0 0 10px}
+.card p{font-size:13px;color:var(--text);line-height:1.5}
+.card .tag{font-size:11px;color:var(--blue);font-weight:600;margin-top:14px;
+  padding-top:12px;border-top:1px dashed var(--line)}
+.card .cta-lnk{color:var(--blue);font-weight:600;font-size:12px;
+  text-decoration:none;margin-top:10px;display:inline-block}
+
+/* STEPS */
+.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0}
+.step{padding:20px;border:1px solid var(--line);border-radius:var(--r16)}
+.step-n{display:flex;align-items:center;justify-content:center;
+  width:32px;height:32px;background:var(--blue);color:#fff;
+  border-radius:50%;font-size:14px;font-weight:700;margin-bottom:12px}
+.step h3{font-size:15px;margin:0 0 8px}
+.step p{font-size:13px;color:var(--text)}
+
+/* LOCATION */
+.loc-card{border:1px solid var(--line);border-radius:var(--r16);padding:24px;margin:14px 0}
+.loc-card h3{font-size:18px;color:var(--primary);margin-bottom:4px}
+.loc-card .addr{font-size:13px;color:var(--gray);margin-bottom:14px}
+.loc-card ul{padding-left:20px}
+.loc-card li{font-size:13px;margin-bottom:5px}
+.loc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:16px 0}
+
+/* PRICE TABLE */
+.price-table{width:100%;border-collapse:collapse;font-size:13px;margin:16px 0}
+.price-table th{background:var(--blue);color:#fff;padding:10px 14px;text-align:left;font-weight:600}
+.price-table td{padding:10px 14px;border-bottom:1px solid var(--line)}
+.price-table tr:nth-child(even) td{background:var(--bg)}
+.price-table .hl td{background:#e8f5e9;font-weight:600}
+
+/* FAQ */
+details.faq{border-bottom:1px solid var(--line)}
+details.faq summary{padding:14px 0;font-weight:700;font-size:14px;cursor:pointer;
+  list-style:none;display:flex;justify-content:space-between;align-items:center;color:var(--primary)}
+details.faq summary::-webkit-details-marker{display:none}
+details.faq summary::after{content:'+';display:flex;align-items:center;justify-content:center;
+  width:24px;height:24px;background:var(--bg);border-radius:50%;
+  font-size:14px;color:var(--blue);flex-shrink:0}
+details.faq[open] summary::after{content:'−';background:var(--blue);color:#fff}
+.faq-a{padding:0 0 14px;font-size:13px;color:var(--text);line-height:1.7}
+
+/* CTA BANNER */
+.cta-banner{background:var(--blue);color:#fff;padding:36px;
+  border-radius:var(--r16);margin:32px 40px;text-align:center}
+.cta-banner h2{font-size:22px;color:#fff;margin-bottom:12px}
+.cta-banner p{font-size:14px;opacity:.92;max-width:600px;margin:0 auto 20px;color:#fff}
+.cta-banner .btn{display:inline-flex;background:#fff;color:var(--blue);
+  padding:10px 24px;border-radius:var(--r30);font-weight:700;font-size:14px;
+  text-decoration:none;margin:0 6px}
+.cta-banner .btn-out{background:transparent;border:1px solid rgba(255,255,255,.5);color:#fff}
+
+/* CONTACT FORM */
+.form-wrap{background:var(--bg);border-radius:var(--r16);padding:28px;margin:20px 0}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.form-field label{display:block;font-size:11px;font-weight:600;color:var(--gray);margin-bottom:4px}
+.form-field input,.form-field textarea,.form-field select{
+  width:100%;padding:10px 14px;border:1px solid var(--line);border-radius:var(--r8);
+  font-size:13px;background:#fff;color:var(--text)}
+.form-field textarea{min-height:80px;resize:vertical}
+.form-submit{background:var(--blue);color:#fff;padding:12px 28px;
+  border-radius:var(--r30);border:none;font-weight:700;font-size:14px;cursor:pointer;margin-top:12px}
+
+/* PLACEHOLDER */
+.ph{background:var(--ph-bg);border:1px dashed var(--ph-bdr);
+  border-radius:6px;padding:8px 14px;font-size:12px;
+  font-style:italic;color:#856404;margin:8px 0;display:inline-block}
+
+/* FOOTER */
+.footer{background:linear-gradient(180deg,#ECF3F7 0%,#fff 100%);
+  border-radius:var(--r16) var(--r16) 0 0;padding:28px 40px 16px;
+  margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.f-label{font-size:11px;color:var(--gray);margin-bottom:2px}
+.f-val{font-size:15px;font-weight:500;color:var(--blue);margin-bottom:10px}
+.f-links{display:flex;gap:16px;margin-top:8px;flex-wrap:wrap}
+.f-links a{font-size:11px;color:var(--gray);text-decoration:none}
+.f-links a:hover{color:var(--blue)}
+.f-copy{grid-column:1/-1;font-size:10px;color:var(--gray);
+  border-top:1px dashed var(--line);padding-top:10px;margin-top:6px}
+
+/* BADGE */
+.ver-badge{position:fixed;bottom:14px;right:14px;background:var(--blue);
+  color:#fff;padding:5px 12px;border-radius:var(--r30);font-size:10px;font-weight:700;z-index:200}
+.src-badge{position:fixed;bottom:14px;left:14px;background:#6b7280;
+  color:#fff;padding:4px 10px;border-radius:var(--r30);font-size:9px;z-index:200}
+
+/* INDEX-SPECIFIC */
+.site-map{padding:32px 40px}
+.group-header{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2px;
+  color:var(--gray);margin:28px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+.page-card{border:1px solid var(--line);border-radius:var(--r12);
+  margin:10px 0;overflow:hidden;transition:box-shadow .15s}
+.page-card:hover{box-shadow:0 4px 16px rgba(0,0,0,.1)}
+.page-card-header{display:flex;align-items:center;gap:12px;padding:16px 20px;
+  background:#fff;text-decoration:none;color:var(--primary);cursor:pointer}
+.page-card-header:hover{background:var(--bg)}
+.page-card-title{font-weight:700;font-size:16px;flex:1}
+.ver-pill{font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px}
+.ph-count{font-size:11px;color:#856404;background:#FFF3CD;padding:3px 8px;
+  border-radius:20px;font-weight:600}
+.block-list{padding:12px 20px 16px;background:var(--bg);border-top:1px solid var(--line)}
+.block-row{display:flex;align-items:center;gap:10px;padding:5px 0;
+  border-bottom:1px solid rgba(0,0,0,.04)}
+.block-row:last-child{border-bottom:none}
+.block-type{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;
+  padding:2px 7px;border-radius:20px;min-width:54px;text-align:center}
+.bt-hero{background:#dbeafe;color:#1d4ed8}
+.bt-faq{background:#d1fae5;color:#065f46}
+.bt-cta{background:#fce7f3;color:#9d174d}
+.bt-trust{background:#fef3c7;color:#92400e}
+.bt-cards{background:#ede9fe;color:#5b21b6}
+.bt-steps{background:#e0f2fe;color:#0369a1}
+.bt-form{background:#fef9c3;color:#713f12}
+.bt-skip{background:#f3f4f6;color:#9ca3af}
+.bt-section{background:#f3f4f6;color:#374151}
+.block-name{font-size:13px;font-weight:500;color:var(--text);flex:1}
+.block-preview{font-size:11px;color:var(--gray);white-space:nowrap;
+  overflow:hidden;text-overflow:ellipsis;max-width:320px}
+
+/* INDEX STATS */
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;
+  margin:0 40px 24px;padding:0}
+.stat-box{background:#fff;border:1px solid var(--line);border-radius:var(--r12);
+  padding:16px 20px;text-align:center}
+.stat-n{font-size:32px;font-weight:800;color:var(--blue)}
+.stat-l{font-size:11px;color:var(--gray);margin-top:2px}
+
+/* RESPONSIVE */
+@media(max-width:800px){
+  .card-grid,.steps-grid,.loc-grid,.form-row,.trust-strip{grid-template-columns:1fr}
+  .nav{flex-wrap:wrap;height:auto;padding:8px 12px}
+  .hero{padding:40px 20px}.hero h1{font-size:24px}
+  .sec,.site-map,.stats-row{padding:24px 20px;margin:0 0 12px}
+  .footer{grid-template-columns:1fr}
+  .feedback-btn{top:auto;bottom:-16px;right:16px;font-size:12px}
+  .feedback-panel{padding:16px}
+}
+
+/* === FEEDBACK UI === */
+:root{--fb-accent:#f59e0b;--fb-accent-border:#d97706;--fb-accent-hover:#d97706;--fb-saved:#10b981;--fb-saved-border:#059669;--fb-save:#2563eb;--fb-save-border:#1d4ed8;--fb-save-hover:#1d4ed8;--fb-panel-bg:#fef3c7;--fb-panel-border:#f59e0b;--fb-delete:#dc2626;--fb-delete-bg:#fef2f2;--fb-delete-border:#fca5a5;}
+.feedback-counter{background:var(--fb-accent);color:#1e293b;padding:5px 14px;border-radius:20px;font-weight:700;cursor:pointer;transition:transform 0.2s;font-size:13px;white-space:nowrap}
+.feedback-counter:hover{transform:scale(1.05)}
+.feedback-counter.has-feedback{animation:fb-pulse 2s infinite}
+@keyframes fb-pulse{0%,100%{box-shadow:0 0 0 0 rgba(245,158,11,0.4)}50%{box-shadow:0 0 0 8px transparent}}
+.feedback-btn{position:absolute;top:12px;right:24px;background:var(--fb-accent);border:2px solid var(--fb-accent-border);padding:5px 12px;border-radius:20px;cursor:pointer;font-size:12px;color:#1e293b;font-weight:600;transition:all 0.2s;z-index:10}
+.feedback-btn:hover{background:var(--fb-accent-hover);color:white}
+.feedback-btn.has-comment{background:var(--fb-saved);border-color:var(--fb-saved-border);color:white}
+.feedback-panel{display:none;margin-top:20px;background:var(--fb-panel-bg);border:2px solid var(--fb-panel-border);border-radius:8px;padding:20px;animation:fb-slideDown 0.3s ease}
+.feedback-panel.open{display:block}
+@keyframes fb-slideDown{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+.feedback-panel label{display:block;font-weight:600;margin-bottom:8px;color:var(--primary);font-size:14px}
+.feedback-panel textarea{width:100%;min-height:90px;padding:10px;border:1px solid #d1d5db;border-radius:6px;font-family:inherit;font-size:14px;resize:vertical}
+.feedback-actions{display:flex;gap:10px;margin-top:10px;align-items:center;flex-wrap:wrap}
+.btn-save{background:var(--fb-save);color:white;border:2px solid var(--fb-save-border);padding:7px 18px;border-radius:6px;cursor:pointer;font-size:13px;font-weight:600}
+.btn-save:hover{background:var(--fb-save-hover)}
+.btn-cancel{background:white;border:2px solid #94a3b8;padding:7px 18px;border-radius:6px;cursor:pointer;font-size:13px;color:#334155;font-weight:500}
+.btn-cancel:hover{background:#f1f5f9}
+.btn-delete{background:var(--fb-delete-bg);border:2px solid var(--fb-delete-border);padding:7px 14px;border-radius:6px;cursor:pointer;font-size:13px;color:var(--fb-delete);font-weight:500;margin-left:auto}
+.saved-indicator{display:none;color:#10b981;font-size:13px;align-items:center;gap:4px}
+.export-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:200;justify-content:center;align-items:center}
+.export-overlay.open{display:flex}
+.export-box{background:white;border-radius:12px;padding:32px;max-width:500px;width:90%;text-align:center}
+.export-box h2{margin-bottom:16px;font-size:22px}
+.export-box p{color:#64748b;margin-bottom:24px}
+.export-box .count{font-size:48px;font-weight:800;color:var(--fb-save)}
+.btn-export{display:inline-block;background:var(--fb-save);color:white;padding:13px 28px;border-radius:8px;border:none;font-size:15px;font-weight:600;cursor:pointer;margin:6px}
+.btn-close-overlay{display:inline-block;background:transparent;border:1px solid #e2e8f0;padding:13px 28px;border-radius:8px;font-size:15px;cursor:pointer;margin:6px;color:#64748b}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a href="medilux_berlin_preview_index.html" class="nav-logo">MEDILUX</a>
+  <div class="nav-links">
+    <a href="medilux_berlin_preview_startseite.html">Startseite</a>
+    <span class="nav-dot"></span>
+    <a href="medilux_berlin_preview_leistungen.html">Leistungen</a>
+    <span class="nav-dot"></span>
+    <details class="nav-dd">
+      <summary class="nav-dd-btn active">Für wen? &#9662;</summary>
+      <div class="nav-dd-menu">
+        <a href="medilux_berlin_preview_fuer_angehoerige.html">Für Angehörige</a>
+        <a href="medilux_berlin_preview_fuer_senioren.html" class="dd-act">Für Senioren</a>
+        <a href="medilux_berlin_preview_fuer_berufsbetreuer.html">Für Berufsbetreuer</a>
+        <a href="medilux_berlin_preview_fuer_aerzte.html">Für Ärzte</a>
+        <a href="medilux_berlin_preview_fuer_sozialdienste.html">Für Sozialdienste</a>
+        <a href="medilux_berlin_preview_fuer_pflegeberater.html">Für Pflegeberater</a>
+        <a href="medilux_berlin_preview_fuer_sozialamter.html">Für Sozialämter</a>
+      </div>
+    </details>
+    <span class="nav-dot"></span>
+    <a href="medilux_berlin_preview_standorte.html">Standorte</a>
+    <span class="nav-dot"></span>
+    <a href="medilux_berlin_preview_ueber_uns.html">Über uns</a>
+    <span class="nav-dot"></span>
+    <a href="medilux_berlin_preview_karriere.html">Karriere</a>
+    <span class="nav-dot"></span>
+    <a href="medilux_berlin_preview_kontakt.html">Kontakt</a>
+    <a href="medilux_berlin_preview_kontakt.html" class="nav-cta">Beratung →</a>
+    <div class="feedback-counter" id="feedbackCounter" onclick="openExportOverlay()">Feedback: <span id="feedbackCount">0</span> Kommentare</div>
+  </div>
+</nav>
+<div class="page">
+<div class="meta-bar">
+  <strong>FÜR SENIOREN v0.9</strong> <span class="meta-url">https://medilux.berlin/fuer-wen/senioren/</span> <span class="meta-kw">** betreutes Wohnen Berlin (1.600 SV/mo)</span> | Status: Draft
+  <br><strong>SEO Title:</strong> Betreutes Wohnen & Pflege-WG Berlin für Senioren | MEDILUX (57 Zeichen)
+  <br><strong>Meta Desc:</strong> Selbstbestimmt wohnen mit Unterstützung: MEDILUX Berlin bietet betreutes Wohnen, Pflege-WGs und ambulante Pflege an 2 Standorten in Zehlendorf und Spandau. (155 Zeichen)
+  <br><span style="color:#856404;font-weight:600">&#9888; 5 Placeholders auf dieser Seite</span>
+</div>
+<div id="block-1" style="position:relative"><button class="feedback-btn" onclick="toggleFeedback(1)">✏️ Vorschlag</button><section class="hero">
+  <h1>Betreutes Wohnen und Pflege-WG in Berlin — Ihr Zuhause, Ihre Entscheidung</h1>
+  <div style="margin-top:8px">
+    <a href="#cta" class="btn">Besichtigungstermin vereinbaren</a>
+    <a href="#cta" class="btn btn-out">+49 173 8334531 anrufen</a>
+  </div>
+</section>
+<div class="feedback-panel" id="feedback-panel-1"><label>Ihr Vorschlag für „BLOCK 1 — Hero (Above the Fold)":</label><textarea id="feedback-text-1" placeholder="Änderungsvorschlag oder Kommentar…"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(1)">Speichern</button><button class="btn-cancel" onclick="toggleFeedback(1)">Abbrechen</button><button class="btn-delete" onclick="deleteFeedback(1)" style="display:none" id="delete-btn-1">Löschen</button><span class="saved-indicator" id="saved-1">✓ Gespeichert</span></div></div></div><div id="block-2" style="position:relative"><button class="feedback-btn" onclick="toggleFeedback(2)">✏️ Vorschlag</button><div class="sec">
+<h2>Einstieg: Die Frage, die sich stellt</h2>
+<h4>H2: Wie möchten Sie im Alter wohnen?</h4>
+<p>Vielleicht stellen Sie sich diese Frage zum ersten Mal. Oder Sie denken schon länger darüber nach. Beides ist in Ordnung.</p>
+<p>Was sich viele Senioren wünschen, wissen wir aus Gesprächen:</p>
+<ul>
+<li><strong>Eigenständigkeit bewahren</strong> — den eigenen Tagesrhythmus beibehalten, selbst kochen, Besuch empfangen, wann Sie möchten</li>
+<li><strong>Sicherheit haben</strong> — die Gewissheit, dass bei einem Sturz oder einem Notfall sofort jemand da ist</li>
+<li><strong>Nicht allein sein</strong> — Gesellschaft, wenn Sie sie möchten, Ruhe, wenn Sie sie brauchen</li>
+<li><strong>Gut versorgt sein</strong> — bei Pflege, Medikamenten, Arztbesuchen — ohne ständig organisieren zu müssen</li>
+</ul>
+<p>MEDILUX Berlin bietet drei Wohnformen, die genau das ermöglichen. Keine davon bedeutet, dass Sie Ihre Selbstständigkeit aufgeben.</p>
+</div>
+<div class="feedback-panel" id="feedback-panel-2"><label>Ihr Vorschlag für „BLOCK 2 — Einstieg: Die Frage, die sich stellt":</label><textarea id="feedback-text-2" placeholder="Änderungsvorschlag oder Kommentar…"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(2)">Speichern</button><button class="btn-cancel" onclick="toggleFeedback(2)">Abbrechen</button><button class="btn-delete" onclick="deleteFeedback(2)" style="display:none" id="delete-btn-2">Löschen</button><span class="saved-indicator" id="saved-2">✓ Gespeichert</span></div></div></div><div id="block-3" style="position:relative"><button class="feedback-btn" onclick="toggleFeedback(3)">✏️ Vorschlag</button><div class="sec">
+<h2>Drei Wohnformen im Überblick</h2>
+<h4>H2: Drei Wege — Sie wählen, was zu Ihnen passt</h4>
+<h4>H3: Betreutes Wohnen — Ihre eigene Wohnung mit Sicherheitsnetz</h4>
+<p>Sie behalten Ihre Privatsphäre. Sie haben Ihre eigene Wohnung — mit Ihrer Einrichtung, Ihren Gewohnheiten, Ihrem Alltag. Der Unterschied zu einer normalen Wohnung: Wenn Sie Hilfe brauchen, ist sie sofort da.</p>
+<p><strong>Was Sie erwartet:</strong></p>
+<ul>
+<li>Barrierefreie Wohnungen von 18 bis 48 m² — Einzel- und Zweiraumwohnungen</li>
+<li>Notruf- und Sicherheitssystem rund um die Uhr</li>
+<li>Teils mit Balkon</li>
+<li>Gemeinschaftsräume für Aktivitäten und Begegnung</li>
+<li>Pflegerische Unterstützung bei Bedarf — flexibel zubuchbar</li>
+</ul>
+<p><strong>Standort:</strong> Residenz Heerstraße, Gärtnereiring 56, 13593 Berlin-Spandau</p>
+<p><strong>42 Wohneinheiten</strong> in ruhiger, grüner Lage mit guter ÖPNV-Anbindung und Besucherparkplatz.</p>
+<p><strong>Für Sie geeignet, wenn:</strong> Sie selbstständig leben, aber wissen möchten, dass im Notfall sofort Hilfe kommt — ohne in ein Pflegeheim zu ziehen.</p>
+<p>→ <code>Wohnungen ansehen — Besichtigung anfragen</code></p>
+<h4>H3: Pflege-WG — Zusammen leben, individuell betreut</h4>
+<p>Wenn der Alltag allein nicht mehr gut funktioniert, ist eine Pflege-Wohngemeinschaft eine Alternative zum Pflegeheim: Sie leben in einer kleinen Gruppe von 6 bis 12 Personen. Jeder hat sein eigenes Zimmer. Examinierte Pflegekräfte sind rund um die Uhr vor Ort.</p>
+<p><strong>Was Sie erwartet:</strong></p>
+<ul>
+<li>Eigenes Zimmer (12–22 m²), Platz für persönliche Möbel und Erinnerungsstücke</li>
+<li>24-Stunden-Betreuung durch examinierte Pflegekräfte, auch nachts</li>
+<li>Gemeinsames Kochen, Essen, Aktivitäten — so viel oder so wenig Gesellschaft, wie Sie möchten</li>
+<li>Spezialisierte Betreuung bei Demenz, Palliativbedarf oder Intensivpflege</li>
+<li>Haustiere sind erlaubt</li>
+</ul>
+<p><strong>Zwei Standorte:</strong></p>
+<table class="price-table"><thead><tr><th></th><th>Villa Civitas</th><th>Residenz Heerstraße</th></tr></thead><tbody><tr><td><strong>Stadtteil</strong></td><td>Berlin-Zehlendorf</td><td>Berlin-Spandau</td></tr><tr><td><strong>Plätze</strong></td><td>35 (4 WGs)</td><td>24 (2 WGs à 12)</td></tr><tr><td><strong>Besonderheit</strong></td><td>Historische Villa im Grünen, alter Baumbestand, große Terrasse</td><td>Modernes Haus, Dachterrasse mit Panoramablick, beschützter Demenzbereich</td></tr><tr><td><strong>Eigenanteil (PG 2)</strong></td><td>€3.450–3.850/mo</td><td>€2.200–2.600/mo</td></tr><tr><td><strong>Aufnahme</strong></td><td>Ab PG 2</td><td>Ab PG 2</td></tr></tbody></table>
+<p><code></code></p>
+<p><strong>Für Sie geeignet, wenn:</strong> Sie regelmäßige Pflege benötigen, aber kein Pflegeheim möchten — sondern eine Gemeinschaft, in der Sie als Mensch wahrgenommen werden.</p>
+<p>→ <code>Pflege-WG besichtigen</code></p>
+<h4>H3: Ambulante Pflege — Unterstützung bei Ihnen zu Hause</h4>
+<p>Sie bleiben in Ihrer Wohnung. Unsere Pflegekräfte kommen zu Ihnen — regelmäßig und zuverlässig. Sie bestimmen, welche Hilfe Sie annehmen.</p>
+<p><strong>Was wir übernehmen können:</strong></p>
+<ul>
+<li><strong>Grundpflege:</strong> Körperpflege, Anziehen, Mobilisierung — in Ihrem Tempo</li>
+<li><strong>Behandlungspflege:</strong> Wundversorgung, Injektionen, Medikamente</li>
+<li><strong>Hauswirtschaft:</strong> Einkaufen, Kochen, Reinigung</li>
+</ul>
+<p>Wir sind Vertragspartner der Krankenkassen — die Abrechnung läuft direkt, Sie müssen sich um nichts kümmern.</p>
+<p><strong>Für Sie geeignet, wenn:</strong> Sie zu Hause bleiben möchten und gezielte Unterstützung bei bestimmten Aufgaben brauchen.</p>
+<p>→ <code>Ambulante Pflege anfragen</code></p>
+</div>
+<div class="feedback-panel" id="feedback-panel-3"><label>Ihr Vorschlag für „BLOCK 3 — Drei Wohnformen im Überblick":</label><textarea id="feedback-text-3" placeholder="Änderungsvorschlag oder Kommentar…"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(3)">Speichern</button><button class="btn-cancel" onclick="toggleFeedback(3)">Abbrechen</button><button class="btn-delete" onclick="deleteFeedback(3)" style="display:none" id="delete-btn-3">Löschen</button><span class="saved-indicator" id="saved-3">✓ Gespeichert</span></div></div></div><div id="block-4" style="position:relative"><button class="feedback-btn" onclick="toggleFeedback(4)">✏️ Vorschlag</button><div class="sec">
+<h2>So kommen Sie zu uns</h2>
+<h4>H2: Drei Schritte — in Ihrem Tempo</h4>
+<p><strong>Schritt 1: Anrufen oder schreiben</strong></p>
+<p>Erzählen Sie uns, was Sie suchen. Ein Beratungsgespräch ist kostenlos und unverbindlich. Wir nehmen uns Zeit.</p>
+<p><strong>Schritt 2: Vorbeikommen und ansehen</strong></p>
+<p>Besuchen Sie unsere Standorte. Sehen Sie die Zimmer, die Gemeinschaftsräume, den Garten. Sprechen Sie mit dem Team. Bringen Sie gern jemanden mit.</p>
+<p><strong>Schritt 3: In Ruhe entscheiden</strong></p>
+<p>Niemand drängt Sie. Wir klären gemeinsam die Verfügbarkeit, unterstützen bei der Beantragung eines Pflegegrades und regeln die Formalitäten — wenn Sie so weit sind.</p>
+<p><strong>Kontakt:</strong> +49 173 8334531 · Mo–Fr 8:00–16:30</p>
+</div>
+<div class="feedback-panel" id="feedback-panel-4"><label>Ihr Vorschlag für „BLOCK 4 — So kommen Sie zu uns":</label><textarea id="feedback-text-4" placeholder="Änderungsvorschlag oder Kommentar…"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(4)">Speichern</button><button class="btn-cancel" onclick="toggleFeedback(4)">Abbrechen</button><button class="btn-delete" onclick="deleteFeedback(4)" style="display:none" id="delete-btn-4">Löschen</button><span class="saved-indicator" id="saved-4">✓ Gespeichert</span></div></div></div><div id="block-5" style="position:relative"><button class="feedback-btn" onclick="toggleFeedback(5)">✏️ Vorschlag</button><div class="sec sec-alt">
+<h2>Standorte im Detail</h2>
+<h4>H2: Unsere zwei Standorte in Berlin</h4>
+<h4>H3: Villa Civitas — Zehlendorf</h4>
+<p><strong>Lindenthaler Allee 20, 14163 Berlin</strong></p>
+<p>Eine historische Villa im grünen Zehlendorf. Alter Baumbestand, großzügige Außenfläche, barrierefreie Wege durch den Garten. Die S-Bahn Mexikoplatz ist in der Nähe, Einkaufsmöglichkeiten und Ärzte sind fußläufig erreichbar.</p>
+<p><strong>Ihr Alltag hier:</strong></p>
+<ul>
+<li>Gemeinsam kochen in der Gemeinschaftsküche — oder sich bekochen lassen</li>
+<li>Basteln, Musikkreise, Gedächtnistraining, Gymnastik</li>
+<li>Gärtnern und Spaziergänge im eigenen Garten</li>
+<li>Lesen auf der großen Terrasse</li>
+<li>Ihr Haustier darf mitkommen</li>
+</ul>
+<p><code></code></p>
+<h4>H3: Residenz Heerstraße — Spandau</h4>
+<p><strong>Gärtnereiring 56, 13593 Berlin</strong></p>
+<p>Ein modernes Wohn- und Pflegehaus im ruhigen Spandau. Dachterrasse mit Panoramablick, barrierefreie Zugänge, Aufzug. Gute ÖPNV-Anbindung, Besucherparkplatz vorhanden.</p>
+<p><strong>Ihr Alltag hier:</strong></p>
+<ul>
+<li>Täglich frisch zubereitete Mahlzeiten — Sonderkost und Diäten berücksichtigt</li>
+<li>Erzählrunden, Spiele, Filmvorführungen, Tanzen</li>
+<li>Ausflüge und kulturelle Exkursionen</li>
+<li>Themen-Nachmittage und Musikkreise</li>
+<li>Haustiere nach Absprache erlaubt</li>
+</ul>
+<p><code></code></p>
+</div>
+<div class="feedback-panel" id="feedback-panel-5"><label>Ihr Vorschlag für „BLOCK 5 — Standorte im Detail":</label><textarea id="feedback-text-5" placeholder="Änderungsvorschlag oder Kommentar…"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(5)">Speichern</button><button class="btn-cancel" onclick="toggleFeedback(5)">Abbrechen</button><button class="btn-delete" onclick="deleteFeedback(5)" style="display:none" id="delete-btn-5">Löschen</button><span class="saved-indicator" id="saved-5">✓ Gespeichert</span></div></div></div><div id="block-6" style="position:relative"><button class="feedback-btn" onclick="toggleFeedback(6)">✏️ Vorschlag</button><div class="sec sec-alt">
+<h2>Kosten: Was Sie wissen sollten</h2>
+<h4>H2: Was kostet es — und was übernimmt die Pflegekasse?</h4>
+<p>Wir nennen Ihnen die Kosten offen. Das tun nur wenige Pflegeanbieter in Berlin.</p>
+<h4>H3: Pflege-WG — monatlicher Eigenanteil</h4>
+<table class="price-table"><thead><tr><th>Standort</th><th>Eigenanteil (ca.)</th><th>Was ist enthalten</th></tr></thead><tbody><tr><td>Villa Civitas (PG 2)</td><td>€3.450–3.850</td><td>Betreuung, Unterkunft, Verpflegung</td></tr><tr><td>Residenz Heerstraße</td><td>€2.200–2.600</td><td>Betriebskosten, Versorgung, alle Pflegemaßnahmen</td></tr></tbody></table>
+<p><code></code></p>
+<h4>H3: Was die Pflegekasse zahlt</h4>
+<p>Je nach Pflegegrad stehen Ihnen Leistungen zu, die den Eigenanteil reduzieren:</p>
+<table class="price-table"><thead><tr><th>Pflegegrad</th><th>Pflegegeld</th><th>Sachleistung</th></tr></thead><tbody><tr><td>PG 2</td><td>332 €/Monat</td><td>761 €/Monat</td></tr><tr><td>PG 3</td><td>573 €/Monat</td><td>1.432 €/Monat</td></tr><tr><td>PG 4</td><td>765 €/Monat</td><td>1.778 €/Monat</td></tr><tr><td>PG 5</td><td>947 €/Monat</td><td>2.200 €/Monat</td></tr></tbody></table>
+<p><code></code></p>
+<h4>H3: Ambulante Pflege — direkte Kassenabrechnung</h4>
+<p>Bei der ambulanten Pflege rechnen wir direkt mit Ihrer Pflegekasse ab. Für Sie entstehen in der Regel keine zusätzlichen Kosten für die Leistungen, die Ihr Pflegegrad abdeckt.</p>
+<p>Noch keinen Pflegegrad? Wir helfen Ihnen bei der Antragstellung.</p>
+<p>→ <code>Kostenlose Beratung zu Kosten und Finanzierung</code></p>
+</div>
+<div class="feedback-panel" id="feedback-panel-6"><label>Ihr Vorschlag für „BLOCK 6 — Kosten: Was Sie wissen sollten":</label><textarea id="feedback-text-6" placeholder="Änderungsvorschlag oder Kommentar…"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(6)">Speichern</button><button class="btn-cancel" onclick="toggleFeedback(6)">Abbrechen</button><button class="btn-delete" onclick="deleteFeedback(6)" style="display:none" id="delete-btn-6">Löschen</button><span class="saved-indicator" id="saved-6">✓ Gespeichert</span></div></div></div><div id="block-7" style="position:relative"><button class="feedback-btn" onclick="toggleFeedback(7)">✏️ Vorschlag</button><div class="sec">
+<h2>Erfahrungen</h2>
+<h4>H2: Was Bewohner und ihre Familien sagen</h4>
+<p><span class="ph">&#9998; PH #4: Testimonial — Senior über das Leben in der Pflege-WG, Alltag, Gemeinschaft</span></p>
+<p><span class="ph">&#9998; PH #5: Testimonial — Bewohnerin über betreutes Wohnen, Eigenständigkeit + Sicherheit</span></p>
+<p><span class="ph">&#9998; PH #6: Testimonial — Familie über den Einzugsprozess, "Der Übergang war einfacher als gedacht"</span></p>
+<p><em>Alle Erfahrungsberichte werden mit schriftlicher Einwilligung (DSGVO) veröffentlicht.</em></p>
+</div>
+<div class="feedback-panel" id="feedback-panel-7"><label>Ihr Vorschlag für „BLOCK 7 — Erfahrungen":</label><textarea id="feedback-text-7" placeholder="Änderungsvorschlag oder Kommentar…"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(7)">Speichern</button><button class="btn-cancel" onclick="toggleFeedback(7)">Abbrechen</button><button class="btn-delete" onclick="deleteFeedback(7)" style="display:none" id="delete-btn-7">Löschen</button><span class="saved-indicator" id="saved-7">✓ Gespeichert</span></div></div></div><div id="block-8" style="position:relative"><button class="feedback-btn" onclick="toggleFeedback(8)">✏️ Vorschlag</button><div class="sec">
+<h2>FAQ für Senioren</h2>
+<details class="faq" open>
+  <summary>Kann ich meine eigenen Möbel und persönlichen Gegenstände mitbringen?</summary>
+  <div class="faq-a">Ja. In allen Zimmern und Wohnungen ist Platz für Ihre Möbel, Bilder und Erinnerungsstücke. Ihr Zimmer soll sich anfühlen wie Ihr Zuhause — denn das ist es.</div>
+</details>
+<details class="faq">
+  <summary>Muss ich meinen Tagesablauf anpassen?</summary>
+  <div class="faq-a">Nein. Sie entscheiden, wann Sie aufstehen, wann Sie essen, was Sie unternehmen. In den Pflege-WGs gibt es gemeinsame Mahlzeiten, aber Teilnahme ist freiwillig. Im betreuten Wohnen gestalten Sie Ihren Tag komplett selbst.</div>
+</details>
+<details class="faq">
+  <summary>Darf ich mein Haustier mitbringen?</summary>
+  <div class="faq-a">In der Villa Civitas sind Haustiere erlaubt. In der Residenz Heerstraße ist dies nach Absprache möglich. Sprechen Sie uns darauf an — wir finden eine Lösung.</div>
+</details>
+<details class="faq">
+  <summary>Was passiert, wenn sich mein Pflegebedarf verändert?</summary>
+  <div class="faq-a">Dann passen wir die Betreuung an. Im betreuten Wohnen können Sie bei steigendem Bedarf zusätzliche Pflegeleistungen zubuchen. In der Pflege-WG wird die Versorgung vom Team angepasst — ohne dass Sie umziehen müssen.</div>
+</details>
+<details class="faq">
+  <summary>Brauche ich einen Pflegegrad, um einzuziehen?</summary>
+  <div class="faq-a">Für die Pflege-WGs ist mindestens Pflegegrad 2 erforderlich (oder ein laufender Antrag). Für das betreute Wohnen und die ambulante Pflege gibt es auch ohne Pflegegrad Möglichkeiten. Wir beraten Sie zur Antragstellung.</div>
+</details>
+<details class="faq">
+  <summary>Kann ich die Räumlichkeiten vorher besichtigen?</summary>
+  <div class="faq-a">Selbstverständlich. Rufen Sie uns an (+49 173 8334531) und vereinbaren Sie einen Termin. Kommen Sie gern mit einer Begleitperson. Wir zeigen Ihnen alles — ohne Zeitdruck.</div>
+</details>
+<details class="faq">
+  <summary>Gibt es einen Probezeitraum?</summary>
+  <div class="faq-a">Die Residenz Heerstraße bietet Verhinderungspflege an, die auch als Probewohnen genutzt werden kann. So lernen Sie den Alltag kennen, bevor Sie sich entscheiden. <span class="ph">&#9998; PH #15: Details Probewohnen — Dauer, Kosten, Ablauf</span></div>
+</details>
+</div>
+<div class="feedback-panel" id="feedback-panel-8"><label>Ihr Vorschlag für „BLOCK 8 — FAQ für Senioren":</label><textarea id="feedback-text-8" placeholder="Änderungsvorschlag oder Kommentar…"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(8)">Speichern</button><button class="btn-cancel" onclick="toggleFeedback(8)">Abbrechen</button><button class="btn-delete" onclick="deleteFeedback(8)" style="display:none" id="delete-btn-8">Löschen</button><span class="saved-indicator" id="saved-8">✓ Gespeichert</span></div></div></div><div id="block-9" style="position:relative"><button class="feedback-btn" onclick="toggleFeedback(9)">✏️ Vorschlag</button><div class="cta-banner" id="cta">
+  <h2>Kommen Sie vorbei — und sehen Sie selbst</h2>
+  <p>Ein Gespräch am Telefon ist gut. Vor Ort sein ist besser. Sehen Sie die Räume, den Garten, die Dachterrasse. Sprechen Sie mit dem Team. Stellen Sie alle Fragen, die Sie haben.</p>
+  <div>
+    <a href="#" class="btn">Besichtigungstermin vereinbaren</a>
+    <a href="#" class="btn btn-out">+49 173 8334531 anrufen</a>
+  </div>
+</div>
+<div class="feedback-panel" id="feedback-panel-9"><label>Ihr Vorschlag für „BLOCK 9 — Abschluss-CTA":</label><textarea id="feedback-text-9" placeholder="Änderungsvorschlag oder Kommentar…"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(9)">Speichern</button><button class="btn-cancel" onclick="toggleFeedback(9)">Abbrechen</button><button class="btn-delete" onclick="deleteFeedback(9)" style="display:none" id="delete-btn-9">Löschen</button><span class="saved-indicator" id="saved-9">✓ Gespeichert</span></div></div></div>
+<footer class="footer">
+  <div>
+    <div class="f-label">Telefon</div>
+    <div class="f-val">+49 173 8334531</div>
+    <div class="f-label">E-Mail</div>
+    <div class="f-val">medilux@live.de</div>
+  </div>
+  <div>
+    <div class="f-label">Standorte</div>
+    <div style="font-size:12px;color:var(--text);line-height:1.8">
+      Villa Civitas &mdash; Lindenthaler Allee 20, 14163 Berlin-Zehlendorf<br>
+      Residenz Heerstra&szlig;e &mdash; G&auml;rtnereiring 56, 13593 Berlin-Spandau
+    </div>
+    <div class="f-links">
+      <a href="medilux_berlin_preview_kosten.html">Kosten &amp; Finanzierung</a>
+      <a href="#">Mediatek</a>
+      <a href="#">Impressum</a>
+      <a href="#">Datenschutz</a>
+    </div>
+  </div>
+  <div class="f-copy">&copy; 2026 MEDILUX GmbH &mdash; Content Preview v0.9 &middot; Nur zur internen Pr&uuml;fung &middot; 2p-preview skill</div>
+</footer>
+</div>
+<div class="ver-badge">v0.9</div>
+<div class="src-badge">2p-preview &middot; 16.03.2026</div>
+<div class="export-overlay" id="exportOverlay">
+  <div class="export-box">
+    <div class="count" id="exportCount">0</div>
+    <h2>Kommentare bereit</h2>
+    <p>Alle Ihre Änderungsvorschläge in einer Datei. Laden Sie sie herunter und senden Sie diese an Ihr Projektteam.</p>
+    <button class="btn-export" onclick="exportFeedback()">Als Datei herunterladen</button>
+    <button class="btn-close-overlay" onclick="closeExportOverlay()">Schließen</button>
+  </div>
+</div>
+<script>
+(function(){
+  var PROJECT='medilux-berlin';
+  var PAGE='fuer_senioren';
+  var PAGE_TITLE='Für Senioren';
+  var STORAGE_KEY='2p-feedback-'+PROJECT;
+  function getAll(){return JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}');}
+  function getPage(){var a=getAll();return a[PAGE]||{};}
+  function savePage(d){var a=getAll();if(Object.keys(d).length===1&&d._title){delete a[PAGE];}else{a[PAGE]=d;}localStorage.setItem(STORAGE_KEY,JSON.stringify(a));}
+  function total(){var a=getAll(),c=0;for(var p in a)for(var k in a[p])if(k!=='_title')c++;return c;}
+  function updateCounter(){var c=total(),el=document.getElementById('feedbackCounter');if(!el)return;if(c>0){el.classList.add('has-feedback');el.innerHTML='📥 Feedback: '+c+' Kommentar'+(c>1?'e':'');}else{el.classList.remove('has-feedback');el.innerHTML='Feedback: 0 Kommentare';}}
+  function loadFeedback(){var d=getPage();for(var id in d){if(id==='_title')continue;var e=d[id];var t=typeof e==='object'?e.text:e;var ta=document.getElementById('feedback-text-'+id);var btn=document.querySelector('#block-'+id+' .feedback-btn');var del=document.getElementById('delete-btn-'+id);if(ta)ta.value=t;if(btn){btn.classList.add('has-comment');btn.textContent='✏️ Kommentar bearbeiten';}if(del)del.style.display='inline-block';}updateCounter();}
+  window.toggleFeedback=function(id){var p=document.getElementById('feedback-panel-'+id);p.classList.toggle('open');if(p.classList.contains('open'))document.getElementById('feedback-text-'+id).focus();};
+  window.saveFeedback=function(id){var t=document.getElementById('feedback-text-'+id).value.trim();if(!t)return;var el=document.getElementById('block-'+id);var lbl=el?(el.querySelector('.block-label,h2,h3')||{}).textContent||('Block '+id):('Block '+id);var d=getPage();d._title=PAGE_TITLE;d[id]={text:t,label:'Block '+id+' — '+(lbl.length>40?lbl.slice(0,40)+'…':lbl)};savePage(d);var btn=document.querySelector('#block-'+id+' .feedback-btn');btn.classList.add('has-comment');btn.textContent='✏️ Kommentar bearbeiten';document.getElementById('delete-btn-'+id).style.display='inline-block';var s=document.getElementById('saved-'+id);s.style.display='flex';setTimeout(function(){s.style.display='none';},2000);updateCounter();setTimeout(function(){window.toggleFeedback(id);},1500);};
+  window.deleteFeedback=function(id){var d=getPage();delete d[id];savePage(d);document.getElementById('feedback-text-'+id).value='';var btn=document.querySelector('#block-'+id+' .feedback-btn');btn.classList.remove('has-comment');btn.textContent='✏️ Vorschlag';document.getElementById('delete-btn-'+id).style.display='none';updateCounter();window.toggleFeedback(id);};
+  window.openExportOverlay=function(){var c=total();if(c===0)return;document.getElementById('exportCount').textContent=c;document.getElementById('exportOverlay').classList.add('open');};
+  window.closeExportOverlay=function(){document.getElementById('exportOverlay').classList.remove('open');};
+  window.exportFeedback=function(){var a=getAll(),c=total();var t='FEEDBACK \u2014 MEDILUX BERLIN\nDatum: '+new Date().toLocaleDateString('de-DE')+'\n'+c+' Kommentar(e) insgesamt\n'+'='.repeat(50)+'\n\n';for(var page in a){var pd=a[page];t+='\u2501\u2501\u2501 '+(pd._title||page)+' \u2501\u2501\u2501\n\n';for(var bid in pd){if(bid==='_title')continue;var entry=pd[bid];var txt=typeof entry==='object'?entry.text:entry;var lbl=typeof entry==='object'&&entry.label?entry.label:('Block '+bid);t+='\uD83D\uDCCC '+lbl+'\n'+'-'.repeat(40)+'\n'+txt+'\n\n';}}t+='='.repeat(50)+'\nErstellt am '+new Date().toLocaleString('de-DE')+'\n';var blob=new Blob([t],{type:'text/plain;charset=utf-8'});var url=URL.createObjectURL(blob);var a2=document.createElement('a');a2.href=url;a2.download='feedback_medilux-berlin_'+new Date().toISOString().slice(0,10)+'.txt';a2.click();URL.revokeObjectURL(url);window.closeExportOverlay();};
+  /* Close nav dropdown on outside click */
+  document.addEventListener('click',function(e){if(!e.target.closest('details.nav-dd'))document.querySelectorAll('details.nav-dd[open]').forEach(function(d){d.removeAttribute('open');});});
+  loadFeedback();
+})();
+</script>
+</body>
+</html>
