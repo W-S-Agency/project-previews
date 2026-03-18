@@ -577,6 +577,110 @@ body {
 .btn-export.btn-copy:hover { background: var(--fb-accent-border); }
 .btn-close-overlay { display: inline-block; background: transparent; border: 1px solid var(--border); padding: 14px 32px; border-radius: var(--radius); font-size: 16px; cursor: pointer; margin: 8px; color: var(--text-light); }
 
+/* Multi-step Lead Magnet */
+.block-multistep {
+  background: linear-gradient(135deg, #f0f7ff 0%, #e8f4f8 100%);
+  border: 2px solid var(--primary);
+  border-radius: 12px;
+  padding: 40px 32px;
+}
+.ms-progress {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 32px;
+}
+.ms-step-dot {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid #cbd5e1;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 16px; color: #94a3b8;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+.ms-step-dot.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: white;
+  box-shadow: 0 0 0 4px rgba(30,58,95,0.15);
+}
+.ms-step-dot.completed {
+  background: var(--success);
+  border-color: var(--success);
+  color: white;
+}
+.ms-step-line {
+  width: 40px; height: 2px;
+  background: #cbd5e1;
+  flex-shrink: 0;
+}
+.ms-options { margin: 24px 0; }
+.ms-radios { display: flex; flex-direction: column; gap: 12px; }
+.ms-radio {
+  display: flex; align-items: flex-start; gap: 12px;
+  background: white;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  cursor: default;
+  transition: border-color 0.2s;
+}
+.ms-radio:hover { border-color: var(--primary-light); }
+.ms-radio input { margin-top: 4px; width: 18px; height: 18px; accent-color: var(--primary); }
+.ms-radio strong { display: block; font-size: 15px; color: var(--text); }
+.ms-opt-desc { display: block; font-size: 13px; color: var(--text-light); margin-top: 2px; }
+.ms-checkboxes { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
+.ms-checkbox {
+  display: flex; align-items: center; gap: 10px;
+  background: white;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  cursor: default;
+  font-size: 14px;
+}
+.ms-checkbox:hover { border-color: var(--primary-light); }
+.ms-checkbox input { width: 18px; height: 18px; accent-color: var(--primary); }
+.ms-table { margin: 20px 0; }
+.ms-table table { width: 100%; background: white; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); }
+.ms-table th, .ms-table td { padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--border); }
+.ms-table th { background: var(--bg-alt); font-size: 14px; font-weight: 600; }
+.ms-table td { font-size: 14px; }
+.ms-hint {
+  background: rgba(30,58,95,0.05);
+  border-left: 3px solid var(--primary);
+  padding: 12px 16px;
+  margin: 16px 0;
+  font-size: 14px;
+  color: var(--text-light);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+.ms-nav-buttons {
+  display: flex; justify-content: space-between; margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--border);
+}
+.ms-btn-back, .ms-btn-next {
+  padding: 12px 28px;
+  border-radius: var(--radius);
+  font-size: 15px; font-weight: 600;
+  cursor: default;
+}
+.ms-btn-back {
+  background: white; border: 2px solid var(--border); color: var(--text-light);
+}
+.ms-btn-next {
+  background: var(--primary); border: 2px solid var(--primary); color: white;
+}
+.ms-submit {
+  display: block; width: 100%; padding: 16px;
+  background: var(--primary); color: white;
+  border: none; border-radius: var(--radius);
+  font-size: 17px; font-weight: 700;
+  cursor: default; margin-top: 24px;
+}
+
 @media (max-width: 768px) {
   .feedback-btn { top: auto; bottom: -16px; right: 16px; font-size: 12px; }
   .block-hero { padding: 40px 20px; }
@@ -584,6 +688,10 @@ body {
   .cards-grid { grid-template-columns: 1fr; }
   .footer-inner { grid-template-columns: 1fr; }
   .preview-bar { flex-wrap: wrap; gap: 8px; }
+  .block-multistep { padding: 24px 16px; }
+  .ms-step-dot { width: 32px; height: 32px; font-size: 13px; }
+  .ms-step-line { width: 20px; }
+  .ms-checkboxes { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -601,7 +709,7 @@ body {
             <li><a href="renotec_preview_leistungen.html">Übersicht</a></li>
             <li><a href="renotec_preview_waermepumpen.html">Wärmepumpen</a></li><li><a href="renotec_preview_badsanierung.html" class="active">Badsanierung</a></li><li><a href="renotec_preview_heizungsinstallationen.html">Heizungsinstallation</a></li><li><a href="renotec_preview_sanitaerinstallationen.html">Sanitärinstallation</a></li><li><a href="renotec_preview_rohrreinigung.html">Rohrreinigung</a></li><li><a href="renotec_preview_sonstige.html">Sonstige Bauleistungen</a></li>
           </ul>
-        </li><li><a href="renotec_preview_bewertungen.html">Bewertungen</a></li><li><a href="renotec_preview_kontakt.html">Kontakt</a></li>
+        </li><li><a href="renotec_preview_bewertungen.html">Bewertungen</a></li><li><a href="renotec_preview_anfrage.html">Anfrage</a></li><li><a href="renotec_preview_kontakt.html">Kontakt</a></li>
         </ul>
       </div>
     </nav>
@@ -839,7 +947,7 @@ body {
         </div>
         <div class="footer-col">
           <h4>Navigation</h4>
-          <ul><li><a href="#">Startseite</a></li><li><a href="#">Leistungen</a></li><li><a href="#">Bewertungen</a></li><li><a href="#">Kontakt</a></li></ul>
+          <ul><li><a href="#">Startseite</a></li><li><a href="#">Leistungen</a></li><li><a href="#">Bewertungen</a></li><li><a href="#">Anfrage</a></li><li><a href="#">Kontakt</a></li></ul>
         </div>
       </div>
       <div class="footer-bottom">
