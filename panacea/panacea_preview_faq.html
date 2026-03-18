@@ -48,12 +48,41 @@ body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; color: var
 .nav-dd-menu { display: none; position: absolute; top: 100%; left: 0; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: 0 4px 12px rgba(0,0,0,.1); min-width: 160px; z-index: 1001; }
 .nav-dd-menu a { display: block; padding: .5rem 1rem; }
 .nav-dd:hover .nav-dd-menu { display: block; }
-.nav-counter { font-size: .8rem; color: var(--text-light); white-space: nowrap; }
+.nav-counter { font-size: .8rem; color: var(--text-light); white-space: nowrap; cursor: pointer; transition: transform .15s; }
+.nav-counter:hover { transform: scale(1.05); }
+.nav-counter.has-feedback { animation: fb-pulse 2s infinite; }
+@keyframes fb-pulse { 0%,100%{ box-shadow:0 0 0 0 rgba(245,158,11,.4); } 50%{ box-shadow:0 0 0 8px transparent; } }
 
-/* ── Meta bar ── */
-.meta-bar { background: var(--bg-alt); border-bottom: 1px solid var(--border); padding: .75rem 1.5rem; font-size: .82rem; color: var(--text-light); }
-.meta-bar-inner { max-width: 1200px; margin: 0 auto; }
-.meta-bar strong { color: var(--text); }
+/* ── SEO Bar ── */
+.seo-bar { background: #1a1a2e; color: #e2e8f0; border-bottom: 1px solid #2d2d4a; font-size: .82rem; }
+.seo-bar-header { padding: .6rem 1.5rem; cursor: pointer; display: flex; align-items: center; justify-content: space-between; user-select: none; }
+.seo-bar-header:hover { background: #22223a; }
+.seo-bar-header .seo-toggle { font-size: .9rem; transition: transform .2s; }
+.seo-bar.collapsed .seo-toggle { transform: rotate(-90deg); }
+.seo-bar-body { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem .75rem; }
+.seo-bar.collapsed .seo-bar-body { display: none; }
+.seo-bar strong { color: #fff; }
+.seo-bar code { background: #2d2d4a; padding: .1rem .4rem; border-radius: 3px; font-size: .8rem; color: #a5b4fc; }
+.seo-bar .seo-row { margin-bottom: .35rem; }
+.len-badge { display: inline-block; padding: .1rem .4rem; border-radius: 3px; font-size: .72rem; font-weight: 600; margin-left: .4rem; }
+.len-badge.len-ok { background: #166534; color: #bbf7d0; }
+.len-badge.len-warn { background: #854d0e; color: #fef08a; }
+.len-badge.len-over { background: #991b1b; color: #fecaca; }
+.schema-tag { display: inline-block; padding: .1rem .45rem; border-radius: 3px; font-size: .72rem; font-weight: 600; margin: .15rem .2rem .15rem 0; }
+.schema-tag-org { background: #1e3a5f; color: #93c5fd; }
+.schema-tag-breadcrumb { background: #3b2f63; color: #c4b5fd; }
+.schema-tag-website { background: #164e63; color: #67e8f9; }
+.schema-tag-howto { background: #365314; color: #bef264; }
+.schema-tag-faqpage { background: #713f12; color: #fde68a; }
+.schema-tag-localbusiness { background: #7f1d1d; color: #fca5a5; }
+.schema-tag-service { background: #581c87; color: #d8b4fe; }
+.schema-tag-jobposting { background: #0c4a6e; color: #7dd3fc; }
+.schema-tag-contactpoint { background: #134e4a; color: #5eead4; }
+.seo-jsonld-toggle { cursor: pointer; color: #a5b4fc; text-decoration: underline; font-size: .8rem; margin-top: .35rem; display: inline-block; }
+.seo-jsonld-toggle:hover { color: #c4b5fd; }
+.seo-jsonld-content { display: none; margin-top: .5rem; }
+.seo-jsonld-content.open { display: block; }
+.seo-jsonld-content pre { background: #0f0f23; border: 1px solid #2d2d4a; padding: .75rem; border-radius: 4px; font-size: .75rem; color: #e2e8f0; overflow-x: auto; max-height: 300px; }
 .source-badge { display: inline-block; background: #eef2ff; border: 1px solid #c7d2fe; color: #4338ca; padding: .15rem .5rem; border-radius: 4px; font-size: .75rem; margin-top: .35rem; }
 
 /* ── Blocks (shared) ── */
@@ -98,7 +127,7 @@ h2 { font-size: 1.6rem; color: var(--primary); margin-bottom: 1.25rem; text-alig
 .faq-q { padding: 1rem 1.25rem; cursor: pointer; font-weight: 600; display: flex; justify-content: space-between; align-items: center; background: var(--bg); transition: background .15s; }
 .faq-q:hover { background: var(--bg-alt); }
 .faq-q::after { content: '+'; font-size: 1.3rem; color: var(--primary); transition: transform .2s; }
-.faq-item.open .faq-q::after { content: '−'; }
+.faq-item.open .faq-q::after { content: '\2212'; }
 .faq-a { padding: 0 1.25rem; max-height: 0; overflow: hidden; transition: max-height .3s ease, padding .3s ease; font-size: .93rem; color: var(--text-light); }
 .faq-item.open .faq-a { max-height: 600px; padding: .5rem 1.25rem 1rem; }
 
@@ -142,12 +171,6 @@ h2 { font-size: 1.6rem; color: var(--primary); margin-bottom: 1.25rem; text-alig
 .fb-cancel { background: #f1f5f9; color: var(--text); border: 1px solid var(--border); padding: .35rem .8rem; border-radius: 4px; cursor: pointer; font-size: .82rem; }
 .fb-delete { background: var(--fb-delete-bg); color: var(--fb-delete); border: 1px solid var(--fb-delete-border); padding: .35rem .8rem; border-radius: 4px; cursor: pointer; font-size: .82rem; }
 
-/* ── Nav counter (clickable) ── */
-.nav-counter { cursor: pointer; transition: transform .15s; }
-.nav-counter:hover { transform: scale(1.05); }
-.nav-counter.has-feedback { animation: fb-pulse 2s infinite; }
-@keyframes fb-pulse { 0%,100%{ box-shadow:0 0 0 0 rgba(245,158,11,.4); } 50%{ box-shadow:0 0 0 8px transparent; } }
-
 /* ── Export overlay ── */
 .export-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.5); z-index: 2000; align-items: center; justify-content: center; }
 .export-overlay.open { display: flex; }
@@ -169,10 +192,23 @@ h2 { font-size: 1.6rem; color: var(--primary); margin-bottom: 1.25rem; text-alig
 /* ── Index page ── */
 .index-hero { text-align: center; padding: 3rem 1.5rem; }
 .index-hero h1 { font-size: 2rem; }
-.version-table { max-width: 800px; margin: 2rem auto; border-collapse: collapse; width: 100%; }
+.version-table { max-width: 900px; margin: 2rem auto; border-collapse: collapse; width: 100%; }
 .version-table th, .version-table td { padding: .6rem 1rem; border: 1px solid var(--border); text-align: left; font-size: .9rem; }
 .version-table th { background: var(--bg-alt); font-weight: 600; }
 .version-table a { color: var(--primary); }
+.seo-table { max-width: 1100px; margin: 2rem auto; border-collapse: collapse; width: 100%; font-size: .85rem; }
+.seo-table th, .seo-table td { padding: .5rem .75rem; border: 1px solid var(--border); text-align: left; }
+.seo-table th { background: var(--bg-alt); font-weight: 600; font-size: .82rem; }
+.seo-table .len-badge { font-size: .68rem; }
+.seo-table .schema-tag { font-size: .65rem; margin: .1rem; }
+.legend-box { max-width: 700px; margin: 1.5rem auto; background: #f8fafc; border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.25rem; font-size: .82rem; color: var(--text-light); }
+.legend-box strong { color: var(--text); }
+
+/* ── Kurzanleitung ── */
+.anleitung { max-width: 700px; margin: 0 auto 2rem; background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; }
+.anleitung h3 { color: var(--primary); margin-bottom: .75rem; font-size: 1.1rem; }
+.anleitung ol { padding-left: 1.25rem; font-size: .9rem; color: var(--text-light); }
+.anleitung li { margin-bottom: .4rem; }
 
 /* ── Responsive ── */
 @media (max-width: 768px) {
@@ -182,6 +218,7 @@ h2 { font-size: 1.6rem; color: var(--primary); margin-bottom: 1.25rem; text-alig
   .nav-inner { flex-wrap: wrap; height: auto; padding: .5rem 1rem; }
   .nav-links { gap: .15rem; }
   .contact-cols { grid-template-columns: 1fr; }
+  .seo-table { font-size: .75rem; }
 }
 </style>
 </head>
@@ -208,14 +245,58 @@ h2 { font-size: 1.6rem; color: var(--primary); margin-bottom: 1.25rem; text-alig
   </div>
 </nav>
 
-<!-- Meta bar -->
-<div class="meta-bar">
-  <div class="meta-bar-inner">
-    <strong>Title Tag:</strong> Häufige Fragen zum Pflegedienst — Panacea Pflege<br>
-    <strong>Meta Description:</strong> Antworten auf Ihre Fragen: Kosten, Leistungen, Pflegegrad, Ablauf. Ambulanter Pflegedienst in München und Umgebung. Jetzt informieren!<br>
+<!-- SEO Bar -->
+
+<div class="seo-bar">
+  <div class="seo-bar-header">
+    <span><strong>SEO</strong> — Meta &amp; Schema</span>
+    <span class="seo-toggle">▼</span>
+  </div>
+  <div class="seo-bar-body">
+    <div class="seo-row"><strong>Title:</strong> Häufige Fragen zum Pflegedienst — Panacea Pflege <span class="len-badge len-ok">OK (48)</span></div>
+    <div class="seo-row"><strong>Description:</strong> Antworten auf Ihre Fragen: Kosten, Leistungen, Pflegegrad, Ablauf. Ambulanter Pflegedienst in München und Umgebung. Jetzt informieren! <span class="len-badge len-ok">OK (134)</span></div>
+    <div class="seo-row"><strong>URL:</strong> <code>/faq/</code></div>
+    <div class="seo-row"><strong>Schema.org:</strong> <span class="schema-tag schema-tag-org">Organization</span><span class="schema-tag schema-tag-breadcrumb">BreadcrumbList</span><span class="schema-tag schema-tag-faqpage">FAQPage</span></div>
+    
+        <div class="seo-row">
+          <span class="seo-jsonld-toggle">▶ JSON-LD Vorschau</span>
+          <div class="seo-jsonld-content">
+            <pre><code>{
+  &quot;@context&quot;: &quot;https://schema.org&quot;,
+  &quot;@type&quot;: &quot;FAQPage&quot;,
+  &quot;mainEntity&quot;: [
+    {
+      &quot;@type&quot;: &quot;Question&quot;,
+      &quot;name&quot;: &quot;Was kostet ein ambulanter Pflegedienst?&quot;,
+      &quot;acceptedAnswer&quot;: {
+        &quot;@type&quot;: &quot;Answer&quot;,
+        &quot;text&quot;: &quot;Die Kosten richten sich nach Ihrem Pflegegrad und den Leistungen, die Sie benötigen. Die Pflegekasse übernimmt einen Großteil der Kosten. Als privater Träger arbeiten wir mit besonders günstigen Sätzen — so bekommen Sie mehr Leistung für Ihr Budget. Nutzen Sie unseren Kostenrechner für eine erste Einschätzung.&quot;
+      }
+    },
+    {
+      &quot;@type&quot;: &quot;Question&quot;,
+      &quot;name&quot;: &quot;Welche Leistungen übernimmt die Pflegekasse?&quot;,
+      &quot;acceptedAnswer&quot;: {
+        &quot;@type&quot;: &quot;Answer&quot;,
+        &quot;text&quot;: &quot;Die Pflegekasse übernimmt Leistungen der Grundpflege und Behandlungspflege, je nach Pflegegrad. Dazu kommen Entlastungsleistungen und Verhinderungspflege. Wir beraten Sie, welche Leistungen Ihnen zustehen — und helfen bei der Beantragung.&quot;
+      }
+    },
+    {
+      &quot;@type&quot;: &quot;Question&quot;,
+      &quot;name&quot;: &quot;Was ist der Entlastungsbetrag und wie nutze ich ihn?&quot;,
+      &quot;acceptedAnswer&quot;: {
+        &quot;@type&quot;: &quot;Answer&quot;,
+        &quot;text&quot;: &quot;Jeder Pflegebedürftige mit Pflegegrad 1 bis 5 hat Anspruch auf 125 Euro monatlich für Entlastungsleistungen. Dieser Betrag kann für hauswirtschaftliche Hilfe oder Betreuung genutzt werden. Nicht genutzte Beträge können angespart werden. Wir helfen Ihnen, den Entlastungsbetrag sinnvoll einzusetzen.&quot;
+      }
+    }
+  ]
+}</code></pre>
+          </div>
+        </div>
     <span class="source-badge">📋 Quelle: Internal Spec</span>
   </div>
 </div>
+
 
 <!-- Content -->
 
@@ -446,11 +527,15 @@ h2 { font-size: 1.6rem; color: var(--primary); margin-bottom: 1.25rem; text-alig
   function saveAll(d){ localStorage.setItem(STORAGE_KEY, JSON.stringify(d)); }
   function getPage(){ const d=loadAll(); if(!d[PAGE]) d[PAGE]={}; return d; }
 
-  function updateCounter(){
+  function countAll(){
     const d=loadAll(); let c=0;
     Object.values(d).forEach(p=>{ Object.keys(p).forEach(k=>{ if(k!=='_title') c++; }); });
-    const el=document.querySelector('.fb-counter-num');
-    if(el) el.textContent=c;
+    return c;
+  }
+
+  function updateCounter(){
+    const c=countAll();
+    document.querySelectorAll('.fb-counter-num').forEach(el=>{ el.textContent=c; });
     const counter=document.querySelector('.nav-counter');
     if(counter){ counter.classList.toggle('has-feedback',c>0); }
   }
@@ -460,6 +545,7 @@ h2 { font-size: 1.6rem; color: var(--primary); margin-bottom: 1.25rem; text-alig
       const bid=wrapper.dataset.block;
       const btn=wrapper.querySelector('.fb-btn');
       const panel=wrapper.querySelector('.fb-panel');
+      if(!btn||!panel) return;
       const ta=panel.querySelector('textarea');
       const saveBtn=panel.querySelector('.fb-save');
       const cancelBtn=panel.querySelector('.fb-cancel');
@@ -471,7 +557,7 @@ h2 { font-size: 1.6rem; color: var(--primary); margin-bottom: 1.25rem; text-alig
         const entry=d[PAGE][bid];
         ta.value=(typeof entry==='object')?entry.text:entry;
         btn.classList.add('has-feedback');
-        btn.textContent='✏️ Kommentar bearbeiten';
+        btn.textContent='\u270f\ufe0f Kommentar bearbeiten';
       }
 
       btn.addEventListener('click',()=>{
@@ -486,8 +572,8 @@ h2 { font-size: 1.6rem; color: var(--primary); margin-bottom: 1.25rem; text-alig
         const labelEl=wrapper.querySelector('.block-label');
         const labelText=labelEl?labelEl.textContent:('Block '+bid);
         d[PAGE]._title=document.title.replace(/ — Preview$/,'');
-        if(val){ d[PAGE][bid]={text:val,label:labelText}; btn.classList.add('has-feedback'); btn.textContent='✏️ Kommentar bearbeiten'; }
-        else { delete d[PAGE][bid]; btn.classList.remove('has-feedback'); btn.textContent='✏️ Vorschlag'; }
+        if(val){ d[PAGE][bid]={text:val,label:labelText}; btn.classList.add('has-feedback'); btn.textContent='\u270f\ufe0f Kommentar bearbeiten'; }
+        else { delete d[PAGE][bid]; btn.classList.remove('has-feedback'); btn.textContent='\u270f\ufe0f Vorschlag'; }
         saveAll(d);
         panel.classList.remove('open');
         updateCounter();
@@ -497,7 +583,7 @@ h2 { font-size: 1.6rem; color: var(--primary); margin-bottom: 1.25rem; text-alig
         const d=getPage();
         delete d[PAGE][bid];
         saveAll(d);
-        btn.classList.remove('has-feedback'); btn.textContent='✏️ Vorschlag';
+        btn.classList.remove('has-feedback'); btn.textContent='\u270f\ufe0f Vorschlag';
         panel.classList.remove('open');
         updateCounter();
       });
@@ -514,11 +600,31 @@ h2 { font-size: 1.6rem; color: var(--primary); margin-bottom: 1.25rem; text-alig
     });
   }
 
+  // SEO bar collapse toggle
+  function initSEOBar(){
+    document.querySelectorAll('.seo-bar-header').forEach(header=>{
+      header.addEventListener('click',()=>{
+        header.parentElement.classList.toggle('collapsed');
+      });
+    });
+    // JSON-LD toggle
+    document.querySelectorAll('.seo-jsonld-toggle').forEach(toggle=>{
+      toggle.addEventListener('click',()=>{
+        const content=toggle.nextElementSibling;
+        if(content) content.classList.toggle('open');
+        toggle.textContent=content&&content.classList.contains('open')?'\u25bc JSON-LD ausblenden':'\u25b6 JSON-LD Vorschau';
+      });
+    });
+  }
+
   // Export overlay — cross-page
   function buildFeedbackText(){
     const d=loadAll();
-    let c=0; Object.values(d).forEach(p=>{ Object.keys(p).forEach(k=>{ if(k!=='_title') c++; }); });
-    let txt='FEEDBACK — PANACEA\nDatum: '+new Date().toLocaleDateString('de-DE')+'\n'+c+' Kommentar(e) insgesamt\n'+'='.repeat(50)+'\n\n';
+    const c=countAll();
+    const now=new Date();
+    const datePart=now.toLocaleDateString('de-DE',{day:'2-digit',month:'2-digit',year:'numeric'});
+    const timePart=now.toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
+    let txt='FEEDBACK \u2014 PANACEA\nDatum: '+datePart+'\n'+c+' Kommentar(e) insgesamt\n'+'='.repeat(50)+'\n\n';
     Object.entries(d).forEach(([page,pd])=>{
       const title=pd._title||page;
       txt+='\u2501\u2501\u2501 '+title+' \u2501\u2501\u2501\n\n';
@@ -529,7 +635,7 @@ h2 { font-size: 1.6rem; color: var(--primary); margin-bottom: 1.25rem; text-alig
         txt+='\ud83d\udccc '+label+'\n'+'-'.repeat(40)+'\n'+text+'\n\n';
       });
     });
-    txt+='='.repeat(50)+'\nErstellt am '+new Date().toLocaleString('de-DE')+'\n';
+    txt+='='.repeat(50)+'\nErstellt am '+datePart+', '+timePart+'\n';
     return txt;
   }
 
@@ -538,10 +644,8 @@ h2 { font-size: 1.6rem; color: var(--primary); margin-bottom: 1.25rem; text-alig
     const overlay=document.getElementById('export-overlay');
     if(!counter||!overlay) return;
 
-    counter.style.cursor='pointer';
     counter.addEventListener('click',()=>{
-      const d=loadAll(); let c=0;
-      Object.values(d).forEach(p=>{ Object.keys(p).forEach(k=>{ if(k!=='_title') c++; }); });
+      const c=countAll();
       if(c===0) return;
       overlay.querySelector('.export-count').textContent=c;
       overlay.classList.add('open');
@@ -571,7 +675,7 @@ h2 { font-size: 1.6rem; color: var(--primary); margin-bottom: 1.25rem; text-alig
     });
   }
 
-  document.addEventListener('DOMContentLoaded',()=>{ initFeedback(); initFAQ(); initExport(); });
+  document.addEventListener('DOMContentLoaded',()=>{ initFeedback(); initFAQ(); initSEOBar(); initExport(); });
 })();
 </script>
 
