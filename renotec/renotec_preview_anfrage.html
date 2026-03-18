@@ -196,6 +196,8 @@ body {
   border-radius: var(--radius);
 }
 .block:nth-child(even) { background: var(--bg-alt); }
+.block a { color: var(--accent); text-decoration: none; }
+.block a:hover { text-decoration: underline; }
 .block-label {
   display: none; /* hidden, used by feedback JS */
 }
@@ -231,6 +233,7 @@ body {
 }
 .block-hero .btn:hover { transform: translateY(-2px); }
 .block-hero .btn-primary { background: var(--fb-accent); color: var(--text); }
+.block-hero a { color: white; }
 .block-hero .btn-secondary { background: rgba(255,255,255,0.15); color: white; border: 1px solid rgba(255,255,255,0.3); }
 
 /* Trust bar */
@@ -343,7 +346,10 @@ body {
 .block-cta h2 { margin-bottom: 16px; font-size: 26px; }
 .block-cta p { opacity: 0.9; margin-bottom: 24px; max-width: 600px; margin-left: auto; margin-right: auto; }
 .block-cta .contact-lines { font-size: 15px; margin-bottom: 20px; line-height: 2; }
+.block-cta a { color: white; text-decoration: underline; text-underline-offset: 2px; }
+.block-cta a:hover { opacity: 0.85; }
 .block-cta .btn { display: inline-block; background: var(--fb-accent); color: var(--text); padding: 14px 32px; border-radius: var(--radius); font-weight: 600; text-decoration: none; font-size: 16px; }
+.block-cta .contact-lines a { color: rgba(255,255,255,0.9); }
 
 /* Form */
 .block-form { background: var(--bg-alt); padding: 40px; border-radius: var(--radius); }
@@ -731,13 +737,17 @@ body {
     </div>
   <main class="page-content">
     
-    <div class="block block-generic" id="block-1">
-      <span class="block-label" style="display:none">Block 1 — </span>
+    <div class="block block-steps" id="block-1">
+      <span class="block-label" style="display:none">Block 1 — Ihre Anfrage in wenigen Schritten</span>
       <button class="feedback-btn" onclick="toggleFeedback(1)">✏️ Vorschlag</button>
-      <h2></h2>
-      
+      <h2>Ihre Anfrage in wenigen Schritten</h2>
+      <p>Sie haben ein Vorhaben im Bereich Sanitär, Heizung oder Rohrreinigung? Beschreiben Sie uns in wenigen Schritten, was Sie brauchen – wir melden uns innerhalb von 24 Stunden mit einer persönlichen Rückmeldung. Kein Callcenter, kein Formular-Chaos: Sie sprechen direkt mit unserem Team.</p>
+<blockquote>
+<p>⏱ <strong>Dauer: ca. 2 Minuten</strong> · Kostenlos & unverbindlich · Antwort innerhalb von 24 Std.</p>
+</blockquote>
+      <div class="steps-list"></div>
       <div class="feedback-panel" id="feedback-panel-1">
-        <label>Ihr Vorschlag für Block 1 — :</label>
+        <label>Ihr Vorschlag für Block 1 — Ihre Anfrage in wenigen Schritten:</label>
         <textarea id="feedback-text-1" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
         <div class="feedback-actions">
           <button class="btn-save" onclick="saveFeedback(1)">Speichern</button>
@@ -747,29 +757,9 @@ body {
         </div>
       </div>
     </div>
-    <div class="block block-steps" id="block-2">
-      <span class="block-label" style="display:none">Block 2 — Ihre Anfrage in wenigen Schritten</span>
+    <div class="block block-multistep" id="block-2">
+      <span class="block-label" style="display:none">Block 2 — Schritt 1 – Wie dürfen wir Ihnen helfen?</span>
       <button class="feedback-btn" onclick="toggleFeedback(2)">✏️ Vorschlag</button>
-      <h2>Ihre Anfrage in wenigen Schritten</h2>
-      <p>Sie haben ein Vorhaben im Bereich Sanitär, Heizung oder Rohrreinigung? Beschreiben Sie uns in wenigen Schritten, was Sie brauchen – wir melden uns innerhalb von 24 Stunden mit einer persönlichen Rückmeldung. Kein Callcenter, kein Formular-Chaos: Sie sprechen direkt mit unserem Team.</p>
-<blockquote>
-<p>⏱ <strong>Dauer: ca. 2 Minuten</strong> · Kostenlos & unverbindlich · Antwort innerhalb von 24 Std.</p>
-</blockquote>
-      <div class="steps-list"></div>
-      <div class="feedback-panel" id="feedback-panel-2">
-        <label>Ihr Vorschlag für Block 2 — Ihre Anfrage in wenigen Schritten:</label>
-        <textarea id="feedback-text-2" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
-        <div class="feedback-actions">
-          <button class="btn-save" onclick="saveFeedback(2)">Speichern</button>
-          <button class="btn-cancel" onclick="toggleFeedback(2)">Abbrechen</button>
-          <button class="btn-delete" onclick="deleteFeedback(2)" style="display:none" id="delete-btn-2">Löschen</button>
-          <span class="saved-indicator" id="saved-2">✓ Gespeichert</span>
-        </div>
-      </div>
-    </div>
-    <div class="block block-multistep" id="block-3">
-      <span class="block-label" style="display:none">Block 3 — Schritt 1 – Wie dürfen wir Ihnen helfen?</span>
-      <button class="feedback-btn" onclick="toggleFeedback(3)">✏️ Vorschlag</button>
       <div class="ms-progress"><div class="ms-step-dot active"><span>1</span></div><div class="ms-step-line"></div><div class="ms-step-dot"><span>2</span></div><div class="ms-step-line"></div><div class="ms-step-dot"><span>3</span></div><div class="ms-step-line"></div><div class="ms-step-dot"><span>4</span></div><div class="ms-step-line"></div><div class="ms-step-dot"><span>5</span></div></div>
       <h2>Wie dürfen wir Ihnen helfen?</h2>
       <p>Bitte wählen Sie, wie wir Sie unterstützen können:</p>
@@ -799,20 +789,20 @@ body {
         <button class="ms-btn-back" disabled>← Zurück</button>
         <button class="ms-btn-next" disabled>Weiter →</button>
       </div>
-      <div class="feedback-panel" id="feedback-panel-3">
-        <label>Ihr Vorschlag für Block 3 — Schritt 1 – Wie dürfen wir Ihnen helfen?:</label>
-        <textarea id="feedback-text-3" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+      <div class="feedback-panel" id="feedback-panel-2">
+        <label>Ihr Vorschlag für Block 2 — Schritt 1 – Wie dürfen wir Ihnen helfen?:</label>
+        <textarea id="feedback-text-2" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
         <div class="feedback-actions">
-          <button class="btn-save" onclick="saveFeedback(3)">Speichern</button>
-          <button class="btn-cancel" onclick="toggleFeedback(3)">Abbrechen</button>
-          <button class="btn-delete" onclick="deleteFeedback(3)" style="display:none" id="delete-btn-3">Löschen</button>
-          <span class="saved-indicator" id="saved-3">✓ Gespeichert</span>
+          <button class="btn-save" onclick="saveFeedback(2)">Speichern</button>
+          <button class="btn-cancel" onclick="toggleFeedback(2)">Abbrechen</button>
+          <button class="btn-delete" onclick="deleteFeedback(2)" style="display:none" id="delete-btn-2">Löschen</button>
+          <span class="saved-indicator" id="saved-2">✓ Gespeichert</span>
         </div>
       </div>
     </div>
-    <div class="block block-multistep" id="block-4">
-      <span class="block-label" style="display:none">Block 4 — Schritt 2 – Um welchen Bereich geht es?</span>
-      <button class="feedback-btn" onclick="toggleFeedback(4)">✏️ Vorschlag</button>
+    <div class="block block-multistep" id="block-3">
+      <span class="block-label" style="display:none">Block 3 — Schritt 2 – Um welchen Bereich geht es?</span>
+      <button class="feedback-btn" onclick="toggleFeedback(3)">✏️ Vorschlag</button>
       <div class="ms-progress"><div class="ms-step-dot completed"><span>1</span></div><div class="ms-step-line"></div><div class="ms-step-dot active"><span>2</span></div><div class="ms-step-line"></div><div class="ms-step-dot"><span>3</span></div><div class="ms-step-line"></div><div class="ms-step-dot"><span>4</span></div><div class="ms-step-line"></div><div class="ms-step-dot"><span>5</span></div></div>
       <h2>Um welchen Bereich geht es?</h2>
       <p>Wählen Sie den Bereich, der am besten zu Ihrem Anliegen passt:</p>
@@ -842,20 +832,20 @@ body {
         <button class="ms-btn-back" disabled>← Zurück</button>
         <button class="ms-btn-next" disabled>Weiter →</button>
       </div>
-      <div class="feedback-panel" id="feedback-panel-4">
-        <label>Ihr Vorschlag für Block 4 — Schritt 2 – Um welchen Bereich geht es?:</label>
-        <textarea id="feedback-text-4" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+      <div class="feedback-panel" id="feedback-panel-3">
+        <label>Ihr Vorschlag für Block 3 — Schritt 2 – Um welchen Bereich geht es?:</label>
+        <textarea id="feedback-text-3" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
         <div class="feedback-actions">
-          <button class="btn-save" onclick="saveFeedback(4)">Speichern</button>
-          <button class="btn-cancel" onclick="toggleFeedback(4)">Abbrechen</button>
-          <button class="btn-delete" onclick="deleteFeedback(4)" style="display:none" id="delete-btn-4">Löschen</button>
-          <span class="saved-indicator" id="saved-4">✓ Gespeichert</span>
+          <button class="btn-save" onclick="saveFeedback(3)">Speichern</button>
+          <button class="btn-cancel" onclick="toggleFeedback(3)">Abbrechen</button>
+          <button class="btn-delete" onclick="deleteFeedback(3)" style="display:none" id="delete-btn-3">Löschen</button>
+          <span class="saved-indicator" id="saved-3">✓ Gespeichert</span>
         </div>
       </div>
     </div>
-    <div class="block block-multistep" id="block-5">
-      <span class="block-label" style="display:none">Block 5 — Schritt 3 – Welche Leistungen benötigen Sie?</span>
-      <button class="feedback-btn" onclick="toggleFeedback(5)">✏️ Vorschlag</button>
+    <div class="block block-multistep" id="block-4">
+      <span class="block-label" style="display:none">Block 4 — Schritt 3 – Welche Leistungen benötigen Sie?</span>
+      <button class="feedback-btn" onclick="toggleFeedback(4)">✏️ Vorschlag</button>
       <div class="ms-progress"><div class="ms-step-dot completed"><span>1</span></div><div class="ms-step-line"></div><div class="ms-step-dot completed"><span>2</span></div><div class="ms-step-line"></div><div class="ms-step-dot active"><span>3</span></div><div class="ms-step-line"></div><div class="ms-step-dot"><span>4</span></div><div class="ms-step-line"></div><div class="ms-step-dot"><span>5</span></div></div>
       <h2>Welche Leistungen benötigen Sie?</h2>
       <p>Wählen Sie alle zutreffenden Leistungen (Mehrfachauswahl möglich):</p>
@@ -900,8 +890,30 @@ body {
         <button class="ms-btn-back" disabled>← Zurück</button>
         <button class="ms-btn-next" disabled>Weiter →</button>
       </div>
+      <div class="feedback-panel" id="feedback-panel-4">
+        <label>Ihr Vorschlag für Block 4 — Schritt 3 – Welche Leistungen benötigen Sie?:</label>
+        <textarea id="feedback-text-4" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+        <div class="feedback-actions">
+          <button class="btn-save" onclick="saveFeedback(4)">Speichern</button>
+          <button class="btn-cancel" onclick="toggleFeedback(4)">Abbrechen</button>
+          <button class="btn-delete" onclick="deleteFeedback(4)" style="display:none" id="delete-btn-4">Löschen</button>
+          <span class="saved-indicator" id="saved-4">✓ Gespeichert</span>
+        </div>
+      </div>
+    </div>
+    <div class="block block-multistep" id="block-5">
+      <span class="block-label" style="display:none">Block 5 — Schritt 4 – Details zu Ihrem Objekt</span>
+      <button class="feedback-btn" onclick="toggleFeedback(5)">✏️ Vorschlag</button>
+      <div class="ms-progress"><div class="ms-step-dot completed"><span>1</span></div><div class="ms-step-line"></div><div class="ms-step-dot completed"><span>2</span></div><div class="ms-step-line"></div><div class="ms-step-dot completed"><span>3</span></div><div class="ms-step-line"></div><div class="ms-step-dot active"><span>4</span></div><div class="ms-step-line"></div><div class="ms-step-dot"><span>5</span></div></div>
+      <h2>Details zu Ihrem Objekt</h2>
+      <p>Damit wir Ihre Anfrage besser einschätzen können, geben Sie bitte die ungefähren Eckdaten Ihres Objekts an:</p>
+      <div class="ms-table"><table><tr><th>Angabe</th><th>Bereich</th><th>Standardwert</th></tr><tr><td><strong>Wohnfläche (m²)</strong></td><td>20 – 500 m²</td><td>100 m²</td></tr><tr><td><strong>Anzahl Bäder</strong></td><td>1 – 5</td><td>1</td></tr><tr><td><strong>Baujahr (ca.)</strong></td><td>1900 – 2026</td><td>1990</td></tr></table></div><div class="ms-hint">Diese Angaben sind optional und helfen uns, Ihre Anfrage schneller zu bearbeiten. Falls Sie unsicher sind, lassen Sie die Felder einfach auf dem Standardwert.</div>
+      <div class="ms-nav-buttons">
+        <button class="ms-btn-back" disabled>← Zurück</button>
+        <button class="ms-btn-next" disabled>Weiter →</button>
+      </div>
       <div class="feedback-panel" id="feedback-panel-5">
-        <label>Ihr Vorschlag für Block 5 — Schritt 3 – Welche Leistungen benötigen Sie?:</label>
+        <label>Ihr Vorschlag für Block 5 — Schritt 4 – Details zu Ihrem Objekt:</label>
         <textarea id="feedback-text-5" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
         <div class="feedback-actions">
           <button class="btn-save" onclick="saveFeedback(5)">Speichern</button>
@@ -912,18 +924,18 @@ body {
       </div>
     </div>
     <div class="block block-multistep" id="block-6">
-      <span class="block-label" style="display:none">Block 6 — Schritt 4 – Details zu Ihrem Objekt</span>
+      <span class="block-label" style="display:none">Block 6 — Schritt 5 – Ihre Kontaktdaten</span>
       <button class="feedback-btn" onclick="toggleFeedback(6)">✏️ Vorschlag</button>
-      <div class="ms-progress"><div class="ms-step-dot completed"><span>1</span></div><div class="ms-step-line"></div><div class="ms-step-dot completed"><span>2</span></div><div class="ms-step-line"></div><div class="ms-step-dot completed"><span>3</span></div><div class="ms-step-line"></div><div class="ms-step-dot active"><span>4</span></div><div class="ms-step-line"></div><div class="ms-step-dot"><span>5</span></div></div>
-      <h2>Details zu Ihrem Objekt</h2>
-      <p>Damit wir Ihre Anfrage besser einschätzen können, geben Sie bitte die ungefähren Eckdaten Ihres Objekts an:</p>
-      <div class="ms-table"><table><tr><th>Angabe</th><th>Bereich</th><th>Standardwert</th></tr><tr><td><strong>Wohnfläche (m²)</strong></td><td>20 – 500 m²</td><td>100 m²</td></tr><tr><td><strong>Anzahl Bäder</strong></td><td>1 – 5</td><td>1</td></tr><tr><td><strong>Baujahr (ca.)</strong></td><td>1900 – 2026</td><td>1990</td></tr></table></div><div class="ms-hint">Diese Angaben sind optional und helfen uns, Ihre Anfrage schneller zu bearbeiten. Falls Sie unsicher sind, lassen Sie die Felder einfach auf dem Standardwert.</div>
+      <div class="ms-progress"><div class="ms-step-dot completed"><span>1</span></div><div class="ms-step-line"></div><div class="ms-step-dot completed"><span>2</span></div><div class="ms-step-line"></div><div class="ms-step-dot completed"><span>3</span></div><div class="ms-step-line"></div><div class="ms-step-dot completed"><span>4</span></div><div class="ms-step-line"></div><div class="ms-step-dot active"><span>5</span></div></div>
+      <h2>Ihre Kontaktdaten</h2>
+      <p>Wie können wir Sie erreichen? Bitte geben Sie Ihre Daten ein.</p>
+      <div class="ms-table"><table><tr><th>Feld</th><th>Pflichtfeld</th></tr><tr><td>Vorname</td><td>–</td></tr><tr><td><strong>Nachname</strong></td><td>✓</td></tr><tr><td><strong>Telefonnummer</strong></td><td>✓</td></tr><tr><td><strong>E-Mail</strong></td><td>✓</td></tr><tr><td>Adresse / Stadtteil</td><td>–</td></tr><tr><td><strong>Postleitzahl</strong></td><td>✓</td></tr></table></div><div class="ms-hint">🔒 Ihre Daten werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet und nicht an Dritte weitergegeben. Weitere Informationen finden Sie in unserer <a href="/datenschutz/">Datenschutzerklärung</a>.</div><button class="ms-submit" disabled>Anfrage absenden</button>
       <div class="ms-nav-buttons">
         <button class="ms-btn-back" disabled>← Zurück</button>
         <button class="ms-btn-next" disabled>Weiter →</button>
       </div>
       <div class="feedback-panel" id="feedback-panel-6">
-        <label>Ihr Vorschlag für Block 6 — Schritt 4 – Details zu Ihrem Objekt:</label>
+        <label>Ihr Vorschlag für Block 6 — Schritt 5 – Ihre Kontaktdaten:</label>
         <textarea id="feedback-text-6" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
         <div class="feedback-actions">
           <button class="btn-save" onclick="saveFeedback(6)">Speichern</button>
@@ -933,19 +945,19 @@ body {
         </div>
       </div>
     </div>
-    <div class="block block-multistep" id="block-7">
-      <span class="block-label" style="display:none">Block 7 — Schritt 5 – Ihre Kontaktdaten</span>
+    <div class="block block-generic" id="block-7">
+      <span class="block-label" style="display:none">Block 7 — Nach Ihrer Anfrage</span>
       <button class="feedback-btn" onclick="toggleFeedback(7)">✏️ Vorschlag</button>
-      <div class="ms-progress"><div class="ms-step-dot completed"><span>1</span></div><div class="ms-step-line"></div><div class="ms-step-dot completed"><span>2</span></div><div class="ms-step-line"></div><div class="ms-step-dot completed"><span>3</span></div><div class="ms-step-line"></div><div class="ms-step-dot completed"><span>4</span></div><div class="ms-step-line"></div><div class="ms-step-dot active"><span>5</span></div></div>
-      <h2>Ihre Kontaktdaten</h2>
-      <p>Wie können wir Sie erreichen? Bitte geben Sie Ihre Daten ein.</p>
-      <div class="ms-table"><table><tr><th>Feld</th><th>Pflichtfeld</th></tr><tr><td>Vorname</td><td>–</td></tr><tr><td><strong>Nachname</strong></td><td>✓</td></tr><tr><td><strong>Telefonnummer</strong></td><td>✓</td></tr><tr><td><strong>E-Mail</strong></td><td>✓</td></tr><tr><td>Adresse / Stadtteil</td><td>–</td></tr><tr><td><strong>Postleitzahl</strong></td><td>✓</td></tr></table></div><div class="ms-hint">🔒 Ihre Daten werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet und nicht an Dritte weitergegeben. Weitere Informationen finden Sie in unserer <a href="/datenschutz/">Datenschutzerklärung</a>.</div><button class="ms-submit" disabled>Anfrage absenden</button>
-      <div class="ms-nav-buttons">
-        <button class="ms-btn-back" disabled>← Zurück</button>
-        <button class="ms-btn-next" disabled>Weiter →</button>
-      </div>
+      <h2>Nach Ihrer Anfrage</h2>
+      <p>Vielen Dank! Wir melden uns innerhalb von 24 Stunden bei Ihnen — persönlich, nicht automatisiert.</p>
+<p><strong>Was passiert als Nächstes?</strong></p>
+<ol>
+<li><strong>Prüfung Ihrer Anfrage</strong> – Wir sichten Ihre Angaben und ordnen Ihr Anliegen dem richtigen Fachbereich zu.</li>
+<li><strong>Persönliche Kontaktaufnahme</strong> – Ein Mitarbeiter meldet sich bei Ihnen, um offene Fragen zu klären und ggf. einen Vor-Ort-Termin zu vereinbaren.</li>
+<li><strong>Individuelles Angebot</strong> – Nach einer Besichtigung erhalten Sie ein detailliertes Angebot — transparent, ohne versteckte Kosten.</li>
+</ol>
       <div class="feedback-panel" id="feedback-panel-7">
-        <label>Ihr Vorschlag für Block 7 — Schritt 5 – Ihre Kontaktdaten:</label>
+        <label>Ihr Vorschlag für Block 7 — Nach Ihrer Anfrage:</label>
         <textarea id="feedback-text-7" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
         <div class="feedback-actions">
           <button class="btn-save" onclick="saveFeedback(7)">Speichern</button>
@@ -955,43 +967,21 @@ body {
         </div>
       </div>
     </div>
-    <div class="block block-generic" id="block-8">
-      <span class="block-label" style="display:none">Block 8 — Nach Ihrer Anfrage</span>
-      <button class="feedback-btn" onclick="toggleFeedback(8)">✏️ Vorschlag</button>
-      <h2>Nach Ihrer Anfrage</h2>
-      <p>Vielen Dank! Wir melden uns innerhalb von 24 Stunden bei Ihnen — persönlich, nicht automatisiert.</p>
-<p><strong>Was passiert als Nächstes?</strong></p>
-<ol>
-<li><strong>Prüfung Ihrer Anfrage</strong> – Wir sichten Ihre Angaben und ordnen Ihr Anliegen dem richtigen Fachbereich zu.</li>
-<li><strong>Persönliche Kontaktaufnahme</strong> – Ein Mitarbeiter meldet sich bei Ihnen, um offene Fragen zu klären und ggf. einen Vor-Ort-Termin zu vereinbaren.</li>
-<li><strong>Individuelles Angebot</strong> – Nach einer Besichtigung erhalten Sie ein detailliertes Angebot — transparent, ohne versteckte Kosten.</li>
-</ol>
+    <div class="block block-cta" id="block-8">
+      <span class="block-label" style="display:none">Block 8 — Lieber direkt Kontakt aufnehmen?</span>
+      <button class="feedback-btn" onclick="toggleFeedback(8)" style="color:#1e293b;">✏️ Vorschlag</button>
+      <h2>Lieber direkt Kontakt aufnehmen?</h2>
+      <p>Sie möchten nicht über das Formular gehen? Kein Problem – erreichen Sie uns auch direkt: 🏅 Eingetragener Meisterbetrieb · Handwerkskammer Berlin</p>
+      <div class="contact-lines">📞 Telefon: <span class="placeholder">[PLATZHALTER]</span><br>📧 E-Mail: kontakt@renotec-shk.de<br>💬 <a href="#whatsapp">WhatsApp: Anfrage senden</a><br>📍 Pohlstraße 71, 10785 Berlin</div>
+      
       <div class="feedback-panel" id="feedback-panel-8">
-        <label>Ihr Vorschlag für Block 8 — Nach Ihrer Anfrage:</label>
+        <label>Ihr Vorschlag für Block 8 — Lieber direkt Kontakt aufnehmen?:</label>
         <textarea id="feedback-text-8" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
         <div class="feedback-actions">
           <button class="btn-save" onclick="saveFeedback(8)">Speichern</button>
           <button class="btn-cancel" onclick="toggleFeedback(8)">Abbrechen</button>
           <button class="btn-delete" onclick="deleteFeedback(8)" style="display:none" id="delete-btn-8">Löschen</button>
           <span class="saved-indicator" id="saved-8">✓ Gespeichert</span>
-        </div>
-      </div>
-    </div>
-    <div class="block block-cta" id="block-9">
-      <span class="block-label" style="display:none">Block 9 — Lieber direkt Kontakt aufnehmen?</span>
-      <button class="feedback-btn" onclick="toggleFeedback(9)" style="color:#1e293b;">✏️ Vorschlag</button>
-      <h2>Lieber direkt Kontakt aufnehmen?</h2>
-      <p>Sie möchten nicht über das Formular gehen? Kein Problem – erreichen Sie uns auch direkt: 🏅 Eingetragener Meisterbetrieb · Handwerkskammer Berlin</p>
-      <div class="contact-lines">📞 Telefon: <span class="placeholder">[PLATZHALTER]</span><br>📧 E-Mail: kontakt@renotec-shk.de<br>💬 <a href="#whatsapp">WhatsApp: Anfrage senden</a><br>📍 Pohlstraße 71, 10785 Berlin</div>
-      
-      <div class="feedback-panel" id="feedback-panel-9">
-        <label>Ihr Vorschlag für Block 9 — Lieber direkt Kontakt aufnehmen?:</label>
-        <textarea id="feedback-text-9" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
-        <div class="feedback-actions">
-          <button class="btn-save" onclick="saveFeedback(9)">Speichern</button>
-          <button class="btn-cancel" onclick="toggleFeedback(9)">Abbrechen</button>
-          <button class="btn-delete" onclick="deleteFeedback(9)" style="display:none" id="delete-btn-9">Löschen</button>
-          <span class="saved-indicator" id="saved-9">✓ Gespeichert</span>
         </div>
       </div>
     </div>

@@ -196,6 +196,8 @@ body {
   border-radius: var(--radius);
 }
 .block:nth-child(even) { background: var(--bg-alt); }
+.block a { color: var(--accent); text-decoration: none; }
+.block a:hover { text-decoration: underline; }
 .block-label {
   display: none; /* hidden, used by feedback JS */
 }
@@ -231,6 +233,7 @@ body {
 }
 .block-hero .btn:hover { transform: translateY(-2px); }
 .block-hero .btn-primary { background: var(--fb-accent); color: var(--text); }
+.block-hero a { color: white; }
 .block-hero .btn-secondary { background: rgba(255,255,255,0.15); color: white; border: 1px solid rgba(255,255,255,0.3); }
 
 /* Trust bar */
@@ -343,7 +346,10 @@ body {
 .block-cta h2 { margin-bottom: 16px; font-size: 26px; }
 .block-cta p { opacity: 0.9; margin-bottom: 24px; max-width: 600px; margin-left: auto; margin-right: auto; }
 .block-cta .contact-lines { font-size: 15px; margin-bottom: 20px; line-height: 2; }
+.block-cta a { color: white; text-decoration: underline; text-underline-offset: 2px; }
+.block-cta a:hover { opacity: 0.85; }
 .block-cta .btn { display: inline-block; background: var(--fb-accent); color: var(--text); padding: 14px 32px; border-radius: var(--radius); font-weight: 600; text-decoration: none; font-size: 16px; }
+.block-cta .contact-lines a { color: rgba(255,255,255,0.9); }
 
 /* Form */
 .block-form { background: var(--bg-alt); padding: 40px; border-radius: var(--radius); }
@@ -731,13 +737,15 @@ body {
     </div>
   <main class="page-content">
     
-    <div class="block block-generic" id="block-1">
-      <span class="block-label" style="display:none">Block 1 — </span>
+    <div class="block block-hero" id="block-1">
+      <span class="block-label" style="display:none">Block 1 — Hero</span>
       <button class="feedback-btn" onclick="toggleFeedback(1)">✏️ Vorschlag</button>
-      <h2></h2>
-      
+      <div class="hero-badge">🏅 Meisterbetrieb – eingetragen bei der Handwerkskammer Berlin</div>
+      <h1>RenoTec – Ihr zuverlässiger SHK-Meisterbetrieb in Berlin.</h1>
+      <div class="hero-sub">Ob Wärmepumpe, Badsanierung oder Heizungsmodernisierung: Wir planen, installieren und warten Ihre Sanitär- und Heizungsanlagen mit Meisterpräzision. Mit über 15 Jahren Erfahrung im SHK-Bereich und als eingetragener Meisterbetrieb der Handwerkskammer Berlin stehen wir für fachgerechte Ausführung und persönliche Betreuung. Schildern Sie uns Ihr Vorhaben – die Erstberatung ist kostenlos und unverbindlich.</div>
+      <div class="hero-ctas"><span class="btn btn-primary">💬 <a href="#whatsapp"><strong>WhatsApp: Anfrage senden</strong></a></span><span class="btn btn-secondary">📞 <strong>Telefon:</strong> <span class="placeholder">[PLATZHALTER]</span></span><span class="btn btn-secondary">📋 <a href="/kontakt/"><strong>Jetzt kostenlos anfragen</strong></a></span></div>
       <div class="feedback-panel" id="feedback-panel-1">
-        <label>Ihr Vorschlag für Block 1 — :</label>
+        <label>Ihr Vorschlag für Block 1 — Hero:</label>
         <textarea id="feedback-text-1" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
         <div class="feedback-actions">
           <button class="btn-save" onclick="saveFeedback(1)">Speichern</button>
@@ -747,27 +755,9 @@ body {
         </div>
       </div>
     </div>
-    <div class="block block-hero" id="block-2">
-      <span class="block-label" style="display:none">Block 2 — Hero</span>
+    <div class="block block-trust" id="block-2">
+      <span class="block-label" style="display:none">Block 2 — Warum RenoTec? – Ihr Vorteil auf einen Blick</span>
       <button class="feedback-btn" onclick="toggleFeedback(2)">✏️ Vorschlag</button>
-      <div class="hero-badge">🏅 Meisterbetrieb – eingetragen bei der Handwerkskammer Berlin</div>
-      <h1>RenoTec – Ihr zuverlässiger SHK-Meisterbetrieb in Berlin.</h1>
-      <div class="hero-sub">Ob Wärmepumpe, Badsanierung oder Heizungsmodernisierung: Wir planen, installieren und warten Ihre Sanitär- und Heizungsanlagen mit Meisterpräzision. Mit über 15 Jahren Erfahrung im SHK-Bereich und als eingetragener Meisterbetrieb der Handwerkskammer Berlin stehen wir für fachgerechte Ausführung und persönliche Betreuung. Schildern Sie uns Ihr Vorhaben – die Erstberatung ist kostenlos und unverbindlich.</div>
-      <div class="hero-ctas"><span class="btn btn-primary">💬 <a href="#whatsapp"><strong>WhatsApp: Anfrage senden</strong></a></span><span class="btn btn-secondary">📞 <strong>Telefon:</strong> <span class="placeholder">[PLATZHALTER]</span></span><span class="btn btn-secondary">📋 <a href="/kontakt/"><strong>Jetzt kostenlos anfragen</strong></a></span></div>
-      <div class="feedback-panel" id="feedback-panel-2">
-        <label>Ihr Vorschlag für Block 2 — Hero:</label>
-        <textarea id="feedback-text-2" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
-        <div class="feedback-actions">
-          <button class="btn-save" onclick="saveFeedback(2)">Speichern</button>
-          <button class="btn-cancel" onclick="toggleFeedback(2)">Abbrechen</button>
-          <button class="btn-delete" onclick="deleteFeedback(2)" style="display:none" id="delete-btn-2">Löschen</button>
-          <span class="saved-indicator" id="saved-2">✓ Gespeichert</span>
-        </div>
-      </div>
-    </div>
-    <div class="block block-trust" id="block-3">
-      <span class="block-label" style="display:none">Block 3 — Warum RenoTec? – Ihr Vorteil auf einen Blick</span>
-      <button class="feedback-btn" onclick="toggleFeedback(3)">✏️ Vorschlag</button>
       <h2>Warum RenoTec? – Ihr Vorteil auf einen Blick</h2>
       <p>Wenn es um Sanitär und Heizung in Berlin geht, zählt nicht nur Fachwissen – sondern auch Verlässlichkeit, ehrliche Beratung und ein Handwerker, der wirklich zuhört. RenoTec verbindet über 15 Jahre Erfahrung im SHK-Bereich mit dem Anspruch, Ihnen stets die beste technische und wirtschaftliche Lösung für Ihr Zuhause zu bieten. Wir arbeiten ausschließlich mit geprüften Premiumprodukten führender Hersteller und geben diesen Qualitätsanspruch direkt an unsere Kunden weiter. Unser Meisterbetrieb ist bei der Handwerkskammer Berlin eingetragen – das ist für Sie nicht nur eine formale Garantie, sondern ein aktives Qualitätsversprechen.</p>
       <div class="trust-items">
@@ -780,20 +770,20 @@ body {
                 <div class="trust-item">
                   <strong>🤝 8 Premium-Herstellerpartner</strong>
                 </div></div>
-      <div class="feedback-panel" id="feedback-panel-3">
-        <label>Ihr Vorschlag für Block 3 — Warum RenoTec? – Ihr Vorteil auf einen Blick:</label>
-        <textarea id="feedback-text-3" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+      <div class="feedback-panel" id="feedback-panel-2">
+        <label>Ihr Vorschlag für Block 2 — Warum RenoTec? – Ihr Vorteil auf einen Blick:</label>
+        <textarea id="feedback-text-2" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
         <div class="feedback-actions">
-          <button class="btn-save" onclick="saveFeedback(3)">Speichern</button>
-          <button class="btn-cancel" onclick="toggleFeedback(3)">Abbrechen</button>
-          <button class="btn-delete" onclick="deleteFeedback(3)" style="display:none" id="delete-btn-3">Löschen</button>
-          <span class="saved-indicator" id="saved-3">✓ Gespeichert</span>
+          <button class="btn-save" onclick="saveFeedback(2)">Speichern</button>
+          <button class="btn-cancel" onclick="toggleFeedback(2)">Abbrechen</button>
+          <button class="btn-delete" onclick="deleteFeedback(2)" style="display:none" id="delete-btn-2">Löschen</button>
+          <span class="saved-indicator" id="saved-2">✓ Gespeichert</span>
         </div>
       </div>
     </div>
-    <div class="block block-cards" id="block-4">
-      <span class="block-label" style="display:none">Block 4 — Unsere Leistungen in Berlin</span>
-      <button class="feedback-btn" onclick="toggleFeedback(4)">✏️ Vorschlag</button>
+    <div class="block block-cards" id="block-3">
+      <span class="block-label" style="display:none">Block 3 — Unsere Leistungen in Berlin</span>
+      <button class="feedback-btn" onclick="toggleFeedback(3)">✏️ Vorschlag</button>
       <h2>Unsere Leistungen in Berlin</h2>
       <p>Von der modernen Wärmepumpe über die komplette Badsanierung bis zur schnellen Rohrreinigung – RenoTec bietet Ihnen das gesamte Spektrum des SHK-Handwerks aus einer Hand. Alle Arbeiten werden fachgerecht nach Meisterstandard ausgeführt. So erhalten Sie nicht nur handwerklich einwandfreie Ergebnisse, sondern auch die nötige Rechtssicherheit für Förderanträge, Versicherungen und Gewährleistungsansprüche.</p>
       <div class="cards-grid">
@@ -831,8 +821,27 @@ body {
 ---</p>
           <a class="card-link" href="https://renovira.de">Alle Leistungen ansehen → renovira.de</a>
         </div></div>
+      <div class="feedback-panel" id="feedback-panel-3">
+        <label>Ihr Vorschlag für Block 3 — Unsere Leistungen in Berlin:</label>
+        <textarea id="feedback-text-3" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+        <div class="feedback-actions">
+          <button class="btn-save" onclick="saveFeedback(3)">Speichern</button>
+          <button class="btn-cancel" onclick="toggleFeedback(3)">Abbrechen</button>
+          <button class="btn-delete" onclick="deleteFeedback(3)" style="display:none" id="delete-btn-3">Löschen</button>
+          <span class="saved-indicator" id="saved-3">✓ Gespeichert</span>
+        </div>
+      </div>
+    </div>
+    <div class="block block-generic" id="block-4">
+      <span class="block-label" style="display:none">Block 4 — Das sagen unsere Kunden</span>
+      <button class="feedback-btn" onclick="toggleFeedback(4)">✏️ Vorschlag</button>
+      <h2>Das sagen unsere Kunden</h2>
+      <blockquote>
+<p>Bewertungen werden nach Abschluss der ersten Projekte hier veröffentlicht. Wir freuen uns auf Ihr Vertrauen als einer unserer ersten Kunden in Berlin!</p>
+</blockquote>
+<p><a href="/bewertungen/">Alle Bewertungen ansehen →</a></p>
       <div class="feedback-panel" id="feedback-panel-4">
-        <label>Ihr Vorschlag für Block 4 — Unsere Leistungen in Berlin:</label>
+        <label>Ihr Vorschlag für Block 4 — Das sagen unsere Kunden:</label>
         <textarea id="feedback-text-4" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
         <div class="feedback-actions">
           <button class="btn-save" onclick="saveFeedback(4)">Speichern</button>
@@ -842,16 +851,15 @@ body {
         </div>
       </div>
     </div>
-    <div class="block block-generic" id="block-5">
-      <span class="block-label" style="display:none">Block 5 — Das sagen unsere Kunden</span>
-      <button class="feedback-btn" onclick="toggleFeedback(5)">✏️ Vorschlag</button>
-      <h2>Das sagen unsere Kunden</h2>
-      <blockquote>
-<p>Bewertungen werden nach Abschluss der ersten Projekte hier veröffentlicht. Wir freuen uns auf Ihr Vertrauen als einer unserer ersten Kunden in Berlin!</p>
-</blockquote>
-<p><a href="/bewertungen/">Alle Bewertungen ansehen →</a></p>
+    <div class="block block-cta" id="block-5">
+      <span class="block-label" style="display:none">Block 5 — Wie dürfen wir Ihnen helfen? – Jetzt Anfrage starten</span>
+      <button class="feedback-btn" onclick="toggleFeedback(5)" style="color:#1e293b;">✏️ Vorschlag</button>
+      <h2>Wie dürfen wir Ihnen helfen? – Jetzt Anfrage starten</h2>
+      <p>Sie wissen bereits, was Sie brauchen? In nur wenigen Schritten können Sie uns Ihr Anliegen schildern – unverbindlich und kostenlos. Wählen Sie Ihren Bereich, beschreiben Sie Ihr Vorhaben und wir melden uns mit einem individuellen Angebot. <strong>So funktioniert's:</strong> 1. <strong>Anliegen wählen</strong> – Kostenvoranschlag, Beratungstermin oder allgemeine Anfrage 2. <strong>Bereich angeben</strong> – Wärmepumpe & Heizung, Bad & Sanitär oder Rohrreinigung 3. <strong>Leistungen auswählen</strong> – Wählen Sie die passenden Leistungen (Mehrfachauswahl möglich) 4. <strong>Objektdaten ergänzen</strong> – Wohnfläche, Anzahl Bäder, Baujahr 5. <strong>Kontaktdaten hinterlassen</strong> – Wir melden uns innerhalb von 24 Stunden ⏱ <strong>Dauer: ca. 2 Minuten</strong> · Kostenlos & unverbindlich · Antwort innerhalb von 24 Std. ---</p>
+      <div class="contact-lines"></div>
+      <a class="btn" href="#">→ Jetzt Anfrage starten</a>
       <div class="feedback-panel" id="feedback-panel-5">
-        <label>Ihr Vorschlag für Block 5 — Das sagen unsere Kunden:</label>
+        <label>Ihr Vorschlag für Block 5 — Wie dürfen wir Ihnen helfen? – Jetzt Anfrage starten:</label>
         <textarea id="feedback-text-5" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
         <div class="feedback-actions">
           <button class="btn-save" onclick="saveFeedback(5)">Speichern</button>
@@ -861,15 +869,53 @@ body {
         </div>
       </div>
     </div>
-    <div class="block block-cta" id="block-6">
-      <span class="block-label" style="display:none">Block 6 — Wie dürfen wir Ihnen helfen? – Jetzt Anfrage starten</span>
-      <button class="feedback-btn" onclick="toggleFeedback(6)" style="color:#1e293b;">✏️ Vorschlag</button>
-      <h2>Wie dürfen wir Ihnen helfen? – Jetzt Anfrage starten</h2>
-      <p>Sie wissen bereits, was Sie brauchen? In nur wenigen Schritten können Sie uns Ihr Anliegen schildern – unverbindlich und kostenlos. Wählen Sie Ihren Bereich, beschreiben Sie Ihr Vorhaben und wir melden uns mit einem individuellen Angebot. <strong>So funktioniert's:</strong> 1. <strong>Anliegen wählen</strong> – Kostenvoranschlag, Beratungstermin oder allgemeine Anfrage 2. <strong>Bereich angeben</strong> – Wärmepumpe & Heizung, Bad & Sanitär oder Rohrreinigung 3. <strong>Leistungen auswählen</strong> – Wählen Sie die passenden Leistungen (Mehrfachauswahl möglich) 4. <strong>Objektdaten ergänzen</strong> – Wohnfläche, Anzahl Bäder, Baujahr 5. <strong>Kontaktdaten hinterlassen</strong> – Wir melden uns innerhalb von 24 Stunden ⏱ <strong>Dauer: ca. 2 Minuten</strong> · Kostenlos & unverbindlich · Antwort innerhalb von 24 Std. ---</p>
-      <div class="contact-lines"></div>
-      <a class="btn" href="#">→ Jetzt Anfrage starten</a>
+    <div class="block block-steps" id="block-6">
+      <span class="block-label" style="display:none">Block 6 — Ihre Anfrage in 5 Schritten – einfach &amp; kostenlos</span>
+      <button class="feedback-btn" onclick="toggleFeedback(6)">✏️ Vorschlag</button>
+      <h2>Ihre Anfrage in 5 Schritten – einfach & kostenlos</h2>
+      <p>Wir wissen, dass Handwerkersuche oft mit Unsicherheiten verbunden ist. Deshalb haben wir unseren Anfrageprozess so einfach und transparent wie möglich gestaltet. Von Ihrer ersten Kontaktaufnahme bis zum fertigen Angebot begleiten wir Sie Schritt für Schritt – ohne versteckte Kosten und ohne Verpflichtung.</p>
+      <div class="steps-list">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <h3>Anfrage stellen</h3>
+            <p>Per WhatsApp, Telefon oder Formular: Schildern Sie uns kurz Ihr Anliegen.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <h3>Kostenlose Erstberatung</h3>
+            <p>Wir melden uns bei Ihnen und klären erste Fragen unverbindlich.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <h3>Vor-Ort-Termin</h3>
+            <p>Wir besichtigen Ihr Objekt, nehmen alles auf und beraten Sie persönlich.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <h3>Individuelles Angebot</h3>
+            <p>Sie erhalten ein klares, detailliertes Angebot ohne Überraschungen.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">5</div>
+          <div class="step-content">
+            <h3>Ausführung & Abnahme</h3>
+            <p>Wir führen die Arbeiten fachgerecht aus und nehmen das Ergebnis gemeinsam mit Ihnen ab.
+
+<a href="/anfrage/"><strong>Jetzt kostenlos anfragen →</strong></a>
+
+---</p>
+          </div>
+        </div></div>
       <div class="feedback-panel" id="feedback-panel-6">
-        <label>Ihr Vorschlag für Block 6 — Wie dürfen wir Ihnen helfen? – Jetzt Anfrage starten:</label>
+        <label>Ihr Vorschlag für Block 6 — Ihre Anfrage in 5 Schritten – einfach &amp; kostenlos:</label>
         <textarea id="feedback-text-6" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
         <div class="feedback-actions">
           <button class="btn-save" onclick="saveFeedback(6)">Speichern</button>
