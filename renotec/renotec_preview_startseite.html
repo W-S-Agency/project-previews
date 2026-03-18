@@ -167,18 +167,83 @@ body {
   margin-left: 8px;
 }
 
-/* === META BAR === */
-.meta-bar {
+/* === SEO BAR === */
+.seo-bar {
   max-width: 1200px;
   margin: 16px auto;
-  padding: 12px 24px;
-  background: #f0f9ff;
-  border: 1px solid #bae6fd;
+  background: #1a1a2e;
   border-radius: var(--radius);
   font-size: 13px;
-  color: var(--text-light);
+  color: rgba(255,255,255,0.85);
+  overflow: hidden;
 }
-.meta-bar strong { color: var(--text); }
+.seo-bar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.15s;
+}
+.seo-bar-header:hover { background: rgba(255,255,255,0.05); }
+.seo-bar-header span { font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; color: rgba(255,255,255,0.6); }
+.seo-bar-header .seo-toggle { font-size: 11px; color: rgba(255,255,255,0.4); }
+.seo-bar-body { display: none; padding: 0 20px 16px; }
+.seo-bar.open .seo-bar-body { display: block; }
+.seo-bar.open .seo-toggle::after { content: '▲'; }
+.seo-bar:not(.open) .seo-toggle::after { content: '▼'; }
+.seo-row { display: flex; align-items: baseline; gap: 8px; margin-bottom: 8px; line-height: 1.6; }
+.seo-row .seo-label { color: rgba(255,255,255,0.5); font-size: 12px; min-width: 80px; flex-shrink: 0; }
+.seo-row .seo-value { color: rgba(255,255,255,0.9); word-break: break-word; }
+.seo-row code { background: rgba(255,255,255,0.1); padding: 2px 8px; border-radius: 4px; font-size: 12px; color: #93c5fd; }
+.len-badge {
+  display: inline-block;
+  padding: 1px 8px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+.len-ok { background: #065f46; color: #6ee7b7; }
+.len-warn { background: #78350f; color: #fcd34d; }
+.len-over { background: #7f1d1d; color: #fca5a5; }
+.schema-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.schema-tag {
+  display: inline-block;
+  background: rgba(99,102,241,0.2);
+  border: 1px solid rgba(99,102,241,0.4);
+  color: #a5b4fc;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 500;
+}
+.jsonld-toggle {
+  display: inline-block;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.6);
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 11px;
+  cursor: pointer;
+  margin-top: 8px;
+}
+.jsonld-toggle:hover { background: rgba(255,255,255,0.12); }
+.jsonld-preview { display: none; margin-top: 8px; }
+.jsonld-preview.open { display: block; }
+.jsonld-preview pre {
+  background: rgba(0,0,0,0.3);
+  padding: 12px 16px;
+  border-radius: var(--radius);
+  font-size: 12px;
+  color: #93c5fd;
+  overflow-x: auto;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
 
 /* === CONTENT === */
 .page-content {
@@ -198,6 +263,10 @@ body {
 .block:nth-child(even) { background: var(--bg-alt); }
 .block a { color: var(--accent); text-decoration: none; }
 .block a:hover { text-decoration: underline; }
+/* Override nth-child(even) for typed blocks with explicit backgrounds */
+.block.block-hero { background: linear-gradient(135deg, var(--primary) 0%, #0f2744 100%) !important; color: white !important; }
+.block.block-cta { background: var(--primary) !important; color: white !important; }
+.block.block-multistep { background: linear-gradient(135deg, #f0f7ff 0%, #e8f4f8 100%) !important; }
 .block-label {
   display: none; /* hidden, used by feedback JS */
 }
@@ -730,10 +799,46 @@ body {
       </div>
     </div>
   
-    <div class="meta-bar">
-      <strong>Title Tag:</strong> Sanitär &amp; Heizung Berlin – Meisterbetrieb für Wärmepumpen &amp; Bad | RenoTec<br>
-      <strong>Meta Description:</strong> RenoTec – Ihr SHK-Meisterbetrieb in Berlin. Über 15 Jahre Erfahrung. Wärmepumpen, Badsanierung, Heizung, Sanitär. Jetzt kostenlos anfragen!
-      <span class="source-badge">Spec</span>
+    <div class="seo-bar" id="seoBar">
+      <div class="seo-bar-header" onclick="document.getElementById('seoBar').classList.toggle('open')">
+        <span>SEO &amp; Schema.org</span>
+        <span class="seo-toggle"></span>
+      </div>
+      <div class="seo-bar-body">
+        <div class="seo-row">
+          <span class="seo-label">Title</span>
+          <span class="seo-value">Sanitär &amp; Heizung Berlin – Meisterbetrieb für Wärmepumpen &amp; Bad | RenoTec <span class="len-badge len-over">73 — Over</span></span>
+        </div>
+        <div class="seo-row">
+          <span class="seo-label">Description</span>
+          <span class="seo-value">RenoTec – Ihr SHK-Meisterbetrieb in Berlin. Über 15 Jahre Erfahrung. Wärmepumpen, Badsanierung, Heizung, Sanitär. Jetzt kostenlos anfragen! <span class="len-badge len-ok">139 — OK</span></span>
+        </div>
+        <div class="seo-row">
+          <span class="seo-label">URL</span>
+          <span class="seo-value"><code>/</code></span>
+        </div>
+        <div class="seo-row">
+          <span class="seo-label">Schema.org</span>
+          <span class="seo-value"><div class="schema-tags"><span class="schema-tag">Organization (LocalBusiness)</span><span class="schema-tag">WebSite</span><span class="schema-tag">FAQPage</span></div></span>
+        </div>
+        <div class="jsonld-toggle" onclick="var el=document.getElementById('jsonldPreview');el.classList.toggle('open');this.textContent=el.classList.contains('open')?'▲ JSON-LD ausblenden':'▼ JSON-LD Vorschau'">▼ JSON-LD Vorschau</div>
+        <div class="jsonld-preview" id="jsonldPreview">
+          <pre><code>{
+  &quot;@context&quot;: &quot;https://schema.org&quot;,
+  &quot;@type&quot;: &quot;FAQPage&quot;,
+  &quot;mainEntity&quot;: [
+    {
+      &quot;@type&quot;: &quot;Question&quot;,
+      &quot;name&quot;: &quot;Beispielfrage?&quot;,
+      &quot;acceptedAnswer&quot;: {
+        &quot;@type&quot;: &quot;Answer&quot;,
+        &quot;text&quot;: &quot;Beispielantwort...&quot;
+      }
+    }
+  ]
+}</code></pre>
+        </div>
+      </div>
     </div>
   <main class="page-content">
     
@@ -851,27 +956,9 @@ body {
         </div>
       </div>
     </div>
-    <div class="block block-cta" id="block-5">
-      <span class="block-label" style="display:none">Block 5 — Wie dürfen wir Ihnen helfen? – Jetzt Anfrage starten</span>
-      <button class="feedback-btn" onclick="toggleFeedback(5)" style="color:#1e293b;">✏️ Vorschlag</button>
-      <h2>Wie dürfen wir Ihnen helfen? – Jetzt Anfrage starten</h2>
-      <p>Sie wissen bereits, was Sie brauchen? In nur wenigen Schritten können Sie uns Ihr Anliegen schildern – unverbindlich und kostenlos. Wählen Sie Ihren Bereich, beschreiben Sie Ihr Vorhaben und wir melden uns mit einem individuellen Angebot. <strong>So funktioniert's:</strong> 1. <strong>Anliegen wählen</strong> – Kostenvoranschlag, Beratungstermin oder allgemeine Anfrage 2. <strong>Bereich angeben</strong> – Wärmepumpe & Heizung, Bad & Sanitär oder Rohrreinigung 3. <strong>Leistungen auswählen</strong> – Wählen Sie die passenden Leistungen (Mehrfachauswahl möglich) 4. <strong>Objektdaten ergänzen</strong> – Wohnfläche, Anzahl Bäder, Baujahr 5. <strong>Kontaktdaten hinterlassen</strong> – Wir melden uns innerhalb von 24 Stunden ⏱ <strong>Dauer: ca. 2 Minuten</strong> · Kostenlos & unverbindlich · Antwort innerhalb von 24 Std. ---</p>
-      <div class="contact-lines"></div>
-      <a class="btn" href="#">→ Jetzt Anfrage starten</a>
-      <div class="feedback-panel" id="feedback-panel-5">
-        <label>Ihr Vorschlag für Block 5 — Wie dürfen wir Ihnen helfen? – Jetzt Anfrage starten:</label>
-        <textarea id="feedback-text-5" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
-        <div class="feedback-actions">
-          <button class="btn-save" onclick="saveFeedback(5)">Speichern</button>
-          <button class="btn-cancel" onclick="toggleFeedback(5)">Abbrechen</button>
-          <button class="btn-delete" onclick="deleteFeedback(5)" style="display:none" id="delete-btn-5">Löschen</button>
-          <span class="saved-indicator" id="saved-5">✓ Gespeichert</span>
-        </div>
-      </div>
-    </div>
-    <div class="block block-steps" id="block-6">
-      <span class="block-label" style="display:none">Block 6 — Ihre Anfrage in 5 Schritten – einfach &amp; kostenlos</span>
-      <button class="feedback-btn" onclick="toggleFeedback(6)">✏️ Vorschlag</button>
+    <div class="block block-steps" id="block-5">
+      <span class="block-label" style="display:none">Block 5 — Ihre Anfrage in 5 Schritten – einfach &amp; kostenlos</span>
+      <button class="feedback-btn" onclick="toggleFeedback(5)">✏️ Vorschlag</button>
       <h2>Ihre Anfrage in 5 Schritten – einfach & kostenlos</h2>
       <p>Wir wissen, dass Handwerkersuche oft mit Unsicherheiten verbunden ist. Deshalb haben wir unseren Anfrageprozess so einfach und transparent wie möglich gestaltet. Von Ihrer ersten Kontaktaufnahme bis zum fertigen Angebot begleiten wir Sie Schritt für Schritt – ohne versteckte Kosten und ohne Verpflichtung.</p>
       <div class="steps-list">
@@ -914,8 +1001,26 @@ body {
 ---</p>
           </div>
         </div></div>
+      <div class="feedback-panel" id="feedback-panel-5">
+        <label>Ihr Vorschlag für Block 5 — Ihre Anfrage in 5 Schritten – einfach &amp; kostenlos:</label>
+        <textarea id="feedback-text-5" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+        <div class="feedback-actions">
+          <button class="btn-save" onclick="saveFeedback(5)">Speichern</button>
+          <button class="btn-cancel" onclick="toggleFeedback(5)">Abbrechen</button>
+          <button class="btn-delete" onclick="deleteFeedback(5)" style="display:none" id="delete-btn-5">Löschen</button>
+          <span class="saved-indicator" id="saved-5">✓ Gespeichert</span>
+        </div>
+      </div>
+    </div>
+    <div class="block block-cta" id="block-6">
+      <span class="block-label" style="display:none">Block 6 — Wie dürfen wir Ihnen helfen? – Jetzt Anfrage starten</span>
+      <button class="feedback-btn" onclick="toggleFeedback(6)" style="color:#1e293b;">✏️ Vorschlag</button>
+      <h2>Wie dürfen wir Ihnen helfen? – Jetzt Anfrage starten</h2>
+      <p>Sie wissen bereits, was Sie brauchen? In nur wenigen Schritten können Sie uns Ihr Anliegen schildern – unverbindlich und kostenlos. Wählen Sie Ihren Bereich, beschreiben Sie Ihr Vorhaben und wir melden uns mit einem individuellen Angebot. <strong>So funktioniert's:</strong> 1. <strong>Anliegen wählen</strong> – Kostenvoranschlag, Beratungstermin oder allgemeine Anfrage 2. <strong>Bereich angeben</strong> – Wärmepumpe & Heizung, Bad & Sanitär oder Rohrreinigung 3. <strong>Leistungen auswählen</strong> – Wählen Sie die passenden Leistungen (Mehrfachauswahl möglich) 4. <strong>Objektdaten ergänzen</strong> – Wohnfläche, Anzahl Bäder, Baujahr 5. <strong>Kontaktdaten hinterlassen</strong> – Wir melden uns innerhalb von 24 Stunden ⏱ <strong>Dauer: ca. 2 Minuten</strong> · Kostenlos & unverbindlich · Antwort innerhalb von 24 Std. ---</p>
+      <div class="contact-lines"></div>
+      <a class="btn" href="#">→ Jetzt Anfrage starten</a>
       <div class="feedback-panel" id="feedback-panel-6">
-        <label>Ihr Vorschlag für Block 6 — Ihre Anfrage in 5 Schritten – einfach &amp; kostenlos:</label>
+        <label>Ihr Vorschlag für Block 6 — Wie dürfen wir Ihnen helfen? – Jetzt Anfrage starten:</label>
         <textarea id="feedback-text-6" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
         <div class="feedback-actions">
           <button class="btn-save" onclick="saveFeedback(6)">Speichern</button>
@@ -925,18 +1030,14 @@ body {
         </div>
       </div>
     </div>
-    <div class="block block-steps" id="block-7">
-      <span class="block-label" style="display:none">Block 7 — So arbeiten wir zusammen – Unser Ablauf</span>
+    <div class="block block-logos" id="block-7">
+      <span class="block-label" style="display:none">Block 7 — Partner &amp; Hersteller</span>
       <button class="feedback-btn" onclick="toggleFeedback(7)">✏️ Vorschlag</button>
-      <h2>So arbeiten wir zusammen – Unser Ablauf</h2>
-      <p>Gute Handwerksarbeit beginnt lange vor dem ersten Handgriff. Wir nehmen uns die Zeit, Ihr Vorhaben wirklich zu verstehen – denn nur so können wir Ihnen eine Lösung empfehlen, die technisch sinnvoll, wirtschaftlich fair und langfristig zuverlässig ist. Als Meisterbetrieb begleiten wir jedes Projekt von der ersten Beratung über die Planung bis zur Abnahme. Wir halten Sie während der gesamten Ausführung auf dem Laufenden, damit Sie stets wissen, was auf Ihrer Baustelle passiert. Nach Abschluss der Arbeiten stehen wir Ihnen für Rückfragen und im Rahmen unserer Gewährleistung weiterhin zur Verfügung.</p>
-<div style="background: var(--bg-alt); padding: 16px; border-radius: var(--radius); margin: 12px 0; font-family: monospace; font-size: 13px; white-space: pre-wrap; overflow-x: auto;">
-Anfrage → Beratung → Planung → Ausführung → Abnahme → Nachbetreuung
-<br>
-</div>
-      <div class="steps-list"></div>
+      <h2>Partner & Hersteller</h2>
+      <p>Wir setzen auf geprüfte Qualität von führenden Herstellern der SHK-Branche. Diese Partnerschaften ermöglichen es uns, Ihnen aktuelle Technologien, zuverlässige Produkte und herstellergerechte Installation aus einer Hand anzubieten.</p>
+      <h3>Premium-Hersteller</h3><div class="logos-grid"><div class="logo-item">Vaillant</div><div class="logo-item">Viessmann</div><div class="logo-item">Bosch</div><div class="logo-item">Buderus</div><div class="logo-item">Geberit</div><div class="logo-item">Grohe</div><div class="logo-item">hansgrohe</div><div class="logo-item">TECE</div></div><h3>Fachhändler & Großhandelspartner</h3><div class="logos-grid"><div class="logo-item">ABEX</div><div class="logo-item">Wiedemann</div><div class="logo-item">Bergmann &amp; Franz</div><div class="logo-item">ATALA</div><div class="logo-item">ELEMENTS</div></div>
       <div class="feedback-panel" id="feedback-panel-7">
-        <label>Ihr Vorschlag für Block 7 — So arbeiten wir zusammen – Unser Ablauf:</label>
+        <label>Ihr Vorschlag für Block 7 — Partner &amp; Hersteller:</label>
         <textarea id="feedback-text-7" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
         <div class="feedback-actions">
           <button class="btn-save" onclick="saveFeedback(7)">Speichern</button>
@@ -946,26 +1047,9 @@ Anfrage → Beratung → Planung → Ausführung → Abnahme → Nachbetreuung
         </div>
       </div>
     </div>
-    <div class="block block-logos" id="block-8">
-      <span class="block-label" style="display:none">Block 8 — Partner &amp; Hersteller</span>
+    <div class="block block-faq" id="block-8">
+      <span class="block-label" style="display:none">Block 8 — Häufige Fragen (FAQ)</span>
       <button class="feedback-btn" onclick="toggleFeedback(8)">✏️ Vorschlag</button>
-      <h2>Partner & Hersteller</h2>
-      <p>Wir setzen auf geprüfte Qualität von führenden Herstellern der SHK-Branche. Diese Partnerschaften ermöglichen es uns, Ihnen aktuelle Technologien, zuverlässige Produkte und herstellergerechte Installation aus einer Hand anzubieten.</p>
-      <h3>Premium-Hersteller</h3><div class="logos-grid"><div class="logo-item">Vaillant</div><div class="logo-item">Viessmann</div><div class="logo-item">Bosch</div><div class="logo-item">Buderus</div><div class="logo-item">Geberit</div><div class="logo-item">Grohe</div><div class="logo-item">hansgrohe</div><div class="logo-item">TECE</div></div><h3>Fachhändler & Großhandelspartner</h3><div class="logos-grid"><div class="logo-item">ABEX</div><div class="logo-item">Wiedemann</div><div class="logo-item">Bergmann &amp; Franz</div><div class="logo-item">ATALA</div><div class="logo-item">ELEMENTS</div></div>
-      <div class="feedback-panel" id="feedback-panel-8">
-        <label>Ihr Vorschlag für Block 8 — Partner &amp; Hersteller:</label>
-        <textarea id="feedback-text-8" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
-        <div class="feedback-actions">
-          <button class="btn-save" onclick="saveFeedback(8)">Speichern</button>
-          <button class="btn-cancel" onclick="toggleFeedback(8)">Abbrechen</button>
-          <button class="btn-delete" onclick="deleteFeedback(8)" style="display:none" id="delete-btn-8">Löschen</button>
-          <span class="saved-indicator" id="saved-8">✓ Gespeichert</span>
-        </div>
-      </div>
-    </div>
-    <div class="block block-faq" id="block-9">
-      <span class="block-label" style="display:none">Block 9 — Häufige Fragen (FAQ)</span>
-      <button class="feedback-btn" onclick="toggleFeedback(9)">✏️ Vorschlag</button>
       <h2>Häufige Fragen (FAQ)</h2>
       <div class="faq-list">
         <div class="faq-item" onclick="this.classList.toggle('open')">
@@ -1000,32 +1084,32 @@ Anfrage → Beratung → Planung → Ausführung → Abnahme → Nachbetreuung
           <div class="faq-q">Was kostet eine Anfrage bei RenoTec?</div>
           <div class="faq-a"><p>Die Anfrage und Erstberatung sind für Sie vollständig kostenlos und unverbindlich. Wir erstellen individuelle Angebote nach persönlicher Besichtigung vor Ort – ohne Pauschalen und ohne versteckte Kosten.</p></div>
         </div></div>
+      <div class="feedback-panel" id="feedback-panel-8">
+        <label>Ihr Vorschlag für Block 8 — Häufige Fragen (FAQ):</label>
+        <textarea id="feedback-text-8" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+        <div class="feedback-actions">
+          <button class="btn-save" onclick="saveFeedback(8)">Speichern</button>
+          <button class="btn-cancel" onclick="toggleFeedback(8)">Abbrechen</button>
+          <button class="btn-delete" onclick="deleteFeedback(8)" style="display:none" id="delete-btn-8">Löschen</button>
+          <span class="saved-indicator" id="saved-8">✓ Gespeichert</span>
+        </div>
+      </div>
+    </div>
+    <div class="block block-cta" id="block-9">
+      <span class="block-label" style="display:none">Block 9 — Kontakt – Jetzt kostenlos anfragen</span>
+      <button class="feedback-btn" onclick="toggleFeedback(9)" style="color:#1e293b;">✏️ Vorschlag</button>
+      <h2>Kontakt – Jetzt kostenlos anfragen</h2>
+      <p>Sie haben ein Projekt geplant oder eine dringende Frage zu Ihrer Heizung oder Sanitäranlage? Wir freuen uns auf Ihre Nachricht. Die Erstberatung ist kostenlos, unverbindlich und schnell. <strong>RenoTec – SHK-Meisterbetrieb Berlin</strong> 🏅 Eingetragener Meisterbetrieb · Handwerkskammer Berlin</p>
+      <div class="contact-lines">📍 Pohlstraße 71, 10785 Berlin<br>📞 Telefon: <span class="placeholder">[PLATZHALTER]</span><br>📧 E-Mail: kontakt@renotec-shk.de<br>💬 <a href="#whatsapp">WhatsApp: Anfrage senden</a></div>
+      
       <div class="feedback-panel" id="feedback-panel-9">
-        <label>Ihr Vorschlag für Block 9 — Häufige Fragen (FAQ):</label>
+        <label>Ihr Vorschlag für Block 9 — Kontakt – Jetzt kostenlos anfragen:</label>
         <textarea id="feedback-text-9" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
         <div class="feedback-actions">
           <button class="btn-save" onclick="saveFeedback(9)">Speichern</button>
           <button class="btn-cancel" onclick="toggleFeedback(9)">Abbrechen</button>
           <button class="btn-delete" onclick="deleteFeedback(9)" style="display:none" id="delete-btn-9">Löschen</button>
           <span class="saved-indicator" id="saved-9">✓ Gespeichert</span>
-        </div>
-      </div>
-    </div>
-    <div class="block block-cta" id="block-10">
-      <span class="block-label" style="display:none">Block 10 — Kontakt – Jetzt kostenlos anfragen</span>
-      <button class="feedback-btn" onclick="toggleFeedback(10)" style="color:#1e293b;">✏️ Vorschlag</button>
-      <h2>Kontakt – Jetzt kostenlos anfragen</h2>
-      <p>Sie haben ein Projekt geplant oder eine dringende Frage zu Ihrer Heizung oder Sanitäranlage? Wir freuen uns auf Ihre Nachricht. Die Erstberatung ist kostenlos, unverbindlich und schnell. <strong>RenoTec – SHK-Meisterbetrieb Berlin</strong> 🏅 Eingetragener Meisterbetrieb · Handwerkskammer Berlin</p>
-      <div class="contact-lines">📍 Pohlstraße 71, 10785 Berlin<br>📞 Telefon: <span class="placeholder">[PLATZHALTER]</span><br>📧 E-Mail: kontakt@renotec-shk.de<br>💬 <a href="#whatsapp">WhatsApp: Anfrage senden</a></div>
-      
-      <div class="feedback-panel" id="feedback-panel-10">
-        <label>Ihr Vorschlag für Block 10 — Kontakt – Jetzt kostenlos anfragen:</label>
-        <textarea id="feedback-text-10" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
-        <div class="feedback-actions">
-          <button class="btn-save" onclick="saveFeedback(10)">Speichern</button>
-          <button class="btn-cancel" onclick="toggleFeedback(10)">Abbrechen</button>
-          <button class="btn-delete" onclick="deleteFeedback(10)" style="display:none" id="delete-btn-10">Löschen</button>
-          <span class="saved-indicator" id="saved-10">✓ Gespeichert</span>
         </div>
       </div>
     </div>
