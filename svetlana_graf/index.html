@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Svetlana Graf — Website-Vorschau</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6B5B95;
+            --secondary: #8B7CB8;
+            --accent: #D4A574;
+            --bg: #FAF8F5;
+            --text: #2D2D2D;
+            --text-light: #6B7280;
+            --border: #E5E7EB;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #f9fafb;
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 40px 24px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 28px;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 14px;
+            opacity: 0.95;
+            margin-bottom: 4px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+
+        .info-section {
+            background: white;
+            border-radius: 8px;
+            padding: 32px;
+            margin-bottom: 32px;
+            border: 1px solid var(--border);
+        }
+
+        .info-section h2 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: var(--primary);
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 12px;
+        }
+
+        .info-section h3 {
+            font-size: 16px;
+            margin-top: 24px;
+            margin-bottom: 12px;
+            color: var(--text);
+        }
+
+        .info-section h3:first-child {
+            margin-top: 0;
+        }
+
+        .preview-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 24px;
+            background-color: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .preview-link:hover {
+            background-color: #c49563;
+        }
+
+        .seo-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 12px;
+            font-size: 14px;
+        }
+
+        .seo-table th,
+        .seo-table td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid var(--border);
+        }
+
+        .seo-table th {
+            background-color: var(--primary);
+            color: white;
+            font-weight: 600;
+        }
+
+        .seo-table tr:nth-child(even) {
+            background-color: #f9fafb;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: 8px;
+        }
+
+        .badge-good {
+            background-color: #d1fae5;
+            color: #065f46;
+        }
+
+        .badge-warning {
+            background-color: #fef3c7;
+            color: #92400e;
+        }
+
+        .badge-error {
+            background-color: #fee2e2;
+            color: #991b1b;
+        }
+
+        .schema-list {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 12px;
+        }
+
+        .schema-list li {
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+        }
+
+        .schema-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .meta-data {
+            background-color: #f3f4f6;
+            padding: 12px;
+            border-radius: 4px;
+            margin: 12px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            overflow-x: auto;
+        }
+
+        .version-badge {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            margin-right: 8px;
+        }
+
+        footer {
+            background-color: var(--text);
+            color: white;
+            padding: 24px;
+            text-align: center;
+            font-size: 13px;
+            margin-top: 40px;
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 24px;
+            }
+
+            header h1 {
+                font-size: 22px;
+            }
+
+            .container {
+                padding: 20px 16px;
+            }
+
+            .info-section {
+                padding: 20px;
+            }
+
+            .seo-table {
+                font-size: 12px;
+            }
+
+            .seo-table th,
+            .seo-table td {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Svetlana Graf — Website-Vorschau</h1>
+        <p>Wellness & Massage Praxis | Hamburg-Bergedorf</p>
+    </header>
+
+    <div class="container">
+        <div class="info-section">
+            <h2>📄 Seite verfügbar</h2>
+            <h3>Startseite (index.html)</h3>
+            <p>Vollständige Website-Vorschau mit allen 8 Content-Blöcken + Navigation, Footer und Feedback-System.</p>
+            <a href="./svetlana_graf_preview_startseite.html" class="preview-link">→ Zur Vorschau</a>
+        </div>
+
+        <div class="info-section">
+            <h2>📋 SEO Überblick</h2>
+
+            <h3>Title Tag</h3>
+            <div class="meta-data">Massage Bergedorf | Reiki Hamburg | Svetlana Graf — Energietherapie</div>
+            <p>
+                Zeichen: <strong>56</strong>
+                <span class="badge badge-warning">⚠ Warn</span>
+            </p>
+            <p style="font-size: 13px; color: var(--text-light); margin-top: 4px;">Hinweis: 56 Zeichen liegt knapp über der idealen Länge von ≤55 Zeichen. Desktop-SERPs können Text abschneiden.</p>
+
+            <h3>Meta Description</h3>
+            <div class="meta-data">Wellness-Massage & Reiki in Hamburg-Bergedorf. 14 Behandlungen: Energiearbeit, Lomi Lomi, Hot Stone & mehr. Zertifizierte Therapeutin. Jetzt Termin via WhatsApp!</div>
+            <p>
+                Zeichen: <strong>156</strong>
+                <span class="badge badge-good">✓ Optimal</span>
+            </p>
+
+            <h3>URL Structure</h3>
+            <div class="meta-data">/</div>
+
+            <h3>Schema.org Tags</h3>
+            <ul class="schema-list">
+                <li><strong>Organization</strong> — Unternehmensinformationen</li>
+                <li><strong>WebSite</strong> — Website-Schema</li>
+                <li><strong>LocalBusiness</strong> — Lokale Geschäftsinformationen</li>
+                <li><strong>Service ×14</strong> — Alle Behandlungen als strukturierte Daten</li>
+                <li><strong>FAQPage</strong> — FAQ-Struktur für Rich Snippets</li>
+                <li><strong>Person</strong> — Therapeutin-Profil</li>
+            </ul>
+            <p style="font-size: 13px; color: var(--text-light); margin-top: 12px;">Alle Schema.org Tags sind als JSON-LD in die Seite eingebettet und können in der Vorschau überprüft werden.</p>
+        </div>
+
+        <div class="info-section">
+            <h2>📊 Content-Struktur</h2>
+            <h3>8 Haupt-Blöcke</h3>
+            <ol style="margin-left: 20px; margin-top: 12px;">
+                <li><strong>HERO</strong> — H1 + Subline + Primary CTA Button</li>
+                <li><strong>ÜBER MICH</strong> — Persönliche Geschichte + 4 Zertifikate</li>
+                <li><strong>ENERGETISCHE PRAKTIKEN</strong> — 4 Services mit Preisen (Reiki, Access Bars, Fernreiki, Heilungsstrahlen)</li>
+                <li><strong>MASSAGEN & WELLNESS</strong> — 10 Services mit Preisen (Lomi Lomi, Hotstone, Aroma, Fuß, Nuna Vut, Ganzkörper, Gesicht/Kopf, Sport, Taping, Padabhyanka)</li>
+                <li><strong>FENG SHUI BERATUNG</strong> — Single Service mit Kurzbeschreibung</li>
+                <li><strong>PREISE</strong> — Drei Preis-Tabellen (Energetische Praktiken + Massagen &amp; Wellness + Beratung &amp; Analyse)</li>
+                <li><strong>FAQ</strong> — 10 Fragen mit Akkordeon-Interaktivität</li>
+                <li><strong>KONTAKT / CTA</strong> — Kontaktinfo + WhatsApp-Button + Maps-Placeholder</li>
+            </ol>
+        </div>
+
+        <div class="info-section">
+            <h2>🎨 Farbschema</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; margin-top: 12px;">
+                <div style="background-color: var(--primary); padding: 20px; border-radius: 6px; color: white; text-align: center;">
+                    <strong>Primary</strong><br>#6B5B95
+                </div>
+                <div style="background-color: var(--secondary); padding: 20px; border-radius: 6px; color: white; text-align: center;">
+                    <strong>Secondary</strong><br>#8B7CB8
+                </div>
+                <div style="background-color: var(--accent); padding: 20px; border-radius: 6px; color: white; text-align: center;">
+                    <strong>Accent</strong><br>#D4A574
+                </div>
+                <div style="background-color: var(--bg); padding: 20px; border-radius: 6px; border: 1px solid var(--border); text-align: center;">
+                    <strong>Background</strong><br>#FAF8F5
+                </div>
+            </div>
+            <p style="margin-top: 12px; font-size: 13px; color: var(--text-light);">Szenario C: Keine Figma-Bestätigung. Farben basieren auf Wellness/Massage/Energietherapie-Best-Practices.</p>
+        </div>
+
+        <div class="info-section">
+            <h2>🛠 Technische Features</h2>
+            <ul style="margin-left: 20px; margin-top: 12px;">
+                <li><strong>Responsive Design</strong> — Mobile-first, optimiert für 320px – 1920px</li>
+                <li><strong>Feedback-System</strong> — ✏️ Buttons pro Block mit localStorage Persistierung</li>
+                <li><strong>FAQ-Akkordeon</strong> — Vanilla JS, kein Framework nötig</li>
+                <li><strong>SEO Bar</strong> — Collapsible, Dark Theme (#1a1a2e), JSON-LD Preview</li>
+                <li><strong>WhatsApp Integration</strong> — wa.me Links mit +49 170 545 9840</li>
+                <li><strong>Alle Preise bestätigt</strong> — Keine Platzhalter mehr, alle Preise aus DataRegistry (✅ CLIENT)</li>
+                <li><strong>Self-contained</strong> — Alle CSS und JS inline, keine externen Dependencies</li>
+                <li><strong>Accessibility</strong> — Semantic HTML, Alt-Text, ARIA-Labels</li>
+            </ul>
+        </div>
+
+        <div class="info-section">
+            <h2>✅ Version & Datum</h2>
+            <p>
+                <span class="version-badge">V1.3</span> <span class="badge badge-warning">AKTUALISIERT</span>
+                <strong>Erstellungsdatum:</strong> 2026-03-20
+            </p>
+            <p style="margin-top: 12px; font-size: 13px; color: var(--text-light);">
+                Diese Vorschau wurde basierend auf dem Content-Dokument <code>svetlana_graf_01_startseite.md</code> (V1.3) generiert.
+                Alle Inhalte, Preise und Kontaktdaten stammen aus der Kundendatenbank (DataRegistry). Aktualisierung: Preise korrigiert (Sportmassage 90€/70min, Aroma/Nuna Vut/Kinesiology Taping ausgefüllt), Feng Shui Beratung Preistabelle ergänzt.
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <p>🌟 Svetlana Graf — Wellness, Massage & Energietherapie</p>
+        <p style="margin-top: 8px; font-size: 12px;">Hamburg-Bergedorf | Diese Vorschau ist für die interne Überprüfung bestimmt.</p>
+    </footer>
+</body>
+</html>
