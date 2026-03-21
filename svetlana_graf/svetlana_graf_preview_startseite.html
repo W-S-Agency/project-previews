@@ -339,6 +339,43 @@ a:hover { text-decoration: underline; }
   h2 { font-size: 1.4rem; }
   .hero { padding: 60px 0 50px; }
 }
+
+/* === TRUST STRIPE === */
+.trust-stripe { padding: 28px 0; background: var(--white) !important; border-bottom: 1px solid var(--border); }
+.trust-items {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;
+  max-width: 900px; margin: 0 auto;
+}
+@media (min-width: 768px) { .trust-items { grid-template-columns: repeat(4, 1fr); } }
+.trust-item { text-align: center; padding: 16px 12px; }
+.trust-icon { font-size: 1.8rem; display: block; margin-bottom: 8px; }
+.trust-item strong { display: block; color: var(--primary-dark); font-size: 0.9rem; margin-bottom: 3px; font-weight: 700; }
+.trust-item span { font-size: 0.82rem; color: var(--text-light); }
+
+/* === PROZESS === */
+.prozess-section { padding: 80px 0; }
+.prozess-section h2 { text-align: center; margin-bottom: 12px; }
+.prozess-intro { text-align: center; color: var(--text-light); margin-bottom: 48px; font-size: 1.05rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+.prozess-steps {
+  display: grid; grid-template-columns: 1fr; gap: 28px;
+  max-width: 900px; margin: 0 auto 40px;
+}
+@media (min-width: 768px) { .prozess-steps { grid-template-columns: repeat(3, 1fr); } }
+.prozess-step {
+  text-align: center; padding: 32px 24px;
+  background: var(--white); border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.step-number {
+  width: 52px; height: 52px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: white; font-size: 1.4rem; font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 18px;
+}
+.prozess-step h3 { color: var(--primary-dark); margin-bottom: 10px; font-size: 1.05rem; }
+.prozess-step p { font-size: 0.92rem; color: var(--text); line-height: 1.6; }
 </style>
 </head>
 <body>
@@ -347,7 +384,7 @@ a:hover { text-decoration: underline; }
 <div class="preview-bar">
   <div>
     <span class="project-name"><a href="index.html">Svetlana Graf</a></span>
-    <span class="version"> — Startseite — Preview V1.3</span>
+    <span class="version"> — Startseite — Preview V2.0</span>
     <span class="source-badge">Spec + Entities</span>
   </div>
   <div class="feedback-counter" id="feedbackCounter" onclick="openExportOverlay()">
@@ -368,7 +405,7 @@ a:hover { text-decoration: underline; }
     </div>
     <div class="seo-row">
       <span class="label">Description</span>
-      <span class="value">Wellness-Massage &amp; Reiki in Hamburg-Bergedorf. 14 Behandlungen: Energiearbeit, Lomi Lomi, Hot Stone &amp; mehr. Zertifizierte Therapeutin. Jetzt Termin via WhatsApp! <span class="len-badge len-warn">156 Z.</span></span>
+      <span class="value">Wellness-Massage &amp; Reiki in Hamburg-Bergedorf. 15 Behandlungen: Energiearbeit, Lomi Lomi, Hot Stone &amp; mehr. Zertifizierte Therapeutin. Jetzt Termin via WhatsApp! <span class="len-badge len-warn">156 Z.</span></span>
     </div>
     <div class="seo-row">
       <span class="label">URL</span>
@@ -381,7 +418,7 @@ a:hover { text-decoration: underline; }
         <span class="schema-tag">WebSite</span>
         <span class="schema-tag">LocalBusiness</span>
         <span class="schema-tag">FAQPage</span>
-        <span class="schema-tag">Service ×14</span>
+        <span class="schema-tag">Service ×15</span>
       </span>
     </div>
     <div class="seo-row">
@@ -421,9 +458,9 @@ a:hover { text-decoration: underline; }
   <span class="block-label">Block 1 — Hero</span>
   <button class="feedback-btn" onclick="toggleFeedback(1)">✏️ Vorschlag</button>
   <div class="container">
-    <h1>Massage in Bergedorf &amp; Reiki in Hamburg</h1>
-    <p class="subline">Svetlana Graf — Ihre Wegbegleiterin für Energie &amp; Balance. Energetische Therapie, Wellness-Massage und Feng Shui in Hamburg-Bergedorf.</p>
-    <a href="#" class="btn-primary">Jetzt unverbindlich anfragen</a>
+    <h1>Wenn Körper und Seele zur Ruhe kommen</h1>
+    <p class="subline">Zertifizierte Reiki Master Teacher, Access Bars Practitioner &amp; Wellness-Masseurin in Hamburg-Bergedorf. 15 Behandlungen für Ihre innere Balance — in der Praxis oder per Fernsitzung.</p>
+    <a href="#" class="btn-primary">Erstgespräch vereinbaren — kostenlos &amp; unverbindlich</a>
   </div>
   <div class="feedback-panel" id="feedback-panel-1">
     <label>Ihr Vorschlag für Block 1 — Hero:</label>
@@ -437,6 +474,46 @@ a:hover { text-decoration: underline; }
   </div>
 </div>
 
+<!-- BLOCK — TRUST-LEISTE -->
+<div class="block-wrapper trust-stripe" id="block-trust">
+  <span class="block-label">Trust-Leiste</span>
+  <button class="feedback-btn" onclick="toggleFeedback('trust')">✏️ Vorschlag</button>
+  <div class="container">
+    <div class="trust-items">
+      <div class="trust-item">
+        <span class="trust-icon">🎓</span>
+        <strong>Reiki Master Teacher</strong>
+        <span>Zertifiziert, Barcelona 2025</span>
+      </div>
+      <div class="trust-item">
+        <span class="trust-icon">✋</span>
+        <strong>Access Bars Practitioner</strong>
+        <span>Zertifiziert 2021</span>
+      </div>
+      <div class="trust-item">
+        <span class="trust-icon">💆</span>
+        <strong>15 Behandlungen</strong>
+        <span>Massage &amp; Energiearbeit</span>
+      </div>
+      <div class="trust-item">
+        <span class="trust-icon">📍</span>
+        <strong>Hamburg-Bergedorf</strong>
+        <span>&amp; Fernsitzung möglich</span>
+      </div>
+    </div>
+  </div>
+  <div class="feedback-panel" id="feedback-panel-trust">
+    <label>Ihr Vorschlag für Trust-Leiste:</label>
+    <textarea id="feedback-text-trust" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+    <div class="feedback-actions">
+      <button class="btn-save" onclick="saveFeedback('trust')">Speichern</button>
+      <button class="btn-cancel" onclick="toggleFeedback('trust')">Abbrechen</button>
+      <button class="btn-delete" onclick="deleteFeedback('trust')" style="display:none" id="delete-btn-trust">Löschen</button>
+      <span class="saved-indicator" id="saved-trust">✓ Gespeichert</span>
+    </div>
+  </div>
+</div>
+
 <!-- BLOCK 2 — ÜBER MICH -->
 <div class="block-wrapper about-section" id="block-2">
   <span class="block-label">Block 2 — Über mich</span>
@@ -444,7 +521,7 @@ a:hover { text-decoration: underline; }
   <div class="container about-content">
     <h2>Über mich — Svetlana Graf</h2>
     <p class="about-text">Mein Sohn kam in der 23. Schwangerschaftswoche zur Welt. Sieben Operationen, Monate auf der Intensivstation. In dieser Zeit habe ich Reiki kennengelernt — und erfahren, was energetische Heilung bewirken kann.</p>
-    <p class="about-text">Heute begleite ich Menschen auf ihrem Weg zu mehr Balance und innerer Ruhe. Als zertifizierte Reiki Master Teacher, Access Bars Practitioner und ausgebildete Wellness-Masseurin biete ich Ihnen 14 verschiedene Behandlungen — von Energiearbeit bis Tiefenmassage.</p>
+    <p class="about-text">Heute begleite ich Menschen auf ihrem Weg zu mehr Balance und innerer Ruhe. Als zertifizierte Reiki Master Teacher, Access Bars Practitioner und ausgebildete Wellness-Masseurin biete ich Ihnen 15 verschiedene Behandlungen — von Energiearbeit bis Tiefenmassage.</p>
     <div class="certificates-grid">
       <div class="cert-card"><strong>1. Reiki Master Teacher</strong><span>Reiki School by Ksenia Deych, Barcelona (2025)</span></div>
       <div class="cert-card"><strong>2. Access Bars Practitioner</strong><span>Access Consciousness International (2021)</span></div>
@@ -608,6 +685,46 @@ a:hover { text-decoration: underline; }
       <button class="btn-cancel" onclick="toggleFeedback(5)">Abbrechen</button>
       <button class="btn-delete" onclick="deleteFeedback(5)" style="display:none" id="delete-btn-5">Löschen</button>
       <span class="saved-indicator" id="saved-5">✓ Gespeichert</span>
+    </div>
+  </div>
+</div>
+
+<!-- BLOCK — PROZESS -->
+<div class="block-wrapper prozess-section" id="block-prozess">
+  <span class="block-label">Prozess — So einfach geht's</span>
+  <button class="feedback-btn" onclick="toggleFeedback('prozess')">✏️ Vorschlag</button>
+  <div class="container">
+    <h2>So einfach starten Sie</h2>
+    <p class="prozess-intro">Kein langer Vorlauf, keine Formulare — drei Schritte bis zu Ihrer ersten Behandlung.</p>
+    <div class="prozess-steps">
+      <div class="prozess-step">
+        <div class="step-number">1</div>
+        <h3>Kontakt aufnehmen</h3>
+        <p>Schreiben Sie mir kurz via WhatsApp oder E-Mail — welche Behandlung Sie interessiert und Ihren Wunschtermin.</p>
+      </div>
+      <div class="prozess-step">
+        <div class="step-number">2</div>
+        <h3>Kurze Abstimmung</h3>
+        <p>Ich melde mich innerhalb eines Tages. Wir klären gemeinsam, welche Behandlung am besten zu Ihnen und Ihrem Anliegen passt.</p>
+      </div>
+      <div class="prozess-step">
+        <div class="step-number">3</div>
+        <h3>Behandlung erleben</h3>
+        <p>In meiner Praxis in Hamburg-Bergedorf oder bequem als Fernsitzung — ganz nach Ihren Bedürfnissen.</p>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:8px;">
+      <a href="#" class="btn-primary">💬 Jetzt via WhatsApp Termin anfragen</a>
+    </div>
+  </div>
+  <div class="feedback-panel" id="feedback-panel-prozess">
+    <label>Ihr Vorschlag für Prozess-Block:</label>
+    <textarea id="feedback-text-prozess" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+    <div class="feedback-actions">
+      <button class="btn-save" onclick="saveFeedback('prozess')">Speichern</button>
+      <button class="btn-cancel" onclick="toggleFeedback('prozess')">Abbrechen</button>
+      <button class="btn-delete" onclick="deleteFeedback('prozess')" style="display:none" id="delete-btn-prozess">Löschen</button>
+      <span class="saved-indicator" id="saved-prozess">✓ Gespeichert</span>
     </div>
   </div>
 </div>
