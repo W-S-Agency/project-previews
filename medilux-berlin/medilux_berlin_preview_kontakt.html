@@ -302,19 +302,19 @@ details.faq[open] summary::after{content:'−';background:var(--blue);color:#fff
 </nav>
 <div class="page">
 <div class="meta-bar">
-  <strong>KONTAKT v0.9</strong> | Status: Draft
+  <strong>KONTAKT v0.9.1</strong> | Status: ✅ KUNDENFREIGABE (teilweise) — JES-Feedback 17.03.2026 eingearbeitet
   <br><span style="color:#856404;font-weight:600">&#9888; 4 Placeholders auf dieser Seite</span>
 </div>
 <div id="block-1" style="position:relative"><button class="feedback-btn" onclick="toggleFeedback(1)">✏️ Vorschlag</button><div class="sec sec-alt">
 <div class="ai-snippet" style="background:var(--bg);border-radius:var(--r12);padding:20px 24px;border-left:4px solid var(--yellow);max-width:none">
   <div class="ai-label" style="color:var(--gray)">AI-SNIPPET / MARQUEE — für Google AI Overviews (50–80 Wörter)</div>
-  <p style="margin:8px 0 0;font-size:14px;line-height:1.7">Sie möchten sich über Pflege-Wohngemeinschaften oder betreutes Wohnen bei MEDILUX Berlin informieren? Rufen Sie uns an unter +49 173 8334531, schreiben Sie uns eine Nachricht oder nutzen Sie unser Kontaktformular. Wir beraten Sie kostenlos und unverbindlich — zu Verfügbarkeit, Kosten und Besichtigungsterminen. Beratungszeiten: Montag bis Freitag, 8:00 bis 16:30 Uhr.</p>
+  <p style="margin:8px 0 0;font-size:14px;line-height:1.7">Sie möchten sich über Pflege-Wohngemeinschaften oder betreutes Wohnen bei MEDILUX Berlin informieren? Rufen Sie uns an unter 0391/6076062, schreiben Sie uns eine Nachricht oder nutzen Sie unser Kontaktformular. Wir beraten Sie kostenlos und unverbindlich — zu Verfügbarkeit, Kosten und Besichtigungsterminen. Beratungszeiten: Montag bis Freitag, 8:00 bis 16:30 Uhr.</p>
 </div>
 </div>
 <div class="feedback-panel" id="feedback-panel-1"><label>Ihr Vorschlag für „AI-Snippet (50–80 Wörter)":</label><textarea id="feedback-text-1" placeholder="Änderungsvorschlag oder Kommentar…"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(1)">Speichern</button><button class="btn-cancel" onclick="toggleFeedback(1)">Abbrechen</button><button class="btn-delete" onclick="deleteFeedback(1)" style="display:none" id="delete-btn-1">Löschen</button><span class="saved-indicator" id="saved-1">✓ Gespeichert</span></div></div></div><div id="block-2" style="position:relative"><button class="feedback-btn" onclick="toggleFeedback(2)">✏️ Vorschlag</button><section class="hero">
   <h1>Kontakt — wir beraten Sie persönlich und unverbindlich</h1>
   <div style="margin-top:8px">
-    <a href="#cta" class="btn">Jetzt anrufen: +49 173 8334531</a>
+    <a href="#cta" class="btn">Jetzt anrufen: 0391/6076062</a>
   </div>
 </section>
 <div class="feedback-panel" id="feedback-panel-2"><label>Ihr Vorschlag für „Block 1: Hero":</label><textarea id="feedback-text-2" placeholder="Änderungsvorschlag oder Kommentar…"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(2)">Speichern</button><button class="btn-cancel" onclick="toggleFeedback(2)">Abbrechen</button><button class="btn-delete" onclick="deleteFeedback(2)" style="display:none" id="delete-btn-2">Löschen</button><span class="saved-indicator" id="saved-2">✓ Gespeichert</span></div></div></div><div id="block-3" style="position:relative"><button class="feedback-btn" onclick="toggleFeedback(3)">✏️ Vorschlag</button><div class="sec">
@@ -322,7 +322,7 @@ details.faq[open] summary::after{content:'−';background:var(--blue);color:#fff
 <h4>H2</h4>
 <p><strong>So erreichen Sie uns</strong></p>
 <h4>Telefon (schnellster Weg)</h4>
-<p><strong>+49 173 8334531</strong></p>
+<p><strong>0391/6076062</strong></p>
 <p>Mo–Fr 8:00–16:30 Uhr</p>
 <p>Direkter Kontakt zu unserem Team — kein Callcenter, keine Warteschleife.</p>
 <h4>E-Mail</h4>
@@ -334,11 +334,15 @@ details.faq[open] summary::after{content:'−';background:var(--blue);color:#fff
 <div class="feedback-panel" id="feedback-panel-3"><label>Ihr Vorschlag für „Block 2: Drei Wege, uns zu erreichen":</label><textarea id="feedback-text-3" placeholder="Änderungsvorschlag oder Kommentar…"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(3)">Speichern</button><button class="btn-cancel" onclick="toggleFeedback(3)">Abbrechen</button><button class="btn-delete" onclick="deleteFeedback(3)" style="display:none" id="delete-btn-3">Löschen</button><span class="saved-indicator" id="saved-3">✓ Gespeichert</span></div></div></div><div id="block-4" style="position:relative"><button class="feedback-btn" onclick="toggleFeedback(4)">✏️ Vorschlag</button><div class="sec">
 <h2>Block 3: Kontaktformular</h2>
 <div class="form-wrap">
-<div class="form-row"><div class="form-field"><label>Vorname</label><input type="text" placeholder="Ihr Vorname..."></div><div class="form-field"><label>Nachname</label><input type="text" placeholder="Ihr Nachname..."></div></div>
-<div class="form-row"><div class="form-field"><label>E-Mail</label><input type="email" placeholder="ihre@email.de"></div><div class="form-field"><label>Telefon</label><input type="tel" placeholder="+49..."></div></div>
-<div class="form-row" style="grid-template-columns:1fr"><div class="form-field"><label>Nachricht</label><textarea placeholder="Ihr Anliegen..."></textarea></div></div>
+<div class="form-row"><div class="form-field"><label>Vorname *</label><input type="text" placeholder="Ihr Vorname..."></div><div class="form-field"><label>Nachname *</label><input type="text" placeholder="Ihr Nachname..."></div></div>
+<div class="form-row"><div class="form-field"><label>Telefon *</label><input type="tel" placeholder="+49..."></div><div class="form-field"><label>E-Mail</label><input type="email" placeholder="ihre@email.de"></div></div>
+<div class="form-row" style="grid-template-columns:1fr"><div class="form-field"><label>Ich interessiere mich für: *</label><select><option value="">— Bitte wählen —</option><option>Pflege-WG</option><option>Betreutes Wohnen</option><option>Besichtigungstermin</option><option>Allgemeine Beratung</option><option>Stellenangebot / Bewerbung</option></select></div></div>
+<div class="form-row" style="grid-template-columns:1fr"><div class="form-field"><label>Bevorzugter Standort</label><select><option value="">— Kein Vorrang / Unsicher —</option><option>Villa Civitas (Zehlendorf)</option><option>Residenz Heerstraße (Spandau)</option></select></div></div>
+<div class="form-row" style="grid-template-columns:1fr"><div class="form-field"><label>Ihre Nachricht</label><textarea placeholder="Ihr Anliegen (optional)..."></textarea></div></div>
 <button class="form-submit">Nachricht senden →</button>
+<p style="font-size:11px;color:var(--gray);margin-top:10px">Ich habe die <a href="#">Datenschutzerklärung</a> gelesen und bin mit der Verarbeitung meiner Daten einverstanden.</p>
 </div>
+<small style="font-size:10px;color:var(--gray);margin-top:4px;display:block">✅ CLIENT — JES 17.03.2026 Block 5 (Ambulante Pflege aus Dropdown entfernt)</small>
 </div>
 <div class="feedback-panel" id="feedback-panel-4"><label>Ihr Vorschlag für „Block 3: Kontaktformular":</label><textarea id="feedback-text-4" placeholder="Änderungsvorschlag oder Kommentar…"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(4)">Speichern</button><button class="btn-cancel" onclick="toggleFeedback(4)">Abbrechen</button><button class="btn-delete" onclick="deleteFeedback(4)" style="display:none" id="delete-btn-4">Löschen</button><span class="saved-indicator" id="saved-4">✓ Gespeichert</span></div></div></div><div id="block-5" style="position:relative"><button class="feedback-btn" onclick="toggleFeedback(5)">✏️ Vorschlag</button><div class="sec sec-alt">
 <h2>Block 4: Unsere Standorte — Anfahrt</h2>
@@ -361,7 +365,7 @@ details.faq[open] summary::after{content:'−';background:var(--blue);color:#fff
 <p><strong>Ihr Ansprechpartner</strong></p>
 <p><strong>Herr Joe Schermer</strong></p>
 <p>Prokurist, MEDILUX Berlin</p>
-<p>Telefon: +49 173 8334531</p>
+<p>Telefon: 0391/6076062</p>
 <p>E-Mail: <span class="ph">&#9998; PH #9: — Email-Adresse</span></p>
 <p>Beratungszeiten: Mo–Fr 8:00–16:30 Uhr</p>
 <p>Herr Schermer berät Sie zu allen Fragen rund um:</p>
@@ -388,7 +392,7 @@ details.faq[open] summary::after{content:'−';background:var(--blue);color:#fff
 </details>
 <details class="faq">
   <summary>Ich bin Berufsbetreuer / Arzt / Sozialdienst — an wen wende ich mich?</summary>
-  <div class="faq-a">Ebenfalls an Herrn Joe Schermer unter +49 173 8334531. Er koordiniert alle Anfragen und vermittelt bei Bedarf an die zuständigen Fachkräfte weiter.</div>
+  <div class="faq-a">Ebenfalls an Herrn Joe Schermer unter 0391/6076062. Er koordiniert alle Anfragen und vermittelt bei Bedarf an die zuständigen Fachkräfte weiter.</div>
 </details>
 <details class="faq">
   <summary>Brauche ich schon einen Pflegegrad, um mich zu melden?</summary>
@@ -399,7 +403,7 @@ details.faq[open] summary::after{content:'−';background:var(--blue);color:#fff
 <footer class="footer">
   <div>
     <div class="f-label">Telefon</div>
-    <div class="f-val">+49 173 8334531</div>
+    <div class="f-val">0391/6076062</div>
     <div class="f-label">E-Mail</div>
     <div class="f-val">medilux@live.de</div>
   </div>
@@ -416,10 +420,10 @@ details.faq[open] summary::after{content:'−';background:var(--blue);color:#fff
       <a href="#">Datenschutz</a>
     </div>
   </div>
-  <div class="f-copy">&copy; 2026 MEDILUX GmbH &mdash; Content Preview v0.9 &middot; Nur zur internen Pr&uuml;fung &middot; 2p-preview skill</div>
+  <div class="f-copy">&copy; 2026 MEDILUX GmbH &mdash; Content Preview v0.9.1 &middot; Nur zur internen Pr&uuml;fung &middot; 2p-preview skill</div>
 </footer>
 </div>
-<div class="ver-badge">v0.9</div>
+<div class="ver-badge">v0.9.1 ✅</div>
 <div class="src-badge">2p-preview &middot; 16.03.2026</div>
 <div class="export-overlay" id="exportOverlay">
   <div class="export-box">
