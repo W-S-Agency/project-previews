@@ -1,346 +1,1062 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Svetlana Graf — Website-Vorschau</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Preview — Startseite — Svetlana Graf</title>
+<style>
+/* === BASE VARIABLES === */
+:root {
+  --primary: #6B5B95;
+  --primary-light: #8B7BB5;
+  --primary-dark: #4A3D6E;
+  --secondary: #D4A574;
+  --secondary-light: #E8C9A6;
+  --accent: #D4A574;
+  --text: #2D2D2D;
+  --text-light: #64748b;
+  --bg: #FAFAF8;
+  --bg-alt: #F3F0EB;
+  --white: #ffffff;
+  --border: #e2e8f0;
+  --max-width: 1200px;
+  --radius: 8px;
+  --fb-accent: #f59e0b;
+  --fb-accent-border: #d97706;
+  --fb-accent-hover: #d97706;
+  --fb-saved: #10b981;
+  --fb-saved-border: #059669;
+  --fb-save: #2563eb;
+  --fb-save-border: #1d4ed8;
+  --fb-save-hover: #1d4ed8;
+  --fb-panel-bg: #fef3c7;
+  --fb-panel-border: #f59e0b;
+  --fb-delete: #dc2626;
+  --fb-delete-bg: #fef2f2;
+  --fb-delete-border: #fca5a5;
+  --success: #10b981;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.7;
+  font-size: 16px;
+}
+.container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
+@media (min-width: 1024px) { .container { padding: 0 40px; } }
+h1 { font-size: 2.4rem; line-height: 1.2; font-weight: 700; }
+h2 { font-size: 1.8rem; line-height: 1.3; font-weight: 700; color: var(--primary-dark); }
+h3 { font-size: 1.2rem; font-weight: 600; color: var(--primary); }
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; }
 
-        :root {
-            --primary: #6B5B95;
-            --secondary: #8B7CB8;
-            --accent: #D4A574;
-            --bg: #FAF8F5;
-            --text: #2D2D2D;
-            --text-light: #6B7280;
-            --border: #E5E7EB;
-        }
+/* === PREVIEW BAR === */
+.preview-bar {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--primary-dark);
+  color: white;
+  padding: 12px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+.preview-bar .project-name { font-weight: 700; font-size: 15px; }
+.preview-bar .project-name a { color: white; text-decoration: none; }
+.preview-bar .project-name a:hover { text-decoration: underline; }
+.preview-bar .version { opacity: 0.8; font-size: 13px; }
+.source-badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.15);
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  margin-left: 12px;
+  opacity: 0.7;
+}
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background-color: #f9fafb;
-            color: var(--text);
-            line-height: 1.6;
-        }
+/* === SEO BAR === */
+.seo-bar {
+  background: #1a1a2e;
+  color: #e2e8f0;
+  padding: 16px 24px;
+  font-size: 13px;
+  cursor: pointer;
+}
+.seo-bar-header {
+  display: flex; justify-content: space-between; align-items: center;
+  font-weight: 600; font-size: 14px;
+}
+.seo-bar-header .toggle-icon { transition: transform 0.3s; }
+.seo-bar.collapsed .seo-bar-content { display: none; }
+.seo-bar.collapsed .toggle-icon { transform: rotate(-90deg); }
+.seo-bar-content { margin-top: 12px; }
+.seo-row { display: flex; gap: 12px; margin-bottom: 8px; align-items: flex-start; }
+.seo-row .label { min-width: 100px; font-weight: 600; color: #94a3b8; flex-shrink: 0; }
+.seo-row .value { color: #e2e8f0; word-break: break-word; }
+.seo-row code { background: rgba(255,255,255,0.1); padding: 2px 8px; border-radius: 4px; font-size: 13px; }
+.len-badge { display: inline-block; padding: 1px 8px; border-radius: 10px; font-size: 11px; font-weight: 700; margin-left: 8px; }
+.len-ok { background: #065f46; color: #6ee7b7; }
+.len-warn { background: #78350f; color: #fcd34d; }
+.len-over { background: #7f1d1d; color: #fca5a5; }
+.schema-tag {
+  display: inline-block;
+  background: rgba(107,91,149,0.3);
+  color: #c4b5fd;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  margin: 2px 4px 2px 0;
+}
+.jsonld-toggle { color: var(--secondary-light); cursor: pointer; text-decoration: underline; font-size: 12px; margin-top: 8px; display: inline-block; }
+.jsonld-preview { display: none; margin-top: 8px; background: rgba(0,0,0,0.3); padding: 12px; border-radius: 6px; font-size: 12px; overflow-x: auto; white-space: pre-wrap; }
+.jsonld-preview.open { display: block; }
 
-        header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
-            padding: 40px 24px;
-            text-align: center;
-        }
+/* === BLOCK WRAPPER === */
+.block-wrapper { position: relative; padding: 60px 0; }
+.block-wrapper:nth-child(even of .block-wrapper) { background: var(--bg-alt); }
+.block-label {
+  position: absolute; top: 12px; left: 24px;
+  font-size: 11px; color: var(--text-light); opacity: 0.5;
+  font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;
+}
 
-        header h1 {
-            font-size: 28px;
-            margin-bottom: 8px;
-            font-weight: 700;
-        }
+/* === HERO === */
+.hero {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: white; padding: 100px 0 80px; text-align: center;
+}
+.hero h1 { color: white; font-size: 2.6rem; margin-bottom: 20px; }
+@media (min-width: 768px) { .hero h1 { font-size: 3.2rem; } }
+.hero .subline { font-size: 1.15rem; opacity: 0.92; max-width: 700px; margin: 0 auto 36px; line-height: 1.7; }
+.btn-primary {
+  display: inline-block; background: var(--secondary); color: white;
+  padding: 16px 36px; border-radius: 30px; font-size: 1.05rem; font-weight: 700;
+  transition: all 0.2s; text-decoration: none;
+  box-shadow: 0 4px 15px rgba(212,165,116,0.4);
+}
+.btn-primary:hover { background: var(--secondary-light); transform: translateY(-2px); text-decoration: none; }
 
-        header p {
-            font-size: 14px;
-            opacity: 0.95;
-            margin-bottom: 4px;
-        }
+/* === ABOUT === */
+.about-section { padding: 80px 0; }
+.about-content { max-width: 800px; margin: 0 auto; }
+.about-content h2 { margin-bottom: 24px; text-align: center; }
+.about-text { font-size: 1.05rem; margin-bottom: 20px; }
+.certificates-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 32px; }
+@media (min-width: 768px) { .certificates-grid { grid-template-columns: 1fr 1fr; } }
+.cert-card {
+  background: white; border: 1px solid var(--border); border-left: 4px solid var(--primary);
+  border-radius: var(--radius); padding: 20px;
+}
+.cert-card strong { color: var(--primary-dark); display: block; margin-bottom: 4px; }
+.cert-card span { font-size: 0.9rem; color: var(--text-light); }
 
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 40px 24px;
-        }
+/* === SERVICES === */
+.services-section { padding: 80px 0; }
+.services-section h2 { text-align: center; margin-bottom: 40px; }
+.services-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
+@media (min-width: 768px) { .services-grid { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1024px) { .services-grid { grid-template-columns: 1fr 1fr 1fr; } }
+.service-card {
+  background: white; border-radius: var(--radius); padding: 28px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06); border: 1px solid var(--border);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.service-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+.service-card.usp { border: 2px solid var(--secondary); position: relative; }
+.service-card.usp::before {
+  content: '⭐ Exklusiv'; position: absolute; top: -12px; right: 16px;
+  background: var(--secondary); color: white; padding: 2px 14px;
+  border-radius: 12px; font-size: 12px; font-weight: 700;
+}
+.service-card h4 { font-size: 1.15rem; color: var(--primary-dark); margin-bottom: 10px; }
+.service-card p { font-size: 0.95rem; color: var(--text); margin-bottom: 14px; line-height: 1.6; }
+.service-meta { font-size: 0.9rem; color: var(--primary); font-weight: 600; margin-bottom: 12px; }
+.service-cta { display: inline-block; color: var(--secondary); font-weight: 600; font-size: 0.9rem; }
+.service-cta:hover { color: var(--primary); }
 
-        .info-section {
-            background: white;
-            border-radius: 8px;
-            padding: 32px;
-            margin-bottom: 32px;
-            border: 1px solid var(--border);
-        }
+/* === FENG SHUI === */
+.fengshui-section {
+  padding: 80px 0;
+  background: linear-gradient(135deg, var(--bg-alt) 0%, #EDE8E0 100%);
+}
+.fengshui-content { max-width: 800px; margin: 0 auto; text-align: center; }
+.fengshui-content h2 { margin-bottom: 20px; }
+.fengshui-content p { font-size: 1.05rem; margin-bottom: 24px; }
 
-        .info-section h2 {
-            font-size: 20px;
-            margin-bottom: 20px;
-            color: var(--primary);
-            border-bottom: 2px solid var(--accent);
-            padding-bottom: 12px;
-        }
+/* === PRICING === */
+.pricing-section { padding: 80px 0; }
+.pricing-section h2 { text-align: center; margin-bottom: 12px; }
+.pricing-intro { text-align: center; color: var(--text-light); margin-bottom: 40px; }
+.pricing-category { margin-bottom: 36px; }
+.pricing-category h3 { margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid var(--primary-light); }
+.pricing-table {
+  width: 100%; border-collapse: collapse; background: white;
+  border-radius: var(--radius); overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.pricing-table th {
+  background: var(--primary); color: white; padding: 12px 20px;
+  text-align: left; font-size: 0.9rem; font-weight: 600;
+}
+.pricing-table td { padding: 12px 20px; border-bottom: 1px solid var(--border); font-size: 0.95rem; }
+.pricing-table tr:last-child td { border-bottom: none; }
+.pricing-table tr:hover td { background: var(--bg-alt); }
+.pricing-table .price { font-weight: 700; color: var(--primary-dark); white-space: nowrap; }
+.pricing-note { text-align: center; font-size: 0.85rem; color: var(--text-light); margin-top: 24px; font-style: italic; }
 
-        .info-section h3 {
-            font-size: 16px;
-            margin-top: 24px;
-            margin-bottom: 12px;
-            color: var(--text);
-        }
+/* === FAQ === */
+.faq-section { padding: 80px 0; }
+.faq-section h2 { text-align: center; margin-bottom: 40px; }
+.faq-list { max-width: 800px; margin: 0 auto; }
+.faq-item { background: white; border: 1px solid var(--border); border-radius: var(--radius); margin-bottom: 12px; overflow: hidden; }
+.faq-question {
+  padding: 20px 24px; cursor: pointer; font-weight: 600;
+  display: flex; justify-content: space-between; align-items: center; transition: background 0.2s;
+}
+.faq-question:hover { background: var(--bg-alt); }
+.faq-question::after { content: '▼'; font-size: 12px; transition: transform 0.3s; color: var(--primary); }
+.faq-item.open .faq-question::after { transform: rotate(180deg); }
+.faq-answer { display: none; padding: 0 24px 20px; color: var(--text); line-height: 1.7; }
+.faq-item.open .faq-answer { display: block; }
 
-        .info-section h3:first-child {
-            margin-top: 0;
-        }
+/* === CTA === */
+.block-wrapper.cta-section {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+}
+.cta-section {
+  color: white; padding: 80px 0; text-align: center;
+}
+.cta-section h2 { color: white; margin-bottom: 16px; }
+.cta-section p { opacity: 0.92; max-width: 600px; margin: 0 auto 32px; font-size: 1.05rem; }
+.btn-whatsapp {
+  display: inline-block; background: #25D366; color: white;
+  padding: 16px 36px; border-radius: 30px; font-size: 1.1rem; font-weight: 700;
+  text-decoration: none; box-shadow: 0 4px 15px rgba(37,211,102,0.3); transition: all 0.2s;
+}
+.btn-whatsapp:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37,211,102,0.4); text-decoration: none; }
+.contact-info { margin-top: 36px; font-size: 0.95rem; opacity: 0.9; }
+.contact-info a { color: var(--secondary-light); }
 
-        .preview-link {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 12px 24px;
-            background-color: var(--accent);
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: 600;
-            transition: background-color 0.3s;
-        }
+/* === STICKY CTA === */
+.sticky-cta {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  background: #25D366; color: white; text-align: center;
+  padding: 14px; font-weight: 700; font-size: 1rem; z-index: 90;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.15); display: none;
+}
+@media (max-width: 768px) { .sticky-cta { display: block; } }
 
-        .preview-link:hover {
-            background-color: #c49563;
-        }
+/* === FOOTER === */
+.site-footer { background: #1a1a2e; color: #94a3b8; padding: 48px 0 24px; }
+.footer-content {
+  max-width: var(--max-width); margin: 0 auto; padding: 0 24px;
+  display: grid; grid-template-columns: 1fr; gap: 32px;
+}
+@media (min-width: 768px) { .footer-content { grid-template-columns: 1fr 1fr 1fr; } }
+.footer-col h4 { color: white; font-size: 1rem; margin-bottom: 12px; }
+.footer-col p, .footer-col a { font-size: 0.9rem; color: #94a3b8; line-height: 1.8; }
+.footer-col a:hover { color: var(--secondary-light); }
+.footer-bottom {
+  max-width: var(--max-width); margin: 0 auto; padding: 24px 24px 0;
+  border-top: 1px solid rgba(255,255,255,0.1); margin-top: 32px;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 12px; font-size: 0.8rem;
+}
+.footer-disclaimer {
+  font-size: 0.8rem; font-style: italic; opacity: 0.7;
+  margin-top: 16px; padding: 0 24px;
+  max-width: var(--max-width); margin-left: auto; margin-right: auto;
+}
 
-        .seo-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 12px;
-            font-size: 14px;
-        }
+/* === FEEDBACK UI === */
+.feedback-counter {
+  background: var(--fb-accent); color: #1e293b; padding: 6px 16px;
+  border-radius: 20px; font-weight: 700; cursor: pointer;
+  transition: transform 0.2s; font-size: 13px;
+}
+.feedback-counter:hover { transform: scale(1.05); }
+.feedback-counter.has-feedback { animation: fb-pulse 2s infinite; }
+@keyframes fb-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--fb-accent) 40%, transparent); }
+  50% { box-shadow: 0 0 0 8px transparent; }
+}
+.feedback-btn {
+  position: absolute; top: 12px; right: 24px;
+  background: var(--fb-accent); border: 2px solid var(--fb-accent-border);
+  padding: 6px 14px; border-radius: 20px; cursor: pointer;
+  font-size: 13px; color: #1e293b; font-weight: 600;
+  transition: all 0.2s; z-index: 10;
+}
+.feedback-btn:hover { background: var(--fb-accent-hover); border-color: var(--fb-accent-border); color: white; }
+.feedback-btn.has-comment { background: var(--fb-saved); border-color: var(--fb-saved-border); color: white; }
+.feedback-panel {
+  display: none; position: absolute; top: 3rem; right: .75rem;
+  width: 320px; max-width: calc(100% - 1.5rem); z-index: 200;
+  background: var(--fb-panel-bg); border: 2px solid var(--fb-panel-border);
+  border-radius: var(--radius); padding: 20px;
+  box-shadow: 0 4px 16px rgba(0,0,0,.2); animation: fb-slideDown 0.3s ease;
+}
+.feedback-panel.open { display: block; }
+@keyframes fb-slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.feedback-panel label { display: block; font-weight: 600; margin-bottom: 8px; color: var(--primary); font-size: 14px; }
+.feedback-panel textarea {
+  width: 100%; min-height: 100px; padding: 12px;
+  border: 1px solid var(--border); border-radius: var(--radius);
+  font-family: inherit; font-size: 15px; resize: vertical; line-height: 1.5;
+}
+.feedback-panel textarea:focus { outline: none; border-color: var(--primary-light); box-shadow: 0 0 0 3px rgba(107,91,149,0.1); }
+.feedback-actions { display: flex; gap: 12px; margin-top: 12px; flex-wrap: wrap; }
+.btn-save { background: var(--fb-save); color: white; border: 2px solid var(--fb-save-border); padding: 8px 20px; border-radius: var(--radius); cursor: pointer; font-size: 14px; font-weight: 600; }
+.btn-save:hover { background: var(--fb-save-hover); }
+.btn-cancel { background: white; border: 2px solid #94a3b8; padding: 8px 20px; border-radius: var(--radius); cursor: pointer; font-size: 14px; color: #334155; font-weight: 500; }
+.btn-cancel:hover { background: #f1f5f9; }
+.btn-delete { background: var(--fb-delete-bg); border: 2px solid var(--fb-delete-border); padding: 8px 16px; border-radius: var(--radius); cursor: pointer; font-size: 14px; color: var(--fb-delete); font-weight: 500; margin-left: auto; }
+.btn-delete:hover { background: #fee2e2; border-color: var(--fb-delete); }
+.saved-indicator { display: none; color: var(--success); font-size: 13px; align-items: center; gap: 4px; }
+.export-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 200; justify-content: center; align-items: center; }
+.export-overlay.open { display: flex; }
+.export-box { background: white; border-radius: 12px; padding: 32px; max-width: 500px; width: 90%; text-align: center; }
+.export-box h2 { margin-bottom: 16px; font-size: 22px; color: var(--text); }
+.export-box p { color: var(--text-light); margin-bottom: 24px; }
+.export-box .count { font-size: 48px; font-weight: 800; color: var(--fb-save); }
+.btn-export { display: inline-block; background: var(--fb-save); color: white; padding: 14px 32px; border-radius: var(--radius); border: none; font-size: 16px; font-weight: 600; cursor: pointer; margin: 8px; }
+.btn-export:hover { background: var(--fb-save-hover); }
+.btn-export.btn-copy { background: var(--fb-accent); color: #1e293b; }
+.btn-export.btn-copy:hover { background: var(--fb-accent-border); }
+.btn-close-overlay { display: inline-block; background: transparent; border: 1px solid var(--border); padding: 14px 32px; border-radius: var(--radius); font-size: 16px; cursor: pointer; margin: 8px; color: var(--text-light); }
+@media (max-width: 768px) {
+  .feedback-btn { top: auto; bottom: -16px; right: 16px; font-size: 12px; }
+  .feedback-panel { padding: 16px; width: 280px; }
+  h1 { font-size: 1.8rem; }
+  h2 { font-size: 1.4rem; }
+  .hero { padding: 60px 0 50px; }
+}
 
-        .seo-table th,
-        .seo-table td {
-            padding: 12px;
-            text-align: left;
-            border: 1px solid var(--border);
-        }
+/* === TRUST STRIPE === */
+.trust-stripe { padding: 28px 0; background: var(--white) !important; border-bottom: 1px solid var(--border); }
+.trust-items {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;
+  max-width: 900px; margin: 0 auto;
+}
+@media (min-width: 768px) { .trust-items { grid-template-columns: repeat(4, 1fr); } }
+.trust-item { text-align: center; padding: 16px 12px; }
+.trust-icon { font-size: 1.8rem; display: block; margin-bottom: 8px; }
+.trust-item strong { display: block; color: var(--primary-dark); font-size: 0.9rem; margin-bottom: 3px; font-weight: 700; }
+.trust-item span { font-size: 0.82rem; color: var(--text-light); }
 
-        .seo-table th {
-            background-color: var(--primary);
-            color: white;
-            font-weight: 600;
-        }
-
-        .seo-table tr:nth-child(even) {
-            background-color: #f9fafb;
-        }
-
-        .badge {
-            display: inline-block;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 12px;
-            font-weight: 600;
-            margin-left: 8px;
-        }
-
-        .badge-good {
-            background-color: #d1fae5;
-            color: #065f46;
-        }
-
-        .badge-warning {
-            background-color: #fef3c7;
-            color: #92400e;
-        }
-
-        .badge-error {
-            background-color: #fee2e2;
-            color: #991b1b;
-        }
-
-        .schema-list {
-            list-style: none;
-            padding-left: 0;
-            margin-top: 12px;
-        }
-
-        .schema-list li {
-            padding: 8px 0;
-            padding-left: 24px;
-            position: relative;
-        }
-
-        .schema-list li:before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: var(--accent);
-            font-weight: bold;
-        }
-
-        .meta-data {
-            background-color: #f3f4f6;
-            padding: 12px;
-            border-radius: 4px;
-            margin: 12px 0;
-            font-family: 'Courier New', monospace;
-            font-size: 13px;
-            overflow-x: auto;
-        }
-
-        .version-badge {
-            display: inline-block;
-            background-color: var(--primary);
-            color: white;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 12px;
-            margin-right: 8px;
-        }
-
-        footer {
-            background-color: var(--text);
-            color: white;
-            padding: 24px;
-            text-align: center;
-            font-size: 13px;
-            margin-top: 40px;
-        }
-
-        footer a {
-            color: var(--accent);
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        @media (max-width: 768px) {
-            header {
-                padding: 24px;
-            }
-
-            header h1 {
-                font-size: 22px;
-            }
-
-            .container {
-                padding: 20px 16px;
-            }
-
-            .info-section {
-                padding: 20px;
-            }
-
-            .seo-table {
-                font-size: 12px;
-            }
-
-            .seo-table th,
-            .seo-table td {
-                padding: 8px;
-            }
-        }
-    </style>
+/* === PROZESS === */
+.prozess-section { padding: 80px 0; }
+.prozess-section h2 { text-align: center; margin-bottom: 12px; }
+.prozess-intro { text-align: center; color: var(--text-light); margin-bottom: 48px; font-size: 1.05rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+.prozess-steps {
+  display: grid; grid-template-columns: 1fr; gap: 28px;
+  max-width: 900px; margin: 0 auto 40px;
+}
+@media (min-width: 768px) { .prozess-steps { grid-template-columns: repeat(3, 1fr); } }
+.prozess-step {
+  text-align: center; padding: 32px 24px;
+  background: var(--white); border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.step-number {
+  width: 52px; height: 52px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: white; font-size: 1.4rem; font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 18px;
+}
+.prozess-step h3 { color: var(--primary-dark); margin-bottom: 10px; font-size: 1.05rem; }
+.prozess-step p { font-size: 0.92rem; color: var(--text); line-height: 1.6; }
+</style>
 </head>
 <body>
-    <header>
-        <h1>Svetlana Graf — Website-Vorschau</h1>
-        <p>Wellness & Massage Praxis | Hamburg-Bergedorf</p>
-    </header>
 
-    <div class="container">
-        <div class="info-section">
-            <h2>📄 Seite verfügbar</h2>
-            <h3>Startseite (index.html)</h3>
-            <p>Vollständige Website-Vorschau mit allen 8 Content-Blöcken + Navigation, Footer und Feedback-System.</p>
-            <a href="./svetlana_graf_preview_startseite.html" class="preview-link">→ Zur Vorschau</a>
-        </div>
+<!-- PREVIEW BAR -->
+<div class="preview-bar">
+  <div>
+    <span class="project-name"><a href="index.html">Svetlana Graf</a></span>
+    <span class="version"> — Startseite — Preview V2.0</span>
+    <span class="source-badge">Spec + Entities</span>
+  </div>
+  <div class="feedback-counter" id="feedbackCounter" onclick="openExportOverlay()">
+    Feedback: <span id="feedbackCount">0</span> Kommentare
+  </div>
+</div>
 
-        <div class="info-section">
-            <h2>📋 SEO Überblick</h2>
+<!-- SEO BAR -->
+<div class="seo-bar" id="seoBar" onclick="toggleSeoBar()">
+  <div class="seo-bar-header">
+    <span>🔍 SEO Metadaten</span>
+    <span class="toggle-icon">▼</span>
+  </div>
+  <div class="seo-bar-content">
+    <div class="seo-row">
+      <span class="label">Title</span>
+      <span class="value">Reiki Hamburg | Wellness-Massage | Svetlana Graf — Energietherapie <span class="len-badge len-ok">55 Z.</span></span>
+    </div>
+    <div class="seo-row">
+      <span class="label">Description</span>
+      <span class="value">Wellness-Massage &amp; Reiki in Hamburg. 15 Behandlungen: Energiearbeit, Lomi Lomi, Hot Stone &amp; mehr. Zertifizierte Therapeutin. Jetzt Termin via WhatsApp! <span class="len-badge len-ok">149 Z.</span></span>
+    </div>
+    <div class="seo-row">
+      <span class="label">URL</span>
+      <span class="value"><code>/</code></span>
+    </div>
+    <div class="seo-row">
+      <span class="label">Schema.org</span>
+      <span class="value">
+        <span class="schema-tag">Organization</span>
+        <span class="schema-tag">WebSite</span>
+        <span class="schema-tag">LocalBusiness</span>
+        <span class="schema-tag">FAQPage</span>
+        <span class="schema-tag">Service ×15</span>
+      </span>
+    </div>
+    <div class="seo-row">
+      <span class="label">JSON-LD</span>
+      <span class="value"><span class="jsonld-toggle" onclick="event.stopPropagation(); document.getElementById('jsonld').classList.toggle('open')">Preview anzeigen ▸</span></span>
+    </div>
+    <pre class="jsonld-preview" id="jsonld"><code>{
+  "@context": "https://schema.org",
+  "@type": ["LocalBusiness", "HealthAndBeautyBusiness"],
+  "name": "Svetlana Graf — Energietherapie &amp; Massage",
+  "url": "https://svetlanagraf.de/",
+  "telephone": "+491705459840",
+  "email": "svetlanag@gmx.de",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "St. Benedictstraße 5",
+    "addressLocality": "Hamburg",
+    "postalCode": "20149",
+    "addressRegion": "HH",
+    "addressCountry": "DE"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Behandlungen",
+    "itemListElement": [
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Reiki"}, "price": "70.00", "priceCurrency": "EUR"},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Access Bars"}, "price": "70.00", "priceCurrency": "EUR"},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Lomi Lomi Massage"}, "price": "120.00", "priceCurrency": "EUR"}
+    ]
+  }
+}</code></pre>
+  </div>
+</div>
 
-            <h3>Title Tag</h3>
-            <div class="meta-data">Massage Bergedorf | Reiki Hamburg | Svetlana Graf — Energietherapie</div>
-            <p>
-                Zeichen: <strong>56</strong>
-                <span class="badge badge-warning">⚠ Warn</span>
-            </p>
-            <p style="font-size: 13px; color: var(--text-light); margin-top: 4px;">Hinweis: 56 Zeichen liegt knapp über der idealen Länge von ≤55 Zeichen. Desktop-SERPs können Text abschneiden.</p>
+<!-- BLOCK 1 — HERO -->
+<div class="block-wrapper hero" id="block-1">
+  <span class="block-label">Block 1 — Hero</span>
+  <button class="feedback-btn" onclick="toggleFeedback(1)">✏️ Vorschlag</button>
+  <div class="container">
+    <h1>Wenn Körper und Seele zur Ruhe kommen</h1>
+    <p class="subline">Zertifizierte Reiki Master Teacher, Access Bars Practitioner &amp; Wellness-Masseurin in Hamburg. 15 Behandlungen für Ihre innere Balance — in der Praxis oder per Fernsitzung.</p>
+    <a href="#" class="btn-primary">Erstgespräch vereinbaren — kostenlos &amp; unverbindlich</a>
+  </div>
+  <div class="feedback-panel" id="feedback-panel-1">
+    <label>Ihr Vorschlag für Block 1 — Hero:</label>
+    <textarea id="feedback-text-1" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+    <div class="feedback-actions">
+      <button class="btn-save" onclick="saveFeedback(1)">Speichern</button>
+      <button class="btn-cancel" onclick="toggleFeedback(1)">Abbrechen</button>
+      <button class="btn-delete" onclick="deleteFeedback(1)" style="display:none" id="delete-btn-1">Löschen</button>
+      <span class="saved-indicator" id="saved-1">✓ Gespeichert</span>
+    </div>
+  </div>
+</div>
 
-            <h3>Meta Description</h3>
-            <div class="meta-data">Wellness-Massage & Reiki in Hamburg-Bergedorf. 14 Behandlungen: Energiearbeit, Lomi Lomi, Hot Stone & mehr. Zertifizierte Therapeutin. Jetzt Termin via WhatsApp!</div>
-            <p>
-                Zeichen: <strong>156</strong>
-                <span class="badge badge-good">✓ Optimal</span>
-            </p>
+<!-- BLOCK — TRUST-LEISTE -->
+<div class="block-wrapper trust-stripe" id="block-trust">
+  <span class="block-label">Trust-Leiste</span>
+  <button class="feedback-btn" onclick="toggleFeedback('trust')">✏️ Vorschlag</button>
+  <div class="container">
+    <div class="trust-items">
+      <div class="trust-item">
+        <span class="trust-icon">🎓</span>
+        <strong>Reiki Master Teacher</strong>
+        <span>Zertifiziert, Barcelona 2025</span>
+      </div>
+      <div class="trust-item">
+        <span class="trust-icon">✋</span>
+        <strong>Access Bars Practitioner</strong>
+        <span>Zertifiziert 2021</span>
+      </div>
+      <div class="trust-item">
+        <span class="trust-icon">💆</span>
+        <strong>15 Behandlungen</strong>
+        <span>Massage &amp; Energiearbeit</span>
+      </div>
+      <div class="trust-item">
+        <span class="trust-icon">📍</span>
+        <strong>Hamburg</strong>
+        <span>&amp; Fernsitzung möglich</span>
+      </div>
+    </div>
+  </div>
+  <div class="feedback-panel" id="feedback-panel-trust">
+    <label>Ihr Vorschlag für Trust-Leiste:</label>
+    <textarea id="feedback-text-trust" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+    <div class="feedback-actions">
+      <button class="btn-save" onclick="saveFeedback('trust')">Speichern</button>
+      <button class="btn-cancel" onclick="toggleFeedback('trust')">Abbrechen</button>
+      <button class="btn-delete" onclick="deleteFeedback('trust')" style="display:none" id="delete-btn-trust">Löschen</button>
+      <span class="saved-indicator" id="saved-trust">✓ Gespeichert</span>
+    </div>
+  </div>
+</div>
 
-            <h3>URL Structure</h3>
-            <div class="meta-data">/</div>
+<!-- BLOCK 2 — ÜBER MICH -->
+<div class="block-wrapper about-section" id="block-2">
+  <span class="block-label">Block 2 — Über mich</span>
+  <button class="feedback-btn" onclick="toggleFeedback(2)">✏️ Vorschlag</button>
+  <div class="container about-content">
+    <h2>Über mich — Svetlana Graf</h2>
+    <p class="about-text">Schon in meiner Jugend habe ich mich intensiv mit Feng Shui beschäftigt, viele Bücher gelesen und versucht, dieses Wissen in meinem Alltag anzuwenden. Ich hatte immer das Gefühl, dass es mehr gibt als das Sichtbare – eine feine Energie, die unser Leben beeinflusst.</p>
+    <p class="about-text">Im Jahr 2014 erlebte ich eine tiefgreifende Wendung in meinem Leben. Mein Sohn wurde bereits in der 23. Schwangerschaftswoche geboren. Die Ärzte gaben ihm kaum Chancen. Es folgten Monate voller Herausforderungen: Operationen, Infektionen und insgesamt fünf Monate auf der Intensivstation.</p>
+    <p class="about-text">In dieser schweren Zeit begann ich intuitiv, ihm Reiki-Musik vorzuspielen. Später kam auch Reiki-Therapie dazu. Ich bin fest davon überzeugt, dass diese Energie ihn auf seinem Weg unterstützt und gestärkt hat.</p>
+    <p class="about-text">Diese Erfahrung hat mein Leben nachhaltig verändert. Ich habe selbst Reiki gelernt und mich entschieden, mit Energiearbeit bewusst zu wirken.</p>
+    <p class="about-text">Heute begleite ich Menschen ganzheitlich auf ihrem Weg. In meiner Arbeit verbinde ich Reiki mit weiteren energetischen Methoden wie Access Bars® und den Lichtstrahlen (Rays of Light). Zusätzlich fließen auch achtsame Massagetechniken in meine Behandlungen ein.</p>
+    <p class="about-text">Mein Ansatz ist es, Körper, Geist und Seele in Einklang zu bringen. Ich unterstütze meine Klienten dabei, Stress abzubauen, innere Blockaden zu lösen und neue Kraft sowie Klarheit zu finden.</p>
+    <p class="about-text">Für mich ist Energiearbeit eine sanfte, aber kraftvolle Möglichkeit, Menschen wieder in Verbindung mit sich selbst zu bringen und ihre natürliche Balance zu stärken.</p>
+    <div class="certificates-grid">
+      <div class="cert-card"><strong>1. Reiki Master Teacher</strong><span>Reiki School by Ksenia Deych, Barcelona (2025)</span></div>
+      <div class="cert-card"><strong>2. Access Bars Practitioner</strong><span>Access Consciousness International (2021)</span></div>
+      <div class="cert-card"><strong>3. Master Wellness Masseurin — 11 Massagearten</strong><span>Master Wellness Akademie, Norderstedt (2024)</span></div>
+      <div class="cert-card"><strong>4. Feng Shui Beraterin</strong><span>Zertifizierte Feng Shui Beraterin</span></div>
+    </div>
+  </div>
+  <div class="feedback-panel" id="feedback-panel-2">
+    <label>Ihr Vorschlag für Block 2 — Über mich:</label>
+    <textarea id="feedback-text-2" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+    <div class="feedback-actions">
+      <button class="btn-save" onclick="saveFeedback(2)">Speichern</button>
+      <button class="btn-cancel" onclick="toggleFeedback(2)">Abbrechen</button>
+      <button class="btn-delete" onclick="deleteFeedback(2)" style="display:none" id="delete-btn-2">Löschen</button>
+      <span class="saved-indicator" id="saved-2">✓ Gespeichert</span>
+    </div>
+  </div>
+</div>
 
-            <h3>Schema.org Tags</h3>
-            <ul class="schema-list">
-                <li><strong>Organization</strong> — Unternehmensinformationen</li>
-                <li><strong>WebSite</strong> — Website-Schema</li>
-                <li><strong>LocalBusiness</strong> — Lokale Geschäftsinformationen</li>
-                <li><strong>Service ×14</strong> — Alle Behandlungen als strukturierte Daten</li>
-                <li><strong>FAQPage</strong> — FAQ-Struktur für Rich Snippets</li>
-                <li><strong>Person</strong> — Therapeutin-Profil</li>
-            </ul>
-            <p style="font-size: 13px; color: var(--text-light); margin-top: 12px;">Alle Schema.org Tags sind als JSON-LD in die Seite eingebettet und können in der Vorschau überprüft werden.</p>
-        </div>
+<!-- BLOCK 3 — ENERGETISCHE PRAKTIKEN -->
+<div class="block-wrapper services-section" id="block-3">
+  <span class="block-label">Block 3 — Energetische Praktiken</span>
+  <button class="feedback-btn" onclick="toggleFeedback(3)">✏️ Vorschlag</button>
+  <div class="container">
+    <h2>Energetische Praktiken</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <h4>Reiki</h4>
+        <p>Energetische Therapie zur Aktivierung Ihrer Selbstheilungskräfte. Reiki lenkt die Energie nach innen, löst Blockaden und ermöglicht tiefe innere Wandlung. Bei Stress, Angst, Schlaflosigkeit oder emotionaler Erschöpfung — Reiki schafft Raum für Klarheit und Balance.</p>
+        <div class="service-meta">Sitzung | 70,00 €</div>
+        <a href="#" class="service-cta">→ Termin via WhatsApp vereinbaren</a>
+      </div>
+      <div class="service-card">
+        <h4>Access Bars</h4>
+        <p>32 Energiepunkte am Kopf — sanfte Berührung setzt alte Gedanken, Emotionen und Muster frei. Wie das Löschen einer überfüllten Festplatte: Access Bars schafft Freiraum für Ihre eigenen Wünsche und neue Möglichkeiten.</p>
+        <div class="service-meta">Sitzung | 70,00 €</div>
+        <a href="#" class="service-cta">→ Termin via WhatsApp vereinbaren</a>
+      </div>
+      <div class="service-card">
+        <h4>Fernreiki</h4>
+        <p>Energieübertragung auf Distanz — Reiki wirkt unabhängig von Ort und Zeit. Ideal, wenn Sie nicht persönlich in die Praxis kommen können.</p>
+        <div class="service-meta">30,00 €</div>
+        <a href="#" class="service-cta">→ Termin via WhatsApp vereinbaren</a>
+      </div>
+      <div class="service-card">
+        <h4>Heilungsstrahlen</h4>
+        <p>Energetische Heilung für Körper und Seele — sanft, berührungslos und tiefgreifend. Ideal bei emotionaler Belastung oder wenn Sie neue Kraft schöpfen möchten.</p>
+        <div class="service-meta">30,00 €</div>
+        <a href="#" class="service-cta">→ Termin via WhatsApp vereinbaren</a>
+      </div>
+    </div>
+    <p style="text-align:center; margin-top:24px; font-size:0.85rem; color:var(--text-light); font-style:italic;">Energetische Therapie ersetzt keine ärztliche Behandlung oder Diagnose.</p>
+  </div>
+  <div class="feedback-panel" id="feedback-panel-3">
+    <label>Ihr Vorschlag für Block 3 — Energetische Praktiken:</label>
+    <textarea id="feedback-text-3" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+    <div class="feedback-actions">
+      <button class="btn-save" onclick="saveFeedback(3)">Speichern</button>
+      <button class="btn-cancel" onclick="toggleFeedback(3)">Abbrechen</button>
+      <button class="btn-delete" onclick="deleteFeedback(3)" style="display:none" id="delete-btn-3">Löschen</button>
+      <span class="saved-indicator" id="saved-3">✓ Gespeichert</span>
+    </div>
+  </div>
+</div>
 
-        <div class="info-section">
-            <h2>📊 Content-Struktur</h2>
-            <h3>8 Haupt-Blöcke</h3>
-            <ol style="margin-left: 20px; margin-top: 12px;">
-                <li><strong>HERO</strong> — H1 + Subline + Primary CTA Button</li>
-                <li><strong>ÜBER MICH</strong> — Persönliche Geschichte + 4 Zertifikate</li>
-                <li><strong>ENERGETISCHE PRAKTIKEN</strong> — 4 Services mit Preisen (Reiki, Access Bars, Fernreiki, Heilungsstrahlen)</li>
-                <li><strong>MASSAGEN & WELLNESS</strong> — 10 Services mit Preisen (Lomi Lomi, Hotstone, Aroma, Fuß, Nuna Vut, Ganzkörper, Gesicht/Kopf, Sport, Taping, Padabhyanka)</li>
-                <li><strong>FENG SHUI BERATUNG</strong> — Single Service mit Kurzbeschreibung</li>
-                <li><strong>PREISE</strong> — Drei Preis-Tabellen (Energetische Praktiken + Massagen &amp; Wellness + Beratung &amp; Analyse)</li>
-                <li><strong>FAQ</strong> — 10 Fragen mit Akkordeon-Interaktivität</li>
-                <li><strong>KONTAKT / CTA</strong> — Kontaktinfo + WhatsApp-Button + Maps-Placeholder</li>
-            </ol>
-        </div>
+<!-- BLOCK 4 — MASSAGEN & WELLNESS -->
+<div class="block-wrapper services-section" id="block-4">
+  <span class="block-label">Block 4 — Massagen &amp; Wellness</span>
+  <button class="feedback-btn" onclick="toggleFeedback(4)">✏️ Vorschlag</button>
+  <div class="container">
+    <h2>Massagen &amp; Wellness</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <h4>Lomi Lomi Massage</h4>
+        <p>Die hawaiianische Tempelmassage: fließende, rhythmische Bewegungen lösen körperliche und emotionale Verspannungen. Lomi Lomi bringt Körper, Geist und Seele in Einklang — eine Massage, die tief berührt.</p>
+        <div class="service-meta">90 Min | 120,00 €</div>
+        <a href="#" class="service-cta">→ Termin via WhatsApp vereinbaren</a>
+      </div>
+      <div class="service-card">
+        <h4>Hotstone Massage</h4>
+        <p>Die Wärme der erhitzten Steine dringt tief in Ihre Muskulatur ein, fördert die Durchblutung und den Lymphfluss — wohltuende Tiefenentspannung für den ganzen Körper.</p>
+        <div class="service-meta">90 Min | 120,00 €</div>
+        <a href="#" class="service-cta">→ Termin via WhatsApp vereinbaren</a>
+      </div>
+      <div class="service-card">
+        <h4>Aroma Massage</h4>
+        <p>Massage mit ätherischen Ölen — je nach Öl vitalisierend, wärmend oder entspannend. Lassen Sie den Alltag hinter sich und spüren Sie, wie Körper und Geist zur Ruhe kommen.</p>
+        <div class="service-meta">50 Min | 60,00 €</div>
+        <a href="#" class="service-cta">→ Termin via WhatsApp vereinbaren</a>
+      </div>
+      <div class="service-card">
+        <h4>Fußzonenmassage</h4>
+        <p>Gezielte Stimulation der Reflexzonen am Fuß. Jede Zone ist mit einem Organ oder Körperbereich verbunden — Fußreflexzonenmassage fördert die Selbstregulation des Körpers.</p>
+        <div class="service-meta">50 Min | 60,00 €</div>
+        <a href="#" class="service-cta">→ Termin via WhatsApp vereinbaren</a>
+      </div>
+      <div class="service-card usp">
+        <h4>Nuna Vut Massage</h4>
+        <p>Seltene Polarmassage aus dem arktischen Territorium Nunavut in Kanada. Entstanden durch die extremen Klimabedingungen der Arktis. Gezielte Triggerpunkttechnik löst tiefe Verspannungen in Schulter und Rücken nachhaltig. In Hamburg exklusiv bei Svetlana Graf.</p>
+        <div class="service-meta">50 Min | 60,00 €</div>
+        <a href="#" class="service-cta">→ Termin via WhatsApp vereinbaren</a>
+      </div>
+      <div class="service-card">
+        <h4>Ganzkörpermassage</h4>
+        <p>Wohltuende Massage für den gesamten Körper — löst Verspannungen, fördert die Durchblutung und schenkt Ihnen tiefe Entspannung.</p>
+        <div class="service-meta">50 Min | 60,00 €</div>
+        <a href="#" class="service-cta">→ Termin via WhatsApp vereinbaren</a>
+      </div>
+      <div class="service-card">
+        <h4>Gesicht- und Kopfmassage</h4>
+        <p>Sanfte Massage für Gesicht und Kopf — löst Anspannung, lindert Kopfschmerzen und schenkt ein Gefühl von Leichtigkeit.</p>
+        <div class="service-meta">50 Min | 60,00 €</div>
+        <a href="#" class="service-cta">→ Termin via WhatsApp vereinbaren</a>
+      </div>
+      <div class="service-card">
+        <h4>Sportmassage</h4>
+        <p>Gezielte Massage für sportlich Aktive — lockert beanspruchte Muskulatur, beschleunigt die Regeneration und beugt Verletzungen vor.</p>
+        <div class="service-meta">70 Min | 90,00 €</div>
+        <a href="#" class="service-cta">→ Termin via WhatsApp vereinbaren</a>
+      </div>
+      <div class="service-card">
+        <h4>Kinesiology Taping</h4>
+        <p>Therapeutisches Taping zur Unterstützung von Muskeln und Gelenken — stabilisiert, lindert Schmerzen und fördert die natürliche Heilung.</p>
+        <div class="service-meta">30,00 €</div>
+        <a href="#" class="service-cta">→ Termin via WhatsApp vereinbaren</a>
+      </div>
+      <div class="service-card">
+        <h4>Padabhyanka</h4>
+        <p>Ayurvedische Fußmassage mit warmem Öl — löst Blockaden, fördert den Energiefluss und schenkt tiefe Entspannung bis in die Zehenspitzen.</p>
+        <div class="service-meta">30 Min | 35,00 €</div>
+        <a href="#" class="service-cta">→ Termin via WhatsApp vereinbaren</a>
+      </div>
+    </div>
+  </div>
+  <div class="feedback-panel" id="feedback-panel-4">
+    <label>Ihr Vorschlag für Block 4 — Massagen &amp; Wellness:</label>
+    <textarea id="feedback-text-4" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+    <div class="feedback-actions">
+      <button class="btn-save" onclick="saveFeedback(4)">Speichern</button>
+      <button class="btn-cancel" onclick="toggleFeedback(4)">Abbrechen</button>
+      <button class="btn-delete" onclick="deleteFeedback(4)" style="display:none" id="delete-btn-4">Löschen</button>
+      <span class="saved-indicator" id="saved-4">✓ Gespeichert</span>
+    </div>
+  </div>
+</div>
 
-        <div class="info-section">
-            <h2>🎨 Farbschema</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; margin-top: 12px;">
-                <div style="background-color: var(--primary); padding: 20px; border-radius: 6px; color: white; text-align: center;">
-                    <strong>Primary</strong><br>#6B5B95
-                </div>
-                <div style="background-color: var(--secondary); padding: 20px; border-radius: 6px; color: white; text-align: center;">
-                    <strong>Secondary</strong><br>#8B7CB8
-                </div>
-                <div style="background-color: var(--accent); padding: 20px; border-radius: 6px; color: white; text-align: center;">
-                    <strong>Accent</strong><br>#D4A574
-                </div>
-                <div style="background-color: var(--bg); padding: 20px; border-radius: 6px; border: 1px solid var(--border); text-align: center;">
-                    <strong>Background</strong><br>#FAF8F5
-                </div>
-            </div>
-            <p style="margin-top: 12px; font-size: 13px; color: var(--text-light);">Szenario C: Keine Figma-Bestätigung. Farben basieren auf Wellness/Massage/Energietherapie-Best-Practices.</p>
-        </div>
+<!-- BLOCK 5 — FENG SHUI -->
+<div class="block-wrapper fengshui-section" id="block-5">
+  <span class="block-label">Block 5 — Feng Shui Beratung</span>
+  <button class="feedback-btn" onclick="toggleFeedback(5)">✏️ Vorschlag</button>
+  <div class="container fengshui-content">
+    <h2>Feng Shui Beratung</h2>
+    <p>Harmonie beginnt im Raum. Mit einer persönlichen Kua-Zahl-Berechnung und Raumanalyse nach Feng Shui optimiere ich Ihr Zuhause oder Ihren Arbeitsplatz — für mehr Wohlbefinden, Klarheit und positive Energie.</p>
+    <a href="#" class="btn-primary">Termin via WhatsApp vereinbaren</a>
+  </div>
+  <div class="feedback-panel" id="feedback-panel-5">
+    <label>Ihr Vorschlag für Block 5 — Feng Shui Beratung:</label>
+    <textarea id="feedback-text-5" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+    <div class="feedback-actions">
+      <button class="btn-save" onclick="saveFeedback(5)">Speichern</button>
+      <button class="btn-cancel" onclick="toggleFeedback(5)">Abbrechen</button>
+      <button class="btn-delete" onclick="deleteFeedback(5)" style="display:none" id="delete-btn-5">Löschen</button>
+      <span class="saved-indicator" id="saved-5">✓ Gespeichert</span>
+    </div>
+  </div>
+</div>
 
-        <div class="info-section">
-            <h2>🛠 Technische Features</h2>
-            <ul style="margin-left: 20px; margin-top: 12px;">
-                <li><strong>Responsive Design</strong> — Mobile-first, optimiert für 320px – 1920px</li>
-                <li><strong>Feedback-System</strong> — ✏️ Buttons pro Block mit localStorage Persistierung</li>
-                <li><strong>FAQ-Akkordeon</strong> — Vanilla JS, kein Framework nötig</li>
-                <li><strong>SEO Bar</strong> — Collapsible, Dark Theme (#1a1a2e), JSON-LD Preview</li>
-                <li><strong>WhatsApp Integration</strong> — wa.me Links mit +49 170 545 9840</li>
-                <li><strong>Alle Preise bestätigt</strong> — Keine Platzhalter mehr, alle Preise aus DataRegistry (✅ CLIENT)</li>
-                <li><strong>Self-contained</strong> — Alle CSS und JS inline, keine externen Dependencies</li>
-                <li><strong>Accessibility</strong> — Semantic HTML, Alt-Text, ARIA-Labels</li>
-            </ul>
-        </div>
+<!-- BLOCK — PROZESS -->
+<div class="block-wrapper prozess-section" id="block-prozess">
+  <span class="block-label">Prozess — So einfach geht's</span>
+  <button class="feedback-btn" onclick="toggleFeedback('prozess')">✏️ Vorschlag</button>
+  <div class="container">
+    <h2>So einfach starten Sie</h2>
+    <p class="prozess-intro">Kein langer Vorlauf, keine Formulare — drei Schritte bis zu Ihrer ersten Behandlung.</p>
+    <div class="prozess-steps">
+      <div class="prozess-step">
+        <div class="step-number">1</div>
+        <h3>Kontakt aufnehmen</h3>
+        <p>Schreiben Sie mir kurz via WhatsApp oder E-Mail — welche Behandlung Sie interessiert und Ihren Wunschtermin.</p>
+      </div>
+      <div class="prozess-step">
+        <div class="step-number">2</div>
+        <h3>Kurze Abstimmung</h3>
+        <p>Ich melde mich innerhalb eines Tages. Wir klären gemeinsam, welche Behandlung am besten zu Ihnen und Ihrem Anliegen passt.</p>
+      </div>
+      <div class="prozess-step">
+        <div class="step-number">3</div>
+        <h3>Behandlung erleben</h3>
+        <p>In meiner Praxis in Hamburg (St. Benedictstraße 5, 20149 Hamburg) oder bequem als Fernsitzung — ganz nach Ihren Bedürfnissen.</p>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:8px;">
+      <a href="#" class="btn-primary">💬 Jetzt via WhatsApp Termin anfragen</a>
+    </div>
+  </div>
+  <div class="feedback-panel" id="feedback-panel-prozess">
+    <label>Ihr Vorschlag für Prozess-Block:</label>
+    <textarea id="feedback-text-prozess" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+    <div class="feedback-actions">
+      <button class="btn-save" onclick="saveFeedback('prozess')">Speichern</button>
+      <button class="btn-cancel" onclick="toggleFeedback('prozess')">Abbrechen</button>
+      <button class="btn-delete" onclick="deleteFeedback('prozess')" style="display:none" id="delete-btn-prozess">Löschen</button>
+      <span class="saved-indicator" id="saved-prozess">✓ Gespeichert</span>
+    </div>
+  </div>
+</div>
 
-        <div class="info-section">
-            <h2>✅ Version & Datum</h2>
-            <p>
-                <span class="version-badge">V1.3</span> <span class="badge badge-warning">AKTUALISIERT</span>
-                <strong>Erstellungsdatum:</strong> 2026-03-20
-            </p>
-            <p style="margin-top: 12px; font-size: 13px; color: var(--text-light);">
-                Diese Vorschau wurde basierend auf dem Content-Dokument <code>svetlana_graf_01_startseite.md</code> (V1.3) generiert.
-                Alle Inhalte, Preise und Kontaktdaten stammen aus der Kundendatenbank (DataRegistry). Aktualisierung: Preise korrigiert (Sportmassage 90€/70min, Aroma/Nuna Vut/Kinesiology Taping ausgefüllt), Feng Shui Beratung Preistabelle ergänzt.
-            </p>
-        </div>
+<!-- BLOCK 6 — PREISE -->
+<div class="block-wrapper pricing-section" id="block-6">
+  <span class="block-label">Block 6 — Preise</span>
+  <button class="feedback-btn" onclick="toggleFeedback(6)">✏️ Vorschlag</button>
+  <div class="container">
+    <h2>Preise</h2>
+    <p class="pricing-intro">Transparenz ist mir wichtig. Hier finden Sie alle Behandlungen mit Dauer und Preis auf einen Blick.</p>
+
+    <div class="pricing-category">
+      <h3>Energetische Praktiken</h3>
+      <table class="pricing-table">
+        <thead><tr><th>Behandlung</th><th>Dauer</th><th>Preis</th></tr></thead>
+        <tbody>
+          <tr><td>Reiki</td><td>Sitzung</td><td class="price">70,00 €</td></tr>
+          <tr><td>Access Bars</td><td>Sitzung</td><td class="price">70,00 €</td></tr>
+          <tr><td>Fernreiki</td><td>—</td><td class="price">30,00 €</td></tr>
+          <tr><td>Heilungsstrahlen</td><td>—</td><td class="price">30,00 €</td></tr>
+        </tbody>
+      </table>
     </div>
 
-    <footer>
-        <p>🌟 Svetlana Graf — Wellness, Massage & Energietherapie</p>
-        <p style="margin-top: 8px; font-size: 12px;">Hamburg-Bergedorf | Diese Vorschau ist für die interne Überprüfung bestimmt.</p>
-    </footer>
+    <div class="pricing-category">
+      <h3>Massagen &amp; Wellness</h3>
+      <table class="pricing-table">
+        <thead><tr><th>Behandlung</th><th>Dauer</th><th>Preis</th></tr></thead>
+        <tbody>
+          <tr><td>Lomi Lomi Massage</td><td>90 Min</td><td class="price">120,00 €</td></tr>
+          <tr><td>Hotstone Massage</td><td>90 Min</td><td class="price">120,00 €</td></tr>
+          <tr><td>Aroma Massage</td><td>50 Min</td><td class="price">60,00 €</td></tr>
+          <tr><td>Fußzonenmassage</td><td>50 Min</td><td class="price">60,00 €</td></tr>
+          <tr><td>Nuna Vut Massage</td><td>50 Min</td><td class="price">60,00 €</td></tr>
+          <tr><td>Ganzkörpermassage</td><td>50 Min</td><td class="price">60,00 €</td></tr>
+          <tr><td>Gesicht- und Kopfmassage</td><td>50 Min</td><td class="price">60,00 €</td></tr>
+          <tr><td>Sportmassage</td><td>70 Min</td><td class="price">90,00 €</td></tr>
+          <tr><td>Kinesiology Taping</td><td>—</td><td class="price">30,00 €</td></tr>
+          <tr><td>Padabhyanka</td><td>30 Min</td><td class="price">35,00 €</td></tr>
+          <tr><td>Massage nach Wahl</td><td>30 Min</td><td class="price">35,00 €</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="pricing-category">
+      <h3>Beratung &amp; Analyse</h3>
+      <table class="pricing-table">
+        <thead><tr><th>Behandlung</th><th>Dauer</th><th>Preis</th></tr></thead>
+        <tbody>
+          <tr><td>Kua-Zahl Auswertung</td><td>—</td><td class="price">30,00 €</td></tr>
+          <tr><td>Feng Shui Analyse</td><td>—</td><td class="price">6,00 €/m²</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="pricing-note">Gemäß §19 UStG (Kleinunternehmerregelung) wird keine Umsatzsteuer ausgewiesen. Alle Preise sind Endpreise.</p>
+  </div>
+  <div class="feedback-panel" id="feedback-panel-6">
+    <label>Ihr Vorschlag für Block 6 — Preise:</label>
+    <textarea id="feedback-text-6" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+    <div class="feedback-actions">
+      <button class="btn-save" onclick="saveFeedback(6)">Speichern</button>
+      <button class="btn-cancel" onclick="toggleFeedback(6)">Abbrechen</button>
+      <button class="btn-delete" onclick="deleteFeedback(6)" style="display:none" id="delete-btn-6">Löschen</button>
+      <span class="saved-indicator" id="saved-6">✓ Gespeichert</span>
+    </div>
+  </div>
+</div>
+
+<!-- BLOCK 7 — FAQ -->
+<div class="block-wrapper faq-section" id="block-7">
+  <span class="block-label">Block 7 — FAQ</span>
+  <button class="feedback-btn" onclick="toggleFeedback(7)">✏️ Vorschlag</button>
+  <div class="container">
+    <h2>Häufige Fragen</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">Was ist Reiki und wie funktioniert es?</div>
+        <div class="faq-answer">Reiki ist eine energetische Heilmethode, bei der durch sanftes Handauflegen die Selbstheilungskräfte des Körpers aktiviert werden. Eine Sitzung dauert etwa 60 Minuten — Sie liegen bekleidet und entspannt.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">Was sind Access Bars?</div>
+        <div class="faq-answer">Bei Access Bars werden 32 Energiepunkte am Kopf sanft berührt. Alte Gedanken und Muster können sich lösen — viele Klienten beschreiben ein Gefühl von Leichtigkeit und Klarheit.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">Welche Massage passt zu mir?</div>
+        <div class="faq-answer">Das hängt von Ihrem Anliegen ab: Bei Verspannungen empfehle ich Hotstone oder Sportmassage, für Tiefenentspannung Lomi Lomi, bei Stress Aroma Massage. Gerne berate ich Sie persönlich.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">Wie buche ich einen Termin?</div>
+        <div class="faq-answer">Am einfachsten per WhatsApp an +49 170 545 9840 oder per E-Mail an svetlanag@gmx.de. Ich melde mich zeitnah bei Ihnen.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">Wo befindet sich die Praxis?</div>
+        <div class="faq-answer">Meine Praxis befindet sich in Hamburg: St. Benedictstraße 5, 20149 Hamburg.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">Was kostet eine Sitzung?</div>
+        <div class="faq-answer">Die Preise beginnen bei 30 € (Fernreiki/Heilungsstrahlen) und reichen bis 120 € (Lomi Lomi/Hotstone, 90 Min). Die vollständige Preisliste finden Sie oben auf dieser Seite.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">Ersetzt Energietherapie eine ärztliche Behandlung?</div>
+        <div class="faq-answer">Nein. Energetische Therapie ist eine ergänzende Methode zur Förderung des Wohlbefindens. Sie ersetzt keine ärztliche Diagnose oder Behandlung.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">Was ist Feng Shui Beratung?</div>
+        <div class="faq-answer">Feng Shui analysiert die Energieströme in Ihren Räumen. Durch eine persönliche Kua-Zahl-Berechnung und gezielte Anpassungen schaffen wir mehr Harmonie in Ihrem Zuhause oder Büro.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">Gibt es auch Online-Sitzungen?</div>
+        <div class="faq-answer">Ja — Fernreiki und Heilungsstrahlen sind auch als Fernsitzung möglich. Sie benötigen nur einen ruhigen Ort und eine stabile Verbindung für ein kurzes Vorgespräch.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">Was ist die Nuna Vut Massage?</div>
+        <div class="faq-answer">Eine seltene Polarmassage aus dem arktischen Territorium Nunavut in Kanada. Gezielte Triggerpunkttechnik löst tiefe Verspannungen in Schulter und Rücken — in Hamburg exklusiv bei mir.</div>
+      </div>
+    </div>
+  </div>
+  <div class="feedback-panel" id="feedback-panel-7">
+    <label>Ihr Vorschlag für Block 7 — FAQ:</label>
+    <textarea id="feedback-text-7" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+    <div class="feedback-actions">
+      <button class="btn-save" onclick="saveFeedback(7)">Speichern</button>
+      <button class="btn-cancel" onclick="toggleFeedback(7)">Abbrechen</button>
+      <button class="btn-delete" onclick="deleteFeedback(7)" style="display:none" id="delete-btn-7">Löschen</button>
+      <span class="saved-indicator" id="saved-7">✓ Gespeichert</span>
+    </div>
+  </div>
+</div>
+
+<!-- BLOCK 8 — KONTAKT / CTA -->
+<div class="block-wrapper cta-section" id="block-8" style="background: linear-gradient(135deg, #6B5B95 0%, #4A3D6E 100%)!important;">
+  <span class="block-label" style="color:rgba(255,255,255,0.5);">Block 8 — Kontakt / CTA</span>
+  <button class="feedback-btn" onclick="toggleFeedback(8)">✏️ Vorschlag</button>
+  <div class="container">
+    <h2>Termin anfragen</h2>
+    <p>Sie möchten einen Termin vereinbaren oder haben Fragen zu meinen Behandlungen? Schreiben Sie mir unverbindlich — ich freue mich auf Sie.</p>
+    <a href="#" class="btn-whatsapp">💬 Jetzt unverbindlich via WhatsApp anfragen</a>
+    <div class="contact-info">
+      <p>📱 <strong>WhatsApp:</strong> <a href="#">+49 170 545 9840</a></p>
+      <p>✉️ <strong>E-Mail:</strong> <a href="#">svetlanag@gmx.de</a></p>
+      <p style="margin-top:16px;">📍 <strong>Adresse:</strong><br>St. Benedictstraße 5<br>20149 Hamburg</p>
+      <p style="margin-top:16px; opacity:0.7; font-size:0.85rem;">[Google Maps — Karte einbetten, Lazy Load]</p>
+    </div>
+  </div>
+  <div class="feedback-panel" id="feedback-panel-8">
+    <label>Ihr Vorschlag für Block 8 — Kontakt / CTA:</label>
+    <textarea id="feedback-text-8" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+    <div class="feedback-actions">
+      <button class="btn-save" onclick="saveFeedback(8)">Speichern</button>
+      <button class="btn-cancel" onclick="toggleFeedback(8)">Abbrechen</button>
+      <button class="btn-delete" onclick="deleteFeedback(8)" style="display:none" id="delete-btn-8">Löschen</button>
+      <span class="saved-indicator" id="saved-8">✓ Gespeichert</span>
+    </div>
+  </div>
+</div>
+
+<!-- STICKY CTA (mobile) -->
+<div class="sticky-cta">💬 WhatsApp</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="footer-col">
+      <h4>Svetlana Graf</h4>
+      <p>Energietherapie &amp; Massage<br>St. Benedictstraße 5<br>20149 Hamburg</p>
+    </div>
+    <div class="footer-col">
+      <h4>Kontakt</h4>
+      <p>📱 +49 170 545 9840<br>✉️ svetlanag@gmx.de</p>
+      <p style="margin-top:8px;">
+        <a href="https://www.instagram.com/massage_energetischeheilung_/">Instagram DE</a> ·
+        <a href="https://www.instagram.com/reiki.svet.hh/">Instagram RU</a>
+      </p>
+    </div>
+    <div class="footer-col">
+      <h4>Rechtliches</h4>
+      <p><a href="#">Impressum</a><br><a href="#">Datenschutz</a></p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Svetlana Graf — Energietherapie &amp; Massage</span>
+  </div>
+  <p class="footer-disclaimer">Energetische Therapie ersetzt keine ärztliche Behandlung oder Diagnose.</p>
+</footer>
+
+<!-- EXPORT OVERLAY -->
+<div class="export-overlay" id="exportOverlay">
+  <div class="export-box">
+    <div class="count" id="exportCount">0</div>
+    <h2>Kommentare bereit</h2>
+    <p>Alle Ihre Änderungsvorschläge für alle Seiten in einer Datei. Laden Sie sie herunter und senden Sie diese an Ihr Projektteam.</p>
+    <button class="btn-export" onclick="exportFeedback()">📥 Als Datei herunterladen</button>
+    <button class="btn-export btn-copy" onclick="copyFeedback()">📋 In Zwischenablage kopieren</button>
+    <br>
+    <button class="btn-close-overlay" onclick="closeExportOverlay()">Schließen</button>
+  </div>
+</div>
+
+<script>
+function toggleSeoBar() { document.getElementById('seoBar').classList.toggle('collapsed'); }
+
+(function() {
+  var PROJECT = 'svetlana_graf';
+  var PAGE = 'startseite';
+  var PAGE_TITLE = 'Startseite';
+  var STORAGE_KEY = '2p-feedback-' + PROJECT;
+
+  function getAllFeedback() { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); }
+  function getPageFeedback() { var all = getAllFeedback(); return all[PAGE] || {}; }
+  function savePageFeedback(pageData) {
+    var all = getAllFeedback();
+    if (Object.keys(pageData).length === 1 && pageData._title) { delete all[PAGE]; }
+    else { all[PAGE] = pageData; }
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(all));
+  }
+  function getTotalCount() {
+    var all = getAllFeedback(); var count = 0;
+    for (var page in all) { for (var key in all[page]) { if (key !== '_title') count++; } }
+    return count;
+  }
+  function loadFeedback() {
+    var pageData = getPageFeedback();
+    for (var blockId in pageData) {
+      if (blockId === '_title') continue;
+      var entry = pageData[blockId];
+      var text = (typeof entry === 'object') ? entry.text : entry;
+      var textarea = document.getElementById('feedback-text-' + blockId);
+      var btn = document.querySelector('#block-' + blockId + ' .feedback-btn');
+      var deleteBtn = document.getElementById('delete-btn-' + blockId);
+      if (textarea) textarea.value = text;
+      if (btn) { btn.classList.add('has-comment'); btn.textContent = '✏️ Kommentar bearbeiten'; }
+      if (deleteBtn) deleteBtn.style.display = 'inline-block';
+    }
+    updateCounter();
+  }
+  window.toggleFeedback = function(blockId) {
+    var panel = document.getElementById('feedback-panel-' + blockId);
+    panel.classList.toggle('open');
+    if (panel.classList.contains('open')) document.getElementById('feedback-text-' + blockId).focus();
+  };
+  window.saveFeedback = function(blockId) {
+    var text = document.getElementById('feedback-text-' + blockId).value.trim();
+    if (!text) return;
+    var blockEl = document.getElementById('block-' + blockId);
+    var labelEl = blockEl ? blockEl.querySelector('.block-label') : null;
+    var label = labelEl ? labelEl.textContent : ('Block ' + blockId);
+    var pageData = getPageFeedback();
+    pageData._title = PAGE_TITLE;
+    pageData[blockId] = { text: text, label: label };
+    savePageFeedback(pageData);
+    var btn = document.querySelector('#block-' + blockId + ' .feedback-btn');
+    btn.classList.add('has-comment'); btn.textContent = '✏️ Kommentar bearbeiten';
+    document.getElementById('delete-btn-' + blockId).style.display = 'inline-block';
+    var indicator = document.getElementById('saved-' + blockId);
+    indicator.style.display = 'flex';
+    setTimeout(function() { indicator.style.display = 'none'; }, 2000);
+    updateCounter();
+    setTimeout(function() { window.toggleFeedback(blockId); }, 1500);
+  };
+  window.deleteFeedback = function(blockId) {
+    var pageData = getPageFeedback(); delete pageData[blockId]; savePageFeedback(pageData);
+    document.getElementById('feedback-text-' + blockId).value = '';
+    var btn = document.querySelector('#block-' + blockId + ' .feedback-btn');
+    btn.classList.remove('has-comment'); btn.textContent = '✏️ Vorschlag';
+    document.getElementById('delete-btn-' + blockId).style.display = 'none';
+    updateCounter(); window.toggleFeedback(blockId);
+  };
+  function updateCounter() {
+    var count = getTotalCount();
+    var counterEl = document.getElementById('feedbackCounter');
+    if (count > 0) {
+      counterEl.classList.add('has-feedback');
+      counterEl.innerHTML = '📥 Feedback: ' + count + ' Kommentar' + (count > 1 ? 'e' : '');
+    } else {
+      counterEl.classList.remove('has-feedback');
+      counterEl.innerHTML = 'Feedback: 0 Kommentare';
+    }
+  }
+  window.openExportOverlay = function() {
+    var count = getTotalCount(); if (count === 0) return;
+    document.getElementById('exportCount').textContent = count;
+    document.getElementById('exportOverlay').classList.add('open');
+  };
+  window.closeExportOverlay = function() { document.getElementById('exportOverlay').classList.remove('open'); };
+  function buildFeedbackText() {
+    var all = getAllFeedback(); var totalCount = getTotalCount();
+    var text = 'FEEDBACK — ' + PROJECT.toUpperCase() + '\n';
+    text += 'Datum: ' + new Date().toLocaleDateString('de-DE') + '\n';
+    text += totalCount + ' Kommentar(e) insgesamt\n';
+    text += '==================================================\n\n';
+    for (var page in all) {
+      var pageData = all[page]; var pageTitle = pageData._title || page;
+      text += '━━━ ' + pageTitle + ' ━━━\n\n';
+      for (var blockId in pageData) {
+        if (blockId === '_title') continue;
+        var entry = pageData[blockId];
+        var commentText = (typeof entry === 'object') ? entry.text : entry;
+        var label = (typeof entry === 'object' && entry.label) ? entry.label : ('Block ' + blockId);
+        text += '📌 ' + label + '\n';
+        text += '----------------------------------------\n';
+        text += commentText + '\n\n';
+      }
+    }
+    text += '==================================================\n';
+    text += 'Erstellt am ' + new Date().toLocaleString('de-DE') + '\n';
+    return text;
+  }
+  window.exportFeedback = function() {
+    var text = buildFeedbackText();
+    var blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a'); a.href = url;
+    a.download = 'feedback_' + PROJECT + '_' + new Date().toISOString().slice(0,10) + '.txt';
+    a.click(); URL.revokeObjectURL(url); window.closeExportOverlay();
+  };
+  window.copyFeedback = function() {
+    var text = buildFeedbackText();
+    navigator.clipboard.writeText(text).then(function() {
+      var btn = document.querySelector('.btn-copy'); var original = btn.textContent;
+      btn.textContent = '✅ Kopiert!';
+      setTimeout(function() { btn.textContent = original; }, 2000);
+    });
+  };
+  loadFeedback();
+})();
+</script>
 </body>
 </html>
