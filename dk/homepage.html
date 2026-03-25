@@ -8,6 +8,38 @@
     <link rel="stylesheet" href="style.css">
     <style>
 .placeholder-section { padding: 2rem; background: #f5f5f5; border: 2px dashed #ccc; border-radius: 8px; margin: 2rem 0; text-align: center; color: #999; font-style: italic; font-size: 1rem; }
+        .service-kacheln-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin: var(--spacing-md) 0; }
+        .service-kachel { background: var(--bg-light); border-radius: var(--radius); overflow: hidden; transition: transform 0.2s, box-shadow 0.2s; text-decoration: none; color: inherit; display: block; }
+        .service-kachel:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
+        .service-kachel-img { height: 180px; background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); display: flex; align-items: center; justify-content: center; font-size: 3rem; }
+        .service-kachel-body { padding: 1.25rem; }
+        .service-kachel-body h3 { font-size: 1.2rem; margin-bottom: 0.5rem; color: var(--secondary); }
+        .service-kachel-body p { color: var(--text-light); font-size: 0.95rem; margin-bottom: 0.75rem; }
+        .service-kachel-link { color: var(--accent); font-weight: 600; font-size: 0.95rem; }
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--spacing-md); margin: var(--spacing-lg) 0; text-align: center; }
+        .stat-item .stat-number { font-size: 2.5rem; font-weight: 800; color: var(--secondary); font-family: var(--font-heading); line-height: 1.2; }
+        .stat-item .stat-label { color: var(--text-light); font-size: 0.95rem; margin-top: 0.25rem; }
+        .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--spacing-md); margin: var(--spacing-md) 0; }
+        .process-step { text-align: center; padding: var(--spacing-md); }
+        .process-step .step-num { width: 48px; height: 48px; background: var(--secondary); color: white; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 1.25rem; font-weight: 700; margin-bottom: var(--spacing-sm); }
+        .process-step h3 { font-size: 1.05rem; margin-bottom: 0.5rem; }
+        .process-step p { color: var(--text-light); font-size: 0.9rem; }
+        .bewertung-cta-section { background: linear-gradient(135deg, var(--primary) 0%, #e8d5c0 100%); padding: var(--spacing-xl, 3rem) var(--spacing-md); border-radius: var(--radius); text-align: center; }
+        .bewertung-cta-section h2 { color: var(--secondary); }
+        .bewertung-cta-section p { max-width: 600px; margin: 0 auto var(--spacing-md); }
+        .suchprofil-section { background: var(--secondary); color: white; padding: var(--spacing-xl, 3rem) var(--spacing-md); border-radius: var(--radius); text-align: center; }
+        .suchprofil-section h2 { color: white; }
+        .suchprofil-section p { opacity: 0.9; max-width: 600px; margin: 0 auto var(--spacing-md); }
+        .suchprofil-section .cta-button { background: var(--accent); color: white; }
+        .testimonial-card { background: var(--bg-light); padding: 1.5rem; border-radius: var(--radius); border-left: 4px solid var(--accent); }
+        .testimonial-card .stars { color: var(--accent); margin-bottom: 0.5rem; }
+        .testimonial-card .author { font-weight: 600; margin-top: 0.75rem; color: var(--secondary); }
+        .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: var(--spacing-md) 0; }
+        @media (max-width: 768px) {
+            .service-kacheln-grid { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .process-grid { grid-template-columns: 1fr 1fr; }
+        }
         .problemloeser { padding: var(--spacing-lg) var(--spacing-md); background: white; margin: var(--spacing-lg) 0; }
         .problemloeser .problem-items { margin: var(--spacing-md) 0; }
         .problemloeser .problem-item { padding: var(--spacing-sm) 0; padding-left: 2.5rem; position: relative; font-size: 1.05rem; line-height: 1.6; }
@@ -93,8 +125,8 @@ section { position: relative; }
             <span class="meta-item"><strong>Description:</strong> Immobilie verkaufen, kaufen oder bewerten in Berlin. Professioneller Maklerservice + Finanzierungsberatung. Jetzt kostenlose Bewertung anfordern!</span>
         </div>
 
-        <div class="placeholder-section" style="background:#fffbeb; border-color:#f59e0b; font-style:normal; color:#92400e; font-size:0.9rem;">
-            v3 Update (13.03.2026): Kunden-Feedback DR eingearbeitet — 8 Problemlöser-Blöcke, 6 Trust-Punkte, Finanzierung unabhängig vom Objekt, SEO-Keywords beibehalten.
+        <div style="background:#fffbeb; border: 1px solid #f59e0b; border-radius: 6px; padding: 0.75rem 1rem; margin-bottom: var(--spacing-md); font-size:0.9rem; color:#92400e;">
+            <strong>v4 Update (24.03.2026):</strong> Alle Placeholder ersetzt — 4 Service-Kacheln, Suchprofil, So arbeiten wir (4-Schritte-Prozess), Bewertungs-CTA, Warum DK? (Statistiken), Empfohlene Immobilien, Testimonials, Kontaktformular, Footer. Design-Vorlage: DK_Home_Approved_Design.jpeg.
         </div>
 
         <!-- SECTION 1: HERO -->
@@ -116,10 +148,55 @@ section { position: relative; }
 </div>
 </section>
 
-        <!-- PLACEHOLDER: Hero-Kacheln -->
-        <div class="placeholder-section">
-            [4 Hero-Kacheln: Verkaufen, Angebote, Bewerten, Bauträger — UNVERÄNDERT]
-        </div>
+        <!-- SECTION: 4 Service-Kacheln (aus Design) -->
+        <section id="block-6" class="generic">
+            <span class="block-label" style="display:none">Service-Kacheln: Kaufen, Verkaufen, Bewerten, Investment</span>
+            <button class="feedback-btn" onclick="toggleFeedback(6)">&#9999;&#65039; Vorschlag</button>
+            <div class="service-kacheln-grid">
+                <a href="kaufen.html" class="service-kachel">
+                    <div class="service-kachel-img">&#127968;</div>
+                    <div class="service-kachel-body">
+                        <h3>Kaufen</h3>
+                        <p>Ihre Traumimmobilie in Berlin finden – mit persönlicher Beratung, exklusiven Off-Market-Angeboten und Finanzierung aus einer Hand.</p>
+                        <span class="service-kachel-link">Immobilie kaufen &rarr;</span>
+                    </div>
+                </a>
+                <a href="verkaufen.html" class="service-kachel">
+                    <div class="service-kachel-img">&#128206;</div>
+                    <div class="service-kachel-body">
+                        <h3>Verkaufen</h3>
+                        <p>Professionelle Vermarktung, diskrete Abwicklung und maximaler Verkaufspreis – begleitet durch den gesamten Verkaufsprozess.</p>
+                        <span class="service-kachel-link">Immobilie verkaufen &rarr;</span>
+                    </div>
+                </a>
+                <a href="bewertung.html" class="service-kachel">
+                    <div class="service-kachel-img">&#128200;</div>
+                    <div class="service-kachel-body">
+                        <h3>Bewerten</h3>
+                        <p>Kostenlose und professionelle Marktwertanalyse – fundiert, transparent und als Basis für Ihren erfolgreichen Verkauf.</p>
+                        <span class="service-kachel-link">Immobilie bewerten &rarr;</span>
+                    </div>
+                </a>
+                <a href="investment.html" class="service-kachel">
+                    <div class="service-kachel-img">&#128176;</div>
+                    <div class="service-kachel-body">
+                        <h3>Investment</h3>
+                        <p>Renditestarke Kapitalanlagen in Berlin – von Mehrfamilienhäusern bis Gewerbeimmobilien, 100 % diskret und Off-Market.</p>
+                        <span class="service-kachel-link">Investment-Beratung &rarr;</span>
+                    </div>
+                </a>
+            </div>
+            <div class="feedback-panel" id="feedback-panel-6">
+  <label>Ihr Vorschlag für Service-Kacheln:</label>
+  <textarea id="feedback-text-6" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+  <div class="feedback-actions">
+    <button class="btn-save" onclick="saveFeedback(6)">Speichern</button>
+    <button class="btn-cancel" onclick="toggleFeedback(6)">Abbrechen</button>
+    <button class="btn-delete" onclick="deleteFeedback(6)" style="display:none" id="delete-btn-6">Löschen</button>
+    <span class="saved-indicator" id="saved-6">&#10003; Gespeichert</span>
+  </div>
+</div>
+</section>
 
         <!-- SECTION 3: ALLES AUS EINER HAND -->
         <section id="block-2" class="generic">
@@ -195,10 +272,63 @@ section { position: relative; }
 </div>
 </section>
 
-        <!-- PLACEHOLDER: Video-Section, Service-Benefits -->
-        <div class="placeholder-section">
-            [Video-Section, Service-Benefits — UNVERÄNDERT]
-        </div>
+        <!-- SECTION: Suchprofil (aus Design: "Passende Immobilienangebote direkt ins Postfach") -->
+        <section id="block-7" class="suchprofil-section">
+            <span class="block-label" style="display:none">Passende Immobilienangebote – direkt für Sie ausgewählt</span>
+            <button class="feedback-btn" onclick="toggleFeedback(7)" style="color:white; border-color:rgba(255,255,255,0.4);">&#9999;&#65039; Vorschlag</button>
+            <h2>Passende Immobilienangebote – direkt für Sie ausgewählt</h2>
+            <p>Sie suchen eine bestimmte Immobilie in Berlin? Erstellen Sie Ihr persönliches Suchprofil und erhalten Sie passende Angebote, bevor sie auf den großen Portalen erscheinen – exklusiv und diskret.</p>
+            <a href="kaufen.html" class="cta-button">Suchprofil anlegen &rarr;</a>
+            <div class="feedback-panel" id="feedback-panel-7">
+  <label>Ihr Vorschlag für Suchprofil-Sektion:</label>
+  <textarea id="feedback-text-7" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+  <div class="feedback-actions">
+    <button class="btn-save" onclick="saveFeedback(7)">Speichern</button>
+    <button class="btn-cancel" onclick="toggleFeedback(7)">Abbrechen</button>
+    <button class="btn-delete" onclick="deleteFeedback(7)" style="display:none" id="delete-btn-7">Löschen</button>
+    <span class="saved-indicator" id="saved-7">&#10003; Gespeichert</span>
+  </div>
+</div>
+</section>
+
+        <!-- SECTION: So arbeiten wir (aus Design: 4-Schritte-Prozess) -->
+        <section id="block-8" class="generic">
+            <span class="block-label" style="display:none">So arbeiten wir</span>
+            <button class="feedback-btn" onclick="toggleFeedback(8)">&#9999;&#65039; Vorschlag</button>
+            <h2 style="text-align: center;">So arbeiten wir</h2>
+            <div class="process-grid">
+                <div class="process-step">
+                    <div class="step-num">1</div>
+                    <h3>Gespräch &amp; Analyse</h3>
+                    <p>Wir lernen Ihre Situation kennen und analysieren Ihre Möglichkeiten – persönlich und unverbindlich.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">2</div>
+                    <h3>Strategie &amp; Planung</h3>
+                    <p>Gemeinsam entwickeln wir eine individuelle Strategie für Kauf, Verkauf, Bewertung oder Finanzierung.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">3</div>
+                    <h3>Umsetzung &amp; Begleitung</h3>
+                    <p>Wir koordinieren alle Schritte – von der Vermarktung über Besichtigungen bis zur Vertragsverhandlung.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">4</div>
+                    <h3>Abschluss &amp; Nachbetreuung</h3>
+                    <p>Vom Notartermin bis zur Schlüsselübergabe und darüber hinaus – wir bleiben an Ihrer Seite.</p>
+                </div>
+            </div>
+            <div class="feedback-panel" id="feedback-panel-8">
+  <label>Ihr Vorschlag für So arbeiten wir:</label>
+  <textarea id="feedback-text-8" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+  <div class="feedback-actions">
+    <button class="btn-save" onclick="saveFeedback(8)">Speichern</button>
+    <button class="btn-cancel" onclick="toggleFeedback(8)">Abbrechen</button>
+    <button class="btn-delete" onclick="deleteFeedback(8)" style="display:none" id="delete-btn-8">Löschen</button>
+    <span class="saved-indicator" id="saved-8">&#10003; Gespeichert</span>
+  </div>
+</div>
+</section>
 
         <!-- SECTION 6: FINANZIERUNG CROSS-SELL -->
         <section id="block-4" class="cta">
@@ -220,10 +350,59 @@ section { position: relative; }
 </div>
 </section>
 
-        <!-- PLACEHOLDER: Homestaging, 3D, Luftaufnahmen, Diskreter Verkauf -->
-        <div class="placeholder-section">
-            [Homestaging, 3D, Luftaufnahmen, Diskreter Verkauf — UNVERÄNDERT]
-        </div>
+        <!-- SECTION: Bewertungs-CTA (aus Design: "Erfahren Sie kostenfrei, was Ihre Immobilie wert ist") -->
+        <section id="block-9" class="bewertung-cta-section">
+            <span class="block-label" style="display:none">Erfahren Sie kostenfrei, was Ihre Immobilie wert ist</span>
+            <button class="feedback-btn" onclick="toggleFeedback(9)">&#9999;&#65039; Vorschlag</button>
+            <h2>Erfahren Sie kostenfrei, was Ihre Immobilie wert ist</h2>
+            <p>Unsere professionelle Marktwertanalyse gibt Ihnen eine fundierte Einschätzung – als Grundlage für den Verkauf, die Finanzierung oder einfach für Ihre persönliche Entscheidung. Kostenlos und unverbindlich.</p>
+            <a href="bewertung.html" class="cta-button">Jetzt kostenlose Bewertung anfordern &rarr;</a>
+            <div class="feedback-panel" id="feedback-panel-9">
+  <label>Ihr Vorschlag für Bewertungs-CTA:</label>
+  <textarea id="feedback-text-9" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+  <div class="feedback-actions">
+    <button class="btn-save" onclick="saveFeedback(9)">Speichern</button>
+    <button class="btn-cancel" onclick="toggleFeedback(9)">Abbrechen</button>
+    <button class="btn-delete" onclick="deleteFeedback(9)" style="display:none" id="delete-btn-9">Löschen</button>
+    <span class="saved-indicator" id="saved-9">&#10003; Gespeichert</span>
+  </div>
+</div>
+</section>
+
+        <!-- SECTION: Warum DK? Statistiken (aus Design: 4 Kennzahlen) -->
+        <section id="block-10" class="generic">
+            <span class="block-label" style="display:none">Warum DK? – Kennzahlen</span>
+            <button class="feedback-btn" onclick="toggleFeedback(10)">&#9999;&#65039; Vorschlag</button>
+            <h2 style="text-align: center;">Warum DK?</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">20+</div>
+                    <div class="stat-label">Jahre gemeinsame Erfahrung</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">550+</div>
+                    <div class="stat-label">Bankpartner im Netzwerk</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100 %</div>
+                    <div class="stat-label">unabhängige Beratung</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">1 Hand</div>
+                    <div class="stat-label">Immobilie + Finanzierung</div>
+                </div>
+            </div>
+            <div class="feedback-panel" id="feedback-panel-10">
+  <label>Ihr Vorschlag für Warum DK? – Kennzahlen:</label>
+  <textarea id="feedback-text-10" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+  <div class="feedback-actions">
+    <button class="btn-save" onclick="saveFeedback(10)">Speichern</button>
+    <button class="btn-cancel" onclick="toggleFeedback(10)">Abbrechen</button>
+    <button class="btn-delete" onclick="deleteFeedback(10)" style="display:none" id="delete-btn-10">Löschen</button>
+    <span class="saved-indicator" id="saved-10">&#10003; Gespeichert</span>
+  </div>
+</div>
+</section>
 
         <!-- SECTION 8: TRUST -->
         <section id="block-5" class="trust-bar">
@@ -270,10 +449,120 @@ section { position: relative; }
 </div>
 </section>
 
-        <!-- PLACEHOLDER: Aktuelle Objekte, Testimonials, Kontaktformular, Footer -->
-        <div class="placeholder-section">
-            [Aktuelle Objekte, Testimonials, Kontaktformular, Footer — UNVERÄNDERT]
-        </div>
+        <!-- SECTION: Empfohlene Immobilien (aus Design) -->
+        <section id="block-11" class="generic" style="text-align: center; padding: var(--spacing-lg) var(--spacing-md); background: var(--bg-light); border-radius: var(--radius);">
+            <span class="block-label" style="display:none">Empfohlene Immobilien</span>
+            <button class="feedback-btn" onclick="toggleFeedback(11)">&#9999;&#65039; Vorschlag</button>
+            <h2>Empfohlene Immobilien</h2>
+            <p style="color: var(--text-light); margin-bottom: var(--spacing-md);">Entdecken Sie eine Auswahl unserer aktuellen Immobilienangebote in Berlin und Umgebung.</p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-bottom: var(--spacing-md);">
+                <div style="background: white; border-radius: var(--radius); overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+                    <div style="height: 160px; background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); display:flex; align-items:center; justify-content:center; color:white; font-size:2rem;">&#127970;</div>
+                    <div style="padding: 1rem;">
+                        <p style="font-weight:600; margin-bottom:4px;">Erdgeschosswohnung</p>
+                        <p style="color:var(--text-light); font-size:0.9rem; margin-bottom:4px;">10717 Berlin · 3 Zimmer · 85 m²</p>
+                        <p style="color:var(--accent); font-weight:700;">395.000 EUR</p>
+                    </div>
+                </div>
+                <div style="background: white; border-radius: var(--radius); overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+                    <div style="height: 160px; background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); display:flex; align-items:center; justify-content:center; color:white; font-size:2rem;">&#127968;</div>
+                    <div style="padding: 1rem;">
+                        <p style="font-weight:600; margin-bottom:4px;">Doppelhaushälfte</p>
+                        <p style="color:var(--text-light); font-size:0.9rem; margin-bottom:4px;">13503 Berlin · 5 Zimmer · 140 m²</p>
+                        <p style="color:var(--accent); font-weight:700;">475.000 EUR</p>
+                    </div>
+                </div>
+                <div style="background: white; border-radius: var(--radius); overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+                    <div style="height: 160px; background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); display:flex; align-items:center; justify-content:center; color:white; font-size:2rem;">&#127961;</div>
+                    <div style="padding: 1rem;">
+                        <p style="font-weight:600; margin-bottom:4px;">Dachgeschosswohnung</p>
+                        <p style="color:var(--text-light); font-size:0.9rem; margin-bottom:4px;">14195 Berlin · 4 Zimmer · 120 m²</p>
+                        <p style="color:var(--accent); font-weight:700;">1.950.000 EUR</p>
+                    </div>
+                </div>
+            </div>
+            <a href="kaufen.html" class="cta-button">Alle Angebote ansehen &rarr;</a>
+            <div class="feedback-panel" id="feedback-panel-11">
+  <label>Ihr Vorschlag für Empfohlene Immobilien:</label>
+  <textarea id="feedback-text-11" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+  <div class="feedback-actions">
+    <button class="btn-save" onclick="saveFeedback(11)">Speichern</button>
+    <button class="btn-cancel" onclick="toggleFeedback(11)">Abbrechen</button>
+    <button class="btn-delete" onclick="deleteFeedback(11)" style="display:none" id="delete-btn-11">Löschen</button>
+    <span class="saved-indicator" id="saved-11">&#10003; Gespeichert</span>
+  </div>
+</div>
+</section>
+
+        <!-- SECTION: Testimonials -->
+        <section id="block-12" class="generic">
+            <span class="block-label" style="display:none">Was unsere Kunden sagen</span>
+            <button class="feedback-btn" onclick="toggleFeedback(12)">&#9999;&#65039; Vorschlag</button>
+            <h2 style="text-align: center;">Was unsere Kunden sagen</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p>„Herr Kolesnikov hat uns beim Verkauf unserer Eigentumswohnung in Berlin hervorragend beraten. Seine professionelle und gleichzeitig persönliche Art hat uns von Anfang an überzeugt."</p>
+                    <div class="author">Michael Maurer</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p>„Der gesamte Verkaufsprozess war transparent und strukturiert. Wir wussten jederzeit, wo wir stehen. Die Kombination aus Immobilienexpertise und Finanzierungsberatung war für uns der entscheidende Vorteil."</p>
+                    <div class="author">Thomas Glatzel</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p>„Besonders beeindruckt hat uns die diskrete Vermarktung. Unsere Immobilie wurde verkauft, ohne dass die Nachbarschaft etwas mitbekommen hat. Genau das war uns wichtig."</p>
+                    <div class="author">Rayan Hoteit</div>
+                </div>
+            </div>
+            <div class="feedback-panel" id="feedback-panel-12">
+  <label>Ihr Vorschlag für Testimonials:</label>
+  <textarea id="feedback-text-12" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+  <div class="feedback-actions">
+    <button class="btn-save" onclick="saveFeedback(12)">Speichern</button>
+    <button class="btn-cancel" onclick="toggleFeedback(12)">Abbrechen</button>
+    <button class="btn-delete" onclick="deleteFeedback(12)" style="display:none" id="delete-btn-12">Löschen</button>
+    <span class="saved-indicator" id="saved-12">&#10003; Gespeichert</span>
+  </div>
+</div>
+</section>
+
+        <!-- SECTION: Kontaktformular -->
+        <section id="block-13" class="cta" style="text-align: center; padding: var(--spacing-lg) var(--spacing-md);">
+            <span class="block-label" style="display:none">Kontaktformular</span>
+            <button class="feedback-btn" onclick="toggleFeedback(13)">&#9999;&#65039; Vorschlag</button>
+            <h2>Haben Sie Fragen?</h2>
+            <p>Wir beantworten Ihnen diese gern. Hinterlassen Sie einfach Ihre Kontaktdaten und wir nehmen schnellstmöglich Kontakt mit Ihnen auf.</p>
+            <div style="max-width: 500px; margin: var(--spacing-md) auto; text-align: left;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                    <input type="text" placeholder="Vorname" style="padding: 12px; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 15px;" disabled>
+                    <input type="text" placeholder="Nachname" style="padding: 12px; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 15px;" disabled>
+                </div>
+                <input type="email" placeholder="Email" style="width: 100%; padding: 12px; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 15px; margin-bottom: 1rem; box-sizing: border-box;" disabled>
+                <input type="tel" placeholder="Telefon" style="width: 100%; padding: 12px; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 15px; margin-bottom: 1rem; box-sizing: border-box;" disabled>
+                <textarea placeholder="Ihre Nachricht" style="width: 100%; padding: 12px; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 15px; min-height: 100px; box-sizing: border-box;" disabled></textarea>
+                <button class="cta-button" style="margin-top: 1rem; width: 100%;" disabled>Nachricht senden</button>
+            </div>
+            <div class="feedback-panel" id="feedback-panel-13">
+  <label>Ihr Vorschlag für Kontaktformular:</label>
+  <textarea id="feedback-text-13" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+  <div class="feedback-actions">
+    <button class="btn-save" onclick="saveFeedback(13)">Speichern</button>
+    <button class="btn-cancel" onclick="toggleFeedback(13)">Abbrechen</button>
+    <button class="btn-delete" onclick="deleteFeedback(13)" style="display:none" id="delete-btn-13">Löschen</button>
+    <span class="saved-indicator" id="saved-13">&#10003; Gespeichert</span>
+  </div>
+</div>
+</section>
+
+        <!-- Footer -->
+        <footer style="background: var(--secondary); color: white; padding: var(--spacing-lg) var(--spacing-md); margin-top: var(--spacing-lg); text-align: center;">
+            <p style="font-weight: 600; font-size: 1.1rem; margin-bottom: var(--spacing-sm);">D.K. Real Estate GmbH</p>
+            <p style="opacity: 0.8; margin-bottom: 4px;">Hubertusallee 76, 14193 Berlin</p>
+            <p style="opacity: 0.8; margin-bottom: 4px;">+49 30 / 120 841 86 · kontakt@dk360.de</p>
+            <p style="opacity: 0.6; font-size: 0.85rem; margin-top: var(--spacing-md);">&copy; D.K. Real Estate GmbH · AGB · Impressum · Datenschutzerklärung</p>
+        </footer>
 
     </main>
 <div class="export-overlay" id="exportOverlay">

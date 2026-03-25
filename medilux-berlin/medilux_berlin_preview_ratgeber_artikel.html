@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ratgeber-Artikel — MEDILUX Berlin Preview</title>
+<style>
+:root {
+  --primary: #1A1A1A;
+  --blue:    #2B55C0;
+  --mid:     #4C7CDA;
+  --yellow:  #E8C830;
+  --bg:      #ECF3F7;
+  --white:   #FFFFFF;
+  --text:    #333333;
+  --gray:    #7A8A9E;
+  --line:    #D9E3EC;
+  --r8: 8px; --r12: 12px; --r16: 16px; --r30: 30px;
+  --ph-bg:  #FFF3CD;
+  --ph-bdr: #FFD93D;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  background:var(--bg);color:var(--text);line-height:1.6}
+.page{max-width:1200px;margin:0 auto;background:var(--white);min-height:100vh;
+  box-shadow:0 0 40px rgba(0,0,0,.08)}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.94);
+  backdrop-filter:blur(12px);border-bottom:1px solid var(--line);
+  padding:0 40px;height:52px;display:flex;align-items:center}
+.nav-logo{font-size:18px;font-weight:800;color:var(--blue);letter-spacing:2px;text-decoration:none}
+.nav-links{display:flex;align-items:center;gap:4px;margin-left:auto}
+.nav-links a{padding:5px 12px;border-radius:var(--r30);text-decoration:none;
+  font-size:12px;font-weight:500;color:var(--gray)}
+.nav-links a:hover{color:var(--blue)}
+.nav-links a.active{background:var(--blue);color:#fff}
+.nav-dot{width:4px;height:4px;background:var(--yellow);border-radius:50%}
+.nav-cta{background:var(--blue)!important;color:#fff!important;font-weight:600!important}
+/* DROPDOWN */
+details.nav-dd{position:relative;list-style:none}
+details.nav-dd > summary{padding:5px 12px;border-radius:var(--r30);
+  font-size:12px;font-weight:500;color:var(--gray);cursor:pointer;
+  list-style:none;user-select:none}
+details.nav-dd > summary::-webkit-details-marker{display:none}
+details.nav-dd > summary.active{background:var(--blue);color:#fff}
+details.nav-dd > summary:hover{color:var(--blue)}
+.nav-dd-menu{position:absolute;top:calc(100% + 4px);left:0;background:#fff;
+  border:1px solid var(--line);border-radius:var(--r12);padding:6px 0;
+  min-width:180px;box-shadow:0 4px 16px rgba(0,0,0,.12);z-index:200}
+.nav-dd-menu a{display:block;padding:8px 16px;font-size:12px;color:var(--text);
+  text-decoration:none;font-weight:500}
+.nav-dd-menu a:hover{background:var(--bg)}
+.nav-dd-menu a.dd-act{color:var(--blue);font-weight:700}
+
+/* META BAR */
+.meta-bar{background:var(--bg);border-left:4px solid var(--blue);
+  padding:12px 18px;margin:12px 40px;border-radius:var(--r12);
+  font-size:11px;line-height:1.8}
+.meta-bar strong{color:var(--blue)}
+.meta-kw{display:inline-block;background:var(--blue);color:#fff;
+  font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;margin-left:6px}
+.meta-url{font-family:monospace;font-size:10px;color:var(--gray);background:var(--bg);
+  padding:2px 6px;border-radius:4px;margin-left:4px}
+
+/* BREADCRUMB */
+.breadcrumb{padding:12px 40px;font-size:12px;color:var(--gray)}
+.breadcrumb a{color:var(--blue);text-decoration:none}
+.breadcrumb a:hover{text-decoration:underline}
+.breadcrumb span{margin:0 6px}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,#1a1a2e 0%,#2a2a4e 50%,#1a2a3e 100%);
+  color:#fff;border-radius:0 0 var(--r16) var(--r16);
+  padding:48px 40px 36px;overflow:hidden}
+.hero h1{font-size:30px;line-height:1.2;font-weight:700;max-width:700px;margin-bottom:12px}
+.hero .sub{font-size:15px;opacity:.88;line-height:1.5;max-width:640px;margin-bottom:20px}
+
+/* ARTICLE META */
+.article-meta{font-size:12px;color:rgba(255,255,255,.7);margin:8px 0 16px;display:flex;gap:16px;flex-wrap:wrap}
+.article-meta-dark{color:var(--gray)}
+
+/* ARTICLE TAGS */
+.article-tags{display:flex;gap:6px;margin-bottom:20px;flex-wrap:wrap}
+.article-tag{font-size:11px;background:rgba(255,255,255,.15);color:rgba(255,255,255,.9);padding:4px 10px;border-radius:20px;font-weight:600}
+.article-tag-light{background:var(--bg);color:var(--blue)}
+
+/* AI SNIPPET */
+.ai-snippet-block{background:var(--bg);border-radius:var(--r12);padding:20px 40px;border-left:4px solid var(--yellow);margin:0}
+.ai-snippet-block .ai-label{font-size:10px;font-weight:700;letter-spacing:1px;color:var(--gray);margin-bottom:6px}
+.ai-snippet-block p{font-size:14px;line-height:1.7;color:var(--text);margin:0}
+
+/* ARTICLE LAYOUT */
+.article-layout{display:grid;grid-template-columns:1fr 300px;gap:32px;padding:32px 40px}
+
+/* ARTICLE BODY */
+.article-body h2{font-size:22px;font-weight:700;color:var(--primary);margin:28px 0 14px;padding-top:8px;border-top:1px solid var(--line)}
+.article-body h2:first-child{border-top:none;margin-top:0}
+.article-body h3{font-size:16px;font-weight:700;margin:18px 0 8px;color:var(--primary)}
+.article-body p{font-size:14px;color:var(--text);line-height:1.7;margin-bottom:12px}
+.article-body ul,.article-body ol{padding-left:22px;margin-bottom:14px}
+.article-body li{font-size:14px;margin-bottom:6px;line-height:1.6}
+
+/* SIDEBAR */
+.article-sidebar{position:sticky;top:64px;height:fit-content}
+.sidebar-box{background:var(--bg);border-radius:var(--r12);padding:20px;margin-bottom:16px}
+.sidebar-box h4{font-size:13px;font-weight:700;color:var(--primary);margin-bottom:10px}
+.sidebar-box a{display:block;font-size:12px;color:var(--blue);text-decoration:none;padding:4px 0}
+.sidebar-box a:hover{text-decoration:underline}
+.sidebar-box a.active-toc{font-weight:700;color:var(--primary)}
+.sidebar-cta{background:var(--blue);color:#fff;border-radius:var(--r12);padding:20px;text-align:center;margin-bottom:16px}
+.sidebar-cta h4{color:#fff;font-size:14px;margin-bottom:8px}
+.sidebar-cta p{color:rgba(255,255,255,.85);font-size:12px;line-height:1.5;margin-bottom:10px}
+.sidebar-cta .btn{display:inline-block;background:#fff;color:var(--blue);padding:8px 20px;border-radius:var(--r30);font-weight:700;font-size:13px;text-decoration:none;margin-top:8px}
+.sidebar-cta .btn:hover{background:#f0f4ff}
+.sidebar-related{font-size:12px;color:var(--text)}
+.sidebar-related a{display:block;padding:8px 0;border-bottom:1px solid var(--line);color:var(--blue);text-decoration:none;font-size:12px;line-height:1.4}
+.sidebar-related a:last-child{border-bottom:none}
+.sidebar-related a:hover{color:var(--primary)}
+.sidebar-related .rel-tag{font-size:10px;color:var(--gray);display:block;margin-top:2px}
+
+/* INFO BOX */
+.info-box{background:#e8f5e9;border-left:4px solid #4caf50;border-radius:var(--r8);padding:16px 20px;margin:16px 0}
+.info-box p{margin:0;font-size:13px;line-height:1.6}
+.info-box strong{color:#2e7d32}
+
+/* COMPARISON TABLE (reuses price-table) */
+.price-table{width:100%;border-collapse:collapse;font-size:13px;margin:16px 0}
+.price-table th{background:var(--blue);color:#fff;padding:10px 14px;text-align:left;font-weight:600}
+.price-table td{padding:10px 14px;border-bottom:1px solid var(--line)}
+.price-table tr:nth-child(even) td{background:var(--bg)}
+.price-table .hl td{background:#e8f5e9;font-weight:600}
+
+/* CHECKLIST */
+.checklist{list-style:none;padding-left:0;margin:16px 0}
+.checklist li{padding:6px 0 6px 28px;position:relative;font-size:14px;line-height:1.6}
+.checklist li::before{content:'\2713';position:absolute;left:0;color:#4caf50;font-weight:700;font-size:16px}
+
+/* FAQ */
+details.faq{border-bottom:1px solid var(--line)}
+details.faq summary{padding:14px 0;font-weight:700;font-size:14px;cursor:pointer;
+  list-style:none;display:flex;justify-content:space-between;align-items:center;color:var(--primary)}
+details.faq summary::-webkit-details-marker{display:none}
+details.faq summary::after{content:'+';display:flex;align-items:center;justify-content:center;
+  width:24px;height:24px;background:var(--bg);border-radius:50%;
+  font-size:14px;color:var(--blue);flex-shrink:0}
+details.faq[open] summary::after{content:'\2212';background:var(--blue);color:#fff}
+.faq-a{padding:0 0 14px;font-size:13px;color:var(--text);line-height:1.7}
+
+/* CTA BANNER */
+.cta-banner{background:var(--blue);color:#fff;padding:36px;
+  border-radius:var(--r16);margin:32px 40px;text-align:center}
+.cta-banner h2{font-size:22px;color:#fff;margin-bottom:12px}
+.cta-banner p{font-size:14px;opacity:.92;max-width:600px;margin:0 auto 20px;color:#fff}
+.cta-banner .btn{display:inline-flex;background:#fff;color:var(--blue);
+  padding:10px 24px;border-radius:var(--r30);font-weight:700;font-size:14px;
+  text-decoration:none;margin:0 6px}
+.cta-banner .btn-out{background:transparent;border:1px solid rgba(255,255,255,.5);color:#fff}
+
+/* RELATED CARDS */
+.related-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0}
+.related-card{background:linear-gradient(135deg,#EFF4F6,#DAEAF6);border-radius:var(--r16);
+  padding:20px;display:flex;flex-direction:column}
+.related-card .rc-tag{font-size:10px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+.related-card h4{font-size:15px;font-weight:700;color:var(--primary);margin-bottom:8px;line-height:1.3}
+.related-card p{font-size:12px;color:var(--text);line-height:1.5;flex:1}
+.related-card a{color:var(--blue);font-weight:600;font-size:12px;text-decoration:none;margin-top:10px;display:inline-block}
+
+/* SECTIONS */
+.sec{padding:32px 40px}
+.sec-alt{background:var(--bg)}
+.sec h2{font-size:24px;font-weight:700;color:var(--primary);margin-bottom:16px}
+.sec h3{font-size:17px;font-weight:700;margin:20px 0 8px;color:var(--primary)}
+.sec p{font-size:14px;color:var(--text);line-height:1.6;margin-bottom:10px;max-width:780px}
+
+/* PLACEHOLDER */
+.ph{background:var(--ph-bg);border:1px dashed var(--ph-bdr);
+  border-radius:6px;padding:8px 14px;font-size:12px;
+  font-style:italic;color:#856404;margin:8px 0;display:inline-block}
+
+/* FOOTER */
+.footer{background:linear-gradient(180deg,#ECF3F7 0%,#fff 100%);
+  border-radius:var(--r16) var(--r16) 0 0;padding:28px 40px 16px;
+  margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.f-label{font-size:11px;color:var(--gray);margin-bottom:2px}
+.f-val{font-size:15px;font-weight:500;color:var(--blue);margin-bottom:10px}
+.f-links{display:flex;gap:16px;margin-top:8px;flex-wrap:wrap}
+.f-links a{font-size:11px;color:var(--gray);text-decoration:none}
+.f-links a:hover{color:var(--blue)}
+.f-copy{grid-column:1/-1;font-size:10px;color:var(--gray);
+  border-top:1px dashed var(--line);padding-top:10px;margin-top:6px}
+
+/* BADGE */
+.ver-badge{position:fixed;bottom:14px;right:14px;background:var(--blue);
+  color:#fff;padding:5px 12px;border-radius:var(--r30);font-size:10px;font-weight:700;z-index:200}
+.src-badge{position:fixed;bottom:14px;left:14px;background:#6b7280;
+  color:#fff;padding:4px 10px;border-radius:var(--r30);font-size:9px;z-index:200}
+
+/* === FEEDBACK UI === */
+:root{--fb-accent:#f59e0b;--fb-accent-border:#d97706;--fb-accent-hover:#d97706;--fb-saved:#10b981;--fb-saved-border:#059669;--fb-save:#2563eb;--fb-save-border:#1d4ed8;--fb-save-hover:#1d4ed8;--fb-panel-bg:#fef3c7;--fb-panel-border:#f59e0b;--fb-delete:#dc2626;--fb-delete-bg:#fef2f2;--fb-delete-border:#fca5a5;}
+.feedback-counter{background:var(--fb-accent);color:#1e293b;padding:5px 14px;border-radius:20px;font-weight:700;cursor:pointer;transition:transform 0.2s;font-size:13px;white-space:nowrap}
+.feedback-counter:hover{transform:scale(1.05)}
+.feedback-counter.has-feedback{animation:fb-pulse 2s infinite}
+@keyframes fb-pulse{0%,100%{box-shadow:0 0 0 0 rgba(245,158,11,0.4)}50%{box-shadow:0 0 0 8px transparent}}
+.feedback-btn{position:absolute;top:12px;right:24px;background:var(--fb-accent);border:2px solid var(--fb-accent-border);padding:5px 12px;border-radius:20px;cursor:pointer;font-size:12px;color:#1e293b;font-weight:600;transition:all 0.2s;z-index:10}
+.feedback-btn:hover{background:var(--fb-accent-hover);color:white}
+.feedback-btn.has-comment{background:var(--fb-saved);border-color:var(--fb-saved-border);color:white}
+.feedback-panel{display:none;margin-top:20px;background:var(--fb-panel-bg);border:2px solid var(--fb-panel-border);border-radius:8px;padding:20px;animation:fb-slideDown 0.3s ease}
+.feedback-panel.open{display:block}
+@keyframes fb-slideDown{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+.feedback-panel label{display:block;font-weight:600;margin-bottom:8px;color:var(--primary);font-size:14px}
+.feedback-panel textarea{width:100%;min-height:90px;padding:10px;border:1px solid #d1d5db;border-radius:6px;font-family:inherit;font-size:14px;resize:vertical}
+.feedback-actions{display:flex;gap:10px;margin-top:10px;align-items:center;flex-wrap:wrap}
+.btn-save{background:var(--fb-save);color:white;border:2px solid var(--fb-save-border);padding:7px 18px;border-radius:6px;cursor:pointer;font-size:13px;font-weight:600}
+.btn-save:hover{background:var(--fb-save-hover)}
+.btn-cancel{background:white;border:2px solid #94a3b8;padding:7px 18px;border-radius:6px;cursor:pointer;font-size:13px;color:#334155;font-weight:500}
+.btn-cancel:hover{background:#f1f5f9}
+.btn-delete{background:var(--fb-delete-bg);border:2px solid var(--fb-delete-border);padding:7px 14px;border-radius:6px;cursor:pointer;font-size:13px;color:var(--fb-delete);font-weight:500;margin-left:auto}
+.saved-indicator{display:none;color:#10b981;font-size:13px;align-items:center;gap:4px}
+.export-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:200;justify-content:center;align-items:center}
+.export-overlay.open{display:flex}
+.export-box{background:white;border-radius:12px;padding:32px;max-width:500px;width:90%;text-align:center}
+.export-box h2{margin-bottom:16px;font-size:22px}
+.export-box p{color:#64748b;margin-bottom:24px}
+.export-box .count{font-size:48px;font-weight:800;color:var(--fb-save)}
+.btn-export{display:inline-block;background:var(--fb-save);color:white;padding:13px 28px;border-radius:8px;border:none;font-size:15px;font-weight:600;cursor:pointer;margin:6px}
+.btn-close-overlay{display:inline-block;background:transparent;border:1px solid #e2e8f0;padding:13px 28px;border-radius:8px;font-size:15px;cursor:pointer;margin:6px;color:#64748b}
+
+/* RESPONSIVE */
+@media(max-width:800px){
+  .article-layout{grid-template-columns:1fr;gap:20px;padding:20px}
+  .article-sidebar{position:static}
+  .related-cards{grid-template-columns:1fr}
+  .nav{flex-wrap:wrap;height:auto;padding:8px 12px}
+  .hero{padding:40px 20px}.hero h1{font-size:24px}
+  .sec{padding:24px 20px}
+  .footer{grid-template-columns:1fr}
+  .breadcrumb{padding:12px 20px}
+  .cta-banner{margin:20px}
+  .feedback-btn{top:auto;bottom:-16px;right:16px;font-size:12px}
+  .feedback-panel{padding:16px}
+}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a href="medilux_berlin_preview_index.html" class="nav-logo">MEDILUX</a>
+  <div class="nav-links">
+    <a href="medilux_berlin_preview_startseite.html">Startseite</a>
+    <span class="nav-dot"></span>
+    <a href="medilux_berlin_preview_leistungen.html">Leistungen</a>
+    <span class="nav-dot"></span>
+    <details class="nav-dd">
+      <summary class="nav-dd-btn">F&uuml;r wen? &#9662;</summary>
+      <div class="nav-dd-menu">
+        <a href="medilux_berlin_preview_fuer_angehoerige.html">F&uuml;r Angeh&ouml;rige</a>
+        <a href="medilux_berlin_preview_fuer_senioren.html">F&uuml;r Senioren</a>
+        <a href="medilux_berlin_preview_fuer_berufsbetreuer.html">F&uuml;r Berufsbetreuer</a>
+        <a href="medilux_berlin_preview_fuer_aerzte.html">F&uuml;r &Auml;rzte</a>
+        <a href="medilux_berlin_preview_fuer_sozialdienste.html">F&uuml;r Sozialdienste</a>
+        <a href="medilux_berlin_preview_fuer_pflegeberater.html">F&uuml;r Pflegeberater</a>
+        <a href="medilux_berlin_preview_fuer_sozialamter.html">F&uuml;r Sozial&auml;mter</a>
+      </div>
+    </details>
+    <span class="nav-dot"></span>
+    <a href="medilux_berlin_preview_standorte.html">Standorte</a>
+    <span class="nav-dot"></span>
+    <a href="medilux_berlin_preview_ratgeber_artikel.html" class="active">Ratgeber</a>
+    <span class="nav-dot"></span>
+    <a href="medilux_berlin_preview_ueber_uns.html">&Uuml;ber uns</a>
+    <span class="nav-dot"></span>
+    <a href="medilux_berlin_preview_kontakt.html">Kontakt</a>
+    <a href="medilux_berlin_preview_kontakt.html" class="nav-cta">Beratung &rarr;</a>
+    <div class="feedback-counter" id="feedbackCounter" onclick="openExportOverlay()">Feedback: <span id="feedbackCount">0</span> Kommentare</div>
+  </div>
+</nav>
+<div class="page">
+
+<!-- META BAR -->
+<div class="meta-bar">
+  <strong>RATGEBER-ARTIKEL (Template) v0.1</strong> <span class="meta-kw">Pflege-WG vs Pflegeheim (500&ndash;1.000 SV)</span> | Typ: Hub-Seite (Pillar Content)
+  <br><strong>URL:</strong> <span class="meta-url">/ratgeber/pflege-wg-erklaert/</span>
+  <br><strong>SEO Title:</strong> Pflege-WG oder Pflegeheim? Ehrlicher Vergleich f&uuml;r Berlin 2026 | MEDILUX Berlin
+  <br><strong>Meta Desc:</strong> Pflege-WG vs. Pflegeheim in Berlin: Kosten, Betreuung, Atmosph&auml;re und Eigenanteil im direkten Vergleich. Mit Berliner Zahlen und praktischer Entscheidungshilfe. (156 Z.)
+</div>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="medilux_berlin_preview_startseite.html">Startseite</a> <span>&rsaquo;</span>
+  <a href="#">Ratgeber</a> <span>&rsaquo;</span>
+  Pflege-WG erkl&auml;rt
+</div>
+
+<!-- BLOCK 1: HERO -->
+<div id="block-1" style="position:relative">
+<button class="feedback-btn" onclick="toggleFeedback(1)">&#9998; Vorschlag</button>
+<section class="hero">
+  <h1>Pflege-WG oder Pflegeheim? Ehrlicher Vergleich f&uuml;r Berlin (2026)</h1>
+  <div class="article-meta">
+    <span>Aktualisiert: 28.04.2026</span>
+    <span>Lesezeit: ca. 12 Min.</span>
+    <span>Autor: MEDILUX Berlin Redaktion</span>
+  </div>
+  <div class="article-tags">
+    <span class="article-tag">Pflege-WG</span>
+    <span class="article-tag">Pflegeheim</span>
+    <span class="article-tag">Berlin</span>
+    <span class="article-tag">Kosten</span>
+    <span class="article-tag">Vergleich</span>
+  </div>
+  <p class="sub">Sie suchen einen Pflegeplatz in Berlin &mdash; und stehen vor der Frage: Pflege-Wohngemeinschaft oder Pflegeheim? Dieser Ratgeber vergleicht beide Optionen sachlich und mit konkreten Berliner Zahlen.</p>
+</section>
+<div class="feedback-panel" id="feedback-panel-1"><label>Ihr Vorschlag f&uuml;r &bdquo;Block 1: Hero &amp; Intro&ldquo;:</label><textarea id="feedback-text-1" placeholder="&Auml;nderungsvorschlag oder Kommentar&hellip;"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(1)">Speichern</button><button class="btn-cancel" onclick="toggleFeedback(1)">Abbrechen</button><button class="btn-delete" onclick="deleteFeedback(1)" style="display:none" id="delete-btn-1">L&ouml;schen</button><span class="saved-indicator" id="saved-1">&#10003; Gespeichert</span></div></div>
+</div>
+
+<!-- BLOCK 2: AI SNIPPET -->
+<div id="block-2" style="position:relative">
+<button class="feedback-btn" onclick="toggleFeedback(2)">&#9998; Vorschlag</button>
+<div class="ai-snippet-block">
+  <div class="ai-label">AI-SNIPPET &mdash; f&uuml;r Google AI Overviews (74 W&ouml;rter)</div>
+  <p>Eine Pflege-WG bietet famili&auml;re Betreuung in kleinen Gruppen von 6&ndash;12 Personen mit individueller Tagesgestaltung. Ein Pflegeheim versorgt 60&ndash;120 Bewohner mit festen Strukturen und umfassender medizinischer Infrastruktur. In Berlin liegt der Pflegeheim-Eigenanteil bei durchschnittlich 2.975 Euro monatlich. Pflege-WGs kosten je nach Anbieter &auml;hnlich, bieten daf&uuml;r h&ouml;here Personalschl&uuml;ssel und mehr Mitbestimmung. Die Wahl h&auml;ngt von Pflegebedarf, Budget und pers&ouml;nlichen Pr&auml;ferenzen ab.</p>
+</div>
+<div class="feedback-panel" id="feedback-panel-2"><label>Ihr Vorschlag f&uuml;r &bdquo;Block 2: AI-Snippet&ldquo;:</label><textarea id="feedback-text-2" placeholder="&Auml;nderungsvorschlag oder Kommentar&hellip;"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(2)">Speichern</button><button class="btn-cancel" onclick="toggleFeedback(2)">Abbrechen</button><button class="btn-delete" onclick="deleteFeedback(2)" style="display:none" id="delete-btn-2">L&ouml;schen</button><span class="saved-indicator" id="saved-2">&#10003; Gespeichert</span></div></div>
+</div>
+
+<!-- BLOCK 3: TWO-COLUMN ARTICLE LAYOUT -->
+<div id="block-3" style="position:relative">
+<button class="feedback-btn" onclick="toggleFeedback(3)">&#9998; Vorschlag</button>
+<div class="article-layout">
+
+<!-- === LEFT COLUMN: ARTICLE BODY === -->
+<div class="article-body">
+
+<!-- INLINE TOC -->
+<div style="background:var(--bg);border-radius:var(--r12);padding:20px;margin-bottom:24px">
+  <h4 style="font-size:14px;font-weight:700;color:var(--primary);margin-bottom:10px">Inhaltsverzeichnis</h4>
+  <ol style="padding-left:20px;margin:0;font-size:13px;line-height:2">
+    <li><a href="#sec-was-ist" style="color:var(--blue);text-decoration:none">Was ist eine Pflege-WG &mdash; und was ein Pflegeheim?</a></li>
+    <li><a href="#sec-vergleich" style="color:var(--blue);text-decoration:none">Pflege-WG vs. Pflegeheim &mdash; der direkte Vergleich</a></li>
+    <li><a href="#sec-kosten" style="color:var(--blue);text-decoration:none">Kosten in Berlin: Eigenanteil, Pflegekasse, Zusch&uuml;sse</a></li>
+    <li><a href="#sec-fuer-wen" style="color:var(--blue);text-decoration:none">F&uuml;r wen eignet sich welche Wohnform?</a></li>
+    <li><a href="#sec-qualitaet" style="color:var(--blue);text-decoration:none">Qualit&auml;t erkennen: Checkliste</a></li>
+    <li><a href="#sec-finden" style="color:var(--blue);text-decoration:none">Pflege-WG in Berlin finden &mdash; praktische Schritte</a></li>
+    <li><a href="#sec-faq" style="color:var(--blue);text-decoration:none">H&auml;ufige Fragen (FAQ)</a></li>
+  </ol>
+</div>
+
+<!-- H2: Was ist eine Pflege-WG -->
+<h2 id="sec-was-ist">1. Was ist eine Pflege-WG &mdash; und was ein Pflegeheim?</h2>
+<p>Bevor Sie vergleichen, lohnt es sich, die beiden Konzepte klar zu verstehen. Denn die Bezeichnungen klingen &auml;hnlich &mdash; die Realit&auml;t dahinter ist grundverschieden.</p>
+
+<h3>Die Pflege-Wohngemeinschaft (Pflege-WG)</h3>
+<p>Eine Pflege-WG ist eine ambulant betreute Wohnform. Sechs bis zw&ouml;lf pflegebed&uuml;rftige Menschen teilen sich eine Wohnung oder ein Haus. Sie haben ein eigenes Zimmer, nutzen aber K&uuml;che, Wohnzimmer und Garten gemeinsam.</p>
+<p>Der entscheidende Unterschied zum Heim: Die Bewohner &mdash; oder ihre Angeh&ouml;rigen &mdash; sind formal Mieter. Sie beauftragen gemeinsam einen Pflegedienst und bestimmen mit, wie der Alltag gestaltet wird.</p>
+
+<div class="info-box">
+  <p><strong>Typische Merkmale einer Pflege-WG:</strong></p>
+  <ul style="padding-left:18px;margin:8px 0 0">
+    <li>6&ndash;12 Bewohner pro Wohngemeinschaft</li>
+    <li>Eigenes Zimmer (12&ndash;22 m&sup2;), gemeinschaftliche Wohnbereiche</li>
+    <li>24-Stunden-Betreuung durch einen ambulanten Pflegedienst</li>
+    <li>Gemeinsames Kochen, individuelle Tagesgestaltung</li>
+    <li>Angeh&ouml;rige k&ouml;nnen sich aktiv einbringen</li>
+    <li>Anspruch auf Wohngruppenzuschlag (224 &euro;/Monat)</li>
+  </ul>
+</div>
+
+<h3>Das Pflegeheim (station&auml;re Pflege)</h3>
+<p>Ein Pflegeheim ist eine station&auml;re Einrichtung mit 60 bis 120 oder mehr Bewohnern. Die Pflege, Verpflegung und Betreuung liegen vollst&auml;ndig in der Hand des Tr&auml;gers. Bewohner haben ein Einzelzimmer und nutzen Gemeinschaftsr&auml;ume, die vom Heim gestaltet werden.</p>
+<p>Die Tagesstruktur ist weitgehend vorgegeben: feste Essenszeiten, geplante Aktivit&auml;ten, medizinische Visiten. Das bietet Sicherheit und Entlastung &mdash; aber weniger Spielraum f&uuml;r individuelle W&uuml;nsche.</p>
+
+<div class="info-box">
+  <p><strong>Typische Merkmale eines Pflegeheims:</strong></p>
+  <ul style="padding-left:18px;margin:8px 0 0">
+    <li>60&ndash;120+ Bewohner pro Einrichtung</li>
+    <li>Einzelzimmer (15&ndash;20 m&sup2;), zentrale Gemeinschaftsbereiche</li>
+    <li>Vollversorgung durch den Tr&auml;ger (Pflege, Verpflegung, Hauswirtschaft)</li>
+    <li>Feste Tagesstruktur und Essenszeiten</li>
+    <li>&Auml;rztliche Anbindung und medizinische Infrastruktur vor Ort</li>
+    <li>Einrichtungseinheitlicher Eigenanteil (EEE)</li>
+  </ul>
+</div>
+
+<!-- H2: Vergleich -->
+<h2 id="sec-vergleich">2. Pflege-WG vs. Pflegeheim &mdash; der direkte Vergleich</h2>
+<p>Die folgende Tabelle fasst die wichtigsten Unterschiede zusammen.</p>
+
+<table class="price-table">
+  <thead>
+    <tr>
+      <th style="width:28%">Kriterium</th>
+      <th style="width:36%">Pflege-WG</th>
+      <th style="width:36%">Pflegeheim</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>Bewohnerzahl</strong></td><td>6&ndash;12 pro WG</td><td>60&ndash;120+ pro Einrichtung</td></tr>
+    <tr><td><strong>Rechtsform</strong></td><td>Ambulant (Mieter + Pflegevertrag)</td><td>Station&auml;r (Heimvertrag)</td></tr>
+    <tr><td><strong>Betreuung</strong></td><td>24 h durch ambulanten Pflegedienst</td><td>24 h durch Heimteam</td></tr>
+    <tr class="hl"><td><strong>Personalschl&uuml;ssel</strong></td><td>H&ouml;her (1:4 bis 1:6)</td><td>Niedriger (1:8 bis 1:12)</td></tr>
+    <tr class="hl"><td><strong>Mitbestimmung</strong></td><td>Hoch &mdash; Bewohner/Angeh&ouml;rige gestalten Alltag</td><td>Gering &mdash; Tr&auml;ger bestimmt Ablauf</td></tr>
+    <tr><td><strong>Atmosph&auml;re</strong></td><td>Famili&auml;r, wohnlich</td><td>Institutionell, strukturiert</td></tr>
+    <tr><td><strong>Verpflegung</strong></td><td>Frisch gekocht in der WG-K&uuml;che</td><td>Zentralk&uuml;che, feste Men&uuml;s</td></tr>
+    <tr><td><strong>Eigenes Zimmer</strong></td><td>Ja, 12&ndash;22 m&sup2;</td><td>Ja, 15&ndash;20 m&sup2;</td></tr>
+    <tr><td><strong>Medizinische Versorgung</strong></td><td>Hausarzt kommt ins Haus</td><td>Oft Heimarzt vor Ort</td></tr>
+    <tr class="hl"><td><strong>Eigenanteil Berlin</strong></td><td>2.500&ndash;3.500 &euro; (je nach Anbieter)</td><td>2.975 &euro; (Berliner Durchschnitt)</td></tr>
+    <tr><td><strong>Wohngruppenzuschlag</strong></td><td>Ja (224 &euro;/Monat)</td><td>Nein</td></tr>
+    <tr><td><strong>Verhinderungspflege</strong></td><td>Ja, m&ouml;glich</td><td>Nicht anwendbar</td></tr>
+    <tr><td><strong>F&uuml;r Demenz geeignet</strong></td><td>Ja &mdash; besonders in spezialisierten WGs</td><td>Ja &mdash; in besch&uuml;tzten Bereichen</td></tr>
+    <tr><td><strong>Angeh&ouml;rige</strong></td><td>Aktive Rolle m&ouml;glich</td><td>Besucherrolle</td></tr>
+  </tbody>
+</table>
+
+<h3>Atmosph&auml;re und Alltag</h3>
+<p>In einer Pflege-WG riecht es morgens nach frischem Kaffee und Fr&uuml;hst&uuml;ck aus der eigenen K&uuml;che. Die Bewohner &mdash; oder die Alltagsbegleitung &mdash; kochen gemeinsam. Der Tag folgt einem Rhythmus, aber keinem starren Plan.</p>
+<p>Im Pflegeheim gibt es feste Essenszeiten, ein geplantes Tagesprogramm und eine K&uuml;che, die f&uuml;r 80 oder mehr Menschen kocht. F&uuml;r manche Menschen bietet genau diese Struktur Halt und Orientierung. F&uuml;r andere bedeutet sie einen Verlust an Eigenst&auml;ndigkeit.</p>
+
+<h3>Betreuung und Personal</h3>
+<p>Der Personalschl&uuml;ssel ist einer der gr&ouml;&szlig;ten Unterschiede. In einer guten Pflege-WG kommen auf 10&ndash;12 Bewohner tags&uuml;ber zwei bis drei Pflegekr&auml;fte. Das bedeutet: mehr Zeit f&uuml;r den einzelnen Menschen, mehr M&ouml;glichkeit f&uuml;r individuelle Betreuung.</p>
+<p>Bei MEDILUX Berlin arbeiten examinierte Pflegekr&auml;fte in kleinen, festen Teams. Jede Wohngemeinschaft hat ihre eigenen Bezugspersonen. <a href="/leistungen/" style="color:var(--blue)">Mehr &uuml;ber unser Team und unsere Leistungen &rarr;</a></p>
+
+<!-- H2: Kosten -->
+<h2 id="sec-kosten">3. Kosten in Berlin: Eigenanteil, Pflegekasse, Zusch&uuml;sse</h2>
+<p>Die Kostenfrage ist f&uuml;r die meisten Familien der zentrale Punkt. Hier die konkreten Zahlen f&uuml;r Berlin.</p>
+
+<h3>Pflegeheim &mdash; Eigenanteil in Berlin</h3>
+<p>Der einrichtungseinheitliche Eigenanteil (EEE) in Berliner Pflegeheimen liegt laut vdek-Auswertung bei durchschnittlich <strong>2.975 Euro pro Monat</strong> (Stand 2025). Dieser Betrag setzt sich zusammen aus Pflege-Eigenanteil, Unterkunft und Verpflegung sowie Investitionskosten.</p>
+<p>Seit 2022 gibt es gestaffelte Leistungszuschl&auml;ge der Pflegekasse:</p>
+<ul>
+  <li>Im 1. Jahr: 15 % Zuschlag auf den Pflege-Eigenanteil</li>
+  <li>Im 2. Jahr: 30 %</li>
+  <li>Im 3. Jahr: 50 %</li>
+  <li>Ab dem 4. Jahr: 75 %</li>
+</ul>
+
+<h3>Pflege-WG &mdash; Kosten bei MEDILUX Berlin</h3>
+<p>Bei MEDILUX Berlin liegt der monatliche Eigenanteil f&uuml;r einen Pflege-WG-Platz bei <strong>3.000 bis 3.500 Euro</strong>. In diesem Betrag sind enthalten:</p>
+<ul>
+  <li>Miete f&uuml;r das Einzelzimmer</li>
+  <li>Versorgungs- und Serviceentgelt</li>
+  <li>24-Stunden-Pflege und Betreuung</li>
+</ul>
+<p>S&auml;mtliche &uuml;ber die Pflegekasse abrechenbaren Leistungen werden vollst&auml;ndig zur Refinanzierung des Pflegeplatzes eingesetzt.</p>
+
+<h3>Zus&auml;tzliche Zusch&uuml;sse in der Pflege-WG</h3>
+<table class="price-table">
+  <thead>
+    <tr><th>Leistung</th><th>Betrag</th><th>Anspruch</th></tr>
+  </thead>
+  <tbody>
+    <tr class="hl"><td><strong>Wohngruppenzuschlag</strong></td><td>224 &euro;/Monat</td><td>Ab Pflegegrad 1, in anerkannter WG</td></tr>
+    <tr><td><strong>Entlastungsbetrag</strong></td><td>131 &euro;/Monat (ab 2025)</td><td>Ab Pflegegrad 1</td></tr>
+    <tr><td><strong>Verhinderungspflege</strong></td><td>Bis 1.612 &euro;/Jahr</td><td>Ab Pflegegrad 2</td></tr>
+    <tr><td><strong>Pflegehilfsmittel</strong></td><td>40 &euro;/Monat</td><td>Ab Pflegegrad 1</td></tr>
+  </tbody>
+</table>
+
+<div class="info-box">
+  <p><strong>Finanzierung bei geringem Einkommen:</strong> In beiden Wohnformen gilt: Wenn das eigene Einkommen und Verm&ouml;gen nicht ausreichen, &uuml;bernimmt das Sozialamt die Differenz (&bdquo;Hilfe zur Pflege&ldquo;, SGB XII). MEDILUX Berlin unterst&uuml;tzt Sie bei der Antragstellung. <a href="/kosten/" style="color:#2e7d32">Mehr zur Finanzierung &rarr;</a></p>
+</div>
+
+<!-- H2: Fuer wen -->
+<h2 id="sec-fuer-wen">4. F&uuml;r wen eignet sich welche Wohnform?</h2>
+<p>Es gibt keine pauschal &bdquo;bessere&ldquo; Wohnform. Die richtige Entscheidung h&auml;ngt von der individuellen Situation ab.</p>
+
+<h3>Eine Pflege-WG ist oft die bessere Wahl, wenn &hellip;</h3>
+<ul>
+  <li><strong>Famili&auml;re Atmosph&auml;re wichtig ist.</strong> Kleine Gruppe, pers&ouml;nliche Beziehungen, gemeinsames Kochen &mdash; das pr&auml;gt den Alltag in der WG.</li>
+  <li><strong>Die Person an Demenz erkrankt ist.</strong> Spezialisierte Demenz-WGs bieten konstante Bezugspersonen und einen strukturierten Alltag in kleinem Rahmen.</li>
+  <li><strong>Angeh&ouml;rige sich einbringen m&ouml;chten.</strong> In der WG k&ouml;nnen Sie mitentscheiden &mdash; &uuml;ber Pflegedienst, Mahlzeiten, Aktivit&auml;ten.</li>
+  <li><strong>Der Pflegebedarf hoch, aber stabil ist.</strong> Bei Pflegegrad 3 bis 5 mit planbarem Betreuungsbedarf. Auch Intensivpflege ist m&ouml;glich &mdash; etwa in der Villa Civitas. <a href="/standorte/" style="color:var(--blue)">Standorte ansehen &rarr;</a></li>
+</ul>
+
+<h3>Ein Pflegeheim kann die bessere Wahl sein, wenn &hellip;</h3>
+<ul>
+  <li><strong>Akuter, komplexer medizinischer Bedarf besteht.</strong> Manche Krankheitsbilder erfordern eine medizinische Infrastruktur, die nur gr&ouml;&szlig;ere Einrichtungen vorhalten k&ouml;nnen.</li>
+  <li><strong>Keine Angeh&ouml;rigen vorhanden sind,</strong> die sich einbringen k&ouml;nnen.</li>
+  <li><strong>Kurzfristige Aufnahme n&ouml;tig ist.</strong> Pflegeheime haben h&auml;ufiger kurzfristig verf&uuml;gbare Pl&auml;tze.</li>
+  <li><strong>Die Person selbst das Heim bevorzugt.</strong> Manche Menschen f&uuml;hlen sich in einer klar strukturierten Einrichtung wohler.</li>
+</ul>
+
+<h3>Demenz &mdash; ein Sonderfall</h3>
+<p>F&uuml;r Menschen mit Demenz ist die Wohnform besonders relevant. In einer kleinen Pflege-WG bleibt das Umfeld &uuml;berschaubar: weniger Bewohner, weniger Reize, konstante Gesichter. Das reduziert Unruhe und Angst.</p>
+<p>Bei MEDILUX Berlin bieten beide Standorte spezialisierte Demenz-Betreuung. Die Villa Civitas in Zehlendorf hat eine eigene Demenz-WG. Die Residenz Heerstra&szlig;e in Spandau verf&uuml;gt &uuml;ber einen besch&uuml;tzten Bereich mit gesichertem Gartenbereich.</p>
+
+<!-- H2: Qualitaet -->
+<h2 id="sec-qualitaet">5. Qualit&auml;t erkennen: Worauf Sie bei der Besichtigung achten sollten</h2>
+<p>Ob Pflege-WG oder Pflegeheim &mdash; die entscheidende Frage ist nicht die Wohnform, sondern die Qualit&auml;t der konkreten Einrichtung.</p>
+
+<h3>10 Fragen f&uuml;r Ihren Besichtigungstermin</h3>
+<ul class="checklist">
+  <li>Wie ist der Personalschl&uuml;ssel tags und nachts? Lassen Sie sich konkrete Zahlen nennen.</li>
+  <li>Wer kocht &mdash; und was? Frisch in der WG-K&uuml;che oder Zentralk&uuml;che?</li>
+  <li>Wie oft wechselt das Personal? Hohe Fluktuation ist ein Warnsignal.</li>
+  <li>Wie werden Nachtdienste organisiert? Wachpflegekraft oder Rufbereitschaft?</li>
+  <li>Wie sieht ein typischer Tag aus? Bitten Sie um einen konkreten Tagesablauf.</li>
+  <li>Wie werden Angeh&ouml;rige eingebunden? Gibt es regelm&auml;&szlig;ige Gespr&auml;che?</li>
+  <li>Welche Qualifikation hat das Personal? Examinierte, Pflegehelfer, Alltagsbegleiter &mdash; die Mischung z&auml;hlt.</li>
+  <li>Wie wird Medikation organisiert? Wer bestellt, stellt bereit, kontrolliert?</li>
+  <li>Gibt es Au&szlig;enbereich? Garten, Terrasse, Balkon &mdash; Zugang zu frischer Luft ist Lebensqualit&auml;t.</li>
+  <li>Was passiert, wenn der Pflegebedarf steigt? Kann die Einrichtung weiter versorgen?</li>
+</ul>
+
+<h3>Berliner Anlaufstellen f&uuml;r Beratung</h3>
+<ul>
+  <li><strong>Pflegest&uuml;tzpunkte Berlin:</strong> In jedem Bezirk, tr&auml;gerunabh&auml;ngig. Kostenlose Beratung.</li>
+  <li><strong>Compass Pflegeberatung:</strong> Telefonisch und vor Ort. Kostenlos f&uuml;r alle Versicherten.</li>
+  <li><strong>Verbraucherzentrale Berlin:</strong> Ber&auml;t auch zu Pflegeheim-Vertr&auml;gen und Pflege-WG-Rechten.</li>
+</ul>
+
+<!-- H2: Pflege-WG finden -->
+<h2 id="sec-finden">6. Pflege-WG in Berlin finden &mdash; praktische Schritte</h2>
+
+<h3>Schritt 1 &mdash; Pflegegrad beantragen oder pr&uuml;fen</h3>
+<p>F&uuml;r eine Pflege-WG ben&ouml;tigen Sie in der Regel mindestens Pflegegrad 2. Falls noch kein Pflegegrad vorliegt, stellen Sie einen Antrag bei Ihrer Pflegekasse.</p>
+
+<h3>Schritt 2 &mdash; Wohnform und Standort w&auml;hlen</h3>
+<p>&Uuml;berlegen Sie: Welcher Bezirk kommt infrage? Welche Spezialisierung wird ben&ouml;tigt?</p>
+<div class="info-box">
+  <p><strong>MEDILUX Berlin &mdash; zwei Standorte:</strong></p>
+  <ul style="padding-left:18px;margin:8px 0 0">
+    <li><strong>Villa Civitas in Zehlendorf</strong> &mdash; 35 Pl&auml;tze in 4 WGs: Demenz, Intensivpflege, Palliativ, Junge Pflege</li>
+    <li><strong>Residenz Heerstra&szlig;e in Spandau</strong> &mdash; 24 WG-Pl&auml;tze + 42 betreute Wohneinheiten</li>
+  </ul>
+  <p style="margin-top:8px"><a href="/standorte/" style="color:#2e7d32">Beide Standorte im Detail ansehen &rarr;</a></p>
+</div>
+
+<h3>Schritt 3 &mdash; Besichtigung vereinbaren</h3>
+<p>Besichtigen Sie mindestens zwei bis drei Einrichtungen. Kommen Sie zu unterschiedlichen Tageszeiten. Nehmen Sie die Checkliste aus dem vorherigen Abschnitt mit.</p>
+
+<h3>Schritt 4 &mdash; Finanzierung kl&auml;ren</h3>
+<p>Lassen Sie sich eine detaillierte Kostenaufstellung geben. Pr&uuml;fen Sie: Was &uuml;bernimmt die Pflegekasse? Welche Zusch&uuml;sse stehen Ihnen zu? <a href="/kostenrechner/" style="color:var(--blue)">MEDILUX Kostenrechner &rarr;</a></p>
+
+<h3>Schritt 5 &mdash; Einzug vorbereiten</h3>
+<p>Sobald ein Platz zugesagt ist: Pers&ouml;nliche Gegenst&auml;nde ausw&auml;hlen, die das Zimmer zum Zuhause machen. Fotos, eine Lieblingsdecke, das gewohnte Kopfkissen &mdash; Kleinigkeiten, die Orientierung geben.</p>
+
+<!-- H2: FAQ -->
+<h2 id="sec-faq">7. H&auml;ufige Fragen &mdash; Pflege-WG vs. Pflegeheim</h2>
+
+<details class="faq" open>
+  <summary>Was ist der Unterschied zwischen einer Pflege-WG und einem Pflegeheim?</summary>
+  <div class="faq-a">In einer Pflege-WG leben 6&ndash;12 Menschen in einer gemeinsamen Wohnung mit eigener K&uuml;chengestaltung und individueller Tagesstruktur. Ein Pflegeheim ist eine gr&ouml;&szlig;ere Einrichtung mit 60&ndash;120 Bewohnern, festen Abl&auml;ufen und zentraler Versorgung. Die Pflege-WG bietet mehr Mitbestimmung und famili&auml;re Atmosph&auml;re, das Pflegeheim mehr medizinische Infrastruktur.</div>
+</details>
+<details class="faq">
+  <summary>Was kostet eine Pflege-WG in Berlin im Vergleich zum Pflegeheim?</summary>
+  <div class="faq-a">Der durchschnittliche Eigenanteil im Berliner Pflegeheim liegt bei 2.975 Euro pro Monat (Stand 2025). Eine Pflege-WG bei MEDILUX Berlin kostet zwischen 3.000 und 3.500 Euro Eigenanteil monatlich. In diesem Betrag sind Miete, Versorgung und 24-Stunden-Pflege enthalten. Bei geringem Einkommen kann Hilfe zur Pflege beim Sozialamt beantragt werden. <a href="/kosten/" style="color:var(--blue)">Mehr zu Kosten &rarr;</a></div>
+</details>
+<details class="faq">
+  <summary>F&uuml;r wen ist eine Pflege-WG geeignet?</summary>
+  <div class="faq-a">Eine Pflege-WG eignet sich f&uuml;r Menschen ab Pflegegrad 2, die famili&auml;re Betreuung in kleiner Gruppe bevorzugen. Besonders geeignet ist sie f&uuml;r Menschen mit Demenz, die von konstanten Bezugspersonen und einem strukturierten Alltag profitieren. Auch f&uuml;r Angeh&ouml;rige, die Mitsprache bei der Pflege w&uuml;nschen.</div>
+</details>
+<details class="faq">
+  <summary>Kann das Sozialamt die Kosten einer Pflege-WG &uuml;bernehmen?</summary>
+  <div class="faq-a">Ja. Bei geringem Einkommen und Verm&ouml;gen k&ouml;nnen Sie Hilfe zur Pflege nach SGB XII beantragen. Das Sozialamt &uuml;bernimmt dann die Differenz zwischen dem Eigenanteil und Ihren finanziellen Mitteln &mdash; sowohl in der Pflege-WG als auch im Pflegeheim. MEDILUX Berlin unterst&uuml;tzt Sie bei der Antragstellung. <a href="/kontakt/" style="color:var(--blue)">Kontakt &rarr;</a></div>
+</details>
+<details class="faq">
+  <summary>Welche Pflege-WG-Standorte hat MEDILUX Berlin?</summary>
+  <div class="faq-a">MEDILUX Berlin betreibt zwei Standorte: Die Villa Civitas in Berlin-Zehlendorf (Lindenthaler Allee 20) bietet 35 Pl&auml;tze in vier spezialisierten WGs (Demenz, Intensivpflege, Palliativ, Junge Pflege). Die Residenz Heerstra&szlig;e in Berlin-Spandau (G&auml;rtnereiring 56) bietet 24 WG-Pl&auml;tze plus 42 betreute Wohneinheiten. <a href="/standorte/" style="color:var(--blue)">Standorte ansehen &rarr;</a></div>
+</details>
+
+</div><!-- /article-body -->
+
+<!-- === RIGHT COLUMN: SIDEBAR === -->
+<div class="article-sidebar">
+
+  <!-- TOC Sidebar -->
+  <div class="sidebar-box">
+    <h4>Inhalt</h4>
+    <a href="#sec-was-ist">1. Was ist eine Pflege-WG?</a>
+    <a href="#sec-vergleich">2. Direkter Vergleich</a>
+    <a href="#sec-kosten">3. Kosten in Berlin</a>
+    <a href="#sec-fuer-wen">4. F&uuml;r wen geeignet?</a>
+    <a href="#sec-qualitaet">5. Qualit&auml;t erkennen</a>
+    <a href="#sec-finden">6. Pflege-WG finden</a>
+    <a href="#sec-faq">7. FAQ</a>
+  </div>
+
+  <!-- CTA Box -->
+  <div class="sidebar-cta">
+    <h4>Kostenlose Beratung</h4>
+    <p>Wir beraten Sie pers&ouml;nlich zu Pflege-WG-Pl&auml;tzen in Berlin.</p>
+    <a href="tel:+493916076062" class="btn">0391/6076062</a>
+    <p style="margin-top:12px;font-size:11px;opacity:.7">Mo&ndash;Fr, 8:00&ndash;16:30 Uhr</p>
+  </div>
+
+  <!-- Kostenrechner Teaser -->
+  <div class="sidebar-box" style="background:linear-gradient(135deg,#EFF4F6,#DAEAF6)">
+    <h4>Kostenrechner</h4>
+    <p style="font-size:12px;color:var(--text);line-height:1.5;margin-bottom:8px">Berechnen Sie Ihren individuellen Eigenanteil f&uuml;r einen Pflege-WG-Platz bei MEDILUX Berlin.</p>
+    <a href="/kostenrechner/" style="display:inline-block;background:var(--blue);color:#fff;padding:6px 16px;border-radius:var(--r30);font-size:12px;font-weight:600;text-decoration:none">Jetzt berechnen &rarr;</a>
+  </div>
+
+  <!-- Related Articles -->
+  <div class="sidebar-box">
+    <h4>Verwandte Artikel</h4>
+    <div class="sidebar-related">
+      <a href="#">
+        Pflegegrad beantragen: Schritt-f&uuml;r-Schritt-Anleitung f&uuml;r Berlin
+        <span class="rel-tag">Ratgeber &middot; 8 Min.</span>
+      </a>
+      <a href="#">
+        Was kostet ein Pflegeplatz in Berlin? Eigenanteil, Zusch&uuml;sse &amp; Finanzierung
+        <span class="rel-tag">Ratgeber &middot; 10 Min.</span>
+      </a>
+      <a href="#">
+        Demenz-WG vs. besch&uuml;tzter Bereich: Die richtige Betreuung finden
+        <span class="rel-tag">Ratgeber &middot; 7 Min.</span>
+      </a>
+      <a href="#">
+        Hilfe zur Pflege: So beantragen Sie Sozialamts-Unterst&uuml;tzung
+        <span class="rel-tag">Ratgeber &middot; 6 Min.</span>
+      </a>
+    </div>
+  </div>
+
+</div><!-- /article-sidebar -->
+
+</div><!-- /article-layout -->
+<div class="feedback-panel" id="feedback-panel-3" style="margin:0 40px"><label>Ihr Vorschlag f&uuml;r &bdquo;Block 3: Artikelinhalt (Two-Column Layout)&ldquo;:</label><textarea id="feedback-text-3" placeholder="&Auml;nderungsvorschlag oder Kommentar&hellip;"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(3)">Speichern</button><button class="btn-cancel" onclick="toggleFeedback(3)">Abbrechen</button><button class="btn-delete" onclick="deleteFeedback(3)" style="display:none" id="delete-btn-3">L&ouml;schen</button><span class="saved-indicator" id="saved-3">&#10003; Gespeichert</span></div></div>
+</div>
+
+<!-- BLOCK 4: CTA BANNER -->
+<div id="block-4" style="position:relative">
+<button class="feedback-btn" onclick="toggleFeedback(4)">&#9998; Vorschlag</button>
+<div class="cta-banner">
+  <h2>Sie &uuml;berlegen, ob eine Pflege-WG das Richtige ist?</h2>
+  <p>Wir beraten Sie pers&ouml;nlich &mdash; kostenlos und unverbindlich. Ob f&uuml;r Sie selbst oder f&uuml;r einen Angeh&ouml;rigen: In einem Gespr&auml;ch kl&auml;ren wir gemeinsam, welche Wohnform und welcher Standort zu Ihrer Situation passt.</p>
+  <div>
+    <a href="tel:+493916076062" class="btn">0391/6076062 anrufen</a>
+    <a href="medilux_berlin_preview_kontakt.html" class="btn btn-out">Kontaktformular</a>
+  </div>
+</div>
+<div class="feedback-panel" id="feedback-panel-4"><label>Ihr Vorschlag f&uuml;r &bdquo;Block 4: CTA Banner&ldquo;:</label><textarea id="feedback-text-4" placeholder="&Auml;nderungsvorschlag oder Kommentar&hellip;"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(4)">Speichern</button><button class="btn-cancel" onclick="toggleFeedback(4)">Abbrechen</button><button class="btn-delete" onclick="deleteFeedback(4)" style="display:none" id="delete-btn-4">L&ouml;schen</button><span class="saved-indicator" id="saved-4">&#10003; Gespeichert</span></div></div>
+</div>
+
+<!-- BLOCK 5: RELATED ARTICLES -->
+<div id="block-5" style="position:relative">
+<button class="feedback-btn" onclick="toggleFeedback(5)">&#9998; Vorschlag</button>
+<div class="sec">
+  <h2>Das k&ouml;nnte Sie auch interessieren</h2>
+  <div class="related-cards">
+    <div class="related-card">
+      <div class="rc-tag">Ratgeber</div>
+      <h4>Pflegegrad beantragen: Anleitung f&uuml;r Berlin 2026</h4>
+      <p>Schritt f&uuml;r Schritt zum Pflegegrad &mdash; vom Antrag &uuml;ber die MD-Begutachtung bis zur Bewilligung. Mit Berliner Kontaktadressen und Fristen.</p>
+      <a href="#">Artikel lesen &rarr;</a>
+    </div>
+    <div class="related-card">
+      <div class="rc-tag">Ratgeber</div>
+      <h4>Was kostet ein Pflegeplatz in Berlin?</h4>
+      <p>Eigenanteil, Pflegekassen-Leistungen, Wohngruppenzuschlag und Sozialamts-Unterst&uuml;tzung &mdash; alle Kosten transparent erkl&auml;rt.</p>
+      <a href="#">Artikel lesen &rarr;</a>
+    </div>
+    <div class="related-card">
+      <div class="rc-tag">Standorte</div>
+      <h4>Unsere Pflege-WGs in Zehlendorf &amp; Spandau</h4>
+      <p>Villa Civitas und Residenz Heerstra&szlig;e &mdash; zwei Standorte, 59 WG-Pl&auml;tze. Virtueller Rundgang, Fotos und Anfahrt.</p>
+      <a href="#">Standorte ansehen &rarr;</a>
+    </div>
+  </div>
+</div>
+<div class="feedback-panel" id="feedback-panel-5"><label>Ihr Vorschlag f&uuml;r &bdquo;Block 5: Verwandte Artikel&ldquo;:</label><textarea id="feedback-text-5" placeholder="&Auml;nderungsvorschlag oder Kommentar&hellip;"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(5)">Speichern</button><button class="btn-cancel" onclick="toggleFeedback(5)">Abbrechen</button><button class="btn-delete" onclick="deleteFeedback(5)" style="display:none" id="delete-btn-5">L&ouml;schen</button><span class="saved-indicator" id="saved-5">&#10003; Gespeichert</span></div></div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div>
+    <div class="f-label">Telefon</div>
+    <div class="f-val">0391/6076062</div>
+    <div class="f-label">E-Mail</div>
+    <div class="f-val">medilux@live.de</div>
+  </div>
+  <div>
+    <div class="f-label">Standorte</div>
+    <div style="font-size:12px;color:var(--text);line-height:1.8">
+      Villa Civitas &mdash; Lindenthaler Allee 20, 14163 Berlin-Zehlendorf<br>
+      Residenz Heerstra&szlig;e &mdash; G&auml;rtnereiring 56, 13593 Berlin-Spandau
+    </div>
+    <div class="f-links">
+      <a href="medilux_berlin_preview_kosten.html">Kosten &amp; Finanzierung</a>
+      <a href="#">Mediatek</a>
+      <a href="#">Impressum</a>
+      <a href="#">Datenschutz</a>
+    </div>
+  </div>
+  <div class="f-copy">&copy; 2026 MEDILUX GmbH &mdash; Content Preview v0.1.0 &middot; Ratgeber-Artikel Template &middot; 2p-preview skill</div>
+</footer>
+</div><!-- /page -->
+
+<div class="ver-badge">v0.1</div>
+<div class="src-badge">2p-preview &middot; 22.03.2026</div>
+
+<!-- EXPORT OVERLAY -->
+<div class="export-overlay" id="exportOverlay">
+  <div class="export-box">
+    <div class="count" id="exportCount">0</div>
+    <h2>Kommentare bereit</h2>
+    <p>Alle Ihre &Auml;nderungsvorschl&auml;ge in einer Datei. Laden Sie sie herunter und senden Sie diese an Ihr Projektteam.</p>
+    <button class="btn-export" onclick="exportFeedback()">Als Datei herunterladen</button>
+    <button class="btn-close-overlay" onclick="closeExportOverlay()">Schlie&szlig;en</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  var PROJECT='medilux-berlin';
+  var PAGE='ratgeber-artikel';
+  var PAGE_TITLE='Ratgeber-Artikel: Pflege-WG erkl\u00e4rt';
+  var STORAGE_KEY='2p-feedback-'+PROJECT;
+  function getAll(){return JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}');}
+  function getPage(){var a=getAll();return a[PAGE]||{};}
+  function savePage(d){var a=getAll();if(Object.keys(d).length===1&&d._title){delete a[PAGE];}else{a[PAGE]=d;}localStorage.setItem(STORAGE_KEY,JSON.stringify(a));}
+  function total(){var a=getAll(),c=0;for(var p in a)for(var k in a[p])if(k!=='_title')c++;return c;}
+  function updateCounter(){var c=total(),el=document.getElementById('feedbackCounter');if(!el)return;if(c>0){el.classList.add('has-feedback');el.innerHTML='\uD83D\uDCE5 Feedback: '+c+' Kommentar'+(c>1?'e':'');}else{el.classList.remove('has-feedback');el.innerHTML='Feedback: 0 Kommentare';}}
+  function loadFeedback(){var d=getPage();for(var id in d){if(id==='_title')continue;var e=d[id];var t=typeof e==='object'?e.text:e;var ta=document.getElementById('feedback-text-'+id);var btn=document.querySelector('#block-'+id+' .feedback-btn');var del=document.getElementById('delete-btn-'+id);if(ta)ta.value=t;if(btn){btn.classList.add('has-comment');btn.textContent='\u270E Kommentar bearbeiten';}if(del)del.style.display='inline-block';}updateCounter();}
+  window.toggleFeedback=function(id){var p=document.getElementById('feedback-panel-'+id);p.classList.toggle('open');if(p.classList.contains('open'))document.getElementById('feedback-text-'+id).focus();};
+  window.saveFeedback=function(id){var t=document.getElementById('feedback-text-'+id).value.trim();if(!t)return;var el=document.getElementById('block-'+id);var lbl=el?(el.querySelector('.block-label,h2,h3')||{}).textContent||('Block '+id):('Block '+id);var d=getPage();d._title=PAGE_TITLE;d[id]={text:t,label:'Block '+id+' \u2014 '+(lbl.length>40?lbl.slice(0,40)+'\u2026':lbl)};savePage(d);var btn=document.querySelector('#block-'+id+' .feedback-btn');btn.classList.add('has-comment');btn.textContent='\u270E Kommentar bearbeiten';document.getElementById('delete-btn-'+id).style.display='inline-block';var s=document.getElementById('saved-'+id);s.style.display='flex';setTimeout(function(){s.style.display='none';},2000);updateCounter();setTimeout(function(){window.toggleFeedback(id);},1500);};
+  window.deleteFeedback=function(id){var d=getPage();delete d[id];savePage(d);document.getElementById('feedback-text-'+id).value='';var btn=document.querySelector('#block-'+id+' .feedback-btn');btn.classList.remove('has-comment');btn.textContent='\u270E Vorschlag';document.getElementById('delete-btn-'+id).style.display='none';updateCounter();window.toggleFeedback(id);};
+  window.openExportOverlay=function(){var c=total();if(c===0)return;document.getElementById('exportCount').textContent=c;document.getElementById('exportOverlay').classList.add('open');};
+  window.closeExportOverlay=function(){document.getElementById('exportOverlay').classList.remove('open');};
+  window.exportFeedback=function(){var a=getAll(),c=total();var t='FEEDBACK \u2014 MEDILUX BERLIN\nDatum: '+new Date().toLocaleDateString('de-DE')+'\n'+c+' Kommentar(e) insgesamt\n'+'='.repeat(50)+'\n\n';for(var page in a){var pd=a[page];t+='\u2501\u2501\u2501 '+(pd._title||page)+' \u2501\u2501\u2501\n\n';for(var bid in pd){if(bid==='_title')continue;var entry=pd[bid];var txt=typeof entry==='object'?entry.text:entry;var lbl=typeof entry==='object'&&entry.label?entry.label:('Block '+bid);t+='\uD83D\uDCCC '+lbl+'\n'+'-'.repeat(40)+'\n'+txt+'\n\n';}}t+='='.repeat(50)+'\nErstellt am '+new Date().toLocaleString('de-DE')+'\n';var blob=new Blob([t],{type:'text/plain;charset=utf-8'});var url=URL.createObjectURL(blob);var a2=document.createElement('a');a2.href=url;a2.download='feedback_medilux-berlin_'+new Date().toISOString().slice(0,10)+'.txt';a2.click();URL.revokeObjectURL(url);window.closeExportOverlay();};
+  document.addEventListener('click',function(e){if(!e.target.closest('details.nav-dd'))document.querySelectorAll('details.nav-dd[open]').forEach(function(d){d.removeAttribute('open');});});
+  loadFeedback();
+})();
+</script>
+</body>
+</html>

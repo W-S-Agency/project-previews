@@ -167,18 +167,83 @@ body {
   margin-left: 8px;
 }
 
-/* === META BAR === */
-.meta-bar {
+/* === SEO BAR === */
+.seo-bar {
   max-width: 1200px;
   margin: 16px auto;
-  padding: 12px 24px;
-  background: #f0f9ff;
-  border: 1px solid #bae6fd;
+  background: #1a1a2e;
   border-radius: var(--radius);
   font-size: 13px;
-  color: var(--text-light);
+  color: rgba(255,255,255,0.85);
+  overflow: hidden;
 }
-.meta-bar strong { color: var(--text); }
+.seo-bar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.15s;
+}
+.seo-bar-header:hover { background: rgba(255,255,255,0.05); }
+.seo-bar-header span { font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; color: rgba(255,255,255,0.6); }
+.seo-bar-header .seo-toggle { font-size: 11px; color: rgba(255,255,255,0.4); }
+.seo-bar-body { display: none; padding: 0 20px 16px; }
+.seo-bar.open .seo-bar-body { display: block; }
+.seo-bar.open .seo-toggle::after { content: '▲'; }
+.seo-bar:not(.open) .seo-toggle::after { content: '▼'; }
+.seo-row { display: flex; align-items: baseline; gap: 8px; margin-bottom: 8px; line-height: 1.6; }
+.seo-row .seo-label { color: rgba(255,255,255,0.5); font-size: 12px; min-width: 80px; flex-shrink: 0; }
+.seo-row .seo-value { color: rgba(255,255,255,0.9); word-break: break-word; }
+.seo-row code { background: rgba(255,255,255,0.1); padding: 2px 8px; border-radius: 4px; font-size: 12px; color: #93c5fd; }
+.len-badge {
+  display: inline-block;
+  padding: 1px 8px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+.len-ok { background: #065f46; color: #6ee7b7; }
+.len-warn { background: #78350f; color: #fcd34d; }
+.len-over { background: #7f1d1d; color: #fca5a5; }
+.schema-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.schema-tag {
+  display: inline-block;
+  background: rgba(99,102,241,0.2);
+  border: 1px solid rgba(99,102,241,0.4);
+  color: #a5b4fc;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 500;
+}
+.jsonld-toggle {
+  display: inline-block;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.6);
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 11px;
+  cursor: pointer;
+  margin-top: 8px;
+}
+.jsonld-toggle:hover { background: rgba(255,255,255,0.12); }
+.jsonld-preview { display: none; margin-top: 8px; }
+.jsonld-preview.open { display: block; }
+.jsonld-preview pre {
+  background: rgba(0,0,0,0.3);
+  padding: 12px 16px;
+  border-radius: var(--radius);
+  font-size: 12px;
+  color: #93c5fd;
+  overflow-x: auto;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
 
 /* === CONTENT === */
 .page-content {
@@ -196,6 +261,12 @@ body {
   border-radius: var(--radius);
 }
 .block:nth-child(even) { background: var(--bg-alt); }
+.block a { color: var(--accent); text-decoration: none; }
+.block a:hover { text-decoration: underline; }
+/* Override nth-child(even) for typed blocks with explicit backgrounds */
+.block.block-hero { background: linear-gradient(135deg, var(--primary) 0%, #0f2744 100%) !important; color: white !important; }
+.block.block-cta { background: var(--primary) !important; color: white !important; }
+.block.block-multistep { background: linear-gradient(135deg, #f0f7ff 0%, #e8f4f8 100%) !important; }
 .block-label {
   display: none; /* hidden, used by feedback JS */
 }
@@ -231,6 +302,7 @@ body {
 }
 .block-hero .btn:hover { transform: translateY(-2px); }
 .block-hero .btn-primary { background: var(--fb-accent); color: var(--text); }
+.block-hero a { color: white; }
 .block-hero .btn-secondary { background: rgba(255,255,255,0.15); color: white; border: 1px solid rgba(255,255,255,0.3); }
 
 /* Trust bar */
@@ -343,7 +415,10 @@ body {
 .block-cta h2 { margin-bottom: 16px; font-size: 26px; }
 .block-cta p { opacity: 0.9; margin-bottom: 24px; max-width: 600px; margin-left: auto; margin-right: auto; }
 .block-cta .contact-lines { font-size: 15px; margin-bottom: 20px; line-height: 2; }
+.block-cta a { color: white; text-decoration: underline; text-underline-offset: 2px; }
+.block-cta a:hover { opacity: 0.85; }
 .block-cta .btn { display: inline-block; background: var(--fb-accent); color: var(--text); padding: 14px 32px; border-radius: var(--radius); font-weight: 600; text-decoration: none; font-size: 16px; }
+.block-cta .contact-lines a { color: rgba(255,255,255,0.9); }
 
 /* Form */
 .block-form { background: var(--bg-alt); padding: 40px; border-radius: var(--radius); }
@@ -577,6 +652,110 @@ body {
 .btn-export.btn-copy:hover { background: var(--fb-accent-border); }
 .btn-close-overlay { display: inline-block; background: transparent; border: 1px solid var(--border); padding: 14px 32px; border-radius: var(--radius); font-size: 16px; cursor: pointer; margin: 8px; color: var(--text-light); }
 
+/* Multi-step Lead Magnet */
+.block-multistep {
+  background: linear-gradient(135deg, #f0f7ff 0%, #e8f4f8 100%);
+  border: 2px solid var(--primary);
+  border-radius: 12px;
+  padding: 40px 32px;
+}
+.ms-progress {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 32px;
+}
+.ms-step-dot {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid #cbd5e1;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 16px; color: #94a3b8;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+.ms-step-dot.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: white;
+  box-shadow: 0 0 0 4px rgba(30,58,95,0.15);
+}
+.ms-step-dot.completed {
+  background: var(--success);
+  border-color: var(--success);
+  color: white;
+}
+.ms-step-line {
+  width: 40px; height: 2px;
+  background: #cbd5e1;
+  flex-shrink: 0;
+}
+.ms-options { margin: 24px 0; }
+.ms-radios { display: flex; flex-direction: column; gap: 12px; }
+.ms-radio {
+  display: flex; align-items: flex-start; gap: 12px;
+  background: white;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  cursor: default;
+  transition: border-color 0.2s;
+}
+.ms-radio:hover { border-color: var(--primary-light); }
+.ms-radio input { margin-top: 4px; width: 18px; height: 18px; accent-color: var(--primary); }
+.ms-radio strong { display: block; font-size: 15px; color: var(--text); }
+.ms-opt-desc { display: block; font-size: 13px; color: var(--text-light); margin-top: 2px; }
+.ms-checkboxes { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
+.ms-checkbox {
+  display: flex; align-items: center; gap: 10px;
+  background: white;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  cursor: default;
+  font-size: 14px;
+}
+.ms-checkbox:hover { border-color: var(--primary-light); }
+.ms-checkbox input { width: 18px; height: 18px; accent-color: var(--primary); }
+.ms-table { margin: 20px 0; }
+.ms-table table { width: 100%; background: white; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); }
+.ms-table th, .ms-table td { padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--border); }
+.ms-table th { background: var(--bg-alt); font-size: 14px; font-weight: 600; }
+.ms-table td { font-size: 14px; }
+.ms-hint {
+  background: rgba(30,58,95,0.05);
+  border-left: 3px solid var(--primary);
+  padding: 12px 16px;
+  margin: 16px 0;
+  font-size: 14px;
+  color: var(--text-light);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+.ms-nav-buttons {
+  display: flex; justify-content: space-between; margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--border);
+}
+.ms-btn-back, .ms-btn-next {
+  padding: 12px 28px;
+  border-radius: var(--radius);
+  font-size: 15px; font-weight: 600;
+  cursor: default;
+}
+.ms-btn-back {
+  background: white; border: 2px solid var(--border); color: var(--text-light);
+}
+.ms-btn-next {
+  background: var(--primary); border: 2px solid var(--primary); color: white;
+}
+.ms-submit {
+  display: block; width: 100%; padding: 16px;
+  background: var(--primary); color: white;
+  border: none; border-radius: var(--radius);
+  font-size: 17px; font-weight: 700;
+  cursor: default; margin-top: 24px;
+}
+
 @media (max-width: 768px) {
   .feedback-btn { top: auto; bottom: -16px; right: 16px; font-size: 12px; }
   .block-hero { padding: 40px 20px; }
@@ -584,6 +763,10 @@ body {
   .cards-grid { grid-template-columns: 1fr; }
   .footer-inner { grid-template-columns: 1fr; }
   .preview-bar { flex-wrap: wrap; gap: 8px; }
+  .block-multistep { padding: 24px 16px; }
+  .ms-step-dot { width: 32px; height: 32px; font-size: 13px; }
+  .ms-step-line { width: 20px; }
+  .ms-checkboxes { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -601,7 +784,7 @@ body {
             <li><a href="renotec_preview_leistungen.html">Übersicht</a></li>
             <li><a href="renotec_preview_waermepumpen.html">Wärmepumpen</a></li><li><a href="renotec_preview_badsanierung.html">Badsanierung</a></li><li><a href="renotec_preview_heizungsinstallationen.html">Heizungsinstallation</a></li><li><a href="renotec_preview_sanitaerinstallationen.html">Sanitärinstallation</a></li><li><a href="renotec_preview_rohrreinigung.html">Rohrreinigung</a></li><li><a href="renotec_preview_sonstige.html">Sonstige Bauleistungen</a></li>
           </ul>
-        </li><li><a href="renotec_preview_bewertungen.html" class="active">Bewertungen</a></li><li><a href="renotec_preview_kontakt.html">Kontakt</a></li>
+        </li><li><a href="renotec_preview_bewertungen.html" class="active">Bewertungen</a></li><li><a href="renotec_preview_anfrage.html">Anfrage</a></li><li><a href="renotec_preview_kontakt.html">Kontakt</a></li>
         </ul>
       </div>
     </nav>
@@ -616,10 +799,44 @@ body {
       </div>
     </div>
   
-    <div class="meta-bar">
-      <strong>Title Tag:</strong> Kundenbewertungen &amp; Referenzen | RenoTec Berlin<br>
-      <strong>Meta Description:</strong> Echte Kundenbewertungen und Referenzprojekte von RenoTec Berlin. Meisterbetrieb für Sanitär &amp; Heizung. Überzeugen Sie sich selbst!
-      <span class="source-badge">Spec</span>
+    <div class="seo-bar" id="seoBar">
+      <div class="seo-bar-header" onclick="document.getElementById('seoBar').classList.toggle('open')">
+        <span>SEO &amp; Schema.org</span>
+        <span class="seo-toggle"></span>
+      </div>
+      <div class="seo-bar-body">
+        <div class="seo-row">
+          <span class="seo-label">Title</span>
+          <span class="seo-value">Kundenbewertungen &amp; Referenzen | RenoTec Berlin <span class="len-badge len-ok">47 — OK</span></span>
+        </div>
+        <div class="seo-row">
+          <span class="seo-label">Description</span>
+          <span class="seo-value">Kundenbewertungen und Referenzprojekte von RenoTec Berlin. SHK-Meisterbetrieb für Sanitär &amp; Heizung. Überzeugen Sie sich selbst! <span class="len-badge len-ok">128 — OK</span></span>
+        </div>
+        <div class="seo-row">
+          <span class="seo-label">URL</span>
+          <span class="seo-value"><code>/bewertungen/</code></span>
+        </div>
+        <div class="seo-row">
+          <span class="seo-label">Schema.org</span>
+          <span class="seo-value"><div class="schema-tags"><span class="schema-tag">Review / AggregateRating (via Plugin)</span></div></span>
+        </div>
+        <div class="jsonld-toggle" onclick="var el=document.getElementById('jsonldPreview');el.classList.toggle('open');this.textContent=el.classList.contains('open')?'▲ JSON-LD ausblenden':'▼ JSON-LD Vorschau'">▼ JSON-LD Vorschau</div>
+        <div class="jsonld-preview" id="jsonldPreview">
+          <pre><code>{
+  &quot;@context&quot;: &quot;https://schema.org&quot;,
+  &quot;@type&quot;: &quot;LocalBusiness&quot;,
+  &quot;name&quot;: &quot;RenoTec – SHK-Meisterbetrieb Berlin&quot;,
+  &quot;url&quot;: &quot;https://renotec-shk.de/bewertungen/&quot;,
+  &quot;address&quot;: {
+    &quot;@type&quot;: &quot;PostalAddress&quot;,
+    &quot;streetAddress&quot;: &quot;Pohlstraße 71&quot;,
+    &quot;addressLocality&quot;: &quot;Berlin&quot;,
+    &quot;postalCode&quot;: &quot;10785&quot;
+  }
+}</code></pre>
+        </div>
+      </div>
     </div>
   <main class="page-content">
     
@@ -627,7 +844,7 @@ body {
       <span class="block-label" style="display:none">Block 1 — </span>
       <button class="feedback-btn" onclick="toggleFeedback(1)">✏️ Vorschlag</button>
       <h2></h2>
-      <p>Vertrauen entsteht durch Erfahrung – und die sprechen unsere Kunden am besten selbst aus. RenoTec ist seit über 15 Jahren als SHK-Meisterbetrieb in Berlin tätig. Was uns antreibt, ist die Zufriedenheit jedes einzelnen Kunden – bei kleinen Reparaturen genauso wie bei großen Sanierungsprojekten.</p>
+      <p>Vertrauen entsteht durch Erfahrung – und die sprechen unsere Kunden am besten selbst aus. RenoTec ist Ihr SHK-Meisterbetrieb in Berlin – mit über 15 Jahren Erfahrung im SHK-Bereich. Was uns antreibt, ist die Zufriedenheit jedes einzelnen Kunden: bei kleinen Reparaturen genauso wie bei großen Sanierungsprojekten.</p>
       <div class="feedback-panel" id="feedback-panel-1">
         <label>Ihr Vorschlag für Block 1 — :</label>
         <textarea id="feedback-text-1" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
@@ -805,7 +1022,7 @@ body {
         </div>
         <div class="footer-col">
           <h4>Navigation</h4>
-          <ul><li><a href="#">Startseite</a></li><li><a href="#">Leistungen</a></li><li><a href="#">Bewertungen</a></li><li><a href="#">Kontakt</a></li></ul>
+          <ul><li><a href="#">Startseite</a></li><li><a href="#">Leistungen</a></li><li><a href="#">Bewertungen</a></li><li><a href="#">Anfrage</a></li><li><a href="#">Kontakt</a></li></ul>
         </div>
       </div>
       <div class="footer-bottom">
