@@ -23,6 +23,8 @@
         .steuer-box .hint-box { background: rgba(255,255,255,0.1); border-left: 4px solid var(--accent); padding: var(--spacing-md); border-radius: var(--radius-sm); margin-top: var(--spacing-md); }
         .trust-badges { display: flex; justify-content: center; gap: var(--spacing-md); margin-top: var(--spacing-md); flex-wrap: wrap; }
         .trust-badge-item { background: white; padding: var(--spacing-sm) var(--spacing-md); border-radius: var(--radius); font-weight: 600; font-size: 0.95rem; color: var(--secondary); box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .nav-cta { display: inline-block; background: var(--accent, #c9a96e); color: white; padding: 8px 20px; border-radius: var(--radius, 8px); font-weight: 700; font-size: 0.9rem; text-decoration: none; white-space: nowrap; transition: all 0.2s; border: none; cursor: pointer; }
+        .nav-cta:hover { filter: brightness(1.1); transform: translateY(-1px); }
     
 /* === FEEDBACK UI === */
 :root {
@@ -90,6 +92,7 @@ section { position: relative; }
                 <a href="bewertung.html">Bewertung</a>
                 <a href="finanzierung-danke.html">Danke</a>
             </div>
+            <a href="https://calendar.app.google/Fio8VHkp7TdYCmFt6" target="_blank" rel="noopener" class="nav-cta">📅 Termin buchen</a>
             <div class="feedback-counter" id="feedbackCounter" onclick="openExportOverlay()">Feedback: 0 Kommentare</div>
         </div>
     </nav>
