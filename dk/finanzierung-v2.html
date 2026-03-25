@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finanzierung v2 — finlink Integration | DK Preview</title>
+    <meta name="description" content="Finanzierung für Verkäufer und Käufer: Bankwertgutachten, 550+ Bankpartner, Zusage in 1–2 Wochen. DK Real Estate – Immobilie und Finanzierung aus einer Hand.">
+    <link rel="stylesheet" href="style.css">
+    <style>
+/* === PAGE-SPECIFIC STYLES === */
+.verkaufer-vorteile { background: var(--bg-light); padding: var(--spacing-lg) var(--spacing-md); border-radius: var(--radius); margin-bottom: var(--spacing-lg); }
+.verkaufer-vorteile .trust-item { border-left-color: var(--accent); }
+.kaufer-vorteile { background: white; padding: var(--spacing-lg) var(--spacing-md); margin-bottom: var(--spacing-lg); }
+.kaufer-vorteile .trust-item { border-left-color: var(--secondary); background: var(--bg-light); }
+.inhouse-block { padding: var(--spacing-lg) var(--spacing-md); margin-bottom: var(--spacing-lg); }
+.icons-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--spacing-md); margin-top: var(--spacing-md); }
+.icon-item { text-align: center; padding: var(--spacing-md); background: var(--bg-light); border-radius: var(--radius); }
+.icon-item .icon { font-size: 2rem; margin-bottom: var(--spacing-sm); }
+.icon-item h3 { font-size: 1.1rem; margin-bottom: var(--spacing-xs); }
+.icon-item p { color: var(--text-light); font-size: 0.95rem; margin: 0; }
+.steuer-box { background: var(--secondary); color: white; padding: var(--spacing-xl) var(--spacing-md); border-radius: var(--radius); margin: var(--spacing-lg) 0; }
+.steuer-box h2 { color: white; }
+.steuer-box p { color: rgba(255,255,255,0.9); max-width: 800px; }
+.steuer-box .hint-box { background: rgba(255,255,255,0.1); border-left: 4px solid var(--accent); padding: var(--spacing-md); border-radius: var(--radius-sm); margin-top: var(--spacing-md); }
+.trust-badges { display: flex; justify-content: center; gap: var(--spacing-md); margin-top: var(--spacing-md); flex-wrap: wrap; }
+.trust-badge-item { background: white; padding: var(--spacing-sm) var(--spacing-md); border-radius: var(--radius); font-weight: 600; font-size: 0.95rem; color: var(--secondary); box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+
+/* === HERO CTA ROW === */
+.hero-cta-row { display: flex; gap: 16px; flex-wrap: wrap; margin-top: var(--spacing-md); justify-content: center; }
+.cta-button-secondary { display: inline-block; background: transparent; color: var(--secondary); border: 2px solid var(--secondary); padding: 14px 32px; border-radius: var(--radius); font-size: 1rem; font-weight: 600; cursor: pointer; text-decoration: none; transition: all 0.2s; }
+.cta-button-secondary:hover { background: var(--secondary); color: white; }
+
+/* === FINLINK WIDGET SECTIONS === */
+.widget-section { padding: var(--spacing-xl) var(--spacing-md); background: #f8fbff; border-radius: var(--radius); margin: var(--spacing-lg) 0; border: 2px solid #d0e4f7; }
+.widget-section h2 { text-align: center; color: var(--secondary); }
+.widget-section .section-intro { text-align: center; max-width: 700px; margin: 0 auto var(--spacing-lg); color: var(--text-light); }
+.widget-iframe-wrap { border-radius: var(--radius); overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1); background: white; }
+.widget-iframe-wrap iframe { display: block; width: 100%; border: none; }
+.widget-alt-link { text-align: center; margin-top: var(--spacing-md); font-size: 0.95rem; color: var(--text-light); }
+.widget-alt-link a { color: var(--secondary); font-weight: 600; }
+
+/* === RECHNER GRID === */
+.rechner-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-lg); margin-top: var(--spacing-md); }
+.rechner-card { background: white; border-radius: var(--radius); box-shadow: 0 4px 20px rgba(0,0,0,0.08); overflow: hidden; }
+.rechner-card-header { background: var(--secondary); color: white; padding: var(--spacing-md); }
+.rechner-card-header h3 { color: white; margin: 0 0 4px; font-size: 1.1rem; }
+.rechner-card-header p { color: rgba(255,255,255,0.8); margin: 0; font-size: 0.9rem; }
+.rechner-card iframe { display: block; width: 100%; border: none; }
+@media(max-width: 768px) { .rechner-grid { grid-template-columns: 1fr; } }
+
+/* === CTA FINAL (ohne Form) === */
+.cta-final { text-align: center; padding: var(--spacing-xl) var(--spacing-md); }
+.cta-final h2 { color: var(--secondary); }
+.cta-final p { max-width: 650px; margin: 0 auto var(--spacing-lg); color: var(--text-light); }
+.cta-termin-btn { display: inline-block; background: var(--accent); color: white; padding: 18px 48px; border-radius: var(--radius); font-size: 1.1rem; font-weight: 700; text-decoration: none; transition: all 0.2s; border: none; cursor: pointer; }
+.cta-termin-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
+.cta-or-divider { margin: var(--spacing-md) 0; color: var(--text-light); font-size: 0.95rem; }
+.cta-or-divider a { color: var(--secondary); font-weight: 600; text-decoration: none; }
+.cta-or-divider a:hover { text-decoration: underline; }
+
+/* === VERSION BADGE === */
+.v2-banner { background: #1e293b; color: white; padding: 10px 20px; border-radius: var(--radius); margin-bottom: var(--spacing-lg); display: flex; gap: 16px; flex-wrap: wrap; align-items: center; font-size: 0.9rem; }
+.v2-banner strong { font-size: 1rem; }
+.v2-tag { background: #10b981; color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; }
+.v2-tag.removed { background: #dc2626; }
+.v2-tag.changed { background: #f59e0b; color: #1e293b; }
+.v2-changes { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-top: 6px; }
+.new-badge { background: #10b981; color: white; font-size: 0.7rem; font-weight: 700; padding: 2px 8px; border-radius: 10px; vertical-align: middle; margin-left: 8px; }
+.changed-badge { background: #f59e0b; color: #1e293b; font-size: 0.7rem; font-weight: 700; padding: 2px 8px; border-radius: 10px; vertical-align: middle; margin-left: 8px; }
+.removed-badge { background: #dc2626; color: white; font-size: 0.7rem; font-weight: 700; padding: 2px 8px; border-radius: 10px; vertical-align: middle; margin-left: 8px; }
+
+/* === FEEDBACK UI === */
+:root {
+  --fb-accent: #f59e0b; --fb-accent-border: #d97706; --fb-accent-hover: #d97706;
+  --fb-saved: #10b981; --fb-saved-border: #059669;
+  --fb-save: #2563eb; --fb-save-border: #1d4ed8; --fb-save-hover: #1d4ed8;
+  --fb-panel-bg: #fef3c7; --fb-panel-border: #f59e0b;
+  --fb-delete: #dc2626; --fb-delete-bg: #fef2f2; --fb-delete-border: #fca5a5;
+  --success: #10b981;
+}
+.feedback-counter { background: var(--fb-accent); color: #1e293b; padding: 6px 16px; border-radius: 20px; font-weight: 700; cursor: pointer; transition: transform 0.2s; font-size: 13px; white-space: nowrap; }
+.feedback-counter:hover { transform: scale(1.05); }
+.feedback-counter.has-feedback { animation: fb-pulse 2s infinite; }
+@keyframes fb-pulse { 0%,100%{box-shadow:0 0 0 0 color-mix(in srgb, var(--fb-accent) 40%, transparent)} 50%{box-shadow:0 0 0 8px transparent} }
+.feedback-btn { position:absolute; top:12px; right:24px; background:var(--fb-accent); border:2px solid var(--fb-accent-border); padding:6px 14px; border-radius:20px; cursor:pointer; font-size:13px; color:#1e293b; font-weight:600; transition:all 0.2s; z-index:10; }
+.feedback-btn:hover { background:var(--fb-accent-hover); border-color:var(--fb-accent-border); color:white; }
+.feedback-btn.has-comment { background:var(--fb-saved); border-color:var(--fb-saved-border); color:white; }
+section { position: relative; }
+.feedback-panel { display:none; margin-top:24px; background:var(--fb-panel-bg); border:2px solid var(--fb-panel-border); border-radius:var(--radius,8px); padding:20px; animation:fb-slideDown 0.3s ease; }
+.feedback-panel.open { display:block; }
+@keyframes fb-slideDown { from{opacity:0;transform:translateY(-10px)} to{opacity:1;transform:translateY(0)} }
+.feedback-panel label { display:block; font-weight:600; margin-bottom:8px; color:var(--primary,#1e3a5f); font-size:14px; }
+.feedback-panel textarea { width:100%; min-height:100px; padding:12px; border:1px solid var(--border,#e2e8f0); border-radius:var(--radius,8px); font-family:inherit; font-size:15px; resize:vertical; line-height:1.5; box-sizing:border-box; }
+.feedback-panel textarea:focus { outline:none; border-color:var(--fb-save); box-shadow:0 0 0 3px rgba(37,99,235,0.1); }
+.feedback-actions { display:flex; gap:12px; margin-top:12px; align-items:center; }
+.btn-save { background:var(--fb-save); color:white; border:2px solid var(--fb-save-border); padding:8px 20px; border-radius:var(--radius,8px); cursor:pointer; font-size:14px; font-weight:600; }
+.btn-save:hover { background:var(--fb-save-hover); }
+.btn-cancel { background:white; border:2px solid #94a3b8; padding:8px 20px; border-radius:var(--radius,8px); cursor:pointer; font-size:14px; color:#334155; font-weight:500; }
+.btn-cancel:hover { background:#f1f5f9; }
+.btn-delete { background:var(--fb-delete-bg); border:2px solid var(--fb-delete-border); padding:8px 16px; border-radius:var(--radius,8px); cursor:pointer; font-size:14px; color:var(--fb-delete); font-weight:500; margin-left:auto; }
+.btn-delete:hover { background:color-mix(in srgb, var(--fb-delete-bg) 80%, var(--fb-delete)); border-color:var(--fb-delete); }
+.saved-indicator { display:none; color:var(--success); font-size:13px; align-items:center; gap:4px; }
+.export-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:200; justify-content:center; align-items:center; }
+.export-overlay.open { display:flex; }
+.export-box { background:white; border-radius:12px; padding:32px; max-width:500px; width:90%; text-align:center; }
+.export-box h2 { margin-bottom:16px; font-size:22px; }
+.export-box p { color:var(--text-light,#64748b); margin-bottom:24px; }
+.export-box .count { font-size:48px; font-weight:800; color:var(--fb-save); }
+.btn-export { display:inline-block; background:var(--fb-save); color:white; padding:14px 32px; border-radius:var(--radius,8px); border:none; font-size:16px; font-weight:600; cursor:pointer; margin:8px; }
+.btn-export:hover { background:var(--fb-save-hover); }
+.btn-close-overlay { display:inline-block; background:transparent; border:1px solid var(--border,#e2e8f0); padding:14px 32px; border-radius:var(--radius,8px); font-size:16px; cursor:pointer; margin:8px; color:var(--text-light,#64748b); }
+@media(max-width:768px) { .feedback-btn{top:auto;bottom:-16px;right:16px;font-size:12px} .feedback-panel{padding:16px} .nav-links{flex-wrap:wrap;gap:4px} .nav-links a{font-size:12px;padding:4px 8px} }
+    </style>
+</head>
+<body>
+    <nav class="sticky-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">DK Real Estate — Preview</a>
+            <div class="nav-links">
+                <a href="homepage.html">Homepage</a>
+                <a href="kaufen.html">Kaufen</a>
+                <a href="finanzierung.html">Finanzierung v1</a>
+                <a href="finanzierung-v2.html" class="active">Finanzierung v2 ✦</a>
+                <a href="verkaufen.html">Verkaufen</a>
+                <a href="investment.html">Investment</a>
+                <a href="bewertung.html">Bewertung</a>
+            </div>
+            <div class="feedback-counter" id="feedbackCounter" onclick="openExportOverlay()">Feedback: 0 Kommentare</div>
+        </div>
+    </nav>
+
+    <main class="page-content">
+        <div class="meta-bar">
+            <span class="meta-item"><strong>URL:</strong> /immobilienfinanzierung-berlin/</span>
+            <span class="meta-item"><strong>Title:</strong> Immobilienfinanzierung Berlin | DK Real Estate</span>
+            <span class="meta-item"><strong>Version:</strong> v2 — finlink Integration (25.03.2026)</span>
+        </div>
+
+        <!-- VERSION BANNER -->
+        <div class="v2-banner">
+            <div>
+                <strong>Version 2 — finlink Integration</strong>
+                <div class="v2-changes">
+                    <span class="v2-tag changed">Hero: 2 CTAs</span>
+                    <span class="v2-tag">NEU: Antragsstrecke-Widget</span>
+                    <span class="v2-tag">NEU: Rechner-Tools</span>
+                    <span class="v2-tag removed">Kontaktformular entfernt</span>
+                    <span class="v2-tag changed">Finaler CTA: Termin buchen</span>
+                </div>
+            </div>
+            <div style="margin-left:auto; font-size:0.85rem; color:rgba(255,255,255,0.6);">
+                Vergleich: <a href="finanzierung.html" style="color:#60a5fa;">← v1 ansehen</a>
+            </div>
+        </div>
+
+        <!-- SECTION 1: HERO (GEÄNDERT: 2 CTAs) -->
+        <section id="block-1" class="hero">
+            <span class="block-label" style="display:none">Hero — Finanzierung, die wirklich für Sie arbeitet</span>
+            <button class="feedback-btn" onclick="toggleFeedback(1)">✏️ Vorschlag</button>
+            <h1>Immobilienfinanzierung Berlin – Ihr Vorteil als Verkäufer und Käufer</h1>
+            <h2>Finanzierung, die wirklich für Sie arbeitet <span class="changed-badge">GEÄNDERT</span></h2>
+            <p class="intro">DK Real Estate ist kein klassisches Maklerbüro. Wir sind ein Full-Service-Makler mit eigener Finanzierungsabteilung, Architektin und Energieberater im Haus. Das bedeutet: Ihre Immobilie wird nicht nur vermarktet, sondern so aufbereitet und finanzierbar gemacht, dass Verkäufer den bestmöglichen Preis erzielen und Käufer die bestmögliche Finanzierung erhalten.</p>
+            <p class="intro">Ob Sie verkaufen oder kaufen – unsere Finanzierungsexpertise schafft klare Vorteile für beide Seiten.</p>
+            <div class="hero-cta-row">
+                <a href="https://calendar.app.google/Fio8VHkp7TdYCmFt6" target="_blank" rel="noopener" class="cta-button">📅 Termin buchen</a>
+                <a href="https://dk360.finlink.de/start" target="_blank" rel="noopener" class="cta-button-secondary">Finanzierungsanfrage stellen →</a>
+            </div>
+            <div class="feedback-panel" id="feedback-panel-1">
+                <label>Ihr Vorschlag für den Hero-Bereich:</label>
+                <textarea id="feedback-text-1" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+                <div class="feedback-actions">
+                    <button class="btn-save" onclick="saveFeedback(1)">Speichern</button>
+                    <button class="btn-cancel" onclick="toggleFeedback(1)">Abbrechen</button>
+                    <button class="btn-delete" onclick="deleteFeedback(1)" style="display:none" id="delete-btn-1">Löschen</button>
+                    <span class="saved-indicator" id="saved-1">✓ Gespeichert</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: VERKÄUFER-VORTEILE (unverändert) -->
+        <section id="block-2" class="trust-bar verkaufer-vorteile">
+            <span class="block-label" style="display:none">Als Verkäufer: Wie unsere Finanzierungsexpertise Ihren Verkaufspreis steigert</span>
+            <button class="feedback-btn" onclick="toggleFeedback(2)">✏️ Vorschlag</button>
+            <h2>Als Verkäufer: Wie unsere Finanzierungsexpertise Ihren Verkaufspreis steigert</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto var(--spacing-lg); color: var(--text-light);">Viele Makler vermitteln – wir optimieren. Unsere Finanzierungsabteilung arbeitet aktiv daran, den Wert Ihrer Immobilie für die Bank und damit für den Käufer zu steigern.</p>
+            <div class="trust-items">
+                <div class="trust-item">
+                    <h3><span class="checkmark">✔</span> Bonitätsprüfung der Kaufinteressenten</h3>
+                    <p>Bevor ein Interessent Ihre Immobilie besichtigt, prüfen wir seine finanzielle Leistungsfähigkeit. So verschwenden Sie keine Zeit mit Käufern, die sich Ihre Immobilie nicht leisten können. Nur geprüfte Interessenten kommen in die engere Auswahl.</p>
+                </div>
+                <div class="trust-item">
+                    <h3><span class="checkmark">✔</span> Bankwertgutachten trifft Marktwertanalyse</h3>
+                    <p>Wir erstellen nicht nur eine Marktwertanalyse, sondern kennen auch den Beleihungswert, den Banken ansetzen. Diese doppelte Perspektive ermöglicht es uns, den Angebotspreis realistisch und gleichzeitig ambitioniert zu positionieren – damit Ihre Immobilie nicht unter Wert verkauft wird.</p>
+                </div>
+                <div class="trust-item">
+                    <h3><span class="checkmark">✔</span> Objektoptimierung: Wohnfläche und Energieausweis</h3>
+                    <p>Unsere Architektin prüft die Wohnflächenberechnung und unser Energieberater den Energieausweis. Häufig ergeben sich hier korrigierte Quadratmeterzahlen oder bessere Energiewerte – beides steigert den Bankwert und damit den erzielbaren Kaufpreis direkt.</p>
+                </div>
+                <div class="trust-item">
+                    <h3><span class="checkmark">✔</span> 550 Banken. 10 Hausbanken. Ihre beste Chance.</h3>
+                    <p>Wir arbeiten mit über 550 Bankpartnern und haben zu 10 Hausbanken einen direkten Draht. Das bedeutet: Wir finden für den Käufer die passende Finanzierung – und für Sie als Verkäufer einen zahlungsfähigen Käufer, der den vollen Preis tragen kann.</p>
+                </div>
+                <div class="trust-item">
+                    <h3><span class="checkmark">✔</span> Ergebnis: Höherer Preis durch bessere Finanzierbarkeit</h3>
+                    <p>Wenn die Bank eine Immobilie höher bewertet, kann der Käufer mehr finanzieren. Wenn der Käufer mehr finanzieren kann, können Sie einen höheren Preis erzielen. So einfach ist die Rechnung – und genau dafür sorgen wir.</p>
+                </div>
+            </div>
+            <div class="feedback-panel" id="feedback-panel-2">
+                <label>Ihr Vorschlag für die Verkäufer-Vorteile:</label>
+                <textarea id="feedback-text-2" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+                <div class="feedback-actions">
+                    <button class="btn-save" onclick="saveFeedback(2)">Speichern</button>
+                    <button class="btn-cancel" onclick="toggleFeedback(2)">Abbrechen</button>
+                    <button class="btn-delete" onclick="deleteFeedback(2)" style="display:none" id="delete-btn-2">Löschen</button>
+                    <span class="saved-indicator" id="saved-2">✓ Gespeichert</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: KÄUFER-VORTEILE (unverändert) -->
+        <section id="block-3" class="trust-bar kaufer-vorteile">
+            <span class="block-label" style="display:none">Als Käufer: Schnell, sicher und mit dem besten Angebot zum Abschluss</span>
+            <button class="feedback-btn" onclick="toggleFeedback(3)">✏️ Vorschlag</button>
+            <h2>Als Käufer: Schnell, sicher und mit dem besten Angebot zum Abschluss</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto var(--spacing-lg); color: var(--text-light);">Wenn Sie über DK Real Estate kaufen, profitieren Sie von einem Prozess, der auf Geschwindigkeit, Transparenz und optimale Konditionen ausgelegt ist.</p>
+            <div class="trust-items">
+                <div class="trust-item">
+                    <h3><span class="checkmark">✔</span> Das Objekt ist bankfertig — bevor Sie anfragen</h3>
+                    <p>Jede Immobilie, die wir anbieten, ist bereits mit allen relevanten Unterlagen aufbereitet: Grundbuchauszug, Teilungserklärung, Wohnflächenberechnung, Energieausweis und Bankwertgutachten. Sie müssen nichts nachfordern – die Bank kann sofort prüfen.</p>
+                </div>
+                <div class="trust-item">
+                    <h3><span class="checkmark">✔</span> Unterlagen ohne Chaos — nur was die Bank wirklich braucht</h3>
+                    <p>Wir kennen die Anforderungen der Banken im Detail. Deshalb erhalten Sie von uns eine klare Checkliste Ihrer persönlichen Unterlagen – kein unnötiger Papierkram, keine Nachforderungen, kein Zeitverlust.</p>
+                </div>
+                <div class="trust-item">
+                    <h3><span class="checkmark">✔</span> Finanzierungszusage in 1 bis 2 Wochen</h3>
+                    <p>Dank unserer vorbereiteten Objektunterlagen und direkten Bankzugänge erhalten Sie in der Regel innerhalb von 1 bis 2 Wochen eine verbindliche Finanzierungszusage. Das gibt Ihnen Sicherheit – und dem Verkäufer Vertrauen.</p>
+                </div>
+                <div class="trust-item">
+                    <h3><span class="checkmark">✔</span> Einblick in den reellen Beleihungswert — Ihr Kaufgefühl stimmt</h3>
+                    <p>Sie erfahren, wie die Bank die Immobilie bewertet – nicht nur, was der Verkäufer verlangt. Dieser Einblick gibt Ihnen ein sicheres Gefühl für Ihre Kaufentscheidung und schützt Sie vor überhöhten Preisen.</p>
+                </div>
+            </div>
+            <div class="feedback-panel" id="feedback-panel-3">
+                <label>Ihr Vorschlag für die Käufer-Vorteile:</label>
+                <textarea id="feedback-text-3" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+                <div class="feedback-actions">
+                    <button class="btn-save" onclick="saveFeedback(3)">Speichern</button>
+                    <button class="btn-cancel" onclick="toggleFeedback(3)">Abbrechen</button>
+                    <button class="btn-delete" onclick="deleteFeedback(3)" style="display:none" id="delete-btn-3">Löschen</button>
+                    <span class="saved-indicator" id="saved-3">✓ Gespeichert</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 8 [NEU]: ANTRAGSSTRECKE WIDGET -->
+        <section id="block-8" class="widget-section">
+            <span class="block-label" style="display:none">NEU: Finanzierungsanfrage über finlink</span>
+            <button class="feedback-btn" onclick="toggleFeedback(8)">✏️ Vorschlag</button>
+            <h2>Jetzt Finanzierungsanfrage stellen <span class="new-badge">NEU</span></h2>
+            <p class="section-intro">Starten Sie Ihren Finanzierungsprozess direkt hier – sicher, unverbindlich und in wenigen Minuten. Über unseren Partner finlink haben Sie Zugang zu über 550 Banken und Finanzierungspartnern.</p>
+            <div class="widget-iframe-wrap">
+                <iframe
+                    src="https://dk360.finlink.de/start-widget?primaryColor=20558F"
+                    height="650"
+                    title="Finanzierungsanfrage – DK Real Estate via finlink"
+                    loading="lazy"
+                    allow="payment"
+                ></iframe>
+            </div>
+            <div class="widget-alt-link">
+                Lieber im eigenen Tab öffnen? → <a href="https://dk360.finlink.de/start" target="_blank" rel="noopener">dk360.finlink.de/start</a>
+            </div>
+            <div class="feedback-panel" id="feedback-panel-8">
+                <label>Ihr Vorschlag für den Antragsstrecke-Bereich:</label>
+                <textarea id="feedback-text-8" placeholder="Passt das Widget hier? Andere Position? Höhe anpassen?"></textarea>
+                <div class="feedback-actions">
+                    <button class="btn-save" onclick="saveFeedback(8)">Speichern</button>
+                    <button class="btn-cancel" onclick="toggleFeedback(8)">Abbrechen</button>
+                    <button class="btn-delete" onclick="deleteFeedback(8)" style="display:none" id="delete-btn-8">Löschen</button>
+                    <span class="saved-indicator" id="saved-8">✓ Gespeichert</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: ALLES INHOUSE (unverändert) -->
+        <section id="block-4" class="inhouse-block">
+            <span class="block-label" style="display:none">Alles unter einem Dach: Kein Wartezimmer, kein Weiterleiten</span>
+            <button class="feedback-btn" onclick="toggleFeedback(4)">✏️ Vorschlag</button>
+            <h2 style="text-align: center;">Alles unter einem Dach: Kein Wartezimmer, kein Weiterleiten</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto var(--spacing-md); color: var(--text-light);">Bei DK Real Estate werden alle relevanten Schritte intern bearbeitet. Keine externen Dienstleister, keine Wartezeiten durch Dritte, keine Kommunikationslücken. Unsere Finanzierungsabteilung, unsere Architektin und unser Energieberater arbeiten Hand in Hand – direkt im Haus.</p>
+            <div class="icons-row">
+                <div class="icon-item">
+                    <div class="icon">🏢</div>
+                    <h3>Kein Outsourcing</h3>
+                    <p>Finanzierung, Wertgutachten und Objektprüfung – alles aus einer Hand, alles intern. Keine Umwege, keine Verzögerungen.</p>
+                </div>
+                <div class="icon-item">
+                    <div class="icon">📋</div>
+                    <h3>Vollmachten für schnelles Handeln</h3>
+                    <p>Mit Ihrer Vollmacht beschaffen wir alle notwendigen Unterlagen direkt bei Ämtern und Behörden – schnell und ohne Ihr Zutun.</p>
+                </div>
+                <div class="icon-item">
+                    <div class="icon">🏗️</div>
+                    <h3>Architektin und Energieberater Inhouse</h3>
+                    <p>Wohnflächenberechnung, Energieausweis und bauliche Einschätzungen erfolgen direkt bei uns – für eine fundierte Bewertung Ihrer Immobilie.</p>
+                </div>
+            </div>
+            <div class="feedback-panel" id="feedback-panel-4">
+                <label>Ihr Vorschlag für Alles unter einem Dach:</label>
+                <textarea id="feedback-text-4" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+                <div class="feedback-actions">
+                    <button class="btn-save" onclick="saveFeedback(4)">Speichern</button>
+                    <button class="btn-cancel" onclick="toggleFeedback(4)">Abbrechen</button>
+                    <button class="btn-delete" onclick="deleteFeedback(4)" style="display:none" id="delete-btn-4">Löschen</button>
+                    <span class="saved-indicator" id="saved-4">✓ Gespeichert</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: STEUERLICHE OPTIMIERUNG (unverändert) -->
+        <section id="block-5" class="steuer-box">
+            <span class="block-label" style="display:none">Bis zu 6 % Abschreibung statt 2 %</span>
+            <button class="feedback-btn" onclick="toggleFeedback(5)">✏️ Vorschlag</button>
+            <h2>Bis zu 6 % Abschreibung statt 2 %: Wie Käufer legal deutlich weniger Steuern zahlen</h2>
+            <p>Viele Käufer wissen nicht, dass sie mit einem sogenannten Restnutzungsdauergutachten die steuerliche Abschreibung (AfA) ihrer Immobilie erheblich steigern können. Statt der üblichen 2 % lineare AfA sind in vielen Fällen 5 bis 6 % möglich – und das völlig legal.</p>
+            <p><strong>Rechenbeispiel:</strong> Bei einem Gebäudewert von 1.000.000 € ergibt sich folgende jährliche Abschreibung:</p>
+            <p>• Standard-AfA (2 %): 20.000 € pro Jahr<br>
+               • Mit Restnutzungsdauergutachten (5 %): 50.000 € pro Jahr<br>
+               • <strong>Differenz: 30.000 € zusätzliche Abschreibung pro Jahr</strong></p>
+            <p>Je nach persönlichem Steuersatz kann das eine jährliche Steuerersparnis von 30.000 bis 40.000 € bedeuten. Über 10 Jahre summiert sich das schnell auf mehrere Hunderttausend Euro.</p>
+            <div class="hint-box">
+                <p><strong>Wichtiger Hinweis:</strong> Wir erstellen selbst keine steuerliche Beratung und keine Restnutzungsdauergutachten. Wir arbeiten jedoch eng mit erfahrenen Steuerberatern und Juristen zusammen, die wir Ihnen auf Wunsch gerne vermitteln. Die steuerliche Optimierung ist ein wichtiger Baustein – und wir sorgen dafür, dass Sie die richtigen Ansprechpartner kennen.</p>
+            </div>
+            <div class="feedback-panel" id="feedback-panel-5">
+                <label>Ihr Vorschlag für die Steuer-Optimierung-Section:</label>
+                <textarea id="feedback-text-5" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+                <div class="feedback-actions">
+                    <button class="btn-save" onclick="saveFeedback(5)">Speichern</button>
+                    <button class="btn-cancel" onclick="toggleFeedback(5)">Abbrechen</button>
+                    <button class="btn-delete" onclick="deleteFeedback(5)" style="display:none" id="delete-btn-5">Löschen</button>
+                    <span class="saved-indicator" id="saved-5">✓ Gespeichert</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 9 [NEU]: RECHNER-TOOLS -->
+        <section id="block-9" class="widget-section">
+            <span class="block-label" style="display:none">NEU: Finanzierungsrechner</span>
+            <button class="feedback-btn" onclick="toggleFeedback(9)">✏️ Vorschlag</button>
+            <h2>Berechnen Sie Ihre Finanzierung <span class="new-badge">NEU</span></h2>
+            <p class="section-intro">Unverbindlich und kostenlos – errechnen Sie Ihr Budget und Ihre Tilgungsmöglichkeiten. Zwei Rechner, die Ihnen sofort Klarheit geben.</p>
+            <div class="rechner-grid">
+                <div class="rechner-card">
+                    <div class="rechner-card-header">
+                        <h3>💰 Budgetrechner</h3>
+                        <p>Wie viel Immobilie kann ich mir leisten?</p>
+                    </div>
+                    <iframe
+                        src="https://widgets.finlink.de/de/baufinanzierung-rechner/budgetrechner/?primaryColor=20558F&organization=dk360"
+                        height="500"
+                        title="Budgetrechner – DK Real Estate"
+                        loading="lazy"
+                    ></iframe>
+                </div>
+                <div class="rechner-card">
+                    <div class="rechner-card-header">
+                        <h3>📊 Tilgungsrechner</h3>
+                        <p>Monatliche Rate mit Sondertilgung berechnen</p>
+                    </div>
+                    <iframe
+                        src="https://widgets.finlink.de/de/baufinanzierung-rechner/tilgungsrechner-sondertilgung/?primaryColor=20558F&organization=dk360"
+                        height="500"
+                        title="Tilgungsrechner – DK Real Estate"
+                        loading="lazy"
+                    ></iframe>
+                </div>
+            </div>
+            <div class="feedback-panel" id="feedback-panel-9">
+                <label>Ihr Vorschlag für den Rechner-Bereich:</label>
+                <textarea id="feedback-text-9" placeholder="Beide Rechner nebeneinander? Nacheinander? Andere Reihenfolge?"></textarea>
+                <div class="feedback-actions">
+                    <button class="btn-save" onclick="saveFeedback(9)">Speichern</button>
+                    <button class="btn-cancel" onclick="toggleFeedback(9)">Abbrechen</button>
+                    <button class="btn-delete" onclick="deleteFeedback(9)" style="display:none" id="delete-btn-9">Löschen</button>
+                    <span class="saved-indicator" id="saved-9">✓ Gespeichert</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: FAQ (unverändert) -->
+        <section id="block-6" class="faq">
+            <span class="block-label" style="display:none">Häufig gestellte Fragen zur Immobilienfinanzierung</span>
+            <button class="feedback-btn" onclick="toggleFeedback(6)">✏️ Vorschlag</button>
+            <h2>Häufig gestellte Fragen zur Immobilienfinanzierung</h2>
+            <div class="faq-items">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+                        <h3>Wie lange dauert es, bis ich eine Finanzierungszusage erhalte?</h3>
+                        <span class="toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>In der Regel erhalten Sie innerhalb von 1 bis 2 Wochen eine verbindliche Finanzierungszusage. Voraussetzung ist, dass alle persönlichen Unterlagen vollständig vorliegen. Die Objektunterlagen haben wir bereits für Sie vorbereitet.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+                        <h3>Prüft DK Real Estate meine Bonität als Käufer?</h3>
+                        <span class="toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Ja, wir führen eine vollständige Bonitätsprüfung durch, bevor wir Sie als Kaufinteressenten für eine Immobilie vorschlagen. Das dient der Sicherheit aller Beteiligten und beschleunigt den gesamten Kaufprozess erheblich.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+                        <h3>Was ist ein Restnutzungsdauergutachten und lohnt es sich?</h3>
+                        <span class="toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Ein Restnutzungsdauergutachten ermittelt die verbleibende wirtschaftliche Nutzungsdauer eines Gebäudes. Liegt diese unter dem gesetzlichen Standard, können Sie statt der üblichen 2 % AfA bis zu 5 oder 6 % jährlich abschreiben. Bei einem Gebäudewert von 1 Mio. € kann das eine jährliche Steuerersparnis von 30.000 bis 40.000 € bedeuten.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+                        <h3>Arbeiten Sie mit bestimmten Banken zusammen?</h3>
+                        <span class="toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Wir arbeiten bankenunabhängig mit über 550 Finanzierungspartnern zusammen. Zusätzlich haben wir zu 10 Hausbanken einen besonders engen Draht, was die Bearbeitung beschleunigt und oft bessere Konditionen ermöglicht.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+                        <h3>Was kostet die Finanzierungsberatung?</h3>
+                        <span class="toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Unsere Finanzierungsberatung ist für Sie kostenlos und unverbindlich. Wir finanzieren uns über die Provisionen der Banken, die im Zins bereits einkalkuliert sind. Für Sie entstehen keine zusätzlichen Kosten.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="feedback-panel" id="feedback-panel-6">
+                <label>Ihr Vorschlag für den FAQ-Bereich:</label>
+                <textarea id="feedback-text-6" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+                <div class="feedback-actions">
+                    <button class="btn-save" onclick="saveFeedback(6)">Speichern</button>
+                    <button class="btn-cancel" onclick="toggleFeedback(6)">Abbrechen</button>
+                    <button class="btn-delete" onclick="deleteFeedback(6)" style="display:none" id="delete-btn-6">Löschen</button>
+                    <span class="saved-indicator" id="saved-6">✓ Gespeichert</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 7: FINALER CTA (GEÄNDERT: kein Formular mehr) -->
+        <section id="block-7" class="cta-final">
+            <span class="block-label" style="display:none">Finaler CTA — Termin buchen</span>
+            <button class="feedback-btn" onclick="toggleFeedback(7)">✏️ Vorschlag</button>
+            <h2>Jetzt Termin buchen – kostenlos und unverbindlich <span class="changed-badge">GEÄNDERT</span></h2>
+            <p>Ob Sie verkaufen oder kaufen möchten – wir zeigen Ihnen, wie unsere Finanzierungsexpertise Ihnen einen echten Vorteil verschafft. Buchen Sie direkt einen Termin – wir melden uns innerhalb von 24 Stunden.</p>
+            <a href="https://calendar.app.google/Fio8VHkp7TdYCmFt6" target="_blank" rel="noopener" class="cta-termin-btn">📅 Jetzt Termin buchen</a>
+            <div class="cta-or-divider">
+                oder direkt online: <a href="https://dk360.finlink.de/start" target="_blank" rel="noopener">Finanzierungsanfrage über finlink stellen →</a>
+            </div>
+            <div class="trust-badges">
+                <div class="trust-badge-item">⭐ Über 150 Google-Bewertungen</div>
+                <div class="trust-badge-item">🏦 550+ Bankpartner</div>
+                <div class="trust-badge-item">⚡ Finanzierungszusage in 1–2 Wochen</div>
+            </div>
+            <div class="feedback-panel" id="feedback-panel-7">
+                <label>Ihr Vorschlag für den finalen CTA-Bereich:</label>
+                <textarea id="feedback-text-7" placeholder="Kein Formular: OK? Oder soll ein einfaches Kontaktformular bleiben?"></textarea>
+                <div class="feedback-actions">
+                    <button class="btn-save" onclick="saveFeedback(7)">Speichern</button>
+                    <button class="btn-cancel" onclick="toggleFeedback(7)">Abbrechen</button>
+                    <button class="btn-delete" onclick="deleteFeedback(7)" style="display:none" id="delete-btn-7">Löschen</button>
+                    <span class="saved-indicator" id="saved-7">✓ Gespeichert</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="export-overlay" id="exportOverlay">
+        <div class="export-box">
+            <div class="count" id="exportCount">0</div>
+            <h2>Kommentare bereit</h2>
+            <p>Alle Ihre Änderungsvorschläge in einer Datei. Laden Sie sie herunter und senden Sie diese an Ihr Projektteam.</p>
+            <button class="btn-export" onclick="exportFeedback()">Als Datei herunterladen</button>
+            <button class="btn-close-overlay" onclick="closeExportOverlay()">Schließen</button>
+        </div>
+    </div>
+
+    <script>
+(function() {
+  var PROJECT = 'dk';
+  var PAGE = 'finanzierung-v2';
+  var PAGE_TITLE = 'Finanzierung v2';
+  var STORAGE_KEY = '2p-feedback-' + PROJECT;
+
+  function getAllFeedback() { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); }
+  function getPageFeedback() { var all = getAllFeedback(); return all[PAGE] || {}; }
+  function savePageFeedback(pageData) {
+    var all = getAllFeedback();
+    if (Object.keys(pageData).length === 1 && pageData._title) { delete all[PAGE]; }
+    else { all[PAGE] = pageData; }
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(all));
+  }
+  function getTotalCount() {
+    var all = getAllFeedback(); var count = 0;
+    for (var page in all) { for (var key in all[page]) { if (key !== '_title') count++; } }
+    return count;
+  }
+  function updateCounter() {
+    var count = getTotalCount();
+    var el = document.getElementById('feedbackCounter');
+    el.textContent = 'Feedback: ' + count + ' Kommentar' + (count !== 1 ? 'e' : '');
+    el.classList.toggle('has-feedback', count > 0);
+  }
+
+  window.toggleFeedback = function(id) {
+    var panel = document.getElementById('feedback-panel-' + id);
+    var btn = panel.previousElementSibling;
+    if (!btn || !btn.classList.contains('feedback-btn')) {
+      btn = panel.parentElement.querySelector('.feedback-btn');
+    }
+    var isOpen = panel.classList.contains('open');
+    document.querySelectorAll('.feedback-panel.open').forEach(function(p) { p.classList.remove('open'); });
+    document.querySelectorAll('.feedback-btn').forEach(function(b) { if (!b.classList.contains('has-comment')) b.textContent = '✏️ Vorschlag'; });
+    if (!isOpen) {
+      panel.classList.add('open');
+      var saved = getPageFeedback();
+      var key = 'block-' + id;
+      if (saved[key]) {
+        document.getElementById('feedback-text-' + id).value = saved[key];
+        document.getElementById('delete-btn-' + id).style.display = 'inline-block';
+      }
+    }
+  };
+
+  window.saveFeedback = function(id) {
+    var text = document.getElementById('feedback-text-' + id).value.trim();
+    if (!text) return;
+    var saved = getPageFeedback();
+    saved._title = PAGE_TITLE;
+    saved['block-' + id] = text;
+    savePageFeedback(saved);
+    var indicator = document.getElementById('saved-' + id);
+    indicator.style.display = 'flex';
+    setTimeout(function() { indicator.style.display = 'none'; }, 2000);
+    var btn = document.querySelector('#block-' + id + ' .feedback-btn');
+    if (btn) { btn.textContent = '✓ Gespeichert'; btn.classList.add('has-comment'); }
+    document.getElementById('delete-btn-' + id).style.display = 'inline-block';
+    updateCounter();
+  };
+
+  window.deleteFeedback = function(id) {
+    var saved = getPageFeedback();
+    delete saved['block-' + id];
+    savePageFeedback(saved);
+    document.getElementById('feedback-text-' + id).value = '';
+    document.getElementById('delete-btn-' + id).style.display = 'none';
+    var btn = document.querySelector('#block-' + id + ' .feedback-btn');
+    if (btn) { btn.textContent = '✏️ Vorschlag'; btn.classList.remove('has-comment'); }
+    updateCounter();
+    document.getElementById('feedback-panel-' + id).classList.remove('open');
+  };
+
+  window.openExportOverlay = function() {
+    var count = getTotalCount();
+    document.getElementById('exportCount').textContent = count;
+    document.getElementById('exportOverlay').classList.add('open');
+  };
+
+  window.closeExportOverlay = function() {
+    document.getElementById('exportOverlay').classList.remove('open');
+  };
+
+  window.exportFeedback = function() {
+    var all = getAllFeedback();
+    var lines = ['DK Real Estate — Feedback Export\n', '='.repeat(40)];
+    for (var page in all) {
+      lines.push('\n\n## Seite: ' + (all[page]._title || page));
+      for (var key in all[page]) {
+        if (key !== '_title') { lines.push('\n[' + key + ']\n' + all[page][key]); }
+      }
+    }
+    var blob = new Blob([lines.join('\n')], { type: 'text/plain;charset=utf-8' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a'); a.href = url; a.download = 'dk-feedback.txt';
+    a.click(); URL.revokeObjectURL(url);
+  };
+
+  // Init on load
+  document.addEventListener('DOMContentLoaded', function() {
+    updateCounter();
+    var saved = getPageFeedback();
+    for (var key in saved) {
+      if (key === '_title') continue;
+      var id = key.replace('block-', '');
+      var btn = document.querySelector('#' + key + ' .feedback-btn');
+      if (btn) { btn.textContent = '✓ Gespeichert'; btn.classList.add('has-comment'); }
+    }
+  });
+})();
+    </script>
+</body>
+</html>
