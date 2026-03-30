@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Vielen Dank für Ihr Suchprofil | DK Real Estate</title>
+    <meta name="description" content="Ihre Suchkriterien wurden erfolgreich gespeichert. Wir beginnen sofort mit der Suche nach passenden Immobilien für Sie.">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Thank You Page Specific Styles */
+        .success-hero {
+            text-align: center;
+            padding: var(--spacing-xl) 0;
+            background: linear-gradient(135deg, #f0f9f0 0%, #e8f5e9 100%);
+            border-radius: var(--radius);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .success-icon {
+            font-size: 4rem;
+            color: var(--success);
+            margin-bottom: var(--spacing-md);
+            animation: scaleIn 0.5s ease-out;
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .success-hero h1 {
+            color: var(--success);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .success-hero .intro {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: var(--text);
+        }
+
+        .timeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-md);
+            margin: var(--spacing-lg) 0;
+        }
+
+        .timeline-step {
+            background: var(--bg-light);
+            padding: var(--spacing-md);
+            border-radius: var(--radius);
+            border-left: 4px solid var(--accent);
+            position: relative;
+        }
+
+        .timeline-step .step-number {
+            position: absolute;
+            top: -12px;
+            left: var(--spacing-md);
+            background: var(--accent);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.125rem;
+        }
+
+        .timeline-step h3 {
+            margin-top: var(--spacing-sm);
+            font-size: 1.25rem;
+            color: var(--secondary);
+        }
+
+        .timeline-step p {
+            color: var(--text-light);
+            margin: 0;
+        }
+
+        .nav-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-md);
+            margin: var(--spacing-lg) 0;
+        }
+
+        .nav-card {
+            background: var(--primary);
+            padding: var(--spacing-md);
+            border-radius: var(--radius);
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+            display: block;
+            border: 2px solid var(--accent);
+        }
+
+        .nav-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+
+        .nav-card h3 {
+            color: var(--secondary);
+            font-size: 1.125rem;
+            margin: 0;
+        }
+
+        .contact-box {
+            background: var(--bg-light);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius);
+            border: 2px solid var(--accent);
+            text-align: center;
+            margin: var(--spacing-lg) 0;
+        }
+
+        .contact-box h3 {
+            color: var(--secondary);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+            font-size: 1.125rem;
+        }
+
+        .contact-info a {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .trust-badges-thankyou {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: var(--spacing-sm);
+            margin: var(--spacing-lg) 0;
+            text-align: center;
+        }
+
+        .trust-badge {
+            padding: var(--spacing-sm);
+            background: white;
+            border-radius: var(--radius-sm);
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .trust-badge span {
+            color: var(--success);
+            font-size: 1.25rem;
+            display: block;
+            margin-bottom: var(--spacing-xs);
+        }
+
+/* === FEEDBACK UI === */
+:root {
+  --fb-accent: #f59e0b;
+  --fb-accent-border: #d97706;
+  --fb-accent-hover: #d97706;
+  --fb-saved: #10b981;
+  --fb-saved-border: #059669;
+  --fb-save: #2563eb;
+  --fb-save-border: #1d4ed8;
+  --fb-save-hover: #1d4ed8;
+  --fb-panel-bg: #fef3c7;
+  --fb-panel-border: #f59e0b;
+  --fb-delete: #dc2626;
+  --fb-delete-bg: #fef2f2;
+  --fb-delete-border: #fca5a5;
+  --success: #10b981;
+}
+.feedback-counter { background: var(--fb-accent); color: #1e293b; padding: 6px 16px; border-radius: 20px; font-weight: 700; cursor: pointer; transition: transform 0.2s; font-size: 13px; white-space: nowrap; }
+.feedback-counter:hover { transform: scale(1.05); }
+.feedback-counter.has-feedback { animation: fb-pulse 2s infinite; }
+@keyframes fb-pulse { 0%,100%{box-shadow:0 0 0 0 color-mix(in srgb, var(--fb-accent) 40%, transparent)} 50%{box-shadow:0 0 0 8px transparent} }
+.feedback-btn { position:absolute; top:12px; right:24px; background:var(--fb-accent); border:2px solid var(--fb-accent-border); padding:6px 14px; border-radius:20px; cursor:pointer; font-size:13px; color:#1e293b; font-weight:600; transition:all 0.2s; z-index:10; }
+.feedback-btn:hover { background:var(--fb-accent-hover); border-color:var(--fb-accent-border); color:white; }
+.feedback-btn.has-comment { background:var(--fb-saved); border-color:var(--fb-saved-border); color:white; }
+section { position: relative; }
+.feedback-panel { display:none; margin-top:24px; background:var(--fb-panel-bg); border:2px solid var(--fb-panel-border); border-radius:var(--radius,8px); padding:20px; animation:fb-slideDown 0.3s ease; }
+.feedback-panel.open { display:block; }
+@keyframes fb-slideDown { from{opacity:0;transform:translateY(-10px)} to{opacity:1;transform:translateY(0)} }
+.feedback-panel label { display:block; font-weight:600; margin-bottom:8px; color:var(--primary,#1e3a5f); font-size:14px; }
+.feedback-panel textarea { width:100%; min-height:100px; padding:12px; border:1px solid var(--border,#e2e8f0); border-radius:var(--radius,8px); font-family:inherit; font-size:15px; resize:vertical; line-height:1.5; box-sizing:border-box; }
+.feedback-panel textarea:focus { outline:none; border-color:var(--fb-save); box-shadow:0 0 0 3px rgba(37,99,235,0.1); }
+.feedback-actions { display:flex; gap:12px; margin-top:12px; align-items:center; }
+.btn-save { background:var(--fb-save); color:white; border:2px solid var(--fb-save-border); padding:8px 20px; border-radius:var(--radius,8px); cursor:pointer; font-size:14px; font-weight:600; }
+.btn-save:hover { background:var(--fb-save-hover); }
+.btn-cancel { background:white; border:2px solid #94a3b8; padding:8px 20px; border-radius:var(--radius,8px); cursor:pointer; font-size:14px; color:#334155; font-weight:500; }
+.btn-cancel:hover { background:#f1f5f9; }
+.btn-delete { background:var(--fb-delete-bg); border:2px solid var(--fb-delete-border); padding:8px 16px; border-radius:var(--radius,8px); cursor:pointer; font-size:14px; color:var(--fb-delete); font-weight:500; margin-left:auto; }
+.btn-delete:hover { background:color-mix(in srgb, var(--fb-delete-bg) 80%, var(--fb-delete)); border-color:var(--fb-delete); }
+.saved-indicator { display:none; color:var(--success); font-size:13px; align-items:center; gap:4px; }
+.export-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:200; justify-content:center; align-items:center; }
+.export-overlay.open { display:flex; }
+.export-box { background:white; border-radius:12px; padding:32px; max-width:500px; width:90%; text-align:center; }
+.export-box h2 { margin-bottom:16px; font-size:22px; }
+.export-box p { color:var(--text-light,#64748b); margin-bottom:24px; }
+.export-box .count { font-size:48px; font-weight:800; color:var(--fb-save); }
+.btn-export { display:inline-block; background:var(--fb-save); color:white; padding:14px 32px; border-radius:var(--radius,8px); border:none; font-size:16px; font-weight:600; cursor:pointer; margin:8px; }
+.btn-export:hover { background:var(--fb-save-hover); }
+.btn-close-overlay { display:inline-block; background:transparent; border:1px solid var(--border,#e2e8f0); padding:14px 32px; border-radius:var(--radius,8px); font-size:16px; cursor:pointer; margin:8px; color:var(--text-light,#64748b); }
+@media(max-width:768px) { .feedback-btn{top:auto;bottom:-16px;right:16px;font-size:12px} .feedback-panel{padding:16px} .nav-links{flex-wrap:wrap;gap:4px} .nav-links a{font-size:12px;padding:4px 8px} }
+
+</style>
+</head>
+<body>
+        <nav class="sticky-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">DK Real Estate — Preview</a>
+            <div class="nav-links">
+                <a href="homepage.html">Homepage</a>
+                <a href="kaufen.html">Kaufen</a>
+                <a href="finanzierung.html">Finanzierung</a>
+                <a href="verkaufen.html">Verkaufen</a>
+                <a href="investment.html">Investment</a>
+                <a href="bewertung.html">Bewertung</a>
+                <a href="suchprofil-danke.html">Danke</a>
+            </div>
+            <div class="feedback-counter" id="feedbackCounter" onclick="openExportOverlay()">Feedback: 0 Kommentare</div>
+        </div>
+    </nav>
+
+    <main class="page-content">
+        <div class="meta-bar">
+            <span class="meta-item"><strong>URL:</strong> /suchprofil/danke/</span>
+            <span class="meta-item"><strong>Title:</strong> Vielen Dank für Ihr Suchprofil | DK Real Estate</span>
+            <span class="meta-item"><strong>SEO:</strong> noindex, nofollow</span>
+        </div>
+
+        <!-- BLOCK 1: SUCCESS HERO -->
+        <section id="block-1" class="success-hero">
+            <span class="block-label" style="display:none">Block 1</span>
+            <button class="feedback-btn" onclick="toggleFeedback(1)">&#9999;&#65039; Vorschlag</button>
+            <div class="success-icon">✓</div>
+            <h1>Vielen Dank für Ihr Suchprofil!</h1>
+            <p class="intro">Ihre Suchkriterien wurden erfolgreich gespeichert. Wir beginnen sofort mit der Suche nach passenden Immobilien für Sie — auch in unserem exklusiven Off-Market-Bestand.</p>
+
+            <div class="feedback-panel" id="feedback-panel-1">
+  <label>Ihr Vorschlag für Block 1:</label>
+  <textarea id="feedback-text-1" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+  <div class="feedback-actions">
+    <button class="btn-save" onclick="saveFeedback(1)">Speichern</button>
+    <button class="btn-cancel" onclick="toggleFeedback(1)">Abbrechen</button>
+    <button class="btn-delete" onclick="deleteFeedback(1)" style="display:none" id="delete-btn-1">Löschen</button>
+    <span class="saved-indicator" id="saved-1">&#10003; Gespeichert</span>
+  </div>
+</div>
+</section>
+
+        <!-- BLOCK 2: NEXT STEPS / TIMELINE -->
+        <section id="block-2" class="generic">
+            <span class="block-label" style="display:none">Wie geht es weiter?</span>
+            <button class="feedback-btn" onclick="toggleFeedback(2)">&#9999;&#65039; Vorschlag</button>
+            <h2 style="text-align: center;">Wie geht es weiter?</h2>
+            <div class="timeline">
+                <div class="timeline-step">
+                    <div class="step-number">1</div>
+                    <h3>✓ Analyse Ihres Suchprofils</h3>
+                    <p>Unser Team prüft Ihre Kriterien und gleicht sie mit unserem aktuellen Immobilienbestand ab.</p>
+                </div>
+                <div class="timeline-step">
+                    <div class="step-number">2</div>
+                    <h3>✓ Passende Objekte für Sie</h3>
+                    <p>Sobald wir geeignete Immobilien identifiziert haben, erhalten Sie eine persönliche Vorauswahl — auch exklusive Off-Market-Angebote.</p>
+                </div>
+                <div class="timeline-step">
+                    <div class="step-number">3</div>
+                    <h3>✓ Persönliche Vorstellung</h3>
+                    <p>Wir kontaktieren Sie und stellen Ihnen die ausgewählten Objekte vor — mit allen relevanten Details und Unterlagen.</p>
+                </div>
+                <div class="timeline-step">
+                    <div class="step-number">4</div>
+                    <h3>✓ Besichtigung &amp; Begleitung</h3>
+                    <p>Bei Interesse begleiten wir Sie persönlich zu Besichtigungen und unterstützen Sie bis zur Schlüsselübergabe.</p>
+                </div>
+            </div>
+
+            <div class="feedback-panel" id="feedback-panel-2">
+  <label>Ihr Vorschlag für Wie geht es weiter?:</label>
+  <textarea id="feedback-text-2" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+  <div class="feedback-actions">
+    <button class="btn-save" onclick="saveFeedback(2)">Speichern</button>
+    <button class="btn-cancel" onclick="toggleFeedback(2)">Abbrechen</button>
+    <button class="btn-delete" onclick="deleteFeedback(2)" style="display:none" id="delete-btn-2">Löschen</button>
+    <span class="saved-indicator" id="saved-2">&#10003; Gespeichert</span>
+  </div>
+</div>
+</section>
+
+        <!-- BLOCK 3: NAVIGATION / ADDITIONAL INFO -->
+        <section id="block-3" class="generic">
+            <span class="block-label" style="display:none">In der Zwischenzeit...</span>
+            <button class="feedback-btn" onclick="toggleFeedback(3)">&#9999;&#65039; Vorschlag</button>
+            <h2 style="text-align: center;">In der Zwischenzeit...</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto var(--spacing-lg);">Nutzen Sie die Wartezeit und informieren Sie sich über unsere weiteren Leistungen rund um den Immobilienkauf.</p>
+
+            <div class="nav-cards">
+                <a href="finanzierung.html" class="nav-card">
+                    <h3>💰 Finanzierungsberatung</h3>
+                </a>
+                <a href="bewertung.html" class="nav-card">
+                    <h3>📊 Immobilienbewertung</h3>
+                </a>
+                <a href="investment.html" class="nav-card">
+                    <h3>💼 Investment</h3>
+                </a>
+                <a href="#" class="nav-card">
+                    <h3>⭐ Referenzen</h3>
+                </a>
+            </div>
+
+            <div class="feedback-panel" id="feedback-panel-3">
+  <label>Ihr Vorschlag für In der Zwischenzeit...:</label>
+  <textarea id="feedback-text-3" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+  <div class="feedback-actions">
+    <button class="btn-save" onclick="saveFeedback(3)">Speichern</button>
+    <button class="btn-cancel" onclick="toggleFeedback(3)">Abbrechen</button>
+    <button class="btn-delete" onclick="deleteFeedback(3)" style="display:none" id="delete-btn-3">Löschen</button>
+    <span class="saved-indicator" id="saved-3">&#10003; Gespeichert</span>
+  </div>
+</div>
+</section>
+
+        <!-- BLOCK 4: CONTACT INFO -->
+        <section id="block-4" class="contact-box">
+            <span class="block-label" style="display:none">Block 4</span>
+            <button class="feedback-btn" onclick="toggleFeedback(4)">&#9999;&#65039; Vorschlag</button>
+            <h3>Haben Sie noch Fragen?</h3>
+            <p style="margin-bottom: var(--spacing-md); color: var(--text-light);">Bei dringenden Fragen oder zusätzlichem Informationsbedarf erreichen Sie uns gerne direkt:</p>
+
+            <div class="contact-info">
+                <div><strong>Telefon:</strong> <a href="tel:+493012084186">+49 30 / 120 841 86</a></div>
+                <div><strong>E-Mail:</strong> <a href="mailto:kontakt@dk360.de">kontakt@dk360.de</a></div>
+                <div><strong>Adresse:</strong> Hubertusallee 76, 14193 Berlin</div>
+            </div>
+
+            <p style="margin-top: var(--spacing-md); font-weight: 600; color: var(--secondary);">Ihr Team von DK Real Estate</p>
+
+            <div class="feedback-panel" id="feedback-panel-4">
+  <label>Ihr Vorschlag für Block 4:</label>
+  <textarea id="feedback-text-4" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+  <div class="feedback-actions">
+    <button class="btn-save" onclick="saveFeedback(4)">Speichern</button>
+    <button class="btn-cancel" onclick="toggleFeedback(4)">Abbrechen</button>
+    <button class="btn-delete" onclick="deleteFeedback(4)" style="display:none" id="delete-btn-4">Löschen</button>
+    <span class="saved-indicator" id="saved-4">&#10003; Gespeichert</span>
+  </div>
+</div>
+</section>
+
+        <!-- BLOCK 5: TRUST BADGES -->
+        <section id="block-5" class="generic">
+            <span class="block-label" style="display:none">Block 5</span>
+            <button class="feedback-btn" onclick="toggleFeedback(5)">&#9999;&#65039; Vorschlag</button>
+            <div class="trust-badges-thankyou">
+                <div class="trust-badge">
+                    <span>✓</span>
+                    Exklusive Off-Market-Objekte
+                </div>
+                <div class="trust-badge">
+                    <span>✓</span>
+                    Persönliche Immobilienberatung
+                </div>
+                <div class="trust-badge">
+                    <span>✓</span>
+                    Finanzierung aus einer Hand
+                </div>
+                <div class="trust-badge">
+                    <span>✓</span>
+                    Über 20 Jahre Markterfahrung
+                </div>
+            </div>
+
+            <div class="feedback-panel" id="feedback-panel-5">
+  <label>Ihr Vorschlag für Block 5:</label>
+  <textarea id="feedback-text-5" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+  <div class="feedback-actions">
+    <button class="btn-save" onclick="saveFeedback(5)">Speichern</button>
+    <button class="btn-cancel" onclick="toggleFeedback(5)">Abbrechen</button>
+    <button class="btn-delete" onclick="deleteFeedback(5)" style="display:none" id="delete-btn-5">Löschen</button>
+    <span class="saved-indicator" id="saved-5">&#10003; Gespeichert</span>
+  </div>
+</div>
+</section>
+
+        <!-- CLOSING -->
+        <section id="block-6" class="closing">
+            <span class="block-label" style="display:none">Block 6</span>
+            <button class="feedback-btn" onclick="toggleFeedback(6)">&#9999;&#65039; Vorschlag</button>
+            <p>Wir freuen uns darauf, die passende Immobilie für Sie zu finden — persönlich, diskret und mit Zugang zu Angeboten, die Sie nirgendwo anders finden.</p>
+
+            <div class="feedback-panel" id="feedback-panel-6">
+  <label>Ihr Vorschlag für Block 6:</label>
+  <textarea id="feedback-text-6" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+  <div class="feedback-actions">
+    <button class="btn-save" onclick="saveFeedback(6)">Speichern</button>
+    <button class="btn-cancel" onclick="toggleFeedback(6)">Abbrechen</button>
+    <button class="btn-delete" onclick="deleteFeedback(6)" style="display:none" id="delete-btn-6">Löschen</button>
+    <span class="saved-indicator" id="saved-6">&#10003; Gespeichert</span>
+  </div>
+</div>
+</section>
+
+        <!-- TRACKING NOTE FOR DEVELOPER -->
+        <div style="background: #fff9c4; border: 2px dashed #ffc107; padding: var(--spacing-md); border-radius: var(--radius); margin-top: var(--spacing-lg);">
+            <h3 style="color: #f57c00; margin-bottom: var(--spacing-sm);">🔧 FÜR ENTWICKLER: TRACKING EVENTS</h3>
+            <p style="margin: 0; font-size: 0.95rem; color: #666;">Diese Seite ist der Conversion-Trigger! Beim Laden müssen folgende Events ausgelöst werden:</p>
+            <ul style="margin: var(--spacing-sm) 0 0; padding-left: var(--spacing-md); font-size: 0.9rem; color: #666;">
+                <li>Google Analytics 4: <code>gtag('event', 'lead_suchprofil_submitted')</code></li>
+                <li>Google Ads Conversion: <code>gtag('event', 'conversion', ...)</code></li>
+                <li>Meta Pixel: <code>fbq('track', 'Lead', ...)</code></li>
+                <li>Bitrix24: Lead bereits beim Form Submit erstellt (via webhook)</li>
+            </ul>
+        </div>
+    </main>
+<!-- TRACKING SCRIPTS (Placeholder — wird beim Build eingefügt) -->
+    <script>
+        // Google Analytics 4
+        // gtag('event', 'lead_suchprofil_submitted', {
+        //   'event_category': 'Lead Generation',
+        //   'event_label': 'Suchprofil Formular',
+        //   'value': 1
+        // });
+
+        // Google Ads Conversion
+        // gtag('event', 'conversion', {
+        //   'send_to': 'AW-XXXXXXXXX/CONVERSION_ID',
+        //   'value': 1.0,
+        //   'currency': 'EUR'
+        // });
+
+        // Meta Pixel
+        // fbq('track', 'Lead', {
+        //   content_category: 'Suchprofil',
+        //   content_name: 'Suchprofil Formular'
+        // });
+
+        console.log('✓ Thank You Page loaded — Tracking events should fire here');
+    </script>
+<div class="export-overlay" id="exportOverlay">
+  <div class="export-box">
+    <div class="count" id="exportCount">0</div>
+    <h2>Kommentare bereit</h2>
+    <p>Alle Ihre Änderungsvorschläge für alle Seiten in einer Datei. Laden Sie sie herunter und senden Sie diese an Ihr Projektteam.</p>
+    <button class="btn-export" onclick="exportFeedback()">Als Datei herunterladen</button>
+    <button class="btn-close-overlay" onclick="closeExportOverlay()">Schließen</button>
+  </div>
+</div>
+<script>
+(function() {
+  var PROJECT = 'dk';
+  var PAGE = 'suchprofil-danke';
+  var PAGE_TITLE = 'Suchprofil Danke';
+  var STORAGE_KEY = '2p-feedback-' + PROJECT;
+
+  function getAllFeedback() {
+    return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+  }
+
+  function getPageFeedback() {
+    var all = getAllFeedback();
+    return all[PAGE] || {};
+  }
+
+  function savePageFeedback(pageData) {
+    var all = getAllFeedback();
+    if (Object.keys(pageData).length === 1 && pageData._title) {
+      delete all[PAGE];
+    } else {
+      all[PAGE] = pageData;
+    }
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(all));
+  }
+
+  function getTotalCount() {
+    var all = getAllFeedback();
+    var count = 0;
+    for (var page in all) {
+      for (var key in all[page]) {
+        if (key !== '_title') count++;
+      }
+    }
+    return count;
+  }
+
+  function loadFeedback() {
+    var pageData = getPageFeedback();
+    for (var blockId in pageData) {
+      if (blockId === '_title') continue;
+      var entry = pageData[blockId];
+      var text = (typeof entry === 'object') ? entry.text : entry;
+      var textarea = document.getElementById('feedback-text-' + blockId);
+      var btn = document.querySelector('#block-' + blockId + ' .feedback-btn');
+      var deleteBtn = document.getElementById('delete-btn-' + blockId);
+      if (textarea) textarea.value = text;
+      if (btn) { btn.classList.add('has-comment'); btn.textContent = '\u270f\ufe0f Kommentar bearbeiten'; }
+      if (deleteBtn) deleteBtn.style.display = 'inline-block';
+    }
+    updateCounter();
+  }
+
+  window.toggleFeedback = function(blockId) {
+    var panel = document.getElementById('feedback-panel-' + blockId);
+    panel.classList.toggle('open');
+    if (panel.classList.contains('open')) {
+      document.getElementById('feedback-text-' + blockId).focus();
+    }
+  };
+
+  window.saveFeedback = function(blockId) {
+    var text = document.getElementById('feedback-text-' + blockId).value.trim();
+    if (!text) return;
+
+    var blockEl = document.getElementById('block-' + blockId);
+    var labelEl = blockEl ? blockEl.querySelector('.block-label') : null;
+    var label = labelEl ? labelEl.textContent : ('Block ' + blockId);
+
+    var pageData = getPageFeedback();
+    pageData._title = PAGE_TITLE;
+    pageData[blockId] = { text: text, label: label };
+    savePageFeedback(pageData);
+
+    var btn = document.querySelector('#block-' + blockId + ' .feedback-btn');
+    btn.classList.add('has-comment');
+    btn.textContent = '\u270f\ufe0f Kommentar bearbeiten';
+
+    document.getElementById('delete-btn-' + blockId).style.display = 'inline-block';
+
+    var indicator = document.getElementById('saved-' + blockId);
+    indicator.style.display = 'flex';
+    setTimeout(function() { indicator.style.display = 'none'; }, 2000);
+
+    updateCounter();
+    setTimeout(function() { window.toggleFeedback(blockId); }, 1500);
+  };
+
+  window.deleteFeedback = function(blockId) {
+    var pageData = getPageFeedback();
+    delete pageData[blockId];
+    savePageFeedback(pageData);
+
+    document.getElementById('feedback-text-' + blockId).value = '';
+    var btn = document.querySelector('#block-' + blockId + ' .feedback-btn');
+    btn.classList.remove('has-comment');
+    btn.textContent = '\u270f\ufe0f Vorschlag';
+    document.getElementById('delete-btn-' + blockId).style.display = 'none';
+
+    updateCounter();
+    window.toggleFeedback(blockId);
+  };
+
+  function updateCounter() {
+    var count = getTotalCount();
+    var counterEl = document.getElementById('feedbackCounter');
+    if (count > 0) {
+      counterEl.classList.add('has-feedback');
+      counterEl.innerHTML = '\ud83d\udce5 Feedback: ' + count + ' Kommentar' + (count > 1 ? 'e' : '');
+    } else {
+      counterEl.classList.remove('has-feedback');
+      counterEl.innerHTML = 'Feedback: 0 Kommentare';
+    }
+  }
+
+  window.openExportOverlay = function() {
+    var count = getTotalCount();
+    if (count === 0) return;
+    document.getElementById('exportCount').textContent = count;
+    document.getElementById('exportOverlay').classList.add('open');
+  };
+
+  window.closeExportOverlay = function() {
+    document.getElementById('exportOverlay').classList.remove('open');
+  };
+
+  window.exportFeedback = function() {
+    var all = getAllFeedback();
+    var totalCount = getTotalCount();
+
+    var text = 'FEEDBACK \u2014 ' + PROJECT.toUpperCase() + '\n';
+    text += 'Datum: ' + new Date().toLocaleDateString('de-DE') + '\n';
+    text += totalCount + ' Kommentar(e) insgesamt\n';
+    text += '==================================================\n\n';
+
+    for (var page in all) {
+      var pageData = all[page];
+      var pageTitle = pageData._title || page;
+      text += '\u2501\u2501\u2501 ' + pageTitle + ' \u2501\u2501\u2501\n\n';
+
+      for (var blockId in pageData) {
+        if (blockId === '_title') continue;
+        var entry = pageData[blockId];
+        var commentText = (typeof entry === 'object') ? entry.text : entry;
+        var label = (typeof entry === 'object' && entry.label) ? entry.label : ('Block ' + blockId);
+
+        text += '\ud83d\udccc ' + label + '\n';
+        text += '----------------------------------------\n';
+        text += commentText + '\n\n';
+      }
+    }
+
+    text += '==================================================\n';
+    text += 'Erstellt am ' + new Date().toLocaleString('de-DE') + '\n';
+
+    var blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'feedback_' + PROJECT + '_' + new Date().toISOString().slice(0,10) + '.txt';
+    a.click();
+    URL.revokeObjectURL(url);
+
+    window.closeExportOverlay();
+  };
+
+  loadFeedback();
+})();
+</script>
+</body>
+</html>
