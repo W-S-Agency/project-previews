@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TZ — Design-Kit Startseite | Mega-Mietpark</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #C62828;
+    --red-dark: #8B1A1A;
+    --red-light: #FFEBEE;
+    --black: #1F1F1F;
+    --gray: #6B6B6B;
+    --light: #F5F5F5;
+    --white: #FFFFFF;
+    --border: #E0E0E0;
+    --radius: 4px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: var(--black);
+    background: var(--white);
+    line-height: 1.6;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--black);
+    display: flex; align-items: center; gap: 0;
+    padding: 0 40px; height: 52px; overflow-x: auto;
+  }
+  nav a {
+    color: rgba(255,255,255,0.6); text-decoration: none;
+    font-family: 'Roboto Condensed', sans-serif; font-size: 12px;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 0 16px; height: 52px; display: flex; align-items: center;
+    border-bottom: 2px solid transparent; white-space: nowrap; transition: all 0.2s;
+  }
+  nav a:hover { color: #fff; border-bottom-color: var(--red); }
+  nav .logo {
+    color: var(--white); font-size: 13px; font-weight: 700;
+    letter-spacing: 0.1em; margin-right: 24px; padding: 0;
+    border-bottom: none; flex-shrink: 0;
+  }
+  nav .logo span { color: var(--red); }
+
+  /* COVER */
+  .cover {
+    background: var(--black); padding: 80px 60px 72px;
+    position: relative; overflow: hidden;
+  }
+  .cover::after {
+    content: ''; position: absolute; bottom: 0; left: 0;
+    width: 100%; height: 4px; background: var(--red);
+  }
+  .cover-tag {
+    font-family: 'Roboto Condensed', sans-serif; font-size: 11px;
+    letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); margin-bottom: 20px;
+  }
+  .cover h1 {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: clamp(36px, 5vw, 64px); font-weight: 700;
+    text-transform: uppercase; color: var(--white);
+    line-height: 1.05; letter-spacing: 0.02em; max-width: 800px; margin-bottom: 28px;
+  }
+  .cover h1 em { color: var(--red); font-style: normal; }
+  .cover-meta { display: flex; gap: 40px; flex-wrap: wrap; }
+  .cover-meta-item { color: rgba(255,255,255,0.5); font-size: 13px; }
+  .cover-meta-item strong { color: rgba(255,255,255,0.9); display: block; font-size: 14px; margin-top: 2px; }
+
+  /* SECTIONS */
+  section { padding: 72px 60px; }
+  section.dark { background: var(--black); }
+  section.light { background: var(--light); }
+  section.white { background: var(--white); }
+
+  .section-label {
+    font-family: 'Roboto Condensed', sans-serif; font-size: 11px;
+    letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); margin-bottom: 12px;
+  }
+  .section-label.light { color: rgba(255,255,255,0.5); }
+
+  h2 {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: clamp(24px, 3vw, 36px); font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.04em; line-height: 1.1;
+    margin-bottom: 40px; color: var(--black);
+  }
+  h2.light { color: var(--white); }
+
+  /* GRIDS */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  @media (max-width: 900px) {
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+    section { padding: 48px 24px; }
+    .cover { padding: 48px 24px; }
+    nav { padding: 0 16px; }
+  }
+
+  /* CARDS */
+  .card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 28px;
+  }
+  .card.dark-card {
+    background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); color: var(--white);
+  }
+  .card.red-accent { border-top: 3px solid var(--red); }
+  .card h3 {
+    font-family: 'Roboto Condensed', sans-serif; font-size: 15px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 12px;
+  }
+  .card h3.light { color: var(--white); }
+  .card p, .card li { font-size: 14px; color: var(--gray); line-height: 1.6; }
+  .card.dark-card p, .card.dark-card li { color: rgba(255,255,255,0.65); }
+  .card ul { padding-left: 16px; margin-top: 8px; }
+  .card ul li { margin-bottom: 4px; }
+
+  /* DECISION BAR */
+  .decision-bar {
+    background: var(--red); border-radius: var(--radius); padding: 20px 28px;
+    display: flex; align-items: center; gap: 16px; margin-bottom: 32px;
+  }
+  .decision-bar .check { font-size: 22px; }
+  .decision-bar p { color: var(--white); font-size: 14px; font-weight: 500; }
+
+  /* COLOR SWATCHES */
+  .swatch-row { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 32px; }
+  .swatch { display: flex; align-items: center; gap: 12px; }
+  .swatch-box { width: 48px; height: 48px; border-radius: var(--radius); flex-shrink: 0; }
+  .swatch-info { display: flex; flex-direction: column; gap: 3px; }
+  .swatch-name { font-size: 13px; font-weight: 500; }
+  .swatch-hex { font-size: 11px; font-family: monospace; color: rgba(255,255,255,0.4); }
+  .font-sample-condensed {
+    font-family: 'Roboto Condensed', sans-serif; font-size: 28px;
+    font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; line-height: 1.1;
+  }
+
+  /* WIREFRAME */
+  .wireframe {
+    background: var(--white); border: 2px solid var(--border);
+    border-radius: var(--radius); overflow: hidden; font-family: 'Roboto Condensed', sans-serif;
+  }
+  .wf-section {
+    padding: 14px 18px; border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 10px; background: var(--white);
+    font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase; font-weight: 600; color: var(--black);
+  }
+  .wf-section.hero-s { background: #1F1F1F; color: white; padding: 22px 18px; }
+  .wf-section.highlight { background: #FFF8E1; border-left: 3px solid var(--red); }
+  .wf-section.cta-s {
+    background: var(--red); color: white; justify-content: center;
+    font-size: 13px; padding: 18px; letter-spacing: 0.08em;
+  }
+  .wf-section .num {
+    background: rgba(255,255,255,0.15); color: white; width: 22px; height: 22px;
+    border-radius: 3px; display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 700; flex-shrink: 0;
+  }
+  .wf-section .num.dark { background: var(--black); color: white; }
+  .badge {
+    margin-left: auto; background: var(--red); color: white;
+    font-size: 9px; padding: 2px 6px; border-radius: 3px; letter-spacing: 0.1em;
+  }
+
+  /* LEGEND */
+  .wf-legend { display: flex; flex-direction: column; gap: 0; }
+  .wf-item {
+    display: flex; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--border);
+    align-items: flex-start;
+  }
+  .wf-item:last-child { border-bottom: none; }
+  .wf-num {
+    width: 28px; height: 28px; border-radius: 3px; background: var(--light);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Roboto Condensed', sans-serif; font-size: 13px; font-weight: 700;
+    flex-shrink: 0; margin-top: 2px;
+  }
+  .wf-num.red { background: var(--red); color: white; }
+  .wf-item-content h4 {
+    font-family: 'Roboto Condensed', sans-serif; font-size: 14px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 3px;
+  }
+  .wf-item-content p { font-size: 13px; color: var(--gray); line-height: 1.5; }
+
+  /* CONTENT SPEC CARDS */
+  .spec-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: var(--radius); margin-bottom: 20px; overflow: hidden;
+  }
+  .spec-card-header {
+    display: flex; align-items: center; gap: 14px; padding: 16px 24px;
+    background: var(--black); color: white;
+  }
+  .spec-card-header.light-header {
+    background: var(--light); color: var(--black); border-bottom: 1px solid var(--border);
+  }
+  .spec-num {
+    width: 32px; height: 32px; background: var(--red); border-radius: var(--radius);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Roboto Condensed', sans-serif; font-size: 14px; font-weight: 700; color: white; flex-shrink: 0;
+  }
+  .spec-card-header h3 {
+    font-family: 'Roboto Condensed', sans-serif; font-size: 15px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.06em; color: white;
+  }
+  .spec-card-header.light-header h3 { color: var(--black); }
+  .spec-card-header .spec-bg-tag {
+    margin-left: auto; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: rgba(255,255,255,0.5); white-space: nowrap;
+  }
+  .spec-card-header.light-header .spec-bg-tag { color: var(--gray); }
+  .spec-body { padding: 24px; }
+  .spec-row { display: grid; grid-template-columns: 140px 1fr; gap: 10px; align-items: baseline; margin-bottom: 10px; }
+  .spec-label {
+    font-family: 'Roboto Condensed', sans-serif; font-size: 11px;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray); padding-top: 1px;
+  }
+  .spec-value { font-size: 14px; color: var(--black); line-height: 1.5; }
+  .spec-value.headline {
+    font-family: 'Roboto Condensed', sans-serif; font-size: 18px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.03em; color: var(--black);
+  }
+  .spec-value.subtext { color: var(--gray); font-size: 13px; }
+  .cta-pill {
+    display: inline-block; padding: 6px 14px; border-radius: var(--radius); font-size: 13px;
+    font-weight: 500; margin-right: 8px; margin-bottom: 4px;
+  }
+  .cta-pill.primary { background: var(--red); color: white; }
+  .cta-pill.secondary { background: transparent; border: 2px solid var(--black); color: var(--black); }
+  .cta-pill.outline-white { background: transparent; border: 2px solid white; color: white; }
+  .spec-features { margin: 0; padding: 0; list-style: none; }
+  .spec-features li {
+    font-size: 13px; color: var(--gray); padding: 5px 0;
+    border-bottom: 1px solid var(--border); display: flex; gap: 8px;
+  }
+  .spec-features li:last-child { border-bottom: none; }
+  .spec-features li::before { content: "✓"; color: var(--red); font-weight: 700; flex-shrink: 0; }
+  .spec-divider {
+    border: none; border-top: 1px solid var(--border); margin: 16px 0;
+  }
+  .spec-note {
+    background: #FFF3E0; border-left: 3px solid #E65100; padding: 10px 14px;
+    border-radius: 0 var(--radius) var(--radius) 0; font-size: 12px; color: var(--black); margin-top: 12px;
+  }
+  .spec-note strong { color: #E65100; }
+  .price-card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 12px 0; }
+  .price-mini-card {
+    border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; text-align: center;
+  }
+  .price-mini-card.featured { border-color: var(--red); border-width: 2px; position: relative; }
+  .price-mini-card .pm-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray); margin-bottom: 4px; }
+  .price-mini-card .pm-size { font-size: 12px; color: var(--gray); margin-bottom: 8px; }
+  .price-mini-card .pm-price {
+    font-family: 'Roboto Condensed', sans-serif; font-size: 26px; font-weight: 700; color: var(--red); line-height: 1;
+  }
+  .price-mini-card .pm-note { font-size: 11px; color: var(--gray); margin-top: 4px; }
+  .feat-badge { font-size: 9px; background: var(--red); color: white; padding: 2px 6px; border-radius: 2px; text-transform: uppercase; letter-spacing: 0.08em; position: absolute; top: -9px; left: 50%; transform: translateX(-50%); white-space: nowrap; }
+  .faq-preview { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-top: 8px; }
+  .faq-q {
+    padding: 12px 16px; background: var(--light); font-weight: 600; font-size: 13px;
+    border-bottom: 1px solid var(--border); display: flex; justify-content: space-between;
+  }
+  .faq-a { padding: 12px 16px; font-size: 13px; color: var(--gray); line-height: 1.6; border-bottom: 1px solid var(--border); }
+  .faq-a:last-child { border-bottom: none; }
+  .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 8px; }
+  .step-card { border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; }
+  .step-num {
+    font-family: 'Roboto Condensed', sans-serif; font-size: 36px; font-weight: 700;
+    color: var(--red); line-height: 1; margin-bottom: 8px;
+  }
+  .step-title { font-family: 'Roboto Condensed', sans-serif; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 8px; }
+  .step-text { font-size: 13px; color: var(--gray); line-height: 1.6; }
+  .step-hint { font-size: 11px; color: var(--red); margin-top: 8px; font-style: italic; }
+  .usp-items { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 8px; }
+  .usp-item { display: flex; gap: 10px; padding: 10px; background: var(--light); border-radius: var(--radius); align-items: flex-start; }
+  .usp-icon { font-size: 20px; flex-shrink: 0; }
+  .usp-text strong { font-size: 13px; font-weight: 600; display: block; }
+  .usp-text span { font-size: 12px; color: var(--gray); }
+  .sol-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 8px; }
+  .sol-card { border: 1px solid var(--border); border-radius: var(--radius); padding: 14px; }
+  .sol-title { font-family: 'Roboto Condensed', sans-serif; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 5px; }
+  .sol-text { font-size: 12px; color: var(--gray); line-height: 1.5; margin-bottom: 8px; }
+  .sol-cta { font-size: 12px; color: var(--red); font-weight: 600; }
+
+  /* ACF */
+  .acf-field {
+    display: flex; gap: 16px; padding: 16px; background: var(--white);
+    border: 1px solid var(--border); border-radius: var(--radius); margin-bottom: 10px;
+    align-items: flex-start;
+  }
+  .acf-icon {
+    background: var(--red-light); color: var(--red); width: 36px; height: 36px;
+    border-radius: var(--radius); display: flex; align-items: center; justify-content: center;
+    font-size: 16px; flex-shrink: 0;
+  }
+  .acf-field h4 { font-size: 14px; font-weight: 600; margin-bottom: 3px; }
+  .acf-field .acf-key {
+    font-family: monospace; font-size: 11px; color: var(--gray);
+    background: var(--light); padding: 2px 6px; border-radius: 3px;
+  }
+  .acf-field p { font-size: 13px; color: var(--gray); margin-top: 4px; }
+  .acf-section-title {
+    font-family: 'Roboto Condensed', sans-serif; font-size: 13px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.08em; color: var(--black);
+    margin: 28px 0 12px; padding-bottom: 8px; border-bottom: 2px solid var(--red);
+    display: flex; align-items: center; gap: 8px;
+  }
+
+  /* BUTTONS */
+  .btn-preview { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; }
+  .btn-primary {
+    background: var(--red); color: white; border: none; padding: 12px 24px;
+    border-radius: var(--radius); font-family: 'Inter', sans-serif; font-size: 14px;
+    font-weight: 500; cursor: default; letter-spacing: 0.02em;
+  }
+  .btn-secondary {
+    background: transparent; color: var(--black); border: 2px solid var(--black);
+    padding: 10px 24px; border-radius: var(--radius); font-family: 'Inter', sans-serif;
+    font-size: 14px; font-weight: 500; cursor: default;
+  }
+
+  /* TAGS */
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.08em; padding: 3px 8px; border-radius: 3px; margin-left: 8px;
+  }
+  .tag.red { background: var(--red); color: white; }
+  .tag.yellow { background: #FFF8E1; color: #E65100; border: 1px solid #FFE082; }
+  .tag.green { background: #E8F5E9; color: #2E7D32; border: 1px solid #A5D6A7; }
+  .tag.gray { background: var(--light); color: var(--gray); border: 1px solid var(--border); }
+
+  /* PRINCIPLE */
+  .principle {
+    background: var(--white); border-radius: var(--radius); padding: 24px; border-left: 4px solid var(--red);
+  }
+  .principle .pnum {
+    font-family: 'Roboto Condensed', sans-serif; font-size: 32px; font-weight: 700;
+    color: var(--red); line-height: 1; margin-bottom: 8px;
+  }
+  .principle h4 {
+    font-family: 'Roboto Condensed', sans-serif; font-size: 14px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px;
+  }
+  .principle p { font-size: 13px; color: var(--gray); }
+
+  /* DELIVERABLES */
+  .dl-group { margin-bottom: 28px; }
+  .dl-group h3 {
+    font-family: 'Roboto Condensed', sans-serif; font-size: 14px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 14px;
+    padding-bottom: 8px; border-bottom: 2px solid var(--red);
+  }
+  .dl-item {
+    display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border);
+    font-size: 13px; align-items: flex-start;
+  }
+  .dl-item.star { background: #FFFDE7; margin: 0 -8px; padding: 10px 8px; border-radius: var(--radius); margin-bottom: 4px; border-bottom: none; }
+  .dl-item strong { color: var(--black); display: block; }
+  .dl-item span { color: var(--gray); font-size: 12px; }
+  .cb {
+    width: 16px; height: 16px; border: 2px solid var(--border); border-radius: 3px;
+    flex-shrink: 0; margin-top: 2px;
+  }
+
+  /* STATUS TAGS */
+  .status-done { color: #2E7D32; background: #E8F5E9; padding: 3px 8px; border-radius: 3px; font-size: 12px; }
+  .status-open { color: #E65100; background: #FFF3E0; padding: 3px 8px; border-radius: 3px; font-size: 12px; }
+
+  /* TABLE */
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th { background: var(--black); color: white; padding: 12px 16px; text-align: left; font-family: 'Roboto Condensed', sans-serif; letter-spacing: 0.06em; text-transform: uppercase; font-size: 12px; }
+  td { padding: 12px 16px; border-bottom: 1px solid var(--border); }
+  tr:hover td { background: var(--light); }
+
+  /* TIMELINE */
+  .timeline { position: relative; padding-left: 32px; }
+  .timeline::before {
+    content: ''; position: absolute; left: 8px; top: 8px; bottom: 0;
+    width: 2px; background: var(--border);
+  }
+  .tl-item { position: relative; padding-bottom: 28px; }
+  .tl-item::before {
+    content: ''; position: absolute; left: -28px; top: 6px;
+    width: 12px; height: 12px; border-radius: 50%;
+    background: var(--red); border: 2px solid var(--white); box-shadow: 0 0 0 2px var(--red);
+  }
+  .tl-item h4 { font-weight: 600; font-size: 14px; margin-bottom: 3px; }
+  .tl-item p { font-size: 13px; color: var(--gray); }
+
+  /* FOOTER */
+  footer {
+    background: var(--black); padding: 32px 60px;
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
+  }
+  footer p { color: rgba(255,255,255,0.4); font-size: 12px; }
+  .footer-brand {
+    font-family: 'Roboto Condensed', sans-serif; font-size: 13px; font-weight: 700;
+    letter-spacing: 0.1em; color: rgba(255,255,255,0.7); text-transform: uppercase;
+  }
+  .footer-brand span { color: var(--red); }
+
+  /* UTILS */
+  .sep { width: 40px; height: 3px; background: var(--red); margin-bottom: 24px; }
+  .note {
+    background: #FFF3E0; border-left: 3px solid #E65100; padding: 12px 16px;
+    border-radius: 0 var(--radius) var(--radius) 0; font-size: 13px; color: var(--black); margin-top: 16px;
+  }
+  .note strong { color: #E65100; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="logo">MEGA <span>MIETPARK</span></span>
+  <a href="#kontext">Kontext</a>
+  <a href="#design">Designsystem</a>
+  <a href="#homepage">Seitenaufbau</a>
+  <a href="#acf">Editierbare Felder</a>
+  <a href="#deliverables">Lieferobjekte</a>
+  <a href="#offene">Offene Punkte</a>
+  <a href="#zeitplan">Zeitplan</a>
+</nav>
+
+<!-- COVER -->
+<div class="cover">
+  <p class="cover-tag">Technisches Lastenheft · Version 1.2 · 2026-04-10</p>
+  <h1>Design-Kit<br><em>Startseite</em><br>mega-mietpark.de</h1>
+  <div class="cover-meta">
+    <div class="cover-meta-item">Auftraggeber<strong>Mega-Mietpark / Formica GmbH</strong></div>
+    <div class="cover-meta-item">Ansprechpartner<strong>David Neugum</strong></div>
+    <div class="cover-meta-item">Auftragnehmer<strong>2penguins</strong></div>
+    <div class="cover-meta-item">Design-System<strong>LAER Konzern · Variante B</strong></div>
+    <div class="cover-meta-item">Tech-Stack<strong>WordPress + Bricks Framework</strong></div>
+  </div>
+</div>
+
+<!-- SECTION 1: KONTEXT -->
+<section class="white" id="kontext">
+  <p class="section-label">01 — Projektkontext</p>
+  <h2>Ausgangslage & Ziel</h2>
+  <div class="grid-2">
+    <div>
+      <p style="font-size:15px; line-height:1.8; margin-bottom:20px;">
+        Mega-Mietpark betreibt <strong>16 Standorte</strong> in Deutschland mit XXL-Garagen, Büros, Werkhallen und Lagerräumen. Die aktuelle Website ist eine passive Visitenkarte — kein Vertriebskanal.
+      </p>
+      <p style="font-size:15px; line-height:1.8;">
+        Ziel des Relaunchs: <strong>Vom Hidden Champion zum sichtbaren Marktführer.</strong> Die Website soll aktiv Leads generieren und den gesamten Buchungsprozess digital abbilden.
+      </p>
+      <div class="sep" style="margin-top:24px;"></div>
+      <div class="grid-2" style="gap:12px; margin-top:4px;">
+        <div class="card red-accent">
+          <h3 style="font-size:13px;">Was wird gebaut?</h3>
+          <p>Design-Kit der Startseite als Basis für Kunden-Freigabe und anschließende Entwicklung.</p>
+        </div>
+        <div class="card red-accent">
+          <h3 style="font-size:13px;">Scope Phase 1</h3>
+          <p>Startseite — Desktop (1440px) + Mobile (390px). Subpages folgen in Phase 2.</p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="grid-2" style="gap:12px;">
+        <div style="background:var(--black); border-radius:var(--radius); padding:24px; text-align:center;">
+          <div style="font-family:'Roboto Condensed',sans-serif; font-size:48px; font-weight:700; color:var(--red); line-height:1;">16</div>
+          <div style="color:rgba(255,255,255,0.6); font-size:13px; margin-top:4px;">Standorte</div>
+        </div>
+        <div style="background:var(--black); border-radius:var(--radius); padding:24px; text-align:center;">
+          <div style="font-family:'Roboto Condensed',sans-serif; font-size:48px; font-weight:700; color:var(--red); line-height:1;">2.500+</div>
+          <div style="color:rgba(255,255,255,0.6); font-size:13px; margin-top:4px;">Aktive Mieter</div>
+        </div>
+        <div style="background:var(--black); border-radius:var(--radius); padding:24px; text-align:center;">
+          <div style="font-family:'Roboto Condensed',sans-serif; font-size:48px; font-weight:700; color:var(--red); line-height:1;">13+</div>
+          <div style="color:rgba(255,255,255,0.6); font-size:13px; margin-top:4px;">Jahre Erfahrung</div>
+        </div>
+        <div style="background:var(--black); border-radius:var(--radius); padding:24px; text-align:center;">
+          <div style="font-family:'Roboto Condensed',sans-serif; font-size:48px; font-weight:700; color:var(--red); line-height:1;">24/7</div>
+          <div style="color:rgba(255,255,255,0.6); font-size:13px; margin-top:4px;">Zugang & Video</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2: DESIGN SYSTEM -->
+<section class="dark" id="design">
+  <p class="section-label light">02 — Designsystem</p>
+  <h2 class="light">Entschiedene Designrichtung</h2>
+
+  <div class="decision-bar">
+    <span class="check">✅</span>
+    <p><strong>Variante B — LAER Konzern Visual Identity</strong> · Entschieden am 2026-04-10</p>
+  </div>
+
+  <p style="font-family:'Roboto Condensed',sans-serif; font-size:12px; letter-spacing:0.15em; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:16px;">Farbsystem</p>
+  <div class="swatch-row">
+    <div class="swatch">
+      <div class="swatch-box" style="background:#C62828;"></div>
+      <div class="swatch-info"><span class="swatch-name" style="color:white;">Primary Red</span><span class="swatch-hex">#C62828</span></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-box" style="background:#1F1F1F;"></div>
+      <div class="swatch-info"><span class="swatch-name" style="color:white;">Industrial Black</span><span class="swatch-hex">#1F1F1F</span></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-box" style="background:#6B6B6B;"></div>
+      <div class="swatch-info"><span class="swatch-name" style="color:white;">Concrete Gray</span><span class="swatch-hex">#6B6B6B</span></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-box" style="background:#FFFFFF; border:1px solid rgba(255,255,255,0.2);"></div>
+      <div class="swatch-info"><span class="swatch-name" style="color:white;">White</span><span class="swatch-hex">#FFFFFF</span></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-box" style="background:#F5F5F5;"></div>
+      <div class="swatch-info"><span class="swatch-name" style="color:white;">Light Gray</span><span class="swatch-hex">#F5F5F5</span></div>
+    </div>
+  </div>
+
+  <div style="background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.12); border-radius:var(--radius); padding:14px 18px; margin:24px 0; font-size:13px; color:rgba(255,255,255,0.6);">
+    ℹ️ Mega Corporate Design (<strong style="color:rgba(255,255,255,0.85);">#FF0000</strong>, Eurostile) bleibt den physischen Standorten vorbehalten — Schilder, Fassaden, Fahrzeuge. Nicht für die Website.
+  </div>
+
+  <p style="font-family:'Roboto Condensed',sans-serif; font-size:12px; letter-spacing:0.15em; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:20px; margin-top:40px;">Typografie</p>
+  <div class="grid-2">
+    <div style="background:rgba(255,255,255,0.07); border-radius:var(--radius); padding:28px;">
+      <div class="font-sample-condensed" style="color:white;">Roboto Condensed</div>
+      <p style="font-family:'Roboto Condensed',sans-serif; font-size:13px; letter-spacing:0.15em; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-top:8px;">Headlines H1–H3 · Bold 700 · Uppercase · Letter-spacing 0.05em</p>
+    </div>
+    <div style="background:rgba(255,255,255,0.07); border-radius:var(--radius); padding:28px;">
+      <div style="font-family:'Inter',sans-serif; font-size:22px; color:white; margin-bottom:8px; line-height:1.6;">Inter — Lesbar auf allen Screens</div>
+      <p style="font-family:'Inter',sans-serif; font-size:13px; color:rgba(255,255,255,0.4);">Body Text · Regular 400 / Medium 500 · 16px · Line-height 1.6</p>
+    </div>
+  </div>
+
+  <div class="grid-2" style="margin-top:24px;">
+    <div style="background:rgba(255,255,255,0.07); border-radius:var(--radius); padding:28px;">
+      <p style="font-family:'Roboto Condensed',sans-serif; font-size:12px; letter-spacing:0.15em; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:16px;">Border-Radius</p>
+      <div style="display:flex; gap:16px; align-items:center;">
+        <div style="width:56px;height:56px; background:var(--red); border-radius:4px;"></div>
+        <div>
+          <p style="color:white; font-size:24px; font-weight:700; font-family:'Roboto Condensed',sans-serif;">4px</p>
+          <p style="color:rgba(255,255,255,0.5); font-size:12px;">Geometrisch präzise — wie Garagen-Maße.</p>
+        </div>
+      </div>
+    </div>
+    <div style="background:rgba(255,255,255,0.07); border-radius:var(--radius); padding:28px;">
+      <p style="font-family:'Roboto Condensed',sans-serif; font-size:12px; letter-spacing:0.15em; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:16px;">Button-System</p>
+      <div class="btn-preview">
+        <button class="btn-primary">Standort finden →</button>
+        <button class="btn-secondary" style="color:white; border-color:white;">Alle Lösungen</button>
+      </div>
+      <p style="color:rgba(255,255,255,0.4); font-size:12px; margin-top:12px;">Primary: #C62828 → Hover: #8B1A1A · Secondary: Outline 2px</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3: HOMEPAGE STRUCTURE -->
+<section class="light" id="homepage">
+  <p class="section-label">03 — Seitenaufbau</p>
+  <h2>Homepage — 9 Sektionen mit Inhalten</h2>
+
+  <!-- Wireframe overview -->
+  <div class="grid-2" style="margin-bottom:56px;">
+    <div>
+      <div class="wireframe">
+        <div class="wf-section hero-s">
+          <div class="num" style="background:var(--red);">1</div>
+          <div class="label">HERO — Einheitlich (kein Split)</div>
+          <div style="font-size:10px; opacity:0.6; margin-left:auto;">Dunkel · Industrie-Foto</div>
+        </div>
+        <div class="wf-section" style="background:#F9F9F9;">
+          <div class="num dark">2</div>
+          <div style="font-size:11px;">USP BAR — 5 Vorteile · Icon + Text</div>
+        </div>
+        <div class="wf-section highlight">
+          <div class="num" style="background:var(--red); color:white;">3</div>
+          <div style="font-size:11px; font-weight:600;">STANDORT-FINDER — PLZ-Eingabe</div>
+          <div class="badge">KEY</div>
+        </div>
+        <div class="wf-section" style="background:#F9F9F9;">
+          <div class="num dark">4</div>
+          <div style="font-size:11px;">LÖSUNGS-FINDER — 4 Produkt-Kacheln</div>
+        </div>
+        <div class="wf-section">
+          <div class="num dark">5</div>
+          <div style="font-size:11px;">TRUST-BLOCK — Bewertungen + 4 Stats</div>
+        </div>
+        <div class="wf-section highlight">
+          <div class="num" style="background:var(--red); color:white;">6</div>
+          <div style="font-size:11px; font-weight:600;">PREIS-TEASER — ab 180 €/Monat netto</div>
+          <div class="badge">KEY</div>
+        </div>
+        <div class="wf-section" style="background:#F9F9F9;">
+          <div class="num dark">7</div>
+          <div style="font-size:11px;">PROZESS — 3 Schritte bis Einzug</div>
+        </div>
+        <div class="wf-section">
+          <div class="num dark">8</div>
+          <div style="font-size:11px;">FAQ — 6 Fragen · Accordion</div>
+        </div>
+        <div class="wf-section cta-s">Jetzt Standort finden →</div>
+      </div>
+    </div>
+    <div>
+      <div class="wf-legend">
+        <div class="wf-item"><div class="wf-num red">1</div><div class="wf-item-content"><h4>Hero <span class="tag gray">Dunkel</span></h4><p>Einheitlich — kein Split. Ein Headline, zwei CTAs (Primary + Secondary). Großes Industriefoto als Hintergrund.</p></div></div>
+        <div class="wf-item"><div class="wf-num">2</div><div class="wf-item-content"><h4>USP Bar <span class="tag gray">Hell</span></h4><p>5 Icons + Kurztext horizontal. Übersetzt sofort: Was macht Mega besser?</p></div></div>
+        <div class="wf-item"><div class="wf-num red">3</div><div class="wf-item-content"><h4>Standort-Finder ⭐ <span class="tag red">Key</span></h4><p>PLZ → nächster Standort. Schnellster Weg zur Conversion. Großes Suchfeld.</p></div></div>
+        <div class="wf-item"><div class="wf-num">4</div><div class="wf-item-content"><h4>Lösungs-Finder <span class="tag gray">Weiß</span></h4><p>4 Produkte als Kacheln: Garagen / Büro / Werkhalle / Fahrzeuge.</p></div></div>
+        <div class="wf-item"><div class="wf-num">5</div><div class="wf-item-content"><h4>Trust-Block <span class="tag gray">Dunkel</span></h4><p>Google-Rating + 4 Kennzahlen-Counter. VOR erstem Formular-CTA.</p></div></div>
+        <div class="wf-item"><div class="wf-num red">6</div><div class="wf-item-content"><h4>Preis-Teaser ⭐ <span class="tag red">Key</span></h4><p>3 Preiskarten mit echten Daten. Kein „Preis auf Anfrage". ACF-editierbar.</p></div></div>
+        <div class="wf-item"><div class="wf-num">7</div><div class="wf-item-content"><h4>Prozess <span class="tag gray">Weiß</span></h4><p>3 nummerierte Schritte: Wählen → Anfragen → Einziehen.</p></div></div>
+        <div class="wf-item"><div class="wf-num">8</div><div class="wf-item-content"><h4>FAQ <span class="tag gray">Hell</span></h4><p>6 fertige Fragen + Antworten. Accordion-Format. SEO + KI-Readiness.</p></div></div>
+        <div class="wf-item"><div class="wf-num red">9</div><div class="wf-item-content"><h4>Final CTA <span class="tag gray">Dunkel</span></h4><p>Letzter Impuls. H2 + 1 primärer Button + Kontaktinfo.</p></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- DETAILED CONTENT SPEC PER SECTION -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+
+  <h3 style="font-family:'Roboto Condensed',sans-serif; font-size:20px; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:24px; padding-bottom:12px; border-bottom:3px solid var(--red);">Inhalte — Sektion für Sektion</h3>
+
+  <!-- S1: HERO -->
+  <div class="spec-card">
+    <div class="spec-card-header">
+      <div class="spec-num">1</div>
+      <h3>Hero-Sektion</h3>
+      <span class="spec-bg-tag">Hintergrund: #1F1F1F + Industriefoto-Overlay</span>
+    </div>
+    <div class="spec-body">
+      <div class="spec-row">
+        <span class="spec-label">Hintergrund</span>
+        <span class="spec-value">Großes Foto einer Mega-Mietpark-Außenansicht (Garagenreihen, Abendstimmung oder diffuses Licht). Dunkel-Overlay (#1F1F1F bei 60–70% Opacity). Kein Split — <strong>eine einheitliche Sektion für alle Besucher</strong>.</span>
+      </div>
+      <hr class="spec-divider">
+      <div class="spec-row">
+        <span class="spec-label">H1 (Headline)</span>
+        <span class="spec-value headline">MEHR RAUM.<br>AN 16 STANDORTEN<br>IN DEUTSCHLAND.</span>
+      </div>
+      <div class="spec-row" style="margin-top:12px;">
+        <span class="spec-label">Subline</span>
+        <span class="spec-value" style="font-size:15px; color:#555;">XXL-Garagen · Büros · Werkhallen · LKW-befahrbar · 24/7 Zugang · ab 180 €/Monat</span>
+      </div>
+      <hr class="spec-divider">
+      <div class="spec-row">
+        <span class="spec-label">CTAs</span>
+        <div>
+          <span class="cta-pill primary">Standort finden →</span>
+          <span class="cta-pill outline-white" style="border-color:#aaa; color:#555;">Alle Produkte entdecken</span>
+          <p style="font-size:12px; color:var(--gray); margin-top:8px;">Primary (rot) → springt zur Standort-Finder-Sektion oder öffnet PLZ-Suche. Secondary (Outline) → scrollt zu Lösungs-Finder.</p>
+        </div>
+      </div>
+      <hr class="spec-divider">
+      <div class="spec-row">
+        <span class="spec-label">Trust-Zeile</span>
+        <span class="spec-value subtext">Kleine Zeile unter den CTAs: <em>„2.500+ zufriedene Mieter · Videüberwacht · Eigene Immobilien seit 2006"</em></span>
+      </div>
+      <div class="spec-note"><strong>Foto:</strong> Placeholder im Mockup verwenden. Echte Standortfotos werden von David Neugum geliefert. Kein Stock-Foto mit Menschen.</div>
+    </div>
+  </div>
+
+  <!-- S2: USP BAR -->
+  <div class="spec-card">
+    <div class="spec-card-header light-header">
+      <div class="spec-num">2</div>
+      <h3>USP-Bar</h3>
+      <span class="spec-bg-tag">Hintergrund: #FFFFFF oder #F5F5F5 · Kompakt</span>
+    </div>
+    <div class="spec-body">
+      <div class="spec-row">
+        <span class="spec-label">Layout</span>
+        <span class="spec-value">5 Punkte horizontal in einer Zeile. Desktop: nebeneinander. Mobile: 2 Spalten + 1 zentriert. Icon (24px) + Fetttext + Kurztext darunter.</span>
+      </div>
+      <hr class="spec-divider">
+      <div class="spec-row">
+        <span class="spec-label">Inhalte</span>
+        <div class="usp-items">
+          <div class="usp-item"><div class="usp-icon">🏗️</div><div class="usp-text"><strong>XXL bis 100 m²</strong><span>Kein Selfstorage — echte Flächen für echte Anforderungen</span></div></div>
+          <div class="usp-item"><div class="usp-icon">🚛</div><div class="usp-text"><strong>LKW-befahrbar</strong><span>Drive-in statt Aufzug. Sektionaltor 2,90 m × 3,30 m</span></div></div>
+          <div class="usp-item"><div class="usp-icon">📹</div><div class="usp-text"><strong>24/7 Videoüberwacht</strong><span>Kameraüberwachung und Zugangskontrolle an allen Standorten</span></div></div>
+          <div class="usp-item"><div class="usp-icon">📍</div><div class="usp-text"><strong>16 Standorte</strong><span>NRW, Niedersachsen &amp; Sachsen-Anhalt — Ihr Standort ist nah</span></div></div>
+          <div class="usp-item" style="grid-column: span 2;"><div class="usp-icon">🏢</div><div class="usp-text"><strong>Eigene Immobilien</strong><span>Kein Pachtmodell — Eigentümer ist Vermieter. Mehr Stabilität für Sie</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- S3: STANDORT-FINDER -->
+  <div class="spec-card">
+    <div class="spec-card-header">
+      <div class="spec-num">3</div>
+      <h3>Standort-Finder ⭐</h3>
+      <span class="spec-bg-tag">Hintergrund: #1F1F1F · Prominent</span>
+    </div>
+    <div class="spec-body">
+      <div class="spec-row">
+        <span class="spec-label">Headline H2</span>
+        <span class="spec-value headline">Ihr nächster Mega-Mietpark</span>
+      </div>
+      <div class="spec-row" style="margin-top:12px;">
+        <span class="spec-label">Subtext</span>
+        <span class="spec-value subtext">Geben Sie Ihre Postleitzahl ein — wir zeigen Ihnen den nächsten Standort in Ihrer Nähe.</span>
+      </div>
+      <hr class="spec-divider">
+      <div class="spec-row">
+        <span class="spec-label">Eingabefeld</span>
+        <span class="spec-value">Großes Input-Feld (Placeholder: <em>„PLZ eingeben, z. B. 50737"</em>) + roter Button <strong>„Standort finden →"</strong>. Breite: 100% Container, max. 640px. Auf Mobile: Input + Button untereinander.</span>
+      </div>
+      <div class="spec-row" style="margin-top:8px;">
+        <span class="spec-label">Hilfstext</span>
+        <span class="spec-value subtext">Unter dem Suchfeld: <em>„Oder alle 16 Standorte auf der Karte anzeigen →"</em> (als Text-Link)</span>
+      </div>
+      <div class="spec-note"><strong>Technisch:</strong> PLZ-Eingabe leitet auf Standort-Übersichtsseite weiter (Phase 2). Im Mockup: Suchfeld als Designelement darstellen, Funktion kommt in Entwicklung.</div>
+    </div>
+  </div>
+
+  <!-- S4: LÖSUNGS-FINDER -->
+  <div class="spec-card">
+    <div class="spec-card-header light-header">
+      <div class="spec-num">4</div>
+      <h3>Lösungs-Finder</h3>
+      <span class="spec-bg-tag">Hintergrund: #FFFFFF · 4 Kacheln</span>
+    </div>
+    <div class="spec-body">
+      <div class="spec-row">
+        <span class="spec-label">Headline H2</span>
+        <span class="spec-value headline">Was suchen Sie?</span>
+      </div>
+      <div class="spec-row" style="margin-top:8px;">
+        <span class="spec-label">Subtext</span>
+        <span class="spec-value subtext">Von der Standard-Garage bis zur Komplettlösung für Ihr Gewerbe — wählen Sie Ihr Produkt.</span>
+      </div>
+      <hr class="spec-divider">
+      <div class="spec-row">
+        <span class="spec-label">Kacheln</span>
+        <div class="sol-grid">
+          <div class="sol-card">
+            <div class="sol-title">🚗 MEGA Garagen</div>
+            <div class="sol-text">Für PKW, Wohnmobil, Oldtimer und mehr. Einzel, Doppel, WoMo, Jumbo — von 26 m² bis 100 m². Mit Strom (230V), 24/7-Zugang und Videoüberwachung.</div>
+            <div class="sol-cta">Garagen entdecken →</div>
+          </div>
+          <div class="sol-card">
+            <div class="sol-title">🏢 MEGA Büro</div>
+            <div class="sol-text">2 Ebenen: EG als Lager- oder Werkraum, OG als Büro mit WC und Teeküchenvorb. Gewerbeadresse auf Anfrage. Ideal für Startups und Handwerksbetriebe.</div>
+            <div class="sol-cta">Büros anzeigen →</div>
+          </div>
+          <div class="sol-card">
+            <div class="sol-title">🔧 MEGA Werkhalle</div>
+            <div class="sol-text">LKW-befahrbar, 6 m Deckenhöhe, 400V Starkstrom auf Anfrage. Für Handwerker, KFZ-Betriebe und E-Commerce mit Volumen. Ihre eigene Werkstatt mit Büroebene.</div>
+            <div class="sol-cta">Werkhallen anzeigen →</div>
+          </div>
+          <div class="sol-card">
+            <div class="sol-title">🚐 Fahrzeuge &amp; Sonder</div>
+            <div class="sol-text">Wohnmobil, Wohnwagen, Boot oder Oldtimer? WoMo-Garagen bis 16 m Tiefe. Isolierte Garagen für empfindliche Güter an mehreren Standorten verfügbar.</div>
+            <div class="sol-cta">Fahrzeug-Garagen →</div>
+          </div>
+        </div>
+      </div>
+      <div class="spec-note"><strong>Logos:</strong> Produkt-Logos (mega-garagen.jpg, mega-buero.jpg etc.) als Icon-Elemente verwenden. SVG-Version bei David anfragen.</div>
+    </div>
+  </div>
+
+  <!-- S5: TRUST-BLOCK -->
+  <div class="spec-card">
+    <div class="spec-card-header">
+      <div class="spec-num">5</div>
+      <h3>Trust-Block</h3>
+      <span class="spec-bg-tag">Hintergrund: #1F1F1F · Vor erstem Formular</span>
+    </div>
+    <div class="spec-body">
+      <div class="spec-row">
+        <span class="spec-label">Headline H2</span>
+        <span class="spec-value headline">Seit 2006 das Vertrauen von 2.500+ Mietern</span>
+      </div>
+      <hr class="spec-divider">
+      <div class="spec-row">
+        <span class="spec-label">Google-Rating</span>
+        <span class="spec-value">Widget: ★★★★★ <strong>4.7</strong> · 214 Bewertungen (Google) — Daten werden von David Neugum geliefert und über ACF-Felder gepflegt (trust_google_rating / trust_google_count).</span>
+      </div>
+      <hr class="spec-divider">
+      <div class="spec-row">
+        <span class="spec-label">4 Stats-Counter</span>
+        <div style="display:grid; grid-template-columns: repeat(4,1fr); gap:12px; margin-top:4px;">
+          <div style="text-align:center; background:rgba(255,255,255,0.07); border-radius:4px; padding:16px;">
+            <div style="font-family:'Roboto Condensed',sans-serif; font-size:32px; font-weight:700; color:#C62828;">16</div>
+            <div style="font-size:12px; color:rgba(255,255,255,0.5);">Standorte</div>
+          </div>
+          <div style="text-align:center; background:rgba(255,255,255,0.07); border-radius:4px; padding:16px;">
+            <div style="font-family:'Roboto Condensed',sans-serif; font-size:32px; font-weight:700; color:#C62828;">2.500+</div>
+            <div style="font-size:12px; color:rgba(255,255,255,0.5);">Aktive Mieter</div>
+          </div>
+          <div style="text-align:center; background:rgba(255,255,255,0.07); border-radius:4px; padding:16px;">
+            <div style="font-family:'Roboto Condensed',sans-serif; font-size:32px; font-weight:700; color:#C62828;">13+</div>
+            <div style="font-size:12px; color:rgba(255,255,255,0.5);">Jahre Erfahrung</div>
+          </div>
+          <div style="text-align:center; background:rgba(255,255,255,0.07); border-radius:4px; padding:16px;">
+            <div style="font-family:'Roboto Condensed',sans-serif; font-size:32px; font-weight:700; color:#C62828;">24/7</div>
+            <div style="font-size:12px; color:rgba(255,255,255,0.5);">Zugang &amp; Video</div>
+          </div>
+        </div>
+      </div>
+      <div class="spec-note"><strong>Kunden-Zitat (optional):</strong> 1–2 kurze Zitate (max. 120 Zeichen) als Blockquote-Elemente. Echte Zitate werden von David Neugum geliefert. Placeholder im Mockup: <em>„Seit 3 Jahren meine Garage in Bochum — immer sauber, immer zugänglich. Empfehle ich jedem." — M. K., Bochum</em></div>
+    </div>
+  </div>
+
+  <!-- S6: PREIS-TEASER -->
+  <div class="spec-card">
+    <div class="spec-card-header light-header">
+      <div class="spec-num">6</div>
+      <h3>Preis-Teaser ⭐</h3>
+      <span class="spec-bg-tag">Hintergrund: #F5F5F5 · 3 Preiskarten</span>
+    </div>
+    <div class="spec-body">
+      <div class="spec-row">
+        <span class="spec-label">Headline H2</span>
+        <span class="spec-value headline">Transparente Preise — kein „Preis auf Anfrage"</span>
+      </div>
+      <div class="spec-row" style="margin-top:8px;">
+        <span class="spec-label">Subtext</span>
+        <span class="spec-value subtext">Wir zeigen unsere Preise. Immer. Damit Sie sofort entscheiden können.</span>
+      </div>
+      <hr class="spec-divider">
+      <div class="spec-row">
+        <span class="spec-label">3 Preiskarten</span>
+        <div style="width:100%;">
+          <div class="price-card-grid">
+            <div class="price-mini-card">
+              <div class="pm-label">MEGA 8 · Standard</div>
+              <div class="pm-size">3,30m × 8m × 5,00m · ca. 26 m²</div>
+              <div class="pm-price">ab 180 €</div>
+              <div class="pm-note">/ Monat netto · Bochum</div>
+              <ul class="spec-features" style="text-align:left; margin-top:10px;">
+                <li>Sektionaltor 2,90m × 3,30m</li>
+                <li>Stromanschluss 230V</li>
+                <li>24/7 Zugang & Video</li>
+              </ul>
+              <div style="margin-top:12px;"><span class="cta-pill primary" style="font-size:12px; padding:6px 12px;">Jetzt anfragen →</span></div>
+            </div>
+            <div class="price-mini-card featured">
+              <div class="feat-badge">Beliebt</div>
+              <div class="pm-label">MEGA 8-HB · Hoch+Breit</div>
+              <div class="pm-size">3,80m × 8m × 5,70m · ca. 30 m²</div>
+              <div class="pm-price">ab 200 €</div>
+              <div class="pm-note">/ Monat netto · Wuppertal</div>
+              <ul class="spec-features" style="text-align:left; margin-top:10px;">
+                <li>Breiteres Tor 3,40m × 4,00m</li>
+                <li>Ideal für große Fahrzeuge</li>
+                <li>24/7 Zugang & Video</li>
+              </ul>
+              <div style="margin-top:12px;"><span class="cta-pill primary" style="font-size:12px; padding:6px 12px;">Jetzt anfragen →</span></div>
+            </div>
+            <div class="price-mini-card">
+              <div class="pm-label">MEGA Werkhalle · Gewerbe</div>
+              <div class="pm-size">5,90m × 16m · ca. 95 m² · 2 Ebenen</div>
+              <div class="pm-price">ab 1.360 €</div>
+              <div class="pm-note">/ Monat netto + 100 € NK · Wuppertal</div>
+              <ul class="spec-features" style="text-align:left; margin-top:10px;">
+                <li>LKW-befahrbar</li>
+                <li>6m Deckenhöhe</li>
+                <li>Büro OG mit WC</li>
+              </ul>
+              <div style="margin-top:12px;"><span class="cta-pill primary" style="font-size:12px; padding:6px 12px;">Jetzt anfragen →</span></div>
+            </div>
+          </div>
+          <p style="font-size:12px; color:var(--gray); margin-top:8px;">Alle Preise netto zzgl. gesetzlicher MwSt. Preise variieren je nach Standort und Einheitentyp.</p>
+          <p style="margin-top:8px;"><span class="cta-pill secondary" style="font-size:12px; padding:6px 12px;">Alle Standorte &amp; Preise anzeigen →</span></p>
+        </div>
+      </div>
+      <div class="spec-note"><strong>ACF-Feld:</strong> <code>preis_teaser_start</code> — David kann den „ab X €" Einstiegspreis jederzeit aus dem WordPress-Admin anpassen, ohne Entwickler.</div>
+    </div>
+  </div>
+
+  <!-- S7: PROZESS -->
+  <div class="spec-card">
+    <div class="spec-card-header light-header">
+      <div class="spec-num">7</div>
+      <h3>Prozess-Schritte</h3>
+      <span class="spec-bg-tag">Hintergrund: #FFFFFF · 3 Schritte</span>
+    </div>
+    <div class="spec-body">
+      <div class="spec-row">
+        <span class="spec-label">Headline H2</span>
+        <span class="spec-value headline">In 3 Schritten einziehen</span>
+      </div>
+      <div class="spec-row" style="margin-top:8px;">
+        <span class="spec-label">Subtext</span>
+        <span class="spec-value subtext">Kein langer Papierkram. Kein wochenlanger Prozess. So läuft es ab:</span>
+      </div>
+      <hr class="spec-divider">
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">01</div>
+          <div class="step-title">Standort &amp; Einheit wählen</div>
+          <div class="step-text">Geben Sie Ihre Postleitzahl ein und wählen Sie aus den verfügbaren Einheiten am nächsten Standort — Garage, Büro oder Werkhalle, in der passenden Größe.</div>
+          <div class="step-hint">PLZ → Standortseite → Einheit auswählen</div>
+        </div>
+        <div class="step-card" style="border-color:var(--red);">
+          <div class="step-num">02</div>
+          <div class="step-title">Unverbindlich anfragen</div>
+          <div class="step-text">Kurzes Formular ausfüllen oder direkt anrufen: <strong>+49 2309 5439 995</strong>. Unser Regionalleiter vor Ort meldet sich persönlich — innerhalb von 24 Stunden.</div>
+          <div class="step-hint">Online oder telefonisch — kein Zwang</div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">03</div>
+          <div class="step-title">Einziehen — ab dem ersten Tag</div>
+          <div class="step-text">Nach Vertragsunterzeichnung: persönlicher Zugangscode, Einweisung vor Ort, sofort nutzbare Einheit. Mietbeginn flexibel nach Verfügbarkeit.</div>
+          <div class="step-hint">Keine Kaution im klassischen Sinne</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- S8: FAQ -->
+  <div class="spec-card">
+    <div class="spec-card-header light-header">
+      <div class="spec-num">8</div>
+      <h3>FAQ — Häufige Fragen</h3>
+      <span class="spec-bg-tag">Hintergrund: #F5F5F5 · Accordion</span>
+    </div>
+    <div class="spec-body">
+      <div class="spec-row">
+        <span class="spec-label">Headline H2</span>
+        <span class="spec-value headline">Häufige Fragen</span>
+      </div>
+      <div class="spec-row" style="margin-top:8px;">
+        <span class="spec-label">Subtext</span>
+        <span class="spec-value subtext">Alles Wichtige auf einen Blick. Nicht dabei? Wir helfen gerne: +49 2309 5439 995</span>
+      </div>
+      <hr class="spec-divider">
+      <div class="faq-preview">
+        <div class="faq-q">Was ist der Unterschied zwischen Mega-Mietpark und Self-Storage? <span>▾</span></div>
+        <div class="faq-a">Wir bieten XXL-Flächen bis 100 m² mit bis zu 6 m Deckenhöhe — deutlich größer als klassisches Self-Storage (max. 30 m²). Unsere Garagen sind LKW-befahrbar mit echten Sektionaltoren. Kein Aufzug, kein Umweg. Außerdem: Eigentümer ist der Vermieter — keine Pachtflächen.</div>
+        <div class="faq-q">Wie schnell kann ich einziehen? <span>▾</span></div>
+        <div class="faq-a">Nach Vertragsunterzeichnung in der Regel innerhalb von 1–3 Werktagen. Je nach Verfügbarkeit manchmal sofort. Sprechen Sie uns direkt an — wir finden eine schnelle Lösung.</div>
+        <div class="faq-q">Welche Mindestmietdauer gibt es? <span>▾</span></div>
+        <div class="faq-a">Das hängt vom Produkt ab: Garagen haben 6 Monate Mindestlaufzeit (Kündigung 3 Monate vorher). Lagerräume sind monatlich kündbar. Büros und Werkhallen: 2-jährige Mindestlaufzeit (Kündigung 6 Monate vorher).</div>
+        <div class="faq-q">Kann ich als Gewerbetreibender eine Rechnung mit MwSt. bekommen? <span>▾</span></div>
+        <div class="faq-a">Ja. Gewerbliche Mieter erhalten Rechnungen mit Umsatzsteuerausweis. Alle Nettomieten werden im Mietvertrag ausgewiesen. Gewerbeadresse auf Wunsch möglich (standortabhängig).</div>
+        <div class="faq-q">Ist der Zugang wirklich 24/7 möglich? <span>▾</span></div>
+        <div class="faq-a">Die meisten Standorte sind täglich von 06:00 bis 22:00 Uhr zugänglich, einige rund um die Uhr. Zugang erfolgt per persönlichem PIN-Code oder Chipkarte. 24/7-Videoüberwachung ist an allen Standorten aktiv.</div>
+        <div class="faq-q" style="border-bottom:none;">Gibt es isolierte Garagen? <span>▾</span></div>
+        <div class="faq-a" style="border-bottom:none;">Ja — an mehreren Standorten (u. a. Remscheid, Wuppertal, Datteln, Halle, Oberhausen). Isolierte Garagen sind ideal für Oldtimer, empfindliche Güter oder ganzjährigen Werkstattbetrieb. Fragen Sie am jeweiligen Standort nach Verfügbarkeit.</div>
+      </div>
+      <div class="spec-note"><strong>ACF:</strong> faq_items (Repeater) — David kann Fragen jederzeit aus dem Admin hinzufügen, entfernen oder umsortieren. Empfehlung: 5–7 Einträge auf der Startseite.</div>
+    </div>
+  </div>
+
+  <!-- S9: FINAL CTA -->
+  <div class="spec-card">
+    <div class="spec-card-header">
+      <div class="spec-num">9</div>
+      <h3>Final CTA</h3>
+      <span class="spec-bg-tag">Hintergrund: #1F1F1F · Abschluss</span>
+    </div>
+    <div class="spec-body">
+      <div class="spec-row">
+        <span class="spec-label">Headline H2</span>
+        <span class="spec-value headline">Ihr Raum. Ihr Standort.<br>Jetzt verfügbar.</span>
+      </div>
+      <div class="spec-row" style="margin-top:8px;">
+        <span class="spec-label">Subtext</span>
+        <span class="spec-value subtext">Finden Sie Ihre Einheit — in wenigen Sekunden.</span>
+      </div>
+      <div class="spec-row" style="margin-top:12px;">
+        <span class="spec-label">CTA</span>
+        <div>
+          <span class="cta-pill primary">Standort finden →</span>
+          <p style="font-size:12px; color:var(--gray); margin-top:8px;">Unter dem Button: <em>„Oder rufen Sie uns an: +49 2309 5439 995 · anfrage@mega-mietpark.de"</em></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Design Principles -->
+  <div style="margin-top:48px;">
+    <h3 style="font-family:'Roboto Condensed',sans-serif; font-size:18px; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:20px;">Verbindliche Designprinzipien</h3>
+    <div class="grid-3">
+      <div class="principle"><div class="pnum">01</div><h4>Mobile First</h4><p>390px zuerst entwerfen, dann 1440px. Klickflächen min. 48px. Keine kleinen Icons auf Mobile.</p></div>
+      <div class="principle"><div class="pnum">02</div><h4>1 Primärer CTA</h4><p>Pro Sektion genau ein Haupt-CTA. Kein Entscheidungsparalyse-Risiko für den Nutzer.</p></div>
+      <div class="principle"><div class="pnum">03</div><h4>Trust vor Formular</h4><p>Bewertungen und Kennzahlen erscheinen VOR dem ersten Kontaktpunkt.</p></div>
+      <div class="principle"><div class="pnum">04</div><h4>Alltagssprache</h4><p>57% kennen „Selfstorage" nicht. → „Garage", „Lagerraum", „Halle" — keine Fachbegriffe in CTAs.</p></div>
+      <div class="principle"><div class="pnum">05</div><h4>Industrieästhetik</h4><p>Keine Stock-Fotos mit Lächeln. Echte Garagen-Fotos, klare Flächen, Fakten statt Emotion.</p></div>
+      <div class="principle"><div class="pnum">06</div><h4>Dunkel-Hell-Wechsel</h4><p>Sektionen alternieren Dark (#1F1F1F) und Light (#FFFFFF/#F5F5F5). Kein monotones Layout.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4: EDITABLE FIELDS (ACF) -->
+<section class="white" id="acf">
+  <p class="section-label">04 — WordPress Admin</p>
+  <h2>Editierbare Felder — Kein Live-Feed erforderlich</h2>
+
+  <div style="background:var(--red-light); border:1px solid #FFCDD2; border-radius:var(--radius); padding:20px 24px; margin-bottom:40px;">
+    <p style="font-size:14px; color:var(--black); line-height:1.7;">
+      <strong>Entscheidung:</strong> Echte Live-Daten (Verfügbarkeit, Preise in Echtzeit) werden vom Kunden <strong>nicht</strong> bereitgestellt. Stattdessen: alle dynamischen Inhalte als <strong>einfach editierbare WordPress-Felder (ACF)</strong>, die David oder sein Team jederzeit aus dem Admin-Panel aktualisieren können — ohne Entwickler-Eingriff.
+    </p>
+  </div>
+
+  <div class="acf-section-title">💰 Preise &amp; Angebote</div>
+  <div class="acf-field">
+    <div class="acf-icon">€</div>
+    <div>
+      <h4>Einstiegspreis Startseite <span class="acf-key">preis_teaser_start</span></h4>
+      <p>Wird im Preis-Teaser angezeigt: „ab [X] €/Monat". Aktuell: <strong>ab 180 €</strong> (Bochum). Text-Feld, Freitext.</p>
+    </div>
+  </div>
+  <div class="acf-field">
+    <div class="acf-icon">📋</div>
+    <div>
+      <h4>Preis-Teaser Beschreibung <span class="acf-key">preis_teaser_text</span></h4>
+      <p>Kurztext unter dem Preis: „MEGA 8 Garage, ca. 26 m², NRW. Exkl. MwSt. Andere Standorte auf Anfrage." Textarea, max. 100 Zeichen.</p>
+    </div>
+  </div>
+
+  <div class="acf-section-title">📍 Trust &amp; Kennzahlen</div>
+  <div class="acf-field">
+    <div class="acf-icon">🔢</div>
+    <div>
+      <h4>Anzahl Standorte <span class="acf-key">stat_standorte</span></h4>
+      <p>Wird im Stats-Counter angezeigt. Aktuell: <strong>16</strong>. Zahl-Feld. Bei Eröffnung neuer Standorte einfach erhöhen.</p>
+    </div>
+  </div>
+  <div class="acf-field">
+    <div class="acf-icon">👥</div>
+    <div>
+      <h4>Anzahl aktive Mieter <span class="acf-key">stat_mieter</span></h4>
+      <p>Wird im Stats-Counter angezeigt. Aktuell: <strong>2.500+</strong>. Text-Feld (erlaubt „+" und Formatierung).</p>
+    </div>
+  </div>
+  <div class="acf-field">
+    <div class="acf-icon">⭐</div>
+    <div>
+      <h4>Google-Bewertung (Gesamt) <span class="acf-key">trust_google_rating</span></h4>
+      <p>Durchschnittsbewertung für den Trust-Block. Manuell gepflegt. Format: „4.7"</p>
+    </div>
+  </div>
+  <div class="acf-field">
+    <div class="acf-icon">💬</div>
+    <div>
+      <h4>Anzahl Google-Bewertungen <span class="acf-key">trust_google_count</span></h4>
+      <p>Für Anzeige: „4.7 ★ (214 Bewertungen)". Manuell gepflegt. Zahl-Feld.</p>
+    </div>
+  </div>
+
+  <div class="acf-section-title">🔔 Verfügbarkeit &amp; Aktionen</div>
+  <div class="acf-field">
+    <div class="acf-icon">✅</div>
+    <div>
+      <h4>Verfügbarkeits-Banner (an/aus) <span class="acf-key">verfuegbarkeit_banner_aktiv</span></h4>
+      <p>True/False-Schalter. Zeigt/versteckt einen farbigen Banner. Beispiel: „Nur noch 3 Garagen in Köln verfügbar!" Kein automatischer Feed — Client pflegt manuell.</p>
+    </div>
+  </div>
+  <div class="acf-field">
+    <div class="acf-icon">📢</div>
+    <div>
+      <h4>Banner-Text <span class="acf-key">verfuegbarkeit_banner_text</span></h4>
+      <p>Nur aktiv wenn Schalter = True. Freitext-Feld, max. 120 Zeichen. Beispiel: „Jetzt verfügbar: XXL-Garagen in Bochum und Detmold".</p>
+    </div>
+  </div>
+  <div class="acf-field">
+    <div class="acf-icon">🎯</div>
+    <div>
+      <h4>Saisonale Aktions-Box <span class="acf-key">aktion_aktiv / aktion_text / aktion_link</span></h4>
+      <p>Optionale Kampagnen-Box (z. B. „Wohnmobil Einwinterung — jetzt Platz sichern!"). True/False + Textfeld + URL-Feld. Kann im Lösungs-Finder oder separat eingeblendet werden.</p>
+    </div>
+  </div>
+
+  <div class="acf-section-title">🗣️ FAQ &amp; Inhalte</div>
+  <div class="acf-field">
+    <div class="acf-icon">❓</div>
+    <div>
+      <h4>FAQ-Einträge <span class="acf-key">faq_items (Repeater)</span></h4>
+      <p>ACF Repeater-Feld: beliebig viele Frage/Antwort-Paare. David kann Fragen hinzufügen, entfernen oder umsortieren — ohne Entwickler. Empfehlung: 5–7 Einträge auf der Startseite.</p>
+    </div>
+  </div>
+
+  <div class="note" style="margin-top:32px;">
+    <strong>Hinweis für den Designer:</strong> Alle oben genannten Felder sind <em>editierbar, aber nicht automatisch</em>. Im Design sollen sie wie normaler Inhalt aussehen — kein „Live-Badge", keine Echtzeit-Indikatoren.
+  </div>
+</section>
+
+<!-- SECTION 5: DELIVERABLES -->
+<section class="light" id="deliverables">
+  <p class="section-label">05 — Lieferobjekte</p>
+  <h2>Deliverables — Design-Kit</h2>
+
+  <div class="grid-2">
+    <div>
+      <div class="dl-group">
+        <h3>Foundations</h3>
+        <div class="dl-item"><div class="cb"></div><div><strong>Farbpalette</strong> — Primary, Neutrals, State-Colors<span>Hover, Focus, Error, Success — vollständig als Design-Tokens</span></div></div>
+        <div class="dl-item"><div class="cb"></div><div><strong>Typografie-Skala</strong> — H1–H4, Body, Caption, Label<span>Desktop + Mobile. Fluid typography empfohlen.</span></div></div>
+        <div class="dl-item"><div class="cb"></div><div><strong>Spacing-System</strong> — 4px-Basis-Grid<span>4 · 8 · 12 · 16 · 24 · 32 · 48 · 64px</span></div></div>
+        <div class="dl-item"><div class="cb"></div><div><strong>Border-Radius-Tokens</strong><span>4px Standard · 0px für Icons · 50% für Avatare</span></div></div>
+        <div class="dl-item"><div class="cb"></div><div><strong>Schatten-System</strong> — Card, Elevated, Modal<span>3 Abstufungen als Box-Shadow</span></div></div>
+      </div>
+      <div class="dl-group">
+        <h3>Komponenten</h3>
+        <div class="dl-item star"><div class="cb"></div><div><strong>PLZ-Suchfeld</strong> — Standort-Finder<span>⭐ KEY COMPONENT — mit rotem Such-Button, Focus-State, Mobile-Variante</span></div></div>
+        <div class="dl-item"><div class="cb"></div><div><strong>Button-System</strong> — Primär, Sekundär, Ghost<span>Alle States: Default, Hover, Active, Disabled</span></div></div>
+        <div class="dl-item"><div class="cb"></div><div><strong>Eingabefelder</strong> — Input, Textarea, Select<span>Default, Focus (#C62828 Border), Error, Disabled</span></div></div>
+        <div class="dl-item"><div class="cb"></div><div><strong>Navigation</strong> — Desktop + Mobile<span>Desktop: Menüleiste mit CTA-Button · Mobile: Hamburger-Drawer</span></div></div>
+        <div class="dl-item"><div class="cb"></div><div><strong>Produkt-Kachel</strong> — 4 Typen<span>Icon + Titel + 1-Satz + Link. Garagen / Büro / Werkhalle / Fahrzeuge</span></div></div>
+        <div class="dl-item"><div class="cb"></div><div><strong>USP-Chip</strong> — Icon + Kurztext<span>Für USP Bar und weitere Sektionen</span></div></div>
+        <div class="dl-item"><div class="cb"></div><div><strong>Trust-Badge</strong> — Bewertungs-Widget<span>Stern + Zahl + Plattform-Label. Google</span></div></div>
+        <div class="dl-item"><div class="cb"></div><div><strong>Stats-Counter</strong> — Große Zahl + Label<span>16 / 2.500+ / 13+ / 24/7</span></div></div>
+        <div class="dl-item"><div class="cb"></div><div><strong>Preis-Karte</strong> — Typ + Fläche + Preis + CTA<span>Standard, Featured (hervorgehoben), Gewerbe</span></div></div>
+        <div class="dl-item"><div class="cb"></div><div><strong>FAQ-Eintrag</strong> — Accordion<span>Geöffnet + Geschlossen State</span></div></div>
+        <div class="dl-item"><div class="cb"></div><div><strong>Prozess-Schritt-Card</strong> — Nummer + Titel + Text<span>3er-Layout Desktop, Stack auf Mobile</span></div></div>
+      </div>
+    </div>
+    <div>
+      <div class="dl-group">
+        <h3>Startseiten-Mockup <span class="tag red">HIGH PRIORITY</span></h3>
+        <p style="font-size:13px; color:var(--gray); margin-bottom:16px;">Desktop (1440px) + Mobile (390px) — alle 9 Sektionen:</p>
+        <div class="dl-item star"><div class="cb"></div><div><strong>Hero-Sektion</strong><span>⭐ Einheitlich, Industriefoto-Placeholder, H1 „Mehr Raum. An 16 Standorten.", 2 CTAs</span></div></div>
+        <div class="dl-item"><div class="cb"></div><div><strong>USP Bar</strong><span>5 Punkte horizontal (Icon + Fetttext + Kurztext)</span></div></div>
+        <div class="dl-item star"><div class="cb"></div><div><strong>Standort-Finder</strong><span>⭐ PLZ-Eingabe prominent auf dunklem Hintergrund</span></div></div>
+        <div class="dl-item"><div class="cb"></div><div><strong>Lösungs-Finder</strong><span>4 Kacheln: Garagen / Büro / Werkhalle / Fahrzeuge</span></div></div>
+        <div class="dl-item"><div class="cb"></div><div><strong>Trust-Block</strong><span>Google-Rating + 4 Stats-Counter auf dunklem BG</span></div></div>
+        <div class="dl-item star"><div class="cb"></div><div><strong>Preis-Teaser</strong><span>⭐ 3 Preiskarten (Standard / Featured / Gewerbe) mit echten Preisen</span></div></div>
+        <div class="dl-item"><div class="cb"></div><div><strong>Prozess-Schritte</strong><span>3 nummerierte Cards mit vollständigem Text</span></div></div>
+        <div class="dl-item"><div class="cb"></div><div><strong>FAQ</strong><span>6 exemplarische Fragen im Accordion (Texte → Sektion 03/S8)</span></div></div>
+        <div class="dl-item"><div class="cb"></div><div><strong>Final CTA</strong><span>Dunkler Abschluss-Block, H2, 1 Button + Kontaktinfo</span></div></div>
+      </div>
+      <div class="dl-group">
+        <h3>Nicht im Scope (Phase 1)</h3>
+        <div style="background:var(--white); border:1px solid var(--border); border-radius:var(--radius); padding:16px; font-size:13px; color:var(--gray);">
+          <p>❌ Subpages (Standort-Landingpages, Produktseiten, Kontakt) → Phase 2</p>
+          <p style="margin-top:6px;">❌ Animationen / Microinteractions</p>
+          <p style="margin-top:6px;">❌ Echte Fotos und Texte → Placeholder verwenden, Lieferung durch David</p>
+          <p style="margin-top:6px;">❌ Live-Daten-Integrationen → ersetzt durch ACF-Felder</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 6: OPEN POINTS -->
+<section class="white" id="offene">
+  <p class="section-label">06 — Status</p>
+  <h2>Offene Punkte &amp; Entscheidungen</h2>
+  <table>
+    <thead>
+      <tr><th>#</th><th>Punkt</th><th>An wen</th><th>Status</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td><strong>Designvariante #C62828 vs. #FF0000?</strong></td><td>David Neugum</td><td><span class="status-done">✅ #C62828 · LAER</span></td></tr>
+      <tr><td>2</td><td><strong>Border-Radius?</strong></td><td>David/Konstantin</td><td><span class="status-done">✅ 4px</span></td></tr>
+      <tr><td>3</td><td><strong>Live-Daten vs. editierbare Felder?</strong></td><td>David Neugum</td><td><span class="status-done">✅ ACF editierbar</span></td></tr>
+      <tr><td>4</td><td><strong>Hero: Split vs. einheitlich?</strong></td><td>David Neugum</td><td><span class="status-done">✅ Einheitlich — kein Split</span></td></tr>
+      <tr><td>5</td><td><strong>Standortfotos</strong> — echte Bilder der Standorte</td><td>David Neugum</td><td><span class="status-open">⚠️ Ausstehend</span></td></tr>
+      <tr><td>6</td><td><strong>Logo-Vektordateien (SVG/AI)</strong> für alle 5 Produkte</td><td>David Neugum</td><td><span class="status-open">⚠️ Nur JPEG verfügbar</span></td></tr>
+      <tr><td>7</td><td><strong>Figma bevorzugt</strong> oder anderes Design-Tool?</td><td>Designer + David</td><td><span class="status-open">⚠️ Bestätigen</span></td></tr>
+      <tr><td>8</td><td><strong>Google-Bewertungsstand</strong> — welche Daten initial?</td><td>David Neugum</td><td><span class="status-open">⚠️ Ausstehend</span></td></tr>
+      <tr><td>9</td><td><strong>Kunden-Zitate</strong> für Trust-Block — 1–2 echte Bewertungen</td><td>David Neugum</td><td><span class="status-open">⚠️ Ausstehend</span></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- SECTION 7: TIMELINE -->
+<section class="light" id="zeitplan">
+  <p class="section-label">07 — Zeitplan</p>
+  <h2>Vorgeschlagener Ablauf</h2>
+  <div class="grid-2">
+    <div class="timeline">
+      <div class="tl-item"><h4>TZ an Designer übergeben</h4><p>Dieses Dokument + Wireframe-PDF + LAER Visual Guide + Logo-JPEGs</p></div>
+      <div class="tl-item"><h4>Offene Punkte klären</h4><p>David liefert: Standortfotos, Logo SVG, Figma-Bestätigung, Google-Bewertungsstand, 1–2 Kunden-Zitate</p></div>
+      <div class="tl-item"><h4>Design-Kit Erstellung</h4><p>Designer: Foundations + Komponenten + Startseiten-Mockup Desktop + Mobile. Ca. 5–7 Werktage.</p></div>
+      <div class="tl-item"><h4>Review durch 2penguins</h4><p>Qualitätsprüfung gegen dieses TZ. 1–2 Werktage.</p></div>
+      <div class="tl-item"><h4>Präsentation beim Kunden</h4><p>David + Konstantin. Präsentation des Design-Kits. Feedback + Freigabe.</p></div>
+      <div class="tl-item"><h4>Phase 2 — Subpages</h4><p>Nach Freigabe der Startseite: Standort-Landingpages, Produktseiten, Kontakt.</p></div>
+    </div>
+    <div>
+      <div class="card" style="margin-bottom:16px;">
+        <h3>Referenz-Dateien für Designer</h3>
+        <p style="margin-bottom:12px; font-size:13px; color:var(--gray);">Folgende Dateien werden mit dem TZ übergeben:</p>
+        <ul style="list-style:none; padding:0;">
+          <li style="padding:8px 0; border-bottom:1px solid var(--border); font-size:13px;">📄 <strong>Mega_Wireframes.pdf</strong> — 12 genehmigte Wireframes</li>
+          <li style="padding:8px 0; border-bottom:1px solid var(--border); font-size:13px;">📄 <strong>LAER Visual Identity Guide</strong> — Konzern-Designsystem</li>
+          <li style="padding:8px 0; border-bottom:1px solid var(--border); font-size:13px;">🖼️ <strong>mega-mietpark.jpg</strong> — Haupt-Logo JPEG</li>
+          <li style="padding:8px 0; border-bottom:1px solid var(--border); font-size:13px;">🖼️ <strong>mega-garagen.jpg</strong> — Garagen-Logo JPEG</li>
+          <li style="padding:8px 0; border-bottom:1px solid var(--border); font-size:13px;">🖼️ <strong>mega-buero.jpg</strong> — Büro-Logo JPEG</li>
+          <li style="padding:8px 0; border-bottom:1px solid var(--border); font-size:13px;">🖼️ <strong>mega-werkhalle.jpg</strong> — Werkhalle-Logo JPEG</li>
+          <li style="padding:8px 0; font-size:13px;">🖼️ <strong>mega-lagerraum.jpg</strong> — Lagerraum-Logo JPEG</li>
+        </ul>
+        <div class="note"><strong>Ausstehend:</strong> SVG-Vektoren für alle Logos — Anfrage an David Neugum.</div>
+      </div>
+      <div class="card">
+        <h3>Referenz-Websites (nur Orientierung)</h3>
+        <ul style="list-style:none; padding:0;">
+          <li style="padding:8px 0; border-bottom:1px solid var(--border); font-size:13px;">🔗 <strong>laer-gruppe.com</strong> — LAER Konzern-Ästhetik</li>
+          <li style="padding:8px 0; border-bottom:1px solid var(--border); font-size:13px;">🔗 <strong>storage24.com</strong> — Direkter Wettbewerber, Garagen+Büro</li>
+          <li style="padding:8px 0; font-size:13px;">🔗 <strong>myplace.de</strong> — Trust-Elemente, Standortdarstellung</li>
+        </ul>
+        <p style="font-size:12px; color:var(--gray); margin-top:12px;">Keine 1:1-Kopie — nur visuelle Orientierung für Industrieästhetik.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-brand">2<span>P</span>ENGUINS</div>
+    <p style="margin-top:4px;">TZ Designer Homepage · mega-mietpark.de · Version 1.2</p>
+  </div>
+  <div style="text-align:right;">
+    <p>Designsystem: LAER Konzern · #C62828 · 4px Radius</p>
+    <p style="margin-top:4px;">Stand: 2026-04-10</p>
+  </div>
+</footer>
+
+</body>
+</html>
