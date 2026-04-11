@@ -170,7 +170,7 @@ details.faq[open] summary::after{content:'−';background:var(--blue);color:#fff
 /* FOOTER */
 .footer{background:linear-gradient(180deg,#ECF3F7 0%,#fff 100%);
   border-radius:var(--r16) var(--r16) 0 0;padding:28px 40px 16px;
-  margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:28px}
+  margin-top:40px;display:grid;grid-template-columns:1fr 1fr 2fr;gap:28px}
 .f-label{font-size:11px;color:var(--gray);margin-bottom:2px}
 .f-val{font-size:15px;font-weight:500;color:var(--blue);margin-bottom:10px}
 .f-links{display:flex;gap:16px;margin-top:8px;flex-wrap:wrap}
@@ -178,6 +178,17 @@ details.faq[open] summary::after{content:'−';background:var(--blue);color:#fff
 .f-links a:hover{color:var(--blue)}
 .f-copy{grid-column:1/-1;font-size:10px;color:var(--gray);
   border-top:1px dashed var(--line);padding-top:10px;margin-top:6px}
+.f-nav{display:flex;flex-direction:column;gap:5px;margin-top:6px}
+.f-nav a{font-size:12px;color:var(--gray);text-decoration:none}
+.f-nav a:hover{color:var(--blue)}
+.f-faq-title{font-size:10px;font-weight:700;letter-spacing:.8px;color:var(--blue);text-transform:uppercase;margin-bottom:10px}
+.f-faq details{border-bottom:1px solid var(--line);padding:8px 0}
+.f-faq details:first-of-type{border-top:1px solid var(--line)}
+.f-faq summary{font-size:12px;font-weight:600;cursor:pointer;color:var(--primary);list-style:none;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.f-faq summary::after{content:'+';color:var(--gray);font-size:14px;flex-shrink:0}
+.f-faq details[open] summary::after{content:'×';color:var(--blue)}
+.f-faq summary::-webkit-details-marker{display:none}
+.f-faq .f-faq-a{font-size:11px;color:var(--gray);line-height:1.6;margin-top:6px;padding-bottom:4px}
 
 /* BADGE */
 .ver-badge{position:fixed;bottom:14px;right:14px;background:var(--blue);
@@ -441,49 +452,57 @@ details.faq[open] summary::after{content:'−';background:var(--blue);color:#fff
 <p><strong>Text:</strong> Alle Ratgeber anzeigen</p>
 <p><strong>Link:</strong> /ratgeber</p>
 </div>
-<div class="feedback-panel" id="feedback-panel-9"><label>Ihr Vorschlag für „Block 9: Ratgeber & News":</label><textarea id="feedback-text-9" placeholder="Änderungsvorschlag oder Kommentar…"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(9)">Speichern</button><button class="btn-cancel" onclick="toggleFeedback(9)">Abbrechen</button><button class="btn-delete" onclick="deleteFeedback(9)" style="display:none" id="delete-btn-9">Löschen</button><span class="saved-indicator" id="saved-9">✓ Gespeichert</span></div></div></div><div id="block-10" style="position:relative"><button class="feedback-btn" onclick="toggleFeedback(10)">✏️ Vorschlag</button><div class="sec">
-<h2>Block 10: FAQ</h2>
-<details class="faq" open>
-  <summary>Was kostet ein Platz in einer Pflege-Wohngemeinschaft?</summary>
-  <div class="faq-a">In der Regel liegt der monatliche Eigenanteil zwischen <strong>3.000 und 3.500 €</strong>. Das Pflegekassenbudget wird vollständig zur Refinanzierung eingesetzt. Bei geringem Einkommen besteht außerdem die Möglichkeit der Sozialamt-Unterstützung (Hilfe zur Pflege). Rufen Sie uns für eine individuelle Berechnung an: <strong>0391/6076062</strong>. <small style="opacity:.7">✅ CLIENT — JES Block 10</small></div>
-</details>
-<details class="faq">
-  <summary>Welche Leistungen übernimmt die Pflegekasse?</summary>
-  <div class="faq-a">Die Pflegekasse übernimmt je nach Pflegegrad zwischen <strong>€770 (PG 2)</strong> und <strong>€2.200 (PG 5)</strong> für Pflegesachleistungen. Zusätzlich gibt es den Entlastungsbetrag von <strong>€125/Monat</strong> und weitere Zuschüsse für Wohnraumanpassung.</div>
-</details>
-<details class="faq">
-  <summary>Kann ich MEDILUX Berlin vorab besichtigen?</summary>
-  <div class="faq-a">Ja, gerne! Vereinbaren Sie einen unverbindlichen Besichtigungstermin in der Villa Civitas (Zehlendorf) oder Residenz Heerstraße (Spandau). Rufen Sie uns an unter <strong>0391/6076062</strong> oder nutzen Sie unser <a href="#kontakt">Kontaktformular</a>. Beratungszeiten: Mo–Fr 8:00–16:30 Uhr.</div>
-</details>
-<details class="faq">
-  <summary>Wie unterscheidet sich eine Pflege-WG vom Pflegeheim?</summary>
-  <div class="faq-a">In unseren Pflege-Wohngemeinschaften leben <strong>4 bis 12 Bewohner</strong> zusammen in einer familienähnlichen Atmosphäre mit Gemeinschaftsküche, Wohnzimmer und Garten bzw. Terrasse. Anders als im klassischen Pflegeheim steht <strong>Selbstbestimmung und Teilhabe</strong> im Vordergrund – gemeinsames Kochen, Basteln, Gedächtnistraining und Spaziergänge gehören zum Alltag.</div>
-</details>
-<details class="faq">
-  <summary>Woran erkenne ich eine gute Pflegeeinrichtung?</summary>
-  <div class="faq-a">Vertrauen Sie Ihrem ersten Eindruck: Riecht es angenehm? Wirken die Pflegekräfte freundlich und haben Zeit für Bewohner und Angehörige? Fühlen sich die Bewohner sichtlich wohl? Bitten Sie um einen Besichtigungstermin – auch ohne Voranmeldung. Das leckere Essen, die Atmosphäre und das Team sagen mehr als jede Broschüre. Wir freuen uns auf Ihren Besuch: <strong>0391/6076062</strong>. <small style="opacity:.7">✅ CLIENT — JES Block 10</small></div>
-</details>
-</div>
-<div class="feedback-panel" id="feedback-panel-10"><label>Ihr Vorschlag für „Block 10: FAQ (Häufig gestellte Fragen)":</label><textarea id="feedback-text-10" placeholder="Änderungsvorschlag oder Kommentar…"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(10)">Speichern</button><button class="btn-cancel" onclick="toggleFeedback(10)">Abbrechen</button><button class="btn-delete" onclick="deleteFeedback(10)" style="display:none" id="delete-btn-10">Löschen</button><span class="saved-indicator" id="saved-10">✓ Gespeichert</span></div></div></div>
-<footer class="footer">
+<div class="feedback-panel" id="feedback-panel-9"><label>Ihr Vorschlag für „Block 9: Ratgeber & News":</label><textarea id="feedback-text-9" placeholder="Änderungsvorschlag oder Kommentar…"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(9)">Speichern</button><button class="btn-cancel" onclick="toggleFeedback(9)">Abbrechen</button><button class="btn-delete" onclick="deleteFeedback(9)" style="display:none" id="delete-btn-9">Löschen</button><span class="saved-indicator" id="saved-9">✓ Gespeichert</span></div></div></div><footer class="footer">
   <div>
     <div class="f-label">Telefon</div>
     <div class="f-val">0391/6076062</div>
     <div class="f-label">E-Mail</div>
     <div class="f-val">medilux@live.de</div>
-  </div>
-  <div>
-    <div class="f-label">Standorte</div>
-    <div style="font-size:12px;color:var(--text);line-height:1.8">
+    <div class="f-label" style="margin-top:6px">Standorte</div>
+    <div style="font-size:11px;color:var(--text);line-height:1.8">
       Villa Civitas &mdash; Lindenthaler Allee 20, 14163 Berlin-Zehlendorf<br>
       Residenz Heerstra&szlig;e &mdash; G&auml;rtnereiring 56, 13593 Berlin-Spandau
     </div>
-    <div class="f-links">
-      <a href="medilux_berlin_preview_kosten.html">Kosten &amp; Finanzierung</a>
-      <a href="#">Mediatek</a>
-      <a href="#">Impressum</a>
-      <a href="#">Datenschutz</a>
+  </div>
+  <div>
+    <div class="f-label">Menu</div>
+    <div class="f-nav">
+      <a href="medilux_berlin_preview_leistungen.html">Betreuungsformen</a>
+      <a href="medilux_berlin_preview_startseite.html">Wohngemeinschaften</a>
+      <a href="medilux_berlin_preview_standorte.html">Standorte</a>
+      <a href="medilux_berlin_preview_ueber_uns.html">Unternehmen</a>
+      <a href="medilux_berlin_preview_kontakt.html">Kontakt</a>
+      <a href="medilux_berlin_preview_karriere.html">Karriere</a>
     </div>
+    <div class="f-nav" style="margin-top:12px">
+      <a href="#">Datenschutz</a>
+      <a href="#">Impressum</a>
+      <a href="#">Cookies</a>
+    </div>
+  </div>
+  <div class="f-faq">
+    <div class="f-faq-title">HABEN SIE NOCH FRAGEN?</div>
+    <details>
+      <summary>Was kostet ein Platz in einer Pflege-WG?</summary>
+      <div class="f-faq-a">In der Regel liegt der monatliche Eigenanteil zwischen <strong>3.000 und 3.500 €</strong>. Das Pflegekassenbudget wird vollständig zur Refinanzierung eingesetzt. Bei Bedarf unterstützt das Sozialamt (Hilfe zur Pflege). Beratung: <strong>0391/6076062</strong>. <small style="opacity:.7">✅ JES Block 10</small></div>
+    </details>
+    <details>
+      <summary>Welche Leistungen übernimmt die Pflegekasse?</summary>
+      <div class="f-faq-a">Die Pflegekasse übernimmt je nach Pflegegrad zwischen <strong>€770 (PG 2)</strong> und <strong>€2.200 (PG 5)</strong> für Pflegesachleistungen. Zusätzlich gibt es den Entlastungsbetrag von <strong>€125/Monat</strong>.</div>
+    </details>
+    <details>
+      <summary>Kann ich MEDILUX Berlin vorab besichtigen?</summary>
+      <div class="f-faq-a">Ja, gerne! Vereinbaren Sie einen Besichtigungstermin in der Villa Civitas (Zehlendorf) oder Residenz Heerstraße (Spandau). Rufen Sie uns an: <strong>0391/6076062</strong>. Mo–Fr 8:00–16:30 Uhr.</div>
+    </details>
+    <details>
+      <summary>Wie unterscheidet sich eine Pflege-WG vom Pflegeheim?</summary>
+      <div class="f-faq-a">In unseren Pflege-WGs leben <strong>4 bis 12 Bewohner</strong> in einer familienähnlichen Atmosphäre. Im Vordergrund stehen <strong>Selbstbestimmung und Teilhabe</strong> – gemeinsames Kochen, Gedächtnistraining und Spaziergänge gehören zum Alltag.</div>
+    </details>
+    <details>
+      <summary>Woran erkenne ich eine gute Pflegeeinrichtung?</summary>
+      <div class="f-faq-a">Vertrauen Sie Ihrem ersten Eindruck: Riecht es angenehm? Wirken die Pflegekräfte freundlich? Bitten Sie um einen Besichtigungstermin – auch ohne Voranmeldung. Wir freuen uns auf Ihren Besuch: <strong>0391/6076062</strong>. <small style="opacity:.7">✅ JES Block 10</small></div>
+    </details>
+    <small style="font-size:10px;color:var(--gray);display:block;margin-top:10px">✅ CLIENT — JES 17.03.2026 Block 10</small>
   </div>
   <div class="f-copy">&copy; 2026 MEDILUX GmbH &mdash; Content Preview v0.9.0 &middot; Nur zur internen Pr&uuml;fung &middot; 2p-preview skill</div>
 </footer>
