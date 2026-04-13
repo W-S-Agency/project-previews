@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IT-Entsorgung für Kommunen &amp; Behörden — EDELMET GmbH Preview</title>
+<style>
+/* === BASE === */
+:root {
+  --primary: #1B6B3E; --primary-light: #238C52; --primary-dark: #145030;
+  --secondary: #0F1F33; --secondary-light: #1A3050;
+  --accent: #C5961E; --accent-light: #D4A82D;
+  --text: #1A1A2E; --text-light: #64748B; --text-lighter: #94A3B8;
+  --bg: #F7F8FA; --white: #FFFFFF; --border: #E2E8F0;
+  --success: #10B981; --warning: #F59E0B; --danger: #DC2626;
+  --max-width: 1200px; --radius: 8px;
+  --fb-accent: #f59e0b; --fb-accent-border: #d97706; --fb-accent-hover: #d97706;
+  --fb-saved: #10b981; --fb-saved-border: #059669;
+  --fb-save: #2563eb; --fb-save-border: #1d4ed8; --fb-save-hover: #1d4ed8;
+  --fb-panel-bg: #fef3c7; --fb-panel-border: #f59e0b;
+  --fb-delete: #dc2626; --fb-delete-bg: #fef2f2; --fb-delete-border: #fca5a5;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: var(--text); background: var(--bg); line-height: 1.6; }
+.container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
+@media(min-width:1024px) { .container { padding: 0 40px; } }
+h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); line-height: 1.2; font-weight: 800; }
+h2 { font-size: clamp(1.4rem, 3vw, 2rem); line-height: 1.3; font-weight: 700; margin-bottom: 1rem; color: var(--secondary); }
+h3 { font-size: 1.15rem; font-weight: 600; margin-bottom: .5rem; }
+p { margin-bottom: 1rem; }
+a { color: var(--primary); text-decoration: none; }
+img { max-width: 100%; }
+ul, ol { padding-left: 1.5rem; margin-bottom: 1rem; }
+li { margin-bottom: .4rem; }
+blockquote { border-left: 4px solid var(--accent); padding: 1rem 1.5rem; margin: 1.5rem 0; background: rgba(197,150,30,.06); font-style: italic; border-radius: 0 var(--radius) var(--radius) 0; }
+
+/* === NAV === */
+.main-nav { position: sticky; top: 0; z-index: 100; background: var(--secondary); color: white; box-shadow: 0 2px 8px rgba(0,0,0,.15); }
+.nav-inner { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 24px; height: 60px; }
+.nav-brand { color: var(--accent); font-weight: 800; font-size: 1.2rem; text-decoration: none; white-space: nowrap; }
+.nav-toggle { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
+.nav-links { display: flex; list-style: none; gap: 0; margin: 0; padding: 0; flex: 1; }
+.nav-links li { position: relative; }
+.nav-links li > a, .nav-links li > span { display: block; padding: 18px 14px; color: rgba(255,255,255,.85); text-decoration: none; font-size: 14px; font-weight: 500; cursor: pointer; white-space: nowrap; transition: color .2s; }
+.nav-links li > a:hover, .nav-links li > span:hover, .nav-links li.active > a, .nav-links li.active > span { color: var(--accent); }
+.nav-links li > a.active { color: var(--accent); border-bottom: 2px solid var(--accent); }
+.dropdown { display: none; position: absolute; top: 100%; left: 0; background: var(--secondary-light); min-width: 220px; border-radius: 0 0 var(--radius) var(--radius); box-shadow: 0 8px 24px rgba(0,0,0,.3); z-index: 110; }
+.dropdown a { display: block; padding: 10px 18px; color: rgba(255,255,255,.8); font-size: 13px; white-space: nowrap; }
+.dropdown a:hover, .dropdown a.active { color: var(--accent); background: rgba(255,255,255,.05); }
+.has-dropdown:hover .dropdown { display: block; }
+.has-dropdown > span::after { content: ' ▾'; font-size: 10px; }
+@media(max-width:1024px) {
+  .nav-toggle { display: block; }
+  .nav-links { display: none; flex-direction: column; position: absolute; top: 60px; left: 0; right: 0; background: var(--secondary); padding: 8px 0; }
+  .nav-links.open { display: flex; }
+  .dropdown { position: static; box-shadow: none; }
+  .has-dropdown:hover .dropdown { display: block; }
+}
+
+/* === HERO === */
+.block-hero { position: relative; }
+.hero { background: linear-gradient(135deg, var(--secondary) 0%, var(--primary-dark) 100%); color: white; padding: 80px 0 60px; position: relative; min-height: 400px; display: flex; align-items: center; }
+.hero-overlay { position: absolute; inset: 0; background: rgba(15,31,51,.4); }
+.hero-content { position: relative; z-index: 2; }
+.hero h1 { color: white; margin-bottom: 1rem; }
+.hero-subline { font-size: 1.15rem; max-width: 640px; opacity: .9; margin-bottom: 2rem; line-height: 1.7; }
+.hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 1.5rem; }
+.hero-trust { font-size: .9rem; opacity: .8; }
+.hero-bg-note { position: absolute; bottom: 8px; right: 16px; font-size: 11px; color: rgba(255,255,255,.4); }
+
+/* === BUTTONS === */
+.btn { display: inline-block; padding: 14px 28px; border-radius: var(--radius); font-weight: 600; font-size: 15px; text-decoration: none; cursor: pointer; border: 2px solid transparent; transition: all .2s; }
+.btn-primary { background: var(--accent); color: var(--secondary); border-color: var(--accent); }
+.btn-primary:hover { background: var(--accent-light); }
+.btn-secondary { background: transparent; color: white; border-color: rgba(255,255,255,.4); }
+.btn-secondary:hover { border-color: white; }
+.btn-accent { background: var(--accent); color: var(--secondary); border-color: var(--accent); }
+.btn-lg { padding: 16px 36px; font-size: 17px; }
+
+/* === TRUST BAR === */
+.trust-bar { padding: 20px 0; background: var(--white); border-bottom: 1px solid var(--border); }
+.trust-badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; }
+.trust-badge { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; color: var(--text); }
+.trust-icon { color: var(--primary); font-weight: 700; }
+.trust-section { padding: 48px 0; }
+
+/* === STEPS === */
+.steps-section { padding: 60px 0; background: var(--white); }
+.steps { display: flex; flex-direction: column; gap: 24px; margin-top: 32px; }
+.step { display: flex; gap: 20px; align-items: flex-start; }
+.step-num { width: 48px; height: 48px; min-width: 48px; border-radius: 50%; background: var(--primary); color: white; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: 700; }
+.step-body h3 { color: var(--secondary); margin-bottom: 4px; }
+.step-body p { color: var(--text-light); margin-bottom: 4px; }
+.step-benefit { color: var(--primary); font-weight: 500; }
+
+/* === PROOF / STATS === */
+.proof-section { padding: 60px 0; background: var(--secondary); color: white; }
+.proof-section h2 { color: white; }
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 32px; margin: 32px 0; }
+.stat { text-align: center; }
+.stat-value { font-size: 2rem; font-weight: 800; color: var(--accent); }
+.stat-label { font-size: .9rem; opacity: .8; margin-top: 4px; }
+.proof-text { max-width: 700px; opacity: .9; margin-top: 24px; }
+.proof-text p { color: rgba(255,255,255,.85); }
+
+/* === CARDS === */
+.cards-section { padding: 60px 0; }
+.cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; margin-top: 32px; }
+.card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; transition: box-shadow .2s, transform .2s; }
+.card:hover { box-shadow: 0 8px 24px rgba(0,0,0,.08); transform: translateY(-2px); }
+.card h3 { color: var(--primary); }
+.card p { color: var(--text-light); font-size: .95rem; }
+.card-link { color: var(--accent); font-weight: 600; font-size: .9rem; }
+
+/* === FAQ === */
+.faq-section { padding: 60px 0; background: var(--white); }
+.faq-item { border: 1px solid var(--border); border-radius: var(--radius); margin-bottom: 8px; overflow: hidden; }
+.faq-q { display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 16px 20px; background: none; border: none; cursor: pointer; font-size: 15px; font-weight: 600; text-align: left; color: var(--text); }
+.faq-icon { font-size: 1.3rem; color: var(--primary); transition: transform .3s; }
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+.faq-a { display: none; padding: 0 20px 16px; color: var(--text-light); }
+.faq-item.open .faq-a { display: block; }
+
+/* === CTA === */
+.cta-section { padding: 60px 0; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); color: white; text-align: center; }
+.cta-section h2 { color: white; }
+.cta-text { max-width: 600px; margin: 0 auto 24px; opacity: .9; }
+.cta-guarantee { margin-top: 16px; font-size: .85rem; opacity: .7; }
+
+/* === FORM === */
+.form-section { padding: 60px 0; }
+.form-preview { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px; max-width: 700px; }
+.form-steps { display: flex; flex-direction: column; gap: 16px; margin-bottom: 24px; }
+.form-step { display: grid; grid-template-columns: 60px 1fr 1.2fr; gap: 12px; align-items: start; padding: 12px; background: var(--bg); border-radius: var(--radius); }
+.form-step-num { font-weight: 700; color: var(--primary); }
+.form-step-field { font-weight: 500; }
+.form-step-logic { font-size: .85rem; color: var(--text-light); }
+.form-note { color: var(--warning); font-size: .85rem; margin-top: 12px; text-align: center; }
+.form-confirm { color: var(--text-light); font-size: .9rem; margin-top: 12px; }
+@media(max-width:768px) { .form-step { grid-template-columns: 1fr; } }
+
+/* === LEAD MAGNET === */
+.lead-magnet { padding: 60px 0; }
+.lead-magnet-box { background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%); border: 2px solid var(--primary-light); border-radius: 12px; padding: 40px; max-width: 700px; margin: 0 auto; }
+.lead-magnet-box h2 { color: var(--primary-dark); }
+.lead-magnet-items { margin: 16px 0; }
+.lead-magnet-sep { font-size: .9rem; color: var(--text-light); margin: 12px 0; padding: 12px 0; border-top: 1px dashed var(--border); }
+
+/* === PROBLEM === */
+.problem-section { padding: 60px 0; background: #fef8f0; border-left: 4px solid var(--warning); }
+.problem-section h2 { color: var(--secondary); }
+.problem-text { max-width: 700px; }
+
+/* === SOLUTION === */
+.solution-section { padding: 60px 0; }
+
+/* === CONTACT === */
+.contact-info { padding: 60px 0; }
+.contact-person { padding: 40px 0; }
+
+/* === INFO TABLE === */
+.info-table-section { padding: 60px 0; }
+.material-classes { margin-top: 24px; }
+.info-note { margin-top: 16px; padding: 16px; background: #f0fdf4; border-radius: var(--radius); border: 1px solid #bbf7d0; }
+
+/* === STORY === */
+.story-section { padding: 60px 0; }
+.quote { font-size: 1.15rem; max-width: 600px; }
+
+/* === FACILITY === */
+.facility-section { padding: 60px 0; background: var(--white); }
+
+/* === TEAM === */
+.team-section { padding: 60px 0; }
+
+/* === GENERIC === */
+.generic-section { padding: 60px 0; }
+.subsection { margin-bottom: 32px; padding: 24px; background: var(--white); border-radius: var(--radius); border: 1px solid var(--border); }
+.subsection h3 { color: var(--primary-dark); }
+
+/* === TABLES === */
+.content-table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+.content-table th { background: var(--secondary); color: white; padding: 12px 16px; text-align: left; font-size: .85rem; font-weight: 600; }
+.content-table td { padding: 12px 16px; border-bottom: 1px solid var(--border); font-size: .9rem; }
+.content-table tr:nth-child(even) { background: var(--bg); }
+.content-table tr:hover { background: #f1f5f9; }
+
+/* === PLACEHOLDERS === */
+.placeholder { background: #fef3c7; border: 1px solid #fcd34d; padding: 2px 8px; border-radius: 4px; font-size: .9em; white-space: nowrap; }
+.photo-placeholder { background: #f1f5f9; border: 2px dashed var(--border); border-radius: var(--radius); padding: 40px 24px; text-align: center; color: var(--text-light); margin: 16px 0; font-size: .9rem; }
+.photo-placeholder span { display: block; margin-top: 4px; font-size: .85rem; }
+.arrow-link { color: var(--primary); font-weight: 600; }
+
+/* === SEO BAR === */
+.seo-bar { background: #1a1a2e; color: #e2e8f0; font-size: 13px; overflow: hidden; max-height: 40px; transition: max-height .3s; }
+.seo-bar.expanded { max-height: 600px; }
+.seo-bar-header { padding: 10px 24px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+.seo-bar-header:hover { background: rgba(255,255,255,.05); }
+.seo-toggle { transition: transform .3s; font-size: 10px; }
+.seo-bar.expanded .seo-toggle { transform: rotate(180deg); }
+.seo-bar-body { padding: 0 24px 16px; }
+.seo-row { display: flex; gap: 12px; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,.08); }
+.seo-label { min-width: 90px; color: #94a3b8; font-weight: 500; }
+.seo-value { flex: 1; }
+.seo-value code { background: rgba(255,255,255,.1); padding: 2px 8px; border-radius: 4px; }
+.len-badge { display: inline-block; padding: 1px 8px; border-radius: 10px; font-size: 11px; font-weight: 700; margin-left: 8px; }
+.len-ok { background: #065f46; color: #6ee7b7; }
+.len-warn { background: #78350f; color: #fcd34d; }
+.len-over { background: #7f1d1d; color: #fca5a5; }
+.schema-tag { display: inline-block; background: #312e81; color: #a5b4fc; padding: 2px 10px; border-radius: 10px; font-size: 11px; margin: 2px 4px 2px 0; }
+.seo-jsonld { margin-top: 8px; }
+.seo-jsonld summary { cursor: pointer; color: #94a3b8; font-size: 12px; }
+.seo-jsonld pre { background: rgba(0,0,0,.3); padding: 12px; border-radius: 6px; margin-top: 8px; overflow-x: auto; font-size: 12px; color: #a5b4fc; }
+
+/* === BLOCK WRAPPER (feedback positioning) === */
+.block-wrapper { position: relative; }
+
+/* === FOOTER === */
+.site-footer { background: var(--secondary); color: rgba(255,255,255,.8); padding: 48px 0 0; margin-top: 0; }
+.footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 32px; }
+.footer-col h4 { color: var(--accent); margin-bottom: 12px; font-size: .9rem; text-transform: uppercase; letter-spacing: 1px; }
+.footer-col a { display: block; color: rgba(255,255,255,.6); font-size: .85rem; padding: 3px 0; }
+.footer-col a:hover { color: var(--accent); }
+.footer-col p { font-size: .85rem; line-height: 1.6; }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,.1); margin-top: 32px; padding: 20px 0; text-align: center; font-size: .8rem; color: rgba(255,255,255,.4); }
+
+/* === STUB PAGE === */
+.stub-page { padding: 80px 0; text-align: center; min-height: 50vh; display: flex; align-items: center; justify-content: center; }
+.stub-box { max-width: 500px; background: var(--white); border: 2px dashed var(--border); border-radius: 12px; padding: 48px; }
+.stub-box h1 { font-size: 1.8rem; color: var(--secondary); margin-bottom: 16px; }
+.stub-box p { color: var(--text-light); }
+
+/* === FEEDBACK === */
+.feedback-counter { background: var(--fb-accent); color: #1e293b; padding: 6px 16px; border-radius: 20px; font-weight: 700; cursor: pointer; transition: transform .2s; font-size: 13px; white-space: nowrap; margin-left: auto; }
+.feedback-counter:hover { transform: scale(1.05); }
+.feedback-counter.has-feedback { animation: fb-pulse 2s infinite; }
+@keyframes fb-pulse { 0%,100%{ box-shadow:0 0 0 0 rgba(245,158,11,.4); } 50%{ box-shadow:0 0 0 8px transparent; } }
+.feedback-btn { position: absolute; top: 12px; right: 24px; background: var(--fb-accent); border: 2px solid var(--fb-accent-border); padding: 6px 14px; border-radius: 20px; cursor: pointer; font-size: 13px; color: #1e293b; font-weight: 600; transition: all .2s; z-index: 10; }
+.feedback-btn:hover { background: var(--fb-accent-hover); border-color: var(--fb-accent-border); color: white; }
+.feedback-btn.has-comment { background: var(--fb-saved); border-color: var(--fb-saved-border); color: white; }
+.feedback-panel { display: none; position: absolute; top: 3rem; right: .75rem; width: 320px; max-width: calc(100% - 1.5rem); z-index: 200; background: var(--fb-panel-bg); border: 2px solid var(--fb-panel-border); border-radius: var(--radius); padding: 20px; box-shadow: 0 4px 16px rgba(0,0,0,.2); animation: fb-slideDown .3s ease; }
+.feedback-panel.open { display: block; }
+@keyframes fb-slideDown { from{ opacity:0; transform:translateY(-10px); } to{ opacity:1; transform:translateY(0); } }
+.feedback-panel label { display: block; font-weight: 600; margin-bottom: 8px; color: var(--primary); font-size: 14px; }
+.feedback-panel textarea { width: 100%; min-height: 100px; padding: 12px; border: 1px solid var(--border); border-radius: var(--radius); font-family: inherit; font-size: 15px; resize: vertical; line-height: 1.5; }
+.feedback-panel textarea:focus { outline: none; border-color: var(--primary-light); box-shadow: 0 0 0 3px rgba(27,107,62,.1); }
+.feedback-actions { display: flex; gap: 12px; margin-top: 12px; align-items: center; }
+.btn-save { background: var(--fb-save); color: white; border: 2px solid var(--fb-save-border); padding: 8px 20px; border-radius: var(--radius); cursor: pointer; font-size: 14px; font-weight: 600; }
+.btn-save:hover { background: var(--fb-save-hover); }
+.btn-cancel { background: white; border: 2px solid #94a3b8; padding: 8px 20px; border-radius: var(--radius); cursor: pointer; font-size: 14px; color: #334155; }
+.btn-delete { background: var(--fb-delete-bg); border: 2px solid var(--fb-delete-border); padding: 8px 16px; border-radius: var(--radius); cursor: pointer; font-size: 14px; color: var(--fb-delete); margin-left: auto; }
+.saved-indicator { display: none; color: var(--success); font-size: 13px; align-items: center; gap: 4px; }
+.export-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.5); z-index: 200; justify-content: center; align-items: center; }
+.export-overlay.open { display: flex; }
+.export-box { background: white; border-radius: 12px; padding: 32px; max-width: 500px; width: 90%; text-align: center; }
+.export-box h2 { margin-bottom: 16px; font-size: 22px; }
+.export-box p { color: var(--text-light); margin-bottom: 24px; }
+.export-box .count { font-size: 48px; font-weight: 800; color: var(--fb-save); }
+.btn-export { display: inline-block; background: var(--fb-save); color: white; padding: 14px 32px; border-radius: var(--radius); border: none; font-size: 16px; font-weight: 600; cursor: pointer; margin: 8px; }
+.btn-export:hover { background: var(--fb-save-hover); }
+.btn-export.btn-copy { background: var(--fb-accent); }
+.btn-export.btn-copy:hover { background: var(--fb-accent-border); }
+.btn-close-overlay { display: inline-block; background: transparent; border: 1px solid var(--border); padding: 14px 32px; border-radius: var(--radius); font-size: 16px; cursor: pointer; margin: 8px; color: var(--text-light); }
+@media(max-width:768px) {
+  .feedback-btn { top: auto; bottom: -16px; right: 16px; font-size: 12px; }
+  .feedback-panel { padding: 16px; width: 280px; }
+}
+</style>
+</head>
+<body>
+<nav class="main-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">EDELMET GmbH</a>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+    <ul class="nav-links"><li><a href="edelmet_preview_01_startseite.html" class="">Startseite</a></li><li class="has-dropdown "><span>Leistungen</span><div class="dropdown"><a href="edelmet_preview_02_datenloeschung.html" class="">Datenlöschung</a><a href="edelmet_preview_03_it_remarketing.html" class="">IT-Remarketing</a><a href="edelmet_preview_04_logistik.html" class="">Logistik</a><a href="edelmet_preview_05_esg_reporting.html" class="">ESG-Reporting</a></div></li><li class="has-dropdown "><span>Über uns</span><div class="dropdown"><a href="edelmet_preview_06_historie_anlage.html" class="">Historie &amp; Anlage</a><a href="edelmet_preview_07_zertifikate.html" class="">Zertifikate</a><a href="edelmet_preview_08_karriere.html" class="">Karriere</a></div></li><li class="has-dropdown active"><span>Für Unternehmen</span><div class="dropdown"><a href="edelmet_preview_10_zg_it_mittelstand.html" class="">IT-Mittelstand</a><a href="edelmet_preview_11_zg_rechenzentren.html" class="">Rechenzentren</a><a href="edelmet_preview_12_zg_kommunen.html" class="active">Kommunen</a><a href="edelmet_preview_13_zg_telekommunikation.html" class="">Telekommunikation</a><a href="edelmet_preview_14_zg_automobilzulieferer.html" class="">Automobilzulieferer</a><a href="edelmet_preview_15_zg_partnernetzwerk.html" class="">Entsorger-Partner</a></div></li><li><a href="edelmet_preview_16_privatankauf.html" class="">Privatankauf</a></li><li><a href="edelmet_preview_09_kontakt.html" class="">Kontakt</a></li></ul>
+    <div class="feedback-counter" id="feedbackCounter" onclick="openExportOverlay()">Feedback: <span id="feedbackCount">0</span> Kommentare</div>
+  </div>
+</nav>
+<div class="seo-bar" id="seoBar">
+  <div class="seo-bar-header" onclick="document.getElementById('seoBar').classList.toggle('expanded')">
+    <span>🔍 SEO & Schema.org</span><span class="seo-toggle">▼</span>
+  </div>
+  <div class="seo-bar-body">
+    <div class="seo-row"><span class="seo-label">Title</span><span class="seo-value">IT-Entsorgung Kommunen &amp; Behörden — EfbV-zertifiziert | EDELMET <span class="len-badge len-over">63</span></span></div>
+    <div class="seo-row"><span class="seo-label">Description</span><span class="seo-value">IT-Entsorgung für Kommunen &amp; Behörden ✓ EfbV-zertifiziert (Nr. 2503067) ✓ Ausschreibungskonform ✓ DSGVO-konforme Datenlöschung ✓ eANV-Nachweise. Jetzt Kontakt aufnehmen. <span class="len-badge len-over">169</span></span></div>
+    <div class="seo-row"><span class="seo-label">URL</span><span class="seo-value"><code>/fuer-unternehmen/kommunen-behoerden/</code></span></div>
+    <div class="seo-row"><span class="seo-label">Schema.org</span><span class="seo-value"><span class="schema-tag">Organization</span><span class="schema-tag">BreadcrumbList</span><span class="schema-tag">FAQPage</span></span></div>
+    <details class="seo-jsonld"><summary>JSON-LD Preview</summary><pre><code>{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "name": "IT-Entsorgung Kommunen &amp; Behörden — EfbV-zertifiziert | EDELMET",
+  "url": "https://edelmet.de/fuer-unternehmen/kommunen-behoerden/"
+}</code></pre></details>
+  </div>
+</div>
+<main>
+<section class="block-wrapper block-hero" id="block-1">
+  <span class="block-label" style="display:none">Block 1 — HERO</span>
+  <button class="feedback-btn" onclick="toggleFeedback(1)">✏️ Vorschlag</button>
+  <div class="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content container">
+    <h1>IT-Entsorgung für Kommunen & Behörden — EfbV-zertifiziert, ausschreibungskonform</h1>
+    <p class="hero-subline">EfbV-zertifiziert, DSGVO-konform und mit lückenloser Nachweiskette. EDELMET erfüllt alle Kriterien für die IT-Entsorgung im öffentlichen Sektor — von der Ausschreibung bis zum Abschlussnachweis.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary">Ausschreibungsunterlagen besprechen — Kontakt aufnehmen</a>
+      <a class="btn btn-secondary">EfbV-Zertifikat herunterladen</a>
+    </div>
+    <div class="hero-trust">EfbV-Badge (prominent — K.o.-Kriterium)</div>
+  </div>
+  <div class="hero-bg-note">📷 Anlage in Hagen — professioneller Eindruck für öffentliche Auftraggeber</div>
+</div>
+  <div class="feedback-panel" id="feedback-panel-1">
+    <label>Ihr Vorschlag für Block 1 — HERO:</label>
+    <textarea id="feedback-text-1" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+    <div class="feedback-actions">
+      <button class="btn-save" onclick="saveFeedback(1)">Speichern</button>
+      <button class="btn-cancel" onclick="toggleFeedback(1)">Abbrechen</button>
+      <button class="btn-delete" onclick="deleteFeedback(1)" style="display:none" id="delete-btn-1">Löschen</button>
+      <span class="saved-indicator" id="saved-1">✓ Gespeichert</span>
+    </div>
+  </div>
+</section>
+<section class="block-wrapper block-generic" id="block-2">
+  <span class="block-label" style="display:none">Block 2 — ZIELGRUPPEN-BESCHREIBUNG</span>
+  <button class="feedback-btn" onclick="toggleFeedback(2)">✏️ Vorschlag</button>
+  <div class="generic-section container">
+  <h2>Sie beschaffen IT-Entsorgung für eine Kommune oder Behörde? Wir kennen Ihre Anforderungen.</h2>
+  
+  <p>Sie arbeiten in einer Stadtverwaltung, Landesbehörde oder einem kommunalen Unternehmen. Das Vergaberecht stellt besondere Anforderungen: Jeder Entsorgungsdienstleister muss EfbV-zertifiziert sein. Kein Nice-to-have, sondern K.o.-Kriterium in der Ausschreibung. Dazu kommen DSGVO-Anforderungen für dienstliche Daten und die Pflicht zur lückenlosen Nachweisführung per eANV.</p>
+<p>Sie brauchen keinen Entsorger, der Ihnen erklärt, was er alles kann. Sie brauchen einen, der die geforderten Zertifikate hat — und die Dokumentation liefert, die Ihr Vergabeverfahren verlangt.</p>
+</div>
+  <div class="feedback-panel" id="feedback-panel-2">
+    <label>Ihr Vorschlag für Block 2 — ZIELGRUPPEN-BESCHREIBUNG:</label>
+    <textarea id="feedback-text-2" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+    <div class="feedback-actions">
+      <button class="btn-save" onclick="saveFeedback(2)">Speichern</button>
+      <button class="btn-cancel" onclick="toggleFeedback(2)">Abbrechen</button>
+      <button class="btn-delete" onclick="deleteFeedback(2)" style="display:none" id="delete-btn-2">Löschen</button>
+      <span class="saved-indicator" id="saved-2">✓ Gespeichert</span>
+    </div>
+  </div>
+</section>
+<section class="block-wrapper block-solution" id="block-3">
+  <span class="block-label" style="display:none">Block 3 — PROBLEM → SOLUTION</span>
+  <button class="feedback-btn" onclick="toggleFeedback(3)">✏️ Vorschlag</button>
+  <div class="solution-section container">
+  <h2>Ausschreibung, Vergabe, Nachweis — alle Kriterien erfüllt</h2>
+  <table class="content-table"><thead><tr><th>Anforderung</th><th>Nachweis</th></tr></thead><tbody><tr><td>EfbV-Zertifikat</td><td>Nr. 2503067, zertifiziert durch ENVIZERT, gültig bis 12.02.2027</td></tr><tr><td>DSGVO-konforme Datenlöschung</td><td>Nach DIN 66399, Löschzertifikat pro Gerät mit Seriennummer</td></tr><tr><td>eANV-Nachweise</td><td>Elektronische Abfallnachweisführung nach KrWG — lückenlos</td></tr><tr><td>Eigene Infrastruktur</td><td>8.500 m² Anlage in Hagen, eigener Fuhrpark — kein Vermittler</td></tr></tbody></table>
+  
+</div>
+  <div class="feedback-panel" id="feedback-panel-3">
+    <label>Ihr Vorschlag für Block 3 — PROBLEM → SOLUTION:</label>
+    <textarea id="feedback-text-3" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+    <div class="feedback-actions">
+      <button class="btn-save" onclick="saveFeedback(3)">Speichern</button>
+      <button class="btn-cancel" onclick="toggleFeedback(3)">Abbrechen</button>
+      <button class="btn-delete" onclick="deleteFeedback(3)" style="display:none" id="delete-btn-3">Löschen</button>
+      <span class="saved-indicator" id="saved-3">✓ Gespeichert</span>
+    </div>
+  </div>
+</section>
+<section class="block-wrapper block-cards" id="block-4">
+  <span class="block-label" style="display:none">Block 4 — RELEVANTE LEISTUNGEN</span>
+  <button class="feedback-btn" onclick="toggleFeedback(4)">✏️ Vorschlag</button>
+  <div class="cards-section container"><h2>Diese Leistungen sind für Kommunen und Behörden relevant</h2><div class="cards-grid"><div class="card">
+  <h3>EfbV-konforme Verwertung aller gängigen IT-Geräte. Sortierung, Demontage, fachgerechte Aufbereitung.</h3>
+  <p>(keine eigene Seite — Oberbegriff, adressiert auf Startseite)</p>
+  
+</div><div class="card">
+  <h3>Zertifizierte Löschung oder physische Vernichtung nach DIN 66399. Löschzertifikat pro Gerät.</h3>
+  <p><span class="arrow-link">→ /leistungen/datenloeschung/</span></p>
+  
+</div><div class="card">
+  <h3>Behältergestellung, Abholung mit eigenem Fuhrpark, GPS-überwacht. Standard 3–5 Werktage, Express 48h.</h3>
+  <p><span class="arrow-link">→ /leistungen/logistik/</span></p>
+  
+</div></div></div>
+  <div class="feedback-panel" id="feedback-panel-4">
+    <label>Ihr Vorschlag für Block 4 — RELEVANTE LEISTUNGEN:</label>
+    <textarea id="feedback-text-4" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+    <div class="feedback-actions">
+      <button class="btn-save" onclick="saveFeedback(4)">Speichern</button>
+      <button class="btn-cancel" onclick="toggleFeedback(4)">Abbrechen</button>
+      <button class="btn-delete" onclick="deleteFeedback(4)" style="display:none" id="delete-btn-4">Löschen</button>
+      <span class="saved-indicator" id="saved-4">✓ Gespeichert</span>
+    </div>
+  </div>
+</section>
+<section class="block-wrapper block-trust" id="block-5">
+  <span class="block-label" style="display:none">Block 5 — TRUST</span>
+  <button class="feedback-btn" onclick="toggleFeedback(5)">✏️ Vorschlag</button>
+  <div class="trust-bar container"><div class="trust-badges"><div class="trust-badge"><span class="trust-icon">✓</span><span>Nr. 2503067, zertifiziert durch ENVIZERT, gültig bis 12.02.2027 — K.o.-Kriterium erfüllt</span></div><div class="trust-badge"><span class="trust-icon">✓</span><span>Nach DIN 66399, Löschzertifikat pro Gerät — belastbar bei Prüfungen</span></div><div class="trust-badge"><span class="trust-icon">✓</span><span>Elektronische Abfallnachweisführung — gesetzeskonform und lückenlos</span></div><div class="trust-badge"><span class="trust-icon">✓</span><span>8.500 m² in Hagen — kein Vermittler, eigene Verarbeitung</span></div><div class="trust-badge"><span class="trust-icon">✓</span><span>GPS-überwacht, keine Subunternehmer im Transport</span></div></div></div>
+  <div class="feedback-panel" id="feedback-panel-5">
+    <label>Ihr Vorschlag für Block 5 — TRUST:</label>
+    <textarea id="feedback-text-5" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+    <div class="feedback-actions">
+      <button class="btn-save" onclick="saveFeedback(5)">Speichern</button>
+      <button class="btn-cancel" onclick="toggleFeedback(5)">Abbrechen</button>
+      <button class="btn-delete" onclick="deleteFeedback(5)" style="display:none" id="delete-btn-5">Löschen</button>
+      <span class="saved-indicator" id="saved-5">✓ Gespeichert</span>
+    </div>
+  </div>
+</section>
+<section class="block-wrapper block-faq" id="block-6">
+  <span class="block-label" style="display:none">Block 6 — FAQ</span>
+  <button class="feedback-btn" onclick="toggleFeedback(6)">✏️ Vorschlag</button>
+  <div class="faq-section container"><h2>Häufige Fragen zur IT-Entsorgung für Kommunen und Behörden</h2><div class="faq-item">
+  <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+    <span>Ist EDELMET ein zertifizierter Entsorgungsfachbetrieb (EfbV)?</span><span class="faq-icon">+</span>
+  </button>
+  <div class="faq-a"><p>Ja. EDELMET ist zertifiziert nach §56 KrWG als Entsorgungsfachbetrieb. Zertifikatsnummer: 2503067, ausgestellt durch ENVIZERT, gültig bis 12.02.2027. Das Zertifikat steht auf dieser Seite zum Download bereit.</p></div>
+</div><div class="faq-item">
+  <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+    <span>Welche Nachweise erhalten wir für die Vergabeakte?</span><span class="faq-icon">+</span>
+  </button>
+  <div class="faq-a"><p>Sie erhalten: EfbV-Zertifikat, Löschzertifikate pro Gerät (mit Seriennummer, Verfahren und Sicherheitsstufe), eANV-Nachweise nach KrWG und auf Wunsch einen zusammenfassenden Abschlussbericht. Alle Dokumente sind audit-ready und jederzeit abrufbar.</p></div>
+</div><div class="faq-item">
+  <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+    <span>Können Sie dienstliche Daten von Bürgern DSGVO-konform löschen?</span><span class="faq-icon">+</span>
+  </button>
+  <div class="faq-a"><p>Ja. Die Datenlöschung erfolgt nach DIN 66399. Jeder Datenträger wird einzeln erfasst und das Verfahren (Software-Löschung oder physische Vernichtung) dokumentiert. Sie erhalten ein individuelles Löschzertifikat pro Gerät — die belastbare Grundlage für Ihre DSGVO-Nachweispflicht.</p>
+<p>---</p></div>
+</div></div>
+  <div class="feedback-panel" id="feedback-panel-6">
+    <label>Ihr Vorschlag für Block 6 — FAQ:</label>
+    <textarea id="feedback-text-6" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+    <div class="feedback-actions">
+      <button class="btn-save" onclick="saveFeedback(6)">Speichern</button>
+      <button class="btn-cancel" onclick="toggleFeedback(6)">Abbrechen</button>
+      <button class="btn-delete" onclick="deleteFeedback(6)" style="display:none" id="delete-btn-6">Löschen</button>
+      <span class="saved-indicator" id="saved-6">✓ Gespeichert</span>
+    </div>
+  </div>
+</section>
+<section class="block-wrapper block-cta" id="block-7">
+  <span class="block-label" style="display:none">Block 7 — CTA</span>
+  <button class="feedback-btn" onclick="toggleFeedback(7)">✏️ Vorschlag</button>
+  <div class="cta-section">
+  <div class="container">
+    <h2>Ausschreibungsunterlagen besprechen — jetzt Kontakt aufnehmen</h2>
+    <p class="cta-text">Sie bereiten eine Ausschreibung vor? Wir liefern Ihnen alle Nachweise, die Ihre Vergabestelle braucht — EfbV, Löschzertifikate, eANV.</p>
+    <a class="btn btn-primary btn-lg">Ausschreibungsunterlagen besprechen — Kontakt aufnehmen</a>
+    <p class="cta-guarantee">EfbV-zertifiziert · DSGVO-konform · eANV-Nachweise</p>
+  </div>
+</div>
+  <div class="feedback-panel" id="feedback-panel-7">
+    <label>Ihr Vorschlag für Block 7 — CTA:</label>
+    <textarea id="feedback-text-7" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+    <div class="feedback-actions">
+      <button class="btn-save" onclick="saveFeedback(7)">Speichern</button>
+      <button class="btn-cancel" onclick="toggleFeedback(7)">Abbrechen</button>
+      <button class="btn-delete" onclick="deleteFeedback(7)" style="display:none" id="delete-btn-7">Löschen</button>
+      <span class="saved-indicator" id="saved-7">✓ Gespeichert</span>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-col">
+      <h4>EDELMET GmbH</h4>
+      <p>Ophauser Straße 24<br>58089 Hagen</p>
+      <p>Tel: +49 2330 6194998<br>E-Mail: info@edelmet.de</p>
+    </div>
+    <div class="footer-col">
+      <h4>Leistungen</h4>
+      <a href="edelmet_preview_02_datenloeschung.html">Datenlöschung</a>
+      <a href="edelmet_preview_03_it_remarketing.html">IT-Remarketing</a>
+      <a href="edelmet_preview_04_logistik.html">Logistik</a>
+      <a href="edelmet_preview_05_esg_reporting.html">ESG-Reporting</a>
+    </div>
+    <div class="footer-col">
+      <h4>Unternehmen</h4>
+      <a href="edelmet_preview_06_historie_anlage.html">Über uns</a>
+      <a href="edelmet_preview_07_zertifikate.html">Zertifikate</a>
+      <a href="edelmet_preview_09_kontakt.html">Kontakt</a>
+    </div>
+    <div class="footer-col">
+      <h4>Rechtliches</h4>
+      <a href="edelmet_preview_17_impressum.html">Impressum</a><a href="edelmet_preview_18_datenschutz.html">Datenschutz</a>
+    </div>
+  </div>
+  <div class="footer-bottom container">
+    <p>© 2026 EDELMET GmbH — EfbV-zertifiziert · Eigene Anlage · Eigener Fuhrpark · NRW</p>
+  </div>
+</footer>
+<div class="export-overlay" id="exportOverlay">
+  <div class="export-box">
+    <div class="count" id="exportCount">0</div>
+    <h2>Kommentare bereit</h2>
+    <p>Alle Ihre Änderungsvorschläge für alle Seiten in einer Datei.</p>
+    <button class="btn-export" onclick="exportFeedback()">📥 Als Datei herunterladen</button>
+    <button class="btn-export btn-copy" onclick="copyFeedback()">📋 In Zwischenablage kopieren</button>
+    <button class="btn-close-overlay" onclick="closeExportOverlay()">Schließen</button>
+  </div>
+</div>
+<script>
+(function(){
+  var PROJECT='edelmet', PAGE='12_zg_kommunen', PAGE_TITLE='IT-Entsorgung für Kommunen & Behörden';
+  var SK='2p-feedback-'+PROJECT;
+  function ga(){return JSON.parse(localStorage.getItem(SK)||'{}');}
+  function gp(){var a=ga();return a[PAGE]||{};}
+  function sp(d){var a=ga();if(Object.keys(d).length<=1&&d._title)delete a[PAGE];else a[PAGE]=d;localStorage.setItem(SK,JSON.stringify(a));}
+  function tc(){var a=ga(),c=0;for(var p in a)for(var k in a[p])if(k!=='_title')c++;return c;}
+  function load(){
+    var pd=gp();
+    for(var bid in pd){
+      if(bid==='_title')continue;
+      var e=pd[bid],t=(typeof e==='object')?e.text:e;
+      var ta=document.getElementById('feedback-text-'+bid);
+      var btn=document.querySelector('#block-'+bid+' .feedback-btn');
+      var db=document.getElementById('delete-btn-'+bid);
+      if(ta)ta.value=t;
+      if(btn){btn.classList.add('has-comment');btn.textContent='✏️ Kommentar bearbeiten';}
+      if(db)db.style.display='inline-block';
+    }
+    uc();
+  }
+  window.toggleFeedback=function(id){
+    var p=document.getElementById('feedback-panel-'+id);
+    p.classList.toggle('open');
+    if(p.classList.contains('open'))document.getElementById('feedback-text-'+id).focus();
+  };
+  window.saveFeedback=function(id){
+    var t=document.getElementById('feedback-text-'+id).value.trim();if(!t)return;
+    var bl=document.getElementById('block-'+id),le=bl?bl.querySelector('.block-label'):null;
+    var label=le?le.textContent:('Block '+id);
+    var pd=gp();pd._title=PAGE_TITLE;pd[id]={text:t,label:label};sp(pd);
+    var btn=document.querySelector('#block-'+id+' .feedback-btn');
+    btn.classList.add('has-comment');btn.textContent='✏️ Kommentar bearbeiten';
+    document.getElementById('delete-btn-'+id).style.display='inline-block';
+    var si=document.getElementById('saved-'+id);si.style.display='flex';
+    setTimeout(function(){si.style.display='none';},2000);
+    uc();setTimeout(function(){window.toggleFeedback(id);},1500);
+  };
+  window.deleteFeedback=function(id){
+    var pd=gp();delete pd[id];sp(pd);
+    document.getElementById('feedback-text-'+id).value='';
+    var btn=document.querySelector('#block-'+id+' .feedback-btn');
+    btn.classList.remove('has-comment');btn.textContent='✏️ Vorschlag';
+    document.getElementById('delete-btn-'+id).style.display='none';
+    uc();window.toggleFeedback(id);
+  };
+  function uc(){
+    var c=tc(),el=document.getElementById('feedbackCounter');
+    if(c>0){el.classList.add('has-feedback');el.innerHTML='📥 Feedback: '+c+' Kommentar'+(c>1?'e':'');}
+    else{el.classList.remove('has-feedback');el.innerHTML='Feedback: 0 Kommentare';}
+  }
+  window.openExportOverlay=function(){
+    var c=tc();if(c===0)return;
+    document.getElementById('exportCount').textContent=c;
+    document.getElementById('exportOverlay').classList.add('open');
+  };
+  window.closeExportOverlay=function(){document.getElementById('exportOverlay').classList.remove('open');};
+  function bft(){
+    var a=ga(),c=tc(),t='FEEDBACK — EDELMET\nDatum: '+new Date().toLocaleDateString('de-DE')+'\n'+c+' Kommentar(e) insgesamt\n==================================================\n\n';
+    for(var p in a){var pd=a[p],pt=pd._title||p;t+='━━━ '+pt+' ━━━\n\n';
+      for(var bid in pd){if(bid==='_title')continue;var e=pd[bid],ct=(typeof e==='object')?e.text:e,lb=(typeof e==='object'&&e.label)?e.label:('Block '+bid);
+        t+='📌 '+lb+'\n----------------------------------------\n'+ct+'\n\n';}}
+    t+='==================================================\nErstellt am '+new Date().toLocaleString('de-DE')+'\n';return t;
+  }
+  window.exportFeedback=function(){
+    var t=bft(),b=new Blob([t],{type:'text/plain;charset=utf-8'}),u=URL.createObjectURL(b),a=document.createElement('a');
+    a.href=u;a.download='feedback_edelmet_'+new Date().toISOString().slice(0,10)+'.txt';a.click();URL.revokeObjectURL(u);
+    window.closeExportOverlay();
+  };
+  window.copyFeedback=function(){
+    navigator.clipboard.writeText(bft()).then(function(){
+      var b=document.querySelector('.btn-copy'),o=b.textContent;b.textContent='✅ Kopiert!';setTimeout(function(){b.textContent=o;},2000);
+    });
+  };
+  load();
+})();
+</script>
+</body>
+</html>
