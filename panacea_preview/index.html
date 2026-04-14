@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panacea Pflege — Preview Versions</title>
+<style>
+  :root { --primary: #810080; --bg: #f8f5f9; --text: #1e293b; --border: #e2e8f0; }
+  body { font-family: 'Segoe UI', system-ui, sans-serif; color: var(--text); background: var(--bg); margin: 0; padding: 2rem; }
+  .container { max-width: 700px; margin: 0 auto; }
+  h1 { color: var(--primary); font-size: 1.8rem; margin-bottom: .5rem; }
+  .subtitle { color: #64748b; margin-bottom: 2rem; }
+  .version-card { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; margin-bottom: 1rem; display: flex; justify-content: space-between; align-items: center; transition: box-shadow .15s; }
+  .version-card:hover { box-shadow: 0 4px 12px rgba(129,0,128,.08); }
+  .version-card.latest { border-color: var(--primary); border-width: 2px; }
+  .version-info h3 { margin: 0 0 .25rem; font-size: 1.1rem; }
+  .version-info p { margin: 0; font-size: .88rem; color: #64748b; }
+  .badge { display: inline-block; padding: .15rem .5rem; border-radius: 4px; font-size: .75rem; font-weight: 600; margin-left: .5rem; }
+  .badge-latest { background: #810080; color: #fff; }
+  .badge-audit { background: #f59e0b; color: #fff; }
+  .badge-sent { background: #10b981; color: #fff; }
+  a.btn { display: inline-block; background: var(--primary); color: #fff; padding: .5rem 1rem; border-radius: 6px; text-decoration: none; font-size: .9rem; font-weight: 600; }
+  a.btn:hover { opacity: .9; }
+  .footer { margin-top: 2rem; font-size: .82rem; color: #94a3b8; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Panacea Pflege — Previews</h1>
+  <p class="subtitle">Website-Vorschau in verschiedenen Versionen</p>
+
+  <div class="version-card latest">
+    <div class="version-info">
+      <h3>V1.5 — Content V1.2 + Audit Fixes <span class="badge badge-latest">Aktuell</span></h3>
+      <p>14.04.2026 — 6 Audit-Findings behoben: FAQ Q3 München, Team-Teaser LK FFB, Meta Descriptions, Logo-Link, TY-Zitat Karriere, CTA Landkreis FFB</p>
+    </div>
+    <a href="v1.5/index.html" class="btn">Öffnen</a>
+  </div>
+
+  <div class="version-card">
+    <div class="version-info">
+      <h3>V1.4 — Content V1.2 (AW) <span class="badge badge-audit">Auditiert</span></h3>
+      <p>07.04.2026 — TY-Feedback verbatim eingebaut (27 Punkte). Audit: 35/44 verbatim, 6 Findings.</p>
+    </div>
+    <a href="v1.4/panacea_preview_index.html" class="btn">Öffnen</a>
+  </div>
+
+  <div class="version-card">
+    <div class="version-info">
+      <h3>V1.3 — An Kunden gesendet <span class="badge badge-sent">Gesendet</span></h3>
+      <p>19.03.2026 — UX-Fixes (Logo-Link, fb-panel). Referenzversion für TY-Feedback.</p>
+    </div>
+    <a href="v1.3/index.html" class="btn">Öffnen</a>
+  </div>
+
+  <div class="footer">
+    <p>Projekt: Panacea Pflege — Website Relaunch | Stack: Next.js + Sanity (bestätigt TY 31.03)</p>
+    <p>Repo: W-S-Agency/project-previews (gh-pages)</p>
+  </div>
+</div>
+</body>
+</html>
