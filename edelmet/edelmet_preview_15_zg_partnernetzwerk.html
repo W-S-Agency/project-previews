@@ -96,7 +96,7 @@ blockquote { border-left: 4px solid var(--accent); padding: 1rem 1.5rem; margin:
 /* === PROOF / STATS === */
 .proof-section { padding: 60px 0; background: var(--secondary); color: white; }
 .proof-section h2 { color: white; }
-.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 32px; margin: 32px 0; }
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 32px; margin: 32px 0; text-align: center; }
 .stat { text-align: center; }
 .stat-value { font-size: 2rem; font-weight: 800; color: var(--accent); }
 .stat-label { font-size: .9rem; opacity: .8; margin-top: 4px; }
@@ -105,7 +105,8 @@ blockquote { border-left: 4px solid var(--accent); padding: 1rem 1.5rem; margin:
 
 /* === CARDS === */
 .cards-section { padding: 60px 0; }
-.cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; margin-top: 32px; }
+.cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 32px; }
+@media(max-width:768px) { .cards-grid { grid-template-columns: 1fr; } }
 .card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; transition: box-shadow .2s, transform .2s; }
 .card:hover { box-shadow: 0 8px 24px rgba(0,0,0,.08); transform: translateY(-2px); }
 .card h3 { color: var(--primary); }
@@ -141,7 +142,10 @@ blockquote { border-left: 4px solid var(--accent); padding: 1rem 1.5rem; margin:
 
 /* === LEAD MAGNET === */
 .lead-magnet { padding: 60px 0; }
-.lead-magnet-box { background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%); border: 2px solid var(--primary-light); border-radius: 12px; padding: 40px; max-width: 700px; margin: 0 auto; }
+.lead-magnet-box { background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%); border: 2px solid var(--primary-light); border-radius: 12px; padding: 40px; max-width: var(--max-width); margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 0; }
+@media(min-width:768px) { .lead-magnet-box { grid-template-columns: 280px 1fr; gap: 32px; } }
+.lead-magnet-image { background: var(--primary-dark); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; min-height: 200px; color: rgba(255,255,255,.5); font-size: .85rem; text-align: center; padding: 24px; }
+.lead-magnet-content { }
 .lead-magnet-box h2 { color: var(--primary-dark); }
 .lead-magnet-items { margin: 16px 0; }
 .lead-magnet-sep { font-size: .9rem; color: var(--text-light); margin: 12px 0; padding: 12px 0; border-top: 1px dashed var(--border); }
@@ -270,9 +274,9 @@ blockquote { border-left: 4px solid var(--accent); padding: 1rem 1.5rem; margin:
 <body>
 <nav class="main-nav">
   <div class="nav-inner">
-    <a href="index.html" class="nav-brand">EDELMET GmbH</a>
+    <a href="edelmet_preview_01_startseite.html" class="nav-brand">EDELMET GmbH</a>
     <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
-    <ul class="nav-links"><li><a href="edelmet_preview_01_startseite.html" class="">Startseite</a></li><li class="has-dropdown "><span>Leistungen</span><div class="dropdown"><a href="edelmet_preview_02_datenloeschung.html" class="">Datenlöschung</a><a href="edelmet_preview_03_it_remarketing.html" class="">IT-Remarketing</a><a href="edelmet_preview_04_logistik.html" class="">Logistik</a><a href="edelmet_preview_05_esg_reporting.html" class="">ESG-Reporting</a></div></li><li class="has-dropdown "><span>Über uns</span><div class="dropdown"><a href="edelmet_preview_06_historie_anlage.html" class="">Historie &amp; Anlage</a><a href="edelmet_preview_07_zertifikate.html" class="">Zertifikate</a><a href="edelmet_preview_08_karriere.html" class="">Karriere</a></div></li><li class="has-dropdown active"><span>Für Unternehmen</span><div class="dropdown"><a href="edelmet_preview_10_zg_it_mittelstand.html" class="">IT-Mittelstand</a><a href="edelmet_preview_11_zg_rechenzentren.html" class="">Rechenzentren</a><a href="edelmet_preview_12_zg_kommunen.html" class="">Kommunen</a><a href="edelmet_preview_13_zg_telekommunikation.html" class="">Telekommunikation</a><a href="edelmet_preview_14_zg_automobilzulieferer.html" class="">Automobilzulieferer</a><a href="edelmet_preview_15_zg_partnernetzwerk.html" class="active">Entsorger-Partner</a></div></li><li><a href="edelmet_preview_16_privatankauf.html" class="">Privatankauf</a></li><li><a href="edelmet_preview_09_kontakt.html" class="">Kontakt</a></li></ul>
+    <ul class="nav-links"><li class="has-dropdown active"><span>Für Unternehmen</span><div class="dropdown"><a href="edelmet_preview_10_zg_it_mittelstand.html" class="">IT-Mittelstand</a><a href="edelmet_preview_11_zg_rechenzentren.html" class="">Rechenzentren</a><a href="edelmet_preview_12_zg_kommunen.html" class="">Kommunen</a><a href="edelmet_preview_13_zg_telekommunikation.html" class="">Telekommunikation</a><a href="edelmet_preview_14_zg_automobilzulieferer.html" class="">Automobilzulieferer</a><a href="edelmet_preview_15_zg_partnernetzwerk.html" class="active">Entsorger-Partner</a></div></li><li class="has-dropdown "><span>Leistungen</span><div class="dropdown"><a href="edelmet_preview_02_datenloeschung.html" class="">Datenlöschung</a><a href="edelmet_preview_03_it_remarketing.html" class="">IT-Remarketing</a><a href="edelmet_preview_04_logistik.html" class="">Logistik</a><a href="edelmet_preview_05_esg_reporting.html" class="">ESG-Reporting</a></div></li><li class="has-dropdown "><span>Über uns</span><div class="dropdown"><a href="edelmet_preview_06_historie_anlage.html" class="">Historie &amp; Anlage</a><a href="edelmet_preview_07_zertifikate.html" class="">Zertifikate</a><a href="edelmet_preview_08_karriere.html" class="">Karriere</a></div></li><li><a href="edelmet_preview_09_kontakt.html" class="">Kontakt</a></li></ul>
     <div class="feedback-counter" id="feedbackCounter" onclick="openExportOverlay()">Feedback: <span id="feedbackCount">0</span> Kommentare</div>
   </div>
 </nav>
@@ -281,37 +285,37 @@ blockquote { border-left: 4px solid var(--accent); padding: 1rem 1.5rem; margin:
     <span>🔍 SEO & Schema.org</span><span class="seo-toggle">▼</span>
   </div>
   <div class="seo-bar-body">
-    <div class="seo-row"><span class="seo-label">Title</span><span class="seo-value">Partnernetzwerk NRW — Subunternehmer mit EfbV &amp; Kapazität | EDELMET <span class="len-badge len-over">67</span></span></div>
-    <div class="seo-row"><span class="seo-label">Description</span><span class="seo-value">Subunternehmer für NRW gesucht? EDELMET: EfbV-zertifiziert ✓ 8.500 m² Anlage ✓ Eigener Fuhrpark ✓ Erfahrung mit Interzero &amp; Zentek. Partnerschaft besprechen — Direktkontakt Geschäftsführung. <span class="len-badge len-over">190</span></span></div>
+    <div class="seo-row"><span class="seo-label">Title</span><span class="seo-value">Partnernetzwerk NRW | EDELMET <span class="len-badge len-ok">29</span></span></div>
+    <div class="seo-row"><span class="seo-label">Description</span><span class="seo-value">Subunternehmer für NRW gesucht? EDELMET: EfbV-zertifiziert ✓ 8.500 m² Anlage ✓ Eigener Fuhrpark ✓ Erfahrung mit Interzero &amp; Zentek. Partnerschaft besprechen - Direktkontakt Geschäftsführung. <span class="len-badge len-over">190</span></span></div>
     <div class="seo-row"><span class="seo-label">URL</span><span class="seo-value"><code>/fuer-unternehmen/entsorger-partner/</code></span></div>
     <div class="seo-row"><span class="seo-label">Schema.org</span><span class="seo-value"><span class="schema-tag">Organization</span><span class="schema-tag">BreadcrumbList</span><span class="schema-tag">FAQPage</span></span></div>
     <details class="seo-jsonld"><summary>JSON-LD Preview</summary><pre><code>{
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  "name": "Partnernetzwerk NRW — Subunternehmer mit EfbV &amp; Kapazität | EDELMET",
+  "name": "Partnernetzwerk NRW | EDELMET",
   "url": "https://edelmet.de/fuer-unternehmen/entsorger-partner/"
 }</code></pre></details>
   </div>
 </div>
 <main>
 <section class="block-wrapper block-hero" id="block-1">
-  <span class="block-label" style="display:none">Block 1 — HERO</span>
+  <span class="block-label" style="display:none">Block 1 - HERO</span>
   <button class="feedback-btn" onclick="toggleFeedback(1)">✏️ Vorschlag</button>
   <div class="hero">
   <div class="hero-overlay"></div>
   <div class="hero-content container">
-    <h1>Partnernetzwerk — Subunternehmer für NRW mit Kapazität</h1>
-    <p class="hero-subline">Sie haben den nationalen Vertrag gewonnen — aber keine eigene Kapazität in NRW? EDELMET ist Ihr zertifizierter Partner vor Ort: 8.500 m² Anlage, eigener Fuhrpark, EfbV-zertifiziert. Bereit für Ihre Volumina.</p>
+    <h1>Partnernetzwerk - Subunternehmer für NRW mit Kapazität</h1>
+    <p class="hero-subline">Sie haben den nationalen Vertrag gewonnen, aber keine eigene Kapazität in NRW? EDELMET ist Ihr zertifizierter Partner vor Ort: 8.500 m² Anlage, eigener Fuhrpark, EfbV-zertifiziert. Bereit für Ihre Volumina.</p>
     <div class="hero-ctas">
-      <a class="btn btn-primary">Partnerschaft besprechen — Direktkontakt Geschäftsführung</a>
+      <a class="btn btn-primary">Partnerschaft besprechen - Direktkontakt Geschäftsführung</a>
       
     </div>
     <div class="hero-trust">EfbV-Badge + 8.500 m² Kapazität</div>
   </div>
-  <div class="hero-bg-note">📷 Luftaufnahme oder Weitwinkel der Anlage 8.500 m² in Hagen — zeigt Kapazität</div>
+  <div class="hero-bg-note">📷 Luftaufnahme oder Weitwinkel der Anlage 8.500 m² in Hagen - zeigt Kapazität</div>
 </div>
   <div class="feedback-panel" id="feedback-panel-1">
-    <label>Ihr Vorschlag für Block 1 — HERO:</label>
+    <label>Ihr Vorschlag für Block 1 - HERO:</label>
     <textarea id="feedback-text-1" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
     <div class="feedback-actions">
       <button class="btn-save" onclick="saveFeedback(1)">Speichern</button>
@@ -322,16 +326,16 @@ blockquote { border-left: 4px solid var(--accent); padding: 1rem 1.5rem; margin:
   </div>
 </section>
 <section class="block-wrapper block-generic" id="block-2">
-  <span class="block-label" style="display:none">Block 2 — ZIELGRUPPEN-BESCHREIBUNG</span>
+  <span class="block-label" style="display:none">Block 2 - ZIELGRUPPEN-BESCHREIBUNG</span>
   <button class="feedback-btn" onclick="toggleFeedback(2)">✏️ Vorschlag</button>
   <div class="generic-section container">
   <h2>Für überregionale Entsorger, die einen verlässlichen NRW-Partner brauchen</h2>
   
-  <p>Sie sind ein überregionaler Entsorgungsdienstleister mit nationalen Verträgen — wie Interzero oder Zentek. In NRW fehlt Ihnen die eigene Kapazität. Sie brauchen einen zertifizierten Partner mit eigener Anlage und eigenem Fuhrpark. Einen Partner, der Ihre Volumina zuverlässig verarbeitet — ohne dass Sie eine Niederlassung aufbauen müssen.</p>
+  <p>Sie sind ein überregionaler Entsorgungsdienstleister mit nationalen Verträgen, wie Interzero oder Zentek. In NRW fehlt Ihnen die eigene Kapazität. Sie brauchen einen zertifizierten Partner mit eigener Anlage und eigenem Fuhrpark. Einen Partner, der Ihre Volumina zuverlässig verarbeitet, ohne dass Sie eine Niederlassung aufbauen müssen.</p>
 <p>EDELMET ist genau dieser Partner. Wir sind kein Vermittler, sondern ein operativer Entsorgungsfachbetrieb mit eigener Infrastruktur in Hagen.</p>
 </div>
   <div class="feedback-panel" id="feedback-panel-2">
-    <label>Ihr Vorschlag für Block 2 — ZIELGRUPPEN-BESCHREIBUNG:</label>
+    <label>Ihr Vorschlag für Block 2 - ZIELGRUPPEN-BESCHREIBUNG:</label>
     <textarea id="feedback-text-2" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
     <div class="feedback-actions">
       <button class="btn-save" onclick="saveFeedback(2)">Speichern</button>
@@ -342,15 +346,15 @@ blockquote { border-left: 4px solid var(--accent); padding: 1rem 1.5rem; margin:
   </div>
 </section>
 <section class="block-wrapper block-solution" id="block-3">
-  <span class="block-label" style="display:none">Block 3 — PROBLEM → SOLUTION</span>
+  <span class="block-label" style="display:none">Block 3 - PROBLEM → SOLUTION</span>
   <button class="feedback-btn" onclick="toggleFeedback(3)">✏️ Vorschlag</button>
   <div class="solution-section container">
-  <h2>Nationaler Vertrag, keine Kapazität in NRW — wir lösen das</h2>
-  <table class="content-table"><thead><tr><th>Was Sie brauchen</th><th>Was wir liefern</th></tr></thead><tbody><tr><td>Kapazität in NRW</td><td>8.500 m² Anlage in Hagen — eigene Fläche, keine Miete</td></tr><tr><td>EfbV-Zertifikat</td><td>Nr. 2503067, ENVIZERT, gültig bis 12.02.2027</td></tr><tr><td>Eigener Fuhrpark</td><td>GPS-überwacht, Abholung NRW-weit</td></tr><tr><td>Zuverlässigkeit</td><td>Erfahrung als Subunternehmer für Interzero und Zentek</td></tr><tr><td>Dokumentation</td><td>eANV, Löschzertifikate, ESG-Reporting — White-Label-fähig</td></tr></tbody></table>
+  <h2>Nationaler Vertrag, keine Kapazität in NRW, wir lösen das</h2>
+  <table class="content-table"><thead><tr><th>Was Sie brauchen</th><th>Was wir liefern</th></tr></thead><tbody><tr><td>Kapazität in NRW</td><td>8.500 m² Anlage in Hagen - eigene Fläche, keine Miete</td></tr><tr><td>EfbV-Zertifikat</td><td>Nr. 2503067, ENVIZERT, gültig bis 12.02.2027</td></tr><tr><td>Eigener Fuhrpark</td><td>GPS-überwacht, Abholung NRW-weit</td></tr><tr><td>Zuverlässigkeit</td><td>Erfahrung als Subunternehmer für Interzero und Zentek</td></tr><tr><td>Dokumentation</td><td>eANV, Löschzertifikate, ESG-Reporting - White-Label-fähig</td></tr></tbody></table>
   
 </div>
   <div class="feedback-panel" id="feedback-panel-3">
-    <label>Ihr Vorschlag für Block 3 — PROBLEM → SOLUTION:</label>
+    <label>Ihr Vorschlag für Block 3 - PROBLEM → SOLUTION:</label>
     <textarea id="feedback-text-3" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
     <div class="feedback-actions">
       <button class="btn-save" onclick="saveFeedback(3)">Speichern</button>
@@ -361,23 +365,19 @@ blockquote { border-left: 4px solid var(--accent); padding: 1rem 1.5rem; margin:
   </div>
 </section>
 <section class="block-wrapper block-cards" id="block-4">
-  <span class="block-label" style="display:none">Block 4 — RELEVANTE LEISTUNGEN</span>
+  <span class="block-label" style="display:none">Block 4 - RELEVANTE LEISTUNGEN</span>
   <button class="feedback-btn" onclick="toggleFeedback(4)">✏️ Vorschlag</button>
   <div class="cards-section container"><h2>Diese Leistungen sind für Entsorger-Partner relevant</h2><div class="cards-grid"><div class="card">
-  <h3>EfbV-konforme Verwertung in eigener Anlage. Sortierung, Demontage, fachgerechte Aufbereitung — als Subunternehmer-Leistung.</h3>
-  <p>(keine eigene Seite — Oberbegriff, adressiert auf Startseite)</p>
-  
-</div><div class="card">
   <h3>Abholung NRW-weit mit eigenem Fuhrpark, GPS-überwacht. Integration in Ihre bestehende Logistikkette.</h3>
   <p><span class="arrow-link">→ /leistungen/logistik/</span></p>
   
 </div><div class="card">
-  <h3>CO₂-Bilanz, Verwertungsquote, Materialrückgewinnung — bereit zur Weitergabe an Ihren Endkunden.</h3>
+  <h3>CO₂-Bilanz, Verwertungsquote, Materialrückgewinnung - bereit zur Weitergabe an Ihren Endkunden.</h3>
   <p><span class="arrow-link">→ /leistungen/esg-reporting/</span></p>
   
 </div></div></div>
   <div class="feedback-panel" id="feedback-panel-4">
-    <label>Ihr Vorschlag für Block 4 — RELEVANTE LEISTUNGEN:</label>
+    <label>Ihr Vorschlag für Block 4 - RELEVANTE LEISTUNGEN:</label>
     <textarea id="feedback-text-4" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
     <div class="feedback-actions">
       <button class="btn-save" onclick="saveFeedback(4)">Speichern</button>
@@ -388,11 +388,11 @@ blockquote { border-left: 4px solid var(--accent); padding: 1rem 1.5rem; margin:
   </div>
 </section>
 <section class="block-wrapper block-trust" id="block-5">
-  <span class="block-label" style="display:none">Block 5 — TRUST</span>
+  <span class="block-label" style="display:none">Block 5 - TRUST</span>
   <button class="feedback-btn" onclick="toggleFeedback(5)">✏️ Vorschlag</button>
-  <div class="trust-bar container"><div class="trust-badges"><div class="trust-badge"><span class="trust-icon">✓</span><span>Nr. 2503067, zertifiziert durch ENVIZERT, gültig bis 12.02.2027</span></div><div class="trust-badge"><span class="trust-icon">✓</span><span>Eigene Betriebsfläche in Hagen — keine Miete, eigene Infrastruktur</span></div><div class="trust-badge"><span class="trust-icon">✓</span><span>GPS-überwacht, Abholung NRW-weit — keine weiteren Subunternehmer</span></div><div class="trust-badge"><span class="trust-icon">✓</span><span>Erfahrung als Subunternehmer für Interzero und Zentek</span></div><div class="trust-badge"><span class="trust-icon">✓</span><span>eANV, Löschzertifikate, ESG-Reporting — auf Wunsch White-Label-fähig</span></div></div></div>
+  <div class="trust-bar container"><div class="trust-badges"><div class="trust-badge"><span class="trust-icon">🛡️</span><span>Nr. 2503067, zertifiziert durch ENVIZERT, gültig bis 12.02.2027</span></div><div class="trust-badge"><span class="trust-icon">🏭</span><span>Eigene Betriebsfläche in Hagen - keine Miete, eigene Infrastruktur</span></div><div class="trust-badge"><span class="trust-icon">🚛</span><span>GPS-überwacht, Abholung NRW-weit - keine weiteren Subunternehmer</span></div><div class="trust-badge"><span class="trust-icon">•</span><span>Erfahrung als Subunternehmer für Interzero und Zentek</span></div><div class="trust-badge"><span class="trust-icon">🔒</span><span>eANV, Löschzertifikate, ESG-Reporting - auf Wunsch White-Label-fähig</span></div></div></div>
   <div class="feedback-panel" id="feedback-panel-5">
-    <label>Ihr Vorschlag für Block 5 — TRUST:</label>
+    <label>Ihr Vorschlag für Block 5 - TRUST:</label>
     <textarea id="feedback-text-5" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
     <div class="feedback-actions">
       <button class="btn-save" onclick="saveFeedback(5)">Speichern</button>
@@ -403,27 +403,27 @@ blockquote { border-left: 4px solid var(--accent); padding: 1rem 1.5rem; margin:
   </div>
 </section>
 <section class="block-wrapper block-faq" id="block-6">
-  <span class="block-label" style="display:none">Block 6 — FAQ</span>
+  <span class="block-label" style="display:none">Block 6 - FAQ</span>
   <button class="feedback-btn" onclick="toggleFeedback(6)">✏️ Vorschlag</button>
   <div class="faq-section container"><h2>Häufige Fragen für Entsorger-Partner</h2><div class="faq-item">
   <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
     <span>Wie funktioniert die Zusammenarbeit als Subunternehmer?</span><span class="faq-icon">+</span>
   </button>
-  <div class="faq-a"><p>Wir übernehmen Abholung, Verarbeitung und Dokumentation in NRW — als Ihr verlängerter Arm. Die Kommunikation mit Ihrem Endkunden bleibt bei Ihnen. Dokumentation und Nachweise liefern wir in Ihrem gewünschten Format — auf Wunsch White-Label-fähig.</p></div>
+  <div class="faq-a"><p>Wir übernehmen Abholung, Verarbeitung und Dokumentation in NRW, als Ihr verlängerter Arm. Die Kommunikation mit Ihrem Endkunden bleibt bei Ihnen. Dokumentation und Nachweise liefern wir in Ihrem gewünschten Format, auf Wunsch White-Label-fähig.</p></div>
 </div><div class="faq-item">
   <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
     <span>Welche Kapazität steht zur Verfügung?</span><span class="faq-icon">+</span>
   </button>
-  <div class="faq-a"><p>Unsere 8.500 m² Anlage in Hagen bietet ausreichend Kapazität für kontinuierliche Volumina. Die genaue Kapazitätsplanung besprechen wir individuell — abhängig von Materialart, Menge und Frequenz. Wir sind darauf ausgelegt, ca. 20 % des Gesamtvolumens eines überregionalen Partners als NRW-Anteil abzudecken.</p></div>
+  <div class="faq-a"><p>Unsere 8.500 m² Anlage in Hagen bietet ausreichend Kapazität für kontinuierliche Volumina. Die genaue Kapazitätsplanung besprechen wir individuell, abhängig von Materialart, Menge und Frequenz. Wir sind darauf ausgelegt, ca. 20 % des Gesamtvolumens eines überregionalen Partners als NRW-Anteil abzudecken.</p></div>
 </div><div class="faq-item">
   <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
     <span>Können Sie auch ESG-Reports für unseren Endkunden liefern?</span><span class="faq-icon">+</span>
   </button>
-  <div class="faq-a"><p>Ja. Unser ESG-Reporting umfasst CO₂-Bilanz, Verwertungsquote und Materialrückgewinnung — pro Auftrag dokumentiert. Diese Daten können Sie direkt an Ihren Endkunden weitergeben oder in Ihre eigene Berichterstattung integrieren.</p>
+  <div class="faq-a"><p>Ja. Unser ESG-Reporting umfasst CO₂-Bilanz, Verwertungsquote und Materialrückgewinnung, pro Auftrag dokumentiert. Diese Daten können Sie direkt an Ihren Endkunden weitergeben oder in Ihre eigene Berichterstattung integrieren.</p>
 <p>---</p></div>
 </div></div>
   <div class="feedback-panel" id="feedback-panel-6">
-    <label>Ihr Vorschlag für Block 6 — FAQ:</label>
+    <label>Ihr Vorschlag für Block 6 - FAQ:</label>
     <textarea id="feedback-text-6" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
     <div class="feedback-actions">
       <button class="btn-save" onclick="saveFeedback(6)">Speichern</button>
@@ -434,18 +434,18 @@ blockquote { border-left: 4px solid var(--accent); padding: 1rem 1.5rem; margin:
   </div>
 </section>
 <section class="block-wrapper block-cta" id="block-7">
-  <span class="block-label" style="display:none">Block 7 — CTA</span>
+  <span class="block-label" style="display:none">Block 7 - CTA</span>
   <button class="feedback-btn" onclick="toggleFeedback(7)">✏️ Vorschlag</button>
   <div class="cta-section">
   <div class="container">
-    <h2>Partnerschaft besprechen — Direktkontakt Geschäftsführung</h2>
-    <p class="cta-text">Sie brauchen einen NRW-Partner mit eigener Anlage? Sprechen Sie direkt mit der Geschäftsführung — wir klären Kapazitäten und Konditionen.</p>
-    <a class="btn btn-primary btn-lg">Partnerschaft besprechen — Direktkontakt Geschäftsführung</a>
+    <h2>Partnerschaft besprechen - Direktkontakt Geschäftsführung</h2>
+    <p class="cta-text">Sie brauchen einen NRW-Partner mit eigener Anlage? Sprechen Sie direkt mit der Geschäftsführung, wir klären Kapazitäten und Konditionen.</p>
+    <a class="btn btn-primary btn-lg">Partnerschaft besprechen - Direktkontakt Geschäftsführung</a>
     <p class="cta-guarantee">EfbV-zertifiziert · 8.500 m² Kapazität · Eigener Fuhrpark · Referenzen</p>
   </div>
 </div>
   <div class="feedback-panel" id="feedback-panel-7">
-    <label>Ihr Vorschlag für Block 7 — CTA:</label>
+    <label>Ihr Vorschlag für Block 7 - CTA:</label>
     <textarea id="feedback-text-7" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
     <div class="feedback-actions">
       <button class="btn-save" onclick="saveFeedback(7)">Speichern</button>
@@ -460,30 +460,15 @@ blockquote { border-left: 4px solid var(--accent); padding: 1rem 1.5rem; margin:
 <footer class="site-footer">
   <div class="container footer-grid">
     <div class="footer-col">
-      <h4>EDELMET GmbH</h4>
-      <p>Ophauser Straße 24<br>58089 Hagen</p>
-      <p>Tel: +49 2330 6194998<br>E-Mail: info@edelmet.de</p>
+      <p>EDELMET GmbH<br>Ophauser Straße 24, 58089 Hagen<br>Tel: +49 2330 6194998 · info@edelmet.de</p>
     </div>
-    <div class="footer-col">
-      <h4>Leistungen</h4>
-      <a href="edelmet_preview_02_datenloeschung.html">Datenlöschung</a>
-      <a href="edelmet_preview_03_it_remarketing.html">IT-Remarketing</a>
-      <a href="edelmet_preview_04_logistik.html">Logistik</a>
-      <a href="edelmet_preview_05_esg_reporting.html">ESG-Reporting</a>
-    </div>
-    <div class="footer-col">
-      <h4>Unternehmen</h4>
-      <a href="edelmet_preview_06_historie_anlage.html">Über uns</a>
-      <a href="edelmet_preview_07_zertifikate.html">Zertifikate</a>
-      <a href="edelmet_preview_09_kontakt.html">Kontakt</a>
-    </div>
-    <div class="footer-col">
-      <h4>Rechtliches</h4>
+    <div class="footer-col footer-links">
+      <a href="edelmet_preview_16_privatankauf.html">Privatankauf</a>
       <a href="edelmet_preview_17_impressum.html">Impressum</a><a href="edelmet_preview_18_datenschutz.html">Datenschutz</a>
     </div>
   </div>
   <div class="footer-bottom container">
-    <p>© 2026 EDELMET GmbH — EfbV-zertifiziert · Eigene Anlage · Eigener Fuhrpark · NRW</p>
+    <p>© 2026 EDELMET GmbH</p>
   </div>
 </footer>
 <div class="export-overlay" id="exportOverlay">

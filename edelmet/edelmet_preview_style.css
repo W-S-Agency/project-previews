@@ -1,3 +1,4 @@
+
 /* === BASE === */
 :root {
   --primary: #1B6B3E; --primary-light: #238C52; --primary-dark: #145030;
@@ -41,7 +42,7 @@ blockquote { border-left: 4px solid var(--accent); padding: 1rem 1.5rem; margin:
 .dropdown a { display: block; padding: 10px 18px; color: rgba(255,255,255,.8); font-size: 13px; white-space: nowrap; }
 .dropdown a:hover, .dropdown a.active { color: var(--accent); background: rgba(255,255,255,.05); }
 .has-dropdown:hover .dropdown { display: block; }
-.has-dropdown > span::after { content: ' \25BE'; font-size: 10px; }
+.has-dropdown > span::after { content: ' ▾'; font-size: 10px; }
 @media(max-width:1024px) {
   .nav-toggle { display: block; }
   .nav-links { display: none; flex-direction: column; position: absolute; top: 60px; left: 0; right: 0; background: var(--secondary); padding: 8px 0; }

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EDELMET GmbH — Content Preview</title>
+<title>EDELMET GmbH - Content Preview</title>
 <style>
 /* === BASE === */
 :root {
@@ -96,7 +96,7 @@ blockquote { border-left: 4px solid var(--accent); padding: 1rem 1.5rem; margin:
 /* === PROOF / STATS === */
 .proof-section { padding: 60px 0; background: var(--secondary); color: white; }
 .proof-section h2 { color: white; }
-.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 32px; margin: 32px 0; }
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 32px; margin: 32px 0; text-align: center; }
 .stat { text-align: center; }
 .stat-value { font-size: 2rem; font-weight: 800; color: var(--accent); }
 .stat-label { font-size: .9rem; opacity: .8; margin-top: 4px; }
@@ -105,7 +105,8 @@ blockquote { border-left: 4px solid var(--accent); padding: 1rem 1.5rem; margin:
 
 /* === CARDS === */
 .cards-section { padding: 60px 0; }
-.cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; margin-top: 32px; }
+.cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 32px; }
+@media(max-width:768px) { .cards-grid { grid-template-columns: 1fr; } }
 .card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; transition: box-shadow .2s, transform .2s; }
 .card:hover { box-shadow: 0 8px 24px rgba(0,0,0,.08); transform: translateY(-2px); }
 .card h3 { color: var(--primary); }
@@ -141,7 +142,10 @@ blockquote { border-left: 4px solid var(--accent); padding: 1rem 1.5rem; margin:
 
 /* === LEAD MAGNET === */
 .lead-magnet { padding: 60px 0; }
-.lead-magnet-box { background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%); border: 2px solid var(--primary-light); border-radius: 12px; padding: 40px; max-width: 700px; margin: 0 auto; }
+.lead-magnet-box { background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%); border: 2px solid var(--primary-light); border-radius: 12px; padding: 40px; max-width: var(--max-width); margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 0; }
+@media(min-width:768px) { .lead-magnet-box { grid-template-columns: 280px 1fr; gap: 32px; } }
+.lead-magnet-image { background: var(--primary-dark); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; min-height: 200px; color: rgba(255,255,255,.5); font-size: .85rem; text-align: center; padding: 24px; }
+.lead-magnet-content { }
 .lead-magnet-box h2 { color: var(--primary-dark); }
 .lead-magnet-items { margin: 16px 0; }
 .lead-magnet-sep { font-size: .9rem; color: var(--text-light); margin: 12px 0; padding: 12px 0; border-top: 1px dashed var(--border); }
@@ -290,7 +294,7 @@ blockquote { border-left: 4px solid var(--accent); padding: 1rem 1.5rem; margin:
 <div class="index-header">
   <div class="container">
     <h1>📄 EDELMET GmbH — Content Preview</h1>
-    <p>18 Seiten · Generiert am 13.04.2026, 15:29</p>
+    <p>18 Seiten · Generiert am 14.04.2026, 18:02</p>
   </div>
 </div>
 <div class="container">
@@ -360,11 +364,11 @@ blockquote { border-left: 4px solid var(--accent); padding: 1rem 1.5rem; margin:
   <div class="index-card-version">V1.0 · 2026-04-13</div>
 </a><a href="edelmet_preview_17_impressum.html" class="index-card">
   <div class="index-card-title">Impressum <span style="background:#fef3c7;color:#92400e;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;">PLATZHALTER</span></div>
-  <div class="index-card-meta">/</div>
+  <div class="index-card-meta">/impressum/</div>
   <div class="index-card-version">V1.0 · 2026-04-13</div>
 </a><a href="edelmet_preview_18_datenschutz.html" class="index-card">
   <div class="index-card-title">Datenschutzerklärung <span style="background:#fef3c7;color:#92400e;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;">PLATZHALTER</span></div>
-  <div class="index-card-meta">/</div>
+  <div class="index-card-meta">/datenschutz/</div>
   <div class="index-card-version">V1.0 · 2026-04-13</div>
 </a></div>
 
@@ -375,106 +379,106 @@ blockquote { border-left: 4px solid var(--accent); padding: 1rem 1.5rem; margin:
       <thead><tr><th>Seite</th><th>Title Tag</th><th>Len</th><th>Description (gekürzt)</th><th>Len</th><th>Schema.org</th></tr></thead>
       <tbody><tr>
   <td><a href="edelmet_preview_01_startseite.html">Startseite</a></td>
-  <td style="font-size:.8rem">Zertifizierte IT-Entsorgung NRW — EfbV-Fachbetrieb | EDELMET</td>
+  <td style="font-size:.8rem">Zertifizierte IT-Entsorgung NRW - EfbV-Fachbetrieb | EDELMET</td>
   <td><span class="len-badge len-warn">60</span></td>
   <td style="font-size:.8rem">Zertifizierte IT-Entsorgung in NRW ✓ EfbV-Fac…</td>
   <td><span class="len-badge len-over">172</span></td>
   <td><span class="schema-tag">Organization</span><span class="schema-tag">WebSite</span></td>
 </tr><tr>
   <td><a href="edelmet_preview_02_datenloeschung.html">Zertifizierte Datenlöschung</a></td>
-  <td style="font-size:.8rem">Datenlöschung nach DIN 66399 — Zertifiziert &amp; DSGVO-konform | EDELMET</td>
+  <td style="font-size:.8rem">Datenlöschung nach DIN 66399 - Zertifiziert &amp; DSGVO-konform | EDELMET</td>
   <td><span class="len-badge len-over">69</span></td>
   <td style="font-size:.8rem">Zertifizierte Datenlöschung nach DIN 66399 ✓ …</td>
   <td><span class="len-badge len-over">162</span></td>
   <td><span class="schema-tag">Organization</span><span class="schema-tag">BreadcrumbList</span><span class="schema-tag">FAQPage</span><span class="schema-tag">Service</span></td>
 </tr><tr>
   <td><a href="edelmet_preview_03_it_remarketing.html">IT-Remarketing</a></td>
-  <td style="font-size:.8rem">IT-Remarketing — Restwert statt Entsorgungskosten | EDELMET</td>
-  <td><span class="len-badge len-warn">59</span></td>
-  <td style="font-size:.8rem">IT-Remarketing für Unternehmen ✓ Funktionsfäh…</td>
-  <td><span class="len-badge len-over">174</span></td>
+  <td style="font-size:.8rem">IT-Remarketing - Restwert statt Kosten | EDELMET</td>
+  <td><span class="len-badge len-ok">48</span></td>
+  <td style="font-size:.8rem">IT-Remarketing für Unternehmen ✓ Hardware auf…</td>
+  <td><span class="len-badge len-ok">150</span></td>
   <td><span class="schema-tag">Organization</span><span class="schema-tag">BreadcrumbList</span><span class="schema-tag">FAQPage</span><span class="schema-tag">Service</span></td>
 </tr><tr>
   <td><a href="edelmet_preview_04_logistik.html">Logistik &amp; Behälterservice</a></td>
-  <td style="font-size:.8rem">Logistik &amp; Behälterservice — Sicherer IT-Transport NRW | EDELMET</td>
+  <td style="font-size:.8rem">Logistik &amp; Behälterservice - Sicherer IT-Transport NRW | EDELMET</td>
   <td><span class="len-badge len-over">64</span></td>
   <td style="font-size:.8rem">IT-Logistik für Unternehmen ✓ Eigener Fuhrpar…</td>
   <td><span class="len-badge len-ok">150</span></td>
   <td><span class="schema-tag">Organization</span><span class="schema-tag">BreadcrumbList</span><span class="schema-tag">FAQPage</span><span class="schema-tag">Service</span></td>
 </tr><tr>
   <td><a href="edelmet_preview_05_esg_reporting.html">ESG-Reporting</a></td>
-  <td style="font-size:.8rem">ESG-Reporting — Audit-ready Entsorgungsnachweise | EDELMET</td>
-  <td><span class="len-badge len-warn">58</span></td>
-  <td style="font-size:.8rem">ESG-konforme Entsorgungsnachweise für CSRD-Be…</td>
-  <td><span class="len-badge len-warn">157</span></td>
+  <td style="font-size:.8rem">ESG-Reporting - Entsorgungsnachweise | EDELMET</td>
+  <td><span class="len-badge len-ok">46</span></td>
+  <td style="font-size:.8rem">ESG-konforme Entsorgungsnachweise für CSRD ✓ …</td>
+  <td><span class="len-badge len-ok">140</span></td>
   <td><span class="schema-tag">Organization</span><span class="schema-tag">BreadcrumbList</span><span class="schema-tag">FAQPage</span><span class="schema-tag">Service</span></td>
 </tr><tr>
   <td><a href="edelmet_preview_06_historie_anlage.html">Historie &amp; Anlage</a></td>
-  <td style="font-size:.8rem">Über EDELMET — EfbV-Entsorgungsfachbetrieb in Hagen | EDELMET</td>
+  <td style="font-size:.8rem">Über EDELMET - EfbV-Entsorgungsfachbetrieb in Hagen | EDELMET</td>
   <td><span class="len-badge len-over">61</span></td>
   <td style="font-size:.8rem">EDELMET GmbH: EfbV-zertifizierter Entsorgungs…</td>
   <td><span class="len-badge len-ok">137</span></td>
   <td><span class="schema-tag">Organization</span><span class="schema-tag">BreadcrumbList</span><span class="schema-tag">LocalBusiness</span></td>
 </tr><tr>
   <td><a href="edelmet_preview_07_zertifikate.html">Zertifikate &amp; Downloads</a></td>
-  <td style="font-size:.8rem">Zertifikate &amp; Downloads — Dokumenten-Center für Einkäufer | EDELMET</td>
-  <td><span class="len-badge len-over">67</span></td>
+  <td style="font-size:.8rem">Zertifikate &amp; Downloads | EDELMET</td>
+  <td><span class="len-badge len-ok">33</span></td>
   <td style="font-size:.8rem">Alle EDELMET-Zertifikate auf einen Blick ✓ Ef…</td>
   <td><span class="len-badge len-ok">147</span></td>
   <td><span class="schema-tag">Organization</span><span class="schema-tag">BreadcrumbList</span></td>
 </tr><tr>
   <td><a href="edelmet_preview_08_karriere.html">Karriere</a></td>
-  <td style="font-size:.8rem">Karriere bei EDELMET — Jobs in der IT-Entsorgung Hagen | EDELMET</td>
-  <td><span class="len-badge len-over">64</span></td>
+  <td style="font-size:.8rem">Karriere bei EDELMET - Jobs in Hagen | EDELMET</td>
+  <td><span class="len-badge len-ok">46</span></td>
   <td style="font-size:.8rem">Karriere bei EDELMET GmbH in Hagen ✓ Wachsend…</td>
   <td><span class="len-badge len-ok">113</span></td>
   <td><span class="schema-tag">Organization</span><span class="schema-tag">BreadcrumbList</span></td>
 </tr><tr>
   <td><a href="edelmet_preview_09_kontakt.html">Kontakt</a></td>
-  <td style="font-size:.8rem">Kontakt — B2B-IT-Entsorgung anfragen | EDELMET Hagen</td>
+  <td style="font-size:.8rem">Kontakt - B2B-IT-Entsorgung anfragen | EDELMET Hagen</td>
   <td><span class="len-badge len-ok">52</span></td>
   <td style="font-size:.8rem">Kontaktieren Sie EDELMET für Ihre IT-Entsorgu…</td>
   <td><span class="len-badge len-ok">134</span></td>
   <td><span class="schema-tag">Organization</span><span class="schema-tag">BreadcrumbList</span><span class="schema-tag">LocalBusiness</span></td>
 </tr><tr>
   <td><a href="edelmet_preview_10_zg_it_mittelstand.html">IT-Entsorgung für den Mittelstand</a></td>
-  <td style="font-size:.8rem">IT-Entsorgung Mittelstand — DSGVO-konform &amp; zertifiziert | EDELMET</td>
+  <td style="font-size:.8rem">IT-Entsorgung Mittelstand - DSGVO-konform &amp; zertifiziert | EDELMET</td>
   <td><span class="len-badge len-over">66</span></td>
   <td style="font-size:.8rem">IT-Entsorgung für den Mittelstand ✓ DSGVO-kon…</td>
   <td><span class="len-badge len-over">163</span></td>
   <td><span class="schema-tag">Organization</span><span class="schema-tag">BreadcrumbList</span><span class="schema-tag">FAQPage</span></td>
 </tr><tr>
   <td><a href="edelmet_preview_11_zg_rechenzentren.html">RZ-Rückbau &amp; IT-Entsorgung</a></td>
-  <td style="font-size:.8rem">RZ-Rückbau &amp; Server-Entsorgung — Zertifiziert &amp; ESG-ready | EDELMET</td>
-  <td><span class="len-badge len-over">67</span></td>
-  <td style="font-size:.8rem">RZ-Rückbau &amp; Server-Entsorgung ✓ DIN 66399-ko…</td>
-  <td><span class="len-badge len-over">163</span></td>
+  <td style="font-size:.8rem">RZ-Rückbau &amp; Server-Entsorgung | EDELMET</td>
+  <td><span class="len-badge len-ok">40</span></td>
+  <td style="font-size:.8rem">RZ-Rückbau &amp; Server-Entsorgung ✓ DIN 66399-Da…</td>
+  <td><span class="len-badge len-ok">137</span></td>
   <td><span class="schema-tag">Organization</span><span class="schema-tag">BreadcrumbList</span><span class="schema-tag">FAQPage</span></td>
 </tr><tr>
   <td><a href="edelmet_preview_12_zg_kommunen.html">IT-Entsorgung für Kommunen &amp; Behörden</a></td>
-  <td style="font-size:.8rem">IT-Entsorgung Kommunen &amp; Behörden — EfbV-zertifiziert | EDELMET</td>
-  <td><span class="len-badge len-over">63</span></td>
+  <td style="font-size:.8rem">IT-Entsorgung für Kommunen &amp; Behörden | EDELMET</td>
+  <td><span class="len-badge len-ok">47</span></td>
   <td style="font-size:.8rem">IT-Entsorgung für Kommunen &amp; Behörden ✓ EfbV-…</td>
-  <td><span class="len-badge len-over">169</span></td>
+  <td><span class="len-badge len-ok">149</span></td>
   <td><span class="schema-tag">Organization</span><span class="schema-tag">BreadcrumbList</span><span class="schema-tag">FAQPage</span></td>
 </tr><tr>
   <td><a href="edelmet_preview_13_zg_telekommunikation.html">IT-Entsorgung für Telekommunikation</a></td>
-  <td style="font-size:.8rem">IT-Entsorgung Telekommunikation — Netzausbau, Rückbau, Verwertung | EDELMET</td>
-  <td><span class="len-badge len-over">75</span></td>
-  <td style="font-size:.8rem">IT-Entsorgung für Telekommunikationsunternehm…</td>
-  <td><span class="len-badge len-over">182</span></td>
+  <td style="font-size:.8rem">IT-Entsorgung Telekommunikation | EDELMET</td>
+  <td><span class="len-badge len-ok">41</span></td>
+  <td style="font-size:.8rem">IT-Entsorgung für Telekommunikation ✓ Router,…</td>
+  <td><span class="len-badge len-ok">141</span></td>
   <td><span class="schema-tag">Organization</span><span class="schema-tag">BreadcrumbList</span><span class="schema-tag">FAQPage</span></td>
 </tr><tr>
   <td><a href="edelmet_preview_14_zg_automobilzulieferer.html">IT-Entsorgung für Automobilzulieferer</a></td>
-  <td style="font-size:.8rem">IT-Entsorgung Automobilzulieferer — Sichere Vernichtung &amp; IP-Schutz | EDELMET</td>
-  <td><span class="len-badge len-over">77</span></td>
+  <td style="font-size:.8rem">IT-Entsorgung Automobilzulieferer | EDELMET</td>
+  <td><span class="len-badge len-ok">43</span></td>
   <td style="font-size:.8rem">IT-Entsorgung für Automobilzulieferer ✓ Proto…</td>
-  <td><span class="len-badge len-over">173</span></td>
+  <td><span class="len-badge len-ok">142</span></td>
   <td><span class="schema-tag">Organization</span><span class="schema-tag">BreadcrumbList</span><span class="schema-tag">FAQPage</span></td>
 </tr><tr>
   <td><a href="edelmet_preview_15_zg_partnernetzwerk.html">Partnernetzwerk</a></td>
-  <td style="font-size:.8rem">Partnernetzwerk NRW — Subunternehmer mit EfbV &amp; Kapazität | EDELMET</td>
-  <td><span class="len-badge len-over">67</span></td>
+  <td style="font-size:.8rem">Partnernetzwerk NRW | EDELMET</td>
+  <td><span class="len-badge len-ok">29</span></td>
   <td style="font-size:.8rem">Subunternehmer für NRW gesucht? EDELMET: EfbV…</td>
   <td><span class="len-badge len-over">190</span></td>
   <td><span class="schema-tag">Organization</span><span class="schema-tag">BreadcrumbList</span><span class="schema-tag">FAQPage</span></td>
@@ -487,17 +491,17 @@ blockquote { border-left: 4px solid var(--accent); padding: 1rem 1.5rem; margin:
   <td><span class="schema-tag">Organization</span><span class="schema-tag">BreadcrumbList</span></td>
 </tr><tr>
   <td><a href="edelmet_preview_17_impressum.html">Impressum</a></td>
-  <td style="font-size:.8rem">Impressum</td>
-  <td><span class="len-badge len-ok">9</span></td>
-  <td style="font-size:.8rem"></td>
-  <td><span class="len-badge len-ok">0</span></td>
+  <td style="font-size:.8rem">Impressum | EDELMET GmbH</td>
+  <td><span class="len-badge len-ok">24</span></td>
+  <td style="font-size:.8rem">Impressum der EDELMET GmbH, Ophauser Straße 2…</td>
+  <td><span class="len-badge len-ok">95</span></td>
   <td><span class="schema-tag">Organization</span><span class="schema-tag">BreadcrumbList</span></td>
 </tr><tr>
   <td><a href="edelmet_preview_18_datenschutz.html">Datenschutzerklärung</a></td>
-  <td style="font-size:.8rem">Datenschutzerklärung</td>
-  <td><span class="len-badge len-ok">20</span></td>
-  <td style="font-size:.8rem"></td>
-  <td><span class="len-badge len-ok">0</span></td>
+  <td style="font-size:.8rem">Datenschutzerklärung | EDELMET GmbH</td>
+  <td><span class="len-badge len-ok">35</span></td>
+  <td style="font-size:.8rem">Datenschutzerklärung der EDELMET GmbH. Inform…</td>
+  <td><span class="len-badge len-ok">94</span></td>
   <td><span class="schema-tag">Organization</span><span class="schema-tag">BreadcrumbList</span></td>
 </tr></tbody>
     </table>
