@@ -4,6 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Für Angehörige — MEDILUX Berlin Preview</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script>
+<script>
+  tailwind.config = {
+    corePlugins: { preflight: false },
+    theme: { extend: { colors: {
+      brand: '#2B55C0', 'brand-mid': '#4C7CDA', 'brand-yellow': '#E8C830', 'brand-bg': '#ECF3F7'
+    }}}
+  }
+</script>
 <style>
 :root {
   --primary: #1A1A1A;
@@ -314,17 +324,41 @@ details.faq[open] summary::after{content:'−';background:var(--blue);color:#fff
     <a href="#cta" class="btn btn-out">0391/6076062 anrufen</a>
   </div>
 </section>
-<div class="feedback-panel" id="feedback-panel-1"><label>Ihr Vorschlag für „BLOCK 1 — Hero (Above the Fold)":</label><textarea id="feedback-text-1" placeholder="Änderungsvorschlag oder Kommentar…"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(1)">Speichern</button><button class="btn-cancel" onclick="toggleFeedback(1)">Abbrechen</button><button class="btn-delete" onclick="deleteFeedback(1)" style="display:none" id="delete-btn-1">Löschen</button><span class="saved-indicator" id="saved-1">✓ Gespeichert</span></div></div></div><div id="block-2" style="position:relative"><button class="feedback-btn" onclick="toggleFeedback(2)">✏️ Vorschlag</button><div class="sec">
-<h2>Problem/Pain: Die Realität der Pflege</h2>
-<h4>H2: Wenn die Pflege zur Belastung wird</h4>
-<p>Sie haben sich entschieden, für Ihre Mutter, Ihren Vater oder Ihren Partner da zu sein. Dafür verdienen Sie Respekt. Aber vielleicht merken Sie auch: Die Pflege verändert Ihren Alltag grundlegend.</p>
-<p><strong>Drei Situationen, die viele Angehörige kennen:</strong></p>
-<p><strong>Zwischen Beruf und Pflege</strong></p>
-<p>Der Arbeitstag endet — die Pflege beginnt. Einkaufen, Medikamente, Arzttermine, nachts aufstehen. Freizeit wird zum Fremdwort. Dieser Spagat ist auf Dauer kaum durchzuhalten.</p>
-<p><strong>Schuldgefühle, egal wie man sich entscheidet</strong></p>
-<p>Wer professionelle Hilfe in Betracht zieht, fragt sich oft: Gebe ich auf? Die Antwort ist klar: Nein. Sie sorgen dafür, dass Ihr Angehöriger die bestmögliche Betreuung bekommt — von geschulten Pflegekräften, rund um die Uhr.</p>
-<p><strong>Allein mit der Verantwortung</strong></p>
-<p>Pflegegrade beantragen, Leistungen vergleichen, Formulare ausfüllen, Entscheidungen treffen. Das Pflegesystem ist komplex. Ohne Orientierung kostet das Kraft, die Sie für Ihren Angehörigen brauchen.</p>
+<div class="feedback-panel" id="feedback-panel-1"><label>Ihr Vorschlag für „BLOCK 1 — Hero (Above the Fold)":</label><textarea id="feedback-text-1" placeholder="Änderungsvorschlag oder Kommentar…"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(1)">Speichern</button><button class="btn-cancel" onclick="toggleFeedback(1)">Abbrechen</button><button class="btn-delete" onclick="deleteFeedback(1)" style="display:none" id="delete-btn-1">Löschen</button><span class="saved-indicator" id="saved-1">✓ Gespeichert</span></div></div></div><div id="block-2" style="position:relative"><button class="feedback-btn" onclick="toggleFeedback(2)">✏️ Vorschlag</button>
+<div class="bg-white py-16 px-10">
+  <div class="max-w-2xl">
+    <h2 class="text-3xl font-bold tracking-tight text-gray-900">Wenn die Pflege zur Belastung wird</h2>
+    <p class="mt-4 text-lg text-gray-600">Sie haben sich entschieden, für Ihre Mutter, Ihren Vater oder Ihren Partner da zu sein. Dafür verdienen Sie Respekt. Aber die Pflege verändert Ihren Alltag grundlegend.</p>
+  </div>
+  <div class="mt-12 grid grid-cols-1 gap-10 lg:grid-cols-3">
+    <div class="flex flex-col">
+      <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-brand">
+        <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+        </svg>
+      </div>
+      <h3 class="text-base font-semibold text-gray-900">Zwischen Beruf und Pflege</h3>
+      <p class="mt-2 text-base text-gray-600">Der Arbeitstag endet — die Pflege beginnt. Einkaufen, Medikamente, Arzttermine, nachts aufstehen. Freizeit wird zum Fremdwort. Dieser Spagat ist auf Dauer kaum durchzuhalten.</p>
+    </div>
+    <div class="flex flex-col">
+      <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-brand">
+        <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+        </svg>
+      </div>
+      <h3 class="text-base font-semibold text-gray-900">Schuldgefühle, egal wie man sich entscheidet</h3>
+      <p class="mt-2 text-base text-gray-600">Wer professionelle Hilfe in Betracht zieht, fragt sich oft: Gebe ich auf? Die Antwort ist klar: Nein. Sie sorgen dafür, dass Ihr Angehöriger die bestmögliche Betreuung bekommt — rund um die Uhr.</p>
+    </div>
+    <div class="flex flex-col">
+      <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-brand">
+        <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75 2.25 2.25 0 0 0-.1-.664m-5.8 0A2.251 2.251 0 0 1 13.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V19.5a2.25 2.25 0 0 0 2.25 2.25h9a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08" />
+        </svg>
+      </div>
+      <h3 class="text-base font-semibold text-gray-900">Allein mit der Verantwortung</h3>
+      <p class="mt-2 text-base text-gray-600">Pflegegrade beantragen, Leistungen vergleichen, Formulare ausfüllen, Entscheidungen treffen. Das Pflegesystem ist komplex. Ohne Orientierung kostet das Kraft, die Sie für Ihren Angehörigen brauchen.</p>
+    </div>
+  </div>
 </div>
 <div class="feedback-panel" id="feedback-panel-2"><label>Ihr Vorschlag für „BLOCK 2 — Problem/Pain: Die Realität der Pflege":</label><textarea id="feedback-text-2" placeholder="Änderungsvorschlag oder Kommentar…"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(2)">Speichern</button><button class="btn-cancel" onclick="toggleFeedback(2)">Abbrechen</button><button class="btn-delete" onclick="deleteFeedback(2)" style="display:none" id="delete-btn-2">Löschen</button><span class="saved-indicator" id="saved-2">✓ Gespeichert</span></div></div></div><div id="block-3" style="position:relative"><button class="feedback-btn" onclick="toggleFeedback(3)">✏️ Vorschlag</button><div class="sec">
 <h2>Welche Betreuung passt zu Ihrer Situation?</h2>
@@ -356,48 +390,100 @@ details.faq[open] summary::after{content:'−';background:var(--blue);color:#fff
   </div>
 </div>
 </div>
-<div class="feedback-panel" id="feedback-panel-3"><label>Ihr Vorschlag für „BLOCK 3 — Lösung: Drei Wege, die entlasten":</label><textarea id="feedback-text-3" placeholder="Änderungsvorschlag oder Kommentar…"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(3)">Speichern</button><button class="btn-cancel" onclick="toggleFeedback(3)">Abbrechen</button><button class="btn-delete" onclick="deleteFeedback(3)" style="display:none" id="delete-btn-3">Löschen</button><span class="saved-indicator" id="saved-3">✓ Gespeichert</span></div></div></div><div id="block-4" style="position:relative"><button class="feedback-btn" onclick="toggleFeedback(4)">✏️ Vorschlag</button><div class="sec">
-<h2>So funktioniert der Weg zu uns</h2>
-<h4>H2: In drei Schritten zur richtigen Betreuung</h4>
-<p><strong>Schritt 1: Erstgespräch — kostenlos und unverbindlich</strong></p>
-<p>Rufen Sie uns an oder schreiben Sie uns. Wir nehmen uns Zeit für Ihre Fragen und Ihre Situation. Kein Verkaufsgespräch — ein ehrliches Beratungsgespräch.</p>
-<p><strong>Schritt 2: Besichtigung vor Ort</strong></p>
-<p>Kommen Sie vorbei und sehen Sie sich unsere Räumlichkeiten an. Lernen Sie das Team kennen. Bringen Sie Ihren Angehörigen mit, wenn möglich — oder kommen Sie erst allein.</p>
-<p><strong>Schritt 3: Gemeinsam entscheiden</strong></p>
-<p>Wir prüfen die Verfügbarkeit, klären den Pflegebedarf und unterstützen Sie bei der Antragstellung. Erst wenn Sie und Ihr Angehöriger sich sicher fühlen, geht es weiter.</p>
-<p><strong>Kontakt:</strong> 0391/6076062 · Mo–Fr 8:00–16:30</p>
+<div class="feedback-panel" id="feedback-panel-3"><label>Ihr Vorschlag für „BLOCK 3 — Lösung: Drei Wege, die entlasten":</label><textarea id="feedback-text-3" placeholder="Änderungsvorschlag oder Kommentar…"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(3)">Speichern</button><button class="btn-cancel" onclick="toggleFeedback(3)">Abbrechen</button><button class="btn-delete" onclick="deleteFeedback(3)" style="display:none" id="delete-btn-3">Löschen</button><span class="saved-indicator" id="saved-3">✓ Gespeichert</span></div></div></div><div id="block-4" style="position:relative"><button class="feedback-btn" onclick="toggleFeedback(4)">✏️ Vorschlag</button>
+<div class="py-16 px-10" style="background:#ECF3F7">
+  <div class="max-w-2xl mb-10">
+    <h2 class="text-3xl font-bold tracking-tight text-gray-900">In drei Schritten zur richtigen Betreuung</h2>
+    <p class="mt-4 text-lg text-gray-600">Vom ersten Gespräch bis zum Einzug — wir begleiten Sie jeden Schritt.</p>
+  </div>
+  <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
+    <div class="flex flex-col bg-white rounded-2xl p-8 shadow-sm">
+      <div class="flex h-10 w-10 items-center justify-center rounded-full text-white font-bold text-base" style="background:#2B55C0">1</div>
+      <h3 class="mt-6 text-lg font-semibold text-gray-900">Erstgespräch</h3>
+      <p class="mt-1 text-sm font-medium" style="color:#2B55C0">Kostenlos und unverbindlich</p>
+      <p class="mt-3 text-base text-gray-600 flex-1">Rufen Sie uns an oder schreiben Sie uns. Wir nehmen uns Zeit für Ihre Fragen und Ihre Situation. Kein Verkaufsgespräch — ein ehrliches Beratungsgespräch.</p>
+    </div>
+    <div class="flex flex-col bg-white rounded-2xl p-8 shadow-sm">
+      <div class="flex h-10 w-10 items-center justify-center rounded-full text-white font-bold text-base" style="background:#2B55C0">2</div>
+      <h3 class="mt-6 text-lg font-semibold text-gray-900">Besichtigung vor Ort</h3>
+      <p class="mt-1 text-sm font-medium" style="color:#2B55C0">Sehen, fühlen, entscheiden</p>
+      <p class="mt-3 text-base text-gray-600 flex-1">Kommen Sie vorbei und sehen Sie sich unsere Räumlichkeiten an. Lernen Sie das Team kennen. Bringen Sie Ihren Angehörigen mit, wenn möglich — oder kommen Sie erst allein.</p>
+    </div>
+    <div class="flex flex-col bg-white rounded-2xl p-8 shadow-sm">
+      <div class="flex h-10 w-10 items-center justify-center rounded-full text-white font-bold text-base" style="background:#2B55C0">3</div>
+      <h3 class="mt-6 text-lg font-semibold text-gray-900">Gemeinsam entscheiden</h3>
+      <p class="mt-1 text-sm font-medium" style="color:#2B55C0">Ohne Druck, ohne Verpflichtung</p>
+      <p class="mt-3 text-base text-gray-600 flex-1">Wir prüfen die Verfügbarkeit, klären den Pflegebedarf und unterstützen Sie bei der Antragstellung. Erst wenn Sie und Ihr Angehöriger sich sicher fühlen, geht es weiter.</p>
+    </div>
+  </div>
+  <p class="mt-8 text-sm text-gray-500">📞 <strong>0391/6076062</strong> · Mo–Fr 8:00–16:30</p>
 </div>
-<div class="feedback-panel" id="feedback-panel-4"><label>Ihr Vorschlag für „BLOCK 4 — So funktioniert der Weg zu uns":</label><textarea id="feedback-text-4" placeholder="Änderungsvorschlag oder Kommentar…"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(4)">Speichern</button><button class="btn-cancel" onclick="toggleFeedback(4)">Abbrechen</button><button class="btn-delete" onclick="deleteFeedback(4)" style="display:none" id="delete-btn-4">Löschen</button><span class="saved-indicator" id="saved-4">✓ Gespeichert</span></div></div></div><div id="block-5" style="position:relative"><button class="feedback-btn" onclick="toggleFeedback(5)">✏️ Vorschlag</button><div class="sec sec-alt">
-<h2>Unsere Standorte: Orte zum Besuchen</h2>
-<h4>H2: Zwei Standorte in Berlin — beide gut erreichbar</h4>
-<h4>H3: Villa Civitas — Berlin-Zehlendorf</h4>
-<p><strong>Lindenthaler Allee 20, 14163 Berlin</strong></p>
-<p>Eine historische Villa im grünen Herzen von Zehlendorf: alter Baumbestand, großzügige Außenfläche, barrierefreie Wege. S-Bahn Mexikoplatz in der Nähe, Einkaufsmöglichkeiten und Ärzte fußläufig.</p>
-<ul>
-<li>4 Pflege-Wohngemeinschaften, 35 Plätze</li>
-<li>24-Stunden-Betreuung, Nachtbereitschaft</li>
-<li>Spezialisierung: Demenz, Palliativ, Intensivpflege, Junge Pflege</li>
-<li>Einzelzimmer und 3 Doppelzimmer (12–20 m²), barrierefrei</li>
-<li>Gemeinschaftsküche, moderne Pflegebäder, große Terrasse</li>
-<li>Aktivitäten: Basteln, Musikkreise, Gedächtnistraining, Gymnastik, Gärtnern</li>
-<li>Haustiere erlaubt</li>
-</ul>
-<p><code></code></p>
-<h4>H3: Residenz Heerstraße — Berlin-Spandau</h4>
-<p><strong>Gärtnereiring 56, 13593 Berlin</strong></p>
-<p>Ein modernes Wohn- und Pflegehaus im grünen Spandau: ruhige Lage, gute ÖPNV-Anbindung, Besucherparkplatz vorhanden. Dachterrasse mit Panoramablick.</p>
-<ul>
-<li>2 Pflege-WGs (je 12 Plätze) + 42 betreute Wohneinheiten</li>
-<li>24-Stunden-Betreuung, Nachtbereitschaft</li>
-<li>Beschützter Demenzbereich</li>
-<li>WG-Zimmer: 15–22 m², überwiegend mit eigenem Bad</li>
-<li>Wohnungen: 18–48 m², teils mit Balkon, barrierefrei</li>
-<li>Notruf- und Sicherheitssystem rund um die Uhr</li>
-<li>Täglich frisch zubereitete Mahlzeiten, Sonderkost möglich</li>
-<li>Haustiere nach Absprache erlaubt</li>
-<li>Aufnahme ab Pflegegrad 2 (oder Antrag gestellt)</li>
-</ul>
-<p><code></code></p>
+<div class="feedback-panel" id="feedback-panel-4"><label>Ihr Vorschlag für „BLOCK 4 — So funktioniert der Weg zu uns":</label><textarea id="feedback-text-4" placeholder="Änderungsvorschlag oder Kommentar…"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(4)">Speichern</button><button class="btn-cancel" onclick="toggleFeedback(4)">Abbrechen</button><button class="btn-delete" onclick="deleteFeedback(4)" style="display:none" id="delete-btn-4">Löschen</button><span class="saved-indicator" id="saved-4">✓ Gespeichert</span></div></div></div><div id="block-5" style="position:relative"><button class="feedback-btn" onclick="toggleFeedback(5)">✏️ Vorschlag</button>
+<div class="bg-white py-16 px-10">
+  <h2 class="text-3xl font-bold tracking-tight text-gray-900">Zwei Standorte in Berlin — beide gut erreichbar</h2>
+  <p class="mt-4 text-lg text-gray-600">Besuche jederzeit willkommen. Beide Standorte sind barrierefrei und gut mit dem ÖPNV erreichbar.</p>
+  <div class="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-2">
+    <!-- Villa Civitas -->
+    <div class="rounded-2xl border border-gray-200 overflow-hidden">
+      <div class="p-1" style="background:#2B55C0"></div>
+      <div class="p-8">
+        <div class="flex items-center gap-4 mb-6">
+          <div class="flex h-12 w-12 items-center justify-center rounded-full text-white font-bold text-sm flex-shrink-0" style="background:#2B55C0">VC</div>
+          <div>
+            <h3 class="text-xl font-bold text-gray-900">Villa Civitas</h3>
+            <p class="text-sm text-gray-500">Lindenthaler Allee 20, 14163 Berlin-Zehlendorf</p>
+          </div>
+        </div>
+        <p class="text-base text-gray-600 mb-6">Eine historische Villa im grünen Herzen von Zehlendorf: alter Baumbestand, großzügige Außenfläche, barrierefreie Wege. S-Bahn Mexikoplatz in der Nähe.</p>
+        <dl class="grid grid-cols-2 gap-3">
+          <div class="rounded-xl p-3" style="background:#ECF3F7">
+            <dt class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Pflegeplätze</dt>
+            <dd class="mt-1 text-2xl font-bold" style="color:#2B55C0">35</dd>
+          </div>
+          <div class="rounded-xl p-3" style="background:#ECF3F7">
+            <dt class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Pflege-WGs</dt>
+            <dd class="mt-1 text-2xl font-bold" style="color:#2B55C0">4</dd>
+          </div>
+        </dl>
+        <ul class="mt-6 space-y-2">
+          <li class="flex items-start gap-2 text-sm text-gray-600"><span style="color:#2B55C0">✓</span> 24h-Betreuung, Nachtbereitschaft</li>
+          <li class="flex items-start gap-2 text-sm text-gray-600"><span style="color:#2B55C0">✓</span> Demenz, Palliativ, Intensivpflege, Junge Pflege</li>
+          <li class="flex items-start gap-2 text-sm text-gray-600"><span style="color:#2B55C0">✓</span> Zimmer 12–20 m², barrierefrei, Haustiere erlaubt</li>
+          <li class="flex items-start gap-2 text-sm text-gray-600"><span style="color:#2B55C0">✓</span> Terrasse, Musikkreise, Gedächtnistraining, Gärtnern</li>
+        </ul>
+      </div>
+    </div>
+    <!-- Residenz Heerstraße -->
+    <div class="rounded-2xl border border-gray-200 overflow-hidden">
+      <div class="p-1" style="background:#4C7CDA"></div>
+      <div class="p-8">
+        <div class="flex items-center gap-4 mb-6">
+          <div class="flex h-12 w-12 items-center justify-center rounded-full text-white font-bold text-sm flex-shrink-0" style="background:#4C7CDA">RH</div>
+          <div>
+            <h3 class="text-xl font-bold text-gray-900">Residenz Heerstraße</h3>
+            <p class="text-sm text-gray-500">Gärtnereiring 56, 13593 Berlin-Spandau</p>
+          </div>
+        </div>
+        <p class="text-base text-gray-600 mb-6">Ein modernes Wohn- und Pflegehaus im grünen Spandau: ruhige Lage, Besucherparkplatz, Dachterrasse mit Panoramablick.</p>
+        <dl class="grid grid-cols-2 gap-3">
+          <div class="rounded-xl p-3" style="background:#ECF3F7">
+            <dt class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Pflegeplätze</dt>
+            <dd class="mt-1 text-2xl font-bold" style="color:#4C7CDA">24</dd>
+          </div>
+          <div class="rounded-xl p-3" style="background:#ECF3F7">
+            <dt class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Betr. Wohnen</dt>
+            <dd class="mt-1 text-2xl font-bold" style="color:#4C7CDA">42</dd>
+          </div>
+        </dl>
+        <ul class="mt-6 space-y-2">
+          <li class="flex items-start gap-2 text-sm text-gray-600"><span style="color:#4C7CDA">✓</span> 24h-Betreuung, Nachtbereitschaft</li>
+          <li class="flex items-start gap-2 text-sm text-gray-600"><span style="color:#4C7CDA">✓</span> Beschützter Demenzbereich</li>
+          <li class="flex items-start gap-2 text-sm text-gray-600"><span style="color:#4C7CDA">✓</span> Wohnungen 18–48 m², Balkon, barrierefrei</li>
+          <li class="flex items-start gap-2 text-sm text-gray-600"><span style="color:#4C7CDA">✓</span> Notruf 24/7 · frische Mahlzeiten täglich</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>
 <div class="feedback-panel" id="feedback-panel-5"><label>Ihr Vorschlag für „BLOCK 5 — Unsere Standorte: Orte zum Besuchen":</label><textarea id="feedback-text-5" placeholder="Änderungsvorschlag oder Kommentar…"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(5)">Speichern</button><button class="btn-cancel" onclick="toggleFeedback(5)">Abbrechen</button><button class="btn-delete" onclick="deleteFeedback(5)" style="display:none" id="delete-btn-5">Löschen</button><span class="saved-indicator" id="saved-5">✓ Gespeichert</span></div></div></div><div id="block-6" style="position:relative"><button class="feedback-btn" onclick="toggleFeedback(6)">✏️ Vorschlag</button><div class="sec sec-alt">
 <h2>Kosten: Transparent und planbar</h2>
