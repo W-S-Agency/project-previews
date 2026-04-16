@@ -3,242 +3,82 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Für Sozialämter — MEDILUX Berlin Preview</title>
+<title>F&uuml;r Sozial&auml;mter &mdash; MEDILUX Berlin Preview</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script>
+<script>
+  tailwind.config = {
+    corePlugins: { preflight: false },
+    theme: { extend: { colors: {
+      brand: '#2B55C0', 'brand-mid': '#4C7CDA', 'brand-yellow': '#E8C830', 'brand-bg': '#ECF3F7'
+    }}}
+  }
+</script>
 <style>
-:root {
-  --primary: #1A1A1A;
-  --blue:    #2B55C0;
-  --mid:     #4C7CDA;
-  --yellow:  #E8C830;
-  --bg:      #ECF3F7;
-  --white:   #FFFFFF;
-  --text:    #333333;
-  --gray:    #7A8A9E;
-  --line:    #D9E3EC;
-  --r8: 8px; --r12: 12px; --r16: 16px; --r30: 30px;
-  --ph-bg:  #FFF3CD;
-  --ph-bdr: #FFD93D;
-}
+:root{--primary:#1A1A1A;--blue:#2B55C0;--mid:#4C7CDA;--yellow:#E8C830;--bg:#ECF3F7;--white:#FFFFFF;--text:#333333;--gray:#7A8A9E;--line:#D9E3EC;--r8:8px;--r12:12px;--r16:16px;--r30:30px;--ph-bg:#FFF3CD;--ph-bdr:#FFD93D}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
-  background:var(--bg);color:var(--text);line-height:1.6}
-.page{max-width:1200px;margin:0 auto;background:var(--white);min-height:100vh;
-  box-shadow:0 0 40px rgba(0,0,0,.08)}
-
-/* NAV */
-.nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.94);
-  backdrop-filter:blur(12px);border-bottom:1px solid var(--line);
-  padding:0 40px;height:52px;display:flex;align-items:center}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+.page{max-width:1200px;margin:0 auto;background:var(--white);min-height:100vh;box-shadow:0 0 40px rgba(0,0,0,.08)}
+.nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:0 40px;height:52px;display:flex;align-items:center}
 .nav-logo{font-size:18px;font-weight:800;color:var(--blue);letter-spacing:2px;text-decoration:none}
 .nav-links{display:flex;align-items:center;gap:4px;margin-left:auto}
-.nav-links a{padding:5px 12px;border-radius:var(--r30);text-decoration:none;
-  font-size:12px;font-weight:500;color:var(--gray)}
+.nav-links a{padding:5px 12px;border-radius:var(--r30);text-decoration:none;font-size:12px;font-weight:500;color:var(--gray)}
 .nav-links a:hover{color:var(--blue)}
-.nav-links a.active{background:var(--blue);color:#fff}
 .nav-dot{width:4px;height:4px;background:var(--yellow);border-radius:50%}
 .nav-cta{background:var(--blue)!important;color:#fff!important;font-weight:600!important}
-/* DROPDOWN — native <details> toggle, no JS needed for open/close */
 details.nav-dd{position:relative;list-style:none}
-details.nav-dd > summary{padding:5px 12px;border-radius:var(--r30);
-  font-size:12px;font-weight:500;color:var(--gray);cursor:pointer;
-  list-style:none;user-select:none}
-details.nav-dd > summary::-webkit-details-marker{display:none}
-details.nav-dd > summary.active{background:var(--blue);color:#fff}
-details.nav-dd > summary:hover{color:var(--blue)}
-.nav-dd-menu{position:absolute;top:calc(100% + 4px);left:0;background:#fff;
-  border:1px solid var(--line);border-radius:var(--r12);padding:6px 0;
-  min-width:180px;box-shadow:0 4px 16px rgba(0,0,0,.12);z-index:200}
-.nav-dd-menu a{display:block;padding:8px 16px;font-size:12px;color:var(--text);
-  text-decoration:none;font-weight:500}
+details.nav-dd>summary{padding:5px 12px;border-radius:var(--r30);font-size:12px;font-weight:500;color:var(--gray);cursor:pointer;list-style:none;user-select:none}
+details.nav-dd>summary::-webkit-details-marker{display:none}
+details.nav-dd>summary.active{background:var(--blue);color:#fff}
+details.nav-dd>summary:hover{color:var(--blue)}
+.nav-dd-menu{position:absolute;top:calc(100% + 4px);left:0;background:#fff;border:1px solid var(--line);border-radius:var(--r12);padding:6px 0;min-width:180px;box-shadow:0 4px 16px rgba(0,0,0,.12);z-index:200}
+.nav-dd-menu a{display:block;padding:8px 16px;font-size:12px;color:var(--text);text-decoration:none;font-weight:500}
 .nav-dd-menu a:hover{background:var(--bg)}
 .nav-dd-menu a.dd-act{color:var(--blue);font-weight:700}
-
-/* META BAR */
-.meta-bar{background:var(--bg);border-left:4px solid var(--blue);
-  padding:12px 18px;margin:12px 40px;border-radius:var(--r12);
-  font-size:11px;line-height:1.8}
+.meta-bar{background:var(--bg);border-left:4px solid var(--blue);padding:12px 18px;margin:12px 40px;border-radius:var(--r12);font-size:11px;line-height:1.8}
 .meta-bar strong{color:var(--blue)}
-.meta-kw{display:inline-block;background:var(--blue);color:#fff;
-  font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;margin-left:6px}
-.meta-url{font-family:monospace;font-size:10px;color:var(--gray);background:var(--bg);
-  padding:2px 6px;border-radius:4px;margin-left:4px}
-
-/* HERO */
-.hero{background:linear-gradient(135deg,#1a1a2e 0%,#2a2a4e 50%,#1a2a3e 100%);
-  color:#fff;border-radius:0 0 var(--r16) var(--r16);
-  padding:72px 40px 48px;overflow:hidden}
+.meta-kw{display:inline-block;background:var(--blue);color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;margin-left:6px}
+.meta-url{font-family:monospace;font-size:10px;color:var(--gray);background:var(--bg);padding:2px 6px;border-radius:4px;margin-left:4px}
+.hero{background:linear-gradient(135deg,#1a1a2e 0%,#2a2a4e 50%,#1a2a3e 100%);color:#fff;border-radius:0 0 var(--r16) var(--r16);padding:72px 40px 48px;overflow:hidden}
 .hero h1{font-size:32px;line-height:1.1;font-weight:700;max-width:700px;margin-bottom:18px}
 .hero .sub{font-size:15px;opacity:.88;line-height:1.5;max-width:640px;margin-bottom:28px}
-.hero .btn{display:inline-flex;align-items:center;gap:10px;background:var(--mid);color:#fff;
-  padding:10px 24px;border-radius:var(--r30);font-weight:600;font-size:13px;
-  text-decoration:none;margin-right:12px}
+.hero .btn{display:inline-flex;align-items:center;gap:10px;background:var(--mid);color:#fff;padding:10px 24px;border-radius:var(--r30);font-weight:600;font-size:13px;text-decoration:none;margin-right:12px}
 .hero .btn-out{background:transparent;border:1px solid rgba(255,255,255,.4)}
-.hero .ai-snippet{margin-top:28px;background:rgba(255,255,255,.1);border-radius:var(--r12);
-  padding:16px 20px;font-size:13px;line-height:1.7;opacity:.9;max-width:740px;border-left:3px solid var(--yellow)}
-.hero .ai-label{font-size:10px;font-weight:700;letter-spacing:1px;opacity:.7;margin-bottom:6px}
-
-/* SECTIONS */
 .sec{padding:32px 40px}
 .sec-alt{background:var(--bg)}
 .sec h2{font-size:24px;font-weight:700;color:var(--primary);margin-bottom:16px}
 .sec h3{font-size:17px;font-weight:700;margin:20px 0 8px;color:var(--primary)}
-.sec h4{font-size:14px;font-weight:700;margin:14px 0 6px;color:var(--primary)}
 .sec p{font-size:14px;color:var(--text);line-height:1.6;margin-bottom:10px;max-width:780px}
-.sec ul,.sec ol{padding-left:22px;margin-bottom:14px}
+.sec ul{padding-left:22px;margin-bottom:14px}
 .sec li{font-size:14px;margin-bottom:6px;line-height:1.5}
-
-/* TRUST STRIP */
-.trust-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:20px 0}
-.trust-item{background:linear-gradient(135deg,#EFF4F6,#DAEAF6);border-radius:var(--r16);
-  padding:20px;text-align:center}
-.trust-item .icon{font-size:28px;margin-bottom:8px}
-.trust-item .t{font-size:13px;font-weight:700;color:var(--primary)}
-.trust-item .s{font-size:11px;color:var(--gray);margin-top:4px}
-
-/* CARDS */
-.card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0}
-.card{background:linear-gradient(135deg,#EFF4F6,#DAEAF6);border-radius:var(--r16);
-  padding:24px 20px;display:flex;flex-direction:column}
-.card h3{font-size:17px;font-weight:700;color:var(--primary);margin:0 0 10px}
-.card p{font-size:13px;color:var(--text);line-height:1.5}
-.card .tag{font-size:11px;color:var(--blue);font-weight:600;margin-top:14px;
-  padding-top:12px;border-top:1px dashed var(--line)}
-.card .cta-lnk{color:var(--blue);font-weight:600;font-size:12px;
-  text-decoration:none;margin-top:10px;display:inline-block}
-
-/* STEPS */
-.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0}
-.step{padding:20px;border:1px solid var(--line);border-radius:var(--r16)}
-.step-n{display:flex;align-items:center;justify-content:center;
-  width:32px;height:32px;background:var(--blue);color:#fff;
-  border-radius:50%;font-size:14px;font-weight:700;margin-bottom:12px}
-.step h3{font-size:15px;margin:0 0 8px}
-.step p{font-size:13px;color:var(--text)}
-
-/* LOCATION */
-.loc-card{border:1px solid var(--line);border-radius:var(--r16);padding:24px;margin:14px 0}
-.loc-card h3{font-size:18px;color:var(--primary);margin-bottom:4px}
-.loc-card .addr{font-size:13px;color:var(--gray);margin-bottom:14px}
-.loc-card ul{padding-left:20px}
-.loc-card li{font-size:13px;margin-bottom:5px}
-.loc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:16px 0}
-
-/* PRICE TABLE */
 .price-table{width:100%;border-collapse:collapse;font-size:13px;margin:16px 0}
 .price-table th{background:var(--blue);color:#fff;padding:10px 14px;text-align:left;font-weight:600}
 .price-table td{padding:10px 14px;border-bottom:1px solid var(--line)}
 .price-table tr:nth-child(even) td{background:var(--bg)}
 .price-table .hl td{background:#e8f5e9;font-weight:600}
-
-/* FAQ */
 details.faq{border-bottom:1px solid var(--line)}
-details.faq summary{padding:14px 0;font-weight:700;font-size:14px;cursor:pointer;
-  list-style:none;display:flex;justify-content:space-between;align-items:center;color:var(--primary)}
+details.faq summary{padding:14px 0;font-weight:700;font-size:14px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;color:var(--primary)}
 details.faq summary::-webkit-details-marker{display:none}
-details.faq summary::after{content:'+';display:flex;align-items:center;justify-content:center;
-  width:24px;height:24px;background:var(--bg);border-radius:50%;
-  font-size:14px;color:var(--blue);flex-shrink:0}
-details.faq[open] summary::after{content:'−';background:var(--blue);color:#fff}
+details.faq summary::after{content:'+';display:flex;align-items:center;justify-content:center;width:24px;height:24px;background:var(--bg);border-radius:50%;font-size:14px;color:var(--blue);flex-shrink:0}
+details.faq[open] summary::after{content:'\2212';background:var(--blue);color:#fff}
 .faq-a{padding:0 0 14px;font-size:13px;color:var(--text);line-height:1.7}
-
-/* CTA BANNER */
-.cta-banner{background:var(--blue);color:#fff;padding:36px;
-  border-radius:var(--r16);margin:32px 40px;text-align:center}
+.cta-banner{background:var(--blue);color:#fff;padding:36px;border-radius:var(--r16);margin:32px 40px;text-align:center}
 .cta-banner h2{font-size:22px;color:#fff;margin-bottom:12px}
 .cta-banner p{font-size:14px;opacity:.92;max-width:600px;margin:0 auto 20px;color:#fff}
-.cta-banner .btn{display:inline-flex;background:#fff;color:var(--blue);
-  padding:10px 24px;border-radius:var(--r30);font-weight:700;font-size:14px;
-  text-decoration:none;margin:0 6px}
+.cta-banner .btn{display:inline-flex;background:#fff;color:var(--blue);padding:10px 24px;border-radius:var(--r30);font-weight:700;font-size:14px;text-decoration:none;margin:0 6px}
 .cta-banner .btn-out{background:transparent;border:1px solid rgba(255,255,255,.5);color:#fff}
-
-/* CONTACT FORM */
-.form-wrap{background:var(--bg);border-radius:var(--r16);padding:28px;margin:20px 0}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
-.form-field label{display:block;font-size:11px;font-weight:600;color:var(--gray);margin-bottom:4px}
-.form-field input,.form-field textarea,.form-field select{
-  width:100%;padding:10px 14px;border:1px solid var(--line);border-radius:var(--r8);
-  font-size:13px;background:#fff;color:var(--text)}
-.form-field textarea{min-height:80px;resize:vertical}
-.form-submit{background:var(--blue);color:#fff;padding:12px 28px;
-  border-radius:var(--r30);border:none;font-weight:700;font-size:14px;cursor:pointer;margin-top:12px}
-
-/* PLACEHOLDER */
-.ph{background:var(--ph-bg);border:1px dashed var(--ph-bdr);
-  border-radius:6px;padding:8px 14px;font-size:12px;
-  font-style:italic;color:#856404;margin:8px 0;display:inline-block}
-
-/* FOOTER */
-.footer{background:linear-gradient(180deg,#ECF3F7 0%,#fff 100%);
-  border-radius:var(--r16) var(--r16) 0 0;padding:28px 40px 16px;
-  margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.ph{background:var(--ph-bg);border:1px dashed var(--ph-bdr);border-radius:6px;padding:8px 14px;font-size:12px;font-style:italic;color:#856404;margin:8px 0;display:inline-block}
+.footer{background:linear-gradient(180deg,#ECF3F7 0%,#fff 100%);border-radius:var(--r16) var(--r16) 0 0;padding:28px 40px 16px;margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:28px}
 .f-label{font-size:11px;color:var(--gray);margin-bottom:2px}
 .f-val{font-size:15px;font-weight:500;color:var(--blue);margin-bottom:10px}
 .f-links{display:flex;gap:16px;margin-top:8px;flex-wrap:wrap}
 .f-links a{font-size:11px;color:var(--gray);text-decoration:none}
 .f-links a:hover{color:var(--blue)}
-.f-copy{grid-column:1/-1;font-size:10px;color:var(--gray);
-  border-top:1px dashed var(--line);padding-top:10px;margin-top:6px}
-
-/* BADGE */
-.ver-badge{position:fixed;bottom:14px;right:14px;background:var(--blue);
-  color:#fff;padding:5px 12px;border-radius:var(--r30);font-size:10px;font-weight:700;z-index:200}
-.src-badge{position:fixed;bottom:14px;left:14px;background:#6b7280;
-  color:#fff;padding:4px 10px;border-radius:var(--r30);font-size:9px;z-index:200}
-
-/* INDEX-SPECIFIC */
-.site-map{padding:32px 40px}
-.group-header{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2px;
-  color:var(--gray);margin:28px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--line)}
-.page-card{border:1px solid var(--line);border-radius:var(--r12);
-  margin:10px 0;overflow:hidden;transition:box-shadow .15s}
-.page-card:hover{box-shadow:0 4px 16px rgba(0,0,0,.1)}
-.page-card-header{display:flex;align-items:center;gap:12px;padding:16px 20px;
-  background:#fff;text-decoration:none;color:var(--primary);cursor:pointer}
-.page-card-header:hover{background:var(--bg)}
-.page-card-title{font-weight:700;font-size:16px;flex:1}
-.ver-pill{font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px}
-.ph-count{font-size:11px;color:#856404;background:#FFF3CD;padding:3px 8px;
-  border-radius:20px;font-weight:600}
-.block-list{padding:12px 20px 16px;background:var(--bg);border-top:1px solid var(--line)}
-.block-row{display:flex;align-items:center;gap:10px;padding:5px 0;
-  border-bottom:1px solid rgba(0,0,0,.04)}
-.block-row:last-child{border-bottom:none}
-.block-type{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;
-  padding:2px 7px;border-radius:20px;min-width:54px;text-align:center}
-.bt-hero{background:#dbeafe;color:#1d4ed8}
-.bt-faq{background:#d1fae5;color:#065f46}
-.bt-cta{background:#fce7f3;color:#9d174d}
-.bt-trust{background:#fef3c7;color:#92400e}
-.bt-cards{background:#ede9fe;color:#5b21b6}
-.bt-steps{background:#e0f2fe;color:#0369a1}
-.bt-form{background:#fef9c3;color:#713f12}
-.bt-skip{background:#f3f4f6;color:#9ca3af}
-.bt-section{background:#f3f4f6;color:#374151}
-.block-name{font-size:13px;font-weight:500;color:var(--text);flex:1}
-.block-preview{font-size:11px;color:var(--gray);white-space:nowrap;
-  overflow:hidden;text-overflow:ellipsis;max-width:320px}
-
-/* INDEX STATS */
-.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;
-  margin:0 40px 24px;padding:0}
-.stat-box{background:#fff;border:1px solid var(--line);border-radius:var(--r12);
-  padding:16px 20px;text-align:center}
-.stat-n{font-size:32px;font-weight:800;color:var(--blue)}
-.stat-l{font-size:11px;color:var(--gray);margin-top:2px}
-
-/* RESPONSIVE */
-@media(max-width:800px){
-  .card-grid,.steps-grid,.loc-grid,.form-row,.trust-strip{grid-template-columns:1fr}
-  .nav{flex-wrap:wrap;height:auto;padding:8px 12px}
-  .hero{padding:40px 20px}.hero h1{font-size:24px}
-  .sec,.site-map,.stats-row{padding:24px 20px;margin:0 0 12px}
-  .footer{grid-template-columns:1fr}
-  .feedback-btn{top:auto;bottom:-16px;right:16px;font-size:12px}
-  .feedback-panel{padding:16px}
-}
-
-/* === FEEDBACK UI === */
-:root{--fb-accent:#f59e0b;--fb-accent-border:#d97706;--fb-accent-hover:#d97706;--fb-saved:#10b981;--fb-saved-border:#059669;--fb-save:#2563eb;--fb-save-border:#1d4ed8;--fb-save-hover:#1d4ed8;--fb-panel-bg:#fef3c7;--fb-panel-border:#f59e0b;--fb-delete:#dc2626;--fb-delete-bg:#fef2f2;--fb-delete-border:#fca5a5;}
+.f-copy{grid-column:1/-1;font-size:10px;color:var(--gray);border-top:1px dashed var(--line);padding-top:10px;margin-top:6px}
+.ver-badge{position:fixed;bottom:14px;right:14px;background:var(--blue);color:#fff;padding:5px 12px;border-radius:var(--r30);font-size:10px;font-weight:700;z-index:200}
+.src-badge{position:fixed;bottom:14px;left:14px;background:#6b7280;color:#fff;padding:4px 10px;border-radius:var(--r30);font-size:9px;z-index:200}
+@media(max-width:800px){.nav{flex-wrap:wrap;height:auto;padding:8px 12px}.hero{padding:40px 20px}.hero h1{font-size:24px}.sec{padding:24px 20px}.footer{grid-template-columns:1fr}.feedback-btn{top:auto;bottom:-16px;right:16px;font-size:12px}.feedback-panel{padding:16px}}
+:root{--fb-accent:#f59e0b;--fb-accent-border:#d97706;--fb-accent-hover:#d97706;--fb-saved:#10b981;--fb-saved-border:#059669;--fb-save:#2563eb;--fb-save-border:#1d4ed8;--fb-save-hover:#1d4ed8;--fb-panel-bg:#fef3c7;--fb-panel-border:#f59e0b;--fb-delete:#dc2626;--fb-delete-bg:#fef2f2;--fb-delete-border:#fca5a5}
 .feedback-counter{background:var(--fb-accent);color:#1e293b;padding:5px 14px;border-radius:20px;font-weight:700;cursor:pointer;transition:transform 0.2s;font-size:13px;white-space:nowrap}
 .feedback-counter:hover{transform:scale(1.05)}
 .feedback-counter.has-feedback{animation:fb-pulse 2s infinite}
@@ -272,235 +112,392 @@ details.faq[open] summary::after{content:'−';background:var(--blue);color:#fff
 <nav class="nav">
   <a href="medilux_berlin_preview_index.html" class="nav-logo">MEDILUX</a>
   <div class="nav-links">
-    <a href="medilux_berlin_preview_startseite.html">Startseite</a>
-    <span class="nav-dot"></span>
-    <a href="medilux_berlin_preview_leistungen.html">Leistungen</a>
-    <span class="nav-dot"></span>
-    <details class="nav-dd">
-      <summary class="nav-dd-btn active">Für wen? &#9662;</summary>
-      <div class="nav-dd-menu">
-        <a href="medilux_berlin_preview_fuer_angehoerige.html">Für Angehörige</a>
-        <a href="medilux_berlin_preview_fuer_senioren.html">Für Senioren</a>
-        <a href="medilux_berlin_preview_fuer_berufsbetreuer.html">Für Berufsbetreuer</a>
-        <a href="medilux_berlin_preview_fuer_aerzte.html">Für Ärzte</a>
-        <a href="medilux_berlin_preview_fuer_sozialdienste.html">Für Sozialdienste</a>
-        <a href="medilux_berlin_preview_fuer_pflegeberater.html">Für Pflegeberater</a>
-        <a href="medilux_berlin_preview_fuer_sozialamter.html" class="dd-act">Für Sozialämter</a>
-      </div>
-    </details>
-    <span class="nav-dot"></span>
-    <a href="medilux_berlin_preview_standorte.html">Standorte</a>
-    <span class="nav-dot"></span>
-    <a href="medilux_berlin_preview_ueber_uns.html">Über uns</a>
-    <span class="nav-dot"></span>
-    <a href="medilux_berlin_preview_karriere.html">Karriere</a>
-    <span class="nav-dot"></span>
+    <a href="medilux_berlin_preview_startseite.html">Startseite</a><span class="nav-dot"></span>
+    <a href="medilux_berlin_preview_leistungen.html">Leistungen</a><span class="nav-dot"></span>
+    <details class="nav-dd"><summary class="nav-dd-btn active">F&uuml;r wen? &#9662;</summary><div class="nav-dd-menu">
+      <a href="medilux_berlin_preview_fuer_angehoerige.html">F&uuml;r Angeh&ouml;rige</a>
+      <a href="medilux_berlin_preview_fuer_senioren.html">F&uuml;r Senioren</a>
+      <a href="medilux_berlin_preview_fuer_berufsbetreuer.html">F&uuml;r Berufsbetreuer</a>
+      <a href="medilux_berlin_preview_fuer_aerzte.html">F&uuml;r &Auml;rzte</a>
+      <a href="medilux_berlin_preview_fuer_sozialdienste.html">F&uuml;r Sozialdienste</a>
+      <a href="medilux_berlin_preview_fuer_pflegeberater.html">F&uuml;r Pflegeberater</a>
+      <a href="medilux_berlin_preview_fuer_sozialamter.html" class="dd-act">F&uuml;r Sozial&auml;mter</a>
+    </div></details><span class="nav-dot"></span>
+    <a href="medilux_berlin_preview_standorte.html">Standorte</a><span class="nav-dot"></span>
+    <a href="medilux_berlin_preview_ueber_uns.html">&Uuml;ber uns</a><span class="nav-dot"></span>
+    <a href="medilux_berlin_preview_karriere.html">Karriere</a><span class="nav-dot"></span>
     <a href="medilux_berlin_preview_kontakt.html">Kontakt</a>
-    <a href="medilux_berlin_preview_kontakt.html" class="nav-cta">Beratung →</a>
+    <a href="medilux_berlin_preview_kontakt.html" class="nav-cta">Beratung &rarr;</a>
     <div class="feedback-counter" id="feedbackCounter" onclick="openExportOverlay()">Feedback: <span id="feedbackCount">0</span> Kommentare</div>
   </div>
 </nav>
 <div class="page">
 <div class="meta-bar">
-  <strong>FÜR SOZIALÄMTER v0.9</strong> <span class="meta-url">https://medilux.berlin/fuer-wen/sozialamter/</span> <span class="meta-kw">** Pflege-WG Berlin (140 SV/mo, KD 13%)</span> | Status: Draft
-  <br><strong>SEO Title:</strong> Pflege-WG & Betreutes Wohnen Berlin — Für Sozialämter | MEDILUX (60 Zeichen)
-  <br><strong>Meta Desc:</strong> Hilfe zur Pflege (SGB XII): MEDILUX Berlin bietet Pflege-WGs und betreutes Wohnen mit transparenten Eigenanteilen. 59 WG-Plätze, 2 Standorte in Berlin. (156 Zeichen)
-  <br><span style="color:#856404;font-weight:600">&#9888; 4 Placeholders auf dieser Seite</span>
+  <strong>F&Uuml;R SOZIAL&Auml;MTER v0.9.1</strong> <span class="meta-url">https://medilux.berlin/fuer-wen/sozialamter/</span> <span class="meta-kw">** Pflege-WG Berlin (140 SV)</span> | Status: Draft
+  <br><strong>SEO Title:</strong> Pflege-WG &amp; Betreutes Wohnen Berlin &mdash; F&uuml;r Sozial&auml;mter | MEDILUX (60Z)
+  <br><strong>Meta Desc:</strong> Hilfe zur Pflege (SGB XII): MEDILUX Berlin bietet Pflege-WGs und betreutes Wohnen mit transparenten Eigenanteilen. 59 WG-Pl&auml;tze, 2 Standorte in Berlin. (156 Zeichen)
+  <br><span style="color:#856404;font-weight:600">&#9888; 3 Placeholders auf dieser Seite (#2, #3, #21 &mdash; PH #9 closed)</span>
 </div>
-<div id="block-1" style="position:relative"><button class="feedback-btn" onclick="toggleFeedback(1)">✏️ Vorschlag</button><section class="hero">
-  <h1>Pflege-WG und betreutes Wohnen in Berlin — Kostenstruktur für Sozialämter</h1>
-  <div style="margin-top:8px">
+
+<!-- BLOCK 1 — Hero -->
+<div id="block-1" style="position:relative"><button class="feedback-btn" onclick="toggleFeedback(1)">&#9998;&#65039; Vorschlag</button>
+<section class="hero">
+  <h1>Pflege-WG und betreutes Wohnen in Berlin &mdash; Kostenstruktur f&uuml;r Sozial&auml;mter</h1>
+  <div class="sub">Sie pr&uuml;fen Antr&auml;ge auf Hilfe zur Pflege und brauchen belastbare Zahlen. Wir liefern Ihnen eine nachvollziehbare Kostenstruktur, definierte Leistungen und einen direkten Ansprechpartner &mdash; damit Sie fundiert entscheiden k&ouml;nnen.</div>
+  <div>
     <a href="#cta" class="btn">Kostensatz anfragen</a>
-    <a href="#cta" class="btn btn-out">0391/6076062 anrufen</a>
+    <a href="tel:+493916076062" class="btn btn-out">0391/6076062 anrufen</a>
   </div>
 </section>
-<div class="feedback-panel" id="feedback-panel-1"><label>Ihr Vorschlag für „BLOCK 1 — Hero (Above the Fold)":</label><textarea id="feedback-text-1" placeholder="Änderungsvorschlag oder Kommentar…"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(1)">Speichern</button><button class="btn-cancel" onclick="toggleFeedback(1)">Abbrechen</button><button class="btn-delete" onclick="deleteFeedback(1)" style="display:none" id="delete-btn-1">Löschen</button><span class="saved-indicator" id="saved-1">✓ Gespeichert</span></div></div></div><div id="block-2" style="position:relative"><button class="feedback-btn" onclick="toggleFeedback(2)">✏️ Vorschlag</button><div class="sec">
-<h2>Problemverständnis</h2>
-<h4>H2: Was Sozialämter von einem Pflegeanbieter brauchen</h4>
-<p>Sie bewilligen Hilfe zur Pflege für Menschen, die sich die Versorgung nicht aus eigenen Mitteln leisten können. Jede Entscheidung braucht eine sachliche Grundlage.</p>
-<p><strong>Was die Sachbearbeitung erschwert:</strong></p>
-<p><strong>Intransparente Kostenstrukturen</strong></p>
-<p>Der Antragsteller legt Unterlagen vor — aber die Kostenaufstellung des Pflegeanbieters ist unklar. Was ist im Eigenanteil enthalten? Was kommt hinzu? Welche Leistungen sind im Preis inbegriffen, welche werden separat berechnet? Ohne nachvollziehbare Aufschlüsselung ist eine sachgerechte Bewilligungsentscheidung schwierig.</p>
-<p><strong>Fehlende Kapazitätsinformation</strong></p>
-<p>Ein Antrag wird bewilligt — aber der Pflegeanbieter hat keine freien Plätze. Die Bewilligung läuft, der Hilfeempfänger wartet, das Amt muss nachsteuern. Ohne verlässliche Kapazitätsauskunft entstehen unnötige Verzögerungen.</p>
-<p><strong>Unklare Leistungsabgrenzung</strong></p>
-<p>Pflege-WG, betreutes Wohnen — was genau bekommt der Hilfeempfänger für welchen Betrag? Wenn die Leistungsabgrenzung nicht sauber dokumentiert ist, fehlt die Grundlage für die Prüfung der Angemessenheit.</p>
+<div class="feedback-panel" id="feedback-panel-1"><label>Ihr Vorschlag f&uuml;r &bdquo;BLOCK 1 &mdash; Hero&ldquo;:</label><textarea id="feedback-text-1" placeholder="&Auml;nderungsvorschlag oder Kommentar&hellip;"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(1)">Speichern</button><button class="btn-cancel" onclick="toggleFeedback(1)">Abbrechen</button><button class="btn-delete" onclick="deleteFeedback(1)" style="display:none" id="delete-btn-1">L&ouml;schen</button><span class="saved-indicator" id="saved-1">&#10003; Gespeichert</span></div></div></div>
+
+<!-- BLOCK 2 — Pain Points (Tailwind 3-col feature grid) -->
+<div id="block-2" style="position:relative"><button class="feedback-btn" onclick="toggleFeedback(2)">&#9998;&#65039; Vorschlag</button>
+<div class="bg-white py-16 px-10">
+  <div class="max-w-2xl">
+    <h2 class="text-3xl font-bold tracking-tight text-gray-900">Was Sozial&auml;mter von einem Pflegeanbieter brauchen</h2>
+    <p class="mt-4 text-lg text-gray-600">Sie bewilligen Hilfe zur Pflege f&uuml;r Menschen, die sich die Versorgung nicht aus eigenen Mitteln leisten k&ouml;nnen. Jede Entscheidung braucht eine sachliche Grundlage.</p>
+  </div>
+  <div class="mt-12 grid grid-cols-1 gap-10 lg:grid-cols-3">
+    <div class="flex flex-col">
+      <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-brand">
+        <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0 1 15.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 0 1 3 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 0 0-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 0 1-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 0 0 3 15h-.75M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm3 0h.008v.008H18V10.5Zm-12 0h.008v.008H6V10.5Z" />
+        </svg>
+      </div>
+      <h3 class="text-base font-semibold text-gray-900">Intransparente Kostenstrukturen</h3>
+      <p class="mt-2 text-base text-gray-600">Der Antragsteller legt Unterlagen vor &mdash; aber die Kostenaufstellung des Pflegeanbieters ist unklar. Was ist im Eigenanteil enthalten? Was kommt hinzu? Ohne nachvollziehbare Aufschl&uuml;sselung ist eine sachgerechte Bewilligungsentscheidung schwierig.</p>
+    </div>
+    <div class="flex flex-col">
+      <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-brand">
+        <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" />
+        </svg>
+      </div>
+      <h3 class="text-base font-semibold text-gray-900">Fehlende Kapazit&auml;tsinformation</h3>
+      <p class="mt-2 text-base text-gray-600">Ein Antrag wird bewilligt &mdash; aber der Pflegeanbieter hat keine freien Pl&auml;tze. Die Bewilligung l&auml;uft, der Hilfeempf&auml;nger wartet, das Amt muss nachsteuern. Ohne verl&auml;ssliche Kapazit&auml;tsauskunft entstehen unn&ouml;tige Verz&ouml;gerungen.</p>
+    </div>
+    <div class="flex flex-col">
+      <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-brand">
+        <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75 2.25 2.25 0 0 0-.1-.664m-5.8 0A2.251 2.251 0 0 1 13.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25ZM6.75 12h.008v.008H6.75V12Zm0 3h.008v.008H6.75V15Zm0 3h.008v.008H6.75V18Z" />
+        </svg>
+      </div>
+      <h3 class="text-base font-semibold text-gray-900">Unklare Leistungsabgrenzung</h3>
+      <p class="mt-2 text-base text-gray-600">Pflege-WG, betreutes Wohnen &mdash; was genau bekommt der Hilfeempf&auml;nger f&uuml;r welchen Betrag? Wenn die Leistungsabgrenzung nicht sauber dokumentiert ist, fehlt die Grundlage f&uuml;r die Pr&uuml;fung der Angemessenheit.</p>
+    </div>
+  </div>
 </div>
-<div class="feedback-panel" id="feedback-panel-2"><label>Ihr Vorschlag für „BLOCK 2 — Problemverständnis":</label><textarea id="feedback-text-2" placeholder="Änderungsvorschlag oder Kommentar…"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(2)">Speichern</button><button class="btn-cancel" onclick="toggleFeedback(2)">Abbrechen</button><button class="btn-delete" onclick="deleteFeedback(2)" style="display:none" id="delete-btn-2">Löschen</button><span class="saved-indicator" id="saved-2">✓ Gespeichert</span></div></div></div><div id="block-3" style="position:relative"><button class="feedback-btn" onclick="toggleFeedback(3)">✏️ Vorschlag</button><div class="sec">
-<h2>Lösung: MEDILUX als behördlicher Partner</h2>
-<h4>H2: Nachvollziehbare Leistungsstruktur für Ihre Prüfung</h4>
-<h4>H3: Klar definierte Wohn- und Pflegeformen</h4>
+<div class="feedback-panel" id="feedback-panel-2"><label>Ihr Vorschlag f&uuml;r &bdquo;BLOCK 2 &mdash; Problemverst&auml;ndnis&ldquo;:</label><textarea id="feedback-text-2" placeholder="&Auml;nderungsvorschlag oder Kommentar&hellip;"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(2)">Speichern</button><button class="btn-cancel" onclick="toggleFeedback(2)">Abbrechen</button><button class="btn-delete" onclick="deleteFeedback(2)" style="display:none" id="delete-btn-2">L&ouml;schen</button><span class="saved-indicator" id="saved-2">&#10003; Gespeichert</span></div></div></div>
+
+<!-- BLOCK 3 — Lösung: Nachvollziehbare Leistungsstruktur -->
+<div id="block-3" style="position:relative"><button class="feedback-btn" onclick="toggleFeedback(3)">&#9998;&#65039; Vorschlag</button>
+<div class="sec">
+<h2>Nachvollziehbare Leistungsstruktur f&uuml;r Ihre Pr&uuml;fung</h2>
+
+<h3>Klar definierte Wohn- und Pflegeformen</h3>
 <p>MEDILUX Berlin bietet zwei Wohn- und Pflegeformen mit jeweils definiertem Leistungsumfang:</p>
-<table class="price-table"><thead><tr><th>Wohnform</th><th>Leistungsumfang</th><th>Aufnahme ab</th><th>Abrechnung</th></tr></thead><tbody><tr><td><strong>Pflege-WG</strong></td><td>24h-Betreuung, examinierte Pflege, Unterkunft, Verpflegung, Grundpflege, Behandlungspflege</td><td>PG 2</td><td>Eigenanteil + Pflegekasse</td></tr><tr><td><strong>Betreutes Wohnen</strong></td><td>Barrierefreie Wohnung, 24h-Notruf, Grundservice, Pflege optional</td><td>Ohne PG möglich</td><td>Miete + Servicepauschale</td></tr></tbody></table>
-<p><code></code></p>
-<h4>H3: Eigenanteil-Struktur — aufgeschlüsselt</h4>
-<p>Für die Prüfung der Angemessenheit nach § 65 SGB XII (Hilfe zur Pflege) stellen wir Ihnen die Kostensätze transparent bereit:</p>
-<table class="price-table"><thead><tr><th>Standort / Wohnform</th><th>Eigenanteil (ca.)</th><th>Darin enthalten</th></tr></thead><tbody><tr><td>Pflege-WG Villa Civitas (PG 2)</td><td>€3.450–3.850/mo</td><td>Betreuung 24h, Unterkunft, Verpflegung</td></tr><tr><td>Pflege-WG Residenz Heerstraße (PG 2)</td><td>€2.200–2.600/mo</td><td>Betriebskosten, Versorgung, alle Pflegemaßnahmen</td></tr><tr><td>Betreutes Wohnen Residenz</td><td>Auf Anfrage</td><td>Wohnung + Grundservice, Pflege optional zubuchbar</td></tr></tbody></table>
-<p><code></code></p>
-<p><strong>Hinweis:</strong> Bei höheren Pflegegraden (PG 3–5) steigen die Kassenleistungen. Die Eigenanteile bleiben in der Regel stabil oder sinken relativ, da die Sachleistung einen größeren Teil der Kosten abdeckt.</p>
-<h4>H3: Zusammenarbeit bei Hilfe-zur-Pflege-Anträgen</h4>
-<p>Wenn ein Hilfeempfänger bei MEDILUX Berlin aufgenommen wird, unterstützen wir Ihre Sachbearbeitung:</p>
+<table class="price-table">
+<thead><tr><th>Wohnform</th><th>Leistungsumfang</th><th>Aufnahme ab</th><th>Abrechnung</th></tr></thead>
+<tbody>
+<tr><td><strong>Pflege-WG</strong></td><td>24h-Betreuung, examinierte Pflege, Unterkunft, Verpflegung, Grundpflege, Behandlungspflege</td><td>PG 2</td><td>Eigenanteil + Pflegekasse</td></tr>
+<tr><td><strong>Betreutes Wohnen</strong></td><td>Barrierefreie Wohnung, 24h-Notruf, Grundservice, Pflege optional</td><td>Ohne PG m&ouml;glich</td><td>Miete + Servicepauschale</td></tr>
+</tbody>
+</table>
+
+<h3>Eigenanteil-Struktur &mdash; aufgeschl&uuml;sselt</h3>
+<p>F&uuml;r die Pr&uuml;fung der Angemessenheit nach &sect;&nbsp;65 SGB&nbsp;XII (Hilfe zur Pflege) stellen wir Ihnen die Kostens&auml;tze transparent bereit:</p>
+<table class="price-table">
+<thead><tr><th>Standort / Wohnform</th><th>Eigenanteil (ca.)</th><th>Darin enthalten</th></tr></thead>
+<tbody>
+<tr><td>Pflege-WG Villa Civitas (PG 2)</td><td>&euro;3.450&ndash;3.850/mo</td><td>Betreuung 24h, Unterkunft, Verpflegung</td></tr>
+<tr><td>Pflege-WG Residenz Heerstra&szlig;e (PG 2)</td><td>&euro;2.200&ndash;2.600/mo</td><td>Betriebskosten, Versorgung, alle Pflegema&szlig;nahmen</td></tr>
+<tr><td>Betreutes Wohnen Residenz</td><td>Auf Anfrage</td><td>Wohnung + Grundservice, Pflege optional zubuchbar</td></tr>
+</tbody>
+</table>
+
+<p><strong>Hinweis:</strong> Bei h&ouml;heren Pflegegraden (PG 3&ndash;5) steigen die Kassenleistungen. Die Eigenanteile bleiben in der Regel stabil oder sinken relativ, da die Sachleistung einen gr&ouml;&szlig;eren Teil der Kosten abdeckt.</p>
+
+<h3>Zusammenarbeit bei Hilfe-zur-Pflege-Antr&auml;gen</h3>
+<p>Wenn ein Hilfeempf&auml;nger bei MEDILUX Berlin aufgenommen wird, unterst&uuml;tzen wir Ihre Sachbearbeitung:</p>
 <ul>
-<li><strong>Kostenaufstellung</strong> — Aufschlüsselung des Eigenanteils nach Leistungsbestandteilen</li>
-<li><strong>Leistungsnachweis</strong> — Dokumentation der erbrachten Pflege- und Betreuungsleistungen</li>
-<li><strong>Kapazitätsbestätigung</strong> — Verfügbarkeit eines konkreten Platzes für den Antragsteller</li>
-<li><strong>Ansprechpartner</strong> — Direkte Erreichbarkeit für Rückfragen zur Kostenstruktur</li>
+<li><strong>Kostenaufstellung</strong> &mdash; Aufschl&uuml;sselung des Eigenanteils nach Leistungsbestandteilen</li>
+<li><strong>Leistungsnachweis</strong> &mdash; Dokumentation der erbrachten Pflege- und Betreuungsleistungen</li>
+<li><strong>Kapazit&auml;tsbest&auml;tigung</strong> &mdash; Verf&uuml;gbarkeit eines konkreten Platzes f&uuml;r den Antragsteller</li>
+<li><strong>Ansprechpartner</strong> &mdash; Direkte Erreichbarkeit f&uuml;r R&uuml;ckfragen zur Kostenstruktur</li>
 </ul>
 </div>
-<div class="feedback-panel" id="feedback-panel-3"><label>Ihr Vorschlag für „BLOCK 3 — Lösung: MEDILUX als behördlicher Partner":</label><textarea id="feedback-text-3" placeholder="Änderungsvorschlag oder Kommentar…"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(3)">Speichern</button><button class="btn-cancel" onclick="toggleFeedback(3)">Abbrechen</button><button class="btn-delete" onclick="deleteFeedback(3)" style="display:none" id="delete-btn-3">Löschen</button><span class="saved-indicator" id="saved-3">✓ Gespeichert</span></div></div></div><div id="block-4" style="position:relative"><button class="feedback-btn" onclick="toggleFeedback(4)">✏️ Vorschlag</button><div class="sec">
-<h2>Ablauf der Zusammenarbeit</h2>
-<h4>H2: Von der Kostenzusage zur Aufnahme — Ablauf</h4>
-<p><strong>Schritt 1: Kostenauskunft einholen</strong></p>
-<p>Sie oder der Antragsteller kontaktieren uns. Wir liefern eine schriftliche Kostenaufstellung mit Eigenanteil, Leistungsumfang und Aufnahmebedingungen — als Grundlage für Ihren Bewilligungsbescheid.</p>
-<p><strong>Schritt 2: Eignung und Verfügbarkeit prüfen</strong></p>
-<p>Wir prüfen, ob die gewünschte Wohnform für den Antragsteller geeignet ist (Pflegegrad, besondere Anforderungen) und ob ein Platz verfügbar ist. Das Ergebnis teilen wir Ihnen schriftlich mit.</p>
-<p><strong>Schritt 3: Bewilligungsbescheid und Aufnahme</strong></p>
-<p>Nach Bewilligung durch das Sozialamt koordinieren wir die Aufnahme. Wir unterstützen bei der Zusammenstellung der Unterlagen (Pflegevertrag, Leistungsvereinbarung, ggf. Pflegegradantrag).</p>
-<p><strong>Schritt 4: Laufende Dokumentation</strong></p>
-<p>Während der Betreuung erhalten Sie auf Anfrage Leistungsnachweise und Kostenabrechnungen — für Ihre Aktenführung und Überprüfung der Leistungsangemessenheit.</p>
-<p><strong>Kontakt:</strong> 0391/6076062 · Mo–Fr 8:00–16:30</p>
+<div class="feedback-panel" id="feedback-panel-3"><label>Ihr Vorschlag f&uuml;r &bdquo;BLOCK 3 &mdash; L&ouml;sung&ldquo;:</label><textarea id="feedback-text-3" placeholder="&Auml;nderungsvorschlag oder Kommentar&hellip;"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(3)">Speichern</button><button class="btn-cancel" onclick="toggleFeedback(3)">Abbrechen</button><button class="btn-delete" onclick="deleteFeedback(3)" style="display:none" id="delete-btn-3">L&ouml;schen</button><span class="saved-indicator" id="saved-3">&#10003; Gespeichert</span></div></div></div>
+
+<!-- BLOCK 4 — Ablauf: 4-step numbered cards on brand-bg -->
+<div id="block-4" style="position:relative"><button class="feedback-btn" onclick="toggleFeedback(4)">&#9998;&#65039; Vorschlag</button>
+<div class="py-16 px-10" style="background:#ECF3F7">
+  <div class="max-w-2xl mb-10">
+    <h2 class="text-3xl font-bold tracking-tight text-gray-900">Von der Kostenzusage zur Aufnahme &mdash; Ablauf</h2>
+  </div>
+  <div class="grid grid-cols-1 gap-6 lg:grid-cols-4">
+    <div class="flex flex-col bg-white rounded-2xl p-8 shadow-sm">
+      <div class="flex h-10 w-10 items-center justify-center rounded-full text-white font-bold text-base" style="background:#2B55C0">1</div>
+      <h3 class="mt-6 text-lg font-semibold text-gray-900">Kostenauskunft einholen</h3>
+      <p class="mt-1 text-sm font-medium" style="color:#2B55C0">Schriftliche Kostenaufstellung</p>
+      <p class="mt-3 text-base text-gray-600 flex-1">Sie oder der Antragsteller kontaktieren uns. Wir liefern eine schriftliche Kostenaufstellung mit Eigenanteil, Leistungsumfang und Aufnahmebedingungen &mdash; als Grundlage f&uuml;r Ihren Bewilligungsbescheid.</p>
+    </div>
+    <div class="flex flex-col bg-white rounded-2xl p-8 shadow-sm">
+      <div class="flex h-10 w-10 items-center justify-center rounded-full text-white font-bold text-base" style="background:#2B55C0">2</div>
+      <h3 class="mt-6 text-lg font-semibold text-gray-900">Eignung pr&uuml;fen</h3>
+      <p class="mt-1 text-sm font-medium" style="color:#2B55C0">Pflegegrad, Anforderungen, Verf&uuml;gbarkeit</p>
+      <p class="mt-3 text-base text-gray-600 flex-1">Wir pr&uuml;fen, ob die gew&uuml;nschte Wohnform f&uuml;r den Antragsteller geeignet ist (Pflegegrad, besondere Anforderungen) und ob ein Platz verf&uuml;gbar ist. Das Ergebnis teilen wir Ihnen schriftlich mit.</p>
+    </div>
+    <div class="flex flex-col bg-white rounded-2xl p-8 shadow-sm">
+      <div class="flex h-10 w-10 items-center justify-center rounded-full text-white font-bold text-base" style="background:#2B55C0">3</div>
+      <h3 class="mt-6 text-lg font-semibold text-gray-900">Bewilligung + Aufnahme</h3>
+      <p class="mt-1 text-sm font-medium" style="color:#2B55C0">Koordinierte Aufnahme nach Bescheid</p>
+      <p class="mt-3 text-base text-gray-600 flex-1">Nach Bewilligung durch das Sozialamt koordinieren wir die Aufnahme. Wir unterst&uuml;tzen bei der Zusammenstellung der Unterlagen (Pflegevertrag, Leistungsvereinbarung, ggf. Pflegegradantrag).</p>
+    </div>
+    <div class="flex flex-col bg-white rounded-2xl p-8 shadow-sm">
+      <div class="flex h-10 w-10 items-center justify-center rounded-full text-white font-bold text-base" style="background:#2B55C0">4</div>
+      <h3 class="mt-6 text-lg font-semibold text-gray-900">Laufende Dokumentation</h3>
+      <p class="mt-1 text-sm font-medium" style="color:#2B55C0">Leistungsnachweise und Abrechnungen</p>
+      <p class="mt-3 text-base text-gray-600 flex-1">W&auml;hrend der Betreuung erhalten Sie auf Anfrage Leistungsnachweise und Kostenabrechnungen &mdash; f&uuml;r Ihre Aktenf&uuml;hrung und &Uuml;berpr&uuml;fung der Leistungsangemessenheit.</p>
+    </div>
+  </div>
+  <p class="mt-8 text-sm text-gray-500">&#128222; <strong>0391/6076062</strong> &middot; Mo&ndash;Fr 8:00&ndash;16:30</p>
 </div>
-<div class="feedback-panel" id="feedback-panel-4"><label>Ihr Vorschlag für „BLOCK 4 — Ablauf der Zusammenarbeit":</label><textarea id="feedback-text-4" placeholder="Änderungsvorschlag oder Kommentar…"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(4)">Speichern</button><button class="btn-cancel" onclick="toggleFeedback(4)">Abbrechen</button><button class="btn-delete" onclick="deleteFeedback(4)" style="display:none" id="delete-btn-4">Löschen</button><span class="saved-indicator" id="saved-4">✓ Gespeichert</span></div></div></div><div id="block-5" style="position:relative"><button class="feedback-btn" onclick="toggleFeedback(5)">✏️ Vorschlag</button><div class="sec sec-alt">
-<h2>Standorte mit Kostenstruktur</h2>
-<h4>H2: Zwei Standorte — Kapazitäten und Kostensätze</h4>
-<h4>H3: Villa Civitas — Berlin-Zehlendorf</h4>
-<table class="price-table"><thead><tr><th>Merkmal</th><th>Details</th></tr></thead><tbody><tr><td><strong>Adresse</strong></td><td>Lindenthaler Allee 20, 14163 Berlin</td></tr><tr><td><strong>Kapazität</strong></td><td>35 Pflegeplätze in 4 Pflege-WGs</td></tr><tr><td><strong>Wohnformen</strong></td><td>Intensivpflege-WG (4–12 Plätze), Demenz-WG 24h, Senioren-WG 24h, Senioren-WG mit ambulanter Pflege</td></tr><tr><td><strong>Aufnahme</strong></td><td>Ab Pflegegrad 2</td></tr><tr><td><strong>Eigenanteil (PG 2)</strong></td><td>€3.450–3.850/mo</td></tr><tr><td><strong>Inklusivleistungen</strong></td><td>24h-Betreuung, examinierte Pflege, Unterkunft, Verpflegung</td></tr><tr><td><strong>Kontaktperson</strong></td><td>Herr Joe Schermer (Prokurist)</td></tr><tr><td><strong>Erreichbarkeit</strong></td><td>S-Bahn Mexikoplatz, fußläufig Ärzte/Apotheken</td></tr></tbody></table>
-<p><code></code></p>
-<h4>H3: Residenz Heerstraße — Berlin-Spandau</h4>
-<table class="price-table"><thead><tr><th>Merkmal</th><th>Details</th></tr></thead><tbody><tr><td><strong>Adresse</strong></td><td>Gärtnereiring 56, 13593 Berlin</td></tr><tr><td><strong>Kapazität</strong></td><td>24 WG-Plätze (2×12) + 42 betreute Wohneinheiten</td></tr><tr><td><strong>Wohnformen</strong></td><td>Senioren-WG 24h Pflege, Senioren-WG amb. Pflege, Betreutes Wohnen, Demenzpflege (beschützter Bereich), Verhinderungspflege</td></tr><tr><td><strong>Aufnahme</strong></td><td>Ab PG 2 (WG), ohne PG möglich (Betreutes Wohnen)</td></tr><tr><td><strong>Eigenanteil WG (PG 2)</strong></td><td>€2.200–2.600/mo</td></tr><tr><td><strong>Inklusivleistungen</strong></td><td>Betriebskosten, Versorgung, alle Pflegemaßnahmen</td></tr><tr><td><strong>Besonderheit</strong></td><td>Beschützter Demenzbereich, 24h-Notruf, Besucherparkplatz</td></tr><tr><td><strong>Erreichbarkeit</strong></td><td>Gute ÖPNV-Anbindung</td></tr></tbody></table>
-<p><code></code></p>
+<div class="feedback-panel" id="feedback-panel-4"><label>Ihr Vorschlag f&uuml;r &bdquo;BLOCK 4 &mdash; Ablauf&ldquo;:</label><textarea id="feedback-text-4" placeholder="&Auml;nderungsvorschlag oder Kommentar&hellip;"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(4)">Speichern</button><button class="btn-cancel" onclick="toggleFeedback(4)">Abbrechen</button><button class="btn-delete" onclick="deleteFeedback(4)" style="display:none" id="delete-btn-4">L&ouml;schen</button><span class="saved-indicator" id="saved-4">&#10003; Gespeichert</span></div></div></div>
+
+<!-- BLOCK 5 — Standorte: Tailwind stats cards -->
+<div id="block-5" style="position:relative"><button class="feedback-btn" onclick="toggleFeedback(5)">&#9998;&#65039; Vorschlag</button>
+<div class="bg-white py-16 px-10">
+  <div class="max-w-2xl mb-10">
+    <h2 class="text-3xl font-bold tracking-tight text-gray-900">Zwei Standorte &mdash; Kapazit&auml;ten und Kostens&auml;tze</h2>
+  </div>
+  <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+    <!-- Villa Civitas -->
+    <div class="rounded-2xl border border-gray-200 p-8 shadow-sm">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="inline-flex items-center rounded-full px-3 py-1 text-xs font-bold text-white" style="background:#2B55C0">Villa Civitas</span>
+        <span class="text-sm text-gray-500">Berlin-Zehlendorf</span>
+      </div>
+      <div class="grid grid-cols-2 gap-4 mb-6">
+        <div class="rounded-xl bg-brand-bg p-4 text-center">
+          <div class="text-2xl font-extrabold" style="color:#2B55C0">35</div>
+          <div class="text-xs text-gray-500">Pflegpl&auml;tze</div>
+        </div>
+        <div class="rounded-xl bg-brand-bg p-4 text-center">
+          <div class="text-2xl font-extrabold" style="color:#2B55C0">4</div>
+          <div class="text-xs text-gray-500">Pflege-WGs</div>
+        </div>
+      </div>
+      <div class="mb-4 rounded-xl bg-gray-50 p-4">
+        <div class="text-xs font-semibold text-gray-500 mb-1">Eigenanteil (PG 2)</div>
+        <div class="text-xl font-bold" style="color:#2B55C0">&euro;3.450&ndash;3.850/mo</div>
+      </div>
+      <ul class="space-y-2 text-sm text-gray-600">
+        <li class="flex items-start gap-2"><span style="color:#2B55C0">&#10003;</span> 24h-Betreuung, examinierte Pflege</li>
+        <li class="flex items-start gap-2"><span style="color:#2B55C0">&#10003;</span> Intensivpflege-WG (4&ndash;12 Pl&auml;tze)</li>
+        <li class="flex items-start gap-2"><span style="color:#2B55C0">&#10003;</span> Demenz-WG 24h</li>
+        <li class="flex items-start gap-2"><span style="color:#2B55C0">&#10003;</span> Aufnahme ab PG 2</li>
+        <li class="flex items-start gap-2"><span style="color:#2B55C0">&#10003;</span> Lindenthaler Allee 20, 14163 Berlin</li>
+      </ul>
+    </div>
+    <!-- Residenz Heerstraße -->
+    <div class="rounded-2xl border border-gray-200 p-8 shadow-sm">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="inline-flex items-center rounded-full px-3 py-1 text-xs font-bold text-white" style="background:#4C7CDA">Residenz Heerstra&szlig;e</span>
+        <span class="text-sm text-gray-500">Berlin-Spandau</span>
+      </div>
+      <div class="grid grid-cols-3 gap-4 mb-6">
+        <div class="rounded-xl bg-brand-bg p-4 text-center">
+          <div class="text-2xl font-extrabold" style="color:#4C7CDA">24</div>
+          <div class="text-xs text-gray-500">WG-Pl&auml;tze</div>
+        </div>
+        <div class="rounded-xl bg-brand-bg p-4 text-center">
+          <div class="text-2xl font-extrabold" style="color:#4C7CDA">42</div>
+          <div class="text-xs text-gray-500">Wohneinheiten</div>
+        </div>
+        <div class="rounded-xl bg-brand-bg p-4 text-center">
+          <div class="text-2xl font-extrabold" style="color:#4C7CDA">2</div>
+          <div class="text-xs text-gray-500">Demenzbereiche</div>
+        </div>
+      </div>
+      <div class="mb-4 rounded-xl bg-gray-50 p-4">
+        <div class="text-xs font-semibold text-gray-500 mb-1">Eigenanteil (PG 2)</div>
+        <div class="text-xl font-bold" style="color:#4C7CDA">&euro;2.200&ndash;2.600/mo</div>
+      </div>
+      <ul class="space-y-2 text-sm text-gray-600">
+        <li class="flex items-start gap-2"><span style="color:#4C7CDA">&#10003;</span> Pflege-WG + Betreutes Wohnen</li>
+        <li class="flex items-start gap-2"><span style="color:#4C7CDA">&#10003;</span> Besch&uuml;tzter Demenzbereich</li>
+        <li class="flex items-start gap-2"><span style="color:#4C7CDA">&#10003;</span> Verhinderungspflege m&ouml;glich</li>
+        <li class="flex items-start gap-2"><span style="color:#4C7CDA">&#10003;</span> WG ab PG 2, Wohnen ohne PG</li>
+        <li class="flex items-start gap-2"><span style="color:#4C7CDA">&#10003;</span> G&auml;rtnereiring 56, 13593 Berlin</li>
+      </ul>
+    </div>
+  </div>
 </div>
-<div class="feedback-panel" id="feedback-panel-5"><label>Ihr Vorschlag für „BLOCK 5 — Standorte mit Kostenstruktur":</label><textarea id="feedback-text-5" placeholder="Änderungsvorschlag oder Kommentar…"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(5)">Speichern</button><button class="btn-cancel" onclick="toggleFeedback(5)">Abbrechen</button><button class="btn-delete" onclick="deleteFeedback(5)" style="display:none" id="delete-btn-5">Löschen</button><span class="saved-indicator" id="saved-5">✓ Gespeichert</span></div></div></div><div id="block-6" style="position:relative"><button class="feedback-btn" onclick="toggleFeedback(6)">✏️ Vorschlag</button><div class="sec sec-alt">
-<h2>Kostenübernahme und Finanzierung</h2>
-<h4>H2: Kostenübernahme — Leistungsansprüche und Eigenanteil</h4>
-<h4>H3: Pflegekasse-Leistungen nach Pflegegrad</h4>
-<table class="price-table"><thead><tr><th>Pflegegrad</th><th>Pflegegeld</th><th>Sachleistung</th><th>Wohngruppenzuschlag</th><th>Verbleibender Eigenanteil (Richtwert)</th></tr></thead><tbody><tr><td>PG 2</td><td>332 €/mo</td><td>761 €/mo</td><td>214 €/mo</td><td>Differenz zum Gesamtkostensatz</td></tr><tr><td>PG 3</td><td>573 €/mo</td><td>1.432 €/mo</td><td>214 €/mo</td><td>Reduziert sich durch höhere Sachleistung</td></tr><tr><td>PG 4</td><td>765 €/mo</td><td>1.778 €/mo</td><td>214 €/mo</td><td>Reduziert sich weiter</td></tr><tr><td>PG 5</td><td>947 €/mo</td><td>2.200 €/mo</td><td>214 €/mo</td><td>Reduziert sich weiter</td></tr></tbody></table>
-<p><code></code></p>
-<h4>H3: Hilfe zur Pflege nach SGB XII — Zusammenarbeit</h4>
-<p>Wenn die Pflegekasse-Leistungen und eigene Mittel des Hilfeempfängers nicht ausreichen, greift die Hilfe zur Pflege nach dem SGB XII. Für Ihre Sachbearbeitung stellen wir bereit:</p>
+<div class="feedback-panel" id="feedback-panel-5"><label>Ihr Vorschlag f&uuml;r &bdquo;BLOCK 5 &mdash; Standorte&ldquo;:</label><textarea id="feedback-text-5" placeholder="&Auml;nderungsvorschlag oder Kommentar&hellip;"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(5)">Speichern</button><button class="btn-cancel" onclick="toggleFeedback(5)">Abbrechen</button><button class="btn-delete" onclick="deleteFeedback(5)" style="display:none" id="delete-btn-5">L&ouml;schen</button><span class="saved-indicator" id="saved-5">&#10003; Gespeichert</span></div></div></div>
+
+<!-- BLOCK 6 — Kostenübernahme (unique content for this page) -->
+<div id="block-6" style="position:relative"><button class="feedback-btn" onclick="toggleFeedback(6)">&#9998;&#65039; Vorschlag</button>
+<div class="sec sec-alt">
+<h2>Kosten&uuml;bernahme &mdash; Leistungsanspr&uuml;che und Eigenanteil</h2>
+
+<h3>Pflegekasse-Leistungen nach Pflegegrad</h3>
+<table class="price-table">
+<thead><tr><th>Pflegegrad</th><th>Pflegegeld</th><th>Sachleistung</th><th>Wohngruppen&shy;zuschlag</th><th>Verbleibender Eigenanteil (Richtwert)</th></tr></thead>
+<tbody>
+<tr><td>PG 2</td><td>332 &euro;/mo</td><td>761 &euro;/mo</td><td>214 &euro;/mo</td><td>Differenz zum Gesamtkostensatz</td></tr>
+<tr><td>PG 3</td><td>573 &euro;/mo</td><td>1.432 &euro;/mo</td><td>214 &euro;/mo</td><td>Reduziert sich durch h&ouml;here Sachleistung</td></tr>
+<tr><td>PG 4</td><td>765 &euro;/mo</td><td>1.778 &euro;/mo</td><td>214 &euro;/mo</td><td>Reduziert sich weiter</td></tr>
+<tr><td>PG 5</td><td>947 &euro;/mo</td><td>2.200 &euro;/mo</td><td>214 &euro;/mo</td><td>Reduziert sich weiter</td></tr>
+</tbody>
+</table>
+
+<h3>Hilfe zur Pflege nach SGB XII &mdash; Zusammenarbeit</h3>
+<p>Wenn die Pflegekasse-Leistungen und eigene Mittel des Hilfeempf&auml;ngers nicht ausreichen, greift die Hilfe zur Pflege nach dem SGB&nbsp;XII. F&uuml;r Ihre Sachbearbeitung stellen wir bereit:</p>
 <ul>
-<li><strong>Detaillierte Kostenaufstellung</strong> — Eigenanteil abzüglich Pflegekasse-Leistungen und Wohngruppenzuschlag</li>
-<li><strong>Leistungsvereinbarung</strong> — Was genau der Hilfeempfänger erhält (Betreuung, Unterkunft, Verpflegung, Pflege)</li>
-<li><strong>Einkommens- und Vermögensprüfung</strong> — Mitwirkung des Hilfeempfängers vorausgesetzt, unterstützen wir bei der Zusammenstellung der Unterlagen</li>
-<li><strong>Nachweis der Leistungserbringung</strong> — Dokumentation der tatsächlich erbrachten Leistungen für Ihre Überprüfung</li>
+<li><strong>Detaillierte Kostenaufstellung</strong> &mdash; Eigenanteil abz&uuml;glich Pflegekasse-Leistungen und Wohngruppenzuschlag</li>
+<li><strong>Leistungsvereinbarung</strong> &mdash; Was genau der Hilfeempf&auml;nger erh&auml;lt (Betreuung, Unterkunft, Verpflegung, Pflege)</li>
+<li><strong>Einkommens- und Verm&ouml;genspr&uuml;fung</strong> &mdash; Mitwirkung des Hilfeempf&auml;ngers vorausgesetzt, unterst&uuml;tzen wir bei der Zusammenstellung der Unterlagen</li>
+<li><strong>Nachweis der Leistungserbringung</strong> &mdash; Dokumentation der tats&auml;chlich erbrachten Leistungen f&uuml;r Ihre &Uuml;berpr&uuml;fung</li>
 </ul>
-<h4>H3: Rechenbeispiel (Pflege-WG Residenz, PG 2)</h4>
-<table class="price-table"><thead><tr><th>Position</th><th>Betrag</th></tr></thead><tbody><tr><td>Gesamtkosten Pflege-WG (ca.)</td><td>€2.200–2.600/mo</td></tr><tr><td>abzgl. Sachleistung PG 2</td><td>– 761 €/mo</td></tr><tr><td>abzgl. Wohngruppenzuschlag</td><td>– 214 €/mo</td></tr><tr><td><strong>Verbleibender Eigenanteil</strong></td><td><strong>ca. €1.225–1.625/mo</strong></td></tr></tbody></table>
-<p><em>Hinweis: Individuell abhängig von Pflegegrad, gewählten Leistungen und Standort. Genaue Berechnung auf Anfrage.</em></p>
-<p><code></code></p>
+
+<h3>Rechenbeispiel (Pflege-WG Residenz, PG 2)</h3>
+<table class="price-table">
+<thead><tr><th>Position</th><th>Betrag</th></tr></thead>
+<tbody>
+<tr><td>Gesamtkosten Pflege-WG (ca.)</td><td>&euro;2.200&ndash;2.600/mo</td></tr>
+<tr><td>abzgl. Sachleistung PG 2</td><td>&ndash; 761 &euro;/mo</td></tr>
+<tr><td>abzgl. Wohngruppenzuschlag</td><td>&ndash; 214 &euro;/mo</td></tr>
+<tr class="hl"><td><strong>Verbleibender Eigenanteil</strong></td><td><strong>ca. &euro;1.225&ndash;1.625/mo</strong></td></tr>
+</tbody>
+</table>
+<p><em>Hinweis: Individuell abh&auml;ngig von Pflegegrad, gew&auml;hlten Leistungen und Standort. Genaue Berechnung auf Anfrage.</em></p>
 </div>
-<div class="feedback-panel" id="feedback-panel-6"><label>Ihr Vorschlag für „BLOCK 6 — Kostenübernahme und Finanzierung":</label><textarea id="feedback-text-6" placeholder="Änderungsvorschlag oder Kommentar…"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(6)">Speichern</button><button class="btn-cancel" onclick="toggleFeedback(6)">Abbrechen</button><button class="btn-delete" onclick="deleteFeedback(6)" style="display:none" id="delete-btn-6">Löschen</button><span class="saved-indicator" id="saved-6">✓ Gespeichert</span></div></div></div><div id="block-7" style="position:relative"><button class="feedback-btn" onclick="toggleFeedback(7)">✏️ Vorschlag</button><div class="sec">
-<h2>Qualität und Aufsicht</h2>
-<h4>H2: Qualitätssicherung und Nachweispflicht</h4>
-<p><span class="ph">&#9998; PH #3: Qualitätsnachweise — MDK-Bewertung, Zertifikate, Qualitätssiegel falls vorhanden</span></p>
-<p><strong>Was wir dokumentieren und nachweisen können:</strong></p>
-<ul>
-<li>Examinierte Pflegekräfte mit regelmäßiger Fortbildung (Demenz, Intensivpflege, Palliativ)</li>
-<li>Nachtbereitschaft an beiden Standorten</li>
-<li>24-Stunden-Betreuung in allen Pflege-WGs</li>
-<li>Betreuungsschlüssel nach Landesrahmenvereinbarung</li>
-<li>Hygienemanagement und Qualitätssicherung</li>
-<li>Pflegedokumentation nach anerkannten Standards</li>
+<div class="feedback-panel" id="feedback-panel-6"><label>Ihr Vorschlag f&uuml;r &bdquo;BLOCK 6 &mdash; Kosten&uuml;bernahme&ldquo;:</label><textarea id="feedback-text-6" placeholder="&Auml;nderungsvorschlag oder Kommentar&hellip;"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(6)">Speichern</button><button class="btn-cancel" onclick="toggleFeedback(6)">Abbrechen</button><button class="btn-delete" onclick="deleteFeedback(6)" style="display:none" id="delete-btn-6">L&ouml;schen</button><span class="saved-indicator" id="saved-6">&#10003; Gespeichert</span></div></div></div>
+
+<!-- BLOCK 7 — Qualitätssicherung -->
+<div id="block-7" style="position:relative"><button class="feedback-btn" onclick="toggleFeedback(7)">&#9998;&#65039; Vorschlag</button>
+<div class="sec">
+<h2>Qualit&auml;tssicherung und Nachweispflicht</h2>
+<span class="ph">&#9998; PH #3: Qualit&auml;tsnachweise &mdash; MDK-Bewertung, Zertifikate, Qualit&auml;tssiegel falls vorhanden</span>
+<ul style="margin-top:16px">
+<li><strong>Examinierte Pflegekr&auml;fte</strong> &mdash; mit regelm&auml;&szlig;iger Fortbildung (Demenz, Intensivpflege, Palliativ)</li>
+<li><strong>Nachtbereitschaft</strong> &mdash; an beiden Standorten</li>
+<li><strong>24-Stunden-Betreuung</strong> &mdash; in allen Pflege-WGs</li>
+<li><strong>Betreuungsschl&uuml;ssel</strong> &mdash; nach Landesrahmenvereinbarung</li>
+<li><strong>Hygienemanagement</strong> &mdash; und laufende Qualit&auml;tssicherung</li>
+<li><strong>Pflegedokumentation</strong> &mdash; nach anerkannten Standards</li>
 </ul>
-<p><span class="ph">&#9998; PH #2: Team-Qualifikationen — Anzahl examinierter Kräfte, Spezialisierungen, Fortbildungsprogramm</span></p>
-<p><strong>Ansprechpartner:</strong> Herr Joe Schermer (Prokurist)</p>
-<p><strong>Telefon:</strong> 0391/6076062</p>
-<p><strong>Erreichbarkeit:</strong> Mo–Fr 8:00–16:30</p>
-<p><code></code></p>
+<span class="ph">&#9998; PH #2: Team-Qualifikationen &mdash; Anzahl examinierter Kr&auml;fte, Spezialisierungen, Fortbildungsprogramm</span>
+<p style="margin-top:16px"><strong>Ansprechpartner:</strong> Herr Joe Schermer (Prokurist) &mdash; 0391/6076062 &middot; Mo&ndash;Fr 8:00&ndash;16:30</p>
 </div>
-<div class="feedback-panel" id="feedback-panel-7"><label>Ihr Vorschlag für „BLOCK 7 — Qualität und Aufsicht":</label><textarea id="feedback-text-7" placeholder="Änderungsvorschlag oder Kommentar…"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(7)">Speichern</button><button class="btn-cancel" onclick="toggleFeedback(7)">Abbrechen</button><button class="btn-delete" onclick="deleteFeedback(7)" style="display:none" id="delete-btn-7">Löschen</button><span class="saved-indicator" id="saved-7">✓ Gespeichert</span></div></div></div><div id="block-8" style="position:relative"><button class="feedback-btn" onclick="toggleFeedback(8)">✏️ Vorschlag</button><div class="sec">
-<h2>FAQ für Sozialämter</h2>
+<div class="feedback-panel" id="feedback-panel-7"><label>Ihr Vorschlag f&uuml;r &bdquo;BLOCK 7 &mdash; Qualit&auml;t&ldquo;:</label><textarea id="feedback-text-7" placeholder="&Auml;nderungsvorschlag oder Kommentar&hellip;"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(7)">Speichern</button><button class="btn-cancel" onclick="toggleFeedback(7)">Abbrechen</button><button class="btn-delete" onclick="deleteFeedback(7)" style="display:none" id="delete-btn-7">L&ouml;schen</button><span class="saved-indicator" id="saved-7">&#10003; Gespeichert</span></div></div></div>
+
+<!-- BLOCK 8 — FAQ -->
+<div id="block-8" style="position:relative"><button class="feedback-btn" onclick="toggleFeedback(8)">&#9998;&#65039; Vorschlag</button>
+<div class="sec sec-alt">
+<h2>H&auml;ufige Fragen von Sozial&auml;mtern</h2>
 <details class="faq" open>
-  <summary>Wie erhalte ich eine Kostenaufstellung für einen konkreten Antrag?</summary>
-  <div class="faq-a">Rufen Sie uns an oder schreiben Sie mit den Eckdaten des Falls (Pflegegrad, gewünschte Wohnform, Standort). Wir erstellen eine schriftliche Kostenaufstellung mit Eigenanteil und Leistungsumfang — als Grundlage für Ihren Bewilligungsbescheid.</div>
+  <summary>Wie erhalte ich eine Kostenaufstellung f&uuml;r einen konkreten Antrag?</summary>
+  <div class="faq-a">Rufen Sie uns an oder schreiben Sie mit den Eckdaten des Falls (Pflegegrad, gew&uuml;nschte Wohnform, Standort). Wir erstellen eine schriftliche Kostenaufstellung mit Eigenanteil und Leistungsumfang &mdash; als Grundlage f&uuml;r Ihren Bewilligungsbescheid.</div>
 </details>
 <details class="faq">
-  <summary>Sind die Kostensätze verhandlungsfähig?</summary>
-  <div class="faq-a">Die Kostensätze sind transparent kalkuliert und orientieren sich an den tatsächlichen Aufwendungen für Betreuung, Unterkunft und Verpflegung. Für Fragen zur Kostenstruktur steht Ihnen Herr Schermer als Ansprechpartner zur Verfügung.</div>
+  <summary>Sind die Kostens&auml;tze verhandlungsf&auml;hig?</summary>
+  <div class="faq-a">Die Kostens&auml;tze sind transparent kalkuliert und orientieren sich an den tats&auml;chlichen Aufwendungen f&uuml;r Betreuung, Unterkunft und Verpflegung. F&uuml;r Fragen zur Kostenstruktur steht Ihnen Herr Schermer als Ansprechpartner zur Verf&uuml;gung.</div>
 </details>
 <details class="faq">
   <summary>Wie wird die Leistungserbringung dokumentiert?</summary>
-  <div class="faq-a">Jede erbrachte Pflegeleistung wird nach anerkannten Pflegestandards dokumentiert. Auf Anfrage stellen wir Ihnen Leistungsnachweise und Abrechnungsunterlagen für Ihre Aktenprüfung bereit.</div>
+  <div class="faq-a">Jede erbrachte Pflegeleistung wird nach anerkannten Pflegestandards dokumentiert. Auf Anfrage stellen wir Ihnen Leistungsnachweise und Abrechnungsunterlagen f&uuml;r Ihre Aktenpr&uuml;fung bereit.</div>
 </details>
 <details class="faq">
-  <summary>Kann ein Hilfeempfänger auch ohne bewilligten Pflegegrad aufgenommen werden?</summary>
-  <div class="faq-a">Für die Pflege-WGs ist mindestens Pflegegrad 2 (oder ein laufender Antrag) Voraussetzung. Für das betreute Wohnen ist kein Pflegegrad notwendig. Wir unterstützen bei der Pflegegrad-Antragstellung.</div>
+  <summary>Kann ein Hilfeempf&auml;nger auch ohne bewilligten Pflegegrad aufgenommen werden?</summary>
+  <div class="faq-a">F&uuml;r die Pflege-WGs ist mindestens Pflegegrad 2 (oder ein laufender Antrag) Voraussetzung. F&uuml;r das betreute Wohnen ist kein Pflegegrad notwendig. Wir unterst&uuml;tzen bei der Pflegegrad-Antragstellung.</div>
 </details>
 <details class="faq">
-  <summary>Wie schnell ist eine Aufnahme nach Bewilligung möglich?</summary>
-  <div class="faq-a">Bei vorhandenem Platz kann die Aufnahme innerhalb weniger Tage nach Bewilligung erfolgen. Wir bestätigen die Verfügbarkeit vorab, damit Sie Ihren Bescheid auf eine gesicherte Grundlage stellen können. <span class="ph">&#9998; PH #21: Verfügbarkeit FAQ — typische Reaktionszeiten, Warteliste-Info</span></div>
+  <summary>Wie schnell ist eine Aufnahme nach Bewilligung m&ouml;glich?</summary>
+  <div class="faq-a">Bei vorhandenem Platz kann die Aufnahme innerhalb weniger Tage nach Bewilligung erfolgen. Wir best&auml;tigen die Verf&uuml;gbarkeit vorab, damit Sie Ihren Bescheid auf eine gesicherte Grundlage stellen k&ouml;nnen. <span class="ph">&#9998; PH #21: Verf&uuml;gbarkeit FAQ &mdash; typische Reaktionszeiten, Warteliste-Info</span></div>
 </details>
 <details class="faq">
-  <summary>Welche Unterlagen benötigen Sie vom Sozialamt?</summary>
-  <div class="faq-a">In der Regel: Bewilligungsbescheid (Hilfe zur Pflege), ggf. Kostenübernahmeerklärung und Kontaktdaten des zuständigen Sachbearbeiters. Im Erstgespräch klären wir die genauen Anforderungen je nach Fall.</div>
+  <summary>Welche Unterlagen ben&ouml;tigen Sie vom Sozialamt?</summary>
+  <div class="faq-a">In der Regel: Bewilligungsbescheid (Hilfe zur Pflege), ggf. Kosten&uuml;bernahmeerkl&auml;rung und Kontaktdaten des zust&auml;ndigen Sachbearbeiters. Im Erstgespr&auml;ch kl&auml;ren wir die genauen Anforderungen je nach Fall.</div>
 </details>
 <details class="faq">
-  <summary>Gibt es eine regelmäßige Überprüfung der Leistungsangemessenheit?</summary>
-  <div class="faq-a">Wir stehen für eine regelmäßige Abstimmung zur Verfügung. Bei Veränderungen im Pflegebedarf oder bei Pflegegradänderungen informieren wir Sie proaktiv, damit Sie die Bewilligung entsprechend anpassen können.</div>
+  <summary>Gibt es eine regelm&auml;&szlig;ige &Uuml;berpr&uuml;fung der Leistungsangemessenheit?</summary>
+  <div class="faq-a">Wir stehen f&uuml;r eine regelm&auml;&szlig;ige Abstimmung zur Verf&uuml;gung. Bei Ver&auml;nderungen im Pflegebedarf oder bei Pflegegrad&auml;nderungen informieren wir Sie proaktiv, damit Sie die Bewilligung entsprechend anpassen k&ouml;nnen.</div>
 </details>
 </div>
-<div class="feedback-panel" id="feedback-panel-8"><label>Ihr Vorschlag für „BLOCK 8 — FAQ für Sozialämter":</label><textarea id="feedback-text-8" placeholder="Änderungsvorschlag oder Kommentar…"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(8)">Speichern</button><button class="btn-cancel" onclick="toggleFeedback(8)">Abbrechen</button><button class="btn-delete" onclick="deleteFeedback(8)" style="display:none" id="delete-btn-8">Löschen</button><span class="saved-indicator" id="saved-8">✓ Gespeichert</span></div></div></div><div id="block-9" style="position:relative"><button class="feedback-btn" onclick="toggleFeedback(9)">✏️ Vorschlag</button><div class="cta-banner" id="cta">
-  <h2>Kostensätze und Kapazitäten — ein Anruf genügt</h2>
-  <p>Sie prüfen einen Antrag auf Hilfe zur Pflege und brauchen eine belastbare Kostengrundlage? Wir liefern Ihnen die Zahlen — nachvollziehbar, schriftlich und zeitnah.</p>
+<div class="feedback-panel" id="feedback-panel-8"><label>Ihr Vorschlag f&uuml;r &bdquo;BLOCK 8 &mdash; FAQ&ldquo;:</label><textarea id="feedback-text-8" placeholder="&Auml;nderungsvorschlag oder Kommentar&hellip;"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(8)">Speichern</button><button class="btn-cancel" onclick="toggleFeedback(8)">Abbrechen</button><button class="btn-delete" onclick="deleteFeedback(8)" style="display:none" id="delete-btn-8">L&ouml;schen</button><span class="saved-indicator" id="saved-8">&#10003; Gespeichert</span></div></div></div>
+
+<!-- BLOCK 9 — CTA -->
+<div id="block-9" style="position:relative"><button class="feedback-btn" onclick="toggleFeedback(9)">&#9998;&#65039; Vorschlag</button>
+<div class="cta-banner" id="cta">
+  <h2>Kostens&auml;tze und Kapazit&auml;ten &mdash; ein Anruf gen&uuml;gt</h2>
+  <p>Sie pr&uuml;fen einen Antrag auf Hilfe zur Pflege und brauchen eine belastbare Kostengrundlage? Wir liefern Ihnen die Zahlen &mdash; nachvollziehbar, schriftlich und zeitnah.</p>
+  <p style="font-size:13px;opacity:.85;margin-bottom:16px"><strong>Telefon:</strong> 0391/6076062 &middot; <strong>E-Mail:</strong> medilux@live.de &middot; <strong>Schriftliche Kostenauskunft:</strong> in 2 Werktagen</p>
   <div>
     <a href="#" class="btn">Kostensatz anfragen</a>
-    <a href="#" class="btn btn-out">0391/6076062 anrufen</a>
+    <a href="tel:+493916076062" class="btn btn-out">0391/6076062 anrufen</a>
   </div>
 </div>
-<div class="feedback-panel" id="feedback-panel-9"><label>Ihr Vorschlag für „BLOCK 9 — Abschluss-CTA":</label><textarea id="feedback-text-9" placeholder="Änderungsvorschlag oder Kommentar…"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(9)">Speichern</button><button class="btn-cancel" onclick="toggleFeedback(9)">Abbrechen</button><button class="btn-delete" onclick="deleteFeedback(9)" style="display:none" id="delete-btn-9">Löschen</button><span class="saved-indicator" id="saved-9">✓ Gespeichert</span></div></div></div>
+<div class="feedback-panel" id="feedback-panel-9"><label>Ihr Vorschlag f&uuml;r &bdquo;BLOCK 9 &mdash; Abschluss-CTA&ldquo;:</label><textarea id="feedback-text-9" placeholder="&Auml;nderungsvorschlag oder Kommentar&hellip;"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(9)">Speichern</button><button class="btn-cancel" onclick="toggleFeedback(9)">Abbrechen</button><button class="btn-delete" onclick="deleteFeedback(9)" style="display:none" id="delete-btn-9">L&ouml;schen</button><span class="saved-indicator" id="saved-9">&#10003; Gespeichert</span></div></div></div>
+
 <footer class="footer">
   <div>
     <div class="f-label">Telefon</div>
     <div class="f-val">0391/6076062</div>
     <div class="f-label">E-Mail</div>
     <div class="f-val">medilux@live.de</div>
-  </div>
-  <div>
-    <div class="f-label">Standorte</div>
+    <div class="f-label" style="margin-top:10px">Standorte</div>
     <div style="font-size:12px;color:var(--text);line-height:1.8">
       Villa Civitas &mdash; Lindenthaler Allee 20, 14163 Berlin-Zehlendorf<br>
       Residenz Heerstra&szlig;e &mdash; G&auml;rtnereiring 56, 13593 Berlin-Spandau
     </div>
-    <div class="f-links">
-      <a href="medilux_berlin_preview_kosten.html">Kosten &amp; Finanzierung</a>
-      <a href="#">Mediatek</a>
+  </div>
+  <div>
+    <div class="f-label">Navigation</div>
+    <nav style="display:flex;flex-direction:column;gap:6px;margin-top:6px">
+      <a href="medilux_berlin_preview_startseite.html" style="font-size:13px;color:var(--text);text-decoration:none">Startseite</a>
+      <a href="medilux_berlin_preview_leistungen.html" style="font-size:13px;color:var(--text);text-decoration:none">Leistungen</a>
+      <a href="medilux_berlin_preview_standorte.html" style="font-size:13px;color:var(--text);text-decoration:none">Standorte</a>
+      <a href="medilux_berlin_preview_kosten.html" style="font-size:13px;color:var(--text);text-decoration:none">Kosten &amp; Finanzierung</a>
+      <a href="medilux_berlin_preview_ueber_uns.html" style="font-size:13px;color:var(--text);text-decoration:none">&Uuml;ber uns</a>
+      <a href="medilux_berlin_preview_karriere.html" style="font-size:13px;color:var(--text);text-decoration:none">Karriere</a>
+      <a href="medilux_berlin_preview_kontakt.html" style="font-size:13px;color:var(--text);text-decoration:none">Kontakt</a>
+    </nav>
+    <div class="f-links" style="margin-top:16px">
       <a href="#">Impressum</a>
       <a href="#">Datenschutz</a>
     </div>
   </div>
-  <div class="f-copy">&copy; 2026 MEDILUX GmbH &mdash; Content Preview v0.9 &middot; Nur zur internen Pr&uuml;fung &middot; 2p-preview skill</div>
+  <div class="f-copy">&copy; 2026 MEDILUX GmbH &mdash; Content Preview v0.9.1 &middot; Nur zur internen Pr&uuml;fung &middot; 16.04.2026</div>
 </footer>
 </div>
-<div class="ver-badge">v0.9</div>
-<div class="src-badge">2p-preview &middot; 16.03.2026</div>
+<div class="ver-badge">v0.9.1</div>
+<div class="src-badge">2p-preview &middot; 16.04.2026</div>
 <div class="export-overlay" id="exportOverlay">
   <div class="export-box">
     <div class="count" id="exportCount">0</div>
     <h2>Kommentare bereit</h2>
-    <p>Alle Ihre Änderungsvorschläge in einer Datei. Laden Sie sie herunter und senden Sie diese an Ihr Projektteam.</p>
+    <p>Alle Ihre &Auml;nderungsvorschl&auml;ge in einer Datei.</p>
     <button class="btn-export" onclick="exportFeedback()">Als Datei herunterladen</button>
-    <button class="btn-close-overlay" onclick="closeExportOverlay()">Schließen</button>
+    <button class="btn-close-overlay" onclick="closeExportOverlay()">Schlie&szlig;en</button>
   </div>
 </div>
 <script>
 (function(){
-  var PROJECT='medilux-berlin';
-  var PAGE='fuer_sozialamter';
-  var PAGE_TITLE='Für Sozialämter';
-  var STORAGE_KEY='2p-feedback-'+PROJECT;
+  var PROJECT='medilux-berlin',PAGE='fuer_sozialamter',PAGE_TITLE='F\u00fcr Sozial\u00e4mter',STORAGE_KEY='2p-feedback-'+PROJECT;
   function getAll(){return JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}');}
   function getPage(){var a=getAll();return a[PAGE]||{};}
   function savePage(d){var a=getAll();if(Object.keys(d).length===1&&d._title){delete a[PAGE];}else{a[PAGE]=d;}localStorage.setItem(STORAGE_KEY,JSON.stringify(a));}
   function total(){var a=getAll(),c=0;for(var p in a)for(var k in a[p])if(k!=='_title')c++;return c;}
-  function updateCounter(){var c=total(),el=document.getElementById('feedbackCounter');if(!el)return;if(c>0){el.classList.add('has-feedback');el.innerHTML='📥 Feedback: '+c+' Kommentar'+(c>1?'e':'');}else{el.classList.remove('has-feedback');el.innerHTML='Feedback: 0 Kommentare';}}
-  function loadFeedback(){var d=getPage();for(var id in d){if(id==='_title')continue;var e=d[id];var t=typeof e==='object'?e.text:e;var ta=document.getElementById('feedback-text-'+id);var btn=document.querySelector('#block-'+id+' .feedback-btn');var del=document.getElementById('delete-btn-'+id);if(ta)ta.value=t;if(btn){btn.classList.add('has-comment');btn.textContent='✏️ Kommentar bearbeiten';}if(del)del.style.display='inline-block';}updateCounter();}
+  function updateCounter(){var c=total(),el=document.getElementById('feedbackCounter');if(!el)return;if(c>0){el.classList.add('has-feedback');el.innerHTML='\ud83d\udce5 Feedback: '+c+' Kommentar'+(c>1?'e':'');}else{el.classList.remove('has-feedback');el.innerHTML='Feedback: 0 Kommentare';}}
+  function loadFeedback(){var d=getPage();for(var id in d){if(id==='_title')continue;var e=d[id];var t=typeof e==='object'?e.text:e;var ta=document.getElementById('feedback-text-'+id);var btn=document.querySelector('#block-'+id+' .feedback-btn');var del=document.getElementById('delete-btn-'+id);if(ta)ta.value=t;if(btn){btn.classList.add('has-comment');btn.textContent='\u270e\ufe0f Kommentar bearbeiten';}if(del)del.style.display='inline-block';}updateCounter();}
   window.toggleFeedback=function(id){var p=document.getElementById('feedback-panel-'+id);p.classList.toggle('open');if(p.classList.contains('open'))document.getElementById('feedback-text-'+id).focus();};
-  window.saveFeedback=function(id){var t=document.getElementById('feedback-text-'+id).value.trim();if(!t)return;var el=document.getElementById('block-'+id);var lbl=el?(el.querySelector('.block-label,h2,h3')||{}).textContent||('Block '+id):('Block '+id);var d=getPage();d._title=PAGE_TITLE;d[id]={text:t,label:'Block '+id+' — '+(lbl.length>40?lbl.slice(0,40)+'…':lbl)};savePage(d);var btn=document.querySelector('#block-'+id+' .feedback-btn');btn.classList.add('has-comment');btn.textContent='✏️ Kommentar bearbeiten';document.getElementById('delete-btn-'+id).style.display='inline-block';var s=document.getElementById('saved-'+id);s.style.display='flex';setTimeout(function(){s.style.display='none';},2000);updateCounter();setTimeout(function(){window.toggleFeedback(id);},1500);};
-  window.deleteFeedback=function(id){var d=getPage();delete d[id];savePage(d);document.getElementById('feedback-text-'+id).value='';var btn=document.querySelector('#block-'+id+' .feedback-btn');btn.classList.remove('has-comment');btn.textContent='✏️ Vorschlag';document.getElementById('delete-btn-'+id).style.display='none';updateCounter();window.toggleFeedback(id);};
+  window.saveFeedback=function(id){var t=document.getElementById('feedback-text-'+id).value.trim();if(!t)return;var el=document.getElementById('block-'+id);var lbl=el?(el.querySelector('.block-label,h2,h3')||{}).textContent||('Block '+id):('Block '+id);var d=getPage();d._title=PAGE_TITLE;d[id]={text:t,label:'Block '+id+' \u2014 '+(lbl.length>40?lbl.slice(0,40)+'\u2026':lbl)};savePage(d);var btn=document.querySelector('#block-'+id+' .feedback-btn');btn.classList.add('has-comment');btn.textContent='\u270e\ufe0f Kommentar bearbeiten';document.getElementById('delete-btn-'+id).style.display='inline-block';var s=document.getElementById('saved-'+id);s.style.display='flex';setTimeout(function(){s.style.display='none';},2000);updateCounter();setTimeout(function(){window.toggleFeedback(id);},1500);};
+  window.deleteFeedback=function(id){var d=getPage();delete d[id];savePage(d);document.getElementById('feedback-text-'+id).value='';var btn=document.querySelector('#block-'+id+' .feedback-btn');btn.classList.remove('has-comment');btn.textContent='\u270e\ufe0f Vorschlag';document.getElementById('delete-btn-'+id).style.display='none';updateCounter();window.toggleFeedback(id);};
   window.openExportOverlay=function(){var c=total();if(c===0)return;document.getElementById('exportCount').textContent=c;document.getElementById('exportOverlay').classList.add('open');};
   window.closeExportOverlay=function(){document.getElementById('exportOverlay').classList.remove('open');};
-  window.exportFeedback=function(){var a=getAll(),c=total();var t='FEEDBACK \u2014 MEDILUX BERLIN\nDatum: '+new Date().toLocaleDateString('de-DE')+'\n'+c+' Kommentar(e) insgesamt\n'+'='.repeat(50)+'\n\n';for(var page in a){var pd=a[page];t+='\u2501\u2501\u2501 '+(pd._title||page)+' \u2501\u2501\u2501\n\n';for(var bid in pd){if(bid==='_title')continue;var entry=pd[bid];var txt=typeof entry==='object'?entry.text:entry;var lbl=typeof entry==='object'&&entry.label?entry.label:('Block '+bid);t+='\uD83D\uDCCC '+lbl+'\n'+'-'.repeat(40)+'\n'+txt+'\n\n';}}t+='='.repeat(50)+'\nErstellt am '+new Date().toLocaleString('de-DE')+'\n';var blob=new Blob([t],{type:'text/plain;charset=utf-8'});var url=URL.createObjectURL(blob);var a2=document.createElement('a');a2.href=url;a2.download='feedback_medilux-berlin_'+new Date().toISOString().slice(0,10)+'.txt';a2.click();URL.revokeObjectURL(url);window.closeExportOverlay();};
-  /* Close nav dropdown on outside click */
+  window.exportFeedback=function(){var a=getAll(),c=total();var t='FEEDBACK \u2014 MEDILUX BERLIN\nDatum: '+new Date().toLocaleDateString('de-DE')+'\n'+c+' Kommentar(e) insgesamt\n'+'='.repeat(50)+'\n\n';for(var page in a){var pd=a[page];t+='\u2501\u2501\u2501 '+(pd._title||page)+' \u2501\u2501\u2501\n\n';for(var bid in pd){if(bid==='_title')continue;var entry=pd[bid];var txt=typeof entry==='object'?entry.text:entry;var lbl=typeof entry==='object'&&entry.label?entry.label:('Block '+bid);t+='\ud83d\udccc '+lbl+'\n'+'-'.repeat(40)+'\n'+txt+'\n\n';}}t+='='.repeat(50)+'\nErstellt am '+new Date().toLocaleString('de-DE')+'\n';var blob=new Blob([t],{type:'text/plain;charset=utf-8'});var url=URL.createObjectURL(blob);var a2=document.createElement('a');a2.href=url;a2.download='feedback_medilux-berlin_'+new Date().toISOString().slice(0,10)+'.txt';a2.click();URL.revokeObjectURL(url);window.closeExportOverlay();};
   document.addEventListener('click',function(e){if(!e.target.closest('details.nav-dd'))document.querySelectorAll('details.nav-dd[open]').forEach(function(d){d.removeAttribute('open');});});
   loadFeedback();
 })();
