@@ -7,10 +7,16 @@
 <style>
   :root { --primary: #810080; --bg: #f8f5f9; --text: #1e293b; --border: #e2e8f0; }
   body { font-family: 'Segoe UI', system-ui, sans-serif; color: var(--text); background: var(--bg); margin: 0; padding: 2rem; }
-  .container { max-width: 700px; margin: 0 auto; }
+  .container { max-width: 760px; margin: 0 auto; }
   h1 { color: var(--primary); font-size: 1.8rem; margin-bottom: .5rem; }
   .subtitle { color: #64748b; margin-bottom: 2rem; }
-  .version-card { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; margin-bottom: 1rem; display: flex; justify-content: space-between; align-items: center; transition: box-shadow .15s; }
+  .feedback-guide { background: #fff; border: 1px solid var(--primary); border-left: 4px solid var(--primary); border-radius: 8px; padding: 1.25rem 1.5rem; margin-bottom: 2rem; }
+  .feedback-guide h3 { color: var(--primary); font-size: 1.1rem; margin: 0 0 .75rem; }
+  .feedback-guide ol { margin: 0 0 .75rem 1.2rem; padding: 0; }
+  .feedback-guide ol li { margin-bottom: .5rem; font-size: .92rem; line-height: 1.5; color: var(--text); }
+  .feedback-guide ol li strong { color: var(--primary); }
+  .feedback-guide p { font-size: .82rem; color: #64748b; margin: 0; font-style: italic; }
+  .version-card { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; margin-bottom: 1rem; display: flex; justify-content: space-between; align-items: center; transition: box-shadow .15s; gap: 1rem; }
   .version-card:hover { box-shadow: 0 4px 12px rgba(129,0,128,.08); }
   .version-card.latest { border-color: var(--primary); border-width: 2px; }
   .version-info h3 { margin: 0 0 .25rem; font-size: 1.1rem; }
@@ -19,7 +25,7 @@
   .badge-latest { background: #810080; color: #fff; }
   .badge-audit { background: #f59e0b; color: #fff; }
   .badge-sent { background: #10b981; color: #fff; }
-  a.btn { display: inline-block; background: var(--primary); color: #fff; padding: .5rem 1rem; border-radius: 6px; text-decoration: none; font-size: .9rem; font-weight: 600; }
+  a.btn { display: inline-block; background: var(--primary); color: #fff; padding: .5rem 1rem; border-radius: 6px; text-decoration: none; font-size: .9rem; font-weight: 600; white-space: nowrap; }
   a.btn:hover { opacity: .9; }
   .footer { margin-top: 2rem; font-size: .82rem; color: #94a3b8; }
 </style>
@@ -29,9 +35,29 @@
   <h1>Panacea Pflege — Previews</h1>
   <p class="subtitle">Website-Vorschau in verschiedenen Versionen</p>
 
+  <section class="feedback-guide">
+    <h3>📝 So geben Sie Feedback</h3>
+    <ol>
+      <li><strong>Seite öffnen</strong> — Klicken Sie auf eine Version unten und anschließend auf eine Seite in der Navigation.</li>
+      <li><strong>Kommentar hinterlassen</strong> — Neben jedem Textblock sehen Sie „✏️ Vorschlag". Klicken Sie darauf, schreiben Sie Ihren Kommentar und klicken Sie auf „Speichern".</li>
+      <li><strong>Mehrere Seiten kommentieren</strong> — Kommentare werden seitenübergreifend gespeichert. Sie können beliebig zwischen den Seiten wechseln.</li>
+      <li><strong>Feedback absenden</strong> — Oben rechts: „📥 Feedback: X Kommentare" → klicken → wählen Sie: <strong>„Als Datei herunterladen"</strong> (eine .txt-Datei) oder <strong>„In Zwischenablage kopieren"</strong> (zum Einfügen in E-Mail oder Messenger).</li>
+      <li><strong>An uns senden</strong> — Schicken Sie die heruntergeladene Datei oder den kopierten Text per E-Mail, WhatsApp oder wie es Ihnen am liebsten ist.</li>
+    </ol>
+    <p>Hinweis: Ihre Kommentare werden lokal in Ihrem Browser gespeichert und bleiben erhalten, auch wenn Sie die Seite schließen.</p>
+  </section>
+
   <div class="version-card latest">
     <div class="version-info">
-      <h3>V1.5 — Content V1.2 + Audit Fixes <span class="badge badge-latest">Aktuell</span></h3>
+      <h3>V1.6 — Render-Fixes + Landkreis FFB + DE Typografie <span class="badge badge-latest">Aktuell</span></h3>
+      <p>16.04.2026 — Renderer-Bugs behoben (leere Bullets, „---" in Karten), Olching → Landkreis FFB in Navigation &amp; Kontakt, Em-Dash „—" → „–" (Duden-Norm), Karriere-Zitat als Pull-Quote</p>
+    </div>
+    <a href="v1.6/index.html" class="btn">Öffnen</a>
+  </div>
+
+  <div class="version-card">
+    <div class="version-info">
+      <h3>V1.5 — Content V1.2 + Audit Fixes <span class="badge badge-audit">Auditiert</span></h3>
       <p>14.04.2026 — 6 Audit-Findings behoben: FAQ Q3 München, Team-Teaser LK FFB, Meta Descriptions, Logo-Link, TY-Zitat Karriere, CTA Landkreis FFB</p>
     </div>
     <a href="v1.5/index.html" class="btn">Öffnen</a>
