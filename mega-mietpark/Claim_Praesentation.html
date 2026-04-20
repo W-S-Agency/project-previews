@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claim-Vorschläge · Mega-Mietpark</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #C62828;
+    --red-dark: #8B1A1A;
+    --red-light: #FFEBEE;
+    --black: #1F1F1F;
+    --gray: #6B6B6B;
+    --light: #F5F5F5;
+    --white: #FFFFFF;
+    --border: #E0E0E0;
+    --radius: 3px;
+    --gold: #B8860B;
+    --silver: #A0A0A0;
+    --bronze: #8B5A2B;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; font-size: 16px; color: var(--black); background: var(--white); line-height: 1.7; }
+
+  nav { position: sticky; top: 0; z-index: 100; background: var(--black); display: flex; align-items: center; gap: 0; padding: 0 40px; height: 52px; overflow-x: auto; }
+  nav a { color: rgba(255,255,255,0.65); text-decoration: none; font-family: 'Roboto Condensed', sans-serif; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; padding: 0 16px; height: 52px; display: flex; align-items: center; border-bottom: 2px solid transparent; white-space: nowrap; transition: all 0.2s; }
+  nav a:hover { color: #fff; border-bottom-color: var(--red); }
+  nav .logo { color: var(--white); font-size: 13px; font-weight: 700; letter-spacing: 0.1em; margin-right: 24px; flex-shrink: 0; }
+  nav .logo span { color: var(--red); }
+  nav .v-tag { margin-left: auto; font-family: 'Roboto Condensed', sans-serif; font-size: 10px; letter-spacing: 0.15em; color: var(--red); padding: 3px 10px; border: 1px solid var(--red); border-radius: 3px; flex-shrink: 0; }
+
+  .cover { background: linear-gradient(135deg, var(--black) 0%, #2c2c2c 100%); padding: 90px 60px 80px; position: relative; overflow: hidden; }
+  .cover::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 4px; background: var(--red); }
+  .cover-tag { font-family: 'Roboto Condensed', sans-serif; font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--red); margin-bottom: 22px; }
+  .cover h1 { font-family: 'Roboto Condensed', sans-serif; font-size: clamp(40px, 5.5vw, 72px); font-weight: 700; text-transform: uppercase; color: var(--white); line-height: 1.02; letter-spacing: 0.01em; max-width: 950px; margin-bottom: 30px; }
+  .cover h1 em { color: var(--red); font-style: normal; }
+  .cover-sub { color: rgba(255,255,255,0.82); font-size: 18px; line-height: 1.6; max-width: 780px; margin-bottom: 32px; }
+  .cover-sub strong { color: var(--white); }
+  .cover-meta { display: flex; gap: 40px; flex-wrap: wrap; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 22px; margin-top: 22px; }
+  .cover-meta-item { color: rgba(255,255,255,0.55); font-size: 12px; }
+  .cover-meta-item strong { color: rgba(255,255,255,0.95); display: block; font-size: 14px; margin-top: 3px; font-weight: 500; }
+
+  section { padding: 80px 60px; border-bottom: 1px solid var(--border); }
+  section.light { background: var(--light); }
+  section.white { background: var(--white); }
+  section.dark { background: var(--black); color: rgba(255,255,255,0.9); border-bottom-color: rgba(255,255,255,0.08); }
+  section.dark h2 { color: var(--white); }
+  section.dark p { color: rgba(255,255,255,0.85); }
+  section.dark strong { color: var(--white); }
+
+  .section-label { font-family: 'Roboto Condensed', sans-serif; font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--red); margin-bottom: 14px; }
+  h2 { font-family: 'Roboto Condensed', sans-serif; font-size: clamp(28px, 3.5vw, 42px); font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; line-height: 1.1; margin-bottom: 30px; color: var(--black); max-width: 900px; }
+  h3 { font-family: 'Roboto Condensed', sans-serif; font-size: 20px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; margin: 28px 0 14px; color: var(--black); }
+  p { margin-bottom: 16px; max-width: 820px; }
+  p.lead { font-size: 18px; line-height: 1.6; max-width: 820px; }
+  em { color: var(--red); font-style: italic; }
+
+  .letter { background: #FFFDF7; border: 1px solid #F5E8C8; border-left: 5px solid var(--red); padding: 36px 42px; border-radius: 0 var(--radius) var(--radius) 0; max-width: 820px; }
+  .letter h3 { margin-top: 0; font-size: 22px; }
+  .letter p { margin-bottom: 14px; }
+  .letter .signature { margin-top: 24px; font-style: italic; color: var(--gray); }
+  .letter .signature strong { color: var(--black); display: block; font-style: normal; }
+
+  .principle-comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 28px 0; max-width: 960px; }
+  .principle-comparison .col { padding: 26px 30px; border-radius: var(--radius); }
+  .principle-comparison .dont { background: #FFEBEE; border-left: 4px solid var(--red); }
+  .principle-comparison .do { background: #E8F5E9; border-left: 4px solid #2E7D32; }
+  .principle-comparison h4 { font-family: 'Roboto Condensed',sans-serif; font-size: 13px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 14px; }
+  .principle-comparison .dont h4 { color: var(--red-dark); }
+  .principle-comparison .do h4 { color: #1B5E20; }
+  .principle-comparison ul { list-style: none; padding: 0; margin: 0; }
+  .principle-comparison li { padding: 8px 0; font-style: italic; color: var(--black); font-size: 15px; }
+  .principle-comparison li::before { content: "·"; font-weight: 700; margin-right: 8px; color: inherit; }
+
+  /* LOGO LOCKUP */
+  .lockup { background: linear-gradient(180deg, var(--white) 0%, #FAFAFA 100%); border: 1px solid var(--border); border-radius: var(--radius); padding: 70px 40px 56px; text-align: center; margin: 32px 0; position: relative; overflow: hidden; }
+  .lockup::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, var(--red) 0%, #FF5252 100%); }
+  .lockup .brand { font-family: 'Roboto Condensed', sans-serif; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.25em; color: var(--gray); margin-bottom: 14px; }
+  .lockup .brand span.dot { color: var(--red); margin: 0 6px; }
+  .lockup .claim-text { font-family: 'Roboto Condensed', sans-serif; font-size: clamp(34px, 5vw, 58px); font-weight: 700; color: var(--black); letter-spacing: 0.01em; line-height: 1.1; margin: 8px 0 0; }
+  .lockup .claim-text em { color: var(--red); font-style: normal; }
+  .lockup.top-favorit { background: linear-gradient(135deg, #FFFFFF 0%, #FFF5F5 100%); border-color: var(--red); border-width: 2px; padding: 90px 40px 70px; }
+  .lockup.top-favorit .claim-text { font-size: clamp(44px, 6.5vw, 76px); }
+  .rank-badge { position: absolute; top: -1px; left: 50%; transform: translateX(-50%); background: var(--red); color: #fff; font-family: 'Roboto Condensed',sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; padding: 8px 22px; border-radius: 0 0 var(--radius) var(--radius); }
+  .rank-badge.gold { background: var(--red); }
+  .rank-badge.silver { background: #555; }
+
+  .fav-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 0; margin-bottom: 24px; overflow: hidden; }
+  .fav-card .fav-header { padding: 22px 30px; background: var(--black); color: #fff; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .fav-card .medal { font-family: 'Roboto Condensed',sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--red); background: rgba(198,40,40,0.14); padding: 5px 12px; border-radius: 3px; }
+  .fav-card .fav-label { font-family: 'Roboto Condensed',sans-serif; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.55); }
+  .fav-card .fav-body { padding: 30px 36px 36px; }
+  .fav-card .mini-lockup { background: var(--light); border-radius: var(--radius); padding: 36px 28px; text-align: center; margin-bottom: 22px; border-left: 3px solid var(--red); }
+  .fav-card .mini-lockup .brand { font-family: 'Roboto Condensed',sans-serif; font-size: 11px; letter-spacing: 0.22em; color: var(--gray); text-transform: uppercase; font-weight: 700; margin-bottom: 8px; }
+  .fav-card .mini-lockup .brand span.dot { color: var(--red); margin: 0 5px; }
+  .fav-card .mini-lockup .claim-text { font-family: 'Roboto Condensed',sans-serif; font-size: clamp(26px, 3.5vw, 40px); font-weight: 700; color: var(--black); letter-spacing: 0.01em; }
+  .fav-card .rationale { font-size: 15px; line-height: 1.7; margin-bottom: 16px; }
+  .fav-card .strength { background: #E8F5E9; border-left: 3px solid #2E7D32; padding: 12px 18px; border-radius: 0 var(--radius) var(--radius) 0; font-size: 14px; }
+  .fav-card .strength strong { color: #1B5E20; }
+
+  .list-table { width: 100%; border-collapse: collapse; margin: 24px 0; background: var(--white); border-radius: var(--radius); overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .list-table th { background: var(--black); color: white; padding: 14px 18px; text-align: left; font-family: 'Roboto Condensed', sans-serif; letter-spacing: 0.08em; text-transform: uppercase; font-size: 12px; }
+  .list-table td { padding: 16px 18px; border-bottom: 1px solid var(--border); vertical-align: top; font-size: 14px; line-height: 1.6; }
+  .list-table tr.fav td { background: #FFFDE7; }
+  .list-table tr.fav td:first-child { border-left: 3px solid var(--red); }
+  .list-table tr:hover td { background: var(--light); }
+  .list-table tr.fav:hover td { background: #FFF9C4; }
+  .list-table td.claim-col { font-family: 'Roboto Condensed',sans-serif; font-size: 15px; font-weight: 700; color: var(--black); letter-spacing: 0.01em; min-width: 200px; }
+  .list-table .star { color: var(--red); font-size: 13px; margin-right: 6px; }
+  .list-table .plus { color: #1B5E20; font-weight: 600; }
+  .list-table .minus { color: #C62828; font-weight: 600; }
+  .list-table .usp { font-size: 12px; color: var(--gray); font-style: italic; }
+
+  .steps-ol { counter-reset: step; padding: 0; list-style: none; margin: 24px 0; max-width: 820px; }
+  .steps-ol li { counter-increment: step; position: relative; padding: 22px 24px 22px 82px; background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); margin-bottom: 14px; font-size: 15px; }
+  .steps-ol li::before { content: counter(step); position: absolute; left: 22px; top: 22px; width: 42px; height: 42px; background: var(--red); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Roboto Condensed',sans-serif; font-weight: 700; font-size: 18px; }
+  .steps-ol li strong { display: block; font-family: 'Roboto Condensed',sans-serif; font-size: 14px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+
+  .callout { background: #FFF8E1; border-left: 4px solid #E65100; padding: 20px 26px; border-radius: 0 var(--radius) var(--radius) 0; margin: 24px 0; font-size: 15px; line-height: 1.7; max-width: 820px; }
+  .callout strong { color: #E65100; }
+  .callout.green { background: #E8F5E9; border-left-color: #2E7D32; }
+  .callout.green strong { color: #2E7D32; }
+
+  footer { background: var(--black); padding: 40px 60px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+  footer p { color: rgba(255,255,255,0.55); font-size: 13px; margin-bottom: 4px; }
+  footer a { color: rgba(255,255,255,0.75); text-decoration: none; }
+  footer a:hover { color: var(--red); }
+  .footer-brand { font-family: 'Roboto Condensed', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.12em; color: rgba(255,255,255,0.85); text-transform: uppercase; }
+  .footer-brand span { color: var(--red); }
+
+  @media (max-width: 900px) {
+    section, nav, footer { padding: 50px 24px; }
+    nav { padding: 0 16px; height: 52px; }
+    .cover { padding: 60px 24px 50px; }
+    .principle-comparison { grid-template-columns: 1fr; }
+    .fav-card .fav-body { padding: 24px 20px; }
+    .list-table { font-size: 13px; }
+    .list-table th, .list-table td { padding: 10px 12px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="logo">MEGA <span>MIETPARK</span></span>
+  <a href="#letter">Brief</a>
+  <a href="#prinzip">Prinzip</a>
+  <a href="#top">Top-Favorit</a>
+  <a href="#favoriten">5 Favoriten</a>
+  <a href="#auswahl">Alle 11</a>
+  <a href="#next">Nächste Schritte</a>
+  <span class="v-tag">CLAIM · 2026-04</span>
+</nav>
+
+<!-- COVER -->
+<div class="cover">
+  <p class="cover-tag">Claim-Vorschläge · 19. April 2026</p>
+  <h1>Ein Claim<br>für die <em>Marke</em> — nicht<br>für ein <em>Produkt</em>.</h1>
+  <p class="cover-sub">
+    Auf Basis der Strategie-Arbeit der letzten Wochen, des Kommunikationskonzepts und deines Feedbacks vom 18.04. haben wir <strong>11 Claim-Optionen</strong> für Mega-Mietpark entwickelt. Fünf davon setzen wir als Favoriten an die Spitze. Diese Auswahl stellen wir dir heute zur Diskussion.
+  </p>
+  <div class="cover-meta">
+    <div class="cover-meta-item">Empfänger<strong>David Neugum · Mega-Mietpark</strong></div>
+    <div class="cover-meta-item">Absender<strong>Anna Schmidt · W&amp;S Agency</strong></div>
+    <div class="cover-meta-item">Datum<strong>19. April 2026</strong></div>
+    <div class="cover-meta-item">Zweck<strong>Entscheidungsvorlage</strong></div>
+  </div>
+</div>
+
+<!-- BRIEF -->
+<section class="white" id="letter">
+  <p class="section-label">01 · Persönliches Anschreiben</p>
+  <h2>Lieber David,</h2>
+
+  <div class="letter">
+    <p>auf Basis der Strategie-Arbeit der letzten Wochen, des Kommunikationskonzepts und deines Feedbacks vom 18.04. haben wir <strong>11 Claim-Optionen</strong> für Mega-Mietpark entwickelt. Diese Auswahl stellen wir dir heute zur Diskussion.</p>
+
+    <p>Wir haben innerhalb der 11 Optionen <strong>fünf Favoriten</strong> identifiziert, die aus unserer Sicht die stärkste Kombination aus Eigenständigkeit, Merkfähigkeit und Markenfähigkeit bieten.</p>
+
+    <p>Unser Top-Favorit: <strong style="color:var(--red);">„Einfach einfahren."</strong></p>
+
+    <p>Die Begründung findest du weiter unten, zusammen mit der vollständigen Auswahl. Die visuelle Umsetzung unseres Favoriten — wie Claim und Logo im Hero-Layout, auf Plakat und in weiteren Anwendungen wirken — erarbeiten wir im Rahmen der weiteren Design-Konzept-Arbeit für die Startseite.</p>
+
+    <p>Wir freuen uns auf dein Feedback — und darauf, gemeinsam den Claim auszuwählen, der die Marke in den kommenden Jahren tragen soll.</p>
+
+    <div class="signature">
+      Herzliche Grüße
+      <strong>Anna Schmidt</strong>
+      W&amp;S Agency
+    </div>
+  </div>
+</section>
+
+<!-- PRINZIP -->
+<section class="light" id="prinzip">
+  <p class="section-label">02 · Was wir bewusst gemacht haben</p>
+  <h2>Markenfähig statt produktbezogen</h2>
+
+  <p class="lead">
+    Alle 11 Claims sind so angelegt, dass sie <strong>auf Marken-Ebene</strong> funktionieren — nicht auf Produkt-Ebene. Das bedeutet: Kein Claim klammert sich an eine einzelne Nutzungsart (Garage, Büro, Werkhalle, Lagerraum). Jeder Claim funktioniert gleichermaßen für:
+  </p>
+
+  <ul style="padding-left:26px; max-width:820px; margin-bottom:20px;">
+    <li>den Handwerker, der eine Werkhalle mit Büro mietet</li>
+    <li>den Wohnmobil-Besitzer, der seinen Camper überwintern lässt</li>
+    <li>die Gründerin, die ihr Lager + Office kombiniert</li>
+    <li>den Oldtimer-Sammler, der einen sicheren Platz sucht</li>
+  </ul>
+
+  <p>
+    <strong>Warum dieses Prinzip?</strong> Mega-Mietpark ist mehr als ein einzelnes Produkt. Wenn der Claim sich auf „Garagen" oder auf „Bürovermietung" verengt, verliert die Marke Dachcharakter — und jede neue Nutzungsart müsste ihre eigene Kommunikation aufbauen. Ein markenfähiger Claim bleibt tragfähig, auch wenn das Produktportfolio wächst.
+  </p>
+
+  <p>
+    Alle Vorschläge arbeiten <strong>komplementär zum Logo</strong>: das Wort „Mietpark" steht bereits im Logo und wird darum im Claim bewusst nicht wiederholt.
+  </p>
+
+  <h3 style="margin-top:36px;">Zur Illustration</h3>
+  <div class="principle-comparison">
+    <div class="col dont">
+      <h4>❌ Produktbezogener Claim (vermieden)</h4>
+      <ul>
+        <li>„Die Garage für deine Freiheit."</li>
+        <li>„Büro und Lager aus einer Hand."</li>
+        <li>„Deine Werkhalle mit Büro."</li>
+      </ul>
+    </div>
+    <div class="col do">
+      <h4>✅ Markenfähiger Claim (unsere Auswahl)</h4>
+      <ul>
+        <li>„Einfach einfahren."</li>
+        <li>„Raum, der mehr kann."</li>
+        <li>„Raum, der mitzieht."</li>
+      </ul>
+    </div>
+  </div>
+  <p style="margin-top:14px; font-size:14px; color:var(--gray); font-style:italic;">
+    Die linke Spalte schließt Nutzungsarten aus. Die rechte bleibt offen für Garage, Büro, Werkhalle, Lager, Mezzanin — und alles, was künftig dazukommt.
+  </p>
+</section>
+
+<!-- TOP FAVORIT -->
+<section class="white" id="top">
+  <p class="section-label">03 · Unsere Empfehlung</p>
+  <h2>🥇 Top-Favorit</h2>
+
+  <div class="lockup top-favorit">
+    <div class="rank-badge gold">Top-Favorit · Nr. 1</div>
+    <div class="brand">Mega<span class="dot">·</span>Mietpark</div>
+    <div class="claim-text"><em>Einfach einfahren.</em></div>
+  </div>
+
+  <h3>Warum wir diesen Claim an erste Stelle setzen</h3>
+
+  <p class="lead">
+    „Einfach einfahren." bringt in <strong>zwei Wörtern</strong> auf den Punkt, was Mega-Mietpark grundlegend vom Self-Storage-Markt unterscheidet: Bei Mega-Mietpark fährt man direkt zur Unit — ob mit Auto, Sprinter, LKW oder Wohnmobil. <strong>Kein Aufzug, keine Korridore, kein Umladen.</strong> Dieser USP ist <strong>von keinem deutschlandweiten Wettbewerber</strong> (Shurgard, MyPlace, Lagerbox) <strong>kopierbar</strong>, weil deren Immobilien strukturell anders gebaut sind.
+  </p>
+
+  <p>Der Claim arbeitet gleichzeitig auf zwei Ebenen:</p>
+
+  <div class="principle-comparison">
+    <div class="col do" style="background:#FFF5F5; border-left-color:var(--red);">
+      <h4 style="color:var(--red-dark);">Funktional</h4>
+      <ul><li>physisch einfahren = Drive-in, LKW-befahrbar, ebenerdig</li></ul>
+    </div>
+    <div class="col do" style="background:#FFF5F5; border-left-color:var(--red);">
+      <h4 style="color:var(--red-dark);">Emotional</h4>
+      <ul><li>„sich einfahren" = einleben, einrichten, ankommen</li></ul>
+    </div>
+  </div>
+
+  <p>
+    Damit adressiert der Claim die zentralen Personas — vom Handwerker mit Sprinter über den Wohnmobil-Besitzer bis zur E-Commerce-Gründerin — <strong>gleichermaßen</strong> und bleibt dabei werbefähig für jede künftige Nutzungsart.
+  </p>
+
+  <div class="callout">
+    <strong>Hinweis:</strong> Die konkrete visuelle Umsetzung (Hero, Plakat, Signatur, Fahrzeugbeschriftung) folgt im nächsten Schritt als Teil der Design-Konzept-Arbeit für die Startseite.
+  </div>
+</section>
+
+<!-- 5 FAVORITEN -->
+<section class="light" id="favoriten">
+  <p class="section-label">04 · Empfohlene Auswahl</p>
+  <h2>Unsere 5 Favoriten</h2>
+
+  <p class="lead">Nach dem Top-Favorit „Einfach einfahren." folgen vier weitere Claims, die wir gleichwertig stark finden — jeder adressiert einen anderen strategischen Ankerpunkt.</p>
+
+  <!-- FAVORIT 2 -->
+  <div class="fav-card">
+    <div class="fav-header">
+      <span class="medal">🥈 Favorit 2</span>
+      <span class="fav-label">Multi-USP · kategoriebildend</span>
+    </div>
+    <div class="fav-body">
+      <div class="mini-lockup">
+        <div class="brand">Mega<span class="dot">·</span>Mietpark</div>
+        <div class="claim-text">Raum, der mehr kann.</div>
+      </div>
+      <p class="rationale">
+        Dieser Claim deutet mehrere Kern-USPs gleichzeitig an — <strong>6 m Deckenhöhe, integriertes Büro, LKW-Zugang, Mezzanin</strong> — ohne sie auszubuchstabieren. Die Personifikation („der Raum kann etwas") gibt der Marke eine selbstbewusste, fast partnerschaftliche Stimme. Klassische Self-Storage-Anbieter liefern genau dieses „mehr" nicht — der Claim ist also defensibel gegen Commodity-Wettbewerb.
+      </p>
+      <div class="strength"><strong>Stärke:</strong> emotional und rational gleichzeitig · multi-USP-fähig · markentauglich über alle Nutzungsarten.</div>
+    </div>
+  </div>
+
+  <!-- FAVORIT 3 -->
+  <div class="fav-card">
+    <div class="fav-header">
+      <span class="medal">🥉 Favorit 3</span>
+      <span class="fav-label">Wachstum · Flexibilität · Partnerschaft</span>
+    </div>
+    <div class="fav-body">
+      <div class="mini-lockup">
+        <div class="brand">Mega<span class="dot">·</span>Mietpark</div>
+        <div class="claim-text">Raum, der mitzieht.</div>
+      </div>
+      <p class="rationale">
+        „Mitziehen" verdichtet <strong>drei Eigenschaften</strong> in einem einzigen Verb: Flexibilität (keine Knebelverträge), Wachstum (Mezzanin-Option, Fläche skalieren) und Partnerschaft (die Marke zieht mit dem Kunden mit). Besonders stark für wachsende Handwerksbetriebe und skalierende Startups. Modern, ohne trendy zu sein, komplett ohne Anglizismen.
+      </p>
+      <div class="strength"><strong>Stärke:</strong> kategoriebildend · partnerschaftliches Markenbild · zukunftsoffen.</div>
+    </div>
+  </div>
+
+  <!-- FAVORIT 4 -->
+  <div class="fav-card">
+    <div class="fav-header">
+      <span class="medal">🏅 Favorit 4</span>
+      <span class="fav-label">Marken-Statement · Werte-Ebene</span>
+    </div>
+    <div class="fav-body">
+      <div class="mini-lockup">
+        <div class="brand">Mega<span class="dot">·</span>Mietpark</div>
+        <div class="claim-text">Fläche mit Haltung.</div>
+      </div>
+      <p class="rationale">
+        Ein <strong>Marken-Statement</strong> statt eines Nutzenversprechens. „Haltung" transportiert Qualität, Seriosität, Werte — und verweist implizit auf die <strong>Formica-Bauqualität</strong> (ArcelorMittal, Hörmann). Dieser Claim positioniert Mega-Mietpark bewusst gegen den Commodity-Charakter nationaler Self-Storage-Ketten. Er klingt nach Manufaktur, nicht nach Kette.
+      </p>
+      <div class="strength"><strong>Stärke:</strong> differenziert auf Werte-Ebene · premium-fähig · zeitlos.</div>
+    </div>
+  </div>
+
+  <!-- FAVORIT 5 -->
+  <div class="fav-card">
+    <div class="fav-header">
+      <span class="medal">🏅 Favorit 5</span>
+      <span class="fav-label">Härtester Fakt · du-Form</span>
+    </div>
+    <div class="fav-body">
+      <div class="mini-lockup">
+        <div class="brand">Mega<span class="dot">·</span>Mietpark</div>
+        <div class="claim-text">Mehr Volumen für deine Ziele.</div>
+      </div>
+      <p class="rationale">
+        Der Claim nennt den <strong>härtesten messbaren Differenziator</strong> direkt: <strong>Volumen</strong> — die 6 m Deckenhöhe ergeben 2,4× mehr Kubikmeter als Self-Storage-Standard. „Volumen" funktioniert technisch präzise und zugleich metaphorisch (Tragweite, Wirkung). „deine Ziele" ist dual lesbar als Geschäftsziel (B2B) und Lebensziel (B2C). Die du-Form schafft Nähe und passt zur Markentonalität.
+      </p>
+      <div class="strength"><strong>Stärke:</strong> hart differenzierend · faktenbasiert · persönlich angesprochen.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ALLE 11 -->
+<section class="white" id="auswahl">
+  <p class="section-label">05 · Vollständige Auswahl</p>
+  <h2>Alle 11 Claims im Überblick</h2>
+
+  <p class="lead">Zur Orientierung — unsere fünf Favoriten sind mit <span style="color:var(--red);">⭐</span> markiert.</p>
+
+  <table class="list-table">
+    <thead>
+      <tr><th style="width:50px;">#</th><th>Claim</th><th>Stärken</th><th>Schwächen</th><th>USP-Signal</th></tr>
+    </thead>
+    <tbody>
+      <tr class="fav">
+        <td><strong>1</strong></td>
+        <td class="claim-col"><span class="star">⭐</span>Einfach einfahren. <em style="color:var(--red); font-size:11px; text-transform:uppercase; letter-spacing:0.1em;">Top</em></td>
+        <td>2 Wörter, höchste Merkfähigkeit, Doppelbedeutung, nicht kopierbar</td>
+        <td>sehr funktional, weniger emotional</td>
+        <td class="usp">Drive-in · LKW-befahrbar</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td class="claim-col">Platz für deine Pläne.</td>
+        <td>emotional, warm, dual (Business- &amp; Lebenspläne)</td>
+        <td>austauschbar, könnte bei Coworking/Maklern stehen</td>
+        <td class="usp">keiner explizit · implizit Flexibilität</td>
+      </tr>
+      <tr class="fav">
+        <td><strong>3</strong></td>
+        <td class="claim-col"><span class="star">⭐</span>Fläche mit Haltung.</td>
+        <td>Marken-Statement, Qualität, seriös</td>
+        <td>abstrakt, braucht Produktvisual</td>
+        <td class="usp">Formica-Qualität · Marken-Seriosität</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td class="claim-col">Hier passt dein Vorhaben.</td>
+        <td>dual (B2B Vorhaben + B2C Projekt), lokale Verankerung</td>
+        <td>„hier" standortgebunden, keine direkte USP-Andeutung</td>
+        <td class="usp">Flexibilität · Regionalität</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td class="claim-col">Hier wird Raum nutzbar.</td>
+        <td>kategoriebildend (Nutzbarkeit statt Abstellen), dual</td>
+        <td>„hier" standortgebunden, wenig Emotion</td>
+        <td class="usp">Drive-in · Büro · Mezzanin (indirekt)</td>
+      </tr>
+      <tr class="fav">
+        <td><strong>6</strong></td>
+        <td class="claim-col"><span class="star">⭐</span>Raum, der mehr kann.</td>
+        <td>multi-USP implizit, emotional + rational, nicht austauschbar</td>
+        <td>„mehr" ist werbehaftig, B2C-Camper-Assoziation schwächer</td>
+        <td class="usp">Höhe · Drive-in · Büro · Mezzanin</td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td class="claim-col">Ein Raum. Viele Möglichkeiten.</td>
+        <td>einfach, merkfähig, Flexibilitätsversprechen</td>
+        <td>klischeeverdächtig („1 X, viele Y"), wenig eigenständig</td>
+        <td class="usp">Büro · Mezzanin-Flexibilität</td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td class="claim-col">Hier haben Pläne maximale Freiheit.</td>
+        <td>Flexibilität emotional, Volumen-Andeutung, dual</td>
+        <td>5 Wörter, Superlativ wirkt marketingesk</td>
+        <td class="usp">Flexibilität (keine Knebelverträge)</td>
+      </tr>
+      <tr class="fav">
+        <td><strong>9</strong></td>
+        <td class="claim-col"><span class="star">⭐</span>Mehr Volumen für deine Ziele.</td>
+        <td>harter Fakt (6 m Höhe), dual lesbar, persönliche du-Ansprache</td>
+        <td>„Volumen" für Nicht-Fachpublikum abstrakt</td>
+        <td class="usp">6 m Höhe · Volumen · Mezzanin</td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td class="claim-col">Sicher. Flexibel. Direkt nutzbar.</td>
+        <td>drei USPs im Dreiklang, B2B-stark, rational</td>
+        <td>wenig emotional, 3 Satzzeichen zerlegen den Claim</td>
+        <td class="usp">Sicherheit · Flexibilität · Drive-in</td>
+      </tr>
+      <tr class="fav">
+        <td><strong>11</strong></td>
+        <td class="claim-col"><span class="star">⭐</span>Raum, der mitzieht.</td>
+        <td>Wachstum + Flexibilität + Partnerschaft in einem Verb, modern ohne trendy</td>
+        <td>B2C-Camper spricht der Claim weniger an</td>
+        <td class="usp">Mezzanin · Flexibilität · Regional-Partnerschaft</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- NEXT STEPS -->
+<section class="dark" id="next">
+  <p class="section-label" style="color:var(--red);">06 · So geht's weiter</p>
+  <h2>Nächste Schritte</h2>
+
+  <ol class="steps-ol" style="max-width:820px;">
+    <li>
+      <strong>Dein Feedback</strong>
+      Welche Claims sprechen dich spontan an? Welche lehnst du ab? Deine erste Reaktion ist wertvoll.
+    </li>
+    <li>
+      <strong>Finalauswahl</strong>
+      Nach deiner Rückmeldung engen wir auf 2–3 Claims ein — und besprechen sie in einer kurzen Runde.
+    </li>
+    <li>
+      <strong>Visualisierung</strong>
+      Der gewählte Claim wird visuell ausgearbeitet (Hero, Plakat, Signatur) — als Teil der Design-Konzept-Arbeit für die Startseite.
+    </li>
+    <li>
+      <strong>Festlegung</strong>
+      Der finale Claim fließt ins Design-Revision-Briefing für Andrey ein und wird Teil der Markenkommunikation.
+    </li>
+  </ol>
+
+  <div class="callout green" style="background:rgba(46,125,50,0.12); border-left-color:#66BB6A; color:rgba(255,255,255,0.92);">
+    <strong style="color:#A5D6A7;">Hinweis zur Markentonalität:</strong> Alle Claims sind in der <strong>du-Form</strong> formuliert. Wir empfehlen diese als einheitliche Ansprache für Mega-Mietpark — sie passt sowohl zu den B2C-Zielgruppen (Wohnmobil, Umzug, Oldtimer) als auch zu den wachsenden B2B-Betrieben (Handwerk, E-Commerce), die zunehmend informell kommunizieren.
+  </div>
+
+  <p style="font-size:22px; font-family:'Roboto Condensed',sans-serif; font-weight:700; color:#fff; letter-spacing:0.03em; margin-top:40px; text-transform:uppercase;">
+    Wir freuen uns auf das Gespräch.
+  </p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-brand">W&amp;S <span>AGENCY</span></div>
+    <p style="margin-top:6px;">Claim-Präsentation · mega-mietpark.de · Version 2026-04-19</p>
+  </div>
+  <div style="text-align:right;">
+    <p>Erstellt: Anna Schmidt · W&amp;S Agency</p>
+    <p>Für: David Neugum · Mega-Mietpark / Laer Gruppe</p>
+  </div>
+</footer>
+
+</body>
+</html>
