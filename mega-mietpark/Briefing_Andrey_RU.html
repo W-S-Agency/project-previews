@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Стратегический бриф для дизайнера · Mega-Mietpark</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #C62828;
+    --red-dark: #8B1A1A;
+    --red-light: #FFEBEE;
+    --black: #1F1F1F;
+    --gray: #6B6B6B;
+    --light: #F5F5F5;
+    --white: #FFFFFF;
+    --border: #E0E0E0;
+    --radius: 3px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; font-size: 15px; color: var(--black); background: var(--white); line-height: 1.7; }
+  nav { position: sticky; top: 0; z-index: 100; background: var(--black); display: flex; align-items: center; gap: 0; padding: 0 40px; height: 52px; overflow-x: auto; }
+  nav a { color: rgba(255,255,255,0.6); text-decoration: none; font-family: 'Roboto Condensed', sans-serif; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; padding: 0 16px; height: 52px; display: flex; align-items: center; border-bottom: 2px solid transparent; white-space: nowrap; transition: all 0.2s; }
+  nav a:hover { color: #fff; border-bottom-color: var(--red); }
+  nav .logo { color: var(--white); font-size: 13px; font-weight: 700; letter-spacing: 0.1em; margin-right: 24px; padding: 0; border-bottom: none; flex-shrink: 0; }
+  nav .logo span { color: var(--red); }
+  nav .v-tag { margin-left: auto; font-family: 'Roboto Condensed', sans-serif; font-size: 10px; letter-spacing: 0.15em; color: var(--red); padding: 3px 10px; border: 1px solid var(--red); border-radius: 3px; flex-shrink: 0; }
+
+  .cover { background: var(--black); padding: 80px 60px 72px; position: relative; overflow: hidden; }
+  .cover::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 4px; background: var(--red); }
+  .cover-tag { font-family: 'Roboto Condensed', sans-serif; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); margin-bottom: 20px; }
+  .cover h1 { font-family: 'Roboto Condensed', sans-serif; font-size: clamp(32px, 4.5vw, 54px); font-weight: 700; text-transform: uppercase; color: var(--white); line-height: 1.1; letter-spacing: 0.02em; max-width: 900px; margin-bottom: 28px; }
+  .cover h1 em { color: var(--red); font-style: normal; }
+  .cover-sub { color: rgba(255,255,255,0.82); font-size: 17px; line-height: 1.6; max-width: 820px; margin-bottom: 28px; }
+  .cover-sub strong { color: var(--white); }
+  .cover-meta { display: flex; gap: 40px; flex-wrap: wrap; }
+  .cover-meta-item { color: rgba(255,255,255,0.5); font-size: 13px; }
+  .cover-meta-item strong { color: rgba(255,255,255,0.9); display: block; font-size: 14px; margin-top: 2px; }
+
+  section { padding: 64px 60px; border-bottom: 1px solid var(--border); }
+  section.light { background: var(--light); }
+  section.white { background: var(--white); }
+
+  .section-label { font-family: 'Roboto Condensed', sans-serif; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); margin-bottom: 12px; }
+  h2 { font-family: 'Roboto Condensed', sans-serif; font-size: clamp(24px, 3vw, 34px); font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; line-height: 1.15; margin-bottom: 28px; color: var(--black); }
+  h3 { font-family: 'Roboto Condensed', sans-serif; font-size: 18px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin: 28px 0 12px; color: var(--black); }
+  h4 { font-family: 'Roboto Condensed', sans-serif; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; }
+
+  p { margin-bottom: 14px; max-width: 860px; }
+  strong { color: var(--black); }
+  em { color: var(--red); font-style: italic; }
+
+  ul { padding-left: 22px; margin-bottom: 14px; max-width: 860px; }
+  ul li { margin-bottom: 6px; }
+  ol { padding-left: 22px; margin-bottom: 14px; max-width: 860px; }
+  ol li { margin-bottom: 8px; }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  @media (max-width: 900px) { .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; } section { padding: 40px 22px; } .cover { padding: 48px 22px; } nav { padding: 0 14px; } }
+
+  .callout { background: #FFF8E1; border-left: 4px solid #E65100; padding: 18px 22px; border-radius: 0 var(--radius) var(--radius) 0; margin: 20px 0; font-size: 15px; line-height: 1.7; }
+  .callout strong { color: #E65100; }
+  .callout.red { background: #FFEBEE; border-left-color: var(--red); }
+  .callout.red strong { color: var(--red); }
+  .callout.green { background: #E8F5E9; border-left-color: #2E7D32; }
+  .callout.green strong { color: #2E7D32; }
+  .callout.dark { background: var(--black); color: rgba(255,255,255,0.92); border-left-color: var(--red); }
+  .callout.dark strong { color: var(--white); }
+
+  .persona-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-bottom: 20px; }
+  .persona-header { background: linear-gradient(90deg, var(--black) 0%, #2c2c2c 100%); color: #fff; padding: 18px 26px; display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+  .persona-header .ptype { font-family: 'Roboto Condensed',sans-serif; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--red); background: rgba(198,40,40,0.12); padding: 3px 10px; border-radius: 3px; }
+  .persona-header h3 { color: #fff; font-size: 20px; margin: 0; letter-spacing: 0.03em; }
+  .persona-header .page { margin-left: auto; color: rgba(255,255,255,0.55); font-size: 12px; }
+  .persona-body { padding: 24px 26px; }
+  .persona-section { margin-bottom: 18px; }
+  .persona-section:last-child { margin-bottom: 0; }
+  .persona-section .label { font-family: 'Roboto Condensed',sans-serif; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--red); margin-bottom: 6px; }
+  .persona-section p { margin-bottom: 6px; }
+  .persona-section .quote { font-style: italic; color: var(--black); padding: 10px 16px; background: var(--light); border-left: 3px solid var(--red); border-radius: 0 var(--radius) var(--radius) 0; font-size: 14px; margin-top: 6px; }
+
+  .principle-card { background: var(--white); border-left: 4px solid var(--red); border-radius: var(--radius); padding: 22px 26px; }
+  .principle-card .num { font-family: 'Roboto Condensed',sans-serif; font-size: 38px; font-weight: 700; color: var(--red); line-height: 1; margin-bottom: 4px; }
+  .principle-card h4 { margin-bottom: 8px; }
+  .principle-card p { font-size: 14px; color: var(--black); margin: 0; }
+
+  .do-dont { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 20px; }
+  .do-dont .block { padding: 22px 26px; border-radius: var(--radius); }
+  .do-dont .do { background: #E8F5E9; border-left: 4px solid #2E7D32; }
+  .do-dont .dont { background: #FFEBEE; border-left: 4px solid var(--red); }
+  .do-dont h4 { margin-bottom: 12px; }
+  .do-dont .do h4 { color: #1B5E20; }
+  .do-dont .dont h4 { color: var(--red-dark); }
+  .do-dont ul { margin: 0; padding-left: 20px; }
+  .do-dont li { font-size: 14px; margin-bottom: 6px; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 14px 0; background: var(--white); }
+  th { background: var(--black); color: white; padding: 12px 16px; text-align: left; font-family: 'Roboto Condensed', sans-serif; letter-spacing: 0.06em; text-transform: uppercase; font-size: 12px; }
+  td { padding: 12px 16px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  tr:hover td { background: var(--light); }
+
+  .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 20px 0; }
+  .stat-box { background: var(--black); color: #fff; padding: 22px 20px; border-radius: var(--radius); text-align: center; }
+  .stat-box .num { font-family: 'Roboto Condensed',sans-serif; font-size: 38px; font-weight: 700; color: var(--red); line-height: 1; }
+  .stat-box .lab { color: rgba(255,255,255,0.7); font-size: 12px; margin-top: 6px; text-transform: uppercase; letter-spacing: 0.06em; }
+
+  .claim-block { background: linear-gradient(135deg, var(--black) 0%, #2c2c2c 100%); color: #fff; padding: 52px 40px; border-radius: var(--radius); text-align: center; margin: 28px 0; }
+  .claim-block .quote-mark { color: var(--red); font-size: 48px; line-height: 0.5; font-family: 'Roboto Condensed',sans-serif; }
+  .claim-block .claim-text { font-family: 'Roboto Condensed',sans-serif; font-size: 44px; font-weight: 700; color: #fff; letter-spacing: 0.02em; margin: 12px 0; text-transform: none; }
+  .claim-block .claim-text em { color: var(--red); font-style: normal; }
+  .claim-block .caption { color: rgba(255,255,255,0.6); font-size: 14px; margin-top: 6px; }
+
+  .cta-row { display: flex; gap: 16px; flex-wrap: wrap; margin: 18px 0; align-items: center; }
+  .cta-row .tag { display: inline-block; background: var(--red); color: #fff; font-family: 'Roboto Condensed',sans-serif; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; padding: 6px 12px; border-radius: var(--radius); }
+
+  .ref-list { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 26px; }
+  .ref-list li { padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 14px; list-style: none; }
+  .ref-list li:last-child { border-bottom: none; }
+  .ref-list ul { padding: 0; }
+
+  footer { background: var(--black); padding: 32px 60px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+  footer p { color: rgba(255,255,255,0.5); font-size: 12px; }
+  .footer-brand { font-family: 'Roboto Condensed', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.1em; color: rgba(255,255,255,0.7); text-transform: uppercase; }
+  .footer-brand span { color: var(--red); }
+
+  .highlight { background: #FFF8E1; padding: 1px 5px; border-radius: 2px; }
+
+  .tl-box { display: flex; gap: 14px; align-items: flex-start; padding: 14px 18px; background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); margin-bottom: 10px; }
+  .tl-box .tl-num { width: 28px; height: 28px; background: var(--red); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0; font-size: 13px; }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="logo">MEGA <span>MIETPARK</span></span>
+  <a href="#intro">Введение</a>
+  <a href="#kontext">О клиенте</a>
+  <a href="#position">Позиционирование</a>
+  <a href="#personas">Персоны</a>
+  <a href="#kanaele">Как работаем</a>
+  <a href="#tone">Тональность</a>
+  <a href="#design-prinzipien">Принципы дизайна</a>
+  <a href="#ziel">Куда идём</a>
+  <span class="v-tag">RU · BRIEFING</span>
+</nav>
+
+<div class="cover">
+  <p class="cover-tag">Стратегический бриф для дизайнера · 2026-04-20</p>
+  <h1>Дизайн-кит Mega-Mietpark:<br><em>смысл</em>, <em>персоны</em>, <em>тональность</em></h1>
+  <p class="cover-sub">
+    Этот документ — <strong>спутник ТЗ</strong>. Если ТЗ v2 отвечает на вопрос «что делать», то здесь — «почему так и для кого». Всё, что нужно понять, чтобы принимать правильные дизайн-решения самостоятельно, без постоянных уточнений у W&amp;S. Читать перед тем, как открыть Figma.
+  </p>
+  <div class="cover-meta">
+    <div class="cover-meta-item">Клиент<strong>Mega-Mietpark / Laer Gruppe</strong></div>
+    <div class="cover-meta-item">Агентство<strong>W&amp;S Agency (2penguins)</strong></div>
+    <div class="cover-meta-item">Дизайнер<strong>Андрей Ковыркин</strong></div>
+    <div class="cover-meta-item">Куратор<strong>Анна Шмидт</strong></div>
+    <div class="cover-meta-item">Bitrix24 Task<strong>#3839 · Design-Kit Startseite</strong></div>
+    <div class="cover-meta-item">Связанное ТЗ<strong>TZ v2 DE+RU (соседний HTML)</strong></div>
+  </div>
+</div>
+
+<section class="white" id="intro">
+  <p class="section-label">01 · Введение</p>
+  <h2>Зачем этот документ существует</h2>
+
+  <p>
+    У нас есть ТЗ v2 с 12 секциями главной страницы. Оно описывает <strong>что</strong> нужно нарисовать: какой hero, какие карточки, какие блоки. Этого мало, чтобы сделать сильный дизайн. Сильный дизайн приходит тогда, когда дизайнер понимает <strong>для кого</strong> он рисует, <strong>что важно</strong> и <strong>что категорически нельзя</strong>.
+  </p>
+
+  <p>
+    Этот бриф собирает весь стратегический контекст проекта в одном месте на русском языке. После его прочтения ты должен уверенно отвечать на вопросы:
+  </p>
+
+  <ul>
+    <li>Кто реальные клиенты, для которых мы делаем сайт? Как они думают, чего боятся, что ищут?</li>
+    <li>Что отличает Mega-Mietpark от всех конкурентов? В чём уникальность?</li>
+    <li>Почему клиент сказал «слишком мрачно»? Что именно означает «светло и с людьми» стратегически?</li>
+    <li>Какой тон голоса у бренда? «Вы» или «ты»? Эмоция или факты? Почему?</li>
+    <li>Куда мы ведём проект за 12 месяцев?</li>
+  </ul>
+
+  <div class="callout">
+    <strong>Правило работы:</strong> если при работе над макетом возникает вопрос в духе «а так можно?» или «а какой тон здесь?» — ответ в этом документе или в связанных вики-страницах. Если ответа нет — пиши Анне. Не додумывай.
+  </div>
+</section>
+
+<section class="light" id="kontext">
+  <p class="section-label">02 · О клиенте</p>
+  <h2>Кто такой Mega-Mietpark</h2>
+
+  <p>
+    Это не Self-Storage в привычном смысле и не стандартные промышленные склады. Это <strong>новая категория</strong> коммерческой недвижимости, которую клиент сам обозначает как <em>Mietpark</em> — «арендный парк». Между маленькой складской кабиной (до 20 м² у MyPlace, Shurgard, Lagerbox) и большими промышленными ангарами (от 300 м²) существует пустая ниша: <strong>26–100+ м² с высотой до 6 метров, заездом для грузовика, встроенным офисом и гибкой арендой</strong>. Эту нишу Mega и занимает.
+  </p>
+
+  <h3>Структура: три уровня бренда</h3>
+  <table>
+    <thead><tr><th>Уровень</th><th>Кто это</th><th>Роль для клиента</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Mega-Mietpark</strong></td><td>Фронтенд-бренд, лицо для арендатора</td><td>Видимый бренд: вывески, сайт, реклама, договор в повседневной коммуникации</td></tr>
+      <tr><td><strong>Formica GmbH</strong></td><td>Застройщик, юр. лицо в договоре</td><td>Доверие: 210+ проектов, 27 000+ объектов в портфолио, строят всё сами</td></tr>
+      <tr><td><strong>Laer Gruppe</strong></td><td>Материнский концерн с 2006 года</td><td>Фундамент: доказательство долгой истории, собственная недвижимость, не франшиза</td></tr>
+    </tbody>
+  </table>
+
+  <p>
+    <strong>Важно для дизайна:</strong> клиент видит в первую очередь Mega-Mietpark. Formica и Laer — это <span class="highlight">якоря доверия</span>, которые появляются в блоках «о нас», «группа за продуктом», иногда в футере. Никаких «логотип Mega + логотип Formica + логотип Laer» рядом в одной навигации — это путает.
+  </p>
+
+  <div class="stat-grid">
+    <div class="stat-box"><div class="num">16</div><div class="lab">Локаций в Германии</div></div>
+    <div class="stat-box"><div class="num">2.500+</div><div class="lab">Активных арендаторов</div></div>
+    <div class="stat-box"><div class="num">2006</div><div class="lab">Основана Laer Gruppe</div></div>
+    <div class="stat-box"><div class="num">24/7</div><div class="lab">Доступ + видеонаблюдение</div></div>
+  </div>
+
+  <h3>Продукт — четыре типа использования</h3>
+  <ul>
+    <li><strong>Garage</strong> — гараж (в т.ч. XXL для домов на колёсах, классики, мотоциклов)</li>
+    <li><strong>Lager / Self-Storage</strong> — склад (от 1 м² для частника до больших площадей)</li>
+    <li><strong>Hybrides Büro</strong> — офис + склад/мастерская в одной единице</li>
+    <li><strong>Werkhalle</strong> — мастерская/цех для ремесленников, от 52 м², с заездом грузовика</li>
+  </ul>
+
+  <div class="callout red">
+    <strong>Особый случай — Брауншвайг.</strong> В этой локации по юридическим причинам сдаются <strong>только гаражи</strong>. Слово «Lager» / «склад» категорически не должно появляться в рекламе, ключевых словах, текстах страницы <code>/braunschweig/</code> — только «Garage». Для этой локации визуал строится вокруг персоны Томаса (автовладелец).
+  </div>
+</section>
+
+<section class="white" id="position">
+  <p class="section-label">03 · Позиционирование</p>
+  <h2>Новая категория «Mietpark»</h2>
+
+  <p>
+    Это центральная стратегическая идея. На рынке есть две большие зоны, и между ними — пустота. Mega занимает эту пустоту и называет её по-своему.
+  </p>
+
+  <div class="callout dark">
+    <strong style="font-size:18px;">Формулировка позиционирования:</strong><br><br>
+    «Больше, чем Self-Storage. Гибче, чем коммерческий ангар. Это Mega-Mietpark — <em>твоя</em> мастерская с офисом, твой гараж для дома на колёсах, твой склад в шаговой доступности».
+  </div>
+
+  <h3>USP-иерархия (в порядке силы)</h3>
+  <ol>
+    <li><strong>6 м высоты потолка</strong> — в 2,4× больше объёма, чем у конкурентов. Это <em>измеримое</em> преимущество, которое можно вставить в любой текст и в любой визуал.</li>
+    <li><strong>Заезд для грузовика / drive-in</strong> — убивает главную боль Self-Storage: «подниматься с коробками на лифте».</li>
+    <li><strong>Интегрированный офис</strong> — можно зарегистрировать адрес, принять клиента, работать из того же места, где стоит товар.</li>
+    <li><strong>Мезонин</strong> — второй уровень внутри юнита для роста без переезда.</li>
+    <li><strong>Качество Formica</strong> — стены ArcelorMittal, ворота Hörmann. Премиум-материалы.</li>
+    <li><strong>Региональный менеджер на месте</strong> — живой человек, не анонимная сеть.</li>
+  </ol>
+
+  <h3>От чего мы категорически отстраиваемся</h3>
+  <div class="do-dont">
+    <div class="block do">
+      <h4>✅ Как мы хотим восприниматься</h4>
+      <ul>
+        <li>Прозрачные цены (показываем всегда)</li>
+        <li>Реальные люди с именами и локациями</li>
+        <li>Надёжная немецкая собственная недвижимость</li>
+        <li>Гибкость сроков: «хочешь — месяц, хочешь — год»</li>
+        <li>Персональное обслуживание</li>
+      </ul>
+    </div>
+    <div class="block dont">
+      <h4>❌ С чем нас путать нельзя</h4>
+      <ul>
+        <li>«1 € в первый месяц» — Shurgard-ловушки с повышением цены</li>
+        <li>Анонимные сети с call-центрами</li>
+        <li>Холодные стерильные склады без людей</li>
+        <li>Премиум-гаражи без онлайн-брони (GaragenMAX)</li>
+        <li>«Всё для всех» без сегментации</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="light" id="personas">
+  <p class="section-label">04 · Целевые аудитории</p>
+  <h2>Четыре персоны — это не «примеры», это правило</h2>
+
+  <p>
+    Мы не говорим «для всех». Вся коммуникация бренда построена вокруг <strong>четырёх конкретных персон</strong>. Каждая — это не маркетинговая абстракция, а живой человек с именем, возрастом, страхами и триггером, который приводит его на сайт. Дизайнер должен знать их наизусть, потому что каждый визуальный выбор — это выбор в пользу одной из них.
+  </p>
+
+  <div class="callout">
+    <strong>Принцип:</strong> Stacked Cards на главной (секция S3) структурированы <strong>по типу продукта</strong>, но на фото и в подписи к каждой карточке «живёт» конкретная персона. Одна карточка = одна персона в действии.
+  </div>
+
+  <h3>Разделение B2C / B2B</h3>
+  <table>
+    <thead><tr><th>Сегмент</th><th>Доля</th><th>Радиус</th><th>Основная мотивация</th></tr></thead>
+    <tbody>
+      <tr><td><strong>B2C (частные)</strong></td><td>70–80%</td><td>15–20 мин езды</td><td>Эмоциональная безопасность, спокойствие</td></tr>
+      <tr><td><strong>B2B (бизнес)</strong></td><td>20–30%</td><td>30–40 км</td><td>Эффективность, гибкость, экономика</td></tr>
+    </tbody>
+  </table>
+
+  <p><em>57% населения не знает слова «Selfstorage» →</em> никакого жаргона в текстах. Говорим как нормальные люди.</p>
+
+  <!-- Persona 1 -->
+  <div class="persona-card">
+    <div class="persona-header">
+      <span class="ptype">B2C · Гараж</span>
+      <h3>Томас, 52 · «Заботливый энтузиаст»</h3>
+      <span class="page">Дом на колёсах / олдтаймер / мотоцикл</span>
+    </div>
+    <div class="persona-body">
+      <div class="persona-section">
+        <div class="label">Ситуация</div>
+        <p>Два года назад купил дом на колёсах за 75 000 €. Стоит на неохраняемой щебёночной площадке на окраине города. Проектный менеджер, женат, двое взрослых детей.</p>
+      </div>
+      <div class="persona-section">
+        <div class="label">Психология</div>
+        <p>Гордится своей машиной, но одновременно она источник стресса. Плохо спит во время бури. Боится вандализма и куниц (реальная проблема: грызут проводку). Для него дом на колёсах — не средство передвижения, а <strong>эмоциональные инвестиции в свободу</strong>.</p>
+      </div>
+      <div class="persona-section">
+        <div class="label">Скрытый триггер</div>
+        <p>Он ищет не <em>место</em>, а <strong>душевное спокойствие</strong> (Seelenfrieden). Забор — это не главное; главное — чувство, что машина в безопасности. Ещё одна скрытая проблема: обслуживание батареи. Парковка без розетки для него бесполезна, потому что зимой бортовая электроника садится.</p>
+      </div>
+      <div class="persona-section">
+        <div class="label">Ключевое сообщение</div>
+        <div class="quote">«Самая надёжная гавань для твоей свободы. Сухо, под охраной, в любой момент готов к выезду».</div>
+      </div>
+      <div class="persona-section">
+        <div class="label">Что это значит для визуала</div>
+        <p>Split-screen сравнение: дом на колёсах под дождём на щебёнке против того же в сухом освещённом боксе. Люди старше 40. Натуральный свет. Не холодный индустриал, а «тёплое решение».</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Persona 2 -->
+  <div class="persona-card">
+    <div class="persona-header">
+      <span class="ptype">B2C · Склад</span>
+      <h3>Сара, 34 · «Перегруженная переезжающая»</h3>
+      <span class="page">Переезд / сезонное хранение</span>
+    </div>
+    <div class="persona-body">
+      <div class="persona-section">
+        <div class="label">Ситуация</div>
+        <p>Маркетинг-менеджер, одинокая. Съезжается с парнем. Из двух квартир получается одна. Есть мебель и памятные вещи, с которыми она пока не готова расстаться.</p>
+      </div>
+      <div class="persona-section">
+        <div class="label">Психология</div>
+        <p>В стрессе переезда. Сто дел в голове одновременно (пересылка почты, интернет, покраска). Тема «арендовать склад» — раздражающая задача, которую нужно закрыть быстро и без боли. Нет пространственного воображения: «а сколько — это 10 квадратов?»</p>
+      </div>
+      <div class="persona-section">
+        <div class="label">Скрытый триггер</div>
+        <p>Боится «ловушки Self-Storage» — скидки в первый месяц (1 € за месяц), потом драть три шкуры. Не доверяет индустрии. Кроме того — страх вечером одной ехать в тёмный промышленный район за коробками.</p>
+      </div>
+      <div class="persona-section">
+        <div class="label">Ключевое сообщение</div>
+        <div class="quote">«Место для твоей новой жизни. И старой тоже. Честно, прозрачно и недалеко».</div>
+      </div>
+      <div class="persona-section">
+        <div class="label">Что это значит для визуала</div>
+        <p>Светло, ярко освещённые коридоры (убивает страх темноты). Женщина 30+ с коробкой. Сразу видна цена (никаких «запросите расчёт»). Визуальный калькулятор размера. Мобильный сценарий: всё через телефон.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Persona 3 -->
+  <div class="persona-card">
+    <div class="persona-header">
+      <span class="ptype">B2B · Мастерская / Werkhalle</span>
+      <h3>Маркус, 45 · «Растущий ремесленник»</h3>
+      <span class="page">Handwerk, сервис</span>
+    </div>
+    <div class="persona-body">
+      <div class="persona-section">
+        <div class="label">Ситуация</div>
+        <p>Владелец сантехнической / отопительной компании, 5 сотрудников. Заказы идут, старый гараж под материалы трещит по швам. Утром сотрудники теряют время, чтобы загрузить машины — всё в хаосе.</p>
+      </div>
+      <div class="persona-section">
+        <div class="label">Психология</div>
+        <p>Прагматик. Время = деньги. Не терпит неэффективности. Ищет не «недвижимость», а <strong>логистический узел</strong>, который ускоряет процессы. Готов платить, если это экономит время и защищает дорогой инструмент.</p>
+      </div>
+      <div class="persona-section">
+        <div class="label">Скрытый триггер</div>
+        <p>Думает по-старому: «нужно арендовать ангар на 5 лет». Боится коммерческого договора с длинным сроком — не знает, как пойдёт бизнес через 2 года. Ещё важный момент: логистика подъезда. Может ли его Sprinter подъехать прямо к воротам?</p>
+      </div>
+      <div class="persona-section">
+        <div class="label">Ключевое сообщение</div>
+        <div class="quote">«Твой новый склад материалов: заезд прямо внутрь, максимальная безопасность, гибкость как у твоего ремесла».</div>
+      </div>
+      <div class="persona-section">
+        <div class="label">Что это значит для визуала</div>
+        <p>Sprinter у ворот, ремесленник с инструментом, реальная мастерская (не стерильная студия). Конкретные технические данные видны сразу: ширина ворот, нагрузка на пол, 400V. Мужчина 40–50, рабочая одежда.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Persona 4 -->
+  <div class="persona-card">
+    <div class="persona-header">
+      <span class="ptype">B2B · Гибридный офис</span>
+      <h3>Елена, 29 · «Масштабирующая основательница»</h3>
+      <span class="page">E-commerce, стартап</span>
+    </div>
+    <div class="persona-body">
+      <div class="persona-section">
+        <div class="label">Ситуация</div>
+        <p>Основательница e-commerce стартапа (экологичная косметика). Рост быстрый: гостиная и арендованный подвал уже не справляются. Нужно место, где можно хранить товар, собирать посылки и параллельно работать за ноутбуком.</p>
+      </div>
+      <div class="persona-section">
+        <div class="label">Психология</div>
+        <p>Диджитал-френдли, амбициозная, следит за бюджетом. Хочет выглядеть профессионально, даже если бизнес ещё маленький. Ищет <strong>базу для операций</strong>, которая растёт вместе с ней. Боится финансово переоценить себя.</p>
+      </div>
+      <div class="persona-section">
+        <div class="label">Скрытый триггер</div>
+        <p>Ищет отдельно «офис снять» или «склад снять» — <strong>не знает, что существуют гибридные решения</strong>. Недооценивает инфраструктурные требования (интернет, отопление, туалет), когда смотрит на дешёвые гаражи.</p>
+      </div>
+      <div class="persona-section">
+        <div class="label">Ключевое сообщение</div>
+        <div class="quote">«Штаб-квартира твоего бизнеса. Склад, офис и отправка посылок — в одном месте».</div>
+      </div>
+      <div class="persona-section">
+        <div class="label">Что это значит для визуала</div>
+        <p>Мезонин: внизу упаковка посылок, наверху работа за ноутбуком. Молодая женщина 25–35. Ноутбук, посылочные коробки, современная эстетика. Расчётный пример: «офис+склад вместе vs. отдельно».</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout green">
+    <strong>Главный вывод для дизайнера:</strong> 4 персоны ≠ «4 варианта макета». Это 4 фильтра для каждого визуального решения. При выборе стокового фото: для какой персоны? При формулировке кнопки: какая персона читает? При подборе цвета фона: кто на него смотрит?
+  </div>
+</section>
+
+<section class="white" id="kanaele">
+  <p class="section-label">05 · Как работаем с аудиториями</p>
+  <h2>Стратегия коммуникации</h2>
+
+  <h3>Главный принцип — строгое разделение B2C и B2B</h3>
+  <p>
+    У всех конкурентов (MyPlace, Shurgard, Lagerbox, Storage24) — одна и та же ошибка: частный клиент и бизнес читают одни и те же тексты. Это приводит к размытой коммуникации. <strong>Мы разделяем строго.</strong>
+  </p>
+
+  <table>
+    <thead><tr><th>Канал</th><th>Сегмент</th><th>Роль</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Meta</strong> (Instagram, Facebook)</td><td>Только B2C</td><td>Эмоциональные триггеры, сплит-скрины, люди в action</td></tr>
+      <tr><td><strong>LinkedIn</strong></td><td>Только B2B</td><td>Карусели, рациональные аргументы, конкретные цифры</td></tr>
+      <tr><td><strong>Google Ads + SEO</strong></td><td>Оба</td><td>Фундамент. Но кампании разделены по персонам, не по локациям</td></tr>
+      <tr><td><strong>Ретаргетинг</strong></td><td>Оба</td><td>Кросс-канал: кто заходил на сайт — получает персона-специфичную рекламу</td></tr>
+      <tr><td><strong>Оффлайн</strong></td><td>Оба</td><td><em>В разработке (Anna, апрель 2026)</em> — печать, OOH, мероприятия, кооперации</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Географическая стратегия</h3>
+  <table>
+    <thead><tr><th>Регион</th><th>Конкуренция</th><th>Подход</th></tr></thead>
+    <tbody>
+      <tr><td>Кёльн / Дюссельдорф</td><td>Высокая (Shurgard, MyPlace)</td><td>Дифференциация через USP «XXL до 100 м²», платный трафик</td></tr>
+      <tr><td>Дормаген / Мюльхайм / Оберхаузен</td><td>Низкая</td><td>First-mover: занимаем Local SEO до прихода сетей</td></tr>
+      <tr><td>Халле (Заале), Хальберштадт</td><td>Почти нет</td><td>Пионерский рынок + PR-рычаг</td></tr>
+      <tr><td>Брауншвайг</td><td>Есть Selfstorage</td><td>Только гаражи (без слова «Lager»). Только персона Томас.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Бюджетная логика (целиком ~130 000 €/год)</h3>
+  <ul>
+    <li><strong>Bottom Funnel (конверсия) — 60%:</strong> Google Search, Local SEO</li>
+    <li><strong>Middle Funnel (раздумье) — 25%:</strong> Ретаргетинг (Meta, Google Display, LinkedIn)</li>
+    <li><strong>Top Funnel (осведомлённость) — 15%:</strong> Meta (B2C), LinkedIn (B2B)</li>
+  </ul>
+  <p>Плюс сценарная логика по статусу локации: новый объект — больше бюджета, заполненный объект — меньше.</p>
+</section>
+
+<section class="light" id="tone">
+  <p class="section-label">06 · Тональность</p>
+  <h2>Как бренд говорит</h2>
+
+  <div class="callout red">
+    <strong>Решение от 19.04.2026 [AS]:</strong> Mega-Mietpark общается везде на <strong>«ты»</strong> — на сайте, в оффлайне, в email, в соцсетях. Никаких «Sie» (вы). Это действует для всех четырёх персон, включая B2B. В немецком «ты» в ремеслах — это теплота, а не панибратство.
+  </div>
+
+  <h3>Три режима голоса</h3>
+  <table>
+    <thead><tr><th>Ситуация</th><th>Тон</th><th>Пример</th></tr></thead>
+    <tbody>
+      <tr><td>Hero, клейм, ключевые сообщения</td><td>Короткий, уверенный, прямой</td><td>«Einfach einfahren.» · «Mehr Raum — direkt in deiner Nähe.»</td></tr>
+      <tr><td>Персона B2C в карточке</td><td>Тёплый, эмоциональный, доверительный</td><td>«Самая надёжная гавань для твоей свободы.»</td></tr>
+      <tr><td>Персона B2B в карточке</td><td>Прямой, прагматичный, факты</td><td>«Твой склад материалов: заезд внутрь, безопасность, гибкость.»</td></tr>
+      <tr><td>FAQ, процесс, подписи</td><td>Функциональный, краткий, без маркетинговой шелухи</td><td>«В течение 1–3 рабочих дней после договора.»</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Клейм (в разработке, 5 финалистов у клиента)</h3>
+  <div class="claim-block">
+    <div class="quote-mark">«</div>
+    <div class="claim-text"><em>Einfach einfahren.</em></div>
+    <div class="caption">Топ-фаворит W&amp;S · Статус: в ревью у Давида</div>
+  </div>
+  <p>Остальные четыре в шорт-листе: «Raum, der mehr kann.» · «Raum, der mitzieht.» · «Fläche mit Haltung.» · «Mehr Volumen für deine Ziele.» Финальный выбор ожидается от клиента.</p>
+
+  <div class="callout">
+    <strong>Правило для клейма в макете:</strong> слова «Mega-Mietpark» уже есть в логотипе. Клейм — это <strong>не повторение</strong>, а добавление смысла. Никогда не писать «Mietpark für alle» или «Willkommen im Mietpark». Клейм даёт позицию/эмоцию/отличие, которую логотип не несёт.
+  </div>
+
+  <h3>Языковые ограничения</h3>
+  <ul>
+    <li>Никаких англицизмов, если можно без них (Self-Storage — только если нужно объяснить категорию)</li>
+    <li>Никаких игр со словом «Mega» как с прилагательным размера («Mega-Gross», «Mega-Angebot») — банально и предсказуемо</li>
+    <li>Никогда не обещаем цены ниже конкурентов (у нас не ценовой бой — мы на качестве)</li>
+    <li>Слова «склад» / «Lager» нигде в материалах для Брауншвайга</li>
+  </ul>
+</section>
+
+<section class="white" id="design-prinzipien">
+  <p class="section-label">07 · Принципы дизайна</p>
+  <h2>Шесть обязательных принципов</h2>
+
+  <p>Эти принципы — прямое следствие стратегии. Они не обсуждаются, они — рамки.</p>
+
+  <div class="grid-3" style="margin-top:24px;">
+    <div class="principle-card"><div class="num">01</div><h4>Светлое в приоритете</h4><p>Белый доминирует. Чёрный — только в футере и, при необходимости, в полосе хедера. Никакого чередования тёмных и светлых секций как в v1. Фидбэк 18.04: «слишком мрачно».</p></div>
+    <div class="principle-card"><div class="num">02</div><h4>Люди обязательны</h4><p>В каждой главной секции — реальные люди в действии (дом на колёсах, инструмент, коробка, ноутбук). Никакой стерильной архитектурной съёмки без людей. Это — ядро ответа на фидбэк клиента.</p></div>
+    <div class="principle-card"><div class="num">03</div><h4>«Ты»-форма везде</h4><p>Все заголовки, кнопки, тексты — в неформальной «ты»-форме. Единая тональность бренда. Ни одного «Sie» на всём сайте.</p></div>
+    <div class="principle-card"><div class="num">04</div><h4>Максимум 2 главных CTA</h4><p>Hero-поиск + CTA в Stacked Cards. Secondary-CTA — тихо и только там, где нужно (тур, «о нас», статьи). Третий главный CTA перед футером = навязчивость.</p></div>
+    <div class="principle-card"><div class="num">05</div><h4>Mobile first</h4><p>Сначала проектируем 390 px, потом 1440 px. Кликабельные зоны ≥ 48 px. Clarity-данные показывают: большинство трафика с мобилки, и именно там сейчас проблемы.</p></div>
+    <div class="principle-card"><div class="num">06</div><h4>Доверие без темноты</h4><p>Доверие приходит через лица региональных менеджеров (S6), компетенцию группы Laer+Formica (S7), цифры (16 / 2500+ / с 2006) — а не через тёмные блоки.</p></div>
+  </div>
+
+  <h3>Два референса — разные роли</h3>
+  <div class="grid-2">
+    <div class="callout" style="margin-top:0;">
+      <strong>NordSpace.eu (Польша)</strong> — <em>контентный референс</em>: светлое пространство, люди, 3D-туры, тёплая тональность, Outfit как шрифт (для настроения, но для нас шрифт не меняется). Берём дух, а не внешность.
+    </div>
+    <div class="callout" style="margin-top:0;">
+      <strong>DK (dk.it-reality.de)</strong> — <em>структурный референс</em>: механика hero-поиска по PLZ, техника Stacked Cards. Берём архитектурные решения, а не визуальный стиль.
+    </div>
+  </div>
+
+  <div class="callout red">
+    <strong>Правило границ:</strong> не копировать ни один из референсов 1:1. <em>Контент → от NordSpace. Структура → от DK. Бренд и детали → свои, Mega.</em> LAER-Red (#C62828) — только акцент, никаких больших красных блоков. Industrial Black (#1F1F1F) — только футер.
+  </div>
+</section>
+
+<section class="light" id="offen">
+  <p class="section-label">08 · Что важно именно сейчас</p>
+  <h2>На что обратить внимание при работе</h2>
+
+  <div class="tl-box"><div class="tl-num">1</div><div><strong>Фидбэк клиента 18.04</strong> — дизайн был «мрачным», не было людей, шрифт в кнопках прижат. Всё это решается в ревизии 2: светло, люди в каждой секции, letter-spacing +40…+80 в кнопках.</div></div>
+  <div class="tl-box"><div class="tl-num">2</div><div><strong>Stacked Cards (секция S3) — это ядро новизны.</strong> Не просто 4 карточки. Механика скролла как у DK. Слева фото человека, справа одно ключевое сообщение + CTA «Mehr erfahren». Каждая карточка = одна персона в действии.</div></div>
+  <div class="tl-box"><div class="tl-num">3</div><div><strong>Трастовый блок (S6) — радикально меняется.</strong> Вместо тёмного блока со статистикой теперь добавляются <em>фотографии региональных менеджеров</em> (имя + локация). Это прямой ответ на «где люди?»</div></div>
+  <div class="tl-box"><div class="tl-num">4</div><div><strong>Три новые секции</strong> — S4 (3D-тур), S7 (Группа за продуктом), S10 (статьи/советы). Каждая имеет своё обоснование: NordSpace показал, чего нам не хватает, и мы закрываем эти пробелы.</div></div>
+  <div class="tl-box"><div class="tl-num">5</div><div><strong>Скругления 2–4 px.</strong> NordSpace делает 8 px — для Mega это слишком мягко (Георгу Лаэру не нравятся сильные округления). 0 px как в v1 было слишком острым. Компромисс — лёгкое скругление, но всё равно чёткое.</div></div>
+  <div class="tl-box"><div class="tl-num">6</div><div><strong>Mood-видео в hero</strong> — сток как плейсхолдер сейчас, собственная съёмка или AI-генерация решается отдельно. Видео без звука, люди в движении, светлый уличный вид.</div></div>
+
+  <h3>Что бесполезно делать</h3>
+  <ul>
+    <li>Разрабатывать анимации / микровзаимодействия (это Фаза 2)</li>
+    <li>Делать Instagram-фид или подписку на рассылку (Фаза 2)</li>
+    <li>Искать реальные фото — используем сток как плейсхолдер, собственная съёмка позже</li>
+    <li>Проектировать мобильное приложение (не планируется)</li>
+    <li>Писать пресс-полосу с упоминаниями (есть только если клиент предоставит)</li>
+  </ul>
+</section>
+
+<section class="white" id="ziel">
+  <p class="section-label">09 · Куда движемся</p>
+  <h2>Цель через 12 месяцев</h2>
+
+  <div class="claim-block">
+    <div class="claim-text" style="font-size:34px;">«От скрытого чемпиона<br>к видимому лидеру рынка<br>через цифровую профессионализацию».</div>
+    <div class="caption">Видение проекта, 2026 → 2027</div>
+  </div>
+
+  <h3>Что это означает конкретно</h3>
+  <ul>
+    <li>Сайт — это <strong>продающий канал</strong>, а не визитка. Заявки идут с сайта как у онлайн-магазина.</li>
+    <li>Клиент <strong>бронирует юнит онлайн</strong> — так же просто, как гостиничный номер. 24/7, без офисных часов.</li>
+    <li>«Mietpark» становится <strong>новой категорией</strong> в немецком рынке — так же, как когда-то «Coworking» стал общим понятием.</li>
+    <li>Локальная доминация в каждом городе присутствия (Local SEO, GMB, отзывы) — не национальное размывание.</li>
+    <li>Масштабируемость: открытие нового объекта = plug-and-play в существующую цифровую систему.</li>
+  </ul>
+
+  <h3>Дорожная карта (общий вектор)</h3>
+  <table>
+    <thead><tr><th>Фаза</th><th>Название</th><th>Суть</th></tr></thead>
+    <tbody>
+      <tr><td>Фаза 1</td><td><strong>FOUNDATION</strong></td><td>Редизайн сайта (mobile-first, UX, скорость), трекинг GA4, базовый Local SEO</td></tr>
+      <tr><td>Фаза 2</td><td><strong>GROWTH</strong></td><td>Контент-наступление, Google Ads на высокоинтентные запросы, репутация</td></tr>
+      <tr><td>Фаза 3</td><td><strong>SCALE</strong></td><td>Полная онлайн-бронь, email-нуртуринг, CRO-тесты, B2B-фокус, расширение</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout green">
+    <strong>Связь с дизайном:</strong> то, что ты сейчас рисуешь, — это начало Фазы 1. Красивая картинка не главное. Главное — <strong>задать визуальную ДНК</strong>, которая выдержит следующие фазы: новые объекты, новые кампании, новые типы использования. Поэтому компонентное мышление важнее картиночного.
+  </div>
+</section>
+
+<section class="light" id="weiterfuehrend">
+  <p class="section-label">10 · Что ещё почитать</p>
+  <h2>Если нужна глубина</h2>
+
+  <p>Этот документ — концентрат. Если какой-то аспект нужен подробно — всё есть в wiki проекта:</p>
+
+  <div class="ref-list">
+    <ul>
+      <li>📄 <strong>wiki/segments/personas.md</strong> — 4 персоны с полным Customer Journey (фазы, touchpoints, blind spots)</li>
+      <li>📄 <strong>wiki/synthesis/positionierung.md</strong> — SWOT, USP-иерархия, формула объёма, pricing-модель</li>
+      <li>📄 <strong>wiki/synthesis/kommunikationskonzept.md</strong> — полная канальная стратегия SEA/SEO/Meta/LinkedIn, ретаргетинг, бюджеты</li>
+      <li>📄 <strong>wiki/synthesis/strategic-blueprint.md</strong> — информационная архитектура всего сайта, intent-cluster, Services-Template</li>
+      <li>📄 <strong>wiki/decisions/zielgruppen-produkt-standort-mapping.md</strong> — привязка персон к продуктам и локациям (включая правило Брауншвайга)</li>
+      <li>📄 <strong>wiki/decisions/nordspace-referenz-analyse.md</strong> — подробный разбор референса</li>
+      <li>📄 <strong>wiki/decisions/client-feedback-2026-04-18.md</strong> — оригинал фидбэка клиента</li>
+      <li>📄 <strong>wiki/decisions/homepage-revision-2.md</strong> — решения по ревизии 2 (12 секций, обоснования)</li>
+      <li>📄 <strong>wiki/synthesis/design-system.md</strong> — полный дизайн-систем (цвета, шрифты, компоненты, LAER brand guide)</li>
+      <li>📄 <strong>wiki/synthesis/claim.md</strong> — 11 вариантов клейма, 5 финалистов, критерии выбора</li>
+      <li>📄 <strong>wiki/sources/trust-audit-synthesis.md</strong> — что делают 4 Tier-1 конкурента и где наша возможность</li>
+    </ul>
+  </div>
+
+  <h3>Контакты</h3>
+  <ul>
+    <li><strong>Анна Шмидт (куратор)</strong> — все стратегические вопросы, клейм, тональность, фидбэк клиента</li>
+    <li><strong>Александр Вирт (AW)</strong> — технические вопросы, презентации клиенту, Bitrix24, инфраструктура</li>
+    <li><strong>Bitrix24 Task #3839</strong> — задача по дизайн-киту, там все уточнения по макетам</li>
+  </ul>
+
+  <div class="callout">
+    <strong>Рабочее правило:</strong> лучше задать вопрос и подождать полчаса ответа, чем догадываться и переделывать полдня. Все стратегические решения уже приняты — они зафиксированы или здесь, или в вики. Твоя задача — применить их в дизайне, а не изобретать заново.
+  </div>
+</section>
+
+<footer>
+  <div>
+    <div class="footer-brand">W&amp;S <span>AGENCY</span></div>
+    <p style="margin-top:4px;">Стратегический бриф для дизайнера · mega-mietpark.de · <strong style="color:var(--red);">RU · 2026-04-20</strong></p>
+  </div>
+  <div style="text-align:right;">
+    <p>Составлен: Александр Вирт (AW) на основе wiki/ + синтеза коммуникационного концепта</p>
+    <p style="margin-top:4px;">Связанный документ: TZ v2 HTML DE+RU · <a style="color:rgba(255,255,255,0.6);" href="TZ_Designer_Startseite_v2.html">открыть</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
