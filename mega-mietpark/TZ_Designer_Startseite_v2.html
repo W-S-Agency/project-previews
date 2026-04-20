@@ -25,6 +25,18 @@
   nav .logo { color: var(--white); font-size: 13px; font-weight: 700; letter-spacing: 0.1em; margin-right: 24px; padding: 0; border-bottom: none; flex-shrink: 0; }
   nav .logo span { color: var(--red); }
   nav .v-tag { margin-left: auto; font-family: 'Roboto Condensed', sans-serif; font-size: 10px; letter-spacing: 0.15em; color: var(--red); padding: 3px 10px; border: 1px solid var(--red); border-radius: 3px; flex-shrink: 0; }
+  .lang-toggle { margin-left: 12px; padding: 5px 12px; background: var(--red); border: 1px solid var(--red); color: #fff; font-family: 'Roboto Condensed',sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; border-radius: 3px; cursor: pointer; flex-shrink: 0; transition: all 0.2s; }
+  .lang-toggle:hover { background: var(--red-dark); }
+  .lang-toggle.off { background: transparent; border-color: rgba(255,255,255,0.3); color: rgba(255,255,255,0.6); }
+
+  /* RU mirror — Russische Übersetzung der Briefing-Texte */
+  .ru { margin-top: 10px; padding: 10px 14px; border-left: 3px solid #9CA3AF; background: #F7F8FA; color: #3a3a3a; font-style: italic; font-size: 13px; line-height: 1.6; border-radius: 0 3px 3px 0; }
+  .ru strong { color: var(--black); font-style: normal; }
+  .ru::before { content: "RU"; display: inline-block; margin-right: 8px; font-style: normal; font-family: 'Roboto Condensed',sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 0.12em; color: #9CA3AF; background: #fff; border: 1px solid #D1D5DB; padding: 1px 5px; border-radius: 2px; vertical-align: middle; transform: translateY(-1px); }
+  body.hide-ru .ru { display: none !important; }
+  .ru.ru-inline { display: inline-block; margin-top: 6px; font-size: 12px; padding: 6px 10px; }
+  .ru-list { margin-top: 8px; padding-left: 18px; }
+  .ru-list li { list-style: disc; margin-bottom: 3px; }
 
   .cover { background: var(--black); padding: 80px 60px 72px; position: relative; overflow: hidden; }
   .cover::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 4px; background: var(--red); }
@@ -33,6 +45,9 @@
   .cover h1 em { color: var(--red); font-style: normal; }
   .cover-sub { color: rgba(255,255,255,0.75); font-size: 16px; line-height: 1.55; max-width: 760px; margin-bottom: 28px; }
   .cover-sub strong { color: var(--white); }
+  .cover .ru { background: rgba(255,255,255,0.06); border-left-color: rgba(255,255,255,0.25); color: rgba(255,255,255,0.85); max-width: 760px; margin-bottom: 28px; }
+  .cover .ru strong { color: #fff; }
+  .cover .ru::before { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.7); border-color: rgba(255,255,255,0.25); }
   .cover-meta { display: flex; gap: 40px; flex-wrap: wrap; }
   .cover-meta-item { color: rgba(255,255,255,0.5); font-size: 13px; }
   .cover-meta-item strong { color: rgba(255,255,255,0.9); display: block; font-size: 14px; margin-top: 2px; }
@@ -270,6 +285,7 @@
   <a href="#offene">Offene Punkte</a>
   <a href="#zeitplan">Zeitplan</a>
   <span class="v-tag">V2 · REVISION 2</span>
+  <button class="lang-toggle" id="ruToggle" title="RU-Übersetzung ein/aus · Показать/скрыть перевод">DE + RU</button>
 </nav>
 
 <!-- COVER -->
@@ -280,6 +296,9 @@
   <p class="cover-sub">
     Diese Revision überarbeitet das Design-Kit nach dem Client-Feedback vom 18.04.2026. Kernbefund: <strong>Design wirkt düster und grau, Menschen fehlen komplett.</strong> Referenz von David: <strong>nordspace.eu</strong> — helle Bildwelt, Menschen, 3D-Touren. DK (dk.it-reality.de) bleibt strukturelle Referenz für Hero-Suchleiste und Stacked-Cards-Mechanik.
   </p>
+  <div class="ru">
+    Эта ревизия перерабатывает дизайн-кит после фидбэка клиента от 18.04.2026. <strong>Главное замечание: дизайн выглядит мрачным и серым, люди полностью отсутствуют.</strong> Референс от Давида: <strong>nordspace.eu</strong> — светлый визуал, люди, 3D-туры. DK (dk.it-reality.de) остаётся структурным референсом для hero-поиска и механики Stacked Cards.
+  </div>
   <div class="cover-meta">
     <div class="cover-meta-item">Auftraggeber<strong>Mega-Mietpark / Laer Gruppe</strong></div>
     <div class="cover-meta-item">Ansprechpartner<strong>David Neugum</strong></div>
@@ -299,24 +318,35 @@
   <div class="info-banner">
     <strong>Client-Feedback 18.04.2026 (David Neugum):</strong> Das aktuelle Design-Kit wirkt <strong>düster und grau</strong>, Objekte erscheinen unattraktiv. <strong>Menschen fehlen komplett</strong> — widerspricht dem Kommunikationskonzept mit 4 Personas. „Sicherheit zeigen, aber keine düstere Webseite." Button-Typo zu eng gesetzt. Referenz <strong>nordspace.eu</strong> gefällt komplett.
   </div>
+  <div class="ru">
+    <strong>Фидбэк клиента 18.04.2026 (Давид Нойгум):</strong> текущий дизайн-кит выглядит <strong>мрачно и серо</strong>, объекты кажутся непривлекательными. <strong>Люди полностью отсутствуют</strong> — противоречит коммуникационному концепту с 4 персонами. «Показывать безопасность, но не делать сайт мрачным.» Буквы в кнопках посажены слишком плотно. Референс <strong>nordspace.eu</strong> понравился полностью.
+  </div>
 
   <div class="grid-2">
     <div>
       <p style="font-size:15px; line-height:1.8; margin-bottom:20px;">
         Revision 2 folgt einem klaren Prinzip: <strong>zwei Referenzen, klar getrennte Rollen.</strong> NordSpace liefert die Content-Ebene (Menschen, Video, heller Gesamteindruck, 3D-Touren, warme Tonalität). DK liefert technisch-strukturelle Lösungen (Hero mit PLZ-Suchleiste, Stacked-Cards-Mechanik). Alles andere bleibt Mega-eigen: LAER-Red als CTA-Farbe, du-Form, kein Preisversteck.
       </p>
+      <div class="ru">
+        Ревизия 2 следует чёткому принципу: <strong>два референса с разделёнными ролями</strong>. NordSpace задаёт контентный слой (люди, видео, светлое общее впечатление, 3D-туры, тёплая тональность). DK задаёт технически-структурные решения (hero с PLZ-поиском, механика Stacked Cards). Всё остальное — своё, Mega-овское: LAER-Red как CTA-цвет, «ты»-форма, без прятания цен.
+      </div>
       <p style="font-size:15px; line-height:1.8;">
         Strukturell wächst die Homepage von <strong>9 auf 12 Sektionen</strong>. Drei Sektionen neu aus dem NordSpace-Vergleich: <strong>3D-Tour-Teaser (S4), Gruppe dahinter (S7), Ratgeber-Teaser (S10)</strong>.
       </p>
+      <div class="ru">
+        Структурно главная растёт <strong>с 9 до 12 секций</strong>. Три секции — новые, появились из сравнения с NordSpace: <strong>тизер 3D-тура (S4), «группа за продуктом» (S7), тизер статей/советов (S10)</strong>.
+      </div>
       <div class="sep" style="margin-top:24px;"></div>
       <div class="grid-2" style="gap:12px; margin-top:4px;">
         <div class="card red-accent">
           <h3 style="font-size:13px;">Was wird überarbeitet?</h3>
           <p>Homepage-Design-Kit Revision 2: heller Grundton, Menschen-Fotografie, Stacked Cards, Video-Hero, 3 neue Sektionen. CTA-Hierarchie gestrafft (nur 2 Haupt-CTAs).</p>
+          <div class="ru"><strong>Что перерабатывается:</strong> дизайн-кит главной, ревизия 2 — светлый основной тон, фотографии людей, Stacked Cards, видео-hero, 3 новые секции. Иерархия CTA упрощена (только 2 главных CTA).</div>
         </div>
         <div class="card red-accent">
           <h3 style="font-size:13px;">Scope Phase 1</h3>
           <p>Startseite — Desktop (1440px) + Mobile (390px). Follow-Up: Nutzungsart-Landingpage-Template + „Über uns"-Unterseite (separate Deliverables nach Homepage-Freigabe).</p>
+          <div class="ru"><strong>Скоуп Фазы 1:</strong> главная страница — Desktop (1440px) + Mobile (390px). Дальше (отдельными деливераблами после приёмки главной): шаблон лендинга по типам использования + страница «О нас».</div>
         </div>
       </div>
     </div>
@@ -340,6 +370,7 @@
         </div>
       </div>
       <div class="note" style="margin-top:16px;"><strong>Zahlen-Update:</strong> Statt „13+ Jahre" jetzt konkret „seit 2006" (= 20 Jahre) — David klärt Ursprung der 13+-Zahl im aktuellen Mockup.</div>
+      <div class="ru"><strong>Обновление цифр:</strong> вместо «13+ лет» теперь конкретно «с 2006» (= 20 лет). Давид уточняет, откуда взялось «13+» в текущем макете.</div>
     </div>
   </div>
 </section>
@@ -353,9 +384,15 @@
     <span class="check">🔄</span>
     <p><strong>Revision 2 — Helligkeitsumkehr:</strong> Weiß dominiert · Schwarz nur im Footer · LAER-Red nur als Akzent · Menschen-Fotografie zwingend · Entschieden am 2026-04-19 [AS]</p>
   </div>
+  <div class="ru">
+    <strong>Ревизия 2 — инверсия светлоты:</strong> белый доминирует · чёрный только в футере · LAER-Red только как акцент · фотографии людей обязательны · решение от 2026-04-19 [AS].
+  </div>
 
   <div class="info-banner">
     <strong>Was sich ändert gegenüber v1:</strong> Dunkel-Hell-Wechsel der Sektionen entfällt. Hero und Content-Sektionen sind <strong>hell</strong>. Industrial Black wird auf Footer und Header-Strip reduziert. Trust/Sicherheit wird über <strong>Menschen-Fotografie</strong> und klare helle Gestaltung kommuniziert — nicht über Dunkelheit.
+  </div>
+  <div class="ru">
+    <strong>Что меняется по сравнению с v1:</strong> убираем чередование тёмных/светлых секций. Hero и контентные секции — <strong>светлые</strong>. Industrial Black сокращён до футера и полосы хедера. Доверие/безопасность передаются через <strong>фотографии людей</strong> и ясный светлый дизайн — а не через темноту.
   </div>
 
   <p style="font-family:'Roboto Condensed',sans-serif; font-size:12px; letter-spacing:0.15em; text-transform:uppercase; color:var(--gray); margin-bottom:16px; margin-top:32px;">Farbsystem</p>
@@ -385,8 +422,14 @@
   <div style="background:#FFF8E1; border:1px solid #FFE082; border-radius:var(--radius); padding:14px 18px; margin:16px 0; font-size:13px; color:var(--black);">
     ⚠️ <strong>LAER-Red</strong> bleibt CTA-Farbe, aber <strong>nur als Akzent</strong> (Buttons, Hover, Details) — keine großflächigen roten Blöcke. <strong>Industrial Black</strong> nur im Footer und ggf. Header-Strip, nicht in Hero oder Content-Sektionen.
   </div>
+  <div class="ru">
+    ⚠️ <strong>LAER-Red</strong> остаётся цветом CTA, но <strong>только как акцент</strong> (кнопки, hover, детали) — никаких больших красных блоков. <strong>Industrial Black</strong> — только в футере и, при необходимости, полосе хедера; нельзя использовать в hero или контентных секциях.
+  </div>
   <div style="background:var(--light); border:1px solid var(--border); border-radius:var(--radius); padding:14px 18px; margin:8px 0; font-size:13px; color:var(--gray);">
     ℹ️ Mega Corporate Design (<strong style="color:var(--black);">#FF0000, Eurostile</strong>) bleibt den physischen Standorten vorbehalten — Schilder, Fassaden, Fahrzeuge. Nicht für die Website.
+  </div>
+  <div class="ru">
+    ℹ️ Корпоративный дизайн Mega (<strong>#FF0000, Eurostile</strong>) — только для физических объектов: вывески, фасады, машины. На сайт не переносится.
   </div>
 
   <p style="font-family:'Roboto Condensed',sans-serif; font-size:12px; letter-spacing:0.15em; text-transform:uppercase; color:var(--gray); margin-bottom:20px; margin-top:40px;">Typografie — bleibt</p>
@@ -394,10 +437,12 @@
     <div style="background:var(--light); border-radius:var(--radius); padding:28px;">
       <div class="font-sample-condensed">Roboto Condensed</div>
       <p style="font-family:'Roboto Condensed',sans-serif; font-size:13px; letter-spacing:0.15em; text-transform:uppercase; color:var(--gray); margin-top:8px;">Headlines H1–H3 · Bold 700 · Uppercase · Letter-spacing 0.05em</p>
+      <div class="ru">Заголовки H1–H3 · Bold 700 · uppercase · letter-spacing 0.05em.</div>
     </div>
     <div style="background:var(--light); border-radius:var(--radius); padding:28px;">
       <div style="font-family:'Inter',sans-serif; font-size:22px; margin-bottom:8px; line-height:1.6;">Inter — Lesbar auf allen Screens</div>
       <p style="font-family:'Inter',sans-serif; font-size:13px; color:var(--gray);">Body Text · Regular 400 / Medium 500 · 16px · Line-height 1.6</p>
+      <div class="ru">Основной текст · Regular 400 / Medium 500 · 16px · line-height 1.6.</div>
     </div>
   </div>
 
@@ -411,6 +456,9 @@
           <p style="color:var(--gray); font-size:12px;">Leicht abgerundet (NordSpace-inspired) — aber klar kantig. Georg Laer mag keine starken Abrundungen. 8 px wie NordSpace = zu weich.</p>
         </div>
       </div>
+      <div class="ru">
+        <strong>Скругление углов — обновлено:</strong> 2–4 px — лёгкое скругление (вдохновлено NordSpace), но остаётся чётким и угловатым. Георгу Лаэру не нравятся сильные округления. 8 px как у NordSpace — слишком мягко.
+      </div>
     </div>
     <div style="background:var(--light); border-radius:var(--radius); padding:28px;">
       <p style="font-family:'Roboto Condensed',sans-serif; font-size:12px; letter-spacing:0.15em; text-transform:uppercase; color:var(--gray); margin-bottom:16px;">Button-System <span class="tag yellow">Letter-Spacing Fix</span></p>
@@ -419,6 +467,9 @@
         <button class="btn-secondary">Alle Produkte</button>
       </div>
       <p style="color:var(--gray); font-size:12px; margin-top:12px;">Primary #C62828 → Hover #8B1A1A · Secondary Outline 2 px · <strong>Letter-Spacing erhöht</strong> (+40 bis +80 Tracking-Units): Buchstaben aktuell zu eng, Feedback 18.04. Typo-Familie unverändert.</p>
+      <div class="ru">
+        <strong>Система кнопок — фикс letter-spacing:</strong> Primary #C62828 → hover #8B1A1A · Secondary — outline 2 px · <strong>letter-spacing увеличить</strong> (+40…+80 tracking units): сейчас буквы слишком плотные — фидбэк 18.04. Шрифтовая семья не меняется.
+      </div>
     </div>
   </div>
 
@@ -432,6 +483,15 @@
         <li>Community-Gefühl, nicht steril</li>
         <li>Stock vorerst, später eigenes Shooting an Mega-Standorten</li>
       </ul>
+      <div class="ru">
+        <strong>Обязательно — стиль NordSpace:</strong>
+        <ul class="ru-list">
+          <li><strong>Люди в действии</strong> (с домом на колёсах, инструментом, коробкой при переезде, ноутбуком)</li>
+          <li>Светло, тепло, естественный свет</li>
+          <li>Ощущение community, не стерильно</li>
+          <li>Сначала сток, позже — собственная съёмка на объектах Mega</li>
+        </ul>
+      </div>
     </div>
     <div class="card" style="border-top:3px solid #E65100;">
       <h3 style="font-size:13px; color:#E65100;">Vermeiden</h3>
@@ -441,6 +501,15 @@
         <li>Kalte, sterile Produktfotografie</li>
         <li>Stock mit plakativem Lächeln / Posing</li>
       </ul>
+      <div class="ru">
+        <strong>Избегать:</strong>
+        <ul class="ru-list">
+          <li>Только архитектурные фото <strong>без людей</strong> (= текущая проблема)</li>
+          <li>Тёмные промышленные цеха изнутри</li>
+          <li>Холодная, стерильная продуктовая съёмка</li>
+          <li>Сток с нарочитыми улыбками / позёрством</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
@@ -474,18 +543,18 @@
     </div>
     <div>
       <div class="wf-legend">
-        <div class="wf-item"><div class="wf-num red">1</div><div class="wf-item-content"><h4>Hero <span class="tag gray">Hell</span></h4><p>Mood-Video (Stock, KI-Option später) · PLZ-Suchleiste DK-Style · Claim „Einfach einfahren." · 2 CTAs. Kein dunkler Hintergrund mehr.</p></div></div>
-        <div class="wf-item"><div class="wf-num">2</div><div class="wf-item-content"><h4>USP Bar <span class="tag gray">6 Icons</span></h4><p>XXL · LKW-befahrbar · Video · 16 Standorte · Eigene Immobilien · 24/7 Zugang — auf hellem Grund.</p></div></div>
-        <div class="wf-item"><div class="wf-num red">3</div><div class="wf-item-content"><h4>Stacked Cards ⭐ <span class="tag red">Kern-Neuheit</span></h4><p>DK-Scroll-Mechanik. 4 Nutzungsarten: Lager · Garage · Hybrides Büro · Werkhalle. Persona-Foto links, Kernbotschaft rechts. Links zu Nutzungsart-Landingpages.</p></div></div>
-        <div class="wf-item"><div class="wf-num green">4</div><div class="wf-item-content"><h4>3D-Tour-Teaser <span class="tag green">NEU</span></h4><p>David hat 3D bei NordSpace explizit gelobt. Preview-Still + CTA „Tour starten". Umfang Phase 1/2 mit David klären.</p></div></div>
-        <div class="wf-item"><div class="wf-num">5</div><div class="wf-item-content"><h4>Standort-Finder <span class="tag gray">Map</span></h4><p>Karte dominiert, PLZ als Zweitzugang. Heller Grund. Redirect Airbnb-Stil zum nächsten Standort.</p></div></div>
-        <div class="wf-item"><div class="wf-num">6</div><div class="wf-item-content"><h4>Trust-Block <span class="tag gray">Hell</span></h4><p>4 Stat-Kacheln + Google-Rating + <strong>Regionalleiter-Fotos</strong> (NordSpace-inspired) — echte Gesichter statt dunkler Block.</p></div></div>
-        <div class="wf-item"><div class="wf-num green">7</div><div class="wf-item-content"><h4>Gruppe dahinter <span class="tag green">NEU</span></h4><p>Laer Gruppe (seit 2006) + Formica (210+ Projekte, 27.000+ Einheiten). „Eigene Immobilien"-Statement. CTA zur „Über uns"-Seite.</p></div></div>
-        <div class="wf-item"><div class="wf-num red">8</div><div class="wf-item-content"><h4>Preis-Teaser ⭐ <span class="tag red">Key</span></h4><p>3 Preiskarten, ACF-editierbar. Heller gestaltet, Radius 2–4 px.</p></div></div>
-        <div class="wf-item"><div class="wf-num">9</div><div class="wf-item-content"><h4>Prozess <span class="tag gray">3 Schritte</span></h4><p>Wählen → Anfragen → Einziehen. Hell, kein Dark-Block.</p></div></div>
-        <div class="wf-item"><div class="wf-num green">10</div><div class="wf-item-content"><h4>Ratgeber-Teaser <span class="tag green">NEU</span></h4><p>3 Artikel-Karten als ACF-Repeater. SEO-Boost + Trust durch Expertise. Link auf /ratgeber.</p></div></div>
-        <div class="wf-item"><div class="wf-num">11</div><div class="wf-item-content"><h4>FAQ <span class="tag gray">Accordion</span></h4><p>6 Fragen, Inhalte mit David zu validieren (separat).</p></div></div>
-        <div class="wf-item"><div class="wf-num">12</div><div class="wf-item-content"><h4>Marken-Outro <span class="tag yellow">Kein 3. CTA</span></h4><p>Claim „Einfach einfahren." als emotionaler Abschluss. Wir haben bereits 2 Haupt-CTAs (Hero-Suche + Cards) — dritter würde pushy wirken.</p></div></div>
+        <div class="wf-item"><div class="wf-num red">1</div><div class="wf-item-content"><h4>Hero <span class="tag gray">Hell</span></h4><p>Mood-Video (Stock, KI-Option später) · PLZ-Suchleiste DK-Style · Claim „Einfach einfahren." · 2 CTAs. Kein dunkler Hintergrund mehr.</p><div class="ru">Mood-видео (сток, AI-вариант позже) · строка PLZ-поиска в стиле DK · клейм «Einfach einfahren.» · 2 CTA. Тёмного фона больше нет.</div></div></div>
+        <div class="wf-item"><div class="wf-num">2</div><div class="wf-item-content"><h4>USP Bar <span class="tag gray">6 Icons</span></h4><p>XXL · LKW-befahrbar · Video · 16 Standorte · Eigene Immobilien · 24/7 Zugang — auf hellem Grund.</p><div class="ru">XXL · заезд грузовика · видеонаблюдение · 16 локаций · собственная недвижимость · доступ 24/7 — на светлом фоне.</div></div></div>
+        <div class="wf-item"><div class="wf-num red">3</div><div class="wf-item-content"><h4>Stacked Cards ⭐ <span class="tag red">Kern-Neuheit</span></h4><p>DK-Scroll-Mechanik. 4 Nutzungsarten: Lager · Garage · Hybrides Büro · Werkhalle. Persona-Foto links, Kernbotschaft rechts. Links zu Nutzungsart-Landingpages.</p><div class="ru">Scroll-механика из DK. 4 типа использования: склад · гараж · гибридный офис · мастерская/цех. Фото персоны слева, ключевое сообщение справа. Ссылки — на лендинги по типам использования.</div></div></div>
+        <div class="wf-item"><div class="wf-num green">4</div><div class="wf-item-content"><h4>3D-Tour-Teaser <span class="tag green">NEU</span></h4><p>David hat 3D bei NordSpace explizit gelobt. Preview-Still + CTA „Tour starten". Umfang Phase 1/2 mit David klären.</p><div class="ru">Давид явно хвалил 3D у NordSpace. Превью-кадр + CTA «Tour starten». Объём в фазе 1/2 согласовать с Давидом.</div></div></div>
+        <div class="wf-item"><div class="wf-num">5</div><div class="wf-item-content"><h4>Standort-Finder <span class="tag gray">Map</span></h4><p>Karte dominiert, PLZ als Zweitzugang. Heller Grund. Redirect Airbnb-Stil zum nächsten Standort.</p><div class="ru">Карта — главное, PLZ — вторичный вход. Светлый фон. Редирект в стиле Airbnb на ближайшую локацию.</div></div></div>
+        <div class="wf-item"><div class="wf-num">6</div><div class="wf-item-content"><h4>Trust-Block <span class="tag gray">Hell</span></h4><p>4 Stat-Kacheln + Google-Rating + <strong>Regionalleiter-Fotos</strong> (NordSpace-inspired) — echte Gesichter statt dunkler Block.</p><div class="ru">4 плашки со статистикой + Google-рейтинг + <strong>фотографии региональных менеджеров</strong> (как у NordSpace) — живые лица вместо тёмного блока.</div></div></div>
+        <div class="wf-item"><div class="wf-num green">7</div><div class="wf-item-content"><h4>Gruppe dahinter <span class="tag green">NEU</span></h4><p>Laer Gruppe (seit 2006) + Formica (210+ Projekte, 27.000+ Einheiten). „Eigene Immobilien"-Statement. CTA zur „Über uns"-Seite.</p><div class="ru">Laer Gruppe (с 2006) + Formica (210+ проектов, 27.000+ юнитов). Сообщение «собственная недвижимость». CTA на страницу «О нас».</div></div></div>
+        <div class="wf-item"><div class="wf-num red">8</div><div class="wf-item-content"><h4>Preis-Teaser ⭐ <span class="tag red">Key</span></h4><p>3 Preiskarten, ACF-editierbar. Heller gestaltet, Radius 2–4 px.</p><div class="ru">3 карточки с ценами, редактируются через ACF. Светлее, радиус 2–4 px.</div></div></div>
+        <div class="wf-item"><div class="wf-num">9</div><div class="wf-item-content"><h4>Prozess <span class="tag gray">3 Schritte</span></h4><p>Wählen → Anfragen → Einziehen. Hell, kein Dark-Block.</p><div class="ru">Выбрать → Запросить → Заехать. Светлый блок, без тёмного.</div></div></div>
+        <div class="wf-item"><div class="wf-num green">10</div><div class="wf-item-content"><h4>Ratgeber-Teaser <span class="tag green">NEU</span></h4><p>3 Artikel-Karten als ACF-Repeater. SEO-Boost + Trust durch Expertise. Link auf /ratgeber.</p><div class="ru">3 карточки статей, через ACF-repeater. Буст SEO + доверие через экспертизу. Ссылка на /ratgeber.</div></div></div>
+        <div class="wf-item"><div class="wf-num">11</div><div class="wf-item-content"><h4>FAQ <span class="tag gray">Accordion</span></h4><p>6 Fragen, Inhalte mit David zu validieren (separat).</p><div class="ru">6 вопросов, содержание согласовать с Давидом (отдельно).</div></div></div>
+        <div class="wf-item"><div class="wf-num">12</div><div class="wf-item-content"><h4>Marken-Outro <span class="tag yellow">Kein 3. CTA</span></h4><p>Claim „Einfach einfahren." als emotionaler Abschluss. Wir haben bereits 2 Haupt-CTAs (Hero-Suche + Cards) — dritter würde pushy wirken.</p><div class="ru">Клейм «Einfach einfahren.» как эмоциональный финал. У нас уже есть 2 главных CTA (hero-поиск + cards) — третий выглядел бы навязчиво.</div></div></div>
       </div>
     </div>
   </div>
@@ -498,15 +567,19 @@
     <div class="spec-card-header"><div class="spec-num">1</div><h3>Hero</h3><span class="spec-bg-tag">Mood-Video + heller Text-Layer</span></div>
     <div class="spec-body">
       <div class="spec-row"><span class="spec-label">Hintergrund</span><span class="spec-value"><strong>Video (Mood)</strong> im Loop (8–15 s). Stimmung: Menschen in Bewegung, heller Außenbereich, Einfahren in eine Einheit. Stock-Video als Platzhalter — Entscheidung über Produktion/KI-Generierung folgt separat (AW). <strong>Keine Untertitelung</strong> (kein Ton).</span></div>
+      <div class="ru"><strong>Фон:</strong> mood-видео в лупе (8–15 с). Настроение — люди в движении, светлое уличное пространство, въезд в бокс. Сток как плейсхолдер — решение о собственной съёмке/AI отдельно (AW). <strong>Без субтитров</strong> (звука нет).</div>
       <hr class="spec-divider">
       <div class="spec-row"><span class="spec-label">Claim (Marke)</span><span class="spec-value headline" style="color:var(--red);">Einfach einfahren.</span></div>
       <div class="spec-row" style="margin-top:10px;"><span class="spec-label">H1</span><span class="spec-value headline">Mehr Raum — direkt in deiner Nähe.</span></div>
       <div class="spec-row" style="margin-top:10px;"><span class="spec-label">Subline</span><span class="spec-value" style="font-size:15px; color:#555;">XXL-Garagen · Büros · Werkhallen · LKW-befahrbar · 24/7 Zugang · ab 180 €/Monat</span></div>
       <hr class="spec-divider">
       <div class="spec-row"><span class="spec-label">PLZ-Suchleiste</span><span class="spec-value">Groß, mittig, einladend — <em>analog DK Hero-Search</em>. Placeholder: „PLZ eingeben, z.B. 50737" + roter CTA „Standort finden →". Mechanik: PLZ → Direktweiterleitung zur nächsten Standort-Seite (Airbnb-Stil, bereits entschieden 20.03).</span></div>
+      <div class="ru"><strong>Строка PLZ-поиска:</strong> крупная, по центру, располагающая — <em>как hero-поиск DK</em>. Placeholder «PLZ eingeben, z.B. 50737» + красный CTA «Standort finden →». Механика: ввод PLZ → прямой редирект на ближайшую локацию (стиль Airbnb, решено 20.03).</div>
       <hr class="spec-divider">
       <div class="spec-row"><span class="spec-label">CTAs</span><div><span class="cta-pill primary">Standort finden →</span><span class="cta-pill secondary">Alle Produkte entdecken</span><p style="font-size:12px; color:var(--gray); margin-top:8px;">Die PLZ-Suche zählt als Primär-CTA #1 der Seite.</p></div></div>
+      <div class="ru">PLZ-поиск считается главным CTA #1 страницы.</div>
       <div class="spec-note"><strong>Wichtig:</strong> Hero darf <strong>nicht dunkel</strong> werden. Video liefert Emotion, Text-Layer muss luftig &amp; hell wirken. Text-Overlay hellweiß/frostig mit leichter Transparenz — nicht schwarz.</div>
+      <div class="ru"><strong>Важно:</strong> hero <strong>не должен быть тёмным</strong>. Видео даёт эмоцию, текстовый слой — воздушный и светлый. Наложение текста — бело-матовое с лёгкой прозрачностью, не чёрное.</div>
     </div>
   </div>
 
@@ -515,6 +588,7 @@
     <div class="spec-card-header light-header"><div class="spec-num">2</div><h3>USP-Bar</h3><span class="spec-bg-tag">Weiß · 6 Icons horizontal</span></div>
     <div class="spec-body">
       <div class="spec-row"><span class="spec-label">Layout</span><span class="spec-value">6 Punkte horizontal. Desktop: nebeneinander (3×2 Grid oder 6 in Zeile). Mobile: 2 Spalten, 3 Zeilen. Icon (24px) + Fetttext + Kurztext darunter. Monochrom schwarz oder LAER-Red-Hover.</span></div>
+      <div class="ru"><strong>Лейаут:</strong> 6 пунктов по горизонтали. Desktop — в ряд (3×2 или 6 в один ряд). Mobile — 2 колонки, 3 ряда. Иконка 24px + жирный заголовок + короткий текст под ней. Монохром (чёрный) с hover в LAER-Red.</div>
       <hr class="spec-divider">
       <div class="spec-row"><span class="spec-label">Inhalte</span>
         <div class="usp-items">
@@ -534,8 +608,10 @@
     <div class="spec-card-header"><div class="spec-num">3</div><h3>Stacked Cards — Nutzungsarten ⭐ (Kern-Neuheit)</h3><span class="spec-bg-tag">DK-Mechanik · Menschen-Fotos</span></div>
     <div class="spec-body">
       <div class="spec-row"><span class="spec-label">Mechanik</span><span class="spec-value">DK-Referenz: Karten überlagern sich beim Scrollen — sichtbare Karte „andockt", nächste schiebt sich darüber. Ziel: Bewegung, Tiefe, hohe Wahrnehmung.</span></div>
+      <div class="ru"><strong>Механика:</strong> референс DK — карточки перекрывают друг друга при скролле. Видимая карточка «пристыковывается», следующая наезжает сверху. Цель: движение, глубина, высокое внимание.</div>
       <hr class="spec-divider">
       <div class="spec-row"><span class="spec-label">Prinzip</span><span class="spec-value">Karten gliedern sich <strong>nach Produktkategorie</strong>, nicht nach Persona. Die 4 Personas fließen in <strong>Bildwelt + Kernbotschaft</strong> ein — eine Karte kann mehrere Personas bedienen.</span></div>
+      <div class="ru"><strong>Принцип:</strong> карточки структурированы <strong>по категориям продукта</strong>, не по персонам. 4 персоны влияют на <strong>визуал и ключевое сообщение</strong> — одна карточка может закрывать несколько персон.</div>
       <hr class="spec-divider">
       <div class="spec-row"><span class="spec-label">4 Nutzungsarten</span>
         <div class="nutzung-grid">
@@ -547,7 +623,9 @@
       </div>
       <hr class="spec-divider">
       <div class="spec-row"><span class="spec-label">Kartenaufbau</span><span class="spec-value"><strong>Links (50 %):</strong> Foto Mensch in Action (Wohnmobil, Werkzeug, Umzugskarton, Laptop). Hell, warm, NordSpace-Stil. <strong>Rechts (50 %):</strong> Headline (Nutzungsart) · Ein-Satz-Kernbotschaft (du-Form, Persona-inspiriert) · CTA „Mehr erfahren →" (Link auf Nutzungsart-Landingpage). Card-Radius 2–4 px, heller Grund.</span></div>
+      <div class="ru"><strong>Устройство карточки:</strong> <strong>слева (50 %)</strong> — фото человека в действии (дом на колёсах, инструмент, коробка при переезде, ноутбук). Светло, тепло, стиль NordSpace. <strong>Справа (50 %)</strong> — заголовок (тип использования) · одно ключевое предложение (в «ты»-форме, от персоны) · CTA «Mehr erfahren →» (ссылка на лендинг этого типа). Радиус карточки 2–4 px, светлый фон.</div>
       <div class="spec-note green"><strong>Personas im Hintergrund:</strong> Sarah (Umzug), Thomas (Wohnmobil/Camper), Elena (E-Commerce), Markus (Handwerk) — sie steuern Bildwelt &amp; Tonalität jeder Karte, ohne selbst als Kategorie sichtbar zu werden.</div>
+      <div class="ru"><strong>Персоны — за кадром:</strong> Сара (переезд), Томас (дом на колёсах/кемпер), Елена (e-commerce), Маркус (handwerk). Они задают визуал и тональность каждой карточки, но сами как категория не показаны.</div>
     </div>
   </div>
 
@@ -556,6 +634,7 @@
     <div class="spec-card-header new-header"><div class="spec-num green">4</div><h3>3D-Tour-Teaser <span class="tag green" style="margin-left:8px;">NEU</span></h3><span class="spec-bg-tag">NordSpace-inspired · hell</span></div>
     <div class="spec-body">
       <div class="spec-row"><span class="spec-label">Begründung</span><span class="spec-value">David hat 3D-Touren bei NordSpace explizit gelobt. Wir haben die Objekte — wir machen sie erlebbar.</span></div>
+      <div class="ru"><strong>Обоснование:</strong> Давид явно похвалил 3D-туры у NordSpace. Объекты у нас есть — делаем их «ощутимыми» онлайн.</div>
       <hr class="spec-divider">
       <div class="spec-row"><span class="spec-label">Headline H2</span><span class="spec-value headline">Erlebe deinen Raum in 3D.</span></div>
       <div class="spec-row" style="margin-top:8px;"><span class="spec-label">Subline</span><span class="spec-value subtext">Virtueller Rundgang durch unsere Standorte — bevor du kommst.</span></div>
@@ -566,7 +645,9 @@
           <div class="tour-text"><h4>Rundgang starten</h4><p>Preview-Still eines 360°-Viewers / Matterport-Embed. Möglichst mit Mensch im Raum — nicht leer. Tool und Standort-Umfang werden mit David geklärt.</p><span class="cta-pill primary">Tour starten →</span></div>
         </div>
       </div>
+      <div class="ru"><strong>Лейаут:</strong> превью-стоп 360°-вьюера / Matterport-embed. Желательно с человеком в кадре — не пустое помещение. Инструмент и перечень локаций согласуются с Давидом.</div>
       <div class="spec-note"><strong>Offen:</strong> Startumfang 3D-Touren — Phase 1 mit 1–2 Pilotstandorten oder komplett Phase 2? Tool: Matterport / YouTube-360 / Kuula — mit David festlegen.</div>
+      <div class="ru"><strong>Открыто:</strong> стартовый объём 3D-туров — фаза 1 с 1–2 пилотами или полностью фаза 2? Инструмент: Matterport / YouTube-360 / Kuula — согласовать с Давидом.</div>
     </div>
   </div>
 
@@ -578,7 +659,9 @@
       <div class="spec-row" style="margin-top:8px;"><span class="spec-label">Subtext</span><span class="spec-value subtext">Karte mit allen 16 Standorten. PLZ eingeben oder Standort klicken — los geht's.</span></div>
       <hr class="spec-divider">
       <div class="spec-row"><span class="spec-label">Layout</span><span class="spec-value">Interaktive Karte (Google Maps / Mapbox) ca. 60 % Breite, rechts: PLZ-Zweit-Input + Standort-Liste (scrollbar). Hintergrund weiß. Mobile: Karte zuerst, darunter Liste.</span></div>
+      <div class="ru"><strong>Лейаут:</strong> интерактивная карта (Google Maps / Mapbox) примерно 60% ширины, справа — второй PLZ-инпут и прокручиваемый список локаций. Фон белый. Mobile: сначала карта, ниже список.</div>
       <div class="spec-note"><strong>Mechanik:</strong> PLZ → Direktweiterleitung (Airbnb-Stil) bereits entschieden. Pin-Klick auf Karte öffnet Standort-Karte mit Kurzinfo + Link.</div>
+      <div class="ru"><strong>Механика:</strong> ввод PLZ → прямой редирект (стиль Airbnb), решено ранее. Клик по пину на карте открывает карточку локации с краткой инфо и ссылкой.</div>
     </div>
   </div>
 
@@ -598,7 +681,9 @@
       </div>
       <hr class="spec-divider">
       <div class="spec-row"><span class="spec-label">Regionalleiter</span><span class="spec-value"><strong>NEU:</strong> Foto-Streifen der Regionalleiter je Standort (NordSpace-inspired). Name + Standort unter jedem Foto. Vertrauen durch echte Gesichter — <strong>das ist der Kern gegen „düster"</strong>.</span></div>
+      <div class="ru"><strong>Региональные менеджеры — НОВОЕ:</strong> горизонтальная полоса фотографий региональных менеджеров по локациям (как у NordSpace). Под каждым фото — имя + локация. Доверие через живые лица — <strong>это ядро противоядия против «мрачно»</strong>.</div>
       <div class="spec-note"><strong>Zahlen-Update:</strong> Statt „13+ Jahre" jetzt konkret „seit 2006" (= 20 Jahre). David klärt Ursprung von 13+ im aktuellen Mockup (Andrey-Frage).</div>
+      <div class="ru"><strong>Обновление цифр:</strong> вместо «13+ лет» теперь конкретно «с 2006» (= 20 лет). Давид уточняет, откуда взялось «13+» в текущем макете (вопрос к Андрею).</div>
     </div>
   </div>
 
@@ -607,6 +692,7 @@
     <div class="spec-card-header new-header"><div class="spec-num green">7</div><h3>Gruppe dahinter <span class="tag green" style="margin-left:8px;">NEU</span></h3><span class="spec-bg-tag">Laer + Formica · Trust</span></div>
     <div class="spec-body">
       <div class="spec-row"><span class="spec-label">Begründung</span><span class="spec-value">NordSpace hat einen About-Teaser, wir nicht. <strong>Laer Gruppe (seit 2006)</strong> und <strong>Formica (210+ Projekte, 27.000+ Einheiten)</strong> sind echte Trust-Anker, die aktuell auf der Homepage unsichtbar sind — verschenkter Markenwert.</span></div>
+      <div class="ru"><strong>Обоснование:</strong> у NordSpace есть about-тизер, у нас — нет. <strong>Laer Gruppe (с 2006)</strong> и <strong>Formica (210+ проектов, 27.000+ юнитов)</strong> — это настоящие якоря доверия, которые сейчас не видны на главной. Это упущенный бренд-капитал.</div>
       <hr class="spec-divider">
       <div class="spec-row"><span class="spec-label">Layout</span>
         <div style="width:100%;">
@@ -625,7 +711,9 @@
           </div>
         </div>
       </div>
+      <div class="ru"><strong>Лейаут:</strong> слева — текст «группы за продуктом» + 3 мини-статы (2006 / 210+ / 27.000+) + secondary-CTA «Mehr über uns». Справа — аэросъёмка Mega-объекта (пока плейсхолдер).</div>
       <div class="spec-note green"><strong>Teaser-Prinzip:</strong> S7 ist nur Teaser. Die vollständige Erzählung (Laer Gruppe + Formica + Mega-Mietpark) erfolgt auf der neuen <strong>„Über uns"-Unterseite</strong> (separater Deliverable). CTA „Mehr über uns →" verlinkt dorthin. Sekundär-Button — <strong>kein dritter Haupt-CTA</strong>.</div>
+      <div class="ru"><strong>Тизер-принцип:</strong> S7 — только тизер. Полная история (Laer Gruppe + Formica + Mega-Mietpark) будет на новой странице <strong>«О нас»</strong> (отдельный deliverable). CTA «Mehr über uns →» ведёт туда. Это secondary-кнопка — <strong>не третий главный CTA</strong>.</div>
     </div>
   </div>
 
@@ -647,6 +735,7 @@
         </div>
       </div>
       <div class="spec-note"><strong>⚠️ Preis-Abgleich:</strong> 190 € (S6 aktuelles Mockup) vs. 180 € (Spec Remscheid) — welcher Wert stimmt? Klärung mit David.</div>
+      <div class="ru"><strong>⚠️ Сверка цен:</strong> 190 € (S6 в текущем макете) против 180 € (спека по Remscheid) — какое значение правильное? Уточнить с Давидом.</div>
     </div>
   </div>
 
@@ -670,6 +759,7 @@
     <div class="spec-card-header new-header"><div class="spec-num green">10</div><h3>Ratgeber-Teaser <span class="tag green" style="margin-left:8px;">NEU</span></h3><span class="spec-bg-tag">3 Artikel · ACF-Repeater</span></div>
     <div class="spec-body">
       <div class="spec-row"><span class="spec-label">Begründung</span><span class="spec-value">Wir haben „Ratgeber/Wissensdatenbank" in der Navigation und planen SEO-Content — auf der Startseite kommt davon nichts an. NordSpace macht das richtig. 3 Artikel = SEO-Boost + Trust + Navigation-Anker.</span></div>
+      <div class="ru"><strong>Обоснование:</strong> в навигации у нас есть «Советы/База знаний» и планируется SEO-контент — но на главной об этом ничего не видно. У NordSpace это сделано правильно. 3 статьи = SEO-буст + доверие + якорь для навигации.</div>
       <hr class="spec-divider">
       <div class="spec-row"><span class="spec-label">Headline H2</span><span class="spec-value headline">Du hast Fragen? Wir haben Antworten.</span></div>
       <div class="spec-row" style="margin-top:8px;"><span class="spec-label">Subline</span><span class="spec-value subtext">Ratgeber für Umzug, Lagerung, Gewerbe &amp; Fahrzeuge.</span></div>
@@ -685,6 +775,7 @@
         </div>
       </div>
       <div class="spec-note"><strong>ACF:</strong> <code>ratgeber_featured</code> (Repeater, max. 3 Einträge). David/Redaktion wählt die 3 „Featured"-Artikel aus der Ratgeber-Kategorie. Auto-Fallback: 3 neueste Artikel.</div>
+      <div class="ru"><strong>ACF:</strong> <code>ratgeber_featured</code> (repeater, до 3 записей). Давид/редакция выбирает 3 «featured»-статьи из категории «Советы». Авто-fallback: 3 новейшие статьи.</div>
     </div>
   </div>
 
@@ -710,6 +801,7 @@
         <div class="faq-a" style="border-bottom:none;">Ja — an mehreren Standorten (Remscheid, Wuppertal, Datteln, Halle, Oberhausen). Ideal für Oldtimer.</div>
       </div>
       <div class="spec-note"><strong>ACF:</strong> <code>faq_items</code> (Repeater). David kann Fragen jederzeit pflegen. Empfehlung: 5–7 Einträge.</div>
+      <div class="ru"><strong>ACF:</strong> <code>faq_items</code> (repeater). Давид может редактировать вопросы в любой момент. Рекомендация: 5–7 записей.</div>
     </div>
   </div>
 
@@ -718,6 +810,7 @@
     <div class="spec-card-header light-header"><div class="spec-num">12</div><h3>Marken-Outro <span class="tag yellow" style="margin-left:8px;">Kein 3. CTA</span></h3><span class="spec-bg-tag">Hell · Claim · kein Verkauf</span></div>
     <div class="spec-body">
       <div class="spec-row"><span class="spec-label">Änderung v1</span><span class="spec-value">Kein Final-CTA-Block mehr. Wir haben 2 Haupt-CTAs (Hero-Suche + Stacked-Card-CTAs) plus dezente Sekundär-CTAs in S4 (Tour), S7 (Über uns), S10 (Ratgeber). Ein dritter Haupt-CTA vor dem Footer verwässert Konversion und wirkt pushy.</span></div>
+      <div class="ru"><strong>Изменение по сравнению с v1:</strong> финального CTA-блока больше нет. У нас 2 главных CTA (hero-поиск + CTA в Stacked Cards) + мягкие secondary-CTA в S4 (тур), S7 («О нас»), S10 (советы). Третий главный CTA перед футером размывает конверсию и выглядит навязчиво.</div>
       <hr class="spec-divider">
       <div class="spec-row"><span class="spec-label">Layout</span>
         <div class="outro-preview">
@@ -726,6 +819,7 @@
         </div>
       </div>
       <div class="spec-note green"><strong>ACF-Optional:</strong> dynamische Banner (Verfügbarkeit / Aktion) via ACF <code>verfuegbarkeit_banner_aktiv</code> / <code>aktion_aktiv</code> — bleiben erhalten, aber nur eingeblendet wenn aktiv. Gestaltung hell, ruhiges Markenstatement.</div>
+      <div class="ru"><strong>ACF — опционально:</strong> динамические баннеры (наличие / акция) через ACF <code>verfuegbarkeit_banner_aktiv</code> / <code>aktion_aktiv</code> — остаются, но показываются только при активации. Визуал — светлый, спокойное бренд-высказывание.</div>
     </div>
   </div>
 
@@ -733,12 +827,12 @@
   <div style="margin-top:48px;">
     <h3 style="font-family:'Roboto Condensed',sans-serif; font-size:18px; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:20px;">Verbindliche Designprinzipien · Revision 2</h3>
     <div class="grid-3">
-      <div class="principle"><div class="pnum">01</div><h4>Hell zuerst</h4><p>Weiß dominiert. Schwarz nur Footer. Kein Dark-Hell-Wechsel mehr wie in v1.</p></div>
-      <div class="principle"><div class="pnum">02</div><h4>Mobile First</h4><p>390 px zuerst, dann 1440 px. Klickflächen ≥ 48 px.</p></div>
-      <div class="principle"><div class="pnum">03</div><h4>2 Haupt-CTAs · Max</h4><p>Hero-Suche + Stacked-Cards. Sekundär-CTAs leise, kein dritter Hauptruf am Ende.</p></div>
-      <div class="principle"><div class="pnum">04</div><h4>Menschen zwingend</h4><p>Jede Hauptsektion zeigt Menschen in Action-Situationen. Keine sterilen Architektur-Shots.</p></div>
-      <div class="principle"><div class="pnum">05</div><h4>du-Form durchgängig</h4><p>Alle Headlines, Buttons, Bodytexte in der du-Form. Einheitliche Markentonalität.</p></div>
-      <div class="principle"><div class="pnum">06</div><h4>Trust ohne Dunkelheit</h4><p>Vertrauen entsteht durch Gesichter (Regionalleiter), Gruppen-Kompetenz (S7), Zahlen — nicht durch dunkle Blöcke.</p></div>
+      <div class="principle"><div class="pnum">01</div><h4>Hell zuerst</h4><p>Weiß dominiert. Schwarz nur Footer. Kein Dark-Hell-Wechsel mehr wie in v1.</p><div class="ru"><strong>Светлое в приоритете:</strong> белый доминирует. Чёрный — только в футере. Никакого чередования тёмных/светлых секций как в v1.</div></div>
+      <div class="principle"><div class="pnum">02</div><h4>Mobile First</h4><p>390 px zuerst, dann 1440 px. Klickflächen ≥ 48 px.</p><div class="ru"><strong>Mobile first:</strong> сначала 390 px, потом 1440 px. Кликабельные области ≥ 48 px.</div></div>
+      <div class="principle"><div class="pnum">03</div><h4>2 Haupt-CTAs · Max</h4><p>Hero-Suche + Stacked-Cards. Sekundär-CTAs leise, kein dritter Hauptruf am Ende.</p><div class="ru"><strong>Максимум 2 главных CTA:</strong> hero-поиск + Stacked Cards. Secondary-CTA — тихо; третьего «главного» в конце нет.</div></div>
+      <div class="principle"><div class="pnum">04</div><h4>Menschen zwingend</h4><p>Jede Hauptsektion zeigt Menschen in Action-Situationen. Keine sterilen Architektur-Shots.</p><div class="ru"><strong>Люди обязательны:</strong> каждая главная секция показывает людей в действии. Никакой стерильной архитектурной съёмки.</div></div>
+      <div class="principle"><div class="pnum">05</div><h4>du-Form durchgängig</h4><p>Alle Headlines, Buttons, Bodytexte in der du-Form. Einheitliche Markentonalität.</p><div class="ru"><strong>«Ты»-форма везде:</strong> все заголовки, кнопки, основной текст — в неформальной «ты»-форме. Единый тон бренда.</div></div>
+      <div class="principle"><div class="pnum">06</div><h4>Trust ohne Dunkelheit</h4><p>Vertrauen entsteht durch Gesichter (Regionalleiter), Gruppen-Kompetenz (S7), Zahlen — nicht durch dunkle Blöcke.</p><div class="ru"><strong>Доверие без темноты:</strong> доверие строится через лица (региональные менеджеры), компетенцию группы (S7), цифры — а не через тёмные блоки.</div></div>
     </div>
   </div>
 </section>
@@ -751,36 +845,39 @@
   <div class="info-banner">
     <strong>Prinzip bleibt:</strong> Alle dynamischen Inhalte als editierbare WordPress-Felder (ACF). David oder Team pflegt direkt im Admin — ohne Entwickler. Neue Felder für die drei neuen Sektionen S4 / S7 / S10.
   </div>
+  <div class="ru">
+    <strong>Принцип сохраняется:</strong> весь динамический контент — редактируемые поля WordPress (ACF). Давид или команда правят напрямую в админке, без разработчика. Новые поля — для трёх новых секций S4 / S7 / S10.
+  </div>
 
   <div class="acf-section-title">🔄 3D-Tour (S4 · NEU)</div>
-  <div class="acf-field"><div class="acf-icon">🎬</div><div><h4>Tour-URL oder Embed <span class="acf-key">tour_embed_url</span></h4><p>Matterport- / Kuula- / YouTube-360-Link pro Pilotstandort. URL-Feld oder Embed-Code. Bei leer: Sektion ausgeblendet.</p></div></div>
-  <div class="acf-field"><div class="acf-icon">🖼️</div><div><h4>Tour-Vorschaubild <span class="acf-key">tour_preview_image</span></h4><p>Still aus dem Rundgang. 16:10. Bevorzugt mit Mensch im Bild.</p></div></div>
+  <div class="acf-field"><div class="acf-icon">🎬</div><div><h4>Tour-URL oder Embed <span class="acf-key">tour_embed_url</span></h4><p>Matterport- / Kuula- / YouTube-360-Link pro Pilotstandort. URL-Feld oder Embed-Code. Bei leer: Sektion ausgeblendet.</p><div class="ru">Ссылка Matterport / Kuula / YouTube-360 для пилотной локации. URL или embed-код. Если поле пустое — секция скрывается.</div></div></div>
+  <div class="acf-field"><div class="acf-icon">🖼️</div><div><h4>Tour-Vorschaubild <span class="acf-key">tour_preview_image</span></h4><p>Still aus dem Rundgang. 16:10. Bevorzugt mit Mensch im Bild.</p><div class="ru">Стоп-кадр из тура. 16:10. Желательно с человеком в кадре.</div></div></div>
 
   <div class="acf-section-title">🏢 Gruppe dahinter (S7 · NEU)</div>
-  <div class="acf-field"><div class="acf-icon">📅</div><div><h4>Gründungsjahr <span class="acf-key">gruppe_gruendung</span></h4><p>Stat-Kachel 1. Default: <strong>2006</strong>.</p></div></div>
-  <div class="acf-field"><div class="acf-icon">📊</div><div><h4>Formica Projekte <span class="acf-key">gruppe_formica_projekte</span></h4><p>Stat-Kachel 2. Default: <strong>210+</strong>.</p></div></div>
-  <div class="acf-field"><div class="acf-icon">🏗️</div><div><h4>Formica Einheiten <span class="acf-key">gruppe_formica_einheiten</span></h4><p>Stat-Kachel 3. Default: <strong>27.000+</strong>.</p></div></div>
-  <div class="acf-field"><div class="acf-icon">🛩️</div><div><h4>Gruppe-Visual (Drohne) <span class="acf-key">gruppe_visual</span></h4><p>Luftaufnahme eines Mega-Standorts. 4:3. Platzhalter bis Shooting organisiert ist.</p></div></div>
+  <div class="acf-field"><div class="acf-icon">📅</div><div><h4>Gründungsjahr <span class="acf-key">gruppe_gruendung</span></h4><p>Stat-Kachel 1. Default: <strong>2006</strong>.</p><div class="ru">Стат-плашка 1. По умолчанию: <strong>2006</strong>.</div></div></div>
+  <div class="acf-field"><div class="acf-icon">📊</div><div><h4>Formica Projekte <span class="acf-key">gruppe_formica_projekte</span></h4><p>Stat-Kachel 2. Default: <strong>210+</strong>.</p><div class="ru">Стат-плашка 2. По умолчанию: <strong>210+</strong>.</div></div></div>
+  <div class="acf-field"><div class="acf-icon">🏗️</div><div><h4>Formica Einheiten <span class="acf-key">gruppe_formica_einheiten</span></h4><p>Stat-Kachel 3. Default: <strong>27.000+</strong>.</p><div class="ru">Стат-плашка 3. По умолчанию: <strong>27.000+</strong>.</div></div></div>
+  <div class="acf-field"><div class="acf-icon">🛩️</div><div><h4>Gruppe-Visual (Drohne) <span class="acf-key">gruppe_visual</span></h4><p>Luftaufnahme eines Mega-Standorts. 4:3. Platzhalter bis Shooting organisiert ist.</p><div class="ru">Аэросъёмка Mega-объекта. 4:3. Плейсхолдер до тех пор, пока не организована съёмка.</div></div></div>
 
   <div class="acf-section-title">📚 Ratgeber (S10 · NEU)</div>
-  <div class="acf-field"><div class="acf-icon">📝</div><div><h4>Featured Ratgeber-Artikel <span class="acf-key">ratgeber_featured (Repeater, max 3)</span></h4><p>Redaktion wählt 3 Artikel aus der Ratgeber-Kategorie. Felder pro Eintrag: post_object, Kategorie-Badge-Override (optional), Lesedauer (Min.). Fallback: 3 neueste Artikel.</p></div></div>
+  <div class="acf-field"><div class="acf-icon">📝</div><div><h4>Featured Ratgeber-Artikel <span class="acf-key">ratgeber_featured (Repeater, max 3)</span></h4><p>Redaktion wählt 3 Artikel aus der Ratgeber-Kategorie. Felder pro Eintrag: post_object, Kategorie-Badge-Override (optional), Lesedauer (Min.). Fallback: 3 neueste Artikel.</p><div class="ru">Редакция выбирает 3 статьи из категории «Советы». Поля записи: post_object, override бейджа категории (опционально), время чтения (мин). Fallback: 3 новейшие статьи.</div></div></div>
 
   <div class="acf-section-title">💰 Preise &amp; Trust (bleibt)</div>
-  <div class="acf-field"><div class="acf-icon">€</div><div><h4>Einstiegspreis <span class="acf-key">preis_teaser_start</span></h4><p>„ab [X] €". Default: <strong>180 €</strong> (Remscheid).</p></div></div>
-  <div class="acf-field"><div class="acf-icon">🔢</div><div><h4>Anzahl Standorte <span class="acf-key">stat_standorte</span></h4><p>Default: <strong>16</strong>.</p></div></div>
-  <div class="acf-field"><div class="acf-icon">👥</div><div><h4>Anzahl aktive Mieter <span class="acf-key">stat_mieter</span></h4><p>Default: <strong>2.500+</strong>. Freitext.</p></div></div>
-  <div class="acf-field"><div class="acf-icon">⭐</div><div><h4>Google-Rating <span class="acf-key">trust_google_rating</span></h4><p>Format: <strong>4.7</strong>.</p></div></div>
-  <div class="acf-field"><div class="acf-icon">💬</div><div><h4>Google-Bewertungsanzahl <span class="acf-key">trust_google_count</span></h4><p>Format: <strong>214</strong>.</p></div></div>
+  <div class="acf-field"><div class="acf-icon">€</div><div><h4>Einstiegspreis <span class="acf-key">preis_teaser_start</span></h4><p>„ab [X] €". Default: <strong>180 €</strong> (Remscheid).</p><div class="ru">«ab [X] €». По умолчанию: <strong>180 €</strong> (Remscheid).</div></div></div>
+  <div class="acf-field"><div class="acf-icon">🔢</div><div><h4>Anzahl Standorte <span class="acf-key">stat_standorte</span></h4><p>Default: <strong>16</strong>.</p><div class="ru">По умолчанию: <strong>16</strong>.</div></div></div>
+  <div class="acf-field"><div class="acf-icon">👥</div><div><h4>Anzahl aktive Mieter <span class="acf-key">stat_mieter</span></h4><p>Default: <strong>2.500+</strong>. Freitext.</p><div class="ru">По умолчанию: <strong>2.500+</strong>. Свободный текст.</div></div></div>
+  <div class="acf-field"><div class="acf-icon">⭐</div><div><h4>Google-Rating <span class="acf-key">trust_google_rating</span></h4><p>Format: <strong>4.7</strong>.</p><div class="ru">Формат: <strong>4.7</strong>.</div></div></div>
+  <div class="acf-field"><div class="acf-icon">💬</div><div><h4>Google-Bewertungsanzahl <span class="acf-key">trust_google_count</span></h4><p>Format: <strong>214</strong>.</p><div class="ru">Формат: <strong>214</strong>.</div></div></div>
 
   <div class="acf-section-title">👥 Regionalleiter-Fotos (S6 · NEU im Trust-Block)</div>
-  <div class="acf-field"><div class="acf-icon">🧑</div><div><h4>Regionalleiter je Standort <span class="acf-key">standort_regionalleiter (Repeater)</span></h4><p>Felder pro Eintrag: Foto, Name, Standort. An Standort-CPT gekoppelt — auf Homepage Auswahl 4–6 prominente.</p></div></div>
+  <div class="acf-field"><div class="acf-icon">🧑</div><div><h4>Regionalleiter je Standort <span class="acf-key">standort_regionalleiter (Repeater)</span></h4><p>Felder pro Eintrag: Foto, Name, Standort. An Standort-CPT gekoppelt — auf Homepage Auswahl 4–6 prominente.</p><div class="ru">Поля записи: фото, имя, локация. Привязано к CPT «Локация» — на главной показываем 4–6 наиболее заметных.</div></div></div>
 
   <div class="acf-section-title">🔔 Verfügbarkeit &amp; Aktionen (bleibt · Outro)</div>
-  <div class="acf-field"><div class="acf-icon">✅</div><div><h4>Verfügbarkeits-Banner <span class="acf-key">verfuegbarkeit_banner_aktiv / _text</span></h4><p>True/False + Freitext. Blendet im Marken-Outro (S12) kleinen Banner ein.</p></div></div>
-  <div class="acf-field"><div class="acf-icon">🎯</div><div><h4>Aktions-Banner <span class="acf-key">aktion_aktiv / aktion_text / aktion_link</span></h4><p>Optional. Saisonale Kampagnen.</p></div></div>
+  <div class="acf-field"><div class="acf-icon">✅</div><div><h4>Verfügbarkeits-Banner <span class="acf-key">verfuegbarkeit_banner_aktiv / _text</span></h4><p>True/False + Freitext. Blendet im Marken-Outro (S12) kleinen Banner ein.</p><div class="ru">True/False + свободный текст. Подключает маленький баннер в бренд-outro (S12).</div></div></div>
+  <div class="acf-field"><div class="acf-icon">🎯</div><div><h4>Aktions-Banner <span class="acf-key">aktion_aktiv / aktion_text / aktion_link</span></h4><p>Optional. Saisonale Kampagnen.</p><div class="ru">Опционально. Сезонные кампании.</div></div></div>
 
   <div class="acf-section-title">🗣️ FAQ</div>
-  <div class="acf-field"><div class="acf-icon">❓</div><div><h4>FAQ-Einträge <span class="acf-key">faq_items (Repeater)</span></h4><p>5–7 Fragen empfohlen. Redaktionell pflegbar.</p></div></div>
+  <div class="acf-field"><div class="acf-icon">❓</div><div><h4>FAQ-Einträge <span class="acf-key">faq_items (Repeater)</span></h4><p>5–7 Fragen empfohlen. Redaktionell pflegbar.</p><div class="ru">Рекомендуется 5–7 вопросов. Редактируется редакцией.</div></div></div>
 </section>
 
 <!-- SECTION 5: DELIVERABLES -->
@@ -792,31 +889,32 @@
     <div>
       <div class="dl-group">
         <h3>Foundations (Update)</h3>
-        <div class="dl-item"><div class="cb"></div><div><strong>Farbpalette · heller Grundton</strong><span>Weiß · Off-White · Light Gray dominiert. LAER-Red nur Akzent. Schwarz nur Footer.</span></div></div>
-        <div class="dl-item"><div class="cb"></div><div><strong>Typografie-Skala</strong> — unverändert<span>Roboto Condensed + Inter. <strong>Button-Letter-Spacing erhöht</strong> (+40 bis +80)</span></div></div>
-        <div class="dl-item"><div class="cb"></div><div><strong>Spacing-System</strong> — 4px-Basis-Grid<span>4 · 8 · 12 · 16 · 24 · 32 · 48 · 64 px</span></div></div>
-        <div class="dl-item"><div class="cb"></div><div><strong>Border-Radius-Tokens · revidiert</strong><span>2–4 px Standard · 0 px für Icons · leicht abgerundet statt scharf</span></div></div>
-        <div class="dl-item"><div class="cb"></div><div><strong>Schatten-System</strong> — 3 Stufen<span>Card, Elevated, Modal</span></div></div>
+        <div class="dl-item"><div class="cb"></div><div><strong>Farbpalette · heller Grundton</strong><span>Weiß · Off-White · Light Gray dominiert. LAER-Red nur Akzent. Schwarz nur Footer.</span><div class="ru"><strong>Палитра — светлый основной тон:</strong> белый, off-white, светло-серый. LAER-Red только как акцент, чёрный — только в футере.</div></div></div>
+        <div class="dl-item"><div class="cb"></div><div><strong>Typografie-Skala</strong> — unverändert<span>Roboto Condensed + Inter. <strong>Button-Letter-Spacing erhöht</strong> (+40 bis +80)</span><div class="ru"><strong>Шрифтовая шкала — без изменений:</strong> Roboto Condensed + Inter. <strong>Letter-spacing в кнопках увеличен</strong> (+40…+80).</div></div></div>
+        <div class="dl-item"><div class="cb"></div><div><strong>Spacing-System</strong> — 4px-Basis-Grid<span>4 · 8 · 12 · 16 · 24 · 32 · 48 · 64 px</span><div class="ru"><strong>Система отступов — сетка 4 px:</strong> 4 · 8 · 12 · 16 · 24 · 32 · 48 · 64 px.</div></div></div>
+        <div class="dl-item"><div class="cb"></div><div><strong>Border-Radius-Tokens · revidiert</strong><span>2–4 px Standard · 0 px für Icons · leicht abgerundet statt scharf</span><div class="ru"><strong>Токены скругления — обновлены:</strong> 2–4 px стандарт · 0 px для иконок · лёгкое скругление вместо острых углов.</div></div></div>
+        <div class="dl-item"><div class="cb"></div><div><strong>Schatten-System</strong> — 3 Stufen<span>Card, Elevated, Modal</span><div class="ru"><strong>Система теней — 3 уровня:</strong> Card, Elevated, Modal.</div></div></div>
       </div>
       <div class="dl-group">
         <h3>Komponenten</h3>
-        <div class="dl-item star"><div class="cb"></div><div><strong>Hero mit Video + PLZ-Suchleiste</strong><span>⭐ KEY — Video-Loop-Platzhalter, PLZ-Input, Claim-Layer, 2 CTAs</span></div></div>
-        <div class="dl-item new"><div class="cb"></div><div><strong>Stacked-Card-Komponente</strong><span>🆕 NEU — 4 Varianten (Lager/Garage/Büro/Werkhalle), DK-Scroll-Mechanik, Persona-Foto-Slot links</span></div></div>
-        <div class="dl-item new"><div class="cb"></div><div><strong>3D-Tour-Teaser-Block</strong><span>🆕 NEU — Preview-Still + Play-Overlay, CTA „Tour starten"</span></div></div>
-        <div class="dl-item new"><div class="cb"></div><div><strong>Gruppe-dahinter-Block</strong><span>🆕 NEU — Story-Text + Drohnen-Visual + 3 Mini-Stats + „Mehr über uns" CTA</span></div></div>
-        <div class="dl-item new"><div class="cb"></div><div><strong>Ratgeber-Artikel-Karte</strong><span>🆕 NEU — Beitragsbild + Kategorie-Badge + Titel + Meta</span></div></div>
-        <div class="dl-item"><div class="cb"></div><div><strong>Button-System · revidiert</strong><span>Primär, Sekundär, Ghost. Radius 2–4 px. Letter-Spacing erhöht.</span></div></div>
-        <div class="dl-item"><div class="cb"></div><div><strong>Eingabefelder</strong><span>Input, Textarea, Select. Focus #C62828 Border.</span></div></div>
-        <div class="dl-item"><div class="cb"></div><div><strong>Navigation</strong><span>Desktop + Mobile. Ggf. „Über uns" ergänzen (mit AS zu klären).</span></div></div>
-        <div class="dl-item"><div class="cb"></div><div><strong>Trust-Badge + Stats-Counter</strong><span>Inkl. Regionalleiter-Foto-Komponente (NEU)</span></div></div>
-        <div class="dl-item"><div class="cb"></div><div><strong>Preis-Karte · heller</strong><span>Standard · Featured · Gewerbe. Radius 2–4 px.</span></div></div>
-        <div class="dl-item"><div class="cb"></div><div><strong>FAQ-Eintrag, Prozess-Schritt</strong><span>Bleiben strukturell, heller</span></div></div>
+        <div class="dl-item star"><div class="cb"></div><div><strong>Hero mit Video + PLZ-Suchleiste</strong><span>⭐ KEY — Video-Loop-Platzhalter, PLZ-Input, Claim-Layer, 2 CTAs</span><div class="ru">⭐ KEY — плейсхолдер видеолупа, PLZ-инпут, слой клейма, 2 CTA.</div></div></div>
+        <div class="dl-item new"><div class="cb"></div><div><strong>Stacked-Card-Komponente</strong><span>🆕 NEU — 4 Varianten (Lager/Garage/Büro/Werkhalle), DK-Scroll-Mechanik, Persona-Foto-Slot links</span><div class="ru">🆕 НОВОЕ — 4 варианта (склад/гараж/офис/мастерская), scroll-механика DK, слот для фото персоны слева.</div></div></div>
+        <div class="dl-item new"><div class="cb"></div><div><strong>3D-Tour-Teaser-Block</strong><span>🆕 NEU — Preview-Still + Play-Overlay, CTA „Tour starten"</span><div class="ru">🆕 НОВОЕ — стоп-кадр превью + play-оверлей, CTA «Tour starten».</div></div></div>
+        <div class="dl-item new"><div class="cb"></div><div><strong>Gruppe-dahinter-Block</strong><span>🆕 NEU — Story-Text + Drohnen-Visual + 3 Mini-Stats + „Mehr über uns" CTA</span><div class="ru">🆕 НОВОЕ — текст-история + визуал с дрона + 3 мини-статы + CTA «Mehr über uns».</div></div></div>
+        <div class="dl-item new"><div class="cb"></div><div><strong>Ratgeber-Artikel-Karte</strong><span>🆕 NEU — Beitragsbild + Kategorie-Badge + Titel + Meta</span><div class="ru">🆕 НОВОЕ — картинка поста + бейдж категории + заголовок + мета-инфо.</div></div></div>
+        <div class="dl-item"><div class="cb"></div><div><strong>Button-System · revidiert</strong><span>Primär, Sekundär, Ghost. Radius 2–4 px. Letter-Spacing erhöht.</span><div class="ru"><strong>Система кнопок — обновлена:</strong> Primary, Secondary, Ghost. Радиус 2–4 px. Letter-spacing увеличен.</div></div></div>
+        <div class="dl-item"><div class="cb"></div><div><strong>Eingabefelder</strong><span>Input, Textarea, Select. Focus #C62828 Border.</span><div class="ru"><strong>Поля ввода:</strong> input, textarea, select. В фокусе — рамка #C62828.</div></div></div>
+        <div class="dl-item"><div class="cb"></div><div><strong>Navigation</strong><span>Desktop + Mobile. Ggf. „Über uns" ergänzen (mit AS zu klären).</span><div class="ru"><strong>Навигация:</strong> Desktop + Mobile. Возможно, добавить «Über uns» (согласовать с AS).</div></div></div>
+        <div class="dl-item"><div class="cb"></div><div><strong>Trust-Badge + Stats-Counter</strong><span>Inkl. Regionalleiter-Foto-Komponente (NEU)</span><div class="ru">Включая компонент фотографий региональных менеджеров (НОВОЕ).</div></div></div>
+        <div class="dl-item"><div class="cb"></div><div><strong>Preis-Karte · heller</strong><span>Standard · Featured · Gewerbe. Radius 2–4 px.</span><div class="ru"><strong>Карточка цены — светлее:</strong> Standard · Featured · Gewerbe. Радиус 2–4 px.</div></div></div>
+        <div class="dl-item"><div class="cb"></div><div><strong>FAQ-Eintrag, Prozess-Schritt</strong><span>Bleiben strukturell, heller</span><div class="ru">Структурно остаются, визуально — светлее.</div></div></div>
       </div>
     </div>
     <div>
       <div class="dl-group">
         <h3>Startseiten-Mockup <span class="tag red">HIGH PRIORITY</span></h3>
         <p style="font-size:13px; color:var(--gray); margin-bottom:16px;">Desktop (1440 px) + Mobile (390 px) — 12 Sektionen:</p>
+        <div class="ru" style="margin-bottom:10px;">Макет главной страницы — HIGH PRIORITY. Desktop (1440 px) + Mobile (390 px), 12 секций.</div>
         <div class="dl-item star"><div class="cb"></div><div><strong>S1 Hero mit Video + PLZ-Suche</strong><span>⭐ Mood-Video-Platzhalter · PLZ-Input · Claim „Einfach einfahren."</span></div></div>
         <div class="dl-item"><div class="cb"></div><div><strong>S2 USP Bar · 6 Icons</strong><span>Hell, horizontal</span></div></div>
         <div class="dl-item star"><div class="cb"></div><div><strong>S3 Stacked Cards · 4 Nutzungsarten</strong><span>⭐ KERN-NEUHEIT — Persona-Fotos + Kernbotschaften</span></div></div>
@@ -832,17 +930,26 @@
       </div>
       <div class="dl-group">
         <h3>Follow-Up-Seiten (separate Deliverables)</h3>
-        <div class="dl-item"><div class="cb"></div><div><strong>Nutzungsart-Landingpage-Template</strong><span>4 Instanzen (Lager · Garage · Büro · Werkhalle) — nach Homepage-Freigabe</span></div></div>
-        <div class="dl-item new"><div class="cb"></div><div><strong>„Über uns"-Unterseite</strong><span>🆕 Ziel des S7-Teaser-CTAs. Erzählt Laer Gruppe + Formica + Mega-Mietpark als Gesamtkonstrukt. Seitenname noch zu entscheiden (Über uns · About Us · Die Gruppe).</span></div></div>
+        <div class="ru" style="margin-bottom:10px;"><strong>Страницы-продолжения (отдельные деливераблы):</strong></div>
+        <div class="dl-item"><div class="cb"></div><div><strong>Nutzungsart-Landingpage-Template</strong><span>4 Instanzen (Lager · Garage · Büro · Werkhalle) — nach Homepage-Freigabe</span><div class="ru">Шаблон лендинга по типу использования — 4 экземпляра (склад · гараж · офис · мастерская) — после приёмки главной.</div></div></div>
+        <div class="dl-item new"><div class="cb"></div><div><strong>„Über uns"-Unterseite</strong><span>🆕 Ziel des S7-Teaser-CTAs. Erzählt Laer Gruppe + Formica + Mega-Mietpark als Gesamtkonstrukt. Seitenname noch zu entscheiden (Über uns · About Us · Die Gruppe).</span><div class="ru">🆕 Цель для CTA из тизера S7. Рассказывает Laer Gruppe + Formica + Mega-Mietpark как единый конструкт. Название страницы ещё не решено (Über uns · About Us · Die Gruppe).</div></div></div>
       </div>
       <div class="dl-group">
         <h3>Nicht im Scope (Phase 1)</h3>
+        <div class="ru" style="margin-bottom:10px;"><strong>Не в скоупе (Фаза 1):</strong></div>
         <div style="background:var(--white); border:1px solid var(--border); border-radius:var(--radius); padding:16px; font-size:13px; color:var(--gray);">
           <p>❌ Animationen / Microinteractions — Phase 2</p>
           <p style="margin-top:6px;">❌ Echte Video- und Menschenfotos → Stock als Platzhalter, Eigenproduktion später (AW)</p>
           <p style="margin-top:6px;">❌ Instagram-Feed / Newsletter-Signup → Phase 2</p>
           <p style="margin-top:6px;">❌ Press-/Medien-Streifen → nur falls Erwähnungen vorliegen (David)</p>
           <p style="margin-top:6px;">❌ Mobile App → nicht vorgesehen</p>
+          <div class="ru">
+            ❌ Анимации / микровзаимодействия — фаза 2<br>
+            ❌ Реальные видео и фото людей → сток как плейсхолдер, собственная съёмка позже (AW)<br>
+            ❌ Instagram-фид / подписка на рассылку → фаза 2<br>
+            ❌ Полоса «пресса / упоминания» → только если есть упоминания (Давид)<br>
+            ❌ Мобильное приложение → не планируется
+          </div>
         </div>
       </div>
     </div>
@@ -853,6 +960,7 @@
 <section class="white" id="offene">
   <p class="section-label">06 — Status</p>
   <h2>Offene Punkte &amp; Entscheidungen</h2>
+  <div class="ru" style="margin-bottom:16px;"><strong>Открытые пункты и решения.</strong> Статусы: ✅ решено · ⚠️ в работе / на клиенте · 🆕 новое, требует решения.</div>
   <table>
     <thead><tr><th>#</th><th>Punkt</th><th>An wen</th><th>Status</th></tr></thead>
     <tbody>
@@ -882,21 +990,23 @@
 <section class="light" id="zeitplan">
   <p class="section-label">07 — Zeitplan</p>
   <h2>Vorgeschlagener Ablauf · Revision 2</h2>
+  <div class="ru" style="margin-bottom:20px;"><strong>Предлагаемая последовательность работ, ревизия 2.</strong> Точки маршрута ниже — ориентировочно по порядку.</div>
   <div class="grid-2">
     <div class="timeline">
-      <div class="tl-item"><h4>TZ v2 an Andrey übergeben</h4><p>Dieses Dokument + Briefing-MD + NordSpace-Analyse + DK-Referenz-Zugang. Bitrix24 Task #3839 Kommentar.</p></div>
-      <div class="tl-item"><h4>Stock-Recherche</h4><p>Andrey: 3–5 Hero-Video-Kandidaten + 4 Personas-Foto-Auswahlen pro Stacked Card. 1–2 Werktage.</p></div>
-      <div class="tl-item"><h4>AS + David klären offene Punkte</h4><p>3D-Tour-Umfang · Drohnen-Visual · Über-uns-Seitenname · Preis-Abgleich · 13+ Stat. Parallel zur Stock-Recherche.</p></div>
-      <div class="tl-item"><h4>Design-Kit Revision 2 · Desktop</h4><p>Andrey: Foundations-Update + neue Komponenten + Startseiten-Mockup Desktop (1440 px). 12 Sektionen. Ca. 5–7 Werktage.</p></div>
-      <div class="tl-item"><h4>Design-Kit · Mobile (390 px)</h4><p>Alle 12 Sektionen mobile. 3–4 Werktage.</p></div>
-      <div class="tl-item"><h4>Review durch W&amp;S</h4><p>2P-Kritik + AS-Freigabe gegen dieses TZ v2. 1–2 Werktage.</p></div>
-      <div class="tl-item"><h4>Client-Präsentation</h4><p>AS stellt David das überarbeitete Design-Kit vor. Feedback + Freigabe.</p></div>
-      <div class="tl-item"><h4>Follow-Ups</h4><p>Nutzungsart-Landingpage-Template (4×) + „Über uns"-Unterseite. Nach Homepage-Freigabe.</p></div>
+      <div class="tl-item"><h4>TZ v2 an Andrey übergeben</h4><p>Dieses Dokument + Briefing-MD + NordSpace-Analyse + DK-Referenz-Zugang. Bitrix24 Task #3839 Kommentar.</p><div class="ru">Передача ТЗ v2 Андрею: этот документ + Briefing-MD + разбор NordSpace + доступ к референсу DK. Комментарий в Bitrix24 Task #3839.</div></div>
+      <div class="tl-item"><h4>Stock-Recherche</h4><p>Andrey: 3–5 Hero-Video-Kandidaten + 4 Personas-Foto-Auswahlen pro Stacked Card. 1–2 Werktage.</p><div class="ru">Подбор стока: Андрей — 3–5 кандидатов hero-видео + 4 варианта фото персон для Stacked Cards. 1–2 рабочих дня.</div></div>
+      <div class="tl-item"><h4>AS + David klären offene Punkte</h4><p>3D-Tour-Umfang · Drohnen-Visual · Über-uns-Seitenname · Preis-Abgleich · 13+ Stat. Parallel zur Stock-Recherche.</p><div class="ru">AS + Давид закрывают открытые пункты: объём 3D-тура, дрон-визуал, название страницы «О нас», сверка цен, стат «13+». Параллельно со stock-ресёрчем.</div></div>
+      <div class="tl-item"><h4>Design-Kit Revision 2 · Desktop</h4><p>Andrey: Foundations-Update + neue Komponenten + Startseiten-Mockup Desktop (1440 px). 12 Sektionen. Ca. 5–7 Werktage.</p><div class="ru">Дизайн-кит ревизия 2, Desktop: Андрей — апдейт foundations + новые компоненты + макет главной (1440 px), 12 секций. Примерно 5–7 рабочих дней.</div></div>
+      <div class="tl-item"><h4>Design-Kit · Mobile (390 px)</h4><p>Alle 12 Sektionen mobile. 3–4 Werktage.</p><div class="ru">Мобильная версия — все 12 секций. 3–4 рабочих дня.</div></div>
+      <div class="tl-item"><h4>Review durch W&amp;S</h4><p>2P-Kritik + AS-Freigabe gegen dieses TZ v2. 1–2 Werktage.</p><div class="ru">Ревью со стороны W&amp;S: 2P-критика + апрув AS по этому ТЗ v2. 1–2 рабочих дня.</div></div>
+      <div class="tl-item"><h4>Client-Präsentation</h4><p>AS stellt David das überarbeitete Design-Kit vor. Feedback + Freigabe.</p><div class="ru">Презентация клиенту: AS показывает Давиду переработанный дизайн-кит. Фидбэк + приёмка.</div></div>
+      <div class="tl-item"><h4>Follow-Ups</h4><p>Nutzungsart-Landingpage-Template (4×) + „Über uns"-Unterseite. Nach Homepage-Freigabe.</p><div class="ru">Доработки: шаблон лендинга по типам использования (4×) + страница «О нас». После приёмки главной.</div></div>
     </div>
     <div>
       <div class="card" style="margin-bottom:16px;">
         <h3>Referenz-Dateien für Andrey</h3>
         <p style="margin-bottom:12px; font-size:13px; color:var(--gray);">Folgende Dateien begleiten v2:</p>
+        <div class="ru" style="margin-bottom:10px;"><strong>Референс-файлы для Андрея.</strong> Следующие файлы сопровождают v2:</div>
         <ul style="list-style:none; padding:0;">
           <li style="padding:8px 0; border-bottom:1px solid var(--border); font-size:13px;">📄 <strong>TZ v1</strong> — Version 1.2 als Vorgänger-Dokument (zum Vergleich)</li>
           <li style="padding:8px 0; border-bottom:1px solid var(--border); font-size:13px;">📄 <strong>plans/260419-design-briefing-andrey-homepage-revision-2.md</strong> — Volltext-Briefing</li>
@@ -916,6 +1026,9 @@
           <li style="padding:8px 0; font-size:13px;">🔗 <strong>storage24.com / myplace.de</strong> — Wettbewerber-Orientierung</li>
         </ul>
         <p style="font-size:12px; color:var(--gray); margin-top:12px;">Keine 1:1-Kopie — NordSpace Content + DK Struktur + Mega-eigene Marke.</p>
+        <div class="ru">
+          <strong>Референсы · live-сайты:</strong> NordSpace — контентный референс (люди, видео, светло, 3D, тепло); DK — техническая структура (hero-поиск, Stacked Cards); laer-gruppe.com — эстетика концерна (ориентир); storage24 / myplace — ориентир по конкурентам. <strong>Не копировать 1:1</strong> — контент от NordSpace + структура от DK + собственная марка Mega.
+        </div>
       </div>
     </div>
   </div>
@@ -925,13 +1038,35 @@
 <footer>
   <div>
     <div class="footer-brand">W&amp;S <span>AGENCY</span></div>
-    <p style="margin-top:4px;">TZ Designer Homepage · mega-mietpark.de · <strong style="color:var(--red);">Version 2.0 · Revision 2</strong></p>
+    <p style="margin-top:4px;">TZ Designer Homepage · mega-mietpark.de · <strong style="color:var(--red);">Version 2.0 · Revision 2 · DE + RU</strong></p>
   </div>
   <div style="text-align:right;">
     <p>Designsystem: LAER Konzern · hell-first · #C62828 Akzent · 2–4 px Radius</p>
-    <p style="margin-top:4px;">Stand: 2026-04-19 [AS]</p>
+    <p style="margin-top:4px;">Stand: 2026-04-20 [AW] · Bilingual DE/RU</p>
   </div>
 </footer>
+
+<script>
+  (function () {
+    var btn = document.getElementById('ruToggle');
+    var body = document.body;
+    var STORAGE_KEY = 'tz-v2-ru-visible';
+    var stored = null;
+    try { stored = localStorage.getItem(STORAGE_KEY); } catch (e) {}
+    if (stored === 'off') {
+      body.classList.add('hide-ru');
+      btn.classList.add('off');
+      btn.textContent = 'DE only';
+    }
+    btn.addEventListener('click', function () {
+      body.classList.toggle('hide-ru');
+      var hidden = body.classList.contains('hide-ru');
+      btn.classList.toggle('off', hidden);
+      btn.textContent = hidden ? 'DE only' : 'DE + RU';
+      try { localStorage.setItem(STORAGE_KEY, hidden ? 'off' : 'on'); } catch (e) {}
+    });
+  })();
+</script>
 
 </body>
 </html>
