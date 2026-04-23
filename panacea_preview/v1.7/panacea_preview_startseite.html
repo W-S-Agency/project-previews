@@ -227,6 +227,7 @@ h2 { font-size: 1.6rem; color: var(--primary); margin-bottom: 1.25rem; text-alig
   .seo-table { font-size: .75rem; }
 }
 </style>
+<link rel="stylesheet" href="panacea_preview_rechner.css">
 </head>
 <body>
 
@@ -421,80 +422,14 @@ h2 { font-size: 1.6rem; color: var(--primary); margin-bottom: 1.25rem; text-alig
         <h2>Was kostet Ihre Pflege?</h2>
         <p style="text-align:center;color:var(--text-light);margin-bottom:1.5rem;">Verschaffen Sie sich einen ersten Überblick über die Pflegekosten. Unser Rechner zeigt Ihnen, mit welchen Leistungen und Kosten Sie rechnen können – abhängig von Ihrem Pflegegrad.</p>
 
-        <!-- SCHEMA — Pflegekostenrechner (statischer Mockup, zeigt Ziel-Design) -->
-        <div style="max-width:720px;margin:0 auto;padding:2rem;background:#fff;border:2px dashed var(--primary-light);border-radius:12px;position:relative;">
-          <div style="position:absolute;top:-12px;left:16px;background:var(--primary);color:#fff;padding:.2rem .7rem;border-radius:4px;font-size:.75rem;font-weight:600;">SCHEMA · Design ausstehend (Andrey)</div>
-
-          <!-- Schritt 1 -->
-          <div style="margin-bottom:1.5rem;">
-            <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.75rem;">
-              <span style="width:28px;height:28px;background:var(--primary);color:#fff;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem;">1</span>
-              <strong style="font-size:1rem;">Pflegegrad auswählen</strong>
-            </div>
-            <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
-              <button style="flex:1;min-width:60px;padding:.7rem;border:2px solid var(--primary);background:#fff;color:var(--primary);border-radius:8px;font-weight:700;font-size:1.1rem;cursor:default;">2</button>
-              <button style="flex:1;min-width:60px;padding:.7rem;border:2px solid var(--primary);background:var(--primary);color:#fff;border-radius:8px;font-weight:700;font-size:1.1rem;cursor:default;">3</button>
-              <button style="flex:1;min-width:60px;padding:.7rem;border:2px solid var(--primary);background:#fff;color:var(--primary);border-radius:8px;font-weight:700;font-size:1.1rem;cursor:default;">4</button>
-              <button style="flex:1;min-width:60px;padding:.7rem;border:2px solid var(--primary);background:#fff;color:var(--primary);border-radius:8px;font-weight:700;font-size:1.1rem;cursor:default;">5</button>
-            </div>
-          </div>
-
-          <!-- Empfehlung -->
-          <div style="background:#f0f9e8;border-left:4px solid #92D050;padding:.85rem 1rem;border-radius:6px;margin-bottom:1.5rem;font-size:.92rem;">
-            <strong style="color:#5a7a2e;">✓ Empfehlung:</strong> Bei Pflegegrad&nbsp;3 stehen Ihnen monatlich bis zu <strong>1.497&nbsp;€</strong> an Pflegesachleistungen zu. Das entspricht ca. <strong>2 Besuche à 30 Minuten</strong> ohne private Zuzahlung.
-          </div>
-
-          <!-- Schritt 2 -->
-          <div style="margin-bottom:1.5rem;">
-            <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.75rem;">
-              <span style="width:28px;height:28px;background:var(--primary);color:#fff;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem;">2</span>
-              <strong style="font-size:1rem;">Anzahl und Dauer der täglichen Besuche</strong>
-            </div>
-
-            <div style="margin-bottom:.85rem;">
-              <div style="display:flex;justify-content:space-between;font-size:.88rem;margin-bottom:.3rem;">
-                <span>Besuch 1</span><span style="color:var(--primary);font-weight:600;">40 min</span>
-              </div>
-              <div style="height:6px;background:#e5d5e8;border-radius:3px;position:relative;">
-                <div style="position:absolute;left:0;top:0;height:100%;width:33%;background:var(--primary);border-radius:3px;"></div>
-                <div style="position:absolute;left:33%;top:50%;transform:translate(-50%,-50%);width:18px;height:18px;background:var(--primary);border-radius:50%;border:3px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,.2);"></div>
-              </div>
-            </div>
-
-            <div style="margin-bottom:.85rem;">
-              <div style="display:flex;justify-content:space-between;font-size:.88rem;margin-bottom:.3rem;">
-                <span>Besuch 2</span><span style="color:var(--primary);font-weight:600;">20 min</span>
-              </div>
-              <div style="height:6px;background:#e5d5e8;border-radius:3px;position:relative;">
-                <div style="position:absolute;left:0;top:0;height:100%;width:16%;background:var(--primary);border-radius:3px;"></div>
-                <div style="position:absolute;left:16%;top:50%;transform:translate(-50%,-50%);width:18px;height:18px;background:var(--primary);border-radius:50%;border:3px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,.2);"></div>
-              </div>
-            </div>
-
-            <button style="background:transparent;border:1px dashed var(--primary-light);color:var(--primary);padding:.5rem 1rem;border-radius:6px;font-size:.88rem;cursor:default;">+ Weiteren Besuch hinzufügen</button>
-            <div style="font-size:.78rem;color:var(--text-light);margin-top:.4rem;">Schrittweite 5 min · max. 3 Besuche/Tag</div>
-          </div>
-
-          <!-- Ergebnis -->
-          <div style="background:linear-gradient(135deg, #f0e6f6 0%, #e8e0f0 100%);border-radius:10px;padding:1.25rem;">
-            <div style="font-size:.85rem;color:var(--text-light);margin-bottom:.5rem;">Zusammenfassung</div>
-            <div style="display:flex;justify-content:space-between;font-size:.92rem;margin-bottom:.35rem;">
-              <span>Geschätzte Gesamtkosten / Monat:</span><strong>1.350 €</strong>
-            </div>
-            <div style="display:flex;justify-content:space-between;font-size:.92rem;margin-bottom:.35rem;">
-              <span>Davon Pflegekasse:</span><strong style="color:#5a7a2e;">−1.350 €</strong>
-            </div>
-            <div style="display:flex;justify-content:space-between;font-size:1.1rem;padding-top:.6rem;border-top:1px solid rgba(129,0,128,.2);">
-              <span><strong>Ihre Zuzahlung:</strong></span><strong style="color:var(--primary);font-size:1.25rem;">0 €/Monat</strong>
-            </div>
-            <div style="font-size:.75rem;color:var(--text-light);margin-top:.6rem;font-style:italic;">Alle Angaben unverbindlich · individuell im Beratungsgespräch</div>
-            <button style="width:100%;margin-top:1rem;background:var(--primary);color:#fff;border:none;padding:.8rem;border-radius:8px;font-weight:600;font-size:.95rem;cursor:default;">Kostenlose Beratung anfragen →</button>
-          </div>
-        </div>
+        <!-- LIVE-DEMO — Pflegekostenrechner (voll funktional, Berechnungslogik aus TZ §4) -->
+        <div id="panacea-rechner"></div>
 
         <p style="text-align:center;font-size:.85rem;color:var(--text-light);margin-top:1.25rem;">
-          📐 Vollständiges TZ für Design &amp; Umsetzung: <a href="panacea_preview_kalkulator.html" style="color:var(--primary);font-weight:600;">Kostenrechner-Spezifikation öffnen →</a>
+          🟢 <strong>Live-Demo</strong> · Design provisorisch — Finale Gestaltung: <a href="panacea_preview_kalkulator.html" style="color:var(--primary);font-weight:600;">Design-TZ für Andrey öffnen →</a>
         </p>
+        <script src="panacea_preview_rechner.js"></script>
+        <script>PanaceaRechner.init("#panacea-rechner", { ctaHref: "#block-8" });</script>
       </div>
       
       <button class="fb-btn" title="Feedback geben">✏️ Vorschlag</button>

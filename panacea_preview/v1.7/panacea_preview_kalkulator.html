@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pflegekostenrechner — Design-TZ · Panacea Pflege</title>
 <link rel="stylesheet" href="panacea_preview_style.css">
+<link rel="stylesheet" href="panacea_preview_rechner.css">
 <style>
 .tz-wrap { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
 .tz-hero { text-align: center; padding: 2rem 0 2.5rem; border-bottom: 1px solid var(--border); margin-bottom: 2.5rem; }
@@ -262,65 +263,14 @@ Zuzahlung    = max(0, Gesamtkosten − Kassenanteil)</code></pre>
 
     </div>
 
-    <!-- RIGHT: VISUAL MOCKUP -->
+    <!-- RIGHT: LIVE-DEMO -->
     <div>
-      <div class="mockup-card">
-        <h3>🎨 Schema · Pflegekostenrechner</h3>
-
-        <div class="mock-step">
-          <div class="mock-step-header">
-            <span class="mock-step-num">1</span>
-            <span class="mock-step-title">Pflegegrad auswählen</span>
-          </div>
-          <div class="pg-btns">
-            <div class="pg-btn">2</div>
-            <div class="pg-btn active">3</div>
-            <div class="pg-btn">4</div>
-            <div class="pg-btn">5</div>
-          </div>
-        </div>
-
-        <div class="empfehlung">
-          <strong>✓ Empfehlung:</strong> Bei Pflegegrad 3 stehen Ihnen monatlich bis zu <strong>1.497 €</strong> zu. Das entspricht ca. <strong>2 Besuche à 30 Min.</strong> ohne Zuzahlung.
-        </div>
-
-        <div class="mock-step">
-          <div class="mock-step-header">
-            <span class="mock-step-num">2</span>
-            <span class="mock-step-title">Tägliche Besuche</span>
-          </div>
-
-          <div class="slider-row">
-            <div class="slider-label"><span>Besuch 1</span><span class="slider-val">40 min</span></div>
-            <div class="slider-track">
-              <div class="slider-fill" style="width:33%;"></div>
-              <div class="slider-thumb" style="left:33%;"></div>
-            </div>
-          </div>
-
-          <div class="slider-row">
-            <div class="slider-label"><span>Besuch 2</span><span class="slider-val">30 min</span></div>
-            <div class="slider-track">
-              <div class="slider-fill" style="width:25%;"></div>
-              <div class="slider-thumb" style="left:25%;"></div>
-            </div>
-          </div>
-
-          <button class="add-btn">+ Weiteren Besuch hinzufügen</button>
-          <div style="font-size:.72rem;color:var(--text-light);margin-top:.35rem;">Schrittweite 5 min · max. 3</div>
-        </div>
-
-        <div class="result-box">
-          <div class="result-label">Zusammenfassung</div>
-          <div class="result-row"><span>Gesamtkosten / Monat</span><strong>1.575 €</strong></div>
-          <div class="result-row"><span>Pflegekasse übernimmt</span><strong style="color:#5a7a2e;">−1.497 €</strong></div>
-          <div class="result-row final"><span><strong>Ihre Zuzahlung</strong></span><strong>78 €/Mon.</strong></div>
-          <div class="result-disclaimer">Alle Angaben unverbindlich · individuell im Beratungsgespräch</div>
-          <button class="cta-final">Kostenlose Beratung anfragen →</button>
-        </div>
-
+      <div class="mockup-card" style="padding:1.5rem;">
+        <h3 style="margin-bottom:.5rem;">🟢 Live-Demo · Funktionaler Widget</h3>
+        <p style="text-align:center;font-size:.82rem;color:var(--text-light);margin-bottom:1.25rem;">Berechnung läuft live nach Formel aus §3 · Design provisorisch, zu ersetzen</p>
+        <div id="panacea-rechner-demo"></div>
         <div style="margin-top:1rem;padding-top:1rem;border-top:1px dashed var(--border);font-size:.78rem;color:var(--text-light);text-align:center;">
-          Statischer Mockup · Beispielwerte PG 3 · 40+30 min
+          Probieren: Pflegegrad wählen → Slider bewegen → Ergebnis aktualisiert sich in Echtzeit
         </div>
       </div>
     </div>
@@ -342,5 +292,7 @@ Zuzahlung    = max(0, Gesamtkosten − Kassenanteil)</code></pre>
   </div>
 </footer>
 
+<script src="panacea_preview_rechner.js"></script>
+<script>PanaceaRechner.init("#panacea-rechner-demo");</script>
 </body>
 </html>
