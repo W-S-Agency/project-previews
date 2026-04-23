@@ -261,6 +261,170 @@ Zuzahlung    = max(0, Gesamtkosten − Kassenanteil)</code></pre>
         </ul>
       </div>
 
+      <!-- ═══════════════════════════════════════════════════════════════ -->
+      <!-- RUSSIAN VERSION                                                  -->
+      <!-- ═══════════════════════════════════════════════════════════════ -->
+
+      <div style="margin:3rem 0 2rem;padding:1.5rem;background:linear-gradient(135deg,#f8f5f9 0%,#efe0f5 100%);border-radius:12px;text-align:center;border:1px solid var(--primary-light);">
+        <div style="font-size:.8rem;color:var(--text-light);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.4rem;">🇷🇺 Русская версия · Russische Übersetzung</div>
+        <h2 style="color:var(--primary);font-size:1.5rem;margin:0;border:none;padding:0;text-align:center;">ТЗ для дизайнера — Калькулятор стоимости ухода</h2>
+      </div>
+
+      <div class="tz-section">
+        <h2>1. Цель и контекст</h2>
+        <p>Интерактивный калькулятор ежемесячной стоимости амбулаторного ухода. <strong>USP:</strong> ни один конкурент в регионе не предлагает подобный инструмент. Снижает порог входа — посетитель сразу видит ориентировочную стоимость.</p>
+        <p><strong>Использование (4+ страниц):</strong> Главная (Блок 4), Standort München (Блок 6), Standort Landkreis FFB (Блок 6), все будущие Stadt-Seiten.</p>
+        <div class="tz-callout info">
+          <strong>Целевая аудитория:</strong> Дочь/сын 40–60 лет, ищет уход для родителя. Pflegegrad уже знает (есть заключение MDK).
+        </div>
+      </div>
+
+      <div class="tz-section">
+        <h2>2. Сценарий (2 шага + результат)</h2>
+        <ol>
+          <li><strong>Выбрать Pflegegrad</strong> (2–5). После клика → появляется блок «Empfehlung» (slide-down).</li>
+          <li><strong>Настроить визиты</strong> — до 3-х визитов в день, слайдер для минут.</li>
+          <li><strong>Итог</strong> — обновление в реальном времени, без кнопки «Рассчитать». Клик по CTA → /kontakt.</li>
+        </ol>
+      </div>
+
+      <div class="tz-section">
+        <h2>3. Формула расчёта</h2>
+<pre><code>Gesamtkosten  = Сумма(минут визитов) × Цена за минуту × 30
+Kassenanteil  = min(Gesamtkosten, Sachleistung[Pflegegrad])
+Zuzahlung     = max(0, Gesamtkosten − Kassenanteil)</code></pre>
+
+        <h3>Суммы Sachleistung § 36 SGB XI (2025/2026)</h3>
+        <table class="tz-table">
+          <thead><tr><th>Pflegegrad</th><th>Ежемесячная сумма</th></tr></thead>
+          <tbody>
+            <tr><td>PG 2</td><td>796 €</td></tr>
+            <tr><td>PG 3</td><td>1.497 €</td></tr>
+            <tr><td>PG 4</td><td>1.859 €</td></tr>
+            <tr><td>PG 5</td><td>2.299 €</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Ориентировочные тарифы (клиент заменит через JSON)</h3>
+        <ul>
+          <li><strong>Цена за минуту:</strong> 0,75 € / мин</li>
+          <li><strong>Диапазон слайдера:</strong> 10–120 мин, шаг 5 мин</li>
+          <li><strong>Макс. визитов/день:</strong> 3 · <strong>По умолчанию:</strong> B1=40, B2=20, B3=10 мин</li>
+        </ul>
+
+        <h3>Рекомендации по Pflegegrad (без доплаты)</h3>
+        <table class="tz-table">
+          <thead><tr><th>PG</th><th>Sachleistung</th><th>Рекомендация</th></tr></thead>
+          <tbody>
+            <tr><td>2</td><td>796 €</td><td>1 × 30 мин</td></tr>
+            <tr><td>3</td><td>1.497 €</td><td>2 × 30 мин</td></tr>
+            <tr><td>4</td><td>1.859 €</td><td>2 × 45 мин</td></tr>
+            <tr><td>5</td><td>2.299 €</td><td>3 × 40 мин</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="tz-section">
+        <h2>4. Состояния и крайние случаи</h2>
+        <ul>
+          <li><strong>Начальное:</strong> Шаг 1 активен, Шаг 2 неактивен/серый, итог скрыт.</li>
+          <li><strong>После выбора PG:</strong> появляется «Empfehlung» (slide-down), Шаг 2 активен, Besuch 1 со значением по умолчанию.</li>
+          <li><strong>Сумма визитов = 0 мин:</strong> итог скрыть, показать подсказку.</li>
+          <li><strong>Zuzahlung = 0 €:</strong> зелёный акцент — «Keine Zuzahlung — komplett über die Pflegekasse gedeckt!»</li>
+          <li><strong>Zuzahlung &gt; 3.000 €:</strong> мягкое предупреждение + рекомендация консультации.</li>
+        </ul>
+      </div>
+
+      <div class="tz-section">
+        <h2>5. Визуальные требования</h2>
+
+        <h3>Brand Colors</h3>
+        <div class="swatch-row">
+          <div class="swatch"><span class="swatch-box" style="background:#810080"></span>Primary #810080</div>
+          <div class="swatch"><span class="swatch-box" style="background:#FF00FF"></span>Accent #FF00FF</div>
+          <div class="swatch"><span class="swatch-box" style="background:#000098"></span>Dark #000098</div>
+          <div class="swatch"><span class="swatch-box" style="background:#92D050"></span>Success #92D050</div>
+        </div>
+
+        <h3>Типографика</h3>
+        <ul>
+          <li>Согласованно с общим стилем сайта</li>
+          <li>Числа в итоге — крупно, bold</li>
+          <li>Disclaimer — мелкий шрифт, приглушённый цвет</li>
+        </ul>
+
+        <h3>Адаптивность</h3>
+        <table class="tz-table">
+          <thead><tr><th>Breakpoint</th><th>Поведение</th></tr></thead>
+          <tbody>
+            <tr><td>Desktop (≥1024)</td><td>Шаги 1+2 могут быть рядом, итог на всю ширину</td></tr>
+            <tr><td>Tablet (768–1023)</td><td>Вертикально, слайдеры на всю ширину</td></tr>
+            <tr><td>Mobile (&lt;768)</td><td>Вертикально, слайдеры touch-friendly (≥44px), итог sticky снизу</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Анимации</h3>
+        <ul>
+          <li>Переход между шагами: slide/fade</li>
+          <li>Числа в итоге: counter-animation</li>
+          <li>Empfehlung: slide-down</li>
+        </ul>
+      </div>
+
+      <div class="tz-section">
+        <h2>6. Deliverables (что делает Андрей)</h2>
+        <ol class="checklist">
+          <li>Figma-файл с 3-мя брейкпойнтами: Desktop / Tablet / Mobile</li>
+          <li>Все состояния интерфейса (Initial · PG выбран · визиты заданы · итог · крайние случаи)</li>
+          <li>Design-Tokens: цвета, типографика, радиусы, тени, spacing (согласовано с Design Kit, Task #3891)</li>
+          <li>Icon- и Button-специ: Slider-Thumb, «+ Besuch hinzufügen», PG-радио-кнопки</li>
+          <li>Export-Specs для разработчика: отступы, размеры, Hover-/Active-состояния</li>
+        </ol>
+        <div class="tz-callout">
+          <strong>Зависимость:</strong> Design Kit (Task #3891) идёт параллельно. Если Design Kit ещё не готов — используй базовые цвета и типографику из этого ТЗ, позже подогнать.
+        </div>
+      </div>
+
+      <div class="tz-section">
+        <h2>7. JSON-конфиг (передача разработчику)</h2>
+<pre><code>{
+  "version": "2026-Q1",
+  "minutePrice": 0.75,
+  "minVisitMinutes": 10,
+  "maxVisitMinutes": 120,
+  "stepMinutes": 5,
+  "maxVisitsPerDay": 3,
+  "sachleistungen": {
+    "2": 796, "3": 1497, "4": 1859, "5": 2299
+  },
+  "recommendations": {
+    "2": { "visits": 1, "minutesPerVisit": 30 },
+    "3": { "visits": 2, "minutesPerVisit": 30 },
+    "4": { "visits": 2, "minutesPerVisit": 45 },
+    "5": { "visits": 3, "minutesPerVisit": 40 }
+  }
+}</code></pre>
+        <p style="font-size:.85rem;color:var(--text-light);">Для информации — цифры ориентировочные и влияют на примерные значения в мокапе (PG 3 / 2×30 мин → Zuzahlung 0 €).</p>
+      </div>
+
+      <div class="tz-section">
+        <h2>8. Что нам нужно от тебя</h2>
+        <div class="tz-callout success">
+          <ol style="margin:.25rem 0 .25rem 1.25rem;">
+            <li><strong>Визуальный дизайн</strong> калькулятора (Figma) — Desktop + Mobile, все состояния</li>
+            <li><strong>Превью встраивания</strong> на главной странице (Блок 4) — как это выглядит в контексте страницы</li>
+            <li><strong>Передача разработчику</strong> (Михаил) — ссылка на Figma с комментированными спеками, готово к экспорту</li>
+          </ol>
+        </div>
+        <p><strong>Референсы:</strong></p>
+        <ul>
+          <li>Макет клиента: <a href="https://drive.google.com/drive/folders/1sPQ8aYSWOLqncjglRRujD054tC-3W2E9" target="_blank">kalkulator.pptx</a> (1 слайд, layout)</li>
+          <li>Полное ТЗ (источник): <code>docs/TZ_Kostenrechner_v1.md</code></li>
+          <li>Текущий Preview: <a href="panacea_preview_startseite.html#block-4">Startseite Block 4</a></li>
+          <li>Design Kit Task: <a href="https://portal.2penguins.eu/company/personal/user/3/tasks/task/view/3891/" target="_blank">Bitrix #3891</a></li>
+        </ul>
+      </div>
+
     </div>
 
     <!-- RIGHT: LIVE-DEMO -->
