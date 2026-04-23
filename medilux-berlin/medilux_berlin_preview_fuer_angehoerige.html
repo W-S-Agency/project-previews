@@ -48,6 +48,19 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
 .nav-dot{width:4px;height:4px;background:var(--yellow);border-radius:50%}
 .nav-cta{background:var(--blue)!important;color:#fff!important;font-weight:600!important}
 .nav-tel{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:var(--r30);font-size:12.5px;font-weight:600;color:var(--blue)!important;text-decoration:none;border:1px solid var(--blue);margin-right:6px}.nav-tel:hover{background:var(--blue);color:#fff!important}
+/* === Location Tabs (schematic slider) === */
+.loc-tabs{position:relative}
+.loc-tabs input[type="radio"]{position:absolute;opacity:0;pointer-events:none}
+.loc-tab-labels{display:flex;gap:8px;margin-bottom:24px;border-bottom:2px solid #e5e7eb;padding-bottom:0}
+.loc-tab-label{cursor:pointer;padding:12px 24px;font-weight:600;font-size:15px;color:#6b7280;border-bottom:3px solid transparent;margin-bottom:-2px;transition:all .2s;display:inline-flex;align-items:center;gap:8px}
+.loc-tab-label:hover{color:var(--blue)}
+.loc-tab-avatar{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;color:#fff;font-size:11px;font-weight:700}
+.loc-tab-panels > .loc-tab-panel{display:none}
+#loc-tab-vc:checked ~ .loc-tab-labels .loc-label-vc,
+#loc-tab-rh:checked ~ .loc-tab-labels .loc-label-rh{color:var(--blue);border-bottom-color:var(--blue)}
+#loc-tab-vc:checked ~ .loc-tab-panels .loc-tab-panel-vc,
+#loc-tab-rh:checked ~ .loc-tab-panels .loc-tab-panel-rh{display:block}
+.schematic-note{background:#eef2ff;border-left:4px solid #6366f1;color:#3730a3;padding:10px 14px;border-radius:6px;margin-bottom:20px;font-size:12.5px;line-height:1.5}
 /* DROPDOWN — native <details> toggle, no JS needed for open/close */
 details.nav-dd{position:relative;list-style:none}
 details.nav-dd > summary{padding:5px 12px;border-radius:var(--r30);
@@ -423,65 +436,78 @@ details.faq[open] summary::after{content:'−';background:var(--blue);color:#fff
 <div class="bg-white py-16 px-10">
   <h2 class="text-3xl font-bold tracking-tight text-gray-900">Zwei Standorte in Berlin — beide gut erreichbar</h2>
   <p class="mt-4 text-lg text-gray-600">Besuche jederzeit willkommen. Beide Standorte sind barrierefrei und gut mit dem ÖPNV erreichbar.</p>
-  <div class="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-2">
-    <!-- Villa Civitas -->
-    <div class="rounded-2xl border border-gray-200 overflow-hidden">
-      <div class="p-1" style="background:#2B55C0"></div>
-      <div class="p-8">
-        <div class="flex items-center gap-4 mb-6">
-          <div class="flex h-12 w-12 items-center justify-center rounded-full text-white font-bold text-sm flex-shrink-0" style="background:#2B55C0">VC</div>
-          <div>
-            <h3 class="text-xl font-bold text-gray-900">Villa Civitas</h3>
-            <p class="text-sm text-gray-500">Lindenthaler Allee 20, 14163 Berlin-Zehlendorf</p>
-          </div>
-        </div>
-        <p class="text-base text-gray-600 mb-6">Eine historische Villa im grünen Herzen von Zehlendorf: alter Baumbestand, großzügige Außenfläche, barrierefreie Wege. S-Bahn Mexikoplatz in der Nähe.</p>
-        <dl class="grid grid-cols-2 gap-3">
-          <div class="rounded-xl p-3" style="background:#ECF3F7">
-            <dt class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Pflegeplätze</dt>
-            <dd class="mt-1 text-2xl font-bold" style="color:#2B55C0">35</dd>
-          </div>
-          <div class="rounded-xl p-3" style="background:#ECF3F7">
-            <dt class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Pflege-WGs</dt>
-            <dd class="mt-1 text-2xl font-bold" style="color:#2B55C0">4</dd>
-          </div>
-        </dl>
-        <ul class="mt-6 space-y-2">
-          <li class="flex items-start gap-2 text-sm text-gray-600"><span style="color:#2B55C0">✓</span> 24h-Betreuung, Nachtbereitschaft</li>
-          <li class="flex items-start gap-2 text-sm text-gray-600"><span style="color:#2B55C0">✓</span> Demenz, Palliativ, Intensivpflege, Junge Pflege</li>
-          <li class="flex items-start gap-2 text-sm text-gray-600"><span style="color:#2B55C0">✓</span> Zimmer 12–20 m², barrierefrei, Haustiere erlaubt</li>
-          <li class="flex items-start gap-2 text-sm text-gray-600"><span style="color:#2B55C0">✓</span> Terrasse, Musikkreise, Gedächtnistraining, Gärtnern</li>
-        </ul>
-      </div>
+  <div class="schematic-note" style="margin-top:24px"><strong>💡 Schematic — finale Umsetzung:</strong> Auf der Live-Seite wird dieser Block als <strong>Slider mit 2 Slides</strong> realisiert (Villa Civitas ↔ Residenz Heerstraße). Hier in der Vorschau simulieren wir das durch umschaltbare Tabs — Sie sehen beide Inhalte, indem Sie auf den jeweiligen Standort-Namen klicken.</div>
+  <div class="loc-tabs">
+    <input type="radio" id="loc-tab-vc" name="loc-tab" checked>
+    <input type="radio" id="loc-tab-rh" name="loc-tab">
+    <div class="loc-tab-labels">
+      <label for="loc-tab-vc" class="loc-tab-label loc-label-vc"><span class="loc-tab-avatar" style="background:#2B55C0">VC</span>Villa Civitas</label>
+      <label for="loc-tab-rh" class="loc-tab-label loc-label-rh"><span class="loc-tab-avatar" style="background:#4C7CDA">RH</span>Residenz Heerstraße</label>
     </div>
-    <!-- Residenz Heerstraße -->
-    <div class="rounded-2xl border border-gray-200 overflow-hidden">
-      <div class="p-1" style="background:#4C7CDA"></div>
-      <div class="p-8">
-        <div class="flex items-center gap-4 mb-6">
-          <div class="flex h-12 w-12 items-center justify-center rounded-full text-white font-bold text-sm flex-shrink-0" style="background:#4C7CDA">RH</div>
-          <div>
-            <h3 class="text-xl font-bold text-gray-900">Residenz Heerstraße</h3>
-            <p class="text-sm text-gray-500">Gärtnereiring 56, 13593 Berlin-Spandau</p>
+    <div class="loc-tab-panels">
+      <!-- Villa Civitas Panel -->
+      <div class="loc-tab-panel loc-tab-panel-vc">
+        <div class="rounded-2xl border border-gray-200 overflow-hidden">
+          <div class="p-1" style="background:#2B55C0"></div>
+          <div class="p-8">
+            <div class="flex items-center gap-4 mb-6">
+              <div class="flex h-12 w-12 items-center justify-center rounded-full text-white font-bold text-sm flex-shrink-0" style="background:#2B55C0">VC</div>
+              <div>
+                <h3 class="text-xl font-bold text-gray-900">Villa Civitas</h3>
+                <p class="text-sm text-gray-500">Lindenthaler Allee 20, 14163 Berlin-Zehlendorf</p>
+              </div>
+            </div>
+            <p class="text-base text-gray-600 mb-6">Eine historische Villa im grünen Herzen von Zehlendorf: alter Baumbestand, großzügige Außenfläche, barrierefreie Wege. S-Bahn Mexikoplatz in der Nähe.</p>
+            <dl class="grid grid-cols-2 gap-3" style="max-width:400px">
+              <div class="rounded-xl p-3" style="background:#ECF3F7">
+                <dt class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Pflegeplätze</dt>
+                <dd class="mt-1 text-2xl font-bold" style="color:#2B55C0">35</dd>
+              </div>
+              <div class="rounded-xl p-3" style="background:#ECF3F7">
+                <dt class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Pflege-WGs</dt>
+                <dd class="mt-1 text-2xl font-bold" style="color:#2B55C0">4</dd>
+              </div>
+            </dl>
+            <ul class="mt-6 space-y-2">
+              <li class="flex items-start gap-2 text-sm text-gray-600"><span style="color:#2B55C0">✓</span> 24h-Betreuung, Nachtbereitschaft</li>
+              <li class="flex items-start gap-2 text-sm text-gray-600"><span style="color:#2B55C0">✓</span> Demenz, Palliativ, Intensivpflege, Junge Pflege</li>
+              <li class="flex items-start gap-2 text-sm text-gray-600"><span style="color:#2B55C0">✓</span> Zimmer 12–20 m², barrierefrei, Haustiere erlaubt</li>
+              <li class="flex items-start gap-2 text-sm text-gray-600"><span style="color:#2B55C0">✓</span> Terrasse, Musikkreise, Gedächtnistraining, Gärtnern</li>
+            </ul>
           </div>
         </div>
-        <p class="text-base text-gray-600 mb-6">Ein modernes Wohn- und Pflegehaus im grünen Spandau: ruhige Lage, Besucherparkplatz, Dachterrasse mit Panoramablick.</p>
-        <dl class="grid grid-cols-2 gap-3">
-          <div class="rounded-xl p-3" style="background:#ECF3F7">
-            <dt class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Pflegeplätze</dt>
-            <dd class="mt-1 text-2xl font-bold" style="color:#4C7CDA">24</dd>
+      </div>
+      <!-- Residenz Heerstraße Panel -->
+      <div class="loc-tab-panel loc-tab-panel-rh">
+        <div class="rounded-2xl border border-gray-200 overflow-hidden">
+          <div class="p-1" style="background:#4C7CDA"></div>
+          <div class="p-8">
+            <div class="flex items-center gap-4 mb-6">
+              <div class="flex h-12 w-12 items-center justify-center rounded-full text-white font-bold text-sm flex-shrink-0" style="background:#4C7CDA">RH</div>
+              <div>
+                <h3 class="text-xl font-bold text-gray-900">Residenz Heerstraße</h3>
+                <p class="text-sm text-gray-500">Gärtnereiring 56, 13593 Berlin-Spandau</p>
+              </div>
+            </div>
+            <p class="text-base text-gray-600 mb-6">Ein modernes Wohn- und Pflegehaus im grünen Spandau: ruhige Lage, Besucherparkplatz, Dachterrasse mit Panoramablick.</p>
+            <dl class="grid grid-cols-2 gap-3" style="max-width:400px">
+              <div class="rounded-xl p-3" style="background:#ECF3F7">
+                <dt class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Pflegeplätze</dt>
+                <dd class="mt-1 text-2xl font-bold" style="color:#4C7CDA">24</dd>
+              </div>
+              <div class="rounded-xl p-3" style="background:#ECF3F7">
+                <dt class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Betr. Wohnen</dt>
+                <dd class="mt-1 text-2xl font-bold" style="color:#4C7CDA">42</dd>
+              </div>
+            </dl>
+            <ul class="mt-6 space-y-2">
+              <li class="flex items-start gap-2 text-sm text-gray-600"><span style="color:#4C7CDA">✓</span> 24h-Betreuung, Nachtbereitschaft</li>
+              <li class="flex items-start gap-2 text-sm text-gray-600"><span style="color:#4C7CDA">✓</span> Beschützter Demenzbereich</li>
+              <li class="flex items-start gap-2 text-sm text-gray-600"><span style="color:#4C7CDA">✓</span> Wohnungen 18–48 m², Balkon, barrierefrei</li>
+              <li class="flex items-start gap-2 text-sm text-gray-600"><span style="color:#4C7CDA">✓</span> Notruf 24/7 · frische Mahlzeiten täglich</li>
+            </ul>
           </div>
-          <div class="rounded-xl p-3" style="background:#ECF3F7">
-            <dt class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Betr. Wohnen</dt>
-            <dd class="mt-1 text-2xl font-bold" style="color:#4C7CDA">42</dd>
-          </div>
-        </dl>
-        <ul class="mt-6 space-y-2">
-          <li class="flex items-start gap-2 text-sm text-gray-600"><span style="color:#4C7CDA">✓</span> 24h-Betreuung, Nachtbereitschaft</li>
-          <li class="flex items-start gap-2 text-sm text-gray-600"><span style="color:#4C7CDA">✓</span> Beschützter Demenzbereich</li>
-          <li class="flex items-start gap-2 text-sm text-gray-600"><span style="color:#4C7CDA">✓</span> Wohnungen 18–48 m², Balkon, barrierefrei</li>
-          <li class="flex items-start gap-2 text-sm text-gray-600"><span style="color:#4C7CDA">✓</span> Notruf 24/7 · frische Mahlzeiten täglich</li>
-        </ul>
+        </div>
       </div>
     </div>
   </div>
