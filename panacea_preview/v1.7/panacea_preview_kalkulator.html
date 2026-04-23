@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pflegekostenrechner — Design-TZ · Panacea Pflege</title>
+<link rel="stylesheet" href="panacea_preview_style.css">
+<style>
+.tz-wrap { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+.tz-hero { text-align: center; padding: 2rem 0 2.5rem; border-bottom: 1px solid var(--border); margin-bottom: 2.5rem; }
+.tz-hero h1 { color: var(--primary); font-size: 2rem; margin-bottom: .5rem; }
+.tz-hero .tz-meta { color: var(--text-light); font-size: .95rem; }
+.tz-hero .tz-meta strong { color: var(--text); }
+.tz-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 2.5rem; align-items: start; }
+@media (max-width: 900px) { .tz-grid { grid-template-columns: 1fr; } }
+.tz-section { margin-bottom: 2.5rem; }
+.tz-section h2 { color: var(--primary); font-size: 1.3rem; margin-bottom: 1rem; text-align: left; border-left: 4px solid var(--primary); padding-left: .8rem; }
+.tz-section h3 { font-size: 1.05rem; margin: 1.25rem 0 .5rem; color: var(--text); }
+.tz-section p, .tz-section li { font-size: .95rem; line-height: 1.65; color: var(--text); }
+.tz-section ul, .tz-section ol { padding-left: 1.5rem; margin: .5rem 0 1rem; }
+.tz-section li { margin-bottom: .35rem; }
+.tz-section code { background: #f3e8f4; color: var(--primary); padding: .1rem .4rem; border-radius: 3px; font-size: .88em; }
+.tz-section pre { background: #1a1a2e; color: #e2e8f0; padding: 1rem 1.25rem; border-radius: var(--radius); overflow-x: auto; font-size: .82rem; line-height: 1.55; margin: .75rem 0; }
+.tz-section pre code { background: transparent; color: inherit; padding: 0; }
+.tz-table { width: 100%; border-collapse: collapse; margin: .75rem 0 1rem; font-size: .9rem; }
+.tz-table th, .tz-table td { padding: .55rem .75rem; border: 1px solid var(--border); text-align: left; }
+.tz-table th { background: var(--bg-alt); font-weight: 600; }
+.tz-callout { background: #fef3c7; border-left: 4px solid #f59e0b; padding: .85rem 1rem; border-radius: 4px; font-size: .9rem; margin: .75rem 0; }
+.tz-callout.success { background: #f0f9e8; border-color: #92D050; }
+.tz-callout.info { background: #eef2ff; border-color: #6366f1; }
+.swatch-row { display: flex; gap: .75rem; flex-wrap: wrap; margin: .75rem 0 1.25rem; }
+.swatch { display: flex; align-items: center; gap: .5rem; background: var(--bg); border: 1px solid var(--border); border-radius: 6px; padding: .4rem .7rem; font-size: .85rem; }
+.swatch-box { width: 22px; height: 22px; border-radius: 4px; border: 1px solid rgba(0,0,0,.1); }
+.deliverables-list { background: var(--bg-alt); border-radius: var(--radius); padding: 1rem 1.25rem; }
+.deliverables-list li { margin-bottom: .5rem; }
+.checklist { list-style: none; padding-left: 0 !important; }
+.checklist li { padding-left: 1.75rem; position: relative; margin-bottom: .4rem; }
+.checklist li::before { content: '☐'; position: absolute; left: 0; top: 0; color: var(--primary); font-size: 1.1rem; }
+
+/* ─ Mockup ─ */
+.mockup-card { background: #fff; border: 2px solid var(--primary-light); border-radius: 14px; padding: 1.75rem; box-shadow: 0 8px 24px rgba(129,0,128,.08); position: sticky; top: 80px; }
+.mockup-card h3 { color: var(--primary); text-align: center; margin-bottom: 1.5rem; font-size: 1.2rem; }
+.mock-step { margin-bottom: 1.25rem; }
+.mock-step-header { display: flex; align-items: center; gap: .55rem; margin-bottom: .6rem; }
+.mock-step-num { width: 26px; height: 26px; background: var(--primary); color: #fff; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: 700; font-size: .85rem; }
+.mock-step-title { font-weight: 600; font-size: .95rem; }
+.pg-btns { display: flex; gap: .4rem; }
+.pg-btn { flex: 1; padding: .65rem; border: 2px solid var(--primary); background: #fff; color: var(--primary); border-radius: 8px; font-weight: 700; font-size: 1rem; text-align: center; }
+.pg-btn.active { background: var(--primary); color: #fff; }
+.empfehlung { background: #f0f9e8; border-left: 4px solid #92D050; padding: .75rem .9rem; border-radius: 4px; font-size: .85rem; margin: .8rem 0 1.25rem; color: #3a5720; }
+.empfehlung strong { color: #2d4418; }
+.slider-row { margin-bottom: .75rem; }
+.slider-label { display: flex; justify-content: space-between; font-size: .85rem; margin-bottom: .25rem; }
+.slider-val { color: var(--primary); font-weight: 600; }
+.slider-track { height: 5px; background: #e5d5e8; border-radius: 3px; position: relative; }
+.slider-fill { position: absolute; left: 0; top: 0; height: 100%; background: var(--primary); border-radius: 3px; }
+.slider-thumb { position: absolute; top: 50%; transform: translate(-50%, -50%); width: 16px; height: 16px; background: var(--primary); border-radius: 50%; border: 2.5px solid #fff; box-shadow: 0 1px 3px rgba(0,0,0,.2); }
+.add-btn { background: transparent; border: 1px dashed var(--primary-light); color: var(--primary); padding: .45rem .85rem; border-radius: 6px; font-size: .82rem; margin-top: .25rem; }
+.result-box { background: linear-gradient(135deg, #f0e6f6 0%, #e8e0f0 100%); border-radius: 10px; padding: 1.1rem; margin-top: 1rem; }
+.result-label { font-size: .8rem; color: var(--text-light); margin-bottom: .45rem; text-transform: uppercase; letter-spacing: .03em; }
+.result-row { display: flex; justify-content: space-between; font-size: .88rem; margin-bottom: .3rem; }
+.result-row.final { padding-top: .6rem; margin-top: .4rem; border-top: 1px solid rgba(129,0,128,.2); font-size: 1.05rem; }
+.result-row.final strong { color: var(--primary); font-size: 1.2rem; }
+.result-disclaimer { font-size: .72rem; color: var(--text-light); font-style: italic; margin-top: .6rem; }
+.cta-final { width: 100%; margin-top: .9rem; background: var(--primary); color: #fff; border: none; padding: .75rem; border-radius: 8px; font-weight: 600; font-size: .92rem; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">Panacea Pflege</a>
+    <div class="nav-links">
+      <a href="panacea_preview_startseite.html">Startseite</a>
+      <div class="nav-dd">
+        <a class="nav-dd-toggle">Standorte ▾</a>
+        <div class="nav-dd-menu">
+          <a href="panacea_preview_muenchen.html">München</a>
+          <a href="panacea_preview_landkreis-ffb.html">Landkreis FFB</a>
+        </div>
+      </div>
+      <a href="panacea_preview_faq.html">FAQ</a>
+      <a href="panacea_preview_karriere.html">Karriere</a>
+      <a href="panacea_preview_kontakt.html">Kontakt</a>
+      <a href="panacea_preview_kalkulator.html" class="active">🧮 Rechner-TZ</a>
+    </div>
+  </div>
+</nav>
+
+<div class="tz-wrap">
+
+  <div class="tz-hero">
+    <h1>Pflegekostenrechner — Design-TZ</h1>
+    <p class="tz-meta">
+      <strong>Projekt:</strong> Panacea Pflege ·
+      <strong>Task:</strong> <a href="https://portal.2penguins.eu/company/personal/user/3/tasks/task/view/3241/" target="_blank">Bitrix #3241</a> ·
+      <strong>Stack:</strong> Next.js + Sanity CMS ·
+      <strong>Deadline:</strong> 23.04.2026
+    </p>
+    <p class="tz-meta" style="margin-top:.5rem;">Designer: <strong>Andrey Kovyrkin</strong> · Owner: <strong>Alexander Wirt</strong> · Strategie: <strong>Mihail Taube</strong></p>
+  </div>
+
+  <div class="tz-grid">
+
+    <!-- LEFT: TZ TEXT -->
+    <div>
+
+      <div class="tz-section">
+        <h2>1. Ziel &amp; Kontext</h2>
+        <p>Interaktiver Kalkulator der monatlichen Pflegekosten für ambulante Pflege. <strong>USP:</strong> Kein Wettbewerber in der Region bietet vergleichbares Tool. Senkt die Eintrittsbarriere — Besucher sieht sofort die orientierenden Kosten.</p>
+        <p><strong>Einsatz (4+ Seiten):</strong> Startseite (Block 4), Standort München (Block 6), Standort Landkreis FFB (Block 6), alle künftigen Stadt-Seiten.</p>
+        <div class="tz-callout info">
+          <strong>Zielgruppe:</strong> Tochter/Sohn 40–60 Jahre, sucht Pflege für Elternteil. Kennt den Pflegegrad (MDK-Bescheid).
+        </div>
+      </div>
+
+      <div class="tz-section">
+        <h2>2. Ablauf (2 Schritte + Ergebnis)</h2>
+        <ol>
+          <li><strong>Pflegegrad auswählen</strong> (2–5). Nach Klick → Empfehlungsblock erscheint (Slide-Down).</li>
+          <li><strong>Besuche konfigurieren</strong> — bis zu 3 Besuche/Tag, Slider für Minuten.</li>
+          <li><strong>Zusammenfassung</strong> — Echtzeit-Update, kein „Berechnen"-Button. Klick auf CTA → /kontakt.</li>
+        </ol>
+      </div>
+
+      <div class="tz-section">
+        <h2>3. Berechnungsformel</h2>
+<pre><code>Gesamtkosten = Summe(Besuche_min) × Minutenpreis × 30
+Kassenanteil = min(Gesamtkosten, Sachleistung[Pflegegrad])
+Zuzahlung    = max(0, Gesamtkosten − Kassenanteil)</code></pre>
+
+        <h3>Sachleistungen § 36 SGB XI (Stand 2025/2026)</h3>
+        <table class="tz-table">
+          <thead><tr><th>Pflegegrad</th><th>Monatlicher Betrag</th></tr></thead>
+          <tbody>
+            <tr><td>PG 2</td><td>796 €</td></tr>
+            <tr><td>PG 3</td><td>1.497 €</td></tr>
+            <tr><td>PG 4</td><td>1.859 €</td></tr>
+            <tr><td>PG 5</td><td>2.299 €</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Platzhalter-Tarife (Kunde ersetzt via JSON)</h3>
+        <ul>
+          <li><strong>Minutenpreis:</strong> 0,75 € / min</li>
+          <li><strong>Slider-Range:</strong> 10–120 min, Schrittweite 5 min</li>
+          <li><strong>Max. Besuche/Tag:</strong> 3 · <strong>Defaults:</strong> B1=40, B2=20, B3=10 min</li>
+        </ul>
+
+        <h3>Empfehlungen pro Pflegegrad (ohne Zuzahlung)</h3>
+        <table class="tz-table">
+          <thead><tr><th>PG</th><th>Sachleistung</th><th>Empfehlung</th></tr></thead>
+          <tbody>
+            <tr><td>2</td><td>796 €</td><td>1 × 30 min</td></tr>
+            <tr><td>3</td><td>1.497 €</td><td>2 × 30 min</td></tr>
+            <tr><td>4</td><td>1.859 €</td><td>2 × 45 min</td></tr>
+            <tr><td>5</td><td>2.299 €</td><td>3 × 40 min</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="tz-section">
+        <h2>4. Zustände &amp; Sonderfälle</h2>
+        <ul>
+          <li><strong>Initial:</strong> Schritt 1 aktiv, Schritt 2 inaktiv/grau, Ergebnis ausgeblendet.</li>
+          <li><strong>Nach PG-Auswahl:</strong> Empfehlung erscheint (Slide-Down), Schritt 2 aktiv, Besuch 1 mit Default.</li>
+          <li><strong>Summe Besuche = 0 min:</strong> Ergebnis ausblenden, Hinweis zeigen.</li>
+          <li><strong>Zuzahlung = 0 €:</strong> Akzent grün — „Keine Zuzahlung — komplett über die Pflegekasse gedeckt!"</li>
+          <li><strong>Zuzahlung &gt; 3.000 €:</strong> Weicher Hinweis + Beratungsempfehlung.</li>
+        </ul>
+      </div>
+
+      <div class="tz-section">
+        <h2>5. Visuelle Anforderungen</h2>
+
+        <h3>Brand Colors</h3>
+        <div class="swatch-row">
+          <div class="swatch"><span class="swatch-box" style="background:#810080"></span>Primary #810080</div>
+          <div class="swatch"><span class="swatch-box" style="background:#FF00FF"></span>Accent #FF00FF</div>
+          <div class="swatch"><span class="swatch-box" style="background:#000098"></span>Dark #000098</div>
+          <div class="swatch"><span class="swatch-box" style="background:#92D050"></span>Success #92D050</div>
+        </div>
+
+        <h3>Typografie</h3>
+        <ul>
+          <li>Einheitlich mit dem Site-Stil</li>
+          <li>Ergebnis-Zahlen: großer Schrift, bold</li>
+          <li>Disclaimer: klein, gedämpft</li>
+        </ul>
+
+        <h3>Responsive</h3>
+        <table class="tz-table">
+          <thead><tr><th>Breakpoint</th><th>Verhalten</th></tr></thead>
+          <tbody>
+            <tr><td>Desktop (≥1024)</td><td>Schritte 1+2 nebeneinander möglich, Ergebnis volle Breite</td></tr>
+            <tr><td>Tablet (768–1023)</td><td>Vertikal, Slider volle Breite</td></tr>
+            <tr><td>Mobile (&lt;768)</td><td>Vertikal, Slider touch-freundlich (≥44px), Ergebnis sticky unten</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Animationen</h3>
+        <ul>
+          <li>Übergang zwischen Schritten: Slide/Fade</li>
+          <li>Ergebnis-Zahlen: Counter-Animation</li>
+          <li>Empfehlung: Slide-Down</li>
+        </ul>
+      </div>
+
+      <div class="tz-section">
+        <h2>6. Deliverables (Andrey)</h2>
+        <ol class="checklist">
+          <li>Figma-Datei mit 3 Breakpoints: Desktop / Tablet / Mobile</li>
+          <li>Alle Interaktionszustände (Initial · PG gewählt · Besuche gesetzt · Ergebnis · Leer-/Grenzfälle)</li>
+          <li>Design-Tokens: Farben, Typografie, Radien, Schatten, Spacing (abgestimmt auf Design Kit, Task #3891)</li>
+          <li>Icon- und Button-Specs: Slider-Thumb, „+ Besuch hinzufügen", PG-Radio-Buttons</li>
+          <li>Export-Specs für Dev: Abstände, Größen, Hover-/Active-States</li>
+        </ol>
+        <div class="tz-callout">
+          <strong>Abhängigkeit:</strong> Design Kit (Task #3891) sollte parallel laufen. Falls Design Kit noch nicht fertig: Grundfarben &amp; -typografie aus diesem TZ verwenden, spätere Angleichung.
+        </div>
+      </div>
+
+      <div class="tz-section">
+        <h2>7. JSON-Konfig (Übergabe an Dev)</h2>
+<pre><code>{
+  "version": "2026-Q1",
+  "minutePrice": 0.75,
+  "minVisitMinutes": 10,
+  "maxVisitMinutes": 120,
+  "stepMinutes": 5,
+  "maxVisitsPerDay": 3,
+  "sachleistungen": {
+    "2": 796, "3": 1497, "4": 1859, "5": 2299
+  },
+  "recommendations": {
+    "2": { "visits": 1, "minutesPerVisit": 30 },
+    "3": { "visits": 2, "minutesPerVisit": 30 },
+    "4": { "visits": 2, "minutesPerVisit": 45 },
+    "5": { "visits": 3, "minutesPerVisit": 40 }
+  }
+}</code></pre>
+        <p style="font-size:.85rem;color:var(--text-light);">Nur zur Info für Andrey — Zahlen sind Platzhalter und beeinflussen die Mockup-Beispielwerte (PG 3 / 2×30 min → Zuzahlung 0 €).</p>
+      </div>
+
+      <div class="tz-section">
+        <h2>8. Was wir brauchen</h2>
+        <div class="tz-callout success">
+          <ol style="margin:.25rem 0 .25rem 1.25rem;">
+            <li><strong>Visuelles Design</strong> für den Rechner (Figma) — Desktop + Mobile, alle Zustände</li>
+            <li><strong>Einbettung-Vorschau</strong> auf der Startseite (Block 4) — wie wirkt das Ganze in der Seite</li>
+            <li><strong>Übergabe an Dev</strong> (Mihail) — Figma-Link mit kommentierten Specs, Export-bereit</li>
+          </ol>
+        </div>
+        <p><strong>Referenzen:</strong></p>
+        <ul>
+          <li>Kunden-Vorlage: <a href="https://drive.google.com/drive/folders/1sPQ8aYSWOLqncjglRRujD054tC-3W2E9" target="_blank">kalkulator.pptx</a> (1 Slide, Layout-Skizze)</li>
+          <li>Vollständiges TZ (Quelle): <code>docs/TZ_Kostenrechner_v1.md</code></li>
+          <li>Aktuelle Preview: <a href="panacea_preview_startseite.html#block-4">Startseite Block 4</a></li>
+          <li>Design Kit Task: <a href="https://portal.2penguins.eu/company/personal/user/3/tasks/task/view/3891/" target="_blank">Bitrix #3891</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- RIGHT: VISUAL MOCKUP -->
+    <div>
+      <div class="mockup-card">
+        <h3>🎨 Schema · Pflegekostenrechner</h3>
+
+        <div class="mock-step">
+          <div class="mock-step-header">
+            <span class="mock-step-num">1</span>
+            <span class="mock-step-title">Pflegegrad auswählen</span>
+          </div>
+          <div class="pg-btns">
+            <div class="pg-btn">2</div>
+            <div class="pg-btn active">3</div>
+            <div class="pg-btn">4</div>
+            <div class="pg-btn">5</div>
+          </div>
+        </div>
+
+        <div class="empfehlung">
+          <strong>✓ Empfehlung:</strong> Bei Pflegegrad 3 stehen Ihnen monatlich bis zu <strong>1.497 €</strong> zu. Das entspricht ca. <strong>2 Besuche à 30 Min.</strong> ohne Zuzahlung.
+        </div>
+
+        <div class="mock-step">
+          <div class="mock-step-header">
+            <span class="mock-step-num">2</span>
+            <span class="mock-step-title">Tägliche Besuche</span>
+          </div>
+
+          <div class="slider-row">
+            <div class="slider-label"><span>Besuch 1</span><span class="slider-val">40 min</span></div>
+            <div class="slider-track">
+              <div class="slider-fill" style="width:33%;"></div>
+              <div class="slider-thumb" style="left:33%;"></div>
+            </div>
+          </div>
+
+          <div class="slider-row">
+            <div class="slider-label"><span>Besuch 2</span><span class="slider-val">30 min</span></div>
+            <div class="slider-track">
+              <div class="slider-fill" style="width:25%;"></div>
+              <div class="slider-thumb" style="left:25%;"></div>
+            </div>
+          </div>
+
+          <button class="add-btn">+ Weiteren Besuch hinzufügen</button>
+          <div style="font-size:.72rem;color:var(--text-light);margin-top:.35rem;">Schrittweite 5 min · max. 3</div>
+        </div>
+
+        <div class="result-box">
+          <div class="result-label">Zusammenfassung</div>
+          <div class="result-row"><span>Gesamtkosten / Monat</span><strong>1.575 €</strong></div>
+          <div class="result-row"><span>Pflegekasse übernimmt</span><strong style="color:#5a7a2e;">−1.497 €</strong></div>
+          <div class="result-row final"><span><strong>Ihre Zuzahlung</strong></span><strong>78 €/Mon.</strong></div>
+          <div class="result-disclaimer">Alle Angaben unverbindlich · individuell im Beratungsgespräch</div>
+          <button class="cta-final">Kostenlose Beratung anfragen →</button>
+        </div>
+
+        <div style="margin-top:1rem;padding-top:1rem;border-top:1px dashed var(--border);font-size:.78rem;color:var(--text-light);text-align:center;">
+          Statischer Mockup · Beispielwerte PG 3 · 40+30 min
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <h4>Panacea Home Care GmbH — Pflegekostenrechner TZ</h4>
+    <p>Dieses Dokument dient als Design-Briefing für Andrey Kovyrkin (Task #3241). Vollständige Spezifikation: <code>docs/TZ_Kostenrechner_v1.md</code></p>
+    <div class="footer-links">
+      <a href="index.html">Übersicht</a>
+      <a href="panacea_preview_startseite.html#block-4">Startseite Block 4</a>
+      <a href="https://portal.2penguins.eu/company/personal/user/3/tasks/task/view/3241/" target="_blank">Bitrix #3241</a>
+    </div>
+    <div class="footer-bottom">&copy; 2026 Panacea Home Care GmbH</div>
+  </div>
+</footer>
+
+</body>
+</html>
