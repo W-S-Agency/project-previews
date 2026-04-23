@@ -48,6 +48,19 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
 .nav-dot{width:4px;height:4px;background:var(--yellow);border-radius:50%}
 .nav-cta{background:var(--blue)!important;color:#fff!important;font-weight:600!important}
 .nav-tel{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:var(--r30);font-size:12.5px;font-weight:600;color:var(--blue)!important;text-decoration:none;border:1px solid var(--blue);margin-right:6px}.nav-tel:hover{background:var(--blue);color:#fff!important}
+/* === Location Tabs (schematic slider) === */
+.loc-tabs{position:relative}
+.loc-tabs input[type="radio"]{position:absolute;opacity:0;pointer-events:none}
+.loc-tab-labels{display:flex;gap:8px;margin-bottom:24px;border-bottom:2px solid #e5e7eb;padding-bottom:0}
+.loc-tab-label{cursor:pointer;padding:12px 24px;font-weight:600;font-size:15px;color:#6b7280;border-bottom:3px solid transparent;margin-bottom:-2px;transition:all .2s;display:inline-flex;align-items:center;gap:8px}
+.loc-tab-label:hover{color:var(--blue)}
+.loc-tab-avatar{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;color:#fff;font-size:11px;font-weight:700}
+.loc-tab-panels > .loc-tab-panel{display:none}
+#loc-tab-vc:checked ~ .loc-tab-labels .loc-label-vc,
+#loc-tab-rh:checked ~ .loc-tab-labels .loc-label-rh{color:var(--blue);border-bottom-color:var(--blue)}
+#loc-tab-vc:checked ~ .loc-tab-panels .loc-tab-panel-vc,
+#loc-tab-rh:checked ~ .loc-tab-panels .loc-tab-panel-rh{display:block}
+.schematic-note{background:#eef2ff;border-left:4px solid #6366f1;color:#3730a3;padding:10px 14px;border-radius:6px;margin-bottom:20px;font-size:12.5px;line-height:1.5}
 details.nav-dd{position:relative;list-style:none}
 details.nav-dd > summary{padding:5px 12px;border-radius:var(--r30);
   font-size:12px;font-weight:500;color:var(--gray);cursor:pointer;
@@ -368,69 +381,44 @@ details.faq[open] summary::after{content:'\2212';background:var(--blue);color:#f
 <!-- BLOCK 5 — Standorte: Stats Cards -->
 <div id="block-5" style="position:relative"><button class="feedback-btn" onclick="toggleFeedback(5)">&#9998;&#65039; Vorschlag</button>
 <div class="bg-white py-16 px-10">
-  <h2 class="text-3xl font-bold tracking-tight text-gray-900">Zwei Standorte — die wichtigsten Fakten</h2>
-  <p class="mt-4 text-lg text-gray-600">Kompakte Übersicht für Ihre Entscheidungsgrundlage.</p>
-  <div class="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-2">
-    <!-- Villa Civitas -->
-    <div class="rounded-2xl border border-gray-200 overflow-hidden">
-      <div class="p-1" style="background:#2B55C0"></div>
-      <div class="p-8">
-        <div class="flex items-center gap-4 mb-6">
-          <div class="flex h-12 w-12 items-center justify-center rounded-full text-white font-bold text-sm flex-shrink-0" style="background:#2B55C0">VC</div>
-          <div>
-            <h3 class="text-xl font-bold text-gray-900">Villa Civitas</h3>
-            <p class="text-sm text-gray-500">Lindenthaler Allee 20, 14163 Berlin-Zehlendorf</p>
-          </div>
-        </div>
-        <dl class="grid grid-cols-2 gap-3">
-          <div class="rounded-xl p-3" style="background:#ECF3F7">
-            <dt class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Pflegeplätze</dt>
-            <dd class="mt-1 text-2xl font-bold" style="color:#2B55C0">35</dd>
-          </div>
-          <div class="rounded-xl p-3" style="background:#ECF3F7">
-            <dt class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Pflege-WGs</dt>
-            <dd class="mt-1 text-2xl font-bold" style="color:#2B55C0">4</dd>
-          </div>
-        </dl>
-        <ul class="mt-6 space-y-2">
-          <li class="flex items-start gap-2 text-sm text-gray-600"><span style="color:#2B55C0">&#10003;</span> Intensivpflege-WG, Demenz-WG 24h, Senioren-WG 24h</li>
-          <li class="flex items-start gap-2 text-sm text-gray-600"><span style="color:#2B55C0">&#10003;</span> Einzelzimmer + 3 Doppelzimmer, 12–20 m²</li>
-          <li class="flex items-start gap-2 text-sm text-gray-600"><span style="color:#2B55C0">&#10003;</span> Aufnahme ab Pflegegrad 2</li>
-          <li class="flex items-start gap-2 text-sm text-gray-600"><span style="color:#2B55C0">&#10003;</span> Ansprechpartner: Herr Joe Schermer (Prokurist)</li>
-        </ul>
-      </div>
+  <h2 class="text-3xl font-bold tracking-tight text-gray-900">Unsere zwei Standorte in Berlin</h2>
+  <p class="mt-4 text-lg text-gray-600">Besuche jederzeit willkommen. Beide Standorte sind barrierefrei und gut mit dem ÖPNV erreichbar.</p>
+  <div class="schematic-note" style="margin-top:24px"><strong>💡 Schematic — finale Umsetzung:</strong> Auf der Live-Seite wird dieser Block als <strong>Slider mit 2 Slides</strong> realisiert (Villa Civitas ↔ Residenz Heerstraße). Hier in der Vorschau simulieren wir das durch umschaltbare Tabs — Sie sehen beide Inhalte, indem Sie auf den jeweiligen Standort-Namen klicken.</div>
+  <div class="loc-tabs">
+    <input type="radio" id="loc-tab-vc" name="loc-tab" checked>
+    <input type="radio" id="loc-tab-rh" name="loc-tab">
+    <div class="loc-tab-labels">
+      <label for="loc-tab-vc" class="loc-tab-label loc-label-vc"><span class="loc-tab-avatar" style="background:#2B55C0">VC</span>Villa Civitas</label>
+      <label for="loc-tab-rh" class="loc-tab-label loc-label-rh"><span class="loc-tab-avatar" style="background:#4C7CDA">RH</span>Residenz Heerstraße</label>
     </div>
-    <!-- Residenz Heerstraße -->
-    <div class="rounded-2xl border border-gray-200 overflow-hidden">
-      <div class="p-1" style="background:#4C7CDA"></div>
-      <div class="p-8">
-        <div class="flex items-center gap-4 mb-6">
-          <div class="flex h-12 w-12 items-center justify-center rounded-full text-white font-bold text-sm flex-shrink-0" style="background:#4C7CDA">RH</div>
-          <div>
-            <h3 class="text-xl font-bold text-gray-900">Residenz Heerstraße</h3>
-            <p class="text-sm text-gray-500">Gärtnereiring 56, 13593 Berlin-Spandau</p>
-          </div>
-        </div>
-        <dl class="grid grid-cols-3 gap-3">
-          <div class="rounded-xl p-3" style="background:#ECF3F7">
-            <dt class="text-xs font-semibold text-gray-500 uppercase tracking-wide">WG-Plätze</dt>
-            <dd class="mt-1 text-2xl font-bold" style="color:#4C7CDA">24</dd>
-          </div>
-          <div class="rounded-xl p-3" style="background:#ECF3F7">
-            <dt class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Betr. Wohnen</dt>
-            <dd class="mt-1 text-2xl font-bold" style="color:#4C7CDA">42</dd>
-          </div>
-          <div class="rounded-xl p-3" style="background:#ECF3F7">
-            <dt class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Pflege-WGs</dt>
-            <dd class="mt-1 text-2xl font-bold" style="color:#4C7CDA">2</dd>
-          </div>
-        </dl>
-        <ul class="mt-6 space-y-2">
-          <li class="flex items-start gap-2 text-sm text-gray-600"><span style="color:#4C7CDA">&#10003;</span> Beschützter Demenzbereich, Verhinderungspflege</li>
-          <li class="flex items-start gap-2 text-sm text-gray-600"><span style="color:#4C7CDA">&#10003;</span> WG-Zimmer 15–22 m² &middot; Wohnungen 18–48 m²</li>
-          <li class="flex items-start gap-2 text-sm text-gray-600"><span style="color:#4C7CDA">&#10003;</span> Aufnahme: WG ab PG 2, Betr. Wohnen ohne PG möglich</li>
-          <li class="flex items-start gap-2 text-sm text-gray-600"><span style="color:#4C7CDA">&#10003;</span> Notruf 24h, Besucherparkplatz</li>
+    <div class="loc-tab-panels">
+      <div class="loc-tab-panel loc-tab-panel-vc">
+        <div class="loc-photo" style="width:100%;aspect-ratio:16/9;background:linear-gradient(135deg,#2B55C0 0%,#4C7CDA 100%);border-radius:16px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.7);font-size:14px;letter-spacing:2px;text-transform:uppercase;margin-bottom:28px">📷 Foto: Villa Civitas · Außenansicht</div>
+        <h3 class="text-2xl font-bold text-gray-900" style="margin-bottom:8px">Villa Civitas</h3>
+        <p class="text-sm text-gray-500" style="margin-bottom:18px"><strong>Lindenthaler Allee 20, 14163 Berlin-Zehlendorf</strong></p>
+        <p class="text-base text-gray-700" style="line-height:1.65;margin-bottom:20px">Eine historische Villa im grünen Herzen von Zehlendorf: alter Baumbestand, großzügige Außenfläche, barrierefreie Wege. Vier Pflege-Wohngemeinschaften — darunter spezialisierte Demenz- und Intensivpflege-WGs — verbinden Tradition mit modernen Pflegestandards.</p>
+        <ul style="list-style:disc;padding-left:22px;margin:0 0 24px;color:#374151;line-height:1.8">
+          <li>35 Pflegeplätze in 4 Wohngemeinschaften</li>
+          <li>Einzelzimmer (12–20 m²) mit Platz für eigene Möbel</li>
+          <li>Große Terrasse und Gartenanlage mit altem Baumbestand</li>
+          <li>Ruhige Lage im Grünen — S-Bahn Mexikoplatz, Schlachtensee in der Nähe</li>
+          <li>Demenz, Palliativ, Intensivpflege, Junge Pflege</li>
         </ul>
+        <a href="medilux_berlin_preview_standorte.html#villa-civitas" class="btn" style="display:inline-block">Standort besichtigen</a>
+      </div>
+      <div class="loc-tab-panel loc-tab-panel-rh">
+        <div class="loc-photo" style="width:100%;aspect-ratio:16/9;background:linear-gradient(135deg,#4C7CDA 0%,#7A9DE8 100%);border-radius:16px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.7);font-size:14px;letter-spacing:2px;text-transform:uppercase;margin-bottom:28px">📷 Foto: Residenz Heerstraße · Außenansicht</div>
+        <h3 class="text-2xl font-bold text-gray-900" style="margin-bottom:8px">Residenz Heerstraße</h3>
+        <p class="text-sm text-gray-500" style="margin-bottom:18px"><strong>Gärtnereiring 56, 13593 Berlin-Spandau</strong></p>
+        <p class="text-base text-gray-700" style="line-height:1.65;margin-bottom:20px">Ein modernes Wohn- und Pflegehaus im grünen Spandau: Zwei Pflege-WGs mit je 12 Plätzen bieten rund um die Uhr Betreuung, 42 barrierefreie Wohneinheiten ermöglichen selbstbestimmtes Leben mit flexibler Unterstützung.</p>
+        <ul style="list-style:disc;padding-left:22px;margin:0 0 24px;color:#374151;line-height:1.8">
+          <li>24 Pflege-WG-Plätze + 42 betreute Wohneinheiten</li>
+          <li>Wohnungen von 18–48 m², teils mit Balkon</li>
+          <li>Große Dachterrasse mit Panoramablick</li>
+          <li>Beschützter Demenzbereich, Besucherparkplatz</li>
+          <li>24h-Betreuung, Notruf · frische Mahlzeiten täglich</li>
+        </ul>
+        <a href="medilux_berlin_preview_standorte.html#residenz-heerstrasse" class="btn" style="display:inline-block">Standort besichtigen</a>
       </div>
     </div>
   </div>
