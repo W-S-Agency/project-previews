@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="ru" class="h-full">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EDELMET — Design-Kit Briefing | Андрей Ковыркин</title>
+
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<style type="text/tailwindcss">
+  @theme {
+    --color-bg:     #0f1419;
+    --color-surf:   #1a2028;
+    --color-surf2:  #232b36;
+    --color-text:   #e4e6eb;
+    --color-muted:  #7a8290;
+    --color-border: rgba(228,230,235,0.08);
+    --color-accent: #8fc88a;
+    --color-accent2:#5dade2;
+    --color-warn:   #e5b85a;
+    --color-danger: #d97757;
+    --font-mono:    'Courier New', monospace;
+  }
+
+  @layer base {
+    html { scroll-behavior: smooth; }
+    body { background: var(--color-bg); color: var(--color-text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+  }
+
+  @layer components {
+    .slide {
+      @apply relative flex flex-col justify-center;
+      @apply h-screen min-h-[600px] px-20 py-16 overflow-hidden;
+    }
+    .label {
+      @apply text-[14px] tracking-[.14em] uppercase font-mono text-[var(--color-muted)];
+      @apply mb-5;
+    }
+    .pill {
+      @apply inline-block px-3 py-1 rounded-full text-[10px] tracking-[.08em] uppercase font-mono;
+    }
+    .pill-accent { @apply bg-[var(--color-accent)]/15 text-[var(--color-accent)] border border-[var(--color-accent)]/30; }
+    .pill-blue   { @apply bg-[var(--color-accent2)]/15 text-[var(--color-accent2)] border border-[var(--color-accent2)]/30; }
+    .pill-warn   { @apply bg-[var(--color-warn)]/15 text-[var(--color-warn)] border border-[var(--color-warn)]/30; }
+    .pill-danger { @apply bg-[var(--color-danger)]/15 text-[var(--color-danger)] border border-[var(--color-danger)]/30; }
+    .pill-muted  { @apply bg-white/5 text-[var(--color-muted)] border border-[var(--color-border)]; }
+    .card {
+      @apply bg-[var(--color-surf)] rounded-xl p-6;
+      @apply border border-[var(--color-border)];
+    }
+    .card-hl {
+      @apply bg-[var(--color-surf2)] rounded-xl p-6;
+      @apply border border-[var(--color-accent)]/30;
+    }
+    .sn {
+      @apply absolute bottom-7 right-20 font-mono text-[10px] text-[var(--color-muted)] tracking-[.1em];
+    }
+    .h-hero { font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.08; font-weight: 800; }
+    .h-section { font-size: clamp(1.9rem, 3.2vw, 2.6rem); line-height: 1.15; font-weight: 700; }
+    .h-sub { font-size: clamp(1.3rem, 2vw, 1.6rem); line-height: 1.3; font-weight: 600; }
+    .body-lg { font-size: 1.1rem; line-height: 1.55; color: #c2c6ce; }
+    .body { font-size: 0.98rem; line-height: 1.55; color: #c2c6ce; }
+    .body-sm { font-size: 0.86rem; line-height: 1.5; color: var(--color-muted); }
+    .accent { color: var(--color-accent); }
+    .accent2 { color: var(--color-accent2); }
+    .link { @apply underline decoration-[var(--color-accent)]/40 hover:decoration-[var(--color-accent)] underline-offset-4 transition; color: var(--color-accent2); }
+  }
+</style>
+
+<style>
+html { font-size: 18px; }
+
+.slide { display: none; }
+.slide.active { display: flex; }
+
+/* Navigation arrows */
+.nav-arrow {
+  position: fixed; top: 50%; transform: translateY(-50%);
+  width: 48px; height: 48px; border-radius: 50%;
+  background: rgba(255,255,255,0.05); color: var(--color-text);
+  border: 1px solid var(--color-border); font-size: 1.4rem;
+  cursor: pointer; z-index: 50; transition: all 0.2s;
+  display: flex; align-items: center; justify-content: center;
+}
+.nav-arrow:hover { background: rgba(255,255,255,0.12); border-color: var(--color-accent); }
+.nav-arrow:disabled { opacity: 0.25; cursor: not-allowed; }
+#btn-prev { left: 24px; }
+#btn-next { right: 24px; }
+
+/* Dots */
+.nav-dots { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+  display: flex; gap: 8px; z-index: 50; padding: 8px 14px;
+  background: rgba(15,20,25,0.85); border-radius: 999px; backdrop-filter: blur(8px);
+  border: 1px solid var(--color-border); }
+.nd { width: 8px; height: 8px; border-radius: 50%; border: 0;
+  background: rgba(255,255,255,0.18); cursor: pointer; padding: 0; transition: all 0.2s; }
+.nd.on { background: var(--color-accent); width: 22px; border-radius: 4px; }
+.nd:hover { background: rgba(255,255,255,0.4); }
+
+/* Slide counter */
+#slide-counter {
+  position: fixed; top: 24px; right: 24px; z-index: 50;
+  font-family: var(--font-mono); font-size: 11px; color: var(--color-muted);
+  background: rgba(15,20,25,0.85); padding: 6px 12px; border-radius: 6px;
+  border: 1px solid var(--color-border); backdrop-filter: blur(8px);
+  letter-spacing: 0.1em;
+}
+
+/* Project header (top-left) */
+.proj-tag {
+  position: fixed; top: 24px; left: 24px; z-index: 50;
+  font-family: var(--font-mono); font-size: 11px; color: var(--color-muted);
+  background: rgba(15,20,25,0.85); padding: 6px 12px; border-radius: 6px;
+  border: 1px solid var(--color-border); backdrop-filter: blur(8px);
+  letter-spacing: 0.08em;
+}
+.proj-tag .accent-dot { display: inline-block; width: 8px; height: 8px;
+  background: var(--color-accent); border-radius: 50%; margin-right: 8px; vertical-align: middle; }
+
+/* Responsive */
+@media (max-width: 1024px) { html { font-size: 16px; } }
+@media (max-width: 768px) {
+  html { font-size: 15px; }
+  .slide { padding: 64px 24px 80px !important; min-height: 100vh !important; height: auto !important; }
+  .nav-dots { display: none; }
+  .sn { display: none !important; }
+  .nav-arrow { width: 40px; height: 40px; font-size: 1.1rem; }
+  #btn-prev { left: 8px; }
+  #btn-next { right: 8px; }
+  .grid.grid-cols-3, .grid.grid-cols-4 { grid-template-columns: 1fr !important; }
+  .grid.grid-cols-2 { grid-template-columns: 1fr !important; }
+  [class*="max-w-["] { max-width: 100% !important; }
+}
+@media (max-width: 480px) {
+  html { font-size: 14px; }
+  .slide { padding: 56px 16px 72px !important; }
+}
+
+/* Print */
+@media print {
+  .nav-arrow, .nav-dots, #slide-counter, .proj-tag { display: none !important; }
+  .slide { display: flex !important; page-break-after: always; height: auto; min-height: 100vh; }
+}
+</style>
+</head>
+<body class="h-full">
+
+<div class="proj-tag"><span class="accent-dot"></span>EDELMET / DESIGN-KIT BRIEFING</div>
+
+<nav class="nav-dots" id="dots"></nav>
+<div id="slide-counter">01 · 14</div>
+<button class="nav-arrow" id="btn-prev" aria-label="Previous">&#8592;</button>
+<button class="nav-arrow" id="btn-next" aria-label="Next">&#8594;</button>
+
+<!-- ════════════════════════════════════════ -->
+<!-- SLIDE 01 — HOOK -->
+<!-- ════════════════════════════════════════ -->
+<section class="slide active" id="s01">
+  <div class="label">Briefing für Andrey Kovyrkin · Designer</div>
+  <h1 class="h-hero max-w-[1000px]">
+    EDELMET — <span class="accent">Design-Kit</span><br>
+    für B2B-Website-Relaunch
+  </h1>
+  <p class="body-lg mt-6 max-w-[820px]">
+    Repositionierung: vom Materialankäufer zum zertifizierten <strong class="text-white">B2B-IT-Entsorger in NRW.</strong>
+    Дизайн-кит — фундамент для нового сайта на Odoo CMS.
+  </p>
+  <div class="flex gap-3 mt-10 flex-wrap">
+    <span class="pill pill-accent">5 часов</span>
+    <span class="pill pill-blue">Дедлайн сегодня</span>
+    <span class="pill pill-muted">Deal #1817</span>
+    <span class="pill pill-muted">Bitrix24 Tag: WS</span>
+  </div>
+  <div class="mt-12 grid grid-cols-3 gap-4 max-w-[820px]">
+    <div class="card">
+      <div class="text-[10px] font-mono text-[var(--color-muted)] uppercase tracking-wider mb-2">Клиент</div>
+      <div class="text-white font-semibold">EDELMET GmbH</div>
+      <div class="body-sm mt-1">Hagen, NRW</div>
+    </div>
+    <div class="card">
+      <div class="text-[10px] font-mono text-[var(--color-muted)] uppercase tracking-wider mb-2">Стадия</div>
+      <div class="text-white font-semibold">Konzept ✅</div>
+      <div class="body-sm mt-1">Content V1.1 готов</div>
+    </div>
+    <div class="card">
+      <div class="text-[10px] font-mono text-[var(--color-muted)] uppercase tracking-wider mb-2">Следующий шаг</div>
+      <div class="text-white font-semibold">Design-Kit</div>
+      <div class="body-sm mt-1">→ Figma → Odoo</div>
+    </div>
+  </div>
+  <div class="sn">01 · 14</div>
+</section>
+
+<!-- ════════════════════════════════════════ -->
+<!-- SLIDE 02 — О проекте -->
+<!-- ════════════════════════════════════════ -->
+<section class="slide" id="s02">
+  <div class="label">01 · О проекте</div>
+  <h2 class="h-section mb-8 max-w-[900px]">Что такое EDELMET сегодня <span class="accent">→</span> и куда мы идём</h2>
+  <div class="grid grid-cols-2 gap-6 max-w-[1100px]">
+    <div class="card">
+      <div class="pill pill-danger mb-4">СЕЙЧАС</div>
+      <h3 class="h-sub mb-3 text-white">Materialankäufer</h3>
+      <ul class="body space-y-2">
+        <li>→ Старый сайт edelmet.de выглядит как «Ankauf-Shop für Privatleute»</li>
+        <li>→ Google Ads на B2C-keywords: «Laptop verkaufen», «Handy Ankauf»</li>
+        <li>→ Низкая видимость в B2B-сегменте (Authority Score 2, 0 organic traffic)</li>
+        <li>→ Узнаваемая edelmetall-компетенция, но без B2B-позиционирования</li>
+      </ul>
+    </div>
+    <div class="card-hl">
+      <div class="pill pill-accent mb-4">ЦЕЛЬ</div>
+      <h3 class="h-sub mb-3 text-white">B2B-IT-Entsorger NRW</h3>
+      <ul class="body space-y-2">
+        <li>→ Konzern-Look: solide, compliance-orientiert, Trust-driven</li>
+        <li>→ Фокус: 9 B2B-сегментов (IT-Mittelstand, Rechenzentren, Kommunen, Finanzinstitute…)</li>
+        <li>→ Kernbotschaft: <em class="accent">«Wir eliminieren Ihr Compliance-Risiko»</em></li>
+        <li>→ 50–80 активных B2B-клиентов за 12 месяцев</li>
+      </ul>
+    </div>
+  </div>
+  <div class="mt-8 p-5 rounded-lg bg-[var(--color-accent)]/8 border border-[var(--color-accent)]/25 max-w-[1100px]">
+    <div class="body"><strong class="text-white">Цитата клиента (12.02.2026):</strong>
+    <em>«Wir spielen Darts, aber wir sollten Schach spielen.»</em> — Eduard Pfaffenrot, Geschäftsführer</div>
+  </div>
+  <div class="sn">02 · 14</div>
+</section>
+
+<!-- ════════════════════════════════════════ -->
+<!-- SLIDE 03 — Где мы сейчас -->
+<!-- ════════════════════════════════════════ -->
+<section class="slide" id="s03">
+  <div class="label">02 · Текущая стадия</div>
+  <h2 class="h-section mb-8">Что уже сделано — и почему дизайн нужен сейчас</h2>
+  <div class="grid grid-cols-4 gap-4 max-w-[1100px] mb-8">
+    <div class="card">
+      <i data-lucide="check-circle-2" style="width:1.4rem;height:1.4rem;color:var(--color-accent);"></i>
+      <div class="mt-3 font-semibold text-white">Strategie</div>
+      <div class="body-sm mt-1">Bestätigt 18.03.2026 — 9 сегментов, ZG-Struktur</div>
+    </div>
+    <div class="card">
+      <i data-lucide="check-circle-2" style="width:1.4rem;height:1.4rem;color:var(--color-accent);"></i>
+      <div class="mt-3 font-semibold text-white">Blueprint v1.5</div>
+      <div class="body-sm mt-1">Strategic Blueprint, 12 Sektionen, Kundenversion</div>
+    </div>
+    <div class="card">
+      <i data-lucide="check-circle-2" style="width:1.4rem;height:1.4rem;color:var(--color-accent);"></i>
+      <div class="mt-3 font-semibold text-white">Content V1.1</div>
+      <div class="body-sm mt-1">15 страниц текста: Startseite, Leistungen, ZG-LPs, Über uns</div>
+    </div>
+    <div class="card">
+      <i data-lucide="loader" style="width:1.4rem;height:1.4rem;color:var(--color-warn);"></i>
+      <div class="mt-3 font-semibold text-white">Design-Kit</div>
+      <div class="body-sm mt-1">⬅ ТЫ ЗДЕСЬ</div>
+    </div>
+  </div>
+  <div class="card max-w-[1100px]">
+    <div class="grid grid-cols-2 gap-6">
+      <div>
+        <div class="text-[11px] font-mono text-[var(--color-muted)] uppercase tracking-wider mb-2">Текущий Content-Preview (V1.1)</div>
+        <a href="https://w-s-agency.github.io/project-previews/edelmet/" target="_blank" class="link text-base">
+          w-s-agency.github.io/project-previews/edelmet/
+        </a>
+        <div class="body-sm mt-2">18 страниц + Index, SEO Bar, Feedback UI. Структура страниц подтверждена клиентом.</div>
+      </div>
+      <div>
+        <div class="text-[11px] font-mono text-[var(--color-muted)] uppercase tracking-wider mb-2">Текущий сайт (legacy)</div>
+        <a href="https://edelmet.de" target="_blank" class="link text-base">edelmet.de</a>
+        <div class="body-sm mt-2">B2C-стиль, WordPress. <strong class="text-[var(--color-danger)]">НЕ референс</strong> — мы его заменяем.</div>
+      </div>
+    </div>
+  </div>
+  <div class="mt-6 body-sm max-w-[1100px]">
+    💡 <strong class="text-white">Что важно:</strong> структура страниц в content-preview уже проверена. Дизайн-кит должен закрывать все блоки этих страниц + расширения для будущих страниц (15-20 stadtspezifische Landingpages, AVV-страницы).
+  </div>
+  <div class="sn">03 · 14</div>
+</section>
+
+<!-- ════════════════════════════════════════ -->
+<!-- SLIDE 04 — Целевые аудитории -->
+<!-- ════════════════════════════════════════ -->
+<section class="slide" id="s04">
+  <div class="label">03 · Zielgruppen</div>
+  <h2 class="h-section mb-3">9 B2B-сегментов · <span class="accent">3 кластера</span></h2>
+  <p class="body-lg mb-8 max-w-[900px]">Дизайн должен давать каждому кластеру свой визуальный «канал», но в рамках одной системы.</p>
+  <div class="grid grid-cols-3 gap-5 max-w-[1200px]">
+    <div class="card">
+      <div class="pill pill-blue mb-3">КЛАСТЕР 1 · Premium B2B</div>
+      <h3 class="h-sub mb-3 text-white">IT-Operations</h3>
+      <ul class="body-sm space-y-1.5">
+        <li>• IT-Mittelstand (NRW)</li>
+        <li>• Rechenzentren (DE-weit)</li>
+        <li>• Telekommunikation</li>
+      </ul>
+      <div class="mt-4 pt-4 border-t border-[var(--color-border)]">
+        <div class="text-[11px] font-mono text-[var(--color-muted)] uppercase tracking-wider mb-1">Tonality</div>
+        <div class="body-sm">Tech-savvy, präzise, ROI-driven. Visual: structured data, capacity, infrastructure.</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="pill pill-accent mb-3">КЛАСТЕР 2 · Regulated</div>
+      <h3 class="h-sub mb-3 text-white">Compliance-fokus</h3>
+      <ul class="body-sm space-y-1.5">
+        <li>• Kommunen & Behörden</li>
+        <li>• Finanzinstitute</li>
+        <li>• Versicherungen</li>
+        <li>• Krankenhäuser</li>
+      </ul>
+      <div class="mt-4 pt-4 border-t border-[var(--color-border)]">
+        <div class="text-[11px] font-mono text-[var(--color-muted)] uppercase tracking-wider mb-1">Tonality</div>
+        <div class="body-sm">Sicher, formal, regulatorisch. Visual: certifications, processes, audit-trail.</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="pill pill-warn mb-3">КЛАСТЕР 3 · Industrie & Partner</div>
+      <h3 class="h-sub mb-3 text-white">Volumen-Geschäft</h3>
+      <ul class="body-sm space-y-1.5">
+        <li>• Automobilzulieferer</li>
+        <li>• Überregionale Entsorger (Interzero, Zentek)</li>
+      </ul>
+      <div class="mt-4 pt-4 border-t border-[var(--color-border)]">
+        <div class="text-[11px] font-mono text-[var(--color-muted)] uppercase tracking-wider mb-1">Tonality</div>
+        <div class="body-sm">Industriell, B2B-Partnership, Skalierbarkeit. Visual: capacity, fleet, operations.</div>
+      </div>
+    </div>
+  </div>
+  <div class="mt-8 body-sm max-w-[1200px]">
+    💡 Decision-Maker для всех кластеров: <strong class="text-white">IT-Leiter / Compliance-Officer / Einkäufer / Geschäftsführer</strong>. Возраст 35-55, Tonality «sachlich, kompetent, zuverlässig» — НЕ verspielt.
+  </div>
+  <div class="sn">04 · 14</div>
+</section>
+
+<!-- ════════════════════════════════════════ -->
+<!-- SLIDE 05 — Patterns DE B2B-Mittelstand -->
+<!-- ════════════════════════════════════════ -->
+<section class="slide" id="s05">
+  <div class="label">04 · Паттерны B2B-Mittelstand DE</div>
+  <h2 class="h-section mb-8">Визуальные конвенции немецкого <span class="accent">B2B-сегмента</span></h2>
+  <div class="grid grid-cols-2 gap-6 max-w-[1200px]">
+    <div class="card">
+      <h3 class="h-sub mb-4 text-white">✅ Что работает</h3>
+      <ul class="body space-y-2.5">
+        <li><strong class="text-white">Trust-Bar above the fold:</strong> сертификаты (EfbV, DIN, ISO, TÜV) сразу видны</li>
+        <li><strong class="text-white">Чистая типографика:</strong> Inter / IBM Plex / SF Pro · никаких декоративных шрифтов</li>
+        <li><strong class="text-white">Нейтральные палитры:</strong> белый/серый base + 1 corporate accent (синий/зелёный)</li>
+        <li><strong class="text-white">Структурированная информация:</strong> таблицы, чек-листы, процессы 1-2-3</li>
+        <li><strong class="text-white">Real photography:</strong> фуры, склад, сотрудники, оборудование (НЕ stock-iconography)</li>
+        <li><strong class="text-white">Контактные данные сразу:</strong> phone, email, физический адрес в шапке/футере</li>
+        <li><strong class="text-white">Documenten-Center:</strong> downloads (PDF certificates, AGB, datasheets)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 class="h-sub mb-4 text-white">❌ Чего избегаем</h3>
+      <ul class="body space-y-2.5">
+        <li><strong class="text-[var(--color-danger)]">Игривые иллюстрации</strong> в стиле «startup landing page» — для B2B-mittelstand читается как несерьёзно</li>
+        <li><strong class="text-[var(--color-danger)]">Большие hero-видео</strong> с маркетинговым stock-footage без content</li>
+        <li><strong class="text-[var(--color-danger)]">Эмодзи в навигации</strong> и заголовках страниц</li>
+        <li><strong class="text-[var(--color-danger)]">3D-renders / abstrakte Visuals</strong> без связи с реальностью бизнеса</li>
+        <li><strong class="text-[var(--color-danger)]">Большие gradients</strong> (Y-Combinator-style) — выглядит несолидно для compliance-тематики</li>
+        <li><strong class="text-[var(--color-danger)]">Ankauf-Shop UX</strong>: «Verkaufe deinen Laptop»-кнопки, цены на главной</li>
+      </ul>
+    </div>
+  </div>
+  <div class="mt-8 p-5 rounded-lg bg-white/3 border border-[var(--color-border)] max-w-[1200px]">
+    <div class="body"><strong class="text-white">Главное правило:</strong> <em>«Sachlich, präzise, vertrauenswürdig»</em> — это не «boring». Это эстетика подтверждённой компетенции.
+    Compliance-Officer / IT-Leiter платят за уверенность, не за wow-эффект.</div>
+  </div>
+  <div class="sn">05 · 14</div>
+</section>
+
+<!-- ════════════════════════════════════════ -->
+<!-- SLIDE 06 — Wettbewerber NRW -->
+<!-- ════════════════════════════════════════ -->
+<section class="slide" id="s06">
+  <div class="label">05 · Wettbewerber NRW</div>
+  <h2 class="h-section mb-3">10 NRW-конкурентов <span class="accent">— походи по сайтам</span></h2>
+  <p class="body-lg mb-6 max-w-[900px]">Сними design references: какие блоки, цвета, типографика, photography style. Что у них работает / выглядит профессионально.</p>
+  <div class="grid grid-cols-2 gap-3 max-w-[1200px]">
+    <a href="https://procorex.de" target="_blank" class="card hover:border-[var(--color-accent)]/40 transition group">
+      <div class="flex items-start justify-between mb-2">
+        <div class="font-semibold text-white">ProCoReX</div>
+        <span class="pill pill-danger">SEHR HOCH</span>
+      </div>
+      <div class="body-sm">Unna · Kostenlos + NIS-2 + 7 Länder · Auth 2, 892 backlinks</div>
+      <div class="text-[var(--color-accent2)] body-sm mt-2 group-hover:underline">→ procorex.de</div>
+    </a>
+    <a href="https://elorec.de" target="_blank" class="card hover:border-[var(--color-accent)]/40 transition group">
+      <div class="flex items-start justify-between mb-2">
+        <div class="font-semibold text-white">ELOREC</div>
+        <span class="pill pill-danger">SEHR HOCH</span>
+      </div>
+      <div class="body-sm">Essen · 48h Express · Auth 13, KI-Visibility 22 (лидер)</div>
+      <div class="text-[var(--color-accent2)] body-sm mt-2 group-hover:underline">→ elorec.de</div>
+    </a>
+    <a href="https://corebo.eu/e-schrott-entsorgung/" target="_blank" class="card hover:border-[var(--color-accent)]/40 transition group">
+      <div class="flex items-start justify-between mb-2">
+        <div class="font-semibold text-white">Corebo</div>
+        <span class="pill pill-warn">ВЫСОКАЯ</span>
+      </div>
+      <div class="body-sm">NRW · 50+ stadt-LPs · SEO-доминирование, Auth 8</div>
+      <div class="text-[var(--color-accent2)] body-sm mt-2 group-hover:underline">→ corebo.eu/e-schrott-entsorgung</div>
+    </a>
+    <a href="https://hamarec.de" target="_blank" class="card hover:border-[var(--color-accent)]/40 transition group">
+      <div class="flex items-start justify-between mb-2">
+        <div class="font-semibold text-white">Hamarec</div>
+        <span class="pill pill-warn">ВЫСОКАЯ</span>
+      </div>
+      <div class="body-sm">Essen · Kundenportal · SEO-Leader 540 traffic, 215 keywords</div>
+      <div class="text-[var(--color-accent2)] body-sm mt-2 group-hover:underline">→ hamarec.de</div>
+    </a>
+    <a href="https://refonda.de" target="_blank" class="card hover:border-[var(--color-accent)]/40 transition group">
+      <div class="flex items-start justify-between mb-2">
+        <div class="font-semibold text-white">Refonda</div>
+        <span class="pill pill-blue">СРЕДНЯЯ</span>
+      </div>
+      <div class="body-sm">Solingen · 30 лет Benchmark · zuverlässig, без хорошего web</div>
+      <div class="text-[var(--color-accent2)] body-sm mt-2 group-hover:underline">→ refonda.de</div>
+    </a>
+    <a href="https://eco-remarketing.com/de" target="_blank" class="card hover:border-[var(--color-accent)]/40 transition group">
+      <div class="flex items-start justify-between mb-2">
+        <div class="font-semibold text-white">Eco-Remarketing</div>
+        <span class="pill pill-blue">СРЕДНЯЯ</span>
+      </div>
+      <div class="body-sm">Ennigerloh · 1.500+ globale Partner · global remarketing</div>
+      <div class="text-[var(--color-accent2)] body-sm mt-2 group-hover:underline">→ eco-remarketing.com/de</div>
+    </a>
+    <a href="https://lerec.de" target="_blank" class="card hover:border-[var(--color-accent)]/40 transition group">
+      <div class="flex items-start justify-between mb-2">
+        <div class="font-semibold text-white">Lerec</div>
+        <span class="pill pill-blue">СРЕДНЯЯ</span>
+      </div>
+      <div class="body-sm">Lotte · Erstbehandlungsanlage</div>
+      <div class="text-[var(--color-accent2)] body-sm mt-2 group-hover:underline">→ lerec.de</div>
+    </a>
+    <a href="https://eas-recycling.de" target="_blank" class="card hover:border-[var(--color-accent)]/40 transition group">
+      <div class="flex items-start justify-between mb-2">
+        <div class="font-semibold text-white">EAS Recycling</div>
+        <span class="pill pill-blue">СРЕДНЯЯ</span>
+      </div>
+      <div class="body-sm">Hagen · Edelmetall · локальный сосед EDELMET</div>
+      <div class="text-[var(--color-accent2)] body-sm mt-2 group-hover:underline">→ eas-recycling.de</div>
+    </a>
+    <a href="https://an-electrorecycling.de" target="_blank" class="card hover:border-[var(--color-accent)]/40 transition group">
+      <div class="flex items-start justify-between mb-2">
+        <div class="font-semibold text-white">AN-Electrorecycling</div>
+        <span class="pill pill-muted">НИЗКАЯ</span>
+      </div>
+      <div class="body-sm">Mannheim · DIN 66399 Klasse 3 · референс по compliance-presentation</div>
+      <div class="text-[var(--color-accent2)] body-sm mt-2 group-hover:underline">→ an-electrorecycling.de</div>
+    </a>
+    <a href="https://kostenlose-computer-entsorgung.de" target="_blank" class="card hover:border-[var(--color-accent)]/40 transition group">
+      <div class="flex items-start justify-between mb-2">
+        <div class="font-semibold text-white">Kostenlose-Computer-Entsorgung</div>
+        <span class="pill pill-muted">НИЗКАЯ</span>
+      </div>
+      <div class="body-sm">NRW · SEO-Keyword-Name · пример как НЕ надо</div>
+      <div class="text-[var(--color-accent2)] body-sm mt-2 group-hover:underline">→ kostenlose-computer-entsorgung.de</div>
+    </a>
+  </div>
+  <div class="sn">06 · 14</div>
+</section>
+
+<!-- ════════════════════════════════════════ -->
+<!-- SLIDE 07 — Wettbewerber-Insights -->
+<!-- ════════════════════════════════════════ -->
+<section class="slide" id="s07">
+  <div class="label">06 · Wettbewerber-Insights</div>
+  <h2 class="h-section mb-8">Что у них <span class="accent">работает</span> — что <span style="color:var(--color-danger)">не работает</span></h2>
+  <div class="grid grid-cols-2 gap-6 max-w-[1200px]">
+    <div class="card">
+      <h3 class="h-sub mb-4 text-white">🟢 ELOREC (referенс)</h3>
+      <ul class="body space-y-2">
+        <li>→ <strong class="text-white">48h Express</strong> как visual hero-claim</li>
+        <li>→ Modern, clean B2B-design</li>
+        <li>→ KI-Visibility 22 — самый AI-cited сайт ниши</li>
+        <li>→ Contentstrategie с blog</li>
+        <li>→ Используется как <strong class="text-white">главный benchmark</strong> для EDELMET</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 class="h-sub mb-4 text-white">🟢 Hamarec (UX-референс)</h3>
+      <ul class="body space-y-2">
+        <li>→ <strong class="text-white">Kundenportal</strong> для повторных клиентов</li>
+        <li>→ Vollrecycler-позиционирование</li>
+        <li>→ SEO-лидер с 540 traffic, 215 keywords</li>
+        <li>→ Структурированная навигация по услугам</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 class="h-sub mb-4 text-white">🟡 ProCoReX (паттерны взять)</h3>
+      <ul class="body space-y-2">
+        <li>→ NIS-2 / Compliance messaging — <strong class="text-white">единственные на рынке</strong></li>
+        <li>→ 7 Länder coverage map</li>
+        <li>→ <strong style="color:var(--color-danger)">НО:</strong> 0 organic traffic, технический SEO сломан</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 class="h-sub mb-4 text-white">🔴 Refonda / EAS (negative reference)</h3>
+      <ul class="body space-y-2">
+        <li>→ Сильные компании оффлайн, но web-присутствие <strong style="color:var(--color-danger)">застряло в 2010-х</strong></li>
+        <li>→ Refonda: 30 лет benchmark, но сайт не передаёт авторитет</li>
+        <li>→ EDELMET должен ВЫГЛЯДЕТЬ современнее этих игроков</li>
+      </ul>
+    </div>
+  </div>
+  <div class="mt-8 p-5 rounded-lg bg-[var(--color-accent)]/8 border border-[var(--color-accent)]/25 max-w-[1200px]">
+    <div class="body"><strong class="accent">Цель EDELMET-дизайна:</strong> выглядеть как ELOREC по чистоте + ProCoReX по compliance-fokus + Hamarec по структуре, но <strong class="text-white">современнее всех</strong> + сильнее в Trust-визуализации (capacity 8.500m², Fuhrpark, Edelmetall-USP).</div>
+  </div>
+  <div class="sn">07 · 14</div>
+</section>
+
+<!-- ════════════════════════════════════════ -->
+<!-- SLIDE 08 — Inspiration вне ниши -->
+<!-- ════════════════════════════════════════ -->
+<section class="slide" id="s08">
+  <div class="label">07 · Inspiration вне ниши</div>
+  <h2 class="h-section mb-3">B2B-mittelstand DE · <span class="accent">benchmarks</span></h2>
+  <p class="body-lg mb-8 max-w-[900px]">Recycling-ниша визуально слабая. Нужно поднять planku — посмотри как делают B2B-сайты в industriellen / regulatorischen сегментах.</p>
+  <div class="grid grid-cols-3 gap-5 max-w-[1200px]">
+    <div class="card">
+      <div class="text-[10px] font-mono text-[var(--color-muted)] uppercase tracking-wider mb-2">ITAD / Refurbishing</div>
+      <h3 class="h-sub mb-2 text-white">Refurbed</h3>
+      <a href="https://refurbed.com" target="_blank" class="link body-sm">refurbed.com</a>
+      <div class="body-sm mt-3">Чистый B2C-pivot к B2B. Trust-блоки, real photography, structured data presentation.</div>
+    </div>
+    <div class="card">
+      <div class="text-[10px] font-mono text-[var(--color-muted)] uppercase tracking-wider mb-2">Industrie / Compliance</div>
+      <h3 class="h-sub mb-2 text-white">Interzero</h3>
+      <a href="https://www.interzero.de" target="_blank" class="link body-sm">interzero.de</a>
+      <div class="body-sm mt-3">Партнёр EDELMET. Konzern-Look, ESG-reporting, корпоративная типографика. Образ для NRW-партнёрской позиции.</div>
+    </div>
+    <div class="card">
+      <div class="text-[10px] font-mono text-[var(--color-muted)] uppercase tracking-wider mb-2">Industrie / Compliance</div>
+      <h3 class="h-sub mb-2 text-white">Zentek</h3>
+      <a href="https://www.zentek.de" target="_blank" class="link body-sm">zentek.de</a>
+      <div class="body-sm mt-3">Второй партнёр EDELMET. Zertifizierungs-fokus, Recycling-Quoten, professionelles Reporting.</div>
+    </div>
+    <div class="card">
+      <div class="text-[10px] font-mono text-[var(--color-muted)] uppercase tracking-wider mb-2">B2B-Service</div>
+      <h3 class="h-sub mb-2 text-white">TÜV Rheinland</h3>
+      <a href="https://www.tuv.com" target="_blank" class="link body-sm">tuv.com</a>
+      <div class="body-sm mt-3">Эталон Trust-визуализации в DE. Сертификаты, downloads, structure-первый дизайн.</div>
+    </div>
+    <div class="card">
+      <div class="text-[10px] font-mono text-[var(--color-muted)] uppercase tracking-wider mb-2">Logistik</div>
+      <h3 class="h-sub mb-2 text-white">Dachser</h3>
+      <a href="https://www.dachser.com/de" target="_blank" class="link body-sm">dachser.com</a>
+      <div class="body-sm mt-3">B2B-логистика. Real photography (фуры, склады), structured services, ESG-presentation.</div>
+    </div>
+    <div class="card">
+      <div class="text-[10px] font-mono text-[var(--color-muted)] uppercase tracking-wider mb-2">Datacenter</div>
+      <h3 class="h-sub mb-2 text-white">Hetzner</h3>
+      <a href="https://www.hetzner.com/de" target="_blank" class="link body-sm">hetzner.com</a>
+      <div class="body-sm mt-3">DE-tech B2B. Минимализм, чистая типографика, technische data-presentation. Tonality для Rechenzentren-сегмента.</div>
+    </div>
+  </div>
+  <div class="mt-8 body-sm max-w-[1200px]">💡 На что смотреть: Hero-структура · Trust-Bar · Service-Grid · Process-Visualization · Footer-density · Photography-Style · Typography-Hierarchy.</div>
+  <div class="sn">08 · 14</div>
+</section>
+
+<!-- ════════════════════════════════════════ -->
+<!-- SLIDE 09 — IA / Sitemap -->
+<!-- ════════════════════════════════════════ -->
+<section class="slide" id="s09">
+  <div class="label">08 · Информационная архитектура</div>
+  <h2 class="h-section mb-8">Карта сайта · <span class="accent">страницы которые нужно покрыть дизайном</span></h2>
+  <div class="grid grid-cols-4 gap-4 max-w-[1300px]">
+    <div class="card">
+      <div class="pill pill-blue mb-3">FÜR UNTERNEHMEN</div>
+      <ul class="body-sm space-y-1.5">
+        <li>→ IT-Mittelstand</li>
+        <li>→ Rechenzentren</li>
+        <li>→ Kommunen & Behörden</li>
+        <li>→ Telekommunikation</li>
+        <li>→ Automobilzulieferer</li>
+        <li>→ Entsorger (Partner)</li>
+        <li>→ Finanzinstitute (NEU)</li>
+        <li>→ Versicherungen (NEU)</li>
+      </ul>
+      <div class="text-[10px] mt-3 text-[var(--color-muted)] italic">Zielgruppen-Landingpages</div>
+    </div>
+    <div class="card">
+      <div class="pill pill-accent mb-3">LEISTUNGEN</div>
+      <ul class="body-sm space-y-1.5">
+        <li>→ IT-Remarketing</li>
+        <li>→ Datenlöschung (DIN 66399)</li>
+        <li>→ Logistik & Behälter</li>
+        <li>→ ESG-Reporting</li>
+      </ul>
+      <div class="text-[10px] mt-3 text-[var(--color-muted)] italic">Service-страницы</div>
+    </div>
+    <div class="card">
+      <div class="pill pill-warn mb-3">ÜBER UNS</div>
+      <ul class="body-sm space-y-1.5">
+        <li>→ Historie & Anlage (8.500m²)</li>
+        <li>→ Zertifikate & Downloads</li>
+        <li>→ Karriere</li>
+      </ul>
+      <div class="text-[10px] mt-3 text-[var(--color-muted)] italic">Trust + corporate</div>
+    </div>
+    <div class="card">
+      <div class="pill pill-muted mb-3">KONTAKT</div>
+      <ul class="body-sm space-y-1.5">
+        <li>→ B2B-Anfrage (5-stufiges Formular)</li>
+        <li>→ Standort Hagen</li>
+        <li>→ Ansprechpartner</li>
+      </ul>
+      <div class="text-[10px] mt-3 text-[var(--color-muted)] italic">Conversion</div>
+    </div>
+  </div>
+  <div class="mt-8 grid grid-cols-2 gap-6 max-w-[1300px]">
+    <div class="card-hl">
+      <h3 class="h-sub mb-2 text-white">+ 15-20 stadtspezifische LPs</h3>
+      <div class="body-sm">Köln, Düsseldorf, Dortmund, Essen, Duisburg, Bochum, Wuppertal, Bielefeld, Bonn, Münster, Gelsenkirchen, …</div>
+      <div class="body-sm mt-2 italic text-[var(--color-muted)]">Шаблонизированный layout, unique content per stadt — нужен <strong class="text-white">re-usable LP-template</strong>.</div>
+    </div>
+    <div class="card-hl">
+      <h3 class="h-sub mb-2 text-white">+ AVV-страницы (Long-Tail SEO)</h3>
+      <div class="body-sm">AVV 16 02 13*, 16 02 14, 16 02 15*, 16 02 16 — fachspezifische Landingpages</div>
+      <div class="body-sm mt-2 italic text-[var(--color-muted)]">Чёткая technische data-presentation, hohe Conversion durch AVV-Code-Vorauswahl.</div>
+    </div>
+  </div>
+  <div class="sn">09 · 14</div>
+</section>
+
+<!-- ════════════════════════════════════════ -->
+<!-- SLIDE 10 — Block-Patterns Startseite -->
+<!-- ════════════════════════════════════════ -->
+<section class="slide" id="s10">
+  <div class="label">09 · Block-Patterns · Startseite</div>
+  <h2 class="h-section mb-6">6 секций главной страницы · <span class="accent">паттерны для дизайна</span></h2>
+  <div class="grid grid-cols-2 gap-4 max-w-[1300px]">
+    <div class="card">
+      <div class="flex items-center gap-2 mb-2">
+        <span class="pill pill-accent">01</span><span class="font-semibold text-white">HERO</span>
+      </div>
+      <div class="body-sm">Kernbotschaft: <em>«Wir eliminieren Ihr Compliance-Risiko»</em><br>+ CTA 1 (Projekt anfragen)<br>+ CTA 2 (EfbV-Zertifikat Download)</div>
+    </div>
+    <div class="card">
+      <div class="flex items-center gap-2 mb-2">
+        <span class="pill pill-accent">02</span><span class="font-semibold text-white">TRUST-BAR</span>
+      </div>
+      <div class="body-sm">Visuelle Beweise: EfbV · DIN 66399 · TISAX · Erstbehandlungsanlage<br><em class="text-[var(--color-muted)]">Logos / Badges, sofort erkennbar</em></div>
+    </div>
+    <div class="card">
+      <div class="flex items-center gap-2 mb-2">
+        <span class="pill pill-accent">03</span><span class="font-semibold text-white">PROZESS · 5 SCHRITTE</span>
+      </div>
+      <div class="body-sm">Anfrage → Behälter → Transport → Datenlöschung → ESG-Nachweis<br><em class="text-[var(--color-muted)]">Иконки + численная нумерация</em></div>
+    </div>
+    <div class="card">
+      <div class="flex items-center gap-2 mb-2">
+        <span class="pill pill-accent">04</span><span class="font-semibold text-white">PROOF OF CAPACITY</span>
+      </div>
+      <div class="body-sm">Видео/Bilder: 8.500 m² Anlage · eigener Fuhrpark · industrielle Waagen<br><em class="text-[var(--color-muted)]">Real photography критично</em></div>
+    </div>
+    <div class="card">
+      <div class="flex items-center gap-2 mb-2">
+        <span class="pill pill-accent">05</span><span class="font-semibold text-white">ZG-EINSTIEGE</span>
+      </div>
+      <div class="body-sm">4-6 карточек: IT-Mittelstand · Rechenzentren · Kommunen · Automobilzulieferer · …<br><em class="text-[var(--color-muted)]">Карточки → ZG-Landingpages</em></div>
+    </div>
+    <div class="card">
+      <div class="flex items-center gap-2 mb-2">
+        <span class="pill pill-accent">06</span><span class="font-semibold text-white">LEAD-MAGNET</span>
+      </div>
+      <div class="body-sm">Decision Pack Download: Löschprotokoll-Muster + ESG-Report-Muster + Checkliste<br><em class="text-[var(--color-muted)]">Soft conversion</em></div>
+    </div>
+  </div>
+  <div class="mt-6 p-5 rounded-lg bg-[var(--color-accent2)]/8 border border-[var(--color-accent2)]/25 max-w-[1300px]">
+    <div class="body"><strong class="accent2">Trust-Prinzip:</strong> «Trust ist überall, nicht irgendwo versteckt». Сертификаты не на отдельной странице — они <strong class="text-white">встроены в каждую секцию</strong>: hero (CTA download), service-pages (relevantes Zertifikat), ZG-LPs (EfbV prominent).</div>
+  </div>
+  <div class="sn">10 · 14</div>
+</section>
+
+<!-- ════════════════════════════════════════ -->
+<!-- SLIDE 11 — Design-Kit Scope -->
+<!-- ════════════════════════════════════════ -->
+<section class="slide" id="s11">
+  <div class="label">10 · Design-Kit Scope</div>
+  <h2 class="h-section mb-6">Что должно быть <span class="accent">в твоём deliverable</span></h2>
+  <div class="grid grid-cols-3 gap-4 max-w-[1300px]">
+    <div class="card">
+      <i data-lucide="palette" style="width:1.4rem;height:1.4rem;color:var(--color-accent);"></i>
+      <h3 class="h-sub mt-3 mb-2 text-white">Colors</h3>
+      <ul class="body-sm space-y-1">
+        <li>• Primary (corporate)</li>
+        <li>• Secondary (accent)</li>
+        <li>• Neutrals (5-7 оттенков)</li>
+        <li>• Semantic: success / warning / error / info</li>
+        <li>• Hover / active / disabled states</li>
+      </ul>
+    </div>
+    <div class="card">
+      <i data-lucide="type" style="width:1.4rem;height:1.4rem;color:var(--color-accent);"></i>
+      <h3 class="h-sub mt-3 mb-2 text-white">Typography</h3>
+      <ul class="body-sm space-y-1">
+        <li>• Display (H1, hero)</li>
+        <li>• Headings (H2-H4)</li>
+        <li>• Body (large / regular / small)</li>
+        <li>• UI (labels, captions)</li>
+        <li>• Mono (для tabular data, AVV-codes)</li>
+      </ul>
+      <div class="text-[10px] mt-2 text-[var(--color-muted)] italic">Желательно variable font, поддерживающий umlaute</div>
+    </div>
+    <div class="card">
+      <i data-lucide="component" style="width:1.4rem;height:1.4rem;color:var(--color-accent);"></i>
+      <h3 class="h-sub mt-3 mb-2 text-white">Components</h3>
+      <ul class="body-sm space-y-1">
+        <li>• Buttons (primary, secondary, tertiary, ghost)</li>
+        <li>• Forms (inputs, selects, file upload, multi-step)</li>
+        <li>• Cards (service, ZG, case)</li>
+        <li>• Tables (AVV codes, certificates)</li>
+        <li>• Navigation (header, footer, breadcrumbs)</li>
+        <li>• Modals, tooltips, badges, pills</li>
+      </ul>
+    </div>
+    <div class="card">
+      <i data-lucide="ruler" style="width:1.4rem;height:1.4rem;color:var(--color-accent);"></i>
+      <h3 class="h-sub mt-3 mb-2 text-white">Spacing & Grid</h3>
+      <ul class="body-sm space-y-1">
+        <li>• 8px-scale (4-8-16-24-32-40-48-64-80)</li>
+        <li>• Container max-width</li>
+        <li>• Breakpoints: mobile / tablet / desktop / wide</li>
+        <li>• Section padding standards</li>
+      </ul>
+    </div>
+    <div class="card">
+      <i data-lucide="image" style="width:1.4rem;height:1.4rem;color:var(--color-accent);"></i>
+      <h3 class="h-sub mt-3 mb-2 text-white">Iconography & Imagery</h3>
+      <ul class="body-sm space-y-1">
+        <li>• Icon set (consistent, outline или filled)</li>
+        <li>• Photography style guide (real / industrial)</li>
+        <li>• Illustration style (если применимо — minimal)</li>
+        <li>• Certificate/badge treatment</li>
+      </ul>
+    </div>
+    <div class="card">
+      <i data-lucide="layout" style="width:1.4rem;height:1.4rem;color:var(--color-accent);"></i>
+      <h3 class="h-sub mt-3 mb-2 text-white">Patterns / Mock-Pages</h3>
+      <ul class="body-sm space-y-1">
+        <li>• Hero variants (3-4)</li>
+        <li>• Trust-Bar variants</li>
+        <li>• Service-Grid layout</li>
+        <li>• Form layout (5-stufiges B2B-formular)</li>
+        <li>• Footer (corporate, dense)</li>
+      </ul>
+    </div>
+  </div>
+  <div class="mt-6 body-sm max-w-[1300px]">⚠️ Логотип EDELMET существует — <strong class="text-white">не редизайн логотипа</strong>. Только treatment в системе (clear-space, на различных фонах, lockups).</div>
+  <div class="sn">11 · 14</div>
+</section>
+
+<!-- ════════════════════════════════════════ -->
+<!-- SLIDE 12 — Brand-Persönlichkeit -->
+<!-- ════════════════════════════════════════ -->
+<section class="slide" id="s12">
+  <div class="label">11 · Brand-Persönlichkeit</div>
+  <h2 class="h-section mb-8">Какой EDELMET <span class="accent">— и какой нет</span></h2>
+  <div class="grid grid-cols-2 gap-6 max-w-[1200px]">
+    <div class="card-hl">
+      <h3 class="h-sub mb-4 text-white">✅ Wir sind</h3>
+      <ul class="body-lg space-y-2">
+        <li><strong class="accent">Zertifiziert</strong> — EfbV, DIN 66399 (in Vorbereitung), TISAX-ready</li>
+        <li><strong class="accent">Lokal verankert</strong> — NRW, Hagen, eigene Anlage</li>
+        <li><strong class="accent">Industriell</strong> — 8.500m², eigener Fuhrpark, Volumen-fähig</li>
+        <li><strong class="accent">Compliance-driven</strong> — DSGVO, NIS-2, ESG-fähig</li>
+        <li><strong class="accent">Audit-ready</strong> — vom Behälter bis zum Nachweis dokumentiert</li>
+        <li><strong class="accent">Edelmetall-erfahren</strong> — namensgebende Kompetenz</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 class="h-sub mb-4 text-white">❌ Wir sind NICHT</h3>
+      <ul class="body-lg space-y-2">
+        <li><span style="color:var(--color-danger)">Ankauf-Shop</span> für Privatleute (это legacy)</li>
+        <li><span style="color:var(--color-danger)">Startup</span> с playful tonality</li>
+        <li><span style="color:var(--color-danger)">Konsumer-Brand</span> — kein B2C-Fokus auf Website</li>
+        <li><span style="color:var(--color-danger)">Tech-Bro</span> mit Buzzword-Marketing</li>
+        <li><span style="color:var(--color-danger)">Großkonzern</span> mit Distanz und Bürokratie-Vibe</li>
+        <li><span style="color:var(--color-danger)">Generic Recycler</span> ohne Differenzierung</li>
+      </ul>
+    </div>
+  </div>
+  <div class="mt-8 p-5 rounded-lg bg-white/3 border border-[var(--color-border)] max-w-[1200px]">
+    <div class="body"><strong class="text-white">Tonality-Anker</strong> (одно слово в каждом измерении):<br>
+    <span class="accent">Sachlich</span> · не <em style="color:var(--color-danger)">verspielt</em>　|
+    <span class="accent">Kompetent</span> · не <em style="color:var(--color-danger)">aufdringlich</em>　|
+    <span class="accent">Zuverlässig</span> · не <em style="color:var(--color-danger)">flach</em>　|
+    <span class="accent">Modern</span> · не <em style="color:var(--color-danger)">trendy</em></div>
+  </div>
+  <div class="sn">12 · 14</div>
+</section>
+
+<!-- ════════════════════════════════════════ -->
+<!-- SLIDE 13 — Deliverables -->
+<!-- ════════════════════════════════════════ -->
+<section class="slide" id="s13">
+  <div class="label">12 · Deliverables</div>
+  <h2 class="h-section mb-6">Что отдаёшь <span class="accent">по итогу</span></h2>
+  <div class="grid grid-cols-2 gap-6 max-w-[1200px]">
+    <div class="card-hl">
+      <h3 class="h-sub mb-4 text-white">Figma-файл со структурой:</h3>
+      <ul class="body space-y-2">
+        <li>📁 <strong class="text-white">Foundations</strong> — colors, typography, spacing, shadows, radii</li>
+        <li>📁 <strong class="text-white">Components</strong> — buttons, forms, cards, tables, navigation, modals</li>
+        <li>📁 <strong class="text-white">Patterns</strong> — Hero / Trust-Bar / Service-Grid / Process / Footer</li>
+        <li>📁 <strong class="text-white">Mock-Pages</strong> (минимум 3): Startseite · ZG-LP-template · Service-Page</li>
+        <li>📁 <strong class="text-white">States</strong> — hover, active, disabled, error для всех components</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 class="h-sub mb-4 text-white">Технические требования</h3>
+      <ul class="body space-y-2">
+        <li>→ <strong class="text-white">Mobile-first:</strong> 360 / 768 / 1280 / 1440 breakpoints</li>
+        <li>→ <strong class="text-white">Auto-Layout</strong> для всех components — для разработчика на Odoo</li>
+        <li>→ <strong class="text-white">Variants</strong> для всех states (Figma component variants)</li>
+        <li>→ <strong class="text-white">Variables</strong> для colors / typography (light + поддержка dark в будущем)</li>
+        <li>→ <strong class="text-white">Доступность:</strong> WCAG 2.1 AA contrast minimum</li>
+      </ul>
+    </div>
+  </div>
+  <div class="mt-6 grid grid-cols-3 gap-4 max-w-[1200px]">
+    <div class="card text-center">
+      <div class="text-[11px] font-mono text-[var(--color-muted)] uppercase tracking-wider mb-2">Бюджет времени</div>
+      <div class="text-2xl font-bold text-white">5 часов</div>
+      <div class="body-sm mt-1">Учёт через Bitrix24 (тег WS)</div>
+    </div>
+    <div class="card text-center">
+      <div class="text-[11px] font-mono text-[var(--color-muted)] uppercase tracking-wider mb-2">Дедлайн</div>
+      <div class="text-2xl font-bold accent">Сегодня</div>
+      <div class="body-sm mt-1">27.04.2026</div>
+    </div>
+    <div class="card text-center">
+      <div class="text-[11px] font-mono text-[var(--color-muted)] uppercase tracking-wider mb-2">Postановщик</div>
+      <div class="text-2xl font-bold text-white">AW</div>
+      <div class="body-sm mt-1">Alexander Wirt</div>
+    </div>
+  </div>
+  <div class="sn">13 · 14</div>
+</section>
+
+<!-- ════════════════════════════════════════ -->
+<!-- SLIDE 14 — Контакты и материалы -->
+<!-- ════════════════════════════════════════ -->
+<section class="slide" id="s14">
+  <div class="label">13 · Контакты и материалы</div>
+  <h2 class="h-section mb-6">Куда смотреть · <span class="accent">с кем говорить</span></h2>
+  <div class="grid grid-cols-2 gap-6 max-w-[1200px]">
+    <div class="card">
+      <h3 class="h-sub mb-4 text-white">📚 Источники</h3>
+      <ul class="body space-y-2.5">
+        <li>→ <a href="https://w-s-agency.github.io/project-previews/edelmet/" target="_blank" class="link"><strong>Content-Preview V1.1</strong></a><br><span class="body-sm">18 страниц с финальной структурой блоков</span></li>
+        <li>→ <a href="https://w-s-agency.github.io/project-previews/edelmet-strategie/" target="_blank" class="link"><strong>Strategie-Präsentation</strong></a><br><span class="body-sm">Полный стратегический контекст</span></li>
+        <li>→ <strong class="text-white">Wiki-проекта:</strong> Google Drive «Edelmet/wiki/»<br><span class="body-sm">synthesis/marktposition.md, wettbewerbsmatrix.md, website-strategie.md</span></li>
+        <li>→ <strong class="text-white">Strategic Blueprint v1.5</strong> в Google Drive проекта</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 class="h-sub mb-4 text-white">👥 Контакты</h3>
+      <ul class="body space-y-2.5">
+        <li>→ <strong class="text-white">Alexander Wirt</strong> (постановщик, project lead)<br><span class="body-sm">team@wsagency.company · +49 179 7715079</span></li>
+        <li>→ <strong class="text-white">EDELMET / Eduard Pfaffenrot</strong> (клиент)<br><span class="body-sm">info@edelmet.de · напрямую только через AW</span></li>
+        <li>→ <strong class="text-white">Bitrix24 Deal #1817</strong><br><a href="https://portal.2penguins.eu/crm/deal/details/1817/" target="_blank" class="link body-sm">portal.2penguins.eu/crm/deal/details/1817/</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="mt-6 p-5 rounded-lg bg-[var(--color-accent)]/8 border border-[var(--color-accent)]/25 max-w-[1200px]">
+    <h3 class="h-sub mb-3 text-white">🚀 Следующие шаги</h3>
+    <ol class="body space-y-2">
+      <li><strong class="accent">1.</strong> Походи по конкурентам (slide 06) и benchmarks (slide 08) — собери design references в Figma</li>
+      <li><strong class="accent">2.</strong> Прочитай content-preview V1.1 — пойми структуру блоков</li>
+      <li><strong class="accent">3.</strong> Собери Foundations + ключевые Components → 1 mock-page (Startseite)</li>
+      <li><strong class="accent">4.</strong> Sync с AW при готовности 50% — корректировки до финала</li>
+      <li><strong class="accent">5.</strong> Финальный handoff → Odoo-разработчику</li>
+    </ol>
+  </div>
+  <div class="mt-6 text-center">
+    <div class="body-sm text-[var(--color-muted)]">EDELMET Design-Kit Briefing · 27.04.2026 · prepared by AW · 2Penguins ↔ WS Agency</div>
+  </div>
+  <div class="sn">14 · 14</div>
+</section>
+
+<script>
+(function(){
+  var slides = document.querySelectorAll('.slide');
+  var total = slides.length, cur = 0;
+  var dots = document.getElementById('dots');
+  var counter = document.getElementById('slide-counter');
+  var btnPrev = document.getElementById('btn-prev');
+  var btnNext = document.getElementById('btn-next');
+
+  slides.forEach(function(_, i){
+    var b = document.createElement('button');
+    b.className = 'nd';
+    b.setAttribute('aria-label', 'Slide ' + (i+1));
+    b.onclick = function(){ goto(i); };
+    dots.appendChild(b);
+  });
+  var dotEls = dots.querySelectorAll('.nd');
+
+  function pad(n){ return String(n).padStart(2,'0'); }
+
+  function goto(n){
+    n = Math.max(0, Math.min(total-1, n));
+    slides[cur].classList.remove('active');
+    if (dotEls[cur]) dotEls[cur].classList.remove('on');
+    cur = n;
+    slides[cur].classList.add('active');
+    if (dotEls[cur]) dotEls[cur].classList.add('on');
+    counter.textContent = pad(cur+1) + ' · ' + pad(total);
+    btnPrev.disabled = cur === 0;
+    btnNext.disabled = cur === total-1;
+    window.scrollTo(0, 0);
+  }
+
+  btnPrev.onclick = function(){ goto(cur-1); };
+  btnNext.onclick = function(){ goto(cur+1); };
+
+  document.addEventListener('keydown', function(e){
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ' || e.key === 'PageDown') {
+      e.preventDefault(); goto(cur+1);
+    }
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp' || e.key === 'PageUp') {
+      e.preventDefault(); goto(cur-1);
+    }
+    if (e.key === 'Home') { e.preventDefault(); goto(0); }
+    if (e.key === 'End') { e.preventDefault(); goto(total-1); }
+  });
+
+  var tx=0, ty=0;
+  document.addEventListener('touchstart', function(e){
+    tx = e.touches[0].clientX; ty = e.touches[0].clientY;
+  }, {passive: true});
+  document.addEventListener('touchend', function(e){
+    var dx = e.changedTouches[0].clientX - tx;
+    var dy = e.changedTouches[0].clientY - ty;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+      if (dx < 0) goto(cur+1); else goto(cur-1);
+    }
+  }, {passive: true});
+
+  goto(0);
+})();
+</script>
+<script>lucide.createIcons({attrs:{'stroke-width': 1.5}});</script>
+</body>
+</html>
