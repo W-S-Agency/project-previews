@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EDELMET — Design-Kit Briefing für Andrey</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="doc-tag">EDELMET <span class="accent">·</span> Design-Kit Briefing <span class="accent">·</span> Внутренний документ</div>
+
+<nav class="brief-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">EDELMET<small>DESIGN-BRIEF</small></a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Übersicht</a></li>
+      <li><a href="01_kontext.html">Контекст + ZG</a></li>
+      <li><a href="02_wettbewerber.html">Wettbewerber</a></li>
+      <li><a href="03_design_kit.html">Design-Kit</a></li>
+      <li><a href="04_deliverables.html">Deliverables</a></li>
+    </ul>
+    <span class="feedback-counter" id="feedbackCounter" onclick="openExportOverlay()">Feedback: 0 Kommentare</span>
+    <a href="https://portal.2penguins.eu/company/personal/user/50/tasks/task/view/3918/" target="_blank" class="nav-bitrix">Bitrix24 #3918 →</a>
+  </div>
+</nav>
+
+<header class="brief-hero">
+  <div class="container">
+    <h1>EDELMET — Design-Kit для B2B-сайта</h1>
+    <p class="lead">Брифинг для Андрея Ковыркина. Repositionierung от Materialankäufer к зертification­ed B2B-IT-Entsorger в NRW. Дизайн-кит — фундамент для нового сайта на Odoo CMS.</p>
+    <div class="meta">
+      <span class="meta-pill accent">5 часов</span>
+      <span class="meta-pill">Дедлайн: сегодня</span>
+      <span class="meta-pill">Tag WS</span>
+      <span class="meta-pill">Postановщик: AW</span>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+<div class="block-wrapper" id="block-1">
+  <button class="feedback-btn" onclick="toggleFeedback(1)">✏️ Vorschlag</button>
+  <div class="feedback-panel" id="feedback-panel-1">
+    <label for="feedback-text-1">Комментарий к этому блоку</label>
+    <textarea id="feedback-text-1" placeholder="Опиши, что менять / уточнить…"></textarea>
+    <div class="feedback-actions">
+      <button class="btn-save" onclick="saveFeedback(1)">Speichern</button>
+      <span id="saved-1" class="fb-saved-indicator">✓ Gespeichert</span>
+      <button class="btn-delete" id="delete-btn-1" onclick="deleteFeedback(1)" hidden>Löschen</button>
+    </div>
+  </div>
+  <div class="block-label">Как пользоваться этим брифингом</div>
+  <h2>📚 Структура документа</h2>
+  <p>Брифинг разбит на 4 страницы. Каждая раскрывает свой пласт информации, нужный для Design-Kit. Читать рекомендую по порядку, но можно прыгать.</p>
+  <div class="grid-4">
+    <a href="01_kontext.html" class="competitor-card">
+      <div class="cc-name">1 · Контекст + Zielgruppen</div>
+      <div class="cc-meta">Что делаем, на кого таргетируем, кластеры аудиторий</div>
+    </a>
+    <a href="02_wettbewerber.html" class="competitor-card">
+      <div class="cc-name">2 · Wettbewerber + Patterns</div>
+      <div class="cc-meta">10 NRW-конкурентов, B2B-Mittelstand паттерны DE, benchmarks вне ниши</div>
+    </a>
+    <a href="03_design_kit.html" class="competitor-card">
+      <div class="cc-name">3 · IA + Design-Kit + Brand</div>
+      <div class="cc-meta">Карта сайта, block-паттерны, scope дизайн-кита, brand-персональность</div>
+    </a>
+    <a href="04_deliverables.html" class="competitor-card">
+      <div class="cc-name">4 · Deliverables + Контакты</div>
+      <div class="cc-meta">Что отдаёшь, формат Figma, ссылки на источники, порядок работы</div>
+    </a>
+  </div>
+</div>
+
+<div class="block-wrapper bg-accent-soft" id="block-2">
+  <button class="feedback-btn" onclick="toggleFeedback(2)">✏️ Vorschlag</button>
+  <div class="feedback-panel" id="feedback-panel-2">
+    <label for="feedback-text-2">Комментарий</label>
+    <textarea id="feedback-text-2"></textarea>
+    <div class="feedback-actions">
+      <button class="btn-save" onclick="saveFeedback(2)">Speichern</button>
+      <span id="saved-2" class="fb-saved-indicator">✓</span>
+      <button class="btn-delete" id="delete-btn-2" onclick="deleteFeedback(2)" hidden>Löschen</button>
+    </div>
+  </div>
+  <div class="block-label">💡 Как оставлять обратную связь</div>
+  <h3>Кнопка «✏️ Vorschlag» справа от каждого блока</h3>
+  <p>Кликнул → написал комментарий → Speichern. Комментарии хранятся локально в браузере (localStorage), сквозные между всеми страницами Design-Brief'а. Сверху в навигации — счётчик.</p>
+  <p>Когда готов отправить — кликни <strong>«Feedback: N Kommentare»</strong> в навигации сверху → откроется overlay → <strong>«Als Datei herunterladen»</strong> или <strong>«In Zwischenablage kopieren»</strong>. Пришли мне (AW) в Bitrix24 или WhatsApp.</p>
+</div>
+
+<div class="block-wrapper bg-secondary" id="block-3">
+  <button class="feedback-btn" onclick="toggleFeedback(3)">✏️ Vorschlag</button>
+  <div class="feedback-panel" id="feedback-panel-3">
+    <label for="feedback-text-3">Комментарий</label>
+    <textarea id="feedback-text-3"></textarea>
+    <div class="feedback-actions">
+      <button class="btn-save" onclick="saveFeedback(3)">Speichern</button>
+      <span id="saved-3" class="fb-saved-indicator">✓</span>
+      <button class="btn-delete" id="delete-btn-3" onclick="deleteFeedback(3)" hidden>Löschen</button>
+    </div>
+  </div>
+  <div class="block-label">⚡ Главное в одном экране</div>
+  <h2>Что важно понять до начала</h2>
+  <div class="grid-3">
+    <div class="mini-card">
+      <h4>Tonality</h4>
+      <p><strong>Sachlich · Kompetent · Zuverlässig.</strong> НЕ verspielt, НЕ startup-style, НЕ Y-Combinator gradients.</p>
+    </div>
+    <div class="mini-card">
+      <h4>Trust-Prinzip</h4>
+      <p>Сертификаты (EfbV, DIN 66399, TISAX) — <strong>в каждой секции</strong>, не на отдельной странице.</p>
+    </div>
+    <div class="mini-card">
+      <h4>Кто принимает</h4>
+      <p>IT-Leiter, Compliance-Officer, Einkäufer, Geschäftsführer. Возраст 35-55. Платят за уверенность, не за wow.</p>
+    </div>
+    <div class="mini-card">
+      <h4>Логотип</h4>
+      <p>НЕ редизайнить. Только treatment в системе (clear-space, на разных фонах, lockups).</p>
+    </div>
+    <div class="mini-card">
+      <h4>CMS</h4>
+      <p>Реализация на <strong>Odoo</strong> (бывший plan был WordPress, заменили). Дизайн-кит должен быть Auto-Layout-ready.</p>
+    </div>
+    <div class="mini-card">
+      <h4>Текущий статус</h4>
+      <p>Стратегия и контент готовы (Content V1.1 в preview). Дизайн — следующий блокирующий шаг.</p>
+    </div>
+  </div>
+</div>
+
+<div class="page-footer-nav">
+  <span></span>
+  <a href="01_kontext.html" class="pfn-link">
+    <div class="pfn-dir">Дальше →</div>
+    <div class="pfn-title">1 · Контекст + Zielgruppen</div>
+  </a>
+</div>
+
+</main>
+
+<!-- Export Overlay -->
+<div class="export-overlay" id="exportOverlay">
+  <div class="export-box">
+    <div class="count" id="exportCount">0</div>
+    <h2>Kommentare bereit</h2>
+    <p>Все комментарии по всем страницам Design-Brief'а в одном файле.</p>
+    <button class="btn-export" onclick="exportFeedback()">📥 Als Datei herunterladen</button>
+    <button class="btn-export btn-copy" onclick="copyFeedback()">📋 In Zwischenablage kopieren</button>
+    <button class="btn-close-overlay" onclick="closeExportOverlay()">Schließen</button>
+  </div>
+</div>
+
+<footer class="brief-footer">
+  <div class="container">
+    EDELMET Design-Brief · 27.04.2026 · prepared by AW (2Penguins ↔ WS Agency) · Bitrix24 <a href="https://portal.2penguins.eu/company/personal/user/50/tasks/task/view/3918/" target="_blank">Task #3918</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var PROJECT='edelmet-design-brief', PAGE='index', PAGE_TITLE='Übersicht';
+  var SK='2p-feedback-'+PROJECT;
+  function ga(){return JSON.parse(localStorage.getItem(SK)||'{}');}
+  function gp(){var a=ga();return a[PAGE]||{};}
+  function sp(d){var a=ga();if(Object.keys(d).length<=1&&d._title)delete a[PAGE];else a[PAGE]=d;localStorage.setItem(SK,JSON.stringify(a));}
+  function tc(){var a=ga(),c=0;for(var p in a)for(var k in a[p])if(k!=='_title')c++;return c;}
+  function load(){
+    var pd=gp();
+    for(var bid in pd){
+      if(bid==='_title')continue;
+      var e=pd[bid],t=(typeof e==='object')?e.text:e;
+      var ta=document.getElementById('feedback-text-'+bid);
+      var btn=document.querySelector('#block-'+bid+' .feedback-btn');
+      var db=document.getElementById('delete-btn-'+bid);
+      if(ta)ta.value=t;
+      if(btn){btn.classList.add('has-comment');btn.textContent='✏️ Bearbeiten';}
+      if(db)db.hidden=false;
+    }
+    uc();
+  }
+  window.toggleFeedback=function(id){
+    var p=document.getElementById('feedback-panel-'+id);
+    p.classList.toggle('open');
+    if(p.classList.contains('open'))document.getElementById('feedback-text-'+id).focus();
+  };
+  window.saveFeedback=function(id){
+    var t=document.getElementById('feedback-text-'+id).value.trim();if(!t)return;
+    var bl=document.getElementById('block-'+id),le=bl?bl.querySelector('.block-label'):null;
+    var label=le?le.textContent:('Block '+id);
+    var pd=gp();pd._title=PAGE_TITLE;pd[id]={text:t,label:label};sp(pd);
+    var btn=document.querySelector('#block-'+id+' .feedback-btn');
+    btn.classList.add('has-comment');btn.textContent='✏️ Bearbeiten';
+    document.getElementById('delete-btn-'+id).hidden=false;
+    var si=document.getElementById('saved-'+id);si.style.display='inline-flex';
+    setTimeout(function(){si.style.display='none';},2000);
+    uc();setTimeout(function(){window.toggleFeedback(id);},1200);
+  };
+  window.deleteFeedback=function(id){
+    var pd=gp();delete pd[id];sp(pd);
+    document.getElementById('feedback-text-'+id).value='';
+    var btn=document.querySelector('#block-'+id+' .feedback-btn');
+    btn.classList.remove('has-comment');btn.textContent='✏️ Vorschlag';
+    document.getElementById('delete-btn-'+id).hidden=true;
+    uc();window.toggleFeedback(id);
+  };
+  function uc(){
+    var c=tc(),el=document.getElementById('feedbackCounter');
+    if(c>0){el.classList.add('has-feedback');el.innerHTML='📥 Feedback: '+c+' Kommentar'+(c>1?'e':'');}
+    else{el.classList.remove('has-feedback');el.innerHTML='Feedback: 0 Kommentare';}
+  }
+  window.openExportOverlay=function(){
+    var c=tc();if(c===0)return;
+    document.getElementById('exportCount').textContent=c;
+    document.getElementById('exportOverlay').classList.add('open');
+  };
+  window.closeExportOverlay=function(){document.getElementById('exportOverlay').classList.remove('open');};
+  function bft(){
+    var a=ga(),c=tc(),t='FEEDBACK — EDELMET Design-Brief\nDatum: '+new Date().toLocaleDateString('de-DE')+'\n'+c+' Kommentar(e) insgesamt\n==================================================\n\n';
+    for(var p in a){var pd=a[p],pt=pd._title||p;t+='━━━ '+pt+' ━━━\n\n';
+      for(var bid in pd){if(bid==='_title')continue;var e=pd[bid],ct=(typeof e==='object')?e.text:e,lb=(typeof e==='object'&&e.label)?e.label:('Block '+bid);
+        t+='📌 '+lb+'\n----------------------------------------\n'+ct+'\n\n';}}
+    t+='==================================================\nErstellt am '+new Date().toLocaleString('de-DE')+'\n';return t;
+  }
+  window.exportFeedback=function(){
+    var t=bft(),b=new Blob([t],{type:'text/plain;charset=utf-8'}),u=URL.createObjectURL(b),a=document.createElement('a');
+    a.href=u;a.download='feedback_edelmet_design-brief_'+new Date().toISOString().slice(0,10)+'.txt';a.click();URL.revokeObjectURL(u);
+    window.closeExportOverlay();
+  };
+  window.copyFeedback=function(){
+    navigator.clipboard.writeText(bft()).then(function(){
+      var b=document.querySelector('.btn-copy'),o=b.textContent;b.textContent='✅ Kopiert!';setTimeout(function(){b.textContent=o;},2000);
+    });
+  };
+  load();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1 · Контекст + Zielgruppen — EDELMET Design-Brief</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="doc-tag">EDELMET <span class="accent">·</span> Design-Kit Briefing <span class="accent">·</span> 1/4 — Контекст + Zielgruppen</div>
+
+<nav class="brief-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">EDELMET<small>DESIGN-BRIEF</small></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Übersicht</a></li>
+      <li><a href="01_kontext.html" class="active">Контекст + ZG</a></li>
+      <li><a href="02_wettbewerber.html">Wettbewerber</a></li>
+      <li><a href="03_design_kit.html">Design-Kit</a></li>
+      <li><a href="04_deliverables.html">Deliverables</a></li>
+    </ul>
+    <span class="feedback-counter" id="feedbackCounter" onclick="openExportOverlay()">Feedback: 0 Kommentare</span>
+    <a href="https://portal.2penguins.eu/company/personal/user/50/tasks/task/view/3918/" target="_blank" class="nav-bitrix">Bitrix24 #3918 →</a>
+  </div>
+</nav>
+
+<header class="brief-hero">
+  <div class="container">
+    <h1>1 · Контекст проекта + Zielgruppen</h1>
+    <p class="lead">Кто такой EDELMET, куда мы его двигаем, и для кого делаем сайт.</p>
+  </div>
+</header>
+
+<main class="container">
+
+<div class="block-wrapper" id="block-1">
+  <button class="feedback-btn" onclick="toggleFeedback(1)">✏️ Vorschlag</button>
+  <div class="feedback-panel" id="feedback-panel-1"><label>Комментарий</label><textarea id="feedback-text-1"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(1)">Speichern</button><span id="saved-1" class="fb-saved-indicator">✓</span><button class="btn-delete" id="delete-btn-1" onclick="deleteFeedback(1)" hidden>Löschen</button></div></div>
+  <div class="block-label">Repositionierung</div>
+  <h2>Что такое EDELMET сейчас → и куда мы идём</h2>
+  <div class="do-dont">
+    <div class="col">
+      <h4>🔴 СЕЙЧАС: Materialankäufer</h4>
+      <ul>
+        <li>Старый сайт edelmet.de выглядит как «Ankauf-Shop für Privatleute»</li>
+        <li>Google Ads на B2C-keywords: «Laptop verkaufen», «Handy Ankauf»</li>
+        <li>Низкая видимость в B2B (Authority Score 2, 0 organic traffic)</li>
+        <li>Сильная edelmetall-компетенция, но без B2B-позиционирования</li>
+      </ul>
+    </div>
+    <div class="col">
+      <h4>🟢 ЦЕЛЬ: B2B-IT-Entsorger NRW</h4>
+      <ul>
+        <li><strong>Konzern-Look:</strong> solide, compliance-orientiert, Trust-driven</li>
+        <li>Фокус: 9 B2B-сегментов (IT-Mittelstand, Rechenzentren, Kommunen, Finanzinstitute…)</li>
+        <li>Kernbotschaft: <em>«Wir eliminieren Ihr Compliance-Risiko»</em></li>
+        <li>Цель: 50–80 активных B2B-клиентов за 12 месяцев</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout accent">
+    <strong>Цитата клиента (12.02.2026):</strong> «Wir spielen Darts, aber wir sollten Schach spielen.» — Eduard Pfaffenrot, Geschäftsführer EDELMET
+  </div>
+</div>
+
+<div class="block-wrapper" id="block-2">
+  <button class="feedback-btn" onclick="toggleFeedback(2)">✏️ Vorschlag</button>
+  <div class="feedback-panel" id="feedback-panel-2"><label>Комментарий</label><textarea id="feedback-text-2"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(2)">Speichern</button><span id="saved-2" class="fb-saved-indicator">✓</span><button class="btn-delete" id="delete-btn-2" onclick="deleteFeedback(2)" hidden>Löschen</button></div></div>
+  <div class="block-label">Текущая стадия</div>
+  <h2>Что уже готово — и почему дизайн нужен сейчас</h2>
+  <div class="grid-4">
+    <div class="mini-card"><span class="pill pill-success">✓ Готово</span><h4>Strategie</h4><p>Bestätigt 18.03.2026 — 9 сегментов</p></div>
+    <div class="mini-card"><span class="pill pill-success">✓ Готово</span><h4>Blueprint v1.5</h4><p>Strategic Blueprint, 12 Sektionen</p></div>
+    <div class="mini-card"><span class="pill pill-success">✓ Готово</span><h4>Content V1.1</h4><p>15 страниц текста готовы</p></div>
+    <div class="mini-card"><span class="pill pill-warn">⬅ ЗДЕСЬ</span><h4>Design-Kit</h4><p>Твоя задача</p></div>
+  </div>
+  <p style="margin-top:18px"><strong>Текущий Content-Preview (V1.1):</strong> <a href="https://w-s-agency.github.io/project-previews/edelmet/" target="_blank">w-s-agency.github.io/project-previews/edelmet/</a> — 18 страниц с финальной структурой блоков.</p>
+  <p><strong>Текущий сайт (legacy):</strong> <a href="https://edelmet.de" target="_blank">edelmet.de</a> — B2C-стиль, WordPress. <strong style="color:var(--danger)">НЕ референс</strong>, мы его заменяем.</p>
+</div>
+
+<div class="block-wrapper bg-secondary" id="block-3">
+  <button class="feedback-btn" onclick="toggleFeedback(3)">✏️ Vorschlag</button>
+  <div class="feedback-panel" id="feedback-panel-3"><label>Комментарий</label><textarea id="feedback-text-3"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(3)">Speichern</button><span id="saved-3" class="fb-saved-indicator">✓</span><button class="btn-delete" id="delete-btn-3" onclick="deleteFeedback(3)" hidden>Löschen</button></div></div>
+  <div class="block-label">9 сегментов · 3 кластера</div>
+  <h2>Целевые аудитории</h2>
+  <p style="opacity:.85">Дизайн должен давать каждому кластеру свой «канал» внутри одной системы.</p>
+  <div class="grid-3">
+    <div class="mini-card" style="background:rgba(93,173,226,.15); border-color:rgba(93,173,226,.4); color:#fff">
+      <span class="pill pill-info">Кластер 1 · Premium B2B</span>
+      <h4 style="color:#fff">IT-Operations</h4>
+      <p style="color:rgba(255,255,255,.85)">• IT-Mittelstand (NRW) · Rechenzentren (DE-weit) · Telekommunikation</p>
+      <p style="color:rgba(255,255,255,.7); font-style:italic; margin-top:8px">Tech-savvy, präzise, ROI-driven. Visual: structured data, capacity, infrastructure.</p>
+    </div>
+    <div class="mini-card" style="background:rgba(143,200,138,.18); border-color:rgba(143,200,138,.45); color:#fff">
+      <span class="pill pill-success">Кластер 2 · Regulated</span>
+      <h4 style="color:#fff">Compliance-fokus</h4>
+      <p style="color:rgba(255,255,255,.85)">• Kommunen & Behörden · Finanzinstitute · Versicherungen · Krankenhäuser</p>
+      <p style="color:rgba(255,255,255,.7); font-style:italic; margin-top:8px">Sicher, formal, regulatorisch. Visual: certifications, processes, audit-trail.</p>
+    </div>
+    <div class="mini-card" style="background:rgba(229,184,90,.18); border-color:rgba(229,184,90,.45); color:#fff">
+      <span class="pill pill-warn">Кластер 3 · Industrie</span>
+      <h4 style="color:#fff">Volumen-Geschäft</h4>
+      <p style="color:rgba(255,255,255,.85)">• Automobilzulieferer · Überregionale Entsorger (Interzero, Zentek)</p>
+      <p style="color:rgba(255,255,255,.7); font-style:italic; margin-top:8px">Industriell, B2B-Partnership, Skalierbarkeit. Visual: capacity, fleet, operations.</p>
+    </div>
+  </div>
+</div>
+
+<div class="block-wrapper bg-accent-soft" id="block-4">
+  <button class="feedback-btn" onclick="toggleFeedback(4)">✏️ Vorschlag</button>
+  <div class="feedback-panel" id="feedback-panel-4"><label>Комментарий</label><textarea id="feedback-text-4"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(4)">Speichern</button><span id="saved-4" class="fb-saved-indicator">✓</span><button class="btn-delete" id="delete-btn-4" onclick="deleteFeedback(4)" hidden>Löschen</button></div></div>
+  <div class="block-label">Decision-Maker</div>
+  <h3>Кто решает на стороне клиента</h3>
+  <p>Для всех кластеров: <strong>IT-Leiter / Compliance-Officer / Einkäufer / Geschäftsführer</strong>. Возраст 35-55. Tonality «sachlich, kompetent, zuverlässig» — НЕ verspielt.</p>
+  <p>Платят за <em>уверенность в выборе подрядчика</em>, не за wow-эффект.</p>
+</div>
+
+<div class="page-footer-nav">
+  <a href="index.html" class="pfn-link">
+    <div class="pfn-dir">← Назад</div>
+    <div class="pfn-title">Übersicht</div>
+  </a>
+  <a href="02_wettbewerber.html" class="pfn-link">
+    <div class="pfn-dir">Дальше →</div>
+    <div class="pfn-title">2 · Wettbewerber + Patterns</div>
+  </a>
+</div>
+
+</main>
+
+<div class="export-overlay" id="exportOverlay">
+  <div class="export-box">
+    <div class="count" id="exportCount">0</div>
+    <h2>Kommentare bereit</h2>
+    <p>Все комментарии по всем страницам Design-Brief'а в одном файле.</p>
+    <button class="btn-export" onclick="exportFeedback()">📥 Als Datei herunterladen</button>
+    <button class="btn-export btn-copy" onclick="copyFeedback()">📋 In Zwischenablage kopieren</button>
+    <button class="btn-close-overlay" onclick="closeExportOverlay()">Schließen</button>
+  </div>
+</div>
+
+<footer class="brief-footer">
+  <div class="container">EDELMET Design-Brief · 27.04.2026 · prepared by AW · <a href="https://portal.2penguins.eu/company/personal/user/50/tasks/task/view/3918/" target="_blank">Bitrix24 Task #3918</a></div>
+</footer>
+
+<script>window.FB_PAGE='01_kontext';window.FB_PAGE_TITLE='1 · Контекст + Zielgruppen';</script>
+<script src="feedback.js"></script>
+</body>
+</html>

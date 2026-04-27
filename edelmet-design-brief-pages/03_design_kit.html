@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3 · IA + Design-Kit + Brand — EDELMET Design-Brief</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="doc-tag">EDELMET <span class="accent">·</span> Design-Kit Briefing <span class="accent">·</span> 3/4 — IA + Design-Kit + Brand</div>
+
+<nav class="brief-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">EDELMET<small>DESIGN-BRIEF</small></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Übersicht</a></li>
+      <li><a href="01_kontext.html">Контекст + ZG</a></li>
+      <li><a href="02_wettbewerber.html">Wettbewerber</a></li>
+      <li><a href="03_design_kit.html" class="active">Design-Kit</a></li>
+      <li><a href="04_deliverables.html">Deliverables</a></li>
+    </ul>
+    <span class="feedback-counter" id="feedbackCounter" onclick="openExportOverlay()">Feedback: 0 Kommentare</span>
+    <a href="https://portal.2penguins.eu/company/personal/user/50/tasks/task/view/3918/" target="_blank" class="nav-bitrix">Bitrix24 #3918 →</a>
+  </div>
+</nav>
+
+<header class="brief-hero">
+  <div class="container">
+    <h1>3 · IA + Design-Kit Scope + Brand</h1>
+    <p class="lead">Карта сайта · block-паттерны · scope дизайн-кита · brand-персональность.</p>
+  </div>
+</header>
+
+<main class="container">
+
+<div class="block-wrapper" id="block-1">
+  <button class="feedback-btn" onclick="toggleFeedback(1)">✏️ Vorschlag</button>
+  <div class="feedback-panel" id="feedback-panel-1"><label>Комментарий</label><textarea id="feedback-text-1"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(1)">Speichern</button><span id="saved-1" class="fb-saved-indicator">✓</span><button class="btn-delete" id="delete-btn-1" onclick="deleteFeedback(1)" hidden>Löschen</button></div></div>
+  <div class="block-label">Информационная архитектура</div>
+  <h2>Карта сайта — страницы для покрытия дизайном</h2>
+  <div class="grid-4">
+    <div class="mini-card"><span class="pill pill-info">Für Unternehmen</span><h4>ZG-Landingpages</h4><p>IT-Mittelstand · Rechenzentren · Kommunen · Telekommunikation · Automobilzulieferer · Entsorger-Partner · <strong>+ Finanzinstitute (NEU)</strong> · <strong>+ Versicherungen (NEU)</strong></p></div>
+    <div class="mini-card"><span class="pill pill-success">Leistungen</span><h4>Service-страницы</h4><p>IT-Remarketing · Datenlöschung (DIN 66399) · Logistik & Behälter · ESG-Reporting</p></div>
+    <div class="mini-card"><span class="pill pill-warn">Über uns</span><h4>Trust + corporate</h4><p>Historie & Anlage (8.500m²) · Zertifikate & Downloads · Karriere</p></div>
+    <div class="mini-card"><span class="pill pill-muted">Kontakt</span><h4>Conversion</h4><p>B2B-Anfrage (5-stufiges Formular) · Standort Hagen · Ansprechpartner</p></div>
+  </div>
+  <div class="grid-2" style="margin-top:18px">
+    <div class="mini-card" style="background:rgba(197,150,30,.08); border-color:rgba(197,150,30,.3)"><h4>+ 15-20 stadtspezifische LPs</h4><p>Köln, Düsseldorf, Dortmund, Essen, Duisburg, Bochum, Wuppertal, Bielefeld, Bonn, Münster, Gelsenkirchen, … — нужен <strong>re-usable LP-template</strong></p></div>
+    <div class="mini-card" style="background:rgba(197,150,30,.08); border-color:rgba(197,150,30,.3)"><h4>+ AVV-страницы (Long-Tail SEO)</h4><p>AVV 16 02 13*, 16 02 14, 16 02 15*, 16 02 16 — fachspezifische LPs с technische data-presentation</p></div>
+  </div>
+</div>
+
+<div class="block-wrapper" id="block-2">
+  <button class="feedback-btn" onclick="toggleFeedback(2)">✏️ Vorschlag</button>
+  <div class="feedback-panel" id="feedback-panel-2"><label>Комментарий</label><textarea id="feedback-text-2"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(2)">Speichern</button><span id="saved-2" class="fb-saved-indicator">✓</span><button class="btn-delete" id="delete-btn-2" onclick="deleteFeedback(2)" hidden>Löschen</button></div></div>
+  <div class="block-label">Block-Patterns Startseite</div>
+  <h2>6 секций главной страницы</h2>
+  <div class="grid-2">
+    <div class="mini-card"><h4>01 · HERO</h4><p>Kernbotschaft: <em>«Wir eliminieren Ihr Compliance-Risiko»</em> · CTA 1 (Projekt anfragen) · CTA 2 (EfbV-Zertifikat Download)</p></div>
+    <div class="mini-card"><h4>02 · TRUST-BAR</h4><p>Visuelle Beweise: EfbV · DIN 66399 · TISAX · Erstbehandlungsanlage. Логотипы / Badges, sofort erkennbar.</p></div>
+    <div class="mini-card"><h4>03 · PROZESS · 5 SCHRITTE</h4><p>Anfrage → Behälter → Transport → Datenlöschung → ESG-Nachweis. Иконки + численная нумерация.</p></div>
+    <div class="mini-card"><h4>04 · PROOF OF CAPACITY</h4><p>Видео/Bilder: 8.500 m² Anlage · eigener Fuhrpark · industrielle Waagen. Real photography критично.</p></div>
+    <div class="mini-card"><h4>05 · ZG-EINSTIEGE</h4><p>4-6 карточек ведут на ZG-Landingpages: IT-Mittelstand · Rechenzentren · Kommunen · Automobilzulieferer · …</p></div>
+    <div class="mini-card"><h4>06 · LEAD-MAGNET</h4><p>Decision Pack Download: Löschprotokoll-Muster + ESG-Report-Muster + Checkliste. Soft conversion.</p></div>
+  </div>
+  <div class="callout">
+    <strong>Trust-принцип:</strong> «Trust ist überall, nicht irgendwo versteckt». Сертификаты не на отдельной странице — они <strong>встроены в каждую секцию</strong>: hero (CTA download), service-pages (relevantes Zertifikat), ZG-LPs (EfbV prominent).
+  </div>
+</div>
+
+<div class="block-wrapper bg-secondary" id="block-3">
+  <button class="feedback-btn" onclick="toggleFeedback(3)">✏️ Vorschlag</button>
+  <div class="feedback-panel" id="feedback-panel-3"><label>Комментарий</label><textarea id="feedback-text-3"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(3)">Speichern</button><span id="saved-3" class="fb-saved-indicator">✓</span><button class="btn-delete" id="delete-btn-3" onclick="deleteFeedback(3)" hidden>Löschen</button></div></div>
+  <div class="block-label">Design-Kit Scope</div>
+  <h2>Что должно быть в твоём deliverable</h2>
+  <div class="grid-3">
+    <div class="mini-card" style="background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.15); color:#fff">
+      <h4 style="color:#fff">Colors</h4>
+      <p style="color:rgba(255,255,255,.85)">• Primary (corporate)<br>• Secondary (accent)<br>• Neutrals (5-7 оттенков)<br>• Semantic: success / warning / error / info<br>• Hover / active / disabled states</p>
+    </div>
+    <div class="mini-card" style="background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.15); color:#fff">
+      <h4 style="color:#fff">Typography</h4>
+      <p style="color:rgba(255,255,255,.85)">• Display (H1, hero)<br>• Headings (H2-H4)<br>• Body (large / regular / small)<br>• UI (labels, captions)<br>• Mono (для tabular data, AVV-codes)<br><em>Variable font, поддержка umlaute</em></p>
+    </div>
+    <div class="mini-card" style="background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.15); color:#fff">
+      <h4 style="color:#fff">Components</h4>
+      <p style="color:rgba(255,255,255,.85)">• Buttons (primary, secondary, tertiary, ghost)<br>• Forms (inputs, selects, file upload, multi-step)<br>• Cards (service, ZG, case)<br>• Tables (AVV codes, certificates)<br>• Navigation, modals, badges, pills</p>
+    </div>
+    <div class="mini-card" style="background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.15); color:#fff">
+      <h4 style="color:#fff">Spacing & Grid</h4>
+      <p style="color:rgba(255,255,255,.85)">• 8px-scale (4-8-16-24-32-40-48-64-80)<br>• Container max-width<br>• Breakpoints: mobile / tablet / desktop / wide<br>• Section padding standards</p>
+    </div>
+    <div class="mini-card" style="background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.15); color:#fff">
+      <h4 style="color:#fff">Iconography & Imagery</h4>
+      <p style="color:rgba(255,255,255,.85)">• Icon set (consistent, outline или filled)<br>• Photography style guide (real / industrial)<br>• Illustration style (minimal, если применимо)<br>• Certificate/badge treatment</p>
+    </div>
+    <div class="mini-card" style="background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.15); color:#fff">
+      <h4 style="color:#fff">Patterns / Mock-Pages</h4>
+      <p style="color:rgba(255,255,255,.85)">• Hero variants (3-4)<br>• Trust-Bar variants<br>• Service-Grid layout<br>• Form layout (5-stufiges B2B-formular)<br>• Footer (corporate, dense)</p>
+    </div>
+  </div>
+  <p style="margin-top:18px; color:rgba(255,255,255,.85); font-size:.9rem">⚠️ Логотип EDELMET существует — <strong style="color:var(--accent)">не редизайн логотипа</strong>. Только treatment в системе (clear-space, на различных фонах, lockups).</p>
+</div>
+
+<div class="block-wrapper bg-accent-soft" id="block-4">
+  <button class="feedback-btn" onclick="toggleFeedback(4)">✏️ Vorschlag</button>
+  <div class="feedback-panel" id="feedback-panel-4"><label>Комментарий</label><textarea id="feedback-text-4"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(4)">Speichern</button><span id="saved-4" class="fb-saved-indicator">✓</span><button class="btn-delete" id="delete-btn-4" onclick="deleteFeedback(4)" hidden>Löschen</button></div></div>
+  <div class="block-label">Brand-Persönlichkeit</div>
+  <h2>Какой EDELMET — и какой нет</h2>
+  <div class="do-dont">
+    <div class="col">
+      <h4>✅ Wir sind</h4>
+      <ul>
+        <li><strong>Zertifiziert</strong> — EfbV, DIN 66399 (in Vorbereitung), TISAX-ready</li>
+        <li><strong>Lokal verankert</strong> — NRW, Hagen, eigene Anlage</li>
+        <li><strong>Industriell</strong> — 8.500m², eigener Fuhrpark, Volumen-fähig</li>
+        <li><strong>Compliance-driven</strong> — DSGVO, NIS-2, ESG-fähig</li>
+        <li><strong>Audit-ready</strong> — vom Behälter bis zum Nachweis dokumentiert</li>
+        <li><strong>Edelmetall-erfahren</strong> — namensgebende Kompetenz</li>
+      </ul>
+    </div>
+    <div class="col">
+      <h4 style="color:var(--danger)">❌ Wir sind NICHT</h4>
+      <ul>
+        <li><span style="color:var(--danger)">Ankauf-Shop</span> für Privatleute (это legacy)</li>
+        <li><span style="color:var(--danger)">Startup</span> с playful tonality</li>
+        <li><span style="color:var(--danger)">Konsumer-Brand</span> — kein B2C-Fokus auf Website</li>
+        <li><span style="color:var(--danger)">Tech-Bro</span> mit Buzzword-Marketing</li>
+        <li><span style="color:var(--danger)">Großkonzern</span> mit Distanz und Bürokratie-Vibe</li>
+        <li><span style="color:var(--danger)">Generic Recycler</span> ohne Differenzierung</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout accent" style="margin-top:14px">
+    <strong>Tonality-Anker</strong> (одно слово в каждом измерении):<br>
+    <strong>Sachlich</strong> · не <em style="color:var(--danger)">verspielt</em> &nbsp;|&nbsp;
+    <strong>Kompetent</strong> · не <em style="color:var(--danger)">aufdringlich</em> &nbsp;|&nbsp;
+    <strong>Zuverlässig</strong> · не <em style="color:var(--danger)">flach</em> &nbsp;|&nbsp;
+    <strong>Modern</strong> · не <em style="color:var(--danger)">trendy</em>
+  </div>
+</div>
+
+<div class="page-footer-nav">
+  <a href="02_wettbewerber.html" class="pfn-link">
+    <div class="pfn-dir">← Назад</div>
+    <div class="pfn-title">2 · Wettbewerber + Patterns</div>
+  </a>
+  <a href="04_deliverables.html" class="pfn-link">
+    <div class="pfn-dir">Дальше →</div>
+    <div class="pfn-title">4 · Deliverables + Контакты</div>
+  </a>
+</div>
+
+</main>
+
+<div class="export-overlay" id="exportOverlay">
+  <div class="export-box">
+    <div class="count" id="exportCount">0</div>
+    <h2>Kommentare bereit</h2>
+    <p>Все комментарии по всем страницам Design-Brief'а в одном файле.</p>
+    <button class="btn-export" onclick="exportFeedback()">📥 Als Datei herunterladen</button>
+    <button class="btn-export btn-copy" onclick="copyFeedback()">📋 In Zwischenablage kopieren</button>
+    <button class="btn-close-overlay" onclick="closeExportOverlay()">Schließen</button>
+  </div>
+</div>
+
+<footer class="brief-footer">
+  <div class="container">EDELMET Design-Brief · 27.04.2026 · prepared by AW · <a href="https://portal.2penguins.eu/company/personal/user/50/tasks/task/view/3918/" target="_blank">Bitrix24 Task #3918</a></div>
+</footer>
+
+<script>window.FB_PAGE='03_design_kit';window.FB_PAGE_TITLE='3 · IA + Design-Kit + Brand';</script>
+<script src="feedback.js"></script>
+</body>
+</html>

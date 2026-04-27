@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2 · Wettbewerber + Patterns — EDELMET Design-Brief</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="doc-tag">EDELMET <span class="accent">·</span> Design-Kit Briefing <span class="accent">·</span> 2/4 — Wettbewerber + Patterns</div>
+
+<nav class="brief-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">EDELMET<small>DESIGN-BRIEF</small></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Übersicht</a></li>
+      <li><a href="01_kontext.html">Контекст + ZG</a></li>
+      <li><a href="02_wettbewerber.html" class="active">Wettbewerber</a></li>
+      <li><a href="03_design_kit.html">Design-Kit</a></li>
+      <li><a href="04_deliverables.html">Deliverables</a></li>
+    </ul>
+    <span class="feedback-counter" id="feedbackCounter" onclick="openExportOverlay()">Feedback: 0 Kommentare</span>
+    <a href="https://portal.2penguins.eu/company/personal/user/50/tasks/task/view/3918/" target="_blank" class="nav-bitrix">Bitrix24 #3918 →</a>
+  </div>
+</nav>
+
+<header class="brief-hero">
+  <div class="container">
+    <h1>2 · Wettbewerber + Patterns</h1>
+    <p class="lead">10 NRW-конкурентов · паттерны B2B-Mittelstand DE · benchmarks вне ниши.</p>
+  </div>
+</header>
+
+<main class="container">
+
+<div class="block-wrapper" id="block-1">
+  <button class="feedback-btn" onclick="toggleFeedback(1)">✏️ Vorschlag</button>
+  <div class="feedback-panel" id="feedback-panel-1"><label>Комментарий</label><textarea id="feedback-text-1"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(1)">Speichern</button><span id="saved-1" class="fb-saved-indicator">✓</span><button class="btn-delete" id="delete-btn-1" onclick="deleteFeedback(1)" hidden>Löschen</button></div></div>
+  <div class="block-label">10 NRW-конкурентов</div>
+  <h2>Походи по сайтам — собери design references</h2>
+  <p>Снимай для каждого: блоки, цвета, типографику, photography style. Что выглядит профессионально / устаревше.</p>
+  <div class="grid-2">
+    <a href="https://procorex.de" target="_blank" class="competitor-card"><div class="cc-name">ProCoReX <span class="pill pill-danger" style="margin-left:8px">SEHR HOCH</span></div><div class="cc-meta">Unna · Kostenlos + NIS-2 + 7 Länder · Auth 2, 892 backlinks</div><div class="cc-url">→ procorex.de</div></a>
+    <a href="https://elorec.de" target="_blank" class="competitor-card"><div class="cc-name">ELOREC <span class="pill pill-danger" style="margin-left:8px">SEHR HOCH</span></div><div class="cc-meta">Essen · 48h Express · Auth 13, KI-Visibility 22 (лидер)</div><div class="cc-url">→ elorec.de</div></a>
+    <a href="https://corebo.eu/e-schrott-entsorgung/" target="_blank" class="competitor-card"><div class="cc-name">Corebo <span class="pill pill-warn" style="margin-left:8px">ВЫСОКАЯ</span></div><div class="cc-meta">NRW · 50+ stadt-LPs · SEO-доминирование, Auth 8</div><div class="cc-url">→ corebo.eu/e-schrott-entsorgung</div></a>
+    <a href="https://hamarec.de" target="_blank" class="competitor-card"><div class="cc-name">Hamarec <span class="pill pill-warn" style="margin-left:8px">ВЫСОКАЯ</span></div><div class="cc-meta">Essen · Kundenportal · SEO-Leader 540 traffic</div><div class="cc-url">→ hamarec.de</div></a>
+    <a href="https://refonda.de" target="_blank" class="competitor-card"><div class="cc-name">Refonda <span class="pill pill-info" style="margin-left:8px">СРЕДНЯЯ</span></div><div class="cc-meta">Solingen · 30 лет Benchmark · zuverlässig, без хорошего web</div><div class="cc-url">→ refonda.de</div></a>
+    <a href="https://eco-remarketing.com/de" target="_blank" class="competitor-card"><div class="cc-name">Eco-Remarketing <span class="pill pill-info" style="margin-left:8px">СРЕДНЯЯ</span></div><div class="cc-meta">Ennigerloh · 1.500+ globale Partner</div><div class="cc-url">→ eco-remarketing.com/de</div></a>
+    <a href="https://lerec.de" target="_blank" class="competitor-card"><div class="cc-name">Lerec <span class="pill pill-info" style="margin-left:8px">СРЕДНЯЯ</span></div><div class="cc-meta">Lotte · Erstbehandlungsanlage</div><div class="cc-url">→ lerec.de</div></a>
+    <a href="https://eas-recycling.de" target="_blank" class="competitor-card"><div class="cc-name">EAS Recycling <span class="pill pill-info" style="margin-left:8px">СРЕДНЯЯ</span></div><div class="cc-meta">Hagen · Edelmetall · локальный сосед</div><div class="cc-url">→ eas-recycling.de</div></a>
+    <a href="https://an-electrorecycling.de" target="_blank" class="competitor-card"><div class="cc-name">AN-Electrorecycling <span class="pill pill-muted" style="margin-left:8px">НИЗКАЯ</span></div><div class="cc-meta">Mannheim · DIN 66399 Klasse 3 · референс по compliance</div><div class="cc-url">→ an-electrorecycling.de</div></a>
+    <a href="https://kostenlose-computer-entsorgung.de" target="_blank" class="competitor-card"><div class="cc-name">Kostenlose-Computer-Entsorgung <span class="pill pill-muted" style="margin-left:8px">НИЗКАЯ</span></div><div class="cc-meta">NRW · SEO-Keyword-Name · пример как НЕ надо</div><div class="cc-url">→ kostenlose-computer-entsorgung.de</div></a>
+  </div>
+</div>
+
+<div class="block-wrapper" id="block-2">
+  <button class="feedback-btn" onclick="toggleFeedback(2)">✏️ Vorschlag</button>
+  <div class="feedback-panel" id="feedback-panel-2"><label>Комментарий</label><textarea id="feedback-text-2"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(2)">Speichern</button><span id="saved-2" class="fb-saved-indicator">✓</span><button class="btn-delete" id="delete-btn-2" onclick="deleteFeedback(2)" hidden>Löschen</button></div></div>
+  <div class="block-label">Wettbewerber-Insights</div>
+  <h2>Что у них работает — что не работает</h2>
+  <div class="grid-2">
+    <div class="mini-card"><h4>🟢 ELOREC (главный референс)</h4><p>48h Express как visual hero-claim · Modern, clean B2B-design · KI-Visibility 22 — самый AI-cited · Contentstrategie с blog</p></div>
+    <div class="mini-card"><h4>🟢 Hamarec (UX-референс)</h4><p>Kundenportal для повторных клиентов · Vollrecycler-позиционирование · SEO-лидер 540 traffic, 215 keywords</p></div>
+    <div class="mini-card"><h4>🟡 ProCoReX (паттерны взять)</h4><p>NIS-2 / Compliance messaging — единственные на рынке · 7 Länder coverage map · НО: 0 organic traffic, технический SEO сломан</p></div>
+    <div class="mini-card"><h4>🔴 Refonda / EAS (negative reference)</h4><p>Сильные оффлайн, web застряло в 2010-х · Refonda: 30 лет benchmark, но сайт не передаёт авторитет · EDELMET должен выглядеть современнее</p></div>
+  </div>
+  <div class="callout accent">
+    <strong>Цель EDELMET-дизайна:</strong> выглядеть как ELOREC по чистоте + ProCoReX по compliance-fokus + Hamarec по структуре, но <strong>современнее всех</strong> + сильнее в Trust-визуализации (capacity 8.500m², Fuhrpark, Edelmetall-USP).
+  </div>
+</div>
+
+<div class="block-wrapper bg-secondary" id="block-3">
+  <button class="feedback-btn" onclick="toggleFeedback(3)">✏️ Vorschlag</button>
+  <div class="feedback-panel" id="feedback-panel-3"><label>Комментарий</label><textarea id="feedback-text-3"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(3)">Speichern</button><span id="saved-3" class="fb-saved-indicator">✓</span><button class="btn-delete" id="delete-btn-3" onclick="deleteFeedback(3)" hidden>Löschen</button></div></div>
+  <div class="block-label">Patterns B2B-Mittelstand DE</div>
+  <h2>Визуальные конвенции немецкого B2B-сегмента</h2>
+  <div class="do-dont">
+    <div class="col">
+      <h4>✅ Что работает</h4>
+      <ul style="color:rgba(255,255,255,.9)">
+        <li><strong>Trust-Bar above the fold:</strong> сертификаты (EfbV, DIN, ISO, TÜV) сразу видны</li>
+        <li><strong>Чистая типографика:</strong> Inter / IBM Plex / SF Pro — никаких декоративных шрифтов</li>
+        <li><strong>Нейтральные палитры:</strong> белый/серый base + 1 corporate accent</li>
+        <li><strong>Структурированная информация:</strong> таблицы, чек-листы, процессы 1-2-3</li>
+        <li><strong>Real photography:</strong> фуры, склад, сотрудники, оборудование (НЕ stock-iconography)</li>
+        <li><strong>Контактные данные сразу:</strong> phone, email, физ. адрес в шапке/футере</li>
+        <li><strong>Documenten-Center:</strong> downloads (PDF certificates, AGB, datasheets)</li>
+      </ul>
+    </div>
+    <div class="col">
+      <h4 style="color:#fca5a5">❌ Чего избегаем</h4>
+      <ul style="color:rgba(255,255,255,.9)">
+        <li>Игривые иллюстрации в стиле «startup landing page»</li>
+        <li>Большие hero-видео с маркетинговым stock-footage</li>
+        <li>Эмодзи в навигации и заголовках</li>
+        <li>3D-renders / abstrakte Visuals без связи с реальностью</li>
+        <li>Большие gradients (Y-Combinator-style)</li>
+        <li>Ankauf-Shop UX: «Verkaufe deinen Laptop»-кнопки, цены на главной</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout" style="background:rgba(197,150,30,.15); border-left-color:#C5961E; color:#fff">
+    <strong>Главное правило:</strong> «Sachlich, präzise, vertrauenswürdig» — это НЕ «boring». Это эстетика подтверждённой компетенции. Compliance-Officer / IT-Leiter платят за уверенность, не за wow.
+  </div>
+</div>
+
+<div class="block-wrapper" id="block-4">
+  <button class="feedback-btn" onclick="toggleFeedback(4)">✏️ Vorschlag</button>
+  <div class="feedback-panel" id="feedback-panel-4"><label>Комментарий</label><textarea id="feedback-text-4"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(4)">Speichern</button><span id="saved-4" class="fb-saved-indicator">✓</span><button class="btn-delete" id="delete-btn-4" onclick="deleteFeedback(4)" hidden>Löschen</button></div></div>
+  <div class="block-label">Inspiration вне ниши</div>
+  <h2>B2B-mittelstand DE · benchmarks</h2>
+  <p>Recycling-ниша визуально слабая. Подними планку — посмотри, как делают B2B-сайты в industriellen / regulatorischen сегментах.</p>
+  <div class="grid-3">
+    <a href="https://refurbed.com" target="_blank" class="competitor-card"><div class="cc-name">Refurbed</div><div class="cc-meta">ITAD / Refurbishing · Trust-блоки, real photography, structured data</div><div class="cc-url">→ refurbed.com</div></a>
+    <a href="https://www.interzero.de" target="_blank" class="competitor-card"><div class="cc-name">Interzero</div><div class="cc-meta">Партнёр EDELMET · Konzern-Look, ESG-reporting, корпоративная типографика</div><div class="cc-url">→ interzero.de</div></a>
+    <a href="https://www.zentek.de" target="_blank" class="competitor-card"><div class="cc-name">Zentek</div><div class="cc-meta">Второй партнёр EDELMET · Zertifizierungs-fokus, Recycling-Quoten</div><div class="cc-url">→ zentek.de</div></a>
+    <a href="https://www.tuv.com" target="_blank" class="competitor-card"><div class="cc-name">TÜV Rheinland</div><div class="cc-meta">Эталон Trust-визуализации в DE · сертификаты, downloads, structure-первый дизайн</div><div class="cc-url">→ tuv.com</div></a>
+    <a href="https://www.dachser.com/de" target="_blank" class="competitor-card"><div class="cc-name">Dachser</div><div class="cc-meta">B2B-логистика · Real photography (фуры, склады), structured services</div><div class="cc-url">→ dachser.com</div></a>
+    <a href="https://www.hetzner.com/de" target="_blank" class="competitor-card"><div class="cc-name">Hetzner</div><div class="cc-meta">DE-tech B2B · Минимализм, чистая типографика, technische data-presentation</div><div class="cc-url">→ hetzner.com</div></a>
+  </div>
+  <p style="margin-top:14px; font-size:.88rem; color:var(--text-light)"><strong>На что смотреть:</strong> Hero-структура · Trust-Bar · Service-Grid · Process-Visualization · Footer-density · Photography-Style · Typography-Hierarchy.</p>
+</div>
+
+<div class="page-footer-nav">
+  <a href="01_kontext.html" class="pfn-link">
+    <div class="pfn-dir">← Назад</div>
+    <div class="pfn-title">1 · Контекст + Zielgruppen</div>
+  </a>
+  <a href="03_design_kit.html" class="pfn-link">
+    <div class="pfn-dir">Дальше →</div>
+    <div class="pfn-title">3 · IA + Design-Kit + Brand</div>
+  </a>
+</div>
+
+</main>
+
+<div class="export-overlay" id="exportOverlay">
+  <div class="export-box">
+    <div class="count" id="exportCount">0</div>
+    <h2>Kommentare bereit</h2>
+    <p>Все комментарии по всем страницам Design-Brief'а в одном файле.</p>
+    <button class="btn-export" onclick="exportFeedback()">📥 Als Datei herunterladen</button>
+    <button class="btn-export btn-copy" onclick="copyFeedback()">📋 In Zwischenablage kopieren</button>
+    <button class="btn-close-overlay" onclick="closeExportOverlay()">Schließen</button>
+  </div>
+</div>
+
+<footer class="brief-footer">
+  <div class="container">EDELMET Design-Brief · 27.04.2026 · prepared by AW · <a href="https://portal.2penguins.eu/company/personal/user/50/tasks/task/view/3918/" target="_blank">Bitrix24 Task #3918</a></div>
+</footer>
+
+<script>window.FB_PAGE='02_wettbewerber';window.FB_PAGE_TITLE='2 · Wettbewerber + Patterns';</script>
+<script src="feedback.js"></script>
+</body>
+</html>

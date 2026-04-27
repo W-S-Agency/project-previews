@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4 · Deliverables + Контакты — EDELMET Design-Brief</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="doc-tag">EDELMET <span class="accent">·</span> Design-Kit Briefing <span class="accent">·</span> 4/4 — Deliverables + Контакты</div>
+
+<nav class="brief-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">EDELMET<small>DESIGN-BRIEF</small></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Übersicht</a></li>
+      <li><a href="01_kontext.html">Контекст + ZG</a></li>
+      <li><a href="02_wettbewerber.html">Wettbewerber</a></li>
+      <li><a href="03_design_kit.html">Design-Kit</a></li>
+      <li><a href="04_deliverables.html" class="active">Deliverables</a></li>
+    </ul>
+    <span class="feedback-counter" id="feedbackCounter" onclick="openExportOverlay()">Feedback: 0 Kommentare</span>
+    <a href="https://portal.2penguins.eu/company/personal/user/50/tasks/task/view/3918/" target="_blank" class="nav-bitrix">Bitrix24 #3918 →</a>
+  </div>
+</nav>
+
+<header class="brief-hero">
+  <div class="container">
+    <h1>4 · Deliverables + Контакты</h1>
+    <p class="lead">Что отдаёшь, в каком формате, по каким срокам · ссылки на источники · контакты.</p>
+  </div>
+</header>
+
+<main class="container">
+
+<div class="block-wrapper" id="block-1">
+  <button class="feedback-btn" onclick="toggleFeedback(1)">✏️ Vorschlag</button>
+  <div class="feedback-panel" id="feedback-panel-1"><label>Комментарий</label><textarea id="feedback-text-1"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(1)">Speichern</button><span id="saved-1" class="fb-saved-indicator">✓</span><button class="btn-delete" id="delete-btn-1" onclick="deleteFeedback(1)" hidden>Löschen</button></div></div>
+  <div class="block-label">Deliverables</div>
+  <h2>Что отдаёшь по итогу</h2>
+  <div class="grid-2">
+    <div class="mini-card" style="background:rgba(27,107,62,.08); border-color:rgba(27,107,62,.3)">
+      <h4>📁 Figma-файл со структурой</h4>
+      <ul style="font-size:.86rem; padding-left:1.2rem; margin-top:6px">
+        <li><strong>Foundations</strong> — colors, typography, spacing, shadows, radii</li>
+        <li><strong>Components</strong> — buttons, forms, cards, tables, navigation, modals</li>
+        <li><strong>Patterns</strong> — Hero / Trust-Bar / Service-Grid / Process / Footer</li>
+        <li><strong>Mock-Pages</strong> (минимум 3): Startseite · ZG-LP-template · Service-Page</li>
+        <li><strong>States</strong> — hover, active, disabled, error для всех components</li>
+      </ul>
+    </div>
+    <div class="mini-card">
+      <h4>⚙️ Технические требования</h4>
+      <ul style="font-size:.86rem; padding-left:1.2rem; margin-top:6px">
+        <li><strong>Mobile-first:</strong> 360 / 768 / 1280 / 1440 breakpoints</li>
+        <li><strong>Auto-Layout</strong> для всех components — для разработчика на Odoo</li>
+        <li><strong>Variants</strong> для всех states</li>
+        <li><strong>Variables</strong> для colors / typography (light + поддержка dark в будущем)</li>
+        <li><strong>Доступность:</strong> WCAG 2.1 AA contrast minimum</li>
+      </ul>
+    </div>
+  </div>
+  <div class="grid-3" style="margin-top:18px">
+    <div class="mini-card" style="text-align:center">
+      <div style="font-size:11px; color:var(--text-light); font-weight:700; letter-spacing:.1em; text-transform:uppercase; margin-bottom:6px">Бюджет времени</div>
+      <div style="font-size:1.6rem; font-weight:800; color:var(--secondary)">5 часов</div>
+      <p>Учёт через Bitrix24 (тег WS)</p>
+    </div>
+    <div class="mini-card" style="text-align:center">
+      <div style="font-size:11px; color:var(--text-light); font-weight:700; letter-spacing:.1em; text-transform:uppercase; margin-bottom:6px">Дедлайн</div>
+      <div style="font-size:1.6rem; font-weight:800; color:var(--accent)">Сегодня</div>
+      <p>27.04.2026 до 23:59 (Berlin)</p>
+    </div>
+    <div class="mini-card" style="text-align:center">
+      <div style="font-size:11px; color:var(--text-light); font-weight:700; letter-spacing:.1em; text-transform:uppercase; margin-bottom:6px">Постановщик</div>
+      <div style="font-size:1.6rem; font-weight:800; color:var(--secondary)">AW</div>
+      <p>Alexander Wirt</p>
+    </div>
+  </div>
+</div>
+
+<div class="block-wrapper" id="block-2">
+  <button class="feedback-btn" onclick="toggleFeedback(2)">✏️ Vorschlag</button>
+  <div class="feedback-panel" id="feedback-panel-2"><label>Комментарий</label><textarea id="feedback-text-2"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(2)">Speichern</button><span id="saved-2" class="fb-saved-indicator">✓</span><button class="btn-delete" id="delete-btn-2" onclick="deleteFeedback(2)" hidden>Löschen</button></div></div>
+  <div class="block-label">📚 Источники и материалы</div>
+  <h2>Куда смотреть</h2>
+  <ul>
+    <li>→ <a href="https://w-s-agency.github.io/project-previews/edelmet/" target="_blank"><strong>Content-Preview V1.1</strong></a> — 18 страниц с финальной структурой блоков</li>
+    <li>→ <a href="https://w-s-agency.github.io/project-previews/edelmet-strategie/" target="_blank"><strong>Strategie-Präsentation</strong></a> — полный стратегический контекст</li>
+    <li>→ <strong>Wiki проекта</strong> в Google Drive (папка «Edelmet/wiki/»):<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<code>synthesis/marktposition.md</code>, <code>wettbewerbsmatrix.md</code>, <code>website-strategie.md</code></li>
+    <li>→ <strong>Strategic Blueprint v1.5</strong> в Google Drive проекта</li>
+    <li>→ <strong>Подтверждённые решения:</strong> без прайс-листа, ISO 21964 убрали, DIN 66399, CMS = Odoo</li>
+  </ul>
+</div>
+
+<div class="block-wrapper bg-secondary" id="block-3">
+  <button class="feedback-btn" onclick="toggleFeedback(3)">✏️ Vorschlag</button>
+  <div class="feedback-panel" id="feedback-panel-3"><label>Комментарий</label><textarea id="feedback-text-3"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(3)">Speichern</button><span id="saved-3" class="fb-saved-indicator">✓</span><button class="btn-delete" id="delete-btn-3" onclick="deleteFeedback(3)" hidden>Löschen</button></div></div>
+  <div class="block-label">👥 Контакты</div>
+  <h2>С кем говорить</h2>
+  <div class="grid-2">
+    <div class="mini-card" style="background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.15); color:#fff">
+      <h4 style="color:#fff">Alexander Wirt</h4>
+      <p style="color:rgba(255,255,255,.85)">Постановщик, project lead<br>📧 team@wsagency.company<br>📱 +49 179 7715079</p>
+    </div>
+    <div class="mini-card" style="background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.15); color:#fff">
+      <h4 style="color:#fff">EDELMET / Eduard Pfaffenrot</h4>
+      <p style="color:rgba(255,255,255,.85)">Клиент<br>📧 info@edelmet.de<br><em>Напрямую только через AW</em></p>
+    </div>
+    <div class="mini-card" style="background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.15); color:#fff; grid-column: span 2">
+      <h4 style="color:#fff">Bitrix24 Deal #1817</h4>
+      <p style="color:rgba(255,255,255,.85)"><a href="https://portal.2penguins.eu/crm/deal/details/1817/" target="_blank" style="color:var(--accent-light)">portal.2penguins.eu/crm/deal/details/1817/</a> · Task #3918 в этой сделке</p>
+    </div>
+  </div>
+</div>
+
+<div class="block-wrapper bg-accent-soft" id="block-4">
+  <button class="feedback-btn" onclick="toggleFeedback(4)">✏️ Vorschlag</button>
+  <div class="feedback-panel" id="feedback-panel-4"><label>Комментарий</label><textarea id="feedback-text-4"></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(4)">Speichern</button><span id="saved-4" class="fb-saved-indicator">✓</span><button class="btn-delete" id="delete-btn-4" onclick="deleteFeedback(4)" hidden>Löschen</button></div></div>
+  <div class="block-label">🚀 Порядок работы</div>
+  <h2>Рекомендуемая последовательность</h2>
+  <ol>
+    <li><strong>Походи по конкурентам</strong> (страница 2) и benchmarks (там же) — собери design references в Figma</li>
+    <li><strong>Прочитай content-preview V1.1</strong> — пойми структуру блоков (страница 3)</li>
+    <li><strong>Собери Foundations + ключевые Components</strong> → 1 mock-page (Startseite)</li>
+    <li><strong>Sync с AW при готовности 50%</strong> — корректировки до финала</li>
+    <li><strong>Финальный handoff</strong> → Odoo-разработчику</li>
+  </ol>
+  <p style="margin-top:14px"><strong>Если что-то непонятно</strong> — оставь комментарий через «✏️ Vorschlag» к нужному блоку этого Design-Brief'а или напиши в Bitrix24 в задаче.</p>
+</div>
+
+<div class="page-footer-nav">
+  <a href="03_design_kit.html" class="pfn-link">
+    <div class="pfn-dir">← Назад</div>
+    <div class="pfn-title">3 · IA + Design-Kit + Brand</div>
+  </a>
+  <a href="index.html" class="pfn-link">
+    <div class="pfn-dir">↻ Вернуться</div>
+    <div class="pfn-title">Übersicht</div>
+  </a>
+</div>
+
+</main>
+
+<div class="export-overlay" id="exportOverlay">
+  <div class="export-box">
+    <div class="count" id="exportCount">0</div>
+    <h2>Kommentare bereit</h2>
+    <p>Все комментарии по всем страницам Design-Brief'а в одном файле.</p>
+    <button class="btn-export" onclick="exportFeedback()">📥 Als Datei herunterladen</button>
+    <button class="btn-export btn-copy" onclick="copyFeedback()">📋 In Zwischenablage kopieren</button>
+    <button class="btn-close-overlay" onclick="closeExportOverlay()">Schließen</button>
+  </div>
+</div>
+
+<footer class="brief-footer">
+  <div class="container">EDELMET Design-Brief · 27.04.2026 · prepared by AW · <a href="https://portal.2penguins.eu/company/personal/user/50/tasks/task/view/3918/" target="_blank">Bitrix24 Task #3918</a></div>
+</footer>
+
+<script>window.FB_PAGE='04_deliverables';window.FB_PAGE_TITLE='4 · Deliverables + Контакты';</script>
+<script src="feedback.js"></script>
+</body>
+</html>
