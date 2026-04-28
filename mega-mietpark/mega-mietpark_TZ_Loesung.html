@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TZ · Lösung-Seite Werkhalle · Mega-Mietpark</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mega-mietpark_TZ_style.css?v=4">
+</head>
+<body>
+
+<nav class="global">
+  <a class="logo" href="index.html">MEGA<span>·</span>MIETPARK · TZ</a>
+  <a href="index.html">Hub</a>
+  <a href="mega-mietpark_TZ_Projekt.html">Projekt-Info</a>
+  <a href="mega-mietpark_TZ_Startseite.html">Startseite</a>
+  <a href="mega-mietpark_TZ_Standort.html">Standort-Seite</a>
+  <a href="mega-mietpark_TZ_Loesung.html" class="active">Lösung-Seite</a>
+  <span class="v-tag">V2.1</span>
+  <button class="lang-toggle" id="ruToggle">DE + RU</button>
+</nav>
+
+<div class="cover">
+  <p class="cover-tag">Seite 3 von 3 · Template für 4 Lösungen</p>
+  <h1>Lösung-Seite<br><em>Werkhalle</em> · Persona Markus</h1>
+  <p class="cover-sub">
+    Persona-getriebene Landingpage je Nutzungsart. <strong>Werkhalle</strong> als Leitfall — komplexester B2B-Kasus (Markus, Handwerk).
+    Drei weitere Lösungen werden als Instanzen gebaut: Garage (Thomas), Lagerraum (Sarah), Büro+Hybrid (Elena).
+    <strong>Cross-Linking-Logik:</strong> Sticky Sub-Nav (S1.5) zwischen 4 Lösungen + „Verwandte Lösungen" (S11.5) — Nutzer kann jederzeit wechseln.
+  </p>
+  <div class="ru">
+    Лендинг по типу использования, привязанный к персоне. <strong>Werkhalle</strong> — самый сложный B2B-кейс (Markus, ремесло). 3 другие Lösung-страницы — инстансы (Garage/Lagerraum/Büro+Hybrid).
+    <strong>Логика кросс-линков:</strong> sticky sub-nav (S1.5) + «Verwandte Lösungen» (S11.5) — пользователь может переключиться в любой момент.
+  </p>
+  <div class="cover-meta">
+    <div class="cover-meta-item">URL-Pattern<strong>/loesungen/{slug}/</strong></div>
+    <div class="cover-meta-item">Sektionen<strong>13 (inkl. S1.5 + S11.5)</strong></div>
+    <div class="cover-meta-item">Persona<strong>Markus · 45 · Handwerk</strong></div>
+    <div class="cover-meta-item">Beispiel-URL<strong>/loesungen/werkhalle/</strong></div>
+  </div>
+</div>
+
+<section class="white">
+  <p class="section-label">Aufbau · 13 Sektionen</p>
+  <h2>Sektionsweise: Visual Mock + Designer-Brief</h2>
+
+  <div class="banner red">
+    <strong>⚠️ Placeholder-Prinzip:</strong> Tech-Specs, echte Mieter-Stories und Standort-Preise (Mülheim/Rodenkirchen) fehlen — Placeholder + 3 fiktive Stories. Andrey kann arbeiten, finaler Content kommt nach.
+  </div>
+  <div class="ru"><strong>Принцип placeholder:</strong> тех. характеристики, реальные истории клиентов и цены Mülheim/Rodenkirchen — placeholders + 3 выдуманные истории. Финальный контент позже.</div>
+
+  <!-- ============= S1 HERO MARKUS ============= -->
+  <div class="block-card">
+    <div class="block-card-head">
+      <span class="num">S1</span>
+      <h3>Hero · Persona Markus (B2B Handwerk)</h3>
+      <span class="tag">Persona-Hero</span>
+    </div>
+    <div class="block-card-body">
+      <div class="block-mock">
+        <span class="block-mock-label">Visual Mock</span>
+        <div class="mock-frame">
+          <div class="mock-frame-bar">
+            <span class="mock-dot r"></span><span class="mock-dot y"></span><span class="mock-dot g"></span>
+            <span class="mock-frame-url">mega-mietpark.de/loesungen/werkhalle/</span>
+          </div>
+          <div class="mock-hero">
+            <div class="breadcrumb"><a href="#">Startseite</a> › <a href="#">Lösungen</a> › Werkhalle</div>
+            <span class="mock-hero-pre">WERKHALLE MIETEN</span>
+            <h1>Dein Materiallager<br>— direkt befahrbar.</h1>
+            <p>Werkhalle ab 95 m² · 6 m Deckenhöhe · LKW-Zugang · 24/7 · 2 Jahre Mindestlaufzeit</p>
+            <div class="cta-row">
+              <button class="mock-cta">Standort finden</button>
+              <button class="mock-cta outline">Größen &amp; Preise</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="block-brief">
+        <h4>Designer-Brief</h4>
+        <ul>
+          <li class="done"><strong>H1 wörtlich aus Persona Markus:</strong> „Dein neues Materiallager: Direkt befahrbar, maximal sicher und so flexibel wie dein Handwerk." (gekürzt für Hero)</li>
+          <li class="done"><strong>Subline:</strong> 5 USP-Kürzel · konkrete Zahlen, B2B-Tonalität</li>
+          <li class="done"><strong>2 CTAs:</strong> Standort finden (primär) · Größen &amp; Preise (sekundär)</li>
+          <li class="warn"><strong>Hero-Visual:</strong> Stock — Handwerker mit Sprinter vor offenem Werkhalle-Tor (NordSpace-Stil)</li>
+          <li class="info"><strong>Marken-Claim:</strong> klein über H1 — „Einfach einfahren." (vorläufig)</li>
+          <li class="info"><strong>du-Form:</strong> bestätigt</li>
+        </ul>
+        <div class="quelle">Quelle: wiki/segments/personas.md · Persona 3 Markus</div>
+        <div class="ru" style="margin-top:10px;">S1 Hero — H1 взят из персоны Markus. Stock-фото: ремесленник с Sprinter перед воротами.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============= S1.5 STICKY SUB-NAV — CROSS LINK ============= -->
+  <div class="block-card cross-link">
+    <div class="block-card-head cross">
+      <span class="num">S1.5</span>
+      <h3>Sticky Sub-Nav — CROSS-LINK · Always-visible</h3>
+      <span class="tag">UX-Switch</span>
+    </div>
+    <div class="block-card-body">
+      <div class="block-mock">
+        <span class="block-mock-label">Visual Mock</span>
+        <div class="mock-frame">
+          <div class="mock-subnav">
+            <span class="mock-subnav-pill active">● Werkhalle<span class="ctx">Markus · Handwerk</span></span>
+            <span class="mock-subnav-pill">👤 Garage<span class="ctx">Thomas · Fahrzeug</span></span>
+            <span class="mock-subnav-pill">👤 Lagerraum<span class="ctx">Sarah · Umzug</span></span>
+            <span class="mock-subnav-pill">👤 Büro+Hybrid<span class="ctx">Elena · Startup</span></span>
+          </div>
+        </div>
+      </div>
+      <div class="block-brief">
+        <h4>Designer-Brief</h4>
+        <ul>
+          <li class="done"><strong>4 Pills</strong> · aktuell aktive (Werkhalle) hervorgehoben mit LAER-Red</li>
+          <li class="done"><strong>Pro Pill:</strong> Icon (Persona) · Lösungs-Name · Persona-Name + Kontext-Wort</li>
+          <li class="done"><strong>Sticky:</strong> bleibt unter Hero sichtbar beim Scroll</li>
+          <li class="info"><strong>Mobile:</strong> horizontal Scroll mit gleichen Daten</li>
+          <li class="info"><strong>Verlinkung:</strong> /loesungen/{slug}/ · Browser-State preserved</li>
+          <li class="info"><strong>Zweck:</strong> ersetzt redundanten S2.5-Block — Sub-Nav reicht für Cross-Link</li>
+        </ul>
+        <div class="quelle">UX-Entscheidung 2026-04-28 — S2.5 verworfen, S1.5 enriched</div>
+        <div class="ru" style="margin-top:10px;">S1.5 — sticky sub-nav, всегда видна. 4 pills с персоной + контекстом. Mobile: горизонтальный scroll.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============= S2 PROBLEM ============= -->
+  <div class="block-card">
+    <div class="block-card-head">
+      <span class="num">S2</span>
+      <h3>Problem-Block · Markus' Schmerz</h3>
+      <span class="tag">Problem-Aware</span>
+    </div>
+    <div class="block-card-body">
+      <div class="block-mock">
+        <span class="block-mock-label">Visual Mock</span>
+        <div class="mock-frame">
+          <div class="mock-problem">
+            <h3>Kennst du das?</h3>
+            <ul>
+              <li>Doppelgarage als Lager — zu klein, Mitarbeiter verlieren morgens Zeit beim Beladen</li>
+              <li>5-Jahres-Mietvertrag = unkalkulierbares Risiko bei wechselnder Auftragslage</li>
+              <li>Werkzeug-Diebstahl auf der Baustelle und im offenen Lager</li>
+              <li>Sprinter passt nicht durch normale Tore — endloses Umladen vor dem Eingang</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="block-brief">
+        <h4>Designer-Brief</h4>
+        <ul>
+          <li class="done"><strong>4 Pain Points</strong> · 1:1 aus Persona Markus (Customer Journey Phase 1+2)</li>
+          <li class="done"><strong>Visual:</strong> rote ✗-Marker · klare Ablesbarkeit</li>
+          <li class="info"><strong>Tonalität:</strong> direkter B2B-Sprachstil · keine Marketing-Floskeln</li>
+          <li class="info"><strong>Layout-Variant:</strong> 2-spaltig auf Desktop möglich (Pain links, Foto rechts)</li>
+          <li class="info"><strong>Foto optional:</strong> Stock — chaotische Doppelgarage, Werkzeug-Stapel</li>
+        </ul>
+        <div class="quelle">Quelle: wiki/segments/personas.md · Persona 3 Markus</div>
+        <div class="ru" style="margin-top:10px;">S2 — 4 болевые точки прямо из персоны Markus. Без выдумки.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============= S3 LÖSUNG ============= -->
+  <div class="block-card">
+    <div class="block-card-head">
+      <span class="num">S3</span>
+      <h3>Unsere Lösung · Tech-Specs</h3>
+      <span class="tag">Solution-Aware</span>
+    </div>
+    <div class="block-card-body">
+      <div class="block-mock">
+        <span class="block-mock-label">Visual Mock</span>
+        <div class="mock-frame">
+          <div class="mock-solution">
+            <h3>So lösen wir das.</h3>
+            <ul>
+              <li>XXL-Sektionaltor 2,90 × 3,30 m Standard · auf Wunsch bis 3,80 × 4,00 m — Sprinter direkt rein</li>
+              <li>6 m Deckenhöhe + Mezzanin-Option oder 2 Ebenen (EG Werk + OG Büro/WC)</li>
+              <li>400V Drehstrom auf Anfrage · Druckluft optional</li>
+              <li>24/7 Videoüberwacht · einbruchhemmende Tore · Zugangskontrolle</li>
+              <li>2 Jahre Mindestlaufzeit · 6 Monate Kündigung — kein 5-Jahres-Knebelvertrag</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="block-brief">
+        <h4>Designer-Brief</h4>
+        <ul>
+          <li class="done">5 Lösungs-Punkte · Spiegel zu S2-Problemen</li>
+          <li class="done">Alle Specs aus Angebotsflyer Wuppertal + Standort-Tabelle</li>
+          <li class="done">Mietzeit 2J/6M bestätigt (statt 5-Jahres-Knebel)</li>
+          <li class="warn"><strong>Tech-Specs erweitern:</strong> Bodenbelastung kg/m² · Drainage · Brandschutzklasse · Sprinkler — David anfragen</li>
+          <li class="info"><strong>Visual:</strong> grüne ✓-Marker (Spiegel zu roten ✗ in S2)</li>
+          <li class="info"><strong>Layout:</strong> Icons pro Punkt möglich (sektionale Skizzen statt nur Text)</li>
+        </ul>
+        <div class="quelle">Angebotsflyer Wuppertal · Standorte-Tabelle · Mietbedingungen</div>
+        <div class="ru" style="margin-top:10px;">S3 — 5 фич решения. Зеркало проблем из S2. Placeholder для нагрузки пола, brandschutz и т.п.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============= S4 PREISE ============= -->
+  <div class="block-card">
+    <div class="block-card-head">
+      <span class="num">S4</span>
+      <h3>Größen &amp; Preise · 3 Standorte</h3>
+      <span class="tag">Pricing</span>
+    </div>
+    <div class="block-card-body">
+      <div class="block-mock">
+        <span class="block-mock-label">Visual Mock</span>
+        <div class="mock-frame">
+          <div style="padding:18px 24px 0;"><h3 style="font-family:'Roboto Condensed',sans-serif; font-size:18px; text-transform:uppercase; letter-spacing:0.04em;">Werkhalle in 3 Größen-Varianten</h3></div>
+          <div class="mock-loesung-grid" style="grid-template-columns:repeat(3,1fr);">
+            <div class="mock-loesung-card" style="border-color:var(--red); border-width:2px;">
+              <div class="img" style="background:linear-gradient(135deg,#FFEBEE,#FFCDD2); color:var(--red); font-size:32px;">📐</div>
+              <div class="body">
+                <h4>Wuppertal</h4>
+                <div class="size">5,90 × 16 × 6 m · 95 m² · 2 Ebenen</div>
+                <div class="price">1.360 €</div>
+                <div class="cta" style="font-size:11px; color:var(--gray); font-weight:500;">netto/Mo + 100 € NK</div>
+              </div>
+            </div>
+            <div class="mock-loesung-card">
+              <div class="img">🆕</div>
+              <div class="body">
+                <h4>Köln-Rodenkirchen</h4>
+                <div class="size" style="color:var(--gray); font-style:italic;">⚠️ Größe tbd · ab 04/2026</div>
+                <div class="price">1.750 €</div>
+                <div class="cta" style="font-size:11px; color:var(--gray); font-weight:500;">netto/Mo</div>
+              </div>
+            </div>
+            <div class="mock-loesung-card">
+              <div class="img">📦</div>
+              <div class="body">
+                <h4>Mülheim a.d.R.</h4>
+                <div class="size" style="color:var(--gray); font-style:italic;">⚠️ Größe tbd</div>
+                <div class="price price-tbd">Auf Anfrage</div>
+                <div class="cta" style="font-size:11px; color:var(--gray); font-weight:500;">⚠️ Preis tbd</div>
+              </div>
+            </div>
+          </div>
+          <p style="font-size:11px; color:var(--gray); padding:12px 24px; font-style:italic;">Alle Preise netto zzgl. MwSt. Nebenkosten variieren je nach Standort.</p>
+        </div>
+      </div>
+      <div class="block-brief">
+        <h4>Designer-Brief</h4>
+        <ul>
+          <li class="done"><strong>Wuppertal:</strong> 95 m², 1.360 € · komplett (Quelle Angebotsflyer)</li>
+          <li class="warn"><strong>Köln-Rodenkirchen:</strong> Preis 1.750 € bestätigt · Größe fehlt</li>
+          <li class="warn"><strong>Mülheim:</strong> Preis &amp; Größe fehlen · komplett offen</li>
+          <li class="info"><strong>Featured-Card:</strong> Wuppertal hervorgehoben (klassisches Lead-Standort)</li>
+          <li class="info"><strong>ACF:</strong> Repeater pro Lösung × Standort · automatisches Filtering</li>
+          <li class="info"><strong>CTA pro Karte:</strong> „Standort öffnen" → /standort/{slug}/</li>
+        </ul>
+        <div class="quelle">Angebotsflyer Wuppertal · Standorte-Tabelle (Rodenkirchen + Mülheim partial)</div>
+        <div class="ru" style="margin-top:10px;">S4 — 3 карточки. Wuppertal полный. Rodenkirchen — цена есть, размер placeholder. Mülheim — оба placeholder.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============= S5 USE-CASES ============= -->
+  <div class="block-card">
+    <div class="block-card-head" style="background:#E65100;">
+      <span class="num" style="background:white; color:#E65100;">S5</span>
+      <h3>Use-Cases · 3 erfundene Stories (Placeholder)</h3>
+      <span class="tag">FIKTIV</span>
+    </div>
+    <div class="block-card-body">
+      <div class="block-mock">
+        <span class="block-mock-label">Visual Mock · FIKTIV</span>
+        <div class="mock-frame">
+          <div style="padding:18px 24px 0;"><h3 style="font-family:'Roboto Condensed',sans-serif; font-size:18px; text-transform:uppercase; letter-spacing:0.04em;">So nutzen Handwerker ihre Werkhalle</h3></div>
+          <div class="mock-stories">
+            <div class="mock-story">
+              <div class="mock-story-img">🔧</div>
+              <div class="mock-story-body">
+                <div class="branche">Story 1 · Sanitär</div>
+                <h4>Vom Doppelgaragen-Chaos zur befahrbaren Halle</h4>
+                <p>Tobias H., Sanitär-Inhaber Mülheim. 2 Jahre lang in 30-m²-Doppelgarage. Heute: Sprinter direkt drin — 45 Min/Tag gespart.</p>
+                <span class="fictiv">⚠ Fiktiv</span>
+              </div>
+            </div>
+            <div class="mock-story">
+              <div class="mock-story-img">⚡</div>
+              <div class="mock-story-body">
+                <div class="branche">Story 2 · Elektrik</div>
+                <h4>Mezzanin verdoppelt die Fläche</h4>
+                <p>Elektrofachbetrieb, 7 MA, 95 m² in Wuppertal. Lager unten, Büro oben. Nach 6 Monaten Mezzanin nachgerüstet — doppelte Lagerkapazität.</p>
+                <span class="fictiv">⚠ Fiktiv</span>
+              </div>
+            </div>
+            <div class="mock-story">
+              <div class="mock-story-img">🚗</div>
+              <div class="mock-story-body">
+                <div class="branche">Story 3 · KFZ</div>
+                <h4>6 m Höhe = Hebebühne im Eigenbau</h4>
+                <p>Freier KFZ-Schrauber Köln. Hebebühne + Druckluft selbst eingebaut. 6 m Decke = SUV-Arbeit ohne Kompromisse.</p>
+                <span class="fictiv">⚠ Fiktiv</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="block-brief">
+        <h4>Designer-Brief</h4>
+        <ul>
+          <li class="warn"><strong>3 Stories sind FIKTIV</strong> — basieren auf Branchen aus Persona-Beschreibung</li>
+          <li class="warn"><strong>Vor Live durch echte Mieter-Stories ersetzen</strong> · David: 3 reale Kundenbeispiele</li>
+          <li class="info"><strong>Stock-Fotos OK:</strong> für Branchen Sanitär · Elektrik · KFZ — diverse, action-orientiert</li>
+          <li class="info"><strong>Layout:</strong> 3-Card-Grid · Bild + Branche-Tag + Headline + Body</li>
+          <li class="info"><strong>Mobile:</strong> Stack 1-spaltig</li>
+          <li class="info">Kennzeichnung „Beispiel" oder „Anonymisiert" möglich, falls Kunden anonym bleiben wollen</li>
+        </ul>
+        <div class="quelle">Generiert aus Persona 3 Markus (Sanitär-/Heizungsbetrieb-Beispiel)</div>
+        <div class="ru" style="margin-top:10px;">S5 — 3 use-cases (FIKTIV). Перед запуском — заменить реальными историями от Давида.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============= S6 PROZESS ============= -->
+  <div class="block-card">
+    <div class="block-card-head">
+      <span class="num">S6</span>
+      <h3>Prozess · 4 Schritte</h3>
+      <span class="tag">Conversion-Funnel</span>
+    </div>
+    <div class="block-card-body">
+      <div class="block-mock">
+        <span class="block-mock-label">Visual Mock</span>
+        <div class="mock-frame">
+          <div style="padding:18px 24px 0;"><h3 style="font-family:'Roboto Condensed',sans-serif; font-size:18px; text-transform:uppercase; letter-spacing:0.04em;">Von Anfrage bis Schlüssel — in 24 Stunden</h3></div>
+          <div class="mock-steps">
+            <div class="mock-step"><div class="num">1</div><h4>Standort wählen</h4><p>Wo passt die Logistik? Anfahrt prüfen — A1, A40, A46.</p></div>
+            <div class="mock-step"><div class="num">2</div><h4>Besichtigen oder 3D-Tour</h4><p>Vor Ort oder virtuell, wie es passt.</p></div>
+            <div class="mock-step"><div class="num">3</div><h4>Vertrag in 24h</h4><p>B2B-Schnellabwicklung · fester Ansprechpartner · digital.</p></div>
+            <div class="mock-step"><div class="num">4</div><h4>Einziehen</h4><p>Schlüssel, Code, Strom — sofort startklar.</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="block-brief">
+        <h4>Designer-Brief</h4>
+        <ul>
+          <li class="done">4 Schritte · Nummer + Headline + 1-Satz-Beschreibung</li>
+          <li class="done"><strong>B2B-Tonalität:</strong> Effizienz, Geschwindigkeit, klare Ansprechpartner</li>
+          <li class="info"><strong>Visual-Variant:</strong> Pfeile zwischen Schritten möglich</li>
+          <li class="info"><strong>Mobile:</strong> 2×2 Grid statt 4-spaltig</li>
+        </ul>
+        <div class="quelle">Persona Markus Customer Journey Phase 3+4</div>
+        <div class="ru" style="margin-top:10px;">S6 — 4 шага. B2B-тон: скорость, эффективность.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============= S7 STANDORTE — CROSS LINK ============= -->
+  <div class="block-card cross-link">
+    <div class="block-card-head cross">
+      <span class="num">S7</span>
+      <h3>An welchen Standorten? — CROSS-LINK</h3>
+      <span class="tag">Cross-Page</span>
+    </div>
+    <div class="block-card-body">
+      <div class="block-mock">
+        <span class="block-mock-label">Visual Mock</span>
+        <div class="mock-frame">
+          <div style="padding:18px 24px 0;"><h3 style="font-family:'Roboto Condensed',sans-serif; font-size:18px; text-transform:uppercase; letter-spacing:0.04em;">Werkhallen findest du an 3 Standorten</h3></div>
+          <div class="mock-related">
+            <div class="mock-related-card featured">
+              <h4>Wuppertal</h4>
+              <p>Vohwinkeler Straße 148, 42329</p>
+              <p>5,90 × 16 × 6 m · 95 m² · 2 Ebenen</p>
+              <p class="price">ab 1.360 € netto/Mo</p>
+              <button class="mock-cta text" style="padding:6px 0;">→ Standort öffnen</button>
+            </div>
+            <div class="mock-related-card">
+              <h4>Mülheim a.d.R.</h4>
+              <p>Aktienstr. 17, 45468</p>
+              <p style="color:var(--gray); font-style:italic;">⚠️ Größe tbd</p>
+              <p class="price" style="color:var(--gray);">⚠️ Preis tbd</p>
+              <button class="mock-cta text" style="padding:6px 0;">→ Standort öffnen</button>
+            </div>
+            <div class="mock-related-card">
+              <h4>Köln-Rodenkirchen 🆕</h4>
+              <p>Im Giesdorfer Grund 1, 50997</p>
+              <p style="color:var(--gray); font-style:italic;">⚠️ Größe tbd · ab 04/2026</p>
+              <p class="price">ab 1.750 € netto/Mo</p>
+              <button class="mock-cta text" style="padding:6px 0;">→ Standort öffnen</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="block-brief">
+        <h4>Designer-Brief</h4>
+        <ul>
+          <li class="done"><strong>3 Standort-Karten</strong> · Stadt + Adresse + Größe + Preis + CTA</li>
+          <li class="done">Featured-Card: Wuppertal (vollständige Daten)</li>
+          <li class="warn">Mülheim · Köln-Rodenkirchen: Größen fehlen</li>
+          <li class="info"><strong>Optional:</strong> NRW-Karte mit 3 Pins über den Karten</li>
+          <li class="info"><strong>Verlinkung:</strong> /standort/{slug}/ · jede Card → Standort-Seite (siehe Tab)</li>
+          <li class="info"><strong>SEO:</strong> Standort-Cluster-Linking · Werkhalle-Hub für 3 Locations</li>
+        </ul>
+        <div class="quelle">Standorte-Tabelle · Werkhalle-Standorte: Mülheim, Wuppertal, Köln-Rodenkirchen</div>
+        <div class="ru" style="margin-top:10px;">S7 — кросс-линк на 3 Standort-страницы. Карта + карточки.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============= S8 3D TOUR PLACEHOLDER ============= -->
+  <div class="block-card">
+    <div class="block-card-head">
+      <span class="num">S8</span>
+      <h3>3D-Tour · Phase-2-Placeholder</h3>
+      <span class="tag">Phase 2</span>
+    </div>
+    <div class="block-card-body">
+      <div class="block-mock">
+        <span class="block-mock-label">Visual Mock</span>
+        <div class="mock-frame">
+          <div class="mock-tour">
+            <div class="mock-tour-box">
+              <h4>Virtueller Rundgang — kommt bald</h4>
+              <p style="font-size:12px; color:rgba(255,255,255,0.5); margin-bottom:8px;">Wir arbeiten an 3D-Touren für alle Werkhallen-Standorte.</p>
+              <span class="phase-tag">Phase 2</span>
+              <button class="mock-cta" style="margin-top:14px; opacity:0.4; cursor:not-allowed;">Tour starten</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="block-brief">
+        <h4>Designer-Brief</h4>
+        <ul>
+          <li class="done">Disabled-State · keine echte Funktion</li>
+          <li class="done">Phase-2-Tag (LAER-Red) · Erwartungs-Setting</li>
+          <li class="info"><strong>Dunkles Element:</strong> einer der wenigen dunklen Blöcke (sonst hell-dominiert)</li>
+          <li class="info"><strong>Optional:</strong> Statisches Foto im Hintergrund mit 360°-Overlay</li>
+        </ul>
+        <div class="quelle">3D-Tour Phase 2 — entschieden 2026-04-28 [AW]</div>
+        <div class="ru" style="margin-top:10px;">S8 — заглушка 3D-тура. Disabled, без реального embed.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============= S9 TRUST ============= -->
+  <div class="block-card">
+    <div class="block-card-head">
+      <span class="num">S9</span>
+      <h3>Trust · Formica + Laer + Sicherheit</h3>
+      <span class="tag">B2B-Authority</span>
+    </div>
+    <div class="block-card-body">
+      <div class="block-mock">
+        <span class="block-mock-label">Visual Mock</span>
+        <div class="mock-frame">
+          <div style="padding:18px 24px 0;"><h3 style="font-family:'Roboto Condensed',sans-serif; font-size:18px; text-transform:uppercase; letter-spacing:0.04em;">Warum Handwerker uns vertrauen</h3></div>
+          <div class="mock-trust">
+            <div class="mock-trust-item"><span class="mock-trust-icon">🏗️</span><div class="mock-trust-text"><strong>Formica</strong><span>210+ Projekte · 35+ Jahre Gewerbeimmobilien</span></div></div>
+            <div class="mock-trust-item"><span class="mock-trust-icon">🏛️</span><div class="mock-trust-text"><strong>Laer Gruppe</strong><span>seit 2006 · 27.000+ realisierte Einheiten</span></div></div>
+            <div class="mock-trust-item"><span class="mock-trust-icon">📍</span><div class="mock-trust-text"><strong>16 Standorte</strong><span>davon 3 mit Werkhallen</span></div></div>
+            <div class="mock-trust-item"><span class="mock-trust-icon">📹</span><div class="mock-trust-text"><strong>24/7 Sicherheit</strong><span>Video + Zugangskontrolle + Alarm</span></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="block-brief">
+        <h4>Designer-Brief</h4>
+        <ul>
+          <li class="done">4 Trust-Items · Formica · Laer · Standorte · Sicherheit</li>
+          <li class="done">Alle Zahlen aus trust-audit-synthesis.md verifiziert</li>
+          <li class="warn"><strong>Kunden-Logos:</strong> Placeholder · David: welche Handwerksbetriebe dürfen genannt werden?</li>
+          <li class="info"><strong>Logo-Leiste:</strong> grayscale Logos mit Hover-Effekt (Color-Pop)</li>
+          <li class="info"><strong>B2B-Wirkung:</strong> Logos = sozialer Beweis bei Handwerkern</li>
+        </ul>
+        <div class="quelle">trust-audit-synthesis.md · Mega Trust-Roadmap Tier 2</div>
+        <div class="ru" style="margin-top:10px;">S9 — 4 trust-айтема + placeholder для логотипов клиентов-ремесленников.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============= S10 FAQ ============= -->
+  <div class="block-card">
+    <div class="block-card-head">
+      <span class="num">S10</span>
+      <h3>FAQ · Werkhalle-spezifisch</h3>
+      <span class="tag">Education</span>
+    </div>
+    <div class="block-card-body">
+      <div class="block-mock">
+        <span class="block-mock-label">Visual Mock</span>
+        <div class="mock-frame">
+          <div style="padding:18px 24px 6px;"><h3 style="font-family:'Roboto Condensed',sans-serif; font-size:18px; text-transform:uppercase; letter-spacing:0.04em;">Häufige Fragen zur Werkhalle</h3></div>
+          <div class="mock-faq">
+            <div class="mock-faq-item open">
+              <div class="mock-faq-q-wrap">
+                <div class="mock-faq-q">1. Wie kurzfristig kann ich kündigen?</div>
+                <div class="mock-faq-a">Mindestlaufzeit Werkhalle: 2 Jahre. Kündigung: 6 Monate vor Vertragsende. Damit haben wir keine 5-Jahres-Knebelverträge wie klassische Halle-Vermieter — aber genug Stabilität, dass du dich einrichten kannst.</div>
+              </div>
+              <span class="mock-faq-icon">+</span>
+            </div>
+            <div class="mock-faq-item"><div class="mock-faq-q-wrap"><div class="mock-faq-q">2. Welche Bodenbelastung halten die Hallen? <span class="placeholder-tag" style="font-size:9px;">PLACEHOLDER</span></div></div><span class="mock-faq-icon">+</span></div>
+            <div class="mock-faq-item"><div class="mock-faq-q-wrap"><div class="mock-faq-q">3. Gibt es Druckluft-Anschluss?</div></div><span class="mock-faq-icon">+</span></div>
+            <div class="mock-faq-item"><div class="mock-faq-q-wrap"><div class="mock-faq-q">4. Kann ich das Mezzanin nachrüsten?</div></div><span class="mock-faq-icon">+</span></div>
+            <div class="mock-faq-item"><div class="mock-faq-q-wrap"><div class="mock-faq-q">5. Wie schnell bekomme ich den Vertrag?</div></div><span class="mock-faq-icon">+</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="block-brief">
+        <h4>Designer-Brief · 5 FAQs</h4>
+        <ul>
+          <li class="done"><strong>1. Kündigung</strong> — 2 J / 6 Mo, kein 5-Jahres-Knebel</li>
+          <li class="warn"><strong>2. Bodenbelastung</strong> — Placeholder, David: kg/m²</li>
+          <li class="done"><strong>3. Druckluft</strong> — selbst nachrüstbar, 230V/400V vorhanden</li>
+          <li class="done"><strong>4. Mezzanin</strong> — Wuppertal: 2 Ebenen drin · sonst auf Anfrage</li>
+          <li class="done"><strong>5. Vertrag-Speed</strong> — 24–48h, B2B-Schnellprozess</li>
+          <li class="info">2–3 weitere FAQs von David einholen (echte Kundenfragen)</li>
+        </ul>
+        <div class="quelle">4 Drafts aus Standorte-Tabelle + Mietbedingungen · 1 Placeholder</div>
+        <div class="ru" style="margin-top:10px;">S10 — 4 готовых FAQ + 1 placeholder. Ещё 2-3 нужны от Давида.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============= S11 FORM ============= -->
+  <div class="block-card">
+    <div class="block-card-head">
+      <span class="num">S11</span>
+      <h3>Anfrage-Formular</h3>
+      <span class="tag">Conversion</span>
+    </div>
+    <div class="block-card-body">
+      <div class="block-mock">
+        <span class="block-mock-label">Visual Mock</span>
+        <div class="mock-frame">
+          <div class="mock-form">
+            <h3>Werkhalle anfragen</h3>
+            <div class="mock-form-fields">
+              <div class="mock-form-field">Name *</div>
+              <div class="mock-form-field">Firma *</div>
+              <div class="mock-form-field">E-Mail *</div>
+              <div class="mock-form-field">Telefon *</div>
+              <div class="mock-form-field full">Standort wählen ▾ (Wuppertal / Mülheim / Köln-Rodenkirchen)</div>
+              <div class="mock-form-field">Gewünschte Größe</div>
+              <div class="mock-form-field">Nutzungsart (Werkstatt / Lager / Hybrid)</div>
+              <div class="mock-form-field full textarea">Nachricht / Anforderungen</div>
+              <div class="mock-form-field full" style="background:transparent; border:none; padding:6px 0; font-size:11px;">☐ Ich habe die Datenschutzerklärung gelesen *</div>
+            </div>
+            <div class="mock-form-cta"><button class="mock-cta">Unverbindliches Angebot anfordern</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="block-brief">
+        <h4>Designer-Brief</h4>
+        <ul>
+          <li class="done"><strong>8 Felder</strong> · B2B-fokussiert (Firma · gewünschte Größe · Nutzungsart)</li>
+          <li class="done"><strong>Hidden Field:</strong> <code>nutzungsart=werkhalle</code></li>
+          <li class="done"><strong>Standort-Dropdown:</strong> nur 3 Werkhalle-Standorte</li>
+          <li class="info"><strong>CTA-Wording:</strong> „Unverbindliches Angebot anfordern" (B2B-Sprache, nicht „Anfrage senden")</li>
+          <li class="info"><strong>GA4-Event:</strong> form_loesung_submit · nutzungsart=werkhalle</li>
+        </ul>
+        <div class="quelle">Tech-Stack: Bitrix24-Webhook · WordPress-Form-Plugin</div>
+        <div class="ru" style="margin-top:10px;">S11 — B2B-форма, hidden nutzungsart=werkhalle. CTA «Unverbindliches Angebot anfordern».</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============= S11.5 VERWANDTE LÖSUNGEN — CROSS LINK ============= -->
+  <div class="block-card cross-link">
+    <div class="block-card-head cross">
+      <span class="num">S11.5</span>
+      <h3>Verwandte Lösungen — CROSS-LINK</h3>
+      <span class="tag">Switch-Out</span>
+    </div>
+    <div class="block-card-body">
+      <div class="block-mock">
+        <span class="block-mock-label">Visual Mock</span>
+        <div class="mock-frame">
+          <div style="padding:18px 24px 0;"><h3 style="font-family:'Roboto Condensed',sans-serif; font-size:18px; text-transform:uppercase; letter-spacing:0.04em;">Nicht ganz das Richtige? Vielleicht passt das besser:</h3></div>
+          <div class="mock-verwandte">
+            <div class="mock-verwandte-card">
+              <div class="mock-verwandte-img">🚗</div>
+              <div class="mock-verwandte-body">
+                <h4>Garage</h4>
+                <p>Wenn nur Fahrzeug &amp; Werkzeug Platz brauchen — und 6 m Höhe nicht zwingend nötig sind.</p>
+                <button class="mock-cta text" style="padding:4px 0;">→ Mehr zur Garage</button>
+              </div>
+            </div>
+            <div class="mock-verwandte-card">
+              <div class="mock-verwandte-img">💼</div>
+              <div class="mock-verwandte-body">
+                <h4>Büro+Lager</h4>
+                <p>Wenn dein Geschäft mehr Schreibtisch als Werkbank ist — Büro mit angeschlossenem Lager.</p>
+                <button class="mock-cta text" style="padding:4px 0;">→ Mehr zum Büro</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="block-brief">
+        <h4>Designer-Brief</h4>
+        <ul>
+          <li class="done"><strong>2 Karten</strong> · konkret nahe Alternativen zu Werkhalle</li>
+          <li class="done"><strong>Garage:</strong> für Markus, falls keine 6m-Höhe nötig</li>
+          <li class="done"><strong>Büro+Hybrid:</strong> für Markus, falls mehr Office als Werkbank</li>
+          <li class="info"><strong>Lagerraum bewusst weggelassen</strong> — zu weit weg vom Werkhalle-Use-Case</li>
+          <li class="info"><strong>Logik:</strong> wer hier landet, hat schon Conversion-Intent — letzte Off-Ramp vor Form</li>
+        </ul>
+        <div class="quelle">UX-Entscheidung 2026-04-28 — Cross-Link am Ende für „prüfe-fertig-aber-zweifle"-Nutzer</div>
+        <div class="ru" style="margin-top:10px;">S11.5 — 2 близких альтернативы (Garage и Büro). Lagerraum исключён — слишком далёк от Werkhalle.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============= S12 OUTRO ============= -->
+  <div class="block-card">
+    <div class="block-card-head">
+      <span class="num">S12</span>
+      <h3>CTA-Footer · Re-Use Homepage-Komponente</h3>
+      <span class="tag">Markenoutro</span>
+    </div>
+    <div class="block-card-body">
+      <div class="block-mock">
+        <span class="block-mock-label">Re-Use</span>
+        <div class="mock-frame">
+          <div style="padding:40px 24px; background:linear-gradient(135deg, var(--black) 0%, #2a2a2a 100%); color:white; text-align:center;">
+            <p style="color:var(--red); font-family:'Roboto Condensed',sans-serif; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; margin-bottom:8px;">Mega-Mietpark</p>
+            <h2 style="font-family:'Roboto Condensed',sans-serif; font-size:28px; text-transform:uppercase; letter-spacing:0.04em; color:white; margin-bottom:0;">Einfach einfahren.</h2>
+            <p style="font-size:11px; color:rgba(255,255,255,0.5); margin-top:20px; font-style:italic;">↑ Identisch zur Homepage-S12 ↑</p>
+          </div>
+        </div>
+      </div>
+      <div class="block-brief">
+        <h4>Designer-Brief</h4>
+        <ul>
+          <li class="done">Komponente <strong>identisch</strong> zur Homepage-S12 — keine Variante</li>
+          <li class="info"><strong>Re-Use:</strong> einmal designen, 3× nutzen</li>
+        </ul>
+        <div class="quelle">Re-Use-Prinzip · 1 Component → alle Seiten</div>
+        <div class="ru" style="margin-top:10px;">S12 — переиспользуемая компонента из главной.</div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ============= FRAGEN AN DAVID ============= -->
+<section class="light">
+  <div class="fragen-section" style="margin-top:0; padding-top:0; border-top:none;">
+    <p class="section-label">📋 Fragen an David</p>
+    <h2>Was wir für die Lösung-Seite Werkhalle brauchen</h2>
+    <div class="ru">Что нужно от Давида для финальной версии Lösung-страницы Werkhalle. До получения — placeholders + fiktive stories.</div>
+
+    <table class="fragen-table" style="margin-top:24px;">
+      <thead>
+        <tr>
+          <th style="width:40px;">#</th>
+          <th>Was wir brauchen · Что нужно</th>
+          <th style="width:25%;">Wofür · Куда</th>
+          <th style="width:140px;">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td><strong>Werkhalle Mülheim a.d.R.</strong> · Größe (m²) + Preis netto/Mo</td><td>S4 Preise · S7 Standorte</td><td><span class="status-open">⚠️ offen</span></td></tr>
+        <tr><td>2</td><td><strong>Werkhalle Köln-Rodenkirchen</strong> · Größe (Preis 1.750 € haben wir)</td><td>S4 Preise · S7 Standorte</td><td><span class="status-open">⚠️ offen</span></td></tr>
+        <tr><td>3</td><td><strong>3 echte Mieter-Stories</strong> · idealerweise Sanitär · Elektrik · KFZ — oder andere Branchen</td><td>S5 Use-Cases</td><td><span class="status-draft">📝 3 fiktive drafts</span></td></tr>
+        <tr><td>4</td><td><strong>Bodenbelastung kg/m²</strong> · für FAQ-Antwort und Tech-Specs</td><td>S3 Lösung · S10 FAQ</td><td><span class="status-open">⚠️ offen</span></td></tr>
+        <tr><td>5</td><td><strong>Kunden-Logos</strong> · Handwerksbetriebe für B2B-Trust (welche dürfen genannt werden?)</td><td>S9 Trust</td><td><span class="status-open">⚠️ offen</span></td></tr>
+        <tr><td>6</td><td><strong>2–3 weitere echte FAQs</strong> · was fragen Werkhalle-Mieter wirklich am häufigsten?</td><td>S10 FAQ</td><td><span class="status-draft">📝 4 drafts vorhanden</span></td></tr>
+        <tr><td>7</td><td><strong>Tech-Specs Erweiterung</strong> · Drainage · Brandschutzklasse · Sprinkler · weitere Belastbarkeit</td><td>S3 Lösung · S10 FAQ</td><td><span class="status-open">⚠️ offen</span></td></tr>
+        <tr><td>8</td><td><strong>Action-Fotos</strong> · 3 Werkhalle-Innenaufnahmen mit Handwerkern (oder Stock OK?)</td><td>S5 Use-Cases · S1 Hero</td><td><span class="status-open">⚠️ offen</span></td></tr>
+      </tbody>
+    </table>
+
+    <div class="banner blue" style="margin-top:24px;">
+      <strong>📦 Bündelungs-Tipp:</strong> Punkte 1+2 (Werkhalle Mülheim+Rodenkirchen) lassen sich mit dem Lagerraum-Preis aus der Standort-Seite Wuppertal zu <strong>einer konsolidierten Preis-Anfrage</strong> bündeln. Eine Mail an David — alle 3 Lücken zu.
+    </div>
+    <div class="ru"><strong>Совет по консолидации:</strong> пункты 1+2 (Werkhalle Mülheim+Rodenkirchen) можно объединить с Lagerraum-ценой Wuppertal в один сводный запрос Давиду.</div>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <div class="footer-brand">W&amp;S <span>AGENCY</span></div>
+    <p style="margin-top:6px;">TZ Designer · Lösung-Seite Werkhalle · <strong style="color:var(--red);">Version 2.1 · DE + RU</strong></p>
+  </div>
+  <div style="text-align:right;">
+    <p>← Zurück zum <a href="index.html" style="color:var(--red);">TZ-Hub</a></p>
+    <p style="margin-top:4px;">Stand: 2026-04-28 [AW]</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var btn = document.getElementById('ruToggle');
+  var body = document.body;
+  var STORAGE_KEY = 'tz-v21-ru-visible';
+  var stored = null;
+  try { stored = localStorage.getItem(STORAGE_KEY); } catch (e) {}
+  if (stored === 'off') { body.classList.add('hide-ru'); btn.classList.add('off'); btn.textContent = 'DE only'; }
+  btn.addEventListener('click', function () {
+    body.classList.toggle('hide-ru');
+    var hidden = body.classList.contains('hide-ru');
+    btn.classList.toggle('off', hidden);
+    btn.textContent = hidden ? 'DE only' : 'DE + RU';
+    try { localStorage.setItem(STORAGE_KEY, hidden ? 'off' : 'on'); } catch (e) {}
+  });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TZ · Projekt-Info · Mega-Mietpark</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mega-mietpark_TZ_style.css?v=4">
+</head>
+<body>
+
+<nav class="global">
+  <a class="logo" href="index.html">MEGA<span>·</span>MIETPARK · TZ</a>
+  <a href="index.html">Hub</a>
+  <a href="mega-mietpark_TZ_Projekt.html" class="active">Projekt-Info</a>
+  <a href="mega-mietpark_TZ_Startseite.html">Startseite</a>
+  <a href="mega-mietpark_TZ_Standort.html">Standort-Seite</a>
+  <a href="mega-mietpark_TZ_Loesung.html">Lösung-Seite</a>
+  <span class="v-tag">V2.1</span>
+  <button class="lang-toggle" id="ruToggle">DE + RU</button>
+</nav>
+
+<div class="cover">
+  <p class="cover-tag">Foundations · gilt für alle 3 Seiten-Templates</p>
+  <h1>Projekt-Info<br><em>Mega-Mietpark</em></h1>
+  <p class="cover-sub">
+    Projekt-weite Foundations: Kontext der Revision 2 · Designsystem (Farben, Typo, Bildwelt) · WordPress-ACF-Felder · Lieferobjekte · offene Punkte · Zeitplan. <strong>Alle drei Seiten-Templates</strong> (Startseite · Standort · Lösung) bauen auf diesen Grundlagen auf.
+  </p>
+  <div class="ru">
+    Общие основы проекта: контекст ревизии 2, дизайн-система (цвета, шрифты, фотостиль), ACF-поля WordPress, deliverables, открытые пункты, таймлайн. <strong>Все три шаблона страниц</strong> опираются на эти основы.
+  </div>
+  <div class="cover-meta">
+    <div class="cover-meta-item">Tech-Stack<strong>WordPress + Bricks Framework</strong></div>
+    <div class="cover-meta-item">Backend<strong>Bitrix24 (Forms)</strong></div>
+    <div class="cover-meta-item">CMS-Typ<strong>Semi-statisch (Phase 1)</strong></div>
+    <div class="cover-meta-item">Online-Buchung<strong>Phase 2 (mit ERP)</strong></div>
+  </div>
+</div>
+
+<!-- ============= 01 KONTEXT ============= -->
+<section class="white">
+  <p class="section-label">01 — Projektkontext</p>
+  <h2>Warum Revision 2</h2>
+
+  <div class="banner">
+    <strong>Client-Feedback 18.04.2026 (David Neugum):</strong> Das aktuelle Design-Kit wirkt <strong>düster und grau</strong>, Objekte erscheinen unattraktiv. <strong>Menschen fehlen komplett</strong> — widerspricht dem Kommunikationskonzept mit 4 Personas. „Sicherheit zeigen, aber keine düstere Webseite." Button-Typo zu eng gesetzt. Referenz <strong>nordspace.eu</strong> gefällt komplett.
+  </div>
+  <div class="ru">
+    <strong>Фидбэк 18.04:</strong> мрачный/серый, нет людей — противоречит 4 персонам. «Показывать безопасность, но не делать сайт мрачным.» Референс — nordspace.eu.
+  </div>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:24px;">
+    <div class="block-card">
+      <div class="block-card-head"><span class="num">A</span><h3>NordSpace</h3><span class="tag">Content-Ebene</span></div>
+      <div style="padding:18px;">
+        <p style="font-size:13px;"><strong>Wofür:</strong> Menschen, Video, Bildwelt, heller Gesamteindruck, 3D-Touren, warme Tonalität.</p>
+        <p style="font-size:13px; margin-top:8px;"><strong>NICHT:</strong> Button-Radius (8px), Outfit-Font, Teal-CTA, Kontakt-Form auf Homepage, Doppel-Slider, App-Block.</p>
+      </div>
+    </div>
+    <div class="block-card">
+      <div class="block-card-head"><span class="num">B</span><h3>DK</h3><span class="tag">Struktur-Ebene</span></div>
+      <div style="padding:18px;">
+        <p style="font-size:13px;"><strong>Wofür:</strong> Hero-PLZ-Suchleiste · Stacked-Cards-Mechanik (DK-Scroll-Stack).</p>
+        <p style="font-size:13px; margin-top:8px;"><strong>NICHT:</strong> Farbwelt, dunkles Premium-Design, Typografie.</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:24px;">
+    <div style="background:var(--black); color:white; padding:24px; border-radius:3px; text-align:center;">
+      <div style="font-family:'Roboto Condensed',sans-serif; font-size:42px; font-weight:700; color:var(--red); line-height:1;">16</div>
+      <div style="font-size:12px; color:rgba(255,255,255,0.7); margin-top:6px;">Standorte</div>
+    </div>
+    <div style="background:var(--black); color:white; padding:24px; border-radius:3px; text-align:center;">
+      <div style="font-family:'Roboto Condensed',sans-serif; font-size:42px; font-weight:700; color:var(--red); line-height:1;">2.500+</div>
+      <div style="font-size:12px; color:rgba(255,255,255,0.7); margin-top:6px;">Aktive Mieter</div>
+    </div>
+    <div style="background:var(--black); color:white; padding:24px; border-radius:3px; text-align:center;">
+      <div style="font-family:'Roboto Condensed',sans-serif; font-size:32px; font-weight:700; color:var(--red); line-height:1;">seit 2006</div>
+      <div style="font-size:12px; color:rgba(255,255,255,0.7); margin-top:6px;">Laer Gruppe</div>
+    </div>
+    <div style="background:var(--black); color:white; padding:24px; border-radius:3px; text-align:center;">
+      <div style="font-family:'Roboto Condensed',sans-serif; font-size:42px; font-weight:700; color:var(--red); line-height:1;">24/7</div>
+      <div style="font-size:12px; color:rgba(255,255,255,0.7); margin-top:6px;">Zugang &amp; Video</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= 02 DESIGNSYSTEM ============= -->
+<section class="light">
+  <p class="section-label">02 — Designsystem</p>
+  <h2>Farben · Typo · Prinzipien</h2>
+
+  <div class="banner green">
+    <strong>Helligkeitsumkehr (Revision 2):</strong> Weiß dominiert · Schwarz nur im Footer · LAER-Red nur als Akzent · Menschen-Fotografie zwingend.
+  </div>
+  <div class="ru"><strong>Инверсия светлоты:</strong> белый доминирует · чёрный только в футере · LAER-Red только как акцент · фото людей обязательны.</div>
+
+  <h3 style="font-family:'Roboto Condensed',sans-serif; font-size:14px; letter-spacing:0.15em; text-transform:uppercase; color:var(--gray); margin:32px 0 16px;">Farben (aus Figma extrahiert)</h3>
+  <div style="display:grid; grid-template-columns:repeat(7,1fr); gap:10px;">
+    <div style="background:#FFFFFF; border:1px solid var(--border); border-radius:3px; padding:14px;">
+      <div style="height:40px; background:#FFFFFF; border:1px solid var(--border); margin-bottom:8px; border-radius:3px;"></div>
+      <div style="font-size:11px; font-weight:600;">White</div>
+      <div style="font-family:monospace; font-size:10px; color:var(--gray);">#FFFFFF</div>
+    </div>
+    <div style="background:#FFFFFF; border:1px solid var(--border); border-radius:3px; padding:14px;">
+      <div style="height:40px; background:#F5F5F5; border:1px solid var(--border); margin-bottom:8px; border-radius:3px;"></div>
+      <div style="font-size:11px; font-weight:600;">Light Gray</div>
+      <div style="font-family:monospace; font-size:10px; color:var(--gray);">#F5F5F5</div>
+    </div>
+    <div style="background:#FFFFFF; border:1px solid var(--border); border-radius:3px; padding:14px;">
+      <div style="height:40px; background:#C7C8C9; margin-bottom:8px; border-radius:3px;"></div>
+      <div style="font-size:11px; font-weight:600;">Line Gray</div>
+      <div style="font-family:monospace; font-size:10px; color:var(--gray);">#C7C8C9</div>
+    </div>
+    <div style="background:#FFFFFF; border:1px solid var(--border); border-radius:3px; padding:14px;">
+      <div style="height:40px; background:#6B6B6B; margin-bottom:8px; border-radius:3px;"></div>
+      <div style="font-size:11px; font-weight:600;">Concrete Gray</div>
+      <div style="font-family:monospace; font-size:10px; color:var(--gray);">#6B6B6B</div>
+    </div>
+    <div style="background:#FFFFFF; border:1px solid var(--border); border-radius:3px; padding:14px;">
+      <div style="height:40px; background:#3F3F3F; margin-bottom:8px; border-radius:3px;"></div>
+      <div style="font-size:11px; font-weight:600;">Text Gray</div>
+      <div style="font-family:monospace; font-size:10px; color:var(--gray);">#3F3F3F</div>
+    </div>
+    <div style="background:#FFFFFF; border:1px solid var(--border); border-radius:3px; padding:14px;">
+      <div style="height:40px; background:#1F1F1F; margin-bottom:8px; border-radius:3px;"></div>
+      <div style="font-size:11px; font-weight:600;">Industrial Black</div>
+      <div style="font-family:monospace; font-size:10px; color:var(--gray);">#1F1F1F</div>
+    </div>
+    <div style="background:#FFFFFF; border:1px solid var(--border); border-radius:3px; padding:14px;">
+      <div style="height:40px; background:#C62828; margin-bottom:8px; border-radius:3px;"></div>
+      <div style="font-size:11px; font-weight:600;">LAER-Red · CTA</div>
+      <div style="font-family:monospace; font-size:10px; color:var(--gray);">#C62828</div>
+    </div>
+  </div>
+  <p style="font-size:11px; color:var(--gray); margin-top:10px; font-style:italic;">Quelle: <code>mcp__figma__get_variable_defs</code> · File <code>StDYMmVrZMjT18pxOhV5Ec</code></p>
+
+  <h3 style="font-family:'Roboto Condensed',sans-serif; font-size:14px; letter-spacing:0.15em; text-transform:uppercase; color:var(--gray); margin:32px 0 16px;">Typografie (unverändert)</h3>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+    <div style="background:white; border:1px solid var(--border); border-radius:3px; padding:24px;">
+      <div style="font-family:'Roboto Condensed',sans-serif; font-size:32px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em;">Roboto Condensed</div>
+      <p style="font-size:11px; color:var(--gray); margin-top:8px; letter-spacing:0.1em; text-transform:uppercase;">Headlines H1–H3 · Bold 700 · Letter-spacing 0.04–0.05em</p>
+    </div>
+    <div style="background:white; border:1px solid var(--border); border-radius:3px; padding:24px;">
+      <div style="font-family:'Inter',sans-serif; font-size:22px;">Inter — lesbar auf allen Screens</div>
+      <p style="font-size:11px; color:var(--gray); margin-top:8px; letter-spacing:0.1em; text-transform:uppercase;">Body · Regular 400 / Medium 500 · 15–16px · Line-height 1.6</p>
+    </div>
+  </div>
+
+  <h3 style="font-family:'Roboto Condensed',sans-serif; font-size:14px; letter-spacing:0.15em; text-transform:uppercase; color:var(--gray); margin:32px 0 16px;">Komponenten</h3>
+  <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:14px;">
+    <div style="background:white; border:1px solid var(--border); border-radius:3px; padding:18px;">
+      <div style="font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--gray); margin-bottom:14px;">Border-Radius</div>
+      <div style="display:flex; align-items:center; gap:14px;">
+        <div style="width:48px; height:48px; background:var(--red); border-radius:3px;"></div>
+        <div>
+          <div style="font-family:'Roboto Condensed',sans-serif; font-size:22px; font-weight:700;">2–4 px</div>
+          <p style="font-size:11px; color:var(--gray);">leicht abgerundet, klar kantig (Georg Laer mag keine starken Abrundungen)</p>
+        </div>
+      </div>
+    </div>
+    <div style="background:white; border:1px solid var(--border); border-radius:3px; padding:18px;">
+      <div style="font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--gray); margin-bottom:14px;">Buttons</div>
+      <button class="mock-cta" style="margin-bottom:8px;">Standort finden →</button>
+      <button class="mock-cta dark" style="margin-bottom:8px;">Alle Produkte</button>
+      <p style="font-size:11px; color:var(--gray); margin-top:8px;">Letter-Spacing erhöht (+40 bis +80 Tracking) · Letter-spacing-Fix aus Feedback 18.04</p>
+    </div>
+    <div style="background:white; border:1px solid var(--border); border-radius:3px; padding:18px;">
+      <div style="font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--gray); margin-bottom:14px;">Bildwelt</div>
+      <p style="font-size:13px; line-height:1.6;">Menschen-Fotos zwingend (NordSpace-Stil) · Action-Situationen · helle Lichtsituation · keine sterilen Architektur-Shots.</p>
+    </div>
+  </div>
+
+  <h3 style="font-family:'Roboto Condensed',sans-serif; font-size:14px; letter-spacing:0.15em; text-transform:uppercase; color:var(--gray); margin:32px 0 16px;">6 Leitprinzipien</h3>
+  <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:12px;">
+    <div style="background:white; border:1px solid var(--border); border-radius:3px; padding:14px;"><div style="font-family:'Roboto Condensed',sans-serif; font-size:24px; font-weight:700; color:var(--red);">01</div><h4 style="font-family:'Roboto Condensed',sans-serif; font-size:13px; text-transform:uppercase; letter-spacing:0.04em; margin:6px 0;">Hell-First</h4><p style="font-size:12px; color:var(--gray-text);">Weiß dominiert. Schwarz nur im Footer. Trust ohne Dunkelheit.</p></div>
+    <div style="background:white; border:1px solid var(--border); border-radius:3px; padding:14px;"><div style="font-family:'Roboto Condensed',sans-serif; font-size:24px; font-weight:700; color:var(--red);">02</div><h4 style="font-family:'Roboto Condensed',sans-serif; font-size:13px; text-transform:uppercase; letter-spacing:0.04em; margin:6px 0;">LAER-Red als Akzent</h4><p style="font-size:12px; color:var(--gray-text);">CTAs, Hover, Details. Keine großflächigen roten Blöcke.</p></div>
+    <div style="background:white; border:1px solid var(--border); border-radius:3px; padding:14px;"><div style="font-family:'Roboto Condensed',sans-serif; font-size:24px; font-weight:700; color:var(--red);">03</div><h4 style="font-family:'Roboto Condensed',sans-serif; font-size:13px; text-transform:uppercase; letter-spacing:0.04em; margin:6px 0;">Max 2 Haupt-CTAs</h4><p style="font-size:12px; color:var(--gray-text);">Hero-Suche + Stacked-Cards. Sekundäre leise.</p></div>
+    <div style="background:white; border:1px solid var(--border); border-radius:3px; padding:14px;"><div style="font-family:'Roboto Condensed',sans-serif; font-size:24px; font-weight:700; color:var(--red);">04</div><h4 style="font-family:'Roboto Condensed',sans-serif; font-size:13px; text-transform:uppercase; letter-spacing:0.04em; margin:6px 0;">Menschen zwingend</h4><p style="font-size:12px; color:var(--gray-text);">Jede Hauptsektion zeigt Menschen in Action.</p></div>
+    <div style="background:white; border:1px solid var(--border); border-radius:3px; padding:14px;"><div style="font-family:'Roboto Condensed',sans-serif; font-size:24px; font-weight:700; color:var(--red);">05</div><h4 style="font-family:'Roboto Condensed',sans-serif; font-size:13px; text-transform:uppercase; letter-spacing:0.04em; margin:6px 0;">du-Form durchgängig</h4><p style="font-size:12px; color:var(--gray-text);">Alle Headlines, Buttons, Bodytexte in der du-Form.</p></div>
+    <div style="background:white; border:1px solid var(--border); border-radius:3px; padding:14px;"><div style="font-family:'Roboto Condensed',sans-serif; font-size:24px; font-weight:700; color:var(--red);">06</div><h4 style="font-family:'Roboto Condensed',sans-serif; font-size:13px; text-transform:uppercase; letter-spacing:0.04em; margin:6px 0;">Trust ohne Dunkelheit</h4><p style="font-size:12px; color:var(--gray-text);">Vertrauen durch Gesichter (Manager), Gruppe (S7), Zahlen — nicht durch dunkle Blöcke.</p></div>
+  </div>
+</section>
+
+<!-- ============= 03 ACF ============= -->
+<section class="white">
+  <p class="section-label">03 — WordPress Admin</p>
+  <h2>Editierbare Felder · ACF</h2>
+
+  <div class="banner">
+    <strong>Prinzip:</strong> Alle dynamischen Inhalte als editierbare WordPress-Felder (Advanced Custom Fields). David oder Team pflegt direkt im Admin — ohne Entwickler. Pro Seiten-Template eigene Field-Group.
+  </div>
+  <div class="ru"><strong>Принцип:</strong> весь динамический контент — как ACF-поля. Клиент правит сам без разработчика.</div>
+
+  <table class="fragen-table" style="margin-top:18px;">
+    <thead>
+      <tr>
+        <th>Field</th>
+        <th>Typ</th>
+        <th>Verwendung</th>
+        <th>Seite</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><code>preis_teaser_start</code></td><td>Text</td><td>Startpreis im Preis-Teaser</td><td>Startseite S8</td></tr>
+      <tr><td><code>stat_standorte</code></td><td>Number</td><td>Anzahl Standorte (Trust-Block)</td><td>Startseite S6</td></tr>
+      <tr><td><code>stat_mieter</code></td><td>Number</td><td>Anzahl Mieter</td><td>Startseite S6</td></tr>
+      <tr><td><code>trust_google_rating</code></td><td>Text</td><td>Google-Bewertung Ø</td><td>Startseite S6 · Standort S8</td></tr>
+      <tr><td><code>trust_google_count</code></td><td>Number</td><td>Bewertungsanzahl</td><td>Startseite S6 · Standort S8</td></tr>
+      <tr><td><code>verfuegbarkeit_banner_aktiv</code></td><td>True/False</td><td>Banner ein/aus</td><td>Outro S12 (alle Seiten)</td></tr>
+      <tr><td><code>verfuegbarkeit_banner_text</code></td><td>Text</td><td>Banner-Text</td><td>Outro S12</td></tr>
+      <tr><td><code>aktion_aktiv</code> · <code>aktion_text</code> · <code>aktion_link</code></td><td>True/False · Text · URL</td><td>Aktions-Banner</td><td>Outro S12</td></tr>
+      <tr><td><code>faq_items</code></td><td>Repeater</td><td>FAQ-Frage/Antwort-Paare</td><td>Startseite S11 · Standort S9 · Lösung S10</td></tr>
+      <tr><td><code>standort_*</code></td><td>diverse</td><td>Adresse · Tel · E-Mail · Manager · Galerie · USPs · Anfahrt</td><td>Standort (alle Felder)</td></tr>
+      <tr><td><code>loesung_persona</code></td><td>Select</td><td>Persona-Bild + Kernbotschaft pro Lösung</td><td>Lösung-Seite</td></tr>
+      <tr><td><code>standort_loesungen</code></td><td>Repeater</td><td>welche Lösungen am Standort verfügbar</td><td>Standort S4 · Cross-Link Logik</td></tr>
+      <tr><td><code>loesung_standorte</code></td><td>Repeater</td><td>welche Standorte die Lösung anbieten</td><td>Lösung S7 · Cross-Link Logik</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============= 04 LIEFEROBJEKTE ============= -->
+<section class="light">
+  <p class="section-label">04 — Deliverables</p>
+  <h2>Was Andrey liefert</h2>
+
+  <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:14px;">
+    <div class="block-card">
+      <div class="block-card-head"><span class="num">1</span><h3>Startseite</h3><span class="tag">in Figma fertig</span></div>
+      <div style="padding:18px;">
+        <p style="font-size:13px;">12 Sektionen · Desktop (1440 px) + Mobile (390 px). Status: Revision 2 fertig, 5 Korrekturen offen (siehe Tab Startseite).</p>
+      </div>
+    </div>
+    <div class="block-card">
+      <div class="block-card-head"><span class="num">2</span><h3>Standort-Seite</h3><span class="tag">NEU · Phase 2</span></div>
+      <div style="padding:18px;">
+        <p style="font-size:13px;">12 Sektionen · Wuppertal als Leitfall · Desktop + Mobile. ACF-Felder für 16 Instanzen. Sonderfall Braunschweig (kein „Lager").</p>
+      </div>
+    </div>
+    <div class="block-card">
+      <div class="block-card-head"><span class="num">3</span><h3>Lösung-Seite</h3><span class="tag">NEU · Phase 2</span></div>
+      <div style="padding:18px;">
+        <p style="font-size:13px;">13 Sektionen · Werkhalle als Leitfall · Desktop + Mobile. Sticky Sub-Nav (S1.5) + Verwandte Lösungen (S11.5) als Cross-Link.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="banner blue" style="margin-top:24px;">
+    <strong>Follow-Ups (nach Phase 2):</strong> Über-uns-Unterseite (Laer + Formica + Mega) · Ratgeber-Template · Grundstücke-One-Pager.
+  </div>
+</section>
+
+<!-- ============= 05 OFFENE PUNKTE ============= -->
+<section class="white">
+  <p class="section-label">05 — Offene Punkte</p>
+  <h2>Was noch zu klären ist</h2>
+
+  <table class="fragen-table">
+    <thead>
+      <tr>
+        <th style="width:40px;">#</th>
+        <th>Punkt</th>
+        <th style="width:25%;">Owner</th>
+        <th style="width:140px;">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Claim-Freigabe — „Einfach einfahren." vs. „Groß genug für deine Pläne."</td><td>David + AS</td><td><span class="status-open">⚠️ läuft</span></td></tr>
+      <tr><td>2</td><td>3D-Tour Phase 1 vs. Phase 2 — Pilotstandorte oder komplett später?</td><td>David</td><td><span class="status-verify">🔍 Phase 2 vorerst</span></td></tr>
+      <tr><td>3</td><td>Stat „13+" klären — 2026−2006 = 20 Jahre · in Mockup steht 13+</td><td>David</td><td><span class="status-open">⚠️ offen</span></td></tr>
+      <tr><td>4</td><td>Werkhalle-Preis 180 vs. 190 € — Detmold 🆕 hat 190 €, Bochum 180 €</td><td>David</td><td><span class="status-open">⚠️ offen</span></td></tr>
+      <tr><td>5</td><td>„HOCH+BREIT"-Tarif-Label — Wort „Hoch" entfernen?</td><td>David</td><td><span class="status-open">⚠️ offen</span></td></tr>
+      <tr><td>6</td><td>Über-uns-Seitenname — „Über uns" / „Die Gruppe" / „About Us"?</td><td>David + AS</td><td><span class="status-verify">🔍 Phase 3</span></td></tr>
+      <tr><td>7</td><td>Drohnen-Visual S7 für „Gruppe dahinter" oder Stock?</td><td>David</td><td><span class="status-open">⚠️ offen</span></td></tr>
+      <tr><td>8</td><td>3 Ratgeber-Artikel als „Homepage-Featured" markieren — welche?</td><td>David + AS</td><td><span class="status-open">⚠️ offen</span></td></tr>
+      <tr><td>9</td><td>Standort-Manager-Fotos &amp; Namen für 16 Standorte</td><td>David</td><td><span class="status-open">⚠️ Wuppertal zuerst</span></td></tr>
+      <tr><td>10</td><td>Standort-Fotos · Galerie für 16 Standorte</td><td>David</td><td><span class="status-open">⚠️ Wuppertal zuerst</span></td></tr>
+      <tr><td>11</td><td>Werkhalle-Größen Mülheim &amp; Köln-Rodenkirchen + Preis Mülheim</td><td>David</td><td><span class="status-open">⚠️ konsolidiert</span></td></tr>
+      <tr><td>12</td><td>Lagerraum-Preise Wuppertal + sonstige Standorte</td><td>David</td><td><span class="status-open">⚠️ konsolidiert</span></td></tr>
+      <tr><td>13</td><td>Echte Mieter-Stories für Lösung-Seite Werkhalle (3×)</td><td>David</td><td><span class="status-draft">📝 3 fiktive Drafts</span></td></tr>
+      <tr><td>14</td><td>Kunden-Logos · welche Handwerksbetriebe dürfen genannt werden?</td><td>David</td><td><span class="status-open">⚠️ offen</span></td></tr>
+      <tr><td>15</td><td>Bodenbelastung kg/m² · für Werkhalle-FAQ</td><td>David</td><td><span class="status-open">⚠️ offen</span></td></tr>
+      <tr><td>16</td><td>Tech-Specs erweitert: Drainage · Brandschutz · Sprinkler</td><td>David</td><td><span class="status-open">⚠️ offen</span></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============= 06 ZEITPLAN ============= -->
+<section class="light">
+  <p class="section-label">06 — Zeitplan</p>
+  <h2>Vorgeschlagener Ablauf · Phase 2</h2>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+    <div>
+      <div class="block-card">
+        <div class="block-card-head"><span class="num">1</span><h3>TZ v2.1 an Andrey übergeben</h3><span class="tag">heute</span></div>
+        <div style="padding:18px;"><p style="font-size:13px;">Hub-URL + Briefing für 2 neue Templates. Bitrix24-Task #3839 Kommentar.</p></div>
+      </div>
+      <div class="block-card" style="margin-top:14px;">
+        <div class="block-card-head"><span class="num">2</span><h3>5 Korrekturen Startseite</h3><span class="tag">parallel</span></div>
+        <div style="padding:18px;"><p style="font-size:13px;">Andrey fixt Nav (#1+#2) sofort. AW sendet 3 David-Fragen (#3–#5).</p></div>
+      </div>
+      <div class="block-card" style="margin-top:14px;">
+        <div class="block-card-head"><span class="num">3</span><h3>Konsolidierte David-Anfrage</h3><span class="tag">+ 1–2 Tage</span></div>
+        <div style="padding:18px;"><p style="font-size:13px;">Eine Mail mit allen offenen Daten-Lücken (Manager-Fotos · Werkhalle-Preise · Lagerraum-Preise · FAQ-Validierung).</p></div>
+      </div>
+      <div class="block-card" style="margin-top:14px;">
+        <div class="block-card-head"><span class="num">4</span><h3>Standort-Seite Wuppertal · Design</h3><span class="tag">+ 5–7 Tage</span></div>
+        <div style="padding:18px;"><p style="font-size:13px;">Andrey baut Template (Desktop + Mobile). Stock-Fotos als Placeholder.</p></div>
+      </div>
+    </div>
+    <div>
+      <div class="block-card">
+        <div class="block-card-head"><span class="num">5</span><h3>Lösung-Seite Werkhalle · Design</h3><span class="tag">+ 5–7 Tage</span></div>
+        <div style="padding:18px;"><p style="font-size:13px;">Andrey baut Template. Stories &amp; Logos als Placeholder.</p></div>
+      </div>
+      <div class="block-card" style="margin-top:14px;">
+        <div class="block-card-head"><span class="num">6</span><h3>W&amp;S-Review</h3><span class="tag">+ 1–2 Tage</span></div>
+        <div style="padding:18px;"><p style="font-size:13px;">2P-Kritik · AS-Freigabe gegen dieses TZ.</p></div>
+      </div>
+      <div class="block-card" style="margin-top:14px;">
+        <div class="block-card-head"><span class="num">7</span><h3>Client-Präsentation</h3><span class="tag">Phase 2 Ende</span></div>
+        <div style="padding:18px;"><p style="font-size:13px;">AS zeigt David die 3 fertigen Templates. Feedback + Freigabe.</p></div>
+      </div>
+      <div class="block-card" style="margin-top:14px;">
+        <div class="block-card-head"><span class="num">8</span><h3>Phase 3 Follow-Ups</h3><span class="tag">danach</span></div>
+        <div style="padding:18px;"><p style="font-size:13px;">Über-uns-Seite · Ratgeber-Template · Grundstücke-One-Pager.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <div class="footer-brand">W&amp;S <span>AGENCY</span></div>
+    <p style="margin-top:6px;">TZ Designer · Projekt-Info · <strong style="color:var(--red);">Version 2.1 · DE + RU</strong></p>
+  </div>
+  <div style="text-align:right;">
+    <p>← Zurück zum <a href="index.html" style="color:var(--red);">TZ-Hub</a></p>
+    <p style="margin-top:4px;">Stand: 2026-04-28 [AW]</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var btn = document.getElementById('ruToggle');
+  var body = document.body;
+  var STORAGE_KEY = 'tz-v21-ru-visible';
+  var stored = null;
+  try { stored = localStorage.getItem(STORAGE_KEY); } catch (e) {}
+  if (stored === 'off') { body.classList.add('hide-ru'); btn.classList.add('off'); btn.textContent = 'DE only'; }
+  btn.addEventListener('click', function () {
+    body.classList.toggle('hide-ru');
+    var hidden = body.classList.contains('hide-ru');
+    btn.classList.toggle('off', hidden);
+    btn.textContent = hidden ? 'DE only' : 'DE + RU';
+    try { localStorage.setItem(STORAGE_KEY, hidden ? 'off' : 'on'); } catch (e) {}
+  });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,937 @@
+/* ============================================
+   MEGA-MIETPARK · TZ Designer · Shared Stylesheet
+   Figma-extrahierte Farben (Design V2.0)
+   ============================================ */
+
+:root {
+  /* Primärfarben aus Figma */
+  --red: #C62828;
+  --red-dark: #8B1A1A;
+  --red-light: #FFEBEE;
+  --black: #1F1F1F;
+  --white: #FFFFFF;
+  --gray: #6B6B6B;        /* Concrete Gray */
+  --gray-text: #3F3F3F;   /* Text Gray */
+  --gray-line: #C7C8C9;   /* Line Gray */
+  --gray-light: #F5F5F5;  /* Light Gray (Sektionen) */
+  --gray-card: #FAFAFA;   /* Off-White (Cards) */
+  --border: #E0E0E0;
+  --radius: 3px;
+  --max-w: 1280px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  color: var(--black);
+  background: var(--white);
+  line-height: 1.6;
+}
+
+/* ============================================
+   GLOBAL NAVIGATION (sticky tab-bar)
+   ============================================ */
+nav.global {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--black);
+  display: flex; align-items: center;
+  padding: 0 32px; height: 56px;
+  overflow-x: auto;
+  border-bottom: 3px solid var(--red);
+}
+nav.global a, nav.global button {
+  color: rgba(255,255,255,0.65); text-decoration: none;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0 18px; height: 56px;
+  display: flex; align-items: center;
+  border: none; background: transparent;
+  border-bottom: 3px solid transparent; margin-bottom: -3px;
+  white-space: nowrap; transition: all 0.15s; cursor: pointer;
+}
+nav.global a:hover { color: #fff; border-bottom-color: rgba(198,40,40,0.5); }
+nav.global a.active {
+  color: #fff; border-bottom-color: var(--red);
+  background: rgba(198,40,40,0.12);
+}
+nav.global .logo {
+  color: var(--white); font-size: 14px; font-weight: 700;
+  letter-spacing: 0.12em; margin-right: 28px;
+  border-bottom: none; padding-left: 0;
+}
+nav.global .logo span { color: var(--red); }
+nav.global .v-tag {
+  margin-left: auto; font-size: 10px; letter-spacing: 0.15em;
+  color: var(--red); padding: 4px 10px; border: 1px solid var(--red);
+  border-radius: 3px; height: auto; line-height: 1;
+}
+nav.global .lang-toggle {
+  margin-left: 12px; padding: 6px 14px;
+  background: var(--red); color: #fff;
+  border-radius: 3px; font-size: 10px; font-weight: 700;
+  letter-spacing: 0.12em;
+}
+nav.global .lang-toggle.off { background: transparent; border: 1px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.6); }
+
+/* ============================================
+   COVER / PAGE HEADER
+   ============================================ */
+.cover {
+  background: var(--black); color: var(--white);
+  padding: 64px 48px;
+  position: relative; overflow: hidden;
+}
+.cover-tag {
+  font-family: 'Roboto Condensed',sans-serif;
+  font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--red); margin-bottom: 18px;
+}
+.cover h1 {
+  font-family: 'Roboto Condensed',sans-serif;
+  font-size: clamp(32px, 4.5vw, 56px); font-weight: 700;
+  text-transform: uppercase; line-height: 1.05;
+  letter-spacing: 0.02em; max-width: 900px; margin-bottom: 20px;
+}
+.cover h1 em { color: var(--red); font-style: normal; }
+.cover-sub {
+  color: rgba(255,255,255,0.78);
+  font-size: 16px; line-height: 1.6; max-width: 800px;
+  margin-bottom: 24px;
+}
+.cover-sub strong { color: var(--white); }
+.cover-meta { display: flex; gap: 36px; flex-wrap: wrap; }
+.cover-meta-item { color: rgba(255,255,255,0.5); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; }
+.cover-meta-item strong {
+  color: rgba(255,255,255,0.95); display: block; font-size: 14px;
+  margin-top: 4px; text-transform: none; letter-spacing: 0;
+}
+
+/* RU translation bloc — MAXIMAL SICHTBAR, schwarz auf hellem Rosa */
+.ru {
+  margin-top: 14px !important;
+  padding: 14px 18px !important;
+  background: #FFF5F5 !important;
+  border: 1px solid #FFCDD2 !important;
+  border-left: 4px solid var(--red) !important;
+  color: #000000 !important;
+  font-style: italic !important;
+  font-size: 13px !important;
+  line-height: 1.65 !important;
+  border-radius: 0 4px 4px 0 !important;
+  display: block !important;
+}
+.ru * { color: #000000 !important; }
+.ru strong {
+  color: #000000 !important;
+  font-style: normal !important;
+  font-weight: 700 !important;
+}
+.ru code { color: #000000 !important; background: rgba(255,255,255,0.6); padding: 1px 4px; border-radius: 2px; }
+.ru::before {
+  content: "RU"; display: inline-block; margin-right: 10px;
+  font-style: normal; font-family: 'Roboto Condensed',sans-serif;
+  font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
+  color: white !important; background: var(--red) !important;
+  padding: 2px 8px; border-radius: 3px;
+  vertical-align: middle;
+  transform: translateY(-1px);
+}
+body.hide-ru .ru { display: none !important; }
+
+/* RU innerhalb des Cover-Blocks (dunkler Hintergrund) — weiße Schrift */
+.cover .ru {
+  background: rgba(255,255,255,0.92) !important;
+  border-color: var(--red) !important;
+  color: #000000 !important;
+  max-width: 800px; margin-bottom: 24px;
+}
+.cover .ru * { color: #000000 !important; }
+.cover .ru strong { color: #000000 !important; }
+.cover .ru::before { background: var(--red) !important; color: white !important; border: none !important; }
+
+/* RU innerhalb dunkler Block-Card-Header — niemals dort */
+.block-card-head .ru { display: none !important; }
+
+/* ============================================
+   SECTIONS
+   ============================================ */
+section { padding: 56px 48px; }
+section.light { background: var(--gray-light); }
+section.white { background: var(--white); }
+section.dark { background: var(--black); color: var(--white); }
+.section-label {
+  font-family: 'Roboto Condensed',sans-serif;
+  font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--red); margin-bottom: 12px;
+}
+section h2 {
+  font-family: 'Roboto Condensed',sans-serif;
+  font-size: clamp(24px, 3vw, 36px); font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.04em;
+  line-height: 1.1; margin-bottom: 32px; color: var(--black);
+}
+section.dark h2 { color: var(--white); }
+
+/* ============================================
+   INFO BANNER
+   ============================================ */
+.banner {
+  background: #FFF8E1; border: 1px solid #FFE082;
+  border-left: 4px solid #E65100;
+  border-radius: var(--radius); padding: 16px 22px;
+  margin-bottom: 24px; font-size: 14px;
+  color: var(--black); line-height: 1.6;
+}
+.banner strong { color: #E65100; }
+.banner.green { background: #E8F5E9; border-color: #A5D6A7; border-left-color: #2E7D32; }
+.banner.green strong { color: #2E7D32; }
+.banner.red { background: #FFEBEE; border-color: #FFCDD2; border-left-color: #C62828; }
+.banner.red strong { color: #C62828; }
+.banner.blue { background: #E3F2FD; border-color: #90CAF9; border-left-color: #1565C0; }
+.banner.blue strong { color: #1565C0; }
+
+/* ============================================
+   BLOCK-CARD · Section-Mock + Designer-Brief
+   ============================================ */
+.block-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 28px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.block-card.cross-link { border: 2px solid #2E7D32; }
+.block-card-head {
+  display: flex; align-items: center; gap: 14px;
+  padding: 14px 22px;
+  background: var(--black); color: white;
+}
+.block-card-head.cross { background: linear-gradient(90deg, #2E7D32 0%, #1B5E20 100%); }
+.block-card-head .num {
+  width: 34px; height: 34px;
+  background: var(--red); border-radius: var(--radius);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Roboto Condensed',sans-serif;
+  font-size: 14px; font-weight: 700; color: white;
+  flex-shrink: 0;
+}
+.block-card-head.cross .num { background: white; color: #2E7D32; }
+.block-card-head h3 {
+  font-family: 'Roboto Condensed',sans-serif;
+  font-size: 15px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.06em;
+  color: white;
+}
+.block-card-head .tag {
+  margin-left: auto; font-size: 11px; letter-spacing: 0.08em;
+  text-transform: uppercase; color: rgba(255,255,255,0.7);
+}
+.block-card-body {
+  display: grid; grid-template-columns: 1.4fr 1fr;
+  gap: 0;
+}
+.block-mock {
+  padding: 24px; background: var(--gray-card);
+  border-right: 1px solid var(--border);
+  position: relative; min-height: 200px;
+}
+.block-mock-label {
+  position: absolute; top: 8px; right: 12px;
+  font-family: 'Roboto Condensed',sans-serif;
+  font-size: 9px; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--gray);
+  background: rgba(255,255,255,0.9); padding: 2px 7px;
+  border-radius: 2px; border: 1px solid var(--border);
+}
+.block-brief {
+  padding: 22px 24px; background: var(--white);
+}
+.block-brief h4 {
+  font-family: 'Roboto Condensed',sans-serif;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--gray); margin-bottom: 10px;
+}
+.block-brief ul { list-style: none; padding: 0; margin: 0 0 12px; }
+.block-brief li {
+  font-size: 13px; color: var(--gray-text);
+  padding: 4px 0; line-height: 1.5;
+  display: flex; gap: 8px;
+}
+.block-brief li::before {
+  content: "•"; color: var(--red); flex-shrink: 0;
+  font-weight: 700;
+}
+.block-brief li.done::before { content: "✓"; color: #2E7D32; }
+.block-brief li.warn::before { content: "⚠"; color: #E65100; }
+.block-brief li.info::before { content: "ℹ"; color: #1565C0; }
+.block-brief .quelle {
+  font-size: 11px; color: var(--gray);
+  font-style: italic; margin-top: 8px;
+  padding-top: 8px; border-top: 1px dashed var(--border);
+}
+.placeholder-tag {
+  display: inline-block; background: #FFF3E0; color: #E65100;
+  padding: 3px 8px; border-radius: 3px;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.04em;
+}
+.confirmed-tag {
+  display: inline-block; background: #E8F5E9; color: #2E7D32;
+  padding: 3px 8px; border-radius: 3px;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.04em;
+}
+@media (max-width: 900px) {
+  .block-card-body { grid-template-columns: 1fr; }
+  .block-mock { border-right: none; border-bottom: 1px solid var(--border); }
+}
+
+/* ============================================
+   VISUAL MOCKS — Browser Frame
+   ============================================ */
+.mock-frame {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 4px; overflow: hidden;
+  font-family: 'Inter', sans-serif;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  color: #1F1F1F;
+}
+/* Standardfarbe für alle Heading-Tags + p + strong + em + dt/dd in Mocks (verhindert white-on-white) */
+.mock-frame h1, .mock-frame h2, .mock-frame h3, .mock-frame h4, .mock-frame h5, .mock-frame h6,
+.mock-frame p, .mock-frame strong, .mock-frame em, .mock-frame dt, .mock-frame dd { color: #1F1F1F; }
+/* FAQ-Frage explizit dunkel (.mock-faq-q ist ein div, also nicht von obigen Selektoren erfasst) */
+.mock-frame .mock-faq-q { color: #1F1F1F; }
+/* Block-Mock-Wrapper: Default-Farbe für alle Text-Inhalte */
+.block-mock { color: #1F1F1F; }
+.block-mock h3, .block-mock h4 { color: #1F1F1F; }
+.mock-frame-bar {
+  background: #ECEDEE; padding: 6px 10px;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 6px;
+}
+.mock-dot { width: 9px; height: 9px; border-radius: 50%; background: #ccc; }
+.mock-dot.r { background: #ff5f57; }
+.mock-dot.y { background: #ffbd2e; }
+.mock-dot.g { background: #28c840; }
+.mock-frame-url {
+  margin-left: 14px; font-family: monospace; font-size: 11px;
+  color: var(--gray); background: var(--white);
+  padding: 3px 10px; border-radius: 4px; flex: 1;
+}
+
+/* ============================================
+   MOCK · HERO
+   ============================================ */
+.mock-hero {
+  position: relative;
+  background: linear-gradient(rgba(31,31,31,0.3), rgba(31,31,31,0.6)),
+              linear-gradient(135deg, #FAFAFA 0%, #E8E8E8 100%);
+  padding: 50px 36px 40px; min-height: 280px;
+  color: var(--white);
+  display: flex; flex-direction: column;
+  justify-content: flex-end;
+}
+.mock-hero::before {
+  content: '👤📐'; position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%,-50%); font-size: 70px; opacity: 0.15;
+}
+.mock-hero-pre {
+  font-family: 'Roboto Condensed',sans-serif;
+  font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--red); margin-bottom: 8px; position: relative; z-index: 2;
+}
+.mock-hero h1 {
+  font-family: 'Roboto Condensed',sans-serif;
+  font-size: 32px; font-weight: 700; line-height: 1.1;
+  text-transform: uppercase; letter-spacing: 0.02em;
+  margin-bottom: 12px; color: var(--white);
+  position: relative; z-index: 2;
+}
+.mock-hero p {
+  font-size: 14px; color: rgba(255,255,255,0.92);
+  margin-bottom: 16px; max-width: 460px;
+  position: relative; z-index: 2;
+}
+.mock-hero .cta-row { display: flex; gap: 10px; flex-wrap: wrap; position: relative; z-index: 2; }
+.mock-hero .breadcrumb {
+  position: absolute; top: 14px; left: 36px;
+  font-size: 11px; color: rgba(255,255,255,0.7);
+  letter-spacing: 0.04em; z-index: 2;
+}
+.mock-hero .breadcrumb a { color: rgba(255,255,255,0.7); text-decoration: none; }
+
+/* ============================================
+   MOCK · CTA Buttons
+   ============================================ */
+.mock-cta {
+  display: inline-block; padding: 11px 20px;
+  background: var(--red); color: var(--white);
+  font-family: 'Roboto Condensed',sans-serif;
+  font-size: 12px; letter-spacing: 0.1em;
+  text-transform: uppercase; font-weight: 700;
+  border: none; border-radius: 3px; cursor: pointer;
+}
+.mock-cta.outline {
+  background: transparent; border: 2px solid var(--white);
+  color: var(--white);
+}
+.mock-cta.dark {
+  background: transparent; border: 2px solid var(--black);
+  color: var(--black);
+}
+.mock-cta.text {
+  background: transparent; color: var(--red);
+  font-size: 12px; padding: 6px 0;
+}
+
+/* ============================================
+   MOCK · NAP-Block
+   ============================================ */
+.mock-nap {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+.mock-nap-info {
+  padding: 24px; background: var(--white);
+}
+.mock-nap-info h3 {
+  font-family: 'Roboto Condensed',sans-serif;
+  font-size: 16px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.04em; margin-bottom: 14px;
+}
+.mock-nap-info dl { display: grid; grid-template-columns: 90px 1fr; gap: 6px 12px; }
+.mock-nap-info dt {
+  font-family: 'Roboto Condensed',sans-serif;
+  font-size: 10px; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--gray); padding-top: 2px;
+}
+.mock-nap-info dd { font-size: 13px; color: var(--gray-text); }
+.mock-nap-map {
+  background: linear-gradient(135deg, #cde0d8 0%, #a4c4b9 100%);
+  position: relative;
+  display: flex; align-items: center; justify-content: center;
+}
+.mock-nap-map::before {
+  content: '🗺️'; font-size: 48px; opacity: 0.3;
+}
+.mock-nap-map .pin {
+  position: absolute; left: 50%; top: 50%;
+  transform: translate(-50%,-100%); font-size: 28px;
+}
+
+/* ============================================
+   MOCK · Manager Card
+   ============================================ */
+.mock-manager {
+  display: grid; grid-template-columns: 100px 1fr;
+  gap: 18px; padding: 24px; background: var(--white);
+  align-items: center;
+}
+.mock-manager-photo {
+  width: 100px; height: 100px;
+  background: linear-gradient(135deg, #ddd, #bbb);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 38px; color: rgba(0,0,0,0.3);
+}
+.mock-manager-data h3 {
+  font-family: 'Roboto Condensed',sans-serif;
+  font-size: 18px; font-weight: 700; margin-bottom: 4px;
+}
+.mock-manager-data .role {
+  font-size: 12px; color: var(--gray);
+  text-transform: uppercase; letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
+.mock-manager-data .quote {
+  font-size: 13px; font-style: italic; color: var(--gray-text);
+  margin-bottom: 12px;
+}
+.mock-manager-data .actions { display: flex; gap: 8px; flex-wrap: wrap; }
+
+/* ============================================
+   MOCK · Lösung-Karten (Cross-Link Cards)
+   ============================================ */
+.mock-loesung-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 10px; padding: 24px; background: var(--white);
+}
+.mock-loesung-card {
+  border: 1px solid var(--border); border-radius: 4px;
+  overflow: hidden; transition: transform 0.15s;
+  background: var(--white);
+}
+.mock-loesung-card:hover { transform: translateY(-2px); }
+.mock-loesung-card .img {
+  height: 80px;
+  background: linear-gradient(135deg, #ECEDEE 0%, #D5D7D9 100%);
+  position: relative;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px; color: rgba(0,0,0,0.25);
+}
+.mock-loesung-card .body { padding: 12px; }
+.mock-loesung-card h4 {
+  font-family: 'Roboto Condensed',sans-serif;
+  font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.04em;
+  margin-bottom: 4px;
+}
+.mock-loesung-card .size { font-size: 11px; color: var(--gray); margin-bottom: 6px; }
+.mock-loesung-card .price { font-size: 16px; font-weight: 700; color: var(--red); font-family: 'Roboto Condensed',sans-serif; }
+.mock-loesung-card .price-tbd { color: var(--gray); font-size: 13px; }
+.mock-loesung-card .cta { font-size: 11px; color: var(--red); margin-top: 8px; font-weight: 600; }
+@media (max-width: 700px) {
+  .mock-loesung-grid { grid-template-columns: repeat(2,1fr); }
+}
+
+/* ============================================
+   MOCK · USP Items
+   ============================================ */
+.mock-usps {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 10px; padding: 24px; background: var(--white);
+}
+.mock-usp {
+  display: flex; gap: 10px; align-items: flex-start;
+  padding: 12px; background: var(--gray-card);
+  border-radius: 3px;
+}
+.mock-usp-icon { font-size: 22px; flex-shrink: 0; }
+.mock-usp-text strong { font-size: 13px; display: block; margin-bottom: 2px; }
+.mock-usp-text span { font-size: 11px; color: var(--gray); }
+
+/* ============================================
+   MOCK · Galerie
+   ============================================ */
+.mock-galerie {
+  padding: 24px; background: var(--white);
+}
+.mock-galerie-grid {
+  display: grid; grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: 80px 80px;
+  gap: 4px;
+}
+.mock-galerie-tile {
+  background: linear-gradient(135deg, #ECEDEE, #C7C8C9);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; color: rgba(0,0,0,0.2);
+  border-radius: 3px;
+}
+.mock-galerie-tile.big { grid-row: span 2; }
+.mock-galerie-tile.more {
+  background: rgba(31,31,31,0.85); color: var(--white);
+  font-family: 'Roboto Condensed',sans-serif;
+  font-size: 14px; font-weight: 700;
+}
+
+/* ============================================
+   MOCK · Reviews
+   ============================================ */
+.mock-reviews {
+  padding: 24px; background: var(--white);
+}
+.mock-reviews-head {
+  display: flex; align-items: center; gap: 14px;
+  margin-bottom: 14px;
+}
+.mock-reviews-head .stars { font-size: 22px; color: #FFB400; letter-spacing: -1px; }
+.mock-reviews-head .rating {
+  font-family: 'Roboto Condensed',sans-serif;
+  font-size: 22px; font-weight: 700;
+}
+.mock-reviews-head .count { font-size: 12px; color: var(--gray); }
+.mock-reviews-grid {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 10px;
+}
+.mock-review {
+  padding: 12px; background: var(--gray-card);
+  border-left: 3px solid var(--red); border-radius: 3px;
+  font-size: 12px; line-height: 1.5; color: var(--gray-text);
+}
+.mock-review .author {
+  display: block; margin-top: 6px;
+  font-size: 11px; color: var(--gray);
+  font-weight: 600;
+}
+
+/* ============================================
+   MOCK · FAQ
+   ============================================ */
+.mock-faq { padding: 0; background: var(--white); }
+.mock-faq-item {
+  border-bottom: 1px solid var(--border);
+  padding: 14px 24px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.mock-faq-item:last-child { border-bottom: none; }
+.mock-faq-q {
+  font-family: 'Roboto Condensed',sans-serif;
+  font-size: 13px; font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.mock-faq-icon {
+  font-size: 18px; color: var(--red); font-weight: 300;
+}
+.mock-faq-item.open { background: var(--gray-card); }
+.mock-faq-item.open .mock-faq-a {
+  display: block; margin-top: 8px;
+  font-size: 13px; color: var(--gray-text);
+  line-height: 1.6; font-weight: 400;
+}
+.mock-faq-item.open .mock-faq-icon { transform: rotate(45deg); }
+.mock-faq-q-wrap { flex: 1; }
+.mock-faq-a { display: none; }
+
+/* ============================================
+   MOCK · Form
+   ============================================ */
+.mock-form { padding: 24px; background: var(--white); }
+.mock-form h3 {
+  font-family: 'Roboto Condensed',sans-serif;
+  font-size: 16px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.04em; margin-bottom: 14px;
+}
+.mock-form-fields {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.mock-form-field {
+  border: 1px solid var(--border); border-radius: 3px;
+  padding: 10px 12px; background: var(--gray-card);
+  font-size: 12px; color: var(--gray);
+}
+.mock-form-field.full { grid-column: 1 / -1; }
+.mock-form-field.textarea { height: 60px; }
+.mock-form-cta { margin-top: 12px; }
+
+/* ============================================
+   MOCK · Andere Standorte / Verwandte Lösungen
+   ============================================ */
+.mock-related {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 10px; padding: 24px; background: var(--white);
+}
+.mock-related-card {
+  border: 1px solid var(--border); border-radius: 4px;
+  padding: 14px;
+}
+.mock-related-card.featured { border-top: 3px solid var(--red); }
+.mock-related-card h4 {
+  font-family: 'Roboto Condensed',sans-serif;
+  font-size: 14px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.04em; margin-bottom: 6px;
+}
+.mock-related-card p { font-size: 12px; color: var(--gray); margin-bottom: 4px; line-height: 1.5; }
+.mock-related-card .price { font-size: 14px; font-weight: 700; color: var(--red); margin-top: 6px; }
+@media (max-width: 700px) {
+  .mock-related { grid-template-columns: 1fr; }
+}
+
+/* ============================================
+   MOCK · Sub-Nav (Sticky pills)
+   ============================================ */
+.mock-subnav {
+  display: flex; gap: 8px; flex-wrap: wrap;
+  padding: 18px 24px; background: var(--white);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.mock-subnav-pill {
+  background: var(--gray-light); color: var(--black);
+  padding: 8px 14px; border-radius: 3px;
+  font-size: 12px; font-weight: 500;
+  border: 1px solid var(--border);
+  display: inline-flex; flex-direction: column;
+  align-items: flex-start; line-height: 1.2;
+}
+.mock-subnav-pill.active { background: var(--red); color: var(--white); border-color: var(--red); font-weight: 700; }
+.mock-subnav-pill .ctx { font-size: 10px; opacity: 0.75; margin-top: 2px; }
+
+/* ============================================
+   MOCK · Problem & Solution Lists
+   ============================================ */
+.mock-problem, .mock-solution {
+  padding: 24px; background: var(--white);
+}
+.mock-problem h3, .mock-solution h3 {
+  font-family: 'Roboto Condensed',sans-serif;
+  font-size: 18px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.04em; margin-bottom: 14px;
+}
+.mock-problem ul, .mock-solution ul {
+  list-style: none; padding: 0;
+}
+.mock-problem li, .mock-solution li {
+  font-size: 13px; color: var(--gray-text);
+  padding: 6px 0; padding-left: 26px;
+  position: relative;
+  border-bottom: 1px solid var(--border);
+}
+.mock-problem li:last-child, .mock-solution li:last-child { border-bottom: none; }
+.mock-problem li::before { content: "✗"; position: absolute; left: 0; color: var(--red); font-weight: 700; }
+.mock-solution li::before { content: "✓"; position: absolute; left: 0; color: #2E7D32; font-weight: 700; }
+
+/* ============================================
+   MOCK · 3D Tour Placeholder
+   ============================================ */
+.mock-tour {
+  padding: 24px; background: var(--white);
+}
+.mock-tour-box {
+  background: linear-gradient(135deg, #2a2a2a 0%, #1f1f1f 100%);
+  border-radius: 4px; padding: 40px;
+  display: flex; flex-direction: column; align-items: center;
+  color: rgba(255,255,255,0.5);
+  position: relative;
+}
+.mock-tour-box::before {
+  content: '🔄'; font-size: 48px; opacity: 0.4; margin-bottom: 12px;
+}
+.mock-tour-box h4 {
+  font-family: 'Roboto Condensed',sans-serif;
+  font-size: 14px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.04em; color: rgba(255,255,255,0.7);
+  margin-bottom: 4px;
+}
+.mock-tour-box .phase-tag {
+  font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+  background: rgba(198,40,40,0.2); color: var(--red);
+  padding: 3px 8px; border-radius: 2px; margin-top: 12px;
+}
+
+/* ============================================
+   MOCK · Steps
+   ============================================ */
+.mock-steps {
+  display: grid; grid-template-columns: repeat(4,1fr);
+  gap: 10px; padding: 24px; background: var(--white);
+}
+.mock-step {
+  padding: 14px; border: 1px solid var(--border);
+  border-radius: 4px; background: var(--white);
+}
+.mock-step .num {
+  font-family: 'Roboto Condensed',sans-serif;
+  font-size: 28px; font-weight: 700; color: var(--red);
+  line-height: 1; margin-bottom: 6px;
+}
+.mock-step h4 {
+  font-family: 'Roboto Condensed',sans-serif;
+  font-size: 12px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.04em; margin-bottom: 4px;
+}
+.mock-step p { font-size: 11px; color: var(--gray); line-height: 1.5; }
+@media (max-width: 700px) { .mock-steps { grid-template-columns: 1fr 1fr; } }
+
+/* ============================================
+   MOCK · Trust
+   ============================================ */
+.mock-trust {
+  display: grid; grid-template-columns: repeat(2,1fr);
+  gap: 10px; padding: 24px; background: var(--white);
+}
+.mock-trust-item {
+  display: flex; gap: 12px; padding: 14px;
+  background: var(--gray-card); border-radius: 3px;
+  align-items: center;
+}
+.mock-trust-icon { font-size: 24px; flex-shrink: 0; }
+.mock-trust-text strong { font-size: 13px; display: block; margin-bottom: 2px; }
+.mock-trust-text span { font-size: 11px; color: var(--gray); }
+
+/* ============================================
+   MOCK · Use-Case Stories
+   ============================================ */
+.mock-stories {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 10px; padding: 24px; background: var(--white);
+}
+.mock-story {
+  border: 1px solid var(--border); border-radius: 4px;
+  overflow: hidden;
+}
+.mock-story-img {
+  height: 90px;
+  background: linear-gradient(135deg, #ECEDEE, #C7C8C9);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 32px; color: rgba(0,0,0,0.25);
+}
+.mock-story-body { padding: 12px; }
+.mock-story .branche {
+  font-family: 'Roboto Condensed',sans-serif;
+  font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--gray); margin-bottom: 4px;
+}
+.mock-story h4 {
+  font-family: 'Roboto Condensed',sans-serif;
+  font-size: 13px; font-weight: 700; line-height: 1.3;
+  margin-bottom: 6px;
+}
+.mock-story p { font-size: 11px; color: var(--gray-text); line-height: 1.5; }
+.mock-story .fictiv {
+  display: inline-block; margin-top: 6px;
+  font-size: 9px; color: var(--red);
+  background: var(--red-light); padding: 2px 6px;
+  border-radius: 2px; letter-spacing: 0.08em; text-transform: uppercase;
+}
+@media (max-width: 700px) { .mock-stories { grid-template-columns: 1fr; } }
+
+/* ============================================
+   MOCK · Verwandte Lösungen
+   ============================================ */
+.mock-verwandte {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 10px; padding: 24px; background: var(--white);
+}
+.mock-verwandte-card {
+  display: grid; grid-template-columns: 80px 1fr;
+  border: 1px solid var(--border); border-radius: 4px;
+  overflow: hidden;
+}
+.mock-verwandte-img {
+  background: linear-gradient(135deg, #ECEDEE, #C7C8C9);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px; color: rgba(0,0,0,0.25);
+}
+.mock-verwandte-body { padding: 10px 14px; }
+.mock-verwandte-body h4 {
+  font-family: 'Roboto Condensed',sans-serif;
+  font-size: 14px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.04em; margin-bottom: 4px;
+}
+.mock-verwandte-body p { font-size: 11px; color: var(--gray-text); line-height: 1.5; margin-bottom: 6px; }
+
+/* ============================================
+   FRAGEN AN DAVID — Table
+   ============================================ */
+.fragen-section {
+  margin-top: 48px; padding-top: 24px;
+  border-top: 3px solid var(--red);
+}
+.fragen-table {
+  width: 100%; border-collapse: collapse;
+  background: var(--white); border: 1px solid var(--border);
+  font-size: 13px;
+  color: #1F1F1F;
+}
+.fragen-table thead {
+  background: var(--gray-light);
+}
+.fragen-table th {
+  padding: 12px 14px; text-align: left;
+  font-family: 'Roboto Condensed',sans-serif;
+  font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+  border-bottom: 2px solid var(--border);
+  color: #1F1F1F;
+  font-weight: 700;
+}
+.fragen-table td {
+  padding: 10px 14px; border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  color: #1F1F1F;
+  font-weight: 400;
+  background: var(--white);
+}
+.fragen-table td strong { color: #000000; font-weight: 700; }
+.fragen-table tr:hover td { background: #FAFAFA; }
+.fragen-table .status-open {
+  background: #FFF3E0; color: #E65100;
+  padding: 3px 8px; border-radius: 3px;
+  font-size: 11px; font-weight: 600;
+  display: inline-block;
+}
+.fragen-table .status-draft {
+  background: #E8F5E9; color: #2E7D32;
+  padding: 3px 8px; border-radius: 3px;
+  font-size: 11px; font-weight: 600;
+  display: inline-block;
+}
+.fragen-table .status-verify {
+  background: #E3F2FD; color: #1565C0;
+  padding: 3px 8px; border-radius: 3px;
+  font-size: 11px; font-weight: 600;
+  display: inline-block;
+}
+
+/* ============================================
+   HUB · Page-Cards (index.html)
+   ============================================ */
+.hub-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 18px; margin-top: 32px;
+}
+.hub-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 0;
+  text-decoration: none; color: inherit;
+  overflow: hidden; transition: all 0.2s;
+  display: flex; flex-direction: column;
+  position: relative;
+}
+.hub-card:hover {
+  border-color: var(--red); transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+.hub-card-banner {
+  height: 120px; position: relative;
+  background: linear-gradient(135deg, var(--black) 0%, #2a2a2a 100%);
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(255,255,255,0.4); font-size: 56px;
+  border-bottom: 3px solid var(--red);
+}
+.hub-card-banner.startseite { background: linear-gradient(135deg, #1a1a1a 0%, #C62828 100%); }
+.hub-card-banner.standort { background: linear-gradient(135deg, #1F1F1F 0%, #444 100%); }
+.hub-card-banner.loesung { background: linear-gradient(135deg, #1565C0 0%, #1F1F1F 100%); }
+.hub-card-banner.projekt { background: linear-gradient(135deg, #6B6B6B 0%, #1F1F1F 100%); }
+.hub-card-tag {
+  position: absolute; top: 12px; left: 12px;
+  background: var(--red); color: var(--white);
+  font-family: 'Roboto Condensed',sans-serif;
+  font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 3px 8px; border-radius: 2px; font-weight: 700;
+}
+.hub-card-body { padding: 22px; flex: 1; display: flex; flex-direction: column; }
+.hub-card-body h3 {
+  font-family: 'Roboto Condensed',sans-serif;
+  font-size: 18px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.04em; margin-bottom: 8px;
+}
+.hub-card-body p { font-size: 13px; color: var(--gray); line-height: 1.6; flex: 1; }
+.hub-card-body .meta {
+  font-size: 11px; color: var(--gray); letter-spacing: 0.06em;
+  text-transform: uppercase; margin-top: 12px;
+  padding-top: 12px; border-top: 1px solid var(--border);
+}
+.hub-card-cta {
+  font-size: 12px; color: var(--red); font-weight: 600;
+  margin-top: 8px; text-transform: uppercase; letter-spacing: 0.06em;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+footer {
+  background: var(--black); color: rgba(255,255,255,0.7);
+  padding: 32px 48px; font-size: 13px;
+  display: flex; justify-content: space-between;
+  flex-wrap: wrap; gap: 16px;
+}
+footer .footer-brand {
+  font-family: 'Roboto Condensed',sans-serif;
+  font-size: 16px; color: var(--white); font-weight: 700;
+  letter-spacing: 0.12em;
+}
+footer .footer-brand span { color: var(--red); }
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 900px) {
+  section { padding: 40px 20px; }
+  .cover { padding: 40px 20px; }
+  nav.global { padding: 0 12px; }
+  nav.global a, nav.global button { padding: 0 12px; font-size: 11px; }
+}

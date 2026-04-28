@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TZ · Startseite · Mega-Mietpark</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mega-mietpark_TZ_style.css?v=4">
+</head>
+<body>
+
+<nav class="global">
+  <a class="logo" href="index.html">MEGA<span>·</span>MIETPARK · TZ</a>
+  <a href="index.html">Hub</a>
+  <a href="mega-mietpark_TZ_Projekt.html">Projekt-Info</a>
+  <a href="mega-mietpark_TZ_Startseite.html" class="active">Startseite</a>
+  <a href="mega-mietpark_TZ_Standort.html">Standort-Seite</a>
+  <a href="mega-mietpark_TZ_Loesung.html">Lösung-Seite</a>
+  <span class="v-tag">V2.1</span>
+  <button class="lang-toggle" id="ruToggle">DE + RU</button>
+</nav>
+
+<div class="cover">
+  <p class="cover-tag">Seite 1 von 3 · Revision 2 · in Figma fertig</p>
+  <h1>Startseite<br><em>Status &amp; Korrekturen</em></h1>
+  <p class="cover-sub">
+    Die Revision 2 der Startseite ist <strong>in Figma realisiert</strong> (Mega-Mietpark - Design V2.0). David hat den Entwurf am 27.04.2026 grundsätzlich freigegeben („Das Design gefällt uns schonmal besser!"). Vor Live-Schaltung sind <strong>5 Korrekturen</strong> nötig — siehe unten.
+  </p>
+  <div class="ru">
+    Ревизия 2 главной страницы <strong>реализована в Figma</strong>. Давид одобрил направление 27.04.2026. Перед запуском нужно <strong>5 правок</strong> — см. ниже.
+  </div>
+  <div class="cover-meta">
+    <div class="cover-meta-item">URL<strong>mega-mietpark.de/</strong></div>
+    <div class="cover-meta-item">Sektionen<strong>12</strong></div>
+    <div class="cover-meta-item">Figma-Status<strong>V2.0 · genehmigt 27.04</strong></div>
+    <div class="cover-meta-item">Bitrix-Task<strong>#3839</strong></div>
+  </div>
+</div>
+
+<!-- ============= STATUS ============= -->
+<section class="white">
+  <p class="section-label">Status · Wo wir stehen</p>
+  <h2>Design-Status</h2>
+
+  <div class="banner green">
+    <strong>✓ Genehmigt:</strong> David Neugum, 27.04.2026 — „Das Design gefällt uns schonmal besser!" Hell-first-Ansatz funktioniert. Alle 12 Sektionen strukturell umgesetzt.
+  </div>
+  <div class="ru"><strong>✓ Одобрено:</strong> Давид Нойгум, 27.04.2026. Подход с белым фоном работает. Все 12 секций структурно реализованы.</div>
+
+  <div class="banner red">
+    <strong>⚠️ 5 Korrekturen vor Live-Schaltung nötig</strong> — siehe Korrektur-Liste unten. Andrey kennt diese aus dem Review.
+  </div>
+  <div class="ru"><strong>⚠️ 5 правок перед запуском</strong> — см. список ниже. Андрей в курсе.</div>
+
+  <div class="banner blue">
+    <strong>🔗 Figma-File:</strong> <code>Mega-Mietpark - Design V2.0</code> — File-Key <code>StDYMmVrZMjT18pxOhV5Ec</code>. Frame: <code>Home - Portable</code> (1920 × 17.131 px).
+  </div>
+  <div class="ru"><strong>🔗 Figma-файл:</strong> «Mega-Mietpark - Design V2.0», главный фрейм «Home - Portable» (1920 × 17.131 px).</div>
+</section>
+
+<!-- ============= KORREKTUREN ============= -->
+<section class="light">
+  <p class="section-label">Korrekturen · 5 Punkte</p>
+  <h2>Was Andrey vor Live ändert</h2>
+
+  <table class="fragen-table">
+    <thead>
+      <tr>
+        <th style="width:40px;">#</th>
+        <th>Korrektur · Что исправить</th>
+        <th style="width:25%;">Wo · Где</th>
+        <th style="width:140px;">Quelle</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>
+          <strong>Navigation falsch.</strong> Aktuell: <code>Garage · Büro · Werkhalle · Lagerraum · Bau</code> (= Produkt-Liste).<br>
+          <strong>Soll:</strong> <code>Standorte · Lösungen · Ratgeber · Grundstücke</code> (= 4 Hauptpunkte, beschlossen 20.03.2026)
+        </td>
+        <td>Header (S1)</td>
+        <td><span class="status-verify">CLIENT</span></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>
+          <strong>„Lagerraum" entfernen</strong> aus Header-Nav (gehört zu Korrektur #1, aber separater Hinweis).<br>
+          Grund: Sonderfall Braunschweig — Wort „Lager" darf nirgends erscheinen.
+        </td>
+        <td>Header (S1)</td>
+        <td><span class="status-verify">CLIENT</span></td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>
+          <strong>Stat „13+ Jahre" klären.</strong> Im aktuellen Stats-Block steht „13+", obwohl Laer Gruppe seit 2006 existiert (= 20 Jahre).<br>
+          <strong>Empfohlen:</strong> ersetzen durch „seit 2006".
+        </td>
+        <td>Stats-Block (S6)</td>
+        <td><span class="status-open">⚠️ David</span></td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>
+          <strong>Preis STANDARD: 180 € oder 190 €?</strong> Im Mockup steht 180 € (Bochum). Detmold 🆕 hat 190 €.<br>
+          Frage: welcher Wert für „ab"-Preis auf Startseite?
+        </td>
+        <td>Preis-Teaser (S8)</td>
+        <td><span class="status-open">⚠️ David</span></td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>
+          <strong>„HOCH+BREIT"-Tarif-Label</strong> — Wort „Hoch" war in Diskussion (siehe Claim-Runde 2 — alle „Hoch"-Referenzen entfernt). Soll es bleiben oder ersetzen?
+        </td>
+        <td>Preis-Teaser (S8)</td>
+        <td><span class="status-open">⚠️ David</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="banner blue" style="margin-top:20px;">
+    <strong>Workflow-Vorschlag:</strong> Andrey fixt Punkt #1+#2 (klar entschieden, kein David-Input nötig) sofort. Punkte #3–#5 parallel an David senden — eine Mail mit 3 kurzen Fragen.
+  </div>
+  <div class="ru"><strong>Workflow:</strong> Андрей сразу правит #1+#2 (решение есть). #3–#5 — параллельная отправка Давиду, одно письмо с 3 вопросами.</div>
+</section>
+
+<!-- ============= 12 SEKTIONEN OVERVIEW ============= -->
+<section class="white">
+  <p class="section-label">Übersicht · 12 Sektionen</p>
+  <h2>Aufbau Revision 2</h2>
+  <div class="ru">12 секций финальной структуры. Подробный бриф для каждой — в архивном TZ v2 (см. ссылку внизу).</div>
+
+  <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-top:24px;">
+
+    <div class="block-card">
+      <div class="block-card-head"><span class="num">S1</span><h3>Hero</h3><span class="tag">Mood-Video + PLZ</span></div>
+      <div style="padding:18px;"><p style="font-size:13px;">Stock-Mood-Video · Hero-Suchleiste (PLZ → Standort) · Claim „Einfach einfahren." · CTA „Standort finden"</p></div>
+    </div>
+
+    <div class="block-card">
+      <div class="block-card-head"><span class="num">S2</span><h3>USP-Bar</h3><span class="tag">6 Icons</span></div>
+      <div style="padding:18px;"><p style="font-size:13px;">XXL bis 100m² · LKW-befahrbar · 24/7 Video · 16 Standorte · Eigene Immobilien · 24/7 Zugang</p></div>
+    </div>
+
+    <div class="block-card">
+      <div class="block-card-head" style="background:linear-gradient(90deg,#2E7D32 0%,#1B5E20 100%);"><span class="num" style="background:white; color:#2E7D32;">S3</span><h3>Stacked Cards</h3><span class="tag">KERN-NEUHEIT</span></div>
+      <div style="padding:18px;"><p style="font-size:13px;">4 Karten · Lager · Garage · Hybrides Büro · Werkhalle · DK-Scroll-Stack-Mechanik · Persona-Bilder</p></div>
+    </div>
+
+    <div class="block-card">
+      <div class="block-card-head" style="background:linear-gradient(90deg,#2E7D32 0%,#1B5E20 100%);"><span class="num" style="background:white; color:#2E7D32;">S4</span><h3>3D-Tour-Teaser</h3><span class="tag">🆕 NEU</span></div>
+      <div style="padding:18px;"><p style="font-size:13px;">Preview-Still 360° · CTA „Tour starten" · Phase 1 Pilot oder Phase 2 — David klärt</p></div>
+    </div>
+
+    <div class="block-card">
+      <div class="block-card-head"><span class="num">S5</span><h3>Standort-Finder</h3><span class="tag">Map</span></div>
+      <div style="padding:18px;"><p style="font-size:13px;">Karte NRW + Sachsen-Anhalt + Niedersachsen · 16 Pins · PLZ-Filter</p></div>
+    </div>
+
+    <div class="block-card">
+      <div class="block-card-head"><span class="num">S6</span><h3>Trust-Block</h3><span class="tag">+ Manager</span></div>
+      <div style="padding:18px;"><p style="font-size:13px;">4 Stat-Kacheln · Regionalleiter-Fotos · Google-Rating</p></div>
+    </div>
+
+    <div class="block-card">
+      <div class="block-card-head" style="background:linear-gradient(90deg,#2E7D32 0%,#1B5E20 100%);"><span class="num" style="background:white; color:#2E7D32;">S7</span><h3>Gruppe dahinter</h3><span class="tag">🆕 NEU</span></div>
+      <div style="padding:18px;"><p style="font-size:13px;">Laer + Formica Story · Mini-Stats · CTA „Mehr über uns" → Über-uns-Unterseite</p></div>
+    </div>
+
+    <div class="block-card">
+      <div class="block-card-head"><span class="num">S8</span><h3>Preis-Teaser</h3><span class="tag">3 Karten</span></div>
+      <div style="padding:18px;"><p style="font-size:13px;">MEGA 8 · MEGA 8-HB · MEGA Werkhalle · ab-Preise (Punkte #4+#5 in Korrekturen)</p></div>
+    </div>
+
+    <div class="block-card">
+      <div class="block-card-head"><span class="num">S9</span><h3>3-Schritte-Prozess</h3><span class="tag">Standard</span></div>
+      <div style="padding:18px;"><p style="font-size:13px;">Standort wählen → Anfragen → Einziehen — ab dem ersten Tag</p></div>
+    </div>
+
+    <div class="block-card">
+      <div class="block-card-head" style="background:linear-gradient(90deg,#2E7D32 0%,#1B5E20 100%);"><span class="num" style="background:white; color:#2E7D32;">S10</span><h3>Ratgeber-Teaser</h3><span class="tag">🆕 NEU</span></div>
+      <div style="padding:18px;"><p style="font-size:13px;">3 Artikel-Karten · ACF-Repeater „Homepage-Featured"</p></div>
+    </div>
+
+    <div class="block-card">
+      <div class="block-card-head"><span class="num">S11</span><h3>FAQ</h3><span class="tag">Accordion</span></div>
+      <div style="padding:18px;"><p style="font-size:13px;">6 Fragen · ACF-Repeater · Inhalte mit David validieren</p></div>
+    </div>
+
+    <div class="block-card">
+      <div class="block-card-head"><span class="num">S12</span><h3>Marken-Outro</h3><span class="tag">KEIN 3. CTA</span></div>
+      <div style="padding:18px;"><p style="font-size:13px;">Claim „Einfach einfahren." als emotionales Schluss-Statement · Verfügbarkeits- + Aktions-Banner (ACF)</p></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============= MOCK GANZSEITE ============= -->
+<section class="light">
+  <p class="section-label">Visual · Mini-Mock</p>
+  <h2>Wie die Startseite aussieht (V2.0 in Figma)</h2>
+
+  <div class="block-card">
+    <div class="block-card-head"><span class="num">📄</span><h3>Komplette Seite · 1920 × 17.131 px</h3><span class="tag">in Figma fertig</span></div>
+    <div style="padding:24px;">
+      <div class="mock-frame">
+        <div class="mock-frame-bar">
+          <span class="mock-dot r"></span><span class="mock-dot y"></span><span class="mock-dot g"></span>
+          <span class="mock-frame-url">mega-mietpark.de/</span>
+        </div>
+        <!-- HERO -->
+        <div class="mock-hero">
+          <div class="breadcrumb" style="background:var(--black); padding:8px 36px; left:0; top:0; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.7); width:100%;">Garage · Büro · Werkhalle · Lagerraum · Bau ⚠️ KORREKTUR #1</div>
+          <span class="mock-hero-pre" style="margin-top:24px;">EINFACH EINFAHREN</span>
+          <h1>Mehr Raum<br>— direkt in deiner Nähe</h1>
+          <p>XXL-Garagen · Büros · Werkhallen · ab 180 € pro Monat</p>
+          <div style="background:var(--white); border-radius:4px; padding:8px 12px; max-width:340px; display:flex; gap:8px;">
+            <span style="flex:1; font-size:13px; color:var(--gray);">PLZ eingeben, z. B. 50737</span>
+            <button class="mock-cta" style="padding:6px 14px;">Finden</button>
+          </div>
+        </div>
+
+        <!-- USPs -->
+        <div class="mock-usps" style="grid-template-columns:repeat(6,1fr);">
+          <div class="mock-usp"><span class="mock-usp-icon">📐</span><div class="mock-usp-text"><strong>XXL bis 100m²</strong></div></div>
+          <div class="mock-usp"><span class="mock-usp-icon">🚛</span><div class="mock-usp-text"><strong>LKW-befahrbar</strong></div></div>
+          <div class="mock-usp"><span class="mock-usp-icon">📹</span><div class="mock-usp-text"><strong>24/7 Video</strong></div></div>
+          <div class="mock-usp"><span class="mock-usp-icon">📍</span><div class="mock-usp-text"><strong>16 Standorte</strong></div></div>
+          <div class="mock-usp"><span class="mock-usp-icon">🏗️</span><div class="mock-usp-text"><strong>Eigene Immobilien</strong></div></div>
+          <div class="mock-usp"><span class="mock-usp-icon">🔐</span><div class="mock-usp-text"><strong>24/7 Zugang</strong></div></div>
+        </div>
+
+        <!-- STACKED CARDS -->
+        <div style="padding:24px; background:var(--gray-card);">
+          <h3 style="font-family:'Roboto Condensed',sans-serif; font-size:18px; text-transform:uppercase; letter-spacing:0.04em; margin-bottom:14px;">4 Nutzungsarten</h3>
+          <div class="mock-loesung-grid">
+            <div class="mock-loesung-card"><div class="img">📦</div><div class="body"><h4>Lager</h4><div class="cta">→</div></div></div>
+            <div class="mock-loesung-card"><div class="img">🚗</div><div class="body"><h4>Garage</h4><div class="cta">→</div></div></div>
+            <div class="mock-loesung-card"><div class="img">💼</div><div class="body"><h4>Büro Hybrid</h4><div class="cta">→</div></div></div>
+            <div class="mock-loesung-card"><div class="img">🛠</div><div class="body"><h4>Werkhalle</h4><div class="cta">→</div></div></div>
+          </div>
+        </div>
+
+        <!-- 3D TOUR -->
+        <div class="mock-tour">
+          <div class="mock-tour-box">
+            <h4>Erlebe deinen Raum in 3D</h4>
+            <p style="font-size:12px; color:rgba(255,255,255,0.5); margin-bottom:8px;">Virtueller Rundgang durch unsere Standorte</p>
+            <button class="mock-cta">Tour starten</button>
+          </div>
+        </div>
+
+        <!-- TRUST STATS -->
+        <div style="padding:24px; background:var(--white); display:grid; grid-template-columns:repeat(4,1fr); gap:14px; text-align:center;">
+          <div><div style="font-family:'Roboto Condensed',sans-serif; font-size:32px; font-weight:700; color:var(--red);">16</div><div style="font-size:11px; color:var(--gray); text-transform:uppercase; letter-spacing:0.08em;">Standorte</div></div>
+          <div><div style="font-family:'Roboto Condensed',sans-serif; font-size:32px; font-weight:700; color:var(--red);">2.500+</div><div style="font-size:11px; color:var(--gray); text-transform:uppercase; letter-spacing:0.08em;">Mieter</div></div>
+          <div><div style="font-family:'Roboto Condensed',sans-serif; font-size:32px; font-weight:700; color:var(--red); position:relative;">13+ <span style="font-size:11px; position:absolute; top:0; right:-30px; background:#FFF3E0; color:#E65100; padding:2px 6px; border-radius:2px; transform:translateY(-4px); letter-spacing:0;">⚠️ #3</span></div><div style="font-size:11px; color:var(--gray); text-transform:uppercase; letter-spacing:0.08em;">Jahre</div></div>
+          <div><div style="font-family:'Roboto Condensed',sans-serif; font-size:32px; font-weight:700; color:var(--red);">24/7</div><div style="font-size:11px; color:var(--gray); text-transform:uppercase; letter-spacing:0.08em;">Zugang</div></div>
+        </div>
+
+        <!-- PREIS-TEASER -->
+        <div style="padding:24px; background:var(--gray-card);">
+          <h3 style="font-family:'Roboto Condensed',sans-serif; font-size:18px; text-transform:uppercase; letter-spacing:0.04em; margin-bottom:14px;">Preise · ab-Werte</h3>
+          <div class="mock-loesung-grid" style="grid-template-columns:repeat(3,1fr);">
+            <div class="mock-loesung-card"><div class="img">📦</div><div class="body"><h4>Standard <span style="background:#FFF3E0; color:#E65100; font-size:9px; padding:1px 5px; border-radius:2px;">⚠️ #4</span></h4><div class="size">26m²</div><div class="price">ab 180 €</div></div></div>
+            <div class="mock-loesung-card"><div class="img">📐</div><div class="body"><h4>Hoch+Breit <span style="background:#FFF3E0; color:#E65100; font-size:9px; padding:1px 5px; border-radius:2px;">⚠️ #5</span></h4><div class="size">30m²</div><div class="price">ab 200 €</div></div></div>
+            <div class="mock-loesung-card"><div class="img">🛠</div><div class="body"><h4>Werkhalle</h4><div class="size">95m²</div><div class="price">ab 1.360 €</div></div></div>
+          </div>
+        </div>
+
+        <!-- OUTRO -->
+        <div style="padding:48px 24px; background:linear-gradient(135deg, var(--black) 0%, #2a2a2a 100%); color:white; text-align:center;">
+          <p style="color:var(--red); font-family:'Roboto Condensed',sans-serif; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; margin-bottom:8px;">Mega-Mietpark</p>
+          <h2 style="font-family:'Roboto Condensed',sans-serif; font-size:32px; text-transform:uppercase; letter-spacing:0.04em; color:white; margin-bottom:0;">Einfach einfahren.</h2>
+        </div>
+
+      </div>
+      <p style="font-size:11px; color:var(--gray); margin-top:14px; font-style:italic;">⚠️ = Korrektur-Marker (siehe Tabelle oben)</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============= REFERENZ ============= -->
+<section class="white">
+  <p class="section-label">Referenz · Detail-Briefing</p>
+  <h2>Wo finde ich den vollen Designer-Brief?</h2>
+
+  <div class="grid-2" style="display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:18px;">
+    <div class="block-card">
+      <div class="block-card-head"><span class="num">📄</span><h3>Volltext-Briefing (MD)</h3><span class="tag">Andrey-Übergabe</span></div>
+      <div style="padding:18px;">
+        <p style="font-size:13px; margin-bottom:12px;"><code>plans/260419-design-briefing-andrey-homepage-revision-2.md</code></p>
+        <p style="font-size:13px;">Volltext-Briefing aus dem April-Review. Enthält: Stacked-Card-Personas, S4/S7/S10-Anforderungen, Bildwelt-Briefing, NordSpace-Abgrenzung, Bewusste Übernahmen.</p>
+      </div>
+    </div>
+    <div class="block-card">
+      <div class="block-card-head"><span class="num">🔗</span><h3>Archiviertes TZ v2 (HTML)</h3><span class="tag">Vorgänger</span></div>
+      <div style="padding:18px;">
+        <p style="font-size:13px; margin-bottom:12px;"><code>_archived_mega-mietpark_TZ_Designer_homepage_v2.html</code></p>
+        <p style="font-size:13px;">Vollständiges TZ v2 von April 2026. Enthält die ursprüngliche detaillierte Sektions-Spezifikation (12 Sektionen Volltext mit DE/RU). Wird hier ersetzt durch verteilte Hub-Struktur.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <div class="footer-brand">W&amp;S <span>AGENCY</span></div>
+    <p style="margin-top:6px;">TZ Designer · Startseite · <strong style="color:var(--red);">Version 2.1 · DE + RU</strong></p>
+  </div>
+  <div style="text-align:right;">
+    <p>← Zurück zum <a href="index.html" style="color:var(--red);">TZ-Hub</a></p>
+    <p style="margin-top:4px;">Stand: 2026-04-28 [AW]</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var btn = document.getElementById('ruToggle');
+  var body = document.body;
+  var STORAGE_KEY = 'tz-v21-ru-visible';
+  var stored = null;
+  try { stored = localStorage.getItem(STORAGE_KEY); } catch (e) {}
+  if (stored === 'off') { body.classList.add('hide-ru'); btn.classList.add('off'); btn.textContent = 'DE only'; }
+  btn.addEventListener('click', function () {
+    body.classList.toggle('hide-ru');
+    var hidden = body.classList.contains('hide-ru');
+    btn.classList.toggle('off', hidden);
+    btn.textContent = hidden ? 'DE only' : 'DE + RU';
+    try { localStorage.setItem(STORAGE_KEY, hidden ? 'off' : 'on'); } catch (e) {}
+  });
+})();
+</script>
+
+</body>
+</html>

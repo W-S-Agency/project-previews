@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TZ · Standort-Seite Wuppertal · Mega-Mietpark</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mega-mietpark_TZ_style.css?v=4">
+</head>
+<body>
+
+<nav class="global">
+  <a class="logo" href="index.html">MEGA<span>·</span>MIETPARK · TZ</a>
+  <a href="index.html">Hub</a>
+  <a href="mega-mietpark_TZ_Projekt.html">Projekt-Info</a>
+  <a href="mega-mietpark_TZ_Startseite.html">Startseite</a>
+  <a href="mega-mietpark_TZ_Standort.html" class="active">Standort-Seite</a>
+  <a href="mega-mietpark_TZ_Loesung.html">Lösung-Seite</a>
+  <span class="v-tag">V2.1</span>
+  <button class="lang-toggle" id="ruToggle">DE + RU</button>
+</nav>
+
+<div class="cover">
+  <p class="cover-tag">Seite 2 von 3 · Template für 16 Standorte</p>
+  <h1>Standort-Seite<br><em>Wuppertal</em></h1>
+  <p class="cover-sub">
+    Lokale Landingpage je Standort. <strong>Wuppertal</strong> als Leitfall — vollständigster Produktmix (Garagen + Lagerräume + Büros + Werkhallen). 15 weitere Standorte werden über ACF-Felder als Instanzen befüllt.
+    <strong>Sonderfall Braunschweig:</strong> Lagerraum-Karten ausblenden, Wort „Lager" darf nirgends erscheinen.
+  </p>
+  <div class="ru">
+    Локальный лендинг филиала. <strong>Wuppertal</strong> — ведущий пример с полным продуктовым миксом. 15 остальных филиалов наполняются как инстансы через ACF.
+    <strong>Особый случай Braunschweig:</strong> карточки «Lagerraum» скрываются, слово «Lager» нигде не появляется.
+  </p>
+  <div class="cover-meta">
+    <div class="cover-meta-item">URL-Pattern<strong>/standort/{slug}/</strong></div>
+    <div class="cover-meta-item">Sektionen<strong>12</strong></div>
+    <div class="cover-meta-item">Cross-Links<strong>S4 → 4 Lösungen · S11 → 3 Standorte</strong></div>
+    <div class="cover-meta-item">Beispiel-URL<strong>/standort/wuppertal/</strong></div>
+  </div>
+</div>
+
+<section class="white">
+  <p class="section-label">Aufbau · 12 Sektionen</p>
+  <h2>Sektionsweise: Visual Mock + Designer-Brief</h2>
+
+  <div class="banner red">
+    <strong>⚠️ Placeholder-Prinzip:</strong> Wo Daten von David fehlen — Placeholder im Design, parallel sammeln wir die Fragen am Ende der Seite. Andrey kann mit Stock/Generic arbeiten — finaler Content kommt nach.
+  </div>
+  <div class="ru"><strong>Принцип placeholder:</strong> где нет данных от Давида — placeholder в дизайне, вопросы — в таблице в конце страницы.</div>
+
+  <!-- ============= S1 HERO ============= -->
+  <div class="block-card">
+    <div class="block-card-head">
+      <span class="num">S1</span>
+      <h3>Hero · Lokal</h3>
+      <span class="tag">Hello-Sektion</span>
+    </div>
+    <div class="block-card-body">
+      <div class="block-mock">
+        <span class="block-mock-label">Visual Mock</span>
+        <div class="mock-frame">
+          <div class="mock-frame-bar">
+            <span class="mock-dot r"></span><span class="mock-dot y"></span><span class="mock-dot g"></span>
+            <span class="mock-frame-url">mega-mietpark.de/standort/wuppertal/</span>
+          </div>
+          <div class="mock-hero">
+            <div class="breadcrumb"><a href="#">Startseite</a> › <a href="#">Standorte</a> › Wuppertal</div>
+            <span class="mock-hero-pre">STANDORT</span>
+            <h1>Mega-Mietpark<br>Wuppertal</h1>
+            <p>Garagen · Lagerräume · Büros · Werkhallen — alles an einem Standort</p>
+            <div class="cta-row">
+              <button class="mock-cta">Verfügbarkeit prüfen</button>
+              <button class="mock-cta outline">Standort ansehen</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="block-brief">
+        <h4>Designer-Brief</h4>
+        <ul>
+          <li class="done"><strong>H1:</strong> „Mega-Mietpark Wuppertal" (städtespezifisch, ACF)</li>
+          <li class="done"><strong>Subline:</strong> dynamische Produkt-Liste (nur was am Standort verfügbar ist)</li>
+          <li class="done"><strong>CTA primary:</strong> „Verfügbarkeit prüfen" → Form S10</li>
+          <li class="done"><strong>Breadcrumb:</strong> SEO-relevant, Schema.org BreadcrumbList</li>
+          <li class="warn"><strong>Hero-Foto:</strong> Placeholder · Stock-Bild im NordSpace-Stil (Mensch im Aktionsmoment), bis David echte Wuppertal-Aufnahme liefert</li>
+          <li class="info"><strong>Marken-Claim:</strong> klein über H1 — „Einfach einfahren." (vorläufig — finaler Claim folgt nach David-Freigabe)</li>
+        </ul>
+        <div class="quelle">Quelle: Standorte-Tabelle · Adresse aus Angebotsflyer Wuppertal</div>
+        <div class="ru" style="margin-top:10px;">S1 — местный Hero, H1 «Mega-Mietpark Wuppertal», подзаголовок с продуктами, CTA «Verfügbarkeit prüfen». Hero-фото — placeholder/сток.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============= S2 NAP ============= -->
+  <div class="block-card">
+    <div class="block-card-head">
+      <span class="num">S2</span>
+      <h3>NAP-Block · Adresse · Karte</h3>
+      <span class="tag">Local SEO · Vertrauen</span>
+    </div>
+    <div class="block-card-body">
+      <div class="block-mock">
+        <span class="block-mock-label">Visual Mock</span>
+        <div class="mock-frame">
+          <div class="mock-nap">
+            <div class="mock-nap-info">
+              <h3>So findest du uns</h3>
+              <dl>
+                <dt>Adresse</dt><dd>Vohwinkeler Straße 148<br>42329 Wuppertal</dd>
+                <dt>Telefon</dt><dd>+49 2309 543 99 95</dd>
+                <dt>E-Mail</dt><dd>anfrage@mega-mietpark.de</dd>
+                <dt>Büro</dt><dd style="color:var(--gray); font-style:italic;">Mo–Fr 9:00–17:00 ⚠️</dd>
+                <dt>Zugang</dt><dd>06:00–22:00 Uhr · Zugangskontrolle</dd>
+              </dl>
+            </div>
+            <div class="mock-nap-map">
+              <span class="pin">📍</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="block-brief">
+        <h4>Designer-Brief</h4>
+        <ul>
+          <li class="done"><strong>Adresse:</strong> Vohwinkeler Straße 148, 42329 Wuppertal</li>
+          <li class="done"><strong>Tel:</strong> +49 2309 543 99 95</li>
+          <li class="done"><strong>E-Mail:</strong> anfrage@mega-mietpark.de</li>
+          <li class="done"><strong>Zugang:</strong> 06:00–22:00 Uhr täglich · Einfahrtstor mit Zugangskontrolle</li>
+          <li class="warn"><strong>Office-Zeiten:</strong> Placeholder „Mo–Fr 9–17" — David: bitte bestätigen</li>
+          <li class="info"><strong>Karte:</strong> Google Maps Embed mit Pin · Mobile: angepasste Höhe ~280px</li>
+          <li class="info"><strong>Schema.org:</strong> LocalBusiness · PostalAddress · openingHours</li>
+        </ul>
+        <div class="quelle">Quelle: Angebotsflyer Wuppertal (CLIENT) · Standorte-Tabelle</div>
+        <div class="ru" style="margin-top:10px;">S2 — NAP-блок. Все данные подтверждены. Открыто: точные часы офиса.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============= S3 MANAGER ============= -->
+  <div class="block-card">
+    <div class="block-card-head">
+      <span class="num">S3</span>
+      <h3>Regionalleiter · Person</h3>
+      <span class="tag">NordSpace-Trust</span>
+    </div>
+    <div class="block-card-body">
+      <div class="block-mock">
+        <span class="block-mock-label">Visual Mock</span>
+        <div class="mock-frame">
+          <div class="mock-manager">
+            <div class="mock-manager-photo">👤</div>
+            <div class="mock-manager-data">
+              <h3 style="color:var(--gray); font-style:italic;">{Name} ⚠️</h3>
+              <div class="role">Standortleiter Wuppertal</div>
+              <div class="quote">„Hi, ich bin {Name}. Ich zeige dir gern alles vor Ort."</div>
+              <div class="actions">
+                <button class="mock-cta">📞 Anrufen</button>
+                <button class="mock-cta dark">💬 WhatsApp</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="block-brief">
+        <h4>Designer-Brief</h4>
+        <ul>
+          <li class="warn"><strong>Foto:</strong> Placeholder · David liefern (Hochformat-Porträt, freundlich, freigestellt)</li>
+          <li class="warn"><strong>Name:</strong> Placeholder · David: wer ist Standortleiter Wuppertal?</li>
+          <li class="done"><strong>Rolle:</strong> „Standortleiter Wuppertal"</li>
+          <li class="done"><strong>Zitat:</strong> Template — wird mit echtem Namen befüllt</li>
+          <li class="done"><strong>CTAs:</strong> Anrufen (tel:) + WhatsApp (wa.me/)</li>
+          <li class="info"><strong>NordSpace-Prinzip:</strong> Echtes Gesicht erzeugt Vertrauen — nicht durch Stock ersetzen!</li>
+        </ul>
+        <div class="quelle">Referenz: nordspace.eu/pl-PL/home — Team-Foto-Pattern</div>
+        <div class="ru" style="margin-top:10px;">S3 — региональный менеджер. Реальное лицо = доверие. Placeholder, пока Давид не пришлёт фото и имя.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============= S4 LÖSUNGEN — CROSS LINK ============= -->
+  <div class="block-card cross-link">
+    <div class="block-card-head cross">
+      <span class="num">S4</span>
+      <h3>Verfügbare Lösungen — KERN-CROSS-LINK</h3>
+      <span class="tag">Navigations-Anker</span>
+    </div>
+    <div class="block-card-body">
+      <div class="block-mock">
+        <span class="block-mock-label">Visual Mock</span>
+        <div class="mock-frame">
+          <div style="padding:24px 24px 8px; background:var(--white);">
+            <h3 style="font-family:'Roboto Condensed',sans-serif; font-size:20px; text-transform:uppercase; letter-spacing:0.04em;">In Wuppertal · 4 Lösungen</h3>
+          </div>
+          <div class="mock-loesung-grid">
+            <div class="mock-loesung-card">
+              <div class="img">🚗</div>
+              <div class="body">
+                <h4>Garage</h4>
+                <div class="size">7,5–9 m × 8–16 m</div>
+                <div class="price">ab 200 €</div>
+                <div class="cta">→ Mehr</div>
+              </div>
+            </div>
+            <div class="mock-loesung-card" style="border-color:var(--red); border-width:2px;">
+              <div class="img">🛠</div>
+              <div class="body">
+                <h4>Werkhalle</h4>
+                <div class="size">5,90 × 16 × 6 m</div>
+                <div class="price">ab 1.360 €</div>
+                <div class="cta">→ Mehr</div>
+              </div>
+            </div>
+            <div class="mock-loesung-card">
+              <div class="img">💼</div>
+              <div class="body">
+                <h4>Büro</h4>
+                <div class="size">6,60 × 8 × 6 m</div>
+                <div class="price">ab 1.360 €</div>
+                <div class="cta">→ Mehr</div>
+              </div>
+            </div>
+            <div class="mock-loesung-card">
+              <div class="img">📦</div>
+              <div class="body">
+                <h4>Lagerraum</h4>
+                <div class="size">4–22 m²</div>
+                <div class="price price-tbd">⚠️ tbd</div>
+                <div class="cta">→ Mehr</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="block-brief">
+        <h4>Designer-Brief</h4>
+        <ul>
+          <li class="done"><strong>4 Karten</strong> · Bild + Titel + Größen-Range + Einstiegspreis + CTA</li>
+          <li class="done"><strong>Garage:</strong> ab 200 € (MEGA 8) · 6 Typen verfügbar</li>
+          <li class="done"><strong>Werkhalle:</strong> 95 m², 1.360 € · Featured-Badge möglich (B2B-Lead)</li>
+          <li class="done"><strong>Büro:</strong> 1.360 € · 2 Ebenen mit WC + Teeküchenvorbereitung</li>
+          <li class="warn"><strong>Lagerraum:</strong> 4–22 m² · Preis fehlt — David anfragen</li>
+          <li class="info"><strong>Verlinkung:</strong> /loesungen/{slug}/ → Lösung-Seite (siehe Tab „Lösung-Seite")</li>
+          <li class="info"><strong>Sonderfall Braunschweig:</strong> Lagerraum-Karte komplett ausblenden</li>
+          <li class="info"><strong>Mobile:</strong> 2×2 Grid statt 4-spaltig</li>
+        </ul>
+        <div class="quelle">Quelle: Angebotsflyer Wuppertal (Garage/Werkhalle/Büro confirmed) · Standorte-Tabelle (Lagerraum-Range)</div>
+        <div class="ru" style="margin-top:10px;">S4 — ключевой кросс-линк. 4 карточки с реальными ценами Wuppertal. Lagerraum-цена — placeholder.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============= S5 GALERIE / 3D ============= -->
+  <div class="block-card">
+    <div class="block-card-head">
+      <span class="num">S5</span>
+      <h3>Galerie / 3D-Tour</h3>
+      <span class="tag">Erlebnis</span>
+    </div>
+    <div class="block-card-body">
+      <div class="block-mock">
+        <span class="block-mock-label">Visual Mock</span>
+        <div class="mock-frame">
+          <div class="mock-galerie">
+            <h3 style="font-family:'Roboto Condensed',sans-serif; font-size:18px; text-transform:uppercase; margin-bottom:14px; letter-spacing:0.04em;">So sieht es bei uns aus</h3>
+            <div class="mock-galerie-grid">
+              <div class="mock-galerie-tile big">📷</div>
+              <div class="mock-galerie-tile">📷</div>
+              <div class="mock-galerie-tile">📷</div>
+              <div class="mock-galerie-tile">📷</div>
+              <div class="mock-galerie-tile more">+8 mehr</div>
+            </div>
+            <div style="margin-top:12px;">
+              <button class="mock-cta dark" style="opacity:0.5; cursor:not-allowed;">🔄 3D-Tour starten · Phase 2</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="block-brief">
+        <h4>Designer-Brief</h4>
+        <ul>
+          <li class="warn"><strong>6–12 Standortfotos</strong> · Placeholder · David liefern</li>
+          <li class="info"><strong>Layout:</strong> 1 großes Hero-Foto + 4 kleinere · Lightbox-Modal</li>
+          <li class="info"><strong>Bildwelt:</strong> NordSpace-Stil · möglichst Mensch im Bild · helle Lichtsituation</li>
+          <li class="info"><strong>3D-Tour:</strong> Disabled-Button mit Phase-2-Tag</li>
+          <li class="done"><strong>Mobile:</strong> Horizontal-Scroll-Galerie statt Grid</li>
+        </ul>
+        <div class="quelle">3D-Tour Phase 2 — entschieden 2026-04-28 [AW]</div>
+        <div class="ru" style="margin-top:10px;">S5 — галерея и 3D. Фото — placeholder, 3D — disabled (Phase 2).</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============= S6 USPs ============= -->
+  <div class="block-card">
+    <div class="block-card-head">
+      <span class="num">S6</span>
+      <h3>Standort-USPs</h3>
+      <span class="tag">Tech-Specs</span>
+    </div>
+    <div class="block-card-body">
+      <div class="block-mock">
+        <span class="block-mock-label">Visual Mock</span>
+        <div class="mock-frame">
+          <div style="padding:24px 24px 0;">
+            <h3 style="font-family:'Roboto Condensed',sans-serif; font-size:18px; text-transform:uppercase; letter-spacing:0.04em;">Was Wuppertal besonders macht</h3>
+          </div>
+          <div class="mock-usps">
+            <div class="mock-usp"><span class="mock-usp-icon">🏗️</span><div class="mock-usp-text"><strong>2 Ebenen</strong><span>Werk unten · Büro oben</span></div></div>
+            <div class="mock-usp"><span class="mock-usp-icon">📐</span><div class="mock-usp-text"><strong>6 m Höhe</strong><span>Werkhalle</span></div></div>
+            <div class="mock-usp"><span class="mock-usp-icon">🚪</span><div class="mock-usp-text"><strong>2,90 × 3,30 m</strong><span>Sektionaltor Standard</span></div></div>
+            <div class="mock-usp"><span class="mock-usp-icon">🔌</span><div class="mock-usp-text"><strong>230V / 400V</strong><span>auf Anfrage</span></div></div>
+            <div class="mock-usp"><span class="mock-usp-icon">📹</span><div class="mock-usp-text"><strong>24/7</strong><span>Videoüberwacht</span></div></div>
+            <div class="mock-usp"><span class="mock-usp-icon">🔐</span><div class="mock-usp-text"><strong>06–22 Uhr</strong><span>Zugang täglich</span></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="block-brief">
+        <h4>Designer-Brief</h4>
+        <ul>
+          <li class="done">6 USP-Kacheln · Icon + Headline + Subtext</li>
+          <li class="done">Alle Specs aus Angebotsflyer Wuppertal bestätigt</li>
+          <li class="info"><strong>ACF:</strong> Repeater-Feld · pro Standort eigene Auswahl (Bochum hat z.B. anderes Tor 3,30 × 3,50)</li>
+          <li class="info"><strong>Mobile:</strong> 2 Spalten statt 3</li>
+          <li class="info"><strong>Hover:</strong> leichte Helligkeit, kein dramatischer Effekt</li>
+        </ul>
+        <div class="quelle">Angebotsflyer Wuppertal (CLIENT)</div>
+        <div class="ru" style="margin-top:10px;">S6 — 6 USP-иконок, все данные из Angebotsflyer.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============= S7 ANFAHRT ============= -->
+  <div class="block-card">
+    <div class="block-card-head">
+      <span class="num">S7</span>
+      <h3>Anfahrt &amp; Lage</h3>
+      <span class="tag">Local SEO</span>
+    </div>
+    <div class="block-card-body">
+      <div class="block-mock">
+        <span class="block-mock-label">Visual Mock</span>
+        <div class="mock-frame">
+          <div style="padding:24px;">
+            <h3 style="font-family:'Roboto Condensed',sans-serif; font-size:18px; text-transform:uppercase; letter-spacing:0.04em; margin-bottom:14px;">Direkt erreichbar</h3>
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:18px;">
+              <div>
+                <p style="font-size:13px; color:var(--gray-text); margin-bottom:10px;"><span class="placeholder-tag">PLACEHOLDER</span></p>
+                <p style="font-size:14px; color:var(--gray-text); line-height:1.6;">Wuppertal-Vohwinkel · ca. <strong>X Min von A46</strong>, A1 in <strong>Y Min</strong>.<br>ÖPNV: Bus <strong>{Linie}</strong> (Z m).</p>
+              </div>
+              <div style="background:linear-gradient(135deg,#cde0d8,#a4c4b9); border-radius:3px; min-height:120px; display:flex; align-items:center; justify-content:center;">
+                <span style="font-size:48px; opacity:0.3;">🛣️</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="block-brief">
+        <h4>Designer-Brief</h4>
+        <ul>
+          <li class="warn"><strong>Anfahrtstext:</strong> Placeholder · David: nächste Autobahn (vermutlich A46), Min-Distanz, ÖPNV-Linie</li>
+          <li class="info"><strong>Routen-Karte:</strong> sekundäre Karte mit Autobahn-Pins · kann Maps-Static-Image sein</li>
+          <li class="info"><strong>ACF-Felder:</strong> <code>standort_anfahrt_auto</code> (text), <code>standort_anfahrt_oepnv</code> (text)</li>
+          <li class="info">Mobile: Karte unter Text statt nebeneinander</li>
+        </ul>
+        <div class="quelle">Maps-Recherche oder David-Input</div>
+        <div class="ru" style="margin-top:10px;">S7 — подъездные пути. Placeholder с заглушкой про автобан, ÖPNV.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============= S8 REVIEWS ============= -->
+  <div class="block-card">
+    <div class="block-card-head">
+      <span class="num">S8</span>
+      <h3>Google-Bewertungen</h3>
+      <span class="tag">Social Proof</span>
+    </div>
+    <div class="block-card-body">
+      <div class="block-mock">
+        <span class="block-mock-label">Visual Mock</span>
+        <div class="mock-frame">
+          <div class="mock-reviews">
+            <div class="mock-reviews-head">
+              <span class="stars">★★★★★</span>
+              <span class="rating" style="color:var(--gray); font-style:italic;">X,X ⚠️</span>
+              <span class="count">(XX Bewertungen)</span>
+            </div>
+            <div class="mock-reviews-grid">
+              <div class="mock-review">„Top Service, alles wie versprochen — schnelle Übergabe, sauberer Standort."<span class="author">— Stefan W.</span></div>
+              <div class="mock-review">„Faire Preise, freundliches Team. Werde definitiv wieder mieten."<span class="author">— Petra K.</span></div>
+              <div class="mock-review">„Schnelle Abwicklung, alles digital — perfekt für Handwerker."<span class="author">— Markus T.</span></div>
+            </div>
+            <p style="font-size:11px; color:var(--red); margin-top:10px; font-style:italic;">⚠️ Lorem-Bewertungen · echte Zitate von David</p>
+          </div>
+        </div>
+      </div>
+      <div class="block-brief">
+        <h4>Designer-Brief</h4>
+        <ul>
+          <li class="warn"><strong>Rating + Anzahl:</strong> Placeholder „X,X ★ (XX)" · David: aktueller Wuppertal-Wert</li>
+          <li class="warn"><strong>3 Zitate:</strong> Placeholder · echte Google-Reviews via Google-API live ziehen ODER manuell pflegen</li>
+          <li class="info"><strong>Empfehlung:</strong> Live-API (Google Places API) — Auto-Update bei neuen Reviews</li>
+          <li class="info"><strong>Layout:</strong> Sterne + Zahl prominent · 3 Karten unter Headline</li>
+          <li class="info"><strong>CTA optional:</strong> „Alle Bewertungen auf Google →" → Google-Profile-Link</li>
+        </ul>
+        <div class="quelle">Google My Business · Wuppertal-Standort</div>
+        <div class="ru" style="margin-top:10px;">S8 — отзывы. Placeholder с lorem-цитатами, рейтинг X,X. Реальные данные от Давида или через Google-API.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============= S9 FAQ ============= -->
+  <div class="block-card">
+    <div class="block-card-head">
+      <span class="num">S9</span>
+      <h3>Lokale FAQ · 6 generierte Drafts</h3>
+      <span class="tag">Education</span>
+    </div>
+    <div class="block-card-body">
+      <div class="block-mock">
+        <span class="block-mock-label">Visual Mock</span>
+        <div class="mock-frame">
+          <div style="padding:18px 24px 6px;"><h3 style="font-family:'Roboto Condensed',sans-serif; font-size:18px; text-transform:uppercase; letter-spacing:0.04em;">Häufige Fragen zu Wuppertal</h3></div>
+          <div class="mock-faq">
+            <div class="mock-faq-item open">
+              <div class="mock-faq-q-wrap">
+                <div class="mock-faq-q">1. Wie groß ist die Werkhalle in Wuppertal?</div>
+                <div class="mock-faq-a">Unsere Werkhalle hat 95 m² (5,90 × 16 m) auf zwei Ebenen — unten Lager/Werk, oben Büro mit WC und Teeküchenvorbereitung. Deckenhöhe 6 Meter.</div>
+              </div>
+              <span class="mock-faq-icon">+</span>
+            </div>
+            <div class="mock-faq-item"><div class="mock-faq-q-wrap"><div class="mock-faq-q">2. Welche Tor-Maße habt ihr?</div></div><span class="mock-faq-icon">+</span></div>
+            <div class="mock-faq-item"><div class="mock-faq-q-wrap"><div class="mock-faq-q">3. Gibt es Strom 400V?</div></div><span class="mock-faq-icon">+</span></div>
+            <div class="mock-faq-item"><div class="mock-faq-q-wrap"><div class="mock-faq-q">4. Kann ich auch nachts rein?</div></div><span class="mock-faq-icon">+</span></div>
+            <div class="mock-faq-item"><div class="mock-faq-q-wrap"><div class="mock-faq-q">5. Wie lange muss ich mindestens mieten?</div></div><span class="mock-faq-icon">+</span></div>
+            <div class="mock-faq-item"><div class="mock-faq-q-wrap"><div class="mock-faq-q">6. Wie kommt ihr nach Wuppertal? <span class="placeholder-tag" style="font-size:9px;">PLACEHOLDER</span></div></div><span class="mock-faq-icon">+</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="block-brief">
+        <h4>Designer-Brief · 6 FAQs</h4>
+        <ul>
+          <li class="done"><strong>1. Werkhalle-Größe</strong> — Antwort aus Angebotsflyer</li>
+          <li class="done"><strong>2. Tor-Maße</strong> — 2,90 × 3,30 (Standard), 3,30 × 8 m (Hoch)</li>
+          <li class="done"><strong>3. Strom 400V</strong> — auf Anfrage, 80 € Anschluss</li>
+          <li class="done"><strong>4. Nacht-Zugang</strong> — 06–22 + 24/7 Video</li>
+          <li class="done"><strong>5. Mindestmiete</strong> — Garage 6 Mo / Werkhalle 2 J / Lager monatlich</li>
+          <li class="warn"><strong>6. Anfahrt</strong> — Placeholder bis David antwortet</li>
+          <li class="info"><strong>ACF:</strong> Repeater pro Standort · auch ergänzbar</li>
+          <li class="info"><strong>Vor Live:</strong> mit David validieren — er kennt echte Kundenfragen</li>
+        </ul>
+        <div class="quelle">Drafts aus Angebotsflyer + Standorte-Tabelle</div>
+        <div class="ru" style="margin-top:10px;">S9 — 5 готовых FAQ + 1 placeholder. Перед запуском проверить с Давидом.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============= S10 FORM ============= -->
+  <div class="block-card">
+    <div class="block-card-head">
+      <span class="num">S10</span>
+      <h3>Anfrage-Formular</h3>
+      <span class="tag">Conversion</span>
+    </div>
+    <div class="block-card-body">
+      <div class="block-mock">
+        <span class="block-mock-label">Visual Mock</span>
+        <div class="mock-frame">
+          <div class="mock-form">
+            <h3>Direkt in Wuppertal anfragen</h3>
+            <div class="mock-form-fields">
+              <div class="mock-form-field">Name *</div>
+              <div class="mock-form-field">Telefon *</div>
+              <div class="mock-form-field full">E-Mail *</div>
+              <div class="mock-form-field full">Lösung wählen ▾ (Garage / Werkhalle / Büro / Lagerraum)</div>
+              <div class="mock-form-field full textarea">Nachricht (optional)</div>
+              <div class="mock-form-field full" style="background:transparent; border:none; padding:6px 0; font-size:11px;">☐ Ich habe die Datenschutzerklärung gelesen *</div>
+            </div>
+            <div class="mock-form-cta">
+              <button class="mock-cta">Anfrage senden</button>
+              <span style="font-size:11px; color:var(--gray); margin-left:12px;">Antwort werktags innerhalb von 24h</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="block-brief">
+        <h4>Designer-Brief</h4>
+        <ul>
+          <li class="done"><strong>5 Felder</strong>: Name · Tel · Email · Lösung-Dropdown · Nachricht</li>
+          <li class="done"><strong>Hidden Field:</strong> <code>standort_id=wuppertal</code> · Source-Tracking für Bitrix24</li>
+          <li class="done"><strong>Backend:</strong> Bitrix24 (entschieden 20.03.2026)</li>
+          <li class="done"><strong>Pflicht-Felder:</strong> Name, Email, Tel, Datenschutz-Checkbox</li>
+          <li class="info"><strong>Validation:</strong> Inline · Email-Format · Tel mind. 6 Ziffern</li>
+          <li class="info"><strong>Erfolg-State:</strong> Success-Message + GA4-Event „form_standort_submit"</li>
+        </ul>
+        <div class="quelle">Tech-Stack-Entscheidung: WordPress + Bricks + Bitrix24-Webhook</div>
+        <div class="ru" style="margin-top:10px;">S10 — форма, hidden standort_id=wuppertal, backend Bitrix24.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============= S11 ANDERE STANDORTE — CROSS LINK ============= -->
+  <div class="block-card cross-link">
+    <div class="block-card-head cross">
+      <span class="num">S11</span>
+      <h3>Andere Standorte in der Nähe — CROSS-LINK</h3>
+      <span class="tag">Internal SEO</span>
+    </div>
+    <div class="block-card-body">
+      <div class="block-mock">
+        <span class="block-mock-label">Visual Mock</span>
+        <div class="mock-frame">
+          <div style="padding:18px 24px 0;"><h3 style="font-family:'Roboto Condensed',sans-serif; font-size:18px; text-transform:uppercase; letter-spacing:0.04em;">Weitere Standorte in deiner Nähe</h3></div>
+          <div class="mock-related">
+            <div class="mock-related-card">
+              <h4>Remscheid</h4>
+              <p>Am Bruch 25, 42857</p>
+              <p style="color:var(--red);"><strong>~12 km</strong></p>
+              <p>Garagen &amp; Lager · isolierte 8/10/12er</p>
+              <button class="mock-cta text" style="padding:6px 0; margin-top:6px;">→ Standort öffnen</button>
+            </div>
+            <div class="mock-related-card">
+              <h4>Mülheim a.d.R.</h4>
+              <p>Aktienstr. 17, 45468</p>
+              <p style="color:var(--red);"><strong>~18 km</strong></p>
+              <p>Garagen, Lager &amp; Werkhallen</p>
+              <button class="mock-cta text" style="padding:6px 0; margin-top:6px;">→ Standort öffnen</button>
+            </div>
+            <div class="mock-related-card">
+              <h4>Köln</h4>
+              <p>Pauline-Christmann-Str. 25, 51107</p>
+              <p style="color:var(--red);"><strong>~35 km</strong></p>
+              <p>Garagen &amp; Lager · Sondereinheiten bis 80 m²</p>
+              <button class="mock-cta text" style="padding:6px 0; margin-top:6px;">→ Standort öffnen</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="block-brief">
+        <h4>Designer-Brief</h4>
+        <ul>
+          <li class="done"><strong>3 Karten</strong> · Stadt + Adresse + Distanz + Produkte + CTA</li>
+          <li class="warn"><strong>Distanzen geschätzt</strong> nach PLZ — David / Maps verifizieren</li>
+          <li class="info"><strong>Algorithmus:</strong> 3 nächste Standorte (Luftlinie) mit gemeinsamen Produktangeboten</li>
+          <li class="info"><strong>Mobile:</strong> Stack 1-spaltig</li>
+          <li class="info"><strong>Internal SEO:</strong> Standort-Cluster-Linking — wichtig für lokale Rankings</li>
+        </ul>
+        <div class="quelle">Standorte-Tabelle · Distanzen geschätzt nach PLZ-Region</div>
+        <div class="ru" style="margin-top:10px;">S11 — кросс-линк на 3 ближайших филиала. Расстояния — оценка, нужна верификация.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============= S12 OUTRO ============= -->
+  <div class="block-card">
+    <div class="block-card-head">
+      <span class="num">S12</span>
+      <h3>CTA-Footer · Re-Use Homepage-Komponente</h3>
+      <span class="tag">Markenoutro</span>
+    </div>
+    <div class="block-card-body">
+      <div class="block-mock">
+        <span class="block-mock-label">Re-Use</span>
+        <div class="mock-frame">
+          <div style="padding:40px 24px; background:linear-gradient(135deg, var(--black) 0%, #2a2a2a 100%); color:white; text-align:center;">
+            <p style="color:var(--red); font-family:'Roboto Condensed',sans-serif; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; margin-bottom:8px;">Mega-Mietpark</p>
+            <h2 style="font-family:'Roboto Condensed',sans-serif; font-size:28px; text-transform:uppercase; letter-spacing:0.04em; color:white; margin-bottom:0;">Einfach einfahren.</h2>
+            <p style="font-size:11px; color:rgba(255,255,255,0.5); margin-top:20px; font-style:italic;">↑ Identisch zur Homepage-S12 ↑</p>
+          </div>
+        </div>
+      </div>
+      <div class="block-brief">
+        <h4>Designer-Brief</h4>
+        <ul>
+          <li class="done">Komponente <strong>identisch</strong> zur Homepage-S12 — keine Variante</li>
+          <li class="done">Marken-Claim · Verfügbarkeits-Banner (ACF) · Aktions-Banner (ACF)</li>
+          <li class="info"><strong>Spart Zeit:</strong> einmal designen, 3× nutzen (Startseite + Standort + Lösung)</li>
+          <li class="info"><strong>Visuelle Konsistenz:</strong> Site-weit gleicher Outro</li>
+        </ul>
+        <div class="quelle">Re-Use-Prinzip: 1 Component → alle Seiten</div>
+        <div class="ru" style="margin-top:10px;">S12 — переиспользуемая компонента из главной. Без вариантов.</div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ============= FRAGEN AN DAVID ============= -->
+<section class="light">
+  <div class="fragen-section" style="margin-top:0; padding-top:0; border-top:none;">
+    <p class="section-label">📋 Fragen an David</p>
+    <h2>Was wir für die Standort-Seite brauchen</h2>
+    <div class="ru">Что нужно от Давида для финальной версии Standort-страницы. До получения — placeholders в дизайне.</div>
+
+    <table class="fragen-table" style="margin-top:24px;">
+      <thead>
+        <tr>
+          <th style="width:40px;">#</th>
+          <th>Was wir brauchen · Что нужно</th>
+          <th style="width:25%;">Wofür · Куда</th>
+          <th style="width:140px;">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td><strong>6–12 Fotos vom Wuppertal-Objekt</strong> · Hauptmotiv (Hero) + Galerie. NordSpace-Stil, möglichst mit Mensch im Bild.</td><td>S1 Hero · S5 Galerie</td><td><span class="status-open">⚠️ offen</span></td></tr>
+        <tr><td>2</td><td><strong>Standortleiter Wuppertal</strong> · Foto (Porträt) + Name + Telefon/WhatsApp.</td><td>S3 Manager</td><td><span class="status-open">⚠️ offen</span></td></tr>
+        <tr><td>3</td><td><strong>Office-Öffnungszeiten Wuppertal</strong> (Mo–Fr Uhrzeit, getrennt von 24/7-Zugang).</td><td>S2 NAP</td><td><span class="status-open">⚠️ offen</span></td></tr>
+        <tr><td>4</td><td><strong>Lagerraum-Preise Wuppertal</strong> · Einstiegspreis für 4–22 m² Einheiten.</td><td>S4 Lösungs-Karten</td><td><span class="status-open">⚠️ offen</span></td></tr>
+        <tr><td>5</td><td><strong>Google-Reviews Wuppertal</strong> · Sterne-Bewertung + Anzahl + 3 echte Zitate (oder Freigabe für Live-API).</td><td>S8 Bewertungen</td><td><span class="status-open">⚠️ offen</span></td></tr>
+        <tr><td>6</td><td><strong>Anfahrtsbeschreibung</strong> · welche Autobahn am nächsten? ÖPNV-Linie + Distanz?</td><td>S7 Anfahrt</td><td><span class="status-open">⚠️ offen</span></td></tr>
+        <tr><td>7</td><td><strong>Distanzen verifizieren</strong> · Remscheid (~12 km), Mülheim (~18 km), Köln (~35 km).</td><td>S11 Andere Standorte</td><td><span class="status-verify">🔍 verifizieren</span></td></tr>
+        <tr><td>8</td><td><strong>Echte Wuppertal-FAQs</strong> · welche Fragen kommen am häufigsten? (5 Drafts vorhanden)</td><td>S9 FAQ</td><td><span class="status-draft">📝 5 drafts</span></td></tr>
+      </tbody>
+    </table>
+
+    <div class="banner blue" style="margin-top:24px;">
+      <strong>📦 Bündelungs-Tipp:</strong> Punkt 4 (Lagerraum-Preise Wuppertal) lässt sich mit den Werkhalle-Preisen aus dem Lösung-Tab (Mülheim + Köln-Rodenkirchen) zu <strong>einer konsolidierten Preis-Anfrage</strong> bündeln. Eine Mail an David — alle 3 Lücken zu.
+    </div>
+    <div class="ru"><strong>Совет по консолидации:</strong> пункт 4 (Lagerraum-цена Wuppertal) можно объединить с Werkhalle-ценами из Lösung-таба (Mülheim + Köln-Rodenkirchen) в один сводный запрос Давиду.</div>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <div class="footer-brand">W&amp;S <span>AGENCY</span></div>
+    <p style="margin-top:6px;">TZ Designer · Standort-Seite Wuppertal · <strong style="color:var(--red);">Version 2.1 · DE + RU</strong></p>
+  </div>
+  <div style="text-align:right;">
+    <p>← Zurück zum <a href="index.html" style="color:var(--red);">TZ-Hub</a></p>
+    <p style="margin-top:4px;">Stand: 2026-04-28 [AW]</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var btn = document.getElementById('ruToggle');
+  var body = document.body;
+  var STORAGE_KEY = 'tz-v21-ru-visible';
+  var stored = null;
+  try { stored = localStorage.getItem(STORAGE_KEY); } catch (e) {}
+  if (stored === 'off') { body.classList.add('hide-ru'); btn.classList.add('off'); btn.textContent = 'DE only'; }
+  btn.addEventListener('click', function () {
+    body.classList.toggle('hide-ru');
+    var hidden = body.classList.contains('hide-ru');
+    btn.classList.toggle('off', hidden);
+    btn.textContent = hidden ? 'DE only' : 'DE + RU';
+    try { localStorage.setItem(STORAGE_KEY, hidden ? 'off' : 'on'); } catch (e) {}
+  });
+})();
+</script>
+
+</body>
+</html>
