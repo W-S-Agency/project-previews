@@ -148,67 +148,26 @@ html { font-size: 18px; }
 #btn-prev { left: 24px; }
 #btn-next { right: 24px; }
 
-/* Lists */
-.list-dot {
+/* Lists — with Lucide icons */
+.list-dot, .list-arrow, .list-x, .list-check {
   display: flex;
-  align-items: baseline;
+  align-items: flex-start;
   gap: 12px;
   font-size: 1.05rem;
   line-height: 1.55;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
-.list-dot::before {
-  content: "·";
-  color: var(--color-accent);
-  font-weight: 700;
-  font-size: 1.5rem;
-  line-height: 1;
+.list-x { color: rgba(255,255,255,0.85); font-size: 1rem; }
+.list-check { font-size: 1rem; }
+.list-icon {
   flex-shrink: 0;
-}
-.list-arrow {
-  display: flex;
-  align-items: baseline;
-  gap: 14px;
-  font-size: 1.05rem;
-  line-height: 1.55;
-  margin-bottom: 12px;
-}
-.list-arrow::before {
-  content: "→";
   color: var(--color-accent);
-  font-weight: 700;
-  flex-shrink: 0;
+  width: 1.15rem;
+  height: 1.15rem;
+  margin-top: 4px;
+  stroke-width: 2.5;
 }
-.list-x {
-  display: flex;
-  align-items: baseline;
-  gap: 14px;
-  font-size: 1rem;
-  line-height: 1.55;
-  margin-bottom: 8px;
-  color: rgba(255,255,255,0.85);
-}
-.list-x::before {
-  content: "×";
-  color: var(--color-accent);
-  font-weight: 700;
-  font-size: 1.15rem;
-  flex-shrink: 0;
-}
-.list-check {
-  display: flex;
-  align-items: baseline;
-  gap: 12px;
-  font-size: 1rem;
-  line-height: 1.55;
-  margin-bottom: 8px;
-}
-.list-check::before {
-  content: "✓";
-  color: var(--color-accent);
-  font-weight: 700;
-  flex-shrink: 0;
-}
+.list-icon-sm { width: 1rem; height: 1rem; }
 
 .note {
   color: var(--color-muted);
@@ -413,9 +372,213 @@ html { font-size: 18px; }
 }
 .date-cell p { color: var(--color-muted); font-size: .9rem; line-height: 1.55; }
 
+/* Nav dots */
+.nav-dots {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 7px;
+  z-index: 90;
+  padding: 8px 14px;
+  background: rgba(0,0,0,0.4);
+  border-radius: 999px;
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--color-border);
+}
+.nav-dots .nd {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background .2s, transform .2s;
+}
+.nav-dots .nd:hover { background: rgba(255,87,34,0.5); transform: scale(1.3); }
+.nav-dots .nd.on { background: var(--color-accent); transform: scale(1.4); }
+
+/* Slide counter (top-right, persistent) */
+#slide-counter {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  letter-spacing: .14em;
+  color: var(--color-muted);
+  z-index: 90;
+}
+
+/* Stepped stats card style (for S04, S10) */
+.stepped-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 26px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: transform .2s, border-color .2s;
+}
+.stepped-card.hot {
+  background: rgba(255,87,34,0.10);
+  border-color: rgba(255,87,34,0.45);
+}
+.stepped-card.hot .num { color: var(--color-text); }
+.stepped-card .num {
+  font-size: clamp(1.8rem, 3.4vw, 2.7rem);
+  font-weight: 800;
+  color: var(--color-accent);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.stepped-card .lbl {
+  color: var(--color-muted);
+  font-size: .72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+}
+.stepped-card.hot .lbl { color: var(--color-accent); }
+.stepped-card .ttl {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+.stepped-card p { color: var(--color-muted); font-size: .9rem; line-height: 1.5; }
+.stepped-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-top: 32px;
+  max-width: 1080px;
+}
+
+/* Pricing two-tier (S05) */
+.tier-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 32px;
+  max-width: 980px;
+}
+.tier-card {
+  background: rgba(255,255,255,0.025);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 20px;
+  padding: 28px 30px;
+}
+.tier-card.emphasized {
+  background: rgba(255,87,34,0.08);
+  border-color: rgba(255,87,34,0.45);
+}
+.tier-card .tier-h {
+  color: var(--color-accent);
+  font-size: .82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  margin-bottom: 10px;
+}
+.tier-card .tier-price {
+  font-size: clamp(2rem, 3.6vw, 2.8rem);
+  font-weight: 800;
+  color: var(--color-text);
+  line-height: 1;
+  margin-bottom: 18px;
+  letter-spacing: -0.02em;
+}
+.tier-card .tier-note {
+  color: var(--color-muted);
+  font-size: .9rem;
+  margin-bottom: 18px;
+}
+.tier-card ul { display: flex; flex-direction: column; gap: 10px; margin-top: 6px; }
+.tier-card li { display: flex; gap: 10px; font-size: .95rem; line-height: 1.45; align-items: flex-start; }
+.tier-card li svg { flex-shrink: 0; color: var(--color-accent); width: 1.05rem; height: 1.05rem; margin-top: 4px; stroke-width: 2.5; }
+
+/* Timeline steps (S09) */
+.tl-list {
+  position: relative;
+  padding-left: 44px;
+  margin-top: 24px;
+  max-width: 880px;
+}
+.tl-list::before {
+  content: "";
+  position: absolute;
+  left: 15px;
+  top: 12px;
+  bottom: 12px;
+  width: 2px;
+  background: linear-gradient(to bottom, rgba(255,87,34,0.6), rgba(255,87,34,0.15));
+}
+.tl-step {
+  position: relative;
+  padding-bottom: 24px;
+}
+.tl-step:last-child { padding-bottom: 0; }
+.tl-step::before {
+  content: "";
+  position: absolute;
+  left: -37px;
+  top: 4px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0 0 4px var(--color-bg), 0 0 0 5px rgba(255,87,34,0.3);
+}
+.tl-step .tl-num {
+  font-family: 'Courier New', monospace;
+  color: var(--color-accent);
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.tl-step .tl-ttl { font-size: 1.05rem; font-weight: 700; color: var(--color-text); margin-bottom: 4px; }
+.tl-step p { color: var(--color-muted); font-size: .88rem; line-height: 1.55; }
+
+/* Team icons (S13) */
+.team-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: rgba(255,87,34,0.10);
+  border: 1px solid rgba(255,87,34,0.30);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+.team-icon svg { width: 26px; height: 26px; color: var(--color-accent); stroke-width: 2; }
+
+/* CTA button (S14) */
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  background: var(--color-accent);
+  color: #0a0a0a;
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: transform .15s, background .15s;
+  margin-top: 12px;
+}
+.cta-btn:hover { transform: translateY(-1px); background: #ff7a4a; }
+.cta-btn svg { width: 1.1rem; height: 1.1rem; stroke-width: 2.5; }
+
 /* Responsive */
 @media (max-width: 1100px) {
-  .stats-4 { grid-template-columns: repeat(2, 1fr); }
+  .stats-4, .stepped-grid { grid-template-columns: repeat(2, 1fr); }
   .work-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 1024px) {
@@ -426,20 +589,44 @@ html { font-size: 18px; }
   .brand-tr { right: 56px; }
   .big-num { font-size: clamp(8rem, 18vw, 16rem); }
   .fb-grid { gap: 36px; }
+  .tier-grid { grid-template-columns: 1fr; gap: 16px; }
 }
 @media (max-width: 768px) {
   html { font-size: 15px; }
-  .slide { padding: 96px 24px 80px !important; min-height: 100vh; }
+  .slide { padding: 80px 24px 80px !important; min-height: 100vh; }
   .slide-label { top: 24px; left: 24px; }
-  .page-num { left: 24px; bottom: 24px; }
+  .page-num { left: 24px; bottom: 60px; }
   .swipe-hint { display: none; }
   .brand-tr { display: none; }
+  #slide-counter { top: 18px; right: 18px; }
   .big-num { font-size: clamp(5rem, 24vw, 8rem); top: 8%; right: 6%; }
-  #btn-prev { left: 6px; }
-  #btn-next { right: 6px; }
-  .stats-4, .work-grid, .dates-grid, .team-grid, .rules-grid { grid-template-columns: 1fr !important; gap: 20px !important; }
+  #btn-prev { left: 6px; width: 36px; height: 36px; }
+  #btn-next { right: 6px; width: 36px; height: 36px; }
+  .stats-4, .work-grid, .dates-grid, .team-grid, .rules-grid, .stepped-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
   .fb-grid { grid-template-columns: 1fr !important; gap: 28px !important; }
   .cmp-row, .cmp-head { grid-template-columns: 1.4fr 1fr 1fr !important; gap: 8px !important; font-size: .9rem !important; }
+  .nav-dots { bottom: 12px; padding: 6px 10px; }
+  .nav-dots .nd { width: 5px; height: 5px; }
+  .tier-card { padding: 22px 22px; }
+  .tier-card .tier-price { font-size: 2rem; }
+}
+@media (max-width: 480px) {
+  html { font-size: 14px; }
+  .slide { padding: 70px 16px 70px !important; }
+  .slide-label { top: 16px; left: 16px; }
+  .page-num { display: none; }
+  #slide-counter { top: 14px; right: 14px; font-size: 10px; }
+  .big-num { display: none; }
+  #btn-prev, #btn-next { display: none; }
+  .h-hero { font-size: clamp(1.8rem, 7vw, 2.4rem) !important; }
+  .h-mid { font-size: clamp(1.3rem, 5vw, 1.8rem) !important; }
+  .stepped-card { padding: 18px 18px; gap: 10px; }
+  .stepped-card .num { font-size: 1.6rem; }
+  .tier-card { padding: 18px 18px; }
+  .tier-card .tier-price { font-size: 1.6rem; }
+  .tl-list { padding-left: 32px; }
+  .tl-step::before { left: -28px; width: 12px; height: 12px; }
+  .cta-btn { padding: 12px 22px; font-size: .92rem; }
 }
 </style>
 </head>
@@ -447,6 +634,8 @@ html { font-size: 18px; }
 
 <button class="nav-arrow" id="btn-prev" aria-label="Назад">←</button>
 <button class="nav-arrow" id="btn-next" aria-label="Вперёд">→</button>
+<div id="slide-counter">01 · 14</div>
+<nav class="nav-dots" id="dots" aria-label="Навигация по слайдам"></nav>
 
 <!-- ═══════════════════════════════════════════════════════════════════════ -->
 <!-- S01 · HOOK                                                              -->
@@ -514,10 +703,10 @@ html { font-size: 18px; }
       Программа правительства <span class="accent">Bayern</span>.<br>
       Дают на&nbsp;цифровизацию малого бизнеса.
     </h2>
-    <div class="list-dot"><span><b>Не&nbsp;кредит.</b></span></div>
-    <div class="list-dot"><span><b>Не&nbsp;возврат.</b></span></div>
-    <div class="list-dot"><span><span class="accent" style="font-weight:700;">Прямая дотация от&nbsp;земли Bayern.</span></span></div>
-    <div class="list-dot"><span><span class="accent" style="font-weight:700;">До&nbsp;50% твоих расходов.</span></span></div>
+    <div class="list-dot"><svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg><span><b>Не&nbsp;кредит.</b></span></div>
+    <div class="list-dot"><svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg><span><b>Не&nbsp;возврат.</b></span></div>
+    <div class="list-dot"><svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg><span><span class="accent" style="font-weight:700;">Прямая дотация от&nbsp;земли Bayern.</span></span></div>
+    <div class="list-dot"><svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg><span><span class="accent" style="font-weight:700;">До&nbsp;50% твоих расходов.</span></span></div>
     <p class="note mt-10">Действует с&nbsp;01.07.2024 до&nbsp;31.12.2027. Программа Bayerisches Staatsministerium für&nbsp;Wirtschaft.</p>
   </div>
 
@@ -537,26 +726,30 @@ html { font-size: 18px; }
     <h2 class="h-mid mb-2">Сколько ты&nbsp;получишь.</h2>
     <p class="note mb-2">Четыре опорные цифры программы.</p>
 
-    <div class="stats-4">
-      <div class="stat-cell">
+    <div class="stepped-grid">
+      <div class="stepped-card">
         <div class="lbl">Standard, до</div>
         <div class="num">7.500&nbsp;€</div>
-        <p>Для общей цифровизации: сайт, CRM, ERP, IT-безопасность.</p>
+        <div class="ttl">Общая цифровизация</div>
+        <p>Сайт, CRM, ERP, IT-безопасность.</p>
       </div>
-      <div class="stat-cell">
+      <div class="stepped-card hot">
         <div class="lbl">Plus, до</div>
         <div class="num">30.000&nbsp;€</div>
-        <p>Только за&nbsp;«новейшие технологии»: KI, робототехника, цифровые двойники.</p>
+        <div class="ttl">Новейшие технологии</div>
+        <p>KI, робототехника, цифровые двойники.</p>
       </div>
-      <div class="stat-cell">
+      <div class="stepped-card">
         <div class="lbl">Покрытие, до</div>
         <div class="num">50%</div>
-        <p>От&nbsp;förderfähiger расходов проекта в&nbsp;обеих линиях.</p>
+        <div class="ttl">От&nbsp;förderfähiger расходов</div>
+        <p>В&nbsp;обеих линиях программы.</p>
       </div>
-      <div class="stat-cell">
+      <div class="stepped-card">
         <div class="lbl">Минимум, от</div>
         <div class="num">4.000&nbsp;€</div>
-        <p>Минимальный размер проекта. Меньше — не&nbsp;принимают.</p>
+        <div class="ttl">Размер проекта</div>
+        <p>Меньше&nbsp;— не&nbsp;принимают.</p>
       </div>
     </div>
 
@@ -582,18 +775,29 @@ html { font-size: 18px; }
     <h2 class="h-mid mb-2">Standard или&nbsp;Plus.</h2>
     <p class="note mb-2">Главная разница — Innovationsgehalt (уровень инновационности проекта).</p>
 
-    <div class="cmp-head">
-      <div></div>
-      <div class="lbl-S">Standard</div>
-      <div class="lbl-P">Plus</div>
-    </div>
-    <div class="cmp-tbl">
-      <div class="cmp-row"><span class="k">Максимальная сумма</span><span class="vS">до&nbsp;7.500&nbsp;€</span><span class="vP">до&nbsp;30.000&nbsp;€</span></div>
-      <div class="cmp-row"><span class="k">Покрытие расходов</span><span class="vS">до&nbsp;50%</span><span class="vP">до&nbsp;50%</span></div>
-      <div class="cmp-row"><span class="k">Минимум проекта</span><span class="vS">от&nbsp;4.000&nbsp;€</span><span class="vP">рекомендуется ≥ 15.000&nbsp;€</span></div>
-      <div class="cmp-row"><span class="k">Описание инноваций</span><span class="vS">не&nbsp;нужно детально</span><span class="vP">обязательно, подробно</span></div>
-      <div class="cmp-row"><span class="k">Beratung Bezirksregierung</span><span class="vS">не&nbsp;нужна</span><span class="vP">рекомендуется до&nbsp;подачи</span></div>
-      <div class="cmp-row"><span class="k">Заявок за&nbsp;период</span><span class="vS">1 на&nbsp;Förderbereich</span><span class="vP">1 за&nbsp;всю Laufzeit</span></div>
+    <div class="tier-grid">
+      <div class="tier-card">
+        <div class="tier-h">Standard</div>
+        <div class="tier-price">до&nbsp;7.500&nbsp;€</div>
+        <p class="tier-note">Покрытие до&nbsp;50%. Подходит для&nbsp;общей цифровизации без&nbsp;сильного инновационного компонента.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Минимум проекта от&nbsp;4.000&nbsp;€</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Описание инноваций — не&nbsp;нужно детально</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Beratung Bezirksregierung — не&nbsp;нужна</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>1&nbsp;заявка на&nbsp;Förderbereich</span></li>
+        </ul>
+      </div>
+      <div class="tier-card emphasized">
+        <div class="tier-h">Plus</div>
+        <div class="tier-price">до&nbsp;30.000&nbsp;€</div>
+        <p class="tier-note">Покрытие до&nbsp;50%. Только за&nbsp;«новейшие технологии»: KI, робототехника, цифровые двойники.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Рекомендуется ≥&nbsp;15.000&nbsp;€ в&nbsp;проекте</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Описание инноваций — обязательно, подробно</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Beratung Bezirksregierung — рекомендуется до&nbsp;подачи</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>1&nbsp;заявка за&nbsp;всю Laufzeit программы</span></li>
+        </ul>
+      </div>
     </div>
 
     <div class="mt-8 flex items-center gap-5 flex-wrap">
@@ -665,24 +869,24 @@ html { font-size: 18px; }
       <div class="fb-col">
         <div class="fb-sub">Förderbereich&nbsp;2.1</div>
         <h3>Цифровизация</h3>
-        <div class="list-check"><span>KI и&nbsp;intelligente Datenanalyse</span></div>
-        <div class="list-check"><span>Робототехника (включая роботов как&nbsp;hardware)</span></div>
-        <div class="list-check"><span>Цифровые двойники, симуляции</span></div>
-        <div class="list-check"><span>Migration / Portierung IT-систем</span></div>
-        <div class="list-check"><span>IKT-Software: ERP, CRM, DMS</span></div>
-        <div class="list-check"><span>Branchenspezifische решения и&nbsp;интеграции</span></div>
-        <div class="list-check"><span>Innovative веб-платформы (KI-driven, intelligente функции)</span></div>
+        <div class="list-check"><svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>KI и&nbsp;intelligente Datenanalyse</span></div>
+        <div class="list-check"><svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Робототехника (включая роботов как&nbsp;hardware)</span></div>
+        <div class="list-check"><svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Цифровые двойники, симуляции</span></div>
+        <div class="list-check"><svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Migration / Portierung IT-систем</span></div>
+        <div class="list-check"><svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>IKT-Software: ERP, CRM, DMS</span></div>
+        <div class="list-check"><svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Branchenspezifische решения и&nbsp;интеграции</span></div>
+        <div class="list-check"><svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Innovative веб-платформы (KI-driven, intelligente функции)</span></div>
       </div>
       <div class="fb-col">
         <div class="fb-sub">Förderbereich&nbsp;2.2</div>
         <h3>IT-безопасность</h3>
-        <div class="list-check"><span>Firewall-системы</span></div>
-        <div class="list-check"><span>Защита сети (Netzwerk-Sicherheit)</span></div>
-        <div class="list-check"><span>IKT-Hardware (только в&nbsp;этой категории)</span></div>
-        <div class="list-check"><span>Beratung по&nbsp;безопасности</span></div>
-        <div class="list-check"><span>Audit и&nbsp;настройка процессов</span></div>
-        <div class="list-check"><span>Schulung сотрудников</span></div>
-        <div class="list-check"><span>Защита данных и&nbsp;backup-инфраструктура</span></div>
+        <div class="list-check"><svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Firewall-системы</span></div>
+        <div class="list-check"><svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Защита сети (Netzwerk-Sicherheit)</span></div>
+        <div class="list-check"><svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>IKT-Hardware (только в&nbsp;этой категории)</span></div>
+        <div class="list-check"><svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Beratung по&nbsp;безопасности</span></div>
+        <div class="list-check"><svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Audit и&nbsp;настройка процессов</span></div>
+        <div class="list-check"><svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Schulung сотрудников</span></div>
+        <div class="list-check"><svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Защита данных и&nbsp;backup-инфраструктура</span></div>
       </div>
     </div>
 
@@ -709,21 +913,21 @@ html { font-size: 18px; }
     <h2 class="h-mid mb-10">На&nbsp;что не&nbsp;дают.</h2>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-1 max-w-[1080px] mb-8">
-      <div class="list-x"><span><b>Консалтинг</b> сам по&nbsp;себе — отдельная программа BAFA Unternehmensberatung</span></div>
-      <div class="list-x"><span><b>Зарплаты, аренду, командировочные</b> — нет</span></div>
-      <div class="list-x"><span><b>Уже купленное</b> до&nbsp;подачи заявки — нет</span></div>
-      <div class="list-x"><span>Стандартное ПО (Office, OS, антивирус)</span></div>
-      <div class="list-x"><span>Стандартный Webshop без&nbsp;Innovationsgehalt</span></div>
-      <div class="list-x"><span>Стандартное Online-Marketing (SEO, Ads, Newsletter)</span></div>
-      <div class="list-x"><span>Hardware: PC, ноутбуки, принтеры, производственное</span></div>
-      <div class="list-x"><span>Лицензии и&nbsp;сервисы свыше <b>18&nbsp;месяцев</b></span></div>
-      <div class="list-x"><span>Mietkauf и&nbsp;Leasing-finanzierte решения</span></div>
-      <div class="list-x"><span>Двойное финансирование (другие программы)</span></div>
+      <div class="list-x"><svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span><b>Консалтинг</b> сам по&nbsp;себе — отдельная программа BAFA Unternehmensberatung</span></div>
+      <div class="list-x"><svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span><b>Зарплаты, аренду, командировочные</b> — нет</span></div>
+      <div class="list-x"><svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span><b>Уже купленное</b> до&nbsp;подачи заявки — нет</span></div>
+      <div class="list-x"><svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span>Стандартное ПО (Office, OS, антивирус)</span></div>
+      <div class="list-x"><svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span>Стандартный Webshop без&nbsp;Innovationsgehalt</span></div>
+      <div class="list-x"><svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span>Стандартное Online-Marketing (SEO, Ads, Newsletter)</span></div>
+      <div class="list-x"><svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span>Hardware: PC, ноутбуки, принтеры, производственное</span></div>
+      <div class="list-x"><svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span>Лицензии и&nbsp;сервисы свыше <b>18&nbsp;месяцев</b></span></div>
+      <div class="list-x"><svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span>Mietkauf и&nbsp;Leasing-finanzierte решения</span></div>
+      <div class="list-x"><svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span>Двойное финансирование (другие программы)</span></div>
     </div>
 
     <div class="accent-block">
       <p class="body-lg mb-2">Контракт с&nbsp;исполнителем <span class="accent" style="font-weight:700;">ДО&nbsp;подачи</span> заявки = <b>деньги пропали.</b></p>
-      <p class="note">Сначала заявка <span class="arrow">→</span> подтверждение от&nbsp;Bayern <span class="arrow">→</span> только потом работа.</p>
+      <p class="note flex items-center gap-2 flex-wrap">Сначала заявка <svg class="list-icon list-icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> подтверждение от&nbsp;Bayern <svg class="list-icon list-icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> только потом работа.</p>
     </div>
   </div>
 
@@ -742,48 +946,36 @@ html { font-size: 18px; }
   <div class="content">
     <h2 class="h-mid mb-10">От&nbsp;заявки до&nbsp;денег.</h2>
 
-    <div>
-      <div class="step">
-        <div class="num-tag">01</div>
-        <div class="body">
-          <b>Antrag — заявка онлайн через&nbsp;ELSTER</b>
-          <p>ELSTER — личный кабинет для&nbsp;общения с&nbsp;налоговой. Заполнение формы ~30&nbsp;минут. Black-list проверка по&nbsp;De-minimis (300.000&nbsp;€ за&nbsp;3&nbsp;года).</p>
-        </div>
+    <div class="tl-list">
+      <div class="tl-step">
+        <div class="tl-num">01 · Antrag</div>
+        <div class="tl-ttl">Заявка онлайн через&nbsp;ELSTER</div>
+        <p>ELSTER — личный кабинет для&nbsp;общения с&nbsp;налоговой. Заполнение формы ~30&nbsp;минут. Black-list проверка по&nbsp;De-minimis (300.000&nbsp;€ за&nbsp;3&nbsp;года).</p>
       </div>
-      <div class="step">
-        <div class="num-tag">02</div>
-        <div class="body">
-          <b>Eingangsbestätigung — подтверждение от&nbsp;Bayern по&nbsp;email</b>
-          <p>Приходит за&nbsp;часы / в&nbsp;течение дня. С&nbsp;этого момента — можно стартовать проект на&nbsp;auf eigenes Risiko.</p>
-        </div>
+      <div class="tl-step">
+        <div class="tl-num">02 · Eingangsbestätigung</div>
+        <div class="tl-ttl">Подтверждение от&nbsp;Bayern по&nbsp;email</div>
+        <p>Приходит за&nbsp;часы / в&nbsp;течение дня. С&nbsp;этого момента — можно стартовать проект на&nbsp;auf eigenes Risiko.</p>
       </div>
-      <div class="step">
-        <div class="num-tag">03</div>
-        <div class="body">
-          <b>Prüfung — проверка в&nbsp;Bezirksregierung</b>
-          <p>Местная администрация округа Bayern проверяет соответствие программе и&nbsp;корректность Angebot.</p>
-        </div>
+      <div class="tl-step">
+        <div class="tl-num">03 · Prüfung</div>
+        <div class="tl-ttl">Проверка в&nbsp;Bezirksregierung</div>
+        <p>Местная администрация округа Bayern проверяет соответствие программе и&nbsp;корректность Angebot.</p>
       </div>
-      <div class="step">
-        <div class="num-tag">04</div>
-        <div class="body">
-          <b>Förderbescheid — официальное решение</b>
-          <p>Приходит digital в&nbsp;твой ELSTER-Konto. Обычно через&nbsp;2–3&nbsp;недели после&nbsp;Antrag. С&nbsp;этой даты идут <b>18&nbsp;месяцев</b> на&nbsp;реализацию.</p>
-        </div>
+      <div class="tl-step">
+        <div class="tl-num">04 · Förderbescheid</div>
+        <div class="tl-ttl">Официальное решение</div>
+        <p>Приходит digital в&nbsp;твой ELSTER-Konto. Обычно через&nbsp;2–3&nbsp;недели после&nbsp;Antrag. С&nbsp;этой даты идут <b>18&nbsp;месяцев</b> на&nbsp;реализацию.</p>
       </div>
-      <div class="step">
-        <div class="num-tag">05</div>
-        <div class="body">
-          <b>Verwendungsnachweis — отчёт по&nbsp;реализации</b>
-          <p>После реализации и&nbsp;оплаты счетов: один Auszahlungsantrag с&nbsp;документами.</p>
-        </div>
+      <div class="tl-step">
+        <div class="tl-num">05 · Verwendungsnachweis</div>
+        <div class="tl-ttl">Отчёт по&nbsp;реализации</div>
+        <p>После реализации и&nbsp;оплаты счетов: один Auszahlungsantrag с&nbsp;документами.</p>
       </div>
-      <div class="step">
-        <div class="num-tag">06</div>
-        <div class="body">
-          <b>Auszahlung — выплата на&nbsp;счёт</b>
-          <p>Bezirksregierung проверяет и&nbsp;переводит субсидию. Один платёж, без&nbsp;промежуточных авансов.</p>
-        </div>
+      <div class="tl-step">
+        <div class="tl-num">06 · Auszahlung</div>
+        <div class="tl-ttl">Выплата на&nbsp;счёт</div>
+        <p>Bezirksregierung проверяет и&nbsp;переводит субсидию. Один платёж, без&nbsp;промежуточных авансов.</p>
       </div>
     </div>
   </div>
@@ -845,22 +1037,22 @@ html { font-size: 18px; }
 
     <div class="rules-grid">
       <div class="rule-card">
-        <div class="rx">×</div>
+        <div class="rx"><svg style="width:1.5rem;height:1.5rem;stroke-width:2.2;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
         <h4>Никаких заказов до&nbsp;Eingangsbestätigung</h4>
         <p>Ни&nbsp;письменных, ни&nbsp;устных. Даже фраза «ну ребята, давайте начинать» считается Beginn der&nbsp;Maßnahme и&nbsp;блокирует субсидию.</p>
       </div>
       <div class="rule-card">
-        <div class="rx">×</div>
+        <div class="rx"><svg style="width:1.5rem;height:1.5rem;stroke-width:2.2;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
         <h4>ELSTER только лично</h4>
         <p>Подача через стороннего Berater или&nbsp;Steuerberater запрещена. ELSTER-Konto должен быть зарегистрирован на&nbsp;самого предпринимателя.</p>
       </div>
       <div class="rule-card">
-        <div class="rx">×</div>
+        <div class="rx"><svg style="width:1.5rem;height:1.5rem;stroke-width:2.2;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
         <h4>Innovationsgehalt в&nbsp;Angebot обязателен</h4>
         <p>Стандартные формулировки типа «веб-сайт под&nbsp;ключ» блокируют заявку. Нужны описания инновационности и&nbsp;Neuheitsgrad. На&nbsp;практике слово «innovativ» в&nbsp;Angebot помогает (особенно для&nbsp;Plus).</p>
       </div>
       <div class="rule-card">
-        <div class="rx">×</div>
+        <div class="rx"><svg style="width:1.5rem;height:1.5rem;stroke-width:2.2;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
         <h4>Только внешние услуги</h4>
         <p>Personal-, Verwaltungs- и&nbsp;Reisekosten не&nbsp;финансируются. Покупаются только Leistungen externer Anbieter — то&nbsp;что мы&nbsp;делаем для&nbsp;тебя.</p>
       </div>
@@ -909,7 +1101,7 @@ html { font-size: 18px; }
     </div>
 
     <div class="accent-block">
-      <p class="body-lg">Уже сделали для&nbsp;<span class="accent" style="font-weight:700;">более 20&nbsp;фирм</span> по&nbsp;этой программе.<br><span style="color:#bfbfbf;">Заявку подаёшь&nbsp;ты сам через свой ELSTER. Это требование программы. Мы&nbsp;делаем всё остальное.</span></p>
+      <p class="body-lg">Уже сделали <span class="accent" style="font-weight:700;">более 50&nbsp;проектов</span> по&nbsp;этой программе.<br><span style="color:#bfbfbf;">Заявку подаёшь&nbsp;ты сам через свой ELSTER. Это требование программы. Мы&nbsp;делаем всё остальное.</span></p>
     </div>
   </div>
 
@@ -933,16 +1125,19 @@ html { font-size: 18px; }
 
     <div class="team-grid">
       <div class="team-cell">
+        <div class="team-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg></div>
         <div class="ttl">Marketing &amp; Branding</div>
         <h4>W&amp;S Agency</h4>
         <p>Performance-кампании, контент, бренд. SEO и&nbsp;social для&nbsp;digital-направлений.</p>
       </div>
       <div class="team-cell">
+        <div class="team-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg></div>
         <div class="ttl">Web &amp; AI</div>
         <h4>2Penguins</h4>
         <p>Web-разработка, KI-SEO, AI-ассистенты, цифровые двойники процессов и&nbsp;интеллектуальные решения.</p>
       </div>
       <div class="team-cell">
+        <div class="team-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="6" rx="1"/><rect x="16" y="16" width="6" height="6" rx="1"/><rect x="2" y="16" width="6" height="6" rx="1"/><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"/><path d="M12 12V8"/></svg></div>
         <div class="ttl">CRM &amp; ERP</div>
         <h4>W&amp;K Connect</h4>
         <p>Bitrix24, Odoo, AI-автоматизация процессов. Интеграции через API, intelligente Datenanalyse.</p>
@@ -975,14 +1170,19 @@ html { font-size: 18px; }
   <div class="content content-tight">
     <h2 class="h-hero mb-8">Если подходишь — пиши.</h2>
 
-    <p class="body-lg mb-2">Тема <b style="color:#fff;">«Bayern»</b> на&nbsp;<a href="mailto:team@2penguins.eu?subject=Bayern" style="color:var(--color-accent);text-decoration:none;border-bottom:1px solid var(--color-accent);">team@2penguins.eu</a></p>
-    <p class="note mb-10">Разберём за&nbsp;30&nbsp;минут:</p>
+    <p class="note mb-6">Разберём за&nbsp;30&nbsp;минут:</p>
 
-    <div class="list-dot"><span>Твой fit для&nbsp;программы</span></div>
-    <div class="list-dot"><span>Что финансировать в&nbsp;первую очередь</span></div>
-    <div class="list-dot"><span>Сразу готовим Angebot если&nbsp;подходит</span></div>
+    <div class="list-dot"><svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg><span>Твой fit для&nbsp;программы</span></div>
+    <div class="list-dot"><svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg><span>Что финансировать в&nbsp;первую очередь</span></div>
+    <div class="list-dot"><svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg><span>Сразу готовим Angebot если&nbsp;подходит</span></div>
 
-    <div class="accent-block mt-12">
+    <a href="mailto:team@2penguins.eu?subject=Bayern" class="cta-btn">
+      Написать с&nbsp;темой «Bayern»
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+    <p class="note mt-3">team@2penguins.eu</p>
+
+    <div class="accent-block mt-10">
       <p class="body-lg mb-1"><b><span class="accent">4&nbsp;мая</span> — окно. Бюджет ограничен.</b></p>
       <p class="body-lg"><span class="accent" style="font-weight:700;">Не&nbsp;тормози.</span></p>
     </div>
@@ -1008,12 +1208,29 @@ html { font-size: 18px; }
   var total = slides.length, cur = 0;
   var btnPrev = document.getElementById('btn-prev');
   var btnNext = document.getElementById('btn-next');
+  var dots = document.getElementById('dots');
+  var counter = document.getElementById('slide-counter');
+
+  // Build nav dots
+  for (var i = 0; i < total; i++) {
+    var b = document.createElement('button');
+    b.className = 'nd';
+    b.setAttribute('aria-label', 'Слайд ' + (i+1));
+    (function(idx){ b.onclick = function(){ goto(idx); }; })(i);
+    dots.appendChild(b);
+  }
+  var dotEls = dots.querySelectorAll('.nd');
+
+  function pad(n){ return String(n).padStart(2, '0'); }
 
   function goto(n){
     n = Math.max(0, Math.min(total-1, n));
     slides[cur].classList.remove('active');
+    if (dotEls[cur]) dotEls[cur].classList.remove('on');
     cur = n;
     slides[cur].classList.add('active');
+    if (dotEls[cur]) dotEls[cur].classList.add('on');
+    if (counter) counter.textContent = pad(cur+1) + ' · ' + pad(total);
     btnPrev.disabled = cur === 0;
     btnNext.disabled = cur === total-1;
     window.scrollTo({top:0, behavior:'instant'});
@@ -1022,29 +1239,35 @@ html { font-size: 18px; }
   btnPrev.onclick = function(){ goto(cur-1); };
   btnNext.onclick = function(){ goto(cur+1); };
 
+  // Keyboard navigation
   document.addEventListener('keydown', function(e){
-    if(e.key==='ArrowRight'||e.key==='ArrowDown'||e.key===' '||e.key==='PageDown'){
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ' || e.key === 'PageDown') {
       e.preventDefault(); goto(cur+1);
     }
-    if(e.key==='ArrowLeft'||e.key==='ArrowUp'||e.key==='PageUp'){
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp' || e.key === 'PageUp') {
       e.preventDefault(); goto(cur-1);
     }
-    if(e.key==='Home'){ e.preventDefault(); goto(0); }
-    if(e.key==='End'){ e.preventDefault(); goto(total-1); }
+    if (e.key === 'Home') { e.preventDefault(); goto(0); }
+    if (e.key === 'End') { e.preventDefault(); goto(total-1); }
   });
 
-  var tx=0, ty=0;
+  // Touch swipe
+  var tx = 0, ty = 0;
   document.addEventListener('touchstart', function(e){
-    tx=e.touches[0].clientX; ty=e.touches[0].clientY;
-  }, {passive:true});
+    tx = e.touches[0].clientX;
+    ty = e.touches[0].clientY;
+  }, {passive: true});
   document.addEventListener('touchend', function(e){
-    var dx=e.changedTouches[0].clientX-tx, dy=e.changedTouches[0].clientY-ty;
-    if(Math.abs(dx)>50 && Math.abs(dx)>Math.abs(dy)*1.5){
-      if(dx<0) goto(cur+1); else goto(cur-1);
+    var dx = e.changedTouches[0].clientX - tx;
+    var dy = e.changedTouches[0].clientY - ty;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+      if (dx < 0) goto(cur+1); else goto(cur-1);
     }
-  }, {passive:true});
+  }, {passive: true});
 
-  goto(0);
+  // Init: mark first dot active, set counter
+  if (dotEls[0]) dotEls[0].classList.add('on');
+  if (counter) counter.textContent = '01 · ' + pad(total);
 })();
 </script>
 </body>
