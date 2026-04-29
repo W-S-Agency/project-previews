@@ -69,18 +69,18 @@
     .accent { color: var(--color-accent); }
     .h-hero {
       @apply font-extrabold leading-[1.05];
-      font-size: clamp(2.4rem, 5vw, 4.2rem);
+      font-size: clamp(1.9rem, 3.6vw, 3rem);
     }
     .h-mid {
-      @apply font-bold leading-[1.1];
-      font-size: clamp(1.8rem, 3.2vw, 2.7rem);
-    }
-    .h-sec {
-      @apply font-bold leading-[1.1];
+      @apply font-bold leading-[1.15];
       font-size: clamp(1.4rem, 2.4vw, 2rem);
     }
+    .h-sec {
+      @apply font-bold leading-[1.15];
+      font-size: clamp(1.2rem, 2vw, 1.6rem);
+    }
     .body-lg {
-      @apply text-[1.1rem] leading-[1.55];
+      @apply text-[1rem] leading-[1.55];
     }
     .accent-block {
       border-left: 3px solid var(--color-accent);
@@ -99,14 +99,14 @@
 </style>
 
 <style>
-html { font-size: 18px; }
+html { font-size: 16px; }
 
 .slide { display: none; }
 .slide.active { display: flex; }
 
-.content { position: relative; z-index: 2; max-width: 1080px; }
-.content-wide { max-width: 1180px; }
-.content-tight { max-width: 760px; }
+.content { position: relative; z-index: 2; max-width: 1080px; padding-top: 24px; }
+.content-wide { max-width: 1180px; padding-top: 24px; }
+.content-tight { max-width: 760px; padding-top: 24px; }
 
 /* Brand top-right */
 .brand-tr {
@@ -592,41 +592,32 @@ html { font-size: 18px; }
   .tier-grid { grid-template-columns: 1fr; gap: 16px; }
 }
 @media (max-width: 768px) {
-  html { font-size: 15px; }
-  .slide { padding: 80px 24px 80px !important; min-height: 100vh; }
-  .slide-label { top: 24px; left: 24px; }
-  .page-num { left: 24px; bottom: 60px; }
+  html, body { overflow: visible !important; height: auto !important; }
+  html { font-size: 14px; }
+  .slide { padding: 70px 20px 70px !important; height: auto !important; min-height: 100vh; overflow: visible !important; }
+  .slide-label { top: 18px; left: 20px; }
+  .page-num { left: 20px; bottom: 55px; }
   .swipe-hint { display: none; }
   .brand-tr { display: none; }
-  #slide-counter { top: 18px; right: 18px; }
-  .big-num { font-size: clamp(5rem, 24vw, 8rem); top: 8%; right: 6%; }
-  #btn-prev { left: 6px; width: 36px; height: 36px; }
-  #btn-next { right: 6px; width: 36px; height: 36px; }
-  .stats-4, .work-grid, .dates-grid, .team-grid, .rules-grid, .stepped-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
-  .fb-grid { grid-template-columns: 1fr !important; gap: 28px !important; }
-  .cmp-row, .cmp-head { grid-template-columns: 1.4fr 1fr 1fr !important; gap: 8px !important; font-size: .9rem !important; }
-  .nav-dots { bottom: 12px; padding: 6px 10px; }
-  .nav-dots .nd { width: 5px; height: 5px; }
-  .tier-card { padding: 22px 22px; }
-  .tier-card .tier-price { font-size: 2rem; }
-}
-@media (max-width: 480px) {
-  html { font-size: 14px; }
-  .slide { padding: 70px 16px 70px !important; }
-  .slide-label { top: 16px; left: 16px; }
-  .page-num { display: none; }
-  #slide-counter { top: 14px; right: 14px; font-size: 10px; }
+  #slide-counter { top: 14px; right: 14px; }
   .big-num { display: none; }
   #btn-prev, #btn-next { display: none; }
-  .h-hero { font-size: clamp(1.8rem, 7vw, 2.4rem) !important; }
-  .h-mid { font-size: clamp(1.3rem, 5vw, 1.8rem) !important; }
-  .stepped-card { padding: 18px 18px; gap: 10px; }
-  .stepped-card .num { font-size: 1.6rem; }
+  .stats-4, .work-grid, .dates-grid, .team-grid, .rules-grid, .stepped-grid { grid-template-columns: 1fr !important; gap: 14px !important; }
+  .fb-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
+  .cmp-row, .cmp-head { grid-template-columns: 1.4fr 1fr 1fr !important; gap: 8px !important; font-size: .85rem !important; }
+  .nav-dots { bottom: 12px; padding: 6px 10px; }
+  .nav-dots .nd { width: 5px; height: 5px; }
   .tier-card { padding: 18px 18px; }
   .tier-card .tier-price { font-size: 1.6rem; }
-  .tl-list { padding-left: 32px; }
-  .tl-step::before { left: -28px; width: 12px; height: 12px; }
-  .cta-btn { padding: 12px 22px; font-size: .92rem; }
+  .tier-grid { grid-template-columns: 1fr !important; }
+  .h-hero { font-size: clamp(1.6rem, 6vw, 2.1rem) !important; }
+  .h-mid { font-size: clamp(1.2rem, 4.5vw, 1.6rem) !important; }
+  .stepped-card { padding: 16px 18px; gap: 8px; }
+  .stepped-card .num { font-size: 1.5rem; }
+  .tl-list { padding-left: 30px; }
+  .tl-step::before { left: -26px; width: 12px; height: 12px; }
+  .cta-btn { padding: 12px 22px; font-size: .9rem; }
+  .content, .content-wide, .content-tight { padding-top: 16px; max-width: 100% !important; }
 }
 </style>
 </head>
