@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="ru" class="h-full">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digitalbonus Bayern · до 30.000€ на цифровизацию</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+<style type="text/tailwindcss">
+  @theme {
+    --color-bg:      #000000;
+    --color-text:    #ffffff;
+    --color-muted:   #6b6b6b;
+    --color-dim:     #4a4a4a;
+    --color-border:  rgba(255,255,255,0.08);
+    --color-border-strong: rgba(255,255,255,0.16);
+    --color-accent:  #ff5722;
+    --color-accent-soft: rgba(255,87,34,0.12);
+    --font-display:  'Manrope', system-ui, sans-serif;
+  }
+
+  @layer base {
+    html { scroll-behavior: smooth; }
+    body { background: var(--color-bg); color: var(--color-text); font-family: var(--font-display); }
+  }
+
+  @layer components {
+    .slide {
+      @apply relative flex flex-col justify-center;
+      @apply min-h-screen px-24 py-20 overflow-hidden;
+    }
+    .slide-label {
+      @apply absolute top-12 left-24 flex flex-col gap-2;
+      z-index: 5;
+    }
+    .handle {
+      @apply text-[12px] font-mono tracking-wider;
+      color: var(--color-muted);
+    }
+    .cat {
+      @apply text-[11px] font-bold tracking-[.18em] uppercase;
+      color: var(--color-accent);
+    }
+    .page-num {
+      @apply absolute bottom-10 left-24;
+      @apply text-[11px] font-mono tracking-[.14em];
+      color: var(--color-muted);
+    }
+    .swipe-hint {
+      @apply absolute bottom-10 right-24;
+      @apply text-[11px] font-mono tracking-[.14em];
+      color: var(--color-muted);
+    }
+    .big-num {
+      @apply absolute font-extrabold leading-none;
+      top: 5%;
+      right: 4%;
+      font-size: clamp(11rem, 20vw, 20rem);
+      color: var(--color-accent);
+      z-index: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+    .accent { color: var(--color-accent); }
+    .h-hero {
+      @apply font-extrabold leading-[1.05];
+      font-size: clamp(2.4rem, 5vw, 4.2rem);
+    }
+    .h-mid {
+      @apply font-bold leading-[1.1];
+      font-size: clamp(1.8rem, 3.2vw, 2.7rem);
+    }
+    .h-sec {
+      @apply font-bold leading-[1.1];
+      font-size: clamp(1.4rem, 2.4vw, 2rem);
+    }
+    .body-lg {
+      @apply text-[1.1rem] leading-[1.55];
+    }
+    .accent-block {
+      border-left: 3px solid var(--color-accent);
+      padding: 14px 0 14px 22px;
+    }
+    .arrow {
+      color: var(--color-accent);
+      font-weight: 700;
+    }
+    .pill-orange {
+      @apply inline-block px-4 py-1.5 rounded-full text-[12px] font-semibold tracking-wider;
+      border: 1px solid var(--color-accent);
+      color: var(--color-accent);
+    }
+  }
+</style>
+
+<style>
+html { font-size: 18px; }
+
+.slide { display: none; }
+.slide.active { display: flex; }
+
+.content { position: relative; z-index: 2; max-width: 1080px; }
+.content-wide { max-width: 1180px; }
+.content-tight { max-width: 760px; }
+
+/* Brand top-right */
+.brand-tr {
+  position: absolute;
+  top: 48px;
+  right: 96px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  letter-spacing: .14em;
+  color: var(--color-muted);
+  z-index: 5;
+}
+.brand-tr img { height: 18px; opacity: .55; filter: grayscale(1) brightness(2); }
+
+/* navigation */
+.nav-arrow {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--color-border);
+  background: rgba(255,255,255,0.02);
+  color: var(--color-text);
+  font-size: 18px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .2s, border-color .2s;
+}
+.nav-arrow:hover { background: rgba(255,87,34,0.12); border-color: var(--color-accent); }
+.nav-arrow:disabled { opacity: .2; cursor: not-allowed; }
+#btn-prev { left: 24px; }
+#btn-next { right: 24px; }
+
+/* Lists */
+.list-dot {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  font-size: 1.05rem;
+  line-height: 1.55;
+  margin-bottom: 8px;
+}
+.list-dot::before {
+  content: "·";
+  color: var(--color-accent);
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.list-arrow {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  font-size: 1.05rem;
+  line-height: 1.55;
+  margin-bottom: 12px;
+}
+.list-arrow::before {
+  content: "→";
+  color: var(--color-accent);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.list-x {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  font-size: 1rem;
+  line-height: 1.55;
+  margin-bottom: 8px;
+  color: rgba(255,255,255,0.85);
+}
+.list-x::before {
+  content: "×";
+  color: var(--color-accent);
+  font-weight: 700;
+  font-size: 1.15rem;
+  flex-shrink: 0;
+}
+.list-check {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  font-size: 1rem;
+  line-height: 1.55;
+  margin-bottom: 8px;
+}
+.list-check::before {
+  content: "✓";
+  color: var(--color-accent);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.note {
+  color: var(--color-muted);
+  font-size: .92rem;
+  line-height: 1.55;
+}
+
+/* Stats grid */
+.stats-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  max-width: 1080px;
+  margin-top: 36px;
+}
+.stat-cell {
+  border-left: 1px solid var(--color-border-strong);
+  padding-left: 20px;
+}
+.stat-cell .num {
+  font-size: clamp(2rem, 3.6vw, 3rem);
+  font-weight: 800;
+  color: var(--color-accent);
+  line-height: 1;
+  margin-bottom: 10px;
+  letter-spacing: -0.02em;
+}
+.stat-cell .lbl {
+  color: var(--color-accent);
+  font-size: .72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  margin-bottom: 8px;
+}
+.stat-cell p { color: var(--color-muted); font-size: .9rem; line-height: 1.5; }
+
+/* Compare table */
+.cmp-tbl {
+  margin-top: 28px;
+  border-top: 1px solid var(--color-border-strong);
+  max-width: 940px;
+}
+.cmp-row {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr 1fr;
+  gap: 24px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 1rem;
+}
+.cmp-row .k { color: var(--color-muted); font-size: .92rem; }
+.cmp-row .vS { color: var(--color-text); font-weight: 600; }
+.cmp-row .vP { color: var(--color-accent); font-weight: 700; }
+.cmp-head {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr 1fr;
+  gap: 24px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--color-border-strong);
+  font-size: .82rem;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  font-weight: 700;
+}
+.cmp-head .lbl-S { color: var(--color-text); }
+.cmp-head .lbl-P { color: var(--color-accent); }
+
+/* Two-col Förderbereich */
+.fb-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  margin-top: 28px;
+  max-width: 1080px;
+}
+.fb-col h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.fb-col .fb-sub {
+  color: var(--color-accent);
+  font-size: .72rem;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+/* Process step */
+.step {
+  display: grid;
+  grid-template-columns: 50px 1fr;
+  gap: 14px;
+  margin-bottom: 18px;
+  max-width: 880px;
+}
+.step .num-tag {
+  font-family: 'Courier New', monospace;
+  color: var(--color-accent);
+  font-weight: 700;
+  font-size: .92rem;
+  letter-spacing: .1em;
+  padding-top: 4px;
+}
+.step .body b { color: var(--color-text); }
+.step .body p { color: var(--color-muted); font-size: .88rem; line-height: 1.5; margin-top: 4px; }
+
+/* Rules cards (4 правила) */
+.rules-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  margin-top: 28px;
+  max-width: 1080px;
+}
+.rule-card {
+  border: 1px solid var(--color-border);
+  padding: 22px 24px;
+  border-radius: 0;
+}
+.rule-card .rx {
+  color: var(--color-accent);
+  font-size: 1.6rem;
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+.rule-card h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
+.rule-card p { color: var(--color-muted); font-size: .9rem; line-height: 1.55; }
+
+/* Three-col team */
+.team-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 28px;
+  margin-top: 24px;
+  max-width: 1040px;
+}
+.team-cell h4 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.team-cell .ttl {
+  color: var(--color-accent);
+  font-size: .76rem;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+.team-cell p { color: var(--color-muted); font-size: .9rem; line-height: 1.55; }
+
+/* Что делаем мы — 4 cards */
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+  margin-top: 28px;
+  max-width: 1080px;
+}
+.work-cell {
+  border-top: 2px solid var(--color-accent);
+  padding-top: 16px;
+}
+.work-cell .nm {
+  font-family: 'Courier New', monospace;
+  color: var(--color-accent);
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  margin-bottom: 10px;
+}
+.work-cell h4 { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; }
+.work-cell p { color: var(--color-muted); font-size: .88rem; line-height: 1.55; }
+
+/* Сроки cards */
+.dates-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-top: 28px;
+  max-width: 1080px;
+}
+.date-cell { border-top: 2px solid var(--color-border-strong); padding-top: 16px; }
+.date-cell.hot { border-top-color: var(--color-accent); }
+.date-cell .lbl {
+  color: var(--color-accent);
+  font-size: .72rem;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.date-cell .big {
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  font-weight: 800;
+  margin-bottom: 8px;
+  line-height: 1.1;
+}
+.date-cell p { color: var(--color-muted); font-size: .9rem; line-height: 1.55; }
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .stats-4 { grid-template-columns: repeat(2, 1fr); }
+  .work-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 1024px) {
+  .slide { padding: 80px 56px !important; }
+  .slide-label { left: 56px; }
+  .page-num { left: 56px; }
+  .swipe-hint { right: 56px; }
+  .brand-tr { right: 56px; }
+  .big-num { font-size: clamp(8rem, 18vw, 16rem); }
+  .fb-grid { gap: 36px; }
+}
+@media (max-width: 768px) {
+  html { font-size: 15px; }
+  .slide { padding: 96px 24px 80px !important; min-height: 100vh; }
+  .slide-label { top: 24px; left: 24px; }
+  .page-num { left: 24px; bottom: 24px; }
+  .swipe-hint { display: none; }
+  .brand-tr { display: none; }
+  .big-num { font-size: clamp(5rem, 24vw, 8rem); top: 8%; right: 6%; }
+  #btn-prev { left: 6px; }
+  #btn-next { right: 6px; }
+  .stats-4, .work-grid, .dates-grid, .team-grid, .rules-grid { grid-template-columns: 1fr !important; gap: 20px !important; }
+  .fb-grid { grid-template-columns: 1fr !important; gap: 28px !important; }
+  .cmp-row, .cmp-head { grid-template-columns: 1.4fr 1fr 1fr !important; gap: 8px !important; font-size: .9rem !important; }
+}
+</style>
+</head>
+<body>
+
+<button class="nav-arrow" id="btn-prev" aria-label="Назад">←</button>
+<button class="nav-arrow" id="btn-next" aria-label="Вперёд">→</button>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- S01 · HOOK                                                              -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<section class="slide active" id="s01">
+  <div class="slide-label">
+    <span class="handle">@alexander.wirt</span>
+    <span class="cat">DIGITALBONUS · BAYERN</span>
+  </div>
+  <div class="brand-tr">
+    <img src="materials/2p-logo.svg" alt="2Penguins">
+    <span>2PENGUINS</span>
+  </div>
+
+  <div class="content">
+    <h1 class="h-hero">
+      Бавария даёт до&nbsp;<span class="accent">30.000&nbsp;€</span><br>
+      твоему&nbsp;бизнесу.<br>
+      На&nbsp;цифровизацию.
+    </h1>
+    <p class="mt-10 body-lg" style="color:#bfbfbf;max-width:680px;">
+      Окно — <b style="color:#fff;">4&nbsp;мая&nbsp;2026, 10:00</b>. Бюджет ограничен. <span class="accent" style="font-weight:700;">Не&nbsp;тормози.</span>
+    </p>
+  </div>
+
+  <div class="page-num">01 / 14</div>
+  <div class="swipe-hint">листай →</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- S02 · PERSONAL HOOK                                                     -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<section class="slide" id="s02">
+  <div class="slide-label">
+    <span class="handle">@alexander.wirt</span>
+    <span class="cat">ПОЧЕМУ ЭТО ВАЖНО</span>
+  </div>
+
+  <div class="content content-tight">
+    <h2 class="h-mid mb-10">
+      Я&nbsp;не&nbsp;консультант по&nbsp;субсидиям.<br>
+      Но&nbsp;как предприниматель — слежу.
+    </h2>
+    <p class="body-lg mb-2"><b>Государство даёт.</b></p>
+    <p class="body-lg mb-2" style="color:#bfbfbf;">Большинство не&nbsp;знает.</p>
+    <p class="body-lg mb-10"><span class="accent" style="font-weight:700;">Знание = деньги.</span></p>
+    <p class="note">Разбираю программу. Коротко.</p>
+  </div>
+
+  <div class="page-num">02 / 14</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- S03 · ЧТО ЭТО                                                           -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<section class="slide" id="s03">
+  <div class="slide-label">
+    <span class="handle">@alexander.wirt</span>
+    <span class="cat">ЧТО ЭТО</span>
+  </div>
+  <div class="big-num">1</div>
+
+  <div class="content content-tight">
+    <h2 class="h-mid mb-12">
+      Программа правительства <span class="accent">Bayern</span>.<br>
+      Дают на&nbsp;цифровизацию малого бизнеса.
+    </h2>
+    <div class="list-dot"><span><b>Не&nbsp;кредит.</b></span></div>
+    <div class="list-dot"><span><b>Не&nbsp;возврат.</b></span></div>
+    <div class="list-dot"><span><span class="accent" style="font-weight:700;">Прямая дотация от&nbsp;земли Bayern.</span></span></div>
+    <div class="list-dot"><span><span class="accent" style="font-weight:700;">До&nbsp;50% твоих расходов.</span></span></div>
+    <p class="note mt-10">Действует с&nbsp;01.07.2024 до&nbsp;31.12.2027. Программа Bayerisches Staatsministerium für&nbsp;Wirtschaft.</p>
+  </div>
+
+  <div class="page-num">03 / 14</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- S04 · ЦИФРЫ                                                             -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<section class="slide" id="s04">
+  <div class="slide-label">
+    <span class="handle">@alexander.wirt</span>
+    <span class="cat">ЦИФРЫ</span>
+  </div>
+
+  <div class="content content-wide">
+    <h2 class="h-mid mb-2">Сколько ты&nbsp;получишь.</h2>
+    <p class="note mb-2">Четыре опорные цифры программы.</p>
+
+    <div class="stats-4">
+      <div class="stat-cell">
+        <div class="lbl">Standard, до</div>
+        <div class="num">7.500&nbsp;€</div>
+        <p>Для общей цифровизации: сайт, CRM, ERP, IT-безопасность.</p>
+      </div>
+      <div class="stat-cell">
+        <div class="lbl">Plus, до</div>
+        <div class="num">30.000&nbsp;€</div>
+        <p>Только за&nbsp;«новейшие технологии»: KI, робототехника, цифровые двойники.</p>
+      </div>
+      <div class="stat-cell">
+        <div class="lbl">Покрытие, до</div>
+        <div class="num">50%</div>
+        <p>От&nbsp;förderfähiger расходов проекта в&nbsp;обеих линиях.</p>
+      </div>
+      <div class="stat-cell">
+        <div class="lbl">Минимум, от</div>
+        <div class="num">4.000&nbsp;€</div>
+        <p>Минимальный размер проекта. Меньше — не&nbsp;принимают.</p>
+      </div>
+    </div>
+
+    <p class="note mt-10 max-w-[820px]">
+      Каждая фирма может подать <b style="color:#fff;">максимум 2&nbsp;заявки</b> за&nbsp;период программы (01.07.2024 — 31.12.2027). Standard и&nbsp;Plus нельзя комбинировать на&nbsp;один проект.
+    </p>
+  </div>
+
+  <div class="page-num">04 / 14</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- S05 · STANDARD vs PLUS                                                  -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<section class="slide" id="s05">
+  <div class="slide-label">
+    <span class="handle">@alexander.wirt</span>
+    <span class="cat">ДВА ВАРИАНТА</span>
+  </div>
+  <div class="big-num">2</div>
+
+  <div class="content">
+    <h2 class="h-mid mb-2">Standard или&nbsp;Plus.</h2>
+    <p class="note mb-2">Главная разница — Innovationsgehalt (уровень инновационности проекта).</p>
+
+    <div class="cmp-head">
+      <div></div>
+      <div class="lbl-S">Standard</div>
+      <div class="lbl-P">Plus</div>
+    </div>
+    <div class="cmp-tbl">
+      <div class="cmp-row"><span class="k">Максимальная сумма</span><span class="vS">до&nbsp;7.500&nbsp;€</span><span class="vP">до&nbsp;30.000&nbsp;€</span></div>
+      <div class="cmp-row"><span class="k">Покрытие расходов</span><span class="vS">до&nbsp;50%</span><span class="vP">до&nbsp;50%</span></div>
+      <div class="cmp-row"><span class="k">Минимум проекта</span><span class="vS">от&nbsp;4.000&nbsp;€</span><span class="vP">рекомендуется ≥ 15.000&nbsp;€</span></div>
+      <div class="cmp-row"><span class="k">Описание инноваций</span><span class="vS">не&nbsp;нужно детально</span><span class="vP">обязательно, подробно</span></div>
+      <div class="cmp-row"><span class="k">Beratung Bezirksregierung</span><span class="vS">не&nbsp;нужна</span><span class="vP">рекомендуется до&nbsp;подачи</span></div>
+      <div class="cmp-row"><span class="k">Заявок за&nbsp;период</span><span class="vS">1 на&nbsp;Förderbereich</span><span class="vP">1 за&nbsp;всю Laufzeit</span></div>
+    </div>
+
+    <div class="mt-8 flex items-center gap-5 flex-wrap">
+      <span class="pill-orange">Plus = 4× больше Standard</span>
+      <span class="note">До&nbsp;15&nbsp;тыс€ затрат — Standard. От&nbsp;15&nbsp;тыс€ + сильная KI / Robotik-тема — Plus.</span>
+    </div>
+  </div>
+
+  <div class="page-num">05 / 14</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- S06 · КТО МОЖЕТ ПОДАТЬ                                                  -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<section class="slide" id="s06">
+  <div class="slide-label">
+    <span class="handle">@alexander.wirt</span>
+    <span class="cat">ТРИ КРИТЕРИЯ</span>
+  </div>
+
+  <div class="content">
+    <h2 class="h-mid mb-10">Кто может подать.</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-[1000px] mb-10">
+      <div>
+        <div class="cat mb-2">Размер</div>
+        <div class="text-[1.5rem] font-bold mb-2">Меньше 50 сотрудников</div>
+        <p class="note">Штатные Mitarbeiter. Считаются все, включая аффилированные фирмы.</p>
+      </div>
+      <div>
+        <div class="cat mb-2">Финансы</div>
+        <div class="text-[1.5rem] font-bold mb-2">≤ 10 млн&nbsp;€</div>
+        <p class="note">Годовой оборот <b>или</b> balance-sum. Достаточно одного из&nbsp;двух.</p>
+      </div>
+      <div>
+        <div class="cat mb-2">География</div>
+        <div class="text-[1.5rem] font-bold mb-2">Филиал в&nbsp;Bayern</div>
+        <p class="note">Betriebsstätte в&nbsp;Баварии — там же, где будет реализован проект.</p>
+      </div>
+    </div>
+
+    <div class="accent-block mb-6">
+      <p class="body-lg">Никакой <b>сертификации</b> от&nbsp;исполнителя не&nbsp;нужно.</p>
+      <p class="note mt-1">Подаёт сам владелец через свой ELSTER-Konto.</p>
+    </div>
+
+    <p class="note max-w-[920px]">
+      <b style="color:#fff;">Не подходят:</b> клиники и&nbsp;врачебные практики, Pflegeheime, сельское хозяйство без&nbsp;переработки, фрилансеры без&nbsp;статуса Gewerbe, фирмы в&nbsp;банкротстве, госпредприятия с&nbsp;public-участием.
+    </p>
+  </div>
+
+  <div class="page-num">06 / 14</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- S07 · ЧТО МОЖНО ВНЕДРИТЬ (Förderbereiche)                              -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<section class="slide" id="s07">
+  <div class="slide-label">
+    <span class="handle">@alexander.wirt</span>
+    <span class="cat">ЧТО МОЖНО ВНЕДРИТЬ</span>
+  </div>
+
+  <div class="content content-wide">
+    <h2 class="h-mid mb-2">Программа финансирует внедрение технологий.</h2>
+    <p class="note mb-2">Два направления. Можно подавать в&nbsp;любое из&nbsp;них.</p>
+
+    <div class="fb-grid">
+      <div class="fb-col">
+        <div class="fb-sub">Förderbereich&nbsp;2.1</div>
+        <h3>Цифровизация</h3>
+        <div class="list-check"><span>KI и&nbsp;intelligente Datenanalyse</span></div>
+        <div class="list-check"><span>Робототехника (включая роботов как&nbsp;hardware)</span></div>
+        <div class="list-check"><span>Цифровые двойники, симуляции</span></div>
+        <div class="list-check"><span>Migration / Portierung IT-систем</span></div>
+        <div class="list-check"><span>IKT-Software: ERP, CRM, DMS</span></div>
+        <div class="list-check"><span>Branchenspezifische решения и&nbsp;интеграции</span></div>
+        <div class="list-check"><span>Innovative веб-платформы (KI-driven, intelligente функции)</span></div>
+      </div>
+      <div class="fb-col">
+        <div class="fb-sub">Förderbereich&nbsp;2.2</div>
+        <h3>IT-безопасность</h3>
+        <div class="list-check"><span>Firewall-системы</span></div>
+        <div class="list-check"><span>Защита сети (Netzwerk-Sicherheit)</span></div>
+        <div class="list-check"><span>IKT-Hardware (только в&nbsp;этой категории)</span></div>
+        <div class="list-check"><span>Beratung по&nbsp;безопасности</span></div>
+        <div class="list-check"><span>Audit и&nbsp;настройка процессов</span></div>
+        <div class="list-check"><span>Schulung сотрудников</span></div>
+        <div class="list-check"><span>Защита данных и&nbsp;backup-инфраструктура</span></div>
+      </div>
+    </div>
+
+    <p class="note mt-8 max-w-[920px]">
+      <b style="color:#fff;">Plus (до&nbsp;30.000&nbsp;€)</b> — только за&nbsp;новейшие: KI, робототехника, цифровые двойники.
+      <b style="color:#fff;">Standard (до&nbsp;7.500&nbsp;€)</b> — за&nbsp;всё остальное.
+      Beratung и&nbsp;Schulung покрываются до&nbsp;50% от&nbsp;общих расходов проекта.
+    </p>
+  </div>
+
+  <div class="page-num">07 / 14</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- S08 · НА ЧТО НЕ ДАЮТ                                                    -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<section class="slide" id="s08">
+  <div class="slide-label">
+    <span class="handle">@alexander.wirt</span>
+    <span class="cat">ЧТО ВАЖНО ЗНАТЬ</span>
+  </div>
+
+  <div class="content content-wide">
+    <h2 class="h-mid mb-10">На&nbsp;что не&nbsp;дают.</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-1 max-w-[1080px] mb-8">
+      <div class="list-x"><span><b>Консалтинг</b> сам по&nbsp;себе — отдельная программа BAFA Unternehmensberatung</span></div>
+      <div class="list-x"><span><b>Зарплаты, аренду, командировочные</b> — нет</span></div>
+      <div class="list-x"><span><b>Уже купленное</b> до&nbsp;подачи заявки — нет</span></div>
+      <div class="list-x"><span>Стандартное ПО (Office, OS, антивирус)</span></div>
+      <div class="list-x"><span>Стандартный Webshop без&nbsp;Innovationsgehalt</span></div>
+      <div class="list-x"><span>Стандартное Online-Marketing (SEO, Ads, Newsletter)</span></div>
+      <div class="list-x"><span>Hardware: PC, ноутбуки, принтеры, производственное</span></div>
+      <div class="list-x"><span>Лицензии и&nbsp;сервисы свыше <b>18&nbsp;месяцев</b></span></div>
+      <div class="list-x"><span>Mietkauf и&nbsp;Leasing-finanzierte решения</span></div>
+      <div class="list-x"><span>Двойное финансирование (другие программы)</span></div>
+    </div>
+
+    <div class="accent-block">
+      <p class="body-lg mb-2">Контракт с&nbsp;исполнителем <span class="accent" style="font-weight:700;">ДО&nbsp;подачи</span> заявки = <b>деньги пропали.</b></p>
+      <p class="note">Сначала заявка <span class="arrow">→</span> подтверждение от&nbsp;Bayern <span class="arrow">→</span> только потом работа.</p>
+    </div>
+  </div>
+
+  <div class="page-num">08 / 14</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- S09 · ШЕСТЬ ШАГОВ                                                       -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<section class="slide" id="s09">
+  <div class="slide-label">
+    <span class="handle">@alexander.wirt</span>
+    <span class="cat">ШЕСТЬ ШАГОВ</span>
+  </div>
+
+  <div class="content">
+    <h2 class="h-mid mb-10">От&nbsp;заявки до&nbsp;денег.</h2>
+
+    <div>
+      <div class="step">
+        <div class="num-tag">01</div>
+        <div class="body">
+          <b>Antrag — заявка онлайн через&nbsp;ELSTER</b>
+          <p>ELSTER — личный кабинет для&nbsp;общения с&nbsp;налоговой. Заполнение формы ~30&nbsp;минут. Black-list проверка по&nbsp;De-minimis (300.000&nbsp;€ за&nbsp;3&nbsp;года).</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="num-tag">02</div>
+        <div class="body">
+          <b>Eingangsbestätigung — подтверждение от&nbsp;Bayern по&nbsp;email</b>
+          <p>Приходит за&nbsp;часы / в&nbsp;течение дня. С&nbsp;этого момента — можно стартовать проект на&nbsp;auf eigenes Risiko.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="num-tag">03</div>
+        <div class="body">
+          <b>Prüfung — проверка в&nbsp;Bezirksregierung</b>
+          <p>Местная администрация округа Bayern проверяет соответствие программе и&nbsp;корректность Angebot.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="num-tag">04</div>
+        <div class="body">
+          <b>Förderbescheid — официальное решение</b>
+          <p>Приходит digital в&nbsp;твой ELSTER-Konto. Обычно через&nbsp;2–3&nbsp;недели после&nbsp;Antrag. С&nbsp;этой даты идут <b>18&nbsp;месяцев</b> на&nbsp;реализацию.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="num-tag">05</div>
+        <div class="body">
+          <b>Verwendungsnachweis — отчёт по&nbsp;реализации</b>
+          <p>После реализации и&nbsp;оплаты счетов: один Auszahlungsantrag с&nbsp;документами.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="num-tag">06</div>
+        <div class="body">
+          <b>Auszahlung — выплата на&nbsp;счёт</b>
+          <p>Bezirksregierung проверяет и&nbsp;переводит субсидию. Один платёж, без&nbsp;промежуточных авансов.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-num">09 / 14</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- S10 · СРОКИ                                                             -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<section class="slide" id="s10">
+  <div class="slide-label">
+    <span class="handle">@alexander.wirt</span>
+    <span class="cat">КОГДА ПОДАВАТЬ</span>
+  </div>
+  <div class="big-num">3</div>
+
+  <div class="content">
+    <h2 class="h-mid mb-2">
+      Окно — <span class="accent">4&nbsp;мая</span>.<br>
+      Бюджет ограничен.
+    </h2>
+    <p class="note mb-2">Окна подачи открываются <b style="color:#fff;">каждое 1-е число месяца, 10:00</b>. Ближайшее — 4&nbsp;мая (1&nbsp;мая = праздник, 4-е = первый рабочий день).</p>
+
+    <div class="dates-grid">
+      <div class="date-cell hot">
+        <div class="lbl">Ближайшее окно</div>
+        <div class="big">04.05.2026<br><span style="color:#bfbfbf;font-size:.6em;">10:00 утра</span></div>
+        <p>Бюджет на&nbsp;месяц фиксированный. Кто раньше подал — тот в&nbsp;квоте. Готовиться нужно заранее.</p>
+      </div>
+      <div class="date-cell">
+        <div class="lbl">Регулярность</div>
+        <div class="big">Каждый месяц<br><span style="color:#bfbfbf;font-size:.6em;">первый Werktag</span></div>
+        <p>Ежемесячный Kontingent заявок. Не&nbsp;успели в&nbsp;мае — ждём июня. Анкета в&nbsp;ELSTER сохраняется как&nbsp;черновик.</p>
+      </div>
+      <div class="date-cell">
+        <div class="lbl">Реализация</div>
+        <div class="big">18&nbsp;месяцев<br><span style="color:#bfbfbf;font-size:.6em;">после Bescheid</span></div>
+        <p>Bewilligungszeitraum. Все счета должны быть оплачены в&nbsp;этот срок. В&nbsp;begründeten Fällen возможно продление.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-num">10 / 14</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- S11 · 4 ПРАВИЛА                                                         -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<section class="slide" id="s11">
+  <div class="slide-label">
+    <span class="handle">@alexander.wirt</span>
+    <span class="cat">БЕЗ ЭТОГО НИКАК</span>
+  </div>
+
+  <div class="content content-wide">
+    <h2 class="h-mid mb-3">4&nbsp;правила, которые ломают заявку.</h2>
+    <p class="note">Если упустить одно из&nbsp;этих, право на&nbsp;субсидию теряется без&nbsp;возможности оспорить.</p>
+
+    <div class="rules-grid">
+      <div class="rule-card">
+        <div class="rx">×</div>
+        <h4>Никаких заказов до&nbsp;Eingangsbestätigung</h4>
+        <p>Ни&nbsp;письменных, ни&nbsp;устных. Даже фраза «ну ребята, давайте начинать» считается Beginn der&nbsp;Maßnahme и&nbsp;блокирует субсидию.</p>
+      </div>
+      <div class="rule-card">
+        <div class="rx">×</div>
+        <h4>ELSTER только лично</h4>
+        <p>Подача через стороннего Berater или&nbsp;Steuerberater запрещена. ELSTER-Konto должен быть зарегистрирован на&nbsp;самого предпринимателя.</p>
+      </div>
+      <div class="rule-card">
+        <div class="rx">×</div>
+        <h4>Innovationsgehalt в&nbsp;Angebot обязателен</h4>
+        <p>Стандартные формулировки типа «веб-сайт под&nbsp;ключ» блокируют заявку. Нужны описания инновационности и&nbsp;Neuheitsgrad. На&nbsp;практике слово «innovativ» в&nbsp;Angebot помогает (особенно для&nbsp;Plus).</p>
+      </div>
+      <div class="rule-card">
+        <div class="rx">×</div>
+        <h4>Только внешние услуги</h4>
+        <p>Personal-, Verwaltungs- и&nbsp;Reisekosten не&nbsp;финансируются. Покупаются только Leistungen externer Anbieter — то&nbsp;что мы&nbsp;делаем для&nbsp;тебя.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-num">11 / 14</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- S12 · КАК МЫ РАБОТАЕМ                                                   -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<section class="slide" id="s12">
+  <div class="slide-label">
+    <span class="handle">@alexander.wirt</span>
+    <span class="cat">КАК МЫ РАБОТАЕМ</span>
+  </div>
+
+  <div class="content content-wide">
+    <h2 class="h-mid mb-3">
+      Сначала <span class="accent">Angebot</span> — потом работа.
+    </h2>
+    <p class="note mb-8">Программа запрещает контракт до&nbsp;зелёного света от&nbsp;Bayern. Поэтому процесс жёсткий:</p>
+
+    <div class="work-grid mb-8">
+      <div class="work-cell">
+        <div class="nm">01</div>
+        <h4>Анализ проекта</h4>
+        <p>Определяем подходит твоя цифровизация под&nbsp;программу или&nbsp;нет. Standard или&nbsp;Plus, какой Förderbereich.</p>
+      </div>
+      <div class="work-cell">
+        <div class="nm">02</div>
+        <h4>Подготовка Angebot</h4>
+        <p>За&nbsp;1&nbsp;рабочий день. Правильные формулировки про&nbsp;Innovationsgehalt, корректные пункты förderfähiger расходов.</p>
+      </div>
+      <div class="work-cell">
+        <div class="nm">03</div>
+        <h4>Сопровождение подачи</h4>
+        <p>Проверяем документы перед загрузкой в&nbsp;ELSTER. На&nbsp;связи в&nbsp;день старта окна (10:00).</p>
+      </div>
+      <div class="work-cell">
+        <div class="nm">04</div>
+        <h4>Реализация после Bescheid</h4>
+        <p>Когда пришло одобрение — берёмся за&nbsp;работу. Цифровизация, IT-Sicherheit, KI, Robotik.</p>
+      </div>
+    </div>
+
+    <div class="accent-block">
+      <p class="body-lg">Уже сделали для&nbsp;<span class="accent" style="font-weight:700;">более 20&nbsp;фирм</span> по&nbsp;этой программе.<br><span style="color:#bfbfbf;">Заявку подаёшь&nbsp;ты сам через свой ELSTER. Это требование программы. Мы&nbsp;делаем всё остальное.</span></p>
+    </div>
+  </div>
+
+  <div class="page-num">12 / 14</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- S13 · ONESET / КОМАНДА                                                  -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<section class="slide" id="s13">
+  <div class="slide-label">
+    <span class="handle">@alexander.wirt</span>
+    <span class="cat">КТО МЫ</span>
+  </div>
+
+  <div class="content">
+    <h2 class="h-mid mb-3">
+      Под зонтиком&nbsp;<span class="accent">OneSet</span> — три практики на&nbsp;твой проект.
+    </h2>
+    <p class="note mb-2">Внедрили цифровизацию у&nbsp;себя. Теперь внедряем у&nbsp;клиентов.</p>
+
+    <div class="team-grid">
+      <div class="team-cell">
+        <div class="ttl">Marketing &amp; Branding</div>
+        <h4>W&amp;S Agency</h4>
+        <p>Performance-кампании, контент, бренд. SEO и&nbsp;social для&nbsp;digital-направлений.</p>
+      </div>
+      <div class="team-cell">
+        <div class="ttl">Web &amp; AI</div>
+        <h4>2Penguins</h4>
+        <p>Web-разработка, KI-SEO, AI-ассистенты, цифровые двойники процессов и&nbsp;интеллектуальные решения.</p>
+      </div>
+      <div class="team-cell">
+        <div class="ttl">CRM &amp; ERP</div>
+        <h4>W&amp;K Connect</h4>
+        <p>Bitrix24, Odoo, AI-автоматизация процессов. Интеграции через API, intelligente Datenanalyse.</p>
+      </div>
+    </div>
+
+    <div class="mt-10 flex items-center gap-x-6 gap-y-3 flex-wrap">
+      <span class="text-[1.05rem]"><span class="accent" style="font-weight:700;">5&nbsp;своих бизнесов</span></span>
+      <span class="text-[1.05rem]" style="color:#4a4a4a;">·</span>
+      <span class="text-[1.05rem]"><span class="accent" style="font-weight:700;">20&nbsp;лет в&nbsp;Германии</span></span>
+      <span class="text-[1.05rem]" style="color:#4a4a4a;">·</span>
+      <span class="text-[1.05rem]"><span class="accent" style="font-weight:700;">200+ клиентских проектов</span></span>
+    </div>
+
+    <p class="mt-6 body-lg"><b>Внедрили у&nbsp;себя — внедрим у&nbsp;тебя.</b></p>
+  </div>
+
+  <div class="page-num">13 / 14</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- S14 · СЛЕДУЮЩИЙ ШАГ                                                     -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<section class="slide" id="s14">
+  <div class="slide-label">
+    <span class="handle">@alexander.wirt</span>
+    <span class="cat">СЛЕДУЮЩИЙ ШАГ</span>
+  </div>
+
+  <div class="content content-tight">
+    <h2 class="h-hero mb-8">Если подходишь — пиши.</h2>
+
+    <p class="body-lg mb-2">Тема <b style="color:#fff;">«Bayern»</b> на&nbsp;<a href="mailto:team@2penguins.eu?subject=Bayern" style="color:var(--color-accent);text-decoration:none;border-bottom:1px solid var(--color-accent);">team@2penguins.eu</a></p>
+    <p class="note mb-10">Разберём за&nbsp;30&nbsp;минут:</p>
+
+    <div class="list-dot"><span>Твой fit для&nbsp;программы</span></div>
+    <div class="list-dot"><span>Что финансировать в&nbsp;первую очередь</span></div>
+    <div class="list-dot"><span>Сразу готовим Angebot если&nbsp;подходит</span></div>
+
+    <div class="accent-block mt-12">
+      <p class="body-lg mb-1"><b><span class="accent">4&nbsp;мая</span> — окно. Бюджет ограничен.</b></p>
+      <p class="body-lg"><span class="accent" style="font-weight:700;">Не&nbsp;тормози.</span></p>
+    </div>
+
+    <div class="mt-12 flex items-center gap-5 flex-wrap" style="color:#4a4a4a;font-size:.78rem;font-family:'Courier New',monospace;letter-spacing:.1em;">
+      <span>TEAM@2PENGUINS.EU</span>
+      <span style="opacity:.5;">·</span>
+      <span>ONESET.DE</span>
+      <span style="opacity:.5;">·</span>
+      <span>2PENGUINS.EU</span>
+    </div>
+  </div>
+
+  <div class="page-num">14 / 14</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- NAVIGATION SCRIPT                                                       -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<script>
+(function(){
+  var slides = document.querySelectorAll('.slide');
+  var total = slides.length, cur = 0;
+  var btnPrev = document.getElementById('btn-prev');
+  var btnNext = document.getElementById('btn-next');
+
+  function goto(n){
+    n = Math.max(0, Math.min(total-1, n));
+    slides[cur].classList.remove('active');
+    cur = n;
+    slides[cur].classList.add('active');
+    btnPrev.disabled = cur === 0;
+    btnNext.disabled = cur === total-1;
+    window.scrollTo({top:0, behavior:'instant'});
+  }
+
+  btnPrev.onclick = function(){ goto(cur-1); };
+  btnNext.onclick = function(){ goto(cur+1); };
+
+  document.addEventListener('keydown', function(e){
+    if(e.key==='ArrowRight'||e.key==='ArrowDown'||e.key===' '||e.key==='PageDown'){
+      e.preventDefault(); goto(cur+1);
+    }
+    if(e.key==='ArrowLeft'||e.key==='ArrowUp'||e.key==='PageUp'){
+      e.preventDefault(); goto(cur-1);
+    }
+    if(e.key==='Home'){ e.preventDefault(); goto(0); }
+    if(e.key==='End'){ e.preventDefault(); goto(total-1); }
+  });
+
+  var tx=0, ty=0;
+  document.addEventListener('touchstart', function(e){
+    tx=e.touches[0].clientX; ty=e.touches[0].clientY;
+  }, {passive:true});
+  document.addEventListener('touchend', function(e){
+    var dx=e.changedTouches[0].clientX-tx, dy=e.changedTouches[0].clientY-ty;
+    if(Math.abs(dx)>50 && Math.abs(dx)>Math.abs(dy)*1.5){
+      if(dx<0) goto(cur+1); else goto(cur-1);
+    }
+  }, {passive:true});
+
+  goto(0);
+})();
+</script>
+</body>
+</html>
