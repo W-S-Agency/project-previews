@@ -25,14 +25,14 @@
   }
 
   @layer base {
-    html { scroll-behavior: smooth; }
-    body { background: var(--color-bg); color: var(--color-text); font-family: var(--font-display); }
+    html { scroll-behavior: smooth; overflow: hidden; height: 100vh; }
+    body { background: var(--color-bg); color: var(--color-text); font-family: var(--font-display); overflow: hidden; height: 100vh; }
   }
 
   @layer components {
     .slide {
       @apply relative flex flex-col justify-center;
-      @apply min-h-screen px-24 py-20 overflow-hidden;
+      @apply h-screen px-24 py-16 overflow-hidden;
     }
     .slide-label {
       @apply absolute top-12 left-24 flex flex-col gap-2;
@@ -503,46 +503,46 @@ html { font-size: 18px; }
 /* Timeline steps (S09) */
 .tl-list {
   position: relative;
-  padding-left: 44px;
-  margin-top: 24px;
-  max-width: 880px;
+  padding-left: 40px;
+  margin-top: 16px;
+  max-width: 920px;
 }
 .tl-list::before {
   content: "";
   position: absolute;
-  left: 15px;
-  top: 12px;
-  bottom: 12px;
+  left: 13px;
+  top: 8px;
+  bottom: 8px;
   width: 2px;
   background: linear-gradient(to bottom, rgba(255,87,34,0.6), rgba(255,87,34,0.15));
 }
 .tl-step {
   position: relative;
-  padding-bottom: 24px;
+  padding-bottom: 14px;
 }
 .tl-step:last-child { padding-bottom: 0; }
 .tl-step::before {
   content: "";
   position: absolute;
-  left: -37px;
+  left: -33px;
   top: 4px;
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
   background: var(--color-accent);
-  box-shadow: 0 0 0 4px var(--color-bg), 0 0 0 5px rgba(255,87,34,0.3);
+  box-shadow: 0 0 0 3px var(--color-bg), 0 0 0 4px rgba(255,87,34,0.3);
 }
 .tl-step .tl-num {
   font-family: 'Courier New', monospace;
   color: var(--color-accent);
-  font-size: .72rem;
+  font-size: .68rem;
   font-weight: 700;
   letter-spacing: .14em;
   text-transform: uppercase;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
 }
-.tl-step .tl-ttl { font-size: 1.05rem; font-weight: 700; color: var(--color-text); margin-bottom: 4px; }
-.tl-step p { color: var(--color-muted); font-size: .88rem; line-height: 1.55; }
+.tl-step .tl-ttl { font-size: 1rem; font-weight: 700; color: var(--color-text); margin-bottom: 2px; }
+.tl-step p { color: var(--color-muted); font-size: .82rem; line-height: 1.45; }
 
 /* Team icons (S13) */
 .team-icon {
@@ -645,11 +645,6 @@ html { font-size: 18px; }
     <span class="handle">@alexander.wirt</span>
     <span class="cat">DIGITALBONUS · BAYERN</span>
   </div>
-  <div class="brand-tr">
-    <img src="materials/2p-logo.svg" alt="2Penguins">
-    <span>2PENGUINS</span>
-  </div>
-
   <div class="content">
     <h1 class="h-hero">
       Бавария даёт до&nbsp;<span class="accent">30.000&nbsp;€</span><br>
@@ -944,7 +939,7 @@ html { font-size: 18px; }
   </div>
 
   <div class="content">
-    <h2 class="h-mid mb-10">От&nbsp;заявки до&nbsp;денег.</h2>
+    <h2 class="h-mid mb-4">От&nbsp;заявки до&nbsp;денег.</h2>
 
     <div class="tl-list">
       <div class="tl-step">
@@ -1168,26 +1163,26 @@ html { font-size: 18px; }
   </div>
 
   <div class="content content-tight">
-    <h2 class="h-hero mb-8">Если подходишь — пиши.</h2>
+    <h2 class="h-hero mb-5">Если подходишь — пиши.</h2>
 
-    <p class="note mb-6">Разберём за&nbsp;30&nbsp;минут:</p>
+    <p class="note mb-4">Разберём за&nbsp;30&nbsp;минут:</p>
 
     <div class="list-dot"><svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg><span>Твой fit для&nbsp;программы</span></div>
     <div class="list-dot"><svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg><span>Что финансировать в&nbsp;первую очередь</span></div>
     <div class="list-dot"><svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg><span>Сразу готовим Angebot если&nbsp;подходит</span></div>
 
-    <a href="mailto:team@2penguins.eu?subject=Bayern" class="cta-btn">
+    <a href="mailto:team@2penguins.eu?subject=Bayern" class="cta-btn" style="margin-top:8px;">
       Написать с&nbsp;темой «Bayern»
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
     </a>
-    <p class="note mt-3">team@2penguins.eu</p>
+    <p class="note mt-2">team@2penguins.eu</p>
 
-    <div class="accent-block mt-10">
+    <div class="accent-block mt-5">
       <p class="body-lg mb-1"><b><span class="accent">4&nbsp;мая</span> — окно. Бюджет ограничен.</b></p>
       <p class="body-lg"><span class="accent" style="font-weight:700;">Не&nbsp;тормози.</span></p>
     </div>
 
-    <div class="mt-12 flex items-center gap-5 flex-wrap" style="color:#4a4a4a;font-size:.78rem;font-family:'Courier New',monospace;letter-spacing:.1em;">
+    <div class="mt-4 flex items-center gap-5 flex-wrap" style="color:#4a4a4a;font-size:.74rem;font-family:'Courier New',monospace;letter-spacing:.1em;">
       <span>TEAM@2PENGUINS.EU</span>
       <span style="opacity:.5;">·</span>
       <span>ONESET.DE</span>
