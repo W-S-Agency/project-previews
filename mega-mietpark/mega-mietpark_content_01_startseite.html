@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Content Preview · Startseite · Mega-Mietpark</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="mega-mietpark_TZ_style.css?v=6">
+<link rel="stylesheet" href="mega-mietpark_TZ_style.css?v=7">
 <style>
   /* Content-Preview-spezifisch */
   .preview-intro {
@@ -168,6 +168,13 @@
     font-size: 13px; letter-spacing: 0.2em;
     text-transform: uppercase; color: var(--red);
     margin-bottom: 14px;
+  }
+  /* V1.3 Pre-Header SEO */
+  .real-hero-preheader {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 13px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: rgba(255,255,255,0.65);
+    font-weight: 500; margin: 0 0 12px;
   }
   .real-hero-h1 {
     font-family: 'Roboto Condensed', sans-serif;
@@ -848,25 +855,24 @@
   <a href="index.html">TZ-Hub</a>
   <a href="mega-mietpark_TZ_Startseite.html">TZ Startseite</a>
   <a href="mega-mietpark_content_01_startseite.html" class="active">📝 Content · Startseite</a>
-  <span class="v-tag">V1.2</span>
+  <span class="v-tag">V1.3</span>
   <button class="lang-toggle" id="ruToggle">DE + RU</button>
 </nav>
 
 <div class="cover">
-  <p class="cover-tag">Content Preview · Seite 1 von 3 · V1.2</p>
-  <h1>Startseite<br><em>Block-by-Block-Review applied</em></h1>
+  <p class="cover-tag">Content Preview · Seite 1 von 3 · V1.3</p>
+  <h1>Startseite<br><em>Kritik-Review applied</em></h1>
   <p class="cover-sub">
-    <strong>V1.2-Update vom 2026-05-02:</strong> Block-by-Block-Review aus t-last.json auf alle 14 Blöcke angewendet.
-    Variant-C Trust-Zoning (B1.7 → 4 Lösungen, B6 → 5 Stats incl. Formica, B7 → narrative-only).
-    4-Card Tarif (Lagerraum-Highlight). du-form vereinheitlicht. Footer-Daten REAL (Telefon · E-Mail).
-    Reihenfolge B3: Lagerraum → Garage → Büro → Werkhalle. PLACEHOLDER klar markiert.
+    <strong>V1.3-Update vom 2026-05-02 (Kritik-Review):</strong> Devil's Advocate review (2p-kritik) → 9 targeted fixes.
+    Pre-Header SEO above-fold (B1) · B1.7 Description gekürzt · B2 Card 1+4 Sub-lines neu · B3 LAGERRAUM konkretes „4–22 m²" · B3 4 unique CTAs · B9 „oft schon am nächsten Tag" · B10 „Artikel lesen" · B11 inline-CTA „Jetzt anfragen".
+    <br><strong>V1.2-Update:</strong> Block-by-Block-Review auf alle 14 Blöcke. Variant-C Trust-Zoning · 4-Card Tarif (Lagerraum-Highlight) · du-form · Footer-Daten REAL.
   </p>
   <div class="ru">
     Превью контента V1.2 после Block-by-Block-Review (2026-05-02). Все 14 блоков обновлены: Variant-C Trust-Zoning, 4-Card Tarif с Lagerraum-Highlight, du-form, real-footer-data.
   </div>
   <div class="cover-meta">
     <div class="cover-meta-item">Datei<strong>content/mega_mietpark_01_startseite.md</strong></div>
-    <div class="cover-meta-item">Version<strong>V1.2 · Block-Review applied</strong></div>
+    <div class="cover-meta-item">Version<strong>V1.3 · Kritik-Review applied</strong></div>
     <div class="cover-meta-item">Blöcke<strong>14 (META + 12 + Footer)</strong></div>
     <div class="cover-meta-item">Tonalität<strong>du-Form · DE</strong></div>
   </div>
@@ -924,8 +930,8 @@
   <div class="content-block">
     <div class="block-anchor">
       <span class="block-num">B1</span>
-      <h2 class="block-title">Hero · H1 + Subline + PLZ-Suche</h2>
-      <span class="block-tag">V1.2 · Pre-Headline + Sek-CTA RAUS</span>
+      <h2 class="block-title">Hero · Pre-Header + H1 + Subline + PLZ-Suche</h2>
+      <span class="block-tag">V1.3 · Pre-Header SEO above-fold</span>
     </div>
 
     <div class="block-mock">
@@ -947,6 +953,7 @@
           </div>
         </div>
         <div class="real-hero-content">
+          <p class="real-hero-preheader">GARAGE · LAGERRAUM · BÜRO · WERKHALLE MIETEN</p>
           <h1 class="real-hero-h1">Mehr Raum für dich.</h1>
           <p class="real-hero-subline">An 16 Standorten in Deutschland.</p>
           <div class="search-form">
@@ -1069,7 +1076,7 @@
       <div class="intro-section">
         <div class="intro-text">
           <h2 class="intro-header">Platz für deine Pläne.</h2>
-          <p class="intro-desc">Bei uns findest du Großgaragen, Lagerräume, eigene Büros und Werkhallen mit zugehörigem Verwaltungsbüro — alles unter einem Dach.</p>
+          <p class="intro-desc">Bei uns findest du <strong>vier Lösungen unter einem Dach: Garage, Lagerraum, Büro und Werkhalle.</strong></p>
           <div class="big-stat">
             <div class="big-stat-num">4</div>
             <div class="big-stat-title">Lösungen.</div>
@@ -1125,7 +1132,7 @@
         <div class="usp-card">
           <div class="usp-icon">📐</div>
           <div class="usp-card-title">XXL bis 100 m²</div>
-          <div class="usp-card-sub">Kein Selfstorage — echte Flächen für echte Anforderungen.</div>
+          <div class="usp-card-sub">Bis zu 100 m² unter einem Dach.</div>
         </div>
         <div class="usp-card">
           <div class="usp-icon">🚛</div>
@@ -1140,7 +1147,7 @@
         <div class="usp-card">
           <div class="usp-icon">📍</div>
           <div class="usp-card-title">16 Standorte</div>
-          <div class="usp-card-sub">NRW · Sachsen-Anhalt.</div>
+          <div class="usp-card-sub">Quer durch Deutschland.</div>
         </div>
         <div class="usp-card">
           <div class="usp-icon">🔑</div>
@@ -1205,9 +1212,9 @@
           </div>
           <div class="stacked-card-body">
             <h3 class="stacked-card-h3">LAGERRAUM</h3>
-            <p class="stacked-card-msg">Lagerraum ganz nach deinen Wünschen — vom Karton bis zur ganzen Wohnungsauflösung. Trocken, sicher, 24/7 erreichbar. Privat oder gewerblich, ab 4 m² bis XXL.</p>
+            <p class="stacked-card-msg">Lagerraum <strong>von 4 bis 22 m²</strong> — vom Karton bis zur ganzen Wohnungsauflösung. Trocken, sicher, 24/7 erreichbar. Privat oder gewerblich.</p>
             <div class="stacked-card-info">4–22 m² · monatlich kündbar · faire Preise</div>
-            <div class="stacked-card-cta">Mehr erfahren →</div>
+            <div class="stacked-card-cta">Zum Lagerraum →</div>
           </div>
         </div>
 
@@ -1228,7 +1235,7 @@
             <h3 class="stacked-card-h3">GARAGE</h3>
             <p class="stacked-card-msg">Garagen in vielen Größen — von der Einzelgarage bis zur XXL-Halle für Wohnmobil, Boot oder Oldtimer. Drive-in, Sektionaltor, ebenerdig.</p>
             <div class="stacked-card-info">26–106 m² · Tor bis 4 m · ab <strong>180 €</strong> / Monat</div>
-            <div class="stacked-card-cta">Mehr erfahren →</div>
+            <div class="stacked-card-cta">Zur Garage →</div>
           </div>
         </div>
 
@@ -1249,7 +1256,7 @@
             <h3 class="stacked-card-h3">HYBRIDES BÜRO</h3>
             <p class="stacked-card-msg">Strom, Heizung, Klimaanlage, Wasser, Vinylboden, weiße Wände — sofort einzugsbereit. Oben arbeiten, unten lagern oder werkeln. Eine Adresse für dein Business.</p>
             <div class="stacked-card-info">ab 52 m² · WC + Heizung + Internet · Mezzanin-Option</div>
-            <div class="stacked-card-cta">Mehr erfahren →</div>
+            <div class="stacked-card-cta">Zum Büro →</div>
           </div>
         </div>
 
@@ -1270,7 +1277,7 @@
             <h3 class="stacked-card-h3">WERKHALLE</h3>
             <p class="stacked-card-msg">Hohe Decken, Drive-in, Strom &amp; Wasser, Tageslicht durch große Fenster. Platz für Werkbank, Material und Fahrzeug — alles unter einem Dach.</p>
             <div class="stacked-card-info">ab 95 m² · 6 m Höhe · LKW-Tor · 2 Ebenen</div>
-            <div class="stacked-card-cta">Mehr erfahren →</div>
+            <div class="stacked-card-cta">Zur Werkhalle →</div>
           </div>
         </div>
       </div>
@@ -1741,7 +1748,7 @@
             <div class="step-num">3</div>
             <div class="step-text">
               <h4>EINZIEHEN — AB DEM ERSTEN TAG</h4>
-              <p>Nach Unterschrift bekommst du deinen persönlichen Zugangscode, eine kurze Einweisung vor Ort — und kannst deine Einheit sofort nutzen. Mietbeginn flexibel nach Verfügbarkeit.</p>
+              <p>Nach Unterschrift bekommst du deinen persönlichen Zugangscode, eine kurze Einweisung vor Ort — und kannst deine Einheit <strong>oft schon am nächsten Tag</strong> nutzen. Mietbeginn flexibel nach Verfügbarkeit.</p>
             </div>
           </div>
         </div>
@@ -1817,7 +1824,7 @@
         </div>
 
         <div style="text-align:center; margin-top:24px;">
-          <button class="btn-text">Mehr erfahren →</button>
+          <button class="btn-text">Artikel lesen →</button>
         </div>
       </div>
     </div>
@@ -1852,8 +1859,8 @@
   <div class="content-block">
     <div class="block-anchor">
       <span class="block-num">B11</span>
-      <h2 class="block-title">HÄUFIGE FRAGEN · 6 Fragen (Accordion)</h2>
-      <span class="block-tag">V1.2 · 6 Antworten finalisiert · Subtitle bug fix</span>
+      <h2 class="block-title">HÄUFIGE FRAGEN · 6 Fragen (Accordion) + Inline-CTA</h2>
+      <span class="block-tag">V1.3 · 6 Antworten + „Jetzt anfragen" CTA</span>
     </div>
 
     <div class="block-mock">
@@ -1909,6 +1916,12 @@
             </div>
             <div class="faq-a">Ja — isolierte Garagen mit niedrigerer Deckenhöhe (3,80 m) gibt es in Remscheid, Datteln, Wuppertal und Köln. Ideal für Oldtimer oder empfindliche Güter.</div>
           </div>
+        </div>
+
+        <!-- V1.3 Inline-CTA · Funnel-Lücke geschlossen -->
+        <div class="faq-cta-block" style="text-align:center; margin:40px auto 0; max-width:520px; padding:30px; background:#f7f7f7; border-radius:8px;">
+          <p style="font-size:18px; color:#3f3f3f; margin:0 0 16px; font-family:'Roboto Condensed',sans-serif;">Noch Fragen offen?</p>
+          <button class="btn-primary" style="background:#c62828; color:white; padding:18px 48px; font-size:14px; font-weight:700; letter-spacing:0.1em; border:none; border-radius:3px; cursor:pointer;">Jetzt anfragen</button>
         </div>
       </div>
     </div>
@@ -2175,7 +2188,7 @@
 <footer>
   <div>
     <div class="footer-brand">W&amp;S <span>AGENCY</span></div>
-    <p style="margin-top:6px;">Content Preview · Startseite · <strong style="color:var(--red);">V1.2 · Block-by-Block-Review applied · DE + RU</strong></p>
+    <p style="margin-top:6px;">Content Preview · Startseite · <strong style="color:var(--red);">V1.3 · Kritik-Review applied · DE + RU</strong></p>
   </div>
   <div style="text-align:right;">
     <p>← Zurück zum <a href="index.html" style="color:var(--red);">TZ-Hub</a></p>
