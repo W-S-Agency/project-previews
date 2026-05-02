@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Content Preview · Startseite · Mega-Mietpark</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="mega-mietpark_TZ_style.css?v=4">
+<link rel="stylesheet" href="mega-mietpark_TZ_style.css?v=5">
 <style>
   /* Content-Preview-spezifisch */
   .preview-intro {
@@ -100,6 +100,24 @@
     background: #FFF8E1; color: #E65100;
     padding: 0 4px; border-radius: 2px;
     font-style: italic;
+  }
+  /* V1.2 Placeholder-Hinweis-Box */
+  .v12-placeholder-box {
+    background: #FFF3E0; border-left: 4px solid #E65100;
+    color: #E65100; padding: 6px 12px; margin: 8px 0;
+    border-radius: 3px; font-size: 12px; font-weight: 600;
+    display: inline-block;
+  }
+  .v12-placeholder-box::before {
+    content: '⚠ PLACEHOLDER · '; font-weight: 700; letter-spacing: 0.04em;
+  }
+  .v12-badge-red {
+    display: inline-block;
+    background: #C62828; color: white;
+    padding: 2px 8px; border-radius: 2px;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; margin-left: 6px;
+    vertical-align: middle;
   }
   .alt-tag {
     display: inline-block; background: #1565C0; color: white;
@@ -830,23 +848,25 @@
   <a href="index.html">TZ-Hub</a>
   <a href="mega-mietpark_TZ_Startseite.html">TZ Startseite</a>
   <a href="mega-mietpark_content_01_startseite.html" class="active">📝 Content · Startseite</a>
-  <span class="v-tag">V1.1</span>
+  <span class="v-tag">V1.2</span>
   <button class="lang-toggle" id="ruToggle">DE + RU</button>
 </nav>
 
 <div class="cover">
-  <p class="cover-tag">Content Preview · Seite 1 von 3</p>
-  <h1>Startseite<br><em>Texte im Kontext</em></h1>
+  <p class="cover-tag">Content Preview · Seite 1 von 3 · V1.2</p>
+  <h1>Startseite<br><em>Block-by-Block-Review applied</em></h1>
   <p class="cover-sub">
-    Block-für-Block-Visualisierung der V1.1-Texte (Stand 2026-05-02). Jeder Block zeigt: <strong>links den finalen Text in Layout-Kontext</strong>, <strong>unten Annotationen</strong> (Alternativen, Quellen, Placeholders, Begründungen).
-    Ziel: Texte im Kontext lesen, einfach prüfen und kommentieren.
+    <strong>V1.2-Update vom 2026-05-02:</strong> Block-by-Block-Review aus t-last.json auf alle 14 Blöcke angewendet.
+    Variant-C Trust-Zoning (B1.7 → 4 Lösungen, B6 → 5 Stats incl. Formica, B7 → narrative-only).
+    4-Card Tarif (Lagerraum-Highlight). du-form vereinheitlicht. Footer-Daten REAL (Telefon · E-Mail).
+    Reihenfolge B3: Lagerraum → Garage → Büro → Werkhalle. PLACEHOLDER klar markiert.
   </p>
   <div class="ru">
-    Превью контента блок-за-блоком (V1.1 от 02.05.2026). Каждый блок показывает: <strong>текст в контексте дизайна</strong> и <strong>аннотации внизу</strong> (альтернативы, источники, placeholders).
+    Превью контента V1.2 после Block-by-Block-Review (2026-05-02). Все 14 блоков обновлены: Variant-C Trust-Zoning, 4-Card Tarif с Lagerraum-Highlight, du-form, real-footer-data.
   </div>
   <div class="cover-meta">
     <div class="cover-meta-item">Datei<strong>content/mega_mietpark_01_startseite.md</strong></div>
-    <div class="cover-meta-item">Version<strong>V1.1 · Figma-Sync done</strong></div>
+    <div class="cover-meta-item">Version<strong>V1.2 · Block-Review applied</strong></div>
     <div class="cover-meta-item">Blöcke<strong>14 (META + 12 + Footer)</strong></div>
     <div class="cover-meta-item">Tonalität<strong>du-Form · DE</strong></div>
   </div>
@@ -904,8 +924,8 @@
   <div class="content-block">
     <div class="block-anchor">
       <span class="block-num">B1</span>
-      <h2 class="block-title">Hero · Pre-Headline + H1 + PLZ-Suche</h2>
-      <span class="block-tag">Persona-übergreifend</span>
+      <h2 class="block-title">Hero · H1 + Subline + PLZ-Suche</h2>
+      <span class="block-tag">V1.2 · Pre-Headline + Sek-CTA RAUS</span>
     </div>
 
     <div class="block-mock">
@@ -917,58 +937,49 @@
             <span>Lösungen</span>
             <span>Ratgeber</span>
             <span>Grundstücke</span>
-            <span class="warn-text" title="Aktuell in Figma — soll laut TZ entfernt werden">Lagerraum</span>
           </div>
         </div>
         <div class="real-hero-rating">
           <span>👤👤👤</span>
           <div>
             <div class="rating-stars">⭐⭐⭐⭐⭐</div>
-            <div class="rating-text"><strong>[KUNDE]</strong> aus <strong>[N]</strong> Bewertungen</div>
+            <div class="rating-text"><span class="placeholder-text">[PLACEHOLDER · KUNDE: Rating]</span>/5 · <span class="placeholder-text">[PLACEHOLDER · KUNDE: Anzahl]</span> Bewertungen</div>
           </div>
         </div>
         <div class="real-hero-content">
-          <div class="real-hero-claim">Groß genug für deine Pläne.</div>
-          <h1 class="real-hero-h1">Mehr Raum.<br>An 16 Standorten in Deutschland.</h1>
-          <p class="real-hero-subline">XXL-Garagen · Büros · Werkhallen · Lagerräume — direkt befahrbar, 24/7 zugänglich, ab 180 € pro Monat.</p>
+          <h1 class="real-hero-h1">Mehr Raum für dich.</h1>
+          <p class="real-hero-subline">An 16 Standorten in Deutschland.</p>
           <div class="search-form">
             <div class="search-form-tag">
-              <span>IHR NÄCHSTER MEGA-MIETPARK</span>
+              <span>DEIN NÄCHSTER MEGA-MIETPARK</span>
               <a href="#map">Alle 16 Standorte auf der Karte →</a>
             </div>
             <div class="search-input-row">
-              <input class="search-input" placeholder="PLZ eingeben, z. B. 50737">
-              <button class="btn-primary">Finden</button>
+              <input class="search-input" placeholder="PLZ eingeben, z. B. 42329">
+              <button class="btn-primary">Standort finden</button>
             </div>
           </div>
-          <button class="btn-secondary">Alle Lösungen entdecken</button>
         </div>
       </div>
     </div>
 
     <div class="block-annotations">
       <details>
-        <summary>📝 Alternativen · 3 H1 + 2 Claim + 3 sek-CTA</summary>
+        <summary>📝 V1.1 → V1.2 · Hero-Reduktion</summary>
         <ul>
-          <li><strong>Claim:</strong></li>
-          <li><span class="alt-tag">A ✓</span> "Groß genug für deine Pläne." — W&amp;S Top-Favorit</li>
-          <li><span class="alt-tag">B</span> "Raum, der mehr kann." — David-Favorit</li>
-          <li style="margin-top:8px;"><strong>H1:</strong></li>
-          <li><span class="alt-tag">A ✓</span> "Mehr Raum. An 16 Standorten in Deutschland."</li>
-          <li><span class="alt-tag">B</span> "Dein Raum. Dein Standort. Dein Tempo."</li>
-          <li><span class="alt-tag">C</span> "Garage, Werkhalle, Büro — direkt befahrbar."</li>
-          <li style="margin-top:8px;"><strong>Sekundär-CTA:</strong></li>
-          <li><span class="alt-tag">A ✓</span> "Alle Lösungen entdecken"</li>
-          <li><span class="alt-tag">B</span> "Standorte ansehen"</li>
-          <li><span class="alt-tag">C</span> "Was passt zu dir?"</li>
+          <li><strong>Pre-Headline ENTFERNT:</strong> "Groß genug für deine Pläne." raus — Claim noch nicht final freigegeben</li>
+          <li><strong>H1 vereinfacht:</strong> "Mehr Raum für dich." (V1.2) statt zweizeilig (V1.1)</li>
+          <li><strong>Subline reduziert:</strong> nur Geo-Aussage "An 16 Standorten in Deutschland."</li>
+          <li><strong>Sekundär-CTA ENTFERNT:</strong> "Alle Lösungen entdecken" raus — nicht im Figma-Design</li>
+          <li><strong>PLZ-Beispiel:</strong> 50737 (Köln-Riehl, kein eigener Standort) → 42329 (Wuppertal · präsentabelster Standort)</li>
+          <li><strong>Lagerraum aus Nav:</strong> entfernt (war Andrey-Artefakt)</li>
         </ul>
       </details>
       <div class="placeholder-list">
-        <h4>⚠️ Pending · 2 Items</h4>
+        <h4>⚠️ V1.2 · 2 PLACEHOLDER</h4>
         <ul>
-          <li><strong>Hero-Mood-Video:</strong> Stock-Auswahl (Andrey: 3-5 Kandidaten) — atmospheric, helle Tonalität, Mensch in Aktion</li>
-          <li><strong>Final Claim:</strong> Client-Review läuft — bis David entscheidet bleibt W&amp;S-Top-Favorit Default</li>
-          <li><strong>Stat-Rating in Hero:</strong> Google-Rating + Anzahl von David</li>
+          <li><strong>Rating-Widget:</strong> Rating + Anzahl von David. Quelle ungeklärt (per Standort GBP / consolidated / aggregated).</li>
+          <li><strong>Hero-Mood-Video:</strong> Stock-Auswahl von Andrey (3-5 Kandidaten).</li>
         </ul>
       </div>
     </div>
@@ -984,43 +995,56 @@
   <div class="content-block">
     <div class="block-anchor">
       <span class="block-num">B1.5</span>
-      <h2 class="block-title">Marquee #1 · Sliding Anchor-Bar</h2>
-      <span class="block-tag">🆕 V1.1 · Figma-Sync</span>
+      <h2 class="block-title">Marquee #1 · Sliding Bar (12 Items dekorativ)</h2>
+      <span class="block-tag">V1.2 · 12 Items · KEINE Anchor-Links</span>
     </div>
 
     <div class="block-mock">
       <div class="marquee-bar">
         <span class="marquee-title">WAS DU BEI UNS FINDEST</span>
         <div class="marquee-track">
-          <span class="marquee-link"><a href="#tarif">Büro</a></span>
+          <span class="marquee-link">XXL-Garagen</span>
           <span class="marquee-dot">●</span>
-          <span class="marquee-link"><a href="#tarif">Werkhalle</a></span>
+          <span class="marquee-link">Lagerräume</span>
           <span class="marquee-dot">●</span>
-          <span class="marquee-link"><a href="#usps">LKW-Zufahrt</a></span>
+          <span class="marquee-link">Büros</span>
           <span class="marquee-dot">●</span>
-          <span class="marquee-link"><a href="#usps">24/7 Zugang</a></span>
+          <span class="marquee-link">Werkhallen</span>
           <span class="marquee-dot">●</span>
-          <span class="marquee-link"><a href="#tarif">Preise ab 180 €</a></span>
+          <span class="marquee-link">bis zu 6 m Deckenhöhe</span>
           <span class="marquee-dot">●</span>
-          <span class="marquee-link"><a href="#tarif">Büro</a></span>
+          <span class="marquee-link">LKW-befahrbar</span>
+          <span class="marquee-dot">●</span>
+          <span class="marquee-link">24/7 Zugang</span>
+          <span class="marquee-dot">●</span>
+          <span class="marquee-link">16 Standorte</span>
+          <span class="marquee-dot">●</span>
+          <span class="marquee-link">Eigene Immobilien</span>
+          <span class="marquee-dot">●</span>
+          <span class="marquee-link">Mezzanin-Option</span>
+          <span class="marquee-dot">●</span>
+          <span class="marquee-link">ab 180 €/Monat</span>
+          <span class="marquee-dot">●</span>
+          <span class="marquee-link">Monatlich kündbar</span>
         </div>
       </div>
     </div>
 
     <div class="block-annotations">
       <details>
-        <summary>📝 Alternativen Title · 3 Optionen</summary>
+        <summary>📝 V1.1 → V1.2 · Marquee-Update</summary>
         <ul>
-          <li><span class="alt-tag">A ✓</span> "Was du bei uns findest" — du-Form, einladend</li>
-          <li><span class="alt-tag">B</span> "Mehr als nur Garagen" — kategorie-bildend</li>
-          <li><span class="alt-tag">C</span> "Mietpark · Was das heißt" — Brand-USP-Brücke</li>
+          <li><strong>Items von 5 → 12</strong> — alle Brand-USPs sichtbar als endlose Scroll-Loop</li>
+          <li><strong>KEINE Anchor-Links mehr</strong> — Items sind dekorativ (Anchor-Funktion war zu komplex für UX)</li>
+          <li><strong>"6 m" → "bis zu 6 m"</strong> — präziser ohne Übertreibung (nur Werkhalle hat 6m)</li>
+          <li><strong>Title bestätigt:</strong> "WAS DU BEI UNS FINDEST"</li>
         </ul>
       </details>
       <div class="source-list">
         <h4>📐 Layout-Notiz</h4>
         <ul>
           <li>Figma: <code>147:105 + 147:119</code> (twin-frames für endless animation)</li>
-          <li>5 Anchor-Links + Title — wiederholt sich endlos rechts → links</li>
+          <li>12 Items · wiederholt sich endlos rechts → links</li>
           <li>Höhe: 32 px · Trennzeichen: 6 px Punkte</li>
         </ul>
       </div>
@@ -1037,19 +1061,19 @@
   <div class="content-block">
     <div class="block-anchor">
       <span class="block-num">B1.7</span>
-      <h2 class="block-title">Intro · Photos + Big Stat</h2>
-      <span class="block-tag">🆕 V1.1 · Brücke Hero → USP</span>
+      <h2 class="block-title">Intro · Photos + Header + Big Stat (V1.2 · GEÄNDERT)</h2>
+      <span class="block-tag">V1.2 · Variant-C Trust-Zoning · 4 Lösungen</span>
     </div>
 
     <div class="block-mock">
       <div class="intro-section">
         <div class="intro-text">
-          <h2 class="intro-header">Der Mietpark, der mit dir wächst.</h2>
-          <p class="intro-desc">Kein Self-Storage-Käfig, keine Gewerbe-Halle mit 5-Jahres-Knebel — sondern eine neue Kategorie: <strong>Garagen, Lagerräume, Büros und Werkhallen</strong> unter einem Dach. Direkt befahrbar. Monatlich oder jahreslang. Du entscheidest.</p>
+          <h2 class="intro-header">Platz für deine Pläne.</h2>
+          <p class="intro-desc">Bei uns findest du Großgaragen, Lagerräume, eigene Büros und Werkhallen mit zugehörigem Verwaltungsbüro — alles unter einem Dach.</p>
           <div class="big-stat">
-            <div class="big-stat-num">6 m</div>
-            <div class="big-stat-title">Deckenhöhe.</div>
-            <div class="big-stat-desc">Das ist 2,4× mehr Volumen als bei Self-Storage. Spar dir das Stapeln.</div>
+            <div class="big-stat-num">4</div>
+            <div class="big-stat-title">Lösungen.</div>
+            <div class="big-stat-desc">Garage · Lagerraum · Büro · Werkhalle</div>
           </div>
         </div>
         <div class="intro-photos">
@@ -1061,25 +1085,22 @@
 
     <div class="block-annotations">
       <details>
-        <summary>📝 Alternativen · 3 Header + 3 Stat</summary>
+        <summary>📝 V1.1 → V1.2 · Header + Big-Stat geändert</summary>
         <ul>
-          <li><strong>Header text:</strong></li>
-          <li><span class="alt-tag">A ✓</span> "Der Mietpark, der mit dir wächst." — Brand-USP, growth</li>
-          <li><span class="alt-tag">B</span> "Mehr als Lager. Mehr als Büro. Mehr als Garage." — Triade</li>
-          <li><span class="alt-tag">C</span> "Eigene Immobilien. Eigene Qualität. Direkt von uns." — Trust</li>
-          <li style="margin-top:8px;"><strong>Big Stat:</strong></li>
-          <li><span class="alt-tag">A ✓</span> "6 m Deckenhöhe / 2,4× mehr Volumen"</li>
-          <li><span class="alt-tag">B</span> "16 Standorte / Eines davon direkt bei dir"</li>
-          <li><span class="alt-tag">C</span> "27.000+ Einheiten / Erfahrung von Formica seit 1990"</li>
+          <li><strong>Header (V1.2):</strong> "Platz für deine Pläne." (war "Der Mietpark, der mit dir wächst.")</li>
+          <li><strong>Description (V1.2 · Option A):</strong> du-form, listet 4 Lösungen explizit (Setup für Big-Stat)</li>
+          <li><strong>Big-Stat (V1.2 · GEÄNDERT):</strong> "4 / Lösungen / Garage · Lagerraum · Büro · Werkhalle"</li>
+          <li><strong>Variant-C Trust-Zoning:</strong> 2.500+ Aktive Mieter wandert von HIER nach B6 Trust-Block. Dort macht es mehr Sinn (Setup→Payoff mit Formica).</li>
+          <li><strong>Rationale:</strong> "4" als visueller Setup für B3 Stacked Cards (4 Karten). Mnemonische Verknüpfung. Unique vs Self-Storage-Konkurrenz.</li>
+          <li><strong>Photos:</strong> Real-Renders aus Figma (kein Placeholder mehr · war V1.1 Stock).</li>
         </ul>
       </details>
       <div class="source-list">
-        <h4>✅ Quellen</h4>
+        <h4>✅ Quellen V1.2</h4>
         <ul>
-          <li><strong>6 m Deckenhöhe:</strong> Werkhalle Wuppertal · Angebotsflyer ✅</li>
-          <li><strong>2,4× Volumen:</strong> Berechnung aus positionierung.md (R_vol-Formel)</li>
-          <li><strong>4 Hauptlösungen:</strong> Entities Registry §1</li>
-          <li><strong>Foto-Briefing:</strong> 2 Photos (640×800 + 460×672) — Außen/Innen, NordSpace-Stil</li>
+          <li><strong>4 Lösungen:</strong> Entities Registry §1 (Garage · Lagerraum · Büro · Werkhalle) ✅</li>
+          <li><strong>Description Option A:</strong> du-form, mega-tone, Real-Mockup-Synced</li>
+          <li><strong>Foto-Briefing:</strong> Real-Renders Figma-bestätigt (640×800 + 460×672)</li>
         </ul>
       </div>
     </div>
@@ -1095,8 +1116,8 @@
   <div class="content-block">
     <div class="block-anchor">
       <span class="block-num">B2</span>
-      <h2 class="block-title">USP-Bar · 5 Vorteile</h2>
-      <span class="block-tag">Anchor #usps · Figma 5 cards</span>
+      <h2 class="block-title">USP-Bar · 5 Vorteile (V1.2 · 1:1 Figma)</h2>
+      <span class="block-tag">V1.2 · "Eigene Immobilien" raus → B7</span>
     </div>
 
     <div class="block-mock">
@@ -1104,46 +1125,47 @@
         <div class="usp-card">
           <div class="usp-icon">📐</div>
           <div class="usp-card-title">XXL bis 100 m²</div>
-          <div class="usp-card-sub">Werkhalle mit 6 m Deckenhöhe</div>
+          <div class="usp-card-sub">Kein Selfstorage — echte Flächen für echte Anforderungen.</div>
         </div>
         <div class="usp-card">
           <div class="usp-icon">🚛</div>
           <div class="usp-card-title">LKW-befahrbar</div>
-          <div class="usp-card-sub">Direkt rein, kein Aufzug</div>
+          <div class="usp-card-sub">Drive-in, Sektionaltor.</div>
         </div>
         <div class="usp-card">
           <div class="usp-icon">📷</div>
-          <div class="usp-card-title">24/7 Video</div>
-          <div class="usp-card-sub">Sicher überwacht, Tag und Nacht</div>
+          <div class="usp-card-title">24/7 Videoüberwacht</div>
+          <div class="usp-card-sub">Alle Standorte.</div>
         </div>
         <div class="usp-card">
           <div class="usp-icon">📍</div>
           <div class="usp-card-title">16 Standorte</div>
-          <div class="usp-card-sub">NRW · Sachsen-Anhalt · Niedersachsen</div>
+          <div class="usp-card-sub">NRW · Sachsen-Anhalt.</div>
         </div>
         <div class="usp-card">
-          <div class="usp-icon">🏗️</div>
-          <div class="usp-card-title">Eigene Immobilien</div>
-          <div class="usp-card-sub">Kein Franchise, gebaut von Formica</div>
+          <div class="usp-icon">🔑</div>
+          <div class="usp-card-title">24/7 Zugang</div>
+          <div class="usp-card-sub">PIN/Chipkarte.</div>
         </div>
       </div>
     </div>
 
     <div class="block-annotations">
       <details>
-        <summary>📝 V1.0 → V1.1 · Reduktion 6 → 5</summary>
+        <summary>📝 V1.1 → V1.2 · 1:1 Figma · 5 Cards</summary>
         <ul>
-          <li>"24/7 Zugang" entfernt — überlappte mit "24/7 Video"</li>
-          <li>Figma <code>164:553</code> hat exakt 5 benefit-cards (Sync done)</li>
-          <li>Beide 24/7-USPs werden in FAQ-Antwort gebündelt erläutert</li>
+          <li><strong>Card 5 (V1.2):</strong> "24/7 Zugang / PIN/Chipkarte" — Selbstzugang-Aspekt (NICHT redundant zu Card 3 Video-Bewachung)</li>
+          <li><strong>"Eigene Immobilien" entfernt:</strong> kein direkter Visitor-Benefit — Story wandert nach B7 Gruppe (Laer-Narrative)</li>
+          <li><strong>Card-Sublines:</strong> alle gemäß Figma kompakter (du-form, kürzer)</li>
+          <li><strong>Card 1 Sub:</strong> "Kein Selfstorage — echte Flächen für echte Anforderungen." (Anti-Selfstorage-Differenzierung)</li>
         </ul>
       </details>
       <div class="source-list">
-        <h4>✅ Verifiziert</h4>
+        <h4>✅ Verifiziert · 1:1 Figma</h4>
         <ul>
-          <li>Alle 5 USPs ✅ aus Entities Registry §4 (Core/Revenue)</li>
+          <li>Alle 5 USPs ✅ aus Entities Registry §4 + Figma-Sync</li>
           <li>"100 m²" — gerundet von Werkhalle 95 m² (Wuppertal)</li>
-          <li>Bundesland-Reihenfolge nach Strategic Blueprint v2 §2</li>
+          <li>"NRW · Sachsen-Anhalt" — Niedersachsen (Braunschweig) bewusst weggelassen für Card-Sub-Kürze</li>
         </ul>
       </div>
     </div>
