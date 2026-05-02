@@ -1,0 +1,2175 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Content Preview · Startseite · Mega-Mietpark</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mega-mietpark_TZ_style.css?v=4">
+<style>
+  /* Content-Preview-spezifisch */
+  .preview-intro {
+    background: #FFF8E1; border-left: 4px solid #E65100;
+    padding: 14px 22px; margin: 24px 48px;
+    border-radius: 3px; font-size: 13px; color: #1F1F1F;
+  }
+  .preview-intro strong { color: #E65100; }
+
+  .content-section { padding: 36px 48px; }
+  .content-section.alt { background: var(--gray-light); }
+
+  .content-block {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 4px; margin-bottom: 24px;
+    overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  }
+  .block-anchor {
+    display: flex; align-items: center; gap: 14px;
+    padding: 14px 22px; background: var(--black);
+    color: white;
+  }
+  .block-num {
+    width: 38px; height: 30px;
+    background: var(--red); border-radius: 3px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 13px; font-weight: 700; color: white;
+  }
+  .block-title {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 16px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.06em; color: white; margin: 0;
+  }
+  .block-tag {
+    margin-left: auto; font-size: 11px; letter-spacing: 0.08em;
+    text-transform: uppercase; color: rgba(255,255,255,0.7);
+  }
+
+  .block-mock { padding: 0; background: #FAFAFA; }
+  .block-annotations {
+    padding: 18px 22px; background: var(--white);
+    border-top: 1px solid var(--border);
+    display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
+  }
+  .block-annotations details {
+    background: var(--gray-light); padding: 10px 14px;
+    border-radius: 3px; font-size: 13px;
+  }
+  .block-annotations details summary {
+    cursor: pointer; font-weight: 600;
+    font-family: 'Roboto Condensed',sans-serif;
+    text-transform: uppercase; font-size: 12px;
+    letter-spacing: 0.06em;
+  }
+  .block-annotations details ul { list-style: none; padding: 8px 0 0; margin: 0; }
+  .block-annotations details li {
+    padding: 4px 0; font-size: 12px; color: var(--gray-text);
+    line-height: 1.5;
+  }
+  .block-annotations details li code {
+    background: rgba(198,40,40,0.08); color: var(--red);
+    padding: 1px 4px; border-radius: 2px; font-size: 11px;
+  }
+  .placeholder-list, .source-list {
+    background: #FFF3E0; border-left: 3px solid #E65100;
+    padding: 10px 14px; border-radius: 3px;
+    font-size: 12px; color: #1F1F1F;
+  }
+  .placeholder-list h4, .source-list h4 {
+    font-family: 'Roboto Condensed',sans-serif;
+    font-size: 11px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    margin: 0 0 6px; color: #E65100;
+  }
+  .placeholder-list ul, .source-list ul {
+    list-style: none; padding: 0; margin: 0;
+  }
+  .placeholder-list li, .source-list li {
+    padding: 3px 0; line-height: 1.5;
+  }
+  .source-list { background: #E8F5E9; border-left-color: #2E7D32; }
+  .source-list h4 { color: #2E7D32; }
+
+  .placeholder-tag {
+    background: #FFE082; color: #E65100;
+    padding: 2px 6px; border-radius: 2px;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+  .placeholder-text {
+    background: #FFF8E1; color: #E65100;
+    padding: 0 4px; border-radius: 2px;
+    font-style: italic;
+  }
+  .alt-tag {
+    display: inline-block; background: #1565C0; color: white;
+    padding: 2px 7px; border-radius: 2px; margin-right: 6px;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.06em;
+  }
+
+  /* ============= REAL HERO MOCK ============= */
+  .real-hero {
+    position: relative;
+    background:
+      linear-gradient(rgba(31,31,31,0.55), rgba(31,31,31,0.75)),
+      linear-gradient(135deg, #2a2a2a, #4a4a4a);
+    color: white; padding: 80px 60px 60px;
+    min-height: 460px;
+    overflow: hidden;
+  }
+  .real-hero::before {
+    content: '🚛'; position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%,-50%); font-size: 280px; opacity: 0.06;
+  }
+  .real-hero-nav {
+    position: absolute; top: 18px; right: 60px; left: 60px;
+    display: flex; align-items: center;
+    color: rgba(255,255,255,0.7);
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+    padding-bottom: 14px; z-index: 2;
+  }
+  .real-hero-logo {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 18px; font-weight: 700; color: var(--white);
+    letter-spacing: 0.1em;
+    background: var(--red); padding: 5px 12px; border-radius: 3px;
+  }
+  .real-hero-nav-links {
+    margin-left: auto; display: flex; gap: 22px;
+    font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .real-hero-nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; }
+  .real-hero-nav-links a.warn-text {
+    background: rgba(230,81,0,0.2); color: #FFB74D; padding: 2px 6px;
+    border-radius: 2px; text-decoration: line-through;
+  }
+
+  .real-hero-content { position: relative; z-index: 2; max-width: 720px; margin-top: 50px; }
+  .real-hero-claim {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 13px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--red);
+    margin-bottom: 14px;
+  }
+  .real-hero-h1 {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 46px; font-weight: 700; line-height: 1.05;
+    text-transform: uppercase; letter-spacing: 0.02em;
+    margin: 0 0 14px; color: var(--white);
+  }
+  .real-hero-subline {
+    font-size: 15px; line-height: 1.5;
+    color: rgba(255,255,255,0.92); margin: 0 0 24px;
+    max-width: 580px;
+  }
+
+  .search-form {
+    background: var(--white); border-radius: 4px;
+    padding: 16px 20px; max-width: 520px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  }
+  .search-form-tag {
+    display: flex; justify-content: space-between;
+    font-family: 'Roboto Condensed',sans-serif;
+    font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--gray); margin-bottom: 10px;
+  }
+  .search-form-tag a { color: var(--red); text-decoration: none; }
+  .search-input-row {
+    display: flex; gap: 8px; align-items: stretch;
+  }
+  .search-input {
+    flex: 1; padding: 12px 14px;
+    font-size: 14px; color: var(--gray-text);
+    border: 1px solid var(--border); border-radius: 3px;
+    background: var(--gray-light);
+  }
+  .btn-primary {
+    background: var(--red); color: white; border: none;
+    padding: 12px 24px; border-radius: 3px;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 12px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; cursor: pointer;
+  }
+  .btn-secondary {
+    background: transparent; color: var(--white);
+    border: 2px solid var(--white); padding: 10px 22px;
+    margin-top: 16px; border-radius: 3px;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 12px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; cursor: pointer;
+  }
+  .btn-text {
+    background: transparent; color: var(--red);
+    border: none; padding: 6px 0;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 12px; font-weight: 600; letter-spacing: 0.06em;
+    text-transform: uppercase; cursor: pointer;
+  }
+
+  .real-hero-rating {
+    position: absolute; top: 100px; right: 60px; z-index: 2;
+    display: flex; align-items: center; gap: 10px;
+    background: rgba(255,255,255,0.95); color: var(--black);
+    padding: 8px 14px; border-radius: 4px;
+  }
+  .rating-stars { color: #FFB400; font-size: 14px; letter-spacing: -2px; }
+  .rating-text { font-size: 11px; color: var(--gray); }
+  .rating-text strong { color: var(--black); }
+
+  /* ============= MARQUEE ============= */
+  .marquee-bar {
+    background: var(--gray-light); padding: 14px 60px;
+    display: flex; align-items: center; gap: 20px;
+    overflow: hidden; white-space: nowrap;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .marquee-title {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--red); font-weight: 700; flex-shrink: 0;
+  }
+  .marquee-track {
+    display: flex; gap: 20px; align-items: center;
+    color: var(--gray-text); font-size: 13px;
+  }
+  .marquee-link a {
+    color: var(--gray-text); text-decoration: none;
+    font-family: 'Roboto Condensed',sans-serif;
+    letter-spacing: 0.04em; font-weight: 500;
+  }
+  .marquee-link a:hover { color: var(--red); }
+  .marquee-dot { font-size: 6px; color: var(--gray); }
+
+  /* ============= INTRO-SECTION ============= */
+  .intro-section {
+    padding: 60px 60px;
+    background: var(--white);
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 40px; align-items: start;
+  }
+  .intro-text { padding: 30px 0; }
+  .intro-header {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 38px; font-weight: 700;
+    line-height: 1.1; color: var(--black);
+    margin: 0 0 18px;
+    text-transform: uppercase; letter-spacing: 0.02em;
+  }
+  .intro-desc {
+    font-size: 16px; line-height: 1.7; color: var(--gray-text);
+    margin-bottom: 30px;
+  }
+  .intro-desc strong { color: var(--black); }
+  .big-stat {
+    border-top: 1px solid var(--border);
+    padding-top: 24px; max-width: 360px;
+  }
+  .big-stat-num {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 80px; font-weight: 700; line-height: 0.95;
+    color: var(--red); margin-bottom: 4px;
+  }
+  .big-stat-title {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 24px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.04em; margin-bottom: 6px;
+  }
+  .big-stat-desc { font-size: 14px; color: var(--gray-text); line-height: 1.5; }
+  .intro-photos {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+    align-items: stretch;
+  }
+  .intro-photo {
+    aspect-ratio: 3/4;
+    background: linear-gradient(135deg, #d8d8d8, #b8b8b8);
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 60px; color: rgba(0,0,0,0.2);
+    position: relative;
+  }
+  .intro-photo::after {
+    content: 'Stock-Foto'; position: absolute; bottom: 12px; left: 12px;
+    background: rgba(255,255,255,0.85); color: var(--gray);
+    padding: 3px 8px; border-radius: 2px;
+    font-family: 'Roboto Condensed',sans-serif;
+    font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+  }
+
+  /* ============= USP-BAR ============= */
+  .usp-bar {
+    padding: 50px 60px; background: var(--white);
+    display: grid; grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+  }
+  .usp-card {
+    text-align: center; padding: 18px 14px;
+    background: var(--gray-light); border-radius: 4px;
+    border-top: 3px solid var(--red);
+  }
+  .usp-icon { font-size: 36px; margin-bottom: 10px; opacity: 0.85; }
+  .usp-card-title {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 14px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.04em; margin-bottom: 4px;
+  }
+  .usp-card-sub { font-size: 12px; color: var(--gray); line-height: 1.4; }
+
+  /* ============= STACKED CARDS ============= */
+  .stacked-cards {
+    padding: 60px 60px; background: var(--gray-light);
+  }
+  .section-headline {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 32px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.04em; text-align: center; margin: 0 0 8px;
+  }
+  .section-subline {
+    text-align: center; font-size: 16px;
+    color: var(--gray-text); margin-bottom: 36px;
+  }
+  .stacked-card {
+    background: var(--white); border-radius: 4px;
+    margin-bottom: 16px; overflow: hidden;
+    display: grid; grid-template-columns: 1fr 1fr;
+    border: 1px solid var(--border);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  }
+  .stacked-card-img {
+    background: linear-gradient(135deg, #c8d8c8, #98b898);
+    min-height: 280px;
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 80px; color: rgba(0,0,0,0.2);
+  }
+  .stacked-card-img.garage { background: linear-gradient(135deg, #ffd180, #ff8a65); }
+  .stacked-card-img.lager { background: linear-gradient(135deg, #b3e5fc, #4fc3f7); }
+  .stacked-card-img.buero { background: linear-gradient(135deg, #c8e6c9, #66bb6a); }
+  .stacked-card-img.werkhalle { background: linear-gradient(135deg, #d7ccc8, #8d6e63); }
+
+  .stacked-card-review {
+    position: absolute; bottom: 16px; left: 16px; right: 16px;
+    background: rgba(255,255,255,0.96); padding: 10px 14px;
+    border-radius: 4px; display: flex; align-items: center; gap: 10px;
+    font-size: 12px; line-height: 1.4;
+  }
+  .stacked-card-review-avatar {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--gray-line);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; flex-shrink: 0;
+  }
+  .stacked-card-review-text strong { color: var(--black); }
+  .stacked-card-review-stars { color: #FFB400; font-size: 11px; letter-spacing: -1px; }
+
+  .stacked-card-body {
+    padding: 36px 40px;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .stacked-card-h3 {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 32px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.03em; margin: 0 0 14px;
+  }
+  .stacked-card-msg {
+    font-size: 16px; line-height: 1.55; color: var(--gray-text);
+    margin-bottom: 16px;
+  }
+  .stacked-card-info {
+    font-size: 13px; color: var(--gray);
+    border-top: 1px solid var(--border); padding-top: 12px;
+    margin-bottom: 16px;
+  }
+  .stacked-card-cta {
+    color: var(--red); font-weight: 600;
+    font-family: 'Roboto Condensed',sans-serif;
+    font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase;
+  }
+
+  /* ============= 3D-TOUR ============= */
+  .tour-section {
+    padding: 60px 60px; background: var(--white);
+  }
+  .tour-box {
+    background: linear-gradient(135deg, #1f1f1f, #2a2a2a);
+    border-radius: 4px; padding: 60px;
+    display: grid; grid-template-columns: 2fr 1fr;
+    gap: 40px; align-items: center;
+    color: rgba(255,255,255,0.85);
+    position: relative;
+  }
+  .tour-box .tour-text { padding: 14px 0; }
+  .tour-box h3 {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 28px; font-weight: 700; text-transform: uppercase;
+    color: var(--white); margin: 0 0 12px; letter-spacing: 0.03em;
+  }
+  .tour-box p { font-size: 14px; line-height: 1.6; margin-bottom: 18px; opacity: 0.8; }
+  .tour-box .phase-tag {
+    display: inline-block;
+    background: rgba(198,40,40,0.2); color: var(--red);
+    padding: 3px 8px; border-radius: 2px;
+    font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+    margin-right: 12px;
+  }
+  .tour-box .btn-primary { opacity: 0.5; cursor: not-allowed; }
+  .tour-visual {
+    aspect-ratio: 4/3;
+    background: rgba(255,255,255,0.08);
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 80px; opacity: 0.7;
+  }
+
+  /* ============= MAP ============= */
+  .map-section {
+    padding: 60px 60px; background: var(--white);
+  }
+  .map-container {
+    display: grid; grid-template-columns: 360px 1fr;
+    gap: 24px; align-items: stretch;
+  }
+  .map-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 4px; padding: 24px;
+  }
+  .map-card h3 {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 24px; font-weight: 700; text-transform: uppercase;
+    margin: 0 0 8px; letter-spacing: 0.03em;
+  }
+  .map-card p {
+    font-size: 14px; color: var(--gray-text); margin-bottom: 18px;
+  }
+  .map-visual {
+    background: linear-gradient(135deg, #cde0d8, #a4c4b9);
+    border-radius: 4px; min-height: 380px;
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 80px; opacity: 0.7;
+  }
+  .map-pins {
+    position: absolute; inset: 0;
+    pointer-events: none;
+  }
+  .map-pin {
+    position: absolute;
+    width: 24px; height: 24px;
+    background: var(--red); border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  }
+
+  /* ============= TRUST BLOCK ============= */
+  .trust-section {
+    padding: 60px 60px; background: var(--gray-light);
+  }
+  .trust-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 28px; margin-bottom: 40px;
+  }
+  .trust-header-block { padding: 0; }
+  .trust-header-block h3 {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 28px; font-weight: 700; text-transform: uppercase;
+    margin: 0 0 14px; line-height: 1.15;
+  }
+  .trust-header-block p {
+    font-size: 15px; color: var(--gray-text); line-height: 1.6;
+    margin-bottom: 24px;
+  }
+  .rating-block {
+    display: flex; align-items: center; gap: 18px;
+    background: var(--white); padding: 18px 22px;
+    border-radius: 4px;
+  }
+  .rating-avatars {
+    display: flex; align-items: center;
+  }
+  .rating-avatar {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: var(--gray-line);
+    border: 2px solid var(--white);
+    margin-right: -10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+  }
+  .rating-info-text { font-size: 13px; line-height: 1.45; }
+  .rating-info-text strong { color: var(--black); }
+  .rating-info-text .stars { color: #FFB400; font-size: 14px; letter-spacing: -2px; display: block; margin-bottom: 2px; }
+
+  .stats-block {
+    background: var(--white); padding: 18px 24px;
+    border-radius: 4px;
+  }
+  .stat-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 0; border-bottom: 1px solid var(--border);
+  }
+  .stat-row:last-child { border-bottom: none; }
+  .stat-num {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 36px; font-weight: 700; color: var(--red);
+    line-height: 1;
+  }
+  .stat-label {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 14px; color: var(--black);
+    text-transform: uppercase; letter-spacing: 0.04em;
+    text-align: right;
+  }
+
+  .manager-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 12px; margin-top: 24px;
+  }
+  .manager-card {
+    background: var(--white); padding: 14px;
+    border-radius: 4px;
+    display: grid; grid-template-columns: 80px 1fr;
+    gap: 14px; align-items: center;
+  }
+  .manager-photo {
+    width: 80px; height: 80px;
+    background: linear-gradient(135deg, #d8d8d8, #b8b8b8);
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 32px; color: rgba(0,0,0,0.3);
+  }
+  .manager-data h4 {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 15px; font-weight: 700; margin: 0 0 4px;
+  }
+  .manager-data p { font-size: 12px; color: var(--gray); margin: 0; line-height: 1.4; }
+  .manager-data .city {
+    display: inline-block; margin-top: 4px;
+    font-size: 11px; color: var(--red);
+    font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+  }
+
+  /* ============= GROUPE DAHINTER ============= */
+  .gruppe-section {
+    padding: 60px 60px; background: var(--white);
+  }
+  .gruppe-grid {
+    display: grid; grid-template-columns: 3fr 2fr;
+    gap: 40px; align-items: center;
+  }
+  .gruppe-text h3 {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 32px; font-weight: 700; text-transform: uppercase;
+    margin: 0 0 18px; line-height: 1.1;
+  }
+  .gruppe-text p { font-size: 15px; line-height: 1.7; color: var(--gray-text); margin-bottom: 24px; }
+  .gruppe-text strong { color: var(--black); }
+  .gruppe-stats {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 12px; margin-bottom: 24px;
+  }
+  .gruppe-stat {
+    text-align: center; padding: 14px 10px;
+    background: var(--gray-light); border-radius: 4px;
+    border-top: 3px solid var(--red);
+  }
+  .gruppe-stat-num {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 26px; font-weight: 700; color: var(--red); line-height: 1;
+  }
+  .gruppe-stat-label {
+    font-size: 11px; color: var(--gray);
+    margin-top: 5px; text-transform: uppercase; letter-spacing: 0.06em;
+  }
+  .gruppe-visual {
+    aspect-ratio: 4/3;
+    background: linear-gradient(135deg, #d0d8e0, #a8b4c4);
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 80px; opacity: 0.7;
+  }
+
+  /* ============= TARIF-SECTION ============= */
+  .tarif-section {
+    padding: 60px 60px; background: var(--gray-light);
+  }
+  .tarif-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 16px; margin-top: 28px;
+  }
+  .tarif-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 4px; padding: 32px 26px;
+    display: flex; flex-direction: column;
+    position: relative;
+  }
+  .tarif-card.featured {
+    border-color: var(--red); border-width: 2px;
+    transform: scale(1.02);
+  }
+  .tarif-card.featured::before {
+    content: 'BELIEBT'; position: absolute; top: -12px; left: 50%;
+    transform: translateX(-50%);
+    background: var(--red); color: white;
+    padding: 4px 14px; border-radius: 2px;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.1em;
+  }
+  .tarif-name {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 14px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.1em; color: var(--gray); margin-bottom: 6px;
+  }
+  .tarif-size {
+    font-size: 12px; color: var(--gray);
+    margin-bottom: 18px;
+    font-family: monospace;
+  }
+  .tarif-price-row {
+    display: flex; align-items: baseline; gap: 8px;
+    border-top: 1px solid var(--border); padding-top: 16px;
+    margin-bottom: 22px;
+  }
+  .tarif-price {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 42px; font-weight: 700; color: var(--red);
+    line-height: 1;
+  }
+  .tarif-price-sub { font-size: 13px; color: var(--gray); }
+  .tarif-features { list-style: none; padding: 0; margin: 0 0 24px; }
+  .tarif-features li {
+    padding: 6px 0; font-size: 13px; color: var(--gray-text);
+    display: flex; gap: 10px; align-items: center;
+    border-bottom: 1px solid var(--border);
+  }
+  .tarif-features li::before {
+    content: '✓'; color: var(--red); font-weight: 700;
+  }
+  .tarif-card .btn-primary { margin-top: auto; }
+
+  .tarif-disclaimer {
+    text-align: center; font-size: 12px; color: var(--gray);
+    margin-top: 24px; font-style: italic;
+  }
+
+  /* ============= STEPS ============= */
+  .steps-section {
+    padding: 60px 60px; background: var(--white);
+    display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
+    align-items: center;
+  }
+  .steps-photo {
+    aspect-ratio: 4/3;
+    background: linear-gradient(135deg, #ddc8b0, #c0a878);
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 80px; opacity: 0.6;
+  }
+  .steps-list { padding: 14px 0; }
+  .step-item {
+    display: grid; grid-template-columns: 80px 1fr;
+    gap: 20px; padding: 18px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .step-item:last-child { border-bottom: none; }
+  .step-num {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 56px; font-weight: 700; color: var(--red);
+    line-height: 1; opacity: 0.85;
+  }
+  .step-text h4 {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 18px; font-weight: 700; text-transform: uppercase;
+    margin: 0 0 6px; letter-spacing: 0.03em;
+  }
+  .step-text p { font-size: 13px; color: var(--gray-text); line-height: 1.6; margin: 0; }
+
+  /* ============= RATGEBER ============= */
+  .ratgeber-section {
+    padding: 60px 60px; background: var(--gray-light);
+  }
+  .ratgeber-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 18px; margin-top: 28px;
+  }
+  .ratgeber-card {
+    background: var(--white); border-radius: 4px;
+    overflow: hidden; border: 1px solid var(--border);
+  }
+  .ratgeber-img {
+    aspect-ratio: 16/9;
+    background: linear-gradient(135deg, #c8d8e0, #98b8c4);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 60px; opacity: 0.6;
+    color: rgba(0,0,0,0.2);
+  }
+  .ratgeber-img.umzug { background: linear-gradient(135deg, #ffe0b2, #ffb74d); }
+  .ratgeber-img.gewerbe { background: linear-gradient(135deg, #d7ccc8, #a1887f); }
+  .ratgeber-card-body { padding: 18px 20px 22px; }
+  .ratgeber-cat {
+    font-family: 'Roboto Condensed',sans-serif;
+    font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--gray); margin-bottom: 8px;
+  }
+  .ratgeber-title {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 18px; font-weight: 700; line-height: 1.25;
+    margin: 0 0 14px; min-height: 64px;
+  }
+  .ratgeber-meta {
+    font-size: 11px; color: var(--gray);
+    text-transform: uppercase; letter-spacing: 0.06em;
+  }
+
+  /* ============= FAQ ============= */
+  .faq-section {
+    padding: 60px 60px; background: var(--white);
+  }
+  .faq-list { max-width: 900px; margin: 28px auto 0; }
+  .faq-item {
+    background: var(--gray-light); margin-bottom: 8px;
+    border-radius: 4px; padding: 16px 22px;
+    border-left: 3px solid transparent;
+  }
+  .faq-item.open { background: #FFEBEE; border-left-color: var(--red); }
+  .faq-q {
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: 'Roboto Condensed',sans-serif;
+    font-size: 16px; font-weight: 600;
+    cursor: pointer;
+  }
+  .faq-q-icon { color: var(--red); font-size: 20px; font-weight: 300; }
+  .faq-item.open .faq-q-icon { transform: rotate(45deg); }
+  .faq-a {
+    margin-top: 12px;
+    font-size: 14px; color: var(--gray-text); line-height: 1.7;
+    display: none;
+  }
+  .faq-item.open .faq-a { display: block; }
+  .faq-a strong { color: var(--black); }
+
+  /* ============= MARKEN-OUTRO ============= */
+  .outro-section {
+    padding: 80px 60px;
+    background: linear-gradient(135deg, #1f1f1f, #2a2a2a);
+    color: var(--white); text-align: center;
+  }
+  .outro-banner {
+    background: rgba(198,40,40,0.2);
+    border: 1px solid rgba(198,40,40,0.5);
+    color: rgba(255,255,255,0.95);
+    padding: 12px 22px; border-radius: 4px;
+    display: inline-block; margin-bottom: 32px;
+    font-size: 13px;
+  }
+  .outro-banner strong { color: white; }
+  .outro-claim-tag {
+    font-family: 'Roboto Condensed',sans-serif;
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--red); margin-bottom: 12px;
+  }
+  .outro-claim {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 56px; font-weight: 700; line-height: 1.1;
+    text-transform: uppercase; letter-spacing: 0.04em;
+    margin: 0 0 24px; color: var(--white);
+  }
+  .outro-sub {
+    font-size: 14px; opacity: 0.7;
+    font-style: italic;
+  }
+
+  /* ============= FOOTER ============= */
+  .real-footer {
+    background: var(--black); color: rgba(255,255,255,0.7);
+    padding: 50px 60px;
+  }
+  .footer-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 30px; margin-bottom: 30px;
+  }
+  .footer-grid h5 {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 13px; font-weight: 700;
+    color: var(--white); margin: 0 0 12px;
+    text-transform: uppercase; letter-spacing: 0.1em;
+  }
+  .footer-grid ul { list-style: none; padding: 0; margin: 0; }
+  .footer-grid li {
+    padding: 4px 0; font-size: 13px;
+  }
+  .footer-grid a {
+    color: rgba(255,255,255,0.6); text-decoration: none;
+  }
+  .footer-grid a:hover { color: white; }
+  .footer-trust {
+    border-top: 1px solid rgba(255,255,255,0.12);
+    padding-top: 20px; font-size: 12px;
+    display: flex; justify-content: space-between;
+    color: rgba(255,255,255,0.5);
+  }
+
+  @media (max-width: 1100px) {
+    .stacked-card { grid-template-columns: 1fr; }
+    .intro-section, .gruppe-grid, .map-container, .steps-section, .trust-grid {
+      grid-template-columns: 1fr;
+    }
+    .usp-bar, .ratgeber-grid, .tarif-grid, .footer-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    .real-hero { padding: 60px 30px 40px; }
+    .real-hero-h1 { font-size: 34px; }
+    .outro-claim { font-size: 38px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="global">
+  <a class="logo" href="index.html">MEGA<span>·</span>MIETPARK · Content</a>
+  <a href="index.html">TZ-Hub</a>
+  <a href="mega-mietpark_TZ_Startseite.html">TZ Startseite</a>
+  <a href="mega-mietpark_content_01_startseite.html" class="active">📝 Content · Startseite</a>
+  <span class="v-tag">V1.1</span>
+  <button class="lang-toggle" id="ruToggle">DE + RU</button>
+</nav>
+
+<div class="cover">
+  <p class="cover-tag">Content Preview · Seite 1 von 3</p>
+  <h1>Startseite<br><em>Texte im Kontext</em></h1>
+  <p class="cover-sub">
+    Block-für-Block-Visualisierung der V1.1-Texte (Stand 2026-05-02). Jeder Block zeigt: <strong>links den finalen Text in Layout-Kontext</strong>, <strong>unten Annotationen</strong> (Alternativen, Quellen, Placeholders, Begründungen).
+    Ziel: Texte im Kontext lesen, einfach prüfen und kommentieren.
+  </p>
+  <div class="ru">
+    Превью контента блок-за-блоком (V1.1 от 02.05.2026). Каждый блок показывает: <strong>текст в контексте дизайна</strong> и <strong>аннотации внизу</strong> (альтернативы, источники, placeholders).
+  </div>
+  <div class="cover-meta">
+    <div class="cover-meta-item">Datei<strong>content/mega_mietpark_01_startseite.md</strong></div>
+    <div class="cover-meta-item">Version<strong>V1.1 · Figma-Sync done</strong></div>
+    <div class="cover-meta-item">Blöcke<strong>14 (META + 12 + Footer)</strong></div>
+    <div class="cover-meta-item">Tonalität<strong>du-Form · DE</strong></div>
+  </div>
+</div>
+
+<div class="preview-intro">
+  <strong>📖 Lese-Anleitung:</strong> Scroll von oben nach unten — jede Sektion zeigt zuerst den <em>visuellen Mock</em> mit dem finalen Text wie er auf der Seite erscheinen wird, dann die Annotationen-Box mit Alternativen, Quellen und Placeholdern. Gelb markiert = <span class="placeholder-tag">PLACEHOLDER</span> (wartet auf David). Hellgrün = ✅ verifiziert.
+</div>
+
+<!-- ============================================================ -->
+<!-- BLOCK META                                                   -->
+<!-- ============================================================ -->
+<div class="content-section">
+
+  <div class="content-block">
+    <div class="block-anchor">
+      <span class="block-num">META</span>
+      <h2 class="block-title">Title-Tag &amp; Meta Description</h2>
+      <span class="block-tag">SEO-Foundation</span>
+    </div>
+    <div class="block-mock" style="padding: 22px 28px;">
+      <div style="background:white; border:1px solid var(--border); border-radius:4px; padding:14px 18px; max-width:620px; box-shadow:0 1px 3px rgba(0,0,0,0.05);">
+        <div style="font-size:12px; color:#1A0DAB; font-family:Arial,sans-serif; margin-bottom:2px;">www.mega-mietpark.de</div>
+        <div style="font-size:18px; color:#1A0DAB; font-family:Arial,sans-serif; line-height:1.3; margin-bottom:4px;"><strong>Mega-Mietpark · Garage, Werkhalle &amp; Büro mieten</strong></div>
+        <div style="font-size:13px; color:#4D5156; font-family:Arial,sans-serif; line-height:1.4;">An 16 Standorten in Deutschland: Garagen, Werkhallen, Büros &amp; Lagerräume mit 6 m Höhe, LKW-Zufahrt und 24/7-Zugang. Faire Preise — jetzt Standort finden.</div>
+      </div>
+    </div>
+    <div class="block-annotations">
+      <details>
+        <summary>📝 Alternativen (3 Title + 3 Meta)</summary>
+        <ul>
+          <li><span class="alt-tag">A ✓</span> "Mega-Mietpark · Garage, Werkhalle &amp; Büro mieten" — 49 Zeichen, Brand-First (✓ EMPFOHLEN)</li>
+          <li><span class="alt-tag">B</span> "Garage · Werkhalle · Büro mieten | Mega-Mietpark" — 49 Zeichen, Keyword-First</li>
+          <li><span class="alt-tag">C</span> "16 Standorte für Garage &amp; Werkhalle | Mega-Mietpark" — 53 Zeichen, Local-Trust-First</li>
+        </ul>
+      </details>
+      <div class="source-list">
+        <h4>✅ SEO-Status</h4>
+        <ul>
+          <li>Title: <strong>49 Zeichen</strong> ✓ (Limit 60)</li>
+          <li>Meta: <strong>155 Zeichen</strong> ✓ (Limit 160)</li>
+          <li>Schema.org: <code>WebSite</code>, <code>Organization</code></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- BLOCK 1 — HERO                                               -->
+<!-- ============================================================ -->
+<div class="content-section">
+
+  <div class="content-block">
+    <div class="block-anchor">
+      <span class="block-num">B1</span>
+      <h2 class="block-title">Hero · Pre-Headline + H1 + PLZ-Suche</h2>
+      <span class="block-tag">Persona-übergreifend</span>
+    </div>
+
+    <div class="block-mock">
+      <div class="real-hero">
+        <div class="real-hero-nav">
+          <span class="real-hero-logo">MEGA·MIETPARK</span>
+          <div class="real-hero-nav-links">
+            <span>Standorte</span>
+            <span>Lösungen</span>
+            <span>Ratgeber</span>
+            <span>Grundstücke</span>
+            <span class="warn-text" title="Aktuell in Figma — soll laut TZ entfernt werden">Lagerraum</span>
+          </div>
+        </div>
+        <div class="real-hero-rating">
+          <span>👤👤👤</span>
+          <div>
+            <div class="rating-stars">⭐⭐⭐⭐⭐</div>
+            <div class="rating-text"><strong>[KUNDE]</strong> aus <strong>[N]</strong> Bewertungen</div>
+          </div>
+        </div>
+        <div class="real-hero-content">
+          <div class="real-hero-claim">Groß genug für deine Pläne.</div>
+          <h1 class="real-hero-h1">Mehr Raum.<br>An 16 Standorten in Deutschland.</h1>
+          <p class="real-hero-subline">XXL-Garagen · Büros · Werkhallen · Lagerräume — direkt befahrbar, 24/7 zugänglich, ab 180 € pro Monat.</p>
+          <div class="search-form">
+            <div class="search-form-tag">
+              <span>IHR NÄCHSTER MEGA-MIETPARK</span>
+              <a href="#map">Alle 16 Standorte auf der Karte →</a>
+            </div>
+            <div class="search-input-row">
+              <input class="search-input" placeholder="PLZ eingeben, z. B. 50737">
+              <button class="btn-primary">Finden</button>
+            </div>
+          </div>
+          <button class="btn-secondary">Alle Lösungen entdecken</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="block-annotations">
+      <details>
+        <summary>📝 Alternativen · 3 H1 + 2 Claim + 3 sek-CTA</summary>
+        <ul>
+          <li><strong>Claim:</strong></li>
+          <li><span class="alt-tag">A ✓</span> "Groß genug für deine Pläne." — W&amp;S Top-Favorit</li>
+          <li><span class="alt-tag">B</span> "Raum, der mehr kann." — David-Favorit</li>
+          <li style="margin-top:8px;"><strong>H1:</strong></li>
+          <li><span class="alt-tag">A ✓</span> "Mehr Raum. An 16 Standorten in Deutschland."</li>
+          <li><span class="alt-tag">B</span> "Dein Raum. Dein Standort. Dein Tempo."</li>
+          <li><span class="alt-tag">C</span> "Garage, Werkhalle, Büro — direkt befahrbar."</li>
+          <li style="margin-top:8px;"><strong>Sekundär-CTA:</strong></li>
+          <li><span class="alt-tag">A ✓</span> "Alle Lösungen entdecken"</li>
+          <li><span class="alt-tag">B</span> "Standorte ansehen"</li>
+          <li><span class="alt-tag">C</span> "Was passt zu dir?"</li>
+        </ul>
+      </details>
+      <div class="placeholder-list">
+        <h4>⚠️ Pending · 2 Items</h4>
+        <ul>
+          <li><strong>Hero-Mood-Video:</strong> Stock-Auswahl (Andrey: 3-5 Kandidaten) — atmospheric, helle Tonalität, Mensch in Aktion</li>
+          <li><strong>Final Claim:</strong> Client-Review läuft — bis David entscheidet bleibt W&amp;S-Top-Favorit Default</li>
+          <li><strong>Stat-Rating in Hero:</strong> Google-Rating + Anzahl von David</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- BLOCK 1.5 — MARQUEE #1                                       -->
+<!-- ============================================================ -->
+<div class="content-section">
+
+  <div class="content-block">
+    <div class="block-anchor">
+      <span class="block-num">B1.5</span>
+      <h2 class="block-title">Marquee #1 · Sliding Anchor-Bar</h2>
+      <span class="block-tag">🆕 V1.1 · Figma-Sync</span>
+    </div>
+
+    <div class="block-mock">
+      <div class="marquee-bar">
+        <span class="marquee-title">WAS DU BEI UNS FINDEST</span>
+        <div class="marquee-track">
+          <span class="marquee-link"><a href="#tarif">Büro</a></span>
+          <span class="marquee-dot">●</span>
+          <span class="marquee-link"><a href="#tarif">Werkhalle</a></span>
+          <span class="marquee-dot">●</span>
+          <span class="marquee-link"><a href="#usps">LKW-Zufahrt</a></span>
+          <span class="marquee-dot">●</span>
+          <span class="marquee-link"><a href="#usps">24/7 Zugang</a></span>
+          <span class="marquee-dot">●</span>
+          <span class="marquee-link"><a href="#tarif">Preise ab 180 €</a></span>
+          <span class="marquee-dot">●</span>
+          <span class="marquee-link"><a href="#tarif">Büro</a></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="block-annotations">
+      <details>
+        <summary>📝 Alternativen Title · 3 Optionen</summary>
+        <ul>
+          <li><span class="alt-tag">A ✓</span> "Was du bei uns findest" — du-Form, einladend</li>
+          <li><span class="alt-tag">B</span> "Mehr als nur Garagen" — kategorie-bildend</li>
+          <li><span class="alt-tag">C</span> "Mietpark · Was das heißt" — Brand-USP-Brücke</li>
+        </ul>
+      </details>
+      <div class="source-list">
+        <h4>📐 Layout-Notiz</h4>
+        <ul>
+          <li>Figma: <code>147:105 + 147:119</code> (twin-frames für endless animation)</li>
+          <li>5 Anchor-Links + Title — wiederholt sich endlos rechts → links</li>
+          <li>Höhe: 32 px · Trennzeichen: 6 px Punkte</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- BLOCK 1.7 — INTRO-SECTION                                    -->
+<!-- ============================================================ -->
+<div class="content-section">
+
+  <div class="content-block">
+    <div class="block-anchor">
+      <span class="block-num">B1.7</span>
+      <h2 class="block-title">Intro · Photos + Big Stat</h2>
+      <span class="block-tag">🆕 V1.1 · Brücke Hero → USP</span>
+    </div>
+
+    <div class="block-mock">
+      <div class="intro-section">
+        <div class="intro-text">
+          <h2 class="intro-header">Der Mietpark, der mit dir wächst.</h2>
+          <p class="intro-desc">Kein Self-Storage-Käfig, keine Gewerbe-Halle mit 5-Jahres-Knebel — sondern eine neue Kategorie: <strong>Garagen, Lagerräume, Büros und Werkhallen</strong> unter einem Dach. Direkt befahrbar. Monatlich oder jahreslang. Du entscheidest.</p>
+          <div class="big-stat">
+            <div class="big-stat-num">6 m</div>
+            <div class="big-stat-title">Deckenhöhe.</div>
+            <div class="big-stat-desc">Das ist 2,4× mehr Volumen als bei Self-Storage. Spar dir das Stapeln.</div>
+          </div>
+        </div>
+        <div class="intro-photos">
+          <div class="intro-photo">🚛</div>
+          <div class="intro-photo">📐</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="block-annotations">
+      <details>
+        <summary>📝 Alternativen · 3 Header + 3 Stat</summary>
+        <ul>
+          <li><strong>Header text:</strong></li>
+          <li><span class="alt-tag">A ✓</span> "Der Mietpark, der mit dir wächst." — Brand-USP, growth</li>
+          <li><span class="alt-tag">B</span> "Mehr als Lager. Mehr als Büro. Mehr als Garage." — Triade</li>
+          <li><span class="alt-tag">C</span> "Eigene Immobilien. Eigene Qualität. Direkt von uns." — Trust</li>
+          <li style="margin-top:8px;"><strong>Big Stat:</strong></li>
+          <li><span class="alt-tag">A ✓</span> "6 m Deckenhöhe / 2,4× mehr Volumen"</li>
+          <li><span class="alt-tag">B</span> "16 Standorte / Eines davon direkt bei dir"</li>
+          <li><span class="alt-tag">C</span> "27.000+ Einheiten / Erfahrung von Formica seit 1990"</li>
+        </ul>
+      </details>
+      <div class="source-list">
+        <h4>✅ Quellen</h4>
+        <ul>
+          <li><strong>6 m Deckenhöhe:</strong> Werkhalle Wuppertal · Angebotsflyer ✅</li>
+          <li><strong>2,4× Volumen:</strong> Berechnung aus positionierung.md (R_vol-Formel)</li>
+          <li><strong>4 Hauptlösungen:</strong> Entities Registry §1</li>
+          <li><strong>Foto-Briefing:</strong> 2 Photos (640×800 + 460×672) — Außen/Innen, NordSpace-Stil</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- BLOCK 2 — USP-BAR (5 cards)                                  -->
+<!-- ============================================================ -->
+<div class="content-section alt">
+
+  <div class="content-block">
+    <div class="block-anchor">
+      <span class="block-num">B2</span>
+      <h2 class="block-title">USP-Bar · 5 Vorteile</h2>
+      <span class="block-tag">Anchor #usps · Figma 5 cards</span>
+    </div>
+
+    <div class="block-mock">
+      <div class="usp-bar">
+        <div class="usp-card">
+          <div class="usp-icon">📐</div>
+          <div class="usp-card-title">XXL bis 100 m²</div>
+          <div class="usp-card-sub">Werkhalle mit 6 m Deckenhöhe</div>
+        </div>
+        <div class="usp-card">
+          <div class="usp-icon">🚛</div>
+          <div class="usp-card-title">LKW-befahrbar</div>
+          <div class="usp-card-sub">Direkt rein, kein Aufzug</div>
+        </div>
+        <div class="usp-card">
+          <div class="usp-icon">📷</div>
+          <div class="usp-card-title">24/7 Video</div>
+          <div class="usp-card-sub">Sicher überwacht, Tag und Nacht</div>
+        </div>
+        <div class="usp-card">
+          <div class="usp-icon">📍</div>
+          <div class="usp-card-title">16 Standorte</div>
+          <div class="usp-card-sub">NRW · Sachsen-Anhalt · Niedersachsen</div>
+        </div>
+        <div class="usp-card">
+          <div class="usp-icon">🏗️</div>
+          <div class="usp-card-title">Eigene Immobilien</div>
+          <div class="usp-card-sub">Kein Franchise, gebaut von Formica</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="block-annotations">
+      <details>
+        <summary>📝 V1.0 → V1.1 · Reduktion 6 → 5</summary>
+        <ul>
+          <li>"24/7 Zugang" entfernt — überlappte mit "24/7 Video"</li>
+          <li>Figma <code>164:553</code> hat exakt 5 benefit-cards (Sync done)</li>
+          <li>Beide 24/7-USPs werden in FAQ-Antwort gebündelt erläutert</li>
+        </ul>
+      </details>
+      <div class="source-list">
+        <h4>✅ Verifiziert</h4>
+        <ul>
+          <li>Alle 5 USPs ✅ aus Entities Registry §4 (Core/Revenue)</li>
+          <li>"100 m²" — gerundet von Werkhalle 95 m² (Wuppertal)</li>
+          <li>Bundesland-Reihenfolge nach Strategic Blueprint v2 §2</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- BLOCK 3 — STACKED CARDS (4 Nutzungsarten)                    -->
+<!-- ============================================================ -->
+<div class="content-section">
+
+  <div class="content-block">
+    <div class="block-anchor">
+      <span class="block-num">B3</span>
+      <h2 class="block-title">Stacked Cards · 4 Nutzungsarten · KERN-NEUHEIT</h2>
+      <span class="block-tag">DK-Scroll-Stack · 4 Personas</span>
+    </div>
+
+    <div class="block-mock">
+      <div class="stacked-cards">
+        <h2 class="section-headline">Vier Lösungen. Eine Adresse.</h2>
+        <p class="section-subline">Garage, Lagerraum, Büro oder Werkhalle — finde, was du wirklich brauchst.</p>
+
+        <div class="stacked-card">
+          <div class="stacked-card-img garage">
+            🚗
+            <div class="stacked-card-review">
+              <div class="stacked-card-review-avatar">👤</div>
+              <div class="stacked-card-review-text">
+                <div class="stacked-card-review-stars">⭐⭐⭐⭐⭐</div>
+                "Endlich kein Sturm-Stress mehr — mein Wohnmobil steht trocken und sicher."<br>
+                <strong>Thomas K.</strong>, Wohnmobilbesitzer
+              </div>
+            </div>
+          </div>
+          <div class="stacked-card-body">
+            <h3 class="stacked-card-h3">Garage</h3>
+            <p class="stacked-card-msg">Der sicherste Hafen für deine Freiheit. Dein Wohnmobil, dein Oldtimer, dein Hobby — trocken, bewacht und jederzeit startklar.</p>
+            <div class="stacked-card-info">26–106 m² · Tor bis 4 m · ab <strong>180 €</strong> / Monat</div>
+            <div class="stacked-card-cta">Mehr zur Garage →</div>
+          </div>
+        </div>
+
+        <div class="stacked-card">
+          <div class="stacked-card-img lager">
+            📦
+            <div class="stacked-card-review">
+              <div class="stacked-card-review-avatar">👤</div>
+              <div class="stacked-card-review-text">
+                <div class="stacked-card-review-stars">⭐⭐⭐⭐⭐</div>
+                "Klare Preise, kein 1-Euro-Trick. Innerhalb von zwei Tagen war alles drin."<br>
+                <strong>Sarah M.</strong>, Umzug zu zweit
+              </div>
+            </div>
+          </div>
+          <div class="stacked-card-body">
+            <h3 class="stacked-card-h3">Lagerraum</h3>
+            <p class="stacked-card-msg">Platz für dein neues Leben. Und dein altes auch. Hell, fair und in deiner Nähe — monatlich kündbar, ohne böse Überraschungen.</p>
+            <div class="stacked-card-info">4–22 m² · monatlich kündbar · faire Preise</div>
+            <div class="stacked-card-cta">Mehr zum Lagerraum →</div>
+          </div>
+        </div>
+
+        <div class="stacked-card">
+          <div class="stacked-card-img buero">
+            💼
+            <div class="stacked-card-review">
+              <div class="stacked-card-review-avatar">👤</div>
+              <div class="stacked-card-review-text">
+                <div class="stacked-card-review-stars">⭐⭐⭐⭐⭐</div>
+                "Lager unten, Büro oben — passt für unser E-Commerce-Wachstum perfekt."<br>
+                <strong>Elena R.</strong>, Online-Shop-Inhaberin
+              </div>
+            </div>
+          </div>
+          <div class="stacked-card-body">
+            <h3 class="stacked-card-h3">Büro &amp; Hybrid</h3>
+            <p class="stacked-card-msg">Dein Hauptquartier für dein Business. Oben arbeiten, unten packen — Lager, Büro und Versandstation in einem.</p>
+            <div class="stacked-card-info">ab 52 m² · WC + Heizung + Internet · Mezzanin-Option</div>
+            <div class="stacked-card-cta">Mehr zu Büro &amp; Hybrid →</div>
+          </div>
+        </div>
+
+        <div class="stacked-card">
+          <div class="stacked-card-img werkhalle">
+            🛠
+            <div class="stacked-card-review">
+              <div class="stacked-card-review-avatar">👤</div>
+              <div class="stacked-card-review-text">
+                <div class="stacked-card-review-stars">⭐⭐⭐⭐⭐</div>
+                "Sprinter direkt rein, 6 m Höhe für die Hebebühne. So muss B2B sein."<br>
+                <strong>Markus T.</strong>, Sanitärbetrieb (5 MA)
+              </div>
+            </div>
+          </div>
+          <div class="stacked-card-body">
+            <h3 class="stacked-card-h3">Werkhalle</h3>
+            <p class="stacked-card-msg">Dein neues Materiallager. Direkt befahrbar, maximal sicher und so flexibel wie dein Handwerk — ohne 5-Jahres-Knebel.</p>
+            <div class="stacked-card-info">ab 95 m² · 6 m Höhe · LKW-Tor · 2 Ebenen</div>
+            <div class="stacked-card-cta">Mehr zur Werkhalle →</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="block-annotations">
+      <details>
+        <summary>📝 Persona-Mapping &amp; Mini-Reviews</summary>
+        <ul>
+          <li><strong>Karte 1 → Thomas</strong> (B2C Wohnmobil/Oldtimer) · Kernbotschaft wörtlich aus personas.md ✅</li>
+          <li><strong>Karte 2 → Sarah</strong> (B2C Umzug) · Anti-Selfstorage-Falle</li>
+          <li><strong>Karte 3 → Elena</strong> (B2B E-Commerce) · Hybrid-USP "oben/unten"</li>
+          <li><strong>Karte 4 → Markus</strong> (B2B Handwerk) · "ohne 5-Jahres-Knebel"</li>
+          <li style="margin-top:8px;"><strong>Mini-Reviews (V1.1 NEU):</strong> alle 4 ⚠️ FIKTIV — David muss echte Kunden-Zitate liefern. Schema.org Review.</li>
+        </ul>
+      </details>
+      <div class="source-list">
+        <h4>✅ Quellen + ⚠️ Pending</h4>
+        <ul>
+          <li>4 Kernbotschaften ✅ aus personas.md (Kommunikationskonzept Teil 02)</li>
+          <li>Foto pro Karte ⚠️ — Stock im NordSpace-Stil (Andrey wählt)</li>
+          <li>Reviews ⚠️ — 4 echte Kunden-Zitate von David</li>
+          <li>Verlinkung: <code>/loesungen/&#123;slug&#125;/</code></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- BLOCK 4 — 3D-TOUR                                            -->
+<!-- ============================================================ -->
+<div class="content-section alt">
+
+  <div class="content-block">
+    <div class="block-anchor">
+      <span class="block-num">B4</span>
+      <h2 class="block-title">3D-Tour-Teaser</h2>
+      <span class="block-tag">⚠️ Phase 2 · Disabled-Placeholder</span>
+    </div>
+
+    <div class="block-mock">
+      <div class="tour-section">
+        <div class="tour-box">
+          <div class="tour-text">
+            <h3>Erlebe deinen Raum in 3D.</h3>
+            <p>Virtueller Rundgang durch unsere Standorte — bevor du kommst.</p>
+            <span class="phase-tag">Phase 2 · kommt bald</span>
+            <button class="btn-primary" disabled>Tour starten →</button>
+          </div>
+          <div class="tour-visual">🔄</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="block-annotations">
+      <details>
+        <summary>📐 Layout &amp; Mechanik</summary>
+        <ul>
+          <li>Sektionshöhe: ~50–60 vh · Visual links, Text rechts</li>
+          <li>Disabled-Button — keine echte Funktion in Phase 1</li>
+          <li>Phase 2 Tool: Matterport / 360°-Viewer / YouTube-360 (David entscheidet)</li>
+        </ul>
+      </details>
+      <div class="placeholder-list">
+        <h4>⚠️ Pending</h4>
+        <ul>
+          <li>3D-Tour Phase 1 vs Phase 2 — David entscheidet</li>
+          <li>Falls Phase 1 mit Pilot: 1-2 Standorte (Wuppertal zuerst)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- BLOCK 5 — STANDORT-FINDER (Map)                              -->
+<!-- ============================================================ -->
+<div class="content-section">
+
+  <div class="content-block">
+    <div class="block-anchor">
+      <span class="block-num">B5</span>
+      <h2 class="block-title">Standort-Finder · Map mit 16 Pins</h2>
+      <span class="block-tag">Anchor #map · Sekundär-PLZ</span>
+    </div>
+
+    <div class="block-mock">
+      <div class="map-section">
+        <h2 class="section-headline" style="text-align:left;">Dein nächster Mega-Mietpark — direkt um die Ecke.</h2>
+        <p class="section-subline" style="text-align:left;">Alle 16 Standorte in NRW, Sachsen-Anhalt und Niedersachsen auf einen Blick.</p>
+
+        <div class="map-container">
+          <div class="map-card">
+            <h3>So findest du uns</h3>
+            <p>Gib deine PLZ ein und wir zeigen dir den nächsten Standort. Inklusive Verfügbarkeit, Preisen und direktem Kontakt zum Standortleiter.</p>
+            <div class="search-input-row">
+              <input class="search-input" placeholder="PLZ eingeben, z. B. 50737">
+            </div>
+          </div>
+          <div class="map-visual">
+            🗺️
+            <div class="map-pins">
+              <div class="map-pin" style="left:35%; top:35%;"></div>
+              <div class="map-pin" style="left:38%; top:42%;"></div>
+              <div class="map-pin" style="left:32%; top:48%;"></div>
+              <div class="map-pin" style="left:28%; top:55%;"></div>
+              <div class="map-pin" style="left:42%; top:50%;"></div>
+              <div class="map-pin" style="left:36%; top:60%;"></div>
+              <div class="map-pin" style="left:30%; top:65%;"></div>
+              <div class="map-pin" style="left:25%; top:45%;"></div>
+              <div class="map-pin" style="left:55%; top:40%;"></div>
+              <div class="map-pin" style="left:62%; top:48%;"></div>
+              <div class="map-pin" style="left:75%; top:55%;"></div>
+              <div class="map-pin" style="left:48%; top:30%;"></div>
+              <div class="map-pin" style="left:40%; top:25%;"></div>
+              <div class="map-pin" style="left:33%; top:40%;"></div>
+              <div class="map-pin" style="left:46%; top:55%;"></div>
+              <div class="map-pin" style="left:50%; top:62%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="block-annotations">
+      <details>
+        <summary>📍 Standorte (16) · 3 Bundesländer</summary>
+        <ul>
+          <li><strong>NRW (12):</strong> Bochum · Münster · Bottrop · Remscheid · Datteln · Dormagen · Mülheim a.d.R. · Köln · Köln-Rodenkirchen 🆕 · Oberhausen · Wuppertal · Detmold 🆕 · Menden 🆕</li>
+          <li><strong>Sachsen-Anhalt (2):</strong> Halle (Saale) · Halberstadt</li>
+          <li><strong>Niedersachsen (1):</strong> Braunschweig ⚠️ (kein Wort "Lager")</li>
+        </ul>
+      </details>
+      <div class="source-list">
+        <h4>✅ Mechanik</h4>
+        <ul>
+          <li>PLZ-Eingabe → Direktweiterleitung auf <code>/standort/&#123;slug&#125;/</code></li>
+          <li>Mechanik bestätigt 2026-03-20 (David)</li>
+          <li>3 Neueröffnungen 2026 mit 🆕-Badge: Detmold (02/26), Köln-Rodenkirchen (04/26), Menden (05/26)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- BLOCK 6 — TRUST-BLOCK (4 Sub-Blöcke)                         -->
+<!-- ============================================================ -->
+<div class="content-section alt">
+
+  <div class="content-block">
+    <div class="block-anchor">
+      <span class="block-num">B6</span>
+      <h2 class="block-title">Trust-Block · 5 Stats · 4 Manager</h2>
+      <span class="block-tag">🔄 V1.1 · 4 Sub-Blöcke restrukturiert</span>
+    </div>
+
+    <div class="block-mock">
+      <div class="trust-section">
+        <div class="trust-grid">
+          <div class="trust-header-block">
+            <h3>Echte Menschen.<br>Echte Standorte.<br>Echte Erfahrung.</h3>
+            <p>Bei uns triffst du keinen Chatbot, sondern deinen persönlichen Standortleiter — beim Besichtigen, beim Vertragsabschluss und wenn mal was ist.</p>
+            <div class="rating-block">
+              <div class="rating-avatars">
+                <div class="rating-avatar">👤</div>
+                <div class="rating-avatar">👤</div>
+                <div class="rating-avatar">👤</div>
+              </div>
+              <div class="rating-info-text">
+                <span class="stars">⭐⭐⭐⭐⭐</span>
+                <span class="placeholder-text">[KUNDE]</span>/5 auf Google<br>
+                Aus <span class="placeholder-text">[KUNDE]</span> Bewertungen
+              </div>
+            </div>
+          </div>
+
+          <div class="stats-block">
+            <div class="stat-row">
+              <div class="stat-num">16</div>
+              <div class="stat-label">Standorte in<br>Deutschland</div>
+            </div>
+            <div class="stat-row">
+              <div class="stat-num" style="font-size:24px;">seit 2006</div>
+              <div class="stat-label">Laer<br>Gruppe</div>
+            </div>
+            <div class="stat-row">
+              <div class="stat-num"><span class="placeholder-text">[KUNDE]</span></div>
+              <div class="stat-label">Aktive<br>Mieter</div>
+            </div>
+            <div class="stat-row">
+              <div class="stat-num">27.000+</div>
+              <div class="stat-label">Einheiten gebaut<br>(Formica)</div>
+            </div>
+            <div class="stat-row">
+              <div class="stat-num">210+</div>
+              <div class="stat-label">Realisierte Projekte<br>(Formica)</div>
+            </div>
+          </div>
+        </div>
+
+        <h3 style="font-family:'Roboto Condensed',sans-serif; font-size:22px; text-transform:uppercase; letter-spacing:0.04em; margin:30px 0 18px;">Dein Ansprechpartner vor Ort.</h3>
+
+        <div class="manager-grid">
+          <div class="manager-card">
+            <div class="manager-photo">👤</div>
+            <div class="manager-data">
+              <h4><span class="placeholder-text">[Name]</span></h4>
+              <p>Standortleiter seit <span class="placeholder-text">[Jahr]</span></p>
+              <span class="city">📍 Wuppertal</span>
+            </div>
+          </div>
+          <div class="manager-card">
+            <div class="manager-photo">👤</div>
+            <div class="manager-data">
+              <h4><span class="placeholder-text">[Name]</span></h4>
+              <p>Standortleiter seit <span class="placeholder-text">[Jahr]</span></p>
+              <span class="city">📍 Bochum</span>
+            </div>
+          </div>
+          <div class="manager-card">
+            <div class="manager-photo">👤</div>
+            <div class="manager-data">
+              <h4><span class="placeholder-text">[Name]</span></h4>
+              <p>Standortleiter seit <span class="placeholder-text">[Jahr]</span></p>
+              <span class="city">📍 Köln</span>
+            </div>
+          </div>
+          <div class="manager-card">
+            <div class="manager-photo">👤</div>
+            <div class="manager-data">
+              <h4><span class="placeholder-text">[Name]</span></h4>
+              <p>Standortleiter seit <span class="placeholder-text">[Jahr]</span></p>
+              <span class="city">📍 Mülheim a.d.R.</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align:center; margin-top:30px;">
+          <button class="btn-primary">Lerne unser Team kennen →</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="block-annotations">
+      <details>
+        <summary>📝 V1.0 → V1.1 · Restrukturierung 4 Sub-Blöcke</summary>
+        <ul>
+          <li><strong>6a:</strong> Container Header + Rating-Block (Avatars + Stars + Google-Rating)</li>
+          <li><strong>6b:</strong> 5 Stats (war 4) — ergänzt um 27.000+ Einheiten + 210+ Projekte (Formica)</li>
+          <li><strong>6c:</strong> 4 Manager-Cards (Wuppertal, Bochum, Köln, Mülheim — Hauptstandorte)</li>
+          <li><strong>6d:</strong> "Lerne unser Team kennen"-Button → /ueber-uns/</li>
+        </ul>
+      </details>
+      <div class="placeholder-list">
+        <h4>⚠️ Pending · 4 David-Items</h4>
+        <ul>
+          <li>Google-Rating + Bewertungsanzahl (Live-API empfohlen)</li>
+          <li>Aktive Mieter-Anzahl (Mockup zeigt 2.500+, nicht bestätigt)</li>
+          <li>4 Manager-Fotos + Namen + Bio (Hauptstandorte)</li>
+          <li>3 Avatar-Fotos für Rating-Block (Persona-divers)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- BLOCK 7 — GRUPPE DAHINTER                                    -->
+<!-- ============================================================ -->
+<div class="content-section">
+
+  <div class="content-block">
+    <div class="block-anchor">
+      <span class="block-num">B7</span>
+      <h2 class="block-title">Gruppe dahinter · Laer + Formica</h2>
+      <span class="block-tag">🆕 NEU · About-Teaser</span>
+    </div>
+
+    <div class="block-mock">
+      <div class="gruppe-section">
+        <div class="gruppe-grid">
+          <div>
+            <h3>Gebaut. Betrieben. Gehalten — von uns.</h3>
+            <p>Mega-Mietpark gehört zur <strong>Laer Gruppe</strong> — seit 2006 in Deutschland zuhause. Gebaut werden alle Standorte von <strong>Formica</strong>, dem Bauträger mit über 210 realisierten Projekten und mehr als 27.000 Einheiten Erfahrung. Kein Subunternehmen, kein Franchise — eigene Immobilien, eigene Qualität.</p>
+            <div class="gruppe-stats">
+              <div class="gruppe-stat">
+                <div class="gruppe-stat-num">2006</div>
+                <div class="gruppe-stat-label">Gegründet</div>
+              </div>
+              <div class="gruppe-stat">
+                <div class="gruppe-stat-num">210+</div>
+                <div class="gruppe-stat-label">Projekte (Formica)</div>
+              </div>
+              <div class="gruppe-stat">
+                <div class="gruppe-stat-num">27.000+</div>
+                <div class="gruppe-stat-label">Einheiten realisiert</div>
+              </div>
+            </div>
+            <button class="btn-text">Mehr über uns →</button>
+          </div>
+          <div class="gruppe-visual">🛩️</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="block-annotations">
+      <details>
+        <summary>📝 Alternativen · 3 Headlines</summary>
+        <ul>
+          <li><span class="alt-tag">A ✓</span> "Gebaut. Betrieben. Gehalten — von uns." — Drei-Satz-Stakkato</li>
+          <li><span class="alt-tag">B</span> "Kein Franchise. Kein Subunternehmer. Eigene Immobilien." — direkter Differenziator</li>
+          <li><span class="alt-tag">C</span> "Eine Gruppe. 20 Jahre. 27.000 Einheiten." — Zahlen-Trio</li>
+        </ul>
+      </details>
+      <div class="source-list">
+        <h4>✅ Quellen</h4>
+        <ul>
+          <li>"seit 2006", "210+ Projekte", "27.000+ Einheiten" — alle ✅ CLIENT (Briefing für Alexander)</li>
+          <li>Visual: Drohnen-Aufnahme oder Stock — David / Stock OK?</li>
+          <li>Über-uns-Seitenname: David muss entscheiden ("Über uns" / "Die Gruppe" / "About Us")</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- BLOCK 8 — TARIF-SECTION (3 Cards)                            -->
+<!-- ============================================================ -->
+<div class="content-section alt">
+
+  <div class="content-block">
+    <div class="block-anchor">
+      <span class="block-num">B8</span>
+      <h2 class="block-title">Preis-Teaser · 3 Tarif-Karten</h2>
+      <span class="block-tag">Anchor #tarif · Hybrid-Pricing</span>
+    </div>
+
+    <div class="block-mock">
+      <div class="tarif-section" id="tarif">
+        <h2 class="section-headline">Preise, die du sofort siehst.</h2>
+        <p class="section-subline">Standard-Einheiten online, Werkhallen individuell — fair, transparent, ohne Lockangebote.</p>
+
+        <div class="tarif-grid">
+          <div class="tarif-card">
+            <div class="tarif-name">STANDARD</div>
+            <div class="tarif-size">26 m² · 3,30 × 8 m</div>
+            <div class="tarif-price-row">
+              <div class="tarif-price">180 €</div>
+              <div class="tarif-price-sub">/ Monat netto · ab Bochum</div>
+            </div>
+            <ul class="tarif-features">
+              <li>Sektionaltor 2,90 × 3,30 m</li>
+              <li>Stromanschluss 230V</li>
+              <li>24/7 Zugang &amp; Video</li>
+            </ul>
+            <button class="btn-primary">Verfügbarkeit prüfen →</button>
+          </div>
+
+          <div class="tarif-card featured">
+            <div class="tarif-name">HOCH+BREIT</div>
+            <div class="tarif-size">~30 m² · 3,80 × 8 m</div>
+            <div class="tarif-price-row">
+              <div class="tarif-price">200 €</div>
+              <div class="tarif-price-sub">/ Monat netto · ab Wuppertal</div>
+            </div>
+            <ul class="tarif-features">
+              <li>Tor 3,40 × 4,00 m</li>
+              <li>Für große Fahrzeuge</li>
+              <li>24/7 Zugang &amp; Video</li>
+            </ul>
+            <button class="btn-primary">Verfügbarkeit prüfen →</button>
+          </div>
+
+          <div class="tarif-card">
+            <div class="tarif-name">GEWERBE</div>
+            <div class="tarif-size">~95 m² · 5,90 × 16 m · 2 Ebenen</div>
+            <div class="tarif-price-row">
+              <div class="tarif-price">1.360 €</div>
+              <div class="tarif-price-sub">/ Monat netto · ab Wuppertal</div>
+            </div>
+            <ul class="tarif-features">
+              <li>LKW-befahrbar</li>
+              <li>6 m Deckenhöhe</li>
+              <li>Büro im Obergeschoss</li>
+            </ul>
+            <button class="btn-primary">Verfügbarkeit prüfen →</button>
+          </div>
+        </div>
+
+        <p class="tarif-disclaimer">Alle Preise netto zzgl. MwSt. Preise variieren je nach Standort. Mindestmiete: Garage 6 Monate, Werkhalle 2 Jahre, Lagerraum monatlich.</p>
+      </div>
+    </div>
+
+    <div class="block-annotations">
+      <details>
+        <summary>📝 Tarif-Daten · 3 Cards</summary>
+        <ul>
+          <li><strong>STANDARD:</strong> ab 180 € (Bochum) · MEGA 8 ✅ Angebotsflyer</li>
+          <li><strong>HOCH+BREIT:</strong> 200 € (Wuppertal) · MEGA 8-HB ✅</li>
+          <li><strong>GEWERBE:</strong> 1.360 € (Wuppertal Werkhalle) — <em>Figma zeigt fälschlich "Bochum" — korrigiert in Copy auf Wuppertal</em></li>
+        </ul>
+      </details>
+      <div class="placeholder-list">
+        <h4>⚠️ Korrektur-Pending · 3 David-Items</h4>
+        <ul>
+          <li><strong>Preis 180 € vs 190 €</strong> — Bochum 180 / Detmold 190. Welcher als ab-Preis?</li>
+          <li><strong>"HOCH+BREIT"-Tarif-Label</strong> — Wort "Hoch" behalten oder ersetzen? (Claim-Diskussion)</li>
+          <li><strong>Werkhalle Standort:</strong> Figma "Bochum" → Wuppertal (Andrey muss korrigieren)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- BLOCK 9 — STEPS                                              -->
+<!-- ============================================================ -->
+<div class="content-section">
+
+  <div class="content-block">
+    <div class="block-anchor">
+      <span class="block-num">B9</span>
+      <h2 class="block-title">3-Schritte-Prozess</h2>
+      <span class="block-tag">Conversion-Funnel</span>
+    </div>
+
+    <div class="block-mock">
+      <div class="steps-section">
+        <div class="steps-photo">🏗️</div>
+        <div class="steps-list">
+          <h2 class="section-headline" style="text-align:left; font-size:28px; margin-bottom:18px;">In drei Schritten zu deiner Einheit.</h2>
+
+          <div class="step-item">
+            <div class="step-num">1</div>
+            <div class="step-text">
+              <h4>Standort &amp; Einheit wählen</h4>
+              <p>Verfügbare Flächen und Größen filtern — nach Standort, Nutzungsart und Größe.</p>
+            </div>
+          </div>
+
+          <div class="step-item">
+            <div class="step-num">2</div>
+            <div class="step-text">
+              <h4>Unverbindlich anfragen</h4>
+              <p>Online-Formular ausfüllen oder direkt anrufen: <strong>+49 2309 5439995</strong>. Antwort innerhalb von 24 Stunden.</p>
+            </div>
+          </div>
+
+          <div class="step-item">
+            <div class="step-num">3</div>
+            <div class="step-text">
+              <h4>Einziehen — ab dem ersten Tag</h4>
+              <p>Schlüssel oder Zugangscode bekommen, Strom anschließen, loslegen. Keine Wartezeit, keine Bauphase.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="block-annotations">
+      <details>
+        <summary>📝 Alternativen · 3 Headlines</summary>
+        <ul>
+          <li><span class="alt-tag">A ✓</span> "In drei Schritten zu deiner Einheit." — du-Form, direkt</li>
+          <li><span class="alt-tag">B</span> "Anfragen, vereinbaren, einziehen." — Verb-Trio</li>
+          <li><span class="alt-tag">C</span> "So einfach geht's." — sehr knapp</li>
+        </ul>
+      </details>
+      <div class="source-list">
+        <h4>✅ Daten</h4>
+        <ul>
+          <li>Telefon ✅ +49 2309 5439995 (Angebotsflyer alle Standorte)</li>
+          <li>"24 Stunden Antwort-Zeit" — abgeleitet aus Persona Markus Customer Journey</li>
+          <li>"keine Wartezeit, keine Bauphase" — Differenziator vs. Gewerbeimmobilien-Pacht</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- BLOCK 10 — RATGEBER                                          -->
+<!-- ============================================================ -->
+<div class="content-section alt">
+
+  <div class="content-block">
+    <div class="block-anchor">
+      <span class="block-num">B10</span>
+      <h2 class="block-title">Ratgeber-Teaser · 3 Article-Cards</h2>
+      <span class="block-tag">🔄 V1.1 · Lesedauer ergänzt</span>
+    </div>
+
+    <div class="block-mock">
+      <div class="ratgeber-section">
+        <h2 class="section-headline">Du hast Fragen? Wir haben Antworten.</h2>
+        <p class="section-subline">Ratgeber für Umzug, Lagerung, Gewerbe und Fahrzeuge.</p>
+
+        <div class="ratgeber-grid">
+          <div class="ratgeber-card">
+            <div class="ratgeber-img">🚐</div>
+            <div class="ratgeber-card-body">
+              <div class="ratgeber-cat">Wohnmobil &amp; Camper</div>
+              <h3 class="ratgeber-title"><span class="placeholder-text">[KUNDE]</span> z.B. „Wohnmobil richtig einwintern: Checkliste für Camper"</h3>
+              <div class="ratgeber-meta">⏱ 8 Min Lesezeit</div>
+            </div>
+          </div>
+
+          <div class="ratgeber-card">
+            <div class="ratgeber-img umzug">📦</div>
+            <div class="ratgeber-card-body">
+              <div class="ratgeber-cat">Umzug &amp; Lagerung</div>
+              <h3 class="ratgeber-title"><span class="placeholder-text">[KUNDE]</span> z.B. „Wie viel Lagerraum brauche ich? Größenrechner"</h3>
+              <div class="ratgeber-meta">⏱ 6 Min Lesezeit</div>
+            </div>
+          </div>
+
+          <div class="ratgeber-card">
+            <div class="ratgeber-img gewerbe">🛠</div>
+            <div class="ratgeber-card-body">
+              <div class="ratgeber-cat">Gewerbe &amp; Handwerk</div>
+              <h3 class="ratgeber-title"><span class="placeholder-text">[KUNDE]</span> z.B. „Werkhalle mieten: Was kostet Drive-in wirklich?"</h3>
+              <div class="ratgeber-meta">⏱ 8 Min Lesezeit</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align:center; margin-top:24px;">
+          <button class="btn-text">Mehr erfahren →</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="block-annotations">
+      <details>
+        <summary>📝 Layout · Persona-Mapping</summary>
+        <ul>
+          <li>Card-Layout: Image (~63%) → Description (Datum/Kategorie) → Title (62px) → Lesedauer</li>
+          <li>3 Persona-orientierte Themen: Thomas (Wohnmobil) · Sarah (Umzug) · Markus/Elena (Gewerbe)</li>
+          <li>Schema.org: <code>BlogPosting</code> (headline, datePublished, timeRequired, author)</li>
+        </ul>
+      </details>
+      <div class="placeholder-list">
+        <h4>⚠️ Pending · Redaktion</h4>
+        <ul>
+          <li>3 Featured-Artikel-Auswahl durch David / Redaktion</li>
+          <li>ACF-Feld <code>ratgeber_homepage_featured</code> (Repeater)</li>
+          <li>Saisonal-Bezug möglich (siehe Zielgruppen.md Saisonalität)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- BLOCK 11 — FAQ                                               -->
+<!-- ============================================================ -->
+<div class="content-section">
+
+  <div class="content-block">
+    <div class="block-anchor">
+      <span class="block-num">B11</span>
+      <h2 class="block-title">FAQ · 6 Fragen (Accordion)</h2>
+      <span class="block-tag">Education · AI-Search-Ready</span>
+    </div>
+
+    <div class="block-mock">
+      <div class="faq-section">
+        <h2 class="section-headline">Häufige Fragen.</h2>
+
+        <div class="faq-list">
+          <div class="faq-item open">
+            <div class="faq-q">
+              <span>1. Wie lange muss ich mindestens mieten?</span>
+              <span class="faq-q-icon">+</span>
+            </div>
+            <div class="faq-a">Das hängt von der Lösung ab. <strong>Garagen:</strong> 6 Monate Mindestlaufzeit, 3 Monate Kündigung. <strong>Werkhalle und Büro:</strong> 2 Jahre Mindestlaufzeit, 6 Monate Kündigung. <strong>Lagerraum:</strong> monatlich kündbar — flexibler geht's nicht.</div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">
+              <span>2. Was ist der Unterschied zwischen Garage, Werkhalle und Büro?</span>
+              <span class="faq-q-icon">+</span>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">
+              <span>3. Sind die Flächen 24/7 zugänglich?</span>
+              <span class="faq-q-icon">+</span>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">
+              <span>4. Welche Preise gibt es?</span>
+              <span class="faq-q-icon">+</span>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">
+              <span>5. Kann ich vorab besichtigen?</span>
+              <span class="faq-q-icon">+</span>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">
+              <span>6. Wie schnell bekomme ich einen Vertrag?</span>
+              <span class="faq-q-icon">+</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="block-annotations">
+      <details>
+        <summary>📝 Alle 6 FAQs (Volltexte)</summary>
+        <ul>
+          <li><strong>F1 (open):</strong> siehe oben — Mindestmieten + Kündigungsfristen</li>
+          <li><strong>F2:</strong> Garage 26-106 m² · Werkhalle ab 95 m², 6m, LKW · Büro Hybrid 52 m²+</li>
+          <li><strong>F3:</strong> Code-Zugang Tag/Nacht/WE · 24/7 Video · Office Mo-Fr</li>
+          <li><strong>F4:</strong> Garage ab 180€ · Werkhalle ab 1.360€ · Büro ab 500€ · Lagerraum transparent</li>
+          <li><strong>F5:</strong> Termin direkt mit Standortleiter · Phase 2: Online 360° Tour</li>
+          <li><strong>F6:</strong> Antwort innerhalb 24h · Garage am gleichen Tag · Werkhalle 24-48h digital</li>
+        </ul>
+      </details>
+      <div class="source-list">
+        <h4>✅ Quellen</h4>
+        <ul>
+          <li>Mindestmieten ✅ Standorte-Tabelle (CLIENT)</li>
+          <li>Tel. +49 2309 5439995 ✅</li>
+          <li>FAQs aus Persona-Pains abgeleitet (5 Personas-Pains direkt addressiert)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- BLOCK 11.5 — MARQUEE #2                                      -->
+<!-- ============================================================ -->
+<div class="content-section">
+
+  <div class="content-block">
+    <div class="block-anchor">
+      <span class="block-num">B11.5</span>
+      <h2 class="block-title">Marquee #2 · Standort-Bar</h2>
+      <span class="block-tag">🆕 V1.1 · Vor CTA-Footer</span>
+    </div>
+
+    <div class="block-mock">
+      <div class="marquee-bar">
+        <span class="marquee-title">DIREKT BEI DIR</span>
+        <div class="marquee-track">
+          <span class="marquee-link"><a href="#">Bochum</a></span>
+          <span class="marquee-dot">●</span>
+          <span class="marquee-link"><a href="#">Wuppertal</a></span>
+          <span class="marquee-dot">●</span>
+          <span class="marquee-link"><a href="#">Köln</a></span>
+          <span class="marquee-dot">●</span>
+          <span class="marquee-link"><a href="#">Mülheim a.d.R.</a></span>
+          <span class="marquee-dot">●</span>
+          <span class="marquee-link"><a href="#">Dormagen</a></span>
+          <span class="marquee-dot">●</span>
+          <span class="marquee-link"><a href="#">Münster</a></span>
+          <span class="marquee-dot">●</span>
+          <span class="marquee-link"><a href="#">Halle</a></span>
+          <span class="marquee-dot">●</span>
+          <span class="marquee-link"><a href="#">Halberstadt</a></span>
+          <span class="marquee-dot">●</span>
+          <span class="marquee-link"><a href="#">Braunschweig</a></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="block-annotations">
+      <details>
+        <summary>📝 9 Hauptstandorte (3 Gruppen rotierend)</summary>
+        <ul>
+          <li><strong>Gruppe 1:</strong> Bochum · Wuppertal · Köln</li>
+          <li><strong>Gruppe 2:</strong> Mülheim a.d.R. · Dormagen · Münster</li>
+          <li><strong>Gruppe 3:</strong> Halle · Halberstadt · Braunschweig</li>
+          <li>Detmold/Rodenkirchen/Menden (Neu) — separat im Standort-Finder (B5)</li>
+        </ul>
+      </details>
+      <div class="source-list">
+        <h4>📐 Layout</h4>
+        <ul>
+          <li>Figma: <code>182:766 + 188:92</code></li>
+          <li>Last-chance Local-Anker vor CTA-Footer</li>
+          <li>Verlinkung: <code>/standort/&#123;slug&#125;/</code></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- BLOCK 12 — MARKEN-OUTRO                                      -->
+<!-- ============================================================ -->
+<div class="content-section alt">
+
+  <div class="content-block">
+    <div class="block-anchor">
+      <span class="block-num">B12</span>
+      <h2 class="block-title">Marken-Outro · KEIN 3. CTA</h2>
+      <span class="block-tag">Brand-Statement · ACF-Banner</span>
+    </div>
+
+    <div class="block-mock">
+      <div class="outro-section">
+        <div class="outro-banner">
+          <strong>🆕</strong> Detmold ist eröffnet — sichere dir jetzt deinen Standort.
+        </div>
+        <div class="outro-claim-tag">Mega-Mietpark</div>
+        <h2 class="outro-claim">Groß genug für<br>deine Pläne.</h2>
+        <p class="outro-sub">Mega-Mietpark — gebaut, betrieben und gehalten von uns.</p>
+      </div>
+    </div>
+
+    <div class="block-annotations">
+      <details>
+        <summary>📝 ACF-Banner · 2 Felder</summary>
+        <ul>
+          <li><code>verfuegbarkeit_banner_aktiv</code> + <code>verfuegbarkeit_banner_text</code></li>
+          <li><code>aktion_aktiv</code> + <code>aktion_text</code> + <code>aktion_link</code></li>
+          <li>Beispiel: "Frühjahrsaktion: Erster Monat -50%" oder "Detmold eröffnet"</li>
+        </ul>
+      </details>
+      <div class="source-list">
+        <h4>✅ Decision</h4>
+        <ul>
+          <li>KEIN dritter Haupt-CTA (TZ v2.1 — Stacked Cards + Hero-Suche reichen)</li>
+          <li>Claim als emotionaler Schluss · ALT je nach Final-Decision</li>
+          <li>Sub-Claim verbindet Block 7 (Gruppe dahinter) im Schluss</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- FOOTER                                                       -->
+<!-- ============================================================ -->
+<div class="content-section">
+
+  <div class="content-block">
+    <div class="block-anchor">
+      <span class="block-num">F</span>
+      <h2 class="block-title">Footer · Site-weite Komponente</h2>
+      <span class="block-tag">4 Spalten · Trust-Footer</span>
+    </div>
+
+    <div class="block-mock">
+      <div class="real-footer">
+        <div class="footer-grid">
+          <div>
+            <h5>Lösungen</h5>
+            <ul>
+              <li><a href="#">Garage</a></li>
+              <li><a href="#">Lagerraum</a></li>
+              <li><a href="#">Werkhalle</a></li>
+              <li><a href="#">Büro &amp; Hybrid</a></li>
+            </ul>
+          </div>
+          <div>
+            <h5>Standorte</h5>
+            <ul>
+              <li><a href="#">Übersicht (16)</a></li>
+              <li><a href="#">West (NRW)</a></li>
+              <li><a href="#">Ost (Sachsen-Anhalt)</a></li>
+              <li><a href="#">Niedersachsen</a></li>
+            </ul>
+          </div>
+          <div>
+            <h5>Unternehmen</h5>
+            <ul>
+              <li><a href="#">Über uns</a></li>
+              <li><a href="#">Die Gruppe</a></li>
+              <li><a href="#">Karriere</a></li>
+              <li><a href="#">Presse</a></li>
+            </ul>
+          </div>
+          <div>
+            <h5>Service</h5>
+            <ul>
+              <li><a href="#">Kontakt</a></li>
+              <li><a href="#">FAQ</a></li>
+              <li><a href="#">Ratgeber</a></li>
+              <li><a href="#">AGB</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-trust">
+          <div>
+            📞 +49 2309 5439995 · 📧 anfrage@mega-mietpark.de · 📍 16 Standorte in Deutschland
+          </div>
+          <div>
+            Gebaut von Formica · ArcelorMittal · Hörmann
+          </div>
+        </div>
+
+        <div style="margin-top:14px; padding-top:14px; border-top:1px solid rgba(255,255,255,0.08); font-size:11px; color:rgba(255,255,255,0.4); display:flex; justify-content:space-between;">
+          <span>Mega-Mietpark · Ein Unternehmen der Laer Gruppe</span>
+          <span>Impressum · Datenschutz · AGB</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- ZUSAMMENFASSUNG                                              -->
+<!-- ============================================================ -->
+<section class="white">
+  <p class="section-label">Übersicht · Open Items</p>
+  <h2>Stand der Texte (V1.1)</h2>
+
+  <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:24px;">
+
+    <div class="block-card">
+      <div class="block-card-head" style="background:#2E7D32;">
+        <span class="num" style="background:white; color:#2E7D32;">✓</span>
+        <h3>Vollständig (14 Blöcke)</h3>
+      </div>
+      <div style="padding:18px;">
+        <p style="font-size:13px; color:var(--gray-text);">META · B1 Hero · B1.5 Marquee#1 · B1.7 Intro · B2 USP · B3 Stacked+Reviews · B4 3D · B5 Map · B6 Trust · B7 Gruppe · B8 Preise · B9 Steps · B10 Ratgeber+Min · B11 FAQ · B11.5 Marquee#2 · B12 Outro · Footer</p>
+      </div>
+    </div>
+
+    <div class="block-card">
+      <div class="block-card-head" style="background:#E65100;">
+        <span class="num" style="background:white; color:#E65100;">⚠</span>
+        <h3>Pending · 7 Items</h3>
+      </div>
+      <div style="padding:18px;">
+        <ul style="list-style:none; padding:0; font-size:12px; line-height:1.7;">
+          <li>1. Mieter-Anzahl (B6)</li>
+          <li>2. Google-Rating + Anzahl + 3 Zitate</li>
+          <li>3. 4 Manager-Fotos + Namen + Bio</li>
+          <li>4. Lagerraum-Preis Wuppertal (B3 Karte 2)</li>
+          <li>5. 3 Featured-Ratgeber-Artikel (B10)</li>
+          <li>6. Drohnen-Visual B7 (oder Stock)</li>
+          <li>7. Mini-Reviews echte Zitate (B3)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="block-card">
+      <div class="block-card-head" style="background:#1565C0;">
+        <span class="num" style="background:white; color:#1565C0;">📝</span>
+        <h3>Korrektur-Pending · 5</h3>
+      </div>
+      <div style="padding:18px;">
+        <ul style="list-style:none; padding:0; font-size:12px; line-height:1.7;">
+          <li>1. Stat „13+" → „seit 2006" (B6)</li>
+          <li>2. Preis 180 € vs 190 € (B8)</li>
+          <li>3. „HOCH+BREIT"-Tarif-Label (B8)</li>
+          <li>4. Claim-Freigabe (B1 + B12)</li>
+          <li>5. 3D-Tour Phase 1 vs 2 (B4)</li>
+          <li style="margin-top:8px; font-style:italic; color:var(--red);">+ Werkhalle "· Bochum" → Wuppertal (Andrey)</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="banner blue" style="margin-top:24px;">
+    <strong>📦 Bündelung:</strong> Alle 7 Pending-Items + 5 Korrektur-Items konsolidiert in <code>.ai/context.json</code> → <code>pendingDavidQuestions</code>. Eine konsolidierte David-Anfrage nach dem Brifing schließt alle Lücken parallel zur Phase-3-Pipeline.
+  </div>
+</section>
+
+<footer>
+  <div>
+    <div class="footer-brand">W&amp;S <span>AGENCY</span></div>
+    <p style="margin-top:6px;">Content Preview · Startseite · <strong style="color:var(--red);">V1.1 · Figma-Sync done · DE + RU</strong></p>
+  </div>
+  <div style="text-align:right;">
+    <p>← Zurück zum <a href="index.html" style="color:var(--red);">TZ-Hub</a></p>
+    <p style="margin-top:4px;">Stand: 2026-05-02 [AW]</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var btn = document.getElementById('ruToggle');
+  var body = document.body;
+  var STORAGE_KEY = 'tz-v21-ru-visible';
+  var stored = null;
+  try { stored = localStorage.getItem(STORAGE_KEY); } catch (e) {}
+  if (stored === 'off') { body.classList.add('hide-ru'); btn.classList.add('off'); btn.textContent = 'DE only'; }
+  btn.addEventListener('click', function () {
+    body.classList.toggle('hide-ru');
+    var hidden = body.classList.contains('hide-ru');
+    btn.classList.toggle('off', hidden);
+    btn.textContent = hidden ? 'DE only' : 'DE + RU';
+    try { localStorage.setItem(STORAGE_KEY, hidden ? 'off' : 'on'); } catch (e) {}
+  });
+
+  // FAQ toggle
+  document.querySelectorAll('.faq-q').forEach(function(q) {
+    q.addEventListener('click', function() {
+      this.parentElement.classList.toggle('open');
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
