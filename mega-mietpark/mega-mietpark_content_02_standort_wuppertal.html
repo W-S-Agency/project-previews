@@ -1,0 +1,2140 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Content Preview · Standort Wuppertal · Mega-Mietpark</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mega-mietpark_TZ_style.css?v=1">
+<style>
+  /* ============= Content-Preview-spezifisch (sync mit Startseite-Preview) ============= */
+  .preview-intro {
+    background: #FFF8E1; border-left: 4px solid #E65100;
+    padding: 14px 22px; margin: 24px 48px;
+    border-radius: 3px; font-size: 13px; color: #1F1F1F;
+  }
+  .preview-intro strong { color: #E65100; }
+
+  .content-section { padding: 36px 48px; }
+  .content-section.alt { background: var(--gray-light); }
+
+  .content-block {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 4px; margin-bottom: 24px;
+    overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  }
+  .block-anchor {
+    display: flex; align-items: center; gap: 14px;
+    padding: 14px 22px; background: var(--black);
+    color: white;
+  }
+  .block-num {
+    width: 38px; height: 30px;
+    background: var(--red); border-radius: 3px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 13px; font-weight: 700; color: white;
+  }
+  .block-title {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 16px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.06em; color: white; margin: 0;
+  }
+  .block-tag {
+    margin-left: auto; font-size: 11px; letter-spacing: 0.08em;
+    text-transform: uppercase; color: rgba(255,255,255,0.7);
+  }
+
+  .block-mock { padding: 0; background: #FAFAFA; }
+  .block-annotations {
+    padding: 18px 22px; background: var(--white);
+    border-top: 1px solid var(--border);
+    display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
+  }
+  .block-annotations details {
+    background: var(--gray-light); padding: 10px 14px;
+    border-radius: 3px; font-size: 13px;
+  }
+  .block-annotations details summary {
+    cursor: pointer; font-weight: 600;
+    font-family: 'Roboto Condensed',sans-serif;
+    text-transform: uppercase; font-size: 12px;
+    letter-spacing: 0.06em;
+  }
+  .block-annotations details ul { list-style: none; padding: 8px 0 0; margin: 0; }
+  .block-annotations details li {
+    padding: 4px 0; font-size: 12px; color: var(--gray-text);
+    line-height: 1.5;
+  }
+  .block-annotations details li code {
+    background: rgba(198,40,40,0.08); color: var(--red);
+    padding: 1px 4px; border-radius: 2px; font-size: 11px;
+  }
+  .placeholder-list, .source-list {
+    background: #FFF3E0; border-left: 3px solid #E65100;
+    padding: 10px 14px; border-radius: 3px;
+    font-size: 12px; color: #1F1F1F;
+  }
+  .placeholder-list h4, .source-list h4 {
+    font-family: 'Roboto Condensed',sans-serif;
+    font-size: 11px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    margin: 0 0 6px; color: #E65100;
+  }
+  .placeholder-list ul, .source-list ul {
+    list-style: none; padding: 0; margin: 0;
+  }
+  .placeholder-list li, .source-list li {
+    padding: 3px 0; line-height: 1.5;
+  }
+  .source-list { background: #E8F5E9; border-left-color: #2E7D32; }
+  .source-list h4 { color: #2E7D32; }
+
+  .placeholder-tag {
+    background: #FFE082; color: #E65100;
+    padding: 2px 6px; border-radius: 2px;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+  .placeholder-text {
+    background: #FFF8E1; color: #E65100;
+    padding: 0 4px; border-radius: 2px;
+    font-style: italic;
+  }
+  .v12-placeholder-box {
+    background: #FFF3E0; border-left: 4px solid #E65100;
+    color: #E65100; padding: 6px 12px; margin: 8px 0;
+    border-radius: 3px; font-size: 12px; font-weight: 600;
+    display: inline-block;
+  }
+  .v12-placeholder-box::before {
+    content: '⚠ PLACEHOLDER · '; font-weight: 700; letter-spacing: 0.04em;
+  }
+  .v12-badge-red {
+    display: inline-block;
+    background: #C62828; color: white;
+    padding: 2px 8px; border-radius: 2px;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; margin-left: 6px;
+    vertical-align: middle;
+  }
+  .alt-tag {
+    display: inline-block; background: #1565C0; color: white;
+    padding: 2px 7px; border-radius: 2px; margin-right: 6px;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.06em;
+  }
+  .data-tag {
+    display: inline-block;
+    background: #2E7D32; color: white;
+    padding: 2px 7px; border-radius: 2px;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.06em;
+    margin-right: 6px;
+  }
+
+  /* ============= Light-clean Hero (NordSpace-inspired) ============= */
+  .light-hero {
+    position: relative;
+    background: linear-gradient(180deg, #FAFAFA 0%, #F0F0F0 100%);
+    color: var(--black); padding: 70px 60px 50px;
+    min-height: 460px;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border);
+  }
+  .light-hero::before {
+    content: '🚛'; position: absolute; top: 50%; right: 80px;
+    transform: translateY(-50%); font-size: 240px; opacity: 0.05;
+  }
+  .light-hero-nav {
+    position: absolute; top: 18px; right: 60px; left: 60px;
+    display: flex; align-items: center;
+    color: var(--gray);
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    padding-bottom: 14px; z-index: 2;
+  }
+  .light-hero-logo {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 18px; font-weight: 700; color: white;
+    letter-spacing: 0.1em;
+    background: var(--red); padding: 5px 12px; border-radius: 3px;
+  }
+  .light-hero-nav-links {
+    margin-left: auto; display: flex; gap: 22px;
+    font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--gray-text);
+  }
+
+  .breadcrumb {
+    position: relative; z-index: 2;
+    margin-top: 50px;
+    font-size: 12px; color: var(--gray);
+    letter-spacing: 0.04em;
+  }
+  .breadcrumb a, .breadcrumb span { color: var(--gray); text-decoration: none; }
+  .breadcrumb .crumb-active { color: var(--red); font-weight: 600; }
+
+  .light-hero-content {
+    position: relative; z-index: 2; max-width: 720px; margin-top: 12px;
+  }
+  .light-hero-claim {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 12px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--red);
+    margin-bottom: 6px;
+  }
+  .light-hero-preheader {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 13px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--red);
+    font-weight: 700; margin: 14px 0 12px;
+  }
+  .light-hero-h1 {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 52px; font-weight: 700; line-height: 1.05;
+    text-transform: uppercase; letter-spacing: 0.02em;
+    margin: 0 0 16px; color: var(--black);
+  }
+  .light-hero-h1 em {
+    color: var(--red); font-style: normal;
+  }
+  .light-hero-subline {
+    font-size: 17px; line-height: 1.5;
+    color: var(--gray-text); margin: 0 0 28px;
+    max-width: 580px;
+  }
+  .light-hero-cta-row {
+    display: flex; gap: 12px; flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--red); color: white; border: none;
+    padding: 13px 26px; border-radius: 3px;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 12px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; cursor: pointer;
+  }
+  .btn-secondary-light {
+    background: transparent; color: var(--black);
+    border: 2px solid var(--black); padding: 11px 24px;
+    border-radius: 3px;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 12px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; cursor: pointer;
+  }
+  .btn-secondary-dark {
+    background: var(--black); color: white;
+    border: 2px solid var(--black); padding: 11px 24px;
+    border-radius: 3px;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 12px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; cursor: pointer;
+  }
+  .btn-text {
+    background: transparent; color: var(--red);
+    border: none; padding: 6px 0;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 12px; font-weight: 600; letter-spacing: 0.06em;
+    text-transform: uppercase; cursor: pointer;
+  }
+
+  .placeholder-zone {
+    background:
+      repeating-linear-gradient(45deg, #FFF8E1, #FFF8E1 14px, #FFE082 14px, #FFE082 28px);
+    border: 2px dashed #E65100;
+    border-radius: 4px;
+    padding: 40px 20px;
+    text-align: center;
+    color: #E65100; font-weight: 700;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 14px; letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .placeholder-zone.small {
+    padding: 20px 16px; font-size: 12px;
+  }
+  .placeholder-photo {
+    aspect-ratio: 16/9;
+    background:
+      repeating-linear-gradient(45deg, #f5f5f5, #f5f5f5 12px, #e8e8e8 12px, #e8e8e8 24px);
+    border: 2px dashed #999;
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 8px;
+    color: #888;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  .placeholder-photo .ph-icon { font-size: 36px; opacity: 0.6; }
+
+  /* ============= NAP-Block ============= */
+  .nap-section {
+    padding: 60px; background: var(--white);
+  }
+  .nap-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 32px; align-items: start;
+  }
+  .nap-card {
+    background: var(--gray-light);
+    border-radius: 4px; padding: 24px 28px;
+  }
+  .nap-card h3 {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 22px; font-weight: 700; text-transform: uppercase;
+    margin: 0 0 16px; letter-spacing: 0.04em;
+  }
+  .nap-table {
+    width: 100%; border-collapse: collapse;
+    font-size: 14px;
+  }
+  .nap-table tr {
+    border-bottom: 1px solid var(--border);
+  }
+  .nap-table tr:last-child { border-bottom: none; }
+  .nap-table td {
+    padding: 10px 0;
+    vertical-align: top;
+  }
+  .nap-table td.label {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 700; color: var(--black);
+    text-transform: uppercase; letter-spacing: 0.04em;
+    font-size: 12px;
+    width: 130px;
+  }
+  .nap-table td.value {
+    color: var(--gray-text); line-height: 1.5;
+  }
+  .nap-quick-actions {
+    display: flex; gap: 10px; margin-top: 18px; flex-wrap: wrap;
+  }
+  .nap-quick-actions button {
+    flex: 1; min-width: 110px;
+    background: var(--white); color: var(--black);
+    border: 1px solid var(--border);
+    padding: 10px 14px; border-radius: 3px;
+    font-family: 'Roboto Condensed',sans-serif;
+    font-size: 12px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    cursor: pointer;
+  }
+  .nap-quick-actions button:hover {
+    border-color: var(--red); color: var(--red);
+  }
+
+  .map-mock {
+    background: linear-gradient(135deg, #cde0d8, #a4c4b9);
+    border-radius: 4px; min-height: 380px;
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .map-mock::after {
+    content: ''; position: absolute; inset: 0;
+    background:
+      linear-gradient(transparent 49%, rgba(0,0,0,0.08) 50%, transparent 51%),
+      linear-gradient(90deg, transparent 49%, rgba(0,0,0,0.08) 50%, transparent 51%);
+    background-size: 60px 60px;
+  }
+  .map-pin {
+    width: 32px; height: 32px;
+    background: var(--red); border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    position: relative; z-index: 2;
+  }
+  .map-pin::after {
+    content: ''; position: absolute;
+    top: 8px; left: 8px;
+    width: 12px; height: 12px;
+    background: white; border-radius: 50%;
+  }
+
+  /* ============= Person-Card (B3) ============= */
+  .person-section {
+    padding: 60px; background: var(--gray-light);
+  }
+  .person-card {
+    background: var(--white); border-radius: 4px;
+    padding: 36px 40px;
+    display: grid; grid-template-columns: 200px 1fr;
+    gap: 32px; align-items: center;
+    max-width: 760px; margin: 0 auto;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  .person-photo {
+    width: 200px; height: 240px;
+    background:
+      repeating-linear-gradient(45deg, #f5f5f5, #f5f5f5 12px, #e8e8e8 12px, #e8e8e8 24px);
+    border-radius: 4px;
+    border: 2px dashed #999;
+    display: flex; align-items: center; justify-content: center;
+    color: #888; font-size: 13px;
+    font-family: 'Roboto Condensed',sans-serif;
+    text-align: center; padding: 14px;
+  }
+  .person-info h4 {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 22px; font-weight: 700; margin: 0 0 4px;
+    text-transform: uppercase; letter-spacing: 0.03em;
+  }
+  .person-role {
+    font-size: 13px; color: var(--red); font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    margin-bottom: 18px;
+  }
+  .person-quote {
+    font-size: 15px; color: var(--gray-text);
+    line-height: 1.6; font-style: italic;
+    border-left: 3px solid var(--red);
+    padding: 4px 0 4px 14px; margin-bottom: 22px;
+  }
+  .person-cta-row {
+    display: flex; gap: 10px; flex-wrap: wrap;
+  }
+
+  /* ============= 4-Card Grid (B4) ============= */
+  .loesungen-section {
+    padding: 60px; background: var(--white);
+  }
+  .loesungen-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 16px; margin-top: 32px;
+  }
+  .loesung-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 4px; overflow: hidden;
+    display: flex; flex-direction: column;
+    position: relative;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .loesung-card.featured {
+    border-color: var(--red); border-width: 2px;
+  }
+  .loesung-card.featured::before {
+    content: 'VOR-ORT-HIGHLIGHT'; position: absolute; top: -10px; left: 14px;
+    background: var(--red); color: white;
+    padding: 4px 12px; border-radius: 2px;
+    font-family: 'Roboto Condensed',sans-serif;
+    font-size: 9px; font-weight: 700;
+    letter-spacing: 0.1em;
+    z-index: 2;
+  }
+  .loesung-img {
+    aspect-ratio: 4/3;
+    background:
+      repeating-linear-gradient(45deg, #f5f5f5, #f5f5f5 12px, #e8e8e8 12px, #e8e8e8 24px);
+    border-bottom: 1px dashed #bbb;
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column;
+    color: #888; font-size: 12px;
+    font-family: 'Roboto Condensed',sans-serif;
+  }
+  .loesung-img.garage { background: linear-gradient(135deg, #ffd180, #ff8a65); }
+  .loesung-img.lager { background: linear-gradient(135deg, #b3e5fc, #4fc3f7); }
+  .loesung-img.buero { background: linear-gradient(135deg, #c8e6c9, #66bb6a); }
+  .loesung-img.werkhalle { background: linear-gradient(135deg, #d7ccc8, #8d6e63); }
+  .loesung-body {
+    padding: 22px 22px 24px;
+    display: flex; flex-direction: column; flex: 1;
+  }
+  .loesung-h4 {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 18px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.04em; margin: 0 0 6px;
+  }
+  .loesung-size {
+    font-size: 12px; color: var(--gray);
+    margin-bottom: 12px; font-family: monospace;
+  }
+  .loesung-price {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 24px; font-weight: 700; color: var(--red);
+    line-height: 1; margin-bottom: 4px;
+  }
+  .loesung-price-sub {
+    font-size: 11px; color: var(--gray); margin-bottom: 14px;
+  }
+  .loesung-desc {
+    font-size: 13px; color: var(--gray-text); line-height: 1.55;
+    margin-bottom: 18px; flex: 1;
+  }
+  .loesung-cta {
+    color: var(--red); font-weight: 700;
+    font-family: 'Roboto Condensed',sans-serif;
+    font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase;
+    margin-top: auto;
+  }
+  .loesungen-disclaimer {
+    text-align: center; font-size: 12px; color: var(--gray);
+    margin-top: 24px; font-style: italic;
+  }
+
+  /* ============= Galerie (B5) ============= */
+  .galerie-section {
+    padding: 60px; background: var(--gray-light);
+  }
+  .galerie-layout {
+    display: grid; grid-template-columns: 2fr 1fr;
+    gap: 14px; margin-top: 28px;
+  }
+  .galerie-hero {
+    aspect-ratio: 16/10;
+  }
+  .galerie-tiles {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .galerie-tile {
+    aspect-ratio: 1;
+  }
+  .tour-disabled-row {
+    margin-top: 32px; text-align: center;
+    background: var(--white); border-radius: 4px;
+    padding: 28px; border: 1px solid var(--border);
+  }
+  .phase-tag {
+    display: inline-block;
+    background: rgba(198,40,40,0.15); color: var(--red);
+    padding: 3px 10px; border-radius: 2px;
+    font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+    margin-right: 12px; font-weight: 700;
+  }
+  .btn-disabled {
+    background: var(--gray-line); color: var(--gray);
+    border: none; padding: 13px 26px; border-radius: 3px;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 12px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; cursor: not-allowed;
+  }
+
+  /* ============= USPs (B6) ============= */
+  .usp-section {
+    padding: 60px; background: var(--white);
+  }
+  .usp-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 16px; margin-top: 28px;
+  }
+  .usp-tile {
+    background: var(--gray-light);
+    border-radius: 4px; padding: 24px 20px;
+    text-align: center;
+    border-top: 3px solid var(--red);
+  }
+  .usp-tile-icon {
+    font-size: 40px; margin-bottom: 12px; opacity: 0.85;
+  }
+  .usp-tile-h {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 18px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.04em; margin: 0 0 6px;
+  }
+  .usp-tile-sub {
+    font-size: 13px; color: var(--gray-text); line-height: 1.5;
+  }
+  .usp-disclaimer {
+    margin-top: 22px; padding: 12px 16px;
+    background: #FFF3E0; border-left: 3px solid #E65100;
+    font-size: 12px; color: #1F1F1F;
+    border-radius: 3px;
+  }
+
+  /* ============= Anfahrt (B7) ============= */
+  .anfahrt-section {
+    padding: 60px; background: var(--gray-light);
+  }
+  .anfahrt-grid {
+    display: grid; grid-template-columns: 1.4fr 1fr;
+    gap: 32px; margin-top: 28px;
+    align-items: start;
+  }
+  .anfahrt-text {
+    font-size: 15px; line-height: 1.7; color: var(--gray-text);
+    margin-bottom: 22px;
+  }
+  .anfahrt-text strong { color: var(--black); }
+  .anfahrt-table {
+    width: 100%; border-collapse: collapse;
+    background: var(--white); border-radius: 4px;
+    overflow: hidden;
+  }
+  .anfahrt-table th, .anfahrt-table td {
+    padding: 12px 14px; text-align: left;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+  }
+  .anfahrt-table th {
+    background: var(--gray-light);
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.04em; font-size: 11px;
+  }
+  .anfahrt-mini-map {
+    aspect-ratio: 3/4;
+    min-height: 320px;
+    background: linear-gradient(135deg, #d0d8e0, #a8b4c4);
+    border-radius: 4px;
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .anfahrt-mini-map::after {
+    content: ''; position: absolute; inset: 0;
+    background:
+      linear-gradient(transparent 49%, rgba(0,0,0,0.08) 50%, transparent 51%),
+      linear-gradient(90deg, transparent 49%, rgba(0,0,0,0.08) 50%, transparent 51%);
+    background-size: 50px 50px;
+  }
+
+  /* ============= Reviews (B8) ============= */
+  .reviews-section {
+    padding: 60px; background: var(--white);
+  }
+  .reviews-rating-line {
+    background: var(--gray-light);
+    border-radius: 4px; padding: 22px 28px;
+    display: flex; align-items: center; gap: 18px;
+    margin: 28px 0 24px;
+  }
+  .reviews-rating-stars {
+    color: #FFB400; font-size: 24px; letter-spacing: -2px;
+  }
+  .reviews-rating-num {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 28px; font-weight: 700; color: var(--black);
+  }
+  .reviews-rating-label {
+    font-size: 14px; color: var(--gray-text);
+  }
+  .reviews-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .review-card {
+    background: var(--gray-light);
+    border-radius: 4px; padding: 20px 22px;
+    position: relative;
+  }
+  .review-card-stars {
+    color: #FFB400; font-size: 14px; letter-spacing: -1px;
+    margin-bottom: 10px;
+  }
+  .review-card-quote {
+    font-size: 14px; color: var(--gray-text);
+    line-height: 1.55; font-style: italic;
+    margin-bottom: 14px;
+  }
+  .review-card-author {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 12px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--black);
+  }
+  .review-card .v12-placeholder-box {
+    margin-top: 10px;
+  }
+  .reviews-cta-row {
+    text-align: center; margin-top: 24px;
+  }
+
+  /* ============= FAQ (B9) ============= */
+  .faq-section {
+    padding: 60px; background: var(--gray-light);
+  }
+  .faq-list {
+    max-width: 900px; margin: 28px auto 0;
+  }
+  .faq-item {
+    background: var(--white); margin-bottom: 8px;
+    border-radius: 4px; padding: 16px 22px;
+    border-left: 3px solid transparent;
+  }
+  .faq-item.open { background: #FFEBEE; border-left-color: var(--red); }
+  .faq-q {
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: 'Roboto Condensed',sans-serif;
+    font-size: 16px; font-weight: 600;
+    cursor: pointer; color: var(--black);
+  }
+  .faq-q-icon { color: var(--red); font-size: 20px; font-weight: 300; }
+  .faq-item.open .faq-q-icon { transform: rotate(45deg); }
+  .faq-a {
+    margin-top: 12px;
+    font-size: 14px; color: var(--gray-text); line-height: 1.7;
+    display: none;
+  }
+  .faq-item.open .faq-a { display: block; }
+  .faq-a strong { color: var(--black); }
+  .faq-inline-cta {
+    text-align: center; margin: 28px auto 0;
+    padding: 28px 22px;
+    background: var(--white); border-radius: 4px;
+    border: 1px solid var(--border);
+    max-width: 540px;
+  }
+  .faq-inline-cta-vorzeile {
+    font-size: 15px; color: var(--gray-text);
+    margin-bottom: 14px;
+  }
+
+  /* ============= Form (B10) ============= */
+  .form-section {
+    padding: 60px; background: var(--white);
+  }
+  .form-mock {
+    max-width: 720px; margin: 28px auto 0;
+    background: var(--gray-light); border-radius: 4px;
+    padding: 32px 36px;
+  }
+  .form-row {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 14px; margin-bottom: 14px;
+  }
+  .form-row.single { grid-template-columns: 1fr; }
+  .form-field {
+    display: flex; flex-direction: column;
+  }
+  .form-field label {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 11px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.06em; color: var(--gray);
+    margin-bottom: 6px;
+  }
+  .form-field label .req { color: var(--red); }
+  .form-field input, .form-field select, .form-field textarea {
+    padding: 11px 13px; border: 1px solid var(--border);
+    border-radius: 3px; background: var(--white);
+    font-size: 14px; font-family: inherit;
+    color: var(--gray-text);
+  }
+  .form-field textarea { min-height: 80px; resize: vertical; }
+  .form-checkbox-row {
+    display: flex; align-items: flex-start; gap: 10px;
+    margin: 14px 0 18px;
+    font-size: 12px; color: var(--gray-text);
+  }
+  .form-hidden-notice {
+    background: rgba(21,101,192,0.08);
+    border-left: 3px solid #1565C0;
+    padding: 8px 12px; border-radius: 3px;
+    font-size: 11px; color: #1565C0;
+    margin: 14px 0;
+    font-family: monospace;
+  }
+  .form-cta-row {
+    display: flex; align-items: center; gap: 16px;
+    margin-top: 14px;
+  }
+  .form-cta-sub {
+    font-size: 12px; color: var(--gray);
+  }
+
+  /* ============= Cross-Link Standorte (B11) ============= */
+  .cross-section {
+    padding: 60px; background: var(--gray-light);
+  }
+  .cross-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 16px; margin-top: 28px;
+  }
+  .cross-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 4px; padding: 22px 24px;
+    display: flex; flex-direction: column;
+  }
+  .cross-card-h {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 18px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.04em; margin: 0 0 6px;
+  }
+  .cross-card-distance {
+    font-size: 12px; color: var(--red);
+    font-weight: 700; letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .cross-card-addr {
+    font-size: 13px; color: var(--gray-text);
+    line-height: 1.5;
+    border-top: 1px solid var(--border);
+    padding-top: 12px; margin-bottom: 12px;
+  }
+  .cross-card-prods {
+    font-size: 12px; color: var(--gray);
+    margin-bottom: 18px; flex: 1;
+  }
+  .cross-card-cta {
+    color: var(--red); font-weight: 700;
+    font-family: 'Roboto Condensed',sans-serif;
+    font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase;
+    margin-top: auto;
+  }
+
+  /* ============= Outro (B12) ============= */
+  .outro-section {
+    padding: 80px 60px;
+    background: linear-gradient(135deg, #1f1f1f, #2a2a2a);
+    color: var(--white); text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .outro-section::before {
+    content: '🏗'; position: absolute;
+    top: 50%; left: 50%; transform: translate(-50%, -50%);
+    font-size: 360px; opacity: 0.04;
+  }
+  .outro-claim-tag {
+    font-family: 'Roboto Condensed',sans-serif;
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--red); margin-bottom: 12px;
+    position: relative; z-index: 2;
+  }
+  .outro-claim {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 52px; font-weight: 700; line-height: 1.1;
+    text-transform: uppercase; letter-spacing: 0.04em;
+    margin: 0 0 20px; color: var(--white);
+    position: relative; z-index: 2;
+  }
+  .outro-sub {
+    font-size: 15px; opacity: 0.7;
+    font-style: italic;
+    position: relative; z-index: 2;
+  }
+
+  /* ============= Footer ============= */
+  .real-footer {
+    background: var(--black); color: rgba(255,255,255,0.7);
+    padding: 50px 60px;
+  }
+  .footer-2col {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 60px; margin-bottom: 30px;
+  }
+  .real-footer h5 {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 13px; font-weight: 700;
+    color: var(--white); margin: 0 0 12px;
+    text-transform: uppercase; letter-spacing: 0.1em;
+  }
+  .real-footer ul { list-style: none; padding: 0; margin: 0; }
+  .real-footer li { padding: 4px 0; font-size: 13px; }
+  .real-footer a {
+    color: rgba(255,255,255,0.6); text-decoration: none;
+  }
+  .real-footer a:hover { color: white; }
+  .footer-trust {
+    border-top: 1px solid rgba(255,255,255,0.12);
+    padding-top: 20px; font-size: 12px;
+    display: flex; justify-content: space-between;
+    color: rgba(255,255,255,0.5); flex-wrap: wrap; gap: 16px;
+  }
+
+  /* ============= Open Items Footer Sektion ============= */
+  .open-items-section {
+    padding: 60px 48px;
+    background: var(--gray-light);
+  }
+  .open-items-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 18px; margin-top: 24px;
+  }
+  .open-items-card {
+    background: var(--white); border-radius: 4px;
+    overflow: hidden; border: 1px solid var(--border);
+  }
+  .open-items-card-head {
+    background: #E65100; color: white;
+    padding: 12px 16px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .open-items-card-head.placeholder { background: #E65100; }
+  .open-items-card-head.questions { background: #1565C0; }
+  .open-items-card-head.andrey { background: #6A1B9A; }
+  .open-items-card-head h3 {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 14px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    margin: 0; color: white;
+  }
+  .open-items-card-body {
+    padding: 18px 22px;
+  }
+  .open-items-card-body ol, .open-items-card-body ul {
+    margin: 0; padding-left: 20px;
+    font-size: 13px; line-height: 1.7; color: var(--gray-text);
+  }
+  .open-items-card-body li {
+    padding: 3px 0;
+  }
+
+  .checkpoint-block {
+    margin-top: 32px;
+    background: var(--black); color: white;
+    padding: 22px 28px; border-radius: 4px;
+  }
+  .checkpoint-block h4 {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 16px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    margin: 0 0 12px; color: var(--red);
+  }
+  .checkpoint-block p {
+    margin: 6px 0; font-size: 13px;
+    color: rgba(255,255,255,0.85);
+  }
+  .checkpoint-block strong { color: white; }
+
+  .scaling-banner {
+    margin-top: 24px;
+    background: rgba(21,101,192,0.08);
+    border-left: 4px solid #1565C0;
+    padding: 18px 22px; border-radius: 3px;
+  }
+  .scaling-banner h4 {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 14px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    margin: 0 0 10px; color: #1565C0;
+  }
+  .scaling-banner p {
+    margin: 6px 0; font-size: 13px;
+    color: var(--gray-text); line-height: 1.6;
+  }
+
+  @media (max-width: 1100px) {
+    .nap-grid, .anfahrt-grid { grid-template-columns: 1fr; }
+    .person-card { grid-template-columns: 1fr; text-align: center; }
+    .person-photo { margin: 0 auto; }
+    .loesungen-grid { grid-template-columns: 1fr 1fr; }
+    .galerie-layout { grid-template-columns: 1fr; }
+    .usp-grid, .reviews-grid, .cross-grid, .open-items-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    .footer-2col { grid-template-columns: 1fr; gap: 30px; }
+    .light-hero { padding: 60px 30px 40px; }
+    .light-hero-h1 { font-size: 36px; }
+    .outro-claim { font-size: 36px; }
+  }
+  @media (max-width: 700px) {
+    .loesungen-grid, .usp-grid, .reviews-grid, .cross-grid, .open-items-grid {
+      grid-template-columns: 1fr;
+    }
+    .form-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- GLOBAL HUB-NAV (gleiche Pattern wie Startseite-Preview)      -->
+<!-- ============================================================ -->
+<nav class="global">
+  <a class="logo" href="index.html">MEGA<span>·</span>MIETPARK · Content</a>
+  <a href="index.html">TZ-Hub</a>
+  <a href="mega-mietpark_TZ_Startseite.html">TZ Startseite</a>
+  <a href="mega-mietpark_content_01_startseite.html">📝 Content · Startseite</a>
+  <a href="mega-mietpark_content_02_standort_wuppertal.html" class="active">📍 Content · Standort Wuppertal</a>
+  <span class="v-tag">V1.0.1</span>
+  <button class="lang-toggle" id="ruToggle">DE + RU</button>
+</nav>
+
+<!-- ============================================================ -->
+<!-- COVER                                                        -->
+<!-- ============================================================ -->
+<div class="cover">
+  <p class="cover-tag">Content Preview · Seite 2 von 16+ · V1.0.1 · Standort-Leitfall</p>
+  <h1>Standort-Seite<br><em>Wuppertal V1.0.1</em></h1>
+  <p class="cover-sub">
+    <strong>Erst-Erstellung:</strong> 2026-05-02 — V1.0 Block-by-Block aus TZ_Standort.html generiert (12 Sektionen, alle Daten verifiziert gegen Standorte-Tabelle + Angebotsflyer Wuppertal).
+    <strong>V1.0.1:</strong> 7 Refinement-Korrekturen — B12 Sync mit Startseite V1.3 · B1 SEO Pre-Header mit Geo-Modifier · B4 Featured-Badge inclusive („Vor-Ort-Highlight") · B8 Stock-Reviews entfernt (klare PLACEHOLDER statt cliché Texte).
+    <br>Wuppertal = <strong>vollständigster Produktmix</strong> unter 16 Standorten (alle 4 Lösungen verfügbar). <strong>Leitfall</strong> für 15 weitere Standorte — Template via ACF-Felder.
+  </p>
+  <div class="ru">
+    Превью-страница локации Вупперталь. Эталонный шаблон для 15 других локаций. 12 секций (B1-B12). Тональность и конвенции 1:1 наследуются с главной V1.3 (du-форма, „ab"-префикс, UPPERCASE-заголовки). Особенность Вупперталя: единственный standort с полным product-mix (Garage / Lagerraum / Büro / Werkhalle).
+  </div>
+  <div class="cover-meta">
+    <div class="cover-meta-item">Datei<strong>content/02_standort_wuppertal.md</strong></div>
+    <div class="cover-meta-item">Version<strong>V1.0.1</strong></div>
+    <div class="cover-meta-item">Blöcke<strong>12 (META + B1–B12)</strong></div>
+    <div class="cover-meta-item">Tonalität<strong>du-Form · DE</strong></div>
+    <div class="cover-meta-item">Standort<strong>Wuppertal-Vohwinkel</strong></div>
+  </div>
+</div>
+
+<div class="preview-intro">
+  <strong>📖 Lese-Anleitung:</strong> Scroll von oben nach unten — jede Sektion zeigt zuerst den <em>visuellen Mock</em> mit dem finalen Text wie er auf der Standort-Seite erscheinen wird, dann die Annotationen-Box mit Alternativen, Quellen und PLACEHOLDERS. Gelb-gestreifte Zonen = <span class="placeholder-tag">PLACEHOLDER</span> (wartet auf David). Hellgrün = ✅ verifiziert (CLIENT). Style: <strong>NordSpace-inspired light/clean</strong> (kein dunkles Industrial).
+</div>
+
+<!-- ============================================================ -->
+<!-- BLOCK META                                                   -->
+<!-- ============================================================ -->
+<div class="content-section">
+
+  <div class="content-block">
+    <div class="block-anchor">
+      <span class="block-num">META</span>
+      <h2 class="block-title">Title-Tag &amp; Meta Description · /standort/wuppertal/</h2>
+      <span class="block-tag">SEO-Foundation · Local SEO</span>
+    </div>
+    <div class="block-mock" style="padding: 22px 28px;">
+      <div style="background:white; border:1px solid var(--border); border-radius:4px; padding:14px 18px; max-width:680px; box-shadow:0 1px 3px rgba(0,0,0,0.05);">
+        <div style="font-size:12px; color:#1A0DAB; font-family:Arial,sans-serif; margin-bottom:2px;">www.mega-mietpark.de › standort › wuppertal</div>
+        <div style="font-size:18px; color:#1A0DAB; font-family:Arial,sans-serif; line-height:1.3; margin-bottom:4px;"><strong>Mega-Mietpark Wuppertal · Garage, Lager, Büro &amp; Werkhalle</strong></div>
+        <div style="font-size:13px; color:#4D5156; font-family:Arial,sans-serif; line-height:1.4;">Mega-Mietpark Wuppertal an der Vohwinkeler Straße 148: Garagen ab 200 €, Lagerräume 4–22 m², Werkhallen mit 6 m Höhe und Büros mit zwei Ebenen. Direkt anfragen.</div>
+      </div>
+    </div>
+    <div class="block-annotations">
+      <details>
+        <summary>📝 Alternativen · 3 Title-Varianten</summary>
+        <ul>
+          <li><span class="alt-tag">A ✓</span> "Mega-Mietpark Wuppertal · Garage, Lager, Büro &amp; Werkhalle" — 58 Zeichen, Brand+Geo+4-Lösungen (✓ EMPFOHLEN V1.0)</li>
+          <li><span class="alt-tag">B</span> "Garage &amp; Werkhalle mieten in Wuppertal | Mega-Mietpark" — 53 Zeichen, Keyword+Geo-First</li>
+          <li><span class="alt-tag">C</span> "Wuppertal: Garage, Lager, Büro &amp; Werkhalle | Mega-Mietpark" — 58 Zeichen, Geo-First</li>
+        </ul>
+      </details>
+      <div class="source-list">
+        <h4>✅ SEO-Status &amp; Schema.org</h4>
+        <ul>
+          <li>Title: <strong>58 Zeichen</strong> ✓ (Limit 60)</li>
+          <li>Meta: <strong>158 Zeichen</strong> ✓ (Limit 160) — integriert 4 Lösungen + Adresse + Preis-Anker</li>
+          <li>Schema.org: <code>LocalBusiness</code>, <code>PostalAddress</code>, <code>openingHours</code>, <code>GeoCoordinates</code></li>
+          <li>URL-Pattern (15 weitere Standorte): <code>/standort/{slug}/</code></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- BLOCK 1 — HERO LOKAL                                         -->
+<!-- ============================================================ -->
+<div class="content-section">
+
+  <div class="content-block">
+    <div class="block-anchor">
+      <span class="block-num">B1</span>
+      <h2 class="block-title">Hero · Lokal · Pre-Header SEO + H1 + 2 CTAs</h2>
+      <span class="block-tag">V1.0.1 · Light NordSpace-inspired</span>
+    </div>
+
+    <div class="block-mock">
+      <div class="light-hero">
+        <div class="light-hero-nav">
+          <span class="light-hero-logo">MEGA·MIETPARK</span>
+          <div class="light-hero-nav-links">
+            <span>Standorte</span>
+            <span>Lösungen</span>
+            <span>Ratgeber</span>
+            <span>Grundstücke</span>
+          </div>
+        </div>
+        <div class="light-hero-content">
+          <div class="breadcrumb">
+            <span>Startseite</span> › <span>Standorte</span> › <span class="crumb-active">Wuppertal</span>
+          </div>
+          <p class="light-hero-claim">Einfach einfahren. <span class="placeholder-tag">PLACEHOLDER · vorläufig</span></p>
+          <p class="light-hero-preheader">GARAGE · LAGERRAUM · BÜRO · WERKHALLE MIETEN IN WUPPERTAL</p>
+          <h1 class="light-hero-h1">Mega-Mietpark<br><em>Wuppertal</em></h1>
+          <p class="light-hero-subline">Garage · Lagerraum · Büro · Werkhalle — alles an einem Standort.</p>
+          <div class="light-hero-cta-row">
+            <button class="btn-primary">Verfügbarkeit prüfen</button>
+            <button class="btn-secondary-light">Standort ansehen</button>
+          </div>
+        </div>
+        <div style="position:absolute; bottom:24px; right:60px; max-width:280px; z-index:2;">
+          <div class="placeholder-zone small">
+            ⚠ Hero-Foto Wuppertal<br>
+            <span style="font-weight:400; text-transform:none; font-size:11px;">David muss liefern · NordSpace-Stil · helle Außenaufnahme</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="block-annotations">
+      <details>
+        <summary>📝 V1.0.1 Decision · Pre-Header SEO + 2 CTAs</summary>
+        <ul>
+          <li><strong>Pre-Header NEU V1.0.1:</strong> "GARAGE · LAGERRAUM · BÜRO · WERKHALLE MIETEN IN WUPPERTAL" — SEO-keyword-rich + Local-SEO Geo-Modifier (parallel zu Startseite V1.3)</li>
+          <li><strong>ACF-Template (15 weitere Standorte):</strong> <code>{lösungen} mieten in {stadt}</code> — dynamic per Standort</li>
+          <li><strong>2 CTAs (statt 1):</strong> primary „Verfügbarkeit prüfen" → Form B10 · secondary outline „Standort ansehen" → Karte B7</li>
+          <li><strong>Subline:</strong> alle 4 Lösungen explizit (USP: vollständigster Produktmix)</li>
+          <li><strong>Style:</strong> light/clean (NordSpace-inspired) statt dark industrial</li>
+        </ul>
+      </details>
+      <details>
+        <summary>📝 Alternativen H1 + Subline + Marken-Claim</summary>
+        <ul>
+          <li><span class="alt-tag">H1-A ✓</span> "Mega-Mietpark Wuppertal" — direkt, brand+geo (✓ EMPFOHLEN)</li>
+          <li><span class="alt-tag">H1-B</span> "Dein Mietpark in Wuppertal" — du-form, persona-näher, schwächer für SEO</li>
+          <li><span class="alt-tag">Sub-A ✓</span> „Garage · Lagerraum · Büro · Werkhalle — alles an einem Standort." (✓ EMPFOHLEN)</li>
+          <li><span class="alt-tag">Sub-B</span> „Vier Lösungen an einer Adresse — direkt in Wuppertal-Vohwinkel."</li>
+          <li><strong>Marken-Claim „Einfach einfahren."</strong> — vorläufig, finaler Claim wartet auf David-Freigabe</li>
+        </ul>
+      </details>
+      <div class="placeholder-list">
+        <h4>⚠️ B1 · 2 PLACEHOLDER</h4>
+        <ul>
+          <li><strong>Hero-Foto Wuppertal</strong> — David muss liefern (NordSpace-Stil, Mensch beim Einfahren, helle Tonalität)</li>
+          <li><strong>Marken-Claim final</strong> — "Einfach einfahren." vorläufig · David-Freigabe ausstehend</li>
+        </ul>
+      </div>
+      <div class="source-list">
+        <h4>✅ Daten-Status</h4>
+        <ul>
+          <li>"Wuppertal" ✅ CLIENT (Standorte-Tabelle Pos. 12)</li>
+          <li>4 Lösungen ✅ CLIENT (Angebotsflyer Wuppertal)</li>
+          <li>Breadcrumb-Pfad: Schema.org BreadcrumbList</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- BLOCK 2 — NAP · ADRESSE · KARTE                              -->
+<!-- ============================================================ -->
+<div class="content-section alt">
+
+  <div class="content-block">
+    <div class="block-anchor">
+      <span class="block-num">B2</span>
+      <h2 class="block-title">NAP · Adresse · Karte · 3 Quick-Actions</h2>
+      <span class="block-tag">Local SEO + Vertrauen · Schema.org</span>
+    </div>
+
+    <div class="block-mock">
+      <div class="nap-section">
+        <h2 style="font-family:'Roboto Condensed',sans-serif; font-size:32px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; text-align:center; margin:0 0 8px;">SO FINDEST DU UNS</h2>
+        <p style="text-align:center; font-size:15px; color:var(--gray-text); margin:0 0 32px;">Standort Wuppertal-Vohwinkel · 24/7-videoüberwacht · Zugang täglich 06–22 Uhr.</p>
+        <div class="nap-grid">
+          <div class="nap-card">
+            <h3>Adresse &amp; Kontakt</h3>
+            <table class="nap-table">
+              <tr>
+                <td class="label">Adresse</td>
+                <td class="value"><strong>Vohwinkeler Straße 148</strong><br>42329 Wuppertal</td>
+              </tr>
+              <tr>
+                <td class="label">Telefon</td>
+                <td class="value">+49 2309 543 99 95</td>
+              </tr>
+              <tr>
+                <td class="label">E-Mail</td>
+                <td class="value">anfrage@mega-mietpark.de</td>
+              </tr>
+              <tr>
+                <td class="label">Office-Zeiten</td>
+                <td class="value"><span class="placeholder-text">Mo–Fr 9:00–17:00 [PLACEHOLDER · David]</span></td>
+              </tr>
+              <tr>
+                <td class="label">Anlagen-Zugang</td>
+                <td class="value"><strong>täglich 06:00–22:00 Uhr</strong><br>Einfahrtstor mit Zugangskontrolle</td>
+              </tr>
+            </table>
+            <div class="nap-quick-actions">
+              <button>📞 Anrufen</button>
+              <button>💬 WhatsApp</button>
+              <button>🗺 Route planen</button>
+            </div>
+          </div>
+          <div class="map-mock">
+            <div class="map-pin"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="block-annotations">
+      <details>
+        <summary>📝 Headline-Alternativen + WhatsApp-Frage</summary>
+        <ul>
+          <li><span class="alt-tag">A ✓</span> "SO FINDEST DU UNS" — du-form, einladend (✓ EMPFOHLEN)</li>
+          <li><span class="alt-tag">B</span> "ADRESSE &amp; ÖFFNUNGSZEITEN" — funktional, weniger emotional</li>
+          <li><strong>WhatsApp-Routing:</strong> aktuell <code>+49 2309 5439995</code> — David: gleiche Nummer wie Festnetz oder separate Mobil-Nummer für den Standort?</li>
+          <li><strong>Office vs. Anlagen-Zugang:</strong> KLARE Trennung · Office (Personen vor Ort) ≠ Anlagen-Zugang (Mieter Self-Service)</li>
+        </ul>
+      </details>
+      <div class="placeholder-list">
+        <h4>⚠️ B2 · 2 PLACEHOLDER</h4>
+        <ul>
+          <li><strong>Office-Öffnungszeiten</strong> — vorläufig "Mo–Fr 9–17" als Industriestandard angenommen · David muss bestätigen</li>
+          <li><strong>WhatsApp-Nummer</strong> — gleiche wie Festnetz oder separat?</li>
+        </ul>
+      </div>
+      <div class="source-list">
+        <h4>✅ Daten ✅ CLIENT</h4>
+        <ul>
+          <li>Adresse <strong>Vohwinkeler Straße 148, 42329 Wuppertal</strong> ✅ Standorte-Tabelle + Angebotsflyer</li>
+          <li>Telefon <strong>+49 2309 543 99 95</strong> ✅ zentrale Nummer aller Standorte</li>
+          <li>E-Mail <strong>anfrage@mega-mietpark.de</strong> ✅ Wuppertal-spezifisch (Angebotsflyer)</li>
+          <li>Anlagen-Zugang <strong>06:00–22:00 + Zugangskontrolle</strong> ✅ Angebotsflyer Wuppertal</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- BLOCK 3 — REGIONALLEITER                                     -->
+<!-- ============================================================ -->
+<div class="content-section">
+
+  <div class="content-block">
+    <div class="block-anchor">
+      <span class="block-num">B3</span>
+      <h2 class="block-title">Regionalleiter · Person · Echtes Gesicht</h2>
+      <span class="block-tag">NordSpace-Trust · KEIN Stock</span>
+    </div>
+
+    <div class="block-mock">
+      <div class="person-section">
+        <h2 style="font-family:'Roboto Condensed',sans-serif; font-size:32px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; text-align:center; margin:0 0 32px;">DEIN ANSPRECHPARTNER VOR ORT</h2>
+        <div class="person-card">
+          <div class="person-photo">
+            ⚠ Foto<br>PLACEHOLDER<br><span style="font-size:11px; opacity:0.7;">David muss liefern</span>
+          </div>
+          <div class="person-info">
+            <h4><span class="placeholder-text">[Standortleiter Wuppertal]</span></h4>
+            <div class="person-role">Standortleiter Wuppertal</div>
+            <p class="person-quote">
+              „Hi, ich bin <span class="placeholder-text">[Name]</span>. Ich zeige dir gern alles vor Ort — komm einfach vorbei oder ruf an."
+            </p>
+            <div class="person-cta-row">
+              <button class="btn-primary">📞 Anrufen</button>
+              <button class="btn-secondary-dark">💬 WhatsApp schreiben</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="block-annotations">
+      <details>
+        <summary>📝 Headline-Decision + Fallback bei fehlendem Standortleiter</summary>
+        <ul>
+          <li><span class="alt-tag">A ✓</span> "DEIN ANSPRECHPARTNER VOR ORT" — du-form, parallel zu Startseite-B9-Step-2 (✓ EMPFOHLEN)</li>
+          <li><span class="alt-tag">B</span> "STANDORTLEITER WUPPERTAL" — funktional, weniger personenzentriert</li>
+          <li><strong>Headline rolleninklusiv:</strong> Standortleiter / Sales-Manager / Kundenbetreuer können alle dahinter stehen</li>
+          <li><strong>Fallback:</strong> Wenn David keinen Standortleiter benennen kann → Sektion alternativ als „Zentrales Sales-Team" mit David-Foto neutralisieren</li>
+        </ul>
+      </details>
+      <div class="placeholder-list">
+        <h4>⚠️ B3 · KOMPLETT PLACEHOLDER (3 Items)</h4>
+        <ul>
+          <li><strong>Foto Standortleiter</strong> — Hochformat-Porträt, freigestellt · NordSpace-Prinzip: ECHTES Gesicht</li>
+          <li><strong>Name + ggf. eigene Durchwahl/Mobil/E-Mail</strong> — David muss liefern</li>
+          <li><strong>Persönliches Zitat</strong> — Template, wird mit echtem Namen befüllt</li>
+        </ul>
+      </div>
+      <div class="source-list">
+        <h4>✅ Vorbereitet</h4>
+        <ul>
+          <li>2 CTAs (📞 Anrufen + 💬 WhatsApp) — Tel-Nummer ✅ CLIENT</li>
+          <li>Zitat-Template einladend, du-form</li>
+          <li>Layout-Mock fertig: Foto links, Info rechts (Mobile: gestapelt)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- BLOCK 4 — VERFÜGBARE LÖSUNGEN · 4-CARD                       -->
+<!-- ============================================================ -->
+<div class="content-section alt">
+
+  <div class="content-block">
+    <div class="block-anchor">
+      <span class="block-num">B4</span>
+      <h2 class="block-title">Verfügbare Lösungen · 4-Card-Grid · KERN-CROSS-LINK</h2>
+      <span class="block-tag">V1.0.1 · Featured-Badge „Vor-Ort-Highlight"</span>
+    </div>
+
+    <div class="block-mock">
+      <div class="loesungen-section">
+        <h2 style="font-family:'Roboto Condensed',sans-serif; font-size:32px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; text-align:center; margin:0 0 8px;">IN WUPPERTAL · 4 LÖSUNGEN</h2>
+        <p style="text-align:center; font-size:15px; color:var(--gray-text); margin:0;">Was du bei uns in Wuppertal mieten kannst — alles an einer Adresse.</p>
+
+        <div class="loesungen-grid">
+          <!-- KARTE 1 · GARAGE -->
+          <div class="loesung-card">
+            <div class="loesung-img garage">🏠</div>
+            <div class="loesung-body">
+              <h4 class="loesung-h4">Garage</h4>
+              <div class="loesung-size">7,5–9 × 8–16 m · 6 Typen</div>
+              <div class="loesung-price">ab 200 €</div>
+              <div class="loesung-price-sub">/ Monat netto</div>
+              <p class="loesung-desc">6 Typen verfügbar — von der Standard-Garage bis zur isolierten XXL-Halle. Wohnmobil, Boot, Oldtimer oder Werkstattwagen — du suchst dir aus, was passt.</p>
+              <span class="loesung-cta">Zur Garage →</span>
+            </div>
+          </div>
+
+          <!-- KARTE 2 · LAGERRAUM -->
+          <div class="loesung-card">
+            <div class="loesung-img lager">📦</div>
+            <div class="loesung-body">
+              <h4 class="loesung-h4">Lagerraum</h4>
+              <div class="loesung-size">4 – 22 m²</div>
+              <div class="loesung-price"><span class="placeholder-text">ab ? €</span></div>
+              <div class="loesung-price-sub">/ Monat netto · ⚠ PLACEHOLDER</div>
+              <p class="loesung-desc">Vom 4 m²-Mini bis zum 22 m²-Stauraum für eine ganze Wohnungsauflösung. Trocken, sicher, monatlich kündbar.</p>
+              <span class="loesung-cta">Zum Lagerraum →</span>
+            </div>
+          </div>
+
+          <!-- KARTE 3 · BÜRO -->
+          <div class="loesung-card">
+            <div class="loesung-img buero">🖥️</div>
+            <div class="loesung-body">
+              <h4 class="loesung-h4">Büro</h4>
+              <div class="loesung-size">6,60 × 8 × 6 m · 2 Ebenen · ~52 m²</div>
+              <div class="loesung-price">ab 1.360 €</div>
+              <div class="loesung-price-sub">/ Monat netto · zzgl. 100 € NK</div>
+              <p class="loesung-desc">Zwei Ebenen, eine Adresse: unten Lager oder Werkraum, oben Büro mit WC und Teeküchenvorbereitung. Sofort einzugsbereit.</p>
+              <span class="loesung-cta">Zum Büro →</span>
+            </div>
+          </div>
+
+          <!-- KARTE 4 · WERKHALLE -->
+          <div class="loesung-card featured">
+            <div class="loesung-img werkhalle">🏗</div>
+            <div class="loesung-body">
+              <h4 class="loesung-h4">Werkhalle</h4>
+              <div class="loesung-size">5,90 × 16 × 6 m · 95 m² · LKW</div>
+              <div class="loesung-price">ab 1.360 €</div>
+              <div class="loesung-price-sub">/ Monat netto · zzgl. 100 € NK</div>
+              <p class="loesung-desc">95 m², 6 m hoch, LKW-befahrbar — und oben gleich das Büro mit WC. Werkbank, Material, Fahrzeug: alles unter einem Dach.</p>
+              <span class="loesung-cta">Zur Werkhalle →</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="loesungen-disclaimer">Alle Preise netto zzgl. MwSt. · Stromanschluss-Gebühr einmalig 80 € netto · Stromkosten nach Verbrauch.</p>
+      </div>
+    </div>
+
+    <div class="block-annotations">
+      <details>
+        <summary>📝 V1.0.1 · Featured-Badge inclusive + 4-Card-Order</summary>
+        <ul>
+          <li><strong>V1.0.1 Fix:</strong> Badge "B2B-Favorit" → "Vor-Ort-Highlight" — inclusive für Privat- und B2B-Besucher</li>
+          <li><strong>Begründung:</strong> Werkhalle Wuppertal = einer von nur 3 Werkhallen-Standorten (mit Mülheim + Köln-Rodenkirchen) — Standort-USP</li>
+          <li><strong>Order V1.0:</strong> Garage / Lagerraum / Büro / Werkhalle (parallel zu Startseite-Reihenfolge)</li>
+          <li><strong>Mobile Layout:</strong> 2×2 Grid statt 4-spaltig (1:1 mit TZ Designer-Brief)</li>
+          <li><strong>ACF-dynamisch:</strong> Anzahl Karten je Standort variiert (Wuppertal=4, Bochum=2, Braunschweig=1)</li>
+        </ul>
+      </details>
+      <div class="placeholder-list">
+        <h4>⚠️ B4 · 1 PLACEHOLDER</h4>
+        <ul>
+          <li><strong>Lagerraum-Einstiegspreis Wuppertal</strong> — €/Monat für 4 m²-Einheit (gleicher Pending-Punkt wie Startseite B8)</li>
+          <li>📦 <strong>Bündelungs-Tipp:</strong> Mit Werkhalle-Preisen Mülheim + Köln-Rodenkirchen zu einer konsolidierten David-Anfrage bündeln</li>
+        </ul>
+      </div>
+      <div class="source-list">
+        <h4>✅ Alle Preise/Specs ✅ CLIENT</h4>
+        <ul>
+          <li>Garage <strong>ab 200 €</strong> · MEGA 8 Privat netto ✅ Angebotsflyer Wuppertal</li>
+          <li>Garage <strong>6 Typen</strong> · MEGA 7,5/8/8-H/8-Iso/9-HB/Doppel ✅ Angebotsflyer</li>
+          <li>Lagerraum <strong>4–22 m²</strong> ✅ CLIENT (Standorte-Tabelle Wuppertal)</li>
+          <li>Büro &amp; Werkhalle <strong>1.360 € + 100 € NK</strong> ✅ Angebotsflyer Wuppertal</li>
+          <li>Strom-Gebühr <strong>80 € einmalig</strong> ✅ Angebotsflyer</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- BLOCK 5 — GALERIE / 3D-TOUR                                  -->
+<!-- ============================================================ -->
+<div class="content-section">
+
+  <div class="content-block">
+    <div class="block-anchor">
+      <span class="block-num">B5</span>
+      <h2 class="block-title">Galerie · 1 Hero + 4 Tiles · 3D-Tour Phase 2</h2>
+      <span class="block-tag">Erlebnis · Lightbox-Modal</span>
+    </div>
+
+    <div class="block-mock">
+      <div class="galerie-section">
+        <h2 style="font-family:'Roboto Condensed',sans-serif; font-size:32px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; text-align:center; margin:0 0 8px;">SO SIEHT ES BEI UNS AUS</h2>
+        <p style="text-align:center; font-size:15px; color:var(--gray-text); margin:0;">6–12 Wuppertal-Standortfotos · NordSpace-Stil · helle Lichtsituation.</p>
+
+        <div class="galerie-layout">
+          <div class="placeholder-photo galerie-hero">
+            <span class="ph-icon">📷</span>
+            <span>HERO-FOTO · Außenansicht Tor-Front</span>
+            <span style="font-size:10px; opacity:0.6;">⚠ PLACEHOLDER · David</span>
+          </div>
+          <div class="galerie-tiles">
+            <div class="placeholder-photo galerie-tile">
+              <span class="ph-icon">🚛</span>
+              <span style="font-size:10px;">Garage-Innenraum</span>
+            </div>
+            <div class="placeholder-photo galerie-tile">
+              <span class="ph-icon">🏗</span>
+              <span style="font-size:10px;">Werkhalle 95 m²</span>
+            </div>
+            <div class="placeholder-photo galerie-tile">
+              <span class="ph-icon">🖥️</span>
+              <span style="font-size:10px;">Büro OG</span>
+            </div>
+            <div class="placeholder-photo galerie-tile">
+              <span class="ph-icon">📦</span>
+              <span style="font-size:10px;">Lagerraum</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tour-disabled-row">
+          <span class="phase-tag">Phase 2</span>
+          <button class="btn-disabled">🔄 3D-Tour starten · Demnächst verfügbar</button>
+          <p style="margin:14px 0 0; font-size:12px; color:var(--gray);">Tool-Wahl (Matterport / Kuula / 3DVista) noch offen — konsistent mit Startseite-B4.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="block-annotations">
+      <details>
+        <summary>📋 Foto-Briefing · 6–12 Wuppertal-Standortfotos</summary>
+        <ul>
+          <li>1. Außenansicht Tor-Front (Hero-Foto)</li>
+          <li>2. Garage-Innenraum (Mensch beim Einfahren)</li>
+          <li>3. Werkhalle 95 m² (Sprinter sichtbar, 6m-Höhe)</li>
+          <li>4. Büro OG (Arbeitsplatz · WC · Teeküche)</li>
+          <li>5. Lagerraum (helle Beleuchtung)</li>
+          <li>6. Außengelände bei Tag (Zugangskontrolle / Tor)</li>
+          <li>7. Außengelände abends (Beleuchtung als Sicherheits-Signal)</li>
+          <li>8–12. Detail-Aufnahmen (Sektionaltor · Stromanschluss · Boden · Höhe)</li>
+        </ul>
+      </details>
+      <div class="placeholder-list">
+        <h4>⚠️ B5 · KOMPLETT PLACEHOLDER (1 Set)</h4>
+        <ul>
+          <li><strong>6–12 Wuppertal-Fotos</strong> — David David-Liefer-Set (Bildwelt: NordSpace-Stil · möglichst Mensch im Bild · helle Lichtsituation)</li>
+          <li>KEIN dunkler industrieller Look</li>
+          <li><strong>3D-Tour:</strong> Phase 2 · Button disabled · Tool offen</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- BLOCK 6 — STANDORT-USPs                                      -->
+<!-- ============================================================ -->
+<div class="content-section alt">
+
+  <div class="content-block">
+    <div class="block-anchor">
+      <span class="block-num">B6</span>
+      <h2 class="block-title">Standort-USPs · 6 Kacheln · Was Wuppertal besonders macht</h2>
+      <span class="block-tag">Tech-Specs · alle ✅ CLIENT</span>
+    </div>
+
+    <div class="block-mock">
+      <div class="usp-section">
+        <h2 style="font-family:'Roboto Condensed',sans-serif; font-size:32px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; text-align:center; margin:0 0 8px;">WAS WUPPERTAL BESONDERS MACHT</h2>
+        <p style="text-align:center; font-size:15px; color:var(--gray-text); margin:0;">Alle Daten direkt aus dem Angebotsflyer Wuppertal — keine Schätzungen.</p>
+
+        <div class="usp-grid">
+          <div class="usp-tile">
+            <div class="usp-tile-icon">🏗</div>
+            <div class="usp-tile-h">2 Ebenen</div>
+            <div class="usp-tile-sub">Werk unten · Büro oben</div>
+          </div>
+          <div class="usp-tile">
+            <div class="usp-tile-icon">📐</div>
+            <div class="usp-tile-h">6 m Höhe</div>
+            <div class="usp-tile-sub">Werkhalle</div>
+          </div>
+          <div class="usp-tile">
+            <div class="usp-tile-icon">🚪</div>
+            <div class="usp-tile-h">2,90 × 3,30 m</div>
+            <div class="usp-tile-sub">Sektionaltor Standard</div>
+          </div>
+          <div class="usp-tile">
+            <div class="usp-tile-icon">🔌</div>
+            <div class="usp-tile-h">230 V / 400 V</div>
+            <div class="usp-tile-sub">Starkstrom auf Anfrage</div>
+          </div>
+          <div class="usp-tile">
+            <div class="usp-tile-icon">📹</div>
+            <div class="usp-tile-h">24/7 Video</div>
+            <div class="usp-tile-sub">Videoüberwachte Anlage</div>
+          </div>
+          <div class="usp-tile">
+            <div class="usp-tile-icon">🔐</div>
+            <div class="usp-tile-h">06–22 Uhr</div>
+            <div class="usp-tile-sub">Zugang täglich · Zugangskontrolle</div>
+          </div>
+        </div>
+
+        <div class="usp-disclaimer">
+          <strong>Wichtig:</strong> 24/7 Videoüberwachung · Zugang zur Anlage täglich 06:00–22:00 Uhr mit Zugangskontrolle. Wuppertal hat <strong>NICHT</strong> 24/7-Zugang — explizit ehrlich kommuniziert (unterscheidet sich von einigen anderen Standorten).
+        </div>
+      </div>
+    </div>
+
+    <div class="block-annotations">
+      <details>
+        <summary>📝 Headline-Decision + Mobile-Layout</summary>
+        <ul>
+          <li><span class="alt-tag">A ✓</span> "WAS WUPPERTAL BESONDERS MACHT" — geo-spezifisch, USP-fokussiert (✓ EMPFOHLEN)</li>
+          <li><span class="alt-tag">B</span> "TECHNISCHE DATEN AUF EINEN BLICK" — funktional</li>
+          <li><strong>Layout:</strong> 3×2 Desktop · 2×3 Tablet/Mobile · Hover: leichte Helligkeit</li>
+          <li><strong>Wichtige Decision:</strong> ehrlich „06–22 Uhr" kommunizieren statt „24/7 Zugang" euphemisieren · konsistent zu FAQ-4</li>
+        </ul>
+      </details>
+      <div class="source-list">
+        <h4>✅ ALLE 6 Kacheln ✅ CLIENT-bestätigt (Angebotsflyer Wuppertal)</h4>
+        <ul>
+          <li>2 Ebenen Werkhalle+Büro · 6 m Werkhalle-Höhe · Tor 2,90×3,30 m</li>
+          <li>230 V Standard, 400 V auf Anfrage · 24h Video</li>
+          <li>06:00–22:00 + Zugangskontrolle (Standort-spezifisch · Wuppertal-Sonderregel)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- BLOCK 7 — ANFAHRT & LAGE                                     -->
+<!-- ============================================================ -->
+<div class="content-section">
+
+  <div class="content-block">
+    <div class="block-anchor">
+      <span class="block-num">B7</span>
+      <h2 class="block-title">Anfahrt &amp; Lage · A46 + A1 + ÖPNV</h2>
+      <span class="block-tag">Local SEO · 3 Detaildaten PLACEHOLDER</span>
+    </div>
+
+    <div class="block-mock">
+      <div class="anfahrt-section">
+        <h2 style="font-family:'Roboto Condensed',sans-serif; font-size:32px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; text-align:center; margin:0 0 32px;">DIREKT ERREICHBAR</h2>
+        <div class="anfahrt-grid">
+          <div>
+            <p class="anfahrt-text">
+              Du findest uns in <strong>Wuppertal-Vohwinkel</strong> an der <strong>Vohwinkeler Straße 148</strong>. Mit dem Auto bist du über die <strong>A46</strong> in wenigen Minuten da, die <strong>A1</strong> ist ebenfalls in der Nähe. Wer mit dem ÖPNV kommt, erreicht uns über die nächstgelegene Buslinie.
+            </p>
+            <table class="anfahrt-table">
+              <thead>
+                <tr><th>Verkehrsmittel</th><th>Zugang</th><th>Distanz</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>🛣 Auto · A46</td>
+                  <td><span class="placeholder-text">Auffahrt {?}</span></td>
+                  <td><span class="placeholder-text">⚠ ca. ? Min</span></td>
+                </tr>
+                <tr>
+                  <td>🛣 Auto · A1</td>
+                  <td><span class="placeholder-text">Auffahrt {?}</span></td>
+                  <td><span class="placeholder-text">⚠ ca. ? Min</span></td>
+                </tr>
+                <tr>
+                  <td>🚌 ÖPNV</td>
+                  <td><span class="placeholder-text">Buslinie {?}</span></td>
+                  <td><span class="placeholder-text">⚠ ca. ? m</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="anfahrt-mini-map">
+            <div class="map-pin"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="block-annotations">
+      <details>
+        <summary>📝 ALT-Variante (sobald Daten kommen)</summary>
+        <ul>
+          <li>"Mit dem Auto bist du über die A46 in ca. {X} Minuten da, die A1 erreichst du in {Y} Minuten. ÖPNV: Buslinie {Linie} hält {Z} m vom Standort."</li>
+          <li><strong>ACF-Felder:</strong> <code>standort_anfahrt_auto</code> · <code>standort_anfahrt_oepnv</code> · <code>standort_anfahrt_distanz_min</code></li>
+        </ul>
+      </details>
+      <div class="placeholder-list">
+        <h4>⚠️ B7 · 3 PLACEHOLDER (1 David-Anfrage)</h4>
+        <ul>
+          <li><strong>Min-Distanz A46</strong> + Auffahrt-Name</li>
+          <li><strong>Min-Distanz A1</strong> + Auffahrt-Name</li>
+          <li><strong>ÖPNV-Linien-Nummer</strong> + Bushaltestellen-Distanz in m</li>
+          <li>Same source als B9 FAQ-6 — bei David-Antwort beide gleichzeitig befüllen</li>
+        </ul>
+      </div>
+      <div class="source-list">
+        <h4>✅ Backbone ✅ CLIENT</h4>
+        <ul>
+          <li>Stadtteil <strong>Wuppertal-Vohwinkel</strong> + Adresse <strong>Vohwinkeler Straße 148</strong></li>
+          <li>Autobahnen <strong>A46 + A1</strong> in der Nähe (region geo-bestätigt)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- BLOCK 8 — GOOGLE-BEWERTUNGEN                                 -->
+<!-- ============================================================ -->
+<div class="content-section alt">
+
+  <div class="content-block">
+    <div class="block-anchor">
+      <span class="block-num">B8</span>
+      <h2 class="block-title">Google-Bewertungen · 3 Quotes · Social Proof</h2>
+      <span class="block-tag">V1.0.1 · Stock-Reviews entfernt · klare PLACEHOLDER</span>
+    </div>
+
+    <div class="block-mock">
+      <div class="reviews-section">
+        <h2 style="font-family:'Roboto Condensed',sans-serif; font-size:32px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; text-align:center; margin:0 0 8px;">WAS UNSERE MIETER SAGEN</h2>
+        <p style="text-align:center; font-size:15px; color:var(--gray-text); margin:0 0 8px;">Echte Stimmen von Mietern in Wuppertal-Vohwinkel.</p>
+
+        <div class="reviews-rating-line">
+          <div class="reviews-rating-stars">⭐⭐⭐⭐⭐</div>
+          <div class="reviews-rating-num"><span class="placeholder-text">[?]</span>/5</div>
+          <div class="reviews-rating-label">Aus <span class="placeholder-text">[?]</span> Bewertungen</div>
+          <span class="v12-badge-red">PLACEHOLDER</span>
+        </div>
+
+        <div class="reviews-grid">
+          <div class="review-card">
+            <div class="review-card-stars">⭐⭐⭐⭐⭐</div>
+            <p class="review-card-quote">„<span class="placeholder-text">[ECHTE-QUOTE — wartet auf David-Lieferung]</span>"</p>
+            <div class="review-card-author">— <span class="placeholder-text">[KUNDE-NAME]</span></div>
+            <div class="v12-placeholder-box">KEIN Stock-Inhalt · David</div>
+          </div>
+          <div class="review-card">
+            <div class="review-card-stars">⭐⭐⭐⭐⭐</div>
+            <p class="review-card-quote">„<span class="placeholder-text">[ECHTE-QUOTE — wartet auf David-Lieferung]</span>"</p>
+            <div class="review-card-author">— <span class="placeholder-text">[KUNDE-NAME]</span></div>
+            <div class="v12-placeholder-box">KEIN Stock-Inhalt · David</div>
+          </div>
+          <div class="review-card">
+            <div class="review-card-stars">⭐⭐⭐⭐⭐</div>
+            <p class="review-card-quote">„<span class="placeholder-text">[ECHTE-QUOTE — wartet auf David-Lieferung]</span>"</p>
+            <div class="review-card-author">— <span class="placeholder-text">[KUNDE-NAME]</span></div>
+            <div class="v12-placeholder-box">KEIN Stock-Inhalt · David</div>
+          </div>
+        </div>
+
+        <div class="reviews-cta-row">
+          <button class="btn-secondary-light">Alle Bewertungen auf Google ansehen → <span class="placeholder-text">[URL · David]</span></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="block-annotations">
+      <details>
+        <summary>📝 V1.0.1 · Stock-Reviews entfernt · AW-Empfehlung Live-API</summary>
+        <ul>
+          <li><strong>V1.0.1 Fix:</strong> Stefan W./Petra K./Markus T. Stock-Quotes entfernt → klare Placeholders. Verhindert dass cliché Stock-Inhalte aus Versehen Live gehen</li>
+          <li><strong>AW-Empfehlung:</strong> Live-API-Embed via Google Places API · kein manuelles Pflegen · immer aktuell</li>
+          <li><strong>Alternative:</strong> manuelle 3 Reviews aus echten David-Daten — periodisch updaten</li>
+          <li><strong>David-Frage:</strong> Manuell pflegen ODER Live-API-Embed?</li>
+        </ul>
+      </details>
+      <div class="placeholder-list">
+        <h4>⚠️ B8 · KOMPLETT PLACEHOLDER (5 Items)</h4>
+        <ul>
+          <li><strong>Rating-Wert</strong> aus Google My Business Wuppertal-Profil</li>
+          <li><strong>Anzahl Bewertungen</strong></li>
+          <li><strong>3 echte Quotes</strong> mit Kundennamen (oder anonym)</li>
+          <li><strong>Google-Profile-URL</strong> (Direktlink zum Wuppertal-GMB-Profil)</li>
+          <li><strong>Sourcing-Decision</strong> (manuell vs. Live-API)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- BLOCK 9 — LOKALE FAQ                                         -->
+<!-- ============================================================ -->
+<div class="content-section">
+
+  <div class="content-block">
+    <div class="block-anchor">
+      <span class="block-num">B9</span>
+      <h2 class="block-title">Lokale FAQ · 6 Antworten + Inline-CTA</h2>
+      <span class="block-tag">Education · 5 ✅ + 1 PLACEHOLDER</span>
+    </div>
+
+    <div class="block-mock">
+      <div class="faq-section">
+        <h2 style="font-family:'Roboto Condensed',sans-serif; font-size:32px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; text-align:center; margin:0 0 8px;">HÄUFIGE FRAGEN ZU WUPPERTAL</h2>
+        <p style="text-align:center; font-size:15px; color:var(--gray-text); margin:0;">Was du über unseren Standort wissen solltest — kompakt erklärt.</p>
+
+        <div class="faq-list">
+          <div class="faq-item open">
+            <div class="faq-q"><span>1. Wie groß ist die Werkhalle in Wuppertal?</span><span class="faq-q-icon">+</span></div>
+            <div class="faq-a">Unsere Werkhalle hat <strong>95 m²</strong> auf zwei Ebenen — unten Lager- bzw. Werkbereich (5,90 × 16 m), oben ein eingebautes Büro mit WC und Teeküchenvorbereitung. Die Deckenhöhe liegt bei <strong>6 Metern</strong>, das macht sie LKW-befahrbar.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q"><span>2. Welche Tor-Maße habt ihr in Wuppertal?</span><span class="faq-q-icon">+</span></div>
+            <div class="faq-a">Standard-Sektionaltor in Wuppertal: <strong>2,90 m breit × 3,30 m hoch</strong>. Für höhere Fahrzeuge gibt es die MEGA-H-Variante mit <strong>3,30 × 5,70 m Deckenhöhe</strong> und das Werkhallentor mit <strong>6 m Deckenhöhe</strong> für LKW-Zufahrt.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q"><span>3. Gibt es Stromanschluss 400 V (Starkstrom)?</span><span class="faq-q-icon">+</span></div>
+            <div class="faq-a">Standard ist <strong>230 V</strong> mit eigenem Unterzähler. <strong>400 V Starkstrom</strong> stellen wir auf Anfrage zur Verfügung — die einmalige Anschlussgebühr beträgt <strong>80 € netto</strong>, die Verbrauchskosten werden monatlich abgerechnet.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q"><span>4. Kann ich auch nachts auf den Standort?</span><span class="faq-q-icon">+</span></div>
+            <div class="faq-a">Der Zugang zur Anlage in Wuppertal ist <strong>täglich von 06:00 bis 22:00 Uhr</strong> möglich — über das Einfahrtstor mit individueller Zugangskontrolle. <strong>Die Videoüberwachung läuft rund um die Uhr.</strong> An anderen Mega-Standorten gibt es teils 24/7-Zugang — frag uns am besten direkt für deinen Wunsch-Standort.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q"><span>5. Wie lange muss ich mindestens mieten?</span><span class="faq-q-icon">+</span></div>
+            <div class="faq-a">Je nach Lösung verschieden: <strong>Lagerraum</strong> — monatlich kündbar · <strong>Garage</strong> — 6 Monate Mindestmietdauer (3 Monate Kündigungsfrist) · <strong>Büro &amp; Werkhalle</strong> — 2 Jahre Mindestlaufzeit (6 Monate Kündigungsfrist).</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q"><span>6. Wie kommt ihr nach Wuppertal-Vohwinkel? <span class="v12-badge-red">PLACEHOLDER</span></span><span class="faq-q-icon">+</span></div>
+            <div class="faq-a">Mit dem Auto erreichst du uns über die <strong>A46</strong> sowie die <strong>A1</strong> in wenigen Minuten. ÖPNV-Anschluss: Buslinie <span class="placeholder-text">{Linie}</span> hält in der Nähe der Vohwinkeler Straße. Detaillierte Anfahrt findest du im Anfahrt-Block weiter oben.</div>
+          </div>
+        </div>
+
+        <div class="faq-inline-cta">
+          <p class="faq-inline-cta-vorzeile">Noch Fragen offen?</p>
+          <button class="btn-primary">Jetzt anfragen</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="block-annotations">
+      <details>
+        <summary>📝 V1.0 Decision · Inline-CTA aus Startseite V1.3 übernommen</summary>
+        <ul>
+          <li><strong>Inline-CTA:</strong> visitor nach 6 FAQ-Antworten = max. Bereitschaft → direkter Conversion-Button</li>
+          <li><strong>FAQ-4:</strong> ehrlich kommunizieren — Wuppertal ≠ 24/7. Konsistent mit Startseite B11 FAQ-5</li>
+          <li><strong>FAQ-5 Mindestlaufzeiten:</strong> konsistent mit Startseite B11 FAQ-3</li>
+        </ul>
+      </details>
+      <div class="placeholder-list">
+        <h4>⚠️ B9 · 1 PLACEHOLDER (FAQ-6)</h4>
+        <ul>
+          <li><strong>FAQ-6 Anfahrt-Buslinien-Nummer</strong> — same source als B7 (David-Antwort beide gleichzeitig befüllen)</li>
+        </ul>
+      </div>
+      <div class="source-list">
+        <h4>✅ 5 von 6 FAQ ✅ CLIENT-vollständig</h4>
+        <ul>
+          <li>FAQ-1 Werkhalle 95 m²/2 Ebenen ✅ Angebotsflyer</li>
+          <li>FAQ-2 Tor-Maße ✅ Angebotsflyer</li>
+          <li>FAQ-3 230V/400V/80 € ✅ Angebotsflyer</li>
+          <li>FAQ-4 06:00–22:00 + Zugangskontrolle ✅ Angebotsflyer</li>
+          <li>FAQ-5 Mindestlaufzeiten ✅ Standorte-Tabelle</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- BLOCK 10 — ANFRAGE-FORMULAR                                  -->
+<!-- ============================================================ -->
+<div class="content-section alt">
+
+  <div class="content-block">
+    <div class="block-anchor">
+      <span class="block-num">B10</span>
+      <h2 class="block-title">Anfrage-Formular · 5 Felder + Datenschutz · Bitrix24-Backend</h2>
+      <span class="block-tag">Conversion · 24h-SLA werktags</span>
+    </div>
+
+    <div class="block-mock">
+      <div class="form-section">
+        <h2 style="font-family:'Roboto Condensed',sans-serif; font-size:32px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; text-align:center; margin:0 0 8px;">DIREKT IN WUPPERTAL ANFRAGEN</h2>
+        <p style="text-align:center; font-size:15px; color:var(--gray-text); margin:0;">Kurzes Formular — wir melden uns werktags innerhalb von 24 Stunden.</p>
+
+        <div class="form-mock">
+          <div class="form-row">
+            <div class="form-field">
+              <label>Name <span class="req">*</span></label>
+              <input type="text" placeholder="Vor- und Nachname">
+            </div>
+            <div class="form-field">
+              <label>Telefon <span class="req">*</span></label>
+              <input type="tel" placeholder="+49 ...">
+            </div>
+          </div>
+          <div class="form-row single">
+            <div class="form-field">
+              <label>E-Mail <span class="req">*</span></label>
+              <input type="email" placeholder="dein@email.de">
+            </div>
+          </div>
+          <div class="form-row single">
+            <div class="form-field">
+              <label>Lösung wählen</label>
+              <select>
+                <option>Garage</option>
+                <option>Lagerraum</option>
+                <option>Büro</option>
+                <option>Werkhalle</option>
+                <option>Noch unsicher</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row single">
+            <div class="form-field">
+              <label>Nachricht (optional)</label>
+              <textarea placeholder="Was suchst du? Größe, Zeitpunkt, Besonderheiten ..."></textarea>
+            </div>
+          </div>
+
+          <div class="form-checkbox-row">
+            <input type="checkbox">
+            <span>Ich akzeptiere die <a href="#" style="color:var(--red);">Datenschutzerklärung</a>. <span class="req">*</span></span>
+          </div>
+
+          <div class="form-hidden-notice">
+            🔒 Hidden-Fields (Bitrix24-Tracking): <code>standort_id=wuppertal · source_page=/standort/wuppertal/ · utm_source · utm_medium · utm_campaign</code>
+          </div>
+
+          <div class="form-cta-row">
+            <button class="btn-primary">Anfrage senden →</button>
+            <span class="form-cta-sub">Antwort werktags innerhalb von 24 Stunden.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="block-annotations">
+      <details>
+        <summary>📝 Tech-Spec · Bitrix24-Webhook + GA4-Event</summary>
+        <ul>
+          <li><strong>Backend:</strong> Bitrix24-Webhook ✅ entschieden 20.03.2026</li>
+          <li><strong>Stack:</strong> WordPress + Bricks + Bitrix24-Webhook</li>
+          <li><strong>Success-Message:</strong> „Danke! Wir melden uns werktags innerhalb von 24 Stunden bei dir in Wuppertal."</li>
+          <li><strong>GA4-Event:</strong> <code>form_standort_submit</code> mit Parameter <code>standort_id=wuppertal</code></li>
+          <li><strong>Validation:</strong> Email format-check · Tel min. 6 Ziffern · Pflichtfelder vor Submit blockieren</li>
+        </ul>
+      </details>
+      <div class="source-list">
+        <h4>✅ Vollständig (kein PLACEHOLDER)</h4>
+        <ul>
+          <li>5 Form-Felder + Datenschutz-Checkbox · 3 Pflicht (Name/Tel/E-Mail/Datenschutz), 2 optional (Lösung/Nachricht)</li>
+          <li>Hidden-Fields fest konfiguriert für Source-Tracking</li>
+          <li>Inline-Validation realtime</li>
+          <li>SLA „24h werktags" konsistent zu Startseite B9-Step-2</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- BLOCK 11 — ANDERE STANDORTE (CROSS-LINK)                     -->
+<!-- ============================================================ -->
+<div class="content-section">
+
+  <div class="content-block">
+    <div class="block-anchor">
+      <span class="block-num">B11</span>
+      <h2 class="block-title">Andere Standorte in der Nähe · Cross-Link · 3 Cards</h2>
+      <span class="block-tag">Internal SEO · Standort-Cluster-Linking</span>
+    </div>
+
+    <div class="block-mock">
+      <div class="cross-section">
+        <h2 style="font-family:'Roboto Condensed',sans-serif; font-size:32px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; text-align:center; margin:0 0 8px;">WEITERE STANDORTE IN DEINER NÄHE</h2>
+        <p style="text-align:center; font-size:15px; color:var(--gray-text); margin:0;">Wenn Wuppertal nicht passt — vielleicht ist einer dieser drei Standorte näher dran.</p>
+
+        <div class="cross-grid">
+          <div class="cross-card">
+            <h4 class="cross-card-h">Remscheid</h4>
+            <div class="cross-card-distance">~12 km <span class="placeholder-text">⚠ verifizieren</span></div>
+            <div class="cross-card-addr">Am Bruch 25<br>42857 Remscheid</div>
+            <div class="cross-card-prods">Garagen &amp; Lagerräume · spezielle isolierte 8/10/12er</div>
+            <span class="cross-card-cta">→ Standort öffnen</span>
+          </div>
+          <div class="cross-card">
+            <h4 class="cross-card-h">Mülheim a.d.R.</h4>
+            <div class="cross-card-distance">~18 km <span class="placeholder-text">⚠ verifizieren</span></div>
+            <div class="cross-card-addr">Aktienstr. 17<br>45468 Mülheim an der Ruhr</div>
+            <div class="cross-card-prods">Garagen, Lagerräume &amp; Werkhallen</div>
+            <span class="cross-card-cta">→ Standort öffnen</span>
+          </div>
+          <div class="cross-card">
+            <h4 class="cross-card-h">Köln</h4>
+            <div class="cross-card-distance">~35 km <span class="placeholder-text">⚠ verifizieren</span></div>
+            <div class="cross-card-addr">Pauline-Christmann-Str. 25<br>51107 Köln</div>
+            <div class="cross-card-prods">Garagen &amp; Lagerräume · Sondereinheiten bis 80 m²</div>
+            <span class="cross-card-cta">→ Standort öffnen</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="block-annotations">
+      <details>
+        <summary>📝 Algorithmus-Logik · ACF Phase 2</summary>
+        <ul>
+          <li><strong>Algorithmus:</strong> 3 nächste Standorte (Luftlinie) mit überlappenden Produktangeboten</li>
+          <li><strong>Wuppertal-Cluster:</strong> Remscheid (Garage+Lager) · Mülheim (Garage+Lager+Werkhalle) · Köln (Garage+Lager)</li>
+          <li><strong>Pro Standort werden 3 nächste Cluster-Geschwister angezeigt</strong> (ACF-Repeater)</li>
+          <li><strong>David-Frage:</strong> Distanzen via Maps-Calculator dynamisch oder statische Werte pflegen?</li>
+        </ul>
+      </details>
+      <div class="placeholder-list">
+        <h4>⚠️ B11 · 3 PLACEHOLDER (Distanzen verifizieren)</h4>
+        <ul>
+          <li><strong>Remscheid 12 km</strong> · grobe Schätzung nach PLZ-Region</li>
+          <li><strong>Mülheim 18 km</strong> · grobe Schätzung</li>
+          <li><strong>Köln 35 km</strong> · grobe Schätzung</li>
+          <li>Maps-Verifikation empfohlen</li>
+        </ul>
+      </div>
+      <div class="source-list">
+        <h4>✅ Adressen + Produkte ✅ CLIENT</h4>
+        <ul>
+          <li>Remscheid · Am Bruch 25, 42857 ✅ Standorte-Tabelle</li>
+          <li>Mülheim · Aktienstr. 17, 45468 ✅ + Werkhallen ✅</li>
+          <li>Köln · Pauline-Christmann-Str. 25, 51107 ✅ + Sondereinheiten 80 m² ✅</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- BLOCK 12 — CTA-FOOTER (Re-Use Startseite V1.3)               -->
+<!-- ============================================================ -->
+<div class="content-section alt">
+
+  <div class="content-block">
+    <div class="block-anchor">
+      <span class="block-num">B12</span>
+      <h2 class="block-title">CTA-Footer · 1:1 Re-Use Startseite V1.3</h2>
+      <span class="block-tag">V1.0.1 · synced mit Startseite V1.3</span>
+    </div>
+
+    <div class="block-mock">
+      <div class="outro-section">
+        <div class="outro-claim-tag">Mega-Mietpark</div>
+        <h2 class="outro-claim">DEIN RAUM · DEIN STANDORT ·<br>JETZT VERFÜGBAR</h2>
+        <p class="outro-sub">Finde deine Einheit — in wenigen Sekunden.</p>
+        <div style="text-align:center; margin-top:24px; position:relative; z-index:2;">
+          <button class="btn-primary">Standort finden</button>
+        </div>
+      </div>
+
+      <div class="real-footer">
+        <div class="footer-2col">
+          <div>
+            <h5>Mietpark · Quick-Links</h5>
+            <ul>
+              <li><a href="#">Garage</a></li>
+              <li><a href="#">Lagerraum</a></li>
+              <li><a href="#">Büro</a></li>
+              <li><a href="#">Werkhalle</a></li>
+            </ul>
+          </div>
+          <div>
+            <h5>Navigation</h5>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Standorte</a></li>
+              <li><a href="#">Anfrage</a></li>
+              <li><a href="#">Kontakt</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-trust">
+          <div>
+            📞 <strong>+49 2309 5439995</strong> · 📧 <strong>anfrage@mega-mietpark.de</strong> · 📍 <span class="placeholder-text">[Hauptanschrift Mega-Mietpark — David-pending]</span>
+          </div>
+          <div>
+            Mega-Mietpark — Ein Unternehmen der Laer Gruppe.<br>
+            Gebaut von Formica · ArcelorMittal · Hörmann.
+          </div>
+        </div>
+
+        <div style="margin-top:14px; padding-top:14px; border-top:1px solid rgba(255,255,255,0.08); font-size:11px; color:rgba(255,255,255,0.4); display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+          <span>Impressum · Datenschutz · AGB</span>
+          <span>© 2026 MEGA-Mietpark</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="block-annotations">
+      <details>
+        <summary>📝 V1.0.1 · Komplett-Sync mit Startseite V1.3</summary>
+        <ul>
+          <li><strong>V1.0.1 Fix:</strong> B12 Outro-H2 → "DEIN RAUM · DEIN STANDORT · JETZT VERFÜGBAR" (von "EINFACH EINFAHREN.")</li>
+          <li><strong>V1.0.1 Fix:</strong> Pre-Header "MEGA-MIETPARK" entfernt (in Startseite V1.3 Outro nicht vorhanden)</li>
+          <li><strong>V1.0.1 Fix:</strong> Footer von 4 Spalten → 2 Sektionen (Mietpark-Quick-Links + Navigation) · Lands-Liste (NRW etc.) entfernt</li>
+          <li><strong>Re-Use:</strong> 1:1 identisch zur Startseite Block 12 — KEINE Variante · spart Implementation, garantiert visuelle Konsistenz site-weit</li>
+          <li><strong>Update-Propagation:</strong> Bei Updates auf Startseite-B12 propagiert automatisch zu allen 16 Standort-Seiten</li>
+        </ul>
+      </details>
+      <div class="placeholder-list">
+        <h4>⚠️ Footer · 1 PLACEHOLDER (geerbt von Startseite B12)</h4>
+        <ul>
+          <li><strong>Hauptanschrift Mega-Mietpark</strong> — gleicher Pending-Punkt wie Startseite B12 (zentraler Firmensitz)</li>
+        </ul>
+      </div>
+      <div class="source-list">
+        <h4>✅ Kontakt 2 von 3 REAL</h4>
+        <ul>
+          <li>Telefon <strong>+49 2309 5439995</strong> ✅ CLIENT</li>
+          <li>E-Mail <strong>anfrage@mega-mietpark.de</strong> ✅ CLIENT</li>
+          <li>Trust-Footer „Laer Gruppe · Formica · ArcelorMittal · Hörmann"</li>
+          <li>Copyright "© 2026 MEGA-Mietpark"</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- OPEN ITEMS V1.0.1 SECTION                                    -->
+<!-- ============================================================ -->
+<section class="open-items-section">
+  <p class="section-label">Übersicht · Open Items V1.0.1</p>
+  <h2 style="font-family:'Roboto Condensed',sans-serif; font-size:28px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; margin:0 0 8px;">📋 Stand der Texte · V1.0.1 Refinement applied</h2>
+  <p style="font-size:14px; color:var(--gray-text); margin:0 0 12px;">12 Sektionen Block-by-Block visualisiert · 7 V1.0.1-Korrekturen sync mit Startseite V1.3 · Tonalität &amp; Konventionen 1:1 von Startseite vererbt.</p>
+
+  <div class="open-items-grid">
+
+    <div class="open-items-card">
+      <div class="open-items-card-head placeholder">
+        <span style="font-size:20px;">⚠</span>
+        <h3>11 PLACEHOLDER · für David</h3>
+      </div>
+      <div class="open-items-card-body">
+        <ol>
+          <li><strong>B1 Hero-Foto Wuppertal</strong> · NordSpace-Stil</li>
+          <li><strong>B1 Marken-Claim</strong> · "Einfach einfahren." vorläufig</li>
+          <li><strong>B2 Office-Öffnungszeiten</strong> · Mo–Fr Uhrzeit</li>
+          <li><strong>B2 WhatsApp-Nummer</strong> · gleich/separat?</li>
+          <li><strong>B3 Standortleiter</strong> · Foto + Name + ggf. Durchwahl</li>
+          <li><strong>B4 Lagerraum-Einstiegspreis</strong> · gleicher Punkt Startseite B8</li>
+          <li><strong>B5 Galerie</strong> · 6–12 Wuppertal-Fotos</li>
+          <li><strong>B7 Anfahrt-Detaildaten</strong> · A46/A1 + Buslinie</li>
+          <li><strong>B8 Google-Reviews</strong> · Rating + Anzahl + 3 Quotes</li>
+          <li><strong>B8 Google-Profile-URL</strong> · Direktlink GMB</li>
+          <li><strong>B11 Distanzen verifizieren</strong> · 12/18/35 km</li>
+        </ol>
+        <p style="margin:12px 0 0; padding:10px 12px; background:#FFF3E0; border-left:3px solid #E65100; border-radius:3px; font-size:12px; color:#1F1F1F;">
+          <strong>📦 Bündelungs-Tipp:</strong> Item 6 (Lagerraum-Preis Wuppertal) lässt sich mit Werkhalle-Preisen Mülheim + Köln-Rodenkirchen zu <strong>einer konsolidierten Preis-Anfrage</strong> an David bündeln. Eine Mail — alle 3 Lücken zu.
+        </p>
+      </div>
+    </div>
+
+    <div class="open-items-card">
+      <div class="open-items-card-head questions">
+        <span style="font-size:20px;">❓</span>
+        <h3>5 NEUE FRAGEN V1.0.1 · Wuppertal-spezifisch</h3>
+      </div>
+      <div class="open-items-card-body">
+        <ol>
+          <li><strong>WhatsApp-Routing:</strong> ist <code>+49 2309 5439995</code> auch WhatsApp-fähig oder separate Mobil-Nummer?</li>
+          <li><strong>Featured-Badge "Vor-Ort-Highlight" auf Werkhalle:</strong> Wuppertal-Werkhalle = einer von nur 3 Werkhallen-Standorten — ok als Standort-USP?</li>
+          <li><strong>Google-Reviews-Sourcing:</strong> manuell ODER Live-API-Embed via Google Places API? (AW-Empfehlung: Live-API)</li>
+          <li><strong>Office-Zeiten ≠ Anlagen-Zugang:</strong> Mo–Fr 9–17 (Office) vs. 06–22 täglich (Self-Service) — bestätigen?</li>
+          <li><strong>Cross-Link-Distanzen:</strong> Maps-Calculator dynamisch oder statisch pflegen?</li>
+        </ol>
+        <p style="margin:12px 0 0; font-size:11px; color:var(--gray); font-style:italic;">
+          Hauptliste der David-Anfragen liegt in <code>docs/david-anfrage-konsolidiert-2026-05-02.md</code>. Hier nur Wuppertal-spezifische Ergänzungen aus V1.0/V1.0.1-Erstellung.
+        </p>
+      </div>
+    </div>
+
+    <div class="open-items-card">
+      <div class="open-items-card-head andrey">
+        <span style="font-size:20px;">🎨</span>
+        <h3>7 ANDREY-AUFGABEN · Design-Korrekturen</h3>
+      </div>
+      <div class="open-items-card-body">
+        <ol>
+          <li><strong>B1:</strong> 2 CTAs in Hero · Pre-Header SEO 12-14 px UPPERCASE „GARAGE · LAGERRAUM · BÜRO · WERKHALLE MIETEN IN WUPPERTAL"</li>
+          <li><strong>B4:</strong> 4-Card-Grid (2×2 Mobile) · Featured-Badge "Vor-Ort-Highlight" auf Werkhalle</li>
+          <li><strong>B5:</strong> 1 Hero-Foto + 4 Tiles + disabled 3D-Tour-Button · Lightbox-Modal</li>
+          <li><strong>B6:</strong> 6 USP-Kacheln (3×2 Desktop · 2×3 Mobile) · klare Abgrenzung 24/7-Video vs. 06–22 Zugang</li>
+          <li><strong>B7:</strong> 2-Spalten Anfahrtstext + Mini-Karte · Mobile gestapelt</li>
+          <li><strong>B8:</strong> Rating-Block + 3 Review-Cards · Live-API-Vorbereitung</li>
+          <li><strong>B11:</strong> 3 Cross-Link-Cards · ACF-Repeater für 15 weitere Standorte</li>
+        </ol>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="scaling-banner">
+    <h4>🌍 Skalierungs-Hinweise auf 15 weitere Standorte</h4>
+    <p>Diese Datei ist <strong>Leitfall</strong>. Pro Standort variabel via ACF-Felder: H1 · NAP-Daten · Anfahrt · Cross-Link-Cluster · Galerie-Fotos · 4-Card-Grid (Anzahl Lösungen schwankt: Wuppertal=4, Bochum=2, Braunschweig=1) · USP-Kacheln (z.B. Bochum hat anderes Tor 3,30×3,50) · Mindestlaufzeiten gleich, aber Preise pro Standort.</p>
+    <p><strong>Sonderfall Braunschweig:</strong> Lagerraum-Karte komplett ausblenden · Wort „Lager" darf nirgendwo erscheinen (Subline, FAQ, Cross-Links).</p>
+    <p><strong>Sonderfall Köln:</strong> Gleiche Öffnungszeiten 06–22 wie Wuppertal (NICHT 24/7) · in FAQ-4 muss das gleichermaßen ehrlich kommuniziert werden.</p>
+  </div>
+
+  <div class="checkpoint-block">
+    <h4>📍 CHECKPOINT · Standort-Seite Wuppertal V1.0.1 · 2026-05-02</h4>
+    <p><strong>Готово:</strong> 12 Sektionen (B1–B12) · alle Daten aus TZ + Standorte-Tabelle + Angebotsflyer Wuppertal verifiziert · 11 PLACEHOLDER für David markiert · Tonalität &amp; Konventionen 1:1 von Startseite V1.3 geerbt.</p>
+    <p><strong>Файлы:</strong> <code>content/02_standort_wuppertal.md</code> (V1.0.1 · 797 lines)</p>
+    <p><strong>Следующий шаг:</strong> V1.0.1 → David senden für Review (gebündelt mit Startseite V1.3) · Andrey-Tasks an Bitrix24 #3839 erweitern.</p>
+    <p><strong>Контекст:</strong> mega_mietpark | phase2_standort | V1.0.1 LIVE on gh-pages</p>
+  </div>
+
+</section>
+
+<!-- ============================================================ -->
+<!-- AGENCY FOOTER                                                -->
+<!-- ============================================================ -->
+<footer>
+  <div>
+    <div class="footer-brand">W&amp;S <span>AGENCY</span></div>
+    <p style="margin-top:6px;">Content Preview · Standort Wuppertal · <strong style="color:var(--red);">V1.0.1 · DE + RU</strong></p>
+  </div>
+  <div style="text-align:right;">
+    <p>← Zurück zum <a href="index.html" style="color:var(--red);">TZ-Hub</a></p>
+    <p style="margin-top:4px;">Stand: 2026-05-02 [AW]</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var btn = document.getElementById('ruToggle');
+  var body = document.body;
+  var STORAGE_KEY = 'tz-v21-ru-visible';
+  var stored = null;
+  try { stored = localStorage.getItem(STORAGE_KEY); } catch (e) {}
+  if (stored === 'off') { body.classList.add('hide-ru'); btn.classList.add('off'); btn.textContent = 'DE only'; }
+  btn.addEventListener('click', function () {
+    body.classList.toggle('hide-ru');
+    var hidden = body.classList.contains('hide-ru');
+    btn.classList.toggle('off', hidden);
+    btn.textContent = hidden ? 'DE only' : 'DE + RU';
+    try { localStorage.setItem(STORAGE_KEY, hidden ? 'off' : 'on'); } catch (e) {}
+  });
+
+  // FAQ toggle
+  document.querySelectorAll('.faq-q').forEach(function(q) {
+    q.addEventListener('click', function() {
+      this.parentElement.classList.toggle('open');
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
