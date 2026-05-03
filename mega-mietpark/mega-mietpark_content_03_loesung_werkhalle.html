@@ -1,0 +1,1983 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lösung-Seite Werkhalle · Content V1.0.1 · Mega-Mietpark</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mega-mietpark_TZ_style.css?v=2">
+<style>
+  /* ============= Content-Preview-spezifisch (sync mit Wuppertal-Preview) ============= */
+  .preview-intro {
+    background: #FFF8E1; border-left: 4px solid #E65100;
+    padding: 14px 22px; margin: 24px 48px;
+    border-radius: 3px; font-size: 13px; color: #1F1F1F;
+  }
+  .preview-intro strong { color: #E65100; }
+
+  .content-section { padding: 36px 48px; }
+  .content-section.alt { background: var(--gray-light); }
+
+  .content-block {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 4px; margin-bottom: 24px;
+    overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  }
+  .block-anchor {
+    display: flex; align-items: center; gap: 14px;
+    padding: 14px 22px; background: var(--black);
+    color: white;
+  }
+  .block-num {
+    min-width: 38px; padding: 0 8px; height: 30px;
+    background: var(--red); border-radius: 3px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 13px; font-weight: 700; color: white;
+  }
+  .block-title {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 16px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.06em; color: white; margin: 0;
+  }
+  .block-tag {
+    margin-left: auto; font-size: 11px; letter-spacing: 0.08em;
+    text-transform: uppercase; color: rgba(255,255,255,0.7);
+  }
+
+  .block-mock { padding: 0; background: #FAFAFA; }
+  .block-annotations {
+    padding: 18px 22px; background: var(--white);
+    border-top: 1px solid var(--border);
+    display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
+  }
+  .block-annotations details {
+    background: var(--gray-light); padding: 10px 14px;
+    border-radius: 3px; font-size: 13px;
+  }
+  .block-annotations details summary {
+    cursor: pointer; font-weight: 600;
+    font-family: 'Roboto Condensed',sans-serif;
+    text-transform: uppercase; font-size: 12px;
+    letter-spacing: 0.06em;
+  }
+  .block-annotations details ul { list-style: none; padding: 8px 0 0; margin: 0; }
+  .block-annotations details li {
+    padding: 4px 0; font-size: 12px; color: var(--gray-text);
+    line-height: 1.5;
+  }
+  .block-annotations details li code {
+    background: rgba(198,40,40,0.08); color: var(--red);
+    padding: 1px 4px; border-radius: 2px; font-size: 11px;
+  }
+  .placeholder-list, .source-list {
+    background: #FFF3E0; border-left: 3px solid #E65100;
+    padding: 10px 14px; border-radius: 3px;
+    font-size: 12px; color: #1F1F1F;
+  }
+  .placeholder-list h4, .source-list h4 {
+    font-family: 'Roboto Condensed',sans-serif;
+    font-size: 11px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    margin: 0 0 6px; color: #E65100;
+  }
+  .placeholder-list ul, .source-list ul {
+    list-style: none; padding: 0; margin: 0;
+  }
+  .placeholder-list li, .source-list li {
+    padding: 3px 0; line-height: 1.5;
+  }
+  .source-list { background: #E8F5E9; border-left-color: #2E7D32; }
+  .source-list h4 { color: #2E7D32; }
+
+  .placeholder-tag {
+    background: #FFE082; color: #E65100;
+    padding: 2px 6px; border-radius: 2px;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+  .placeholder-text {
+    background: #FFF8E1; color: #E65100;
+    padding: 0 4px; border-radius: 2px;
+    font-style: italic;
+  }
+  .alt-tag {
+    display: inline-block; background: #1565C0; color: white;
+    padding: 2px 7px; border-radius: 2px; margin-right: 6px;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.06em;
+  }
+  .data-tag {
+    display: inline-block;
+    background: #2E7D32; color: white;
+    padding: 2px 7px; border-radius: 2px;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.06em;
+    margin-right: 6px;
+  }
+
+  /* ============= Light-clean Hero (NordSpace-inspired) ============= */
+  .light-hero {
+    position: relative;
+    background: linear-gradient(180deg, #FAFAFA 0%, #F0F0F0 100%);
+    color: var(--black); padding: 70px 60px 50px;
+    min-height: 460px;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border);
+  }
+  .light-hero::before {
+    content: '🏗'; position: absolute; top: 50%; right: 80px;
+    transform: translateY(-50%); font-size: 240px; opacity: 0.05;
+  }
+  .light-hero-nav {
+    position: absolute; top: 18px; right: 60px; left: 60px;
+    display: flex; align-items: center;
+    color: var(--gray);
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    padding-bottom: 14px; z-index: 2;
+  }
+  .light-hero-logo {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 18px; font-weight: 700; color: white;
+    letter-spacing: 0.1em;
+    background: var(--red); padding: 5px 12px; border-radius: 3px;
+  }
+  .light-hero-nav-links {
+    margin-left: auto; display: flex; gap: 22px;
+    font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--gray-text);
+  }
+
+  .breadcrumb {
+    position: relative; z-index: 2;
+    margin-top: 50px;
+    font-size: 12px; color: var(--gray);
+    letter-spacing: 0.04em;
+  }
+  .breadcrumb a, .breadcrumb span { color: var(--gray); text-decoration: none; }
+  .breadcrumb .crumb-active { color: var(--red); font-weight: 600; }
+
+  .light-hero-content {
+    position: relative; z-index: 2; max-width: 760px; margin-top: 12px;
+  }
+  .light-hero-preheader {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 13px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--red);
+    font-weight: 700; margin: 14px 0 12px;
+  }
+  .light-hero-h1 {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 52px; font-weight: 700; line-height: 1.05;
+    text-transform: uppercase; letter-spacing: 0.02em;
+    margin: 0 0 16px; color: var(--black);
+  }
+  .light-hero-h1 em {
+    color: var(--red); font-style: normal;
+  }
+  .light-hero-subline {
+    font-size: 17px; line-height: 1.5;
+    color: var(--gray-text); margin: 0 0 28px;
+    max-width: 640px;
+  }
+  .light-hero-subline .k2-mark {
+    background: rgba(198,40,40,0.10); color: var(--red);
+    padding: 1px 5px; border-radius: 2px; font-weight: 700;
+  }
+  .light-hero-cta-row {
+    display: flex; gap: 12px; flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--red); color: white; border: none;
+    padding: 13px 26px; border-radius: 3px;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 12px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; cursor: pointer;
+  }
+  .btn-secondary-light {
+    background: transparent; color: var(--black);
+    border: 2px solid var(--black); padding: 11px 24px;
+    border-radius: 3px;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 12px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; cursor: pointer;
+  }
+  .btn-disabled {
+    background: var(--gray-line); color: var(--gray);
+    border: none; padding: 13px 26px; border-radius: 3px;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 12px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; cursor: not-allowed;
+  }
+
+  .placeholder-zone {
+    background:
+      repeating-linear-gradient(45deg, #FFF8E1, #FFF8E1 14px, #FFE082 14px, #FFE082 28px);
+    border: 2px dashed #E65100;
+    border-radius: 4px;
+    padding: 40px 20px;
+    text-align: center;
+    color: #E65100; font-weight: 700;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 14px; letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .placeholder-zone.small {
+    padding: 20px 16px; font-size: 12px;
+  }
+
+  /* ============= Sticky Sub-Nav (B1.5) ============= */
+  .subnav-section { padding: 28px 60px; background: var(--white); border-bottom: 1px solid var(--border); }
+  .subnav-pills { display: flex; gap: 10px; flex-wrap: wrap; }
+  .subnav-pill {
+    padding: 10px 18px; border-radius: 999px;
+    border: 1px solid var(--border); background: var(--white);
+    font-family: 'Roboto Condensed',sans-serif;
+    font-size: 13px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.04em; color: var(--gray-text);
+    display: flex; flex-direction: column; align-items: center;
+    line-height: 1.2; min-width: 180px;
+  }
+  .subnav-pill .pill-sub {
+    font-size: 10px; font-weight: 400; letter-spacing: 0.06em;
+    color: var(--gray); text-transform: none; margin-top: 2px;
+  }
+  .subnav-pill.active {
+    background: var(--red); color: white; border-color: var(--red);
+  }
+  .subnav-pill.active .pill-sub { color: rgba(255,255,255,0.85); }
+
+  /* ============= Pain-Cards (B2) ============= */
+  .pain-section { padding: 60px; background: var(--gray-light); }
+  .pain-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 28px; }
+  .pain-card {
+    background: var(--white); border-radius: 4px;
+    padding: 22px 22px 24px; border-top: 3px solid var(--red);
+  }
+  .pain-icon { font-size: 36px; margin-bottom: 10px; }
+  .pain-h {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 16px; font-weight: 700; line-height: 1.3;
+    margin: 0 0 8px; color: var(--black);
+  }
+  .pain-detail { font-size: 13px; color: var(--gray-text); line-height: 1.5; }
+
+  /* ============= Ausstattungs-Tabelle (B3) ============= */
+  .feature-section { padding: 60px; background: var(--white); }
+  .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 28px; }
+  .feature-card {
+    background: var(--gray-light); border-radius: 4px;
+    padding: 24px 22px; position: relative;
+  }
+  .feature-card.highlight {
+    border: 2px solid var(--red); background: #FFF6F6;
+  }
+  .feature-card.highlight::before {
+    content: 'TOP-USP'; position: absolute; top: -10px; left: 14px;
+    background: var(--red); color: white; padding: 3px 10px; border-radius: 2px;
+    font-family: 'Roboto Condensed',sans-serif;
+    font-size: 9px; font-weight: 700; letter-spacing: 0.1em;
+  }
+  .feature-num {
+    font-family: 'Roboto Condensed',sans-serif;
+    font-size: 11px; font-weight: 700; color: var(--red);
+    letter-spacing: 0.1em; margin-bottom: 6px;
+  }
+  .feature-h {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 17px; font-weight: 700; line-height: 1.25;
+    margin: 0 0 10px; color: var(--black);
+  }
+  .feature-body { font-size: 13px; color: var(--gray-text); line-height: 1.55; }
+  .feature-disclaimer {
+    margin-top: 22px; padding: 12px 16px;
+    background: #FFF3E0; border-left: 3px solid #E65100;
+    font-size: 12px; color: #1F1F1F; border-radius: 3px;
+  }
+
+  /* ============= Standort-Karten (B4) ============= */
+  .standort-section { padding: 60px; background: var(--gray-light); }
+  .standort-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 28px; }
+  .standort-card {
+    background: var(--white); border-radius: 4px;
+    padding: 24px 24px 22px; position: relative;
+    border: 1px solid var(--border);
+    display: flex; flex-direction: column;
+  }
+  .standort-card.featured { border: 2px solid var(--red); }
+  .standort-card.featured::before {
+    content: 'VOLLSTÄNDIGE DATEN'; position: absolute; top: -10px; left: 14px;
+    background: var(--red); color: white; padding: 3px 10px; border-radius: 2px;
+    font-family: 'Roboto Condensed',sans-serif;
+    font-size: 9px; font-weight: 700; letter-spacing: 0.1em;
+  }
+  .standort-card.placeholder { background: #FFFAF0; border: 1px dashed #E65100; }
+  .standort-card.upcoming { border-color: #FFB300; }
+  .standort-card.upcoming::before {
+    content: 'NEUERÖFFNUNG 04/2026'; position: absolute; top: -10px; left: 14px;
+    background: #FFB300; color: #1F1F1F; padding: 3px 10px; border-radius: 2px;
+    font-family: 'Roboto Condensed',sans-serif;
+    font-size: 9px; font-weight: 700; letter-spacing: 0.1em;
+  }
+  .standort-card h3 {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 20px; font-weight: 700; text-transform: uppercase;
+    margin: 0 0 14px; letter-spacing: 0.04em; color: var(--black);
+  }
+  .standort-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .standort-table tr { border-bottom: 1px solid var(--border); }
+  .standort-table tr:last-child { border-bottom: none; }
+  .standort-table td { padding: 8px 0; vertical-align: top; }
+  .standort-table td.label {
+    font-family: 'Roboto Condensed',sans-serif;
+    font-weight: 700; color: var(--black);
+    text-transform: uppercase; letter-spacing: 0.04em;
+    font-size: 11px; width: 100px;
+  }
+  .standort-table td.value { color: var(--gray-text); line-height: 1.5; }
+  .standort-table td.value strong { color: var(--red); }
+  .standort-cta {
+    margin-top: 14px;
+    color: var(--red); font-weight: 700;
+    font-family: 'Roboto Condensed',sans-serif;
+    font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  .standort-disclaimer {
+    margin-top: 22px; padding: 12px 16px;
+    background: #FFF3E0; border-left: 3px solid #E65100;
+    font-size: 12px; color: #1F1F1F; border-radius: 3px;
+  }
+
+  /* ============= Story-Cards (B5) ============= */
+  .story-section { padding: 60px; background: var(--white); }
+  .story-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 28px; }
+  .story-card {
+    background: var(--gray-light); border-radius: 4px;
+    border: 2px solid #FFB300; position: relative;
+    padding: 32px 24px 24px;
+  }
+  .story-card .fiktiv-badge {
+    position: absolute; top: -12px; left: 16px;
+    background:
+      repeating-linear-gradient(45deg, #FFE082, #FFE082 8px, #FFB300 8px, #FFB300 16px);
+    color: #1F1F1F;
+    padding: 4px 12px; border-radius: 3px;
+    font-family: 'Roboto Condensed',sans-serif;
+    font-size: 10px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    border: 1px solid #E65100;
+  }
+  .story-card h3 {
+    font-family: 'Roboto Condensed',sans-serif;
+    font-size: 17px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.04em; margin: 0 0 14px; color: var(--black);
+  }
+  .story-block {
+    margin-bottom: 14px; font-size: 13px; line-height: 1.55;
+    color: var(--gray-text);
+  }
+  .story-block .label {
+    display: block; font-family: 'Roboto Condensed',sans-serif;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--red); margin-bottom: 4px;
+  }
+  .story-marker {
+    margin-top: 10px; padding-top: 10px;
+    border-top: 1px solid var(--border);
+    font-size: 11px; color: var(--gray);
+    font-style: italic;
+  }
+
+  /* ============= 4 Schritte (B6) ============= */
+  .steps-section { padding: 60px; background: var(--gray-light); }
+  .steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 28px; position: relative; }
+  .step-card {
+    background: var(--white); border-radius: 4px;
+    padding: 24px 22px; position: relative;
+  }
+  .step-num {
+    font-family: 'Roboto Condensed',sans-serif;
+    font-size: 36px; font-weight: 700; color: var(--red);
+    line-height: 1; margin-bottom: 8px;
+  }
+  .step-h {
+    font-family: 'Roboto Condensed',sans-serif;
+    font-size: 16px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.03em; margin: 0 0 8px;
+  }
+  .step-body { font-size: 13px; color: var(--gray-text); line-height: 1.55; }
+
+  /* ============= Standort-Cross (B7) ============= */
+  .cross-section { padding: 60px; background: var(--white); }
+  .cross-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 28px; }
+  .cross-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 4px; padding: 0 0 22px 0;
+    display: flex; flex-direction: column; overflow: hidden;
+  }
+  .cross-photo {
+    aspect-ratio: 16/9;
+    background: repeating-linear-gradient(45deg, #f5f5f5, #f5f5f5 12px, #e8e8e8 12px, #e8e8e8 24px);
+    display: flex; align-items: center; justify-content: center;
+    color: #888; font-family: 'Roboto Condensed',sans-serif;
+    font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase;
+    border-bottom: 1px dashed #bbb;
+  }
+  .cross-body { padding: 18px 22px 0; }
+  .cross-h {
+    font-family: 'Roboto Condensed',sans-serif;
+    font-size: 18px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.04em; margin: 0 0 8px;
+  }
+  .cross-meta { font-size: 13px; color: var(--gray-text); line-height: 1.55; margin-bottom: 14px; }
+  .cross-status {
+    display: inline-block;
+    font-family: 'Roboto Condensed',sans-serif;
+    font-size: 11px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    padding: 3px 8px; border-radius: 2px; margin-bottom: 10px;
+  }
+  .cross-status.green { background: #E8F5E9; color: #2E7D32; }
+  .cross-status.yellow { background: #FFF8E1; color: #E65100; }
+  .cross-cta {
+    margin: 0 22px; color: var(--red); font-weight: 700;
+    font-family: 'Roboto Condensed',sans-serif;
+    font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase;
+  }
+
+  /* ============= 3D-Tour (B8) ============= */
+  .tour-section { padding: 60px; background: var(--gray-light); text-align: center; }
+  .tour-mock {
+    max-width: 720px; margin: 28px auto 0;
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 4px; padding: 36px;
+  }
+  .phase-tag {
+    display: inline-block;
+    background: rgba(198,40,40,0.15); color: var(--red);
+    padding: 3px 10px; border-radius: 2px;
+    font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+    margin-right: 12px; font-weight: 700;
+  }
+
+  /* ============= Trust (B9) ============= */
+  .trust-section { padding: 60px; background: var(--white); }
+  .trust-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 28px; }
+  .trust-tile {
+    background: var(--gray-light); border-radius: 4px;
+    padding: 24px 20px; border-top: 3px solid var(--red);
+  }
+  .trust-tile-h {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 17px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.03em; margin: 0 0 8px;
+  }
+  .trust-tile-body { font-size: 13px; color: var(--gray-text); line-height: 1.55; }
+
+  /* ============= FAQ (B10) ============= */
+  .faq-section { padding: 60px; background: var(--gray-light); }
+  .faq-list { max-width: 900px; margin: 28px auto 0; }
+  .faq-item {
+    background: var(--white); margin-bottom: 8px;
+    border-radius: 4px; padding: 16px 22px;
+    border-left: 3px solid transparent;
+  }
+  .faq-item.open { background: #FFEBEE; border-left-color: var(--red); }
+  .faq-q {
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: 'Roboto Condensed',sans-serif;
+    font-size: 16px; font-weight: 600;
+    cursor: pointer; color: var(--black);
+  }
+  .faq-q-icon { color: var(--red); font-size: 20px; font-weight: 300; }
+  .faq-item.open .faq-q-icon { transform: rotate(45deg); }
+  .faq-a {
+    margin-top: 12px;
+    font-size: 14px; color: var(--gray-text); line-height: 1.7;
+    display: none;
+  }
+  .faq-item.open .faq-a { display: block; }
+  .faq-a strong { color: var(--black); }
+
+  /* ============= Form (B11) ============= */
+  .form-section { padding: 60px; background: var(--white); }
+  .form-mock {
+    max-width: 720px; margin: 28px auto 0;
+    background: var(--gray-light); border-radius: 4px;
+    padding: 32px 36px;
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+  .form-row.single { grid-template-columns: 1fr; }
+  .form-field { display: flex; flex-direction: column; }
+  .form-field label {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 11px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.06em; color: var(--gray);
+    margin-bottom: 6px;
+  }
+  .form-field label .req { color: var(--red); }
+  .form-field input, .form-field select, .form-field textarea {
+    padding: 11px 13px; border: 1px solid var(--border);
+    border-radius: 3px; background: var(--white);
+    font-size: 14px; font-family: inherit; color: var(--gray-text);
+  }
+  .form-field textarea { min-height: 80px; resize: vertical; }
+  .form-hidden-notice {
+    background: rgba(21,101,192,0.08);
+    border-left: 3px solid #1565C0;
+    padding: 8px 12px; border-radius: 3px;
+    font-size: 11px; color: #1565C0;
+    margin: 14px 0; font-family: monospace;
+  }
+  .form-cta-row { display: flex; align-items: center; gap: 16px; margin-top: 14px; }
+  .form-cta-sub { font-size: 12px; color: var(--gray); }
+
+  /* ============= Verwandte Lösungen (B11.5) ============= */
+  .related-section { padding: 60px; background: var(--gray-light); }
+  .related-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 28px; }
+  .related-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 4px; padding: 24px 26px;
+  }
+  .related-h {
+    font-family: 'Roboto Condensed',sans-serif;
+    font-size: 20px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.04em; margin: 0 0 12px;
+  }
+  .related-text { font-size: 14px; color: var(--gray-text); line-height: 1.6; margin-bottom: 14px; }
+  .related-hook { font-size: 12px; color: var(--gray); font-style: italic; margin-bottom: 14px; }
+  .related-cta {
+    color: var(--red); font-weight: 700;
+    font-family: 'Roboto Condensed',sans-serif;
+    font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase;
+  }
+
+  /* ============= Outro (B12) ============= */
+  .outro-section {
+    padding: 80px 60px;
+    background: linear-gradient(135deg, #1f1f1f, #2a2a2a);
+    color: var(--white); text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .outro-section::before {
+    content: '🏗'; position: absolute;
+    top: 50%; left: 50%; transform: translate(-50%, -50%);
+    font-size: 360px; opacity: 0.04;
+  }
+  .outro-claim-tag {
+    font-family: 'Roboto Condensed',sans-serif;
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--red); margin-bottom: 12px;
+    position: relative; z-index: 2;
+  }
+  .outro-claim {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 52px; font-weight: 700; line-height: 1.1;
+    text-transform: uppercase; letter-spacing: 0.04em;
+    margin: 0 0 20px; color: var(--white);
+    position: relative; z-index: 2;
+  }
+  .outro-sub {
+    font-size: 17px; line-height: 1.5; opacity: 0.85;
+    margin: 0 auto 28px; max-width: 580px;
+    position: relative; z-index: 2;
+  }
+
+  /* ============= Footer ============= */
+  .real-footer { background: var(--black); color: rgba(255,255,255,0.7); padding: 50px 60px; }
+  .footer-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-bottom: 30px; }
+  .real-footer h5 {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 13px; font-weight: 700;
+    color: var(--white); margin: 0 0 12px;
+    text-transform: uppercase; letter-spacing: 0.1em;
+  }
+  .real-footer ul { list-style: none; padding: 0; margin: 0; }
+  .real-footer li { padding: 4px 0; font-size: 13px; }
+  .real-footer a { color: rgba(255,255,255,0.6); text-decoration: none; }
+  .real-footer a:hover { color: white; }
+  .footer-trust {
+    border-top: 1px solid rgba(255,255,255,0.12);
+    padding-top: 20px; font-size: 12px;
+    display: flex; justify-content: space-between;
+    color: rgba(255,255,255,0.5); flex-wrap: wrap; gap: 16px;
+  }
+
+  /* ============= Open Items ============= */
+  .open-items-section { padding: 60px 48px; background: var(--gray-light); }
+  .open-items-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 24px; }
+  .open-items-card {
+    background: var(--white); border-radius: 4px;
+    overflow: hidden; border: 1px solid var(--border);
+  }
+  .open-items-card-head {
+    background: #E65100; color: white;
+    padding: 12px 16px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .open-items-card-head.placeholder { background: #E65100; }
+  .open-items-card-head.questions { background: #1565C0; }
+  .open-items-card-head.andrey { background: #6A1B9A; }
+  .open-items-card-head h3 {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 14px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    margin: 0; color: white;
+  }
+  .open-items-card-body { padding: 18px 22px; }
+  .open-items-card-body ol, .open-items-card-body ul {
+    margin: 0; padding-left: 20px;
+    font-size: 13px; line-height: 1.7; color: var(--gray-text);
+  }
+  .open-items-card-body li { padding: 3px 0; }
+
+  .checkpoint-block {
+    margin-top: 32px; background: var(--black); color: white;
+    padding: 22px 28px; border-radius: 4px;
+  }
+  .checkpoint-block h4 {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 16px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    margin: 0 0 12px; color: var(--red);
+  }
+  .checkpoint-block p { margin: 6px 0; font-size: 13px; color: rgba(255,255,255,0.85); }
+  .checkpoint-block strong { color: white; }
+
+  @media (max-width: 1100px) {
+    .pain-grid, .feature-grid, .standort-grid, .story-grid, .steps-grid, .cross-grid, .trust-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    .related-grid, .footer-2col, .open-items-grid { grid-template-columns: 1fr; }
+    .light-hero { padding: 60px 30px 40px; }
+    .light-hero-h1 { font-size: 36px; }
+    .outro-claim { font-size: 36px; }
+  }
+  @media (max-width: 700px) {
+    .pain-grid, .feature-grid, .standort-grid, .story-grid, .steps-grid, .cross-grid, .trust-grid {
+      grid-template-columns: 1fr;
+    }
+    .form-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- GLOBAL HUB-NAV                                               -->
+<!-- ============================================================ -->
+<nav class="global">
+  <a class="logo" href="index.html">MEGA<span>·</span>MIETPARK · Content</a>
+  <a href="index.html">TZ-Hub</a>
+  <a href="mega-mietpark_TZ_Startseite.html">TZ Startseite</a>
+  <a href="mega-mietpark_content_01_startseite.html">📝 Content · Startseite</a>
+  <a href="mega-mietpark_content_02_standort_wuppertal.html">📍 Content · Standort Wuppertal</a>
+  <a href="mega-mietpark_content_03_loesung_werkhalle.html?v=1" class="active">🔧 Content · Lösung Werkhalle</a>
+  <span class="v-tag">V1.0.1</span>
+  <button class="lang-toggle" id="ruToggle">DE + RU</button>
+</nav>
+
+<!-- ============================================================ -->
+<!-- COVER                                                        -->
+<!-- ============================================================ -->
+<div class="cover">
+  <p class="cover-tag">Content Preview · Lösung-Seite 1 von 4 · V1.0.1 · Lösung-Leitfall</p>
+  <h1>Lösung-Seite<br><em>Werkhalle V1.0.1</em></h1>
+  <p class="cover-sub">
+    <strong>Content V1.0.1 | 2026-05-03 | Autor: AS</strong><br>
+    <strong>Erst-Erstellung V1.0:</strong> 2026-05-03 08:30 — 13 Sektionen aus TZ_Loesung.html generiert.
+    <strong>V1.0.1:</strong> 4 Korrekturen aus Anna-Review 2026-05-03 09:42 —
+    <strong>(1)</strong> Mietdauer Werkhalle korrigiert auf <strong>6 Monate Mindestlaufzeit · 3 Monate Kündigung</strong> (statt 2 J / 6 Mo);
+    <strong>(2)</strong> Verbotene Tätigkeiten (KFZ, Reparatur, Lackiererei, ölbasierte Arbeiten) intern bekannt — auf Website nicht thematisiert, aber in Stories/FAQ/Form berücksichtigt;
+    <strong>(3)</strong> Story 3 KFZ-Schrauber → <strong>Malerbetrieb Köln-Rodenkirchen</strong> (Variante C);
+    <strong>(4)</strong> Headlines &amp; Sublines sprachlich aufgewertet — SEO-Keywords in flüssige Sätze eingebettet statt als Wort-Stakkato.
+    <br>Strategie C: Persona Markus (B2B Sanitär/Heizung, 5 MA) als primary Hook · K2 Volumen-USP („6 m = bis zu 2,4-fach mehr Volumen pro Euro") prominent in B1 Hero + B3 Punkt 6.
+  </p>
+  <div class="ru">
+    Превью страницы решения «Werkhalle» V1.0.1. Эталон для 3 других решений (Garage / Lagerraum / Büro+Hybrid). 13 блоков (META + B1–B12 + B1.5 + B11.5). Тональность du-форма наследуется со главной V1.3 и Standort V1.0.2. Ключевая Persona: Markus (B2B Handwerker). Top-USP: 6 m Deckenhöhe = до 2,4× больше объёма на евро vs. Self-Storage (2,5 m). 4 правки V1.0.1: длительность аренды 6/3 мес., запрещённые виды работ (KFZ-/масляные исключены из Stories/FAQ/Form), Story 3 — маляр Köln-Rodenkirchen (вместо KFZ), переписаны заголовки и подзаголовки в живые предложения.
+  </div>
+  <div class="cover-meta">
+    <div class="cover-meta-item">Datei<strong>content/03_loesung_werkhalle.md</strong></div>
+    <div class="cover-meta-item">Version<strong>V1.0.1</strong></div>
+    <div class="cover-meta-item">Blöcke<strong>13 (META + B1–B12 + B1.5 + B11.5)</strong></div>
+    <div class="cover-meta-item">Tonalität<strong>du-Form · DE</strong></div>
+    <div class="cover-meta-item">Persona<strong>Markus · B2B Handwerker</strong></div>
+  </div>
+</div>
+
+<div class="preview-intro">
+  <strong>📖 Lese-Anleitung:</strong> Scroll von oben nach unten — jede Sektion zeigt zuerst den <em>visuellen Mock</em> mit dem finalen Text wie er auf der Lösung-Seite erscheinen wird, dann die Annotationen-Box mit Alternativen, Quellen und PLACEHOLDERS. Gelb-gestreifte Zonen = <span class="placeholder-tag">PLACEHOLDER</span> (wartet auf David). Hellgrün = ✅ verifiziert (CLIENT). Rote Box = <strong>TOP-USP</strong> (K2 Volumen-Argument). Story-Cards mit gestreiftem Yellow-Badge = <strong>⚠ FIKTIV</strong> (kein echter Mieter).
+</div>
+
+<!-- ============================================================ -->
+<!-- BLOCK META                                                   -->
+<!-- ============================================================ -->
+<div class="content-section">
+
+  <div class="content-block">
+    <div class="block-anchor">
+      <span class="block-num">META</span>
+      <h2 class="block-title">Title-Tag &amp; Meta Description · /loesungen/werkhalle/</h2>
+      <span class="block-tag">SEO-Foundation · Schema.org Service+Offer</span>
+    </div>
+    <div class="block-mock" style="padding: 22px 28px;">
+      <div style="background:white; border:1px solid var(--border); border-radius:4px; padding:14px 18px; max-width:680px; box-shadow:0 1px 3px rgba(0,0,0,0.05);">
+        <div style="font-size:12px; color:#1A0DAB; font-family:Arial,sans-serif; margin-bottom:2px;">www.mega-mietpark.de › loesungen › werkhalle</div>
+        <div style="font-size:18px; color:#1A0DAB; font-family:Arial,sans-serif; line-height:1.3; margin-bottom:4px;"><strong>Werkhalle mieten — 6 m Deckenhöhe, direkt befahrbar | Mega-Mietpark</strong></div>
+        <div style="font-size:13px; color:#4D5156; font-family:Arial,sans-serif; line-height:1.4;">Werkhalle mieten mit 6 m Deckenhöhe und LKW-befahrbarem Tor — bis zu 2,4-fach mehr Volumen pro Euro als bei klassischem Self-Storage. Wuppertal, Mülheim und Köln-Rodenkirchen ab 1.360 € netto. Jetzt anfragen.</div>
+      </div>
+    </div>
+    <div class="block-annotations">
+      <details>
+        <summary>📝 Alternativen · 3 Title-Varianten V1.0.1</summary>
+        <ul>
+          <li><span class="alt-tag">A ✓</span> "Werkhalle mieten — 6 m Deckenhöhe, direkt befahrbar | Mega-Mietpark" — 67 Zeichen, USP-First (✓ EMPFOHLEN V1.0.1 · liest sich als Satz)</li>
+          <li><span class="alt-tag">B</span> "Werkhalle mit 6 m Höhe in Wuppertal, Mülheim, Köln | Mega-Mietpark" — 67 Zeichen, Geo-First</li>
+          <li><span class="alt-tag">C</span> "Werkhalle ab 1.360 € netto mieten | Mega-Mietpark" — 49 Zeichen, Preis-Anker</li>
+        </ul>
+      </details>
+      <div class="source-list">
+        <h4>✅ SEO-Status &amp; Schema.org</h4>
+        <ul>
+          <li>Title: <strong>67 Zeichen</strong> — leicht über 60-Limit, aber als zusammenhängender Satz vertretbar</li>
+          <li>Meta-Description: <strong>198 Zeichen</strong> — leicht über 160-Limit; Browser zeigt 200+ in Google: vertretbar</li>
+          <li>„Bis zu 2,4-fach" mit rechtssicherer Marketing-Formel (DECISION V1.0.1)</li>
+          <li>Schema.org: <code>Service</code>, <code>Offer</code> (mit Preis-Anker), <code>BreadcrumbList</code></li>
+          <li>URL-Pattern (3 weitere Lösungen): <code>/loesungen/{slug}/</code> (garage / lagerraum / buero-hybrid)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- BLOCK 1 — HERO PERSONA MARKUS                                -->
+<!-- ============================================================ -->
+<div class="content-section">
+
+  <div class="content-block">
+    <div class="block-anchor">
+      <span class="block-num">B1</span>
+      <h2 class="block-title">Hero · Persona Markus · Pre-Header + H1 + K2-Subline + 2 CTAs</h2>
+      <span class="block-tag">V1.0.1 · Light NordSpace-inspired · K2-USP prominent</span>
+    </div>
+
+    <div class="block-mock">
+      <div class="light-hero">
+        <div class="light-hero-nav">
+          <span class="light-hero-logo">MEGA·MIETPARK</span>
+          <div class="light-hero-nav-links">
+            <span>Standorte</span>
+            <span>Lösungen</span>
+            <span>Ratgeber</span>
+            <span>Grundstücke</span>
+          </div>
+        </div>
+        <div class="light-hero-content">
+          <div class="breadcrumb">
+            <span>Startseite</span> › <span>Lösungen</span> › <span class="crumb-active">Werkhalle</span>
+          </div>
+          <p class="light-hero-preheader">Werkhalle mieten · deutschlandweit</p>
+          <h1 class="light-hero-h1">Werkhalle mieten —<br><em>direkt befahrbar.</em></h1>
+          <p class="light-hero-subline">
+            Direkt befahrbar mit 6 m Deckenhöhe, ausgestattet mit 230 V (400 V auf Anfrage) und mit kurzen Mietzeiten — so findest du bei uns <span class="k2-mark">bis zu 2,4-fach mehr Volumen pro Euro</span> als in klassischen Self-Storage-Boxen.
+          </p>
+          <div class="light-hero-cta-row">
+            <button class="btn-primary">Verfügbarkeit prüfen</button>
+            <button class="btn-secondary-light">Standorte ansehen</button>
+          </div>
+        </div>
+        <div style="position:absolute; bottom:24px; right:60px; max-width:300px; z-index:2;">
+          <div class="placeholder-zone small">
+            ⚠ Hero-Visual<br>
+            <span style="font-weight:400; text-transform:none; font-size:11px;">Halle-Innenaufnahme · geöffnetes Sektionaltor (XXL 3,80×4,00 m), Sprinter fährt direkt rein, 6 m Höhe via Stapelregale, Tageslicht. David-Anfrage Phase-2.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="block-annotations">
+      <details>
+        <summary>📝 V1.0.1 Decision · Subline als Satz, K2-USP prominent</summary>
+        <ul>
+          <li><strong>Pre-Header V1.0.1:</strong> "WERKHALLE MIETEN · DEUTSCHLANDWEIT" — SEO-keyword-rich, kein „NRW", kein „Bundesland" (Brand-Decision V1.3)</li>
+          <li><strong>H1 V1.0.1 (✓ A):</strong> "Werkhalle mieten — direkt befahrbar." — kurzer, sauberer Halbsatz mit SEO-Keyword vorne und Top-USP hinten</li>
+          <li><strong>Subline V1.0.1:</strong> als ein zusammenhängender Satz (nicht mehr 3 Komma-Fragmente). „Bis zu 2,4-fach" als Marketing-Sicherheits-Formel.</li>
+          <li><strong>Persona-Hook Markus implizit:</strong> Bildwelt (Sprinter, Werkbank, Tageslicht) · Subline-Vokabular (Handwerk, Volumen, Mietzeiten)</li>
+          <li><strong>Style:</strong> light/clean (NordSpace-inspired) — 1:1 Pattern wie Standort-Wuppertal V1.0.2</li>
+        </ul>
+      </details>
+      <details>
+        <summary>📝 Alternativen H1 + Subline</summary>
+        <ul>
+          <li><span class="alt-tag">H1-A ✓</span> "Werkhalle mieten — direkt befahrbar." (✓ EMPFOHLEN V1.0.1)</li>
+          <li><span class="alt-tag">H1-B</span> "Direkt befahrbare Werkhalle für dein Handwerk." — du-Form, weniger SEO-zentriert</li>
+          <li><span class="alt-tag">H1-C ✗</span> "Dein Materiallager — direkt befahrbar." (V1.0 verworfen — wirkt mehr wie Slogan, SEO-Keyword fehlt)</li>
+          <li><span class="alt-tag">Sub-A ✓</span> Lesefluss-Satz mit „bis zu 2,4-fach" (✓ EMPFOHLEN V1.0.1)</li>
+          <li><span class="alt-tag">Sub-B</span> "Mit 6 m Deckenhöhe und LKW-befahrbarem Tor bekommst du bis zu 2,4-fach mehr Stapelvolumen pro Euro — und behältst durch kurze Mietzeiten volle Planungs-Flexibilität."</li>
+          <li><span class="alt-tag">Sub-C ✗</span> "6 m Deckenhöhe, LKW-befahrbares Tor, 24/7-Zugang. 2,4× mehr Volumen pro € als Self-Storage — und so flexibel wie dein Handwerk." (V1.0 verworfen — Stakkato statt Satz)</li>
+        </ul>
+      </details>
+      <div class="placeholder-list">
+        <h4>⚠️ B1 · 1 PLACEHOLDER</h4>
+        <ul>
+          <li><strong>Hero-Visual</strong> — Action-Foto eines befahrenen Tores in Wuppertal/Mülheim/Köln-Rodenkirchen · David-Anfrage Phase-2 · Stock-Fallback bis dahin</li>
+        </ul>
+      </div>
+      <div class="source-list">
+        <h4>✅ Daten-Status</h4>
+        <ul>
+          <li>6 m Höhe ✅ CLIENT (Angebotsflyer Wuppertal Werkhalle 5,90×16×6,00 m)</li>
+          <li>2,4× Volumen 📄 SPEC (positionierung.md §Volumen-USP, Vergleich Shurgard €2,00/m³ vs. Mega €0,77/m³)</li>
+          <li>24/7-Zugang ⚠️ STANDORT-DIFFERENZIERT — nicht in Hero behauptet, in B3+B4 ehrlich</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- BLOCK 1.5 — STICKY SUB-NAV                                   -->
+<!-- ============================================================ -->
+<div class="content-section alt">
+
+  <div class="content-block">
+    <div class="block-anchor">
+      <span class="block-num">B1.5</span>
+      <h2 class="block-title">Sticky Sub-Nav · 4 Pills Cross-Link Lösungen</h2>
+      <span class="block-tag">Cross-Link-Mechanik · ersetzt verworfenes S2.5</span>
+    </div>
+
+    <div class="block-mock">
+      <div class="subnav-section">
+        <div class="subnav-pills">
+          <div class="subnav-pill active">
+            Werkhalle
+            <span class="pill-sub">für Handwerk</span>
+          </div>
+          <div class="subnav-pill">
+            Garage
+            <span class="pill-sub">für Fahrzeug &amp; Hobby</span>
+          </div>
+          <div class="subnav-pill">
+            Lagerraum
+            <span class="pill-sub">für Privat &amp; Umzug</span>
+          </div>
+          <div class="subnav-pill">
+            Büro+Hybrid
+            <span class="pill-sub">für E-Commerce &amp; Startup</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="block-annotations">
+      <details>
+        <summary>📝 V1.0.1 Decision · Pill-Subline als Use-Case-Hint</summary>
+        <ul>
+          <li><strong>Pill-Subline V1.0.1:</strong> kurzer „für [Nutzungs-Kontext]"-Hinweis (statt Persona-Vorname, der für Visitor ohne Erklärung kryptisch wäre)</li>
+          <li><strong>Strategie-C-Persona-Hook:</strong> bleibt im Hintergrund — sichtbar wird der Use-Case-Kontext</li>
+          <li><strong>Sticky-Verhalten:</strong> Pills bleiben beim Scroll oben kleben → ermöglicht Quer-Navigation ohne Zurück-zur-Homepage</li>
+          <li><strong>Active State:</strong> Werkhalle = rot/dunkel (aktuelle Seite) · andere = inactive</li>
+        </ul>
+      </details>
+      <div class="source-list">
+        <h4>✅ TZ-Mapping</h4>
+        <ul>
+          <li>S1.5 Sticky Sub-Nav (TZ_Loesung)</li>
+          <li>4 Pills · 4 URLs: <code>/loesungen/werkhalle/</code> · <code>/loesungen/garage/</code> · <code>/loesungen/lagerraum/</code> · <code>/loesungen/buero-hybrid/</code></li>
+          <li>Persona-Mapping intern: Werkhalle=Markus · Garage=Thomas · Lagerraum=Sarah · Büro+Hybrid=Elena</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- BLOCK 2 — TYPISCHE ENGPÄSSE                                  -->
+<!-- ============================================================ -->
+<div class="content-section">
+
+  <div class="content-block">
+    <div class="block-anchor">
+      <span class="block-num">B2</span>
+      <h2 class="block-title">Typische Engpässe wachsender Betriebe · 4 Pain-Cards</h2>
+      <span class="block-tag">Persona Markus · Customer Journey Phase 1</span>
+    </div>
+
+    <div class="block-mock">
+      <div class="pain-section">
+        <h2 style="font-family:'Roboto Condensed',sans-serif; font-size:32px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; text-align:center; margin:0 0 8px;">TYPISCHE ENGPÄSSE WACHSENDER BETRIEBE.</h2>
+        <p style="text-align:center; font-size:15px; color:var(--gray-text); margin:0 0 8px;">Vier Situationen, mit denen Handwerksbetriebe regelmäßig zu uns kommen — bevor sie ihre erste Werkhalle bei Mega mieten.</p>
+        <div class="pain-grid">
+          <div class="pain-card">
+            <div class="pain-icon">📦</div>
+            <h3 class="pain-h">Die Doppelgarage reicht nicht mehr.</h3>
+            <p class="pain-detail">Material, Werkzeug und Sprinter konkurrieren um den gleichen Quadratmeter.</p>
+          </div>
+          <div class="pain-card">
+            <div class="pain-icon">🔒</div>
+            <h3 class="pain-h">Klassische Hallen verlangen Fünfjahresverträge.</h3>
+            <p class="pain-detail">Dieses Bindungsrisiko willst du nicht eingehen.</p>
+          </div>
+          <div class="pain-card">
+            <div class="pain-icon">🛠</div>
+            <h3 class="pain-h">Werkzeug verschwindet aus offenen Höfen.</h3>
+            <p class="pain-detail">Kein Schutz, keine Kameras, kein Zaun — und du zahlst doppelt.</p>
+          </div>
+          <div class="pain-card">
+            <div class="pain-icon">🚐</div>
+            <h3 class="pain-h">Der Sprinter passt nicht durchs Tor.</h3>
+            <p class="pain-detail">Standardgaragentore sind zu schmal oder zu niedrig für Hochdach-Transporter.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="block-annotations">
+      <details>
+        <summary>📝 V1.0.1 Decision · Pains als ganze Sätze</summary>
+        <ul>
+          <li><strong>H2 V1.0.1 (✓ A):</strong> "Typische Engpässe wachsender Betriebe." — analytisch, B2B-tonal, kein Werbe-Sprech</li>
+          <li><strong>H2-B:</strong> "Vier Engpässe, die Handwerksbetriebe gerade jetzt bremsen." — narrativer Ton</li>
+          <li><strong>H2-C ✗:</strong> "Kennst du das?" (V1.0 verworfen — zu konfrontativ, kein SEO-Anker)</li>
+          <li><strong>Reihenfolge:</strong> psychologische Eskalation Platz → Vertragsrisiko → Diebstahl → Logistik</li>
+        </ul>
+      </details>
+      <div class="source-list">
+        <h4>✅ Daten-Status — alle 4 Pains ✅ CLIENT</h4>
+        <ul>
+          <li>Persona 3 Markus · Situation + Blinde Flecken + Customer Journey Phase 1 (personas.md)</li>
+          <li>Icons-Vorschlag: 📦 Box-stack-overflow · 🔒 Vertrags-Stapel · 🛠 Werkzeug-Diebstahl · 🚐 Sprinter-vor-Tor</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- BLOCK 3 — AUSSTATTUNG UND LEISTUNG                           -->
+<!-- ============================================================ -->
+<div class="content-section alt">
+
+  <div class="content-block">
+    <div class="block-anchor">
+      <span class="block-num">B3</span>
+      <h2 class="block-title">Ausstattung und Leistung im Überblick · 6 Punkte (K2-USP als Punkt 6)</h2>
+      <span class="block-tag">V1.0.1 · Mietdauer 6/3 Mo. korrigiert · Punkt 6 Highlight</span>
+    </div>
+
+    <div class="block-mock">
+      <div class="feature-section">
+        <h2 style="font-family:'Roboto Condensed',sans-serif; font-size:32px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; text-align:center; margin:0 0 8px;">AUSSTATTUNG UND LEISTUNG IM ÜBERBLICK.</h2>
+        <p style="text-align:center; font-size:15px; color:var(--gray-text); margin:0 0 8px;">Sechs Eigenschaften, die unsere Werkhallen für tägliche Handwerksarbeit nutzbar machen.</p>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <div class="feature-num">01</div>
+            <h3 class="feature-h">XXL-Tor mit 3,80 × 4,00 m optional</h3>
+            <p class="feature-body">Sprinter, Hochdach-Transporter und Mini-Bagger fahren direkt ein. Standardtor 2,90 × 3,30 m als Alternative.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-num">02</div>
+            <h3 class="feature-h">6 m Deckenhöhe</h3>
+            <p class="feature-body">Hochregale, Mezzanin-Ebenen und vertikale Lagerung — der Raum wächst nach oben, nicht in die Breite.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-num">03</div>
+            <h3 class="feature-h">400 V Starkstrom auf Anfrage</h3>
+            <p class="feature-body">Schweißgerät, Druckluftanlage oder Ladestation: Industrie-Strom ist standortabhängig anschließbar.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-num">04</div>
+            <h3 class="feature-h">24/7-Zugang per persönlicher PIN</h3>
+            <p class="feature-body">Frühanfahrt zur Baustelle oder Spätrückkehr — du bestimmst deine Arbeitszeiten. <em>(Standortabhängig, siehe Hinweis unten.)</em></p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-num">05</div>
+            <h3 class="feature-h">6 Monate Mindestlaufzeit · 3 Monate Kündigung</h3>
+            <p class="feature-body">Eine kurze, überschaubare Festbindung statt mehrjähriger Pacht — planbar wie ein Auftrag, flexibel wie dein Geschäft.</p>
+          </div>
+          <div class="feature-card highlight">
+            <div class="feature-num">06 · 🔥 K2 VOLUMEN-USP</div>
+            <h3 class="feature-h">6 m = bis zu 2,4-fach mehr Volumen pro Euro</h3>
+            <p class="feature-body">Klassische Self-Storage-Boxen liegen meist bei 2,5 m Deckenhöhe. Du zahlst pro m² — bekommst aber bei uns bis zu 2,4-fach mehr nutzbares Stapelvolumen für denselben Quadratmeter-Preis.</p>
+          </div>
+        </div>
+        <div class="feature-disclaimer">
+          <strong>Hinweis zum Zugang:</strong> An den Standorten Wuppertal und Köln-Rodenkirchen gilt täglich 06:00 – 22:00 Uhr mit persönlicher Zugangskontrolle (Sicherheits-Feature). Für den Standort Mülheim klären wir die genauen Zeiten auf Anfrage. Frag uns einfach für deinen Wunsch-Standort.
+        </div>
+        <div style="margin-top:18px;">
+          <div class="placeholder-zone small">
+            💡 OPTIONAL · Vergleichs-Visual<br>
+            <span style="font-weight:400; text-transform:none; font-size:11px;">Splitscreen Self-Storage 2,5 m vs. Mega-Werkhalle 6 m mit identischer Grundfläche und Stapel-Visualisierung. Beschriftung: konkrete €/m³-Werte oder „2,4-fach mehr Volumen". — Andrey-Aufgabe wenn Kapazität.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="block-annotations">
+      <details>
+        <summary>📝 V1.0.1 Decisions · Mietdauer-Korrektur + K2-Highlight</summary>
+        <ul>
+          <li><strong>V1.0.1 KORREKTUR Punkt 5:</strong> 2 Jahre / 6 Mo. → <strong>6 Mo. / 3 Mo.</strong> (✅ CLIENT-Workshop, Anna-Review 2026-05-03)</li>
+          <li><strong>V1.0.1 Punkt 6 (K2-USP):</strong> Highlight-Icon 🔥 + Akzentfarbe → visuelle Heraushebung. Body als ganzer Satz, „bis zu 2,4-fach" mit Marketing-Sicherheits-Formel</li>
+          <li><strong>Punkt-6 ALT-A ✓:</strong> "6 m = bis zu 2,4-fach mehr Volumen pro Euro" (✓ EMPFOHLEN V1.0.1)</li>
+          <li><strong>Punkt-6 ALT-B:</strong> "Bei 95 m² Werkhalle ergibt 6 m Höhe rund 570 m³ Stapelvolumen — bei 2,5 m Self-Storage-Höhe wären es nur 237 m³." — quantitativ präzise (Akzent-Daten für Visualisierungen)</li>
+          <li><strong>Disclaimer Punkt 4:</strong> Security-Reframe aus Standort V1.0.2 1:1 übernommen</li>
+        </ul>
+      </details>
+      <div class="placeholder-list">
+        <h4>⚠️ B3 · 2 PLACEHOLDER + 1 OPTIONAL</h4>
+        <ul>
+          <li><strong>06–22 Köln-Rodenkirchen</strong> ⚠️ AI · Annahme analog Köln-Hauptstandort · David-Bestätigung nötig</li>
+          <li><strong>Mülheim 24/7-Status</strong> 📝 BRIEF · David-Frage offen</li>
+          <li><strong>OPTIONAL Vergleichs-Visual</strong> 💡 Andrey-Aufgabe wenn Kapazität · sonst Punkt 6 Text-Only</li>
+        </ul>
+      </div>
+      <div class="source-list">
+        <h4>✅ Daten-Status — 4 von 6 ✅ CLIENT</h4>
+        <ul>
+          <li>Punkt 1: ✅ CLIENT (Angebotsflyer)</li>
+          <li>Punkt 2: ✅ CLIENT (Wuppertal 5,90×16×6,00 m)</li>
+          <li>Punkt 3: ✅ CLIENT (Tech-Standard alle Standorte)</li>
+          <li>Punkt 5: ✅ CLIENT (Anna-Review 2026-05-03)</li>
+          <li>Punkt 4: ⚠️ STANDORT-DIFFERENZIERT</li>
+          <li>Punkt 6: 📄 SPEC (positionierung.md §Volumen-USP)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- BLOCK 4 — GRÖSSEN UND PREISE                                 -->
+<!-- ============================================================ -->
+<div class="content-section">
+
+  <div class="content-block">
+    <div class="block-anchor">
+      <span class="block-num">B4</span>
+      <h2 class="block-title">Größen und Preise — transparent · 3 Standorte (Wuppertal · Mülheim · Köln-Rodenkirchen)</h2>
+      <span class="block-tag">3 von 16 Standorten · Werkhalle ist seltenstes Produkt</span>
+    </div>
+
+    <div class="block-mock">
+      <div class="standort-section">
+        <h2 style="font-family:'Roboto Condensed',sans-serif; font-size:32px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; text-align:center; margin:0 0 8px;">GRÖSSEN UND PREISE — TRANSPARENT.</h2>
+        <p style="text-align:center; font-size:15px; color:var(--gray-text); margin:0 0 12px;">Aktuell verfügbar an drei Standorten — Wuppertal, Mülheim und Köln-Rodenkirchen. Detailpreise und Verfügbarkeit klären wir auf Anfrage.</p>
+        <div class="standort-grid">
+
+          <div class="standort-card featured">
+            <h3>Wuppertal</h3>
+            <table class="standort-table">
+              <tr><td class="label">Standort</td><td class="value">Vohwinkeler Str. 148, Wuppertal-Vohwinkel</td></tr>
+              <tr><td class="label">Maße</td><td class="value">5,90 × 16 × 6,00 m · <strong>95 m²</strong> · 2 Ebenen</td></tr>
+              <tr><td class="label">Preis</td><td class="value"><strong>ab 1.360 € netto / Monat</strong> + 100 € NK</td></tr>
+              <tr><td class="label">Tor</td><td class="value">Sektionaltor 2,90 × 3,30 m · 3,80 × 4,00 m optional</td></tr>
+              <tr><td class="label">Strom</td><td class="value">230 V Standard · 400 V auf Anfrage</td></tr>
+              <tr><td class="label">Zugang</td><td class="value">täglich 06:00–22:00 mit persönl. Zugangskontrolle</td></tr>
+              <tr><td class="label">Besonderheit</td><td class="value">EG Lager-/Werkraum · OG Büro, WC &amp; Teeküche-Vorbereitung</td></tr>
+              <tr><td class="label">Status</td><td class="value">🟢 Verfügbar (zu verifizieren)</td></tr>
+            </table>
+            <a href="#" class="standort-cta">Standort öffnen → /standort/wuppertal/</a>
+          </div>
+
+          <div class="standort-card placeholder">
+            <h3>Mülheim a.d.Ruhr</h3>
+            <table class="standort-table">
+              <tr><td class="label">Standort</td><td class="value">Aktienstr. 17, 45468 Mülheim a.d.Ruhr</td></tr>
+              <tr><td class="label">Maße</td><td class="value"><span class="placeholder-text">⚠ PLACEHOLDER · David-Anfrage</span></td></tr>
+              <tr><td class="label">Preis</td><td class="value"><span class="placeholder-text">⚠ PLACEHOLDER · David-Anfrage</span></td></tr>
+              <tr><td class="label">Tor</td><td class="value">Standard 2,90 × 3,30 m (anzunehmen)</td></tr>
+              <tr><td class="label">Strom</td><td class="value">230 V Standard · 400 V auf Anfrage</td></tr>
+              <tr><td class="label">Zugang</td><td class="value"><span class="placeholder-text">⚠ Zugangszeiten klären</span></td></tr>
+              <tr><td class="label">Status</td><td class="value">⚠ Daten unvollständig — David-pending</td></tr>
+            </table>
+            <a href="#" class="standort-cta">Standort öffnen → /standort/muelheim/</a>
+          </div>
+
+          <div class="standort-card upcoming">
+            <h3>Köln-Rodenkirchen</h3>
+            <table class="standort-table">
+              <tr><td class="label">Standort</td><td class="value">Im Giesdorfer Grund 1, 50997 Köln</td></tr>
+              <tr><td class="label">Maße</td><td class="value"><span class="placeholder-text">⚠ PLACEHOLDER · David-Anfrage</span></td></tr>
+              <tr><td class="label">Preis</td><td class="value"><strong>ab 1.750 € netto / Monat</strong> <span style="font-size:11px;">📄 SPEC</span></td></tr>
+              <tr><td class="label">Tor</td><td class="value">Standard 2,90 × 3,30 m (anzunehmen)</td></tr>
+              <tr><td class="label">Strom</td><td class="value">230 V Standard · 400 V auf Anfrage</td></tr>
+              <tr><td class="label">Zugang</td><td class="value">täglich 06:00–22:00 (anzunehmen analog Köln)</td></tr>
+              <tr><td class="label">Besonderheit</td><td class="value"><strong>Neueröffnung 04/2026</strong> — Frühbuchung möglich</td></tr>
+              <tr><td class="label">Status</td><td class="value">🟡 Neueröffnung 04/2026 — Frühbuchung</td></tr>
+            </table>
+            <a href="#" class="standort-cta">Standort öffnen → /standort/koeln-rodenkirchen/</a>
+          </div>
+
+        </div>
+        <div class="standort-disclaimer">
+          Alle Preise verstehen sich netto zuzüglich gesetzlicher Mehrwertsteuer. Verfügbarkeit auf Anfrage. Der angegebene Preis ist ein Einstiegspreis — die finale Konditionsgestaltung erfolgt individuell nach Ausstattung und Laufzeit.
+        </div>
+      </div>
+    </div>
+
+    <div class="block-annotations">
+      <details>
+        <summary>📝 V1.0.1 Decision · Wuppertal als Highlight-Karte</summary>
+        <ul>
+          <li><strong>Wuppertal als Featured-Karte:</strong> rot-Akzent · Datenvollständigkeit + 2-Ebenen-USP machen Wuppertal zum natürlichen Anker</li>
+          <li><strong>Mülheim als Placeholder-Karte:</strong> Größe + Preis + Zugang offen → David-pending</li>
+          <li><strong>Köln-Rodenkirchen als Upcoming-Karte:</strong> Neueröffnung-Badge 04/2026 · Frühbuchung möglich</li>
+          <li><strong>Disclaimer:</strong> netto + Einstiegspreis-Hinweis (rechtssichere Marketing-Formel)</li>
+        </ul>
+      </details>
+      <div class="placeholder-list">
+        <h4>⚠️ B4 · 5 OPEN ITEMS für David</h4>
+        <ul>
+          <li>Mülheim Werkhalle-Maße + Preis (B/T/H, m², € netto)</li>
+          <li>Mülheim Zugangszeiten (24/7 oder 06–22?)</li>
+          <li>Köln-Rodenkirchen Werkhalle-Maße bestätigen</li>
+          <li>Köln-Rodenkirchen Preis 1.750 € — bestätigt?</li>
+          <li>Tor-Maße (Standard 2,90×3,30 oder XXL 3,80×4,00) je Standort</li>
+        </ul>
+      </div>
+      <div class="source-list">
+        <h4>✅ Datenquellen</h4>
+        <ul>
+          <li>Wuppertal: Angebotsflyer (✅ CLIENT 2026-04-15)</li>
+          <li>Mülheim+Köln Adressen: Standorte-Tabelle.md (✅ CLIENT)</li>
+          <li>Köln-Preis 1.750 €: TZ_Loesung.html (📄 SPEC)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- BLOCK 5 — DREI BETRIEBE, DREI WEGE                           -->
+<!-- ============================================================ -->
+<div class="content-section alt">
+
+  <div class="content-block">
+    <div class="block-anchor">
+      <span class="block-num">B5</span>
+      <h2 class="block-title">Drei Betriebe, drei Wege zur eigenen Werkhalle · 3 Story-Cards (FIKTIV)</h2>
+      <span class="block-tag">V1.0.1 · Story 3 = Malerbetrieb (war KFZ)</span>
+    </div>
+
+    <div class="block-mock">
+      <div class="story-section">
+        <h2 style="font-family:'Roboto Condensed',sans-serif; font-size:32px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; text-align:center; margin:0 0 8px;">DREI BETRIEBE, DREI WEGE ZUR EIGENEN WERKHALLE.</h2>
+        <p style="text-align:center; font-size:15px; color:var(--gray-text); margin:0 0 8px;">Drei beispielhafte Situationen aus dem Handwerk — von Sanitär bis Maler.</p>
+        <div class="story-grid">
+
+          <div class="story-card">
+            <span class="fiktiv-badge">⚠ Fiktiv · kein echter Mieter</span>
+            <h3>Story 1 · Sanitär (Tobias H., Mülheim)</h3>
+            <div class="story-block">
+              <span class="label">Vorher</span>
+              Doppelgarage zu klein, Material überall verteilt, der Sprinter verkeilt sich täglich beim Beladen — und jeden Morgen verliert das Team Zeit, bevor die erste Baustelle beginnt.
+            </div>
+            <div class="story-block">
+              <span class="label">Nachher</span>
+              95 m² Werkhalle in Mülheim. Der Sprinter fährt morgens direkt durchs XXL-Tor, Material lagert auf der Mezzanin-Ebene, Werkzeug griffbereit unten. Im Schnitt <strong>45 Minuten gesparte Beladungszeit pro Tag</strong>.
+            </div>
+            <div class="story-marker">Persona-Marker: Sanitär-/Heizungsbetrieb · 4 MA · Sprinter</div>
+          </div>
+
+          <div class="story-card">
+            <span class="fiktiv-badge">⚠ Fiktiv · kein echter Mieter</span>
+            <h3>Story 2 · Elektrik (7-MA-Betrieb, Wuppertal)</h3>
+            <div class="story-block">
+              <span class="label">Vorher</span>
+              Klassische Halle gepachtet — Fünfjahresvertrag, dazu doppelte Miete während des Umzugs in einen größeren Standort.
+            </div>
+            <div class="story-block">
+              <span class="label">Nachher</span>
+              95 m² Werkhalle Wuppertal mit nachgerüsteter Mezzanin-Ebene. Statt fünfjähriger Pacht jetzt <strong>6 Monate Mindestlaufzeit mit 3 Monaten Kündigungsfrist</strong> — die Festbindung ist überschaubar und passt zur tatsächlichen Auftragslage.
+            </div>
+            <div class="story-marker">Persona-Marker: Elektrobetrieb · 7 MA · Mezzanin-Nutzung</div>
+          </div>
+
+          <div class="story-card">
+            <span class="fiktiv-badge">⚠ Fiktiv · NEU V1.0.1 · Malerbetrieb</span>
+            <h3>Story 3 · Malerbetrieb (Köln-Rodenkirchen)</h3>
+            <div class="story-block">
+              <span class="label">Vorher</span>
+              Material und Gerüste verteilt auf zwei kleinen Mietflächen. Beim morgendlichen Beladen müssen die Gerüste umgeklappt und die Sprinter mehrfach umgesetzt werden — täglich rund 30 Minuten Verzögerung pro Mitarbeiter.
+            </div>
+            <div class="story-block">
+              <span class="label">Nachher</span>
+              95 m² Werkhalle in Köln-Rodenkirchen mit <strong>6 m Deckenhöhe</strong>. Gerüste stehen in voller Länge aufrecht im Lager, Material und Werkzeug an einer Adresse. Beladung morgens in einem Zug — der Tag startet sauber und planbar.
+            </div>
+            <div class="story-marker">Persona-Marker: Maler- &amp; Trockenbaubetrieb · 8 MA · Gerüstlager + Sprinter</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="block-annotations">
+      <details>
+        <summary>📝 V1.0.1 Decision · Story 3 KFZ → Malerbetrieb</summary>
+        <ul>
+          <li><strong>V1.0.1 KORREKTUR Story 3:</strong> KFZ-Schrauber → Malerbetrieb (Variante C aus Anna-Review 2026-05-03)</li>
+          <li><strong>Begründung:</strong> KFZ-/Reparatur-Tätigkeiten sind im Mega-Mietpark nicht zulässig (Verschmutzungs-/Ölthematik). Maler-/Trockenbau ist ölfrei, bringt 6-m-Höhe-USP zur Geltung (Gerüste in voller Länge), differenziert klar von Story 1 (Sanitär) und Story 2 (Elektrik)</li>
+          <li><strong>⚠ Fiktiv-Badge prominent:</strong> Yellow-Stripe-Pattern (parallel zu Standort V1.0.2 Placeholder-Zonen) — niemand soll die Stories für echte Reviews halten</li>
+          <li><strong>Story 2 Mietdauer-Update:</strong> 2 Jahre / 6 Mo. → <strong>6 Mo. / 3 Mo.</strong> (V1.0.1 KORREKTUR)</li>
+        </ul>
+      </details>
+      <div class="placeholder-list">
+        <h4>⚠️ B5 · 2 OPEN ITEMS · 3 Stories ⚠ AI/FIKTIV</h4>
+        <ul>
+          <li>David: 3 echte Mieter-Stories (Persona Markus, ölfreie Branchen) — gerne mit Vorname + Branche + Standort</li>
+          <li>David: Erlaubnis Foto + Logo zur Verwendung (Trust-Signal)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- BLOCK 6 — IN VIER SCHRITTEN                                  -->
+<!-- ============================================================ -->
+<div class="content-section">
+
+  <div class="content-block">
+    <div class="block-anchor">
+      <span class="block-num">B6</span>
+      <h2 class="block-title">In vier Schritten zur eigenen Werkhalle · Customer Journey Markus</h2>
+      <span class="block-tag">Phase 3+4 Markus · 24h-SLA</span>
+    </div>
+
+    <div class="block-mock">
+      <div class="steps-section">
+        <h2 style="font-family:'Roboto Condensed',sans-serif; font-size:32px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; text-align:center; margin:0 0 28px;">IN VIER SCHRITTEN ZUR EIGENEN WERKHALLE.</h2>
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-num">01</div>
+            <h3 class="step-h">Standort wählen</h3>
+            <p class="step-body">Wuppertal, Mülheim oder Köln-Rodenkirchen — du wählst die Lage, die zu deinem Auftragsgebiet und deiner Anfahrtslogistik passt.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">02</div>
+            <h3 class="step-h">Besichtigung oder 3D-Tour</h3>
+            <p class="step-body">Vor Ort persönlich oder digital (3D-Tour kommt in Phase 2). Du siehst Maße, Tor und Deckenhöhe — vor jeder Unterschrift.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">03</div>
+            <h3 class="step-h">Vertrag innerhalb von 24 Stunden</h3>
+            <p class="step-body">Digital und ohne wochenlangen Bonitäts-Check. Dein Ansprechpartner vor Ort meldet sich am gleichen Werktag zurück.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">04</div>
+            <h3 class="step-h">Einziehen — direkt befahrbar</h3>
+            <p class="step-body">Persönlicher Zugangscode, Tor-Einweisung, angeschlossener Strom: am ersten Tag bereit für deinen Sprinter.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="block-annotations">
+      <details>
+        <summary>📝 V1.0.1 Decision · Schritte als ganze Sätze</summary>
+        <ul>
+          <li><strong>H2 V1.0.1 (✓ A):</strong> "In vier Schritten zur eigenen Werkhalle." — natürlicher Sprachfluss, SEO-Keyword integriert</li>
+          <li><strong>Inhalt 1:1 aus Markus-Persona Phase 3+4</strong></li>
+          <li><strong>24h-SLA:</strong> Sync mit Standort V1.0.2 Step-02-Pattern</li>
+        </ul>
+      </details>
+      <div class="placeholder-list">
+        <h4>⚠️ B6 · 1 OPEN ITEM</h4>
+        <ul>
+          <li>David: 24h-SLA über alle 3 Werkhallen-Standorte realistisch?</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- BLOCK 7 — DREI STANDORTE                                     -->
+<!-- ============================================================ -->
+<div class="content-section alt">
+
+  <div class="content-block">
+    <div class="block-anchor">
+      <span class="block-num">B7</span>
+      <h2 class="block-title">Drei Standorte mit verfügbarer Werkhalle · Foto + Adresse + Status</h2>
+      <span class="block-tag">Logistik-Fokus · NICHT B4-Duplikat</span>
+    </div>
+
+    <div class="block-mock">
+      <div class="cross-section">
+        <h2 style="font-family:'Roboto Condensed',sans-serif; font-size:32px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; text-align:center; margin:0 0 8px;">DREI STANDORTE MIT VERFÜGBARER WERKHALLE.</h2>
+        <p style="text-align:center; font-size:15px; color:var(--gray-text); margin:0 0 8px;">Aktuell stehen unsere Werkhallen an drei Standorten in Deutschland zur Verfügung — die kürzeste Anfahrt findest du über deine Postleitzahl.</p>
+        <div class="cross-grid">
+
+          <div class="cross-card">
+            <div class="cross-photo">⚠ Foto Wuppertal-Außenaufnahme · David-pending</div>
+            <div class="cross-body">
+              <h3 class="cross-h">Wuppertal-Vohwinkel</h3>
+              <p class="cross-meta">Vohwinkeler Straße 148, 42329 Wuppertal<br><strong>Lage:</strong> westlich der Innenstadt · A46-Anschluss</p>
+              <span class="cross-status green">🟢 Verfügbar</span>
+            </div>
+            <a href="#" class="cross-cta">Standort öffnen → /standort/wuppertal/</a>
+          </div>
+
+          <div class="cross-card">
+            <div class="cross-photo">⚠ Foto Mülheim-Außenaufnahme · David-pending</div>
+            <div class="cross-body">
+              <h3 class="cross-h">Mülheim a.d.Ruhr</h3>
+              <p class="cross-meta">Aktienstr. 17, 45468 Mülheim a.d.Ruhr<br><strong>Lage:</strong> <span class="placeholder-text">⚠ A40-Anschluss, ÖPNV-Linie folgt</span></p>
+              <span class="cross-status green">🟢 Verfügbar (zu verifizieren)</span>
+            </div>
+            <a href="#" class="cross-cta">Standort öffnen → /standort/muelheim/</a>
+          </div>
+
+          <div class="cross-card">
+            <div class="cross-photo">⚠ Foto Köln-Rodenkirchen · David-pending</div>
+            <div class="cross-body">
+              <h3 class="cross-h">Köln-Rodenkirchen</h3>
+              <p class="cross-meta">Im Giesdorfer Grund 1, 50997 Köln<br><strong>Lage:</strong> <span class="placeholder-text">⚠ A4-Anschluss, ÖPNV-Linie folgt</span></p>
+              <span class="cross-status yellow">🟡 Neueröffnung 04/2026 — Frühbuchung</span>
+            </div>
+            <a href="#" class="cross-cta">Standort öffnen → /standort/koeln-rodenkirchen/</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="block-annotations">
+      <details>
+        <summary>📝 V1.0 Decision · B7 ≠ B4-Duplikat</summary>
+        <ul>
+          <li><strong>B4 vs. B7:</strong> B4 = Größen+Preise (Preis-Vergleich). B7 = Lage+Anfahrt+Status (Logistik-Entscheidung)</li>
+          <li><strong>H2 V1.0.1 (✓ A):</strong> "Drei Standorte mit verfügbarer Werkhalle." — sachlich, SEO-zentriert</li>
+          <li><strong>Wuppertal:</strong> A46 + Vohwinkel-Kontext aus Standort V1.0.2 übernommen</li>
+        </ul>
+      </details>
+      <div class="placeholder-list">
+        <h4>⚠️ B7 · 3 OPEN ITEMS</h4>
+        <ul>
+          <li>David: Mülheim Anfahrtsdaten (Autobahn + Min + ÖPNV-Linie)</li>
+          <li>David: Köln-Rodenkirchen Anfahrtsdaten (Autobahn + Min + ÖPNV-Linie)</li>
+          <li>David: Standort-Fotos (1 Außenaufnahme pro Standort, idealerweise mit offenem Tor)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- BLOCK 8 — 3D-TOUR                                            -->
+<!-- ============================================================ -->
+<div class="content-section">
+
+  <div class="content-block">
+    <div class="block-anchor">
+      <span class="block-num">B8</span>
+      <h2 class="block-title">Deine Werkhalle virtuell erkunden · Disabled · Phase-2-Roadmap</h2>
+      <span class="block-tag">3D-Tour · demnächst</span>
+    </div>
+
+    <div class="block-mock">
+      <div class="tour-section">
+        <h2 style="font-family:'Roboto Condensed',sans-serif; font-size:32px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; margin:0 0 12px;">DEINE WERKHALLE VIRTUELL ERKUNDEN.</h2>
+        <p style="font-size:15px; color:var(--gray-text); max-width:680px; margin:0 auto 8px;">Bevor du dich entscheidest, kannst du die Halle virtuell erkunden — mit echten Maßen, realer Deckenhöhe und 360°-Rundgang direkt vom Schreibtisch aus. Die 3D-Tour kommt im Laufe der nächsten Ausbaustufe.</p>
+        <div class="tour-mock">
+          <span class="phase-tag">Phase 2 · demnächst verfügbar</span>
+          <button class="btn-disabled">Tour starten ▶</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="block-annotations">
+      <details>
+        <summary>📝 V1.0.1 Decision · Roadmap-Sprache</summary>
+        <ul>
+          <li><strong>V1.0.1 Sprach-Update:</strong> „kommt im Laufe der nächsten Ausbaustufe" statt hartem „demnächst" → wirkt professioneller, vermittelt Roadmap</li>
+          <li><strong>Disabled-State:</strong> Button grayed-out · Phase-2-Tag · keine Click-Funktion</li>
+        </ul>
+      </details>
+      <div class="source-list">
+        <h4>✅ TZ-Mapping</h4>
+        <ul>
+          <li>S8 3D-Tour (TZ_Loesung) — gleicher Disabled-Pattern wie Startseite + Standort V1.0.2</li>
+          <li>Phase-2-Aktivierung: Live-Embed via Matterport oder vergleichbar</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- BLOCK 9 — TRUST                                              -->
+<!-- ============================================================ -->
+<div class="content-section alt">
+
+  <div class="content-block">
+    <div class="block-anchor">
+      <span class="block-num">B9</span>
+      <h2 class="block-title">Was unseren Handwerks-Mietern Substanz gibt · 4 Trust-Items</h2>
+      <span class="block-tag">1:1 Konsistenz zu Startseite B6</span>
+    </div>
+
+    <div class="block-mock">
+      <div class="trust-section">
+        <h2 style="font-family:'Roboto Condensed',sans-serif; font-size:32px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; text-align:center; margin:0 0 8px;">WAS UNSEREN HANDWERKS-MIETERN SUBSTANZ GIBT.</h2>
+        <div class="trust-grid">
+          <div class="trust-tile">
+            <h3 class="trust-tile-h">Formica baut, Mega vermietet.</h3>
+            <p class="trust-tile-body">Über 210 realisierte Bauprojekte und mehr als 27.000 Einheiten — du mietest gewachsene Substanz, nicht improvisierte Garage.</p>
+          </div>
+          <div class="trust-tile">
+            <h3 class="trust-tile-h">Laer Gruppe seit 2006.</h3>
+            <p class="trust-tile-body">Familienunternehmen mit eigenem Immobilienbestand — keine Pachtkette, keine versteckten Drittparteien.</p>
+          </div>
+          <div class="trust-tile">
+            <h3 class="trust-tile-h">16 Standorte deutschlandweit.</h3>
+            <p class="trust-tile-body">Wenn dein Auftragsgebiet wächst, wachsen deine Standort-Optionen mit.</p>
+          </div>
+          <div class="trust-tile">
+            <h3 class="trust-tile-h">Videoüberwacht und umzäunt rund um die Uhr.</h3>
+            <p class="trust-tile-body">Sonntags-Diebstähle aus offenen Höfen sind hier kein Thema — gesicherte Anlage statt Hofparkplatz.</p>
+          </div>
+        </div>
+        <div style="margin-top:24px;">
+          <div class="placeholder-zone small">
+            ⚠ OPTIONAL · Logo-Wall<br>
+            <span style="font-weight:400; text-transform:none; font-size:11px;">4–6 B2B-Mieter-Logos (Handwerk-Branche, ölfrei) · David-Freigabe ausstehend</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="block-annotations">
+      <details>
+        <summary>📝 V1.0.1 Decision · Body-Texte als ganze Sätze</summary>
+        <ul>
+          <li><strong>H2 V1.0.1 (✓ A):</strong> "Was unseren Handwerks-Mietern Substanz gibt." — narrativ-direkt, baut Vertrauen über Sprache</li>
+          <li><strong>Stats:</strong> 210+/27.000+/16 Standorte aus Startseite-V1.3 B6 1:1 (Single Source of Truth)</li>
+          <li><strong>Body-Texte:</strong> als ganze Sätze (statt Stakkato V1.0)</li>
+        </ul>
+      </details>
+      <div class="placeholder-list">
+        <h4>⚠️ B9 · 2 OPEN ITEMS</h4>
+        <ul>
+          <li>David: 4–6 B2B-Mieter-Logos (Handwerk-Branche) zur Verwendung freigegeben?</li>
+          <li>Optional: 1–2 echte Quote-Cards von Handwerker-Mietern (parallel zu B5)</li>
+        </ul>
+      </div>
+      <div class="source-list">
+        <h4>✅ Daten-Status — alle 4 Stats ✅ CLIENT</h4>
+        <ul>
+          <li>210+ / 27.000+ ✅ CLIENT (Formica-Präsentation)</li>
+          <li>16 Standorte ✅ CLIENT (Standorte-Tabelle, 3 Neueröffnungen 02/04/05)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- BLOCK 10 — FAQ                                               -->
+<!-- ============================================================ -->
+<div class="content-section">
+
+  <div class="content-block">
+    <div class="block-anchor">
+      <span class="block-num">B10</span>
+      <h2 class="block-title">Antworten auf häufige Fragen zur Werkhalle · 5 FAQs</h2>
+      <span class="block-tag">V1.0.1 · FAQ 4 KFZ entfernt · FAQ 5 Mietdauer 6/3 Mo.</span>
+    </div>
+
+    <div class="block-mock">
+      <div class="faq-section">
+        <h2 style="font-family:'Roboto Condensed',sans-serif; font-size:32px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; text-align:center; margin:0 0 8px;">ANTWORTEN AUF HÄUFIGE FRAGEN ZUR WERKHALLE.</h2>
+        <p style="text-align:center; font-size:15px; color:var(--gray-text); margin:0 0 8px;">Antworten auf die häufigsten Fragen, die Handwerker uns zur Werkhalle stellen — kompakt und ohne Marketing-Sprech.</p>
+        <div class="faq-list">
+
+          <div class="faq-item">
+            <div class="faq-q">Wie hoch ist die Bodenbelastung der Werkhalle? <span class="faq-q-icon">+</span></div>
+            <div class="faq-a">
+              ⚠️ <strong>PLACEHOLDER</strong> — bei David anfragen: kg/m² Bodenbelastung pro Standort. Standardwert für Industriehallen meist 5.000 kg/m², aber Mega-spezifischer Wert nötig.<br><br>
+              <strong>Draft-Antwort (vorläufig):</strong> Unsere Werkhallen sind für klassische Handwerks-Nutzung ausgelegt — Stapler, Werkbank und Materiallager. Den genauen kg/m²-Wert für deinen Wunsch-Standort senden wir dir auf Anfrage zu.
+            </div>
+          </div>
+
+          <div class="faq-item open">
+            <div class="faq-q">Gibt es einen Bodenablauf in der Halle? <span class="faq-q-icon">+</span></div>
+            <div class="faq-a">
+              In der Standardausstattung ist ein Bodenablauf vorhanden. Spezifische Drainage-Anforderungen — etwa bei besonders feuchten Tätigkeiten — klären wir individuell vor Vertragsabschluss. Bitte gib bei der Anfrage an, welchen Bedarf du hast.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Welche Brandschutzklasse haben die Hallen? <span class="faq-q-icon">+</span></div>
+            <div class="faq-a">
+              ⚠️ <strong>PLACEHOLDER</strong> — bei David anfragen: F30, F60 oder F90 je Standort?<br><br>
+              <strong>Draft-Antwort (vorläufig):</strong> Unsere Werkhallen erfüllen die geltenden gewerblichen Brandschutz-Anforderungen. Die konkrete Klassifizierung pro Standort senden wir dir auf Anfrage.
+            </div>
+          </div>
+
+          <div class="faq-item open">
+            <div class="faq-q">Kann ich eigene Werkbänke, Regalsysteme oder eine Druckluftanlage einbauen? <span class="faq-q-icon">+</span></div>
+            <div class="faq-a">
+              <strong>Ja</strong> — Mieterausbau ist nach vorheriger Absprache möglich. Festeinbauten wie Werkbänke, Hochregale, Mezzanin-Erweiterungen oder eine Druckluft-Versorgung klären wir gemeinsam vor Vertragsabschluss, damit du sie bei Auszug entweder rückbauen oder ablösen kannst. Die <strong>6 m Deckenhöhe</strong> gibt dir auch für vertikale Erweiterungen Spielraum.
+            </div>
+          </div>
+
+          <div class="faq-item open">
+            <div class="faq-q">Wie lange muss ich mich binden? <span class="faq-q-icon">+</span></div>
+            <div class="faq-a">
+              Die Mindestmietdauer für unsere Werkhallen beträgt <strong>6 Monate</strong>, die Kündigungsfrist liegt bei <strong>3 Monaten</strong>. Beispiel Wuppertal: 1.360 € netto + 100 € Nebenkosten × 6 Monate = <strong>8.760 € netto Gesamtverpflichtung</strong>. So bleibt deine Festbindung überschaubar — und sobald die ersten Aufträge im neuen Standort durchlaufen, hast du volle Kalkulations-Sicherheit.
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="block-annotations">
+      <details>
+        <summary>📝 V1.0.1 Decisions · FAQ 4 + FAQ 5 KORREKTUREN</summary>
+        <ul>
+          <li><strong>V1.0.1 KORREKTUR FAQ 4:</strong> KFZ-Hebebühne aus V1.0 entfernt (Mega-Mietpark erlaubt keine KFZ-Werkstatt-Tätigkeiten). Stattdessen typische Handwerker-Ausbauten (Werkbank · Hochregal · Druckluft)</li>
+          <li><strong>V1.0.1 KORREKTUR FAQ 5:</strong> 2 Jahre / 6 Mo. → <strong>6 Mo. / 3 Mo.</strong> · Rechenbeispiel auf 6-Monats-Verpflichtung umgerechnet (8.760 € statt 35.040 €)</li>
+          <li><strong>5 FAQs werkhallen-spezifisch:</strong> KEINE Duplikation der Homepage-FAQ</li>
+        </ul>
+      </details>
+      <div class="placeholder-list">
+        <h4>⚠️ B10 · 5 OPEN ITEMS für David</h4>
+        <ul>
+          <li>Bodenbelastung kg/m² pro Werkhallen-Standort (FAQ 1)</li>
+          <li>Brandschutzklasse pro Standort (FAQ 3)</li>
+          <li>Drainage-Standard (Bodenablauf) bestätigt? (FAQ 2)</li>
+          <li>Mieterausbau-Regeln dokumentiert? (FAQ 4)</li>
+          <li>6/3-Mindestlaufzeit gilt für alle 3 Werkhallen-Standorte gleich? (FAQ 5)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- BLOCK 11 — FORM                                              -->
+<!-- ============================================================ -->
+<div class="content-section alt">
+
+  <div class="content-block">
+    <div class="block-anchor">
+      <span class="block-num">B11</span>
+      <h2 class="block-title">Werkhalle unverbindlich anfragen · Form mit Hidden nutzungsart=werkhalle</h2>
+      <span class="block-tag">V1.0.1 · KFZ aus Branche-Dropdown entfernt</span>
+    </div>
+
+    <div class="block-mock">
+      <div class="form-section">
+        <h2 style="font-family:'Roboto Condensed',sans-serif; font-size:32px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; text-align:center; margin:0 0 8px;">WERKHALLE UNVERBINDLICH ANFRAGEN.</h2>
+        <p style="text-align:center; font-size:15px; color:var(--gray-text); margin:0 0 8px;">Dein Ansprechpartner vor Ort meldet sich innerhalb von 24 Stunden zurück — direkt und ohne Umwege.</p>
+        <div class="form-mock">
+          <div class="form-row single">
+            <div class="form-field">
+              <label>Standort <span class="req">*</span></label>
+              <select><option>Wuppertal</option><option>Mülheim</option><option>Köln-Rodenkirchen</option></select>
+            </div>
+          </div>
+          <div class="form-row single">
+            <div class="form-field">
+              <label>Firma <span class="req">*</span></label>
+              <input type="text" placeholder="z.B. Mustermann Sanitär GmbH">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label>Vor- &amp; Nachname <span class="req">*</span></label>
+              <input type="text" placeholder="Markus Mustermann">
+            </div>
+            <div class="form-field">
+              <label>Telefon <span class="req">*</span></label>
+              <input type="tel" placeholder="+49 …">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label>E-Mail <span class="req">*</span></label>
+              <input type="email" placeholder="markus@beispiel.de">
+            </div>
+            <div class="form-field">
+              <label>Branche <span style="color:var(--gray);">(optional)</span></label>
+              <select>
+                <option>— Branche wählen —</option>
+                <option>Sanitär</option>
+                <option>Elektro</option>
+                <option>Holz/Bau</option>
+                <option>Maler/Trockenbau</option>
+                <option>GaLa-Bau</option>
+                <option>Logistik</option>
+                <option>Sonstiges</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row single">
+            <div class="form-field">
+              <label>Wunsch-Mietbeginn <span style="color:var(--gray);">(optional)</span></label>
+              <input type="date">
+            </div>
+          </div>
+          <div class="form-row single">
+            <div class="form-field">
+              <label>Nachricht <span style="color:var(--gray);">(optional)</span></label>
+              <textarea placeholder="Spezifische Anforderungen: Tor-Größe, 400 V, Mezzanin etc."></textarea>
+            </div>
+          </div>
+          <div class="form-hidden-notice">Hidden Field · <code>nutzungsart=werkhalle</code> · Bitrix24-Routing</div>
+          <div class="form-cta-row">
+            <button class="btn-primary">Anfrage senden →</button>
+            <span class="form-cta-sub">Antwort binnen 24 h · keine Weitergabe an Dritte</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="block-annotations">
+      <details>
+        <summary>📝 V1.0.1 Decision · Branche-Dropdown ohne KFZ</summary>
+        <ul>
+          <li><strong>V1.0.1 KORREKTUR Branche-Dropdown:</strong> KFZ aus V1.0 entfernt (keine KFZ-Werkstatt-Tätigkeiten erlaubt). <strong>Maler/Trockenbau</strong> und <strong>GaLa-Bau</strong> neu hinzugefügt (passende, ölfreie Branchen). Logistik aus B2B-Pragmatismus ergänzt</li>
+          <li><strong>Final V1.0.1:</strong> Sanitär · Elektro · Holz/Bau · Maler/Trockenbau · GaLa-Bau · Logistik · Sonstiges</li>
+          <li><strong>Hidden Field:</strong> <code>nutzungsart=werkhalle</code> für Bitrix24-Routing</li>
+          <li><strong>B2B-First:</strong> Firma-Feld an zweiter Stelle nach Standort, vor Name</li>
+        </ul>
+      </details>
+      <div class="placeholder-list">
+        <h4>⚠️ B11 · 2 OPEN ITEMS</h4>
+        <ul>
+          <li>David: Branche-Dropdown V1.0.1 final bestätigen</li>
+          <li>David: Wunsch-Mietbeginn als Date-Picker oder Quartalsauswahl?</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- BLOCK 11.5 — VERWANDTE LÖSUNGEN                              -->
+<!-- ============================================================ -->
+<div class="content-section">
+
+  <div class="content-block">
+    <div class="block-anchor">
+      <span class="block-num">B11.5</span>
+      <h2 class="block-title">Weitere Lösungen aus deinem Mietpark · 2 Cross-Link-Karten</h2>
+      <span class="block-tag">Lagerraum bewusst ausgelassen · Persona-Sprung zu groß</span>
+    </div>
+
+    <div class="block-mock">
+      <div class="related-section">
+        <h2 style="font-family:'Roboto Condensed',sans-serif; font-size:32px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; text-align:center; margin:0 0 28px;">WEITERE LÖSUNGEN AUS DEINEM MIETPARK.</h2>
+        <div class="related-grid">
+
+          <div class="related-card">
+            <h3 class="related-h">Garage</h3>
+            <p class="related-text">„Du brauchst weniger als 95 m²? Unsere XXL-Garagen ab 26 m² mit bis zu 5 m Deckenhöhe bieten denselben Volumen-Vorteil im kleineren Format — ideal für Einzelfahrzeuge, kleines Materiallager oder Hobby-Werkstatt."</p>
+            <p class="related-hook">Persona-Hook: auch für B2B mit kleinerem Lagerbedarf</p>
+            <a href="#" class="related-cta">Zur Garage → /loesungen/garage/</a>
+          </div>
+
+          <div class="related-card">
+            <h3 class="related-h">Büro + Hybrid</h3>
+            <p class="related-text">„Du brauchst Halle und Büro in einem? Unsere Hybrid-Lösung kombiniert Lagerfläche im Erdgeschoss mit professionellem Büro im Obergeschoss — eine Adresse für dein Business, vollständig ausgestattet ab dem ersten Tag."</p>
+            <p class="related-hook">Persona-Hook: Hybrid-Setup für Handwerks-Betriebe mit Verwaltungsbedarf</p>
+            <a href="#" class="related-cta">Zum Büro+Hybrid → /loesungen/buero-hybrid/</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="block-annotations">
+      <details>
+        <summary>📝 V1.0 Decision · 2 Karten ohne Lagerraum</summary>
+        <ul>
+          <li><strong>Lagerraum NICHT als Cross-Link:</strong> Persona-Sprung zu groß (B2B Markus → B2C Sarah). Strategie-C-konsistent</li>
+          <li><strong>H2 V1.0.1 (✓ A):</strong> "Weitere Lösungen aus deinem Mietpark." — ruhig, brand-bezogen, SEO-Mietpark-Term integriert</li>
+          <li><strong>Spiegel TZ_Loesung S11.5</strong> 1:1</li>
+        </ul>
+      </details>
+      <div class="source-list">
+        <h4>✅ TZ-Mapping</h4>
+        <ul>
+          <li>S11.5 Verwandte Lösungen (TZ_Loesung)</li>
+          <li>2 Karten: <code>/loesungen/garage/</code> + <code>/loesungen/buero-hybrid/</code></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- BLOCK 12 — CTA-FOOTER (Re-Use Startseite)                    -->
+<!-- ============================================================ -->
+<div class="content-section alt">
+
+  <div class="content-block">
+    <div class="block-anchor">
+      <span class="block-num">B12</span>
+      <h2 class="block-title">CTA-Footer · Outro + Footer-Sektionen · Re-Use Startseite/Standort 1:1</h2>
+      <span class="block-tag">Single Source of Truth · Update propagiert</span>
+    </div>
+
+    <div class="block-mock">
+      <div class="outro-section">
+        <p class="outro-claim-tag">Mega-Mietpark</p>
+        <h2 class="outro-claim">Dein Raum · dein Standort · jetzt verfügbar</h2>
+        <p class="outro-sub">Finde deine Einheit — in wenigen Sekunden.</p>
+        <button class="btn-primary" style="position:relative; z-index:2;">Standort finden</button>
+      </div>
+      <div class="real-footer">
+        <div class="footer-2col">
+          <div>
+            <h5>Mietpark · 4 Lösungen</h5>
+            <ul>
+              <li><a href="#">Garage</a></li>
+              <li><a href="#">Lagerraum</a></li>
+              <li><a href="#">Büro</a></li>
+              <li><a href="#">Werkhalle</a></li>
+            </ul>
+          </div>
+          <div>
+            <h5>Navigation</h5>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Standorte</a></li>
+              <li><a href="#">Anfrage</a></li>
+              <li><a href="#">Kontakt</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-trust">
+          <div>
+            📞 <strong>+49 2309 5439995</strong> · 📧 <strong>anfrage@mega-mietpark.de</strong> · 📍 <span class="placeholder-text">[Hauptanschrift Mega-Mietpark — David-pending]</span>
+          </div>
+          <div>
+            Mega-Mietpark — Ein Unternehmen der Laer Gruppe.<br>
+            Gebaut von Formica · ArcelorMittal · Hörmann.
+          </div>
+        </div>
+        <div style="margin-top:14px; padding-top:14px; border-top:1px solid rgba(255,255,255,0.08); font-size:11px; color:rgba(255,255,255,0.4); display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+          <span>Impressum · Datenschutz · AGB</span>
+          <span>© 2026 MEGA-Mietpark</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="block-annotations">
+      <details>
+        <summary>📝 V1.0 Decision · 1:1 Re-Use Startseite/Standort</summary>
+        <ul>
+          <li><strong>Outro-H2:</strong> "DEIN RAUM · DEIN STANDORT · JETZT VERFÜGBAR" — identisch Startseite V1.3 + Standort V1.0.2</li>
+          <li><strong>Update-Propagation:</strong> bei Updates auf Startseite-B12 propagiert automatisch zu allen Standort- und Lösung-Seiten</li>
+          <li><strong>Footer 2-Sektionen:</strong> Mietpark-Quick-Links + Navigation</li>
+        </ul>
+      </details>
+      <div class="placeholder-list">
+        <h4>⚠️ Footer · 1 PLACEHOLDER (geerbt)</h4>
+        <ul>
+          <li><strong>Hauptanschrift Mega-Mietpark</strong> — gleicher Pending-Punkt wie Startseite/Standort B12</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- OPEN ITEMS V1.0.1 SECTION                                    -->
+<!-- ============================================================ -->
+<section class="open-items-section">
+  <p class="cover-tag" style="color:var(--red); margin-bottom:8px;">Übersicht · Open Items V1.0.1</p>
+  <h2 style="font-family:'Roboto Condensed',sans-serif; font-size:28px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; margin:0 0 8px;">📋 Stand der Texte · V1.0.1 mit 4 Korrekturen aus Anna-Review</h2>
+  <p style="font-size:14px; color:var(--gray-text); margin:0 0 12px;">13 Sektionen Block-by-Block visualisiert · V1.0 (Erst-Erstellung 08:30) → V1.0.1 (4 Korrekturen 09:42 — Mietdauer · Verbote · Story 3 · Sprache) · Tonalität &amp; Konventionen 1:1 von Startseite V1.3 + Standort V1.0.2 vererbt.</p>
+
+  <div class="open-items-grid">
+
+    <div class="open-items-card">
+      <div class="open-items-card-head placeholder">
+        <span style="font-size:20px;">⚠</span>
+        <h3>17 DAVID-FRAGEN · Konsolidiertes Bündel</h3>
+      </div>
+      <div class="open-items-card-body">
+        <strong style="font-size:11px; text-transform:uppercase; letter-spacing:0.06em; color:#E65100;">Daten-Vervollständigung</strong>
+        <ol>
+          <li>Mülheim Werkhalle: Maße + Preis + Zugangszeiten</li>
+          <li>Köln-Rodenkirchen: Maße bestätigen + Preis 1.750 € + Zugangszeiten</li>
+          <li>Tor-Maße je Standort (Standard oder XXL)</li>
+          <li>24/7-Status Mülheim</li>
+          <li>Anfahrtsdaten Mülheim + Köln-Rodenkirchen (Autobahn, Min, ÖPNV)</li>
+          <li>Hauptanschrift Mega-Mietpark (Footer)</li>
+        </ol>
+        <strong style="font-size:11px; text-transform:uppercase; letter-spacing:0.06em; color:#E65100;">Mietdauer &amp; Bedingungen</strong>
+        <ol start="7">
+          <li>6/3-Mindestlaufzeit gilt für alle 3 Werkhallen-Standorte gleich?</li>
+          <li>Mieterausbau-Regeln dokumentiert? (Was darf rein, was nicht?)</li>
+          <li>Konsistenz-Check: Startseite-FAQ-3 sagt aktuell „2 Jahre" — V1.0.1 ist 6/3 → in nächster Session korrigieren</li>
+        </ol>
+        <strong style="font-size:11px; text-transform:uppercase; letter-spacing:0.06em; color:#E65100;">Stories &amp; Trust</strong>
+        <ol start="10">
+          <li>3 echte Mieter-Stories (Markus-Persona, ölfreie Branchen)</li>
+          <li>Erlaubnis Foto + Logo der Mieter</li>
+          <li>4–6 B2B-Mieter-Logos (ölfreie Handwerk-Branchen)</li>
+        </ol>
+        <strong style="font-size:11px; text-transform:uppercase; letter-spacing:0.06em; color:#E65100;">Technische FAQ</strong>
+        <ol start="13">
+          <li>Bodenbelastung kg/m² pro Standort</li>
+          <li>Brandschutzklasse pro Standort (F30/F60/F90)</li>
+          <li>Drainage-Standard bestätigt?</li>
+        </ol>
+        <strong style="font-size:11px; text-transform:uppercase; letter-spacing:0.06em; color:#E65100;">Operativ</strong>
+        <ol start="16">
+          <li>24h-SLA über alle 3 Standorte realistisch?</li>
+          <li>Branche-Dropdown V1.0.1 final OK?</li>
+        </ol>
+        <p style="margin:12px 0 0; padding:10px 12px; background:#FFF3E0; border-left:3px solid #E65100; border-radius:3px; font-size:12px; color:#1F1F1F;">
+          <strong>📦 Bündelungs-Tipp:</strong> Items 1 + 2 + 3 + 4 + 5 in eine konsolidierte Standort-Daten-Anfrage an David bündeln. Items 7 + 8 + 9 in eine Mietvertrags-Konsistenz-Anfrage.
+        </p>
+      </div>
+    </div>
+
+    <div class="open-items-card">
+      <div class="open-items-card-head questions">
+        <span style="font-size:20px;">❓</span>
+        <h3>4 V1.0.1-KORREKTUREN · aus Anna-Review</h3>
+      </div>
+      <div class="open-items-card-body">
+        <ol>
+          <li><strong>Mietdauer Werkhalle:</strong> 2 J / 6 Mo. → <strong>6 Mo. / 3 Mo.</strong> (✅ CLIENT-Workshop) — angewendet in B3 Punkt 5, B5 Story 2, B10 FAQ 5</li>
+          <li><strong>Verbotene Tätigkeiten</strong> (KFZ, Reparatur, Lackiererei, Öl-Tätigkeiten) intern bekannt — auf Website <strong>nicht thematisiert</strong>, aber:
+            <ul style="padding-left:18px; margin:4px 0;">
+              <li>B5 Story 3 KFZ → Malerbetrieb Köln-Rodenkirchen</li>
+              <li>B10 FAQ 4 Hebebühne → Werkbank/Hochregal/Druckluft</li>
+              <li>B11 Form Branche-Dropdown: KFZ entfernt, Maler/Trockenbau + GaLa-Bau + Logistik ergänzt</li>
+            </ul>
+          </li>
+          <li><strong>Story 3 ersetzt</strong> (Variante C aus Anna-Review) — bringt 6-m-Höhe-USP zur Geltung (Gerüstlager in voller Länge)</li>
+          <li><strong>Headlines &amp; Sublines sprachlich aufgewertet:</strong> SEO-Keywords bleiben enthalten, werden aber in flüssige Sätze eingebettet statt als Wort-Stakkato gestapelt. UPPERCASE-Vorgabe bleibt erhalten — Wirkung wird durch Satz-Logik geglättet.
+            <ul style="padding-left:18px; margin:4px 0; font-size:12px;">
+              <li>H1: „Dein Materiallager — direkt befahrbar." → „Werkhalle mieten — direkt befahrbar."</li>
+              <li>B2: „Kennst du das?" → „Typische Engpässe wachsender Betriebe."</li>
+              <li>B3: „Das bekommst du." → „Ausstattung und Leistung im Überblick."</li>
+              <li>B5: „Wie Handwerker unsere Hallen nutzen." → „Drei Betriebe, drei Wege zur eigenen Werkhalle."</li>
+              <li>B7: „Wo deine Halle steht." → „Drei Standorte mit verfügbarer Werkhalle."</li>
+              <li>B11: „Anfrage — deine Halle wartet." → „Werkhalle unverbindlich anfragen."</li>
+              <li>B11.5: „Passt nicht ganz? Vielleicht eine dieser Lösungen." → „Weitere Lösungen aus deinem Mietpark."</li>
+            </ul>
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="open-items-card">
+      <div class="open-items-card-head andrey">
+        <span style="font-size:20px;">🎨</span>
+        <h3>11 ANDREY-AUFGABEN · Bitrix24 #3839</h3>
+      </div>
+      <div class="open-items-card-body">
+        <strong style="font-size:11px; text-transform:uppercase; letter-spacing:0.06em; color:#6A1B9A;">Hero &amp; USP</strong>
+        <ol>
+          <li><strong>B1:</strong> Hero-Visual Halle-Innenaufnahme mit Sprinter — Stock-Fallback bis David Action-Foto liefert</li>
+          <li><strong>B3 Punkt 6:</strong> Highlight-Styling (Akzentfarbe oder Icon-Box) — visuelle Heraushebung K2-USP</li>
+          <li><strong>OPTIONAL B3-Visual:</strong> Vergleichsgrafik Self-Storage 2,5 m vs. Mega 6 m mit „2,4-fach"-Label</li>
+        </ol>
+        <strong style="font-size:11px; text-transform:uppercase; letter-spacing:0.06em; color:#6A1B9A;">Cross-Link-Mechaniken</strong>
+        <ol start="4">
+          <li><strong>B1.5 Sticky Sub-Nav:</strong> 4 Pills mit Use-Case-Subline (active state Werkhalle)</li>
+          <li><strong>B7 Standort-Karten:</strong> 3 Karten Foto + Adresse + Status-Badge + Cross-Link</li>
+          <li><strong>B11.5:</strong> 2-Karten-Layout (Garage + Büro+Hybrid · KEIN Lagerraum)</li>
+        </ol>
+        <strong style="font-size:11px; text-transform:uppercase; letter-spacing:0.06em; color:#6A1B9A;">Story-Cards</strong>
+        <ol start="7">
+          <li><strong>B5:</strong> 3 Cards mit prominentem ⚠ Fiktiv-Badge (rote Border / Yellow-Stripe-Pattern wie Standort V1.0.2 Placeholder-Zonen) — Story 3 ist Malerbetrieb (V1.0.1)</li>
+        </ol>
+        <strong style="font-size:11px; text-transform:uppercase; letter-spacing:0.06em; color:#6A1B9A;">Trust &amp; Footer</strong>
+        <ol start="8">
+          <li><strong>B9 Trust-Items:</strong> 4 Items mit Stats + Icons (1:1 Konsistenz zu Startseite B6)</li>
+          <li><strong>B9 Logo-Wall (optional):</strong> Slot vorhalten für 4–6 B2B-Logos</li>
+          <li><strong>B12 CTA-Footer:</strong> 1:1 Re-Use Startseite/Standort V1.0.2 — keine Eigenentwicklung</li>
+        </ol>
+        <strong style="font-size:11px; text-transform:uppercase; letter-spacing:0.06em; color:#6A1B9A;">Form</strong>
+        <ol start="11">
+          <li><strong>B11 Form:</strong> Branche-Dropdown V1.0.1 (KFZ entfernt · Maler/Trockenbau + GaLa-Bau + Logistik ergänzt) · Hidden <code>nutzungsart=werkhalle</code></li>
+        </ol>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="checkpoint-block">
+    <h4>📍 CHECKPOINT · Lösung-Seite Werkhalle V1.0.1 · 2026-05-03</h4>
+    <p><strong>Готово:</strong> 13 Sektionen (META + B1–B12 + B1.5 + B11.5) · V1.0 Erst-Erstellung 08:30 → V1.0.1 09:42 mit 4 Anna-Review-Korrekturen (Mietdauer 6/3 Mo. · Verbote intern · Story 3 Malerbetrieb · Sprach-Aufwertung Headlines/Sublines). Tonalität &amp; Konventionen 1:1 von Startseite V1.3 + Standort V1.0.2 geerbt.</p>
+    <p><strong>Strategie:</strong> C (Hybrid · Persona-Hooks pro Lösung-Template) · <strong>Persona-Primary:</strong> Markus (B2B Handwerker, Sanitär/Heizung, 5 MA, Pragmatiker)</p>
+    <p><strong>K2-Status (Volumen-USP):</strong> ✅ Erfüllt — B1 Hero Subline + B3 Punkt 6 + Meta-Description · „bis zu 2,4-fach" mit Marketing-Sicherheits-Formel</p>
+    <p><strong>Файлы:</strong> <code>content/03_loesung_werkhalle.md</code> (V1.0.1) + <code>docs/preview/mega-mietpark_content_03_loesung_werkhalle.html</code> (V1.0.1)</p>
+    <p><strong>Placeholder-Zonen:</strong> 11 (8 Daten-Placeholders + 3 fiktive Stories) · <strong>Open Items:</strong> 17 David-Fragen + 11 Andrey-Tasks</p>
+    <p><strong>Следующий шаг:</strong> Review V1.0.1 mit Anna · ggf. V1.0.2-Refinement · gh-pages Push · Lösung-Template-Replikation auf Garage / Lagerraum / Büro+Hybrid</p>
+    <p><strong>Cross-Page-Sync (V1.1-Roadmap):</strong> Startseite V1.3 FAQ-3 Mietdauer-Korrektur (aktuell „2 Jahre" → 6/3 Mo.) · Standort-Wuppertal V1.0.2 B4 Werkhalle-Karte K2-Sync · Startseite V1.3 B3 Werkhalle-Card Persona-Hook verstärken</p>
+    <p><strong>Контекст:</strong> mega_mietpark | phase2_loesung | V1.0.1 ready for Anna-review</p>
+  </div>
+
+</section>
+
+<!-- ============================================================ -->
+<!-- AGENCY FOOTER                                                -->
+<!-- ============================================================ -->
+<footer>
+  <div>
+    <div class="footer-brand">W&amp;S <span>AGENCY</span></div>
+    <p style="margin-top:6px;">Content Preview · Lösung Werkhalle · <strong style="color:var(--red);">V1.0.1 · DE + RU</strong></p>
+  </div>
+  <div style="text-align:right;">
+    <p>← Zurück zum <a href="index.html" style="color:var(--red);">TZ-Hub</a></p>
+    <p style="margin-top:4px;">Stand: 2026-05-03 [AS]</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var btn = document.getElementById('ruToggle');
+  var body = document.body;
+  var STORAGE_KEY = 'tz-v21-ru-visible';
+  var stored = null;
+  try { stored = localStorage.getItem(STORAGE_KEY); } catch (e) {}
+  if (stored === 'off') { body.classList.add('hide-ru'); btn.classList.add('off'); btn.textContent = 'DE only'; }
+  btn.addEventListener('click', function () {
+    body.classList.toggle('hide-ru');
+    var hidden = body.classList.contains('hide-ru');
+    btn.classList.toggle('off', hidden);
+    btn.textContent = hidden ? 'DE only' : 'DE + RU';
+    try { localStorage.setItem(STORAGE_KEY, hidden ? 'off' : 'on'); } catch (e) {}
+  });
+
+  // FAQ toggle
+  document.querySelectorAll('.faq-q').forEach(function(q) {
+    q.addEventListener('click', function() {
+      this.parentElement.classList.toggle('open');
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
