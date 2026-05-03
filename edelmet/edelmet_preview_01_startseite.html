@@ -96,12 +96,28 @@ blockquote { border-left: 4px solid var(--accent); padding: 1rem 1.5rem; margin:
 /* === PROOF / STATS === */
 .proof-section { padding: 60px 0; background: var(--secondary); color: white; }
 .proof-section h2 { color: white; }
+.proof-subheadline { color: rgba(255,255,255,.85); font-size: 1.05rem; margin: 8px 0 16px; }
+.proof-h3 { color: white; margin-top: 32px; font-size: 1.4rem; }
+.proof-galerie { margin: 24px 0; }
+.galerie-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+@media(max-width:768px) { .galerie-grid { grid-template-columns: repeat(2, 1fr); } }
+.galerie-item { aspect-ratio: 1/1.6; background: rgba(255,255,255,.08); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: rgba(255,255,255,.4); }
+.galerie-note { color: rgba(255,255,255,.5); font-size: .8rem; margin-top: 8px; font-style: italic; }
 .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 32px; margin: 32px 0; text-align: center; }
+.stats-grid-inverted { grid-template-columns: repeat(5, 1fr); text-align: left; gap: 16px; }
+@media(max-width:768px) { .stats-grid-inverted { grid-template-columns: repeat(2, 1fr); } }
 .stat { text-align: center; }
+.stat-inverted { text-align: left; padding: 16px 0; border-top: 1px solid rgba(255,255,255,.2); }
+.stat-inverted .stat-label { font-size: .85rem; opacity: .7; margin-bottom: 8px; text-transform: none; order: 1; }
+.stat-inverted .stat-value { font-size: 2.2rem; font-weight: 800; color: var(--accent); order: 2; }
+.stat-inverted { display: flex; flex-direction: column; }
 .stat-value { font-size: 2rem; font-weight: 800; color: var(--accent); }
 .stat-label { font-size: .9rem; opacity: .8; margin-top: 4px; }
 .proof-text { max-width: 700px; opacity: .9; margin-top: 24px; }
 .proof-text p { color: rgba(255,255,255,.85); }
+.block-kicker { display: inline-block; font-size: .85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); margin-bottom: 12px; }
+.block-intro { color: var(--text-light); font-size: 1.05rem; margin: 12px 0 24px; max-width: 700px; }
+.steps-section .block-kicker, .cards-section .block-kicker { display: block; }
 
 /* === CARDS === */
 .cards-section { padding: 60px 0; }
@@ -328,7 +344,7 @@ blockquote { border-left: 4px solid var(--accent); padding: 1rem 1.5rem; margin:
 <section class="block-wrapper block-trust" id="block-2">
   <span class="block-label" style="display:none">Block 2 - TRUST-LAUFBAND</span>
   <button class="feedback-btn" onclick="toggleFeedback(2)">✏️ Vorschlag</button>
-  <div class="trust-bar container"><div class="trust-badges"><div class="trust-badge"><span class="trust-icon">•</span><span>точка / тонкий значок-разделитель). Mobile: замедлить скорость или вертикальный stack. Loop: infinite slow horizontal scroll, pause on hover. Designer Andrey: external link auf CodePen-Demo mit infinite-scroll-text-animation.]</span></div><div class="trust-badge"><span class="trust-icon">🚛</span><span>GPS-überwacht</span></div></div></div>
+  <div class="trust-bar container"><div class="trust-badges"><div class="trust-badge"><span class="trust-icon">🛡️</span><span>EfbV-Entsorgungsfachbetrieb</span></div><div class="trust-badge"><span class="trust-icon">🔒</span><span>Datenlöschung nach DIN 66399</span></div><div class="trust-badge"><span class="trust-icon">✅</span><span>DSGVO-konform</span></div><div class="trust-badge"><span class="trust-icon">🏭</span><span>8.500 m² Anlage in Hagen</span></div><div class="trust-badge"><span class="trust-icon">🏭</span><span>4.500 m² Partner-Anlage Solingen</span></div><div class="trust-badge"><span class="trust-icon">🚛</span><span>Eigener Fuhrpark · GPS-überwacht</span></div></div></div>
   <div class="feedback-panel" id="feedback-panel-2">
     <label>Ihr Vorschlag für Block 2 - TRUST-LAUFBAND:</label>
     <textarea id="feedback-text-2" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
@@ -343,7 +359,7 @@ blockquote { border-left: 4px solid var(--accent); padding: 1rem 1.5rem; margin:
 <section class="block-wrapper block-steps" id="block-3">
   <span class="block-label" style="display:none">Block 3 - PROZESS · STICKY-SCROLL</span>
   <button class="feedback-btn" onclick="toggleFeedback(3)">✏️ Vorschlag</button>
-  <div class="steps-section container"><h2></h2><div class="steps"><div class="step">
+  <div class="steps-section container"><p class="block-kicker">Unser Prozess</p><h2>So arbeiten wir</h2><p class="block-intro">Vom ersten Anruf bis zum Nachweis: 5 Schritte, jeder einzeln dokumentiert.</p><div class="steps"><div class="step">
   <div class="step-num">📋</div>
   <div class="step-body"><h3>Schritt 01: Anfrage</h3><p>Schildern Sie Ihren Bedarf - per Online-Formular, Telefon oder E-Mail. Wir antworten innerhalb von 24 Stunden.</p></div>
 </div><div class="step">
@@ -370,13 +386,17 @@ blockquote { border-left: 4px solid var(--accent); padding: 1rem 1.5rem; margin:
     </div>
   </div>
 </section>
-<section class="block-wrapper block-generic" id="block-4">
+<section class="block-wrapper block-proof" id="block-4">
   <span class="block-label" style="display:none">Block 4 - DATEN ÜBER EDELMET (INVERTED STAT-GRID)</span>
   <button class="feedback-btn" onclick="toggleFeedback(4)">✏️ Vorschlag</button>
-  <div class="generic-section container">
+  <div class="proof-section container">
   <h2>EDELMET in Zahlen</h2>
+  <p class="proof-subheadline">Eigene Anlagen. Eigenes Team. Eigener Fuhrpark.</p>
   
-  <p>Andere Anbieter koordinieren Subunternehmer und reichen die Dokumentation durch. Wir kontrollieren jeden Schritt selbst: Abholung, Datenlöschung, Erstbehandlung. Das Ergebnis ist ein einziger, lückenloser Audit-Pfad — ohne Schnittstellen, an denen Nachweise verloren gehen können.</p><table class="content-table"><thead><tr><th>#</th><th>Label (oben, klein)</th><th>Value (unten, gross)</th></tr></thead><tbody><tr><td>1</td><td>Hauptanlage Hagen</td><td>8.500 m²</td></tr><tr><td>2</td><td>Partner-Anlage Solingen</td><td>4.500 m²</td></tr><tr><td>3</td><td>Mitarbeiter</td><td>12</td></tr><tr><td>4</td><td>Gegründet</td><td>2017</td></tr><tr><td>5</td><td>Region</td><td>Bundesweit</td></tr></tbody></table>
+  <div class="proof-galerie"><div class="galerie-grid"><div class="galerie-item">📷</div><div class="galerie-item">📷</div><div class="galerie-item">📷</div><div class="galerie-item">📷</div><div class="galerie-item">📷</div></div><p class="galerie-note">5 Aufnahmen — Anlage Hagen, Demontage, Logistik, Region NRW, Server. F11 pending — Drohnenaufnahmen vom Kunden ausstehend. Bis dahin Stock-Bilder als Platzhalter (V1.2-mockup beibehalten). Nach Erhalt der Drohnenaufnahmen ersetzen.</p></div>
+  <div class="stats-grid stats-grid-inverted"><div class="stat stat-inverted"><div class="stat-label">Hauptanlage Hagen</div><div class="stat-value">8.500 m²</div></div><div class="stat stat-inverted"><div class="stat-label">Partner-Anlage Solingen</div><div class="stat-value">4.500 m²</div></div><div class="stat stat-inverted"><div class="stat-label">Mitarbeiter</div><div class="stat-value">12</div></div><div class="stat stat-inverted"><div class="stat-label">Gegründet</div><div class="stat-value">2017</div></div><div class="stat stat-inverted"><div class="stat-label">Region</div><div class="stat-value">Bundesweit</div></div></div>
+  <h3 class="proof-h3">Eine durchgängige Audit-Kette</h3>
+  <div class="proof-text"><p>Andere Anbieter koordinieren Subunternehmer und reichen die Dokumentation durch. Wir kontrollieren jeden Schritt selbst: Abholung, Datenlöschung, Erstbehandlung. Das Ergebnis ist ein einziger, lückenloser Audit-Pfad — ohne Schnittstellen, an denen Nachweise verloren gehen können.</p></div>
 </div>
   <div class="feedback-panel" id="feedback-panel-4">
     <label>Ihr Vorschlag für Block 4 - DATEN ÜBER EDELMET (INVERTED STAT-GRID):</label>
@@ -392,7 +412,7 @@ blockquote { border-left: 4px solid var(--accent); padding: 1rem 1.5rem; margin:
 <section class="block-wrapper block-cards" id="block-5">
   <span class="block-label" style="display:none">Block 5 - ZIELGRUPPEN-EINSTIEGE (8-CARD GRID)</span>
   <button class="feedback-btn" onclick="toggleFeedback(5)">✏️ Vorschlag</button>
-  <div class="cards-section container"><h2>Lösungen für regulierte Branchen</h2><div class="cards-grid"><div class="card">
+  <div class="cards-section container"><p class="block-kicker">Branchen</p><h2>Lösungen für regulierte Branchen</h2><div class="cards-grid"><div class="card">
   <h3>IT-Mittelstand</h3>
   <p>Hardware-Refresh mit lückenloser Dokumentation — von der Abholung bis zum Löschzertifikat.</p>
   <span class="card-link">Mehr erfahren →</span>
@@ -436,34 +456,20 @@ blockquote { border-left: 4px solid var(--accent); padding: 1rem 1.5rem; margin:
     </div>
   </div>
 </section>
-<section class="block-wrapper block-generic" id="block-6">
+<section class="block-wrapper block-lead_magnet" id="block-6">
   <span class="block-label" style="display:none">Block 6 - DOPPEL-CTA TEIL 1 (DECISION PACK · «noch nicht bereit»)</span>
   <button class="feedback-btn" onclick="toggleFeedback(6)">✏️ Vorschlag</button>
-  <div class="generic-section container">
-  <h2>Brauchen Sie Material für die interne Abstimmung?</h2>
-  
-  <p>[2-COLUMN LAYOUT (bestätigt aus Figma-Design 03.05.2026, Section B7):</p>
-<ul>
-<li>Links (x≈100, w≈563): visuelles PDF-Cover «Decision Pack» (rounded image + EDELMET logo overlay)</li>
-<li>Rechts (x≈743, w≈1077): H2 + Description + 3-Punkte-ul + Mini-Line (Zertifikate-Verweis) + Primary Button</li>
-<li>Mobile: vertikaler Stack (Cover oben, Text unten)</li>
-<li>Designer Andrey: bestehender Layout passt — nur Texte updaten]</li>
-</ul>
-<p><strong>H2:</strong></p>
-<p>Brauchen Sie Material für die interne Abstimmung?</p>
-<p><strong>Description:</strong></p>
-<p>Was Sie für die interne Abstimmung mit Compliance, Procurement oder Geschäftsführung brauchen — kompakt in einem PDF: 5-Schritte-Prozess, SLAs, Zertifizierungen und Muster-Nachweise.</p>
-<p><strong>Inhalt Decision Pack (3 Punkte als ul):</strong></p>
-<ol>
-<li>5-Schritte-Prozess: vom Anruf bis zum Löschzertifikat</li>
-<li>SLA-Übersicht: Standard 3-5 WT NRW, Express 48 h, Antwort innerhalb von 24 h</li>
-<li>Zertifizierungen-Übersicht (EfbV, DIN 66399) und Muster-Löschprotokoll</li>
-</ul>
-<p><strong>Mini-Line (unter ul, oberhalb Button — Verweis auf Zertifikate-Seite, Hybrid-Struktur C):</strong></p>
-<p>Einzelne Zertifikate (EfbV, DIN 66399, AGB, AVV-Katalog) finden Sie auf der Zertifikate-Seite →</p>
-<p><strong>Primary Button:</strong> Decision Pack herunterladen</p>
-<p><strong>Mechanik:</strong> E-Mail-Eingabe <span class="arrow-link">→ Double Opt-in → CRM → Nurturing-Kampagne</span></p>
-<p>---</p>
+  <div class="lead-magnet container">
+  <div class="lead-magnet-box">
+    <div class="lead-magnet-image">📄 Platzhalterbild<br>Decision Pack Cover</div>
+    <div class="lead-magnet-content">
+      <h2>Brauchen Sie Material für die interne Abstimmung?</h2>
+      <p>Was Sie für die interne Abstimmung mit Compliance, Procurement oder Geschäftsführung brauchen — kompakt in einem PDF: 5-Schritte-Prozess, SLAs, Zertifizierungen und Muster-Nachweise.</p>
+      <ul class="lead-magnet-items"><li>5-Schritte-Prozess: vom Anruf bis zum Löschzertifikat</li><li>SLA-Übersicht: Standard 3-5 WT NRW, Express 48 h, Antwort innerhalb von 24 h</li><li>Zertifizierungen-Übersicht (EfbV, DIN 66399) und Muster-Löschprotokoll</li></ul>
+      <p class="lead-magnet-sep">Einzelne Zertifikate (EfbV, DIN 66399, AGB, AVV-Katalog) finden Sie auf der Zertifikate-Seite →</p>
+      <a class="btn btn-accent">Decision Pack herunterladen</a>
+    </div>
+  </div>
 </div>
   <div class="feedback-panel" id="feedback-panel-6">
     <label>Ihr Vorschlag für Block 6 - DOPPEL-CTA TEIL 1 (DECISION PACK · «noch nicht bereit»):</label>
@@ -476,24 +482,16 @@ blockquote { border-left: 4px solid var(--accent); padding: 1rem 1.5rem; margin:
     </div>
   </div>
 </section>
-<section class="block-wrapper block-generic" id="block-7">
+<section class="block-wrapper block-cta" id="block-7">
   <span class="block-label" style="display:none">Block 7 - DOPPEL-CTA TEIL 2 (ERSTANALYSE · «schon bereit»)</span>
   <button class="feedback-btn" onclick="toggleFeedback(7)">✏️ Vorschlag</button>
-  <div class="generic-section container">
-  <h2>Bereit für die nächste Compliance-Prüfung? Wir bereiten alles vor.</h2>
-  
-  <p>[FULL-WIDTH HERO-STYLE LAYOUT (bestätigt aus Figma-Design 03.05.2026, Section B7):</p>
-<ul>
-<li>Section: 1920×696, color-bends Background-Image</li>
-<li>Centered Content: H2 (max 1004 wide) + Line + Description (max 760 wide) + Primary Button (centered)</li>
-<li>Visuelle Dominanz: dies ist der finale Konversionspunkt der Seite (Hero-CTA + Footer-CTA = Sandwich-Komposition für ready-buyers)</li>
-<li>Designer Andrey: bestehender Layout passt — nur Texte updaten]</li>
-</ul>
-<p><strong>H2:</strong></p>
-<p>Bereit für die nächste Compliance-Prüfung? Wir bereiten alles vor.</p>
-<p><strong>Description:</strong></p>
-<p>Schildern Sie uns Ihren Bedarf — wir antworten innerhalb von 24 Stunden mit einer konkreten Einschätzung für Ihr Volumen, Ihre Standorte und Ihren Zeitplan. Unverbindlich, ohne Risiko.</p>
-<p><strong>Primary Button:</strong> Kostenlose Erstanalyse anfordern</p>
+  <div class="cta-section">
+  <div class="container">
+    <h2>Bereit für die nächste Compliance-Prüfung? Wir bereiten alles vor.</h2>
+    <p class="cta-text">Schildern Sie uns Ihren Bedarf — wir antworten innerhalb von 24 Stunden mit einer konkreten Einschätzung für Ihr Volumen, Ihre Standorte und Ihren Zeitplan. Unverbindlich, ohne Risiko.</p>
+    <a class="btn btn-primary btn-lg">Kostenlose Erstanalyse anfordern</a>
+    
+  </div>
 </div>
   <div class="feedback-panel" id="feedback-panel-7">
     <label>Ihr Vorschlag für Block 7 - DOPPEL-CTA TEIL 2 (ERSTANALYSE · «schon bereit»):</label>
