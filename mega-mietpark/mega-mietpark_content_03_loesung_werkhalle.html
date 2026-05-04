@@ -3,9 +3,97 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lösung-Seite Werkhalle · Content V1.0.1 · Mega-Mietpark</title>
+<title>Lösung-Seite Werkhalle · Content V1.0.3 · Mega-Mietpark</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="mega-mietpark_TZ_style.css?v=2">
+<style id="ueberuns-teaser-styles-werkhalle">
+  /* ============= B9.5 ÜBER-UNS-TEASER (V1.0.3 · 1:1 Startseite-V1.4 B10.5) ============= */
+  .ueberuns-section { padding: 56px 60px; background: #FAFAFA; }
+  .ueberuns-section h2.section-headline {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 32px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.04em;
+    text-align: center; margin: 0 0 10px; color: #1F1F1F;
+  }
+  .ueberuns-section .section-subline {
+    text-align: center; font-size: 15px; color: #4A4A4A;
+    max-width: 820px; margin: 0 auto 32px; line-height: 1.55;
+  }
+  .ueberuns-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px;
+    max-width: 1200px; margin: 0 auto;
+  }
+  .ueberuns-card {
+    background: #FFFFFF; border: 1px solid #E0E0E0;
+    border-radius: 4px; padding: 22px 20px;
+    display: flex; flex-direction: column; gap: 10px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .ueberuns-card-brand {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 16px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    color: #C62828; margin: 0;
+  }
+  .ueberuns-card-role {
+    font-size: 12px; color: #4A4A4A; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.04em;
+  }
+  .ueberuns-card-stat {
+    font-size: 13px; color: #1F1F1F; font-weight: 600;
+    background: #F5F5F5; padding: 4px 8px; border-radius: 3px;
+    align-self: flex-start;
+  }
+  .ueberuns-card-text { font-size: 13px; color: #1F1F1F; line-height: 1.55; margin: 0; }
+  .ueberuns-card.placeholder {
+    background: repeating-linear-gradient(
+      45deg, #FFF8E1, #FFF8E1 10px,
+      #FFE082 10px, #FFE082 20px
+    );
+    border: 2px dashed #E65100;
+  }
+  .ueberuns-card.placeholder .ueberuns-card-brand { color: #E65100; }
+  .ueberuns-cta-wrap { text-align: center; margin-top: 28px; }
+  .ueberuns-cta-disabled {
+    background: #E0E0E0; color: #9E9E9E;
+    padding: 12px 28px; border-radius: 3px;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 14px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    border: none; cursor: not-allowed;
+    display: inline-block; margin-right: 10px;
+  }
+  .ueberuns-cta-badge {
+    display: inline-block;
+    background: #FFE082; color: #E65100;
+    padding: 4px 10px; border-radius: 2px;
+    font-size: 11px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.06em;
+  }
+
+  /* ============= B9 Trust-Block (V1.0.3 · 5 Stats horizontal) ============= */
+  .trust-stats-strip {
+    display: grid; grid-template-columns: repeat(5, 1fr);
+    gap: 16px; max-width: 1100px;
+    margin: 28px auto 0; padding: 24px 28px;
+    background: #1F1F1F; border-radius: 4px;
+  }
+  .trust-stat-cell {
+    text-align: center; color: #FFFFFF;
+    border-right: 1px solid rgba(255,255,255,0.12);
+    padding: 4px 8px;
+  }
+  .trust-stat-cell:last-child { border-right: none; }
+  .trust-stat-num {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 32px; font-weight: 700; color: #FFFFFF;
+    line-height: 1.1; margin: 0 0 4px;
+  }
+  .trust-stat-label {
+    font-size: 11px; color: rgba(255,255,255,0.7);
+    text-transform: uppercase; letter-spacing: 0.08em;
+  }
+</style>
 <style>
   /* ============= Content-Preview-spezifisch (sync mit Wuppertal-Preview) ============= */
   .preview-intro {
@@ -671,8 +759,8 @@
   <a href="mega-mietpark_TZ_Startseite.html">TZ Startseite</a>
   <a href="mega-mietpark_content_01_startseite.html">📝 Content · Startseite</a>
   <a href="mega-mietpark_content_02_standort_wuppertal.html">📍 Content · Standort Wuppertal</a>
-  <a href="mega-mietpark_content_03_loesung_werkhalle.html?v=1" class="active">🔧 Content · Lösung Werkhalle</a>
-  <span class="v-tag">V1.0.1</span>
+  <a href="mega-mietpark_content_03_loesung_werkhalle.html?v=2" class="active">🔧 Content · Lösung Werkhalle</a>
+  <span class="v-tag">V1.0.3</span>
   <button class="lang-toggle" id="ruToggle">DE + RU</button>
 </nav>
 
@@ -680,24 +768,25 @@
 <!-- COVER                                                        -->
 <!-- ============================================================ -->
 <div class="cover">
-  <p class="cover-tag">Content Preview · Lösung-Seite 1 von 4 · V1.0.1 · Lösung-Leitfall</p>
-  <h1>Lösung-Seite<br><em>Werkhalle V1.0.1</em></h1>
+  <p class="cover-tag">Content Preview · Lösung-Seite 1 von 4 · V1.0.3 · Lösung-Leitfall</p>
+  <h1>Lösung-Seite<br><em>Werkhalle V1.0.3</em></h1>
   <p class="cover-sub">
-    <strong>Content V1.0.1 | 2026-05-03 | Autor: AS</strong><br>
-    <strong>Erst-Erstellung V1.0:</strong> 2026-05-03 08:30 — 13 Sektionen aus TZ_Loesung.html generiert.
-    <strong>V1.0.1:</strong> 4 Korrekturen aus Anna-Review 2026-05-03 09:42 —
-    <strong>(1)</strong> Mietdauer Werkhalle korrigiert auf <strong>6 Monate Mindestlaufzeit · 3 Monate Kündigung</strong> (statt 2 J / 6 Mo);
-    <strong>(2)</strong> Verbotene Tätigkeiten (KFZ, Reparatur, Lackiererei, ölbasierte Arbeiten) intern bekannt — auf Website nicht thematisiert, aber in Stories/FAQ/Form berücksichtigt;
-    <strong>(3)</strong> Story 3 KFZ-Schrauber → <strong>Malerbetrieb Köln-Rodenkirchen</strong> (Variante C);
-    <strong>(4)</strong> Headlines &amp; Sublines sprachlich aufgewertet — SEO-Keywords in flüssige Sätze eingebettet statt als Wort-Stakkato.
-    <br>Strategie C: Persona Markus (B2B Sanitär/Heizung, 5 MA) als primary Hook · K2 Volumen-USP („6 m = bis zu 2,4-fach mehr Volumen pro Euro") prominent in B1 Hero + B3 Punkt 6.
+    <strong>Content V1.0.3 | 2026-05-04 | Autor: AS</strong><br>
+    <strong>V1.0.3-Update:</strong> NEUER Block <strong>B9.5 ÜBER-UNS-TEASER</strong> zwischen B9 Trust und B10 FAQ. Inhalt 1:1 Startseite-V1.4 B10.5 (Single Source of Truth). 4 Brand-Cards (Laer Bau Group · Formica · Mega-Mietpark · Karte 4 ⚠ PLACEHOLDER) + Disabled-CTA „Mehr über uns".<br>
+    <strong>V1.0.2-Update (2026-05-04):</strong>
+    <strong>(1)</strong> „Handwerk"-Begriff aus Headlines/Subtitles entfernt (Stories Sanitär/Elektrik/Maler bleiben);
+    <strong>(2)</strong> B4 neu konzipiert — keine standortspezifischen Karten mehr, sondern 4 Konfigurations-Karten (Standard · ohne Büro · mit Mezzanin · XXL);
+    <strong>(3)</strong> B7 entfernt (Standort-Cross-Links · Live-Verfügbarkeit nicht abbildbar — Standort-Auswahl läuft über B11-Form-Dropdown + Hub-Navigation);
+    <strong>(4)</strong> B9 Trust-Block neu nach Startseite-Pattern — H2 „Seit 2006 das Vertrauen von 2.500+ Mietern" + 5 Stats horizontal als Streifen;
+    <strong>(5)</strong> Wording-Glättung („direkt befahrbar" → „ebenerdig"/„Drive-in-Zufahrt").<br>
+    Strategie C: Persona Markus (B2B Sanitär/Heizung, 5 MA) als primary Hook · K2 Volumen-USP („6 m = bis zu 2,4-fach mehr Volumen pro Euro") prominent in B1 Hero + B3 Punkt 6.
   </p>
   <div class="ru">
     Превью страницы решения «Werkhalle» V1.0.1. Эталон для 3 других решений (Garage / Lagerraum / Büro+Hybrid). 13 блоков (META + B1–B12 + B1.5 + B11.5). Тональность du-форма наследуется со главной V1.3 и Standort V1.0.2. Ключевая Persona: Markus (B2B Handwerker). Top-USP: 6 m Deckenhöhe = до 2,4× больше объёма на евро vs. Self-Storage (2,5 m). 4 правки V1.0.1: длительность аренды 6/3 мес., запрещённые виды работ (KFZ-/масляные исключены из Stories/FAQ/Form), Story 3 — маляр Köln-Rodenkirchen (вместо KFZ), переписаны заголовки и подзаголовки в живые предложения.
   </div>
   <div class="cover-meta">
     <div class="cover-meta-item">Datei<strong>content/03_loesung_werkhalle.md</strong></div>
-    <div class="cover-meta-item">Version<strong>V1.0.1</strong></div>
+    <div class="cover-meta-item">Version<strong>V1.0.3 · 2026-05-04 · AS</strong></div>
     <div class="cover-meta-item">Blöcke<strong>13 (META + B1–B12 + B1.5 + B11.5)</strong></div>
     <div class="cover-meta-item">Tonalität<strong>du-Form · DE</strong></div>
     <div class="cover-meta-item">Persona<strong>Markus · B2B Handwerker</strong></div>
@@ -910,7 +999,7 @@
     <div class="block-mock">
       <div class="pain-section">
         <h2 style="font-family:'Roboto Condensed',sans-serif; font-size:32px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; text-align:center; margin:0 0 8px;">TYPISCHE ENGPÄSSE WACHSENDER BETRIEBE.</h2>
-        <p style="text-align:center; font-size:15px; color:var(--gray-text); margin:0 0 8px;">Vier Situationen, mit denen Handwerksbetriebe regelmäßig zu uns kommen — bevor sie ihre erste Werkhalle bei Mega mieten.</p>
+        <p style="text-align:center; font-size:15px; color:var(--gray-text); margin:0 0 8px;">Vier Situationen, mit denen wachsende Betriebe regelmäßig zu uns kommen — bevor sie ihre erste Werkhalle bei Mega mieten.</p>
         <div class="pain-grid">
           <div class="pain-card">
             <div class="pain-icon">📦</div>
@@ -973,7 +1062,7 @@
     <div class="block-mock">
       <div class="feature-section">
         <h2 style="font-family:'Roboto Condensed',sans-serif; font-size:32px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; text-align:center; margin:0 0 8px;">AUSSTATTUNG UND LEISTUNG IM ÜBERBLICK.</h2>
-        <p style="text-align:center; font-size:15px; color:var(--gray-text); margin:0 0 8px;">Sechs Eigenschaften, die unsere Werkhallen für tägliche Handwerksarbeit nutzbar machen.</p>
+        <p style="text-align:center; font-size:15px; color:var(--gray-text); margin:0 0 8px;">Sechs Eigenschaften, die unsere Werkhallen im täglichen Einsatz praxistauglich machen.</p>
         <div class="feature-grid">
           <div class="feature-card">
             <div class="feature-num">01</div>
@@ -1061,93 +1150,101 @@
   <div class="content-block">
     <div class="block-anchor">
       <span class="block-num">B4</span>
-      <h2 class="block-title">Größen und Preise — transparent · 3 Standorte (Wuppertal · Mülheim · Köln-Rodenkirchen)</h2>
-      <span class="block-tag">3 von 16 Standorten · Werkhalle ist seltenstes Produkt</span>
+      <h2 class="block-title">Größen und Preise — transparent · 4 Konfigurations-Karten (NEU V1.0.2)</h2>
+      <span class="block-tag">V1.0.2 · 4 Konfigurationen statt 3 Standorten · Standort-Auswahl im B11-Form</span>
     </div>
 
     <div class="block-mock">
       <div class="standort-section">
         <h2 style="font-family:'Roboto Condensed',sans-serif; font-size:32px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; text-align:center; margin:0 0 8px;">GRÖSSEN UND PREISE — TRANSPARENT.</h2>
-        <p style="text-align:center; font-size:15px; color:var(--gray-text); margin:0 0 12px;">Aktuell verfügbar an drei Standorten — Wuppertal, Mülheim und Köln-Rodenkirchen. Detailpreise und Verfügbarkeit klären wir auf Anfrage.</p>
-        <div class="standort-grid">
+        <p style="text-align:center; font-size:15px; color:var(--gray-text); margin:0 auto 22px; max-width:780px;">Vier Werkhallen-Konfigurationen mit Einstiegspreis. Verfügbare Größen variieren je nach Standort — finale Konditionen klären wir gemeinsam auf Anfrage.</p>
+        <div class="standort-grid" style="grid-template-columns:repeat(4,1fr);">
 
           <div class="standort-card featured">
-            <h3>Wuppertal</h3>
+            <h3>Werkhalle Standard</h3>
             <table class="standort-table">
-              <tr><td class="label">Standort</td><td class="value">Vohwinkeler Str. 148, Wuppertal-Vohwinkel</td></tr>
-              <tr><td class="label">Maße</td><td class="value">5,90 × 16 × 6,00 m · <strong>95 m²</strong> · 2 Ebenen</td></tr>
-              <tr><td class="label">Preis</td><td class="value"><strong>ab 1.360 € netto / Monat</strong> + 100 € NK</td></tr>
+              <tr><td class="label">Konfiguration</td><td class="value">2 Ebenen — EG Lager-/Werkraum · OG Büro, WC &amp; Teeküchen-Vorbereitung</td></tr>
+              <tr><td class="label">Grundfläche</td><td class="value">ca. <strong>95 m²</strong> (5,90 × 16 m · 6 m Deckenhöhe)</td></tr>
               <tr><td class="label">Tor</td><td class="value">Sektionaltor 2,90 × 3,30 m · 3,80 × 4,00 m optional</td></tr>
               <tr><td class="label">Strom</td><td class="value">230 V Standard · 400 V auf Anfrage</td></tr>
-              <tr><td class="label">Zugang</td><td class="value">täglich 06:00–22:00 mit persönl. Zugangskontrolle</td></tr>
-              <tr><td class="label">Besonderheit</td><td class="value">EG Lager-/Werkraum · OG Büro, WC &amp; Teeküche-Vorbereitung</td></tr>
-              <tr><td class="label">Status</td><td class="value">🟢 Verfügbar (zu verifizieren)</td></tr>
+              <tr><td class="label">Einstiegspreis</td><td class="value"><strong>ab 1.360 € netto / Monat</strong> + 100 € NK · ✅ CLIENT</td></tr>
+              <tr><td class="label">Status</td><td class="value">🟢 Verfügbar · Standardgröße über mehrere Standorte</td></tr>
             </table>
-            <a href="#" class="standort-cta">Standort öffnen → /standort/wuppertal/</a>
+            <span class="placeholder-tag" style="background:#C8E6C9; color:#2E7D32;">HIGHLIGHT · echte Daten</span>
           </div>
 
           <div class="standort-card placeholder">
-            <h3>Mülheim a.d.Ruhr</h3>
+            <h3>Werkhalle ohne Büroebene</h3>
             <table class="standort-table">
-              <tr><td class="label">Standort</td><td class="value">Aktienstr. 17, 45468 Mülheim a.d.Ruhr</td></tr>
-              <tr><td class="label">Maße</td><td class="value"><span class="placeholder-text">⚠ PLACEHOLDER · David-Anfrage</span></td></tr>
-              <tr><td class="label">Preis</td><td class="value"><span class="placeholder-text">⚠ PLACEHOLDER · David-Anfrage</span></td></tr>
-              <tr><td class="label">Tor</td><td class="value">Standard 2,90 × 3,30 m (anzunehmen)</td></tr>
+              <tr><td class="label">Konfiguration</td><td class="value">Reine Halle ohne Büroaufbau — fokussiert auf maximale Lager- und Werkfläche</td></tr>
+              <tr><td class="label">Grundfläche</td><td class="value"><span class="placeholder-text">je nach Standort verschieden — auf Anfrage</span></td></tr>
+              <tr><td class="label">Tor</td><td class="value">Sektionaltor wahlweise 2,90 × 3,30 m oder 3,80 × 4,00 m</td></tr>
               <tr><td class="label">Strom</td><td class="value">230 V Standard · 400 V auf Anfrage</td></tr>
-              <tr><td class="label">Zugang</td><td class="value"><span class="placeholder-text">⚠ Zugangszeiten klären</span></td></tr>
-              <tr><td class="label">Status</td><td class="value">⚠ Daten unvollständig — David-pending</td></tr>
+              <tr><td class="label">Einstiegspreis</td><td class="value"><span class="placeholder-text">⚠ auf Anfrage · David-pending</span></td></tr>
+              <tr><td class="label">Status</td><td class="value">⚠ Konfigurations-Variante — Verfügbarkeit pro Standort klären</td></tr>
             </table>
-            <a href="#" class="standort-cta">Standort öffnen → /standort/muelheim/</a>
+            <span class="placeholder-tag">⚠ AUF ANFRAGE</span>
           </div>
 
-          <div class="standort-card upcoming">
-            <h3>Köln-Rodenkirchen</h3>
+          <div class="standort-card placeholder">
+            <h3>Werkhalle mit Mezzanin-Ebene</h3>
             <table class="standort-table">
-              <tr><td class="label">Standort</td><td class="value">Im Giesdorfer Grund 1, 50997 Köln</td></tr>
-              <tr><td class="label">Maße</td><td class="value"><span class="placeholder-text">⚠ PLACEHOLDER · David-Anfrage</span></td></tr>
-              <tr><td class="label">Preis</td><td class="value"><strong>ab 1.750 € netto / Monat</strong> <span style="font-size:11px;">📄 SPEC</span></td></tr>
-              <tr><td class="label">Tor</td><td class="value">Standard 2,90 × 3,30 m (anzunehmen)</td></tr>
+              <tr><td class="label">Konfiguration</td><td class="value">Werkhalle mit zusätzlicher Mezzanin-Stapelebene — bis zu 60 % mehr nutzbare Lagerfläche bei gleicher Grundfläche</td></tr>
+              <tr><td class="label">Grundfläche</td><td class="value">ab 95 m² Grundfläche · zzgl. Mezzanin-Aufbau</td></tr>
+              <tr><td class="label">Tor</td><td class="value">wie Standard-Werkhalle</td></tr>
               <tr><td class="label">Strom</td><td class="value">230 V Standard · 400 V auf Anfrage</td></tr>
-              <tr><td class="label">Zugang</td><td class="value">täglich 06:00–22:00 (anzunehmen analog Köln)</td></tr>
-              <tr><td class="label">Besonderheit</td><td class="value"><strong>Neueröffnung 04/2026</strong> — Frühbuchung möglich</td></tr>
-              <tr><td class="label">Status</td><td class="value">🟡 Neueröffnung 04/2026 — Frühbuchung</td></tr>
+              <tr><td class="label">Einstiegspreis</td><td class="value"><span class="placeholder-text">⚠ auf Anfrage · Mehrpreis standortabhängig</span></td></tr>
+              <tr><td class="label">Status</td><td class="value">⚠ Konfigurations-Erweiterung — verfügbar an ausgewählten Standorten</td></tr>
             </table>
-            <a href="#" class="standort-cta">Standort öffnen → /standort/koeln-rodenkirchen/</a>
+            <span class="placeholder-tag">⚠ AUF ANFRAGE</span>
+          </div>
+
+          <div class="standort-card placeholder">
+            <h3>Werkhalle Groß (XXL)</h3>
+            <table class="standort-table">
+              <tr><td class="label">Konfiguration</td><td class="value">Werkhallen ab ca. 100 m² Grundfläche für höhere Volumina, mehrere Sprinter oder größere Fertigungen</td></tr>
+              <tr><td class="label">Grundfläche</td><td class="value"><span class="placeholder-text">individuell — auf Anfrage</span></td></tr>
+              <tr><td class="label">Tor</td><td class="value">XXL-Tor 3,80 × 4,00 m Standard</td></tr>
+              <tr><td class="label">Strom</td><td class="value">400 V auf Anfrage</td></tr>
+              <tr><td class="label">Einstiegspreis</td><td class="value"><span class="placeholder-text">⚠ auf Anfrage · David-pending</span></td></tr>
+              <tr><td class="label">Status</td><td class="value">⚠ größere Hallen je nach Standort verfügbar</td></tr>
+            </table>
+            <span class="placeholder-tag">⚠ AUF ANFRAGE</span>
           </div>
 
         </div>
         <div class="standort-disclaimer">
-          Alle Preise verstehen sich netto zuzüglich gesetzlicher Mehrwertsteuer. Verfügbarkeit auf Anfrage. Der angegebene Preis ist ein Einstiegspreis — die finale Konditionsgestaltung erfolgt individuell nach Ausstattung und Laufzeit.
+          Alle Preise verstehen sich netto zuzüglich gesetzlicher Mehrwertsteuer. Verfügbare Größen und Konfigurationen variieren je nach Standort und Zeitpunkt. Den passenden Mietraum klären wir gemeinsam — sende uns einfach deine Anforderungen.
         </div>
       </div>
     </div>
 
     <div class="block-annotations">
       <details>
-        <summary>📝 V1.0.1 Decision · Wuppertal als Highlight-Karte</summary>
+        <summary>📝 V1.0.2 Decision · 4 Konfigurations-Karten statt 3 Standort-Karten</summary>
         <ul>
-          <li><strong>Wuppertal als Featured-Karte:</strong> rot-Akzent · Datenvollständigkeit + 2-Ebenen-USP machen Wuppertal zum natürlichen Anker</li>
-          <li><strong>Mülheim als Placeholder-Karte:</strong> Größe + Preis + Zugang offen → David-pending</li>
-          <li><strong>Köln-Rodenkirchen als Upcoming-Karte:</strong> Neueröffnung-Badge 04/2026 · Frühbuchung möglich</li>
-          <li><strong>Disclaimer:</strong> netto + Einstiegspreis-Hinweis (rechtssichere Marketing-Formel)</li>
+          <li><strong>V1.0.2 NEU-KONZEPT:</strong> Live-Verfügbarkeit pro Standort kann nicht angezeigt werden — Karten bilden stattdessen <strong>4 Konfigurations-Varianten als Range</strong> ab</li>
+          <li><strong>Karte 1 (Highlight):</strong> Werkhalle Standard mit echten Wuppertal-Daten als Anker (✅ CLIENT)</li>
+          <li><strong>Karten 2–4:</strong> Yellow-Stripe-Placeholder · Einstiegspreis und Verfügbarkeit „auf Anfrage" · David-pending Konfigurationsliste</li>
+          <li><strong>Standort-Auswahl:</strong> rutscht in B11 Form-Dropdown + Hub-Hauptnavigation („Standorte"-Tab)</li>
+          <li><strong>Subtitle:</strong> erklärt das Karten-Konzept und führt zur Anfrage — vermeidet negative Formulierung „Live-Verfügbarkeit nicht abbildbar"</li>
         </ul>
       </details>
       <div class="placeholder-list">
-        <h4>⚠️ B4 · 5 OPEN ITEMS für David</h4>
+        <h4>⚠️ B4 · 4 OPEN ITEMS für David</h4>
         <ul>
-          <li>Mülheim Werkhalle-Maße + Preis (B/T/H, m², € netto)</li>
-          <li>Mülheim Zugangszeiten (24/7 oder 06–22?)</li>
-          <li>Köln-Rodenkirchen Werkhalle-Maße bestätigen</li>
-          <li>Köln-Rodenkirchen Preis 1.750 € — bestätigt?</li>
-          <li>Tor-Maße (Standard 2,90×3,30 oder XXL 3,80×4,00) je Standort</li>
+          <li>Vollständige Werkhallen-Konfigurationsliste — welche Varianten gibt es tatsächlich (mit/ohne Büro, mit/ohne Mezzanin, Größenklassen XS/S/M/L/XL)? Pro Standort ggf. unterschiedlich?</li>
+          <li>Einstiegspreis je Konfiguration — gibt es einen einheitlichen „ab"-Preis pro Variante, oder ist das immer standortabhängig?</li>
+          <li>Mezzanin-Mehrpreis — Pauschal pro m² oder Festpreis pro Halle?</li>
+          <li>V1.1: Karten mit echten Werten füllen, sobald Konfigurationsliste vorliegt</li>
         </ul>
       </div>
       <div class="source-list">
         <h4>✅ Datenquellen</h4>
         <ul>
-          <li>Wuppertal: Angebotsflyer (✅ CLIENT 2026-04-15)</li>
-          <li>Mülheim+Köln Adressen: Standorte-Tabelle.md (✅ CLIENT)</li>
-          <li>Köln-Preis 1.750 €: TZ_Loesung.html (📄 SPEC)</li>
+          <li>Karte 1 Standard: Wuppertal-Angebotsflyer (✅ CLIENT 2026-04-15)</li>
+          <li>Mezzanin-Logik: Mezzanin-Standardlösung Mega-Mietpark (📄 SPEC)</li>
+          <li>XXL-Tor: TZ_Loesung.html (📄 SPEC)</li>
         </ul>
       </div>
     </div>
@@ -1170,7 +1267,7 @@
     <div class="block-mock">
       <div class="story-section">
         <h2 style="font-family:'Roboto Condensed',sans-serif; font-size:32px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; text-align:center; margin:0 0 8px;">DREI BETRIEBE, DREI WEGE ZUR EIGENEN WERKHALLE.</h2>
-        <p style="text-align:center; font-size:15px; color:var(--gray-text); margin:0 0 8px;">Drei beispielhafte Situationen aus dem Handwerk — von Sanitär bis Maler.</p>
+        <p style="text-align:center; font-size:15px; color:var(--gray-text); margin:0 0 8px;">Drei beispielhafte Situationen — von Sanitär bis Maler.</p>
         <div class="story-grid">
 
           <div class="story-card">
@@ -1259,8 +1356,8 @@
         <div class="steps-grid">
           <div class="step-card">
             <div class="step-num">01</div>
-            <h3 class="step-h">Standort wählen</h3>
-            <p class="step-body">Wuppertal, Mülheim oder Köln-Rodenkirchen — du wählst die Lage, die zu deinem Auftragsgebiet und deiner Anfahrtslogistik passt.</p>
+            <h3 class="step-h">Konfiguration wählen</h3>
+            <p class="step-body">Standard, ohne Büro, mit Mezzanin oder XXL — du wählst die Werkhalle, die zu deinem Bedarf passt.</p>
           </div>
           <div class="step-card">
             <div class="step-num">02</div>
@@ -1274,7 +1371,7 @@
           </div>
           <div class="step-card">
             <div class="step-num">04</div>
-            <h3 class="step-h">Einziehen — direkt befahrbar</h3>
+            <h3 class="step-h">Einziehen und loslegen</h3>
             <p class="step-body">Persönlicher Zugangscode, Tor-Einweisung, angeschlossener Strom: am ersten Tag bereit für deinen Sprinter.</p>
           </div>
         </div>
@@ -1302,72 +1399,44 @@
 </div>
 
 <!-- ============================================================ -->
-<!-- BLOCK 7 — DREI STANDORTE                                     -->
+<!-- BLOCK 7 — ENTFERNT V1.0.2                                    -->
 <!-- ============================================================ -->
 <div class="content-section alt">
 
   <div class="content-block">
-    <div class="block-anchor">
-      <span class="block-num">B7</span>
-      <h2 class="block-title">Drei Standorte mit verfügbarer Werkhalle · Foto + Adresse + Status</h2>
-      <span class="block-tag">Logistik-Fokus · NICHT B4-Duplikat</span>
+    <div class="block-anchor" style="background:#4A4A4A;">
+      <span class="block-num" style="background:#9E9E9E;">B7</span>
+      <h2 class="block-title">Standort-Cross-Links · ENTFERNT V1.0.2</h2>
+      <span class="block-tag">V1.0.2 · Block leer · Standort-Auswahl läuft über B11-Form + Hub-Nav</span>
     </div>
 
-    <div class="block-mock">
-      <div class="cross-section">
-        <h2 style="font-family:'Roboto Condensed',sans-serif; font-size:32px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; text-align:center; margin:0 0 8px;">DREI STANDORTE MIT VERFÜGBARER WERKHALLE.</h2>
-        <p style="text-align:center; font-size:15px; color:var(--gray-text); margin:0 0 8px;">Aktuell stehen unsere Werkhallen an drei Standorten in Deutschland zur Verfügung — die kürzeste Anfahrt findest du über deine Postleitzahl.</p>
-        <div class="cross-grid">
-
-          <div class="cross-card">
-            <div class="cross-photo">⚠ Foto Wuppertal-Außenaufnahme · David-pending</div>
-            <div class="cross-body">
-              <h3 class="cross-h">Wuppertal-Vohwinkel</h3>
-              <p class="cross-meta">Vohwinkeler Straße 148, 42329 Wuppertal<br><strong>Lage:</strong> westlich der Innenstadt · A46-Anschluss</p>
-              <span class="cross-status green">🟢 Verfügbar</span>
-            </div>
-            <a href="#" class="cross-cta">Standort öffnen → /standort/wuppertal/</a>
-          </div>
-
-          <div class="cross-card">
-            <div class="cross-photo">⚠ Foto Mülheim-Außenaufnahme · David-pending</div>
-            <div class="cross-body">
-              <h3 class="cross-h">Mülheim a.d.Ruhr</h3>
-              <p class="cross-meta">Aktienstr. 17, 45468 Mülheim a.d.Ruhr<br><strong>Lage:</strong> <span class="placeholder-text">⚠ A40-Anschluss, ÖPNV-Linie folgt</span></p>
-              <span class="cross-status green">🟢 Verfügbar (zu verifizieren)</span>
-            </div>
-            <a href="#" class="cross-cta">Standort öffnen → /standort/muelheim/</a>
-          </div>
-
-          <div class="cross-card">
-            <div class="cross-photo">⚠ Foto Köln-Rodenkirchen · David-pending</div>
-            <div class="cross-body">
-              <h3 class="cross-h">Köln-Rodenkirchen</h3>
-              <p class="cross-meta">Im Giesdorfer Grund 1, 50997 Köln<br><strong>Lage:</strong> <span class="placeholder-text">⚠ A4-Anschluss, ÖPNV-Linie folgt</span></p>
-              <span class="cross-status yellow">🟡 Neueröffnung 04/2026 — Frühbuchung</span>
-            </div>
-            <a href="#" class="cross-cta">Standort öffnen → /standort/koeln-rodenkirchen/</a>
-          </div>
-
-        </div>
+    <div class="block-mock" style="padding: 28px 32px;">
+      <div style="background:#FFF3E0; border-left:4px solid #E65100; padding:18px 22px; border-radius:3px;">
+        <h3 style="font-family:'Roboto Condensed',sans-serif; font-size:18px; text-transform:uppercase; letter-spacing:0.04em; margin:0 0 10px; color:#E65100;">B7 V1.0.2 · ENTFERNT</h3>
+        <p style="margin:0 0 10px; font-size:14px; color:#1F1F1F; line-height:1.55;">Block 7 (Standort-Cross-Links · 3 Karten Wuppertal/Mülheim/Köln-Rodenkirchen) wurde in V1.0.2 komplett entfernt. <strong>Live-Verfügbarkeit pro Standort kann nicht angezeigt werden</strong>, daher liefert eine Standort-Auflistung auf der Werkhalle-Seite keinen Mehrwert.</p>
+        <p style="margin:0 0 6px; font-size:14px; color:#1F1F1F; line-height:1.55;"><strong>Visitor erfährt Werkhalle-Standorte über:</strong></p>
+        <ul style="margin:0 0 10px 18px; font-size:13px; color:#1F1F1F; line-height:1.6;">
+          <li>Form-Dropdown in B11 („Standort" als Pflichtfeld der Anfrage)</li>
+          <li>Hub-Hauptnavigation Tab „Standorte"</li>
+        </ul>
+        <p style="margin:0; font-size:12px; color:#4A4A4A;">Block-Nummer B7 bleibt für Cross-Reference-Konsistenz erhalten — wird in der finalen Website nicht gerendert.</p>
       </div>
     </div>
 
     <div class="block-annotations">
       <details>
-        <summary>📝 V1.0 Decision · B7 ≠ B4-Duplikat</summary>
+        <summary>📝 V1.0.2 Decision · B7 entfernt</summary>
         <ul>
-          <li><strong>B4 vs. B7:</strong> B4 = Größen+Preise (Preis-Vergleich). B7 = Lage+Anfahrt+Status (Logistik-Entscheidung)</li>
-          <li><strong>H2 V1.0.1 (✓ A):</strong> "Drei Standorte mit verfügbarer Werkhalle." — sachlich, SEO-zentriert</li>
-          <li><strong>Wuppertal:</strong> A46 + Vohwinkel-Kontext aus Standort V1.0.2 übernommen</li>
+          <li><strong>V1.0.2 KORREKTUR:</strong> Komplette Block-Entfernung (Anna-Review 2026-05-04 08:18)</li>
+          <li><strong>Begründung:</strong> Live-Verfügbarkeit nicht abbildbar → 3 Standort-Karten würden statische, potentiell veraltete Information zeigen</li>
+          <li><strong>Cross-Page-Sync:</strong> Standort-Auswahl läuft auf allen 4 Lösung-Seiten ausschließlich über das B11 Form-Dropdown</li>
         </ul>
       </details>
-      <div class="placeholder-list">
-        <h4>⚠️ B7 · 3 OPEN ITEMS</h4>
+      <div class="source-list">
+        <h4>✅ V1.0.2 Source</h4>
         <ul>
-          <li>David: Mülheim Anfahrtsdaten (Autobahn + Min + ÖPNV-Linie)</li>
-          <li>David: Köln-Rodenkirchen Anfahrtsdaten (Autobahn + Min + ÖPNV-Linie)</li>
-          <li>David: Standort-Fotos (1 Außenaufnahme pro Standort, idealerweise mit offenem Tor)</li>
+          <li>Anna-Review 2026-05-04 08:18 (Korrektur 3 von 5)</li>
+          <li>Cross-Reference: <code>content/03_loesung_werkhalle.md</code> Block 7 (V1.0.2 ENTFERNT)</li>
         </ul>
       </div>
     </div>
@@ -1426,35 +1495,42 @@
   <div class="content-block">
     <div class="block-anchor">
       <span class="block-num">B9</span>
-      <h2 class="block-title">Was unseren Handwerks-Mietern Substanz gibt · 4 Trust-Items</h2>
-      <span class="block-tag">1:1 Konsistenz zu Startseite B6</span>
+      <h2 class="block-title">Trust-Block · 5 Stats horizontal (NEU V1.0.2 · 1:1 Startseite-Pattern)</h2>
+      <span class="block-tag">V1.0.2 · H2 1:1 Startseite-V1.3 B6 · Streifen-Layout</span>
     </div>
 
     <div class="block-mock">
       <div class="trust-section">
-        <h2 style="font-family:'Roboto Condensed',sans-serif; font-size:32px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; text-align:center; margin:0 0 8px;">WAS UNSEREN HANDWERKS-MIETERN SUBSTANZ GIBT.</h2>
-        <div class="trust-grid">
-          <div class="trust-tile">
-            <h3 class="trust-tile-h">Formica baut, Mega vermietet.</h3>
-            <p class="trust-tile-body">Über 210 realisierte Bauprojekte und mehr als 27.000 Einheiten — du mietest gewachsene Substanz, nicht improvisierte Garage.</p>
+        <h2 style="font-family:'Roboto Condensed',sans-serif; font-size:32px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; text-align:center; margin:0 0 8px;">SEIT 2006 DAS VERTRAUEN VON 2.500+ MIETERN.</h2>
+        <p style="text-align:center; font-size:15px; color:var(--gray-text); max-width:780px; margin:0 auto 12px; line-height:1.55;">Eigene Immobilien, gewachsene Bauleistung der Formica-Gruppe und ein Familienunternehmen mit über 19 Jahren am Markt — Substanz, die hinter jeder Werkhalle steht.</p>
+
+        <div class="trust-stats-strip">
+          <div class="trust-stat-cell">
+            <div class="trust-stat-num">16</div>
+            <div class="trust-stat-label">Standorte</div>
           </div>
-          <div class="trust-tile">
-            <h3 class="trust-tile-h">Laer Gruppe seit 2006.</h3>
-            <p class="trust-tile-body">Familienunternehmen mit eigenem Immobilienbestand — keine Pachtkette, keine versteckten Drittparteien.</p>
+          <div class="trust-stat-cell">
+            <div class="trust-stat-num">2.500+</div>
+            <div class="trust-stat-label">Aktive Mieter</div>
           </div>
-          <div class="trust-tile">
-            <h3 class="trust-tile-h">16 Standorte deutschlandweit.</h3>
-            <p class="trust-tile-body">Wenn dein Auftragsgebiet wächst, wachsen deine Standort-Optionen mit.</p>
+          <div class="trust-stat-cell">
+            <div class="trust-stat-num">210+</div>
+            <div class="trust-stat-label">Projekte Formica</div>
           </div>
-          <div class="trust-tile">
-            <h3 class="trust-tile-h">Videoüberwacht und umzäunt rund um die Uhr.</h3>
-            <p class="trust-tile-body">Sonntags-Diebstähle aus offenen Höfen sind hier kein Thema — gesicherte Anlage statt Hofparkplatz.</p>
+          <div class="trust-stat-cell">
+            <div class="trust-stat-num">27.000+</div>
+            <div class="trust-stat-label">Einheiten Formica</div>
+          </div>
+          <div class="trust-stat-cell">
+            <div class="trust-stat-num">2006</div>
+            <div class="trust-stat-label">Gegründet</div>
           </div>
         </div>
+
         <div style="margin-top:24px;">
           <div class="placeholder-zone small">
             ⚠ OPTIONAL · Logo-Wall<br>
-            <span style="font-weight:400; text-transform:none; font-size:11px;">4–6 B2B-Mieter-Logos (Handwerk-Branche, ölfrei) · David-Freigabe ausstehend</span>
+            <span style="font-weight:400; text-transform:none; font-size:11px;">4–6 B2B-Mieter-Logos (ölfreie Branchen) · David-Freigabe ausstehend · V1.1-Roadmap</span>
           </div>
         </div>
       </div>
@@ -1462,25 +1538,118 @@
 
     <div class="block-annotations">
       <details>
-        <summary>📝 V1.0.1 Decision · Body-Texte als ganze Sätze</summary>
+        <summary>📝 V1.0.2 Decision · Trust-Block neu nach Startseite-Pattern</summary>
         <ul>
-          <li><strong>H2 V1.0.1 (✓ A):</strong> "Was unseren Handwerks-Mietern Substanz gibt." — narrativ-direkt, baut Vertrauen über Sprache</li>
-          <li><strong>Stats:</strong> 210+/27.000+/16 Standorte aus Startseite-V1.3 B6 1:1 (Single Source of Truth)</li>
-          <li><strong>Body-Texte:</strong> als ganze Sätze (statt Stakkato V1.0)</li>
+          <li><strong>V1.0.2 NEU:</strong> H2 „Seit 2006 das Vertrauen von 2.500+ Mietern" 1:1 von Startseite-V1.3 B6 (Single Source of Truth)</li>
+          <li><strong>5 Stats horizontal:</strong> 16 / 2.500+ / 210+ / 27.000+ / 2006 — kompakter Streifen statt 4-Tile-Grid (V1.0.1 ersetzt)</li>
+          <li><strong>Layout-Decision:</strong> auf Lösung-Seite kompakter und schneller scanbar als das 60-%-Center-Image-Layout der Startseite — Werkhalle-Visitor ist conversion-orientiert</li>
+          <li><strong>„Handwerks-Mieter" entfernt:</strong> aus H2 (V1.0.1: „Was unseren Handwerks-Mietern Substanz gibt") — Werkhalle adressiert primär B2B, nicht ausschließlich Handwerk</li>
+          <li><strong>Subtitle:</strong> „Familienunternehmen mit über 19 Jahren am Markt" = 2026−2006 (führt das Trust-Narrativ ein)</li>
+          <li><strong>Rating-Widget:</strong> default ohne — wird bei Werkhalle-V1.1 nachgezogen, sobald Startseite-Rating final ist (Single Source of Truth: David)</li>
         </ul>
       </details>
       <div class="placeholder-list">
-        <h4>⚠️ B9 · 2 OPEN ITEMS</h4>
+        <h4>⚠️ B9 · 3 OPEN ITEMS</h4>
         <ul>
-          <li>David: 4–6 B2B-Mieter-Logos (Handwerk-Branche) zur Verwendung freigegeben?</li>
-          <li>Optional: 1–2 echte Quote-Cards von Handwerker-Mietern (parallel zu B5)</li>
+          <li>David: 2.500+ Mieter — finale Zahl bestätigen (gleiche Open-Item wie Startseite-V1.4 B1.7 Big-Stat)</li>
+          <li>David: 4–6 B2B-Mieter-Logos zur Verwendung freigegeben?</li>
+          <li>V1.1: Rating-Widget nachziehen, sobald Startseite-Rating final ist</li>
         </ul>
       </div>
       <div class="source-list">
-        <h4>✅ Daten-Status — alle 4 Stats ✅ CLIENT</h4>
+        <h4>✅ Daten-Status</h4>
         <ul>
+          <li>16 Standorte ✅ CLIENT (Standorte-Tabelle)</li>
           <li>210+ / 27.000+ ✅ CLIENT (Formica-Präsentation)</li>
-          <li>16 Standorte ✅ CLIENT (Standorte-Tabelle, 3 Neueröffnungen 02/04/05)</li>
+          <li>2006 ✅ CLIENT (Laer-Gruppe)</li>
+          <li>2.500+ Mieter 📝 BRIEF (David-pending — finale Zahl)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- BLOCK 9.5 — ÜBER-UNS-TEASER (NEU V1.0.3 · 1:1 Startseite-V1.4 B10.5) -->
+<!-- ============================================================ -->
+<div class="content-section">
+
+  <div class="content-block">
+    <div class="block-anchor">
+      <span class="block-num">B9.5</span>
+      <h2 class="block-title">Über-uns-Teaser · 4 Brand-Cards (NEU V1.0.3)</h2>
+      <span class="block-tag">V1.0.3 · 1:1 Startseite-V1.4 B10.5 · Single Source of Truth</span>
+    </div>
+
+    <div class="block-mock">
+      <div class="ueberuns-section">
+        <h2 class="section-headline">MEHR ALS EIN VERMIETER — DIE GRUPPE HINTER MEGA-MIETPARK.</h2>
+        <p class="section-subline">Mega-Mietpark ist Teil einer gewachsenen Unternehmensgruppe. Holding, Bauträger und Vermietung kommen aus einem Haus — seit 2006 und mit eigenen Immobilien.</p>
+
+        <div class="ueberuns-grid">
+
+          <div class="ueberuns-card">
+            <h3 class="ueberuns-card-brand">Laer Bau Group</h3>
+            <div class="ueberuns-card-role">Muttergesellschaft · Familienunternehmen aus NRW</div>
+            <span class="ueberuns-card-stat">Gegründet 2006</span>
+            <p class="ueberuns-card-text">Holding-Struktur über mehrere Sparten — Eigentümerin der Immobilien, in denen Mega-Mietpark vermietet.</p>
+          </div>
+
+          <div class="ueberuns-card">
+            <h3 class="ueberuns-card-brand">Formica GmbH</h3>
+            <div class="ueberuns-card-role">Bauträger und Projektentwickler innerhalb der Laer Bau Group</div>
+            <span class="ueberuns-card-stat">210+ Projekte · 27.000+ Einheiten</span>
+            <p class="ueberuns-card-text">Plant und realisiert die Mega-Mietpark-Standorte. ArcelorMittal-Stahlwände und Hörmann-Tore als Standardbauweise.</p>
+          </div>
+
+          <div class="ueberuns-card">
+            <h3 class="ueberuns-card-brand">Mega-Mietpark</h3>
+            <div class="ueberuns-card-role">Vermietungsmarke der Gruppe</div>
+            <span class="ueberuns-card-stat">16 Standorte · 2.500+ aktive Mieter</span>
+            <p class="ueberuns-card-text">Garage, Lagerraum, Büro und Werkhalle aus einer Hand — direkt befahrbar und mit kurzen Mietzeiten.</p>
+          </div>
+
+          <div class="ueberuns-card placeholder">
+            <h3 class="ueberuns-card-brand">⚠ Platzhalter · 4. Marke</h3>
+            <div class="ueberuns-card-role">⚠ PLACEHOLDER · vierte Marke des Konzerns oder Personenbrand · David-pending</div>
+            <p class="ueberuns-card-text">Wird befüllt, sobald die vierte Konzern-Säule oder Personenmarke (z. B. Georg Laer als Founder-Brand) finalisiert ist.</p>
+          </div>
+
+        </div>
+
+        <div class="ueberuns-cta-wrap">
+          <button class="ueberuns-cta-disabled" disabled>Mehr über uns →</button>
+          <span class="ueberuns-cta-badge">Über-uns-Seite kommt bald</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="block-annotations">
+      <details>
+        <summary>📝 V1.0.3 · NEUER Block · 1:1 Startseite-V1.4 B10.5</summary>
+        <ul>
+          <li><strong>V1.0.3 NEU:</strong> Über-uns-Teaser zwischen B9 Trust und B10 FAQ — Wiederholungs-Logik analog zum Trust-Block</li>
+          <li><strong>Single Source of Truth:</strong> Inhalt 1:1 Startseite-V1.4 B10.5 · jede Aktualisierung wird gespiegelt</li>
+          <li><strong>Position:</strong> kurz vor FAQ — bringt Visitor mehr Sicherheit kurz vor der Anfrage (Anna-Decision 2026-05-04)</li>
+          <li><strong>Cross-Page-Roadmap:</strong> Standort-Wuppertal-V1.0.2 muss in V1.0.3 ebenfalls den Teaser ergänzen</li>
+        </ul>
+      </details>
+      <div class="placeholder-list">
+        <h4>⚠️ B9.5 · Open Items zentral pflegen (siehe Startseite-V1.4 B10.5)</h4>
+        <ul>
+          <li>David: vierte Marke / Konzern-Säule für Karte 4 (z. B. weitere Sparte der Laer Bau Group)</li>
+          <li>David: Über-uns-Seitenname final? „Über uns" / „Die Gruppe" / „About Us"</li>
+          <li>David: Foto + Bio Georg Laer + Link zur persönlichen Webseite (Über-uns-Seite, nicht hier)</li>
+          <li>David: Logos der 4 Marken in SVG für Brand-Cards</li>
+        </ul>
+      </div>
+      <div class="source-list">
+        <h4>✅ Datenquellen</h4>
+        <ul>
+          <li>Single Source of Truth: <code>content/mega_mietpark_01_startseite.md</code> Block 10.5 (V1.4)</li>
+          <li>Karte 1: <code>wiki/entities/laer-gruppe.md</code> ✅ CLIENT</li>
+          <li>Karte 2: <code>wiki/entities/formica.md</code> ✅ CLIENT</li>
         </ul>
       </div>
     </div>
@@ -1503,7 +1672,7 @@
     <div class="block-mock">
       <div class="faq-section">
         <h2 style="font-family:'Roboto Condensed',sans-serif; font-size:32px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; text-align:center; margin:0 0 8px;">ANTWORTEN AUF HÄUFIGE FRAGEN ZUR WERKHALLE.</h2>
-        <p style="text-align:center; font-size:15px; color:var(--gray-text); margin:0 0 8px;">Antworten auf die häufigsten Fragen, die Handwerker uns zur Werkhalle stellen — kompakt und ohne Marketing-Sprech.</p>
+        <p style="text-align:center; font-size:15px; color:var(--gray-text); margin:0 0 8px;">Die häufigsten Fragen unserer Mieter — kompakt und ohne Marketing-Sprech.</p>
         <div class="faq-list">
 
           <div class="faq-item">

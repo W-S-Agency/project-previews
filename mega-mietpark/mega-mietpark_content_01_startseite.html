@@ -6,6 +6,73 @@
 <title>Content Preview · Startseite · Mega-Mietpark</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="mega-mietpark_TZ_style.css?v=8">
+<style id="ueberuns-teaser-styles">
+  /* ============= B10.5 ÜBER-UNS-TEASER (V1.4) ============= */
+  .ueberuns-section { padding: 56px 60px; background: #FAFAFA; }
+  .ueberuns-section h2.section-headline {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 32px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.04em;
+    text-align: center; margin: 0 0 10px; color: #1F1F1F;
+  }
+  .ueberuns-section .section-subline {
+    text-align: center; font-size: 15px; color: #4A4A4A;
+    max-width: 820px; margin: 0 auto 32px; line-height: 1.55;
+  }
+  .ueberuns-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px;
+    max-width: 1200px; margin: 0 auto;
+  }
+  .ueberuns-card {
+    background: #FFFFFF; border: 1px solid #E0E0E0;
+    border-radius: 4px; padding: 22px 20px;
+    display: flex; flex-direction: column; gap: 10px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .ueberuns-card-brand {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 16px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    color: #C62828; margin: 0;
+  }
+  .ueberuns-card-role {
+    font-size: 12px; color: #4A4A4A; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.04em;
+  }
+  .ueberuns-card-stat {
+    font-size: 13px; color: #1F1F1F; font-weight: 600;
+    background: #F5F5F5; padding: 4px 8px; border-radius: 3px;
+    align-self: flex-start;
+  }
+  .ueberuns-card-text {
+    font-size: 13px; color: #1F1F1F; line-height: 1.55; margin: 0;
+  }
+  .ueberuns-card.placeholder {
+    background: repeating-linear-gradient(
+      45deg, #FFF8E1, #FFF8E1 10px,
+      #FFE082 10px, #FFE082 20px
+    );
+    border: 2px dashed #E65100;
+  }
+  .ueberuns-card.placeholder .ueberuns-card-brand { color: #E65100; }
+  .ueberuns-cta-wrap { text-align: center; margin-top: 28px; }
+  .ueberuns-cta-disabled {
+    background: #E0E0E0; color: #9E9E9E;
+    padding: 12px 28px; border-radius: 3px;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 14px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    border: none; cursor: not-allowed;
+    display: inline-block; margin-right: 10px;
+  }
+  .ueberuns-cta-badge {
+    display: inline-block;
+    background: #FFE082; color: #E65100;
+    padding: 4px 10px; border-radius: 2px;
+    font-size: 11px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.06em;
+  }
+</style>
 <style>
   /* Content-Preview-spezifisch */
   .preview-intro {
@@ -855,25 +922,25 @@
   <a href="index.html">TZ-Hub</a>
   <a href="mega-mietpark_TZ_Startseite.html">TZ Startseite</a>
   <a href="mega-mietpark_content_01_startseite.html" class="active">📝 Content · Startseite</a>
-  <span class="v-tag">V1.3</span>
+  <span class="v-tag">V1.4</span>
   <button class="lang-toggle" id="ruToggle">DE + RU</button>
 </nav>
 
 <div class="cover">
-  <p class="cover-tag">Content Preview · Seite 1 von 3 · V1.3</p>
-  <h1>Startseite<br><em>V1.3 Update</em></h1>
+  <p class="cover-tag">Content Preview · Seite 1 von 3 · V1.4</p>
+  <h1>Startseite<br><em>V1.4 Update</em></h1>
   <p class="cover-sub">
-    <strong>V1.3-Update vom 2026-05-02:</strong> 9 gezielte Content-Verbesserungen.
-    Pre-Header SEO above-fold (B1) · B1.7 Description gekürzt · B2 Card 1+4 Sub-lines neu · B3 LAGERRAUM konkretes „4–22 m²" · B3 4 unique CTAs · B9 „oft schon am nächsten Tag" · B10 „Artikel lesen" · B11 inline-CTA „Jetzt anfragen".
+    <strong>V1.4-Update vom 2026-05-04 [AS]:</strong> NEUER BLOCK B10.5 ÜBER-UNS-TEASER zwischen B10 (Ratgeber) und B11 (FAQ). 4 Brand-Cards (Laer Bau Group · Formica GmbH · Mega-Mietpark · ⚠ Platzhalter 4. Marke). Disabled-CTA „Mehr über uns" mit Roadmap-Badge. Single Source of Truth für alle Hauptseiten (Lösung + Standort spiegeln 1:1).
+    <br><strong>V1.3-Update vom 2026-05-02:</strong> 9 gezielte Content-Verbesserungen. Pre-Header SEO above-fold (B1) · B1.7 Description gekürzt · B2 Card 1+4 Sub-lines neu · B3 LAGERRAUM konkretes „4–22 m²" · B3 4 unique CTAs · B9 „oft schon am nächsten Tag" · B10 „Artikel lesen" · B11 inline-CTA „Jetzt anfragen".
     <br><strong>V1.2-Update:</strong> Block-by-Block-Review auf alle 14 Blöcke. Variant-C Trust-Zoning · 4-Card Tarif (Lagerraum-Highlight) · du-form · Footer-Daten REAL.
   </p>
   <div class="ru">
-    Превью контента V1.2 после Block-by-Block-Review (2026-05-02). Все 14 блоков обновлены: Variant-C Trust-Zoning, 4-Card Tarif с Lagerraum-Highlight, du-form, real-footer-data.
+    Превью контента V1.4 (2026-05-04) — добавлен новый блок B10.5 «Über-uns-Teaser» перед FAQ: 4 brand-cards (Laer Bau Group · Formica · Mega-Mietpark · placeholder 4. Marke) + disabled-CTA. Single Source of Truth для всех главных страниц.
   </div>
   <div class="cover-meta">
     <div class="cover-meta-item">Datei<strong>content/mega_mietpark_01_startseite.md</strong></div>
-    <div class="cover-meta-item">Version<strong>V1.3</strong></div>
-    <div class="cover-meta-item">Blöcke<strong>14 (META + 12 + Footer)</strong></div>
+    <div class="cover-meta-item">Version<strong>V1.4 · 2026-05-04 · AS</strong></div>
+    <div class="cover-meta-item">Blöcke<strong>15 (META + 13 inkl. B10.5 + Footer)</strong></div>
     <div class="cover-meta-item">Tonalität<strong>du-Form · DE</strong></div>
   </div>
 </div>
@@ -1844,6 +1911,96 @@
           <li>3 Featured-Artikel-Auswahl durch David / Redaktion</li>
           <li>ACF-Feld <code>ratgeber_homepage_featured</code> (Repeater)</li>
           <li>Saisonal-Bezug möglich (siehe Zielgruppen.md Saisonalität)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- BLOCK 10.5 — ÜBER-UNS-TEASER (NEU V1.4)                      -->
+<!-- ============================================================ -->
+<div class="content-section">
+
+  <div class="content-block">
+    <div class="block-anchor">
+      <span class="block-num">B10.5</span>
+      <h2 class="block-title">Über-uns-Teaser · 4 Brand-Cards (NEU V1.4)</h2>
+      <span class="block-tag">V1.4 · Single Source of Truth · vor FAQ</span>
+    </div>
+
+    <div class="block-mock">
+      <div class="ueberuns-section">
+        <h2 class="section-headline">MEHR ALS EIN VERMIETER — DIE GRUPPE HINTER MEGA-MIETPARK.</h2>
+        <p class="section-subline">Mega-Mietpark ist Teil einer gewachsenen Unternehmensgruppe. Holding, Bauträger und Vermietung kommen aus einem Haus — seit 2006 und mit eigenen Immobilien.</p>
+
+        <div class="ueberuns-grid">
+
+          <div class="ueberuns-card">
+            <h3 class="ueberuns-card-brand">Laer Bau Group</h3>
+            <div class="ueberuns-card-role">Muttergesellschaft · Familienunternehmen aus NRW</div>
+            <span class="ueberuns-card-stat">Gegründet 2006</span>
+            <p class="ueberuns-card-text">Holding-Struktur über mehrere Sparten — Eigentümerin der Immobilien, in denen Mega-Mietpark vermietet.</p>
+          </div>
+
+          <div class="ueberuns-card">
+            <h3 class="ueberuns-card-brand">Formica GmbH</h3>
+            <div class="ueberuns-card-role">Bauträger und Projektentwickler innerhalb der Laer Bau Group</div>
+            <span class="ueberuns-card-stat">210+ Projekte · 27.000+ Einheiten</span>
+            <p class="ueberuns-card-text">Plant und realisiert die Mega-Mietpark-Standorte. ArcelorMittal-Stahlwände und Hörmann-Tore als Standardbauweise.</p>
+          </div>
+
+          <div class="ueberuns-card">
+            <h3 class="ueberuns-card-brand">Mega-Mietpark</h3>
+            <div class="ueberuns-card-role">Vermietungsmarke der Gruppe</div>
+            <span class="ueberuns-card-stat">16 Standorte · 2.500+ aktive Mieter</span>
+            <p class="ueberuns-card-text">Garage, Lagerraum, Büro und Werkhalle aus einer Hand — direkt befahrbar und mit kurzen Mietzeiten.</p>
+          </div>
+
+          <div class="ueberuns-card placeholder">
+            <h3 class="ueberuns-card-brand">⚠ Platzhalter · 4. Marke</h3>
+            <div class="ueberuns-card-role">⚠ PLACEHOLDER · vierte Marke des Konzerns oder Personenbrand · David-pending</div>
+            <p class="ueberuns-card-text">Wird befüllt, sobald die vierte Konzern-Säule oder Personenmarke (z. B. Georg Laer als Founder-Brand) finalisiert ist.</p>
+          </div>
+
+        </div>
+
+        <div class="ueberuns-cta-wrap">
+          <button class="ueberuns-cta-disabled" disabled>Mehr über uns →</button>
+          <span class="ueberuns-cta-badge">Über-uns-Seite kommt bald</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="block-annotations">
+      <details>
+        <summary>📝 V1.4 · Decision Über-uns-Teaser</summary>
+        <ul>
+          <li><strong>H2 V1.4 (✓ Mix A+B):</strong> "Mehr als ein Vermieter — die Gruppe hinter Mega-Mietpark." (UPPERCASE 1:1 Designsystem)</li>
+          <li><strong>Subtitle V1.4:</strong> 2 klare Sätze — strukturelle Einordnung + Trust-Anker (Eigenbestand · seit 2006)</li>
+          <li><strong>4 Brand-Cards:</strong> Laer Bau Group · Formica GmbH · Mega-Mietpark · Karte 4 ⚠ PLACEHOLDER (Yellow-Stripe-Pattern)</li>
+          <li><strong>Layout:</strong> 4 horizontale Cards (1:1 Andrey-Briefing Bitrix24 #3839)</li>
+          <li><strong>CTA:</strong> Disabled mit „Über-uns-Seite kommt bald"-Badge — wird in Phase 3 aktiv (Link <code>/ueber-uns/</code>)</li>
+          <li><strong>Single Source of Truth:</strong> Werkhalle-V1.0.3 B9.5 + Standort-Wuppertal (Roadmap) spiegeln Inhalt 1:1</li>
+        </ul>
+      </details>
+      <div class="placeholder-list">
+        <h4>⚠️ B10.5 · 5 OPEN ITEMS für David</h4>
+        <ul>
+          <li>David: Welche vierte Marke / Konzern-Säule passt in Karte 4? (z. B. weitere Sparte der Laer Bau Group)</li>
+          <li>David: Über-uns-Seitenname final? „Über uns" / „Die Gruppe" / „About Us"</li>
+          <li>David: Foto + Bio Georg Laer + Link zur persönlichen Webseite (für Über-uns-Seite, nicht hier)</li>
+          <li>David: Logos der 4 Marken in SVG für Brand-Cards</li>
+          <li>AS / AW: Über-uns-Seite als Phase-3-Deliverable einplanen</li>
+        </ul>
+      </div>
+      <div class="source-list">
+        <h4>✅ Datenquellen</h4>
+        <ul>
+          <li>Karte 1 Laer Bau Group: <code>wiki/entities/laer-gruppe.md</code> ✅ CLIENT</li>
+          <li>Karte 2 Formica: <code>wiki/entities/formica.md</code> ✅ CLIENT (210+/27.000+ Formica-Präsentation)</li>
+          <li>Karte 3 Mega-Mietpark: Standorte-Tabelle ✅ CLIENT · Mieterzahl 📝 BRIEF (David-pending)</li>
         </ul>
       </div>
     </div>
