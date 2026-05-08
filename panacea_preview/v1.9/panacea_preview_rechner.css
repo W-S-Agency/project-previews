@@ -1,0 +1,100 @@
+/* Panacea Pflegekostenrechner — Widget-Styles (Preview-Demo) */
+.rechner-widget {
+  --r-primary: #810080;
+  --r-primary-light: #a020a0;
+  --r-bg: #ffffff;
+  --r-bg-alt: #f8f5f9;
+  --r-border: #e2e8f0;
+  --r-text: #1e293b;
+  --r-text-light: #64748b;
+  --r-success: #92D050;
+  --r-success-bg: #f0f9e8;
+  --r-success-dark: #5a7a2e;
+  --r-warn: #f59e0b;
+  --r-warn-bg: #fef3c7;
+  --r-radius: 10px;
+  max-width: 640px;
+  margin: 0 auto;
+  background: var(--r-bg);
+  border-radius: 14px;
+  padding: 1.75rem;
+  box-shadow: 0 4px 20px rgba(129,0,128,.06);
+  border: 1px solid var(--r-border);
+  color: var(--r-text);
+  font-family: inherit;
+}
+.rechner-widget *, .rechner-widget *::before, .rechner-widget *::after { box-sizing: border-box; }
+.rechner-widget button { font-family: inherit; cursor: pointer; }
+
+.rechner-step { margin-bottom: 1.25rem; transition: opacity .2s; }
+.rechner-step-2[data-active="false"] { opacity: .4; pointer-events: none; }
+.rechner-step-header { display: flex; align-items: center; gap: .6rem; margin-bottom: .75rem; }
+.rechner-step-num { width: 28px; height: 28px; background: var(--r-primary); color: #fff; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: 700; font-size: .9rem; flex: none; }
+.rechner-step-title { font-weight: 600; font-size: 1rem; }
+
+.rechner-pg { display: flex; gap: .5rem; flex-wrap: wrap; }
+.rechner-pg-btn { flex: 1; min-width: 60px; padding: .75rem; border: 2px solid var(--r-primary); background: #fff; color: var(--r-primary); border-radius: 8px; font-weight: 700; font-size: 1.15rem; transition: all .15s; }
+.rechner-pg-btn:hover { background: var(--r-bg-alt); }
+.rechner-pg-btn.active { background: var(--r-primary); color: #fff; box-shadow: 0 2px 8px rgba(129,0,128,.25); }
+
+.rechner-empfehlung { background: var(--r-success-bg); border-left: 4px solid var(--r-success); padding: .85rem 1rem; border-radius: 6px; font-size: .93rem; color: var(--r-success-dark); margin: 1rem 0 1.5rem; animation: r-slide-down .25s ease-out; }
+.rechner-empfehlung strong { color: #2d4418; }
+
+/* V2: PG-spezifischer Hint (z.B. PG2-Limitation) */
+.rechner-pg-hint { background: #fef3c7; border-left: 4px solid var(--r-warn); padding: .75rem 1rem; border-radius: 6px; font-size: .88rem; color: #78350f; margin-top: .85rem; animation: r-slide-down .25s ease-out; }
+
+.rechner-slider-row { margin-bottom: 1rem; }
+.rechner-slider-label { display: flex; justify-content: space-between; align-items: center; font-size: .9rem; margin-bottom: .35rem; gap: .5rem; }
+.rechner-slider-label > span:first-child { flex: 1; }
+.rechner-slider-val { color: var(--r-primary); font-weight: 600; min-width: 4em; text-align: right; }
+
+/* V2: Кнопка удаления визита (Besuch 2/3) */
+.rechner-remove { width: 26px; height: 26px; flex: none; padding: 0; border: 1px solid var(--r-border); background: #fff; color: var(--r-text-light); border-radius: 50%; font-size: .85rem; line-height: 1; transition: all .15s; }
+.rechner-remove:hover { background: #fee2e2; color: #b91c1c; border-color: #fca5a5; }
+.rechner-slider { -webkit-appearance: none; appearance: none; width: 100%; height: 6px; background: #e5d5e8; border-radius: 3px; outline: none; }
+.rechner-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 22px; height: 22px; background: var(--r-primary); border: 3px solid #fff; border-radius: 50%; box-shadow: 0 1px 4px rgba(0,0,0,.2); cursor: pointer; }
+.rechner-slider::-moz-range-thumb { width: 22px; height: 22px; background: var(--r-primary); border: 3px solid #fff; border-radius: 50%; box-shadow: 0 1px 4px rgba(0,0,0,.2); cursor: pointer; }
+.rechner-slider:focus-visible { outline: 2px solid var(--r-primary); outline-offset: 4px; }
+
+.rechner-add { background: transparent; border: 1px dashed var(--r-primary-light); color: var(--r-primary); padding: .5rem 1rem; border-radius: 6px; font-size: .88rem; transition: background .15s; }
+.rechner-add:hover { background: var(--r-bg-alt); }
+.rechner-hint { font-size: .78rem; color: var(--r-text-light); margin-top: .5rem; }
+
+/* V2: Чекбокс "Ärztliche Verordnung vorhanden" */
+.rechner-verordnung { display: flex; align-items: flex-start; gap: .65rem; margin-top: 1.1rem; padding: .8rem .9rem; background: var(--r-bg-alt); border: 1px solid var(--r-border); border-radius: 8px; cursor: pointer; transition: background .15s; }
+.rechner-verordnung:hover { background: #f0e6f6; }
+.rechner-verordnung-checkbox { margin-top: .15rem; flex: none; width: 18px; height: 18px; accent-color: var(--r-primary); cursor: pointer; }
+.rechner-verordnung-label { display: flex; flex-direction: column; gap: .2rem; flex: 1; font-size: .88rem; line-height: 1.4; }
+.rechner-verordnung-label strong { color: var(--r-text); font-weight: 600; }
+.rechner-verordnung-hint { color: var(--r-text-light); font-size: .8rem; }
+
+.rechner-empty { text-align: center; color: var(--r-text-light); font-size: .92rem; font-style: italic; padding: 1.25rem; background: var(--r-bg-alt); border-radius: 8px; margin-top: 1rem; }
+
+.rechner-result { background: linear-gradient(135deg, #f0e6f6 0%, #e8e0f0 100%); border-radius: var(--r-radius); padding: 1.25rem; margin-top: 1.25rem; animation: r-slide-down .25s ease-out; }
+.rechner-result-label { font-size: .78rem; color: var(--r-text-light); text-transform: uppercase; letter-spacing: .04em; margin-bottom: .6rem; font-weight: 600; }
+.rechner-row { display: flex; justify-content: space-between; font-size: .95rem; margin-bottom: .4rem; gap: 1rem; }
+
+/* V2: Sub-rows (Pflegezeit / Anfahrt breakdown) */
+.rechner-row-sub { font-size: .82rem; color: var(--r-text-light); padding-left: 1rem; margin-bottom: .25rem; }
+
+.rechner-row-final { padding-top: .7rem; margin-top: .5rem; border-top: 1px solid rgba(129,0,128,.2); font-size: 1.05rem; }
+.rechner-row-final strong:last-child { color: var(--r-primary); font-size: 1.3rem; }
+.rechner-result-msg { margin-top: .85rem; padding: .65rem .85rem; border-radius: 6px; font-size: .88rem; }
+.rechner-msg-success { background: var(--r-success-bg); border-left: 3px solid var(--r-success); color: var(--r-success-dark); }
+.rechner-msg-warn { background: var(--r-warn-bg); border-left: 3px solid var(--r-warn); color: #78350f; }
+.rechner-disclaimer { font-size: .75rem; color: var(--r-text-light); font-style: italic; margin-top: .7rem; }
+.rechner-cta { width: 100%; margin-top: 1rem; background: var(--r-primary); color: #fff; border: none; padding: .85rem; border-radius: 8px; font-weight: 600; font-size: .95rem; transition: background .15s; }
+.rechner-cta:hover { background: var(--r-primary-light); }
+
+@keyframes r-slide-down { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+
+@media (max-width: 600px){
+  .rechner-widget { padding: 1.25rem; }
+  .rechner-cta { padding: 1rem; }
+  .rechner-slider::-webkit-slider-thumb { width: 26px; height: 26px; }
+  .rechner-slider::-moz-range-thumb { width: 26px; height: 26px; }
+}
+
+/* Compact variant (optional) */
+.rechner-compact { padding: 1.25rem; }
+.rechner-compact .rechner-step { margin-bottom: 1rem; }
