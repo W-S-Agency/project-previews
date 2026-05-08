@@ -150,6 +150,8 @@ h2 { font-size: 1.6rem; color: var(--primary); margin-bottom: 1.25rem; text-alig
 /* ── Contact columns ── */
 .contact-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1rem; }
 @media (max-width: 600px) { .contact-cols { grid-template-columns: 1fr; } }
+/* Single contact-col → center the column on the page (Standortseiten Block 7) */
+.contact-cols:has(.contact-col:only-child) { grid-template-columns: minmax(220px, 360px); justify-content: center; justify-items: center; text-align: center; }
 .contact-col h3 { font-size: 1.1rem; color: var(--primary); margin-bottom: .75rem; }
 .contact-col p { font-size: .92rem; margin-bottom: .35rem; }
 
@@ -257,7 +259,7 @@ h2 { font-size: 1.6rem; color: var(--primary); margin-bottom: 1.25rem; text-alig
 
 <div class="index-hero">
   <h1>Panacea Pflege — Content Preview</h1>
-  <p style="color:var(--text-light);margin-top:.5rem;">Generiert: 2026-05-07</p>
+  <p style="color:var(--text-light);margin-top:.5rem;">Generiert: 2026-05-08</p>
 </div>
 
 <div style="max-width:1100px;margin:0 auto;padding:0 1.5rem 3rem;">

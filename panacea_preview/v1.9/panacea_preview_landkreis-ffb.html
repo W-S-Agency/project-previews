@@ -150,6 +150,8 @@ h2 { font-size: 1.6rem; color: var(--primary); margin-bottom: 1.25rem; text-alig
 /* ── Contact columns ── */
 .contact-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1rem; }
 @media (max-width: 600px) { .contact-cols { grid-template-columns: 1fr; } }
+/* Single contact-col → center the column on the page (Standortseiten Block 7) */
+.contact-cols:has(.contact-col:only-child) { grid-template-columns: minmax(220px, 360px); justify-content: center; justify-items: center; text-align: center; }
 .contact-col h3 { font-size: 1.1rem; color: var(--primary); margin-bottom: .75rem; }
 .contact-col p { font-size: .92rem; margin-bottom: .35rem; }
 
@@ -328,8 +330,8 @@ h2 { font-size: 1.6rem; color: var(--primary); margin-bottom: 1.25rem; text-alig
       <div class="block-inner">
         <h1>Ihr Pflegedienst im Landkreis Fürstenfeldbruck</h1>
         <p class="subline">Wir betreuen Sie in Olching, Gröbenzell, Puchheim, Eichenau, Fürstenfeldbruck und Maisach – zuverlässig, einfühlsam, professionell.</p>
-        <div class="cta-group"><a href="#" class="btn-primary">Kostenlose Beratung anfragen</a>
-<a href="#" class="btn-secondary">☎ 08142 4646900</a>
+        <div class="cta-group"><a href="#block-7" class="btn-primary">Kostenlose Beratung anfragen</a>
+<a href="#block-6" class="btn-secondary">Pflegekostenrechner</a>
 </div>
         <div class="ph-foto">📷 [FOTO: Teamfoto LK FFB – KLIENT liefern, ≥ 08.05.2026 — Designs als Referenz möglich]</div>
       </div>
@@ -437,26 +439,10 @@ h2 { font-size: 1.6rem; color: var(--primary); margin-bottom: 1.25rem; text-alig
     </div>
     
     <div class="block-wrapper" id="block-5" data-block="block-5">
-      <span class="block-label">Block 5 — FAQ (Pflege-FAQ – NICHT geographisch)</span>
+      <span class="block-label">Block 5 — FAQ</span>
       <div class="block-inner">
-        <h2>Häufige Fragen zur ambulanten Pflege</h2>
+        <h2>Häufig gestellte Fragen</h2>
         <div class="faq-list">
-        <div class="faq-item">
-          <div class="faq-q">Wie schnell können Sie mit der Pflege beginnen?</div>
-          <div class="faq-a">Nach dem kostenlosen Beratungsgespräch starten wir die Pflege oft am selben Tag. Alle Unterlagen – vor allem der Kostenvoranschlag – werden noch am Tag des Treffens vorbereitet und zur Unterschrift vorgelegt.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q">Was kostet ein ambulanter Pflegedienst im Landkreis Fürstenfeldbruck?</div>
-          <div class="faq-a">Die Kosten richten sich nach Ihrem Pflegegrad und den gewünschten Leistungen. Mit unserem Kostenrechner können Sie sich einen ersten Überblick verschaffen. Die erste Beratung ist bei uns immer kostenlos.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q">Kann ich den Pflegedienst wechseln?</div>
-          <div class="faq-a">Ja, ein Wechsel ist jederzeit möglich, meist zum Monatsende. Wir unterstützen Sie bei der Übernahme und sorgen für einen reibungslosen Übergang.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q">Bieten Sie auch 24-Stunden-Pflege an?</div>
-          <div class="faq-a">Ambulant sind wir täglich von 5 bis 24 Uhr im Einsatz – auch an Wochenenden und Feiertagen. Falls Sie eine Rund-um-die-Uhr-Betreuung möchten, bieten wir Ihnen gern einen Platz in unseren ambulant betreuten Wohngemeinschaften an.</div>
-        </div>
         <div class="faq-item">
           <div class="faq-q">Welche Leistungen übernimmt die Pflegekasse?</div>
           <div class="faq-a">Die Pflegekasse übernimmt einen Großteil der Kosten für ambulante Pflege – abhängig von Ihrem Pflegegrad. Dazu gehören vor allem Grundpflege, Betreuung und Haushaltshilfe. Wir erarbeiten mit Ihnen einen Maßnahmenplan, der das Budget optimal, entsprechend den Wünschen und Bedürfnissen ausnutzt.</div>
@@ -464,6 +450,14 @@ h2 { font-size: 1.6rem; color: var(--primary); margin-bottom: 1.25rem; text-alig
         <div class="faq-item">
           <div class="faq-q">Wie erfolgt die Abrechnung?</div>
           <div class="faq-a">Im Falle der gesetzlichen Pflegekasse unterschreiben Sie am Ende des Monats nur den Leistungsnachweis. Wir schicken ihn zusammen mit der Rechnung an die Pflegekasse und führen sämtliche Kommunikation, falls es etwas zu beanstanden gibt. Basierend auf der Rechnung wird anschließend ggf. das restliche Pflegegeld berechnet und an Sie überwiesen.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Was kostet ein ambulanter Pflegedienst?</div>
+          <div class="faq-a">Die Kosten richten sich nach Ihrem Pflegegrad und den gewünschten Leistungen. Mit unserem Kostenrechner können Sie sich einen ersten Überblick verschaffen. Die erste Beratung ist bei uns immer kostenlos.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Wie schnell können Sie mit der Pflege beginnen?</div>
+          <div class="faq-a">Nach dem persönlichen Beratungsgespräch können wir die Pflege innerhalb von 24 Stunden starten. Der Kostenvoranschlag wird noch am selben Tag des Treffens vorbereitet.</div>
         </div>
         <div class="faq-item">
           <div class="faq-q">Welche Unterlagen benötigt man, um mit Pflege zu beginnen?</div>
@@ -484,10 +478,6 @@ h2 { font-size: 1.6rem; color: var(--primary); margin-bottom: 1.25rem; text-alig
         <div class="faq-item">
           <div class="faq-q">Können Sie uns auch bei der Beantragung eines Pflegegrads helfen?</div>
           <div class="faq-a">Ja, wir unterstützen Sie bei der Erstbeantragung, bei Höherstufungen und Widersprüchen. Wir stellen mit Ihnen die Anträge für Entlastungshilfe und Verhinderungspflege zusammen. Zudem helfen wir Ihnen, bei Bedarf Sozialleistungen zu beantragen.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q">Können Sie bei der Pflegegrad-Erhöhung helfen?</div>
-          <div class="faq-a">Ja. Wenn sich der Pflegebedarf verändert hat oder wir merken, dass er Ihrem aktuellen Zustand nicht entspricht, beantragen wir gemeinsam eine Höherstufung. Wir begleiten Sie durch den gesamten Prozess – inklusive Widerspruch, falls nötig.</div>
         </div>
         <div class="faq-item">
           <div class="faq-q">Sind Sie bei der Komission des medizinischen Dienstes anwesend?</div>
@@ -519,7 +509,7 @@ h2 { font-size: 1.6rem; color: var(--primary); margin-bottom: 1.25rem; text-alig
         <script src="panacea_preview_rechner.js"></script>
         <script>
           if (window.PanaceaRechner && typeof PanaceaRechner.init === 'function') {
-            PanaceaRechner.init({ targetId: 'panacea-rechner-landkreis-ffb', ctaHref: '#block-7' });
+            PanaceaRechner.init("#panacea-rechner-landkreis-ffb", { ctaHref: "#block-7" });
           }
         </script>
       </div>

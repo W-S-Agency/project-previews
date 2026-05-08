@@ -150,6 +150,8 @@ h2 { font-size: 1.6rem; color: var(--primary); margin-bottom: 1.25rem; text-alig
 /* ── Contact columns ── */
 .contact-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1rem; }
 @media (max-width: 600px) { .contact-cols { grid-template-columns: 1fr; } }
+/* Single contact-col → center the column on the page (Standortseiten Block 7) */
+.contact-cols:has(.contact-col:only-child) { grid-template-columns: minmax(220px, 360px); justify-content: center; justify-items: center; text-align: center; }
 .contact-col h3 { font-size: 1.1rem; color: var(--primary); margin-bottom: .75rem; }
 .contact-col p { font-size: .92rem; margin-bottom: .35rem; }
 
@@ -435,7 +437,7 @@ h2 { font-size: 1.6rem; color: var(--primary); margin-bottom: 1.25rem; text-alig
         <script src="panacea_preview_rechner.js"></script>
         <script>
           if (window.PanaceaRechner && typeof PanaceaRechner.init === 'function') {
-            PanaceaRechner.init({ targetId: 'panacea-rechner-startseite', ctaHref: '#block-8' });
+            PanaceaRechner.init("#panacea-rechner-startseite", { ctaHref: "#block-8" });
           }
         </script>
       </div>
@@ -577,7 +579,7 @@ h2 { font-size: 1.6rem; color: var(--primary); margin-bottom: 1.25rem; text-alig
         <h2>Wir sind für Sie da</h2>
         <p style="color:var(--text-light);max-width:600px;margin:0 auto 1rem;">Sie haben Fragen oder möchten ein Beratungsgespräch? Rufen Sie uns an oder schreiben Sie uns – kostenlos und unverbindlich. Wir melden uns innerhalb von 24 Stunden.</p>
         <div class="contact-cols"><div class="contact-col"><h3>München</h3><p>☎ 089 52068407</p><p>✉ anfrage.muc@panacea-pflege.de</p><p>💬 0176 80171362</p></div><div class="contact-col"><h3>Landkreis FFB</h3><p>☎ 08142 4646900</p><p>✉ anfrage.ffb@panacea-pflege.de</p><p>💬 0176 80171362</p></div></div>
-        <div class="cta-group" style="justify-content:center;margin-top:1.5rem;"><a href="#" class="btn-primary">Kostenlose Beratung anfragen</a><a href="#" class="btn-secondary">☎ 089 52068407</a></div>
+        <div class="cta-group" style="justify-content:center;margin-top:1.5rem;"><a href="#" class="btn-primary">Kostenlose Beratung anfragen</a></div>
       </div>
       
       <button class="fb-btn" title="Feedback geben">✏️ Vorschlag</button>
