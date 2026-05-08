@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html lang="de" class="h-full">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Strategischer Blueprint | renovira.de Multi-Page-Relaunch</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<style type="text/tailwindcss">
+  @theme {
+    --color-bg:        #f6f3ed;
+    --color-surf:      #ffffff;
+    --color-surf2:     #efeae1;
+    --color-text:      #3d393d;
+    --color-muted:     #8b8589;
+    --color-border:    rgba(61, 57, 61, 0.12);
+    --color-accent:    #1992CD;
+    --color-accent-2:  #1379a8;
+    --color-charcoal:  #3D393D;
+    --color-renotec:   #3056DB;
+    --color-renovolt:  #2EB599;
+    --font-display:    'Sora', system-ui, sans-serif;
+    --font-body:       'Inter', system-ui, sans-serif;
+    --font-mono:       'Courier New', monospace;
+  }
+
+  @layer base {
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--color-bg);
+      color: var(--color-text);
+      font-family: var(--font-body);
+    }
+    h1, h2, h3, h4 { font-family: var(--font-display); }
+  }
+
+  @layer components {
+    .slide {
+      @apply relative flex flex-col justify-center items-center;
+      @apply h-screen min-h-[640px] px-20 py-16 overflow-hidden;
+    }
+    .label {
+      @apply text-[12px] tracking-[.18em] uppercase font-mono text-[var(--color-muted)];
+      @apply mb-5;
+    }
+    .pill {
+      @apply inline-block px-3 py-1 rounded-full text-[10px] tracking-[.08em] uppercase font-mono;
+      @apply bg-[var(--color-surf2)] text-[var(--color-text)];
+    }
+    .pill-accent {
+      @apply bg-[var(--color-accent)] text-white;
+    }
+    .card {
+      @apply bg-[var(--color-surf)] rounded-xl p-7;
+      @apply border border-[var(--color-border)];
+    }
+    .card-accent {
+      @apply bg-[var(--color-accent)] text-white rounded-xl p-7;
+    }
+    .sn {
+      @apply absolute bottom-7 left-20 font-mono text-[10px] text-[var(--color-muted)] tracking-[.18em];
+    }
+    .num {
+      @apply absolute top-7 right-20 font-mono text-[10px] text-[var(--color-muted)] tracking-[.18em];
+    }
+  }
+</style>
+
+<style>
+html { font-size: 19px; }
+
+.slide { display: none; }
+.slide.active { display: flex; }
+
+.brand-mark {
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.brand-mark .dot { color: #1992CD; }
+
+.hero-title {
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  text-align: center;
+  max-width: 980px;
+}
+.section-h2 {
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+}
+.section-h3 {
+  font-family: 'Sora', sans-serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  line-height: 1.3;
+}
+
+.quote-block {
+  font-family: 'Sora', sans-serif;
+  font-style: italic;
+  font-size: 1.15rem;
+  line-height: 1.5;
+  color: var(--color-text);
+  border-left: 3px solid var(--color-accent);
+  padding-left: 20px;
+  max-width: 760px;
+}
+.quote-source {
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  color: var(--color-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-top: 10px;
+}
+
+.brand-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  width: 100%;
+  max-width: 980px;
+}
+.brand-card {
+  background: var(--color-surf);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 26px 22px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.brand-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: var(--brand-color);
+}
+.brand-card .name {
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: var(--brand-color);
+  margin-bottom: 4px;
+}
+.brand-card .role {
+  font-size: .82rem;
+  color: var(--color-muted);
+  margin-bottom: 12px;
+  min-height: 38px;
+}
+.brand-card .swatch {
+  display: inline-block;
+  font-family: monospace;
+  font-size: .72rem;
+  padding: 2px 8px;
+  background: var(--color-surf2);
+  border-radius: 999px;
+  color: var(--color-text);
+}
+
+.usp-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  width: 100%;
+  max-width: 1080px;
+}
+.usp-card {
+  background: var(--color-surf);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 22px;
+  position: relative;
+}
+.usp-card.featured {
+  background: var(--color-accent);
+  color: white;
+  border-color: var(--color-accent);
+}
+.usp-card.featured .usp-num,
+.usp-card.featured .usp-sub { color: rgba(255,255,255,0.78); }
+.usp-num {
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  color: var(--color-muted);
+  margin-bottom: 8px;
+}
+.usp-title {
+  font-family: 'Sora', sans-serif;
+  font-weight: 600;
+  font-size: 1.05rem;
+  margin-bottom: 6px;
+}
+.usp-sub {
+  font-size: .85rem;
+  color: var(--color-muted);
+  line-height: 1.45;
+}
+
+.pain-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  width: 100%;
+  max-width: 1080px;
+}
+.pain-item {
+  display: flex;
+  gap: 14px;
+  padding: 16px 18px;
+  background: var(--color-surf);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+}
+.pain-num {
+  flex: 0 0 32px;
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--color-accent);
+}
+.pain-txt { font-size: .88rem; line-height: 1.5; }
+.pain-txt .quote { font-style: italic; color: var(--color-text); display: block; margin-bottom: 6px; }
+.pain-txt .answer { color: var(--color-muted); font-size: .82rem; }
+.pain-txt .answer strong { color: var(--color-accent); font-weight: 600; }
+
+/* Sitemap (Slide 09) */
+.sm-wrap {
+  width: 100%;
+  max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.sm-section {
+  background: var(--color-surf);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 18px 20px;
+}
+.sm-section-label {
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-bottom: 12px;
+}
+.sm-row { display: grid; gap: 10px; }
+.sm-row-2 { grid-template-columns: 1fr 1fr; }
+.sm-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.sm-page {
+  background: var(--color-surf2);
+  border-radius: 8px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: .82rem;
+  border: 1px solid transparent;
+}
+.sm-page-key {
+  background: var(--color-surf);
+  border-color: var(--color-accent);
+  border-width: 2px;
+  padding: 12px 16px;
+}
+.sm-icon {
+  width: 18px;
+  height: 18px;
+  color: var(--color-accent);
+  flex-shrink: 0;
+}
+.sm-page-text { display: flex; flex-direction: column; gap: 2px; }
+.sm-page-url {
+  font-family: 'Courier New', monospace;
+  font-size: .8rem;
+  color: var(--color-text);
+  font-weight: 500;
+  flex: 1;
+}
+.sm-page-name {
+  font-size: .72rem;
+  color: var(--color-muted);
+}
+.sm-tag {
+  display: inline-block;
+  font-family: 'Courier New', monospace;
+  font-size: 9px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: var(--color-accent);
+  color: white;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.sm-flat {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+  align-items: center;
+}
+.sm-flat-item {
+  font-family: 'Courier New', monospace;
+  font-size: .82rem;
+  color: var(--color-text);
+  font-weight: 500;
+  background: var(--color-surf2);
+  padding: 6px 12px;
+  border-radius: 6px;
+}
+.sm-flat-muted { color: var(--color-muted); font-weight: 400; }
+.sm-flat-sep { color: var(--color-muted); margin: 0 4px; }
+
+.blocks-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  width: 100%;
+  max-width: 1080px;
+}
+.block-cell {
+  background: var(--color-surf);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 14px 14px;
+  font-size: .84rem;
+  position: relative;
+}
+.block-cell .bn {
+  font-family: 'Courier New', monospace;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  color: var(--color-muted);
+  margin-bottom: 4px;
+}
+.block-cell .bt {
+  font-family: 'Sora', sans-serif;
+  font-weight: 600;
+  font-size: .9rem;
+  line-height: 1.2;
+}
+.block-cell.dark {
+  background: var(--color-charcoal);
+  color: white;
+  border-color: var(--color-charcoal);
+}
+.block-cell.dark .bn { color: rgba(255,255,255,0.5); }
+.block-cell.accent {
+  background: var(--color-accent);
+  color: white;
+  border-color: var(--color-accent);
+}
+.block-cell.accent .bn { color: rgba(255,255,255,0.7); }
+
+.process-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  width: 100%;
+  max-width: 1100px;
+}
+.process-step {
+  background: var(--color-surf);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 18px 16px;
+  text-align: center;
+  position: relative;
+}
+.process-step .pnum {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  color: white;
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 12px;
+}
+.process-step .ptit {
+  font-family: 'Sora', sans-serif;
+  font-weight: 600;
+  font-size: .92rem;
+  margin-bottom: 6px;
+  line-height: 1.25;
+}
+.process-step .pdesc {
+  font-size: .76rem;
+  color: var(--color-muted);
+  line-height: 1.4;
+}
+
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  width: 100%;
+  max-width: 1000px;
+}
+.metric {
+  text-align: center;
+  padding: 22px 16px;
+  background: var(--color-surf);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+}
+.metric .mv {
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: 2rem;
+  color: var(--color-accent);
+  line-height: 1;
+}
+.metric .ml {
+  font-size: .78rem;
+  color: var(--color-muted);
+  margin-top: 6px;
+}
+
+.next-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  width: 100%;
+  max-width: 1080px;
+}
+.next-item {
+  background: var(--color-surf);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 22px;
+  position: relative;
+}
+.next-item .ni-num {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  font-family: 'Sora', sans-serif;
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--color-surf2);
+  line-height: 1;
+}
+.next-item .ni-tit {
+  font-family: 'Sora', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 2;
+}
+.next-item .ni-desc {
+  font-size: .82rem;
+  color: var(--color-muted);
+  line-height: 1.5;
+  position: relative;
+  z-index: 2;
+}
+
+table.simple-table {
+  width: 100%;
+  max-width: 1000px;
+  border-collapse: collapse;
+  font-size: .88rem;
+}
+table.simple-table th, table.simple-table td {
+  text-align: left;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--color-border);
+}
+table.simple-table th {
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  font-weight: 500;
+}
+table.simple-table td.accent { color: var(--color-accent); font-weight: 600; }
+table.simple-table .num-cell { font-family: 'Courier New', monospace; }
+
+.cover-bg {
+  background: linear-gradient(135deg, #f6f3ed 0%, #efeae1 100%);
+}
+.dark-slide {
+  background: #3D393D !important;
+  color: #ffffff !important;
+}
+.dark-slide .label,
+.dark-slide .quote-source { color: rgba(255,255,255,0.55) !important; }
+.dark-slide .section-h2 { color: #ffffff !important; }
+.dark-slide p { color: rgba(255,255,255,0.78); }
+.dark-slide .next-item {
+  background: rgba(255,255,255,0.07) !important;
+  border-color: rgba(255,255,255,0.14) !important;
+  color: #ffffff !important;
+}
+.dark-slide .next-item .ni-tit { color: #ffffff !important; }
+.dark-slide .next-item .ni-num { color: rgba(255,255,255,0.10) !important; }
+.dark-slide .next-item .ni-desc { color: rgba(255,255,255,0.72) !important; }
+
+/* Feedback Call (Slide 15 closing block) */
+.feedback-call {
+  position: relative;
+  max-width: 640px;
+  width: 100%;
+  padding: 26px 32px 28px;
+  background: linear-gradient(135deg, rgba(25, 146, 205, 0.18) 0%, rgba(25, 146, 205, 0.08) 100%);
+  border: 1px solid rgba(25, 146, 205, 0.45);
+  border-left: 3px solid #1992CD;
+  border-radius: 12px;
+  text-align: center;
+}
+.feedback-call-label {
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #1992CD;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+.feedback-call-text {
+  font-family: 'Sora', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #ffffff;
+}
+.feedback-call-text strong {
+  color: #1992CD;
+  font-weight: 600;
+}
+
+/* Navigation */
+.nav-dots {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 7px;
+  z-index: 50;
+  background: rgba(255,255,255,0.7);
+  padding: 7px 12px;
+  border-radius: 999px;
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--color-border);
+}
+.nd {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(61,57,61,0.18);
+  cursor: pointer;
+  border: none;
+  padding: 0;
+  transition: all .2s;
+}
+.nd.on {
+  background: var(--color-accent);
+  transform: scale(1.4);
+}
+.nav-arrow {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 42px;
+  height: 42px;
+  background: rgba(255,255,255,0.9);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  font-size: 1.2rem;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all .2s;
+  backdrop-filter: blur(8px);
+}
+.nav-arrow:hover { background: var(--color-accent); color: white; border-color: var(--color-accent); }
+.nav-arrow:disabled { opacity: 0.25; cursor: default; }
+.nav-arrow:disabled:hover { background: rgba(255,255,255,0.9); color: var(--color-text); border-color: var(--color-border); }
+#btn-prev { left: 22px; }
+#btn-next { right: 22px; }
+#slide-counter {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  color: var(--color-muted);
+  z-index: 100;
+  letter-spacing: 0.18em;
+  background: rgba(255,255,255,0.7);
+  padding: 5px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+}
+
+/* Brand mark fixed top-left */
+.brand-fixed {
+  position: fixed;
+  top: 24px;
+  left: 26px;
+  z-index: 100;
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+}
+.brand-fixed .dot { color: var(--color-accent); }
+
+/* Responsive */
+@media (max-width: 1024px) {
+  html { font-size: 17px; }
+  .slide { padding: 60px 40px; }
+}
+@media (max-width: 768px) {
+  html { font-size: 15px; }
+  .slide { padding: 56px 22px !important; min-height: 100vh !important; height: auto !important; }
+  .nav-dots { display: none; }
+  .sn { display: none !important; }
+  .num { display: none !important; }
+  .brand-row, .usp-grid, .blocks-grid, .next-grid, .metric-grid, .pain-row, .sm-row-2, .sm-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .blocks-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .sm-grid { grid-template-columns: 1fr !important; }
+  .process-row { grid-template-columns: 1fr 1fr !important; }
+  .metric-grid { grid-template-columns: 1fr 1fr !important; }
+  table.simple-table { font-size: .78rem; }
+  table.simple-table th, table.simple-table td { padding: 8px 10px; }
+  .hero-title { font-size: clamp(1.8rem, 7vw, 2.5rem) !important; }
+  .section-h2 { font-size: clamp(1.4rem, 5vw, 1.8rem) !important; }
+  .brand-fixed { font-size: .85rem; top: 18px; left: 18px; }
+  #slide-counter { top: 18px; right: 18px; font-size: 10px; }
+  .nav-arrow { width: 36px; height: 36px; }
+  #btn-prev { left: 12px; }
+  #btn-next { right: 12px; }
+  .quote-block { font-size: 1rem; }
+}
+@media (max-width: 480px) {
+  html { font-size: 14px; }
+  .slide { padding: 56px 16px !important; }
+  .blocks-grid, .process-row, .metric-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+</style>
+</head>
+<body class="h-full">
+
+<!-- Brand mark fixed -->
+<div class="brand-fixed">renovira<span class="dot">.</span></div>
+
+<!-- Navigation -->
+<nav class="nav-dots" id="dots"></nav>
+<div id="slide-counter">01 · 15</div>
+<button class="nav-arrow" id="btn-prev" aria-label="Vorherige Folie">&#8592;</button>
+<button class="nav-arrow" id="btn-next" aria-label="Nächste Folie">&#8594;</button>
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- 01 — COVER -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<section class="slide active cover-bg" id="s01">
+  <div class="label">Strategischer Blueprint · 30.04.2026</div>
+
+  <h1 class="hero-title">
+    Multi-Page-Relaunch<br>
+    <span style="color: var(--color-accent);">renovira.</span>
+  </h1>
+
+  <p class="mt-7 text-center text-[1.1rem] max-w-[700px]" style="color: var(--color-muted); line-height: 1.55;">
+    Strategische Grundlage für den Sprung von Single-Page zur ersten Liga im Berliner Sanierungsmarkt.
+  </p>
+
+  <div class="mt-12 flex flex-col items-center gap-2" style="font-size: .85rem; color: var(--color-muted);">
+    <div><span style="color: var(--color-text); font-weight: 600;">Für:</span> Daniel Kolchynskiy + Alexander Schwarz · Renovira Dienstleistungs GmbH</div>
+    <div><span style="color: var(--color-text); font-weight: 600;">Von:</span> 2Penguins</div>
+  </div>
+
+  <div class="sn">01 · 15</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- 02 — DATENBASIS -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<section class="slide" id="s02">
+  <div class="label">Methodik · Wovon dieser Blueprint ausgeht</div>
+  <h2 class="section-h2 mb-10 text-center">Eine evidenzbasierte Strategie auf drei Säulen.</h2>
+
+  <div class="metric-grid mb-8">
+    <div class="metric"><div class="mv">28</div><div class="ml">Berliner Wettbewerbs-Domains analysiert</div></div>
+    <div class="metric"><div class="mv">16</div><div class="ml">Keyword-Cluster mit Volumen + Schwierigkeit</div></div>
+    <div class="metric"><div class="mv">375</div><div class="ml">Wettbewerbs-Reviews ausgewertet</div></div>
+    <div class="metric"><div class="mv">8</div><div class="ml">Klient-Quellen verifiziert (Verbatim)</div></div>
+  </div>
+
+  <p class="text-center max-w-[760px]" style="color: var(--color-muted); font-size: .92rem; line-height: 1.6;">
+    Datenbasis: Wettbewerbs-Audit Berlin, Site-Audit renovira.de, Ihre Antworten aus dem Google Form vom 12.03.2026, Klient-Antworten via WhatsApp-Chat vom 29.04.2026, Logobook Renovira Gruppe (2025), Component-Library aus dem renotec.-Design-Prototype.
+  </p>
+
+  <div class="sn">02 · 15</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- 03 — POSITIONIERUNG -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<section class="slide" id="s03">
+  <div class="label">Positionierung · Wer ist renovira.</div>
+  <h2 class="section-h2 mb-8 max-w-[900px] text-center">
+    Berliner Generalbauunternehmen für ganzheitliche Sanierungen, Wohnen und Gewerbe.
+  </h2>
+
+  <div class="quote-block mb-3">
+    „Wir möchten zwar die einzelnen Gewerke beschreiben, jedoch soll inhaltlich und designtechnisch ganz klar ersichtlich sein, dass wir ein Generalbauunternehmen sind und diese Gewerke im Zuge einer ganzheitlichen Sanierung anbieten. Es muss deutlich der Fokus auf 'alles aus einer Hand' sein."
+  </div>
+  <div class="quote-source">Daniel Kolchynskiy · Google Form 12.03.2026</div>
+
+  <div class="mt-10 grid grid-cols-3 gap-5 max-w-[900px] w-full">
+    <div class="card text-center">
+      <i data-lucide="home" style="width: 1.8rem; height: 1.8rem; color: var(--color-accent); margin: 0 auto 10px;"></i>
+      <div class="section-h3 mb-1">Wohnen</div>
+      <div style="font-size: .8rem; color: var(--color-muted);">Haus, Wohnung, Altbau</div>
+    </div>
+    <div class="card text-center">
+      <i data-lucide="building-2" style="width: 1.8rem; height: 1.8rem; color: var(--color-accent); margin: 0 auto 10px;"></i>
+      <div class="section-h3 mb-1">Gewerbe</div>
+      <div style="font-size: .8rem; color: var(--color-muted);">Büro, Praxis, Ferienwohnungen</div>
+    </div>
+    <div class="card text-center">
+      <i data-lucide="key-round" style="width: 1.8rem; height: 1.8rem; color: var(--color-accent); margin: 0 auto 10px;"></i>
+      <div class="section-h3 mb-1">Schlüsselfertig</div>
+      <div style="font-size: .8rem; color: var(--color-muted);">Übergabe ohne Aufwand für Sie</div>
+    </div>
+  </div>
+
+  <div class="sn">03 · 15</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- 04 — KONZERN RENOVIRA GRUPPE -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<section class="slide" id="s04">
+  <div class="label">Konzern · Renovira Gruppe</div>
+  <h2 class="section-h2 mb-3 text-center max-w-[900px]">3 Brands, eine Familie, ein Konzern-Verbund.</h2>
+  <p class="text-center max-w-[720px] mb-10" style="color: var(--color-muted); font-size: .92rem;">
+    renovira. ist Teil des Logobooks der Renovira Gruppe (2025). Gemeinsame Logo-Konstruktion, gemeinsame Schriftfamilie, drei differenzierte Brand-Farben auf gemeinsamer Charcoal-Basis.
+  </p>
+
+  <div class="brand-row">
+    <div class="brand-card" style="--brand-color: #1992CD;">
+      <div class="name">renovira.</div>
+      <div class="role">Generalbauunternehmen<br><strong style="color: var(--color-text);">dieses Projekt</strong></div>
+      <div class="swatch">#1992CD · Deep Aqua Blue</div>
+    </div>
+    <div class="brand-card" style="--brand-color: #3056DB;">
+      <div class="name">renotec.</div>
+      <div class="role">Sanitär · Heizung · Klima<br>Standalone</div>
+      <div class="swatch">#3056DB · Royal Blue</div>
+    </div>
+    <div class="brand-card" style="--brand-color: #2EB599;">
+      <div class="name">renovolt.</div>
+      <div class="role">Elektroinstallation<br>Standalone</div>
+      <div class="swatch">#2EB599 · Blue-green</div>
+    </div>
+  </div>
+
+  <p class="mt-10 text-center max-w-[760px]" style="color: var(--color-muted); font-size: .85rem; line-height: 1.6;">
+    Der Konzern-Verbund wird in Footer und Schema-Markup sichtbar gemacht. Cross-Linking dient der Sichtbarkeit der Schwester-Brands, nicht der Vermischung der Inhalte.
+  </p>
+
+  <div class="sn">04 · 15</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- 05 — DIE 6 USPs -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<section class="slide" id="s05">
+  <div class="label">Was renovira. verspricht · 6 USPs</div>
+  <h2 class="section-h2 mb-3 text-center">Sechs Alleinstellungs-Merkmale, ein Versprechen.</h2>
+  <p class="text-center mb-10" style="color: var(--color-muted); font-size: .9rem;">
+    Aus Ihren eigenen Aussagen abgeleitet (Form 12.03 + chat4258 vom 29.04).
+  </p>
+
+  <div class="usp-grid">
+    <div class="usp-card">
+      <div class="usp-num">USP 01</div>
+      <div class="usp-title">Alles aus einer Hand</div>
+      <div class="usp-sub">Kern-Anker. Schlüsselfertige Übergabe, gemeinsames Bemustern.</div>
+    </div>
+    <div class="usp-card">
+      <div class="usp-num">USP 02</div>
+      <div class="usp-title">Deutschsprachig</div>
+      <div class="usp-sub">Direkter Anti-Pain-Match auf Berliner Markt mit hoher internationaler Konkurrenz.</div>
+    </div>
+    <div class="usp-card">
+      <div class="usp-num">USP 03</div>
+      <div class="usp-title">Meisterbetrieb für SHK</div>
+      <div class="usp-sub">Trust-Signal in Maßen, nicht als Hero-Headline.</div>
+    </div>
+    <div class="usp-card">
+      <div class="usp-num">USP 04</div>
+      <div class="usp-title">Digital + kurzfristiger Start</div>
+      <div class="usp-sub">WhatsApp, Calendly, schnelle Antwort. Kontert „Handwerker haben keine Zeit".</div>
+    </div>
+    <div class="usp-card">
+      <div class="usp-num">USP 05</div>
+      <div class="usp-title">Transparente Bauplanung</div>
+      <div class="usp-sub">Effiziente Kommunikation, klarer Bauablauf, persönlicher Bauleiter.</div>
+    </div>
+    <div class="usp-card featured">
+      <div class="usp-num">USP 06 · Stärkste Differenzierung</div>
+      <div class="usp-title">Festpreis-Garantie 99 %</div>
+      <div class="usp-sub">Plus transparente Nachträge nur bei Unvorhergesehenem. Direkt gegen Markt-Pain Nr. 1.</div>
+    </div>
+  </div>
+
+  <div class="sn">05 · 15</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- 06 — IHR VORTEIL AUF EINEN BLICK -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<section class="slide" id="s06">
+  <div class="label">Block 2 nach Hero · Vertical Bullets</div>
+  <h2 class="section-h2 mb-3 text-center">„Ihr Vorteil auf einen Blick."</h2>
+  <p class="text-center mb-12 max-w-[640px]" style="color: var(--color-muted); font-size: .92rem;">
+    Drei zentrale USPs, direkt nach dem Hero, auf Homepage und jeder Service-Landingpage. Die anderen drei USPs werden kontextuell über die Site verteilt.
+  </p>
+
+  <div class="grid grid-cols-3 gap-5 max-w-[1000px] w-full">
+    <div class="card" style="border-color: var(--color-accent); border-width: 2px;">
+      <div class="flex items-center gap-3 mb-4">
+        <div style="width: 36px; height: 36px; background: var(--color-accent); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+          <i data-lucide="badge-percent" style="width: 1.2rem; height: 1.2rem; color: white;"></i>
+        </div>
+        <div class="usp-num">01</div>
+      </div>
+      <div class="section-h3 mb-2" style="font-size: 1.05rem;">Festpreis-Garantie 99 %</div>
+      <div style="font-size: .82rem; color: var(--color-muted); line-height: 1.5;">
+        Was wir nach kostenloser Vor-Ort-Begehung anbieten, gilt. Nachträge nur bei Unvorhergesehenem, immer maximal transparent.
+      </div>
+    </div>
+
+    <div class="card" style="border-color: var(--color-accent); border-width: 2px;">
+      <div class="flex items-center gap-3 mb-4">
+        <div style="width: 36px; height: 36px; background: var(--color-accent); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+          <i data-lucide="hand" style="width: 1.2rem; height: 1.2rem; color: white;"></i>
+        </div>
+        <div class="usp-num">02</div>
+      </div>
+      <div class="section-h3 mb-2" style="font-size: 1.05rem;">Alles aus einer Hand</div>
+      <div style="font-size: .82rem; color: var(--color-muted); line-height: 1.5;">
+        Sie übergeben uns das Objekt, wir geben es Ihnen schlüsselfertig zurück. Bemustern gemeinsam.
+      </div>
+    </div>
+
+    <div class="card" style="border-color: var(--color-accent); border-width: 2px;">
+      <div class="flex items-center gap-3 mb-4">
+        <div style="width: 36px; height: 36px; background: var(--color-accent); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+          <i data-lucide="calendar-check" style="width: 1.2rem; height: 1.2rem; color: white;"></i>
+        </div>
+        <div class="usp-num">03</div>
+      </div>
+      <div class="section-h3 mb-2" style="font-size: 1.05rem;">Termintreue + Bauplanung</div>
+      <div style="font-size: .82rem; color: var(--color-muted); line-height: 1.5;">
+        Vereinbarungen halten wir ein. Persönlicher Bauleiter, transparenter Bauablaufplan vom ersten Termin bis zur Übergabe.
+      </div>
+    </div>
+  </div>
+
+  <div class="sn">06 · 15</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- 07 — 5 PAIN-CLUSTER -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<section class="slide" id="s07">
+  <div class="label">Pain → Solution · Klient-Verbatim 29.04</div>
+  <h2 class="section-h2 mb-3 text-center max-w-[800px]">5 Schmerzpunkte Ihrer Kunden, 5 klare Antworten.</h2>
+  <p class="text-center mb-8 max-w-[720px]" style="color: var(--color-muted); font-size: .88rem;">
+    Auf jeder Service-Landingpage erscheinen 3 dieser Pain-Cluster (gewählt nach Persona-Relevanz) als 3-Kacheln-Pattern.
+  </p>
+
+  <div class="pain-row">
+    <div class="pain-item">
+      <div class="pain-num">KP1</div>
+      <div class="pain-txt">
+        <span class="quote">„Handwerker haben keine Zeit."</span>
+        <span class="answer">→ <strong>USP 4</strong> Digital + kurzfristiger Start. WhatsApp, Calendly, schnelle Antwort.</span>
+      </div>
+    </div>
+    <div class="pain-item">
+      <div class="pain-num">KP2</div>
+      <div class="pain-txt">
+        <span class="quote">„Angebote sind intransparent."</span>
+        <span class="answer">→ <strong>USP 6</strong> Festpreis 99 % + transparente Nachträge.</span>
+      </div>
+    </div>
+    <div class="pain-item">
+      <div class="pain-num">KP3</div>
+      <div class="pain-txt">
+        <span class="quote">„Firmen sprechen kein Deutsch."</span>
+        <span class="answer">→ <strong>USP 2</strong> Deutschsprachige Beratung von Anfang bis Ende.</span>
+      </div>
+    </div>
+    <div class="pain-item">
+      <div class="pain-num">KP4</div>
+      <div class="pain-txt">
+        <span class="quote">„Vereinbarungen wurden nicht gehalten."</span>
+        <span class="answer">→ <strong>Termintreue</strong> + Meisterbetrieb-Qualität + Bauplanung.</span>
+      </div>
+    </div>
+    <div class="pain-item" style="grid-column: span 2; background: var(--color-accent); color: white; border-color: var(--color-accent);">
+      <div class="pain-num" style="color: white;">KP5</div>
+      <div class="pain-txt">
+        <span class="quote" style="color: white;">„Kunden beauftragen jedes Gewerk einzeln und müssen sich um die Organisation jedes Handwerkers selber kümmern."</span>
+        <span class="answer" style="color: rgba(255,255,255,0.85);">→ <strong style="color: white;">USP 1 Alles aus einer Hand</strong> — Kern-Anker der gesamten Positionierung.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sn">07 · 15</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- 08 — MARKT & DIFFERENZIERUNG -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<section class="slide" id="s08">
+  <div class="label">Markt · Berliner Sanierungs-Markt</div>
+  <h2 class="section-h2 mb-3 text-center max-w-[860px]">Der Markt ist offen — kein klarer digitaler Champion.</h2>
+  <p class="text-center mb-8 max-w-[720px]" style="color: var(--color-muted); font-size: .88rem;">
+    10 etablierte GU-Profile, hunderte Einzel-Handwerker. Mittlere Authority Score: 9. Wer den Multi-Page-Sprung macht, kann zur ersten Liga aufsteigen.
+  </p>
+
+  <table class="simple-table">
+    <thead>
+      <tr>
+        <th>Markt-Standard</th>
+        <th>renovira.-Spezifik</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Generic „Festpreis-Garantie"</td>
+        <td class="accent">„Festpreis 99 % + transparente Nachträge nur bei Unvorhergesehenem"</td>
+      </tr>
+      <tr>
+        <td>Generic „alles aus einer Hand"</td>
+        <td class="accent">Schlüsselfertige Übergabe + gemeinsames Bemustern</td>
+      </tr>
+      <tr>
+        <td>Solo-Generalunternehmen</td>
+        <td class="accent">3-Brand-Konzern (renovira. + renotec. + renovolt.)</td>
+      </tr>
+      <tr>
+        <td>Generic „Termintreue"</td>
+        <td class="accent">Pain-direkt: „Vereinbarungen halten wir ein"</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p class="mt-8 text-center max-w-[720px]" style="color: var(--color-muted); font-size: .85rem;">
+    Drei Leader-Referenzen begleiten die Strategie: <strong style="color: var(--color-text);">NiWoBau</strong> (Hauptbenchmark, Profil-Match) · <strong style="color: var(--color-text);">so-innenausbau.de</strong> (organischer Marktführer) · <strong style="color: var(--color-text);">builda.berlin</strong> (Stil-Referenz, klient-bestätigt).
+  </p>
+
+  <div class="sn">08 · 15</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- 09 — SITEMAP -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<section class="slide" id="s09">
+  <div class="label">Sitemap · 15 Seiten</div>
+  <h2 class="section-h2 mb-8 text-center">Eine fokussierte Architektur, keine Erweiterungen.</h2>
+
+  <div class="sm-wrap">
+
+    <!-- Top Level -->
+    <div class="sm-section">
+      <div class="sm-section-label">Top-Level · Hauptnavigation</div>
+      <div class="sm-row sm-row-2">
+        <div class="sm-page sm-page-key">
+          <i data-lucide="home" class="sm-icon"></i>
+          <div class="sm-page-text">
+            <div class="sm-page-url">/</div>
+            <div class="sm-page-name">Homepage</div>
+          </div>
+        </div>
+        <div class="sm-page sm-page-key">
+          <i data-lucide="layout-grid" class="sm-icon"></i>
+          <div class="sm-page-text">
+            <div class="sm-page-url">/leistungen/</div>
+            <div class="sm-page-name">Hub · alle 10 Services</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10 Service Landing Pages -->
+    <div class="sm-section">
+      <div class="sm-section-label">10 × Service-Landingpages</div>
+      <div class="sm-grid">
+        <div class="sm-page">
+          <div class="sm-page-url">/komplettsanierung-berlin/</div>
+          <span class="sm-tag">TOP 3 SEO</span>
+        </div>
+        <div class="sm-page">
+          <div class="sm-page-url">/altbausanierung-berlin/</div>
+          <span class="sm-tag">TOP 3 SEO</span>
+        </div>
+        <div class="sm-page"><div class="sm-page-url">/trockenbau-innenausbau-berlin/</div></div>
+        <div class="sm-page"><div class="sm-page-url">/malerarbeiten-tapezierarbeiten-berlin/</div></div>
+        <div class="sm-page"><div class="sm-page-url">/fliesen-bodenverlegung-berlin/</div></div>
+        <div class="sm-page"><div class="sm-page-url">/dacharbeiten-dachsanierung-berlin/</div></div>
+        <div class="sm-page"><div class="sm-page-url">/fassadenarbeiten-waermedaemmung-berlin/</div></div>
+        <div class="sm-page"><div class="sm-page-url">/fenster-tueren-montage-berlin/</div></div>
+        <div class="sm-page">
+          <div class="sm-page-url">/elektroinstallation-berlin/</div>
+          <span class="sm-tag" style="background: #2EB599; color: white;">↗ renovolt.</span>
+        </div>
+        <div class="sm-page">
+          <div class="sm-page-url">/sanitaer-heizungsinstallation-berlin/</div>
+          <span class="sm-tag" style="background: #3056DB; color: white;">↗ renotec.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Trust + Pflicht -->
+    <div class="sm-section">
+      <div class="sm-section-label">Trust + Pflicht-Seiten</div>
+      <div class="sm-flat">
+        <span class="sm-flat-item">/referenzen/</span>
+        <span class="sm-flat-item">/ueber-uns/</span>
+        <span class="sm-flat-item">/kontakt/</span>
+        <span class="sm-flat-sep">·</span>
+        <span class="sm-flat-item sm-flat-muted">/datenschutz/</span>
+        <span class="sm-flat-item sm-flat-muted">/impressum/</span>
+        <span class="sm-flat-item sm-flat-muted">/barrierefreiheit/</span>
+      </div>
+    </div>
+
+  </div>
+
+  <p class="mt-6 text-center max-w-[760px]" style="color: var(--color-muted); font-size: .82rem; line-height: 1.6;">
+    Geografischer Fokus: <strong style="color: var(--color-text);">berlinweit</strong>, ohne separate Stadtteil-Seiten (Klient-Vorgabe). Bezirks-Long-Tails werden organisch in Texte gewoben.
+  </p>
+
+  <div class="sn">09 · 15</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- 10 — HOMEPAGE 12 BLÖCKE -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<section class="slide" id="s10">
+  <div class="label">Homepage · 12 Blöcke (analog renotec.)</div>
+  <h2 class="section-h2 mb-8 text-center max-w-[800px]">Eine Block-Reihenfolge, die zum Kontaktpunkt führt.</h2>
+
+  <div class="blocks-grid">
+    <div class="block-cell"><div class="bn">01 · HERO</div><div class="bt">H1 + 2 CTAs<br><span style="font-weight: 400; color: var(--color-muted); font-size: .76rem;">kein Trust-Bar</span></div></div>
+    <div class="block-cell accent"><div class="bn">02 · USP-BULLETS</div><div class="bt">Ihr Vorteil<br>auf einen Blick</div></div>
+    <div class="block-cell"><div class="bn">03 · VISUAL</div><div class="bt">Großes Bild<br>renovira.-Sanierung</div></div>
+    <div class="block-cell"><div class="bn">04 · LEISTUNGEN</div><div class="bt">10 Services als<br>Card-Liste</div></div>
+    <div class="block-cell"><div class="bn">05 · REVIEWS</div><div class="bt">Highlight-Box<br>Brand-Akzent</div></div>
+    <div class="block-cell accent"><div class="bn">06 · 5 SCHRITTE</div><div class="bt">Anfrage<br>in 5 Schritten</div></div>
+    <div class="block-cell"><div class="bn">07 · LEAD-FORM</div><div class="bt">Multi-Step<br>(bestehend)</div></div>
+    <div class="block-cell"><div class="bn">08 · KONZERN</div><div class="bt">3-Brand-Block<br>Renovira Gruppe</div></div>
+    <div class="block-cell"><div class="bn">09 · COUNTER</div><div class="bt">renovira.<br>in Zahlen</div></div>
+    <div class="block-cell"><div class="bn">10 · PARTNER</div><div class="bt">Hersteller-<br>Logos</div></div>
+    <div class="block-cell"><div class="bn">11 · FAQ</div><div class="bt">5–7 Fragen<br>FAQ-Schema</div></div>
+    <div class="block-cell dark"><div class="bn">12 · FINAL CTA</div><div class="bt">Tel + WA + Form<br>Charcoal-Section</div></div>
+  </div>
+
+  <p class="mt-8 text-center max-w-[680px]" style="color: var(--color-muted); font-size: .82rem;">
+    Service-Landingpages folgen einem analogen Template (11 Blöcke) — Hero, Vorteil, Pain→Solution, Was wir machen, 5 Schritte, Lead-Form, Referenzen, Cross-Link, Trust, FAQ, Final-CTA.
+  </p>
+
+  <div class="sn">10 · 15</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- 11 — 5-SCHRITTE-PROZESS -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<section class="slide" id="s11">
+  <div class="label">Wie wir arbeiten · 5 Schritte</div>
+  <h2 class="section-h2 mb-3 text-center max-w-[800px]">„Ihre Anfrage in 5 Schritten — einfach &amp; kostenlos."</h2>
+  <p class="text-center mb-12 max-w-[680px]" style="color: var(--color-muted); font-size: .9rem;">
+    Block 6 auf Homepage, Block 5 auf jeder Service-LP. Pattern analog renotec.-Site.
+  </p>
+
+  <div class="process-row">
+    <div class="process-step">
+      <div class="pnum">1</div>
+      <div class="ptit">Anfrage starten</div>
+      <div class="pdesc">Telefon, WhatsApp oder Online-Termin</div>
+    </div>
+    <div class="process-step">
+      <div class="pnum">2</div>
+      <div class="ptit">Erstberatung</div>
+      <div class="pdesc">Klärung Ihrer Wünsche, kostenlos</div>
+    </div>
+    <div class="process-step">
+      <div class="pnum">3</div>
+      <div class="ptit">Vor-Ort-Termin</div>
+      <div class="pdesc">Wir kommen zu Ihnen</div>
+    </div>
+    <div class="process-step">
+      <div class="pnum">4</div>
+      <div class="ptit">Festpreis-Angebot</div>
+      <div class="pdesc">Verbindlich, alle Gewerke aufgeschlüsselt</div>
+    </div>
+    <div class="process-step" style="background: var(--color-accent); color: white; border-color: var(--color-accent);">
+      <div class="pnum" style="background: white; color: var(--color-accent);">5</div>
+      <div class="ptit" style="color: white;">Schlüsselfertig-Übergabe</div>
+      <div class="pdesc" style="color: rgba(255,255,255,0.85);">Sie übergeben das Objekt, wir geben es renoviert zurück</div>
+    </div>
+  </div>
+
+  <p class="mt-12 text-center max-w-[680px]" style="color: var(--color-muted); font-size: .82rem;">
+    Persönlicher Bauleiter, transparenter Bauablaufplan, gemeinsames Bemustern (Boden, Fliesen). Sonst hat der Kunde keinerlei Aufwand.
+  </p>
+
+  <div class="sn">11 · 15</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- 12 — SEO-STRATEGIE -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<section class="slide" id="s12">
+  <div class="label">SEO &amp; KI-SEO · Sichtbarkeitsstrategie</div>
+  <h2 class="section-h2 mb-3 text-center">Top-3-Keywords plus 10 Quick-Wins.</h2>
+  <p class="text-center mb-8 max-w-[720px]" style="color: var(--color-muted); font-size: .9rem;">
+    Hauptpositionierung über drei Top-Cluster, schnelle Reichweite über 10 niedrig-kompetitive Quick-Wins (~2.500 Suchanfragen/Monat).
+  </p>
+
+  <div class="grid grid-cols-2 gap-6 max-w-[1000px] w-full">
+    <div class="card">
+      <div class="usp-num mb-3">TOP-3 KEYWORDS</div>
+      <table class="simple-table" style="font-size: .82rem;">
+        <tbody>
+          <tr><td>komplettsanierung berlin</td><td class="num-cell accent">140/m</td></tr>
+          <tr><td>altbausanierung berlin</td><td class="num-cell accent">390/m</td></tr>
+          <tr><td>generalunternehmer berlin</td><td class="num-cell accent">210/m</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card">
+      <div class="usp-num mb-3">SEO QUICK-WINS · TOP 3</div>
+      <table class="simple-table" style="font-size: .82rem;">
+        <tbody>
+          <tr><td>fliesenleger berlin</td><td class="num-cell accent">590/m · 14%</td></tr>
+          <tr><td>trockenbau berlin</td><td class="num-cell accent">590/m · 19%</td></tr>
+          <tr><td>bodenverlegung berlin</td><td class="num-cell accent">210/m · 18%</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="mt-8 grid grid-cols-3 gap-4 max-w-[1000px] w-full">
+    <div class="card text-center">
+      <i data-lucide="search-code" style="width: 1.6rem; height: 1.6rem; color: var(--color-accent); margin: 0 auto 8px;"></i>
+      <div class="section-h3 mb-1" style="font-size: .95rem;">Schema-Stack</div>
+      <div style="font-size: .78rem; color: var(--color-muted);">Organization, GeneralContractor, LocalBusiness, Service ×10, FAQPage, Konzern-Verbund</div>
+    </div>
+    <div class="card text-center">
+      <i data-lucide="bot" style="width: 1.6rem; height: 1.6rem; color: var(--color-accent); margin: 0 auto 8px;"></i>
+      <div class="section-h3 mb-1" style="font-size: .95rem;">KI-SEO bereit</div>
+      <div style="font-size: .78rem; color: var(--color-muted);">llms.txt, FAQ-Schema auf jeder LP, Long-Form Q&amp;A für KI-Antworten</div>
+    </div>
+    <div class="card text-center">
+      <i data-lucide="link" style="width: 1.6rem; height: 1.6rem; color: var(--color-accent); margin: 0 auto 8px;"></i>
+      <div class="section-h3 mb-1" style="font-size: .95rem;">Konzern-Authority</div>
+      <div style="font-size: .78rem; color: var(--color-muted);">Cross-Linking renovira. ↔ renotec. ↔ renovolt. — SEO-Authority über 3 Sites</div>
+    </div>
+  </div>
+
+  <div class="sn">12 · 15</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- 13 — DESIGN-RICHTUNG -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<section class="slide" id="s13">
+  <div class="label">Design · Logobook der Renovira Gruppe (2025)</div>
+  <h2 class="section-h2 mb-3 text-center max-w-[800px]">Verbindliche Familie-DNA, brand-spezifische Differenzierung.</h2>
+  <p class="text-center mb-10 max-w-[720px]" style="color: var(--color-muted); font-size: .9rem;">
+    renovira. übernimmt die etablierte visuelle Sprache der Renovira Gruppe. Component-Library aus dem renotec.-Design-Prototype als Basis.
+  </p>
+
+  <div class="grid grid-cols-2 gap-5 max-w-[960px] w-full">
+    <div class="card">
+      <div class="usp-num mb-3">BRAND-FARBEN renovira.</div>
+      <div class="flex items-center gap-3 mb-3">
+        <div style="width: 44px; height: 44px; background: #1992CD; border-radius: 8px;"></div>
+        <div>
+          <div class="section-h3" style="font-size: .95rem;">Deep Aqua Blue</div>
+          <div style="font-family: monospace; font-size: .78rem; color: var(--color-muted);">#1992CD · Hauptakzent CTAs, Reviews-Box</div>
+        </div>
+      </div>
+      <div class="flex items-center gap-3">
+        <div style="width: 44px; height: 44px; background: #3D393D; border-radius: 8px;"></div>
+        <div>
+          <div class="section-h3" style="font-size: .95rem;">Metallic Charcoal</div>
+          <div style="font-family: monospace; font-size: .78rem; color: var(--color-muted);">#3D393D · Final-CTA, Footer, Body-Tiefton</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="usp-num mb-3">TYPOGRAFIE · VERBINDLICH</div>
+      <div class="mb-4">
+        <div style="font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.4rem; letter-spacing: -0.02em;">Helotypo</div>
+        <div style="font-size: .78rem; color: var(--color-muted);">H1 · H2 · H3 · geometrische Sans-Serif</div>
+      </div>
+      <div>
+        <div style="font-family: 'Inter', sans-serif; font-weight: 500; font-size: 1.1rem;">TikTok Sans</div>
+        <div style="font-size: .78rem; color: var(--color-muted);">Body Copy · modern, freundlich, klar lesbar</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-6 grid grid-cols-3 gap-4 max-w-[960px] w-full">
+    <div class="card" style="padding: 16px;">
+      <div class="section-h3 mb-1" style="font-size: .85rem;">Geteilte Familie-DNA</div>
+      <div style="font-size: .76rem; color: var(--color-muted); line-height: 1.5;">Logo-Konstruktion · Schriftfamilie · Component-Library · Layout-Patterns</div>
+    </div>
+    <div class="card" style="padding: 16px;">
+      <div class="section-h3 mb-1" style="font-size: .85rem;">renovira.-Spezifik</div>
+      <div style="font-size: .76rem; color: var(--color-muted); line-height: 1.5;">Hausform-Monogram (Generalbau-Symbolik) · Subtitle „Generalbauunternehmen" · Deep Aqua Blue</div>
+    </div>
+    <div class="card" style="padding: 16px;">
+      <div class="section-h3 mb-1" style="font-size: .85rem;">Stilistische Achsen</div>
+      <div style="font-size: .76rem; color: var(--color-muted); line-height: 1.5;">Modern, klar, nicht überladen · subtile Animationen (analog builda.berlin) · ruhiges Layout</div>
+    </div>
+  </div>
+
+  <div class="sn">13 · 15</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- 14 — CONTENT REQUIREMENTS -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<section class="slide" id="s14">
+  <div class="label">Content-Requirements · Wer liefert was</div>
+  <h2 class="section-h2 mb-8 text-center">Klare Aufteilung von Texten, Bildern und Inhalten.</h2>
+
+  <div class="grid grid-cols-2 gap-5 max-w-[1000px] w-full">
+    <div class="card">
+      <div class="flex items-center gap-3 mb-5">
+        <div style="width: 36px; height: 36px; background: var(--color-accent); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+          <i data-lucide="pen-line" style="width: 1.1rem; height: 1.1rem; color: white;"></i>
+        </div>
+        <div class="section-h3">Agentur (2Penguins)</div>
+      </div>
+      <ul style="list-style: none; padding: 0; margin: 0; font-size: .88rem; line-height: 1.8;">
+        <li>· Texte für 10 Service-Landingpages</li>
+        <li>· Texte für Homepage + Hub /leistungen/</li>
+        <li>· Texte für /kontakt/</li>
+        <li>· Strukturierung /referenzen/</li>
+        <li>· Redaktionelle Aufbereitung /ueber-uns/</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="flex items-center gap-3 mb-5">
+        <div style="width: 36px; height: 36px; background: var(--color-charcoal); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+          <i data-lucide="image" style="width: 1.1rem; height: 1.1rem; color: white;"></i>
+        </div>
+        <div class="section-h3">Klient (renovira.)</div>
+      </div>
+      <ul style="list-style: none; padding: 0; margin: 0; font-size: .88rem; line-height: 1.8;">
+        <li>· Vorher-Nachher-Bilder Referenzen</li>
+        <li>· Hersteller- und Partner-Logos</li>
+        <li>· Team-Fotos für /ueber-uns/</li>
+        <li>· Story- und Team-Inhalte</li>
+        <li>· Counter-Block-Zahlen (4 Keyfacts)</li>
+        <li>· Auswahl Referenz-Projekte</li>
+      </ul>
+    </div>
+  </div>
+
+  <p class="mt-8 text-center max-w-[680px]" style="color: var(--color-muted); font-size: .85rem;">
+    Wir starten parallel zu Ihrer Lektüre mit der Texterstellung. Anmerkungen jederzeit gerne im WhatsApp-Chat oder per Telefon — wir bauen das laufend ein.
+  </p>
+
+  <div class="sn">14 · 15</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- 15 — NÄCHSTE SCHRITTE -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<section class="slide dark-slide" id="s15">
+  <div class="label">Nächste Schritte · Was nun</div>
+  <h2 class="section-h2 mb-3 text-center" style="color: white;">Zwei offene Punkte, dann starten Texte und Design.</h2>
+  <p class="text-center mb-10 max-w-[700px]" style="color: rgba(255,255,255,0.72); font-size: .92rem;">
+    Wir haben alles, was wir für den Blueprint und die Texterstellung brauchen. Zwei Punkte sind noch in Klärung — Ihre Antwort dazu kann auch später kommen.
+  </p>
+
+  <div class="next-grid mb-10">
+    <div class="next-item">
+      <div class="ni-num">01</div>
+      <div class="ni-tit">BAFA-Förderservice</div>
+      <div class="ni-desc">Bietet renovira. Hilfe bei Förderanträgen (KfW · BAFA · Pflegekasse)? Wenn ja, ergänzen wir einen eigenen Block dazu. Wenn nein, lassen wir das Thema einfach weg.</div>
+    </div>
+    <div class="next-item">
+      <div class="ni-num">02</div>
+      <div class="ni-tit">Counter-Block-Keyfacts</div>
+      <div class="ni-desc">Site-Stand heute: <strong style="color: rgba(255,255,255,0.92);">„8 Jahre · 100+ Projekte"</strong>. Aktuell oder aktualisieren? Plus zwei bestätigte Keyfacts: Meisterbetrieb für SHK · berlinweit aktiv.</div>
+    </div>
+    <div class="next-item">
+      <div class="ni-num">03</div>
+      <div class="ni-tit">BFSG-Compliance</div>
+      <div class="ni-desc">Barrierefreiheit-Pflicht ab 28.06.2025. Separates Beratungsgespräch zu Vertrag-Erweiterung oder Basis-Setup — kein Blocker für die Texterstellung.</div>
+    </div>
+  </div>
+
+  <div class="feedback-call">
+    <div class="feedback-call-label">Wir freuen uns auf Ihr Feedback</div>
+    <div class="feedback-call-text">
+      Anmerkungen, Korrekturen oder Anpassungswünsche jederzeit gerne <strong>auf Ihrem gewohnten Weg</strong>.<br>
+      Wir bauen das laufend ein.
+    </div>
+  </div>
+
+  <div style="margin-top: 32px; font-size: .78rem; color: rgba(255,255,255,0.48); font-family: 'Courier New', monospace; letter-spacing: 0.16em;">
+    2PENGUINS · 30.04.2026
+  </div>
+
+  <div class="sn" style="color: rgba(255,255,255,0.45);">15 · 15</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- SCRIPT -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<script>
+(function(){
+  var slides = document.querySelectorAll('.slide');
+  var total = slides.length, cur = 0;
+  var dots = document.getElementById('dots');
+  var counter = document.getElementById('slide-counter');
+  var btnPrev = document.getElementById('btn-prev');
+  var btnNext = document.getElementById('btn-next');
+
+  // Build dots
+  slides.forEach(function(_, i){
+    var b = document.createElement('button');
+    b.className = 'nd';
+    b.setAttribute('aria-label', 'Folie ' + (i+1));
+    b.onclick = function(){ goto(i); };
+    dots.appendChild(b);
+  });
+  var dotEls = dots.querySelectorAll('.nd');
+
+  function goto(n){
+    n = Math.max(0, Math.min(total - 1, n));
+    slides[cur].classList.remove('active');
+    dotEls[cur].classList.remove('on');
+    cur = n;
+    slides[cur].classList.add('active');
+    dotEls[cur].classList.add('on');
+    counter.textContent = String(cur + 1).padStart(2, '0') + ' · ' + String(total).padStart(2, '0');
+    btnPrev.disabled = cur === 0;
+    btnNext.disabled = cur === total - 1;
+    window.scrollTo(0, 0);
+  }
+
+  btnPrev.onclick = function(){ goto(cur - 1); };
+  btnNext.onclick = function(){ goto(cur + 1); };
+
+  // Keyboard
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ' || e.key === 'PageDown') {
+      e.preventDefault(); goto(cur + 1);
+    }
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp' || e.key === 'PageUp') {
+      e.preventDefault(); goto(cur - 1);
+    }
+    if (e.key === 'Home') { e.preventDefault(); goto(0); }
+    if (e.key === 'End')  { e.preventDefault(); goto(total - 1); }
+  });
+
+  // Touch swipe
+  var tx = 0, ty = 0;
+  document.addEventListener('touchstart', function(e){
+    tx = e.touches[0].clientX; ty = e.touches[0].clientY;
+  }, { passive: true });
+  document.addEventListener('touchend', function(e){
+    var dx = e.changedTouches[0].clientX - tx;
+    var dy = e.changedTouches[0].clientY - ty;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+      if (dx < 0) goto(cur + 1); else goto(cur - 1);
+    }
+  }, { passive: true });
+
+  goto(0);
+})();
+</script>
+<script>
+  if (typeof lucide !== 'undefined') {
+    lucide.createIcons({ attrs: { 'stroke-width': 1.6 } });
+  }
+</script>
+</body>
+</html>
