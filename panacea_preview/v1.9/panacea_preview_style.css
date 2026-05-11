@@ -49,10 +49,6 @@ body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; color: var
 .nav-counter:hover { transform: scale(1.05); }
 .nav-counter.has-feedback { animation: fb-pulse 2s infinite; }
 @keyframes fb-pulse { 0%,100%{ box-shadow:0 0 0 0 rgba(245,158,11,.4); } 50%{ box-shadow:0 0 0 8px transparent; } }
-.nav-phone { display: inline-flex; align-items: center; gap: .4em; margin-right: 1em; text-decoration: none; color: inherit; font-weight: 500; padding: .4em .8em; border-radius: var(--radius); transition: background .15s; font-size: .9rem; white-space: nowrap; }
-.nav-phone:hover { background: var(--bg-alt); }
-.nav-phone-icon { font-size: .95em; }
-@media (max-width: 768px) { .nav-phone-number { display: none; } }
 html { scroll-behavior: smooth; }
 
 /* ── SEO Bar ── */

@@ -52,10 +52,6 @@ body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; color: var
 .nav-counter:hover { transform: scale(1.05); }
 .nav-counter.has-feedback { animation: fb-pulse 2s infinite; }
 @keyframes fb-pulse { 0%,100%{ box-shadow:0 0 0 0 rgba(245,158,11,.4); } 50%{ box-shadow:0 0 0 8px transparent; } }
-.nav-phone { display: inline-flex; align-items: center; gap: .4em; margin-right: 1em; text-decoration: none; color: inherit; font-weight: 500; padding: .4em .8em; border-radius: var(--radius); transition: background .15s; font-size: .9rem; white-space: nowrap; }
-.nav-phone:hover { background: var(--bg-alt); }
-.nav-phone-icon { font-size: .95em; }
-@media (max-width: 768px) { .nav-phone-number { display: none; } }
 html { scroll-behavior: smooth; }
 
 /* ── SEO Bar ── */
@@ -254,10 +250,6 @@ h2 { font-size: 1.6rem; color: var(--primary); margin-bottom: 1.25rem; text-alig
 <a href="panacea_preview_karriere.html" class="active">Karriere</a>
 <a href="panacea_preview_kontakt.html">Kontakt</a>
     </div>
-    <a href="tel:+498952068407" class="nav-phone" title="München anrufen">
-      <span class="nav-phone-icon">📞</span>
-      <span class="nav-phone-number">089 52068407</span>
-    </a>
     <span class="nav-counter">📥 Feedback: <span class="fb-counter-num">0</span> Kommentare</span>
   </div>
 </nav>
