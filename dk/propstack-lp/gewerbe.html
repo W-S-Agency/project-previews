@@ -1,0 +1,880 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>Repräsentative Bürofläche in Berlin-Mitte — D.K. Real Estate</title>
+
+  <!-- DK Propstack LP CSS (Task #3820, new-style.css → S3) -->
+  <link href="new-style.css" rel="stylesheet">
+
+  <!-- Lightbox2 (Bilder-Lightbox mit Pfeil-Navigation) -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet">
+
+  <!-- Font Awesome 5 Pro (Propstack-konform, gleicher Kit wie current-template) -->
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-6jHF7Z3XI3fF4XZixAuSu0gGKrXwoX/w3uFPxC56OtjChio7wtTGJWRW53Nhx6Ev" crossorigin="anonymous">
+
+  <!-- Favicons (alle im Propstack-S3 wie im current-template) -->
+  <link rel="shortcut icon" href="https://pro-propstack-public.s3.eu-west-1.amazonaws.com/landingpages/propstack/dk-real-estate/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://pro-propstack-public.s3.eu-west-1.amazonaws.com/landingpages/propstack/dk-real-estate/assets/icons/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" href="https://pro-propstack-public.s3.eu-west-1.amazonaws.com/landingpages/propstack/dk-real-estate/assets/icons/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="https://pro-propstack-public.s3.eu-west-1.amazonaws.com/landingpages/propstack/dk-real-estate/assets/icons/favicon-16x16.png" sizes="16x16">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Repräsentative Bürofläche in Berlin-Mitte — D.K. Real Estate GmbH">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200">
+  <meta property="og:description" content="Die in diesem Exposé enthaltenen Informationen dürfen wir Sie bitten, vertraulich zu behandeln.">
+
+</head>
+
+<body>
+
+<!-- ══════════════════════════════════════════════════════════
+     NAVBAR — dunkler Navy-Header analog dk360.de
+     Logo: offizielles dk-logo.svg (244×70, fill #fff) — als S3-asset
+     Final Path: pro-propstack-public.s3.../assets/dk-logo.svg (in Phase 6 hochladen)
+     ══════════════════════════════════════════════════════════ -->
+<div id="lpHead">
+  <nav class="navbar navbar-expand-xl fixed-top">
+    <div class="container-wide w-100 d-flex align-items-center">
+      <a class="navbar-brand" href="https://dk360.de/" target="_blank" rel="noopener">
+        <img src="dk-logo-white.svg" alt="DK Real Estate" class="lp-logo">
+      </a>
+      <button class="navbar-toggler ml-auto d-xl-none" type="button" data-toggle="collapse" data-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Navigation">
+        <i class="fas fa-bars fa-lg"></i>
+      </button>
+      <div class="collapse navbar-collapse ml-auto d-xl-flex" id="navbarNav">
+        <ul class="ml-auto navbar-nav lp-nav d-xl-flex flex-row flex-wrap"><!-- Objekt ▾ -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#lpKeyFacts" id="dd-objekt" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Objekt
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dd-objekt">
+              <a class="dropdown-item" href="#lpKeyFacts">Objektinformationen</a>
+              <a class="dropdown-item" href="#lpFacts">Energieausweis</a>
+            </div>
+          </li>
+
+          
+          <!-- Medien ▾ -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dd-medien" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Medien
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dd-medien">
+              
+              <a class="dropdown-item" href="#lpGallery">Bilder</a>
+              <a class="dropdown-item" href="#lpFloorplans">Grundrisse</a>
+              <a class="dropdown-item" href="#lpDownloads">Dokumente</a>
+            </div>
+          </li>
+          
+
+          <!-- Karte -->
+          <li class="nav-item">
+            <a class="nav-link" href="#lpMap">Karte</a>
+          </li>
+
+          <!-- Kontakt ▾ -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#lpContact" id="dd-kontakt" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Kontakt
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dd-kontakt">
+              <a class="dropdown-item" href="#lpContact">Ansprechpartner</a>
+              <a class="dropdown-item" href="#lpFinanzierung">Finanzierung</a>
+            </div>
+          </li>
+
+          <!-- PDF -->
+          <li class="nav-item">
+            <a class="nav-link nav-pdf" href="#print"><i class="fas fa-file-pdf"></i> PDF</a>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     HERO — erstes Objekt-Bild auf volle Viewport-Breite
+     (Header overlay-transparent, wird beim Scroll solid navy)
+     ══════════════════════════════════════════════════════════ -->
+
+<section id="lpHero">
+  
+  <div class="hero-fullwidth" style="background-image:url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200');" aria-label="Eingang">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 class="hero-title">Repräsentative Bürofläche in Berlin-Mitte</h1>
+      <div class="hero-address">10117 Berlin, Mitte</div>
+    </div>
+  </div>
+  
+
+  
+  <div class="container-wide hero-thumbs">
+    <div class="thumb-row">
+      <a href="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200" data-lightbox="hero" data-title="Eingang" class="thumb-hidden" aria-hidden="true"></a>
+      
+      
+      <a class="thumb" href="https://images.unsplash.com/photo-1604328698692-f76ea9498e76?w=1200" data-lightbox="hero" data-title="Großraum" style="background-image:url('https://images.unsplash.com/photo-1604328698692-f76ea9498e76?w=1200');">
+        
+      </a>
+      
+      <a class="thumb" href="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1200" data-lightbox="hero" data-title="Konferenz" style="background-image:url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1200');">
+        
+      </a>
+      
+    </div>
+  </div>
+  
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     HERO META BAR: kompakte Zeile mit Objekt-ID rechts
+     ══════════════════════════════════════════════════════════ -->
+<section class="lp-hero-meta-bar">
+  <div class="container-wide">
+    <span class="meta-label">OBJEKT-ID</span>
+    <span class="meta-value">9123456</span>
+    <span class="meta-divider">·</span><span class="meta-value">Kauf</span>
+    <span class="meta-divider">·</span><span class="meta-value">Bürofläche</span>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     ICON DECK — Key Facts
+     ══════════════════════════════════════════════════════════ -->
+<section id="lpIconDeck" class="menu-section" style="padding:40px 0;">
+  <div class="container-wide">
+    <div class="wrapper">
+      <div class="card">
+        <img class="icon-deck-svg" src="https://pro-propstack-public.s3.eu-west-1.amazonaws.com/landingpages/propstack/dk-real-estate/assets/icon-objektart.svg" alt="">
+        <h5>Bürofläche</h5>
+        <p>Objektart</p>
+      </div>
+      
+
+      
+      <div class="card">
+        <img class="icon-deck-svg" src="https://pro-propstack-public.s3.eu-west-1.amazonaws.com/landingpages/propstack/dk-real-estate/assets/icon-baujahr.svg" alt="">
+        <h5>2018</h5>
+        <p>Baujahr</p>
+      </div>
+      
+        
+        <div class="card">
+          <img class="icon-deck-svg" src="https://pro-propstack-public.s3.eu-west-1.amazonaws.com/landingpages/propstack/dk-real-estate/assets/icon-groesse.svg" alt="">
+          <h5>640,00 m²</h5>
+          <p>Nutzfläche</p>
+        </div>
+        
+      
+
+      
+      <div class="card">
+        <img class="icon-deck-svg" src="https://pro-propstack-public.s3.eu-west-1.amazonaws.com/landingpages/propstack/dk-real-estate/assets/icon-zimmer.svg" alt="">
+        <h5>12</h5>
+        <p>Zimmer</p>
+      </div>
+      
+
+      
+      <div class="card">
+        <img class="icon-deck-svg" src="https://pro-propstack-public.s3.eu-west-1.amazonaws.com/landingpages/propstack/dk-real-estate/assets/icon-verfuegbar-ab.svg" alt="">
+        <h5>01.07.2026</h5>
+        <p>Verfügbar ab</p>
+      </div>
+      
+
+      
+      <div class="card">
+        <img class="icon-deck-svg" src="https://pro-propstack-public.s3.eu-west-1.amazonaws.com/landingpages/propstack/dk-real-estate/assets/icon-kaufpreis.svg" alt="">
+        <h5>5.800.000 EUR</h5>
+        <p>Kaufpreis</p>
+      </div>
+      
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     VIRTUELLER RUNDGANG
+     ══════════════════════════════════════════════════════════ -->
+
+
+<!-- ══════════════════════════════════════════════════════════
+     OBJEKTINFORMATIONEN — Beschreibung + Daten + Ausstattung
+     ══════════════════════════════════════════════════════════ -->
+<section id="lpKeyFacts" class="menu-section lpKeyFacts" style="padding:60px 0;">
+  <div class="container-wide">
+
+    <!-- Beschreibung -->
+    
+    <div class="dk-section-head">
+      <h2>Beschreibung</h2>
+      <span class="dk-sub">Die wichtigsten Fakten im Überblick</span>
+    </div>
+    <div class="text-colum">Hochwertige Gewerbefläche im Herzen Berlins mit moderner Ausstattung, repräsentativem Empfang und flexibel teilbaren Büroflächen für anspruchsvolle Unternehmen.</div>
+    
+
+    <!-- Objektdaten -->
+    <div class="dk-section-head" style="margin-top:var(--spacing-40);">
+      <h2>Objektinformationen</h2>
+      <span class="dk-sub">Alle Daten zum Objekt</span>
+    </div>
+    <table class="table">
+      <tbody>
+        <tr><th>eExposé ID</th><td>TEST-9123456</td></tr>
+        <tr><th>eExposé für</th><td>Investment GmbH, buyer@example.com</td></tr>
+        <tr><th>Unternehmen</th><td>Berlin Holdings AG</td></tr>
+        
+        <tr><th>Einheit</th><td>9123456</td></tr>
+        <tr><th>Immobilienart</th><td>Kauf-Büro</td></tr>
+        
+        <tr><th>Immobilientyp</th><td>Bürofläche</td></tr>
+        <tr><th>BGF</th><td>720 m²</td></tr>
+        <tr><th>Assetklasse</th><td>Core+</td></tr>
+        <tr><th>Ankaufform</th><td>Asset Deal</td></tr>
+        <tr><th>Flur</th><td></td></tr>
+        <tr><th>Flurstück</th><td></td></tr>
+        
+        <tr><th>Baujahr</th><td>2018</td></tr>
+        <tr><th>Letzte Modernisierung</th><td>2024</td></tr>
+        <tr><th>Etage</th><td>2</td></tr>
+        <tr><th>Zimmer</th><td>12</td></tr>
+        
+          <tr><th>Nutzfläche</th><td>640,00 m² m²</td></tr>
+        
+        <tr><th>Vermietet</th><td><i class="fas fa-check"></i></td></tr>
+        
+        
+        <tr><th>Verfügbar ab</th><td>01.07.2026</td></tr>
+        
+        
+        <tr><th>Adresse</th><td>10117 Berlin, Mitte</td></tr>
+        <tr><th>Gemarkung</th><td>Mitte</td></tr>
+      </tbody>
+    </table>
+
+    <!-- Investment Facts -->
+    
+    <div class="dk-section-head" style="margin-top:var(--spacing-40);">
+      <h2>Investment Fakten</h2>
+      <span class="dk-sub">Renditedaten</span>
+    </div>
+    <table class="table">
+      <tbody>
+        <tr><th>Wohneinheiten</th><td></td></tr>
+        <tr><th>Gewerbeeinheiten</th><td>1</td></tr>
+        <tr><th>Gesamteinheiten</th><td>1</td></tr>
+        <tr><th>Einheiten Leerstand</th><td>0</td></tr>
+        <tr><th>Vermietungsstand</th><td>100 %</td></tr>
+        <tr><th>Faktor Ist</th><td>15,1</td></tr>
+        <tr><th>Faktor Soll</th><td>16,0</td></tr>
+        <tr><th>Rendite Ist</th><td>6,6 %</td></tr>
+        <tr><th>Rendite Soll</th><td>6,9 %</td></tr>
+        <tr><th>Nettomiete Ist p.a.</th><td>384.000 EUR</td></tr>
+        <tr><th>Nettomiete Soll p.a.</th><td>402.000 EUR</td></tr>
+        <tr><th>Mieterstruktur</th><td>Mischmietvertrag, Restlaufzeit 6 Jahre</td></tr>
+        <tr><th>WALT</th><td>6,1 Jahre</td></tr>
+      </tbody>
+    </table>
+    
+
+    <!-- Preis -->
+    
+    <div class="dk-section-head" style="margin-top:var(--spacing-40);">
+      <h2>Preis</h2>
+      <span class="dk-sub">Kaufpreis und Provision</span>
+    </div>
+    <table class="table">
+      <tbody>
+        <tr><th>Kaufpreis</th><td>5.800.000 EUR</td></tr>
+        <tr><th>Käuferprovision</th><td>3,57 % inkl. MwSt.&nbsp;</td></tr>
+        <tr><th>Preis/m²</th><td>9.063 EUR/m²</td></tr>
+        <tr><th>Preis/m² (bereinigt)</th><td> €</td></tr>
+        <tr><th>Hausgeld</th><td> /Monat</td></tr>
+        <tr><th>Vermietet</th><td><i class="fas fa-check"></i></td></tr>
+        <tr><th>Kaltmiete</th><td>32.000 EUR</td></tr>
+        <tr><th>Warmmiete</th><td>38.500 EUR</td></tr>
+        <tr><th>Mieteinnahmen/Monat</th><td>32.000 EUR</td></tr>
+        <tr><th>Stellplatz-Preis</th><td>85.000 EUR</td></tr>
+      </tbody>
+    </table>
+    
+
+    <!-- Ausstattung Beschreibung -->
+    
+    <div class="dk-section-head" style="margin-top:var(--spacing-40);">
+      <h2>Ausstattung</h2>
+      <span class="dk-sub">Alle Merkmale im Überblick</span>
+    </div>
+    <div class="text-colum">Vollklimatisierte Räume, Doppelboden für strukturierte Verkabelung, schalldämmende Glaswände, Konferenzräume mit Medientechnik, Einbauküche im Pausenbereich.</div>
+    
+
+    <!-- Ausstattung Pill -->
+    
+    <div class="lp-ausstattung-pill" style="margin-top:24px;">
+      <span class="lp-feat"><i class="fas fa-check-circle"></i>Barrierefrei</span>
+      <span class="lp-feat"><i class="fas fa-check-circle"></i>Personenaufzug</span>
+      <span class="lp-feat"><i class="fas fa-check-circle"></i>Gäste-WC</span>
+      <span class="lp-feat"><i class="fas fa-check-circle"></i>Keller</span>
+      <span class="lp-feat"><i class="fas fa-check-circle"></i>Einbauküche</span>
+      
+      
+      
+      
+      
+      
+      
+      <span class="lp-feat"><i class="fas fa-check-circle"></i>Klimaanlage</span>
+      <span class="lp-feat"><i class="fas fa-check-circle"></i>Elektrische Rolladen</span>
+      <span class="lp-feat"><i class="fas fa-check-circle"></i>Abstellraum</span>
+      <span class="lp-feat"><i class="fas fa-check-circle"></i>Alarmanlage</span>
+      
+      <span class="lp-feat"><i class="fas fa-check-circle"></i>Lastenaufzug</span>
+      
+      
+    </div>
+    
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     ENERGIEAUSWEIS
+     ══════════════════════════════════════════════════════════ -->
+
+<section id="lpFacts" class="menu-section" style="padding:60px 0;">
+  <div class="container-wide">
+    <div class="dk-section-head">
+      <h2>Energieausweis</h2>
+      <span class="dk-sub">Energetische Kennwerte</span>
+    </div>
+
+    
+    <h5>Energieeffizienzklasse B</h5>
+    <div class="lpEnergyClasses">
+      
+      <div class="lpEnergyClassWrap">
+        <div class="lpEnergyClass classAPlus,A,B,C,D,E,F,G,H B">A+,A,B,C,D,E,F,G,H</div>
+        <div class="lpClassArrow">A+,A,B,C,D,E,F,G,H</div>
+      </div>
+      
+    </div>
+    
+
+    <table class="table">
+      <tbody>
+        <tr><th>Energieausweis</th><td><i class="fas fa-check"></i></td></tr>
+        <tr><th>Energieausweistyp</th><td>Verbrauchsausweis</td></tr>
+        <tr><th>Ausstellungsdatum</th><td>2024-01-01</td></tr>
+        <tr><th>Gültig bis</th><td>2034-01-01</td></tr>
+        <tr><th>Warmwasser enthalten</th><td><i class="fas fa-check"></i></td></tr>
+        <tr><th>Wesentlicher Energieträger</th><td>Fernwärme</td></tr>
+        <tr><th>Heizungsart</th><td>Zentralheizung</td></tr>
+        <tr><th>Energieverbrauchskennwert</th><td>62,1 kWh/(m²*a)</td></tr>
+        <tr><th>Energieeffizienzklasse</th><td>B</td></tr>
+        <tr><th>Baujahr Anlagentechnik</th><td>2018</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     BILDER GALLERY
+     ══════════════════════════════════════════════════════════ -->
+
+<section id="lpGallery" class="menu-section" style="padding:60px 0;">
+  <div class="container-wide">
+    <div class="dk-section-head">
+      <h2>Bilder</h2>
+      <span class="dk-sub">Eindrücke vom Objekt</span>
+    </div>
+    <div id="lpPhotos">
+      <ul id="lpPhotoGallery">
+        
+        <li>
+          <a class="ls-item" title="Eingang" style="background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200')"
+             href="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200" data-lightbox="gallery" data-title="Eingang">
+            <span class="lpCaption">Eingang</span>
+          </a>
+        </li>
+        
+        <li>
+          <a class="ls-item" title="Großraum" style="background-image: url('https://images.unsplash.com/photo-1604328698692-f76ea9498e76?w=1200')"
+             href="https://images.unsplash.com/photo-1604328698692-f76ea9498e76?w=1200" data-lightbox="gallery" data-title="Großraum">
+            <span class="lpCaption">Großraum</span>
+          </a>
+        </li>
+        
+        <li>
+          <a class="ls-item" title="Konferenz" style="background-image: url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1200')"
+             href="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1200" data-lightbox="gallery" data-title="Konferenz">
+            <span class="lpCaption">Konferenz</span>
+          </a>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     GRUNDRISSE — eigene Sektion (Kunden-Mail 23.04 #5)
+     Quelle 1: property.image_floorplans (falls Propstack ihn separat exposed)
+     Quelle 2: property.documents mit Toggle "Als Grundriss markieren"
+     ══════════════════════════════════════════════════════════ -->
+
+<section id="lpFloorplans" class="menu-section" style="padding:60px 0;">
+  <div class="container-wide">
+    <div class="dk-section-head">
+      <h2>Grundrisse</h2>
+      <span class="dk-sub">Räumliche Aufteilung</span>
+    </div>
+    <div class="floorplan-grid">
+      
+      
+        <div class="floorplan-item">
+          <a href="#grundriss-eg.png" target="_blank" data-lightbox="floorplans" data-title="Grundriss EG.png">
+            <img src="#grundriss-eg.png" alt="Grundriss EG.png" onerror="this.parentNode.innerHTML='<div class=\'fp-doc-fallback\'><i class=\'fas fa-file-pdf fa-3x\'></i><br>Grundriss EG.png</div>';">
+          </a>
+          <div class="fp-caption">
+            <i class="fas fa-expand-arrows-alt mr-1"></i>Grundriss EG.png
+            <a href="#grundriss-eg.png" target="_blank" class="float-right lpdlbtn btn" style="padding:2px 8px;font-size:1.1rem;">
+              <i class="fas fa-download"></i>
+            </a>
+          </div>
+        </div>
+        
+      
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     DOKUMENTE (ohne Grundrisse — die haben eigene Sektion oben)
+     ══════════════════════════════════════════════════════════ -->
+
+<section id="lpDownloads" class="menu-section" style="padding:60px 0;">
+  <div class="container-wide">
+    <div class="dk-section-head">
+      <h2>Dokumente</h2>
+      <span class="dk-sub">Zum Download</span>
+    </div>
+    <table class="table">
+      <tbody>
+        
+          <tr>
+            <th>Exposé.pdf</th>
+            <td>
+              <a href="#exposee.pdf" target="_blank" class="dk-btn dk-btn-outline" style="padding:8px 16px;">
+                <i class="fas fa-download"></i> Herunterladen
+              </a>
+            </td>
+          </tr>
+          
+        
+        
+      </tbody>
+    </table>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     LAGE + OBJEKTBETREUER
+     ══════════════════════════════════════════════════════════ -->
+<section id="lpMap" class="menu-section" style="padding:60px 0;background:var(--dk-white);">
+  <div class="container-wide">
+    <div class="dk-section-head">
+      <h2>Lage</h2>
+      <span class="dk-sub">Mitte</span>
+    </div>
+
+    
+    <div class="text-colum" style="max-width:820px;">Zentrale Lage zwischen Brandenburger Tor und Hackescher Markt, exzellente Anbindung an Bahn und ÖPNV, fußläufige Restaurants und Hotels.</div>
+    
+
+    <div id="map" data-lat="52.517" data-lng="13.3888" class="map-placeholder" style="margin-top:32px;">
+      [ Google Maps Preview · 52.517, 13.3888 ]
+    </div>
+    <p class="text-center mt-2 mb-0">
+      <small>10117 Berlin, Mitte
+         · Gemarkung: Mitte
+         · Flur: 
+         · Flurstück: 
+      </small>
+    </p>
+
+    <!-- Entfernungen -->
+    
+    <table class="table" style="margin-top:32px;">
+      <tbody>
+        <tr><th><i class="fas fa-bus fa-fw"></i> Laufzeit zum ÖPNV</th><td>2 Minuten</td></tr>
+        <tr><th><i class="fas fa-road fa-fw"></i> Fahrzeit zur nächsten Autobahn</th><td>8 Minuten</td></tr>
+        <tr><th><i class="fas fa-train fa-fw"></i> Fahrzeit zum nächsten HBF</th><td>5 Minuten</td></tr>
+        <tr><th><i class="fas fa-plane-departure fa-fw"></i> Fahrzeit zum nächsten Flughafen</th><td>25 Minuten</td></tr>
+      </tbody>
+    </table>
+    
+
+    <!-- Objektbetreuer — kann mehrere Makler pro Objekt enthalten -->
+    <a id="lpContact">&nbsp;</a>
+    <div style="margin-top:var(--spacing-40);">
+      <div class="dk-section-head">
+        <h2>Ihr Ansprechpartner</h2>
+        <span class="dk-sub">Objektbetreuer</span>
+      </div><div class="brokers-row ">
+        
+          <div class="contact-card">
+            <img class="contact-photo" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600" alt="Dorian Rouhani">
+            <div class="contact-info">
+              <div class="contact-name">Herr Dorian Rouhani</div>
+              <div class="contact-role">Senior Investment Advisor</div>
+              <a href="tel:+49 30 / 120 841 86" class="card-link"><i class="fas fa-phone"></i>+49 30 / 120 841 86</a>
+              <a href="tel:+49 30 / 120 841 86" class="card-link"><i class="fas fa-mobile-alt"></i>+49 30 / 120 841 86</a>
+              <a href="mailto:rouhani@dk360.de" class="card-link"><i class="fas fa-envelope"></i>rouhani@dk360.de</a>
+              <div class="contact-address">D.K. Real Estate GmbH<br>Hubertusallee 76, 14193 Berlin</div>
+            </div>
+          </div>
+        
+      </div>
+
+      <!-- Gemeinsame Action-Buttons unter allen Maklern, zentriert -->
+      <div class="contact-actions contact-actions--centered">
+        
+        <a href="mailto:rouhani@dk360.de?subject=R%C3%BCckruf%20anfordern%20f%C3%BCr%20Repr%C3%A4sentative+B%C3%BCrofl%C3%A4che+in+Berlin-Mitte" class="dk-btn"><i class="fas fa-phone"></i>Rückruf anfordern</a>
+        <a href="mailto:rouhani@dk360.de?subject=Objektunterlagen%20zu%20Repr%C3%A4sentative+B%C3%BCrofl%C3%A4che+in+Berlin-Mitte" class="dk-btn dk-btn-outline"><i class="fas fa-file-alt"></i>Unterlagen anfordern</a>
+        <a href="mailto:rouhani@dk360.de?subject=Termin%20vereinbaren%20f%C3%BCr%20Repr%C3%A4sentative+B%C3%BCrofl%C3%A4che+in+Berlin-Mitte" class="dk-btn dk-btn-outline"><i class="fas fa-calendar"></i>Termin vereinbaren</a>
+        
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     FINANZIERUNG + GIACOMO
+     CTA-URLs (Finanzierungszertifikat / Objektfinanzierung prüfen / Nachricht)
+     stehen lt. Sebastian "folgen zeitnah" — Release 1 verwendet mailto-Fallback,
+     Release 2 ersetzt durch echte Form-URLs.
+     ══════════════════════════════════════════════════════════ --><section id="lpFinanzierung" class="menu-section" style="margin:40px auto;max-width:1200px;padding:0 24px;">
+  <div class="dk-section-head">
+    <h2>Finanzierung</h2>
+    <span class="dk-sub">Ihre persönliche Beratung</span>
+  </div>
+  <div class="finanz-text">
+    
+    <p>Sie interessieren sich für diese Immobilie und möchten wissen, was finanziell möglich ist? Wir unterstützen Sie nicht nur bei der passenden Immobilie, sondern auf Wunsch auch bei der passenden Finanzierung.</p>
+    <p>Gemeinsam prüfen wir Ihre Möglichkeiten mit Hilfe von einem exklusiven Bankennetzwerk und schaffen damit Klarheit zur Monatsrate, Eigenkapital und Finanzierungsspielraum – transparent, unkompliziert und auf Ihre Situation abgestimmt.</p>
+    
+  </div>
+
+  <div class="giacomo-section">
+    <div class="giacomo-label">/ Ihr Finanzierungsberater</div>
+
+    <div class="brokers-row">
+      <div class="contact-card">
+        <img class="contact-photo" src="https://mail-images.propstack.de/f6QuXaneHuw83c2ZcKcFkKDG/01f0786cd8d1120891b85ee6a11fd462/PHOTO-2026-02-25-14-24-31.jpg" alt="Giacomo Rasum">
+        <div class="contact-info">
+          <div class="contact-name">Herr Giacomo Rasum</div>
+          <div class="contact-role">Leiter Finanzierung</div>
+          <a href="tel:+493012084186" class="card-link"><i class="fas fa-phone"></i>+49 30 120 841 86</a>
+          <a href="tel:+491606350101" class="card-link"><i class="fas fa-mobile-alt"></i>0160 635 0101</a>
+          <a href="mailto:rasum@dk360.de" class="card-link"><i class="fas fa-envelope"></i>rasum@dk360.de</a>
+          <div class="contact-address">D.K. Real Estate GmbH<br>Hubertusallee 76, 14193 Berlin</div>
+        </div>
+        <!-- Print-only: QR-Codes neben den Kontaktdaten (Sebastian-Anforderung) -->
+        <div class="giacomo-print-qr d-none">
+          <div class="qr-grid">
+            <div class="qr-cell">
+              <img src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=https%3A%2F%2Fdk360.de%2Ffinanzierung%2F">
+              <span>Finanzierungszertifikat</span>
+            </div>
+            <div class="qr-cell">
+              <img src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=https%3A%2F%2Fdk360.de%2Ffinanzierung%2F">
+              <span>Finanzierung prüfen</span>
+            </div>
+            <div class="qr-cell">
+              <img src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=mailto%3Arasum%40dk360.de">
+              <span>Nachricht schreiben</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Action-Buttons unter Giacomo-Karte, zentriert.
+         OQ#4: konkrete Form-URLs noch ausstehend → Release 1 mailto-Fallback,
+         Release 2 ersetzen durch echte URLs. -->
+    <div class="contact-actions contact-actions--centered">
+      <a href="mailto%3Arasum%40dk360.de%3Fsubject%3DFinanzierungszertifikat%2520anfragen%2520%25E2%2580%2593%2520Repr%C3%A4sentative+B%C3%BCrofl%C3%A4che+in+Berlin-Mitte" class="dk-btn">
+        <i class="fas fa-certificate"></i>Finanzierungszertifikat anfragen
+      </a>
+      <a href="mailto%3Arasum%40dk360.de%3Fsubject%3DObjektfinanzierung%2520pr%25C3%25BCfen%2520%25E2%2580%2593%2520Repr%C3%A4sentative+B%C3%BCrofl%C3%A4che+in+Berlin-Mitte" class="dk-btn dk-btn-outline">
+        <i class="fas fa-search-dollar"></i>Objektfinanzierung prüfen
+      </a>
+      <a href="mailto%3Arasum%40dk360.de%3Fsubject%3DNachricht%2520%25E2%2580%2593%2520Repr%C3%A4sentative+B%C3%BCrofl%C3%A4che+in+Berlin-Mitte" class="dk-btn dk-btn-outline">
+        <i class="fas fa-envelope"></i>Nachricht schreiben
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     SONSTIGES
+     ══════════════════════════════════════════════════════════ -->
+
+<section id="lpDivers" class="menu-section" style="padding:40px 0;">
+  <div class="container-wide">
+    <div class="dk-section-head">
+      <h2>Sonstiges</h2>
+      <span class="dk-sub">Weitere Informationen</span>
+    </div>
+    <div class="text-colum">Provisionsfreier Direktvermarktung möglich.</div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     AD BANNER
+     ══════════════════════════════════════════════════════════ -->
+<section id="lpAd" style="padding:40px 0;">
+  <div class="container-wide">
+    <div class="container-fluid text-center">
+      
+      <h5>Sie möchten Ihre Immobilie in Berlin verkaufen?</h5>
+      <p>Wir ermitteln den Wert Ihrer Immobilie kostenfrei und unverbindlich für Sie.</p>
+      <a href="https://dk360.de/immobilienbewertung/" class="dk-btn" target="_blank" rel="noopener">
+        <i class="fas fa-home"></i> Kostenlose Bewertung
+      </a>
+      
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     FORM — Anfrage
+     ══════════════════════════════════════════════════════════ -->
+<section class="dk-form-wrap">
+  <div class="container-wide">
+    <div class="row">
+      <div class="col-lg-5">
+        <h2 style="font-size:var(--font-size-h2);color:var(--dk-navy);font-variation-settings:'wght' 340;">Anfrage senden</h2>
+        <div class="dk-sub" style="display:block;font-size:var(--font-size-sm);color:var(--dk-navy);text-transform:uppercase;letter-spacing:0.08em;padding-top:12px;border-top:1px solid var(--dk-line);max-width:300px;">/ HABEN SIE FRAGEN?</div>
+        <p style="margin-top:60px;">Wir beantworten Ihnen diese gern. Hinterlassen Sie einfach Ihre Kontaktdaten und wir nehmen schnellstmöglich Kontakt mit Ihnen auf.</p>
+      </div>
+      <div class="col-lg-7">
+        <div class="dk-form-card">
+          <div class="form-group"><label>Ihre Firma</label><input class="form-control" name="company"></div>
+          <div class="row">
+            <div class="col"><label>Anrede</label><input class="form-control" name="salutation"></div>
+            <div class="col"><label>Vorname</label><input class="form-control" name="firstname"></div>
+            <div class="col"><label>Nachname*</label><input class="form-control" name="lastname"></div>
+          </div>
+          <div class="form-group" style="margin-top:16px;"><label>Ihre E-Mail*</label><input class="form-control" type="email" name="email"></div>
+          <div class="form-group"><label>Ihre Nachricht*</label><textarea class="form-control" name="message" rows="4">Ich interessiere mich für das Objekt Repräsentative Bürofläche in Berlin-Mitte. Bitte nehmen Sie mit mir Kontakt auf.</textarea></div>
+          <button class="dk-btn" style="margin-top:20px;" type="submit">Anfrage senden</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     CUSTOMER INFO
+     ══════════════════════════════════════════════════════════ -->
+<section id="lpCustomerInfo" style="padding:20px 0;">
+  <div class="container-wide">
+    
+    <p><small>Angebot Kauf-Bürofläche — Exposé Objekt 9123456 — eExposé-ID TEST-9123456 für Investment GmbH, buyer@example.com<br>
+    Die in diesem Exposé enthaltenen Informationen dürfen wir Sie bitten, vertraulich zu behandeln. Eine Weitergabe an Dritte ist unzulässig.</small></p>
+    
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     FOOTER — Hauptbereich (Logo + Kontakte + Menüs)
+     +  separater Sub-Footer-Strip (Copyright + WS-Credit)
+     ══════════════════════════════════════════════════════════ -->
+<footer class="footer dk-footer">
+  <div class="container-wide">
+    <div class="row dk-footer-row">
+
+      <!-- COL 1: Logo + Kontakte + Soziale Icons -->
+      <div class="col-lg-4 col-md-6 dk-footer-col">
+        <a href="https://dk360.de/" target="_blank" rel="noopener" class="ftr-logo-link">
+          <img src="dk-logo-white.svg"
+               alt="DK Real Estate" class="ftr-logo">
+        </a>
+        <ul class="ftr-contacts">
+          <li><a href="tel:+493012084186"><span class="title">+49 30 / 120 841 86</span></a><span class="meta">T</span></li>
+          <li><a href="https://wa.me/493012084186" target="_blank" rel="noopener"><span class="title">+49 30 / 120 841 86 (WhatsApp)</span></a><span class="meta">T</span></li>
+          <li><a href="mailto:kontakt@dk360.de"><span class="title">kontakt@dk360.de</span></a><span class="meta">E</span></li>
+          <li><span class="title">Hubertusallee 76, 14193 Berlin</span><span class="meta">A</span></li>
+        </ul>
+        <ul class="ftr-social">
+          <li><a href="https://www.instagram.com/dkrealestate_berlin/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
+          <li><a href="https://www.linkedin.com/company/d-k-real-estate-investitionsgemeinschaft-gmbh/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a></li>
+          <li><a href="https://wa.me/+493012084186" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a></li>
+        </ul>
+      </div>
+
+      <!-- COL 2: Hauptmenü -->
+      <div class="col-lg-4 col-md-6 dk-footer-col">
+        <ul class="ftr-nav">
+          
+          <li><a href="https://dk360.de/kaufen/">Kaufen</a></li>
+          <li><a href="https://dk360.de/verkaufen/">Verkaufen</a></li>
+          <li><a href="https://dk360.de/bewerten/">Bewerten</a></li>
+          <li><a href="https://dk360.de/finanzierung/">Finanzierung</a></li>
+          <li><a href="https://dk360.de/investment/">Investment</a></li>
+          
+        </ul>
+      </div>
+
+      <!-- COL 3: Sekundärmenü -->
+      <div class="col-lg-4 col-md-6 dk-footer-col">
+        <ul class="ftr-nav">
+          
+          <li><a href="https://dk360.de/immobilien/">Unsere Objekte</a></li>
+          <li><a href="https://dk360.de/ueber-uns/">Über DK</a></li>
+          <li><a href="javascript:void(0)" data-toggle="modal" data-target="#termsOfServiceModal">AGB</a></li>
+          <li><a href="javascript:void(0)" data-toggle="modal" data-target="#privacyModal">Datenschutz</a></li>
+          <li><a href="javascript:void(0)" data-toggle="modal" data-target="#imprintModal">Impressum</a></li>
+          
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Sub-Footer-Strip: Copyright links, WS-Credit rechts -->
+  <div class="dk-subfooter">
+    <div class="container-wide">
+      <p class="ftr-copyright">© 2026 D.K. Real Estate GmbH</p>
+      <a href="https://wsagency.de/" target="_blank" rel="noopener" class="ftr-wsa">
+        <span class="ftr-wsa-text">Site by <strong>WS Agency</strong></span>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<!-- Scroll to top -->
+<div class="lpUp">
+  <a href="#lpHead"><i class="fas fa-arrow-up"></i></a>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     MODALS
+     ══════════════════════════════════════════════════════════ -->
+<div class="modal" id="imprintModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Impressum</h5>
+        <button type="button" class="close" data-dismiss="modal"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="modal-body"><p>D.K. Real Estate GmbH<br>Hubertusallee 76, 14193 Berlin</p></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="privacyModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Datenschutz</h5>
+        <button type="button" class="close" data-dismiss="modal"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="modal-body"><p>Datenschutzerklärung Test-Inhalt</p></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="termsOfServiceModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">AGB</h5>
+        <button type="button" class="close" data-dismiss="modal"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="modal-body"><p>AGB Test-Inhalt</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     SCRIPTS
+     ══════════════════════════════════════════════════════════ -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+<script>
+  if (window.lightbox) {
+    lightbox.option({
+      'resizeDuration': 200,
+      'wrapAround': true,
+      'fadeDuration': 300,
+      'imageFadeDuration': 300,
+      'albumLabel': '%1 / %2'
+    });
+  }
+</script>
+
+<script>
+  // Header: transparent → solid navy nach 120px Scroll (analog dk360.de)
+  (function () {
+    var $head = $('#lpHead');
+    function syncScrolled() {
+      if ($(window).scrollTop() > 120) { $head.addClass('scrolled'); }
+      else { $head.removeClass('scrolled'); }
+    }
+    $(window).on('scroll', syncScrolled);
+    syncScrolled();
+  })();
+
+  // Dropdown-Fallback: falls Bootstrap-JS nicht geladen ist, manueller Toggle
+  (function () {
+    $(document).on('click', '#lpHead .nav-link.dropdown-toggle', function (e) {
+      var $item = $(this).parent('.nav-item.dropdown');
+      var wasOpen = $item.hasClass('show');
+      $('#lpHead .nav-item.dropdown').removeClass('show').find('.dropdown-menu').removeClass('show');
+      if (!wasOpen) {
+        $item.addClass('show');
+        $item.find('.dropdown-menu').addClass('show');
+        e.preventDefault();
+      }
+    });
+    // Click ausserhalb → alle Dropdowns schließen
+    $(document).on('click', function (e) {
+      if (!$(e.target).closest('#lpHead .nav-item.dropdown').length) {
+        $('#lpHead .nav-item.dropdown').removeClass('show').find('.dropdown-menu').removeClass('show');
+      }
+    });
+  })();
+
+  $(window).scroll(function () {
+    if ($(this).scrollTop() > 300) { $('.lpUp').fadeIn(200); } else { $('.lpUp').fadeOut(200); }
+  });
+  $('a[href^="#"]').on('click', function (e) {
+    var target = $(this.getAttribute('href'));
+    if (target.length) {
+      e.preventDefault();
+      $('html, body').animate({ scrollTop: target.offset().top - 80 }, 400, 'swing');
+    }
+  });
+</script>
+
+</body>
+</html>
