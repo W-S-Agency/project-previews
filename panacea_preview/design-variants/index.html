@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panacea Pflege — 3 Design-Varianten</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #0F1419;
+  color: #E5E7EB;
+  -webkit-font-smoothing: antialiased;
+}
+.shell {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  height: 100vh;
+}
+.bar {
+  background: rgba(15, 20, 25, 0.95);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  padding: 14px 24px;
+  display: flex; align-items: center; gap: 32px;
+  flex-wrap: wrap;
+}
+.bar-title {
+  display: flex; align-items: baseline; gap: 16px;
+  margin-right: auto;
+}
+.bar-title h1 {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.bar-title .sub {
+  font-size: 13px;
+  color: #94A3B8;
+}
+.tabs {
+  display: flex; gap: 4px;
+  background: rgba(255,255,255,0.05);
+  padding: 4px;
+  border-radius: 10px;
+}
+.tab {
+  padding: 8px 16px;
+  border: none;
+  background: transparent;
+  color: #94A3B8;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: all .15s;
+  display: flex; align-items: center; gap: 8px;
+}
+.tab:hover { color: #E5E7EB; }
+.tab.active {
+  background: white;
+  color: #0F1419;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+.tab .dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.tab[data-v="v1"] .dot { background: #2C4A3E; }
+.tab[data-v="v2"] .dot { background: #0F766E; }
+.tab[data-v="v3"] .dot { background: #B85A3E; }
+.tab[data-v="original"] .dot { background: #810080; }
+
+.info-panel {
+  position: fixed;
+  top: 70px; right: 24px;
+  width: 320px;
+  background: rgba(15, 20, 25, 0.92);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 20px;
+  z-index: 100;
+  font-size: 13px;
+  line-height: 1.5;
+  display: none;
+}
+.info-panel.show { display: block; }
+.info-panel h3 {
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: #FFFFFF;
+}
+.info-panel .meta {
+  color: #94A3B8;
+  margin-bottom: 12px;
+  font-size: 12px;
+}
+.info-panel p {
+  color: #CBD5E1;
+  margin-bottom: 8px;
+}
+.info-panel ul {
+  list-style: none;
+  font-size: 12px;
+  color: #94A3B8;
+}
+.info-panel ul li {
+  padding: 4px 0;
+  display: flex; gap: 8px;
+}
+.info-panel ul li::before {
+  content: "·";
+  color: #64748B;
+}
+.toggle-info {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.15);
+  color: #94A3B8;
+  font-family: inherit;
+  font-size: 12px;
+  padding: 7px 12px;
+  border-radius: 7px;
+  cursor: pointer;
+  display: flex; align-items: center; gap: 6px;
+}
+.toggle-info:hover { color: white; border-color: rgba(255,255,255,0.3); }
+.toggle-info.active { color: white; background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.3); }
+
+.frame-wrap {
+  position: relative;
+  background: #0F1419;
+  overflow: hidden;
+}
+iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+.empty {
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  height: 100%;
+  padding: 48px;
+  text-align: center;
+}
+.empty h2 {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+  background: linear-gradient(180deg, #FFFFFF, #94A3B8);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.empty p { color: #94A3B8; font-size: 16px; max-width: 600px; }
+.empty .cards {
+  margin-top: 48px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 1100px;
+  width: 100%;
+}
+.card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 24px;
+  text-align: left;
+  cursor: pointer;
+  transition: all .2s;
+}
+.card:hover {
+  background: rgba(255,255,255,0.07);
+  border-color: rgba(255,255,255,0.2);
+  transform: translateY(-2px);
+}
+.card .preview-bar {
+  height: 6px;
+  border-radius: 3px;
+  margin-bottom: 16px;
+}
+.card[data-v="v1"] .preview-bar { background: linear-gradient(90deg, #2C4A3E, #B85A3E); }
+.card[data-v="v2"] .preview-bar { background: linear-gradient(90deg, #0F766E, #14B8A6); }
+.card[data-v="v3"] .preview-bar { background: linear-gradient(90deg, #B85A3E, #C19A4B, #6B8E4E); }
+.card h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: white;
+}
+.card .tag {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #94A3B8;
+  margin-bottom: 12px;
+}
+.card p {
+  font-size: 13px;
+  color: #94A3B8;
+  line-height: 1.55;
+  margin-bottom: 16px;
+}
+.card .pills {
+  display: flex; gap: 6px;
+  flex-wrap: wrap;
+}
+.card .pill {
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: rgba(255,255,255,0.05);
+  color: #CBD5E1;
+}
+@media (max-width: 720px) {
+  .empty .cards { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="shell">
+  <div class="bar">
+    <div class="bar-title">
+      <h1>Panacea Pflege</h1>
+      <span class="sub">3 Design-Varianten · Startseite</span>
+    </div>
+    <div class="tabs">
+      <button class="tab active" data-v="start">Übersicht</button>
+      <button class="tab" data-v="v1"><span class="dot"></span>1 · Editorial</button>
+      <button class="tab" data-v="v2"><span class="dot"></span>2 · Healthtech</button>
+      <button class="tab" data-v="v3"><span class="dot"></span>3 · Bavarian</button>
+    </div>
+    <button class="toggle-info">Info</button>
+  </div>
+
+  <div class="info-panel" id="info">
+    <h3 id="info-title">Variante auswählen</h3>
+    <div class="meta" id="info-meta"></div>
+    <div id="info-body"></div>
+  </div>
+
+  <div class="frame-wrap">
+    <div class="empty" id="start-screen">
+      <h2>3 Richtungen für Panacea Pflege</h2>
+      <p>Drei radikal unterschiedliche Designs für dieselben Inhalte. Wählen Sie eine Karte oder einen Tab oben, um sie in voller Größe zu sehen.</p>
+      <div class="cards">
+        <div class="card" data-v="v1">
+          <div class="preview-bar"></div>
+          <div class="tag">Variante 01</div>
+          <h3>Premium Editorial</h3>
+          <p>Pflege als Handwerk. Serifen-Display, viel Weißraum, Naturtöne (Creme + Moosgrün + Terrakotta). Erinnert an Aesop / Apothekerläden. Für ein Vertrauen, das auf Ruhe und Qualität baut.</p>
+          <div class="pills">
+            <span class="pill">Cormorant Garamond</span>
+            <span class="pill">Cream + Moss</span>
+            <span class="pill">Editorial</span>
+          </div>
+        </div>
+        <div class="card" data-v="v2">
+          <div class="preview-bar"></div>
+          <div class="tag">Variante 02</div>
+          <h3>Modern Healthtech</h3>
+          <p>Pflege transparent erklärt. Sage-Teal Akzent, Bento-Layout, Live-Kostenrechner im Hero, klare Schritte. Stripe-Ästhetik für Pflege — für Angehörige, die online recherchieren und Klarheit suchen.</p>
+          <div class="pills">
+            <span class="pill">Inter</span>
+            <span class="pill">Sage Teal</span>
+            <span class="pill">Tech-driven</span>
+          </div>
+        </div>
+        <div class="card" data-v="v3">
+          <div class="preview-bar"></div>
+          <div class="tag">Variante 03</div>
+          <h3>Bavarian Warmth</h3>
+          <p>Wie der Nachbar von nebenan. Terrakotta + Salbei + Walnuss, große accessible Buttons, Lora Serif, persönlicher Ton. Telefonnummer immer sichtbar. Für die Klienten direkt — leicht lesbar, vertraut.</p>
+          <div class="pills">
+            <span class="pill">Lora + Source Sans</span>
+            <span class="pill">Terrakotta + Sage</span>
+            <span class="pill">Accessible</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <iframe id="frame" src="about:blank" style="display:none;"></iframe>
+  </div>
+</div>
+
+<script>
+const VARIANTS = {
+  v1: {
+    url: 'v1-editorial/index.html',
+    title: 'Variant 1 · Premium Editorial',
+    meta: 'Kenya Hara × Aesop · serifs, cream, moss',
+    body: `
+      <p><strong>Philosophie:</strong> Pflege als Handwerk. Östliche Zurückhaltung trifft Aesop-Eleganz.</p>
+      <p><strong>Typografie:</strong> Cormorant Garamond Display + Inter Body. Italics für Wärme.</p>
+      <p><strong>Farbpalette:</strong> Creme #F4EFE6, Walnuss #1F1B16, Moosgrün #2C4A3E, Terrakotta #B85A3E.</p>
+      <p><strong>Vibe-Vergleich:</strong> Apothekerladen mit Geschichte. Patagonia-Ruhe.</p>
+      <ul>
+        <li>Editorial Hero mit Manifesto</li>
+        <li>Leistungen als nummerierte Liste (i, ii, iii)</li>
+        <li>Großes Quote-Section in Moosgrün</li>
+        <li>Kosten-Karte mit subtilen Balken</li>
+      </ul>
+    `
+  },
+  v2: {
+    url: 'v2-healthtech/index.html',
+    title: 'Variant 2 · Modern Healthtech',
+    meta: 'Stripe × Intercom · clean, data-driven, sage teal',
+    body: `
+      <p><strong>Philosophie:</strong> Pflege klar geregelt. Transparenz durch Daten und Struktur.</p>
+      <p><strong>Typografie:</strong> Inter + JetBrains Mono für Zahlen. Tight letter-spacing.</p>
+      <p><strong>Farbpalette:</strong> Off-White #FAFAF9, Ink #0C1419, Sage Teal #0F766E, Amber-Akzent #F59E0B.</p>
+      <p><strong>Vibe-Vergleich:</strong> Linear/Stripe in der Pflege. Ruhig, präzise, fortschrittlich.</p>
+      <ul>
+        <li>Live-Kostenrechner im Hero</li>
+        <li>Bento-Layout für USPs</li>
+        <li>Dark Process-Section mit Tab-Navigation</li>
+        <li>Trust-Badges der Krankenkassen</li>
+      </ul>
+    `
+  },
+  v3: {
+    url: 'v3-bavarian/index.html',
+    title: 'Variant 3 · Bavarian Warmth',
+    meta: 'Kinfolk × hometown poster · accessible, warm, friendly',
+    body: `
+      <p><strong>Philosophie:</strong> Wie für die eigene Familie. Persönlich, lokal, vertraut.</p>
+      <p><strong>Typografie:</strong> Lora Serif + Source Sans 3. 19px Body — bewusst groß für 60+.</p>
+      <p><strong>Farbpalette:</strong> Pergament #FFF8EE, Walnuss #3E2F1C, Terrakotta #B85A3E, Salbei #6B8E4E, Gold #C19A4B.</p>
+      <p><strong>Vibe-Vergleich:</strong> Pflegedienst der Nachbarin. Kinfolk-Magazin trifft bayerisches Heimatposter.</p>
+      <ul>
+        <li>Sticky Top-Bar mit Telefonnummer immer sichtbar</li>
+        <li>Riesige accessible Buttons (64px+ height)</li>
+        <li>Custom bayerische SVG-Illustration im Hero</li>
+        <li>Standorte als Pin-Karten</li>
+      </ul>
+    `
+  }
+};
+
+const tabs = document.querySelectorAll('.tab');
+const cards = document.querySelectorAll('.card');
+const frame = document.getElementById('frame');
+const startScreen = document.getElementById('start-screen');
+const infoBtn = document.querySelector('.toggle-info');
+const infoPanel = document.getElementById('info');
+
+function load(v) {
+  tabs.forEach(t => t.classList.toggle('active', t.dataset.v === v));
+  if (v === 'start') {
+    frame.style.display = 'none';
+    startScreen.style.display = 'flex';
+    document.getElementById('info-title').textContent = 'Variante auswählen';
+    document.getElementById('info-meta').textContent = '';
+    document.getElementById('info-body').innerHTML = '<p>Klicken Sie auf einen Tab oder eine Karte, um eine Variante anzusehen.</p>';
+    return;
+  }
+  const data = VARIANTS[v];
+  if (!data) return;
+  frame.src = data.url;
+  frame.style.display = 'block';
+  startScreen.style.display = 'none';
+  document.getElementById('info-title').textContent = data.title;
+  document.getElementById('info-meta').textContent = data.meta;
+  document.getElementById('info-body').innerHTML = data.body;
+}
+
+tabs.forEach(t => t.addEventListener('click', () => load(t.dataset.v)));
+cards.forEach(c => c.addEventListener('click', () => load(c.dataset.v)));
+infoBtn.addEventListener('click', () => {
+  infoPanel.classList.toggle('show');
+  infoBtn.classList.toggle('active');
+});
+
+// keyboard shortcuts
+document.addEventListener('keydown', e => {
+  if (e.key === '0') load('start');
+  if (e.key === '1') load('v1');
+  if (e.key === '2') load('v2');
+  if (e.key === '3') load('v3');
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panacea Pflege — Pflege, klar geregelt.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #FAFAF9;
+  --bg-elev: #FFFFFF;
+  --bg-sage: #ECF1EE;
+  --bg-dark: #0C1419;
+  --ink: #0C1419;
+  --ink-2: #334155;
+  --ink-3: #64748B;
+  --line: #E2E8F0;
+  --line-2: #CBD5E1;
+  --primary: #0F766E;
+  --primary-hover: #115E59;
+  --primary-soft: #CCFBF1;
+  --amber: #F59E0B;
+  --amber-soft: #FEF3C7;
+  --green: #10B981;
+  --rose: #FB7185;
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(15, 23, 42, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.06), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
+  --shadow-lg: 0 16px 32px -8px rgba(15, 23, 42, 0.12), 0 4px 8px -4px rgba(15, 23, 42, 0.06);
+  --radius: 12px;
+  --radius-sm: 8px;
+  --radius-lg: 20px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: 'cv11', 'ss01', 'ss03';
+  text-wrap: pretty;
+}
+a { color: inherit; text-decoration: none; }
+.mono { font-family: 'JetBrains Mono', monospace; font-feature-settings: normal; }
+
+/* ── Navigation ── */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(250, 250, 249, 0.85);
+  backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid var(--line);
+}
+.nav-inner {
+  max-width: 1280px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 32px;
+}
+.nav-brand {
+  display: flex; align-items: center; gap: 10px;
+  font-weight: 700; font-size: 17px;
+  letter-spacing: -0.01em;
+}
+.nav-logo {
+  width: 32px; height: 32px;
+  background: var(--primary);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-weight: 700; font-size: 14px;
+  position: relative;
+}
+.nav-logo::before {
+  content: ""; position: absolute;
+  inset: 4px;
+  border: 1.5px solid rgba(255,255,255,0.4);
+  border-radius: 4px;
+}
+.nav-logo::after { content: "P"; position: relative; z-index: 1; }
+.nav-links {
+  display: flex; gap: 4px;
+  font-size: 14px; color: var(--ink-2);
+  font-weight: 500;
+}
+.nav-links a {
+  padding: 8px 14px; border-radius: 8px;
+  transition: background .15s, color .15s;
+}
+.nav-links a:hover { background: var(--bg-sage); color: var(--primary); }
+.nav-cta {
+  display: flex; align-items: center; gap: 12px;
+}
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 18px; border-radius: 8px;
+  font-size: 14px; font-weight: 600;
+  font-family: inherit;
+  cursor: pointer; border: none;
+  transition: all .15s;
+  white-space: nowrap;
+}
+.btn-primary {
+  background: var(--ink); color: white;
+}
+.btn-primary:hover { background: var(--primary); transform: translateY(-1px); box-shadow: var(--shadow-md); }
+.btn-ghost {
+  background: transparent; color: var(--ink-2);
+}
+.btn-ghost:hover { color: var(--ink); }
+.btn-lg { padding: 14px 24px; font-size: 15px; border-radius: 10px; }
+.btn-arrow { transition: transform .15s; }
+.btn:hover .btn-arrow { transform: translateX(2px); }
+
+/* ── HERO ── */
+.hero {
+  position: relative;
+  padding: 80px 32px 100px;
+  overflow: hidden;
+}
+.hero::before {
+  content: ""; position: absolute;
+  top: -10%; right: -5%; width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(15, 118, 110, 0.07) 0%, transparent 70%);
+  z-index: 0;
+}
+.hero-inner {
+  max-width: 1280px; margin: 0 auto;
+  position: relative; z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  padding: 6px 12px 6px 8px;
+  border-radius: 100px;
+  font-size: 13px; font-weight: 500;
+  color: var(--ink-2);
+  margin-bottom: 24px;
+  box-shadow: var(--shadow-sm);
+}
+.hero-badge .dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.15);
+}
+.hero h1 {
+  font-size: clamp(40px, 5vw, 64px);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  font-weight: 700;
+  margin-bottom: 24px;
+  background: linear-gradient(180deg, #0C1419 0%, #334155 100%);
+  -webkit-background-clip: text; background-clip: text;
+  color: transparent;
+}
+.hero h1 .highlight {
+  background: linear-gradient(120deg, var(--primary) 0%, #14B8A6 100%);
+  -webkit-background-clip: text; background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+.hero-sub {
+  font-size: 19px; line-height: 1.55;
+  color: var(--ink-3);
+  margin-bottom: 40px;
+  max-width: 480px;
+}
+.hero-cta-group {
+  display: flex; gap: 12px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+.trust-row {
+  display: flex; align-items: center; gap: 24px;
+  font-size: 13px; color: var(--ink-3);
+  flex-wrap: wrap;
+}
+.trust-row strong { color: var(--ink); font-weight: 600; }
+.trust-item { display: flex; align-items: center; gap: 8px; }
+.trust-item svg { color: var(--green); }
+
+/* HERO product card — calculator preview */
+.hero-product {
+  position: relative;
+  background: var(--bg-elev);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--line);
+}
+.hero-product::before {
+  content: ""; position: absolute;
+  inset: -12px;
+  border-radius: 28px;
+  background: linear-gradient(135deg, rgba(15, 118, 110, 0.08), transparent);
+  z-index: -1;
+}
+.hp-head {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 24px;
+}
+.hp-title {
+  font-size: 13px; font-weight: 600;
+  color: var(--ink-3);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.hp-dots { display: flex; gap: 6px; }
+.hp-dots span { width: 10px; height: 10px; border-radius: 50%; background: var(--line-2); }
+.hp-section { margin-bottom: 20px; }
+.hp-label {
+  font-size: 12px; color: var(--ink-3);
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+.hp-grade-row { display: flex; gap: 8px; }
+.hp-grade {
+  flex: 1; padding: 12px 0;
+  text-align: center;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font-size: 13px; font-weight: 600;
+  cursor: pointer;
+  transition: all .15s;
+}
+.hp-grade.active {
+  background: var(--ink); color: white;
+  border-color: var(--ink);
+}
+.hp-grade:hover:not(.active) { border-color: var(--primary); color: var(--primary); }
+.hp-result {
+  background: linear-gradient(135deg, var(--primary) 0%, #115E59 100%);
+  color: white;
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 24px;
+}
+.hp-amount {
+  font-size: 40px; font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-bottom: 4px;
+  font-feature-settings: 'tnum';
+}
+.hp-amount .currency { font-size: 22px; opacity: 0.7; margin-left: 4px; }
+.hp-amount-label {
+  font-size: 12px;
+  color: rgba(255,255,255,0.8);
+  letter-spacing: 0.02em;
+}
+.hp-breakdown {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,0.15);
+  display: flex; flex-direction: column; gap: 8px;
+}
+.hp-br-row {
+  display: flex; justify-content: space-between;
+  font-size: 12px;
+  color: rgba(255,255,255,0.75);
+}
+.hp-br-row strong { color: white; font-weight: 600; font-family: 'JetBrains Mono', monospace; }
+.hp-foot {
+  margin-top: 20px;
+  display: flex; gap: 8px; align-items: center;
+  font-size: 13px; color: var(--ink-3);
+}
+.hp-foot .live {
+  background: var(--primary-soft); color: var(--primary);
+  padding: 3px 8px; border-radius: 6px;
+  font-size: 11px; font-weight: 600;
+}
+@media (max-width: 880px) {
+  .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+}
+
+/* ── Logo strip / trust strip ── */
+.trust-strip {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 24px 32px;
+  background: var(--bg-elev);
+}
+.trust-strip-inner {
+  max-width: 1280px; margin: 0 auto;
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.trust-label {
+  font-size: 13px; color: var(--ink-3);
+  font-weight: 500;
+}
+.trust-tags {
+  display: flex; gap: 12px;
+  flex-wrap: wrap;
+  font-size: 13px;
+  color: var(--ink-2);
+  font-weight: 500;
+}
+.trust-tag {
+  padding: 4px 10px; border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--bg);
+}
+
+/* ── SECTION layout ── */
+.section { padding: 96px 32px; }
+.section-inner { max-width: 1280px; margin: 0 auto; }
+.section-head { margin-bottom: 56px; max-width: 720px; }
+.section-tag {
+  display: inline-block;
+  font-size: 12px; font-weight: 600;
+  color: var(--primary);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  padding: 4px 10px;
+  background: var(--primary-soft);
+  border-radius: 6px;
+}
+.section h2 {
+  font-size: clamp(32px, 4vw, 48px);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+.section-sub {
+  font-size: 18px; line-height: 1.55;
+  color: var(--ink-3);
+}
+
+/* ── LEISTUNGEN — feature grid ── */
+.features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.feature {
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 24px;
+  transition: all .2s ease;
+  position: relative;
+  overflow: hidden;
+}
+.feature:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary);
+}
+.feature::after {
+  content: ""; position: absolute;
+  top: 0; right: 0; width: 200px; height: 200px;
+  background: radial-gradient(circle at top right, rgba(15, 118, 110, 0.04), transparent 50%);
+  pointer-events: none;
+}
+.feature-icon {
+  width: 44px; height: 44px;
+  border-radius: 10px;
+  background: var(--primary-soft);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 18px;
+  color: var(--primary);
+}
+.feature h3 {
+  font-size: 18px; font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+}
+.feature p {
+  font-size: 14px; line-height: 1.55;
+  color: var(--ink-3);
+}
+.feature-meta {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px dashed var(--line);
+  font-size: 12px; color: var(--ink-3);
+  display: flex; gap: 12px;
+}
+.feature-meta .check {
+  color: var(--green);
+  display: inline-flex; align-items: center; gap: 4px;
+}
+@media (max-width: 880px) {
+  .features { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .features { grid-template-columns: 1fr; }
+}
+
+/* ── PROCESS ── */
+.process-bg {
+  background: var(--bg-dark);
+  color: white;
+}
+.process-bg h2 {
+  background: linear-gradient(180deg, #FFFFFF 0%, #94A3B8 100%);
+  -webkit-background-clip: text; background-clip: text;
+  color: transparent;
+}
+.process-bg .section-sub { color: rgba(255,255,255,0.65); }
+.process-bg .section-tag {
+  background: rgba(15, 118, 110, 0.15);
+  color: #5EEAD4;
+}
+.process-tracks {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 64px;
+  margin-top: 24px;
+}
+.process-nav {
+  display: flex; flex-direction: column; gap: 4px;
+}
+.process-nav-item {
+  display: flex; align-items: center; gap: 14px;
+  padding: 14px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background .2s;
+  position: relative;
+}
+.process-nav-item:hover { background: rgba(255,255,255,0.04); }
+.process-nav-item.active { background: rgba(15, 118, 110, 0.15); }
+.process-nav-item.active::before {
+  content: ""; position: absolute;
+  left: 0; top: 12px; bottom: 12px;
+  width: 3px;
+  background: var(--primary);
+  border-radius: 2px;
+}
+.pn-num {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.08);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 600;
+  color: rgba(255,255,255,0.7);
+  flex-shrink: 0;
+}
+.process-nav-item.active .pn-num {
+  background: var(--primary);
+  color: white;
+}
+.pn-text {
+  font-size: 14px; font-weight: 500;
+  color: rgba(255,255,255,0.8);
+}
+.process-nav-item.active .pn-text { color: white; }
+
+.process-content {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+}
+.process-content::before {
+  content: ""; position: absolute;
+  top: -100px; right: -100px; width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(15, 118, 110, 0.18), transparent 70%);
+}
+.pc-step {
+  font-size: 12px; font-weight: 600;
+  color: #5EEAD4;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  font-family: 'JetBrains Mono', monospace;
+}
+.pc-title {
+  font-size: 32px; font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+  line-height: 1.1;
+}
+.pc-desc {
+  font-size: 16px; line-height: 1.6;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 24px;
+}
+.pc-meta {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.pc-meta-item {
+  font-size: 13px;
+  color: rgba(255,255,255,0.55);
+}
+.pc-meta-item strong {
+  display: block; color: white;
+  font-size: 22px; font-weight: 700;
+  margin-bottom: 2px;
+  font-feature-settings: 'tnum';
+}
+@media (max-width: 880px) {
+  .process-tracks { grid-template-columns: 1fr; gap: 24px; }
+  .process-nav { flex-direction: row; overflow-x: auto; }
+  .process-nav-item { flex-shrink: 0; }
+}
+
+/* ── USP — bento ── */
+.bento {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-auto-rows: minmax(200px, auto);
+  gap: 16px;
+}
+.bento-item {
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+  transition: all .2s;
+}
+.bento-item:hover { box-shadow: var(--shadow-md); }
+.bento-item.b-large { grid-column: span 4; }
+.bento-item.b-small { grid-column: span 2; }
+.bento-item.b-med { grid-column: span 3; }
+.bento-item h3 {
+  font-size: 22px; font-weight: 700;
+  letter-spacing: -0.015em;
+  margin-bottom: 12px;
+  line-height: 1.15;
+}
+.bento-item p {
+  font-size: 14px; line-height: 1.55;
+  color: var(--ink-3);
+}
+.bento-item.b-feature {
+  background: linear-gradient(135deg, var(--primary) 0%, #0D9488 100%);
+  color: white;
+  border: none;
+}
+.bento-item.b-feature h3 { color: white; }
+.bento-item.b-feature p { color: rgba(255,255,255,0.85); }
+.bento-tag {
+  display: inline-block;
+  font-size: 11px; font-weight: 600;
+  color: var(--primary);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  padding: 3px 8px;
+  background: var(--primary-soft);
+  border-radius: 4px;
+}
+.bento-stat {
+  font-size: 64px; font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin-bottom: 8px;
+  font-feature-settings: 'tnum';
+}
+.bento-stat-label {
+  font-size: 14px; color: var(--ink-3);
+}
+.b-feature .bento-stat-label { color: rgba(255,255,255,0.8); }
+.bento-quote {
+  font-size: 22px; line-height: 1.4;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+.bento-quote-attr {
+  margin-top: 16px;
+  font-size: 13px; color: var(--ink-3);
+  display: flex; align-items: center; gap: 10px;
+}
+.avatar {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: linear-gradient(135deg, #DBA46E, #B85A3E);
+  flex-shrink: 0;
+  position: relative;
+}
+.avatar::after {
+  content: ""; position: absolute;
+  inset: 6px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 50%;
+}
+@media (max-width: 880px) {
+  .bento { grid-template-columns: repeat(2, 1fr); }
+  .bento-item.b-large, .bento-item.b-small, .bento-item.b-med { grid-column: span 2; }
+}
+
+/* ── Reviews ── */
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.review-card {
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 24px;
+}
+.review-stars {
+  color: var(--amber);
+  font-size: 16px;
+  margin-bottom: 12px;
+  letter-spacing: 2px;
+}
+.review-text {
+  font-size: 15px; line-height: 1.55;
+  color: var(--ink-2);
+  margin-bottom: 16px;
+}
+.review-foot {
+  display: flex; align-items: center; gap: 12px;
+  font-size: 13px;
+}
+.review-foot strong { display: block; color: var(--ink); }
+.review-foot span { color: var(--ink-3); font-size: 12px; }
+@media (max-width: 880px) {
+  .reviews-grid { grid-template-columns: 1fr; }
+}
+
+/* ── FAQ ── */
+.faq-wrap {
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.faq-item { border-bottom: 1px solid var(--line); }
+.faq-item:last-child { border-bottom: none; }
+.faq-q {
+  padding: 22px 28px;
+  display: flex; justify-content: space-between; align-items: center;
+  cursor: pointer;
+  font-size: 16px; font-weight: 600;
+  transition: background .15s;
+}
+.faq-q:hover { background: var(--bg); }
+.faq-toggle {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; color: var(--ink-2);
+  transition: all .2s;
+  flex-shrink: 0;
+  margin-left: 16px;
+}
+.faq-item.open .faq-toggle {
+  background: var(--ink); color: white; border-color: var(--ink);
+  transform: rotate(45deg);
+}
+.faq-a {
+  max-height: 0; overflow: hidden;
+  padding: 0 28px;
+  font-size: 15px; line-height: 1.6;
+  color: var(--ink-3);
+  transition: max-height .3s ease, padding .3s ease;
+}
+.faq-item.open .faq-a {
+  max-height: 600px;
+  padding: 0 28px 22px;
+}
+
+/* ── CTA ── */
+.cta-section {
+  padding: 96px 32px;
+  background: var(--bg-dark);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+.cta-section::before {
+  content: ""; position: absolute;
+  top: -200px; left: -100px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(15, 118, 110, 0.25), transparent 60%);
+}
+.cta-section::after {
+  content: ""; position: absolute;
+  bottom: -300px; right: -100px;
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(20, 184, 166, 0.15), transparent 60%);
+}
+.cta-inner {
+  max-width: 1280px; margin: 0 auto;
+  position: relative; z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+.cta-text h2 {
+  font-size: clamp(36px, 4.5vw, 56px);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  font-weight: 700;
+  margin-bottom: 20px;
+  background: linear-gradient(180deg, #FFFFFF 0%, #94A3B8 100%);
+  -webkit-background-clip: text; background-clip: text;
+  color: transparent;
+}
+.cta-text p {
+  font-size: 18px; line-height: 1.55;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 32px;
+}
+.cta-btn {
+  background: white; color: var(--ink);
+  padding: 16px 28px;
+  font-size: 16px; font-weight: 600;
+  border-radius: 10px;
+  display: inline-flex; align-items: center; gap: 10px;
+  transition: all .15s;
+}
+.cta-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 24px rgba(0,0,0,0.3); }
+
+.contact-locs {
+  display: flex; flex-direction: column; gap: 12px;
+}
+.contact-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius);
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 20px;
+  align-items: center;
+  transition: all .15s;
+}
+.contact-card:hover {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(15, 118, 110, 0.3);
+}
+.cc-loc-label {
+  font-size: 11px; font-weight: 600;
+  color: #5EEAD4;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+  font-family: 'JetBrains Mono', monospace;
+}
+.cc-loc-name {
+  font-size: 18px; font-weight: 700;
+  margin-bottom: 10px;
+  letter-spacing: -0.01em;
+}
+.cc-loc-contacts {
+  display: flex; flex-direction: column; gap: 4px;
+  font-size: 14px;
+  color: rgba(255,255,255,0.75);
+}
+.cc-loc-contacts a:hover { color: white; }
+.cc-action {
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  background: var(--primary);
+  display: flex; align-items: center; justify-content: center;
+  color: white;
+  font-size: 18px;
+  transition: transform .15s;
+}
+.contact-card:hover .cc-action { transform: translateX(3px); }
+@media (max-width: 880px) {
+  .cta-inner { grid-template-columns: 1fr; gap: 48px; }
+}
+
+/* ── Footer ── */
+.footer {
+  background: var(--bg-elev);
+  border-top: 1px solid var(--line);
+  padding: 64px 32px 32px;
+}
+.footer-inner {
+  max-width: 1280px; margin: 0 auto;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid var(--line);
+}
+.footer-brand {
+  max-width: 320px;
+}
+.footer-brand .nav-brand { margin-bottom: 16px; }
+.footer-brand p {
+  font-size: 14px;
+  color: var(--ink-3);
+  line-height: 1.6;
+}
+.footer-col h4 {
+  font-size: 12px; font-weight: 600;
+  color: var(--ink-3);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.footer-col a {
+  display: block;
+  font-size: 14px;
+  color: var(--ink-2);
+  margin-bottom: 10px;
+  transition: color .15s;
+}
+.footer-col a:hover { color: var(--primary); }
+.footer-bot {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-top: 24px;
+  font-size: 13px;
+  color: var(--ink-3);
+}
+.footer-meta {
+  display: flex; align-items: center; gap: 12px;
+}
+.footer-meta .status {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 4px 10px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 100px;
+  font-size: 12px;
+}
+.footer-meta .status .dot {
+  width: 6px; height: 6px;
+  background: var(--green);
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+}
+@media (max-width: 880px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .footer-brand { grid-column: span 2; }
+  .footer-bot { flex-direction: column; gap: 16px; }
+}
+
+/* responsive */
+@media (max-width: 720px) {
+  .nav-links { display: none; }
+  .hero { padding: 48px 20px 64px; }
+  .section { padding: 64px 20px; }
+  .cta-section { padding: 64px 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">
+      <span class="nav-logo"></span>
+      Panacea
+    </a>
+    <div class="nav-links">
+      <a href="#leistungen">Leistungen</a>
+      <a href="#prozess">Ablauf</a>
+      <a href="#kosten">Kosten</a>
+      <a href="#faq">FAQ</a>
+      <a href="#kontakt">Kontakt</a>
+    </div>
+    <div class="nav-cta">
+      <a href="tel:08952068407" class="btn btn-ghost">089 520 68 407</a>
+      <a href="#kontakt" class="btn btn-primary">Beratung anfragen <span class="btn-arrow">→</span></a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">
+        <span class="dot"></span>
+        24-Stunden-Start nach Erstgespräch verfügbar
+      </div>
+      <h1>Ambulante Pflege, <span class="highlight">klar geregelt.</span></h1>
+      <p class="hero-sub">
+        Zuverlässig, einfühlsam, professionell — von der Körperpflege bis zum Pflegegradantrag.
+        Wir kümmern uns um die Pflege <strong style="color: var(--ink);">und</strong> die Bürokratie.
+        München · Landkreis Fürstenfeldbruck.
+      </p>
+      <div class="hero-cta-group">
+        <a href="#kontakt" class="btn btn-primary btn-lg">Kostenlose Beratung anfragen <span class="btn-arrow">→</span></a>
+        <a href="#kosten" class="btn btn-ghost btn-lg">Pflegekostenrechner ansehen</a>
+      </div>
+      <div class="trust-row">
+        <div class="trust-item">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.5 4L5.5 10L2.5 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span><strong>Kostenlos</strong> &amp; unverbindlich</span>
+        </div>
+        <div class="trust-item">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.5 4L5.5 10L2.5 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Antwort in <strong>24h</strong></span>
+        </div>
+        <div class="trust-item">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.5 4L5.5 10L2.5 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span><strong>Alle Pflegegrade</strong></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero product card -->
+    <div class="hero-product">
+      <div class="hp-head">
+        <div class="hp-title">Pflegekostenrechner</div>
+        <div class="hp-dots"><span></span><span></span><span></span></div>
+      </div>
+      <div class="hp-section">
+        <div class="hp-label">Ihr Pflegegrad</div>
+        <div class="hp-grade-row">
+          <div class="hp-grade">1</div>
+          <div class="hp-grade">2</div>
+          <div class="hp-grade active">3</div>
+          <div class="hp-grade">4</div>
+          <div class="hp-grade">5</div>
+        </div>
+      </div>
+      <div class="hp-section">
+        <div class="hp-label">Versorgung</div>
+        <div class="hp-grade-row">
+          <div class="hp-grade">Grundpflege</div>
+          <div class="hp-grade active">+ Medizin</div>
+          <div class="hp-grade">+ Haushalt</div>
+        </div>
+      </div>
+      <div class="hp-result">
+        <div class="hp-amount">1.497<span class="currency">€</span></div>
+        <div class="hp-amount-label">monatlich von der Pflegekasse übernommen</div>
+        <div class="hp-breakdown">
+          <div class="hp-br-row"><span>Pflegesachleistung</span><strong>1.298 €</strong></div>
+          <div class="hp-br-row"><span>Entlastungsbetrag</span><strong>131 €</strong></div>
+          <div class="hp-br-row"><span>Verhinderungspflege</span><strong>anteilig</strong></div>
+        </div>
+      </div>
+      <div class="hp-foot">
+        <span class="live">Live-Berechnung</span>
+        <span>2 Minuten · keine Anmeldung</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST STRIP -->
+<div class="trust-strip">
+  <div class="trust-strip-inner">
+    <div class="trust-label">Anerkannt von:</div>
+    <div class="trust-tags">
+      <span class="trust-tag">AOK Bayern</span>
+      <span class="trust-tag">BARMER</span>
+      <span class="trust-tag">DAK-Gesundheit</span>
+      <span class="trust-tag">TK</span>
+      <span class="trust-tag">Knappschaft</span>
+      <span class="trust-tag">+ alle gesetzlichen Kassen</span>
+    </div>
+  </div>
+</div>
+
+<!-- LEISTUNGEN -->
+<section class="section" id="leistungen">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="section-tag">Leistungen</span>
+      <h2>Alles, was Sie brauchen — aus einer Hand.</h2>
+      <p class="section-sub">Fünf Bereiche, ein Ansprechpartner. Sie bekommen einen Pflegedienstleiter, einen Maßnahmenplan, eine Rechnung. Keine Zwischenanbieter.</p>
+    </div>
+    <div class="features">
+      <div class="feature">
+        <div class="feature-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 11h-6"/><path d="M19 8v6"/></svg>
+        </div>
+        <h3>Körperpflege &amp; Hygiene</h3>
+        <p>Wir helfen bei allen Aspekten der täglichen Körperpflege, um den Tag zu beginnen oder vor dem Schlaf — einfühlsam und professionell.</p>
+        <div class="feature-meta">
+          <span class="check">✓ täglich möglich</span>
+          <span class="check">✓ flexibel</span>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z"/></svg>
+        </div>
+        <h3>Medizinische Versorgung</h3>
+        <p>Wundversorgung, Medikamentengabe, Injektionen und Verbandswechsel — nach ärztlicher Verordnung, zuverlässig durchgeführt.</p>
+        <div class="feature-meta">
+          <span class="check">✓ ärztl. Verordnung</span>
+          <span class="check">✓ Wundmanager</span>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <h3>Haushaltshilfe</h3>
+        <p>Einkäufe, Reinigung, Kochen, Wäsche — wir sorgen dafür, dass Sie sorgenlos zu Hause bleiben.</p>
+        <div class="feature-meta">
+          <span class="check">✓ über Entlastungsbetrag</span>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+        </div>
+        <h3>Betreuung &amp; Begleitung</h3>
+        <p>Gemeinsame Spaziergänge, Gespräche, Begleitung zu Terminen — weil zur Pflege mehr dazu gehört.</p>
+        <div class="feature-meta">
+          <span class="check">✓ stundenweise</span>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
+        <h3>Beratung &amp; Anträge</h3>
+        <p>Pflegegrad beantragen, Höherstufung, Entlastungsbetrag, Sozialleistungen — wir wissen, was Ihnen zusteht.</p>
+        <div class="feature-meta">
+          <span class="check">✓ inklusive</span>
+        </div>
+      </div>
+      <div class="feature" style="background: linear-gradient(135deg, var(--ink) 0%, #1E293B 100%); color: white; border: none;">
+        <div class="feature-icon" style="background: rgba(255,255,255,0.1); color: #5EEAD4;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3 style="color: white;">Notfall &amp; Kurzfristig</h3>
+        <p style="color: rgba(255,255,255,0.7);">Auch wenn es schnell gehen muss: Wir haben Kapazitäten für kurzfristige Versorgung — innerhalb von 24 Stunden nach Erstgespräch.</p>
+        <div class="feature-meta" style="border-top-color: rgba(255,255,255,0.15);">
+          <span style="color: #5EEAD4;">→ 24h-Bereitschaft</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="section process-bg" id="prozess">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="section-tag">Ablauf</span>
+      <h2>In vier Schritten zur Pflege.</h2>
+      <p class="section-sub">Vom ersten Anruf bis zur ersten Pflegevisite vergehen in der Regel weniger als 48 Stunden.</p>
+    </div>
+    <div class="process-tracks">
+      <div class="process-nav">
+        <div class="process-nav-item">
+          <span class="pn-num">1</span>
+          <span class="pn-text">Kontakt aufnehmen</span>
+        </div>
+        <div class="process-nav-item active">
+          <span class="pn-num">2</span>
+          <span class="pn-text">Persönliches Gespräch</span>
+        </div>
+        <div class="process-nav-item">
+          <span class="pn-num">3</span>
+          <span class="pn-text">Pflege beginnt</span>
+        </div>
+        <div class="process-nav-item">
+          <span class="pn-num">4</span>
+          <span class="pn-text">Restliche Unterlagen</span>
+        </div>
+      </div>
+      <div class="process-content">
+        <div class="pc-step">Schritt 02 / 04</div>
+        <h3 class="pc-title">Persönliches Gespräch bei Ihnen zu Hause</h3>
+        <p class="pc-desc">Unser Pflegedienstleiter kommt zu Ihnen — kostenlos und unverbindlich. Gemeinsam erarbeiten wir den Maßnahmenplan und erstellen direkt vor Ort einen Kostenvoranschlag. Sie bekommen volle Transparenz, bevor Sie sich entscheiden.</p>
+        <div class="pc-meta">
+          <div class="pc-meta-item">
+            <strong>~ 45 min</strong>
+            Dauer Erstgespräch
+          </div>
+          <div class="pc-meta-item">
+            <strong>0 €</strong>
+            Kostenvoranschlag
+          </div>
+          <div class="pc-meta-item">
+            <strong>24 h</strong>
+            bis Pflegestart
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- USP — Bento -->
+<section class="section" id="warum">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="section-tag">Warum Panacea</span>
+      <h2>Vier Gründe, warum Familien uns vertrauen.</h2>
+    </div>
+    <div class="bento">
+      <div class="bento-item b-feature b-large">
+        <span class="bento-tag" style="background: rgba(255,255,255,0.2); color: white;">Vollspektrum</span>
+        <h3>Alles aus einer Hand — von Körperpflege bis Bürokratie.</h3>
+        <p>Mit uns haben Sie einen Partner für alles: Pflege, medizinische Versorgung, Haushalt und Antragstellung. Wir übernehmen die Verantwortung und involvieren bei Bedarf unsere starken Partner — Apotheke, Wundmanager, Ärzte.</p>
+      </div>
+      <div class="bento-item b-small">
+        <div class="bento-stat">24h</div>
+        <div class="bento-stat-label">Pflegestart nach Erstgespräch</div>
+      </div>
+      <div class="bento-item b-med">
+        <span class="bento-tag">Preis</span>
+        <h3>Maximale Leistung für Ihr Budget</h3>
+        <p>Als privater Pflegedienst arbeiten wir mit günstigeren Sätzen als gemeinnützige Anbieter und rechnen nicht pauschal ab.</p>
+      </div>
+      <div class="bento-item b-med">
+        <span class="bento-tag">Zeit</span>
+        <h3>Flexibel — auch nachts und am Wochenende</h3>
+        <p>Ob morgens um 5:30 für die Augentropfen oder spät abends nach der Tagespflege — wir richten uns nach Ihrem Rhythmus.</p>
+      </div>
+      <div class="bento-item b-large">
+        <span class="bento-tag">Bürokratie</span>
+        <h3>Wir übernehmen die Anträge — Sie müssen nichts ausfüllen.</h3>
+        <p>Pflegegrad beantragen, Höherstufung, Widerspruch, Entlastungsbetrag — alle Formulare bereiten wir vor. Beim medizinischen Dienst sind wir vor Ort dabei und unterstützen die objektive Bewertung Ihres Pflegebedarfs.</p>
+        <div class="bento-quote-attr" style="margin-top: 24px;">
+          <div class="avatar"></div>
+          <div>
+            <strong style="color: var(--ink);">Pflegedienstleitung Panacea</strong>
+            <span>Bürokratie ist unser Job — nicht Ihrer.</span>
+          </div>
+        </div>
+      </div>
+      <div class="bento-item b-small">
+        <div class="bento-stat" style="color: var(--primary);">5</div>
+        <div class="bento-stat-label">Leistungsbereiche aus einer Hand</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Reviews -->
+<section class="section" id="reviews" style="background: var(--bg-elev); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="section-tag">Erfahrungen</span>
+      <h2>Was Angehörige über uns sagen.</h2>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">„Wir haben innerhalb von 24 Stunden eine Lösung bekommen, als unsere Mutter aus dem Krankenhaus entlassen wurde. Panacea hat sich um alles gekümmert — auch um die Wundversorgung."</p>
+        <div class="review-foot">
+          <div class="avatar"></div>
+          <div>
+            <strong>Familie K.</strong>
+            <span>München · Mai 2026</span>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">„Die Beratung bei der Pflegegrad-Höherstufung war Gold wert. Ohne Panacea hätten wir nie die Unterlagen so vorbereitet, dass der MDK den Pflegegrad 3 anerkennt."</p>
+        <div class="review-foot">
+          <div class="avatar" style="background: linear-gradient(135deg, #94B894, #6B8E4E);"></div>
+          <div>
+            <strong>Frau M., Tochter</strong>
+            <span>Olching · April 2026</span>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">„Sehr flexibel und zuverlässig. Auch kurzfristige Änderungen, wenn mein Vater ins Krankenhaus muss, sind kein Problem. Empfehle ich gern weiter."</p>
+        <div class="review-foot">
+          <div class="avatar" style="background: linear-gradient(135deg, #A8B5C8, #6B7E96);"></div>
+          <div>
+            <strong>Herr B.</strong>
+            <span>Fürstenfeldbruck · März 2026</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="section-tag">Häufige Fragen</span>
+      <h2>Alles, was Sie wissen wollen.</h2>
+      <p class="section-sub">Sie haben weitere Fragen? Rufen Sie uns an — die erste Beratung ist immer kostenlos.</p>
+    </div>
+    <div class="faq-wrap">
+      <div class="faq-item">
+        <div class="faq-q">Welche Leistungen übernimmt die Pflegekasse?<span class="faq-toggle">+</span></div>
+        <div class="faq-a">Die Pflegekasse übernimmt einen Großteil der Kosten für ambulante Pflege — abhängig von Ihrem Pflegegrad. Dazu gehören vor allem Grundpflege, Betreuung und Haushaltshilfe. Wir erarbeiten mit Ihnen einen Maßnahmenplan, der das Budget optimal ausnutzt.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Wie erfolgt die Abrechnung?<span class="faq-toggle">+</span></div>
+        <div class="faq-a">Im Falle der gesetzlichen Pflegekasse unterschreiben Sie am Ende des Monats nur den Leistungsnachweis. Wir schicken ihn zusammen mit der Rechnung an die Pflegekasse und führen sämtliche Kommunikation, falls es etwas zu beanstanden gibt.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Was kostet ein ambulanter Pflegedienst?<span class="faq-toggle">+</span></div>
+        <div class="faq-a">Die Kosten richten sich nach Ihrem Pflegegrad und den gewünschten Leistungen. Mit unserem Kostenrechner können Sie sich einen ersten Überblick verschaffen. Die erste Beratung ist bei uns immer kostenlos.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Wie schnell können Sie mit der Pflege beginnen?<span class="faq-toggle">+</span></div>
+        <div class="faq-a">Nach dem persönlichen Beratungsgespräch können wir die Pflege innerhalb von 24 Stunden starten. Der Kostenvoranschlag wird noch am selben Tag des Treffens vorbereitet.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Wie flexibel sind Sie bei der Planung der Besuche?<span class="faq-toggle">+</span></div>
+        <div class="faq-a">Wir passen uns Ihrer Situation an: Ob Augentropfen fünfmal am Tag oder Mobilisierungshilfe viermal täglich, ob Sie zum Taxi um 5:30 Uhr müssen oder vor und nach der Tagespflege Körperpflege brauchen.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Können Sie uns bei der Beantragung eines Pflegegrads helfen?<span class="faq-toggle">+</span></div>
+        <div class="faq-a">Ja, wir unterstützen Sie bei der Erstbeantragung, Höherstufungen und Widersprüchen. Wir stellen mit Ihnen die Anträge für Entlastungshilfe und Verhinderungspflege zusammen. Zudem helfen wir Ihnen, bei Bedarf Sozialleistungen zu beantragen.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA / CONTACT -->
+<section class="cta-section" id="kontakt">
+  <div class="cta-inner">
+    <div class="cta-text">
+      <h2>Wir sind für Sie da — kostenlos und unverbindlich.</h2>
+      <p>Rufen Sie uns an oder schreiben Sie uns. Wir melden uns innerhalb von 24 Stunden mit einem konkreten Termin für das Erstgespräch bei Ihnen zu Hause.</p>
+      <a href="#" class="cta-btn">Kostenlose Beratung anfragen <span style="transition: transform .15s;">→</span></a>
+    </div>
+    <div class="contact-locs">
+      <a href="tel:08952068407" class="contact-card">
+        <div>
+          <div class="cc-loc-label">Standort 01</div>
+          <div class="cc-loc-name">München</div>
+          <div class="cc-loc-contacts">
+            <span>☎ 089 52068407</span>
+            <span>✉ anfrage.muc@panacea-pflege.de</span>
+          </div>
+        </div>
+        <div class="cc-action">→</div>
+      </a>
+      <a href="tel:0814246469000" class="contact-card">
+        <div>
+          <div class="cc-loc-label">Standort 02</div>
+          <div class="cc-loc-name">Landkreis Fürstenfeldbruck</div>
+          <div class="cc-loc-contacts">
+            <span>☎ 08142 4646900</span>
+            <span>✉ anfrage.ffb@panacea-pflege.de</span>
+            <span>💬 WhatsApp 0176 80171362</span>
+          </div>
+        </div>
+        <div class="cc-action">→</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-brand">
+          <span class="nav-logo"></span>
+          Panacea
+        </div>
+        <p>Panacea Home Care GmbH — ambulanter Pflegedienst für München und den Landkreis Fürstenfeldbruck. Wir kümmern uns um die Pflege und die Bürokratie.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Leistungen</h4>
+        <a href="#leistungen">Körperpflege</a>
+        <a href="#leistungen">Medizin</a>
+        <a href="#leistungen">Haushaltshilfe</a>
+        <a href="#leistungen">Betreuung</a>
+        <a href="#leistungen">Beratung</a>
+      </div>
+      <div class="footer-col">
+        <h4>Unternehmen</h4>
+        <a href="#">Über uns</a>
+        <a href="#">Karriere</a>
+        <a href="#kontakt">Kontakt</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h4>Rechtliches</h4>
+        <a href="#">Impressum</a>
+        <a href="#">Datenschutz</a>
+        <a href="#">AGB</a>
+      </div>
+    </div>
+    <div class="footer-bot">
+      <span>© 2026 Panacea Home Care GmbH</span>
+      <div class="footer-meta">
+        <span class="status"><span class="dot"></span>Erreichbar · Mo–So</span>
+        <span>München · FFB</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// FAQ
+document.querySelectorAll('.faq-item').forEach(item => {
+  item.querySelector('.faq-q').addEventListener('click', () => item.classList.toggle('open'));
+});
+// Calculator demo - cycle grade
+document.querySelectorAll('.hp-grade-row').forEach(row => {
+  row.querySelectorAll('.hp-grade').forEach(g => {
+    g.addEventListener('click', () => {
+      row.querySelectorAll('.hp-grade').forEach(x => x.classList.remove('active'));
+      g.classList.add('active');
+    });
+  });
+});
+// Process nav cycle
+document.querySelectorAll('.process-nav-item').forEach(item => {
+  item.addEventListener('click', () => {
+    document.querySelectorAll('.process-nav-item').forEach(x => x.classList.remove('active'));
+    item.classList.add('active');
+  });
+});
+</script>
+
+</body>
+</html>
