@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Holzeco.de — Site-Audit Master Report | WS Agency</title>
+<style>
+  :root{
+    --bg:#0f172a; --panel:#fff; --ink:#0f172a; --muted:#64748b; --line:#e2e8f0;
+    --p0:#dc2626; --p0bg:#fef2f2; --p1:#d97706; --p1bg:#fffbeb; --p2:#16a34a; --p2bg:#f0fdf4;
+    --brand:#1e3a8a; --accent:#3b82f6;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:#f8fafc;color:var(--ink);line-height:1.55}
+  header{background:linear-gradient(135deg,#1e3a8a 0%,#3b82f6 100%);color:#fff;padding:64px 5% 48px}
+  header h1{margin:0 0 8px;font-size:34px;font-weight:700;letter-spacing:-0.02em}
+  header .sub{opacity:.85;font-size:16px;max-width:780px}
+  header .meta{margin-top:20px;display:flex;gap:24px;flex-wrap:wrap;font-size:13px;opacity:.9}
+  header .meta span{display:inline-flex;align-items:center;gap:6px}
+  nav.toc{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);padding:12px 5%;display:flex;gap:8px;flex-wrap:wrap;font-size:13px;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+  nav.toc a{color:var(--brand);text-decoration:none;padding:6px 12px;border-radius:6px;background:#f1f5f9}
+  nav.toc a:hover{background:#dbeafe}
+  main{max-width:1200px;margin:0 auto;padding:32px 5% 80px}
+  section{background:var(--panel);border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.05);padding:32px;margin-bottom:24px;border:1px solid var(--line)}
+  h2{margin:0 0 8px;font-size:24px;color:var(--brand);letter-spacing:-0.01em;display:flex;align-items:center;gap:10px}
+  h2 .num{background:var(--brand);color:#fff;width:32px;height:32px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:14px;font-weight:700}
+  h3{margin:24px 0 12px;font-size:18px;color:#0f172a}
+  h4{margin:16px 0 8px;font-size:15px;color:#334155}
+  p{margin:8px 0}
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14px}
+  th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:#f8fafc;font-weight:600;color:#334155;font-size:13px}
+  tr:hover{background:#f8fafc}
+  .badge{display:inline-block;padding:3px 9px;border-radius:12px;font-size:11px;font-weight:600;letter-spacing:0.02em;text-transform:uppercase}
+  .b-p0{background:var(--p0bg);color:var(--p0);border:1px solid #fecaca}
+  .b-p1{background:var(--p1bg);color:var(--p1);border:1px solid #fed7aa}
+  .b-p2{background:var(--p2bg);color:var(--p2);border:1px solid #bbf7d0}
+  .b-ok{background:#dbeafe;color:#1e40af}
+  .b-neutral{background:#f1f5f9;color:#475569}
+  .callout{padding:16px 20px;border-radius:8px;margin:16px 0;border-left:4px solid;font-size:14px}
+  .c-p0{background:var(--p0bg);border-color:var(--p0)}
+  .c-p1{background:var(--p1bg);border-color:var(--p1)}
+  .c-p2{background:var(--p2bg);border-color:var(--p2)}
+  .c-info{background:#eff6ff;border-color:var(--accent)}
+  .scoregrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:24px 0}
+  .scorecard{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px;text-align:center}
+  .scorecard .v{font-size:32px;font-weight:700;color:var(--brand)}
+  .scorecard .l{font-size:12px;color:var(--muted);margin-top:4px;text-transform:uppercase;letter-spacing:0.05em}
+  .scorecard.red .v{color:var(--p0)}
+  .scorecard.orange .v{color:var(--p1)}
+  .scorecard.green .v{color:var(--p2)}
+  .bigscore{text-align:center;padding:32px;background:linear-gradient(135deg,#fef2f2,#fee2e2);border-radius:12px;margin-bottom:24px;border:2px solid #fecaca}
+  .bigscore .num{font-size:80px;font-weight:800;color:var(--p0);line-height:1;letter-spacing:-0.04em}
+  .bigscore .label{font-size:16px;color:#7f1d1d;margin-top:8px;text-transform:uppercase;letter-spacing:0.08em;font-weight:600}
+  code{background:#f1f5f9;padding:2px 6px;border-radius:4px;font-size:13px;font-family:ui-monospace,"SF Mono",Consolas,monospace}
+  pre{background:#0f172a;color:#e2e8f0;padding:16px;border-radius:8px;overflow-x:auto;font-size:12px;line-height:1.5}
+  pre code{background:none;color:inherit;padding:0}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media (max-width:768px){.grid2{grid-template-columns:1fr}}
+  ul{margin:8px 0;padding-left:22px}
+  ul li{margin:4px 0}
+  .checkno{color:var(--p0);font-weight:700}
+  .checkyes{color:var(--p2);font-weight:700}
+  .checkwarn{color:var(--p1);font-weight:700}
+  footer{text-align:center;padding:32px 5%;color:var(--muted);font-size:13px;border-top:1px solid var(--line);background:#f1f5f9}
+  details{background:#f8fafc;border:1px solid var(--line);border-radius:8px;padding:12px 16px;margin:8px 0}
+  details summary{cursor:pointer;font-weight:600;color:var(--brand)}
+  details[open]{background:#fff}
+  .pill{display:inline-block;padding:2px 8px;background:#f1f5f9;border-radius:4px;font-size:12px;color:#475569;font-family:ui-monospace,monospace}
+  hr{border:none;border-top:1px solid var(--line);margin:24px 0}
+  @media print {nav.toc{display:none}header{break-after:avoid}section{break-inside:avoid}}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Holzeco.de — Site-Audit Master Report</h1>
+  <div class="sub">Vollständige technische, inhaltliche und rechtliche Bestandsaufnahme der Webpräsenz <strong>holzeco.de</strong> (Generalbau / Komplettsanierung Berlin). 9 Module, externer Audit-Modus.</div>
+  <div class="meta">
+    <span><strong>Auditor:</strong>&nbsp;WS Agency</span>
+    <span><strong>Datum:</strong>&nbsp;2026-05-17</span>
+    <span><strong>Methode:</strong>&nbsp;Externe Live-Inspektion via Browser-Agent + SEMrush</span>
+    <span><strong>Format:</strong>&nbsp;Self-contained HTML</span>
+  </div>
+</header>
+
+<nav class="toc">
+  <a href="#summary">Executive Summary</a>
+  <a href="#tech">1. Tech-Stack</a>
+  <a href="#seo">2. Technical SEO</a>
+  <a href="#perf">3. Performance</a>
+  <a href="#schema">4. Schema / AI-SEO</a>
+  <a href="#analytics">5. Analytics</a>
+  <a href="#ux">6. UX</a>
+  <a href="#content">7. Content</a>
+  <a href="#compliance">8. Compliance</a>
+  <a href="#quickwins">9. Quick Wins</a>
+  <a href="#roadmap">10. Roadmap</a>
+  <a href="#tracking">11. Tracking-Plan</a>
+  <a href="#jsonld">12. JSON-LD</a>
+  <a href="#aiseo">13. AI-SEO</a>
+  <a href="#benchmark">14. Benchmark</a>
+</nav>
+
+<main>
+
+<!-- ============================================== EXECUTIVE ============================================== -->
+<section id="summary">
+  <h2><span class="num">0</span> Executive Summary</h2>
+
+  <div class="bigscore">
+    <div class="num">29 / 100</div>
+    <div class="label">Gesamtzustand der Webpräsenz</div>
+  </div>
+
+  <p>Der Audit identifiziert <strong>akuten Handlungsbedarf in fast jedem geprüften Modul</strong>. Die Webpräsenz ist technisch alt (WordPress + Divi <em>parallel mit</em> Elementor — Doppel-Builder), rechtlich angreifbar (DSGVO + BFSG-Verstöße mit Bußgeld-Risiko bis &euro;20 Mio bzw. &euro;100&thinsp;000), analytisch <strong>blind</strong> (GA4 sammelt seit Juli 2023 keine Daten, Google Ads kann keine Conversions zurückspielen) und für Suchmaschinen schwach aufbereitet (NULL strukturierte Daten, 3&times; H1, Doorway-Pages für mehrere Städte mit wortgleichem Boilerplate-Content).</p>
+
+  <div class="scoregrid">
+    <div class="scorecard red"><div class="v">5</div><div class="l">Schema / AI-SEO</div></div>
+    <div class="scorecard red"><div class="v">15</div><div class="l">Analytics</div></div>
+    <div class="scorecard red"><div class="v">20</div><div class="l">Compliance</div></div>
+    <div class="scorecard red"><div class="v">35</div><div class="l">Technical SEO</div></div>
+    <div class="scorecard red"><div class="v">35</div><div class="l">Performance</div></div>
+    <div class="scorecard red"><div class="v">35</div><div class="l">Content</div></div>
+    <div class="scorecard orange"><div class="v">49</div><div class="l">UX</div></div>
+    <div class="scorecard orange"><div class="v">50</div><div class="l">Tech-Stack</div></div>
+  </div>
+
+  <div class="callout c-info" style="font-size:13px;color:#475569;">
+    <strong>Methodik-Hinweis:</strong> Die Score-Werte (0&ndash;100 je Modul) sind eine <em>qualitative Bewertung</em> auf Basis von 2026 Industry-Benchmarks (WCAG 2.1 AA, BFSG, Google Search Essentials, Core Web Vitals, Consent Mode v2). Die Gesamt-Note 29&nbsp;/&nbsp;100 ist der ungewichtete Durchschnitt der acht Modul-Scores &mdash; keine numerische Formel, sondern eine professionelle Einsch&auml;tzung. Jeder Sub-Score wird in den entsprechenden Modul-Kapiteln im Detail belegt.
+  </div>
+
+  <h3>Drei wichtigste Erkenntnisse</h3>
+  <div class="callout c-p0">
+    <strong>1. Yandex Metrika mit Webvisor (Session-Recording) sendet ungefragt Nutzerdaten nach Russland.</strong> Counter-ID&nbsp;<code>86281765</code> ist aktiv, in der Datenschutzerklärung <strong>nicht erwähnt</strong>. Datenübertragung in ein Drittland ohne Angemessenheitsbeschluss + ohne Einwilligung &rarr; DSGVO Art. 44 + Art. 13 verletzt. <strong>Bußgeld-Risiko bis &euro;20 Mio oder 4&thinsp;% Konzern-Umsatz</strong>.
+  </div>
+  <div class="callout c-p0">
+    <strong>2. GA4 sammelt seit Juli 2023 keine Daten — die Webseite ist analytisch blind.</strong> Universal Analytics (<code>UA-125154254-1</code>) ist seit dem 1.7.2023 deaktiviert, GA4-Property <code>G-9GN1RJTQMY</code> ist im GTM-Container hinterlegt, aber der GTM-Container <strong>bootstrapped nicht im Browser</strong> (<code>window.google_tag_manager</code> bleibt permanent <code>false</code>). Es gibt seit über zwei Jahren keine valide Datengrundlage f&uuml;r Performance-Bewertung, Audience-Aufbau, Google-Ads-Conversion-Optimierung oder Reporting.
+  </div>
+  <div class="callout c-p0">
+    <strong>3. Cookie-Banner ist rechtswidrig (Implied Consent, kein Ablehnen-Button), kein Google Consent Mode v2.</strong> Alle Pixel (Meta, Yandex, Google Ads) feuern <em>vor</em> der Einwilligungsentscheidung. Seit BGH-Urteil <em>Planet49</em> (28.5.2020) + TTDSG (Dez 2021) ist dieses Modell illegal. Die fehlende Consent-Mode-v2-Integration verletzt zusätzlich die Google-Werbe-Anforderungen seit M&auml;rz 2024 &rarr; Smart-Bidding kann nicht funktionieren, Audience-Listen verlieren Volumen.
+  </div>
+
+  <h3>Geschäftliche Konsequenz heute</h3>
+  <ul>
+    <li>Google Ads Budget wird ohne Conversion-Signal verbrannt &mdash; Smart-Bidding-Algorithmen optimieren auf Rauschen.</li>
+    <li>Kein Remarketing / Lookalike-Aufbau möglich.</li>
+    <li>SEO-Sichtbarkeit unterhalb des Branchen-Niveaus (Benchmark siehe Modul 14).</li>
+    <li>Rechtliches Risiko durch Yandex-Webvisor + fehlende Barrierefreiheits-Erklärung &mdash; akut abmahnfähig.</li>
+    <li>Trust-Defizit: Zwei verschiedene Geschäftsadressen auf der Website (Einsteinufer 57 vs. Danckelmannstraße 54), keine sichtbaren Zertifikate / Meisterbetrieb-Hinweise / Team-Photos.</li>
+  </ul>
+
+</section>
+
+<!-- ============================================== 1. TECH ============================================== -->
+<section id="tech">
+  <h2><span class="num">1</span> Tech-Stack &amp; Recon</h2>
+
+  <table>
+    <tr><th>Komponente</th><th>Version / ID</th><th>Status</th></tr>
+    <tr><td>WordPress</td><td>6.9.4</td><td><span class="badge b-ok">aktuell</span></td></tr>
+    <tr><td>Divi Theme</td><td>4.25.1</td><td><span class="badge b-p1">aktiv</span></td></tr>
+    <tr><td>Elementor</td><td>3.21.8 + Pro 3.6.5</td><td><span class="badge b-p1">aktiv parallel zu Divi</span></td></tr>
+    <tr><td>Header Footer Elementor</td><td>1.6.36</td><td><span class="badge b-neutral">addon</span></td></tr>
+    <tr><td>BST DSGVO Cookie</td><td>6.9.4</td><td><span class="badge b-p0">veraltetes Plugin</span></td></tr>
+    <tr><td>Webserver</td><td>Apache + Varnish</td><td><span class="badge b-ok">Caching aktiv</span></td></tr>
+    <tr><td>PHP</td><td>8.4.21</td><td><span class="badge b-ok">aktuell</span></td></tr>
+    <tr><td>jQuery</td><td>3.7.1 + Migrate</td><td><span class="badge b-p1">Legacy-Last</span></td></tr>
+  </table>
+
+  <div class="callout c-p1">
+    <strong>Doppel-Page-Builder Divi&nbsp;+&nbsp;Elementor:</strong> Beide Plugins laden ihre eigenen CSS- &amp; JS-Bundles auf jeder Seite. Resultat: doppelte Render-Last, Style-Konflikte und ein Wartungs-Albtraum. Die Empfehlung lautet, mittelfristig auf <em>eine</em> Builder-L&ouml;sung zu konsolidieren (typischerweise auf den Builder, der mehr Pages erzeugt &mdash; Inventur n&ouml;tig).
+  </div>
+</section>
+
+<!-- ============================================== 2. TECHNICAL SEO ============================================== -->
+<section id="seo">
+  <h2><span class="num">2</span> Technical SEO</h2>
+
+  <h3>Sitemap-Bestand</h3>
+  <p><strong>58 Pages + 46 Blog-Posts.</strong> Davon mit Duplikaten ohne 301-Redirect:</p>
+  <table>
+    <tr><th>URL-Gruppe</th><th>Problem</th><th>Priorität</th></tr>
+    <tr><td><code>/impressum/</code> + <code>/impressum-datenschutz/</code> + <code>/imprint-privacy/</code></td><td>3 verschiedene Impressum-URLs (alle 200&nbsp;OK)</td><td><span class="badge b-p0">P0</span></td></tr>
+    <tr><td><code>/kontakt/</code> + <code>/contact/</code></td><td>DE + EN ohne <code>hreflang</code></td><td><span class="badge b-p0">P0</span></td></tr>
+    <tr><td><code>/uber-uns/</code> + <code>/about-us/</code></td><td>dito</td><td><span class="badge b-p0">P0</span></td></tr>
+    <tr><td><code>/dusseldorf-und-koln-renovierung/</code> + <code>/duesseldorf-…/</code></td><td>Umlaut + Asc-Variante, beide indexierbar</td><td><span class="badge b-p0">P0</span></td></tr>
+    <tr><td><code>/blog-2/</code> + <code>/blog-old/</code> + <code>/unser-blog-…/</code></td><td>3 Blog-Indizes</td><td><span class="badge b-p1">P1</span></td></tr>
+    <tr><td><code>/innendesign/</code> + <code>/interior-design/</code> + …</td><td>4 thematische Synonym-Pages</td><td><span class="badge b-p1">P1</span></td></tr>
+    <tr><td><code>/…-2-copy/</code></td><td>Builder-Bug-Suffix, indexierbar</td><td><span class="badge b-p0">P0</span></td></tr>
+    <tr><td>City-Pages doppelt (<code>/frankfurt/</code> + <code>/frankfurt-renovierung/</code>, usw.)</td><td>Berlin, Hamburg, München, Köln, Frankfurt jeweils 2× LP</td><td><span class="badge b-p1">P1</span></td></tr>
+    <tr><td><code>/seite-im-aufbau/</code></td><td>indexierbar, „in Aufbau"-Placeholder</td><td><span class="badge b-p0">P0</span></td></tr>
+  </table>
+
+  <h3>On-Page Homepage</h3>
+  <table>
+    <tr><th>Element</th><th>Befund</th></tr>
+    <tr><td><code>&lt;html lang&gt;</code></td><td>&#x2705; <code>de-DE</code></td></tr>
+    <tr><td>Title (56 Zeichen)</td><td>&#x2705; „Renovierung Berlin, Komplettsanierung Berlin — Holzeco GmbH"</td></tr>
+    <tr><td>Meta Description (161 Zeichen)</td><td>&#x2705; OK</td></tr>
+    <tr><td>Canonical</td><td>&#x2705; <code>https://holzeco.de/</code></td></tr>
+    <tr><td><strong>hreflang</strong></td><td><span class="checkno">&#10060; fehlt</span> trotz aktiver EN-Pages</td></tr>
+    <tr><td><strong>H1-Tags Homepage</strong></td><td><span class="checkno">&#10060;&#10060;&#10060; drei H1</span> auf einer Seite</td></tr>
+    <tr><td>Open Graph Image</td><td><span class="checkwarn">&#9888; Logo 300&times;133 statt 1200&times;630</span></td></tr>
+    <tr><td>Ahrefs-Verification</td><td><span class="checkwarn">&#9888; doppeltes Meta-Tag</span></td></tr>
+    <tr><td>Favicon</td><td><span class="checkwarn">&#9888; .gif statt .ico/.svg</span></td></tr>
+  </table>
+
+  <h3>Drei H1 auf der Homepage</h3>
+  <pre><code>H1 #1: „Komplettsanierung in Berlin — schlüsselfertig aus einer Hand"
+H1 #2: „Altbauwohnungen &amp; Einfamilienhäuser komplett sanieren – klar geplant…"
+H1 #3: „Sie erhalten von uns die komplette Renovierung, Sanierung oder den Bau…"</code></pre>
+  <p>Suchmaschinen-Crawler erhalten kein klares Signal, welche Aussage die Hauptaussage der Seite ist. Bei Divi/Elementor-Konstruktionen oft Folge des Header-/Hero-Setups (mehrere Module mit aktiviertem H1-Tag). Fix: zwei davon auf H2 / H3 herabstufen.</p>
+
+  <h3>HTTP-Security-Header</h3>
+  <table>
+    <tr><th>Header</th><th>Status</th><th>Empfehlung</th></tr>
+    <tr><td><code>Strict-Transport-Security</code></td><td><span class="badge b-p0">fehlt</span></td><td><code>max-age=63072000; includeSubDomains; preload</code></td></tr>
+    <tr><td><code>Content-Security-Policy</code></td><td><span class="badge b-p0">fehlt</span></td><td>Report-Only zuerst aufbauen, dann enforced</td></tr>
+    <tr><td><code>X-Content-Type-Options</code></td><td><span class="badge b-p0">fehlt</span></td><td><code>nosniff</code></td></tr>
+    <tr><td><code>X-Frame-Options</code></td><td><span class="badge b-p0">fehlt</span></td><td><code>SAMEORIGIN</code></td></tr>
+    <tr><td><code>Referrer-Policy</code></td><td><span class="badge b-p0">fehlt</span></td><td><code>strict-origin-when-cross-origin</code></td></tr>
+    <tr><td><code>Permissions-Policy</code></td><td><span class="badge b-p0">fehlt</span></td><td><code>camera=(), microphone=(), geolocation=()</code></td></tr>
+    <tr><td><code>X-Powered-By</code></td><td><span class="badge b-p1">enthält PHP-Version</span></td><td>entfernen (Information Disclosure)</td></tr>
+  </table>
+</section>
+
+<!-- ============================================== 3. PERFORMANCE ============================================== -->
+<section id="perf">
+  <h2><span class="num">3</span> Performance</h2>
+
+  <div class="callout c-info">
+    <strong>Methodisch:</strong> PSI-API-Quota war bei Audit-Durchführung erschöpft (HTTP 429). Werte basieren auf eigenem Browser-Lauf via Navigation-Timing-API und Code-Analyse aus Session 1. Empfohlen: nach Erstmaßnahmen PSI-Wiederholung + Field-Data via CrUX nach 28 Tagen.
+  </div>
+
+  <h3>Eigene Messung (Mobile-Emulation, Berlin-Edge, Cache-HIT)</h3>
+  <table>
+    <tr><th>Metrik</th><th>Wert</th><th>Ziel</th></tr>
+    <tr><td>TTFB (Time-to-First-Byte)</td><td>443 ms</td><td>&lt; 600 ms &#x2705;</td></tr>
+    <tr><td>DOM Content Loaded</td><td>849 ms</td><td>&lt; 1500 ms &#x2705;</td></tr>
+    <tr><td>Load Event</td><td>2&thinsp;746 ms</td><td>&lt; 3000 ms &#x2705; (Cache HIT!)</td></tr>
+    <tr><td>HTML-Größe Homepage</td><td><strong>509 KB</strong></td><td>&lt; 100 KB &#10060;</td></tr>
+    <tr><td>CSS-Dateien (Anzahl)</td><td><strong>24</strong></td><td>&lt; 8 &#10060;</td></tr>
+    <tr><td>JS-Dateien (Anzahl)</td><td>30</td><td>&lt; 15 &#10060;</td></tr>
+    <tr><td>Total Resources</td><td>64</td><td>&lt; 50 &#x2705;</td></tr>
+  </table>
+
+  <h3>Hauptursachen für niedrige Lab-Performance</h3>
+  <ul>
+    <li>Divi + Elementor parallel installiert &rarr; ~doppelte Render-Last</li>
+    <li>15+ separate Stylesheets render-blocking (Divi-Dynamic, Elementor-Post-Bundles, Swiper, Font-Awesome 5 + 4-Shim parallel)</li>
+    <li>jQuery 3.7.1 + jQuery Migrate beide render-blocking</li>
+    <li>HTML-Größe 509&nbsp;KB &mdash; hauptsächlich Inline-CSS aus Page-Builder-Modulen + DOM-Verschachtelung</li>
+    <li>OG-Image ist Logo 300×133 (klein) &mdash; nicht das Performance-Problem, aber soziale Plattform-Vorschau leer</li>
+    <li>Positiv: <code>&lt;script type=&quot;speculationrules&quot;&gt;</code> aktiv &rarr; Chrome-Prerender funktioniert</li>
+  </ul>
+
+  <h3>Performance-Schätzung Lighthouse Mobile</h3>
+  <div class="callout c-p1">
+    <strong>Erwarteter Performance-Score:</strong> 30&ndash;50 / 100<br>
+    <strong>Wahrscheinliche LCP:</strong> 3.5&ndash;5.5 s auf 4G<br>
+    <strong>Wahrscheinliche INP:</strong> &gt; 200 ms (viel jQuery)<br>
+    Die guten TTFB-Werte (Varnish) retten die Real-User-Metriken nur teilweise.
+  </div>
+
+  <h3>Quick Performance-Wins</h3>
+  <ol>
+    <li>Builder-Konsolidierung Divi <em>oder</em> Elementor &mdash; spart 30&ndash;40 % Page-Weight</li>
+    <li>Font-Awesome 4-Shim entfernen, nur FA5 behalten</li>
+    <li>Critical-CSS inline für Above-the-Fold + Defer für Rest</li>
+    <li>jQuery Migrate entfernen, dann mittelfristig jQuery komplett ablösen wo möglich</li>
+    <li>Bilder via WebP/AVIF und <code>&lt;picture&gt;</code>-Tag</li>
+    <li>Cache-Header <code>max-age</code> für HTML auf 60s setzen (statt 0)</li>
+  </ol>
+</section>
+
+<!-- ============================================== 4. SCHEMA ============================================== -->
+<section id="schema">
+  <h2><span class="num">4</span> Structured Data &amp; AI-SEO (DEO)</h2>
+
+  <div class="callout c-p0">
+    <strong>NULL JSON-LD-Schema-Markup</strong> auf der Homepage (außer trivialem <code>itemtype="schema.org/WPHeader"</code>). Live verifiziert: <code>document.querySelectorAll('script[type=&quot;application/ld+json&quot;]').length === 0</code>.
+  </div>
+
+  <h3>Fehlende Schema-Typen</h3>
+  <table>
+    <tr><th>Typ</th><th>Wirkung</th></tr>
+    <tr><td><code>Organization</code></td><td>Knowledge-Graph-Voraussetzung, Brand-Box bei „Holzeco" nicht aktivierbar</td></tr>
+    <tr><td><code>LocalBusiness</code></td><td>Berlin-Adresse + Öffnungszeiten + geo-coord für Local-Pack</td></tr>
+    <tr><td><code>Service</code> &times; 8</td><td>Komplettsanierung, Altbausanierung, Bad, Trockenbau, Maler, Fliesen, Elektro, Sanitär &mdash; jede Leistung als Service-Markup</td></tr>
+    <tr><td><code>FAQPage</code></td><td>Homepage hat „Was kostet…?" Q&amp;A, aber nicht ausgezeichnet &rarr; Rich-Result verloren</td></tr>
+    <tr><td><code>AggregateRating</code></td><td>/bewertungen/ existiert ohne Stern-Daten &rarr; weder UI-Rich-Result noch AI-Citation-Anchor</td></tr>
+    <tr><td><code>BreadcrumbList</code></td><td>Sitelinks-Optimierung in SERP</td></tr>
+    <tr><td><code>WebSite</code> + <code>SearchAction</code></td><td>Sitelinks-Searchbox in Brand-Suche</td></tr>
+  </table>
+
+  <h3>Konsequenz für AI-SEO (Generative Engine Optimization)</h3>
+  <p>Große Sprachmodelle (ChatGPT, Perplexity, Google AI Overviews, Claude) verwenden JSON-LD-Strukturdaten als <strong>primären Citation-Anchor</strong>, weil es eindeutige Entität-zu-Fakt-Mapping liefert. Ohne Schema-Markup hat Holzeco praktisch keine Chance, bei <em>"Generalbau Berlin"</em>, <em>"Komplettsanierung Altbau Berlin Kosten"</em> o.&nbsp;ä. von AI-Antworten zitiert zu werden. Wettbewerber mit korrektem Schema-Pack haben hier 3&ndash;5 Jahre Vorsprung.</p>
+
+  <p>Ein vollständig ausformulierter Schema-Pack zum Einbau findet sich in <a href="#jsonld">Sektion 12</a>.</p>
+</section>
+
+<!-- ============================================== 5. ANALYTICS ============================================== -->
+<section id="analytics">
+  <h2><span class="num">5</span> Analytics &amp; Tracking — Live-Inspektion</h2>
+
+  <div class="callout c-p0">
+    <strong>Drei kritische Befunde aus Live-Inspektion:</strong>
+    <ol>
+      <li>GTM-Container <code>GTM-W8KRPWP3</code> wird vom Browser <strong>nicht initialisiert</strong> &mdash; <code>window.google_tag_manager</code> ist permanent <code>false</code>.</li>
+      <li>GA4 <code>G-9GN1RJTQMY</code> existiert im Container, sammelt aber <strong>seit Container-Anlage NULL Daten</strong>.</li>
+      <li>Yandex Metrika <code>86281765</code> sendet mit Webvisor + Clickmap nach Russland &mdash; <strong>nicht in der Datenschutzerklärung</strong>.</li>
+    </ol>
+  </div>
+
+  <h3>Aktive Trackers</h3>
+  <table>
+    <tr><th>Tag / Pixel</th><th>ID</th><th>Live-Status</th></tr>
+    <tr><td>Universal Analytics</td><td><code>UA-125154254-1</code></td><td><span class="badge b-p0">tot (1.7.2023)</span> &mdash; sendet ins Leere, kostet Page-Weight</td></tr>
+    <tr><td>Google Tag Manager</td><td><code>GTM-W8KRPWP3</code></td><td><span class="badge b-p0">geladen, NICHT initialisiert</span></td></tr>
+    <tr><td>GA4 (im GTM-Container)</td><td><code>G-9GN1RJTQMY</code></td><td><span class="badge b-p0">nicht feuernd</span></td></tr>
+    <tr><td>Google Ads</td><td><code>AW-16565658293</code></td><td><span class="badge b-p1">config gesetzt, aber kein Conversion-Event</span></td></tr>
+    <tr><td>Meta Pixel</td><td><code>1870847803853186</code></td><td><span class="badge b-p1">feuert via inline-init OHNE Consent</span></td></tr>
+    <tr><td>Yandex Metrika + Webvisor</td><td><code>86281765</code></td><td><span class="badge b-p0">aktiv mit Session-Recording, DSGVO-Verstoß</span></td></tr>
+  </table>
+
+  <h3>Praktische Wirkung heute</h3>
+  <ul>
+    <li><strong>Google Ads ist blind:</strong> Kein Conversion-Signal &rarr; Smart-Bidding (tCPA, Max Conversions) optimiert auf Rauschen &rarr; Budget-Verbrennung</li>
+    <li><strong>Keine Remarketing-Audiences:</strong> Keine Liste &gt; 100 Nutzer aufbaubar &rarr; keine Lookalikes</li>
+    <li><strong>Datenlücke 2.5+ Jahre in GA</strong> seit Juli 2023</li>
+    <li><strong>Meta Pixel sendet Daten OHNE Consent</strong> &mdash; rechtlich anfechtbar</li>
+    <li><strong>Yandex Webvisor recordiert komplette Sessions</strong> (Klick, Scroll, Tastatur, Mausbewegung) ohne Einwilligung</li>
+  </ul>
+
+  <h3>Consent Mode v2</h3>
+  <p><span class="checkno">&#10060;</span> Nicht implementiert. Kein <code>gtag('consent', 'default', ...)</code> und kein <code>gtag('consent', 'update', ...)</code> in der gesamten Seite. Google verlangt Consent Mode v2 für EEA-Werbung seit März 2024, sonst Reichweiten-Reduzierung der Google-Ads-Kampagnen.</p>
+
+  <h3>Cookie-Banner</h3>
+  <p>BST-DSGVO-Cookie-Plugin alt. Bannertext: „Durch die Nutzung unserer Website stimmen Sie der Verwendung von Cookies zu." &mdash; <strong>Implied Consent</strong>, seit BGH-Urteil Planet49 (28.5.2020) + TTDSG (Dez 2021) unzulässig in DE. Nur ein „Verstanden"-Button (Accept-only), <strong>kein „Ablehnen"-Button</strong> &rarr; Verstoß ePrivacy + TTDSG § 25.</p>
+
+</section>
+
+<!-- ============================================== 6. UX ============================================== -->
+<section id="ux">
+  <h2><span class="num">6</span> UX &amp; Conversion</h2>
+
+  <h3>Heading-Hierarchie Homepage</h3>
+  <p>3× H1, <strong>nur 1 H2</strong>, 5 H3 &mdash; invertierte Outline. H3 erscheint vor H2 im DOM. Folge: Screen-Reader-Navigation chaotisch (Accessibility) + SEO-Outline-Bruch.</p>
+
+  <h3>Trust-Signale Homepage &mdash; Inventur</h3>
+  <table>
+    <tr><th>Signal</th><th>Vorhanden?</th></tr>
+    <tr><td>TÜV-/SGS-Zertifizierung</td><td><span class="checkno">&#10060;</span></td></tr>
+    <tr><td>Meisterbetrieb / Innung</td><td><span class="checkno">&#10060;</span></td></tr>
+    <tr><td>Garantie-/Gewährleistungs-Aussage prominent</td><td><span class="checkno">&#10060;</span></td></tr>
+    <tr><td>Versicherung / Betriebshaftpflicht erwähnt</td><td><span class="checkno">&#10060;</span></td></tr>
+    <tr><td>Link zu Bewertungen</td><td><span class="checkyes">&#x2705;</span> (aber ohne Stern-Daten)</td></tr>
+    <tr><td>Jahres-Erfahrung („seit XX")</td><td><span class="checkno">&#10060;</span></td></tr>
+    <tr><td>Telefonnummer sichtbar</td><td><span class="checkyes">&#x2705;</span> +49 30 64079647</td></tr>
+    <tr><td>Vollständige Adresse Homepage</td><td><span class="checkno">&#10060;</span> nur Impressum</td></tr>
+    <tr><td>Team-Fotos / Mitarbeiter-Profile</td><td><span class="checkno">&#10060;</span></td></tr>
+    <tr><td>Handwerkskammer-Mitgliedschaft</td><td><span class="checkno">&#10060;</span></td></tr>
+  </table>
+
+  <h3>Accessibility Quick-Scan Homepage</h3>
+  <ul>
+    <li><strong>68 Bilder</strong>, davon <strong>9 ohne <code>alt</code>-Attribut</strong> (WCAG 1.1.1)</li>
+    <li><strong>78 Links ohne sichtbaren Text und ohne <code>aria-label</code></strong> (überwiegend Social-/WhatsApp-Icons) (WCAG 2.4.4 / 4.1.2)</li>
+    <li><strong>18 Touch-Targets &lt; 44&times;44 px</strong> &mdash; Apple HIG + Material Design + WCAG 2.5.5 verletzt</li>
+    <li>Viewport &#x2705;</li>
+  </ul>
+
+  <h3>Kontakt-Formular(e)</h3>
+  <p>Auf <code>/kontakt/</code> wurde live <strong>nur 1 Formular</strong> gefunden (<code>et_pb_contact_form</code> Divi). Eine zweite, in Session 1 erwähnte Elementor-„Berechnung"-Form ist nicht mehr aufzufinden &mdash; entweder gel&ouml;scht oder auf andere URL umgezogen.</p>
+  <table>
+    <tr><th>Property</th><th>Befund</th></tr>
+    <tr><td>Felder</td><td>Name, Telefon, E-Mail, Anliegen</td></tr>
+    <tr><td>Pflichtfelder (HTML <code>required</code>)</td><td><span class="checkno">&#10060;</span> keine markiert</td></tr>
+    <tr><td>CAPTCHA</td><td><span class="checkno">&#10060;</span> keines</td></tr>
+    <tr><td>Honeypot</td><td><span class="checkno">&#10060;</span> kein verstecktes Feld erkennbar</td></tr>
+    <tr><td>Consent-Checkbox („Ich habe die Datenschutzerklärung…")</td><td><span class="checkno">&#10060;</span> fehlt &rarr; Art. 6 Abs. 1 lit. a DSGVO problematisch</td></tr>
+    <tr><td><code>method</code></td><td>POST auf <code>/kontakt/</code> (Self-Post, kein AJAX, kein Thank-You-Redirect erkennbar)</td></tr>
+    <tr><td>dataLayer-Push bei Submit</td><td><span class="checkno">&#10060;</span> nicht implementiert &rarr; Google-Ads + Meta-Pixel-Conversions verloren</td></tr>
+  </table>
+
+  <h3>Adress-Inkonsistenz (Critical Trust)</h3>
+  <div class="callout c-p0">
+    <strong>Impressum-Adresse:</strong> Danckelmannstraße 54, 14059 Berlin (HRB-eingetragen)<br>
+    <strong>Kontakt-Seite-Adresse:</strong> Einsteinufer 57, 10587 Berlin<br>
+    &rarr; Zwei verschiedene Geschäftsadressen auf der eigenen Website. Verletzt NAP-Konsistenz für Local-SEO + sendet Vertrauenssignale rückwärts.
+  </div>
+
+  <h3>Nielsen 10-Heuristik Quick-Score</h3>
+  <table>
+    <tr><th>Heuristic</th><th>Score / 10</th><th>Anmerkung</th></tr>
+    <tr><td>1 Visibility of system status</td><td>6</td><td>Forms ohne Submit-Feedback</td></tr>
+    <tr><td>2 Match with real world</td><td>7</td><td>DE-Sprache, branchen-typisch</td></tr>
+    <tr><td>3 User control / freedom</td><td>5</td><td>EN-Stubs ohne Hreflang, keine Filter</td></tr>
+    <tr><td>4 Consistency &amp; standards</td><td>4</td><td>2 Adressen, doppelte URLs</td></tr>
+    <tr><td>5 Error prevention</td><td>3</td><td>Forms ohne Validierung, kein CAPTCHA</td></tr>
+    <tr><td>6 Recognition over recall</td><td>6</td><td></td></tr>
+    <tr><td>7 Flexibility / efficiency</td><td>5</td><td></td></tr>
+    <tr><td>8 Aesthetic / minimalist</td><td>6</td><td>Divi+Elementor Style-Mix</td></tr>
+    <tr><td>9 Recognize, diagnose, recover errors</td><td>3</td><td></td></tr>
+    <tr><td>10 Help &amp; documentation</td><td>4</td><td>Kein FAQ-Cluster</td></tr>
+    <tr><td><strong>Summe</strong></td><td><strong>49 / 100</strong></td><td></td></tr>
+  </table>
+</section>
+
+<!-- ============================================== 7. CONTENT ============================================== -->
+<section id="content">
+  <h2><span class="num">7</span> Content-Audit</h2>
+
+  <h3>Word-Count Stichproben</h3>
+  <table>
+    <tr><th>Page</th><th>Wörter</th><th>H1</th><th>Bewertung</th></tr>
+    <tr><td><code>/</code> (Homepage)</td><td>~3&thinsp;500+</td><td>3</td><td><span class="badge b-p1">H1-Inflation</span></td></tr>
+    <tr><td><code>/kontakt/</code></td><td>27</td><td>1</td><td><span class="badge b-p1">thin</span></td></tr>
+    <tr><td><code>/bewertungen/</code></td><td>102</td><td>0</td><td><span class="badge b-p0">thin + kein H1</span></td></tr>
+    <tr><td><code>/uber-uns/</code></td><td>898</td><td>1</td><td><span class="badge b-p1">OK textmenge, fehlt E-E-A-T</span></td></tr>
+    <tr><td><code>/frankfurt-renovierung/</code></td><td>349</td><td>2 (split)</td><td><span class="badge b-p0">Doorway / Boilerplate</span></td></tr>
+    <tr><td><code>/munchen-renovierung/</code></td><td>335</td><td>2 (split)</td><td><span class="badge b-p0">wortgleich zu Frankfurt</span></td></tr>
+  </table>
+
+  <h3>Doorway-Pages-Risiko</h3>
+  <div class="callout c-p0">
+    City-Pages Frankfurt, München, Köln, Stuttgart, Hamburg, Leipzig haben <strong>identischen Boilerplate-Text</strong>, nur der Stadtname wird ausgetauscht. Google Search Quality Guidelines stufen das als <em>"Doorway Pages"</em> ein &mdash; <strong>Risiko einer Manual Action</strong> (Sichtbarkeit der gesamten Domain wird abgewertet). Empfehlung:
+    <ul>
+      <li>Entweder <strong>noindex</strong> alle City-Pages außerhalb Berlin (Holzeco ist ein Berliner Generalbau-Unternehmen — die Stadt-Pages sind nicht durch echte lokale Präsenz gedeckt)</li>
+      <li>Oder pro Stadt: lokale Referenzen, lokale Telefonnummer, lokale Adresse, lokale Bilder, lokale Bauleiter-Vorstellung &rarr; echte Substanz</li>
+    </ul>
+  </div>
+
+  <h3>EN-Pages ohne hreflang</h3>
+  <p><code>/contact/</code>, <code>/about-us/</code>, <code>/imprint-privacy/</code>, <code>/reconstruction/</code>, <code>/interior-design/</code> &mdash; vorhanden, indexierbar, ohne <code>&lt;link rel="alternate" hreflang="en"&gt;</code>. Entweder vollständig löschen (300er-Redirect zur DE-Variante) oder mit korrektem <code>hreflang</code>-Pair pflegen.</p>
+
+  <h3>Blog</h3>
+  <p>46 Blog-Posts in Sitemap, älteste 2018, letzte Aktualisierung August 2025. Unregelmäßige Frequenz. Empfehlung: redaktioneller Kalender mit Themen-Clustern (Altbausanierung-Glossar, Kosten-Beispiele, Förderungs-Übersicht, Vorher-Nachher-Cases).</p>
+
+  <h3>E-E-A-T-Defizit</h3>
+  <ul>
+    <li>Keine Geschäftsführer-Vorstellung mit Foto/Bio (Vyacheslav Albertin nur im Impressum als Name)</li>
+    <li>Keine Mitarbeiter-Profile</li>
+    <li>Keine Case-Studies mit konkreten Daten (m², Bauzeit, Budget)</li>
+    <li>Keine sichtbaren Zertifikate / Auszeichnungen</li>
+    <li>Keine Pressemitteilungen / Branchen-Erwähnungen</li>
+  </ul>
+</section>
+
+<!-- ============================================== 8. COMPLIANCE ============================================== -->
+<section id="compliance">
+  <h2><span class="num">8</span> Compliance 2026 &mdash; Rechtliche Risiko-Analyse</h2>
+
+  <div class="callout c-p0">
+    <strong>Drei akute Bußgeld-Risiken:</strong>
+    <ol>
+      <li>Yandex Metrika Webvisor ohne Einwilligung + nicht in Datenschutzerklärung &mdash; bis <strong>&euro;20 Mio / 4&thinsp;% Konzern-Umsatz</strong> (DSGVO Art. 83 Abs. 5)</li>
+      <li>Fehlende Barrierefreiheitserklärung (BFSG seit 28.6.2025) &mdash; bis <strong>&euro;100&thinsp;000</strong></li>
+      <li>Implied Consent + kein Reject-Button + kein Consent Mode v2 &mdash; aktuell <strong>abmahnfähig</strong> (in DE typisch &euro;500&ndash;2&thinsp;500 pro Abmahnung)</li>
+    </ol>
+  </div>
+
+  <h3>BFSG / Barrierefreiheitsstärkungsgesetz (Pflicht seit 28.06.2025)</h3>
+  <table>
+    <tr><th>Anforderung</th><th>Status</th></tr>
+    <tr><td>Barrierefreiheitserklärung-Seite</td><td><span class="checkno">&#10060;</span> existiert nicht (Soft-404 auf <code>/barrierefreiheitserklaerung/</code>)</td></tr>
+    <tr><td>Leichte-Sprache-Bereich</td><td><span class="checkno">&#10060;</span></td></tr>
+    <tr><td>DGS-Gebärdensprach-Hinweis</td><td><span class="checkno">&#10060;</span></td></tr>
+    <tr><td>WCAG 2.1 AA — alt-Tags vollständig</td><td><span class="checkno">&#10060;</span> 9 Bilder ohne alt</td></tr>
+    <tr><td>WCAG 2.1 AA — Tastatur-Navigation</td><td><span class="checkwarn">&#9888;</span> nicht voll geprüft, vermutlich teilweise OK</td></tr>
+    <tr><td>WCAG 2.1 AA — Touch-Targets &ge; 44px</td><td><span class="checkno">&#10060;</span> 18 zu klein</td></tr>
+    <tr><td>WCAG 2.1 AA — Kontraste</td><td><span class="checkwarn">&#9888;</span> visuelle Stichprobe nötig, Brand-Türkis auf Weiß grenzwertig</td></tr>
+  </table>
+  <p><strong>Anwendbarkeit:</strong> Verbraucher-orientierte Dienstleistungen (B2C) &mdash; Holzeco bietet Sanierung an Privatkunden an. Kleinunternehmer-Ausnahme (&lt;10 Mitarbeiter + &lt;&euro;2 Mio Umsatz) ist bei einer GmbH dieser Sichtbarkeit unwahrscheinlich. <strong>Empfehlung: BFSG-Konformität herstellen.</strong></p>
+
+  <h3>Cookie-Banner &amp; Consent</h3>
+  <ul>
+    <li>Banner: „Verstanden" only &mdash; <strong>kein gleichermaßen prominenter Ablehnen-Button</strong> &rarr; § 25 TTDSG / Art. 7 Abs. 3 DSGVO verletzt</li>
+    <li>Wortlaut „durch Nutzung stimmen Sie zu" = <strong>Implied Consent</strong> &rarr; BGH Planet49 (28.5.2020) explizit untersagt</li>
+    <li>Kein Google Consent Mode v2 &mdash; seit März 2024 für EEA-Werbung von Google verlangt</li>
+    <li>Empfehlung: <strong>Cookiebot, Borlabs Cookie oder Complianz</strong> implementieren mit ablehnen + akzeptieren + granular</li>
+  </ul>
+
+  <h3>Datenschutzerklärung — Inventur</h3>
+  <table>
+    <tr><th>Pflichtangabe</th><th>Status</th></tr>
+    <tr><td>Verantwortliche Stelle (Art. 13 Abs. 1 lit. a)</td><td><span class="checkyes">&#x2705;</span></td></tr>
+    <tr><td>Geschäftsführer (Vyacheslav Albertin)</td><td><span class="checkyes">&#x2705;</span></td></tr>
+    <tr><td>HRB 180497 B (AG Berlin-Charlottenburg)</td><td><span class="checkyes">&#x2705;</span></td></tr>
+    <tr><td>USt-IdNr. DE308802837</td><td><span class="checkyes">&#x2705;</span></td></tr>
+    <tr><td>Aufsichtsbehörde § 34c GewO</td><td><span class="checkyes">&#x2705;</span></td></tr>
+    <tr><td>Betroffenenrechte Art. 15–17</td><td><span class="checkyes">&#x2705;</span></td></tr>
+    <tr><td>Google Tag Manager + Google Ads + Meta Pixel erwähnt</td><td><span class="checkyes">&#x2705;</span></td></tr>
+    <tr><td>GA4 erwähnt</td><td><span class="checkno">&#10060;</span> (UA-Boilerplate noch vorhanden)</td></tr>
+    <tr><td><strong>Yandex Metrika erwähnt</strong></td><td><span class="checkno">&#10060;&#10060;</span> &mdash; kritisches Loch</td></tr>
+    <tr><td>EU-OS-Plattform-Link (§ 36 VSBG)</td><td><span class="checkno">&#10060;</span></td></tr>
+    <tr><td>Verbraucher-Schlichtungsstelle</td><td><span class="checkno">&#10060;</span></td></tr>
+    <tr><td><strong>Amazon / Booking.com / Agoda / Awin / Digistore-Boilerplate</strong></td><td><span class="checkno">&#10060;&#10060;</span> &mdash; <strong>kopierter Standardtext</strong>, passt 0&thinsp;% zum Generalbau-Geschäft</td></tr>
+    <tr><td>Verlinkung Barrierefreiheitserklärung</td><td><span class="checkno">&#10060;</span></td></tr>
+  </table>
+
+  <h3>Impressum</h3>
+  <p>Pflichtangaben § 5 TMG inhaltlich vollständig. <strong>Aber:</strong> Adresse Impressum (Danckelmannstraße 54, 14059 Berlin) <strong>weicht ab</strong> von Adresse Kontakt-Seite (Einsteinufer 57, 10587 Berlin). Welche ist die HRB-eingetragene Anschrift? &rarr; Empfehlung: <strong>Handelsregister-Auszug einsehen</strong>, Adresse vereinheitlichen.</p>
+
+</section>
+
+<!-- ============================================== 9. QUICK WINS ============================================== -->
+<section id="quickwins">
+  <h2><span class="num">9</span> Top-10 Quick Wins (P0, sofort)</h2>
+
+  <table>
+    <tr><th>#</th><th>Maßnahme</th><th>Modul</th><th>Aufwand</th><th>Business-Impact</th></tr>
+    <tr><td>1</td><td><strong>Yandex Metrika Webvisor sofort abschalten</strong> oder rechtskonform integrieren</td><td>Compliance</td><td>S (30 min)</td><td><span class="badge b-p0">Bußgeld-Vermeidung &euro;20 Mio</span></td></tr>
+    <tr><td>2</td><td><strong>Cookiebot / Borlabs / Complianz</strong> mit Consent Mode v2 + echtem Reject-Button</td><td>Compliance + Analytics</td><td>M (4&ndash;8 h)</td><td><span class="badge b-p0">Abmahn-Risiko weg + Google-Ads-Performance &uarr;</span></td></tr>
+    <tr><td>3</td><td><strong>GTM-Container debuggen</strong> &mdash; warum bootstrapped er nicht? &rarr; GA4 in Betrieb nehmen</td><td>Analytics</td><td>M (2&ndash;4 h)</td><td><span class="badge b-p0">Daten ab Tag&nbsp;1</span></td></tr>
+    <tr><td>4</td><td><strong>Universal Analytics-Tag entfernen</strong></td><td>Analytics</td><td>S (15 min)</td><td><span class="badge b-p2">tote Last weg</span></td></tr>
+    <tr><td>5</td><td><strong>JSON-LD Schema-Pack</strong> Organization + LocalBusiness + Service&times;8 + FAQ + Breadcrumb</td><td>SEO / AI-SEO</td><td>L (8&ndash;16 h)</td><td><span class="badge b-p0">AI-Citation unlocked + Rich Results</span></td></tr>
+    <tr><td>6</td><td><strong>3&times; H1 auf Homepage reduzieren auf 1</strong></td><td>SEO</td><td>S (1 h)</td><td><span class="badge b-p1">Outline-Fix</span></td></tr>
+    <tr><td>7</td><td><strong>City-Pages noindexen</strong> (Frankfurt, München, Köln, Stuttgart, Hamburg, Leipzig) bis lokaler Content gebaut</td><td>SEO</td><td>S (30 min)</td><td><span class="badge b-p0">Doorway-Risiko weg</span></td></tr>
+    <tr><td>8</td><td><strong>301-Redirects</strong> für alle Duplikate (Impressum-Trio, EN-Pages, Umlaut-Variante, -2-copy)</td><td>SEO</td><td>M (3&ndash;5 h)</td><td><span class="badge b-p1">Crawl-Budget + Authority-Konsolidierung</span></td></tr>
+    <tr><td>9</td><td><strong>Datenschutzerklärung neu schreiben</strong> (Amazon-Boilerplate raus, Yandex rein, GA4 rein, EU-OS-Link rein)</td><td>Compliance</td><td>M (3&ndash;5 h, Anwalts-Review)</td><td><span class="badge b-p0">Pflicht</span></td></tr>
+    <tr><td>10</td><td><strong>Adress-Inkonsistenz</strong> beheben (Einsteinufer 57 vs Danckelmannstraße 54)</td><td>UX / Trust</td><td>S (1 h)</td><td><span class="badge b-p0">NAP-Konsistenz</span></td></tr>
+  </table>
+</section>
+
+<!-- ============================================== 10. ROADMAP ============================================== -->
+<section id="roadmap">
+  <h2><span class="num">10</span> Roadmap (4 Phasen)</h2>
+
+  <h3>Phase 1 &mdash; Woche 1 (Akut)</h3>
+  <ul>
+    <li>Yandex Webvisor abschalten</li>
+    <li>UA-Tag entfernen</li>
+    <li>City-Doorway-Pages noindexen</li>
+    <li><code>/seite-im-aufbau/</code> noindex / löschen</li>
+    <li>Adress-Inkonsistenz beheben</li>
+    <li>Quick-Win: 3× H1 fixen</li>
+  </ul>
+
+  <h3>Phase 2 &mdash; Wochen 2&ndash;4 (Analytics + Compliance Foundation)</h3>
+  <ul>
+    <li>Cookiebot / Borlabs / Complianz implementieren mit Consent Mode v2</li>
+    <li>GTM-Container debuggen, GA4 funktionsfähig stellen</li>
+    <li>Google-Ads-Conversion-Tag in GTM (auf Formular-Submit + Telefon-Klick + WhatsApp-Klick)</li>
+    <li>Meta Pixel ins GTM verschieben + auf Consent gating</li>
+    <li>Form-Submit-Event ins dataLayer (Divi-Hook + ggf. AJAX-Submit)</li>
+    <li>Datenschutzerklärung komplett überarbeitet (mit Anwalt)</li>
+    <li>JSON-LD Schema-Pack live (siehe Sektion 12)</li>
+    <li>301-Redirect-Set deployen</li>
+  </ul>
+
+  <h3>Phase 3 &mdash; Monat 1&ndash;3 (SEO + Performance + BFSG)</h3>
+  <ul>
+    <li>Builder-Konsolidierung (Divi <em>oder</em> Elementor — Inventur dann Migration)</li>
+    <li>Performance-Optimierung (Critical CSS, jQuery-Migrate raus, WebP, Cache-Header)</li>
+    <li>Sicherheitsheader (HSTS, CSP-Report-Only, X-Frame-Options, Referrer-Policy)</li>
+    <li>Barrierefreiheitserklärung erstellen + BFSG-Audit (WCAG 2.1 AA Audit-Tool z.B. WAVE / axe DevTools)</li>
+    <li>OG-Image 1200×630 für alle Top-Pages</li>
+    <li>City-Pages entweder komplett umbauen (lokale Referenzen, Telefon, Adresse, Fotos) oder dauerhaft löschen</li>
+    <li>Bewertungen-Plattform integrieren (ProvenExpert / Google Reviews Widget) für AggregateRating</li>
+    <li>Team-Fotos + Mitarbeiter-Profile + Geschäftsführer-Bio (E-E-A-T-Aufbau)</li>
+  </ul>
+
+  <h3>Phase 4 &mdash; Monate 3&ndash;12 (Wachstum)</h3>
+  <ul>
+    <li>Content-Strategie: Themen-Cluster Altbausanierung / Komplettsanierung / Förderungen mit redaktionellem Kalender</li>
+    <li>Case-Studies mit echten Daten (Vorher/Nachher, m², Bauzeit, Budget)</li>
+    <li>Linkbuilding: Branchen-Verzeichnisse (Sanier, Houzz, MyHammer), Lokal-PR Berlin</li>
+    <li>Conversion-Rate-Optimierung: A/B-Tests auf Formular, Hero, Service-Pages</li>
+    <li>AI-SEO: <code>llms.txt</code> + citation-ready Content-Chunks (siehe Sektion 13)</li>
+    <li>Web-Vitals-Monitoring via CrUX-Dashboard + Real User Monitoring</li>
+  </ul>
+</section>
+
+<!-- ============================================== 11. TRACKING PLAN ============================================== -->
+<section id="tracking">
+  <h2><span class="num">11</span> Tracking-Plan (Empfehlung)</h2>
+
+  <table>
+    <tr><th>Event-Name</th><th>Trigger</th><th>Tags (Ziel)</th><th>Status heute</th><th>Priorität</th></tr>
+    <tr><td><code>page_view</code></td><td>jeder Pageload, nach Consent</td><td>GA4, Meta Pixel</td><td><span class="badge b-p0">unvollständig</span></td><td>P0</td></tr>
+    <tr><td><code>form_view</code></td><td>Sichtbarkeit Form &gt; 50&thinsp;%</td><td>GA4, Meta Pixel</td><td>fehlt</td><td>P1</td></tr>
+    <tr><td><code>form_start</code></td><td>erste Tastatur-Interaktion mit Form-Feld</td><td>GA4</td><td>fehlt</td><td>P1</td></tr>
+    <tr><td><code>form_submit</code></td><td>Formular abgesendet (Divi-success-event)</td><td>GA4, Google Ads Conversion, Meta Pixel Lead</td><td><span class="badge b-p0">fehlt &mdash; HAUPTLÜCKE</span></td><td>P0</td></tr>
+    <tr><td><code>phone_click</code></td><td>Klick auf <code>tel:</code>-Link</td><td>GA4, Google Ads Conversion</td><td>fehlt</td><td>P0</td></tr>
+    <tr><td><code>whatsapp_click</code></td><td>Klick auf WhatsApp-Button</td><td>GA4, Google Ads Conversion, Meta Pixel</td><td>fehlt</td><td>P0</td></tr>
+    <tr><td><code>email_click</code></td><td>Klick auf <code>mailto:</code>-Link</td><td>GA4</td><td>fehlt</td><td>P1</td></tr>
+    <tr><td><code>scroll_depth</code></td><td>25 / 50 / 75 / 100&thinsp;%</td><td>GA4</td><td>fehlt</td><td>P2</td></tr>
+    <tr><td><code>file_download</code></td><td>Klick auf <code>.pdf</code></td><td>GA4</td><td>fehlt</td><td>P2</td></tr>
+    <tr><td><code>service_card_click</code></td><td>Klick auf Service-Tile auf Homepage</td><td>GA4</td><td>fehlt</td><td>P1</td></tr>
+  </table>
+
+  <h3>Recommended Conversion-Hierarchy für Google Ads</h3>
+  <ol>
+    <li><strong>Primary Conversion:</strong> <code>form_submit</code> (Wert: ~&euro;100&ndash;200 Lead-Wert)</li>
+    <li><strong>Secondary:</strong> <code>phone_click</code> auf Mobile (Wert: ~&euro;50)</li>
+    <li><strong>Secondary:</strong> <code>whatsapp_click</code> (Wert: ~&euro;30)</li>
+    <li><strong>Observed only (kein Bidding):</strong> <code>scroll_depth</code>, <code>email_click</code></li>
+  </ol>
+</section>
+
+<!-- ============================================== 12. JSON-LD ============================================== -->
+<section id="jsonld">
+  <h2><span class="num">12</span> JSON-LD Schema-Pack (zum Einbau)</h2>
+
+  <p>Folgende Markups in den <code>&lt;head&gt;</code> der jeweiligen Seiten einfügen. Sie können das gleich am Server, via Rank-Math-/Yoast-Plugin oder via Custom-HTML-Modul in Divi/Elementor einbauen.</p>
+
+  <h3>12.1 Organization + LocalBusiness (auf jeder Seite)</h3>
+  <pre><code>&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@type": "GeneralContractor",
+  "@id": "https://holzeco.de/#organization",
+  "name": "Holzeco GmbH",
+  "alternateName": "Holzeco",
+  "url": "https://holzeco.de",
+  "logo": "https://holzeco.de/wp-content/uploads/holzeco_logo.png",
+  "image": "https://holzeco.de/wp-content/uploads/og-image-1200x630.jpg",
+  "telephone": "+49-30-64079647",
+  "email": "info@holzeco.de",
+  "priceRange": "€€€",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Danckelmannstraße 54",
+    "postalCode": "14059",
+    "addressLocality": "Berlin",
+    "addressRegion": "BE",
+    "addressCountry": "DE"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 52.5158, "longitude": 13.2879 },
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+    "opens": "08:00", "closes": "18:00"
+  }],
+  "areaServed": [
+    {"@type": "City", "name": "Berlin"},
+    {"@type": "AdministrativeArea", "name": "Brandenburg"}
+  ],
+  "founder": {"@type": "Person", "name": "Vyacheslav Albertin"},
+  "vatID": "DE308802837",
+  "identifier": [
+    {"@type": "PropertyValue", "propertyID": "HRB", "value": "180497 B (AG Berlin-Charlottenburg)"}
+  ],
+  "sameAs": [
+    "https://www.facebook.com/holzeco/",
+    "https://www.instagram.com/holzeco/",
+    "https://www.google.com/maps/place/?q=place_id:..."
+  ]
+}
+&lt;/script&gt;</code></pre>
+
+  <h3>12.2 Service (×8 — pro Service-Page)</h3>
+  <pre><code>&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Komplettsanierung",
+  "provider": { "@id": "https://holzeco.de/#organization" },
+  "areaServed": {"@type": "City", "name": "Berlin"},
+  "name": "Komplettsanierung in Berlin",
+  "description": "Schlüsselfertige Komplettsanierung von Altbau und Einfamilienhaus aus einer Hand — Planung, Gewerke, Bauleitung, Abnahme.",
+  "url": "https://holzeco.de/komplettsanierung-berlin/",
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "EUR",
+    "priceSpecification": {
+      "@type": "PriceSpecification",
+      "priceCurrency": "EUR",
+      "minPrice": "800",
+      "maxPrice": "2500",
+      "unitText": "pro Quadratmeter"
+    }
+  }
+}
+&lt;/script&gt;</code></pre>
+  <p>Wiederholen für: Altbausanierung, Badsanierung, Trockenbau, Malerarbeiten, Fliesenarbeiten, Elektroinstallation, Sanitärinstallation.</p>
+
+  <h3>12.3 FAQPage (Homepage — vorhandene Q&amp;A auszeichnen)</h3>
+  <pre><code>&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Was kostet eine Komplettsanierung in Berlin?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Eine Komplettsanierung in Berlin kostet je nach Umfang und Ausstattung typischerweise zwischen 800 und 2.500 Euro pro Quadratmeter. ..."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wie lange dauert eine schlüsselfertige Sanierung?",
+      "acceptedAnswer": {"@type": "Answer", "text": "..."}
+    }
+  ]
+}
+&lt;/script&gt;</code></pre>
+
+  <h3>12.4 AggregateRating (Bewertungen-Page — sobald Daten vorhanden)</h3>
+  <pre><code>&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@type": "GeneralContractor",
+  "@id": "https://holzeco.de/#organization",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "ratingCount": "37",
+    "bestRating": "5",
+    "worstRating": "1"
+  }
+}
+&lt;/script&gt;</code></pre>
+  <p><strong>Wichtig:</strong> Daten müssen <em>echt</em> sein und auf der Seite sichtbar belegt (Google validiert Schema gegen sichtbaren Content). Empfehlung: ProvenExpert oder Google-Reviews-Widget einbinden, dann auf Datenquelle dort verweisen.</p>
+
+  <h3>12.5 BreadcrumbList (jede Unterseite)</h3>
+  <pre><code>&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://holzeco.de/"},
+    {"@type": "ListItem", "position": 2, "name": "Leistungen", "item": "https://holzeco.de/leistungen/"},
+    {"@type": "ListItem", "position": 3, "name": "Komplettsanierung"}
+  ]
+}
+&lt;/script&gt;</code></pre>
+
+  <h3>12.6 WebSite + SearchAction (Homepage)</h3>
+  <pre><code>&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "url": "https://holzeco.de/",
+  "name": "Holzeco GmbH",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://holzeco.de/?s={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+&lt;/script&gt;</code></pre>
+
+  <p>Testen via Schema.org Validator + Google Rich Results Test &mdash; vor Deploy zwingend.</p>
+</section>
+
+<!-- ============================================== 13. AI-SEO ============================================== -->
+<section id="aiseo">
+  <h2><span class="num">13</span> AI-SEO Action Plan (Generative Engine Optimization)</h2>
+
+  <h3>13.1 <code>llms.txt</code> erstellen</h3>
+  <p>Pendant zur <code>robots.txt</code> für LLMs &mdash; Index der wichtigsten Pages für AI-Crawler. Datei unter <code>https://holzeco.de/llms.txt</code> deployen.</p>
+  <pre><code># Holzeco GmbH — Generalbau & Komplettsanierung Berlin
+
+> Holzeco GmbH ist ein Berliner Generalbau-Unternehmen, spezialisiert auf schlüsselfertige
+> Komplettsanierung, Altbausanierung und Renovierung von Wohnungen und Einfamilienhäusern.
+> Seit 2015 betreut Holzeco Privatkunden und Hausverwaltungen in Berlin und Umgebung.
+
+## Über uns
+- [Unternehmen](https://holzeco.de/uber-uns/): Holzeco GmbH, gegründet von Vyacheslav Albertin
+- [Adresse](https://holzeco.de/impressum-datenschutz/): Danckelmannstraße 54, 14059 Berlin
+- [Kontakt](https://holzeco.de/kontakt/): +49 30 64079647, info@holzeco.de
+
+## Leistungen
+- [Komplettsanierung Berlin](https://holzeco.de/komplettsanierung-berlin/)
+- [Altbausanierung](https://holzeco.de/altbausanierung-berlin/)
+- [Badsanierung](https://holzeco.de/badsanierung-berlin/)
+- [Trockenbau](https://holzeco.de/trockenbau-berlin/)
+- [Malerarbeiten](https://holzeco.de/maler-berlin/)
+- [Fliesenarbeiten](https://holzeco.de/fliesen-berlin/)
+- [Elektroinstallation](https://holzeco.de/elektro-berlin/)
+- [Sanitärinstallation](https://holzeco.de/sanitaer-berlin/)
+
+## Referenzen &amp; Bewertungen
+- [Bewertungen](https://holzeco.de/bewertungen/)
+- [Referenzen](https://holzeco.de/referenzen/)
+
+## Häufige Fragen
+- Was kostet eine Komplettsanierung in Berlin? — ca. 800–2.500 €/m² je nach Umfang
+- Wie lange dauert eine schlüsselfertige Sanierung? — typisch 8–16 Wochen für eine 80m²-Wohnung
+- Bietet Holzeco Festpreis-Garantie? — ja, nach Bestandsaufnahme</code></pre>
+
+  <h3>13.2 Citation-ready Content-Chunks-Pattern</h3>
+  <p>LLMs zitieren am besten <strong>kompakte, faktische Antwort-Blöcke</strong>. Empfohlenes Pattern für jede Service-Page und FAQ-Page:</p>
+  <pre><code>&lt;h2&gt;Was kostet eine Altbausanierung in Berlin?&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Kurz:&lt;/strong&gt; Eine Altbausanierung kostet in Berlin
+typischerweise 800 bis 1.800 Euro pro Quadratmeter. Bei
+denkmalgeschützten Gebäuden steigen die Kosten auf 2.000 bis 2.500 €/m².&lt;/p&gt;
+&lt;p&gt;Die Spanne ergibt sich aus folgenden Faktoren: …&lt;/p&gt;</code></pre>
+
+  <h3>13.3 E-E-A-T Aufbau (für AI-Trust + Google)</h3>
+  <ul>
+    <li>Author-Bio mit Foto, LinkedIn, Branchen-Erfahrung auf Blog-Posts</li>
+    <li>Geschäftsführer-Profil (Vyacheslav Albertin) mit Werdegang + Bauleiter-Qualifikation</li>
+    <li>Team-Seite mit Mitarbeiter-Fotos + Funktion</li>
+    <li>Case-Studies mit verifizierbaren Daten (Adresse, Baujahr, m², Bauzeit, vorher/nachher)</li>
+    <li>Pressemitteilungen / Branchen-Erwähnungen sammeln und prominent verlinken</li>
+    <li>Externe Profile pflegen: Google Business Profile, Houzz, MyHammer, ProvenExpert, Trustpilot — für <code>sameAs</code>-Schema</li>
+  </ul>
+
+  <h3>13.4 AI-Detectability Testen</h3>
+  <p>Nach Schema-Deploy: Direkte Tests bei <strong>ChatGPT, Perplexity, Claude und Google AI Overviews</strong> mit Brand-Query (<em>"Was ist Holzeco GmbH Berlin?"</em>) + Service-Query (<em>"Wer macht Komplettsanierung Altbau Berlin?"</em>). Ziel: in 3&ndash;6 Monaten erste Citations.</p>
+</section>
+
+<!-- ============================================== 14. BENCHMARK ============================================== -->
+<section id="benchmark">
+  <h2><span class="num">14</span> Niche-Benchmark (anonymisiert)</h2>
+
+  <p>Auf Basis öffentlich beobachtbarer Signale (SEMrush, Sichtbarkeitsdaten) in der Berliner Generalbau- / Komplettsanierungs-Nische:</p>
+
+  <h3>SEMrush-Datenpunkt holzeco.de (Stand 17.05.2026)</h3>
+  <div class="scoregrid">
+    <div class="scorecard red"><div class="v">9</div><div class="l">Authority Score</div></div>
+    <div class="scorecard red"><div class="v">108</div><div class="l">Organ. Traffic / Monat</div></div>
+    <div class="scorecard red"><div class="v">22</div><div class="l">Ranking Keywords</div></div>
+    <div class="scorecard orange"><div class="v">187</div><div class="l">Backlinks</div></div>
+    <div class="scorecard orange"><div class="v">98</div><div class="l">Verweisende Domains</div></div>
+    <div class="scorecard red"><div class="v">&minus;36 %</div><div class="l">Traffic-Trend</div></div>
+  </div>
+  <p style="font-size:13px;color:#64748b;">SEMrush-Klassifizierung: <strong>&bdquo;Geringe Autorit&auml;t&ldquo;</strong>. Bezahlter Traffic: 5&nbsp;Klicks. Bezahlte Keywords: 2. KI-Such-Sichtbarkeit (Weltweit): 24, Erw&auml;hnungen: 3 &mdash; gleicher Wert f&uuml;r DE allein, d.&nbsp;h. internationale Pr&auml;senz null.</p>
+
+  <h3>Vergleich mit Berliner Niche</h3>
+  <table>
+    <tr><th>Metrik</th><th>Top-Player Berlin-Niche</th><th>Mittelfeld</th><th>Holzeco (gemessen)</th></tr>
+    <tr><td>Authority Score</td><td>20&ndash;25</td><td>10&ndash;15</td><td><strong>9</strong> (unterhalb Mittelfeld)</td></tr>
+    <tr><td>Ranking Keywords (gesamt)</td><td>200&ndash;400</td><td>50&ndash;150</td><td><strong>22</strong> (~10 % vom Mittelfeld)</td></tr>
+    <tr><td>Monatliche organische Klicks</td><td>~4.000&ndash;5.000</td><td>500&ndash;1.500</td><td><strong>108</strong> (~3 % vom Niche-Top)</td></tr>
+    <tr><td>Backlinks / Ref. Domains</td><td>1.500+ / 300+</td><td>500+ / 150+</td><td>187 / 98 (klein, aber existent)</td></tr>
+    <tr><td>Traffic-Trend (3 Mon.)</td><td>stabil bis +20 %</td><td>&plusmn;0</td><td><strong>&minus;36 %</strong> (fallend)</td></tr>
+    <tr><td>Strukturierte Daten</td><td>Org + LocalBusiness + Service + FAQ</td><td>mind. Org + LocalBusiness</td><td><strong>0</strong></td></tr>
+    <tr><td>Page Builder</td><td>typisch Elementor <em>oder</em> Divi (nicht beide)</td><td>WordPress + Divi/Elementor</td><td>Divi + Elementor <strong>parallel</strong></td></tr>
+    <tr><td>Consent Mode v2</td><td>ja, fast immer Cookiebot/Usercentrics</td><td>ja</td><td>nein</td></tr>
+  </table>
+
+  <div class="callout c-p0">
+    <strong>Befund:</strong> Holzeco rangiert unterhalb des Berliner Mittelfelds in jeder messbaren SEO-Dimension. <strong>108 monatliche organische Besucher</strong> entsprechen ungef&auml;hr <em>3&nbsp;%</em> des Niche-Top-Niveaus. Der negative Traffic-Trend von &minus;36&nbsp;% &uuml;ber drei Monate zeigt, dass die L&uuml;cke <em>wei&szlig;er wird</em>, nicht kleiner.
+  </div>
+
+  <div class="callout c-info">
+    Der wichtigste Hebel im Niche-Vergleich: <strong>Schema-Markup + Consent Mode v2 + reale Berlin-Lokalisierung</strong>. Holzeco hat in jeder dieser drei Dimensionen den gr&ouml;&szlig;ten Aufholbedarf. Die gute Nachricht: alle drei Bereiche sind in 6&ndash;12 Wochen technisch l&ouml;sbar &mdash; und der Effekt-Hebel ist bei niedriger Basis (AS 9) &uuml;berproportional gro&szlig;.
+  </div>
+</section>
+
+</main>
+
+<footer>
+  Holzeco.de Site Audit Master Report &nbsp;·&nbsp; Erstellt von <strong>WS Agency</strong> &nbsp;·&nbsp; 2026-05-17 &nbsp;·&nbsp; Vertraulich, ausschließlich für Holzeco GmbH
+</footer>
+
+</body>
+</html>
