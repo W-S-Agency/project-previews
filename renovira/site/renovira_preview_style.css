@@ -369,6 +369,26 @@ button:disabled { opacity: 0.6; cursor: not-allowed; }
 .team-role { color: var(--text-muted); margin: 4px 0 12px; }
 .team-bio { font-size: 14px; color: var(--text-muted); }
 
+/* ── PRIVAT-GEWERBE ──────────────── */
+.block-privat-gewerbe { background: var(--bg-soft); }
+.pg-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 32px; margin-top: 32px;
+}
+.pg-col {
+  background: #fff; padding: 32px; border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04); border-top: 4px solid var(--primary);
+}
+.pg-col h3 { margin-top: 0; color: var(--primary); }
+.pg-col .btn { margin-top: 16px; }
+
+.team-summary {
+  margin-top: 40px; padding: 24px 32px; background: var(--bg-soft);
+  border-radius: 10px; border-left: 4px solid var(--primary);
+}
+.team-summary h3 { margin-top: 0; color: var(--primary); }
+.team-summary p { margin: 0; }
+
 /* ── ZERTIFIZIERUNGEN ────────────── */
 .zert-grid {
   display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
