@@ -7,11 +7,11 @@
 <style>
 /* === BASE === */
 :root {
-  --primary: #1B6B3E; --primary-light: #238C52; --primary-dark: #145030;
-  --secondary: #0F1F33; --secondary-light: #1A3050;
-  --accent: #C5961E; --accent-light: #D4A82D;
-  --text: #1A1A2E; --text-light: #64748B; --text-lighter: #94A3B8;
-  --bg: #F7F8FA; --white: #FFFFFF; --border: #E2E8F0;
+  --primary: #2B2D33; --primary-light: #3A3D44; --primary-dark: #1D1F24;
+  --secondary: #555A65; --secondary-light: #6B7280;
+  --accent: #FFF30A; --accent-light: #FFF94D;
+  --text: #2B2D33; --text-light: #555A65; --text-lighter: #999EAD;
+  --bg: #FFFFFF; --white: #FFFFFF; --border: #D7DAE2;
   --success: #10B981; --warning: #F59E0B; --danger: #DC2626;
   --max-width: 1200px; --radius: 8px;
   --fb-accent: #f59e0b; --fb-accent-border: #d97706; --fb-accent-hover: #d97706;
@@ -63,6 +63,7 @@ blockquote { border-left: 4px solid var(--accent); padding: 1rem 1.5rem; margin:
 .hero-overlay { position: absolute; inset: 0; background: rgba(15,31,51,.4); }
 .hero-content { position: relative; z-index: 2; }
 .hero h1 { color: white; margin-bottom: 1rem; }
+.hero-lead { font-size: 1.35rem; font-weight: 600; color: var(--accent); max-width: 640px; margin: 0 0 1rem; line-height: 1.4; }
 .hero-subline { font-size: 1.15rem; max-width: 640px; opacity: .9; margin-bottom: 2rem; line-height: 1.7; }
 .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 1.5rem; }
 .hero-trust { font-size: .9rem; opacity: .8; }
@@ -80,6 +81,10 @@ blockquote { border-left: 4px solid var(--accent); padding: 1rem 1.5rem; margin:
 /* === TRUST BAR === */
 .trust-bar { padding: 20px 0; background: var(--white); border-bottom: 1px solid var(--border); }
 .trust-badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; }
+/* Trust-Laufband — POC pattern (D-QA-2026-05-18-001): horizontal items с · separators */
+.trust-laufband { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 16px 24px; max-width: 1720px; margin: 0 auto; }
+.trust-laufband-item { color: #555A65; font-size: 0.9375rem; font-weight: 500; letter-spacing: 0.01em; white-space: nowrap; }
+.trust-laufband-sep { color: #999EAD; font-size: 1rem; user-select: none; opacity: .6; }
 .trust-badge { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; color: var(--text); }
 .trust-icon { color: var(--primary); font-weight: 700; }
 .trust-section { padding: 48px 0; }
@@ -94,8 +99,9 @@ blockquote { border-left: 4px solid var(--accent); padding: 1rem 1.5rem; margin:
 .step-benefit { color: var(--primary); font-weight: 500; }
 
 /* === PROOF / STATS === */
-.proof-section { padding: 60px 0; background: var(--secondary); color: white; }
-.proof-section h2 { color: white; }
+/* Proof — light bg by default (overridden by .block-proof). Color reset to inherit. */
+.proof-section { padding: 60px 0; background: transparent; color: inherit; }
+.proof-section h2 { color: #2B2D33; }
 .proof-subheadline { color: rgba(255,255,255,.85); font-size: 1.05rem; margin: 8px 0 16px; }
 .proof-h3 { color: white; margin-top: 32px; font-size: 1.4rem; }
 .proof-galerie { margin: 24px 0; }
@@ -130,7 +136,7 @@ blockquote { border-left: 4px solid var(--accent); padding: 1rem 1.5rem; margin:
 .card-link { color: var(--accent); font-weight: 600; font-size: .9rem; }
 
 /* === FAQ === */
-.faq-section { padding: 60px 0; background: var(--white); }
+.faq-section { padding: 60px 0; background: transparent; }
 .faq-item { border: 1px solid var(--border); border-radius: var(--radius); margin-bottom: 8px; overflow: hidden; }
 .faq-q { display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 16px 20px; background: none; border: none; cursor: pointer; font-size: 15px; font-weight: 600; text-align: left; color: var(--text); }
 .faq-icon { font-size: 1.3rem; color: var(--primary); transition: transform .3s; }
@@ -142,6 +148,7 @@ blockquote { border-left: 4px solid var(--accent); padding: 1rem 1.5rem; margin:
 .cta-section { padding: 60px 0; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); color: white; text-align: center; }
 .cta-section h2 { color: white; }
 .cta-text { max-width: 600px; margin: 0 auto 24px; opacity: .9; }
+.cta-feature { margin-top: 16px; font-size: .95rem; color: var(--accent); font-weight: 500; }
 .cta-guarantee { margin-top: 16px; font-size: .85rem; opacity: .7; }
 
 /* === FORM === */
@@ -153,22 +160,43 @@ blockquote { border-left: 4px solid var(--accent); padding: 1rem 1.5rem; margin:
 .form-step-field { font-weight: 500; }
 .form-step-logic { font-size: .85rem; color: var(--text-light); }
 .form-note { color: var(--warning); font-size: .85rem; margin-top: 12px; text-align: center; }
+.form-tech-note { margin-top: 16px; padding: 12px 16px; background: #f0f4f8; border-left: 3px solid var(--accent); font-size: .85rem; color: var(--text); border-radius: 4px; }
 .form-confirm { color: var(--text-light); font-size: .9rem; margin-top: 12px; }
 @media(max-width:768px) { .form-step { grid-template-columns: 1fr; } }
 
 /* === LEAD MAGNET === */
-.lead-magnet { padding: 60px 0; }
-.lead-magnet-box { background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%); border: 2px solid var(--primary-light); border-radius: 12px; padding: 40px; max-width: var(--max-width); margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 0; }
-@media(min-width:768px) { .lead-magnet-box { grid-template-columns: 280px 1fr; gap: 32px; } }
-.lead-magnet-image { background: var(--primary-dark); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; min-height: 200px; color: rgba(255,255,255,.5); font-size: .85rem; text-align: center; padding: 24px; }
-.lead-magnet-content { }
-.lead-magnet-box h2 { color: var(--primary-dark); }
-.lead-magnet-items { margin: 16px 0; }
-.lead-magnet-sep { font-size: .9rem; color: var(--text-light); margin: 12px 0; padding: 12px 0; border-top: 1px dashed var(--border); }
+/* Lead Magnet — POC 1:1 rebuild (D-QA-2026-05-18-001): white 2-col card, image left, content right */
+.lead-magnet { padding: 0; max-width: 1500px; margin: 0 auto; }
+.lead-magnet-box { background: white; border: 0; border-radius: 12px; padding: 48px; max-width: 1500px; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 32px; box-shadow: 0 2px 8px rgba(0,0,0,.04); }
+@media(min-width:768px) { .lead-magnet-box { grid-template-columns: minmax(280px, 420px) 1fr; gap: 56px; padding: 56px 64px; align-items: center; } }
+.lead-magnet-image { background: linear-gradient(135deg, #2B2D33 0%, #1D1F24 100%); border-radius: 8px; display: flex; align-items: center; justify-content: center; min-height: 320px; color: rgba(255,243,10,.65); font-size: .8125rem; text-align: center; padding: 24px; letter-spacing: .04em; font-weight: 500; line-height: 1.6; }
+.lead-magnet-content { display: flex; flex-direction: column; gap: 1.25rem; }
+.lead-magnet-box h2 { color: #2B2D33; font-size: clamp(1.75rem, 3vw, 2.25rem); font-weight: 500; line-height: 1.15; margin: 0; padding: 0; border: 0; }
+.lead-magnet-content > p { color: #555A65; font-size: 1.0625rem; line-height: 1.6; margin: 0; }
+.lead-magnet-items { margin: 0; padding-left: 1.25rem; list-style: none; counter-reset: lm-item; }
+.lead-magnet-items li { counter-increment: lm-item; position: relative; padding: 0.4rem 0 0.4rem 1.75rem; color: #2B2D33; font-size: 1rem; line-height: 1.5; border-bottom: 1px solid rgba(43,45,51,.06); }
+.lead-magnet-items li:last-child { border-bottom: 0; }
+.lead-magnet-items li::before { content: counter(lm-item, decimal-leading-zero); position: absolute; left: -0.25rem; top: 0.4rem; color: #FFF30A; font-weight: 700; font-size: 0.875rem; background: #2B2D33; padding: 2px 6px; border-radius: 3px; line-height: 1.2; }
+.lead-magnet-sep { font-size: 0.9375rem; color: #555A65; margin: 0; padding: 1rem 0 0; border-top: 1px solid rgba(43,45,51,.08); }
+.lead-magnet-content .btn-accent { align-self: flex-start; background: #FFF30A; color: #2B2D33; padding: 14px 28px; border-radius: 5px; font-weight: 500; font-size: 1rem; text-decoration: none; border: 0; display: inline-flex; align-items: center; gap: 0.5rem; transition: background .2s; }
+.lead-magnet-content .btn-accent:hover { background: #FFF94D; }
 
 /* === PROBLEM === */
 .problem-section { padding: 60px 0; background: #fef8f0; border-left: 4px solid var(--warning); }
 .problem-section h2 { color: var(--secondary); }
+.problem-solution-section { padding: 60px 0; }
+.problem-solution-section h2 { color: var(--secondary); margin-bottom: 1.5rem; }
+.problem-solution-section h3 { color: var(--primary); margin-top: 2rem; margin-bottom: 1rem; }
+.problem-solution-section ul { margin-left: 1.5rem; }
+.problem-solution-section ul li { margin-bottom: 0.5rem; }
+.problem-solution-section .content-table { margin: 1rem 0; }
+.trust-section h2 { margin-bottom: 1.5rem; }
+.trust-section .content-table { margin: 1rem 0; }
+.trust-list { list-style: none; padding: 0; }
+.trust-list li { padding: 8px 0; border-bottom: 1px solid var(--border); }
+.trust-list li:last-child { border-bottom: none; }
+.trust-download { margin-top: 1rem; }
+.trust-download a { color: var(--accent); font-weight: 500; }
 .problem-text { max-width: 700px; }
 
 /* === SOLUTION === */
@@ -285,6 +313,529 @@ blockquote { border-left: 4px solid var(--accent); padding: 1rem 1.5rem; margin:
   .feedback-btn { top: auto; bottom: -16px; right: 16px; font-size: 12px; }
   .feedback-panel { padding: 16px; width: 280px; }
 }
+
+/* ============================================================ */
+/* ANDREY DESIGN OVERLAY (Figma MCP extracted 2026-05-20)        */
+/* Pure-Neutrals + Yellow accent + Green-wave gradients          */
+/* ============================================================ */
+
+/* Container width Andrey-style */
+.container { max-width: 1920px; padding: 0 24px; }
+@media(min-width:1024px) { .container { padding: 0 100px; } }
+
+/* Typography overrides */
+body { font-feature-settings: 'wdth' 110; letter-spacing: 0; }
+h1, h2, h3, h4, h5 { font-feature-settings: 'wdth' 120; letter-spacing: -0.015em; }
+
+/* === NAV — Andrey style === */
+.main-nav { background: #2B2D33; }
+.nav-inner { max-width: 1920px; padding: 0 24px; height: 80px; }
+@media(min-width:1024px) { .nav-inner { padding: 0 100px; } }
+.nav-brand { color: #FFFFFF; font-size: 1.5rem; font-weight: 700; }
+.nav-links li > a, .nav-links li > span { padding: 28px 16px; font-size: 16px; color: rgba(255,255,255,.85); }
+.nav-links li > a:hover, .nav-links li > span:hover, .nav-links li.active > a, .nav-links li.active > span { color: #FFF30A; }
+.nav-links li > a.active { border-bottom-color: #FFF30A; }
+.dropdown { background: #1D1F24; }
+.dropdown a:hover, .dropdown a.active { color: #FFF30A; background: rgba(255,255,255,.04); }
+.feedback-counter { background: rgba(255, 243, 10, .15); color: #FFF30A; border: 1px solid rgba(255, 243, 10, .3); padding: 8px 14px; border-radius: 5px; cursor: pointer; font-size: 13px; font-weight: 500; }
+
+/* === BUTTONS — Andrey === */
+.btn { padding: 14px 32px; border-radius: 5px; font-weight: 500; font-size: 18px; font-feature-settings: 'wdth' 110; display: inline-flex; align-items: center; gap: 10px; line-height: 1; }
+.btn svg { width: 18px; height: 18px; flex: 0 0 18px; transition: transform .2s ease; }
+.btn:hover svg { transform: translate(2px, -2px); }
+.btn-lg { padding: 16px 36px; }
+.btn-primary { background: #FFF30A !important; color: #2B2D33 !important; border-color: #FFF30A; }
+.btn-primary:hover { background: #FFF94D !important; }
+.btn-secondary { background: transparent; color: white; border: 1px solid rgba(255,255,255,.3); }
+.btn-secondary:hover { background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.6); }
+
+/* === HERO — dark + green-wave === */
+.block-hero { background: #2B2D33; }
+.hero {
+  background:
+    radial-gradient(ellipse 50% 50% at 85% 40%, rgba(80, 250, 140, 0.40) 0%, rgba(40, 200, 100, 0.20) 35%, transparent 65%),
+    radial-gradient(ellipse 70% 60% at 60% 80%, rgba(30, 180, 90, 0.25) 0%, transparent 55%),
+    linear-gradient(135deg, #2B2D33 0%, #232529 50%, #2B2D33 100%);
+  padding: 100px 0 80px; min-height: 500px;
+}
+.hero h1 { font-size: clamp(2.5rem, 5.5vw, 5rem); font-weight: 500; letter-spacing: -0.025em; line-height: 1.1; max-width: 1100px; }
+.hero-lead { color: #FFF30A; font-size: clamp(1.25rem, 2.2vw, 1.75rem); font-weight: 600; line-height: 1.3; max-width: 900px; margin-bottom: 1.5rem; }
+.hero-subline { color: #D7DAE2; font-size: clamp(1rem, 1.5vw, 1.5rem); line-height: 1.5; max-width: 820px; opacity: 1; }
+.hero-overlay { display: none; }
+.hero-ctas { gap: 16px; margin-top: 3rem; margin-bottom: 3rem; }
+.hero-trust { display: flex; flex-wrap: wrap; gap: 16px 32px; color: #D7DAE2; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,.1); font-size: .95rem; }
+.hero-trust-item { display: inline-flex; align-items: center; gap: 8px; }
+.hero-trust-item svg { width: 20px; height: 20px; color: #FFF30A; flex: 0 0 20px; }
+.hero-trust .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+/* === ZG-BESCHREIBUNG / GENERIC light content === */
+.block-generic { background: white; padding: 80px 0; }
+.generic-section h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 500; line-height: 1.1; margin-bottom: 2rem; max-width: 1100px; }
+.generic-section p { font-size: 1.25rem; line-height: 1.6; color: #555A65; max-width: 1100px; }
+
+/* === PROBLEM-SOLUTION — Sticky-Scroll cream === */
+.block-problem_solution, .block-problem { background: #F8F6F1; padding: 80px 0; border-top: 1px solid rgba(215,218,226,.4); border-bottom: 1px solid rgba(215,218,226,.4); }
+.problem-solution-section h2, .problem-section h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 500; max-width: 1200px; margin-bottom: 3rem; line-height: 1.1; }
+.problem-solution-section h3 { font-size: 1.5rem; font-weight: 600; color: #2B2D33; margin-top: 2.5rem; margin-bottom: 1rem; padding-left: 1rem; border-left: 4px solid #FFF30A; }
+.problem-solution-section ul { margin-top: 1rem; padding-left: 0; list-style: none; }
+.problem-solution-section ul li { background: white; padding: 1rem 1.5rem; border-radius: 5px; border-left: 3px solid #D7DAE2; margin-bottom: .75rem; line-height: 1.5; font-size: 1.125rem; color: #2B2D33; }
+.problem-solution-section .content-table { background: white; border-radius: 8px; overflow: hidden; margin: 1.5rem 0; box-shadow: 0 1px 3px rgba(0,0,0,.04); }
+.problem-solution-section .content-table th { background: #2B2D33; color: white; font-weight: 600; text-align: left; padding: 16px; font-size: .95rem; text-transform: uppercase; letter-spacing: .04em; }
+.problem-solution-section .content-table td { padding: 16px; border-top: 1px solid #F0F0F2; vertical-align: top; font-size: 1.05rem; line-height: 1.5; }
+.problem-solution-section .content-table tr:hover td { background: #FFFCE0; }
+.problem-solution-section p { font-size: 1.125rem; line-height: 1.6; color: #555A65; }
+
+/* === TRUST — Dark with yellow accents === */
+/* Trust block: dark by default (Mittelstand 2-col with H2) */
+.block-trust { background: #2B2D33; padding: 80px 0; color: white; }
+/* When contains Trust-Laufband (Startseite Block 2, no H2) — light cream compact band */
+.block-trust:has(.trust-laufband) { background: #F8F6F1; padding: 28px 0; color: #2B2D33; border-top: 1px solid rgba(43,45,51,.08); border-bottom: 1px solid rgba(43,45,51,.08); }
+.block-wrapper.block-trust:has(.trust-laufband) { padding: 28px 0; }
+.block-trust .trust-section { background: transparent; padding: 0; max-width: 1720px; }
+.block-trust h2 { color: white; font-size: clamp(2rem, 4vw, 3rem); font-weight: 500; margin-bottom: 3rem; max-width: 1200px; line-height: 1.1; }
+.block-trust .content-table { background: transparent; }
+.block-trust .content-table th { background: transparent; color: #FFF30A; font-weight: 600; padding: 16px 12px; border-bottom: 1px solid rgba(255,255,255,.15); text-transform: uppercase; letter-spacing: .04em; font-size: .9rem; }
+.block-trust .content-table td { background: transparent; color: #D7DAE2; padding: 20px 12px; border-bottom: 1px solid rgba(255,255,255,.08); vertical-align: top; line-height: 1.5; font-size: 1.0625rem; }
+.block-trust .content-table tr:hover td { background: rgba(255,255,255,.03); color: white; }
+.block-trust .content-table strong { color: white; }
+.block-trust .trust-list { list-style: none; padding: 0; }
+.block-trust .trust-list li { color: #D7DAE2; padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,.08); font-size: 1.0625rem; line-height: 1.5; }
+.block-trust .trust-download { text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,.1); }
+.block-trust .trust-download a { display: inline-block; background: white; color: #2B2D33; padding: 14px 32px; border-radius: 5px; font-weight: 500; font-size: 1.125rem; text-decoration: none; transition: background .2s; }
+.block-trust .trust-download a:hover { background: #F7F8FA; }
+.block-trust .trust-bar { background: transparent; border-bottom: none; padding-top: 2rem; padding-bottom: 0; }
+.block-trust .trust-badge { color: #D7DAE2; }
+.block-trust .trust-icon { color: #FFF30A; }
+
+/* === STEPS — Yellow circles + cream === */
+.block-steps { background: #F8F6F1; padding: 80px 0; }
+.steps-section h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 500; max-width: 1100px; line-height: 1.1; margin-bottom: 2rem; }
+.step-num { background: #FFF30A !important; color: #2B2D33 !important; width: 64px; height: 64px; min-width: 64px; font-size: 1.5rem; font-weight: 700; border-radius: 50%; }
+.step { padding: 1.5rem 0; border-bottom: 1px solid #D7DAE2; gap: 2rem; }
+.step:last-child { border-bottom: none; }
+.step-body h3 { font-size: 1.75rem; font-weight: 500; color: #2B2D33; }
+.step-body p { font-size: 1.125rem; line-height: 1.5; color: #555A65; }
+.step-benefit { color: #2B2D33 !important; font-weight: 500; }
+.block-kicker { display: inline-block; font-size: 1rem; font-weight: 500; color: #2B2D33; padding: 6px 0; border-bottom: 2px solid #FFF30A; margin-bottom: 1.5rem; text-transform: none; }
+.block-intro { font-size: 1.25rem; line-height: 1.5; color: #555A65; max-width: 900px; margin-bottom: 2.5rem; }
+
+/* === CARDS — Cream w/ hover→dark === */
+.block-cards { background: white; padding: 80px 0; }
+.cards-section h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 500; max-width: 1100px; line-height: 1.1; margin-bottom: 3rem; }
+.cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1700px; }
+.card { background: #F8F6F1; border: 1px solid #D7DAE2; border-radius: 8px; padding: 32px 28px; transition: all .25s; cursor: pointer; display: flex; flex-direction: column; gap: 1rem; min-height: 280px; }
+.card:hover { background: #2B2D33; color: white; border-color: #2B2D33; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.12); }
+.card h3 { font-size: 1.5rem; font-weight: 600; color: #2B2D33; margin: 0; transition: color .25s; }
+.card:hover h3 { color: white; }
+.card p { font-size: 1.0625rem; line-height: 1.5; color: #555A65; margin: 0; flex: 1; transition: color .25s; }
+.card:hover p { color: #D7DAE2; }
+.card-link { color: #2B2D33; font-weight: 600; font-size: .95rem; transition: color .25s; }
+.card:hover .card-link { color: #FFF30A; }
+.card .arrow-link { background: transparent; padding: 0; color: inherit; }
+
+/* === FAQ — Cream accordion === */
+.block-faq { background: #F8F6F1; padding: 80px 0; }
+.faq-section { max-width: 1100px; }
+.faq-section h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 500; line-height: 1.1; margin-bottom: 3rem; }
+.faq-item { background: white; border: 1px solid #D7DAE2; border-radius: 8px; margin-bottom: 12px; overflow: hidden; }
+.faq-q { background: transparent; border: none; width: 100%; padding: 24px 28px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-weight: 500; color: #2B2D33; text-align: left; font-size: 1.25rem; font-feature-settings: 'wdth' 120; }
+.faq-q:hover { background: #F8F6F1; }
+.faq-icon { color: #FFF30A; font-size: 2rem; font-weight: 300; line-height: 1; transition: transform .2s; }
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+.faq-a { padding: 0 28px 28px; color: #555A65; font-size: 1.125rem; line-height: 1.6; display: none; }
+.faq-item.open .faq-a { display: block; }
+
+/* === CTA — Green-wave === */
+.block-cta {
+  background:
+    radial-gradient(ellipse 60% 40% at 75% 30%, rgba(60, 240, 130, 0.45) 0%, rgba(30, 180, 90, 0.25) 30%, transparent 60%),
+    radial-gradient(ellipse 80% 50% at 30% 70%, rgba(20, 160, 80, 0.30) 0%, transparent 50%),
+    #2B2D33;
+  padding: 100px 0; color: white;
+}
+.cta-section { background: transparent; text-align: center; max-width: 1720px; margin: 0 auto; }
+.cta-section h2 { color: white; font-size: clamp(2rem, 4vw, 3.25rem); font-weight: 500; max-width: 1100px; margin: 0 auto 2rem; line-height: 1.1; letter-spacing: -0.02em; }
+.cta-section .cta-text { color: #D7DAE2; max-width: 760px; margin: 2rem auto; font-size: 1.375rem; line-height: 1.5; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,.15); }
+.cta-section .btn-primary { background: white !important; color: #2B2D33 !important; border-color: white; font-size: 1.125rem; padding: 16px 36px; }
+.cta-section .btn-primary:hover { background: #F7F8FA !important; }
+.cta-section .cta-feature { color: #FFF30A; margin-top: 1.5rem; font-size: 1rem; }
+.cta-section .cta-guarantee { color: #999EAD; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,.1); font-size: .9375rem; }
+
+/* === PROOF (Inverted Stat-Grid) — Andrey === */
+.block-proof { background: white; padding: 80px 0; }
+.proof-section h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 500; line-height: 1.1; }
+.stats-grid-inverted { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 32px; margin-top: 3rem; }
+.stat-inverted { display: flex; flex-direction: column; gap: 12px; padding: 0; }
+.stat-inverted .stat-label { color: #555A65; font-size: .9375rem; font-weight: 500; padding-bottom: 4px; border-bottom: 2px solid #FFF30A; align-self: flex-start; }
+.stat-inverted .stat-value { color: #2B2D33; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 500; line-height: 1; }
+
+/* === FORM === */
+.block-form { background: #F8F6F1; padding: 80px 0; }
+.form-section h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 500; }
+.form-preview { background: white; border-radius: 8px; padding: 32px; box-shadow: 0 1px 3px rgba(0,0,0,.04); }
+.form-step { display: grid; grid-template-columns: 40px 1fr 1.5fr; gap: 16px; padding: 16px 0; border-bottom: 1px solid #D7DAE2; align-items: start; }
+.form-step-num { background: #FFF30A; color: #2B2D33; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; }
+.form-tech-note { background: #2B2D33; color: #D7DAE2; padding: 16px; border-radius: 5px; border-left: 3px solid #FFF30A; margin-top: 1rem; font-size: .95rem; }
+.form-note { color: #999EAD; text-align: center; margin-top: 1rem; font-size: .85rem; }
+
+/* === LEAD-MAGNET === */
+.block-lead_magnet { background: #F8F6F1; padding: 80px 0; }
+.lead-magnet h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 500; line-height: 1.1; }
+
+/* === STORY / FACILITY / TEAM / CONTACT === */
+.block-story, .block-facility, .block-team, .block-contact_info, .block-contact_person, .block-info_table, .block-solution { background: white; padding: 80px 0; }
+.block-story h2, .block-facility h2, .block-team h2, .block-contact_info h2, .block-contact_person h2, .block-info_table h2, .block-solution h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 500; line-height: 1.1; }
+
+/* === TABLES (default for non-trust-non-problem_solution) === */
+.content-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; background: white; border-radius: 8px; overflow: hidden; }
+.content-table th { background: #F7F8FA; color: #2B2D33; font-weight: 600; text-align: left; padding: 14px 16px; font-size: .9375rem; border-bottom: 1px solid #D7DAE2; }
+.content-table td { padding: 14px 16px; border-bottom: 1px solid #F0F0F2; vertical-align: top; line-height: 1.5; }
+
+/* === FOOTER — Andrey with giant wordmark === */
+.site-footer { background: #2B2D33; color: #999EAD; padding-top: 80px; padding-bottom: 30px; margin-top: 0; }
+.site-footer .container { max-width: 1920px; padding: 0 24px; }
+@media(min-width:1024px) { .site-footer .container { padding: 0 100px; } }
+.footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; padding-bottom: 40px; }
+.footer-col h5 { color: white; font-weight: 600; margin-bottom: 16px; font-size: 1rem; }
+.footer-col p { color: #999EAD; line-height: 1.7; font-size: .9375rem; }
+.footer-col a { color: #999EAD; transition: color .2s; }
+.footer-col a:hover { color: white; }
+.footer-col-brand .nav-brand { display: inline-block; color: white; font-size: 1.5rem; margin-bottom: 12px; }
+.footer-wordmark { text-align: center; padding: 40px 0 24px; border-top: 1px solid rgba(255,255,255,.08); margin-top: 40px; overflow: hidden; }
+.footer-wordmark span { display: inline-block; font-size: clamp(80px, 18vw, 260px); font-weight: 700; line-height: .85; color: #3A3D44; letter-spacing: -0.04em; font-feature-settings: 'wdth' 120; }
+.footer-bottom { padding: 24px 0 0; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; font-size: .8125rem; color: #999EAD; border-top: 1px solid rgba(255,255,255,.08); margin-top: 16px; }
+.footer-bottom a { color: #999EAD; margin-left: 1rem; }
+.footer-bottom a:hover { color: white; }
+.footer-bottom .footer-links a { margin-left: 1rem; }
+
+/* === FEEDBACK UI — Yellow accent === */
+/* Feedback chrome — subtle, не visual distraction (D-QA-001) */
+.feedback-btn { background: rgba(255,255,255,.85) !important; color: #555A65 !important; border: 1px solid rgba(43,45,51,.12) !important; padding: 5px 12px !important; font-size: 11px !important; font-weight: 500 !important; opacity: .55; transition: opacity .2s, background .2s; }
+.feedback-btn:hover { background: #FFF30A !important; color: #2B2D33 !important; border-color: #FFF30A !important; opacity: 1; }
+.feedback-btn.has-comment { background: rgba(255,243,10,.85) !important; color: #2B2D33 !important; border-color: #FFF30A !important; opacity: 1; }
+/* On dark sections — feedback chip stays subtle */
+.block-trust .feedback-btn,
+.block-hero .feedback-btn,
+.block-cta .feedback-btn { background: rgba(255,255,255,.10) !important; color: rgba(255,255,255,.6) !important; border-color: rgba(255,255,255,.15) !important; }
+.block-trust .feedback-btn:hover,
+.block-hero .feedback-btn:hover,
+.block-cta .feedback-btn:hover { background: #FFF30A !important; color: #2B2D33 !important; border-color: #FFF30A !important; opacity: 1; }
+/* Top counter — also subtle */
+.feedback-counter { opacity: .85; }
+.feedback-counter:hover { opacity: 1; }
+.feedback-panel { background: white; border: 2px solid #FFF30A; }
+.btn-save { background: #2B2D33 !important; border-color: #2B2D33 !important; color: white !important; }
+.btn-save:hover { background: #1D1F24 !important; }
+
+/* === BLOCK WRAPPER — wrapper has no padding; sections handle их own === */
+.block-wrapper { position: relative; }
+.block-wrapper > section { margin: 0; }
+
+/* === SECTION VERTICAL RHYTHM — compound selectors (specificity 2 classes) === */
+/* These override generic .block-wrapper rule because of higher specificity */
+.block-wrapper.block-hero { padding: 0; } /* hero handles its own padding internally */
+.block-wrapper.block-generic { padding: 96px 0; }
+.block-wrapper.block-problem,
+.block-wrapper.block-problem_solution { padding: 96px 0; }
+.block-wrapper.block-cards { padding: 96px 0; }
+.block-wrapper.block-trust { padding: 96px 0; }
+.block-wrapper.block-faq { padding: 96px 0; }
+.block-wrapper.block-cta { padding: 80px 0; }
+.block-wrapper.block-steps { padding: 96px 0; }
+.block-wrapper.block-proof { padding: 96px 0; }
+.block-wrapper.block-lead_magnet { padding: 80px 0; }
+.block-wrapper.block-info_table { padding: 80px 0; }
+.block-wrapper.block-team { padding: 96px 0; }
+.block-wrapper.block-story { padding: 96px 0; }
+.block-wrapper.block-facility { padding: 96px 0; }
+.block-wrapper.block-form { padding: 96px 0; }
+.block-wrapper.block-contact_info { padding: 80px 0; }
+.block-wrapper.block-contact_person { padding: 80px 0; }
+.block-wrapper.block-solution { padding: 96px 0; }
+
+/* Inner element rhythm — more generous gaps */
+.block-wrapper section > .container,
+.block-wrapper > section.container { padding-left: 24px; padding-right: 24px; }
+
+/* H2 → content breathing room inside light sections */
+.generic-section h2 { margin-bottom: 1.5rem; }
+.generic-section > p,
+.generic-section > div > p { margin-bottom: 1rem; }
+
+/* Cards: H2 → grid gap + grid → next block */
+.cards-section > h2 { margin-bottom: 3rem; }
+.cards-section .cards-grid { margin-top: 0; }
+
+/* FAQ vertical rhythm */
+.faq-section > h2 { margin-bottom: 3rem; }
+
+/* CTA inner rhythm */
+.cta-section h2 { margin-bottom: 1.5rem; }
+.cta-section .cta-text { margin-bottom: 2.5rem; }
+
+/* === PROBLEM-SOLUTION: design-rich markup (ps-* classes) === */
+.problem-solution-section .ps-problem-card { background: white; border-left: 4px solid #FFF30A; border-radius: 0 8px 8px 0; padding: 32px 36px; margin: 2rem 0 3rem; max-width: 1200px; box-shadow: 0 1px 3px rgba(0,0,0,.04); }
+.problem-solution-section .ps-problem-card h3 { font-size: 1.5rem; font-weight: 600; color: #2B2D33; margin-bottom: 1rem; padding: 0; border: 0; }
+.problem-solution-section .ps-problem-card p { font-size: 1.125rem; line-height: 1.6; color: #555A65; }
+.problem-solution-section .ps-problem-card strong { color: #2B2D33; }
+
+.ps-sticky-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; margin: 3rem 0; }
+@media(max-width:1024px) { .ps-sticky-grid { grid-template-columns: 1fr; gap: 2rem; } }
+.ps-sticky-left { position: sticky; top: 100px; align-self: start; }
+.ps-sticky-left .block-kicker { margin-bottom: 1rem; }
+.ps-sticky-heading { font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight: 500; line-height: 1.15; color: #2B2D33; margin-bottom: 1rem; padding: 0; border: 0; }
+.ps-sticky-intro { font-size: 1.0625rem; line-height: 1.5; color: #555A65; }
+.ps-sticky-right { display: flex; flex-direction: column; gap: 1.5rem; }
+
+.ps-num-card { display: grid; grid-template-columns: 64px 1fr; gap: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid #D7DAE2; }
+.ps-num-card:last-child { border-bottom: none; }
+.ps-num-circle { background: #FFF30A; color: #2B2D33; width: 64px; height: 64px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.5rem; }
+.ps-num-body h4 { font-size: 1.625rem; font-weight: 500; color: #2B2D33; margin-bottom: 0.75rem; line-height: 1.1; }
+.ps-num-body .ps-num-what { font-size: 1.0625rem; line-height: 1.5; color: #555A65; margin-bottom: 0.5rem; }
+.ps-num-body .ps-num-benefit { color: #2B2D33; font-weight: 500; font-size: 0.9375rem; margin: 0; }
+
+.ps-ergebnis-callout { background: #2B2D33; color: white; border-radius: 8px; padding: 2.5rem 3rem; max-width: 1200px; margin: 3rem 0 1.5rem; }
+.ps-ergebnis-callout h3 { color: #FFF30A; font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; padding: 0; border: 0; }
+.ps-ergebnis-callout p { color: #D7DAE2; font-size: 1.125rem; line-height: 1.6; }
+
+.ps-feature-highlight { background: #FFFEF0; border: 1px solid #FFF30A; border-left: 4px solid #FFF30A; border-radius: 8px; padding: 1.75rem 2rem; max-width: 920px; display: grid; grid-template-columns: 48px 1fr; gap: 1.25rem; margin-top: 2rem; }
+@media(max-width:768px) { .ps-feature-highlight { grid-template-columns: 1fr; gap: 1rem; padding: 1.25rem; } }
+.ps-feature-icon { background: #2B2D33; color: #FFF30A; width: 48px; height: 48px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex: 0 0 48px; }
+.ps-feature-icon svg { width: 24px; height: 24px; }
+.ps-feature-body .ps-feature-tag { display: inline-block; background: #2B2D33; color: #FFF30A; padding: 3px 10px; border-radius: 3px; font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 0.5rem; }
+.ps-feature-body h3 { font-size: 1.25rem; font-weight: 600; color: #2B2D33; margin: 0 0 0.4rem; padding: 0; border: 0; line-height: 1.3; }
+.ps-feature-body p { font-size: 0.9375rem; line-height: 1.55; color: #2B2D33; margin: 0; }
+
+/* === TRUST 2-col Andrey layout === */
+.trust-2col { display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; max-width: 1720px; }
+@media(max-width:1024px) { .trust-2col { grid-template-columns: 1fr; gap: 2rem; } }
+.trust-2col-left h2 { margin-bottom: 0; }
+.trust-kicker { color: #FFF30A; border-bottom-color: #FFF30A; }
+.trust-2col-right { display: flex; flex-direction: column; gap: 1.25rem; }
+.trust-item { display: grid; grid-template-columns: 32px 1fr; gap: 1.25rem; padding-bottom: 1.25rem; border-bottom: 1px solid rgba(255,255,255,.1); align-items: start; }
+.trust-item:last-child { border-bottom: none; }
+.trust-item-icon { color: #FFF30A; }
+.trust-item-icon svg { width: 28px; height: 28px; }
+.trust-item-body h4 { font-size: 1.375rem; font-weight: 500; color: white; margin-bottom: 0.5rem; line-height: 1.2; padding: 0; border: 0; }
+.trust-item-body p { color: #D7DAE2; font-size: 1.0625rem; line-height: 1.5; margin: 0; }
+.trust-download-wrap { grid-column: 1 / -1; text-align: center; padding-top: 2rem; margin-top: 2rem; border-top: 1px solid rgba(255,255,255,.1); }
+.trust-download-btn { display: inline-flex; align-items: center; gap: 0.75rem; background: white; color: #2B2D33; padding: 14px 32px; border-radius: 5px; font-weight: 500; font-size: 1.125rem; text-decoration: none; transition: background .2s; }
+.trust-download-btn:hover { background: #F7F8FA; }
+.trust-download-btn svg { width: 20px; height: 20px; }
+
+/* === CARDS — POC 1:1 rebuild (D-QA-2026-05-18-001) === */
+/* Structure: a.card.group → .card-icon-top → h3 → p → .card-link */
+/* No .card-body wrapper. Hover cascade via .card:hover. */
+.cards-section { background: white; }
+/* Cards grid — auto-responsive: handles 3 (Mittelstand) и 8 (Startseite 4x2) */
+.cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; max-width: 1700px; margin: 0 auto; }
+@media(max-width: 768px) { .cards-grid { grid-template-columns: 1fr; } }
+
+.card {
+  background: #F8F6F1;
+  border: 0;
+  border-radius: 8px;
+  padding: 32px 40px 40px;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  min-height: 280px;
+  transition: background-color .25s ease;
+  cursor: pointer;
+}
+.card:hover { background: #2B2D33; }
+
+.card-icon-top {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 3rem;
+}
+.card-icon-top svg {
+  width: 32px;
+  height: 32px;
+  color: #2B2D33;
+  stroke-width: 1.5;
+  transition: color .25s ease;
+}
+.card:hover .card-icon-top svg { color: #FFF30A; }
+
+.card > h3 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #2B2D33;
+  margin: 0 0 0.75rem;
+  padding: 0;
+  border: 0;
+  line-height: 1.2;
+  transition: color .25s ease;
+}
+.card:hover > h3 { color: white; }
+
+.card > p {
+  font-size: 1.125rem;
+  line-height: 1.55;
+  color: #555A65;
+  margin: 0 0 1.5rem;
+  flex: 1;
+  transition: color .25s ease;
+}
+.card:hover > p { color: #D7DAE2; }
+
+.card .card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #2B2D33;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: color .25s ease;
+}
+.card:hover .card-link { color: #FFF30A; }
+
+.card-arrow { display: inline-block; transition: transform .25s ease; }
+.card:hover .card-arrow { transform: translateX(4px); }
+
+/* === FAQ native <details> === */
+/* FAQ — Andrey minimal: flat list, hairline separators, subtle dark icon */
+.faq-section { max-width: 1100px; }
+.faq-list { max-width: 880px; margin-left: auto; margin-right: auto; }
+details.faq-item { background: transparent; border: none; border-bottom: 1px solid rgba(43,45,51,.10); border-radius: 0; margin: 0; overflow: visible; padding: 0; }
+details.faq-item:first-child { border-top: 1px solid rgba(43,45,51,.10); }
+details.faq-item > summary.faq-q { list-style: none; padding: 28px 0; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-weight: 500; color: #2B2D33; text-align: left; font-size: 1.25rem; line-height: 1.4; font-feature-settings: 'wdth' 120; background: transparent; }
+details.faq-item > summary.faq-q::-webkit-details-marker { display: none; }
+details.faq-item > summary.faq-q:hover { background: transparent; color: #1D1F24; }
+details.faq-item > summary.faq-q:hover .faq-icon { opacity: 1; }
+details.faq-item > summary.faq-q .faq-q-text { flex: 1; padding-right: 1.5rem; }
+details.faq-item > summary.faq-q .faq-icon { width: 22px; height: 22px; color: #2B2D33; opacity: .55; flex-shrink: 0; transition: transform .25s ease, opacity .2s; stroke-width: 1.5; }
+details.faq-item[open] > summary.faq-q .faq-icon { transform: rotate(45deg); opacity: 1; }
+details.faq-item > .faq-a { padding: 0 0 32px; color: #555A65; font-size: 1.0625rem; line-height: 1.65; max-width: 760px; }
+details.faq-item > .faq-a p { margin: 0 0 .75rem; }
+details.faq-item > .faq-a p:last-child { margin-bottom: 0; }
+
+/* === Screen-reader only (accessibility + lint compat) === */
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+/* === CTA Garantiesiegel checkmarks === */
+/* CTA — POC 1:1 rebuild (D-QA-2026-05-18-001) */
+.cta-section .cta-container { max-width: 1720px; margin: 0 auto; text-align: center; }
+.cta-section .cta-divider { height: 1px; background: rgba(255,255,255,.15); margin: 3rem auto; max-width: 1720px; }
+.cta-section .cta-divider-bottom { background: rgba(255,255,255,.10); margin-top: 4rem; }
+.cta-section .cta-body { display: flex; flex-direction: column; align-items: center; gap: 2.5rem; }
+.cta-section .cta-guarantee-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem 2rem; margin-top: 0; padding-top: 0; border-top: 0; }
+.cta-section .cta-guarantee-item { display: inline-flex; align-items: center; gap: 0.5rem; color: #999EAD; font-size: 0.9375rem; }
+.cta-section .cta-guarantee-item svg { width: 16px; height: 16px; color: #FFF30A; flex-shrink: 0; }
+.cta-section .btn-cta-white { background: white !important; color: #2B2D33 !important; border-color: white; font-size: 1.125rem; padding: 16px 32px; font-weight: 500; display: inline-flex; align-items: center; gap: 0.625rem; text-decoration: none; border-radius: 5px; line-height: 1; }
+.cta-section .btn-cta-white:hover { background: #F7F8FA !important; }
+.cta-section .btn-cta-white svg { width: 18px; height: 18px; flex: 0 0 18px; transition: transform .2s ease; }
+.cta-section .btn-cta-white:hover svg { transform: translate(2px, -2px); }
+.cta-section .cta-text { max-width: 760px; margin: 0 auto; padding-top: 0; border-top: 0; font-size: 1.375rem; line-height: 1.5; color: #D7DAE2; }
+
+/* === Block 7 bottom-line tagline (Markdown blockquote inside CTA) === */
+.cta-section blockquote { background: transparent; border: 0; border-top: 1px solid rgba(255,255,255,.08); padding: 1.5rem 0 0; margin-top: 3rem; font-style: normal; color: #999EAD; text-align: center; font-size: 0.875rem; border-radius: 0; }
+.cta-section blockquote strong { color: #D7DAE2; font-weight: 500; }
+
+/* === Bottom-line tagline (dedicated dark band, parsed from trailing `> **...**` in .md) === */
+.bottom-line-tagline { background: #2B2D33; color: #999EAD; text-align: center; padding: 22px 24px; font-size: 0.875rem; font-weight: 500; letter-spacing: 0.02em; line-height: 1.5; border-top: 1px solid rgba(255,255,255,.04); }
+.bottom-line-tagline strong { color: #D7DAE2; font-weight: 500; }
+
+/* === SPACING / RHYTHM FIXES (rich blocks) === */
+
+/* Container centering — preserve original margin: 0 auto */
+.container { margin-left: auto; margin-right: auto; }
+
+/* Hero element rhythm — replace old margins with clean spacing */
+.hero h1 { margin-bottom: 0; }
+.hero-lead { margin-top: 1.25rem; margin-bottom: 0; }
+.hero-subline { margin-top: 1.5rem; margin-bottom: 0; }
+.hero-ctas { margin-top: 2.5rem; margin-bottom: 0; gap: 16px; }
+.hero-trust { margin-top: 3rem; }
+.block-hero .hero-content > * + * { /* fallback rhythm */ }
+
+/* Problem-Solution: center cards + better margins */
+.problem-solution-section .block-kicker { margin-bottom: 1rem; }
+.problem-solution-section h2 { margin-bottom: 2.5rem; max-width: 1200px; margin-left: 0; margin-right: 0; }
+.problem-solution-section .ps-problem-card { margin: 0 auto 3.5rem; }
+.problem-solution-section .ps-sticky-grid { margin: 0 auto 3.5rem; max-width: 1720px; }
+.problem-solution-section .ps-ergebnis-callout { margin: 0 auto 2rem; }
+.problem-solution-section .ps-feature-highlight { margin: 0 auto; }
+.ps-num-card { padding: 1.75rem 0 1.75rem; }
+.ps-num-card:first-child { padding-top: 0; }
+
+/* Generic block better spacing */
+.generic-section h2 { margin-bottom: 2rem; }
+.generic-section p { margin-bottom: 1.25rem; }
+.generic-section p:last-child { margin-bottom: 0; }
+
+/* Trust: ensure 2col is centered if narrower */
+.block-trust .trust-2col { margin-left: auto; margin-right: auto; }
+.trust-2col-left h2 { margin-bottom: 0; line-height: 1.1; }
+.trust-2col-left .block-kicker { margin-bottom: 1.25rem; }
+.trust-2col-left .trust-text { margin-top: 1.5rem; color: #D7DAE2; }
+.trust-item { padding: 1.5rem 0; }
+.trust-item:first-child { padding-top: 0; }
+
+/* Cards spacing inside */
+.cards-section .block-kicker { margin-bottom: 1rem; }
+.cards-section h2 { margin-bottom: 3rem; max-width: 1100px; }
+.cards-grid { gap: 24px; }
+.card { gap: 2.5rem; min-height: 280px; padding: 36px 32px; }
+
+/* FAQ spacing */
+.faq-section .block-kicker { margin-bottom: 1rem; }
+.faq-section h2 { margin-bottom: 3rem; }
+.faq-list { margin-left: auto; margin-right: auto; }
+
+/* CTA spacing — center text content */
+.cta-section h2 { margin-top: 0; }
+.cta-section .cta-text { padding-top: 2.5rem; margin-top: 3rem; }
+.cta-section .btn-cta-white { margin-top: 2rem; }
+
+/* Steps spacing */
+.steps-section .block-kicker { margin-bottom: 1rem; }
+.steps-section h2 { margin-bottom: 1rem; }
+.steps { margin-top: 2.5rem; }
+.step { padding: 1.5rem 0; }
+.step:first-child { padding-top: 0; }
+.step:last-child { border-bottom: none; padding-bottom: 0; }
+
+/* Lead-magnet / Solution / Form etc — basic vertical rhythm */
+.block-lead_magnet .lead-magnet > * + *,
+.block-form .form-section > * + *,
+.block-solution .solution-section > * + *,
+.block-proof .proof-section > * + *,
+.block-story .story-section > * + *,
+.block-facility .facility-section > * + *,
+.block-team .team-section > * + *,
+.block-contact_info .contact-info > * + *,
+.block-contact_person .contact-person > * + *,
+.block-info_table .info-table > * + * {
+  margin-top: 1.25rem;
+}
+
+/* Block-wrapper internal spacing — sections need horizontal padding via container only */
+/* overflow: visible (NOT hidden) — important для sticky-scroll в children (.ps-sticky-left) */
+.block-wrapper { overflow: visible; }
+.block-wrapper > div:not(.feedback-panel) { position: relative; }
+
+/* Hide stray hidden block-label (still need it for accessibility/lint, but ensure no layout impact) */
+.block-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+
+/* === RESPONSIVE TWEAKS === */
+@media(max-width:768px) {
+  .hero { padding: 60px 0 40px; min-height: auto; }
+  .container { padding: 0 24px; }
+  .step { flex-direction: column; gap: 1rem; }
+  .step-num { width: 48px; height: 48px; min-width: 48px; font-size: 1.25rem; }
+  .footer-wordmark span { font-size: 60px; }
+  .ps-num-card { grid-template-columns: 48px 1fr; gap: 1rem; }
+  .ps-num-circle { width: 48px; height: 48px; font-size: 1.25rem; }
+  .ps-ergebnis-callout, .ps-feature-highlight { padding: 1.5rem; }
+  .trust-item { grid-template-columns: 28px 1fr; gap: 1rem; }
+  .cards-grid { grid-template-columns: 1fr; }
+  .problem-solution-section .ps-problem-card { padding: 1.5rem; }
+  .ps-sticky-grid { gap: 1.5rem; }
+  .trust-2col { gap: 1.5rem; }
+}
 </style>
 </head>
 <body>
@@ -302,7 +853,7 @@ blockquote { border-left: 4px solid var(--accent); padding: 1rem 1.5rem; margin:
   </div>
   <div class="seo-bar-body">
     <div class="seo-row"><span class="seo-label">Title</span><span class="seo-value">IT-Remarketing - Restwert statt Kosten | EDELMET <span class="len-badge len-ok">48</span></span></div>
-    <div class="seo-row"><span class="seo-label">Description</span><span class="seo-value">IT-Remarketing für Unternehmen ✓ Hardware aufbereiten und vermarkten ✓ Datenlöschung inklusive ✓ CO₂-Einsparung dokumentiert. Jetzt Restwert anfragen. <span class="len-badge len-ok">150</span></span></div>
+    <div class="seo-row"><span class="seo-label">Description</span><span class="seo-value">IT-Remarketing für regulierte Branchen ✓ Datenlöschung nach DIN 66399 inklusive ✓ Restwert-Erlöse ✓ CO₂-Einsparung CSRD-konform dokumentiert ✓ Ab 50 Geräten. Jetzt Restwert anfragen. <span class="len-badge len-over">182</span></span></div>
     <div class="seo-row"><span class="seo-label">URL</span><span class="seo-value"><code>/leistungen/it-remarketing/</code></span></div>
     <div class="seo-row"><span class="seo-label">Schema.org</span><span class="seo-value"><span class="schema-tag">Organization</span><span class="schema-tag">BreadcrumbList</span><span class="schema-tag">FAQPage</span><span class="schema-tag">Service</span></span></div>
     <details class="seo-jsonld"><summary>JSON-LD Preview</summary><pre><code>{
@@ -321,12 +872,13 @@ blockquote { border-left: 4px solid var(--accent); padding: 1rem 1.5rem; margin:
   <div class="hero-overlay"></div>
   <div class="hero-content container">
     <h1>IT-Remarketing - Restwert statt Entsorgungskosten</h1>
+    
     <p class="hero-subline">Funktionsfähige Geräte entsorgen? Das muss nicht sein. Wir prüfen, löschen, bereiten auf und vermarkten Ihre IT-Hardware. Die Erlöse können Ihre Entsorgungskosten teilweise oder vollständig decken.</p>
     <div class="hero-ctas">
-      <a class="btn btn-primary">Restwert-Analyse anfordern</a>
+      <a class="btn btn-primary"><span>Restwert-Analyse anfordern</span><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd"/></svg></a>
       
     </div>
-    <div class="hero-trust">EfbV-Badge + CO₂-Bilanz</div>
+    <div class="hero-trust" data-full="EfbV-Badge + CO₂-Bilanz"><span class="hero-trust-item"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd"/></svg><span>EfbV-Entsorgungsfachbetrieb Nr. 2503067</span></span><span class="hero-trust-item"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd"/></svg><span>CO₂-Bilanz</span></span><span class="sr-only">EfbV-Badge + CO₂-Bilanz</span></div>
   </div>
   
 </div>
@@ -365,7 +917,7 @@ blockquote { border-left: 4px solid var(--accent); padding: 1rem 1.5rem; margin:
   <button class="feedback-btn" onclick="toggleFeedback(3)">✏️ Vorschlag</button>
   <div class="solution-section container">
   <h2>Prüfen. Löschen. Aufbereiten. Vermarkten.</h2>
-  <table class="content-table"><thead><tr><th>Schritt</th><th>Was passiert</th></tr></thead><tbody><tr><td>1. Sichtung</td><td>Wir prüfen Ihre Geräte auf Wiederverwendbarkeit: Zustand, Alter, Marktwert</td></tr><tr><td>2. Datenlöschung</td><td>Zertifizierte Löschung nach DIN 66399 - auch bei Remarketing-Geräten. Löschzertifikat pro Gerät</td></tr><tr><td>3. Aufbereitung</td><td>Funktionsfähige Geräte werden gereinigt, geprüft und für den Wiederverkauf vorbereitet</td></tr><tr><td>4. Vermarktung</td><td>Verkauf über zertifizierte B2B-Kanäle. Erlöse werden Ihnen gutgeschrieben</td></tr><tr><td>5. Dokumentation</td><td>CO₂-Einsparung pro Gerät dokumentiert - für Ihren ESG-Report</td></tr></tbody></table>
+  <p><strong>Prozess:</strong></p><table class="content-table"><thead><tr><th>Schritt</th><th>Was passiert</th></tr></thead><tbody><tr><td>1. Sichtung</td><td>Wir prüfen Ihre Geräte auf Wiederverwendbarkeit: Zustand, Alter, Marktwert</td></tr><tr><td>2. Datenlöschung</td><td>Zertifizierte Löschung nach DIN 66399 - auch bei Remarketing-Geräten. Löschzertifikat pro Gerät</td></tr><tr><td>3. Aufbereitung</td><td>Funktionsfähige Geräte werden gereinigt, geprüft und für den Wiederverkauf vorbereitet</td></tr><tr><td>4. Vermarktung</td><td>Verkauf über zertifizierte B2B-Kanäle. Erlöse werden Ihnen gutgeschrieben</td></tr><tr><td>5. Dokumentation</td><td>CO₂-Einsparung pro Gerät dokumentiert - für Ihren ESG-Report</td></tr></tbody></table><p><strong>Ab welcher Menge?</strong> IT-Remarketing ab 50 Geräten. Darunter lohnt sich in der Regel die zertifizierte Entsorgung.</p>
   
 </div>
   <div class="feedback-panel" id="feedback-panel-3">
@@ -385,7 +937,7 @@ blockquote { border-left: 4px solid var(--accent); padding: 1rem 1.5rem; margin:
   <div class="generic-section container">
   <h2>So rechnet sich IT-Remarketing für Ihr Unternehmen</h2>
   
-  <table class="content-table"><thead><tr><th>Szenario</th><th>Ohne Remarketing</th><th>Mit EDELMET Remarketing</th></tr></thead><tbody><tr><td>200 Laptops, 3 Jahre alt</td><td>Entsorgungskosten</td><td>Remarketing-Erlöse decken Entsorgungskosten teilweise oder vollständig</td></tr><tr><td>50 Server-Racks, 5 Jahre alt</td><td>Hohe Entsorgungskosten (Gewicht)</td><td>Edelmetall-Anteil und funktionierende Komponenten generieren Restwert</td></tr><tr><td>100 Monitore</td><td>Entsorgungskosten</td><td>Aufbereitete Monitore haben stabilen Wiederverkaufswert</td></tr></tbody></table>
+  <table class="content-table"><thead><tr><th>Szenario</th><th>Ohne Remarketing</th><th>Mit EDELMET Remarketing</th></tr></thead><tbody><tr><td>200 Laptops, 3 Jahre alt</td><td>Entsorgungskosten</td><td>Remarketing-Erlöse decken Entsorgungskosten teilweise oder vollständig</td></tr><tr><td>50 Server-Racks, 5 Jahre alt</td><td>Hohe Entsorgungskosten (Gewicht)</td><td>Edelmetall-Anteil und funktionierende Komponenten generieren Restwert</td></tr><tr><td>100 Monitore</td><td>Entsorgungskosten</td><td>Aufbereitete Monitore haben stabilen Wiederverkaufswert</td></tr></tbody></table><p><strong>Transparente Kalkulation:</strong> Sie erhalten vor der Abholung eine Einschätzung des erwarteten Restwerts - kein Kleingedrucktes, keine Überraschungen.</p>
 </div>
   <div class="feedback-panel" id="feedback-panel-4">
     <label>Ihr Vorschlag für Block 4 - ECONOMICS:</label>
@@ -401,7 +953,50 @@ blockquote { border-left: 4px solid var(--accent); padding: 1rem 1.5rem; margin:
 <section class="block-wrapper block-trust" id="block-5">
   <span class="block-label" style="display:none">Block 5 - TRUST</span>
   <button class="feedback-btn" onclick="toggleFeedback(5)">✏️ Vorschlag</button>
-  <div class="trust-bar container"><div class="trust-badges"><div class="trust-badge"><span class="trust-icon">🔒</span><span>Auch Remarketing-Geräte werden nach DIN 66399 gelöscht - kein Gerät verlässt unsere Anlage mit Daten</span></div><div class="trust-badge"><span class="trust-icon">🛡️</span><span>Nr. 2503067 - regelmäßig geprüfter Entsorgungsfachbetrieb</span></div><div class="trust-badge"><span class="trust-icon">🌱</span><span>Jedes aufbereitete Gerät = dokumentierte CO₂-Einsparung für Ihren ESG-Report</span></div><div class="trust-badge"><span class="trust-icon">•</span><span>Alle Geräte werden in Deutschland verarbeitet und vermarktet</span></div></div></div>
+  <div class="trust-section trust-2col container">
+  <div class="trust-2col-left">
+    <div class="block-kicker trust-kicker">Vertrauen</div>
+    <h2>Datenlöschung inklusive, CO₂-Einsparung dokumentiert</h2>
+  </div>
+  <div class="trust-2col-right">
+      <div class="trust-item">
+        <div class="trust-item-icon">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 1.944A11.954 11.954 0 012.166 5C2.056 5.649 2 6.319 2 7c0 5.225 3.34 9.67 8 11.317C14.66 16.67 18 12.225 18 7c0-.682-.057-1.35-.166-2.001A11.954 11.954 0 0110 1.944zM11 14a1 1 0 11-2 0 1 1 0 012 0zm0-7a1 1 0 10-2 0v3a1 1 0 102 0V7z" clip-rule="evenodd"/></svg>
+        </div>
+        <div class="trust-item-body">
+          <h4>Datenlöschung</h4>
+          <p>Auch Remarketing-Geräte werden nach DIN 66399 gelöscht - kein Gerät verlässt unsere Anlage mit Daten</p>
+        </div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-item-icon">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/></svg>
+        </div>
+        <div class="trust-item-body">
+          <h4>EfbV-zertifiziert</h4>
+          <p>Nr. 2503067 - regelmäßig geprüfter Entsorgungsfachbetrieb</p>
+        </div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-item-icon">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/><path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"/></svg>
+        </div>
+        <div class="trust-item-body">
+          <h4>CO₂-Dokumentation</h4>
+          <p>Jedes aufbereitete Gerät = dokumentierte CO₂-Einsparung für Ihren ESG-Report</p>
+        </div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-item-icon">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd"/></svg>
+        </div>
+        <div class="trust-item-body">
+          <h4>Keine Drittländer</h4>
+          <p>Alle Geräte werden in Deutschland verarbeitet und vermarktet</p>
+        </div>
+      </div>
+  </div>
+</div>
   <div class="feedback-panel" id="feedback-panel-5">
     <label>Ihr Vorschlag für Block 5 - TRUST:</label>
     <textarea id="feedback-text-5" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
@@ -416,23 +1011,33 @@ blockquote { border-left: 4px solid var(--accent); padding: 1rem 1.5rem; margin:
 <section class="block-wrapper block-faq" id="block-6">
   <span class="block-label" style="display:none">Block 6 - FAQ</span>
   <button class="feedback-btn" onclick="toggleFeedback(6)">✏️ Vorschlag</button>
-  <div class="faq-section container"><h2>Häufige Fragen zum IT-Remarketing</h2><div class="faq-item">
-  <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
-    <span>Werden meine Daten auch bei Remarketing-Geräten gelöscht?</span><span class="faq-icon">+</span>
-  </button>
-  <div class="faq-a"><p>Ja, ausnahmslos. Jedes Gerät wird vor der Aufbereitung nach DIN 66399 gelöscht. Sie erhalten ein individuelles Löschzertifikat, unabhängig davon, ob das Gerät entsorgt oder weiterverkauft wird.</p></div>
-</div><div class="faq-item">
-  <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
-    <span>Wie wird der Restwert berechnet?</span><span class="faq-icon">+</span>
-  </button>
-  <div class="faq-a"><p>Der Restwert hängt von Gerätetyp, Alter, Zustand und aktuellem Marktwert ab. Nach der Sichtung erhalten Sie eine transparente Kalkulation, vor der Abholung, nicht danach.</p></div>
-</div><div class="faq-item">
-  <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
-    <span>Was passiert mit Geräten, die nicht mehr verkaufsfähig sind?</span><span class="faq-icon">+</span>
-  </button>
-  <div class="faq-a"><p>Geräte ohne Wiederverkaufswert werden fachgerecht entsorgt: Wertvolle Rohstoffe (Edelmetalle, Kupfer) werden zurückgewonnen, der Rest nach EfbV-Standards behandelt. Nichts landet auf der Deponie.</p>
-<p>---</p></div>
-</div></div>
+  <div class="faq-section container">
+  <div class="block-kicker">FAQ</div>
+  <h2>Häufige Fragen zum IT-Remarketing</h2>
+  <div class="faq-list">
+  <details class="faq-item">
+    <summary class="faq-q">
+      <span class="faq-q-text">Werden meine Daten auch bei Remarketing-Geräten gelöscht?</span>
+      <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+    </summary>
+    <div class="faq-a"><p>Ja, ausnahmslos. Jedes Gerät wird vor der Aufbereitung nach DIN 66399 gelöscht. Sie erhalten ein individuelles Löschzertifikat, unabhängig davon, ob das Gerät entsorgt oder weiterverkauft wird.</p></div>
+  </details>
+  <details class="faq-item">
+    <summary class="faq-q">
+      <span class="faq-q-text">Wie wird der Restwert berechnet?</span>
+      <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+    </summary>
+    <div class="faq-a"><p>Der Restwert hängt von Gerätetyp, Alter, Zustand und aktuellem Marktwert ab. Nach der Sichtung erhalten Sie eine transparente Kalkulation, vor der Abholung, nicht danach.</p></div>
+  </details>
+  <details class="faq-item">
+    <summary class="faq-q">
+      <span class="faq-q-text">Was passiert mit Geräten, die nicht mehr verkaufsfähig sind?</span>
+      <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+    </summary>
+    <div class="faq-a"><p>Geräte ohne Wiederverkaufswert werden fachgerecht entsorgt: Wertvolle Rohstoffe (Edelmetalle, Kupfer) werden zurückgewonnen, der Rest nach EfbV-Standards behandelt. Nichts landet auf der Deponie.</p></div>
+  </details>
+  </div>
+</div>
   <div class="feedback-panel" id="feedback-panel-6">
     <label>Ihr Vorschlag für Block 6 - FAQ:</label>
     <textarea id="feedback-text-6" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
@@ -448,10 +1053,14 @@ blockquote { border-left: 4px solid var(--accent); padding: 1rem 1.5rem; margin:
   <span class="block-label" style="display:none">Block 7 - CTA</span>
   <button class="feedback-btn" onclick="toggleFeedback(7)">✏️ Vorschlag</button>
   <div class="cta-section">
-  <div class="container">
+  <div class="container cta-container">
     <h2>Hardware-Restwert ermitteln, kostenlose Einschätzung</h2>
-    <p class="cta-text">Senden Sie uns eine Liste Ihrer Geräte (Typ, Alter, Menge). Wir schätzen den Restwert ein und erstellen ein unverbindliches Angebot, kostenlos und innerhalb von 24 Stunden. Kein Risiko, keine Verpflichtung.</p>
-    <a class="btn btn-primary btn-lg">Restwert-Analyse anfordern</a>
+    <div class="cta-divider"></div>
+    <div class="cta-body">
+      <p class="cta-text">Senden Sie uns eine Liste Ihrer Geräte (Typ, Alter, Menge). Wir schätzen den Restwert ein und erstellen ein unverbindliches Angebot, kostenlos und innerhalb von 24 Stunden. Kein Risiko, keine Verpflichtung.</p>
+      <a class="btn btn-cta-white btn-lg" href="#"><span>Restwert-Analyse anfordern</span><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd"/></svg></a>
+    </div>
+    <p class="cta-feature">⚡ Hardware-Listen-Upload: Excel/CSV-Datei mit Ihren Geräten hochladen <span class="arrow-link">→ automatisierte Vorqualifizierung</span></p>
     
   </div>
 </div>
@@ -466,20 +1075,56 @@ blockquote { border-left: 4px solid var(--accent); padding: 1rem 1.5rem; margin:
     </div>
   </div>
 </section>
-
+<div class="bottom-line-tagline">EfbV-zertifiziert · Eigene Anlage · Eigener Fuhrpark · Alles aus einer Hand - in NRW.</div>
 </main>
 <footer class="site-footer">
-  <div class="container footer-grid">
-    <div class="footer-col">
-      <p>EDELMET GmbH<br>Ophauser Straße 24, 58089 Hagen<br>Tel: +49 2330 6194998 · info@edelmet.de</p>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col footer-col-brand">
+        <span class="nav-brand">EDELMET GmbH</span>
+        <p>Compliance-Partner für IT-Entsorgung in regulierten Branchen.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Für Unternehmen</h5>
+        <p>
+          <a href="edelmet_preview_10_zg_it_mittelstand.html">IT-Mittelstand</a><br>
+          <a href="edelmet_preview_11_zg_rechenzentren.html">Rechenzentren</a><br>
+          <a href="edelmet_preview_12_zg_kommunen.html">Kommunen &amp; Behörden</a><br>
+          <a href="edelmet_preview_19_zg_finanzinstitute.html">Finanzinstitute</a><br>
+          <a href="edelmet_preview_20_zg_versicherungen.html">Versicherungen</a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <h5>Kontakt</h5>
+        <p>
+          +49 (0) 172 77 22 066<br>
+          info@edelmet.de<br><br>
+          Mo–Do 08:00–17:00<br>
+          Fr 08:00–16:00
+        </p>
+      </div>
+      <div class="footer-col">
+        <h5>Standorte</h5>
+        <p>
+          <strong style="color:#fff;">Hauptsitz:</strong><br>
+          Siedlerstraße 29<br>
+          58313 Herdecke<br><br>
+          <strong style="color:#fff;">Betriebsstätte:</strong><br>
+          Ophauser Straße 24<br>
+          58089 Hagen
+        </p>
+      </div>
     </div>
-    <div class="footer-col footer-links">
-      <a href="edelmet_preview_16_privatankauf.html">Privatankauf</a>
-      <a href="edelmet_preview_17_impressum.html">Impressum</a><a href="edelmet_preview_18_datenschutz.html">Datenschutz</a>
+    <div class="footer-wordmark">
+      <span>EDELMET</span>
     </div>
-  </div>
-  <div class="footer-bottom container">
-    <p>© 2026 EDELMET GmbH</p>
+    <div class="footer-bottom">
+      <div>© 2026 EDELMET GmbH · EfbV Nr. 2503067 · HRB 10609 Amtsgericht Hagen</div>
+      <div class="footer-links">
+        <a href="edelmet_preview_16_privatankauf.html">Privatankauf</a>
+        <a href="edelmet_preview_17_impressum.html">Impressum</a><a href="edelmet_preview_18_datenschutz.html">Datenschutz</a>
+      </div>
+    </div>
   </div>
 </footer>
 <div class="export-overlay" id="exportOverlay">
