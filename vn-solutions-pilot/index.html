@@ -679,64 +679,121 @@ table.data tr:hover td { background: rgba(168,208,217,0.03); }
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════
-     SLIDE 10 — БЮДЖЕТ
+     SLIDE 10 — БЮДЖЕТ · ДВА ВАРИАНТА
 ═══════════════════════════════════════════════════════════════ -->
 <section class="slide" id="s10">
-  <div class="label">Распределение 500 €/мес</div>
-  <h2 class="text-[clamp(1.9rem,3.2vw,2.8rem)] font-bold mb-10 max-w-[900px]">
-    По странам и услугам.
+  <div class="label">Распределение 500 €/мес · Choice point</div>
+  <h2 class="text-[clamp(1.7rem,2.8vw,2.4rem)] font-bold mb-8 max-w-[1100px]">
+    Два варианта. <span style="color:var(--color-accent);">Решение за вами.</span>
   </h2>
 
-  <table class="data max-w-[1100px] w-full mb-8">
+  <div class="grid grid-cols-2 gap-6 max-w-[1200px] w-full mb-6">
+
+    <!-- OPTION 1 -->
+    <div class="card" style="border-color: rgba(122,217,156,0.4);">
+      <div class="pill pill-green mb-3">Option 1 · Рекомендуем</div>
+      <div class="font-bold text-lg mb-3">Focus 2×2 — реальный сигнал</div>
+      <table class="data w-full mb-4" style="font-size:.85rem;">
+        <thead>
+          <tr>
+            <th></th>
+            <th class="num">🇰🇿 KZ</th>
+            <th class="num">🇺🇿 UZ</th>
+            <th class="num">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Онкология</strong></td>
+            <td class="num">125&nbsp;€</td>
+            <td class="num">125&nbsp;€</td>
+            <td class="num" style="color:var(--color-success);font-weight:700;">250&nbsp;€</td>
+          </tr>
+          <tr>
+            <td><strong>Урология</strong></td>
+            <td class="num">125&nbsp;€</td>
+            <td class="num">125&nbsp;€</td>
+            <td class="num" style="color:var(--color-success);font-weight:700;">250&nbsp;€</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="text-sm" style="color:#9ca0aa;">
+        <strong style="color:var(--color-success);">€125 × 4 ячейки → 50-80 кликов на ячейку</strong> за 6 нед = статистически значимый сигнал. AZ + GE — после первого сигнала или мини-тест из резерва.
+      </div>
+    </div>
+
+    <!-- OPTION 2 -->
+    <div class="card">
+      <div class="pill pill-yellow mb-3">Option 2 · Fallback</div>
+      <div class="font-bold text-lg mb-3">Spread 4×4 — широкое покрытие</div>
+      <table class="data w-full mb-4" style="font-size:.78rem;">
+        <thead>
+          <tr>
+            <th></th>
+            <th class="num">🇰🇿</th>
+            <th class="num">🇺🇿</th>
+            <th class="num">🇦🇿</th>
+            <th class="num">🇬🇪</th>
+            <th class="num">∑</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Онко · 50%</td>
+            <td class="num">125</td>
+            <td class="num">75</td>
+            <td class="num">25</td>
+            <td class="num">25</td>
+            <td class="num" style="color:var(--color-accent);font-weight:700;">250</td>
+          </tr>
+          <tr>
+            <td>Уро · 25%</td>
+            <td class="num">62</td>
+            <td class="num">37</td>
+            <td class="num">13</td>
+            <td class="num">13</td>
+            <td class="num" style="color:var(--color-accent);font-weight:700;">125</td>
+          </tr>
+          <tr>
+            <td>Орто · 15%</td>
+            <td class="num">38</td>
+            <td class="num">22</td>
+            <td class="num">7</td>
+            <td class="num">8</td>
+            <td class="num" style="color:var(--color-accent);font-weight:700;">75</td>
+          </tr>
+          <tr style="opacity:.6;">
+            <td>Check-up · 10% ⚠️</td>
+            <td class="num">25</td>
+            <td class="num">16</td>
+            <td class="num">5</td>
+            <td class="num">4</td>
+            <td class="num">50</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="text-sm" style="color:#9ca0aa;">
+        16 ячеек × ~€4-125. AZ/GE по ~€30/ячейка — ниже порога stat-значимости, но даёт broad-coverage data сразу.
+      </div>
+    </div>
+
+  </div>
+
+  <table class="data max-w-[1100px] w-full" style="font-size:.82rem;">
     <thead>
       <tr>
-        <th></th>
-        <th class="num">🇰🇿 KZ (250&nbsp;€)</th>
-        <th class="num">🇺🇿 UZ (150&nbsp;€)</th>
-        <th class="num">🇦🇿 AZ (50&nbsp;€)</th>
-        <th class="num">🇬🇪 GE (50&nbsp;€)</th>
-        <th class="num">Total</th>
+        <th>Параметр</th>
+        <th>Option 1 · Focus</th>
+        <th>Option 2 · Spread</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td><strong>Онкология · 50%</strong></td>
-        <td class="num">125&nbsp;€</td>
-        <td class="num">75&nbsp;€</td>
-        <td class="num">25&nbsp;€</td>
-        <td class="num">25&nbsp;€</td>
-        <td class="num" style="color:var(--color-accent);font-weight:700;">250&nbsp;€</td>
-      </tr>
-      <tr>
-        <td><strong>Урология · 25%</strong></td>
-        <td class="num">62&nbsp;€</td>
-        <td class="num">37&nbsp;€</td>
-        <td class="num">13&nbsp;€</td>
-        <td class="num">13&nbsp;€</td>
-        <td class="num" style="color:var(--color-accent);font-weight:700;">125&nbsp;€</td>
-      </tr>
-      <tr>
-        <td><strong>Ортопедия · 15%</strong></td>
-        <td class="num">38&nbsp;€</td>
-        <td class="num">22&nbsp;€</td>
-        <td class="num">7&nbsp;€</td>
-        <td class="num">8&nbsp;€</td>
-        <td class="num" style="color:var(--color-accent);font-weight:700;">75&nbsp;€</td>
-      </tr>
-      <tr style="opacity:.7;">
-        <td><strong>Check-up · 10%</strong> ⚠️</td>
-        <td class="num">25&nbsp;€</td>
-        <td class="num">16&nbsp;€</td>
-        <td class="num">5&nbsp;€</td>
-        <td class="num">4&nbsp;€</td>
-        <td class="num">50&nbsp;€</td>
-      </tr>
+      <tr><td>Ячеек</td><td>4</td><td>16</td></tr>
+      <tr><td>Бюджет на ячейку (6 нед)</td><td style="color:var(--color-success);font-weight:700;">€125</td><td>€4–125</td></tr>
+      <tr><td>Statistical signal</td><td style="color:var(--color-success);font-weight:700;">Real</td><td>Symbolic в AZ/GE</td></tr>
+      <tr><td>Покрытие demand</td><td>~80%</td><td>100% символически</td></tr>
     </tbody>
   </table>
-
-  <div class="callout callout-warn max-w-[1100px] w-full">
-    <strong style="color:var(--color-warn);">Альтернатива на обсуждение:</strong> Спред по 16 ячейкам (4 страны × 4 услуги) = ~30&nbsp;€ на ячейку за 6 недель = слишком тонко для статистики. <strong>Рекомендация:</strong> сфокусироваться на <strong>KZ + UZ × Онко + Уро = 4 ячейки × 125&nbsp;€</strong>. AZ и GE — пробные мини-тесты или после первого сигнала.
-  </div>
 
   <div class="sn">10 · 17</div>
 </section>
