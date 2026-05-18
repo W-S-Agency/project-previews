@@ -182,8 +182,9 @@ blockquote { border-left: 4px solid var(--accent); padding: 1rem 1.5rem; margin:
 .lead-magnet-content .btn-accent:hover { background: #FFF94D; }
 
 /* === PROBLEM === */
-.problem-section { padding: 60px 0; background: #fef8f0; border-left: 4px solid var(--warning); }
-.problem-section h2 { color: var(--secondary); }
+/* Problem section — legacy fef8f0 warning-strip retired (D-QA-2026-05-18-001) */
+.problem-section { padding: 60px 0; background: transparent; border-left: 0; }
+.problem-section h2 { color: #2B2D33; }
 .problem-solution-section { padding: 60px 0; }
 .problem-solution-section h2 { color: var(--secondary); margin-bottom: 1.5rem; }
 .problem-solution-section h3 { color: var(--primary); margin-top: 2rem; margin-bottom: 1rem; }
@@ -484,7 +485,10 @@ h1, h2, h3, h4, h5 { font-feature-settings: 'wdth' 120; letter-spacing: -0.015em
 
 /* === STORY / FACILITY / TEAM / CONTACT === */
 .block-story, .block-facility, .block-team, .block-contact_info, .block-contact_person, .block-info_table, .block-solution { background: white; padding: 80px 0; }
-.block-story h2, .block-facility h2, .block-team h2, .block-contact_info h2, .block-contact_person h2, .block-info_table h2, .block-solution h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 500; line-height: 1.1; }
+/* Andrey: dark H2 across all light-bg blocks (override global h2 secondary-gray default) */
+.block-story h2, .block-facility h2, .block-team h2, .block-contact_info h2, .block-contact_person h2, .block-info_table h2, .block-solution h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 500; line-height: 1.1; color: #2B2D33; }
+.solution-section h2, .info-table-section h2, .story-section h2, .facility-section h2, .team-section h2, .form-section h2, .contact-info-section h2, .contact-person-section h2 { color: #2B2D33; }
+.block-wrapper.block-form h2, .block-wrapper.block-contact_info h2, .block-wrapper.block-contact_person h2 { color: #2B2D33; font-size: clamp(2rem, 4vw, 3rem); font-weight: 500; line-height: 1.1; }
 
 /* === TABLES (default for non-trust-non-problem_solution) === */
 .content-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; background: white; border-radius: 8px; overflow: hidden; }
@@ -861,7 +865,7 @@ details.faq-item > .faq-a p:last-child { margin-bottom: 0; }
 <div class="index-header">
   <div class="container">
     <h1>📄 EDELMET GmbH — Content Preview</h1>
-    <p>20 Seiten · Generiert am 18.05.2026, 10:31</p>
+    <p>20 Seiten · Generiert am 18.05.2026, 11:51</p>
   </div>
 </div>
 <div class="container">
