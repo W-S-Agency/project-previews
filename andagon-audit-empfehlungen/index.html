@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="de" class="h-full">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lead Generation Audit — andagon People | W&S Agency</title>
+
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style type="text/tailwindcss">
+  @theme {
+    --color-bg:     #1e1e1e;
+    --color-surf:   #282828;
+    --color-surf2:  #333333;
+    --color-text:   #F8FBFD;
+    --color-muted:  #808285;
+    --color-sub:    #CED0D3;
+    --color-border: rgba(255,255,255,0.08);
+    --color-accent: #F96C40;
+    --color-accent2: #EB5939;
+    --color-good:   #4ADE80;
+    --color-warn:   #FBBF24;
+    --color-bad:    #FA4362;
+    --font-mono:    'SF Mono', 'Courier New', monospace;
+  }
+
+  @layer base {
+    html { scroll-behavior: smooth; }
+    body { background: var(--color-bg); color: var(--color-text); }
+  }
+
+  @layer components {
+    .slide {
+      @apply relative flex flex-col justify-center items-center;
+      @apply h-screen min-h-[600px] px-20 py-16 overflow-hidden;
+      background: var(--color-bg);
+    }
+    .label {
+      @apply text-[13px] tracking-[.14em] uppercase font-mono;
+      color: var(--color-accent);
+      margin-bottom: 1.2rem;
+      font-weight: 600;
+    }
+    .pill {
+      @apply inline-block px-3 py-1 rounded-full text-[10px] tracking-[.08em] uppercase font-mono font-semibold;
+    }
+    .card {
+      @apply rounded-xl p-7;
+      background: var(--color-surf);
+      border: 1px solid var(--color-border);
+    }
+    .sn {
+      @apply absolute bottom-7 left-20 font-mono text-[10px] tracking-[.1em];
+      color: var(--color-muted);
+    }
+    .metric-big {
+      @apply text-[3.5rem] font-extrabold leading-none;
+      color: var(--color-accent);
+    }
+    .metric-label {
+      @apply text-[.85rem] mt-2;
+      color: var(--color-muted);
+    }
+    .bar {
+      @apply rounded-full h-3;
+      background: var(--color-surf2);
+    }
+    .bar-fill {
+      @apply rounded-full h-3;
+      transition: width 0.8s ease;
+    }
+  }
+</style>
+
+<style>
+html { font-size: 18px; }
+body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
+
+.slide { display: none; }
+.slide.active { display: flex; }
+
+.nav-dots {
+  position: fixed; right: 28px; top: 50%; transform: translateY(-50%);
+  display: flex; flex-direction: column; gap: 8px; z-index: 99;
+}
+.nd {
+  width: 8px; height: 8px; border-radius: 50%; border: none;
+  background: rgba(255,255,255,0.15); cursor: pointer; padding: 0;
+  transition: all 0.2s;
+}
+.nd.on { background: var(--color-accent); transform: scale(1.3); }
+.nd:hover { background: rgba(249,108,64,0.5); }
+
+#slide-counter {
+  position: fixed; bottom: 28px; right: 28px; z-index: 99;
+  font-family: 'SF Mono', monospace; font-size: 11px; letter-spacing: .08em;
+  color: rgba(255,255,255,0.2);
+}
+
+.nav-arrow {
+  position: fixed; top: 50%; z-index: 99; transform: translateY(-50%);
+  width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.1);
+  background: var(--color-surf); cursor: pointer; font-size: 18px; color: var(--color-sub);
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s;
+}
+.nav-arrow:hover { background: var(--color-accent); color: white; border-color: var(--color-accent); }
+.nav-arrow:disabled { opacity: 0.15; cursor: default; }
+.nav-arrow:disabled:hover { background: var(--color-surf); color: var(--color-sub); }
+#btn-prev { left: 20px; }
+#btn-next { right: 56px; }
+
+@keyframes growBar { from { width: 0; } }
+.slide.active .bar-fill { animation: growBar 1s ease-out; }
+
+.data-table { border-collapse: collapse; width: 100%; }
+.data-table th { text-align: left; font-size: .75rem; text-transform: uppercase; letter-spacing: .06em; color: var(--color-muted); padding: 8px 16px; border-bottom: 2px solid var(--color-surf2); font-family: 'SF Mono', monospace; }
+.data-table td { padding: 12px 16px; border-bottom: 1px solid var(--color-surf2); font-size: .95rem; color: var(--color-sub); }
+.data-table tr:last-child td { border-bottom: none; }
+.data-table .highlight td { font-weight: 700; background: rgba(249,108,64,0.06); color: var(--color-text); }
+
+@media (max-width: 1024px) { html { font-size: 16px; } }
+@media (max-width: 768px) {
+  html { font-size: 15px; }
+  .slide { padding: 48px 24px !important; min-height: 100vh !important; height: auto !important; }
+  .nav-dots { display: none; }
+  .sn { display: none !important; }
+  .nav-arrow { display: none; }
+  .grid { grid-template-columns: 1fr !important; }
+}
+</style>
+</head>
+<body class="h-full">
+
+<!-- NAVIGATION -->
+<nav class="nav-dots" id="dots"></nav>
+<div id="slide-counter">01 · 08</div>
+<button class="nav-arrow" id="btn-prev">&#8592;</button>
+<button class="nav-arrow" id="btn-next">&#8594;</button>
+
+<!-- SLIDE 01 — TITLE -->
+<section class="slide active" id="s01">
+  <div class="label" style="color: rgba(249,108,64,0.6);">Lead Generation Audit · Mai 2026</div>
+  <h1 class="text-[clamp(2.2rem,4.5vw,3.5rem)] font-extrabold leading-[1.1] max-w-[800px] text-center" style="color: #F8FBFD;">
+    Ergebnisse & Empfehlungen<br>
+    <span style="color: #F96C40;">andagon People GmbH</span>
+  </h1>
+  <p class="mt-6 text-[1.1rem] text-center max-w-[600px]" style="color: var(--color-muted);">
+    Audit der digitalen Sichtbarkeit und Lead-Generierung<br>
+    im Vergleich mit drei direkten Wettbewerbern
+  </p>
+  <div class="mt-12 flex items-center gap-3" style="color: rgba(255,255,255,0.25); font-size: .85rem;">
+    <span style="font-weight:700;letter-spacing:.05em;">WS</span><span style="opacity:0.4;">agency</span>
+    <span style="opacity:0.3;">|</span>
+    <span>Modul 1 der Marketingkonzeption</span>
+  </div>
+  <div class="sn" style="color: rgba(255,255,255,0.15);">01 · 08</div>
+</section>
+
+<!-- SLIDE 02 — SITE SCORE COMPARISON -->
+<section class="slide" id="s02">
+  <div class="label">Erkenntnis 1</div>
+  <h2 class="text-[clamp(1.6rem,3vw,2.4rem)] font-bold mb-3 text-center max-w-[700px]">
+    Die Website verliert Besucher,<br>statt sie zu gewinnen
+  </h2>
+  <p class="text-center mb-10" style="color: var(--color-muted); max-width: 600px; font-size: .95rem;">
+    Site Score im Vergleich mit drei direkten Wettbewerbern (Semrush, Mai 2026)
+  </p>
+
+  <div class="max-w-[640px] w-full flex flex-col gap-5">
+    <div class="flex items-center gap-4">
+      <div class="w-[100px] text-right text-[.9rem] font-medium" style="color:var(--color-sub);">testbee</div>
+      <div class="flex-1 bar"><div class="bar-fill" style="width:62%;background:var(--color-good);"></div></div>
+      <div class="w-[60px] text-[1.1rem] font-bold" style="color:var(--color-good);">62</div>
+    </div>
+    <div class="flex items-center gap-4">
+      <div class="w-[100px] text-right text-[.9rem] font-medium" style="color:var(--color-sub);">Qytera</div>
+      <div class="flex-1 bar"><div class="bar-fill" style="width:58%;background:var(--color-good);"></div></div>
+      <div class="w-[60px] text-[1.1rem] font-bold" style="color:var(--color-good);">58</div>
+    </div>
+    <div class="flex items-center gap-4">
+      <div class="w-[100px] text-right text-[.9rem] font-medium" style="color:var(--color-sub);">imbus</div>
+      <div class="flex-1 bar"><div class="bar-fill" style="width:50%;background:var(--color-warn);"></div></div>
+      <div class="w-[60px] text-[1.1rem] font-bold" style="color:var(--color-warn);">50</div>
+    </div>
+    <div class="flex items-center gap-4">
+      <div class="w-[100px] text-right text-[.9rem] font-bold" style="color:var(--color-accent);">andagon</div>
+      <div class="flex-1 bar"><div class="bar-fill" style="width:38%;background:var(--color-bad);"></div></div>
+      <div class="w-[60px] text-[1.1rem] font-extrabold" style="color:var(--color-bad);">38</div>
+    </div>
+  </div>
+
+  <div class="mt-10 grid grid-cols-3 gap-5 max-w-[640px] w-full">
+    <div class="card text-center py-5">
+      <div class="text-[.7rem] uppercase tracking-widest mb-2" style="color:var(--color-muted);">Kontaktformular</div>
+      <div class="text-[1.3rem] font-bold" style="color:var(--color-bad);">Fehlt</div>
+    </div>
+    <div class="card text-center py-5">
+      <div class="text-[.7rem] uppercase tracking-widest mb-2" style="color:var(--color-muted);">Cookie-Consent</div>
+      <div class="text-[1.3rem] font-bold" style="color:var(--color-bad);">Bug</div>
+    </div>
+    <div class="card text-center py-5">
+      <div class="text-[.7rem] uppercase tracking-widest mb-2" style="color:var(--color-muted);">NPS 9.8 sichtbar</div>
+      <div class="text-[1.3rem] font-bold" style="color:var(--color-bad);">Nein</div>
+    </div>
+  </div>
+
+  <div class="sn">02 · 08</div>
+</section>
+
+<!-- SLIDE 03 — LINKEDIN -->
+<section class="slide" id="s03">
+  <div class="label">Erkenntnis 2</div>
+  <h2 class="text-[clamp(1.6rem,3vw,2.4rem)] font-bold mb-3 text-center max-w-[700px]">
+    LinkedIn: Reichweite ohne Wirkung
+  </h2>
+  <p class="text-center mb-10" style="color: var(--color-muted); max-width: 600px; font-size: .95rem;">
+    Engagement-Rate im 90-Tage-Vergleich (6 Profile)
+  </p>
+
+  <div class="grid grid-cols-2 gap-8 max-w-[700px] w-full">
+    <div class="card text-center">
+      <div class="text-[.8rem] font-mono uppercase tracking-widest mb-3" style="color:var(--color-muted);">andagon Firmenseite</div>
+      <div class="text-[3rem] font-extrabold leading-none" style="color:var(--color-bad);">0,1%</div>
+      <div class="text-[.85rem] mt-2" style="color:var(--color-muted);">Engagement-Rate</div>
+      <div class="mt-4 text-[1.1rem] font-semibold" style="color:var(--color-sub);">12.000 Follower</div>
+      <div class="text-[.8rem]" style="color:var(--color-muted);">Gr&ouml;&szlig;te Seite im Vergleich</div>
+    </div>
+    <div class="card text-center" style="border-color: rgba(74,222,128,0.25);">
+      <div class="text-[.8rem] font-mono uppercase tracking-widest mb-3" style="color:var(--color-muted);">testbee (Benchmark)</div>
+      <div class="text-[3rem] font-extrabold leading-none" style="color:var(--color-good);">4,1%</div>
+      <div class="text-[.85rem] mt-2" style="color:var(--color-muted);">Engagement-Rate</div>
+      <div class="mt-4 text-[1.1rem] font-semibold" style="color:var(--color-sub);">462 Follower</div>
+      <div class="text-[.8rem] font-semibold" style="color:var(--color-good);">30x mehr Resonanz</div>
+    </div>
+  </div>
+
+  <div class="mt-8 grid grid-cols-3 gap-4 max-w-[700px] w-full">
+    <div class="card py-4 px-5">
+      <div class="flex items-start gap-2">
+        <i data-lucide="globe" style="width:16px;height:16px;color:var(--color-accent);flex-shrink:0;margin-top:2px;"></i>
+        <div class="text-[.82rem]" style="color:var(--color-sub);">Yana postet 80% auf <strong style="color:var(--color-text);">Englisch</strong> -- Zielgruppe ist DACH</div>
+      </div>
+    </div>
+    <div class="card py-4 px-5">
+      <div class="flex items-start gap-2">
+        <i data-lucide="trending-down" style="width:16px;height:16px;color:var(--color-bad);flex-shrink:0;margin-top:2px;"></i>
+        <div class="text-[.82rem]" style="color:var(--color-sub);"><strong style="color:var(--color-text);">Qytera</strong> seit 11 Monaten inaktiv -- strategische L&uuml;cke</div>
+      </div>
+    </div>
+    <div class="card py-4 px-5">
+      <div class="flex items-start gap-2">
+        <i data-lucide="eye-off" style="width:16px;height:16px;color:var(--color-bad);flex-shrink:0;margin-top:2px;"></i>
+        <div class="text-[.82rem]" style="color:var(--color-sub);"><strong style="color:var(--color-text);">NPS 9.8</strong> auf keinem Profil erw&auml;hnt</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sn">03 · 08</div>
+</section>
+
+<!-- SLIDE 04 — TRIGGER-THEMEN -->
+<section class="slide" id="s04">
+  <div class="label">Erkenntnis 3</div>
+  <h2 class="text-[clamp(1.6rem,3vw,2.4rem)] font-bold mb-3 text-center max-w-[700px]">
+    Aktuelle Marktthemen -- online unsichtbar
+  </h2>
+  <p class="text-center mb-8" style="color: var(--color-muted); max-width: 620px; font-size: .95rem;">
+    Drei Gesetze erzeugen akuten Testing-Bedarf bei Gro&szlig;unternehmen. QA-Beratungen wie andagon und deren Wettbewerber k&ouml;nnen davon profitieren.
+  </p>
+
+  <div class="grid grid-cols-3 gap-5 max-w-[880px] w-full">
+    <div class="card">
+      <div class="flex items-center gap-2 mb-4">
+        <span class="pill" style="background:rgba(249,108,64,0.12);color:var(--color-accent);">Pflicht seit 06/2025</span>
+      </div>
+      <div class="text-[1.1rem] font-bold mb-2">BFSG</div>
+      <div class="text-[.85rem]" style="color:var(--color-muted);">Software muss barrierefrei sein. Unternehmen brauchen <strong style="color:var(--color-text);">Barrierefreiheits-Testing</strong> -- klassische QA-Arbeit.</div>
+    </div>
+    <div class="card">
+      <div class="flex items-center gap-2 mb-4">
+        <span class="pill" style="background:rgba(251,191,36,0.12);color:var(--color-warn);">Frist bis 2027</span>
+      </div>
+      <div class="text-[1.1rem] font-bold mb-2">SAP S/4HANA</div>
+      <div class="text-[.85rem]" style="color:var(--color-muted);">Bei jeder Migration m&uuml;ssen alle Prozesse <strong style="color:var(--color-text);">getestet</strong> werden: Regression, Integration, Daten-Validierung.</div>
+    </div>
+    <div class="card">
+      <div class="flex items-center gap-2 mb-4">
+        <span class="pill" style="background:rgba(250,67,98,0.12);color:var(--color-bad);">In Kraft seit 12/2025</span>
+      </div>
+      <div class="text-[1.1rem] font-bold mb-2">NIS-2</div>
+      <div class="text-[.85rem]" style="color:var(--color-muted);">Kritische Infrastruktur braucht <strong style="color:var(--color-text);">Security-Testing</strong> und Compliance-Nachweise.</div>
+    </div>
+  </div>
+
+  <div class="mt-8 card max-w-[880px] w-full" style="background:rgba(249,108,64,0.04);border-color:rgba(249,108,64,0.15);">
+    <div class="flex items-start gap-3">
+      <i data-lucide="help-circle" style="width:20px;height:20px;color:var(--color-accent);flex-shrink:0;margin-top:2px;"></i>
+      <div>
+        <div class="font-semibold text-[.9rem]">Offene Frage</div>
+        <div class="text-[.85rem]" style="color:var(--color-muted);">Bietet andagon diese Services bereits an? Falls ja, fehlt die Sichtbarkeit online. Falls nein, w&auml;re zu kl&auml;ren, ob diese Themen zum Portfolio passen.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sn">04 · 08</div>
+</section>
+
+<!-- SLIDE 05 — 3 SCHRITTE -->
+<section class="slide" id="s05">
+  <div class="label">Empfehlung</div>
+  <h2 class="text-[clamp(1.6rem,3vw,2.4rem)] font-bold mb-10 text-center">
+    Drei Schritte zur Lead-Generierung
+  </h2>
+
+  <div class="grid grid-cols-3 gap-6 max-w-[900px] w-full">
+    <div class="card">
+      <div class="flex items-center gap-2 mb-4">
+        <div class="w-8 h-8 rounded-full flex items-center justify-center text-[.8rem] font-bold" style="background:rgba(249,108,64,0.15);color:var(--color-accent);">1</div>
+        <span class="pill" style="background:rgba(74,222,128,0.1);color:var(--color-good);">Wochen 1-2</span>
+      </div>
+      <div class="text-[1rem] font-bold mb-3">Website-Ma&szlig;nahmenplan</div>
+      <ul class="text-[.82rem] flex flex-col gap-2" style="color:var(--color-muted);list-style:none;padding:0;">
+        <li class="flex items-start gap-2"><span style="color:var(--color-good);">&#10003;</span> Cookie-Consent-Analyse</li>
+        <li class="flex items-start gap-2"><span style="color:var(--color-good);">&#10003;</span> Kontaktformular-Konzept</li>
+        <li class="flex items-start gap-2"><span style="color:var(--color-good);">&#10003;</span> NPS 9.8 + Trust-Bar</li>
+        <li class="flex items-start gap-2"><span style="color:var(--color-good);">&#10003;</span> Barrierefreiheitsseite</li>
+        <li class="flex items-start gap-2"><span style="color:var(--color-good);">&#10003;</span> Google Business Profile</li>
+        <li class="flex items-start gap-2"><span style="color:var(--color-good);">&#10003;</span> Verzeichnis-Korrekturen</li>
+        <li class="flex items-start gap-2"><span style="color:var(--color-good);">&#10003;</span> SEO-Grundlage (Schema)</li>
+      </ul>
+      <div class="mt-3 text-[.72rem] px-2 py-1.5 rounded-lg" style="background:rgba(249,108,64,0.06);color:var(--color-muted);">Planung + Dokumentation. Umsetzung auf der Website separat.</div>
+    </div>
+
+    <div class="card">
+      <div class="flex items-center gap-2 mb-4">
+        <div class="w-8 h-8 rounded-full flex items-center justify-center text-[.8rem] font-bold" style="background:rgba(249,108,64,0.15);color:var(--color-accent);">2</div>
+        <span class="pill" style="background:rgba(251,191,36,0.1);color:var(--color-warn);">Wochen 2-6</span>
+      </div>
+      <div class="text-[1rem] font-bold mb-3">LinkedIn-Strategie</div>
+      <ul class="text-[.82rem] flex flex-col gap-2" style="color:var(--color-muted);list-style:none;padding:0;">
+        <li class="flex items-start gap-2"><span style="color:var(--color-good);">&#10003;</span> Content-Kalender</li>
+        <li class="flex items-start gap-2"><span style="color:var(--color-good);">&#10003;</span> Yana auf Deutsch</li>
+        <li class="flex items-start gap-2"><span style="color:var(--color-good);">&#10003;</span> Karyna-Profil Refit</li>
+        <li class="flex items-start gap-2"><span style="color:var(--color-good);">&#10003;</span> NPS + Festpreis-Posts</li>
+        <li class="flex items-start gap-2"><span style="color:var(--color-good);">&#10003;</span> Trigger-Themen-Content</li>
+        <li class="flex items-start gap-2"><span style="color:var(--color-good);">&#10003;</span> Visual-Pakete</li>
+        <li class="flex items-start gap-2"><span style="color:var(--color-good);">&#10003;</span> Lead-Tracking-Setup</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="flex items-center gap-2 mb-4">
+        <div class="w-8 h-8 rounded-full flex items-center justify-center text-[.8rem] font-bold" style="background:rgba(249,108,64,0.15);color:var(--color-accent);">3</div>
+        <span class="pill" style="background:rgba(249,108,64,0.1);color:var(--color-accent);">Wochen 4-12</span>
+      </div>
+      <div class="text-[1rem] font-bold mb-3">Content + Lead-Magnet</div>
+      <ul class="text-[.82rem] flex flex-col gap-2" style="color:var(--color-muted);list-style:none;padding:0;">
+        <li class="flex items-start gap-2"><span style="color:var(--color-good);">&#10003;</span> Trigger-Service-Seiten</li>
+        <li class="flex items-start gap-2"><span style="color:var(--color-good);">&#10003;</span> BFSG-Readiness-Check</li>
+        <li class="flex items-start gap-2"><span style="color:var(--color-good);">&#10003;</span> &quot;Softwaretests&quot;-Page</li>
+        <li class="flex items-start gap-2"><span style="color:var(--color-good);">&#10003;</span> 5 SEO-Fachartikel</li>
+        <li class="flex items-start gap-2"><span style="color:var(--color-good);">&#10003;</span> Keyword-Monitoring</li>
+      </ul>
+      <div class="mt-3 text-[.72rem] px-2 py-1.5 rounded-lg" style="background:rgba(249,108,64,0.06);color:var(--color-muted);">Content-Erstellung. Einpflege auf der Website separat.</div>
+    </div>
+  </div>
+
+  <div class="sn">05 · 08</div>
+</section>
+
+<!-- SLIDE 06 — INVESTITION -->
+<section class="slide" id="s06">
+  <div class="label">Investition</div>
+  <h2 class="text-[clamp(1.6rem,3vw,2.4rem)] font-bold mb-10 text-center">
+    Budget Testphase
+  </h2>
+
+  <div class="max-w-[720px] w-full">
+    <div class="card mb-6">
+      <div class="text-[.75rem] font-mono uppercase tracking-widest mb-4" style="color:var(--color-muted);">Agenturleistungen (Pauschalpreise, zzgl. MwSt.)</div>
+      <table class="data-table">
+        <thead>
+          <tr><th>Schritt</th><th>Leistung</th><th style="text-align:right;">Pauschale</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="pill" style="background:rgba(249,108,64,0.12);color:var(--color-accent);">1</span></td>
+            <td>Website-Ma&szlig;nahmenplan<br><span class="text-[.75rem]" style="color:var(--color-muted);">Ausf&uuml;hrlicher Aktionsplan mit allen &Auml;nderungen. Umsetzung auf der Website separat &mdash; nach Pr&uuml;fung des CMS.</span></td>
+            <td style="text-align:right;font-weight:600;">1.200 &euro;</td>
+          </tr>
+          <tr>
+            <td><span class="pill" style="background:rgba(249,108,64,0.12);color:var(--color-accent);">2</span></td>
+            <td>LinkedIn-Strategie + Kanal-Aktivierung (3 Mo.)</td>
+            <td style="text-align:right;font-weight:600;">3.500 &euro;</td>
+          </tr>
+          <tr>
+            <td><span class="pill" style="background:rgba(249,108,64,0.12);color:var(--color-accent);">3</span></td>
+            <td>Content + Lead-Magnet (SEO-Aufbau)<br><span class="text-[.75rem]" style="color:var(--color-muted);">Content-Erstellung inkl. Texte &amp; Konzepte. Einpflegen auf der Website separat &mdash; nach Pr&uuml;fung des CMS.</span></td>
+            <td style="text-align:right;font-weight:600;">3.800 &euro;</td>
+          </tr>
+          <tr class="highlight">
+            <td></td>
+            <td><strong>Gesamtinvestition Testphase</strong></td>
+            <td style="text-align:right;font-weight:800;font-size:1.1rem;color:var(--color-accent);">8.500 &euro;</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card" style="background:rgba(249,108,64,0.03);border-color:rgba(249,108,64,0.12);">
+      <div class="text-[.75rem] font-mono uppercase tracking-widest mb-3" style="color:var(--color-muted);">Werbebudget (separat, direkt an LinkedIn)</div>
+      <div class="flex items-center justify-between">
+        <div>
+          <div class="text-[.9rem]" style="color:var(--color-sub);">LinkedIn Ads Mediabudget</div>
+          <div class="text-[.8rem]" style="color:var(--color-muted);">Empfohlen ab Monat 2-3</div>
+        </div>
+        <div class="text-[1.1rem] font-bold" style="color:var(--color-text);">1.500 - 3.000 &euro; <span class="text-[.8rem] font-normal" style="color:var(--color-muted);">/Monat</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sn">06 · 08</div>
+</section>
+
+<!-- SLIDE 07 — ERWARTETE ERGEBNISSE -->
+<section class="slide" id="s07">
+  <div class="label">Erwartete Ergebnisse</div>
+  <h2 class="text-[clamp(1.6rem,3vw,2.4rem)] font-bold mb-10 text-center">
+    Was die Testphase bringt
+  </h2>
+
+  <div class="grid grid-cols-4 gap-5 max-w-[880px] w-full mb-8">
+    <div class="card text-center py-6">
+      <div class="metric-big" style="font-size:2.2rem;">+3-5</div>
+      <div class="metric-label">qualifizierte Anfragen<br>pro Monat</div>
+    </div>
+    <div class="card text-center py-6">
+      <div class="metric-big" style="font-size:2.2rem;color:var(--color-good);">10x</div>
+      <div class="metric-label">LinkedIn<br>Engagement</div>
+    </div>
+    <div class="card text-center py-6">
+      <div class="metric-big" style="font-size:2.2rem;">55+</div>
+      <div class="metric-label">Site Score<br>(aktuell 38)</div>
+    </div>
+    <div class="card text-center py-6">
+      <div class="metric-big" style="font-size:2.2rem;color:var(--color-good);">10-20</div>
+      <div class="metric-label">Lead-Magnet<br>Downloads/Mo</div>
+    </div>
+  </div>
+
+  <div class="card max-w-[880px] w-full">
+    <div class="text-[.75rem] font-mono uppercase tracking-widest mb-4" style="color:var(--color-muted);">Pipeline-Wirkung (Branchenbenchmark)</div>
+    <div class="text-center">
+      <div class="text-[.82rem] mb-2" style="color:var(--color-muted);">Conversion-Rate f&uuml;r digitale Kan&auml;le (Branchenbenchmark B2B-IT-Beratung)</div>
+      <div class="text-[2.5rem] font-bold">10-15 %</div>
+      <div class="text-[.85rem] mt-2" style="color:var(--color-muted);">LinkedIn Organic + SEO-Content + Lead-Magnet</div>
+      <div class="text-[.72rem] mt-3" style="color:var(--color-muted);">Quellen: First Page Sage, MarketJoy, Martal Group (2026)</div>
+    </div>
+  </div>
+
+  <div class="sn">07 · 08</div>
+</section>
+
+<!-- SLIDE 08 — CTA -->
+<section class="slide" id="s08">
+  <div class="label" style="color: rgba(249,108,64,0.5);">N&auml;chste Schritte</div>
+  <h2 class="text-[clamp(1.8rem,3.5vw,2.8rem)] font-bold text-center max-w-[650px] mb-8">
+    Bereit f&uuml;r die Umsetzung?
+  </h2>
+
+  <div class="grid grid-cols-3 gap-5 max-w-[780px] w-full mb-10">
+    <div class="card text-center py-6" style="border-color:rgba(249,108,64,0.15);">
+      <i data-lucide="message-circle" style="width:28px;height:28px;color:var(--color-accent);margin:0 auto 12px;"></i>
+      <div class="font-bold mb-2" style="font-size:.95rem;">R&uuml;ckmeldung</div>
+      <div class="text-[.8rem]" style="color:var(--color-muted);">Ihre Einsch&auml;tzung zu den Empfehlungen und dem Budget</div>
+    </div>
+    <div class="card text-center py-6" style="border-color:rgba(249,108,64,0.15);">
+      <i data-lucide="check-circle" style="width:28px;height:28px;color:var(--color-accent);margin:0 auto 12px;"></i>
+      <div class="font-bold mb-2" style="font-size:.95rem;">Voraussetzungen</div>
+      <div class="text-[.8rem]" style="color:var(--color-muted);">NPS-Freigabe, Logo-Genehmigungen, Lead-Baseline aus CRM</div>
+    </div>
+    <div class="card text-center py-6" style="border-color:rgba(249,108,64,0.15);">
+      <i data-lucide="rocket" style="width:28px;height:28px;color:var(--color-accent);margin:0 auto 12px;"></i>
+      <div class="font-bold mb-2" style="font-size:.95rem;">Start</div>
+      <div class="text-[.8rem]" style="color:var(--color-muted);">Schritt 1 als schnellster Hebel -- unabh&auml;ngig beauftragbar</div>
+    </div>
+  </div>
+
+  <div class="text-center" style="color:rgba(255,255,255,0.25);font-size:.85rem;">
+    <div class="mb-1" style="font-weight:700;letter-spacing:.08em;">WS <span style="font-weight:400;">agency</span></div>
+    <div>Anna Schmidt &middot; team@wsagency.company</div>
+  </div>
+
+  <div class="sn" style="color: rgba(255,255,255,0.15);">08 · 08</div>
+</section>
+
+<!-- SCRIPT -->
+<script>
+(function(){
+  var slides = document.querySelectorAll('.slide');
+  var total = slides.length, cur = 0;
+  var dots = document.getElementById('dots');
+  var counter = document.getElementById('slide-counter');
+  var btnPrev = document.getElementById('btn-prev');
+  var btnNext = document.getElementById('btn-next');
+
+  slides.forEach(function(_,i){
+    var b = document.createElement('button');
+    b.className = 'nd';
+    b.onclick = function(){ goto(i); };
+    dots.appendChild(b);
+  });
+  var dotEls = dots.querySelectorAll('.nd');
+
+  function goto(n){
+    n = Math.max(0, Math.min(total-1, n));
+    slides[cur].classList.remove('active');
+    dotEls[cur].classList.remove('on');
+    cur = n;
+    slides[cur].classList.add('active');
+    dotEls[cur].classList.add('on');
+    counter.textContent = String(cur+1).padStart(2,'0') + ' · ' + String(total).padStart(2,'0');
+    btnPrev.disabled = cur === 0;
+    btnNext.disabled = cur === total-1;
+  }
+
+  btnPrev.onclick = function(){ goto(cur-1); };
+  btnNext.onclick = function(){ goto(cur+1); };
+
+  document.addEventListener('keydown', function(e){
+    if(e.key==='ArrowRight'||e.key==='ArrowDown'||e.key===' '||e.key==='PageDown'){
+      e.preventDefault(); goto(cur+1);
+    }
+    if(e.key==='ArrowLeft'||e.key==='ArrowUp'||e.key==='PageUp'){
+      e.preventDefault(); goto(cur-1);
+    }
+    if(e.key==='Home'){ e.preventDefault(); goto(0); }
+    if(e.key==='End'){ e.preventDefault(); goto(total-1); }
+  });
+
+  var tx=0, ty=0;
+  document.addEventListener('touchstart', function(e){
+    tx=e.touches[0].clientX; ty=e.touches[0].clientY;
+  }, {passive:true});
+  document.addEventListener('touchend', function(e){
+    var dx=e.changedTouches[0].clientX-tx, dy=e.changedTouches[0].clientY-ty;
+    if(Math.abs(dx)>50 && Math.abs(dx)>Math.abs(dy)*1.5){
+      if(dx<0) goto(cur+1); else goto(cur-1);
+    }
+  }, {passive:true});
+
+  goto(0);
+})();
+</script>
+<script>lucide.createIcons({attrs:{'stroke-width':1.5}});</script>
+</body>
+</html>
