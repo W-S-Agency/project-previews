@@ -126,6 +126,12 @@ a:hover { color: var(--primary-dark); }
 .btn-primary:hover { background: var(--primary-dark); color: #fff !important; }
 .btn-secondary { background: #fff; color: var(--primary) !important; border: 2px solid var(--primary); }
 .btn-secondary:hover { background: var(--bg-soft); }
+.btn-whatsapp {
+  background: #25D366; color: #fff !important; border: 2px solid #25D366;
+  display: inline-flex !important; align-items: center; gap: 8px;
+}
+.btn-whatsapp:hover { background: #1DA851; border-color: #1DA851; }
+.wa-icon { font-size: 18px; }
 .btn-tertiary { background: transparent; color: #fff !important; border: 1px solid rgba(255,255,255,0.4); }
 .btn-tertiary:hover { background: rgba(255,255,255,0.08); }
 .cta-placeholder { color: var(--text-muted); font-style: italic; padding: 8px 16px;
@@ -415,9 +421,33 @@ button:disabled { opacity: 0.6; cursor: not-allowed; }
 .lm-calendly-alt { color: var(--text-muted); font-size: 14px; margin: 0; }
 .lm-calendly-alt a { color: var(--primary); }
 
-/* ── Tab 3: Contact Form ── */
-.lm-contact-form h3 { color: var(--charcoal); margin: 0 0 8px; font-size: 22px; }
+/* ── Tab 3: Direct Contact Options (V2.4.0 — anchor zu Pre-Footer-Form) ── */
+.lm-contact-direct { }
+.lm-contact-direct h3 { color: var(--charcoal); margin: 0 0 8px; font-size: 22px; }
 .lm-contact-desc { color: var(--text-muted); margin-bottom: 24px; }
+.lm-contact-options {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px; margin: 24px 0 28px;
+}
+.lm-contact-option {
+  background: var(--bg-soft); padding: 24px 20px; border-radius: 12px;
+  text-align: center; text-decoration: none; color: var(--charcoal);
+  border: 1px solid var(--border); transition: all .15s;
+}
+.lm-contact-option:hover { border-color: var(--primary); transform: translateY(-2px); box-shadow: 0 6px 18px rgba(25,146,205,0.1); }
+.lm-contact-icon { font-size: 32px; margin-bottom: 8px; }
+.lm-contact-label { font-weight: 600; color: var(--text-muted); font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+.lm-contact-value { font-weight: 600; color: var(--charcoal); font-size: 15px; }
+.lm-contact-whatsapp { border-color: #25D36633; }
+.lm-contact-whatsapp:hover { border-color: #25D366; }
+.lm-contact-whatsapp .lm-contact-value { color: #1DA851; }
+.lm-contact-form-link {
+  display: block; text-align: center; padding: 16px;
+  background: rgba(25,146,205,0.08); color: var(--primary) !important;
+  border-radius: 10px; text-decoration: none; font-weight: 600;
+  transition: background .15s;
+}
+.lm-contact-form-link:hover { background: rgba(25,146,205,0.15); }
 
 /* ── CLASSIC KONTAKTFORM (Page 15) ── */
 .block-classic-form {}
@@ -656,7 +686,56 @@ button:disabled { opacity: 0.6; cursor: not-allowed; }
 /* ── CROSS LINK ──────────────────── */
 .block-cross-link { background: var(--bg-soft); }
 
-/* ── FOOTER (D-FB-018-003+004 renotec-Pattern) ── */
+/* ── PRE-FOOTER KONTAKT-SECTION (V2.4.0 — Live-Site #contact Pattern) ── */
+.block-prefooter-kontakt {
+  background: linear-gradient(135deg, #f8fbfd 0%, #ffffff 50%, #f8fbfd 100%);
+  padding: 70px 0 80px;
+  scroll-margin-top: 80px;
+}
+.block-prefooter-kontakt h2 {
+  text-align: center; font-size: 36px; color: var(--charcoal);
+  margin-bottom: 40px;
+}
+.prefooter-grid {
+  background: #fff; border-radius: 20px; padding: 48px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+  display: grid; grid-template-columns: 320px 1fr; gap: 56px;
+  max-width: 1000px; margin: 0 auto;
+}
+@media (max-width: 900px) { .prefooter-grid { grid-template-columns: 1fr; gap: 32px; padding: 32px; } }
+.prefooter-left { }
+.prefooter-block { margin-bottom: 22px; }
+.prefooter-block h3 {
+  color: var(--primary); font-size: 14px; font-weight: 600;
+  margin: 0 0 6px; letter-spacing: 0.4px;
+}
+.prefooter-block p { color: var(--charcoal); margin: 0; font-size: 15px; line-height: 1.55; }
+.prefooter-block a { color: var(--charcoal); text-decoration: none; }
+.prefooter-block a:hover { color: var(--primary); }
+.prefooter-whatsapp-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 22px; background: #fff; color: #25D366 !important;
+  border: 2px solid #25D366; border-radius: 30px;
+  text-decoration: none; font-weight: 600; font-size: 14px;
+  transition: all .15s;
+}
+.prefooter-whatsapp-btn:hover { background: #25D366; color: #fff !important; }
+.prefooter-wa-icon { font-size: 18px; }
+.prefooter-socials {
+  display: flex; gap: 8px; margin-top: 16px;
+}
+.prefooter-social {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--bg-soft); color: var(--primary) !important;
+  display: flex; align-items: center; justify-content: center;
+  text-decoration: none; font-size: 13px; font-weight: 600;
+  border: 1px solid var(--border); transition: all .15s;
+}
+.prefooter-social:hover { background: var(--primary); color: #fff !important; border-color: var(--primary); }
+
+.prefooter-form { background: var(--bg-soft); }
+
+/* ── FOOTER (D-FB-018-003+004 renotec-Pattern + V2.4.0 simplified) ── */
 .site-footer {
   background: linear-gradient(180deg, #2d2a2d 0%, var(--charcoal) 100%);
   color: rgba(255,255,255,0.9); padding: 60px 0 24px; margin-top: 80px;
@@ -697,14 +776,15 @@ button:disabled { opacity: 0.6; cursor: not-allowed; }
 .footer-brand-card-soon { background: rgba(255,255,255,0.95); color: var(--charcoal); }
 .footer-brand-card-arrow { font-size: 13px; opacity: 0.95; align-self: flex-end; font-weight: 500; }
 
-/* ── MAIN FOOTER GRID ── */
+/* ── MAIN FOOTER GRID (V2.4.0 — 3 cols, Kontakt в Pre-Footer) ── */
 .footer-grid {
-  display: grid; grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
-  gap: 32px; margin-bottom: 40px;
+  display: grid; grid-template-columns: 1.6fr 1fr 1fr;
+  gap: 40px; margin-bottom: 40px;
   position: relative; z-index: 2;
 }
+.footer-grid-3 { grid-template-columns: 1.6fr 1fr 1fr; }
 @media (max-width: 1024px) {
-  .footer-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+  .footer-grid, .footer-grid-3 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
 }
 .footer-brand { display: flex; gap: 12px; align-items: center; margin-bottom: 16px; }
 .footer-brand-name { font-size: 22px; color: #fff; }

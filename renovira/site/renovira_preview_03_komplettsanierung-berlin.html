@@ -78,8 +78,8 @@
     <h1>Komplettsanierung in Berlin — alles aus einer Hand</h1>
     <p class="sub-headline">Wohnung, Haus oder Gewerbeobjekt: Wir übernehmen Ihre Sanierung von A bis Z. Persönliche und kundennahe Kommunikation, ein fester Bauleiter, kurzfristig verfügbar dank effizienter Kapazitätsplanung — und ein Festpreis-Angebot nach Vor-Ort-Begehung. Sie übergeben uns das Objekt — wir geben es Ihnen renoviert zurück.</p>
     <div class="cta-row">
-      <a class="btn btn-primary" href="tel:+4930232581670">Kostenlose Vor-Ort-Beratung anrufen</a>
-      <a class="btn btn-secondary" href="">WhatsApp-Anfrage senden</a>
+      <a class="btn btn-primary" href="#lead-magnet">Jetzt Sanierungskosten berechnen</a>
+      <a class="btn btn-whatsapp" href="https://api.whatsapp.com/send?phone=4930232581670" target="_blank" rel="noopener"><span class="wa-icon">💬</span>Auf WhatsApp kontaktieren</a>
     </div>
   </div>
 </section>
@@ -122,7 +122,7 @@
   </div>
 </section>
 
-<section class="block block-leadmagnet">
+<section class="block block-leadmagnet" id="lead-magnet">
   <div class="container">
     <h2>Wie dürfen wir Sie unterstützen?</h2>
     <p class="sub-headline">Drei Wege zur Anfrage — wählen Sie, was am besten zu Ihrem Projekt passt.</p>
@@ -224,28 +224,29 @@
   <p class="lm-calendly-alt">Lieber direkt telefonieren? <a href="tel:+4930232581670"><strong>+49 30 232 581 670</strong></a></p>
 </div></div>
       <div class="lm-panel" id="lm-panel-contact" role="tabpanel">
-<div class="lm-contact-form">
-  <h3>Schreiben Sie uns</h3>
-  <p class="lm-contact-desc">Hinterlassen Sie Ihre Daten — wir melden uns innerhalb von 24 Stunden.</p>
-  <form class="classic-form" onsubmit="event.preventDefault()">
-    <div class="form-row form-row-2">
-      <label><span class="form-label">Vorname</span><input type="text" disabled placeholder="Ihr Vorname"></label>
-      <label><span class="form-label">Nachname</span><input type="text" disabled placeholder="Ihr Nachname"></label>
-    </div>
-    <div class="form-row form-row-2">
-      <label><span class="form-label">Telefon <span class="required">*</span></span><input type="tel" disabled placeholder="+49 30 123456"></label>
-      <label><span class="form-label">E-Mail <span class="required">*</span></span><input type="email" disabled placeholder="ihre@email.de"></label>
-    </div>
-    <label class="form-row"><span class="form-label">Weitere Informationen</span><textarea disabled rows="4" placeholder="Beschreiben Sie kurz Ihr Projekt..."></textarea></label>
-    <label class="form-consent">
-      <input type="checkbox" disabled>
-      <span>Ich habe die <a href="#">Datenschutzerklärung</a> gelesen und akzeptiere die Verarbeitung. <span class="required">*</span></span>
-    </label>
-    <div class="form-cta-row">
-      <button type="submit" class="btn btn-primary" disabled>Senden</button>
-      <span class="form-required-note"><span class="required">*</span> Erforderliche Felder</span>
-    </div>
-  </form>
+<div class="lm-contact-direct">
+  <h3>Direkter Kontakt</h3>
+  <p class="lm-contact-desc">Telefon, WhatsApp, E-Mail oder Kontaktformular — wir freuen uns auf Ihre Nachricht.</p>
+  <div class="lm-contact-options">
+    <a href="tel:+4930232581670" class="lm-contact-option">
+      <div class="lm-contact-icon">📞</div>
+      <div class="lm-contact-label">Telefon</div>
+      <div class="lm-contact-value">+49 30 232 581 670</div>
+    </a>
+    <a href="https://api.whatsapp.com/send?phone=4930232581670" target="_blank" rel="noopener" class="lm-contact-option lm-contact-whatsapp">
+      <div class="lm-contact-icon">💬</div>
+      <div class="lm-contact-label">WhatsApp</div>
+      <div class="lm-contact-value">+49 30 232 581 670</div>
+    </a>
+    <a href="mailto:kontakt@renovira.de" class="lm-contact-option">
+      <div class="lm-contact-icon">✉️</div>
+      <div class="lm-contact-label">E-Mail</div>
+      <div class="lm-contact-value">kontakt@renovira.de</div>
+    </a>
+  </div>
+  <a href="#kontakt" class="lm-contact-form-link">
+    <span>↓ Direkt zur Kontaktform unten</span>
+  </a>
 </div></div>
     </div>
   </div>
@@ -355,8 +356,66 @@
 
 </main>
 
+<section class="block block-prefooter-kontakt" id="kontakt">
+  <div class="container">
+    <h2>Wir freuen uns, von Ihnen zu hören!</h2>
+    <div class="prefooter-grid">
+      <!-- LEFT COLUMN: Kontaktdaten + Soc-Icons -->
+      <div class="prefooter-left">
+        <div class="prefooter-block">
+          <h3>📞 Telefon</h3>
+          <p><a href="tel:+4930232581670"><strong>+49 30 232 581 670</strong></a></p>
+        </div>
+        <div class="prefooter-block">
+          <h3>🏢 Büroanschrift</h3>
+          <p>renovira.<br>Pohlstraße 71<br>10785 Berlin</p>
+        </div>
+        <div class="prefooter-block">
+          <h3>✉️ E-Mail</h3>
+          <p><a href="mailto:kontakt@renovira.de">kontakt@renovira.de</a></p>
+        </div>
+        <div class="prefooter-block">
+          <a href="https://api.whatsapp.com/send?phone=4930232581670" target="_blank" rel="noopener" class="prefooter-whatsapp-btn">
+            <span class="prefooter-wa-icon">💬</span> Auf WhatsApp kontaktieren
+          </a>
+        </div>
+        <div class="prefooter-socials">
+          <a href="#" class="prefooter-social" title="Facebook">FB</a>
+          <a href="#" class="prefooter-social" title="LinkedIn">in</a>
+          <a href="#" class="prefooter-social" title="YouTube">▶</a>
+          <a href="#" class="prefooter-social" title="Instagram">IG</a>
+          <a href="#" class="prefooter-social" title="Bitrix24">24</a>
+          <a href="#" class="prefooter-social" title="Google">G</a>
+        </div>
+      </div>
+      <!-- RIGHT COLUMN: Klass. Kontaktform -->
+      <div class="prefooter-right">
+        <form class="classic-form prefooter-form" onsubmit="event.preventDefault()">
+          <div class="form-row form-row-2">
+            <label><span class="form-label">Vorname</span><input type="text" disabled placeholder="Vorname"></label>
+            <label><span class="form-label">Nachname <span class="required">*</span></span><input type="text" disabled placeholder="Nachname"></label>
+          </div>
+          <div class="form-row form-row-2">
+            <label><span class="form-label">Telefonnummer <span class="required">*</span></span><input type="tel" disabled placeholder="Telefonnummer"></label>
+            <label><span class="form-label">E-Mail <span class="required">*</span></span><input type="email" disabled placeholder="E-Mail"></label>
+          </div>
+          <label class="form-row"><span class="form-label">Weitere Informationen</span><textarea disabled rows="5" placeholder="Beschreiben Sie kurz Ihr Projekt..."></textarea></label>
+          <label class="form-consent">
+            <input type="checkbox" disabled>
+            <span>Ich habe die <a href="#">Datenschutzerklärung</a> gelesen und akzeptiere die Verarbeitung meiner Daten zur Anfrage-Bearbeitung. <span class="required">*</span></span>
+          </label>
+          <div class="form-cta-row">
+            <span class="form-required-note"><span class="required">*</span> Erforderliche Felder</span>
+            <button type="submit" class="btn btn-primary" disabled>Senden</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
 <footer class="site-footer">
-  <!-- ── KONZERN-BENTO (D-FB-018-003+004 — renotec-Pattern) ── -->
+  <!-- ── KONZERN-BENTO (renotec-Pattern) ── -->
   <div class="container footer-konzern">
     <h2 class="footer-konzern-title">renovira. Gruppe</h2>
     <div class="footer-konzern-grid">
@@ -393,8 +452,8 @@
     </div>
   </div>
 
-  <!-- ── FOOTER MAIN GRID ── -->
-  <div class="container footer-grid">
+  <!-- ── FOOTER MAIN GRID (3 cols — Kontakt-Spalte entfernt, jetzt in Pre-Footer) ── -->
+  <div class="container footer-grid footer-grid-3">
     <div class="footer-col footer-col-brand">
       <div class="footer-brand">
         <span class="logo-mark big">▭</span>
@@ -403,7 +462,8 @@
           <div class="footer-brand-sub">Generalbauunternehmen Berlin</div>
         </div>
       </div>
-      <p class="footer-intro">Sie haben ein Sanierungsprojekt geplant oder eine konkrete Frage zur Renovierung? Wir freuen uns auf Ihre Nachricht. Die Erstberatung ist kostenlos, unverbindlich und schnell.</p>
+      <p class="footer-intro">Berliner Generalbauunternehmen für ganzheitliche Sanierungen — Wohnen und Gewerbe. Teil der Renovira Gruppe mit drei spezialisierten Schwester-Brands.</p>
+      <p class="footer-designed-by">designed with <span style="color:#dc2626">♥</span> by <strong>2penguins</strong></p>
     </div>
     <div class="footer-col">
       <h4>Leistungen</h4>
@@ -425,13 +485,6 @@
         <li><a href="renovira_preview_15_kontakt.html">Kontakt</a></li>
         <li><a href="index.html"><em>↳ Preview-Übersicht</em></a></li>
       </ul>
-    </div>
-    <div class="footer-col footer-col-contact">
-      <h4>Kontakt</h4>
-      <p>Renovira Dienstleistungs GmbH<br>Pohlstraße 71<br>10785 Berlin</p>
-      <p><a href="tel:+4930232581670"><strong>+49 30 232 581 670</strong></a><br>
-      <a href="mailto:anfragen@renovira.de">anfragen@renovira.de</a></p>
-      <p class="footer-designed-by">designed with <span style="color:#dc2626">♥</span> by <strong>2penguins</strong></p>
     </div>
   </div>
 
