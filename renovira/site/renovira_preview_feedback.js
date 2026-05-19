@@ -206,6 +206,26 @@
     });
   }
 
+  // ── Lead-Magnet Tab Switching (D-FB-018-010) ──
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.lm-tabs').forEach(function(tabs) {
+      const tabButtons = tabs.querySelectorAll('.lm-tab');
+      const panels = tabs.parentElement.querySelectorAll('.lm-panel');
+      tabButtons.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          const target = btn.dataset.target;
+          tabButtons.forEach(b => {
+            b.classList.toggle('active', b === btn);
+            b.setAttribute('aria-selected', b === btn ? 'true' : 'false');
+          });
+          panels.forEach(p => {
+            p.classList.toggle('active', p.id === target);
+          });
+        });
+      });
+    });
+  });
+
   // ── Reviews Slider Auto-Rotate (D-FB-018-001) ──
   document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.reviews-slider').forEach(function(slider) {

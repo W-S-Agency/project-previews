@@ -118,45 +118,128 @@
   <div class="container">
     <h2>Wie dürfen wir Sie unterstützen?</h2>
     <p class="sub-headline">Drei Wege zur Anfrage — wählen Sie, was am besten zu Ihrem Projekt passt.</p>
-    <div class="lm-cards-grid"><div class="lm-card" data-action="form">
-  <div class="lm-card-icon">💰</div>
-  <h3>Sanierungskosten berechnen</h3>
-  <p>Multi-Step-Form: 5 Fragen, 5 Minuten — Sie erhalten Ihr Festpreis-Angebot.</p>
-  <span class="lm-card-arrow">→</span>
-</div><div class="lm-card" data-action="calendar">
-  <div class="lm-card-icon">📅</div>
-  <h3>Beratungstermin vereinbaren</h3>
-  <p>30-Min-Termin direkt im Kalender wählen — kostenlos und unverbindlich.</p>
-  <span class="lm-card-arrow">→</span>
-</div><div class="lm-card" data-action="contact">
-  <div class="lm-card-icon">💬</div>
-  <h3>Kontakt aufnehmen</h3>
-  <p>Telefon, WhatsApp oder E-Mail — wir melden uns innerhalb von 24 Stunden.</p>
-  <span class="lm-card-arrow">→</span>
-</div></div>
 
-    <details class="lm-details">
-      <summary>
-        <span class="lm-details-label">Direkt-Anfrage in 5 Schritten — einfach &amp; kostenlos</span>
-        <span class="lm-details-toggle">▾</span>
-      </summary>
-      <div class="lm-details-content">
-        
-        <div class="lm-flow">
-          <div class="lm-flow-steps">
-            <div class="steps-flow"><p class="muted">Standard 5-Schritte-Prozess (Anfrage → Erstberatung → Vor-Ort → Festpreis-Angebot → Ausführung)</p></div>
-          </div>
-          <div class="lm-flow-form">
-            <h4>Anfrage-Formular</h4>
-            <div class="form-steps"><div class="form-step"><span class="form-step-num">1</span><span>Was möchten Sie sanieren?</span></div><div class="form-step"><span class="form-step-num">2</span><span>Welches Objekt?</span></div><div class="form-step"><span class="form-step-num">3</span><span>Wann soll es starten?</span></div><div class="form-step"><span class="form-step-num">4</span><span>Wo befindet sich das Objekt?</span></div><div class="form-step"><span class="form-step-num">5</span><span>Wie können wir Sie erreichen?</span></div></div>
-            <div class="form-cta-placeholder">
-              <button type="button" class="btn btn-primary" disabled>Anfrage senden</button>
-              <p class="form-note">Multi-Step-Form · DSGVO-Consent integriert · Daten werden nur für die Beratung verwendet</p>
-            </div>
-          </div>
-        </div>
+    <div class="lm-tabs" role="tablist">
+      <button class="lm-tab active" data-target="lm-panel-calc" role="tab" aria-selected="true">
+        <div class="lm-tab-icon">💰</div>
+        <div class="lm-tab-title">Sanierungskosten berechnen</div>
+        <div class="lm-tab-sub">Multi-Step · 5 Minuten</div>
+      </button>
+      <button class="lm-tab" data-target="lm-panel-calendly" role="tab" aria-selected="false">
+        <div class="lm-tab-icon">📅</div>
+        <div class="lm-tab-title">Beratungstermin buchen</div>
+        <div class="lm-tab-sub">30 Min · kostenlos</div>
+      </button>
+      <button class="lm-tab" data-target="lm-panel-contact" role="tab" aria-selected="false">
+        <div class="lm-tab-icon">💬</div>
+        <div class="lm-tab-title">Kontakt aufnehmen</div>
+        <div class="lm-tab-sub">Telefon · WhatsApp · E-Mail</div>
+      </button>
+    </div>
+
+    <div class="lm-panels">
+      <div class="lm-panel active" id="lm-panel-calc" role="tabpanel">
+<div class="lm-multistep">
+  <div class="lm-step-indicator"><div class="lm-stepnum active">1</div><div class="lm-stepline"></div><div class="lm-stepnum">2</div><div class="lm-stepline"></div><div class="lm-stepnum">3</div><div class="lm-stepline"></div><div class="lm-stepnum">4</div><div class="lm-stepline"></div><div class="lm-stepnum">5</div></div>
+  <div class="lm-step-panel" data-step="1">
+    <h3>Schritt 1: Was möchten Sie sanieren?</h3>
+    <p class="lm-step-hint">Bitte wählen Sie eine Leistung.</p>
+    <div class="lm-options-grid"><label class="lm-option"><input type="radio" name="ls_service" disabled> Komplettsanierung</label><label class="lm-option"><input type="radio" name="ls_service" disabled> Altbausanierung</label><label class="lm-option"><input type="radio" name="ls_service" disabled> Trockenbau</label><label class="lm-option"><input type="radio" name="ls_service" disabled> Malerarbeiten</label><label class="lm-option"><input type="radio" name="ls_service" disabled> Fliesen &amp; Boden</label><label class="lm-option"><input type="radio" name="ls_service" disabled> Dacharbeiten</label><label class="lm-option"><input type="radio" name="ls_service" disabled> Fassade &amp; WDVS</label><label class="lm-option"><input type="radio" name="ls_service" disabled> Fenster &amp; Türen</label><label class="lm-option"><input type="radio" name="ls_service" disabled> Elektroinstallation</label><label class="lm-option"><input type="radio" name="ls_service" disabled> Sanitär &amp; Heizung</label></div>
+    <div class="lm-step-nav">
+      <button class="btn btn-secondary" disabled>← Zurück</button>
+      <button class="btn btn-primary" disabled>Weiter →</button>
+    </div>
+  </div>
+
+  <details class="lm-other-steps">
+    <summary>Alle 5 Schritte ansehen ▾</summary>
+    <div class="lm-step-preview">
+      <h4>Schritt 2: Welches Objekt?</h4>
+      <div class="lm-options-grid lm-options-row"><label class="lm-option lm-option-wide"><input type="radio" name="ls_object" disabled> Wohnung</label><label class="lm-option lm-option-wide"><input type="radio" name="ls_object" disabled> Haus / Eigenheim</label><label class="lm-option lm-option-wide"><input type="radio" name="ls_object" disabled> Gewerbeobjekt</label></div>
+    </div>
+    <div class="lm-step-preview">
+      <h4>Schritt 3: Zusatz-Optionen <span class="lm-step-meta">(optional, Mehrfachauswahl)</span></h4>
+      <div class="lm-options-grid"><label class="lm-option lm-option-wide"><input type="checkbox" name="ls_opt[]" disabled> Mit BAFA/KfW-Förderung</label><label class="lm-option lm-option-wide"><input type="checkbox" name="ls_opt[]" disabled> Denkmalschutz-Auflagen</label><label class="lm-option lm-option-wide"><input type="checkbox" name="ls_opt[]" disabled> Bewohnter Zustand</label><label class="lm-option lm-option-wide"><input type="checkbox" name="ls_opt[]" disabled> Eilauftrag</label><label class="lm-option lm-option-wide"><input type="checkbox" name="ls_opt[]" disabled> Mehrere Objekte</label></div>
+    </div>
+    <div class="lm-step-preview">
+      <h4>Schritt 4: Objekt-Details (Calculator)</h4>
+      <div class="lm-sliders"><div class="lm-slider-row">
+  <label class="lm-slider-label">Anzahl Zimmer <span class="lm-slider-value">2</span></label>
+  <input type="range" min="1" max="10" value="2" disabled class="lm-slider">
+  <div class="lm-slider-scale"><span>1</span><span>10</span></div>
+</div>
+<div class="lm-slider-row">
+  <label class="lm-slider-label">Gesamtfläche (m²) <span class="lm-slider-value">20</span></label>
+  <input type="range" min="10" max="400" value="20" step="10" disabled class="lm-slider">
+  <div class="lm-slider-scale"><span>10</span><span>400</span></div>
+</div>
+<div class="lm-slider-row">
+  <label class="lm-slider-label">Deckenhöhe (m) <span class="lm-slider-value">2</span></label>
+  <input type="range" min="1" max="8" value="2" disabled class="lm-slider">
+  <div class="lm-slider-scale"><span>1</span><span>8</span></div>
+</div></div>
+    </div>
+    <div class="lm-step-preview">
+      <h4>Schritt 5: Kontaktdaten</h4>
+      <div class="form-row form-row-2">
+  <label><span class="form-label">Vorname</span><input type="text" disabled placeholder="Ihr Vorname"></label>
+  <label><span class="form-label">Nachname <span class="required">*</span></span><input type="text" disabled placeholder="Ihr Nachname"></label>
+</div>
+<div class="form-row form-row-2">
+  <label><span class="form-label">Telefon <span class="required">*</span></span><input type="tel" disabled placeholder="+49 30 ..."></label>
+  <label><span class="form-label">E-Mail <span class="required">*</span></span><input type="email" disabled placeholder="ihre@email.de"></label>
+</div>
+<div class="form-row form-row-2">
+  <label><span class="form-label">Adresse</span><input type="text" disabled placeholder="Straße, Hausnummer"></label>
+  <label><span class="form-label">PLZ + Ort</span><input type="text" disabled placeholder="10785 Berlin"></label>
+</div>
+<label class="form-consent">
+  <input type="checkbox" disabled>
+  <span>Ich habe die <a href="#">Datenschutzerklärung</a> gelesen und akzeptiere die Verarbeitung meiner Daten zur Anfrage-Bearbeitung. <span class="required">*</span></span>
+</label>
+      <div class="lm-step-nav">
+        <button class="btn btn-secondary" disabled>← Zurück</button>
+        <button class="btn btn-primary" disabled>Anfrage senden</button>
       </div>
-    </details>
+    </div>
+  </details>
+</div></div>
+      <div class="lm-panel" id="lm-panel-calendly" role="tabpanel">
+<div class="lm-calendly">
+  <div class="lm-calendly-icon">📅</div>
+  <h3>Beratungstermin direkt buchen</h3>
+  <p class="lm-calendly-desc">30-Minuten-Erstberatung — kostenlos und unverbindlich. Wählen Sie einen verfügbaren Termin direkt im Kalender.</p>
+  <div class="lm-calendly-embed">
+    <p class="lm-calendly-placeholder">[Calendly-Embed: verfügbare Termine in den kommenden 2 Wochen]</p>
+    <button class="btn btn-primary" disabled>Verfügbare Termine ansehen</button>
+  </div>
+  <p class="lm-calendly-alt">Lieber direkt telefonieren? <a href="tel:+4930232581670"><strong>+49 30 232 581 670</strong></a></p>
+</div></div>
+      <div class="lm-panel" id="lm-panel-contact" role="tabpanel">
+<div class="lm-contact-form">
+  <h3>Schreiben Sie uns</h3>
+  <p class="lm-contact-desc">Hinterlassen Sie Ihre Daten — wir melden uns innerhalb von 24 Stunden.</p>
+  <form class="classic-form" onsubmit="event.preventDefault()">
+    <div class="form-row form-row-2">
+      <label><span class="form-label">Vorname</span><input type="text" disabled placeholder="Ihr Vorname"></label>
+      <label><span class="form-label">Nachname</span><input type="text" disabled placeholder="Ihr Nachname"></label>
+    </div>
+    <div class="form-row form-row-2">
+      <label><span class="form-label">Telefon <span class="required">*</span></span><input type="tel" disabled placeholder="+49 30 123456"></label>
+      <label><span class="form-label">E-Mail <span class="required">*</span></span><input type="email" disabled placeholder="ihre@email.de"></label>
+    </div>
+    <label class="form-row"><span class="form-label">Weitere Informationen</span><textarea disabled rows="4" placeholder="Beschreiben Sie kurz Ihr Projekt..."></textarea></label>
+    <label class="form-consent">
+      <input type="checkbox" disabled>
+      <span>Ich habe die <a href="#">Datenschutzerklärung</a> gelesen und akzeptiere die Verarbeitung. <span class="required">*</span></span>
+    </label>
+    <div class="form-cta-row">
+      <button type="submit" class="btn btn-primary" disabled>Senden</button>
+      <span class="form-required-note"><span class="required">*</span> Erforderliche Felder</span>
+    </div>
+  </form>
+</div></div>
+    </div>
   </div>
 </section>
 
@@ -181,7 +264,7 @@
 <section class="block block-trust-logos">
   <div class="container">
     <h2>Geprüfte Qualität, eingetragene Standards</h2>
-    <p class="sub-headline">Mitgliedschaften in den relevanten Berliner Handwerks-Institutionen — als Vertrauens-Beleg.</p>
+    <p class="sub-headline">Mitgliedschaften in den relevanten Berliner Handwerks-Institutionen — sowie etablierte Hersteller-Marken für Materialien und Technik.</p>
     <div class="trust-plates-grid"><div class="trust-plate">
   <div class="trust-plate-icon">🏛️</div>
   <div class="trust-plate-content">
@@ -205,7 +288,6 @@
   <div class="trust-plate-badge">✓ verifiziert</div>
 </div></div>
     <div class="trust-hersteller">
-  <h3>Hersteller & Partner</h3>
   <div class="trust-hersteller-grid">
     <div class="trust-hersteller-slot">Knauf</div>
     <div class="trust-hersteller-slot">Rigips</div>
@@ -216,7 +298,6 @@
   </div>
   <p class="trust-hersteller-note">↳ vollständige Hersteller-Logo-Reihe folgt mit Klient-Material Anfang Juni</p>
 </div>
-    
   </div>
 </section>
 
