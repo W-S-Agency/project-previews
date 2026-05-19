@@ -117,22 +117,29 @@
   </div>
 </section>
 
-<section class="block block-form">
+<section class="block block-classic-form">
   <div class="container">
-    <h2>Festpreis-Angebot anfragen — in 5 Schritten</h2>
-    <p class="sub-headline">Beantworten Sie 5 einfache Fragen. Wir melden uns mit dem nächsten Schritt — kostenlose Vor-Ort-Beratung, Festpreis-Angebot, schlüsselfertige Übergabe.</p>
-    <div class="form-preview">
-      <div class="form-steps"><div class="form-step"><span class="form-step-num">1</span><span>Was möchten Sie sanieren?</span></div>
-<div class="form-step"><span class="form-step-num">2</span><span>Welches Objekt?</span></div>
-<div class="form-step"><span class="form-step-num">3</span><span>Wann soll es starten?</span></div>
-<div class="form-step"><span class="form-step-num">4</span><span>Wo befindet sich das Objekt?</span></div>
-<div class="form-step"><span class="form-step-num">5</span><span>Wie können wir Sie erreichen?</span></div>
-</div>
-      <div class="form-cta-placeholder">
-        <button type="button" class="btn btn-primary" disabled>Anfrage senden</button>
-        <p class="form-note">[Multi-Step-Form Preview — DSGVO-Consent + Tippfehler-Fix integriert]</p>
+    <h2>Wir freuen uns, von Ihnen zu hören</h2>
+    <p class="sub-headline">Hinterlassen Sie uns Ihre Daten — wir melden uns innerhalb von 24 Stunden.</p>
+    <form class="classic-form" onsubmit="event.preventDefault()">
+      <div class="form-row form-row-2">
+        <label><span class="form-label">Vorname</span><input type="text" disabled placeholder="Ihr Vorname"></label>
+        <label><span class="form-label">Nachname</span><input type="text" disabled placeholder="Ihr Nachname"></label>
       </div>
-    </div>
+      <div class="form-row form-row-2">
+        <label><span class="form-label">Telefonnummer <span class="required">*</span></span><input type="tel" disabled placeholder="+49 30 123456"></label>
+        <label><span class="form-label">E-Mail <span class="required">*</span></span><input type="email" disabled placeholder="ihre@email.de"></label>
+      </div>
+      <label class="form-row"><span class="form-label">Weitere Informationen</span><textarea disabled rows="5" placeholder="Beschreiben Sie kurz Ihr Projekt..."></textarea></label>
+      <label class="form-consent">
+        <input type="checkbox" disabled>
+        <span>Ich habe die <a href="#">Datenschutzerklärung</a> gelesen und akzeptiere die Verarbeitung meiner Daten zur Bearbeitung der Anfrage. <span class="required">*</span></span>
+      </label>
+      <div class="form-cta-row">
+        <button type="submit" class="btn btn-primary" disabled>Senden</button>
+        <span class="form-required-note"><span class="required">*</span> Erforderliche Felder</span>
+      </div>
+    </form>
   </div>
 </section>
 
@@ -160,8 +167,46 @@
 </main>
 
 <footer class="site-footer">
+  <!-- ── KONZERN-BENTO (D-FB-018-003+004 — renotec-Pattern) ── -->
+  <div class="container footer-konzern">
+    <h2 class="footer-konzern-title">renovira. Gruppe</h2>
+    <div class="footer-konzern-grid">
+      <div class="footer-brand-card footer-brand-card-active" style="background: linear-gradient(135deg, #1992CD, #0D6FA0);">
+        <div class="footer-brand-logo">
+          <span class="logo-mark big">▭</span>
+          <div>
+            <div class="footer-brand-card-name">renovira.</div>
+            <div class="footer-brand-card-sub">Generalbauunternehmen</div>
+          </div>
+        </div>
+        <span class="footer-brand-card-status">↳ aktive Seite</span>
+      </div>
+      <a href="https://renotec.de" target="_blank" rel="noopener" class="footer-brand-card" style="background: linear-gradient(135deg, #3056DB, #1E3A8A);">
+        <div class="footer-brand-logo">
+          <span class="logo-mark big">◊</span>
+          <div>
+            <div class="footer-brand-card-name">renotec.</div>
+            <div class="footer-brand-card-sub">Sanitär · Heizung · Klima</div>
+          </div>
+        </div>
+        <span class="footer-brand-card-arrow">renotec.de →</span>
+      </a>
+      <a href="https://renovolt.de" target="_blank" rel="noopener" class="footer-brand-card" style="background: linear-gradient(135deg, #2EB599, #047857);">
+        <div class="footer-brand-logo">
+          <span class="logo-mark big">⚡</span>
+          <div>
+            <div class="footer-brand-card-name">renovolt.</div>
+            <div class="footer-brand-card-sub">Elektroinstallation</div>
+          </div>
+        </div>
+        <span class="footer-brand-card-status footer-brand-card-soon">Coming Soon</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- ── FOOTER MAIN GRID ── -->
   <div class="container footer-grid">
-    <div class="footer-col">
+    <div class="footer-col footer-col-brand">
       <div class="footer-brand">
         <span class="logo-mark big">▭</span>
         <div>
@@ -169,39 +214,47 @@
           <div class="footer-brand-sub">Generalbauunternehmen Berlin</div>
         </div>
       </div>
-      <p class="footer-tagline">Eine Sanierung. Eine Hand. Ein Ansprechpartner.</p>
+      <p class="footer-intro">Sie haben ein Sanierungsprojekt geplant oder eine konkrete Frage zur Renovierung? Wir freuen uns auf Ihre Nachricht. Die Erstberatung ist kostenlos, unverbindlich und schnell.</p>
     </div>
     <div class="footer-col">
-      <h4>Kontakt</h4>
-      <p>Renovira Dienstleistungs GmbH<br>Pohlstraße 71<br>10785 Berlin</p>
-      <p><a href="tel:+4930232581670">+49 30 232 581 670</a><br>
-      <a href="mailto:anfragen@renovira.de">anfragen@renovira.de</a></p>
+      <h4>Leistungen</h4>
+      <ul class="footer-links">
+        <li><a href="renovira_preview_03_komplettsanierung-berlin.html">Komplettsanierung</a></li>
+        <li><a href="renovira_preview_04_altbausanierung-berlin.html">Altbausanierung</a></li>
+        <li><a href="renovira_preview_05_trockenbau-innenausbau-berlin.html">Trockenbau & Innenausbau</a></li>
+        <li><a href="renovira_preview_06_malerarbeiten-tapezierarbeiten-berlin.html">Malerarbeiten</a></li>
+        <li><a href="renovira_preview_07_fliesen-bodenverlegung-berlin.html">Fliesen & Boden</a></li>
+        <li><a href="renovira_preview_02_leistungen.html"><strong>Alle Leistungen →</strong></a></li>
+      </ul>
     </div>
     <div class="footer-col">
       <h4>Navigation</h4>
       <ul class="footer-links">
-        <li><a href="index.html">Übersicht</a></li>
         <li><a href="renovira_preview_01_startseite.html">Home</a></li>
-        <li><a href="renovira_preview_02_leistungen.html">Leistungen</a></li>
         <li><a href="renovira_preview_13_referenzen.html">Referenzen</a></li>
         <li><a href="renovira_preview_14_ueber-uns.html">Über uns</a></li>
         <li><a href="renovira_preview_15_kontakt.html">Kontakt</a></li>
+        <li><a href="index.html"><em>↳ Preview-Übersicht</em></a></li>
       </ul>
     </div>
-    <div class="footer-col">
-      <h4>Renovira Gruppe</h4>
-      <p><span style="color:#1992CD;font-weight:bold">renovira.</span> Generalbauunternehmen <span class="muted">(aktive Seite)</span></p>
-      <p><a href="https://renotec.de" target="_blank" rel="noopener" style="color:#3056DB">renotec.</a> Sanitär · Heizung · Klima</p>
-      <p><a href="https://renovolt.de" target="_blank" rel="noopener" style="color:#2EB599">renovolt.</a> Elektroinstallation</p>
-      <p class="footer-legal-links">
-        <span class="footer-placeholder">[Impressum]</span> ·
-        <span class="footer-placeholder">[Datenschutz]</span> ·
-        <span class="footer-placeholder">[Barrierefreiheit]</span>
-      </p>
+    <div class="footer-col footer-col-contact">
+      <h4>Kontakt</h4>
+      <p>Renovira Dienstleistungs GmbH<br>Pohlstraße 71<br>10785 Berlin</p>
+      <p><a href="tel:+4930232581670"><strong>+49 30 232 581 670</strong></a><br>
+      <a href="mailto:anfragen@renovira.de">anfragen@renovira.de</a></p>
+      <p class="footer-designed-by">designed with <span style="color:#dc2626">♥</span> by <strong>2penguins</strong></p>
     </div>
   </div>
-  <div class="footer-copyright container">
-    © 2026 Renovira Dienstleistungs GmbH · Vorschau-Version (Preview)
+
+  <div class="footer-watermark"><span>renovira</span></div>
+
+  <div class="footer-bottom container">
+    <div class="footer-copyright">© 2026 Renovira Dienstleistungs GmbH</div>
+    <div class="footer-legal-links">
+      <span class="footer-placeholder">Impressum</span>
+      <span class="footer-placeholder">Datenschutz</span>
+      <span class="footer-placeholder">Barrierefreiheit</span>
+    </div>
   </div>
 </footer>
 

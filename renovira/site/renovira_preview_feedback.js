@@ -205,4 +205,31 @@
       renderCounter();
     });
   }
+
+  // ── Reviews Slider Auto-Rotate (D-FB-018-001) ──
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.reviews-slider').forEach(function(slider) {
+      const slides = slider.querySelectorAll('.review-slide');
+      const dots = slider.querySelectorAll('.review-dot');
+      if (slides.length <= 1) return;
+      let current = 0;
+      let timer = null;
+      function show(idx) {
+        slides.forEach((s, i) => s.classList.toggle('active', i === idx));
+        dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+        current = idx;
+      }
+      function next() { show((current + 1) % slides.length); }
+      function startTimer() { timer = setInterval(next, 5000); }
+      function stopTimer() { if (timer) { clearInterval(timer); timer = null; } }
+      dots.forEach(function(dot, i) {
+        dot.addEventListener('click', function() {
+          stopTimer();
+          show(i);
+          startTimer();
+        });
+      });
+      startTimer();
+    });
+  });
 })();
