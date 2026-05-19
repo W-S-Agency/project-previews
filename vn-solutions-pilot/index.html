@@ -175,7 +175,7 @@ table.data tr:hover td { background: rgba(168,208,217,0.03); }
 
 <!-- NAVIGATION -->
 <nav class="nav-dots" id="dots"></nav>
-<div id="slide-counter">01 · 17</div>
+<div id="slide-counter">01 · 18</div>
 <button class="nav-arrow" id="btn-prev">&#8592;</button>
 <button class="nav-arrow" id="btn-next">&#8594;</button>
 
@@ -291,8 +291,29 @@ table.data tr:hover td { background: rgba(168,208,217,0.03); }
     </div>
   </div>
 
+  <div class="grid grid-cols-2 gap-5 max-w-[1100px] w-full mb-4">
+    <div class="card" style="border-color: rgba(122,217,156,0.4);">
+      <div class="pill pill-green mb-3">CPL + ROI math</div>
+      <div class="text-sm" style="color:#9ca0aa;line-height:1.7;">
+        <strong>Industry medtourism CPL:</strong> $100-300<br>
+        <strong>Наш realistic CPL:</strong> €125-500 (на pessimistic end)<br>
+        <strong>Ticket size VN-Solutions:</strong> €15-50K (per Strategy Canvas)<br>
+        <strong style="color:var(--color-success);">ROI even at €500/lead: 30-100×</strong>
+      </div>
+    </div>
+    <div class="card" style="border-color: rgba(122,217,156,0.4);">
+      <div class="pill pill-green mb-3">Pilot value math</div>
+      <div class="text-sm" style="color:#9ca0aa;line-height:1.7;">
+        Pilot cost: <strong>€500/мес × 1.5 мес = €750</strong><br>
+        1-4 leads × €15-50K ticket = <strong>€15K-200K pipeline value</strong><br>
+        <strong style="color:var(--color-success);">Potential pilot ROI: 20-260×</strong><br>
+        + Real CPC/conversion benchmark для GROWTH-пакета
+      </div>
+    </div>
+  </div>
+
   <div class="callout max-w-[1100px] w-full">
-    <strong style="color:var(--color-accent);">Это discovery pilot, не volume target.</strong> Цель — получить <strong>real CPC и conversion data</strong> для KZ Онкологии (verified anchor) + понять есть ли signal в 3 discovery cells. Output: data-driven decision о GROWTH-пакете €6,950/3 мес или strategic pivot.
+    <strong style="color:var(--color-accent);">Это discovery pilot, не volume target.</strong> Даже 1-2 high-quality лида = pilot ROI 20×. Цель — получить <strong>real CPC и conversion data</strong> для KZ Онкологии (verified anchor) + понять есть ли signal в 3 discovery cells. Output: data-driven decision о GROWTH-пакете €6,950/3 мес.
   </div>
 
   <div class="sn">03 · 17</div>
@@ -1109,18 +1130,69 @@ table.data tr:hover td { background: rgba(168,208,217,0.03); }
         </div>
       </div>
     </div>
-    <div class="card">
+    <div class="card" style="border-color: rgba(243,122,17,0.3);">
       <div class="flex items-start gap-4">
         <div class="font-mono text-lg" style="color:var(--color-accent);">06</div>
         <div>
-          <div class="font-bold mb-2">Решение по /check-up/</div>
-          <div class="text-sm" style="color:#9ca0aa;">Делать content rework (задача Азата #3960) или skip в пилоте и перераспределить 50&nbsp;€ в Онкологию?</div>
+          <div class="font-bold mb-2">📞 Phone + WhatsApp tracking</div>
+          <div class="text-sm" style="color:#9ca0aa;">Medical tourism = high-stake decisions, клиенты часто звонят (не отправляют форму). Без phone tracking measure половину conversion. Setup CallTrackingMetrics / CallRail + WhatsApp click event в GA4.</div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="sn">15 · 17</div>
+  <div class="sn">15 · 18</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     SLIDE 15b — COMMITMENT + RISK + PLAN B (NEW per kritik QW)
+═══════════════════════════════════════════════════════════════ -->
+<section class="slide" id="s15b">
+  <div class="label">Honest commitments · риски · Plan B</div>
+  <h2 class="text-[clamp(1.7rem,2.8vw,2.4rem)] font-bold mb-8 max-w-[1000px]">
+    Что мы <span style="color:var(--color-accent);">обещаем</span> и что делаем <span style="color:var(--color-warn);">если не работает</span>.
+  </h2>
+
+  <div class="grid grid-cols-3 gap-5 max-w-[1200px] w-full mb-6">
+
+    <div class="card" style="border-color: rgba(122,217,156,0.4);">
+      <div class="pill pill-green mb-3">Forward commitment</div>
+      <div class="font-bold mb-2">Scope FINAL</div>
+      <div class="text-sm" style="color:#9ca0aa;line-height:1.6;">
+        Текущий 2×2 scope (KZ+UZ × Онко+Уро) = <strong>final для pilot</strong>.<br><br>
+        Первые 4 недели — optimize within (keywords, ad copy, landings).<br><br>
+        Pivots — <strong>только на основе pilot data</strong>, не на основе предположений.
+      </div>
+    </div>
+
+    <div class="card" style="border-color: rgba(255,230,141,0.4);">
+      <div class="pill pill-yellow mb-3">UZ risk reframe</div>
+      <div class="font-bold mb-2">Реальный risk — €50</div>
+      <div class="text-sm" style="color:#9ca0aa;line-height:1.6;">
+        UZ allocation €200/мес выглядит много, но <strong>natural underspend</strong> (verified demand 0-1/мес).<br><br>
+        Реалистично UZ потратит <strong>~€50/мес combined</strong>.<br><br>
+        Day 14 stop-loss → if 0 conversion → cut + redistribute в KZ. <strong>Total UZ loss: ~€50</strong>.
+      </div>
+    </div>
+
+    <div class="card" style="border-color: rgba(255,107,107,0.4);">
+      <div class="pill pill-red mb-3">Plan B · если pilot 0</div>
+      <div class="font-bold mb-2">3 option после Day 28</div>
+      <div class="text-sm" style="color:#9ca0aa;line-height:1.6;">
+        <strong>1.</strong> Continue learning текущего scope (free optimization)<br>
+        <strong>2.</strong> Pivot к RU-speaking diaspora globally (DE/IL/US/CA + KZ/UZ)<br>
+        <strong>3.</strong> Re-allocate бюджет в content/SEO build-up (long-term play)<br><br>
+        <strong>Decision на основе pilot data</strong>, не предположений.
+      </div>
+    </div>
+
+  </div>
+
+  <div class="callout max-w-[1200px] w-full">
+    <strong style="color:var(--color-accent);">Главное:</strong> Trajectory нашего planирования (4×4 → 1×1 → 2×2) показывает что мы <strong>data-driven</strong>, не следуем initial assumptions. Текущий scope — final pre-data; следующие изменения — только after pilot data на руках.
+  </div>
+
+  <div class="sn">15b · 18</div>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════
