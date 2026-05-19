@@ -415,40 +415,44 @@ table.data tr:hover td { background: rgba(168,208,217,0.03); }
      SLIDE 06 — YANDEX DEMAND VERIFIED
 ═══════════════════════════════════════════════════════════════ -->
 <section class="slide" id="s06">
-  <div class="label">Verified · Yandex Wordstat · прямой запрос</div>
+  <div class="label">Verified · Yandex Wordstat · прямой запрос (re-verified 18.05)</div>
   <h2 class="text-[clamp(1.9rem,3.2vw,2.8rem)] font-bold mb-10 max-w-[900px]">
     Спрос на медтуризм в Yandex ≈ <span style="color:var(--color-danger);">ноль</span>.
   </h2>
 
-  <div class="grid grid-cols-4 gap-5 max-w-[1100px] w-full mb-8">
+  <div class="grid grid-cols-4 gap-5 max-w-[1100px] w-full mb-6">
+    <div class="card text-center" style="opacity:.6;">
+      <div class="flag" style="font-size:2rem;">🇷🇺</div>
+      <div class="font-bold mb-2 mt-2">Россия (baseline)</div>
+      <div class="metric-num" style="color:var(--color-muted);">1 416</div>
+      <div class="metric-label">/мес broad · sanity ref</div>
+    </div>
     <div class="card text-center">
       <div class="flag" style="font-size:2rem;">🇰🇿</div>
       <div class="font-bold mb-2 mt-2">Казахстан</div>
-      <div class="metric-num" style="color:var(--color-warn);">~50</div>
-      <div class="metric-label">/мес на ВСЮ категорию</div>
+      <div class="metric-num" style="color:var(--color-warn);">23</div>
+      <div class="metric-label">/мес broad · ~50 cluster</div>
     </div>
     <div class="card text-center">
       <div class="flag" style="font-size:2rem;">🇺🇿</div>
       <div class="font-bold mb-2 mt-2">Узбекистан</div>
-      <div class="metric-num" style="color:var(--color-danger);">0–1</div>
-      <div class="metric-label">/мес</div>
+      <div class="metric-num" style="color:var(--color-danger);">1</div>
+      <div class="metric-label">/мес broad</div>
     </div>
-    <div class="card text-center">
-      <div class="flag" style="font-size:2rem;">🇬🇪</div>
-      <div class="font-bold mb-2 mt-2">Грузия</div>
-      <div class="metric-num" style="color:var(--color-danger);">5</div>
-      <div class="metric-label">/мес broad, 0 specific</div>
-    </div>
-    <div class="card text-center">
-      <div class="flag" style="font-size:2rem;">🇦🇿</div>
-      <div class="font-bold mb-2 mt-2">Азербайджан</div>
-      <div class="metric-num" style="color:var(--color-danger);">0</div>
-      <div class="metric-label">/мес</div>
+    <div class="card text-center" style="opacity:.7;">
+      <div class="flag" style="font-size:2rem;">🇬🇪🇦🇿</div>
+      <div class="font-bold mb-2 mt-2">GE + AZ</div>
+      <div class="metric-num" style="color:var(--color-danger);">≈0</div>
+      <div class="metric-label">direction confirmed</div>
     </div>
   </div>
 
+  <div class="callout callout-warn max-w-[1100px] w-full mb-4">
+    <strong style="color:var(--color-warn);">Sanity check:</strong> Россия 1 416 / Казахстан 23 = <strong>ratio 62×</strong>. Demographics дают expected ratio ~16× — значит медтуризм это даже более узкая ниша чем общий search pattern предсказывает (high-income subset). Числа реальные, не shallow data.
+  </div>
+
   <div class="callout callout-danger max-w-[1100px] w-full">
-    <strong style="color:var(--color-danger);">Решение:</strong> Yandex.Direkt — не запускаем. Запускать рекламу там, где спрос &lt; 50 запросов/мес — это значит платить за просмотры, не за интент.
+    <strong style="color:var(--color-danger);">Решение:</strong> Yandex.Direkt — не запускаем. <strong>500 € физически некуда деть</strong> — нет аудитории. Запускать рекламу там, где спрос &lt; 50 запросов/мес = платить за просмотры, не за интент.
   </div>
 
   <div class="sn">06 · 17</div>
