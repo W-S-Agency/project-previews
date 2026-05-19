@@ -209,30 +209,30 @@ table.data tr:hover td { background: rgba(168,208,217,0.03); }
 
   <div class="grid grid-cols-3 gap-6 max-w-[1100px] w-full mb-8">
     <div class="card">
-      <div class="pill pill-red mb-4">Что нашли</div>
+      <div class="pill pill-red mb-4">Решение 1 · Канал</div>
       <div class="text-xl font-bold mb-3">Yandex отпадает</div>
       <div class="text-sm" style="color:#9ca0aa;line-height:1.55;">
-        Verified через Wordstat: спрос в Yandex в 4 странах combined ~36/мес. Yandex.Direkt запускать некуда.
+        Verified через Wordstat: спрос на медтуризм в Yandex во всех 4 странах ≈ 36/мес. Весь бюджет → <strong style="color:var(--color-accent);">Google Ads</strong>.
       </div>
     </div>
-    <div class="card">
-      <div class="pill pill-yellow mb-4">Что узнали</div>
-      <div class="text-xl font-bold mb-3">Рынок очень узкий</div>
+    <div class="card" style="border-color: rgba(243,122,17,0.3);">
+      <div class="pill pill-blue mb-4">Решение 2 · География</div>
+      <div class="text-xl font-bold mb-3">KZ + UZ</div>
       <div class="text-sm" style="color:#9ca0aa;line-height:1.55;">
-        Combined Yandex + Google verified demand в 4 странах = <strong style="color:var(--color-warn);">~60-65/мес</strong>. €500/мес не может быть потрачен в этом scope.
+        <strong style="color:var(--color-accent);">Казахстан 60% + Узбекистан 40%</strong>. <strong>Грузию и Азербайджан исключаем</strong> — verified demand 0-5/мес не оправдывает setup ad accounts.
       </div>
     </div>
-    <div class="card">
-      <div class="pill pill-blue mb-4">Что предлагаем</div>
-      <div class="text-xl font-bold mb-3">Пересмотр scope</div>
+    <div class="card" style="border-color: rgba(243,122,17,0.3);">
+      <div class="pill pill-blue mb-4">Решение 3 · Услуги</div>
+      <div class="text-xl font-bold mb-3">Онко + Уро</div>
       <div class="text-sm" style="color:#9ca0aa;line-height:1.55;">
-        3 опции: focus KZ Онко · long-tail expansion · diaspora globally. Решение — на созвоне.
+        <strong style="color:var(--color-accent);">Онкология 65% + Урология 35%</strong>. <strong>Check-up и Ортопедия исключаем</strong> — verified 0 + landing /check-up/ problem.
       </div>
     </div>
   </div>
 
-  <div class="callout callout-warn max-w-[1100px] w-full">
-    <strong style="color:var(--color-warn);">⚠️ Reality check 18.05:</strong> Полная перепроверка 4 услуги × 4 страны × 2 источника показала <strong>combined verified demand ~60-65/мес</strong>. Это меняет scale, не направление. Direction («рынок узкий, focus needed») подтверждается, scale меньше изначальных оценок.
+  <div class="callout max-w-[1100px] w-full">
+    <strong style="color:var(--color-accent);">🎯 Итог: 2×2 = 4 ячейки.</strong> Главная ставка — KZ × Онкология (единственная full-verified). Остальные три — adjacent service (KZ Уро) + geo discovery (UZ × Онко/Уро). Это золотая середина между «спрэд по 4×4 = burn budget» и «1×1 = символический pilot».
   </div>
 
   <div class="sn">02 · 17</div>
@@ -250,30 +250,49 @@ table.data tr:hover td { background: rgba(168,208,217,0.03); }
     Задача за 6 недель — найти работающий канал и зафиксировать реальную стоимость лида.
   </p>
 
-  <div class="grid grid-cols-3 gap-5 max-w-[1100px] w-full mb-8">
-    <div class="card text-center">
-      <div class="pill pill-yellow mb-3">Verified demand</div>
-      <div class="metric-num" style="color:var(--color-warn);">~65</div>
-      <div class="metric-label">запросов / мес combined<br>в 4 странах (Yandex + Google)</div>
+  <div class="grid grid-cols-4 gap-4 max-w-[1100px] w-full mb-8">
+    <div class="card text-center" style="border-color:rgba(243,122,17,0.3);">
+      <div class="pill pill-blue mb-3">KZ Онко (verified)</div>
+      <div class="metric-num" style="color:var(--color-accent);">8–25</div>
+      <div class="metric-label">clicks за 6 нед<br>CPC €0.40–1.00</div>
     </div>
     <div class="card text-center">
-      <div class="pill pill-yellow mb-3">Realistic clicks</div>
-      <div class="metric-num" style="color:var(--color-warn);">12–20</div>
-      <div class="metric-label">за 6 нед<br>(main KW + long-tail)</div>
+      <div class="pill pill-yellow mb-3">KZ Уро (adjacent)</div>
+      <div class="metric-num" style="color:var(--color-warn);">3–10</div>
+      <div class="metric-label">clicks за 6 нед<br>через cluster</div>
     </div>
     <div class="card text-center">
-      <div class="pill pill-muted mb-3">Realistic leads</div>
-      <div class="metric-num" style="color:#9ca0aa;">0–2</div>
-      <div class="metric-label">за 6 нед<br>(2% conversion baseline)</div>
+      <div class="pill pill-yellow mb-3">UZ Онко (discovery)</div>
+      <div class="metric-num" style="color:var(--color-warn);">2–8</div>
+      <div class="metric-label">clicks за 6 нед<br>speculative</div>
+    </div>
+    <div class="card text-center">
+      <div class="pill pill-muted mb-3">UZ Уро (closure)</div>
+      <div class="metric-num" style="color:#9ca0aa;">0–5</div>
+      <div class="metric-label">clicks за 6 нед<br>speculative</div>
     </div>
   </div>
 
-  <div class="callout callout-danger max-w-[1100px] w-full mb-4">
-    <strong style="color:var(--color-danger);">🚨 Reality check:</strong> При €500/мес × 6 недель на 4 страны verified demand даёт max ~12-20 кликов. Это <strong>не достаточно</strong> ни для discovery статистики, ни для lead generation. <strong>Natural spend = €30-80/мес</strong>, не €500. Pilot нужно переосмыслить.
+  <div class="grid grid-cols-3 gap-5 max-w-[1100px] w-full mb-4">
+    <div class="card text-center">
+      <div class="pill pill-blue mb-3">Total clicks</div>
+      <div class="metric-num" style="color:var(--color-accent);">15–40</div>
+      <div class="metric-label">за 6 нед combined</div>
+    </div>
+    <div class="card text-center">
+      <div class="pill pill-blue mb-3">Realistic leads</div>
+      <div class="metric-num" style="color:var(--color-accent);">1–4</div>
+      <div class="metric-label">2-3% conversion</div>
+    </div>
+    <div class="card text-center">
+      <div class="pill pill-yellow mb-3">Natural spend</div>
+      <div class="metric-num" style="color:var(--color-warn);">€200–350</div>
+      <div class="metric-label">/мес (не €500)</div>
+    </div>
   </div>
 
   <div class="callout max-w-[1100px] w-full">
-    <strong style="color:var(--color-accent);">Что это значит:</strong> Initial estimate «8-12 лидов» был основан на предполагаемом demand. После полной перепроверки выяснилось что demand значительно меньше. Это не failure — это <strong>data-driven pivot до старта</strong>, не после слива бюджета. Нужно обсудить 3 опции пересмотра scope.
+    <strong style="color:var(--color-accent);">Это discovery pilot, не volume target.</strong> Цель — получить <strong>real CPC и conversion data</strong> для KZ Онкологии (verified anchor) + понять есть ли signal в 3 discovery cells. Output: data-driven decision о GROWTH-пакете €6,950/3 мес или strategic pivot.
   </div>
 
   <div class="sn">03 · 17</div>
@@ -724,56 +743,69 @@ table.data tr:hover td { background: rgba(168,208,217,0.03); }
      SLIDE 10 — БЮДЖЕТ · ДВА ВАРИАНТА
 ═══════════════════════════════════════════════════════════════ -->
 <section class="slide" id="s10">
-  <div class="label">Pivot Options · post-verification 18.05</div>
+  <div class="label">Распределение 500 €/мес · Final 2×2</div>
   <h2 class="text-[clamp(1.7rem,2.8vw,2.4rem)] font-bold mb-3 max-w-[1100px]">
-    Три варианта. <span style="color:var(--color-accent);">Реальный выбор.</span>
+    Золотая середина: <span style="color:var(--color-accent);">2 страны × 2 услуги</span>.
   </h2>
   <p class="text-[1rem] mb-6 max-w-[900px]" style="color:#9ca0aa;">
-    Initial plans (Focus 2×2 / Spread 4×4) больше не работают: combined verified demand ~60-65/мес физически не вмещает €500/мес бюджет. Natural spend ≈ €30-80/мес.
+    Между 4×4 (burn budget на zero-data ячейках) и 1×1 (символический pilot) — настоящий pilot с verified anchor + 3 discovery cells.
   </p>
 
-  <div class="grid grid-cols-3 gap-5 max-w-[1200px] w-full mb-4">
+  <div class="grid grid-cols-2 gap-6 max-w-[1100px] w-full mb-6">
+    <table class="data w-full" style="font-size:.95rem;">
+      <thead>
+        <tr>
+          <th>Ячейка</th>
+          <th class="num">% / €/мес</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="background:rgba(243,122,17,0.08);">
+          <td>🇰🇿 <strong>KZ × Онкология</strong> ✅</td>
+          <td class="num" style="color:var(--color-accent);font-weight:700;">40% · €200</td>
+        </tr>
+        <tr>
+          <td>🇰🇿 KZ × Урология</td>
+          <td class="num">20% · €100</td>
+        </tr>
+        <tr>
+          <td>🇺🇿 UZ × Онкология</td>
+          <td class="num">25% · €125</td>
+        </tr>
+        <tr>
+          <td>🇺🇿 UZ × Урология</td>
+          <td class="num">15% · €75</td>
+        </tr>
+        <tr style="background:rgba(168,208,217,0.04);font-weight:700;">
+          <td>TOTAL</td>
+          <td class="num">100% · €500</td>
+        </tr>
+      </tbody>
+    </table>
 
-    <!-- OPTION A -->
-    <div class="card" style="border-color: rgba(243,122,17,0.4);">
-      <div class="pill pill-yellow mb-3">A · Re-scoped pilot</div>
-      <div class="font-bold mb-3">Ultra-focus KZ Онко</div>
-      <div class="text-sm" style="color:#9ca0aa;line-height:1.6;">
-        <strong>100% KZ × Онкология</strong> (единственная verified)<br>
-        Natural spend ~€30-50/мес.<br>
-        Excess €450 → сохранить / на content rework / резерв.<br>
-        <strong style="color:var(--color-warn);">Goal:</strong> real CPC + conversion data для KZ Онко за 6 нед.
+    <div class="card">
+      <div class="font-bold mb-3">Логика выбора</div>
+      <div class="text-sm" style="color:#9ca0aa;line-height:1.7;">
+        ✅ <strong>KZ Онко</strong> — единственная full-verified cell. Главная ставка.<br>
+        🟡 <strong>KZ Уро</strong> — adjacent service. Простата = oncology overlap, same audience.<br>
+        🟡 <strong>UZ Онко</strong> — geo discovery. Population 35M, может быть hidden demand.<br>
+        🟡 <strong>UZ Уро</strong> — closure 2×2, low-cost speculative.
       </div>
     </div>
-
-    <!-- OPTION B -->
-    <div class="card" style="border-color: rgba(168,208,217,0.4);">
-      <div class="pill pill-blue mb-3">B · Long-tail FIRST</div>
-      <div class="font-bold mb-3">Delay 1 неделя</div>
-      <div class="text-sm" style="color:#9ca0aa;line-height:1.6;">
-        Week 1: deep keyword research на long-tail (disease-first, procedure-first).<br>
-        Semrush KZ Онко cluster <strong>120/мес</strong> (vs 20 main) = <strong>6×</strong> hidden volume.<br>
-        Pilot Week 2-7 на extended validated set.<br>
-        <strong style="color:var(--color-accent);">Realistic:</strong> 2-3× больше impressions.
-      </div>
-    </div>
-
-    <!-- OPTION C -->
-    <div class="card" style="border-color: rgba(122,217,156,0.4);">
-      <div class="pill pill-green mb-3">C · Diaspora globally</div>
-      <div class="font-bold mb-3">Geographic pivot</div>
-      <div class="text-sm" style="color:#9ca0aa;line-height:1.6;">
-        4 страны combined = 1.3% от global RU-speaking demand.<br>
-        Target: <strong>RU-speakers globally</strong> (DE / IL / US / CA + KZ/UZ; без РФ).<br>
-        Estimated reachable: <strong>500+/мес</strong>.<br>
-        <strong style="color:var(--color-success);">€500 budget achievable</strong>.
-      </div>
-    </div>
-
   </div>
 
-  <div class="callout max-w-[1200px] w-full">
-    <strong style="color:var(--color-accent);">Рекомендация:</strong> <strong>A + B параллельно</strong> (start что verified + Week 1 expansion) + <strong>C как strategic вопрос для вас:</strong> готовы ли работать с RU-speaking diaspora глобально или только CIS-направления?
+  <div class="grid grid-cols-2 gap-5 max-w-[1100px] w-full">
+    <div class="callout">
+      <strong style="color:var(--color-accent);">Что Виктория получает:</strong><br>
+      Setup 2 Google Ads accounts (KZ + UZ) · 4 ad groups (RU primary + EN parallel) · GA4 conversion tracking · Stop-loss protocol · Weekly monitoring · Real CPC + conversion data для GROWTH-пакета decision
+    </div>
+    <div class="callout callout-warn">
+      <strong style="color:var(--color-warn);">Что исключаем и почему:</strong><br>
+      ❌ GE — 5/мес non-cancer, не оправдывает setup<br>
+      ❌ AZ — verified 0 во всём, чистая трата<br>
+      ❌ Check-up — 0 verified + landing /check-up/ problem<br>
+      ❌ Ортопедия — 1 verified только в KZ
+    </div>
   </div>
 
   <div class="sn">10 · 17</div>
