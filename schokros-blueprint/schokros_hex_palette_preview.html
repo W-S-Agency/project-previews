@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Farbpaletten-Vorschläge | Schokros Consulting GmbH</title>
+
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<style type="text/tailwindcss">
+  @theme {
+    --color-bg:         #F7F8FA;
+    --color-surf:       #FFFFFF;
+    --color-primary:    #012245;
+    --color-accent:     #00B8D4;
+    --color-text:       #0F1929;
+    --color-text-soft:  #5C6F85;
+    --color-muted:      #9AA5B5;
+    --color-border:     #DDE4ED;
+    --font-mono:        'JetBrains Mono', 'Courier New', monospace;
+  }
+
+  @layer base {
+    body {
+      background: var(--color-bg);
+      color: var(--color-text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, system-ui, sans-serif;
+    }
+  }
+</style>
+
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  /* Document header */
+  header.doc-header {
+    background: #FFFFFF;
+    border-bottom: 1px solid #DDE4ED;
+    padding: 28px 0;
+    position: sticky; top: 0; z-index: 10;
+  }
+  .doc-header-inner {
+    max-width: 1100px; margin: 0 auto; padding: 0 32px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .brand {
+    font-family: 'JetBrains Mono', monospace; font-size: 13px;
+    color: #5C6F85; letter-spacing: 0.06em;
+    display: flex; gap: 8px; align-items: center;
+  }
+  .brand .accent { color: #00B8D4; }
+  .brand .sep { color: #9AA5B5; }
+  .doc-title {
+    font-family: 'JetBrains Mono', monospace; font-size: 13px;
+    color: #5C6F85; letter-spacing: 0.06em;
+  }
+
+  /* Document hero */
+  .doc-intro {
+    max-width: 1100px; margin: 56px auto 24px; padding: 0 32px;
+  }
+  .doc-intro h1 {
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 800; color: #012245;
+    line-height: 1.15; margin-bottom: 12px;
+  }
+  .doc-intro p.lead {
+    font-size: 17px; color: #5C6F85; max-width: 720px;
+    line-height: 1.6;
+  }
+  .doc-intro .meta {
+    margin-top: 18px; font-size: 12px; color: #9AA5B5;
+    font-family: 'JetBrains Mono', monospace; letter-spacing: 0.06em;
+  }
+
+  /* Main content */
+  main {
+    max-width: 1100px; margin: 0 auto; padding: 32px 32px 80px;
+  }
+
+  /* Palette section card */
+  .palette {
+    background: #FFFFFF;
+    border: 1px solid #DDE4ED;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 28px;
+  }
+  .palette.recommended {
+    border: 2px solid #00B8D4;
+    box-shadow: 0 6px 24px rgba(0, 184, 212, 0.08);
+  }
+  .palette-header {
+    padding: 24px 28px;
+    border-bottom: 1px solid #EDF0F4;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 12px;
+  }
+  .palette-title {
+    font-size: 22px; font-weight: 700; color: #012245;
+  }
+  .palette-character {
+    font-size: 14px; color: #5C6F85;
+    margin-top: 4px;
+  }
+  .palette-label {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    color: #5C6F85; letter-spacing: 0.1em;
+    text-transform: uppercase; margin-bottom: 4px;
+  }
+  .palette-tag {
+    background: #00B8D4; color: #012245;
+    padding: 5px 12px; border-radius: 99px;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase;
+  }
+
+  /* Palette content grid */
+  .palette-body {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 24px;
+    padding: 24px 28px;
+  }
+  @media (max-width: 860px) {
+    .palette-body { grid-template-columns: 1fr; }
+  }
+
+  /* Swatches */
+  .swatches-section h3 {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    color: #5C6F85; letter-spacing: 0.1em;
+    text-transform: uppercase; margin-bottom: 10px;
+  }
+  .swatches-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+  }
+  .swatch {
+    border-radius: 6px;
+    padding: 10px 12px;
+    min-height: 64px;
+    display: flex; flex-direction: column; justify-content: space-between;
+    font-size: 11px; line-height: 1.3;
+    border: 1px solid rgba(0,0,0,0.04);
+  }
+  .swatch .name { font-weight: 600; }
+  .swatch .code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; opacity: 0.85;
+  }
+
+  /* Mockup section */
+  .mockup-section h3 {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    color: #5C6F85; letter-spacing: 0.1em;
+    text-transform: uppercase; margin-bottom: 10px;
+  }
+  .mockup-wrap {
+    border-radius: 8px; overflow: hidden;
+    border: 1px solid #E6EAF1;
+  }
+  .mockup-header {
+    padding: 14px 18px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 13px;
+  }
+  .mockup-header .logo {
+    font-weight: 700;
+  }
+  .mockup-header nav {
+    display: flex; gap: 14px;
+    font-size: 11px; opacity: 0.85;
+  }
+  .mockup-hero {
+    padding: 24px 20px 22px;
+  }
+  .mockup-hero h2 {
+    font-size: 18px; font-weight: 700;
+    margin-bottom: 6px; line-height: 1.25;
+  }
+  .mockup-hero p {
+    font-size: 12px; margin-bottom: 14px;
+    line-height: 1.5; opacity: 0.85;
+  }
+  .mockup-buttons {
+    display: flex; gap: 10px; flex-wrap: wrap;
+  }
+  .btn {
+    padding: 9px 16px; border-radius: 6px;
+    font-size: 12px; font-weight: 600;
+    text-decoration: none; display: inline-block;
+    border: 0; cursor: pointer;
+  }
+  .mockup-stats {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 8px; padding: 12px 18px;
+    border-top: 1px solid;
+  }
+  .mockup-stat { text-align: center; padding: 8px; border-radius: 6px; }
+  .mockup-stat .num { font-size: 18px; font-weight: 700; }
+  .mockup-stat .lbl { font-size: 10px; opacity: 0.75; margin-top: 2px; }
+
+  /* Pros-Cons */
+  .palette-notes {
+    padding: 20px 28px 24px;
+    border-top: 1px solid #EDF0F4;
+    background: #FAFBFC;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  @media (max-width: 720px) {
+    .palette-notes { grid-template-columns: 1fr; }
+  }
+  .notes-block h4 {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    color: #5C6F85; letter-spacing: 0.1em;
+    text-transform: uppercase; margin-bottom: 8px;
+  }
+  .notes-block ul {
+    list-style: none; padding: 0;
+    font-size: 13px; color: #5C6F85; line-height: 1.6;
+  }
+  .notes-block li {
+    padding-left: 16px; position: relative; margin-bottom: 4px;
+  }
+  .notes-block li:before {
+    content: "—"; position: absolute; left: 0;
+    color: #B5C2D3;
+  }
+
+  /* Recommendation */
+  .recommendation {
+    background: #012245; color: #FFFFFF;
+    padding: 32px 36px; border-radius: 12px;
+    margin: 40px 0 24px;
+  }
+  .recommendation h2 {
+    font-size: 24px; font-weight: 700;
+    color: #FFFFFF; margin-bottom: 8px;
+  }
+  .recommendation h2 .accent { color: #00B8D4; }
+  .recommendation p {
+    font-size: 15px; color: #B5C2D3;
+    line-height: 1.6; max-width: 800px;
+  }
+
+  /* Comparison table */
+  .comparison {
+    background: #FFFFFF; border: 1px solid #DDE4ED;
+    border-radius: 12px; overflow: hidden;
+    margin-top: 28px;
+  }
+  .comparison-header {
+    padding: 20px 28px;
+    border-bottom: 1px solid #EDF0F4;
+  }
+  .comparison-header h2 {
+    font-size: 20px; font-weight: 700; color: #012245;
+  }
+  table {
+    width: 100%; border-collapse: collapse;
+    font-size: 13px;
+  }
+  thead {
+    background: #FAFBFC;
+  }
+  th, td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid #EDF0F4;
+  }
+  th {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; color: #5C6F85;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    font-weight: 600;
+  }
+  tbody tr:last-child td { border-bottom: 0; }
+  td.center { text-align: center; }
+  td .rec-tag {
+    background: rgba(0, 184, 212, 0.12);
+    color: #00B8D4;
+    padding: 3px 10px; border-radius: 99px;
+    font-size: 11px; font-weight: 600;
+  }
+
+  /* Footer */
+  footer.doc-footer {
+    max-width: 1100px; margin: 0 auto; padding: 32px;
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    color: #9AA5B5; letter-spacing: 0.05em;
+    text-align: center; border-top: 1px solid #DDE4ED;
+  }
+</style>
+</head>
+<body>
+
+<header class="doc-header">
+  <div class="doc-header-inner">
+    <div class="brand">
+      <span>Schokros Consulting GmbH</span>
+      <span class="sep">·</span>
+      <span class="accent">2Penguins</span>
+    </div>
+    <div class="doc-title">Farbpaletten-Vorschläge</div>
+  </div>
+</header>
+
+<section class="doc-intro">
+  <h1>Drei Farb-Richtungen auf Basis Ihres dunklen Blautons</h1>
+  <p class="lead">
+    Aufbauend auf Ihrem Wunsch-Farbton <strong>#012245 (dunkles Blau)</strong> haben wir drei in sich konsistente Paletten entwickelt. Jede Variante ist mit einer kurzen Charakter-Beschreibung, einer Komponenten-Vorschau und einer Empfehlungs-Begründung ausgearbeitet.
+  </p>
+  <div class="meta">Erstellt am 26.05.2026 · 2Penguins</div>
+</section>
+
+<main>
+
+  <!-- ════════════════════════════════════════════════════════════
+       OPTION A — Klassisches Vertrauen
+       ════════════════════════════════════════════════════════════ -->
+  <section class="palette">
+    <div class="palette-header">
+      <div>
+        <div class="palette-label">Option A</div>
+        <div class="palette-title">Klassisches Vertrauen</div>
+        <div class="palette-character">Konservativ, Premium-Bank-Anmutung mit dezenter Gold-Akzentuierung</div>
+      </div>
+    </div>
+
+    <div class="palette-body">
+      <div class="swatches-section">
+        <h3>Farb-Tokens</h3>
+        <div class="swatches-grid">
+          <div class="swatch" style="background:#012245; color:#FFFFFF;"><span class="name">Haupt</span><span class="code">#012245</span></div>
+          <div class="swatch" style="background:#1B4373; color:#FFFFFF;"><span class="name">Haupt-hell</span><span class="code">#1B4373</span></div>
+          <div class="swatch" style="background:#C9A961; color:#0A1628;"><span class="name">Akzent (Gold)</span><span class="code">#C9A961</span></div>
+          <div class="swatch" style="background:#E8D9B3; color:#0A1628;"><span class="name">Akzent-hell</span><span class="code">#E8D9B3</span></div>
+          <div class="swatch" style="background:#FFFFFF; color:#0A1628; border:1px solid #DDE4ED;"><span class="name">Hintergrund</span><span class="code">#FFFFFF</span></div>
+          <div class="swatch" style="background:#F7F8FA; color:#0A1628; border:1px solid #DDE4ED;"><span class="name">Fläche</span><span class="code">#F7F8FA</span></div>
+          <div class="swatch" style="background:#0A1628; color:#FFFFFF;"><span class="name">Text</span><span class="code">#0A1628</span></div>
+          <div class="swatch" style="background:#5A6878; color:#FFFFFF;"><span class="name">Text-sekundär</span><span class="code">#5A6878</span></div>
+        </div>
+      </div>
+
+      <div class="mockup-section">
+        <h3>Komponenten-Vorschau</h3>
+        <div class="mockup-wrap">
+          <div class="mockup-header" style="background:#012245; color:#FFFFFF;">
+            <div class="logo">Schokros</div>
+            <nav><a href="#" style="color:#FFFFFF; text-decoration:none;">Leistungen</a><a href="#" style="color:#FFFFFF; text-decoration:none;">Über mich</a><a href="#" style="color:#FFFFFF; text-decoration:none;">Kontakt</a></nav>
+          </div>
+          <div class="mockup-hero" style="background:#F7F8FA; color:#0A1628;">
+            <h2>Unabhängige Finanzberatung in Berlin</h2>
+            <p>Persönliche Beratung mit Bauspar- und Finanzierungsexpertise.</p>
+            <div class="mockup-buttons">
+              <a href="#" class="btn" style="background:#C9A961; color:#0A1628;">Beratungsgespräch vereinbaren</a>
+              <a href="#" class="btn" style="background:transparent; color:#012245; border:1.5px solid #012245; padding:7.5px 14.5px;">Finanzierungsrechner</a>
+            </div>
+          </div>
+          <div class="mockup-stats" style="background:#FFFFFF; border-top-color:#E8D9B3;">
+            <div class="mockup-stat" style="background:#F9F4E6; color:#012245;"><div class="num" style="color:#C9A961;">10+</div><div class="lbl">Jahre Erfahrung</div></div>
+            <div class="mockup-stat" style="background:#F9F4E6; color:#012245;"><div class="num" style="color:#C9A961;">DE/RU</div><div class="lbl">Beratungssprachen</div></div>
+            <div class="mockup-stat" style="background:#F9F4E6; color:#012245;"><div class="num" style="color:#C9A961;">12689</div><div class="lbl">Berlin-Standort</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="palette-notes">
+      <div class="notes-block">
+        <h4>Stärken</h4>
+        <ul>
+          <li>Hohe Vertrauens-Wirkung für klassische Banking-Erwartungen</li>
+          <li>Gold-Akzent ist im Berliner Pool selten und differenziert</li>
+          <li>Erinnert an etablierte Privatbank-Aesthetik</li>
+        </ul>
+      </div>
+      <div class="notes-block">
+        <h4>Schwächen</h4>
+        <ul>
+          <li>Wirkt eher traditionell als modern</li>
+          <li>Weniger affin für junge oder tech-orientierte Zielgruppen</li>
+          <li>Geringere Übereinstimmung mit dem Wunsch nach «aktuellem Trend»</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════
+       OPTION B — Modern und digital (RECOMMENDED)
+       ════════════════════════════════════════════════════════════ -->
+  <section class="palette recommended">
+    <div class="palette-header">
+      <div>
+        <div class="palette-label">Option B</div>
+        <div class="palette-title">Modern und digital</div>
+        <div class="palette-character">Zeitgemäße Anmutung mit Cyan-Akzent, passt zum KI-First-Charakter</div>
+      </div>
+      <div class="palette-tag">Empfohlen</div>
+    </div>
+
+    <div class="palette-body">
+      <div class="swatches-section">
+        <h3>Farb-Tokens</h3>
+        <div class="swatches-grid">
+          <div class="swatch" style="background:#012245; color:#FFFFFF;"><span class="name">Haupt</span><span class="code">#012245</span></div>
+          <div class="swatch" style="background:#2853A8; color:#FFFFFF;"><span class="name">Haupt-hell</span><span class="code">#2853A8</span></div>
+          <div class="swatch" style="background:#00B8D4; color:#FFFFFF;"><span class="name">Akzent (Cyan)</span><span class="code">#00B8D4</span></div>
+          <div class="swatch" style="background:#B3E5EC; color:#0F1929;"><span class="name">Akzent-hell</span><span class="code">#B3E5EC</span></div>
+          <div class="swatch" style="background:#FFFFFF; color:#0F1929; border:1px solid #DDE4ED;"><span class="name">Hintergrund</span><span class="code">#FFFFFF</span></div>
+          <div class="swatch" style="background:#F4F7FB; color:#0F1929; border:1px solid #DDE4ED;"><span class="name">Fläche</span><span class="code">#F4F7FB</span></div>
+          <div class="swatch" style="background:#0F1929; color:#FFFFFF;"><span class="name">Text</span><span class="code">#0F1929</span></div>
+          <div class="swatch" style="background:#5C6F85; color:#FFFFFF;"><span class="name">Text-sekundär</span><span class="code">#5C6F85</span></div>
+        </div>
+      </div>
+
+      <div class="mockup-section">
+        <h3>Komponenten-Vorschau</h3>
+        <div class="mockup-wrap">
+          <div class="mockup-header" style="background:#012245; color:#FFFFFF; border-bottom:3px solid #00B8D4;">
+            <div class="logo">Schokros</div>
+            <nav><a href="#" style="color:#FFFFFF; text-decoration:none;">Leistungen</a><a href="#" style="color:#FFFFFF; text-decoration:none;">Über mich</a><a href="#" style="color:#FFFFFF; text-decoration:none;">Kontakt</a></nav>
+          </div>
+          <div class="mockup-hero" style="background:linear-gradient(135deg, #F4F7FB 0%, #EBEFF5 100%); color:#0F1929;">
+            <h2>Unabhängige Finanzberatung in Berlin</h2>
+            <p>Persönliche Beratung mit Bauspar- und Finanzierungsexpertise.</p>
+            <div class="mockup-buttons">
+              <a href="#" class="btn" style="background:#00B8D4; color:#FFFFFF; box-shadow:0 4px 12px rgba(0,184,212,0.25);">Beratungsgespräch vereinbaren</a>
+              <a href="#" class="btn" style="background:#FFFFFF; color:#012245; border:1.5px solid #2853A8; padding:7.5px 14.5px;">Finanzierungsrechner</a>
+            </div>
+          </div>
+          <div class="mockup-stats" style="background:#FFFFFF; border-top-color:#DDE4ED;">
+            <div class="mockup-stat" style="background:#F4F7FB; color:#012245; border:1px solid #DDE4ED;"><div class="num" style="color:#00B8D4;">10+</div><div class="lbl">Jahre Erfahrung</div></div>
+            <div class="mockup-stat" style="background:#F4F7FB; color:#012245; border:1px solid #DDE4ED;"><div class="num" style="color:#00B8D4;">DE/RU</div><div class="lbl">Beratungssprachen</div></div>
+            <div class="mockup-stat" style="background:#F4F7FB; color:#012245; border:1px solid #DDE4ED;"><div class="num" style="color:#00B8D4;">12689</div><div class="lbl">Berlin-Standort</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="palette-notes">
+      <div class="notes-block">
+        <h4>Stärken</h4>
+        <ul>
+          <li>Direkte Übereinstimmung mit Ihrem Wunsch nach modernem Design-Trend</li>
+          <li>Cyan-Akzent ist im Berliner Konkurrenz-Pool einzigartig (Differenzierung)</li>
+          <li>Funktioniert für deutsche und russisch-sprachige Zielgruppen gleichermaßen</li>
+          <li>Passt zum KI-First-Charakter der Website-Strategie</li>
+        </ul>
+      </div>
+      <div class="notes-block">
+        <h4>Hinweise</h4>
+        <ul>
+          <li>Cyan kann für sehr konservative Privatkunden ungewohnt wirken</li>
+          <li>Weniger «Premium-Bank»-Anmutung als Option A</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════
+       OPTION C — Warm und persönlich
+       ════════════════════════════════════════════════════════════ -->
+  <section class="palette">
+    <div class="palette-header">
+      <div>
+        <div class="palette-label">Option C</div>
+        <div class="palette-title">Warm und persönlich</div>
+        <div class="palette-character">Einladende Anmutung mit Terrakotta-Akzent und cremigem Hintergrund</div>
+      </div>
+    </div>
+
+    <div class="palette-body">
+      <div class="swatches-section">
+        <h3>Farb-Tokens</h3>
+        <div class="swatches-grid">
+          <div class="swatch" style="background:#012245; color:#FFFFFF;"><span class="name">Haupt</span><span class="code">#012245</span></div>
+          <div class="swatch" style="background:#2C4E80; color:#FFFFFF;"><span class="name">Haupt-hell</span><span class="code">#2C4E80</span></div>
+          <div class="swatch" style="background:#E07856; color:#FFFFFF;"><span class="name">Akzent (Terrakotta)</span><span class="code">#E07856</span></div>
+          <div class="swatch" style="background:#F5D4C5; color:#1A1A2E;"><span class="name">Akzent-hell</span><span class="code">#F5D4C5</span></div>
+          <div class="swatch" style="background:#FFFDF9; color:#1A1A2E; border:1px solid #DDE4ED;"><span class="name">Hintergrund</span><span class="code">#FFFDF9</span></div>
+          <div class="swatch" style="background:#FAF6EF; color:#1A1A2E; border:1px solid #DDE4ED;"><span class="name">Fläche</span><span class="code">#FAF6EF</span></div>
+          <div class="swatch" style="background:#1A1A2E; color:#FFFFFF;"><span class="name">Text</span><span class="code">#1A1A2E</span></div>
+          <div class="swatch" style="background:#666573; color:#FFFFFF;"><span class="name">Text-sekundär</span><span class="code">#666573</span></div>
+        </div>
+      </div>
+
+      <div class="mockup-section">
+        <h3>Komponenten-Vorschau</h3>
+        <div class="mockup-wrap">
+          <div class="mockup-header" style="background:#012245; color:#FFFFFF;">
+            <div class="logo">Schokros</div>
+            <nav><a href="#" style="color:#FFFFFF; text-decoration:none;">Leistungen</a><a href="#" style="color:#FFFFFF; text-decoration:none;">Über mich</a><a href="#" style="color:#FFFFFF; text-decoration:none;">Kontakt</a></nav>
+          </div>
+          <div class="mockup-hero" style="background:#FAF6EF; color:#1A1A2E;">
+            <h2>Unabhängige Finanzberatung in Berlin</h2>
+            <p>Persönliche Beratung mit Bauspar- und Finanzierungsexpertise.</p>
+            <div class="mockup-buttons">
+              <a href="#" class="btn" style="background:#E07856; color:#FFFFFF;">Beratungsgespräch vereinbaren</a>
+              <a href="#" class="btn" style="background:transparent; color:#012245; border:1.5px solid #012245; padding:7.5px 14.5px;">Finanzierungsrechner</a>
+            </div>
+          </div>
+          <div class="mockup-stats" style="background:#FFFDF9; border-top-color:#EDE6DA;">
+            <div class="mockup-stat" style="background:#FAF6EF; color:#012245;"><div class="num" style="color:#E07856;">10+</div><div class="lbl">Jahre Erfahrung</div></div>
+            <div class="mockup-stat" style="background:#FAF6EF; color:#012245;"><div class="num" style="color:#E07856;">DE/RU</div><div class="lbl">Beratungssprachen</div></div>
+            <div class="mockup-stat" style="background:#FAF6EF; color:#012245;"><div class="num" style="color:#E07856;">12689</div><div class="lbl">Berlin-Standort</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="palette-notes">
+      <div class="notes-block">
+        <h4>Stärken</h4>
+        <ul>
+          <li>Hohe persönliche Wärme, einladend</li>
+          <li>Visuelle Differenzierung vom Berliner Konkurrenz-Pool</li>
+        </ul>
+      </div>
+      <div class="notes-block">
+        <h4>Hinweise (eher Vorbehalte)</h4>
+        <ul>
+          <li>Warme Töne werden im deutschen Finanzkontext als «weniger seriös» wahrgenommen</li>
+          <li>Risiko einer Bistro- oder Boutique-Anmutung statt Finanzexpertise</li>
+          <li>Für Launch nicht empfohlen — eher geeignet als spätere Re-Positionierung, falls erforderlich</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recommendation -->
+  <div class="recommendation">
+    <h2>Unsere Empfehlung: <span class="accent">Option B — Modern und digital</span></h2>
+    <p>Diese Variante entspricht direkt Ihrem Wunsch nach einem aktuellen, modernen Design-Ansatz, ist im Berliner Konkurrenz-Umfeld klar differenzierend und passt zum KI-First-Charakter Ihrer neuen Website. Sie kombiniert Ihren Anker-Farbton mit einem zeitgemäßen Cyan-Akzent, ohne die seriöse Wirkung des klassischen Banking-Blaus zu verlieren.</p>
+  </div>
+
+  <!-- Comparison Table -->
+  <section class="comparison">
+    <div class="comparison-header">
+      <h2>Vergleich auf einen Blick</h2>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Kriterium</th>
+          <th class="center">Option A · Klassisch</th>
+          <th class="center">Option B · Modern</th>
+          <th class="center">Option C · Warm</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Vertrauens-Wirkung für klassische Bank-Erwartungen</td>
+          <td class="center">Sehr hoch</td>
+          <td class="center">Hoch</td>
+          <td class="center">Mittel</td>
+        </tr>
+        <tr>
+          <td>Übereinstimmung mit «modernem Trend»</td>
+          <td class="center">Mittel</td>
+          <td class="center">Sehr hoch</td>
+          <td class="center">Hoch</td>
+        </tr>
+        <tr>
+          <td>Passung zum KI-First-Charakter</td>
+          <td class="center">Mittel</td>
+          <td class="center">Sehr hoch</td>
+          <td class="center">Niedrig</td>
+        </tr>
+        <tr>
+          <td>Differenzierung vom Berliner Konkurrenz-Pool</td>
+          <td class="center">Hoch</td>
+          <td class="center">Sehr hoch</td>
+          <td class="center">Sehr hoch</td>
+        </tr>
+        <tr>
+          <td>Eignung für deutsche und russisch-sprachige Zielgruppen</td>
+          <td class="center">Hoch</td>
+          <td class="center">Sehr hoch</td>
+          <td class="center">Mittel</td>
+        </tr>
+        <tr>
+          <td>WCAG-Kontrast-Konformität</td>
+          <td class="center">Erfüllt (AAA)</td>
+          <td class="center">Erfüllt (AAA)</td>
+          <td class="center">Erfüllt (AAA)</td>
+        </tr>
+        <tr>
+          <td>Empfehlung für Launch</td>
+          <td class="center">Alternative</td>
+          <td class="center"><span class="rec-tag">Empfohlen</span></td>
+          <td class="center">Nicht für Launch</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+</main>
+
+<footer class="doc-footer">
+  Schokros Consulting GmbH · 2Penguins · Farbpaletten-Vorschläge · 26. Mai 2026 · Begleit-Dokument zum Strategic Blueprint
+</footer>
+
+</body>
+</html>

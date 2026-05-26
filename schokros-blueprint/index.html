@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="de" class="h-full">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Strategic Blueprint | Schokros Consulting GmbH</title>
+
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<style type="text/tailwindcss">
+  @theme {
+    --color-bg:           #0F1929;
+    --color-surf:         #16243F;
+    --color-surf2:        #1E3050;
+    --color-text:         #E4E9F0;
+    --color-text-soft:    #B5C2D3;
+    --color-muted:        #5C6F85;
+    --color-border:       rgba(228, 233, 240, 0.08);
+    --color-primary:      #012245;
+    --color-primary-soft: #2853A8;
+    --color-accent:       #00B8D4;
+    --color-accent-soft:  #B3E5EC;
+    --font-mono:          'JetBrains Mono', 'Courier New', monospace;
+  }
+
+  @layer base {
+    html { scroll-behavior: smooth; }
+    body { background: var(--color-bg); color: var(--color-text); }
+  }
+
+  @layer components {
+    .slide {
+      @apply relative flex flex-col justify-center items-center;
+      @apply h-screen min-h-[600px] px-20 py-16 overflow-hidden;
+    }
+    .label {
+      @apply text-[14px] tracking-[.14em] uppercase font-mono;
+      color: var(--color-accent);
+      @apply mb-5;
+    }
+    .pill {
+      @apply inline-block px-3 py-1 rounded-full text-[10px] tracking-[.08em] uppercase font-mono;
+      background: rgba(0, 184, 212, 0.12);
+      color: var(--color-accent);
+      border: 1px solid rgba(0, 184, 212, 0.25);
+    }
+    .pill-soft {
+      background: var(--color-surf2);
+      color: var(--color-text-soft);
+      border: 1px solid var(--color-border);
+    }
+    .card {
+      @apply bg-[var(--color-surf)] rounded-xl p-7;
+      @apply border border-[var(--color-border)];
+    }
+    .card-featured {
+      background: linear-gradient(135deg, var(--color-surf) 0%, var(--color-surf2) 100%);
+      border-left: 3px solid var(--color-accent);
+    }
+  }
+</style>
+
+<style>
+html { font-size: 19px; }
+
+.slide { display: none; }
+.slide.active { display: flex; }
+
+.brand-header {
+  position: fixed; top: 24px; left: 32px; z-index: 100;
+  font-family: 'JetBrains Mono', monospace; font-size: 12px;
+  color: #B5C2D3; opacity: 0.85;
+  display: flex; align-items: center; gap: 8px;
+  letter-spacing: 0.06em;
+}
+.brand-header .sep { color: #5C6F85; }
+.brand-header .accent { color: #00B8D4; }
+
+#slide-counter {
+  position: fixed; top: 26px; right: 32px; z-index: 100;
+  font-family: 'JetBrains Mono', monospace; font-size: 12px;
+  color: #5C6F85; letter-spacing: 0.1em;
+}
+
+.nav-arrow {
+  position: fixed; top: 50%; transform: translateY(-50%); z-index: 100;
+  width: 48px; height: 48px; border-radius: 50%;
+  background: rgba(22, 36, 63, 0.85); color: #B5C2D3;
+  border: 1px solid rgba(228, 233, 240, 0.12);
+  font-size: 20px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s;
+}
+.nav-arrow:hover:not(:disabled) {
+  background: #00B8D4; color: #0F1929; border-color: #00B8D4;
+}
+.nav-arrow:disabled { opacity: 0.25; cursor: not-allowed; }
+#btn-prev { left: 24px; }
+#btn-next { right: 24px; }
+
+.nav-dots {
+  position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); z-index: 100;
+  display: flex; gap: 8px; padding: 10px 16px; border-radius: 99px;
+  background: rgba(22, 36, 63, 0.7);
+  border: 1px solid rgba(228, 233, 240, 0.08);
+}
+.nd {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: rgba(228, 233, 240, 0.2); border: 0; cursor: pointer;
+  transition: all 0.2s;
+}
+.nd:hover { background: rgba(0, 184, 212, 0.5); }
+.nd.on { background: #00B8D4; width: 24px; border-radius: 4px; }
+
+.swatch-mini {
+  border-radius: 5px; padding: 8px 10px; min-height: 56px;
+  display: flex; flex-direction: column; justify-content: space-between;
+  font-size: 10px; font-weight: 500; letter-spacing: 0.02em;
+  border: 1px solid rgba(228, 233, 240, 0.06);
+}
+.swatch-mini .name { font-weight: 700; font-size: 10px; opacity: 0.95; }
+.swatch-mini .code { font-family: 'JetBrains Mono', monospace; font-size: 9px; opacity: 0.85; }
+
+.palette-card {
+  background: #FFFFFF;
+  border: 1px solid #DDE4ED;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.palette-card.recommended {
+  border: 2px solid var(--color-accent);
+  background: #FFFFFF;
+  box-shadow: 0 4px 18px rgba(0, 184, 212, 0.18);
+}
+.palette-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+.palette-card-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #012245;
+  line-height: 1.3;
+}
+.palette-card-character {
+  font-size: 11px;
+  color: #5C6F85;
+  line-height: 1.5;
+}
+
+.sitemap-block {
+  background: rgba(0, 184, 212, 0.05);
+  border-left: 3px solid var(--color-accent);
+  border-radius: 8px;
+  padding: 22px 26px;
+  font-family: 'JetBrains Mono', monospace; font-size: 13px;
+  line-height: 1.85; color: #E4E9F0;
+  white-space: pre; overflow-x: auto;
+  max-width: 680px; width: 100%;
+}
+
+.block-item {
+  background: var(--color-surf); border: 1px solid var(--color-border);
+  border-radius: 8px; padding: 12px 16px;
+  display: flex; align-items: flex-start; gap: 14px;
+  border-left: 3px solid var(--color-accent);
+}
+.block-item .num {
+  background: var(--color-accent); color: var(--color-primary);
+  min-width: 26px; height: 26px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 700; flex-shrink: 0;
+}
+.block-item .body { flex: 1; }
+.block-item .body .title { font-size: 13px; font-weight: 700; color: var(--color-accent); margin-bottom: 2px; letter-spacing: 0.03em; }
+.block-item .body .desc { font-size: 13px; color: var(--color-text-soft); line-height: 1.45; }
+
+.column-list {
+  display: flex; flex-direction: column; gap: 8px;
+}
+
+.dual-col {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+  max-width: 1100px; width: 100%;
+}
+.dual-col h3 { font-size: 14px; color: var(--color-accent); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px; }
+
+@media (max-width: 900px) { .dual-col { grid-template-columns: 1fr; } }
+
+@media (max-width: 1024px) { html { font-size: 17px; } }
+@media (max-width: 768px) {
+  html { font-size: 15px; }
+  .slide { padding: 64px 24px !important; min-height: 100vh !important; height: auto !important; }
+  .nav-dots { display: none; }
+  .grid.grid-cols-3 { grid-template-columns: 1fr !important; }
+  .grid.grid-cols-4 { grid-template-columns: repeat(2,1fr) !important; }
+  .grid.grid-cols-5 { grid-template-columns: 1fr !important; }
+  [class*="max-w-["] { max-width: 100% !important; }
+  .nav-arrow { width: 40px; height: 40px; }
+  #btn-prev { left: 8px; }
+  #btn-next { right: 8px; }
+  .brand-header { left: 16px; font-size: 11px; }
+  #slide-counter { right: 16px; font-size: 11px; }
+}
+@media (max-width: 480px) {
+  html { font-size: 14px; }
+  .slide { padding: 56px 16px !important; }
+  .grid { grid-template-columns: 1fr !important; }
+}
+</style>
+</head>
+<body class="h-full font-sans">
+
+<div class="brand-header">
+  <span>Schokros Consulting GmbH</span>
+  <span class="sep">·</span>
+  <span class="accent">2Penguins</span>
+</div>
+
+<div id="slide-counter">01 / 13</div>
+
+<button class="nav-arrow" id="btn-prev" aria-label="Vorherige Folie">&#8592;</button>
+<button class="nav-arrow" id="btn-next" aria-label="Nächste Folie">&#8594;</button>
+<nav class="nav-dots" id="dots"></nav>
+
+<!-- ════════════════════════════════════════════════════════════
+     SLIDE 01 — COVER
+     ════════════════════════════════════════════════════════════ -->
+<section class="slide active" id="s01">
+  <div class="label">Strategic Blueprint · Version 2.2</div>
+  <h1 class="text-[clamp(2.4rem,4.6vw,3.8rem)] font-extrabold leading-[1.12] max-w-[920px] text-center mb-5">
+    Ihre Website-Strategie<br>
+    <span style="color: var(--color-accent);">auf einen Blick</span>
+  </h1>
+  <p class="text-[1.15rem] text-center max-w-[720px]" style="color: var(--color-text-soft);">
+    Unabhängige Finanzberatung in Berlin — persönlich, mehrsprachig, mit Bauspar- und Finanzierungsexpertise als Fach-Anker.
+  </p>
+  <div class="mt-14 font-mono text-[12px] flex flex-wrap gap-6 justify-center" style="color: var(--color-muted); letter-spacing: 0.06em;">
+    <span>Erstellt am 26. Mai 2026</span>
+    <span class="text-[var(--color-accent)]">·</span>
+    <span>2Penguins</span>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     SLIDE 02 — STRATEGISCHE KERNAUSSAGE
+     ════════════════════════════════════════════════════════════ -->
+<section class="slide" id="s02">
+  <div class="label">Sektion 1 · Strategische Kernaussage</div>
+  <div class="max-w-[900px] w-full text-center mb-12">
+    <p class="text-[1rem] mb-6 font-mono uppercase tracking-[0.1em]" style="color: var(--color-muted);">Die Website hat zwei gleichzeitige Aufgaben</p>
+    <div class="dual-col">
+      <div class="card card-featured text-left">
+        <div class="flex items-center gap-3 mb-3">
+          <i data-lucide="user" style="width: 1.4rem; height: 1.4rem; color: var(--color-accent);"></i>
+          <div class="text-base font-bold">Für den Besucher</div>
+        </div>
+        <div class="text-sm leading-[1.6]" style="color: var(--color-text-soft);">Innerhalb von Sekunden vermitteln, wer berät, wofür beraten wird und warum Schokros die richtige Adresse ist — und dann zur Kontaktaufnahme führen.</div>
+      </div>
+      <div class="card card-featured text-left">
+        <div class="flex items-center gap-3 mb-3">
+          <i data-lucide="search" style="width: 1.4rem; height: 1.4rem; color: var(--color-accent);"></i>
+          <div class="text-base font-bold">Für Google und KI-Antwort-Systeme</div>
+        </div>
+        <div class="text-sm leading-[1.6]" style="color: var(--color-text-soft);">Berlin-lokales, semantisch sauberes, strukturiertes Angebot, das in organischer Suche und in KI-Übersichten als verlässliche Quelle gefunden wird.</div>
+      </div>
+    </div>
+  </div>
+  <p class="text-center max-w-[800px] text-sm" style="color: var(--color-muted);">
+    Jede Seite, jeder Inhalts-Block, jede Mehrsprachigkeits-Entscheidung folgt dieser doppelten Anforderung.
+  </p>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     SLIDE 03 — POSITIONIERUNG (5 SÄULEN)
+     ════════════════════════════════════════════════════════════ -->
+<section class="slide" id="s03">
+  <div class="label">Sektion 2 · Positionierung und Differenzierung</div>
+  <h2 class="text-[clamp(1.5rem,2.4vw,1.9rem)] font-bold mb-3 max-w-[900px] text-center leading-[1.3]" style="color: var(--color-text);">
+    «Persönlicher, mehrsprachiger Berliner Beratungs-Partner für Immobilien-Finanzierung — beratungs-zentriert, mit Bauspar- und Finanzierungsexpertise als Fach-Anker.»
+  </h2>
+  <p class="text-xs mb-9" style="color: var(--color-muted); font-family: monospace; letter-spacing: 0.06em;">Fünf beweisbare Säulen, jeweils strukturell in der Website verankert</p>
+
+  <div class="grid grid-cols-5 gap-3 max-w-[1200px] w-full">
+    <div class="card" style="padding: 18px 16px;">
+      <div class="pill mb-3">Säule 1</div>
+      <div class="font-bold text-[13px] mb-2 leading-[1.3]" style="color: var(--color-accent);">Persönliche Beratung mit Bauspar-Expertise</div>
+      <div class="text-xs leading-[1.5]" style="color: var(--color-text-soft);">Sichtbare Person im Eröffnungsbereich, eigene Über-mich-Seite, wiederkehrendes Foto, Person über Schema.org markiert.</div>
+    </div>
+    <div class="card" style="padding: 18px 16px;">
+      <div class="pill mb-3">Säule 2</div>
+      <div class="font-bold text-[13px] mb-2 leading-[1.3]" style="color: var(--color-accent);">Beratung in Deutsch und Russisch</div>
+      <div class="text-xs leading-[1.5]" style="color: var(--color-text-soft);">Sprach-Umschalter prominent in der Navigation, parallele Sprachversionen für jede Seite, korrekte Hreflang-Markierung.</div>
+    </div>
+    <div class="card" style="padding: 18px 16px;">
+      <div class="pill mb-3">Säule 3</div>
+      <div class="font-bold text-[13px] mb-2 leading-[1.3]" style="color: var(--color-accent);">Bewertung mit benannten Methoden</div>
+      <div class="text-xs leading-[1.5]" style="color: var(--color-text-soft);">Eigene Detailseite mit vdp, Sprengnetter und Value als zentrales Vertrauens-Element.</div>
+    </div>
+    <div class="card" style="padding: 18px 16px;">
+      <div class="pill mb-3">Säule 4</div>
+      <div class="font-bold text-[13px] mb-2 leading-[1.3]" style="color: var(--color-accent);">Beratungs-Fokus statt Produkt-Verkauf</div>
+      <div class="text-xs leading-[1.5]" style="color: var(--color-text-soft);">Beratungs-orientierte Wortwahl in Service-Texten, Aufruf-Buttons konsequent auf «Beratungsgespräch» ausgerichtet.</div>
+    </div>
+    <div class="card" style="padding: 18px 16px;">
+      <div class="pill mb-3">Säule 5</div>
+      <div class="font-bold text-[13px] mb-2 leading-[1.3]" style="color: var(--color-accent);">Berliner Lokal-Anker</div>
+      <div class="text-xs leading-[1.5]" style="color: var(--color-text-soft);">Konsequente Berlin-Erwähnung in Inhalten, Adresse im Footer jeder Seite, Schema.org LocalBusiness-Markierung.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     SLIDE 04 — MARKTBILD
+     ════════════════════════════════════════════════════════════ -->
+<section class="slide" id="s04">
+  <div class="label">Sektion 3 · Marktbild und abgeleitete Muster</div>
+  <h2 class="text-[clamp(1.7rem,2.8vw,2.2rem)] font-bold mb-3 text-center max-w-[900px]">Erkenntnisse aus der Analyse von 14 Konkurrenten plus 100 Karten-Einträgen plus 22-25 russischsprachigen Beratern</h2>
+  <p class="text-xs mb-9 max-w-[700px] text-center" style="color: var(--color-muted);">Markt-Muster, nicht 1:1-Imitation einzelner Anbieter</p>
+
+  <div class="dual-col">
+    <div>
+      <h3>Was wir strukturell einbauen</h3>
+      <div class="column-list">
+        <div class="block-item"><div class="num"><i data-lucide="bar-chart-3" style="width: 14px; height: 14px;"></i></div><div class="body"><div class="title">Quantifizierte Vertrauens-Zahlen</div><div class="desc">Markt-Standard. Zahlen-Kacheln direkt unter dem Eröffnungs-Bereich.</div></div></div>
+        <div class="block-item"><div class="num"><i data-lucide="list-checks" style="width: 14px; height: 14px;"></i></div><div class="body"><div class="title">Klare Prozess-Visualisierung</div><div class="desc">Drei bis fünf Schritte. Reduziert die Hemmschwelle einer Erstberatung.</div></div></div>
+        <div class="block-item"><div class="num"><i data-lucide="code-2" style="width: 14px; height: 14px;"></i></div><div class="body"><div class="title">Konsequente Schema.org-Markierung</div><div class="desc">Im untersuchten Pool selten vollständig — wir setzen sie als technischen Vorsprung ein.</div></div></div>
+        <div class="block-item"><div class="num"><i data-lucide="map-pin" style="width: 14px; height: 14px;"></i></div><div class="body"><div class="title">Lokale Verankerung</div><div class="desc">Berlin-Erwähnung in Überschriften, Meta-Texten und Footer.</div></div></div>
+        <div class="block-item"><div class="num"><i data-lucide="folder-tree" style="width: 14px; height: 14px;"></i></div><div class="body"><div class="title">Übersichts-Seite plus Detailseiten</div><div class="desc">Etablierte Struktur. Ermöglicht gezielte Sichtbarkeit je Leistung.</div></div></div>
+        <div class="block-item"><div class="num"><i data-lucide="help-circle" style="width: 14px; height: 14px;"></i></div><div class="body"><div class="title">Häufige Fragen mit strukturierten Daten</div><div class="desc">Im Pool selten. Konkrete Vorsprungs-Chance für KI-Übersichten.</div></div></div>
+      </div>
+    </div>
+
+    <div>
+      <h3>Was wir bewusst nicht übernehmen</h3>
+      <div class="column-list">
+        <div class="block-item" style="border-left-color: #DC2626;"><div class="num" style="background: #DC2626; color: white;"><i data-lucide="x" style="width: 14px; height: 14px;"></i></div><div class="body"><div class="title">Großmakler-Strategien mit tausenden Unterseiten</div><div class="desc">Programmatische Massen-Strategie großer Vergleichs-Plattformen. Für eine Einzelpraxis weder umsetzbar noch glaubwürdig.</div></div></div>
+        <div class="block-item" style="border-left-color: #DC2626;"><div class="num" style="background: #DC2626; color: white;"><i data-lucide="x" style="width: 14px; height: 14px;"></i></div><div class="body"><div class="title">Sprachstil großer Strukturvertriebe</div><div class="desc">Schokros distanziert sich explizit von vermittlungs- und produktverkaufs-orientierter Sprache.</div></div></div>
+        <div class="block-item" style="border-left-color: #DC2626;"><div class="num" style="background: #DC2626; color: white;"><i data-lucide="x" style="width: 14px; height: 14px;"></i></div><div class="body"><div class="title">Aggressive Verkaufs-Sprache</div><div class="desc">Statt aggressiver «Provisions-frei»-Behauptungen kommunizieren wir den Beratungs-Fokus.</div></div></div>
+        <div class="block-item" style="border-left-color: #DC2626;"><div class="num" style="background: #DC2626; color: white;"><i data-lucide="x" style="width: 14px; height: 14px;"></i></div><div class="body"><div class="title">Versprechen an Spezial-Zielgruppen</div><div class="desc">Keine Positionierung, die nicht durch authentische Marken-Substanz tragbar wäre.</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     SLIDE 05 — SITEMAP
+     ════════════════════════════════════════════════════════════ -->
+<section class="slide" id="s05">
+  <div class="label">Sektion 4 · Sitemap und Informationsarchitektur</div>
+  <h2 class="text-[clamp(1.7rem,2.8vw,2.2rem)] font-bold mb-3">12 Seiten — basierend auf Ihrer Konzept-Skizze</h2>
+  <p class="text-xs mb-7 max-w-[700px] text-center" style="color: var(--color-muted);">Vereinheitlicht aus Skizze vom 23.04 (übergeben 15.05)</p>
+
+  <div class="dual-col" style="grid-template-columns: 1fr 1fr;">
+    <div>
+      <h3>Sitemap</h3>
+      <div class="sitemap-block">1.  Startseite
+2.  Über mich (Denis Slusarev)
+3.  Leistungen (Übersichts-Seite)
+    3.1  Betriebswirtschaftliche Beratung
+    3.2  Einschätzung und Empfehlungsgespräch
+    3.3  Banktypische Immobilienbewertung
+         (vdp · Sprengnetter · Value)
+    3.4  Dokumenten-Prüfung
+    3.5  Vorhabensbegleitung
+4.  Finanzierungsrechner
+    (inkl. Konditionen + Reservierungsanfrage)
+5.  Kontakt
+    (inkl. Selbstauskunft-Anfrage)
+6.  Impressum (nur DE)
+7.  Datenschutz (nur DE)
+
+12 Seiten in Deutsch, 10 davon zusätzlich in Russisch
+Russisch-Pfad: /ru/</div>
+    </div>
+
+    <div>
+      <h3>Strukturelle Begründung</h3>
+      <div class="column-list">
+        <div class="card text-xs" style="padding: 14px 16px;">
+          <div class="font-bold mb-1 text-sm" style="color: var(--color-accent);">Aktionen im Nutzungs-Kontext platziert</div>
+          <div style="color: var(--color-text-soft);">Selbstauskunft auf der Kontakt-Seite. Reservierungsanfrage und Konditionen auf der Rechner-Seite. Wer rechnet, will direkt reservieren.</div>
+        </div>
+        <div class="card text-xs" style="padding: 14px 16px;">
+          <div class="font-bold mb-1 text-sm" style="color: var(--color-accent);">Partner und Verlinkungen als Startseiten-Bereich</div>
+          <div style="color: var(--color-text-soft);">Vertrauens-Element im oberen Bereich. Eine eigene Seite wäre für eine Einzelpraxis ohne erkennbaren Mehrwert.</div>
+        </div>
+        <div class="card text-xs" style="padding: 14px 16px;">
+          <div class="font-bold mb-1 text-sm" style="color: var(--color-accent);">Domain der Website</div>
+          <div style="color: var(--color-text-soft);">Website unter <strong style="color: var(--color-text);">schokros-consulting.de</strong>. Permanente Weiterleitung der bestehenden schokros.com auf die neue Domain. Bestehende E-Mail-Adressen unter schokros.com funktionieren unverändert weiter. Begründung: .de-Lokal-Signal, voller Firmenname kommuniziert direkt.</div>
+        </div>
+        <div class="card text-xs" style="padding: 14px 16px;">
+          <div class="font-bold mb-1 text-sm" style="color: var(--color-accent);">Tipps und Tricks (Blog)</div>
+          <div style="color: var(--color-text-soft);">Empfohlen als optionale Erweiterung in späterer Phase. Erfordert regelmäßige Inhalts-Pflege.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     SLIDE 06 — STARTSEITE BLOCK-ARCHITEKTUR
+     ════════════════════════════════════════════════════════════ -->
+<section class="slide" id="s06">
+  <div class="label">Sektion 5 · Startseite — Inhalts-Architektur</div>
+  <h2 class="text-[clamp(1.6rem,2.6vw,2.1rem)] font-bold mb-3">Acht Bereiche nach Wirkungs-Logik</h2>
+  <p class="text-xs mb-7 max-w-[700px] text-center" style="color: var(--color-muted);">Vertrauen aufbauen, Angebot strukturieren, zur Aktion führen</p>
+
+  <div class="column-list max-w-[820px] w-full">
+    <div class="block-item"><div class="num">1</div><div class="body"><div class="title">Eröffnungs-Bereich</div><div class="desc">Hauptüberschrift mit Positionierung, Untertitel mit Hinweis auf die Bauspar-Expertise, zwei Aktions-Buttons, Sprach-Umschalter sichtbar.</div></div></div>
+    <div class="block-item"><div class="num">2</div><div class="body"><div class="title">Vertrauens-Zahlen</div><div class="desc">3-4 quantifizierte Kacheln direkt unter dem Eröffnungs-Bereich. Glaubwürdigkeit vor Storytelling.</div></div></div>
+    <div class="block-item"><div class="num">3</div><div class="body"><div class="title">Leistungs-Übersicht</div><div class="desc">5 Service-Karten mit Symbol, Titel, Einleitungssatz, Verlinkung zur Detailseite. Stärkt die interne Vernetzung.</div></div></div>
+    <div class="block-item"><div class="num">4</div><div class="body"><div class="title">Beratungs-Prozess in vier Schritten</div><div class="desc">Erstgespräch — Analyse und Konzept — Optionen und Vergleich — Begleitung.</div></div></div>
+    <div class="block-item"><div class="num">5</div><div class="body"><div class="title">Über mich (Kurzversion)</div><div class="desc">Foto plus persönliche Vorstellung mit Hinweis auf die Bauspar- und Finanzierungs-Spezialisierung sowie auf die russisch-sprachige Beratung. Verbindet die Positionierung mit der konkreten Person.</div></div></div>
+    <div class="block-item"><div class="num">6</div><div class="body"><div class="title">Finanzierungs-Rechner-Vorschau</div><div class="desc">Mini-Formular mit Kaufpreis-Eingabe. Lead-Magnet für Besucher in der Recherche-Phase.</div></div></div>
+    <div class="block-item"><div class="num">7</div><div class="body"><div class="title">Partner und Verlinkungen</div><div class="desc">Zwei visuell getrennte Unter-Bereiche: Partner-Kooperationen und Vermittler-Verlinkungen.</div></div></div>
+    <div class="block-item"><div class="num">8</div><div class="body"><div class="title">Häufige Fragen plus abschließender Aufruf</div><div class="desc">6-8 Fragen mit strukturierten Daten. Hebel für KI-Übersichten und für Besucher am Seiten-Ende.</div></div></div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     SLIDE 07 — SERVICE-DETAILSEITEN
+     ════════════════════════════════════════════════════════════ -->
+<section class="slide" id="s07">
+  <div class="label">Sektion 6 · Service-Detailseiten</div>
+  <h2 class="text-[clamp(1.7rem,2.8vw,2.2rem)] font-bold mb-3">Einheitliche Sieben-Bereiche-Struktur</h2>
+  <p class="text-xs mb-7 max-w-[700px] text-center" style="color: var(--color-muted);">Konsistente Erwartung für Besucher, einfachere Pflege</p>
+
+  <div class="column-list max-w-[820px] w-full">
+    <div class="block-item"><div class="num">1</div><div class="body"><div class="title">Eröffnungs-Bereich</div><div class="desc">Service-Name als Hauptüberschrift, ein Satz Kunden-Nutzen, Aufruf zum Beratungsgespräch.</div></div></div>
+    <div class="block-item"><div class="num">2</div><div class="body"><div class="title">Typische Kunden-Fragen</div><div class="desc">3-4 Aussagen aus Kundensicht — als Fragen formuliert, die sich Erstkäufer typischerweise stellen.</div></div></div>
+    <div class="block-item"><div class="num">3</div><div class="body"><div class="title">Was das konkret bedeutet</div><div class="desc">Methode, Vorgehen, Erwartungs-Lage. Bei Immobilienbewertung: vdp, Sprengnetter, Value explizit benannt.</div></div></div>
+    <div class="block-item"><div class="num">4</div><div class="body"><div class="title">Ablauf der Zusammenarbeit</div><div class="desc">3-5 service-spezifische Schritte.</div></div></div>
+    <div class="block-item"><div class="num">5</div><div class="body"><div class="title">Vertrauen und Spezialisierung</div><div class="desc">Beratungs-Fokus, Mehrsprachigkeit, Berliner Anker, bei Immobilienbewertung und Vorhabensbegleitung die Bauspar- und Finanzierungs-Spezialisierung.</div></div></div>
+    <div class="block-item"><div class="num">6</div><div class="body"><div class="title">Service-spezifische Häufige Fragen</div><div class="desc">2-3 Fragen mit Antworten, FAQPage-Schema. Spezifische Such-Phrasen abdecken, KI-tauglich.</div></div></div>
+    <div class="block-item"><div class="num">7</div><div class="body"><div class="title">Abschließender Aufruf</div><div class="desc">Konsistente Konversions-Möglichkeit am Seiten-Ende.</div></div></div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     SLIDE 08 — CONVERSION-ARCHITEKTUR
+     ════════════════════════════════════════════════════════════ -->
+<section class="slide" id="s08">
+  <div class="label">Sektion 7 · Aktivierungs- und Konversions-Architektur</div>
+  <h2 class="text-[clamp(1.7rem,2.8vw,2.2rem)] font-bold mb-9">Hierarchie der Aufrufe und Formular-Flächen</h2>
+
+  <div class="dual-col">
+    <div>
+      <h3>Hierarchie der Handlungs-Aufrufe</h3>
+      <div class="column-list">
+        <div class="card text-xs" style="padding: 14px 16px;">
+          <div class="font-bold mb-1 text-sm" style="color: var(--color-accent);">Primär · Kostenloses Beratungsgespräch</div>
+          <div style="color: var(--color-text-soft);">Eröffnungs-Bereich, Seiten-Ende, fixierter Button auf Mobil. Für entscheidungs-bereite Besucher.</div>
+        </div>
+        <div class="card text-xs" style="padding: 14px 16px;">
+          <div class="font-bold mb-1 text-sm" style="color: var(--color-accent);">Sekundär · Finanzierungsrechner</div>
+          <div style="color: var(--color-text-soft);">Eröffnungs-Bereich, Seitenmitte, Service-Seiten. Für Besucher in der Recherche-Phase.</div>
+        </div>
+        <div class="card text-xs" style="padding: 14px 16px;">
+          <div class="font-bold mb-1 text-sm" style="color: var(--color-accent);">Tertiär · Selbstauskunft / Reservierung</div>
+          <div style="color: var(--color-text-soft);">Rechner-Seite (Reservierung) und Kontakt-Seite (Selbstauskunft). Für fortgeschrittene Entscheidungs-Phase.</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <h3>Formular-Flächen</h3>
+      <div class="column-list">
+        <div class="card text-xs" style="padding: 14px 16px;">
+          <div class="font-bold mb-1 text-sm" style="color: var(--color-accent);">Hauptkontakt-Formular</div>
+          <div style="color: var(--color-text-soft);">Kontakt-Seite. Vollständige Anfrage mit Service-Auswahl und freier Nachricht.</div>
+        </div>
+        <div class="card text-xs" style="padding: 14px 16px;">
+          <div class="font-bold mb-1 text-sm" style="color: var(--color-accent);">Selbstauskunft-Anfrage</div>
+          <div style="color: var(--color-text-soft);">Separater Bereich auf der Kontakt-Seite. Sie senden manuell den 30-Tage-spezifischen Link.</div>
+        </div>
+        <div class="card text-xs" style="padding: 14px 16px;">
+          <div class="font-bold mb-1 text-sm" style="color: var(--color-accent);">Reservierungsanfrage</div>
+          <div style="color: var(--color-text-soft);">Auf der Rechner-Seite, im direkten Nutzungs-Kontext.</div>
+        </div>
+        <div class="card text-xs" style="padding: 14px 16px;">
+          <div class="font-bold mb-1 text-sm" style="color: var(--color-accent);">Mini-Rechner-Vorschau</div>
+          <div style="color: var(--color-text-soft);">Startseite. Ein Eingabefeld (Kaufpreis) als Lead-Magnet.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     SLIDE 09 — SEO UND KI
+     ════════════════════════════════════════════════════════════ -->
+<section class="slide" id="s09">
+  <div class="label">Sektion 8 · Sichtbarkeit in Google und KI-Systemen</div>
+  <h2 class="text-[clamp(1.7rem,2.8vw,2.2rem)] font-bold mb-7">Drei Keyword-Cluster plus Vorsprungs-Chance bei KI-Antworten</h2>
+
+  <div class="grid grid-cols-3 gap-4 max-w-[1100px] w-full mb-5">
+    <div class="card">
+      <div class="text-xs font-mono mb-2" style="color: var(--color-muted);">Breite Such-Phase</div>
+      <div class="font-bold mb-2" style="color: var(--color-accent);">Finanzberater Berlin</div>
+      <div class="text-xs mb-1" style="color: var(--color-text-soft);">260 Suchen pro Monat · Schwierigkeit 25 % (leicht)</div>
+      <div class="text-xs" style="color: var(--color-muted);">Marken-Sichtbarkeit, breite Akquise</div>
+    </div>
+    <div class="card">
+      <div class="text-xs font-mono mb-2" style="color: var(--color-muted);">Höchster Konversions-Wert</div>
+      <div class="font-bold mb-2" style="color: var(--color-accent);">Baufinanzierung Berlin</div>
+      <div class="text-xs mb-1" style="color: var(--color-text-soft);">170 Suchen pro Monat · Klick-Wert bis 5,45 €</div>
+      <div class="text-xs" style="color: var(--color-muted);">Höchster kommerzieller Wert pro Klick</div>
+    </div>
+    <div class="card">
+      <div class="text-xs font-mono mb-2" style="color: var(--color-muted);">Differenzierungs-Cluster</div>
+      <div class="font-bold mb-2" style="color: var(--color-accent);">Immobilienbewertung Berlin</div>
+      <div class="text-xs mb-1" style="color: var(--color-text-soft);">Spezifische Such-Phrasen · Methoden-Spezialisierung</div>
+      <div class="text-xs" style="color: var(--color-muted);">Geringer Wettbewerb, hohe Vertrauens-Wirkung</div>
+    </div>
+  </div>
+
+  <div class="card card-featured max-w-[1100px] w-full mb-5">
+    <div class="flex items-start gap-4">
+      <i data-lucide="zap" style="width: 1.6rem; height: 1.6rem; color: var(--color-accent); flex-shrink: 0; margin-top: 4px;"></i>
+      <div>
+        <div class="font-bold mb-1" style="color: var(--color-accent);">Vorsprungs-Chance bei KI-Antwort-Systemen</div>
+        <div class="text-sm" style="color: var(--color-text-soft);">
+          Für «Finanzberater Berlin» sind aktuell <strong style="color: var(--color-accent);">null Fragen indexiert</strong> in Google. Wer als Erster strukturierte FAQPage-Antworten veröffentlicht, hat eine signifikant höhere Wahrscheinlichkeit, in KI-Antworten als Quelle zitiert zu werden. Wir bauen das von Tag 1 ein.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-xs text-center max-w-[1000px]" style="color: var(--color-muted);">
+    <strong style="color: var(--color-text-soft);">Schema.org-Daten:</strong> Fünf Typen (LocalBusiness, Organization, Person, Service, FAQPage). Im untersuchten Pool nutzt nur 1 Konkurrent ein vergleichbares Setup.
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     SLIDE 10 — MEHRSPRACHIGKEIT
+     ════════════════════════════════════════════════════════════ -->
+<section class="slide" id="s10">
+  <div class="label">Sektion 9 · Mehrsprachigkeit Deutsch und Russisch</div>
+  <h2 class="text-[clamp(1.7rem,2.8vw,2.2rem)] font-bold mb-7">Strukturelles Merkmal, nicht nur Übersetzung</h2>
+
+  <div class="dual-col">
+    <div>
+      <h3>Strukturelle Umsetzung</h3>
+      <div class="column-list">
+        <div class="card text-xs" style="padding: 14px 16px;">
+          <div class="font-bold mb-1 text-sm" style="color: var(--color-accent);">Parallele Sprach-Pfade</div>
+          <div style="color: var(--color-text-soft);">Jede inhaltliche Seite in Deutsch (Hauptpfad) und Russisch (unter /ru/). Impressum und Datenschutz nur Deutsch.</div>
+        </div>
+        <div class="card text-xs" style="padding: 14px 16px;">
+          <div class="font-bold mb-1 text-sm" style="color: var(--color-accent);">Sprach-Umschalter</div>
+          <div style="color: var(--color-text-soft);">Sichtbarer Bestandteil der Hauptnavigation. Wechsel auf der jeweils äquivalenten Seite.</div>
+        </div>
+        <div class="card text-xs" style="padding: 14px 16px;">
+          <div class="font-bold mb-1 text-sm" style="color: var(--color-accent);">Korrekte Sprach-Auszeichnung</div>
+          <div style="color: var(--color-text-soft);">Technisch sauber, damit Suchmaschinen die Sprach-Varianten richtig zuordnen.</div>
+        </div>
+        <div class="card text-xs" style="padding: 14px 16px;">
+          <div class="font-bold mb-1 text-sm" style="color: var(--color-accent);">Eigenständige Daten-Markierung je Sprache</div>
+          <div style="color: var(--color-text-soft);">Jede Sprach-Version wird semantisch eigenständig markiert.</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <h3>Strategische Bedeutung</h3>
+      <div class="card card-featured">
+        <div class="font-bold mb-3 text-base" style="color: var(--color-accent);">Einzigartige Marktposition</div>
+        <div class="text-sm mb-4" style="color: var(--color-text-soft); line-height: 1.6;">
+          Kein direkter Berater-Wettbewerber bietet eine vollständig zweisprachige Website. Im erweiterten Markt: 22 bis 25 aktive russischsprachige Berater, keiner mit vollständig zweisprachiger Präsenz auf gleichem strukturellem Niveau.
+        </div>
+        <div class="text-sm" style="color: var(--color-text-soft); line-height: 1.6;">
+          Die russisch-sprachigen Seiten haben gleichzeitig Sichtbarkeits-Wert für spezifische Such-Phrasen aus der Berliner russischsprachigen Gemeinschaft. Die Wettbewerbsdichte ist deutlich geringer als im deutschsprachigen Markt.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     SLIDE 11 — DESIGN-RICHTUNG (3 OPTIONS)
+     ════════════════════════════════════════════════════════════ -->
+<section class="slide" id="s11">
+  <div class="label">Sektion 10 · Design-Richtung</div>
+  <h2 class="text-[clamp(1.6rem,2.6vw,2.1rem)] font-bold mb-3">Drei Farb-Richtungen auf Basis des dunklen Blautons</h2>
+  <p class="text-xs mb-8 max-w-[760px] text-center" style="color: var(--color-muted);">Unsere Empfehlung ist Option B. Detaillierte visuelle Vorschau mit Mockup-Komponenten siehe Begleit-Datei <a href="schokros_hex_palette_preview.html" target="_blank" rel="noopener" style="color: var(--color-accent); text-decoration: underline; text-underline-offset: 3px; font-weight: 600;">schokros_hex_palette_preview.html</a>.</p>
+
+  <div class="grid grid-cols-3 gap-4 max-w-[1200px] w-full">
+
+    <!-- Option A — Klassisches Vertrauen -->
+    <div class="palette-card">
+      <div class="palette-card-header">
+        <div class="palette-card-title">Option A · Klassisches Vertrauen</div>
+      </div>
+      <div class="grid grid-cols-2 gap-2">
+        <div class="swatch-mini" style="background:#012245; color:#FFFFFF;"><span class="name">Haupt</span><span class="code">#012245</span></div>
+        <div class="swatch-mini" style="background:#C9A961; color:#0A1628;"><span class="name">Gold-Akzent</span><span class="code">#C9A961</span></div>
+        <div class="swatch-mini" style="background:#FFFFFF; color:#0A1628; border:1px solid #DDE4ED;"><span class="name">Hintergrund</span><span class="code">#FFFFFF</span></div>
+        <div class="swatch-mini" style="background:#0A1628; color:#FFFFFF;"><span class="name">Text</span><span class="code">#0A1628</span></div>
+      </div>
+      <div class="palette-card-character">Wirkung: klassisch, Premium-Bank-Anmutung. Stärkt traditionellen Vertrauens-Eindruck.</div>
+    </div>
+
+    <!-- Option B — Modern und digital (RECOMMENDED) -->
+    <div class="palette-card recommended">
+      <div class="palette-card-header">
+        <div class="palette-card-title">Option B · Modern und digital</div>
+        <span class="pill">Empfohlen</span>
+      </div>
+      <div class="grid grid-cols-2 gap-2">
+        <div class="swatch-mini" style="background:#012245; color:#FFFFFF;"><span class="name">Haupt</span><span class="code">#012245</span></div>
+        <div class="swatch-mini" style="background:#00B8D4; color:#012245;"><span class="name">Cyan-Akzent</span><span class="code">#00B8D4</span></div>
+        <div class="swatch-mini" style="background:#FFFFFF; color:#0F1929; border:1px solid #DDE4ED;"><span class="name">Hintergrund</span><span class="code">#FFFFFF</span></div>
+        <div class="swatch-mini" style="background:#0F1929; color:#FFFFFF;"><span class="name">Text</span><span class="code">#0F1929</span></div>
+      </div>
+      <div class="palette-card-character">Wirkung: modern, digital-zeitgemäß. Passt zum KI-First-Charakter und Ihrem Wunsch nach aktuellem Trend.</div>
+    </div>
+
+    <!-- Option C — Warm und persönlich -->
+    <div class="palette-card">
+      <div class="palette-card-header">
+        <div class="palette-card-title">Option C · Warm und persönlich</div>
+      </div>
+      <div class="grid grid-cols-2 gap-2">
+        <div class="swatch-mini" style="background:#012245; color:#FFFFFF;"><span class="name">Haupt</span><span class="code">#012245</span></div>
+        <div class="swatch-mini" style="background:#E07856; color:#FFFFFF;"><span class="name">Terrakotta-Akzent</span><span class="code">#E07856</span></div>
+        <div class="swatch-mini" style="background:#FFFDF9; color:#1A1A2E; border:1px solid #EDE6DA;"><span class="name">Hintergrund</span><span class="code">#FFFDF9</span></div>
+        <div class="swatch-mini" style="background:#1A1A2E; color:#FFFFFF;"><span class="name">Text</span><span class="code">#1A1A2E</span></div>
+      </div>
+      <div class="palette-card-character">Wirkung: warm, persönlich, einladend. Hebt sich vom klassischen Finanz-Look ab, ist für unsere Branche jedoch ungewöhnlich.</div>
+    </div>
+
+  </div>
+
+  <div class="mt-7 text-xs text-center max-w-[900px]" style="color: var(--color-muted); line-height: 1.6;">
+    <strong style="color: var(--color-text-soft);">Schrift-Empfehlung:</strong> Inter oder Sora. Beide Schriften sind bilingual deutsch und russisch funktionsfähig und für Bildschirm-Lesen optimiert.<br>
+    Alle Farb-Kombinationen erfüllen die WCAG-Anforderungen für ausreichende Kontraste.
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     SLIDE 12 — MOBILE-ERFAHRUNG
+     ════════════════════════════════════════════════════════════ -->
+<section class="slide" id="s12">
+  <div class="label">Sektion 11 · Mobile-Erfahrung</div>
+  <h2 class="text-[clamp(1.7rem,2.8vw,2.2rem)] font-bold mb-3">Mobile-First gedacht — Desktop als Erweiterung</h2>
+  <p class="text-xs mb-9 max-w-[760px] text-center" style="color: var(--color-muted);">Ein erheblicher Anteil der Berliner Lokal-Suchen erfolgt über Smartphones. Die Website ist deshalb mobil-zuerst entworfen.</p>
+
+  <div class="grid grid-cols-2 gap-4 max-w-[900px] w-full mb-6">
+    <div class="block-item"><div class="num"><i data-lucide="menu" style="width: 14px; height: 14px;"></i></div><div class="body"><div class="title">Hamburger-Navigation</div><div class="desc">Mit sichtbarer Telefonnummer und Sprach-Umschalter in der oberen Leiste.</div></div></div>
+    <div class="block-item"><div class="num"><i data-lucide="phone" style="width: 14px; height: 14px;"></i></div><div class="body"><div class="title">Ein-Klick-Anruf</div><div class="desc">Direkter Anruf vom Smartphone über tippbare Telefonnummer.</div></div></div>
+    <div class="block-item"><div class="num"><i data-lucide="message-circle" style="width: 14px; height: 14px;"></i></div><div class="body"><div class="title">Floating WhatsApp-Button</div><div class="desc">Bevorzugter Kommunikations-Kanal direkt erreichbar.</div></div></div>
+    <div class="block-item"><div class="num"><i data-lucide="anchor" style="width: 14px; height: 14px;"></i></div><div class="body"><div class="title">Fixierter Aktions-Button</div><div class="desc">Am unteren Bildschirmrand während des Scrollens sichtbar.</div></div></div>
+  </div>
+
+  <div class="text-xs text-center max-w-[760px]" style="color: var(--color-muted); line-height: 1.6;">
+    <strong style="color: var(--color-text-soft);">Performance:</strong> Schnelles Laden ist auf Mobilgeräten besonders wichtig — sowohl als direkter Konversions-Faktor als auch als Rang-Faktor in Google. Die Umsetzung wird auf konsistente Leistungs-Werte optimiert (Bildkomprimierung, verzögertes Laden, Code-Optimierung).
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     SLIDE 13 — NÄCHSTE SCHRITTE
+     ════════════════════════════════════════════════════════════ -->
+<section class="slide" id="s13">
+  <div class="label">Sektion 12 · Nächste Schritte</div>
+  <h2 class="text-[clamp(2rem,3.4vw,2.8rem)] font-bold text-center max-w-[900px] mb-4 leading-[1.2]">
+    Drei Phasen <span style="color: var(--color-accent);">bis zum Launch</span>
+  </h2>
+  <p class="text-center text-sm max-w-[720px] mb-10" style="color: var(--color-text-soft);">
+    Die strategische Architektur dieses Blueprints bleibt während der nachfolgenden Phasen stabil. Texte werden iterativ in der HTML-Vorschau mit Ihnen abgestimmt.
+  </p>
+
+  <div class="grid grid-cols-3 gap-4 max-w-[1000px] w-full">
+    <div class="card text-center">
+      <i data-lucide="file-text" style="width: 1.8rem; height: 1.8rem; color: var(--color-accent); margin: 0 auto 12px;"></i>
+      <div class="font-bold mb-2 text-sm" style="color: var(--color-accent);">Phase 4 · Technische Spezifikation</div>
+      <div class="text-xs" style="color: var(--color-text-soft);">Detaillierte Beschreibung für die Umsetzung: Inhalts-Block-Definition, Komponenten, Schema.org-Markup, Selbst-Pflege-System.</div>
+    </div>
+    <div class="card text-center">
+      <i data-lucide="layout-template" style="width: 1.8rem; height: 1.8rem; color: var(--color-accent); margin: 0 auto 12px;"></i>
+      <div class="font-bold mb-2 text-sm" style="color: var(--color-accent);">Phase 5 · Text-Entwürfe + HTML-Vorschau</div>
+      <div class="text-xs" style="color: var(--color-text-soft);">Erst-Entwürfe der Texte plus vollständige interaktive HTML-Vorschau. Iterative Abstimmung von Texten, Bildern, Anordnungs-Details.</div>
+    </div>
+    <div class="card text-center">
+      <i data-lucide="rocket" style="width: 1.8rem; height: 1.8rem; color: var(--color-accent); margin: 0 auto 12px;"></i>
+      <div class="font-bold mb-2 text-sm" style="color: var(--color-accent);">Phase 6 · Umsetzung und Launch</div>
+      <div class="text-xs" style="color: var(--color-text-soft);">Technische Realisierung als Next.js-Anwendung mit Sanity-Selbst-Pflege-System. Veröffentlichung auf Hetzner-Hosting.</div>
+    </div>
+  </div>
+
+  <div class="mt-14 text-center text-xs" style="color: var(--color-muted);">
+    Schokros Consulting GmbH · 2Penguins · Strategic Blueprint Version 2.2 · 26. Mai 2026
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     NAVIGATION SCRIPT
+     ════════════════════════════════════════════════════════════ -->
+<script>
+(function(){
+  var slides = document.querySelectorAll('.slide');
+  var total = slides.length, cur = 0;
+  var dots = document.getElementById('dots');
+  var counter = document.getElementById('slide-counter');
+  var btnPrev = document.getElementById('btn-prev');
+  var btnNext = document.getElementById('btn-next');
+
+  slides.forEach(function(_, i){
+    var b = document.createElement('button');
+    b.className = 'nd';
+    b.setAttribute('aria-label', 'Zur Folie ' + (i+1));
+    b.onclick = function(){ goto(i); };
+    dots.appendChild(b);
+  });
+  var dotEls = dots.querySelectorAll('.nd');
+
+  function goto(n){
+    n = Math.max(0, Math.min(total-1, n));
+    slides[cur].classList.remove('active');
+    dotEls[cur].classList.remove('on');
+    cur = n;
+    slides[cur].classList.add('active');
+    dotEls[cur].classList.add('on');
+    counter.textContent = String(cur+1).padStart(2, '0') + ' / ' + String(total).padStart(2, '0');
+    btnPrev.disabled = cur === 0;
+    btnNext.disabled = cur === total-1;
+    window.scrollTo(0, 0);
+  }
+
+  btnPrev.onclick = function(){ goto(cur-1); };
+  btnNext.onclick = function(){ goto(cur+1); };
+
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ' || e.key === 'PageDown') {
+      e.preventDefault(); goto(cur+1);
+    }
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp' || e.key === 'PageUp') {
+      e.preventDefault(); goto(cur-1);
+    }
+    if (e.key === 'Home') { e.preventDefault(); goto(0); }
+    if (e.key === 'End')  { e.preventDefault(); goto(total-1); }
+  });
+
+  var tx = 0, ty = 0;
+  document.addEventListener('touchstart', function(e){
+    tx = e.touches[0].clientX; ty = e.touches[0].clientY;
+  }, {passive: true});
+  document.addEventListener('touchend', function(e){
+    var dx = e.changedTouches[0].clientX - tx;
+    var dy = e.changedTouches[0].clientY - ty;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+      if (dx < 0) goto(cur+1); else goto(cur-1);
+    }
+  }, {passive: true});
+
+  goto(0);
+})();
+</script>
+<script>lucide.createIcons({attrs:{'stroke-width': 1.5}});</script>
+
+</body>
+</html>
