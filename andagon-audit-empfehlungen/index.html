@@ -139,15 +139,19 @@ body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
 
 <!-- NAVIGATION -->
 <nav class="nav-dots" id="dots"></nav>
-<div id="slide-counter">01 · 11</div>
+<div id="slide-counter">01 &middot; 18</div>
 <button class="nav-arrow" id="btn-prev">&#8592;</button>
 <button class="nav-arrow" id="btn-next">&#8594;</button>
 
+<!-- ============================================================ -->
+<!-- TEIL 1: ANALYSE-ERGEBNISSE (Was haben wir gefunden?)         -->
+<!-- ============================================================ -->
+
 <!-- SLIDE 01 — TITLE -->
 <section class="slide active" id="s01">
-  <div class="label" style="color: rgba(249,108,64,0.6);">Lead Generation Audit · Mai 2026</div>
+  <div class="label" style="color: rgba(249,108,64,0.6);">Lead Generation Audit &middot; Mai 2026</div>
   <h1 class="text-[clamp(2.2rem,4.5vw,3.5rem)] font-extrabold leading-[1.1] max-w-[800px] text-center" style="color: #F8FBFD;">
-    Ergebnisse & Empfehlungen<br>
+    Ergebnisse &amp; Empfehlungen<br>
     <span style="color: #F96C40;">andagon People GmbH</span>
   </h1>
   <p class="mt-6 text-[1.1rem] text-center max-w-[600px]" style="color: var(--color-muted);">
@@ -159,11 +163,63 @@ body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
     <span style="opacity:0.3;">|</span>
     <span>Modul 1 der Marketingkonzeption</span>
   </div>
-  <div class="sn" style="color: rgba(255,255,255,0.15);">01 · 11</div>
+  <div class="sn" style="color: rgba(255,255,255,0.15);">01 &middot; 18</div>
 </section>
 
-<!-- SLIDE 02 — SITE SCORE COMPARISON -->
+<!-- SLIDE 02 — DREI HEBEL (ÜBERSICHT) -->
 <section class="slide" id="s02">
+  <div class="label" style="color:rgba(249,108,64,0.8);">Ergebnis der Analyse</div>
+  <h2 class="text-[clamp(1.5rem,2.8vw,2.2rem)] font-bold mb-3 text-center max-w-[750px]">
+    Starke Assets, kein Mechanismus
+  </h2>
+  <p class="text-center mb-8" style="color: var(--color-muted); max-width: 680px; font-size: .92rem;">
+    andagon hat NPS 70, 12.000+ LinkedIn-Follower und 25 Jahre QA-Erfahrung &mdash; aber keinen Mechanismus, der daraus Kontakte macht. Drei konkrete Hebel:
+  </p>
+
+  <div class="grid grid-cols-3 gap-5 max-w-[920px] w-full mb-6">
+    <div class="card" style="border-top:3px solid var(--color-accent);">
+      <div class="flex items-center gap-2 mb-3">
+        <div class="w-7 h-7 rounded-full flex items-center justify-center text-[.75rem] font-bold" style="background:rgba(249,108,64,0.15);color:var(--color-accent);">1</div>
+        <div class="font-bold text-[.95rem]">Regulatorische Nachfrage</div>
+      </div>
+      <div class="text-[.82rem]" style="color:var(--color-muted);">
+        BFSG ist Pflicht seit 06/2025, SAP-Migration bis 12/2027. <strong style="color:var(--color-text);">6.000-12.000 Suchen/Monat</strong> in Deutschland. Kein Wettbewerber hat eine Landingpage. <strong style="color:var(--color-accent);">Offenes Fenster.</strong>
+      </div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--color-warn);">
+      <div class="flex items-center gap-2 mb-3">
+        <div class="w-7 h-7 rounded-full flex items-center justify-center text-[.75rem] font-bold" style="background:rgba(251,191,36,0.15);color:var(--color-warn);">2</div>
+        <div class="font-bold text-[.95rem]">Website reparieren</div>
+      </div>
+      <div class="text-[.82rem]" style="color:var(--color-muted);">
+        Site Score <strong style="color:var(--color-bad);">38/100</strong> (Wettbewerber: 50-62). 77 defekte Links, kein Kontaktformular, kein Tracking. <strong style="color:var(--color-text);">Besucher kommen &mdash; andagon erf&auml;hrt nie, wer da war.</strong>
+      </div>
+    </div>
+    <div class="card" style="border-top:3px solid rgba(99,102,241,0.7);">
+      <div class="flex items-center gap-2 mb-3">
+        <div class="w-7 h-7 rounded-full flex items-center justify-center text-[.75rem] font-bold" style="background:rgba(99,102,241,0.12);color:rgba(99,102,241,0.9);">3</div>
+        <div class="font-bold text-[.95rem]">Kan&auml;le konsolidieren</div>
+      </div>
+      <div class="text-[.82rem]" style="color:var(--color-muted);">
+        <strong style="color:var(--color-text);">21 Kan&auml;le</strong> &mdash; 6 LinkedIn-Profile, Instagram, TikTok, Facebook &mdash; nichts koordiniert. Empfehlung: <strong style="color:var(--color-text);">auf 3+1 reduzieren</strong>, Rest archivieren, Energie b&uuml;ndeln.
+      </div>
+    </div>
+  </div>
+
+  <div class="card max-w-[920px] w-full" style="background:rgba(249,108,64,0.04);border-color:rgba(249,108,64,0.15);">
+    <div class="flex items-start gap-3">
+      <i data-lucide="lightbulb" style="width:20px;height:20px;color:var(--color-accent);flex-shrink:0;margin-top:2px;"></i>
+      <div class="text-[.85rem]" style="color:var(--color-muted);">
+        <strong style="color:var(--color-text);">Die gute Nachricht:</strong> andagon muss nicht bei null anfangen. Die Assets sind da &mdash; sie m&uuml;ssen sichtbar gemacht, verkn&uuml;pft und in einen Funnel eingebettet werden.
+      </div>
+    </div>
+  </div>
+
+  <div class="sn">02 &middot; 18</div>
+</section>
+
+<!-- SLIDE 03 — SITE SCORE COMPARISON -->
+<section class="slide" id="s04">
   <div class="label">Erkenntnis 1</div>
   <h2 class="text-[clamp(1.6rem,3vw,2.4rem)] font-bold mb-3 text-center max-w-[700px]">
     Die Website verliert Besucher,<br>statt sie zu gewinnen
@@ -210,12 +266,93 @@ body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
     </div>
   </div>
 
-  <div class="sn">02 · 11</div>
+  <div class="sn">03 &middot; 18</div>
 </section>
 
-<!-- SLIDE 03 — LINKEDIN -->
-<section class="slide" id="s03">
+<!-- SLIDE 03 — SEMRush KEYWORDS (NEU) -->
+<section class="slide" id="s04">
   <div class="label">Erkenntnis 2</div>
+  <h2 class="text-[clamp(1.6rem,3vw,2.4rem)] font-bold mb-3 text-center max-w-[700px]">
+    F&uuml;r Kernkompetenzen unsichtbar
+  </h2>
+  <p class="text-center mb-8" style="color: var(--color-muted); max-width: 640px; font-size: .95rem;">
+    andagon bietet diese Leistungen seit 25 Jahren an &mdash; aber IT-Entscheider finden sie bei Google nicht. Semrush-Daten, Mai 2026.
+  </p>
+
+  <div class="max-w-[880px] w-full">
+    <div class="card mb-5">
+      <div class="text-[.75rem] font-mono uppercase tracking-widest mb-4" style="color:var(--color-accent);">Kernkompetenzen &mdash; Suchvolumen vs. Google-Position</div>
+      <table class="data-table">
+        <thead><tr><th>Keyword</th><th style="text-align:right;">Suchen/Mo (DE)</th><th style="text-align:center;">KD%</th><th style="text-align:center;">andagon Pos.</th><th>Bewertung</th></tr></thead>
+        <tbody>
+          <tr class="highlight">
+            <td><strong>softwaretests</strong></td>
+            <td style="text-align:right;">1.600</td>
+            <td style="text-align:center;">25</td>
+            <td style="text-align:center;"><span style="color:var(--color-warn);">Pos. 21</span></td>
+            <td><span class="text-[.78rem]" style="color:var(--color-warn);">Seite 3 &mdash; unsichtbar</span></td>
+          </tr>
+          <tr class="highlight">
+            <td><strong>regressionstest</strong></td>
+            <td style="text-align:right;">1.600</td>
+            <td style="text-align:center;">17</td>
+            <td style="text-align:center;"><span style="color:var(--color-bad);">nicht in Top-100</span></td>
+            <td><span class="text-[.78rem]" style="color:var(--color-bad);">Komplett unsichtbar</span></td>
+          </tr>
+          <tr class="highlight">
+            <td><strong>testmanagement</strong></td>
+            <td style="text-align:right;">590</td>
+            <td style="text-align:center;">16</td>
+            <td style="text-align:center;"><span style="color:var(--color-bad);">nicht in Top-100</span></td>
+            <td><span class="text-[.78rem]" style="color:var(--color-bad);">Komplett unsichtbar</span></td>
+          </tr>
+          <tr>
+            <td>performance testing</td>
+            <td style="text-align:right;">1.600</td>
+            <td style="text-align:center;">20</td>
+            <td style="text-align:center;"><span style="color:var(--color-bad);">nicht in Top-100</span></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>ki testing</td>
+            <td style="text-align:right;">110</td>
+            <td style="text-align:center;color:var(--color-good);">4</td>
+            <td style="text-align:center;"><span style="color:var(--color-good);">Pos. 5</span></td>
+            <td><span class="text-[.78rem]" style="color:var(--color-good);">Quick Win &mdash; Top 1 erreichbar</span></td>
+          </tr>
+          <tr>
+            <td>istqb test manager</td>
+            <td style="text-align:right;">260</td>
+            <td style="text-align:center;">22</td>
+            <td style="text-align:center;"><span style="color:var(--color-warn);">Pos. 6</span></td>
+            <td><span class="text-[.78rem]" style="color:var(--color-warn);">Push to Top-3 m&ouml;glich</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="grid grid-cols-3 gap-4">
+      <div class="card text-center py-4">
+        <div class="metric-big" style="font-size:2rem;">206</div>
+        <div class="metric-label">Organische Keywords andagon</div>
+      </div>
+      <div class="card text-center py-4">
+        <div class="metric-big" style="font-size:2rem;color:var(--color-good);">1.143</div>
+        <div class="metric-label">Organische Keywords Qytera</div>
+      </div>
+      <div class="card text-center py-4" style="border-color:rgba(249,108,64,0.15);">
+        <div class="metric-big" style="font-size:2rem;">5,5&times;</div>
+        <div class="metric-label">weniger Keywords als Qytera</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sn">04 &middot; 18</div>
+</section>
+
+<!-- SLIDE 04 — LINKEDIN -->
+<section class="slide" id="s05">
+  <div class="label">Erkenntnis 3</div>
   <h2 class="text-[clamp(1.6rem,3vw,2.4rem)] font-bold mb-3 text-center max-w-[700px]">
     LinkedIn: Reichweite ohne Wirkung
   </h2>
@@ -244,52 +381,272 @@ body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
     <div class="card py-4 px-5">
       <div class="flex items-start gap-2">
         <i data-lucide="globe" style="width:16px;height:16px;color:var(--color-accent);flex-shrink:0;margin-top:2px;"></i>
-        <div class="text-[.82rem]" style="color:var(--color-sub);">Yana postet 80% auf <strong style="color:var(--color-text);">Englisch</strong> -- Zielgruppe ist DACH</div>
+        <div class="text-[.82rem]" style="color:var(--color-sub);">Yana postet 80% auf <strong style="color:var(--color-text);">Englisch</strong> &mdash; Zielgruppe ist DACH</div>
       </div>
     </div>
     <div class="card py-4 px-5">
       <div class="flex items-start gap-2">
         <i data-lucide="trending-down" style="width:16px;height:16px;color:var(--color-bad);flex-shrink:0;margin-top:2px;"></i>
-        <div class="text-[.82rem]" style="color:var(--color-sub);"><strong style="color:var(--color-text);">Qytera</strong> seit 11 Monaten inaktiv -- strategische L&uuml;cke</div>
+        <div class="text-[.82rem]" style="color:var(--color-sub);"><strong style="color:var(--color-text);">Qytera</strong> seit 11 Monaten inaktiv &mdash; strategische L&uuml;cke</div>
       </div>
     </div>
     <div class="card py-4 px-5">
       <div class="flex items-start gap-2">
         <i data-lucide="eye-off" style="width:16px;height:16px;color:var(--color-bad);flex-shrink:0;margin-top:2px;"></i>
-        <div class="text-[.82rem]" style="color:var(--color-sub);"><strong style="color:var(--color-text);">NPS 70</strong> &mdash; ein Wert, der nach der von Bain &amp; Company definierten Skala als &laquo;World Class&raquo; gilt (Branchenmedian Consulting: 45) &mdash; auf keinem Profil erw&auml;hnt</div>
+        <div class="text-[.82rem]" style="color:var(--color-sub);"><strong style="color:var(--color-text);">NPS 70</strong> (World Class) auf keinem Profil erw&auml;hnt</div>
       </div>
     </div>
   </div>
 
-  <div class="sn">03 · 11</div>
+  <div class="sn">05 &middot; 18</div>
 </section>
 
-<!-- SLIDE 04 — KERNKOMPETENZEN + GOOGLE ADS -->
-<section class="slide" id="s04">
-  <div class="label">Erkenntnis 3</div>
+<!-- SLIDE 05 — BESTANDSAUFNAHME: 21 KANÄLE -->
+<section class="slide" id="s06">
+  <div class="label" style="color:rgba(251,191,36,0.8);">Erkenntnis 4</div>
   <h2 class="text-[clamp(1.6rem,3vw,2.4rem)] font-bold mb-3 text-center max-w-[700px]">
-    Kernkompetenzen unsichtbar &amp; Google Ads ohne Tracking
+    21 Kan&auml;le &mdash; Bestandsaufnahme
   </h2>
-  <p class="text-center mb-8" style="color: var(--color-muted); max-width: 620px; font-size: .95rem;">
-    F&uuml;r andagons St&auml;rken fehlen Service-Seiten. Bestehende Google-Ads-Kampagnen laufen ohne Wirkungsmessung.
+  <p class="text-center mb-6" style="color: var(--color-muted); max-width: 640px; font-size: .95rem;">
+    Der erweiterte Scan zeigt: andagon ist auf 21 digitalen Kan&auml;len pr&auml;sent &mdash; viele davon verwaist oder unkoordiniert.
   </p>
 
-  <div class="grid grid-cols-2 gap-6 max-w-[880px] w-full">
+  <div class="grid grid-cols-2 gap-5 max-w-[920px] w-full mb-4">
+    <!-- SOCIAL MEDIA -->
     <div class="card">
-      <div class="text-[.75rem] font-mono uppercase tracking-widest mb-4" style="color:var(--color-accent);">Keine Service-Seiten f&uuml;r Kernkompetenzen</div>
+      <div class="text-[.75rem] font-mono uppercase tracking-widest mb-3" style="color:var(--color-accent);">Social Media &mdash; 14 Pr&auml;senzen</div>
       <table class="data-table">
-        <thead><tr><th>Keyword</th><th style="text-align:right;">Suchen/Mo</th><th style="text-align:right;">Google-Pos.</th></tr></thead>
+        <thead><tr><th>Kanal</th><th style="text-align:center;">Anz.</th><th>Status</th></tr></thead>
         <tbody>
-          <tr><td><strong style="color:var(--color-text);">softwaretests</strong></td><td style="text-align:right;">1.600</td><td style="text-align:right;"><span style="color:var(--color-warn);">Pos. 21</span></td></tr>
-          <tr><td><strong style="color:var(--color-text);">regressionstest</strong></td><td style="text-align:right;">1.600</td><td style="text-align:right;"><span style="color:var(--color-bad);">nicht sichtbar</span></td></tr>
-          <tr><td><strong style="color:var(--color-text);">testmanagement</strong></td><td style="text-align:right;">590</td><td style="text-align:right;"><span style="color:var(--color-bad);">nicht sichtbar</span></td></tr>
+          <tr>
+            <td><strong style="color:var(--color-text);">LinkedIn</strong></td>
+            <td style="text-align:center;">6</td>
+            <td><span class="pill" style="background:rgba(74,222,128,0.1);color:var(--color-good);font-size:8px;">Aktiv</span> <span class="text-[.72rem]" style="color:var(--color-muted);">3 Firmen, 2 Personen, 1 Newsletter</span></td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--color-text);">YouTube</strong></td>
+            <td style="text-align:center;">2</td>
+            <td><span class="pill" style="background:rgba(251,191,36,0.1);color:var(--color-warn);font-size:8px;">Teilaktiv</span> <span class="text-[.72rem]" style="color:var(--color-muted);">65+ Videos, 8 Webinare, 2. Kanal inaktiv</span></td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--color-text);">Instagram</strong></td>
+            <td style="text-align:center;">2</td>
+            <td><span class="pill" style="background:rgba(250,67,98,0.1);color:var(--color-bad);font-size:8px;">Inaktiv</span> <span class="text-[.72rem]" style="color:var(--color-muted);">seit 3-5 Mo. (648 Posts Archiv)</span></td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--color-text);">TikTok</strong></td>
+            <td style="text-align:center;">1</td>
+            <td><span class="pill" style="background:rgba(250,67,98,0.1);color:var(--color-bad);font-size:8px;">Inaktiv</span> <span class="text-[.72rem]" style="color:var(--color-muted);">seit 9 Mo.</span></td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--color-text);">Facebook</strong></td>
+            <td style="text-align:center;">2</td>
+            <td><span class="pill" style="background:rgba(250,67,98,0.1);color:var(--color-bad);font-size:8px;">Irrelevant</span> <span class="text-[.72rem]" style="color:var(--color-muted);">GmbH + Academy, kein B2B-Nutzen</span></td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--color-text);">Twitter/X</strong></td>
+            <td style="text-align:center;">1</td>
+            <td><span class="pill" style="background:rgba(250,67,98,0.1);color:var(--color-bad);font-size:8px;">Irrelevant</span> <span class="text-[.72rem]" style="color:var(--color-muted);">DACH B2B nicht relevant</span></td>
+          </tr>
         </tbody>
       </table>
-      <div class="mt-3 text-[.78rem]" style="color:var(--color-muted);">Entscheider suchen nach diesen Leistungen &mdash; andagon bietet sie seit 25 Jahren an, ist aber online nicht auffindbar.</div>
     </div>
 
+    <!-- OWNED + VERZEICHNISSE + BEWERTUNGEN -->
     <div class="card">
-      <div class="text-[.75rem] font-mono uppercase tracking-widest mb-4" style="color:var(--color-bad);">Google Ads: Budget ohne Wirkung</div>
+      <div class="text-[.75rem] font-mono uppercase tracking-widest mb-3" style="color:var(--color-accent);">Weitere Kan&auml;le &mdash; 7 Pr&auml;senzen</div>
+
+      <div class="text-[.7rem] font-mono uppercase tracking-wider mb-2 mt-1" style="color:var(--color-muted);">Website &amp; Newsletter</div>
+      <div class="flex flex-col gap-1 mb-3 pl-2" style="border-left:2px solid var(--color-surf2);">
+        <div class="text-[.82rem]" style="color:var(--color-sub);"><strong style="color:var(--color-text);">andagon.com</strong> <span class="text-[.72rem]" style="color:var(--color-muted);">&mdash; Haupt-Conversion-Kanal</span></div>
+        <div class="text-[.82rem]" style="color:var(--color-sub);"><strong style="color:var(--color-text);">E-Mail-Newsletter</strong> <span class="text-[.72rem]" style="color:var(--color-muted);">&mdash; 120-150 Empf., ~2x/Jahr</span></div>
+      </div>
+
+      <div class="text-[.7rem] font-mono uppercase tracking-wider mb-2" style="color:var(--color-muted);">B2B-Verzeichnisse</div>
+      <div class="flex flex-col gap-1 mb-3 pl-2" style="border-left:2px solid var(--color-surf2);">
+        <div class="text-[.82rem]" style="color:var(--color-sub);"><strong style="color:var(--color-text);">Google Business</strong> <span class="text-[.72rem]" style="color:var(--color-muted);">&mdash; K&ouml;ln (15 Reviews)</span></div>
+        <div class="text-[.82rem]" style="color:var(--color-sub);"><strong style="color:var(--color-text);">Clutch.co</strong> <span class="text-[.72rem]" style="color:var(--color-muted);">&mdash; 0 Reviews</span></div>
+        <div class="text-[.82rem]" style="color:var(--color-sub);"><strong style="color:var(--color-text);">wlw.de</strong> <span class="text-[.72rem]" style="color:var(--color-muted);">&mdash; Markenname falsch</span></div>
+      </div>
+
+      <div class="text-[.7rem] font-mono uppercase tracking-wider mb-2" style="color:var(--color-muted);">Arbeitgeber-Bewertungsportale <span style="color:var(--color-accent);">(Trust, nicht Lead-Gen)</span></div>
+      <div class="flex flex-col gap-1 pl-2" style="border-left:2px solid var(--color-surf2);">
+        <div class="text-[.82rem]" style="color:var(--color-sub);"><strong style="color:var(--color-text);">Kununu</strong> <span class="text-[.72rem]" style="color:var(--color-good);">209 Reviews, ~90% positiv</span></div>
+        <div class="text-[.82rem]" style="color:var(--color-sub);"><strong style="color:var(--color-text);">Glassdoor</strong> <span class="text-[.72rem]" style="color:var(--color-bad);">unclaimed, 3.0/5 (5 Reviews)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card max-w-[920px] w-full" style="background:rgba(251,191,36,0.04);border-color:rgba(251,191,36,0.15);">
+    <div class="flex items-start gap-3">
+      <i data-lucide="alert-circle" style="width:20px;height:20px;color:var(--color-warn);flex-shrink:0;margin-top:2px;"></i>
+      <div>
+        <div class="font-semibold text-[.9rem]">Kernproblem: Ressourcen-Fragmentierung</div>
+        <div class="text-[.85rem]" style="color:var(--color-muted);">7 von 14 Social-Media-Pr&auml;senzen sind inaktiv oder irrelevant. Die Reichweite (~14.500 LinkedIn-Follower) verteilt sich auf 6 Profile in 2 Sprachen. Kein Kanal f&uuml;hrt zu einem Kontaktformular oder Lead-Magnet.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sn">06 &middot; 18</div>
+</section>
+
+<!-- SLIDE 06 — KANAL-EMPFEHLUNG -->
+<section class="slide" id="s07">
+  <div class="label" style="color:rgba(74,222,128,0.8);">Empfehlung</div>
+  <h2 class="text-[clamp(1.6rem,3vw,2.4rem)] font-bold mb-3 text-center max-w-[700px]">
+    Von 21 auf 3+1 Kan&auml;le fokussieren
+  </h2>
+  <p class="text-center mb-6" style="color: var(--color-muted); max-width: 640px; font-size: .95rem;">
+    Weniger Kan&auml;le, mehr Wirkung. Verwaiste Pr&auml;senzen bewusst archivieren statt planlos weiterlaufen lassen.
+  </p>
+
+  <div class="grid grid-cols-3 gap-4 max-w-[920px] w-full mb-4">
+    <!-- BEHALTEN -->
+    <div class="card" style="border-color:rgba(74,222,128,0.25);">
+      <div class="text-[.75rem] font-mono uppercase tracking-widest mb-3" style="color:var(--color-good);">&#10003; Behalten + Ausbauen</div>
+      <div class="flex flex-col gap-2.5">
+        <div class="flex items-start gap-2">
+          <span style="color:var(--color-good);font-size:.8rem;">&#9679;</span>
+          <div>
+            <div class="text-[.85rem] font-semibold" style="color:var(--color-text);">LinkedIn</div>
+            <div class="text-[.72rem]" style="color:var(--color-muted);">6 Profile konsolidieren, Sprache auf DE, Rollen kl&auml;ren</div>
+          </div>
+        </div>
+        <div class="flex items-start gap-2">
+          <span style="color:var(--color-good);font-size:.8rem;">&#9679;</span>
+          <div>
+            <div class="text-[.85rem] font-semibold" style="color:var(--color-text);">YouTube</div>
+            <div class="text-[.72rem]" style="color:var(--color-muted);">Hauptkanal behalten, 8 Webinare als Gated Content nutzen</div>
+          </div>
+        </div>
+        <div class="flex items-start gap-2">
+          <span style="color:var(--color-good);font-size:.8rem;">&#9679;</span>
+          <div>
+            <div class="text-[.85rem] font-semibold" style="color:var(--color-text);">Website</div>
+            <div class="text-[.72rem]" style="color:var(--color-muted);">Haupt-Conversion-Kanal mit Kontaktformular + Lead-Magnet</div>
+          </div>
+        </div>
+        <div class="flex items-start gap-2" style="padding-top:4px;border-top:1px solid var(--color-surf2);">
+          <span style="color:var(--color-good);font-size:.8rem;">+</span>
+          <div>
+            <div class="text-[.85rem] font-semibold" style="color:var(--color-text);">Kununu</div>
+            <div class="text-[.72rem]" style="color:var(--color-muted);">Trust-Signal (209 Reviews) &mdash; keine Lead-Gen, aber Arbeitgebermarke</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DEAKTIVIEREN -->
+    <div class="card" style="border-color:rgba(250,67,98,0.2);">
+      <div class="text-[.75rem] font-mono uppercase tracking-widest mb-3" style="color:var(--color-bad);">&#10007; Deaktivieren / Archivieren</div>
+      <div class="flex flex-col gap-2.5">
+        <div class="flex items-start gap-2">
+          <span style="color:var(--color-bad);font-size:.8rem;">&#10007;</span>
+          <div>
+            <div class="text-[.85rem] font-semibold" style="color:var(--color-text);">TikTok</div>
+            <div class="text-[.72rem]" style="color:var(--color-muted);">Inaktiv seit 9 Mo. Employer-Branding, nicht Lead-Gen.</div>
+          </div>
+        </div>
+        <div class="flex items-start gap-2">
+          <span style="color:var(--color-bad);font-size:.8rem;">&#10007;</span>
+          <div>
+            <div class="text-[.85rem] font-semibold" style="color:var(--color-text);">Instagram (2 Accounts)</div>
+            <div class="text-[.72rem]" style="color:var(--color-muted);">Inaktiv seit 3-5 Mo. 648 Posts als LinkedIn-Content recyceln.</div>
+          </div>
+        </div>
+        <div class="flex items-start gap-2">
+          <span style="color:var(--color-bad);font-size:.8rem;">&#10007;</span>
+          <div>
+            <div class="text-[.85rem] font-semibold" style="color:var(--color-text);">Facebook (2 Seiten)</div>
+            <div class="text-[.72rem]" style="color:var(--color-muted);">Kein B2B-Nutzen im DACH-QA-Markt.</div>
+          </div>
+        </div>
+        <div class="flex items-start gap-2">
+          <span style="color:var(--color-bad);font-size:.8rem;">&#10007;</span>
+          <div>
+            <div class="text-[.85rem] font-semibold" style="color:var(--color-text);">Twitter/X</div>
+            <div class="text-[.72rem]" style="color:var(--color-muted);">Irrelevant f&uuml;r DACH B2B IT-Entscheider.</div>
+          </div>
+        </div>
+        <div class="flex items-start gap-2">
+          <span style="color:var(--color-bad);font-size:.8rem;">&#10007;</span>
+          <div>
+            <div class="text-[.85rem] font-semibold" style="color:var(--color-text);">YouTube #2</div>
+            <div class="text-[.72rem]" style="color:var(--color-muted);">Inaktiver Zweitkanal, zusammenf&uuml;hren.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AUFRÄUMEN -->
+    <div class="card" style="border-color:rgba(251,191,36,0.2);">
+      <div class="text-[.75rem] font-mono uppercase tracking-widest mb-3" style="color:var(--color-warn);">&#9888; Aufr&auml;umen</div>
+      <div class="flex flex-col gap-2.5">
+        <div class="flex items-start gap-2">
+          <span style="color:var(--color-warn);font-size:.8rem;">&#9679;</span>
+          <div>
+            <div class="text-[.85rem] font-semibold" style="color:var(--color-text);">wlw.de</div>
+            <div class="text-[.72rem]" style="color:var(--color-muted);">Markenname korrigieren.</div>
+          </div>
+        </div>
+        <div class="flex items-start gap-2">
+          <span style="color:var(--color-warn);font-size:.8rem;">&#9679;</span>
+          <div>
+            <div class="text-[.85rem] font-semibold" style="color:var(--color-text);">Clutch.co</div>
+            <div class="text-[.72rem]" style="color:var(--color-muted);">B2B-Plattform: Reviews von Bestandskunden einholen (0 Reviews).</div>
+          </div>
+        </div>
+        <div class="flex items-start gap-2">
+          <span style="color:var(--color-warn);font-size:.8rem;">&#9679;</span>
+          <div>
+            <div class="text-[.85rem] font-semibold" style="color:var(--color-text);">Google Business</div>
+            <div class="text-[.72rem]" style="color:var(--color-muted);">Hamburg-Profil erstellen (K&ouml;ln vorhanden).</div>
+          </div>
+        </div>
+        <div class="flex items-start gap-2">
+          <span style="color:var(--color-warn);font-size:.8rem;">&#9679;</span>
+          <div>
+            <div class="text-[.85rem] font-semibold" style="color:var(--color-text);">Glassdoor</div>
+            <div class="text-[.72rem]" style="color:var(--color-muted);">Arbeitgeberprofil claimen (3.0/5 vs. 209 pos. Kununu-Reviews).</div>
+          </div>
+        </div>
+        <div class="flex items-start gap-2">
+          <span style="color:var(--color-warn);font-size:.8rem;">&#9679;</span>
+          <div>
+            <div class="text-[.85rem] font-semibold" style="color:var(--color-text);">Newsletter</div>
+            <div class="text-[.72rem]" style="color:var(--color-muted);">Bot-Bereinigung, Frequenz auf 1x/Mo. erh&ouml;hen.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card max-w-[920px] w-full" style="background:rgba(249,108,64,0.04);border-color:rgba(249,108,64,0.15);">
+    <div class="flex items-start gap-3">
+      <i data-lucide="lightbulb" style="width:20px;height:20px;color:var(--color-accent);flex-shrink:0;margin-top:2px;"></i>
+      <div>
+        <div class="font-semibold text-[.9rem]">Kernaussage</div>
+        <div class="text-[.85rem]" style="color:var(--color-muted);"><strong style="color:var(--color-text);">LinkedIn + YouTube + Website</strong> = Lead-Generierung. Alles andere entweder archivieren oder gezielt aufr&auml;umen. Kununu und Glassdoor sind <strong style="color:var(--color-text);">Trust-Signale</strong> (Arbeitgebermarke), aber nicht f&uuml;r den Produktverkauf relevant.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sn">07 &middot; 18</div>
+</section>
+
+<!-- SLIDE 07 — GOOGLE ADS -->
+<section class="slide" id="s08">
+  <div class="label" style="color:rgba(250,67,98,0.8);">Erkenntnis 5</div>
+  <h2 class="text-[clamp(1.6rem,3vw,2.4rem)] font-bold mb-3 text-center max-w-[700px]">
+    Google Ads: Budget ohne Wirkung
+  </h2>
+  <p class="text-center mb-8" style="color: var(--color-muted); max-width: 620px; font-size: .95rem;">
+    andagon gibt bereits Geld f&uuml;r Werbung aus &mdash; ohne zu wissen, was es bringt.
+  </p>
+
+  <div class="grid grid-cols-2 gap-6 max-w-[880px] w-full mb-5">
+    <div class="card">
+      <div class="text-[.75rem] font-mono uppercase tracking-widest mb-4" style="color:var(--color-bad);">Aktuelle Probleme</div>
       <div class="flex flex-col gap-3">
         <div class="flex items-start gap-2">
           <i data-lucide="alert-triangle" style="width:16px;height:16px;color:var(--color-bad);flex-shrink:0;margin-top:2px;"></i>
@@ -297,23 +654,48 @@ body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
         </div>
         <div class="flex items-start gap-2">
           <i data-lucide="alert-triangle" style="width:16px;height:16px;color:var(--color-bad);flex-shrink:0;margin-top:2px;"></i>
-          <div class="text-[.82rem]" style="color:var(--color-sub);"><strong style="color:var(--color-text);">Keine negativen Keywords</strong> &mdash; irrelevante Klicks</div>
+          <div class="text-[.82rem]" style="color:var(--color-sub);"><strong style="color:var(--color-text);">Keine negativen Keywords</strong> &mdash; irrelevante Klicks verbrauchen Budget</div>
         </div>
         <div class="flex items-start gap-2">
           <i data-lucide="alert-triangle" style="width:16px;height:16px;color:var(--color-bad);flex-shrink:0;margin-top:2px;"></i>
-          <div class="text-[.82rem]" style="color:var(--color-sub);"><strong style="color:var(--color-text);">Leere Remarketing-Listen</strong> &mdash; kein Retargeting</div>
+          <div class="text-[.82rem]" style="color:var(--color-sub);"><strong style="color:var(--color-text);">Leere Remarketing-Listen</strong> &mdash; kein Retargeting m&ouml;glich</div>
         </div>
         <div class="flex items-start gap-2">
           <i data-lucide="alert-triangle" style="width:16px;height:16px;color:var(--color-warn);flex-shrink:0;margin-top:2px;"></i>
           <div class="text-[.82rem]" style="color:var(--color-sub);"><strong style="color:var(--color-text);">~6 &euro;/Tag Budget</strong> &mdash; zu niedrig f&uuml;r Algorithmus-Optimierung</div>
         </div>
       </div>
-      <div class="mt-3 text-[.78rem]" style="color:var(--color-muted);">andagon gibt bereits Geld f&uuml;r Werbung aus &mdash; ohne zu wissen, was es bringt.</div>
+    </div>
+
+    <div class="card">
+      <div class="text-[.75rem] font-mono uppercase tracking-widest mb-4" style="color:var(--color-good);">Was sofort ge&auml;ndert werden muss</div>
+      <div class="flex flex-col gap-3">
+        <div class="flex items-start gap-2">
+          <span style="color:var(--color-good);font-size:.85rem;">1.</span>
+          <div class="text-[.82rem]" style="color:var(--color-sub);"><strong style="color:var(--color-text);">Google-Tag installieren</strong> &mdash; Voraussetzung f&uuml;r alles</div>
+        </div>
+        <div class="flex items-start gap-2">
+          <span style="color:var(--color-good);font-size:.85rem;">2.</span>
+          <div class="text-[.82rem]" style="color:var(--color-sub);"><strong style="color:var(--color-text);">Conversion-Tracking einrichten</strong></div>
+        </div>
+        <div class="flex items-start gap-2">
+          <span style="color:var(--color-good);font-size:.85rem;">3.</span>
+          <div class="text-[.82rem]" style="color:var(--color-sub);"><strong style="color:var(--color-text);">Negative Keywords einpflegen</strong></div>
+        </div>
+        <div class="flex items-start gap-2">
+          <span style="color:var(--color-good);font-size:.85rem;">4.</span>
+          <div class="text-[.82rem]" style="color:var(--color-sub);"><strong style="color:var(--color-text);">Customer-Match-Listen aus Odoo</strong></div>
+        </div>
+        <div class="flex items-start gap-2">
+          <span style="color:var(--color-good);font-size:.85rem;">5.</span>
+          <div class="text-[.82rem]" style="color:var(--color-sub);"><strong style="color:var(--color-text);">Demand-Gen-Kampagnen aufsetzen</strong></div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <div class="mt-6 card max-w-[880px] w-full">
-    <div class="text-[.75rem] font-mono uppercase tracking-widest mb-3" style="color:var(--color-accent);">Wettbewerber setzen auf Lead-Magneten &mdash; andagon nicht</div>
+  <div class="card max-w-[880px] w-full">
+    <div class="text-[.75rem] font-mono uppercase tracking-widest mb-3" style="color:var(--color-accent);">Wettbewerber setzen auf Lead-Magneten &mdash; andagon hat keinen einzigen</div>
     <div class="grid grid-cols-4 gap-4 text-center">
       <div>
         <div class="text-[1.3rem] font-bold" style="color:var(--color-good);">5+</div>
@@ -334,17 +716,142 @@ body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
     </div>
   </div>
 
-  <div class="sn">04 · 11</div>
+  <div class="sn">08 &middot; 18</div>
 </section>
 
-<!-- SLIDE 05 — CONTENT OHNE FUNNEL (NEU) -->
-<section class="slide" id="s05">
+<!-- SLIDE 08 — LEAD vs. NURTURING + NEWSLETTER -->
+<section class="slide" id="s09">
+  <div class="label">Erkenntnis 6</div>
+  <h2 class="text-[clamp(1.6rem,3vw,2.4rem)] font-bold mb-3 text-center max-w-[700px]">
+    Zwei Kanal-Typen, zwei Aufgaben
+  </h2>
+  <p class="text-center mb-6" style="color: var(--color-muted); max-width: 660px; font-size: .95rem;">
+    Nicht jeder Kanal muss neue Kontakte bringen. Entscheidend ist: <strong style="color:var(--color-text);">Welcher Kanal hat welche Aufgabe?</strong>
+  </p>
+
+  <div class="grid grid-cols-2 gap-6 max-w-[880px] w-full mb-5">
+    <!-- LEAD-KANÄLE -->
+    <div class="card" style="border-color:rgba(249,108,64,0.25);">
+      <div class="flex items-center gap-2 mb-4">
+        <i data-lucide="user-plus" style="width:20px;height:20px;color:var(--color-accent);"></i>
+        <div class="text-[.75rem] font-mono uppercase tracking-widest font-semibold" style="color:var(--color-accent);">Lead-Kan&auml;le &mdash; neue Kontakte gewinnen</div>
+      </div>
+      <div class="flex flex-col gap-3">
+        <div class="flex items-start gap-2">
+          <span style="color:var(--color-accent);font-size:.8rem;">&#9733;</span>
+          <div>
+            <div class="text-[.85rem] font-semibold" style="color:var(--color-text);">BFSG-Landingpage + Lead-Magnet</div>
+            <div class="text-[.72rem]" style="color:var(--color-muted);">Self-Assessment-Tool &rarr; 15-40 Leads/Mo</div>
+          </div>
+        </div>
+        <div class="flex items-start gap-2">
+          <span style="color:var(--color-accent);font-size:.8rem;">&#9733;</span>
+          <div>
+            <div class="text-[.85rem] font-semibold" style="color:var(--color-text);">Google Ads</div>
+            <div class="text-[.72rem]" style="color:var(--color-muted);">Gezielt IT-Entscheider ansprechen, die jetzt suchen</div>
+          </div>
+        </div>
+        <div class="flex items-start gap-2">
+          <span style="color:var(--color-accent);font-size:.8rem;">&#9733;</span>
+          <div>
+            <div class="text-[.85rem] font-semibold" style="color:var(--color-text);">LinkedIn (Firmenseite + Karyna)</div>
+            <div class="text-[.72rem]" style="color:var(--color-muted);">Content + Ads &rarr; Traffic auf Landingpage</div>
+          </div>
+        </div>
+        <div class="flex items-start gap-2">
+          <span style="color:var(--color-accent);font-size:.8rem;">&#9733;</span>
+          <div>
+            <div class="text-[.85rem] font-semibold" style="color:var(--color-text);">Service-Seiten (SEO)</div>
+            <div class="text-[.72rem]" style="color:var(--color-muted);">softwaretests, regressionstest &rarr; organischer Traffic</div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-4 px-3 py-2 rounded-lg text-center" style="background:rgba(249,108,64,0.08);">
+        <div class="text-[.78rem] font-semibold" style="color:var(--color-accent);">Aufgabe: Neue Kontakte generieren</div>
+      </div>
+    </div>
+
+    <!-- NURTURING-KANÄLE -->
+    <div class="card" style="border-color:rgba(96,165,250,0.25);">
+      <div class="flex items-center gap-2 mb-4">
+        <i data-lucide="heart-handshake" style="width:20px;height:20px;color:rgb(96,165,250);"></i>
+        <div class="text-[.75rem] font-mono uppercase tracking-widest font-semibold" style="color:rgb(96,165,250);">Nurturing-Kan&auml;le &mdash; Kontakte warmhalten</div>
+      </div>
+      <div class="flex flex-col gap-3">
+        <div class="flex items-start gap-2">
+          <span style="color:rgb(96,165,250);font-size:.8rem;">&#9679;</span>
+          <div>
+            <div class="text-[.85rem] font-semibold" style="color:var(--color-text);">E-Mail-Newsletter</div>
+            <div class="text-[.72rem]" style="color:var(--color-muted);">Regelm&auml;&szlig;ige Tipps &rarr; andagon bleibt im Kopf</div>
+          </div>
+        </div>
+        <div class="flex items-start gap-2">
+          <span style="color:rgb(96,165,250);font-size:.8rem;">&#9679;</span>
+          <div>
+            <div class="text-[.85rem] font-semibold" style="color:var(--color-text);">LinkedIn TestPulse (Newsletter)</div>
+            <div class="text-[.72rem]" style="color:var(--color-muted);">Fachthemen &rarr; Vertrauen aufbauen &uuml;ber Zeit</div>
+          </div>
+        </div>
+        <div class="flex items-start gap-2">
+          <span style="color:rgb(96,165,250);font-size:.8rem;">&#9679;</span>
+          <div>
+            <div class="text-[.85rem] font-semibold" style="color:var(--color-text);">LinkedIn Yana (Thought Leadership)</div>
+            <div class="text-[.72rem]" style="color:var(--color-muted);">CEO als Gesicht der Marke &rarr; Bekanntheit</div>
+          </div>
+        </div>
+        <div class="flex items-start gap-2">
+          <span style="color:rgb(96,165,250);font-size:.8rem;">&#9679;</span>
+          <div>
+            <div class="text-[.85rem] font-semibold" style="color:var(--color-text);">YouTube (Webinare)</div>
+            <div class="text-[.72rem]" style="color:var(--color-muted);">Expertise demonstrieren &rarr; Vertrauen st&auml;rken</div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-4 px-3 py-2 rounded-lg text-center" style="background:rgba(96,165,250,0.08);">
+        <div class="text-[.78rem] font-semibold" style="color:rgb(96,165,250);">Aufgabe: Bestehende Kontakte pflegen</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Newsletter-Daten -->
+  <div class="card max-w-[880px] w-full" style="border-color:rgba(251,191,36,0.15);">
+    <div class="text-[.75rem] font-mono uppercase tracking-widest mb-3" style="color:var(--color-warn);">Newsletter aktuell &mdash; Daten von Karyna Gorek (26.05.2026)</div>
+    <div class="grid grid-cols-4 gap-4 text-center">
+      <div>
+        <div class="text-[1.3rem] font-bold" style="color:var(--color-text);">120-150</div>
+        <div class="text-[.72rem]" style="color:var(--color-muted);">Echte Empf&auml;nger</div>
+      </div>
+      <div>
+        <div class="text-[1.3rem] font-bold" style="color:var(--color-bad);">200+</div>
+        <div class="text-[.72rem]" style="color:var(--color-muted);">Bot-Adressen</div>
+      </div>
+      <div>
+        <div class="text-[1.3rem] font-bold" style="color:var(--color-warn);">~2x/Jahr</div>
+        <div class="text-[.72rem]" style="color:var(--color-muted);">Zu selten</div>
+      </div>
+      <div>
+        <div class="text-[1.3rem] font-bold" style="color:var(--color-bad);">0%</div>
+        <div class="text-[.72rem]" style="color:var(--color-muted);">Conversions</div>
+      </div>
+    </div>
+    <div class="mt-3 text-[.78rem] text-center" style="color:var(--color-muted);">Empfehlung: Bot-Bereinigung + Frequenz auf 1x/Monat erh&ouml;hen + als Nurturing-Kanal nutzen (nicht f&uuml;r Lead-Gewinnung).</div>
+  </div>
+
+  <div class="sn">09 &middot; 18</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- TEIL 2: WAS BEDEUTET DAS? (Strategische Schlussfolgerung)     -->
+<!-- ============================================================ -->
+
+<!-- SLIDE 09 — CONTENT OHNE FUNNEL -->
+<section class="slide" id="s10">
   <div class="label" style="color:rgba(251,191,36,0.8);">Strategische Schlussfolgerung</div>
   <h2 class="text-[clamp(1.6rem,3vw,2.4rem)] font-bold mb-3 text-center max-w-[700px]">
     Content ohne Funnel
   </h2>
   <p class="text-center mb-8" style="color: var(--color-muted); max-width: 640px; font-size: .95rem;">
-    andagon hat die Substanz &mdash; es fehlt die Verkn&uuml;pfung. Der erweiterte Scan deckte 21 Kan&auml;le auf, die nicht koordiniert sind.
+    andagon hat die Substanz &mdash; es fehlt die Verkn&uuml;pfung. 21 Kan&auml;le, aber kein Conversion-Mechanismus.
   </p>
 
   <div class="grid grid-cols-2 gap-5 max-w-[880px] w-full mb-5">
@@ -365,11 +872,11 @@ body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
         </div>
         <div class="flex items-start gap-2">
           <span style="color:var(--color-good);font-size:.85rem;">&#10003;</span>
-          <div class="text-[.82rem]" style="color:var(--color-sub);"><strong style="color:var(--color-text);">2 Kunden-Testimonials</strong> (Video)</div>
+          <div class="text-[.82rem]" style="color:var(--color-sub);"><strong style="color:var(--color-text);">12.000+ LinkedIn-Follower</strong></div>
         </div>
         <div class="flex items-start gap-2">
           <span style="color:var(--color-good);font-size:.85rem;">&#10003;</span>
-          <div class="text-[.82rem]" style="color:var(--color-sub);"><strong style="color:var(--color-text);">12.000+ LinkedIn-Follower</strong></div>
+          <div class="text-[.82rem]" style="color:var(--color-sub);"><strong style="color:var(--color-text);">25 Jahre QA-Erfahrung</strong> + Festpreis-USP</div>
         </div>
         <div class="flex items-start gap-2">
           <span style="color:var(--color-good);font-size:.85rem;">&#10003;</span>
@@ -394,15 +901,37 @@ body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
         </div>
         <div class="flex items-start gap-2">
           <span style="color:var(--color-bad);font-size:.85rem;">&#10007;</span>
-          <div class="text-[.82rem]" style="color:var(--color-sub);">Kununu <strong style="color:var(--color-text);">nicht verlinkt</strong></div>
-        </div>
-        <div class="flex items-start gap-2">
-          <span style="color:var(--color-bad);font-size:.85rem;">&#10007;</span>
-          <div class="text-[.82rem]" style="color:var(--color-sub);"><strong style="color:var(--color-text);">6 LinkedIn-Profile</strong> unkoordiniert</div>
+          <div class="text-[.82rem]" style="color:var(--color-sub);"><strong style="color:var(--color-text);">21 Kan&auml;le</strong> unkoordiniert</div>
         </div>
         <div class="flex items-start gap-2">
           <span style="color:var(--color-bad);font-size:.85rem;">&#10007;</span>
           <div class="text-[.82rem]" style="color:var(--color-sub);">Google Ads <strong style="color:var(--color-text);">ohne Tracking</strong></div>
+        </div>
+        <div class="flex items-start gap-2">
+          <span style="color:var(--color-bad);font-size:.85rem;">&#10007;</span>
+          <div class="text-[.82rem]" style="color:var(--color-sub);">Keine <strong style="color:var(--color-text);">Service-Seiten</strong> f&uuml;r Kernkompetenzen</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Begriffserklärung -->
+  <div class="grid grid-cols-2 gap-4 max-w-[880px] w-full mb-5">
+    <div style="background:rgba(99,102,241,0.06);border:1px solid rgba(99,102,241,0.15);border-radius:10px;padding:14px 16px;">
+      <div class="flex items-start gap-2">
+        <i data-lucide="help-circle" style="width:16px;height:16px;color:rgba(99,102,241,0.7);flex-shrink:0;margin-top:2px;"></i>
+        <div>
+          <div class="font-semibold text-[.82rem]" style="color:rgba(99,102,241,0.9);">Was ist ein Kontaktformular?</div>
+          <div class="text-[.78rem] mt-1" style="color:var(--color-muted);">Ein Formular auf der Website, &uuml;ber das Interessenten ihre Daten hinterlassen (Name, E-Mail, Anliegen). <strong style="color:var(--color-text);">Ohne Formular</strong> kann ein Besucher die Website ansehen &mdash; aber andagon erf&auml;hrt nie, wer da war.</div>
+        </div>
+      </div>
+    </div>
+    <div style="background:rgba(99,102,241,0.06);border:1px solid rgba(99,102,241,0.15);border-radius:10px;padding:14px 16px;">
+      <div class="flex items-start gap-2">
+        <i data-lucide="help-circle" style="width:16px;height:16px;color:rgba(99,102,241,0.7);flex-shrink:0;margin-top:2px;"></i>
+        <div>
+          <div class="font-semibold text-[.82rem]" style="color:rgba(99,102,241,0.9);">Was ist Gating?</div>
+          <div class="text-[.78rem] mt-1" style="color:var(--color-muted);">Wertvoller Content (z.B. Webinar, Checkliste) wird erst nach Eingabe der Kontaktdaten zug&auml;nglich. <strong style="color:var(--color-text);">Beispiel:</strong> Webinar &bdquo;KI im Testing&ldquo; ansehen &rarr; vorher E-Mail eingeben &rarr; andagon hat einen Lead.</div>
         </div>
       </div>
     </div>
@@ -413,29 +942,33 @@ body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
       <i data-lucide="lightbulb" style="width:20px;height:20px;color:var(--color-accent);flex-shrink:0;margin-top:2px;"></i>
       <div>
         <div class="font-semibold text-[.9rem]">Kernaussage</div>
-        <div class="text-[.85rem]" style="color:var(--color-muted);">andagon muss nicht bei null anfangen &mdash; vorhandene Assets m&uuml;ssen <strong style="color:var(--color-text);">sichtbar gemacht, verkn&uuml;pft und in einen Funnel eingebettet</strong> werden. Das macht Ma&szlig;nahmen einfacher, schneller und g&uuml;nstiger als urspr&uuml;nglich kalkuliert.</div>
+        <div class="text-[.85rem]" style="color:var(--color-muted);">andagon muss nicht bei null anfangen &mdash; vorhandene Assets m&uuml;ssen <strong style="color:var(--color-text);">sichtbar gemacht, verkn&uuml;pft und in einen Funnel eingebettet</strong> werden. Das macht Ma&szlig;nahmen einfacher, schneller und g&uuml;nstiger.</div>
       </div>
     </div>
   </div>
 
-  <div class="sn">05 · 11</div>
+  <div class="sn">10 &middot; 18</div>
 </section>
 
-<!-- SLIDE 06 — BFSG PILOT (NEU) -->
-<section class="slide" id="s06">
+<!-- ============================================================ -->
+<!-- TEIL 3: EMPFEHLUNG (Was soll andagon tun?)                    -->
+<!-- ============================================================ -->
+
+<!-- SLIDE 10 — BFSG PILOT -->
+<section class="slide" id="s11">
   <div class="label" style="color:rgba(74,222,128,0.8);">Pilotprojekt</div>
   <h2 class="text-[clamp(1.6rem,3vw,2.4rem)] font-bold mb-3 text-center max-w-[700px]">
     BFSG-Landingpage als erster Funnel
   </h2>
-  <p class="text-center mb-8" style="color: var(--color-muted); max-width: 640px; font-size: .95rem;">
-    Ein konkretes, messbares Pilotprojekt &mdash; gebaut aus vorhandenen Assets.
+  <p class="text-center mb-6" style="color: var(--color-muted); max-width: 640px; font-size: .95rem;">
+    Ein messbares Pilotprojekt &mdash; dient gleichzeitig als Nachfrage-Validierung f&uuml;r BFSG-Testing.
   </p>
 
   <div class="grid grid-cols-3 gap-4 max-w-[880px] w-full mb-5">
     <div class="card text-center py-5">
-      <i data-lucide="video" style="width:24px;height:24px;color:var(--color-accent);margin:0 auto 8px;"></i>
-      <div class="font-bold text-[.9rem] mb-1">BFSG-Webinar</div>
-      <div class="text-[.75rem]" style="color:var(--color-muted);">Existiert auf YouTube &mdash; wird Gated Content (Aufzeichnung nur nach Registrierung)</div>
+      <i data-lucide="file-check" style="width:24px;height:24px;color:var(--color-accent);margin:0 auto 8px;"></i>
+      <div class="font-bold text-[.9rem] mb-1">BFSG-Self-Assessment</div>
+      <div class="text-[.75rem]" style="color:var(--color-muted);">&bdquo;Ist Ihre Website BFSG-konform?&ldquo; &mdash; Self-Assessment-Tools erzielen 30-50% Conversion (Demand Gen Report)</div>
     </div>
     <div class="card text-center py-5">
       <i data-lucide="shield-check" style="width:24px;height:24px;color:var(--color-good);margin:0 auto 8px;"></i>
@@ -449,10 +982,24 @@ body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
     </div>
   </div>
 
+  <!-- Begriffserklärung Self-Assessment -->
+  <div class="max-w-[880px] w-full mb-5" style="background:rgba(99,102,241,0.06);border:1px solid rgba(99,102,241,0.15);border-radius:10px;padding:14px 18px;">
+    <div class="flex items-start gap-2">
+      <i data-lucide="help-circle" style="width:16px;height:16px;color:rgba(99,102,241,0.7);flex-shrink:0;margin-top:2px;"></i>
+      <div>
+        <div class="font-semibold text-[.82rem]" style="color:rgba(99,102,241,0.9);">Was ist ein Self-Assessment-Tool?</div>
+        <div class="text-[.78rem] mt-1" style="color:var(--color-muted);">Ein kurzer Online-Fragebogen (8-10 Fragen), mit dem Unternehmen selbst pr&uuml;fen: <em>&bdquo;Sind wir BFSG-konform?&ldquo;</em> Am Ende erh&auml;lt der Nutzer sein <strong style="color:var(--color-text);">Ergebnis nur gegen E-Mail-Adresse</strong> &mdash; so entsteht ein qualifizierter Lead, weil andagon sofort wei&szlig;, wo der konkrete Bedarf liegt. Dieses Format erzielt in Compliance-Themen <strong style="color:var(--color-text);">30-50% Conversion-Rate</strong> &mdash; deutlich mehr als ein Whitepaper (5-10%).</div>
+      </div>
+    </div>
+  </div>
+
   <div class="card max-w-[880px] w-full mb-5" style="border-color:rgba(249,108,64,0.2);">
-    <div class="text-[.75rem] font-mono uppercase tracking-widest mb-3" style="color:var(--color-accent);">Testbare Hypothese</div>
-    <div class="text-[.95rem] font-medium leading-relaxed" style="color:var(--color-sub);">
-      &laquo;Wenn wir eine BFSG-Landingpage mit Gated Webinar, NPS-70-Trust-Signal und Kontaktformular launchen und &uuml;ber LinkedIn + Google Ads bewerben, dann generieren wir innerhalb von <strong style="color:var(--color-text);">8 Wochen mindestens 10 qualifizierte Kontakte</strong>.&raquo;
+    <div class="text-[.75rem] font-mono uppercase tracking-widest mb-3" style="color:var(--color-accent);">Testbare Hypothese &mdash; datengest&uuml;tzte Herleitung</div>
+    <div class="text-[.9rem] leading-relaxed" style="color:var(--color-sub);">
+      <strong style="color:var(--color-text);">BFSG-Suchvolumen:</strong> ~6.000-12.000 Suchen/Monat in DE (BFSG, Barrierefreiheit Website, BFSG Checkliste u.a.)<br>
+      <strong style="color:var(--color-text);">Erreichbare Klicks:</strong> 3-5% CTR bei Google Ads &times; 3.000 targetbare Suchen = <strong style="color:var(--color-accent);">90-150 Klicks/Monat</strong><br>
+      <strong style="color:var(--color-text);">Landing-Page-Conversion:</strong> 10-20% (B2B mit Lead-Magnet, Unbounce Benchmark) = <strong style="color:var(--color-accent);">9-30 Leads/Monat</strong><br>
+      <strong style="color:var(--color-text);">Kosten pro Lead:</strong> 40-130 &euro; (bei 3-8 &euro; CPC)
     </div>
   </div>
 
@@ -460,25 +1007,71 @@ body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
     <div class="card text-center py-4">
       <div class="text-[.7rem] uppercase tracking-widest mb-2" style="color:var(--color-muted);">Warum BFSG?</div>
       <div class="text-[.85rem] font-semibold" style="color:var(--color-good);">Pflicht seit 06/2025</div>
-      <div class="text-[.72rem]" style="color:var(--color-muted);">Fertiges Produkt + Schulung</div>
+      <div class="text-[.72rem]" style="color:var(--color-muted);">Bis 100.000 &euro; Bu&szlig;geld</div>
+    </div>
+    <div class="card text-center py-4">
+      <div class="text-[.7rem] uppercase tracking-widest mb-2" style="color:var(--color-muted);">andagon-Status</div>
+      <div class="text-[.85rem] font-semibold" style="color:var(--color-warn);">&bdquo;Coming Soon&ldquo;</div>
+      <div class="text-[.72rem]" style="color:var(--color-muted);">Landingpage validiert Nachfrage</div>
     </div>
     <div class="card text-center py-4">
       <div class="text-[.7rem] uppercase tracking-widest mb-2" style="color:var(--color-muted);">Wettbewerb</div>
       <div class="text-[.85rem] font-semibold" style="color:var(--color-accent);">0 Landingpages</div>
-      <div class="text-[.72rem]" style="color:var(--color-muted);">Kein Wettbewerber hat eine</div>
-    </div>
-    <div class="card text-center py-4">
-      <div class="text-[.7rem] uppercase tracking-widest mb-2" style="color:var(--color-muted);">Zeithorizont</div>
-      <div class="text-[.85rem] font-semibold" style="color:var(--color-text);">2-4 Wo. + 8 Wo.</div>
-      <div class="text-[.72rem]" style="color:var(--color-muted);">Aufbau + Messphase</div>
+      <div class="text-[.72rem]" style="color:var(--color-muted);">First-Mover-Vorteil</div>
     </div>
   </div>
 
-  <div class="sn">06 · 11</div>
+  <div class="sn">11 &middot; 18</div>
 </section>
 
-<!-- SLIDE 07 — SCHRITTE -->
-<section class="slide" id="s07">
+<!-- SLIDE 11 — TRIGGER-THEMEN -->
+<section class="slide" id="s12">
+  <div class="label" style="color:rgba(74,222,128,0.7);">Regulatorische Chancen</div>
+  <h2 class="text-[clamp(1.6rem,3vw,2.4rem)] font-bold mb-3 text-center max-w-[700px]">
+    Zwei Trigger-Themen, null Wettbewerber
+  </h2>
+  <p class="text-center mb-6" style="color: var(--color-muted); max-width: 660px; font-size: .95rem;">
+    IT-Entscheider suchen aktiv nach L&ouml;sungen. Kein Wettbewerber hat dedizierte Service-Seiten.
+  </p>
+
+  <div class="grid grid-cols-2 gap-5 max-w-[700px] w-full">
+    <div class="card">
+      <div class="flex items-center gap-2 mb-3">
+        <span class="pill" style="background:rgba(251,191,36,0.12);color:var(--color-warn);">Coming Soon</span>
+        <span class="pill" style="background:rgba(249,108,64,0.12);color:var(--color-accent);">Pflicht seit 06/2025</span>
+      </div>
+      <div class="text-[1.1rem] font-bold mb-2">BFSG</div>
+      <div class="text-[.82rem] mb-3" style="color:var(--color-muted);">andagon hat BFSG-Testing als <strong style="color:var(--color-text);">&bdquo;Coming Soon&ldquo;</strong> auf der Website. Die Landingpage validiert die Nachfrage. Markt&uuml;bliche Spanne: <strong style="color:var(--color-text);">2.500-8.000 &euro;</strong> pro BFSG-Audit <span style="color:var(--color-muted);font-size:.7rem;">(AI-Recherche &mdash; Validierung mit Ihnen offen)</span></div>
+      <div class="text-[.72rem] font-mono" style="color:var(--color-sub);">
+        <div class="flex justify-between py-1" style="border-bottom:1px solid var(--color-surf2);"><span>bfsg (Keyword)</span><span style="color:var(--color-accent);">2-5K/Mo</span></div>
+        <div class="flex justify-between py-1" style="border-bottom:1px solid var(--color-surf2);"><span>barrierefreiheit website</span><span style="color:var(--color-accent);">1-2K/Mo</span></div>
+        <div class="flex justify-between py-1"><span>bfsg checkliste</span><span style="color:var(--color-accent);">500-1K/Mo</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="flex items-center gap-2 mb-3">
+        <span class="pill" style="background:rgba(74,222,128,0.12);color:var(--color-good);">&#10003; Best&auml;tigt</span>
+        <span class="pill" style="background:rgba(251,191,36,0.12);color:var(--color-warn);">Frist bis 12/2027</span>
+      </div>
+      <div class="text-[1.1rem] font-bold mb-2">SAP S/4HANA</div>
+      <div class="text-[.82rem] mb-3" style="color:var(--color-muted);">andagon bietet <strong style="color:var(--color-text);">SAP-Migrations-QA</strong> aktiv an. Tausende Unternehmen m&uuml;ssen migrieren &mdash; jede Migration erfordert Regressions- und Integrationstests.</div>
+      <div class="text-[.72rem] font-mono" style="color:var(--color-sub);">
+        <div class="flex justify-between py-1" style="border-bottom:1px solid var(--color-surf2);"><span>sap s/4hana migration</span><span style="color:var(--color-accent);">&#8599;</span></div>
+        <div class="flex justify-between py-1" style="border-bottom:1px solid var(--color-surf2);"><span>sap testing</span><span style="color:var(--color-accent);">&#8599;</span></div>
+        <div class="flex justify-between py-1"><span>sap regressionstest</span><span style="color:var(--color-accent);">&#8599;</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sn">12 &middot; 18</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- TEIL 4: PRIORIT&Auml;TEN + STEP-BY-STEP                            -->
+<!-- ============================================================ -->
+
+<!-- SLIDE 12 — 4 SCHRITTE -->
+<section class="slide" id="s13">
   <div class="label">Empfehlung</div>
   <h2 class="text-[clamp(1.6rem,3vw,2.4rem)] font-bold mb-8 text-center">
     Vier Schritte zur Lead-Generierung
@@ -494,12 +1087,12 @@ body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
       <ul class="text-[.78rem] flex flex-col gap-1.5" style="color:var(--color-muted);list-style:none;padding:0;">
         <li class="flex items-start gap-2"><span style="color:var(--color-accent);">&#9733;</span> <strong style="color:var(--color-text);">BFSG-Landingpage</strong></li>
         <li class="flex items-start gap-2"><span style="color:var(--color-good);">&#10003;</span> Cookie-Consent-Fix</li>
-        <li class="flex items-start gap-2"><span style="color:var(--color-good);">&#10003;</span> Kontaktformular</li>
+        <li class="flex items-start gap-2"><span style="color:var(--color-good);">&#10003;</span> Kontaktformular auf andagon.com</li>
+        <li style="padding-left:1.1rem;margin-top:-2px;"><span class="text-[.65rem] px-1.5 py-0.5 rounded" style="background:rgba(99,102,241,0.1);color:rgba(99,102,241,0.8);">mit Service-Dropdown: QA · SAP · BFSG</span></li>
         <li class="flex items-start gap-2"><span style="color:var(--color-good);">&#10003;</span> NPS 70 + Trust-Bar</li>
-        <li class="flex items-start gap-2"><span style="color:var(--color-good);">&#10003;</span> Kununu + Clutch.co + Glassdoor</li>
         <li class="flex items-start gap-2"><span style="color:var(--color-good);">&#10003;</span> Google Business (K&ouml;ln + HH)</li>
       </ul>
-      <div class="mt-2 text-[.68rem] px-2 py-1 rounded-lg" style="background:rgba(249,108,64,0.06);color:var(--color-muted);">Inkl. Landingpage-Konzept.</div>
+      <div class="mt-2 text-[.68rem] px-2 py-1 rounded-lg" style="background:rgba(249,108,64,0.06);color:var(--color-muted);">Inkl. Landingpage-Konzept + Lead-Magnet</div>
     </div>
 
     <div class="card">
@@ -507,13 +1100,12 @@ body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
         <div class="w-7 h-7 rounded-full flex items-center justify-center text-[.75rem] font-bold" style="background:rgba(249,108,64,0.15);color:var(--color-accent);">2a</div>
         <span class="pill" style="background:rgba(251,191,36,0.1);color:var(--color-warn);font-size:9px;">Wo. 2-6</span>
       </div>
-      <div class="text-[.9rem] font-bold mb-2">LinkedIn-Konsolidierung</div>
+      <div class="text-[.9rem] font-bold mb-2">Kanal-Konsolidierung</div>
       <ul class="text-[.78rem] flex flex-col gap-1.5" style="color:var(--color-muted);list-style:none;padding:0;">
-        <li class="flex items-start gap-2"><span style="color:var(--color-accent);">&#9733;</span> <strong style="color:var(--color-text);">6 Profile konsolidieren</strong></li>
-        <li class="flex items-start gap-2"><span style="color:var(--color-good);">&#10003;</span> Sprache vereinheitlichen</li>
-        <li class="flex items-start gap-2"><span style="color:var(--color-good);">&#10003;</span> Karyna-Profil aktivieren</li>
-        <li class="flex items-start gap-2"><span style="color:var(--color-good);">&#10003;</span> NPS + Festpreis-Posts</li>
-        <li class="flex items-start gap-2"><span style="color:var(--color-good);">&#10003;</span> TestPulse &rarr; Deutsch</li>
+        <li class="flex items-start gap-2"><span style="color:var(--color-accent);">&#9733;</span> <strong style="color:var(--color-text);">21 &rarr; 3+1 Kan&auml;le</strong></li>
+        <li class="flex items-start gap-2"><span style="color:var(--color-good);">&#10003;</span> LinkedIn 6 Profile konsolidieren</li>
+        <li class="flex items-start gap-2"><span style="color:var(--color-good);">&#10003;</span> TikTok/Instagram archivieren</li>
+        <li class="flex items-start gap-2"><span style="color:var(--color-good);">&#10003;</span> Sprache vereinheitlichen (DE)</li>
         <li class="flex items-start gap-2"><span style="color:var(--color-good);">&#10003;</span> Qytera-L&uuml;cke nutzen</li>
       </ul>
     </div>
@@ -528,8 +1120,7 @@ body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
         <li class="flex items-start gap-2"><span style="color:var(--color-good);">&#10003;</span> Google-Tag installieren</li>
         <li class="flex items-start gap-2"><span style="color:var(--color-good);">&#10003;</span> Conversion-Tracking</li>
         <li class="flex items-start gap-2"><span style="color:var(--color-good);">&#10003;</span> Negative Keywords</li>
-        <li class="flex items-start gap-2"><span style="color:var(--color-good);">&#10003;</span> Kontostruktur-Neuaufbau</li>
-        <li class="flex items-start gap-2"><span style="color:var(--color-good);">&#10003;</span> Customer-Match-Listen</li>
+        <li class="flex items-start gap-2"><span style="color:var(--color-good);">&#10003;</span> Customer-Match aus Odoo</li>
         <li class="flex items-start gap-2"><span style="color:var(--color-good);">&#10003;</span> Demand-Gen-Kampagnen</li>
       </ul>
     </div>
@@ -542,21 +1133,20 @@ body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
       <div class="text-[.9rem] font-bold mb-2">Content + Lead-Magneten</div>
       <ul class="text-[.78rem] flex flex-col gap-1.5" style="color:var(--color-muted);list-style:none;padding:0;">
         <li class="flex items-start gap-2"><span style="color:var(--color-accent);">&#9733;</span> <strong style="color:var(--color-text);">8 Webinare &rarr; Gated</strong></li>
-        <li class="flex items-start gap-2"><span style="color:var(--color-good);">&#10003;</span> 3 Service-Pages (SEO)</li>
+        <li class="flex items-start gap-2"><span style="color:var(--color-good);">&#10003;</span> 3 SEO-Service-Pages</li>
         <li class="flex items-start gap-2"><span style="color:var(--color-good);">&#10003;</span> QA-Reifegrad-Check</li>
         <li class="flex items-start gap-2"><span style="color:var(--color-good);">&#10003;</span> BFSG + SAP-Pages</li>
-        <li class="flex items-start gap-2"><span style="color:var(--color-good);">&#10003;</span> 5 SEO-Fachartikel</li>
         <li class="flex items-start gap-2"><span style="color:var(--color-good);">&#10003;</span> Keyword-Monitoring</li>
       </ul>
       <div class="mt-2 text-[.68rem] px-2 py-1 rounded-lg" style="background:rgba(249,108,64,0.06);color:var(--color-muted);">Content-Erstellung. Einpflege separat.</div>
     </div>
   </div>
 
-  <div class="sn">07 · 11</div>
+  <div class="sn">13 &middot; 18</div>
 </section>
 
-<!-- SLIDE 08 — INVESTITION -->
-<section class="slide" id="s08">
+<!-- SLIDE 13 — INVESTITION -->
+<section class="slide" id="s14">
   <div class="label">Investition</div>
   <h2 class="text-[clamp(1.6rem,3vw,2.4rem)] font-bold mb-8 text-center">
     Budget Testphase
@@ -572,12 +1162,17 @@ body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
         <tbody>
           <tr>
             <td><span class="pill" style="background:rgba(249,108,64,0.12);color:var(--color-accent);">1</span></td>
-            <td>Website-Ma&szlig;nahmenplan<br><span class="text-[.75rem]" style="color:var(--color-muted);">Aktionsplan. Umsetzung separat.</span></td>
+            <td>Website-Ma&szlig;nahmenplan<br><span class="text-[.75rem]" style="color:var(--color-muted);">Aktionsplan: Cookie-Consent, Kontaktformular, Trust-Signale, Google-Tag, defekte Links</span></td>
             <td style="text-align:right;font-weight:600;">1.200 &euro;</td>
           </tr>
           <tr>
+            <td><span class="pill" style="background:rgba(249,108,64,0.12);color:var(--color-accent);">1b</span></td>
+            <td>BFSG-Landingpage + Lead-Magnet<br><span class="text-[.75rem]" style="color:var(--color-muted);">Konzept, Texte, Self-Assessment-Tool, Umsetzung <span style="font-size:.68rem;">(z.B. WordPress o.&auml;. &mdash; plattformabh&auml;ngig)</span></span></td>
+            <td style="text-align:right;font-weight:600;">1.500 &euro;</td>
+          </tr>
+          <tr>
             <td><span class="pill" style="background:rgba(249,108,64,0.12);color:var(--color-accent);">2a</span></td>
-            <td>LinkedIn-Strategie (3 Monate)</td>
+            <td>Kanal-Konsolidierung + LinkedIn (3 Monate)<br><span class="text-[.75rem]" style="color:var(--color-muted);">21 &rarr; 3+1 Kan&auml;le + Content-Strategie</span></td>
             <td style="text-align:right;font-weight:600;">3.500 &euro;</td>
           </tr>
           <tr>
@@ -587,13 +1182,17 @@ body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
           </tr>
           <tr>
             <td><span class="pill" style="background:rgba(249,108,64,0.12);color:var(--color-accent);">3</span></td>
-            <td>Content + Lead-Magnet<br><span class="text-[.75rem]" style="color:var(--color-muted);">Kernkompetenz-Service-Seiten + Lead-Magnet. Einpflege separat.</span></td>
-            <td style="text-align:right;font-weight:600;">3.800 &euro;</td>
+            <td>Content + Lead-Magnet<br><span class="text-[.75rem]" style="color:var(--color-muted);">3 Service-Pages + Lead-Magneten + SEO-Artikel</span></td>
+            <td style="text-align:right;font-weight:600;font-size:.78rem;color:var(--color-muted);">nach Abstimmung</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td colspan="2"><span class="text-[.72rem]" style="color:var(--color-muted);font-style:italic;">Umfang abh&auml;ngig von Anzahl der Service-Pages, Content-Tiefe und SEO-Zielen &mdash; wird gemeinsam mit Ihnen kalkuliert.</span></td>
           </tr>
           <tr class="highlight">
             <td></td>
-            <td><strong>Einmalige Gesamtinvestition</strong></td>
-            <td style="text-align:right;font-weight:800;font-size:1.1rem;color:var(--color-accent);">10.000 &euro;</td>
+            <td><strong>Gesamtinvestition (Schritt 1&ndash;2b)</strong></td>
+            <td style="text-align:right;font-weight:800;font-size:1.1rem;color:var(--color-accent);">7.700 &euro;</td>
           </tr>
         </tbody>
       </table>
@@ -612,11 +1211,118 @@ body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
     </div>
   </div>
 
-  <div class="sn">08 · 11</div>
+  <div class="sn">14 &middot; 18</div>
 </section>
 
-<!-- SLIDE 09 — ERWARTETE ERGEBNISSE -->
-<section class="slide" id="s09">
+<!-- SLIDE 14 — WARUM SERVICE-PAGES + LEAD-MAGNETEN -->
+<section class="slide" id="s15">
+  <div class="label" style="color:rgba(99,102,241,0.8);">Hintergrund zu Schritt 3</div>
+  <h2 class="text-[clamp(1.5rem,2.8vw,2.2rem)] font-bold mb-3 text-center max-w-[750px]">
+    Warum Service-Pages, Lead-Magneten &amp; SEO-Artikel?
+  </h2>
+  <p class="text-center mb-6" style="color: var(--color-muted); max-width: 660px; font-size: .92rem;">
+    Google kann nicht ranken, was nicht existiert. andagon hat eine allgemeine &bdquo;Leistungen&ldquo;-Seite &mdash; aber keine spezifischen Service-Seiten f&uuml;r einzelne Kompetenzen.
+  </p>
+
+  <div class="grid grid-cols-3 gap-4 max-w-[920px] w-full mb-5">
+    <div class="card">
+      <div class="flex items-center gap-2 mb-3">
+        <i data-lucide="file-text" style="width:18px;height:18px;color:var(--color-accent);"></i>
+        <div class="font-bold text-[.9rem]">Service-Pages</div>
+      </div>
+      <div class="text-[.8rem] mb-3" style="color:var(--color-muted);">Eigene Unterseiten auf andagon.com f&uuml;r jede Kernkompetenz:</div>
+      <div class="flex flex-col gap-2">
+        <div class="text-[.78rem] flex items-start gap-2">
+          <span style="color:var(--color-accent);">1.</span>
+          <div style="color:var(--color-sub);"><strong style="color:var(--color-text);">Testautomatisierung</strong> &mdash; Hauptservice, aktuell keine eigene Seite</div>
+        </div>
+        <div class="text-[.78rem] flex items-start gap-2">
+          <span style="color:var(--color-accent);">2.</span>
+          <div style="color:var(--color-sub);"><strong style="color:var(--color-text);">SAP S/4HANA Testing</strong> &mdash; bieten sie an, keine dedizierte Seite</div>
+        </div>
+        <div class="text-[.78rem] flex items-start gap-2">
+          <span style="color:var(--color-accent);">3.</span>
+          <div style="color:var(--color-sub);"><strong style="color:var(--color-text);">BFSG-Testing</strong> &mdash; &bdquo;Coming Soon&ldquo;, braucht eigene Seite</div>
+        </div>
+      </div>
+      <div class="mt-3 text-[.72rem] px-2 py-1.5 rounded-lg" style="background:rgba(249,108,64,0.06);color:var(--color-muted);">
+        <strong style="color:var(--color-text);">Problem heute:</strong> Wer &bdquo;Testautomatisierung Beratung&ldquo; googelt, findet Qytera und imbus &mdash; nicht andagon.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="flex items-center gap-2 mb-3">
+        <i data-lucide="gift" style="width:18px;height:18px;color:var(--color-good);"></i>
+        <div class="font-bold text-[.9rem]">Lead-Magneten</div>
+      </div>
+      <div class="text-[.8rem] mb-3" style="color:var(--color-muted);">Kostenlose Tools/Downloads, die man <strong style="color:var(--color-text);">gegen E-Mail-Adresse</strong> bekommt:</div>
+      <div class="flex flex-col gap-2">
+        <div class="text-[.78rem] flex items-start gap-2">
+          <span style="color:var(--color-good);">&#10003;</span>
+          <div style="color:var(--color-sub);"><strong style="color:var(--color-text);">BFSG-Self-Assessment</strong> &mdash; &bdquo;Sind Sie konform?&ldquo;</div>
+        </div>
+        <div class="text-[.78rem] flex items-start gap-2">
+          <span style="color:var(--color-good);">&#10003;</span>
+          <div style="color:var(--color-sub);"><strong style="color:var(--color-text);">QA-Reifegrad-Check</strong> &mdash; &bdquo;Wie gut ist Ihre QA?&ldquo;</div>
+        </div>
+        <div class="text-[.78rem] flex items-start gap-2">
+          <span style="color:var(--color-good);">&#10003;</span>
+          <div style="color:var(--color-sub);"><strong style="color:var(--color-text);">SAP-Migrations-Checkliste</strong></div>
+        </div>
+      </div>
+      <div class="mt-3 text-[.72rem] px-2 py-1.5 rounded-lg" style="background:rgba(74,222,128,0.06);color:var(--color-muted);">
+        <strong style="color:var(--color-text);">Ergebnis:</strong> Besucher bekommt Mehrwert, andagon bekommt E-Mail + konkreten Bedarf.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="flex items-center gap-2 mb-3">
+        <i data-lucide="search" style="width:18px;height:18px;color:var(--color-warn);"></i>
+        <div class="font-bold text-[.9rem]">SEO-Artikel</div>
+      </div>
+      <div class="text-[.8rem] mb-3" style="color:var(--color-muted);">Blog-Beitr&auml;ge, optimiert auf <strong style="color:var(--color-text);">Keywords mit Suchvolumen</strong>:</div>
+      <div class="flex flex-col gap-2">
+        <div class="text-[.78rem] flex items-start gap-2">
+          <span style="color:var(--color-warn);">&#9733;</span>
+          <div style="color:var(--color-sub);">&bdquo;Was kostet Testautomatisierung?&ldquo; <span style="color:var(--color-accent);font-size:.7rem;">590/Mo</span></div>
+        </div>
+        <div class="text-[.78rem] flex items-start gap-2">
+          <span style="color:var(--color-warn);">&#9733;</span>
+          <div style="color:var(--color-sub);">&bdquo;BFSG Checkliste f&uuml;r Websites&ldquo; <span style="color:var(--color-accent);font-size:.7rem;">500-1K/Mo</span></div>
+        </div>
+        <div class="text-[.78rem] flex items-start gap-2">
+          <span style="color:var(--color-warn);">&#9733;</span>
+          <div style="color:var(--color-sub);">&bdquo;SAP S/4HANA Migration &mdash; Testing-Leitfaden&ldquo; <span style="color:var(--color-accent);font-size:.7rem;">70/Mo</span></div>
+        </div>
+      </div>
+      <div class="mt-3 text-[.72rem] px-2 py-1.5 rounded-lg" style="background:rgba(251,191,36,0.06);color:var(--color-muted);">
+        <strong style="color:var(--color-text);">Jeder Artikel</strong> verlinkt auf Service-Page + Lead-Magnet.
+      </div>
+    </div>
+  </div>
+
+  <!-- Zusammenspiel-Kette -->
+  <div class="card max-w-[920px] w-full" style="background:rgba(249,108,64,0.04);border-color:rgba(249,108,64,0.15);">
+    <div class="text-[.72rem] font-mono uppercase tracking-widest mb-3" style="color:var(--color-accent);">So greifen die Bausteine ineinander</div>
+    <div class="flex items-center justify-center gap-2 flex-wrap text-[.82rem]">
+      <span class="pill" style="background:rgba(251,191,36,0.12);color:var(--color-warn);">Google-Suche</span>
+      <span style="color:var(--color-muted);">&rarr;</span>
+      <span class="pill" style="background:rgba(251,191,36,0.12);color:var(--color-warn);">SEO-Artikel</span>
+      <span style="color:var(--color-muted);">&rarr;</span>
+      <span class="pill" style="background:rgba(249,108,64,0.12);color:var(--color-accent);">Service-Page</span>
+      <span style="color:var(--color-muted);">&rarr;</span>
+      <span class="pill" style="background:rgba(74,222,128,0.12);color:var(--color-good);">Lead-Magnet (E-Mail)</span>
+      <span style="color:var(--color-muted);">&rarr;</span>
+      <span class="pill" style="background:rgba(99,102,241,0.12);color:rgba(99,102,241,0.9);">Vertrieb kontaktiert</span>
+    </div>
+    <div class="text-[.75rem] text-center mt-3" style="color:var(--color-muted);">Aktuell fehlen alle drei Bausteine &mdash; deshalb findet niemand andagon &uuml;ber Google und es werden keine Leads generiert.</div>
+  </div>
+
+  <div class="sn">15 &middot; 18</div>
+</section>
+
+<!-- SLIDE 15 — ERWARTETE ERGEBNISSE -->
+<section class="slide" id="s16">
   <div class="label">Erwartete Ergebnisse</div>
   <h2 class="text-[clamp(1.6rem,3vw,2.4rem)] font-bold mb-8 text-center">
     Was die Testphase bringt
@@ -628,14 +1334,14 @@ body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
         <i data-lucide="mouse-pointer-click" style="width:20px;height:20px;color:var(--color-accent);flex-shrink:0;margin-top:2px;"></i>
         <div>
           <div class="font-bold text-[.95rem]">Kontaktformular: 5-10 Anfragen/Mo</div>
-          <div class="text-[.78rem] mt-1" style="color:var(--color-muted);">Aktuell: 0 (kein Formular vorhanden). Bei ~1.500 Besuchern/Mo und B2B-Conversion-Rate von 2-3&nbsp;% (Content Marketing Institute, B2B Benchmarks 2025).</div>
+          <div class="text-[.78rem] mt-1" style="color:var(--color-muted);">Aktuell: 0 (kein Formular). Bei ~1.500 Besuchern/Mo und B2B-CR 2-3% (CMI 2025).</div>
         </div>
       </div>
       <div class="flex items-start gap-3">
         <i data-lucide="trending-up" style="width:20px;height:20px;color:var(--color-good);flex-shrink:0;margin-top:2px;"></i>
         <div>
-          <div class="font-bold text-[.95rem]">LinkedIn: Engagement 10x (0,1&nbsp;% &rarr; 1&nbsp;%)</div>
-          <div class="text-[.78rem] mt-1" style="color:var(--color-muted);">Konservativ &mdash; Branchendurchschnitt liegt bei 3,6&nbsp;% (Social Insider 2026). testbee erreicht 4,1&nbsp;% mit nur 462 Followern.</div>
+          <div class="font-bold text-[.95rem]">LinkedIn: Engagement 10x (0,1% &rarr; 1%)</div>
+          <div class="text-[.78rem] mt-1" style="color:var(--color-muted);">Konservativ &mdash; Branchendurchschnitt 3,6% (Social Insider 2026).</div>
         </div>
       </div>
     </div>
@@ -643,89 +1349,119 @@ body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
       <div class="flex items-start gap-3 mb-4">
         <i data-lucide="download" style="width:20px;height:20px;color:var(--color-accent);flex-shrink:0;margin-top:2px;"></i>
         <div>
-          <div class="font-bold text-[.95rem]">Lead-Magnet: 5-15 qualifizierte Kontakte/Mo</div>
-          <div class="text-[.78rem] mt-1" style="color:var(--color-muted);">Assessment-Tools erzielen im DACH-Industriesektor 4,7&nbsp;% CR zu qualifizierten Leads (Brixon Group, DACH-Benchmark 2026).</div>
+          <div class="font-bold text-[.95rem]">BFSG-Landingpage: 15-40 Leads/Mo</div>
+          <div class="text-[.78rem] mt-1" style="color:var(--color-muted);">Google Ads (90-150 Klicks, 10-20% CR) + LinkedIn Ads. CPL: 40-130 &euro;. Kosten: 1.000-2.500 &euro; Werbebudget.</div>
         </div>
       </div>
       <div class="flex items-start gap-3">
         <i data-lucide="bar-chart-3" style="width:20px;height:20px;color:var(--color-warn);flex-shrink:0;margin-top:2px;"></i>
         <div>
           <div class="font-bold text-[.95rem]">Google Ads: messbar statt Blindflug</div>
-          <div class="text-[.78rem] mt-1" style="color:var(--color-muted);">Tracking, Remarketing und Demand-Gen erstmals aktiv. Effizienz des bestehenden Budgets steigt erheblich.</div>
+          <div class="text-[.78rem] mt-1" style="color:var(--color-muted);">Tracking, Remarketing und Demand-Gen erstmals aktiv.</div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="grid grid-cols-2 gap-5 max-w-[880px] w-full">
+  <div class="grid grid-cols-3 gap-5 max-w-[880px] w-full">
     <div class="card text-center py-5">
-      <div class="metric-big" style="font-size:2.2rem;">55+</div>
+      <div class="metric-big" style="font-size:2rem;">55+</div>
       <div class="metric-label">Site Score (aktuell 38)</div>
     </div>
     <div class="card text-center py-5" style="border-color:rgba(249,108,64,0.15);">
-      <div class="text-[.82rem] mb-2" style="color:var(--color-muted);">Conversion-Rate Lead &rarr; Mandat (B2B-IT-Beratung)</div>
-      <div class="metric-big" style="font-size:2.2rem;">10-15&nbsp;%</div>
-      <div class="text-[.72rem] mt-2" style="color:var(--color-muted);">First Page Sage, Martal Group, CMI (2025/2026)</div>
+      <div class="metric-big" style="font-size:2rem;">10-15%</div>
+      <div class="metric-label">Lead &rarr; Mandat (B2B-IT)</div>
+    </div>
+    <div class="card text-center py-5" style="border-color:rgba(74,222,128,0.15);">
+      <div class="metric-big" style="font-size:2rem;color:var(--color-good);">8 Wo.</div>
+      <div class="metric-label">Erste messbare Ergebnisse</div>
     </div>
   </div>
 
-  <div class="sn">09 · 11</div>
+  <div class="sn">16 &middot; 18</div>
 </section>
 
-<!-- SLIDE 10 — TRIGGER-THEMEN -->
-<section class="slide" id="s10">
-  <div class="label" style="color:rgba(74,222,128,0.7);">Best&auml;tigte Chance</div>
+<!-- SLIDE 16 — LEAD-BERECHNUNG -->
+<section class="slide" id="s17">
+  <div class="label" style="color:rgba(74,222,128,0.7);">Datengest&uuml;tzte Berechnung</div>
   <h2 class="text-[clamp(1.6rem,3vw,2.4rem)] font-bold mb-3 text-center max-w-[700px]">
-    Zwei regulatorische Trigger-Keywords
+    So rechnet sich der BFSG-Pilot
   </h2>
-  <p class="text-center mb-6" style="color: var(--color-muted); max-width: 660px; font-size: .95rem;">
-    IT-Entscheider suchen aktiv nach diesen Themen. Kein Wettbewerber hat dedizierte Service-Seiten daf&uuml;r &mdash; andagon bietet beide Leistungen bereits an.
+  <p class="text-center mb-6" style="color: var(--color-muted); max-width: 640px; font-size: .95rem;">
+    Funnel-Berechnung auf Basis von B2B-Benchmarks und BFSG-Suchvolumen.
   </p>
 
-  <div class="grid grid-cols-2 gap-5 max-w-[700px] w-full">
-    <div class="card">
-      <div class="flex items-center gap-2 mb-3">
-        <span class="pill" style="background:rgba(74,222,128,0.12);color:var(--color-good);">&#10003; Best&auml;tigt</span>
-        <span class="pill" style="background:rgba(249,108,64,0.12);color:var(--color-accent);">Pflicht seit 06/2025</span>
-      </div>
-      <div class="text-[1.1rem] font-bold mb-2">BFSG</div>
-      <div class="text-[.82rem] mb-3" style="color:var(--color-muted);">andagon bietet <strong style="color:var(--color-text);">fertiges Produkt + Schulung</strong> f&uuml;r Barrierefreiheits-Testing. 4 von 5 Online-Shops sind noch nicht barrierefrei (Aktion Mensch 2025).</div>
-      <div class="text-[.72rem] font-mono" style="color:var(--color-sub);">
-        <div class="flex justify-between py-1" style="border-bottom:1px solid var(--color-surf2);"><span>barrierefreiheit testen</span><span style="color:var(--color-accent);">&#8599;</span></div>
-        <div class="flex justify-between py-1" style="border-bottom:1px solid var(--color-surf2);"><span>bfsg website</span><span style="color:var(--color-accent);">&#8599;</span></div>
-        <div class="flex justify-between py-1"><span>accessibility testing</span><span style="color:var(--color-accent);">&#8599;</span></div>
-      </div>
+  <div class="max-w-[780px] w-full">
+    <div class="card mb-5">
+      <div class="text-[.75rem] font-mono uppercase tracking-widest mb-4" style="color:var(--color-accent);">Lead-Funnel-Berechnung (pro Monat)</div>
+      <table class="data-table">
+        <thead><tr><th>Stufe</th><th style="text-align:right;">Wert</th><th>Quelle</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>BFSG-Suchvolumen (DE, gesamt)</td>
+            <td style="text-align:right;font-weight:600;">6.000-12.000</td>
+            <td class="text-[.78rem]" style="color:var(--color-muted);">Google Keyword Planner</td>
+          </tr>
+          <tr>
+            <td>Targetbarer Anteil</td>
+            <td style="text-align:right;font-weight:600;">~3.000</td>
+            <td class="text-[.78rem]" style="color:var(--color-muted);">Konservative Sch&auml;tzung</td>
+          </tr>
+          <tr>
+            <td>Google Ads CTR</td>
+            <td style="text-align:right;font-weight:600;">3-5%</td>
+            <td class="text-[.78rem]" style="color:var(--color-muted);">WordStream B2B avg.</td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--color-text);">Klicks/Monat</strong></td>
+            <td style="text-align:right;font-weight:700;color:var(--color-accent);">90-150</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Landing-Page-Conversion (mit Lead-Magnet)</td>
+            <td style="text-align:right;font-weight:600;">10-20%</td>
+            <td class="text-[.78rem]" style="color:var(--color-muted);">Unbounce B2B Benchmark</td>
+          </tr>
+          <tr class="highlight">
+            <td><strong>Leads/Monat (Google Ads)</strong></td>
+            <td style="text-align:right;font-weight:800;color:var(--color-accent);">9-30</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>+ LinkedIn Ads</td>
+            <td style="text-align:right;font-weight:600;">+5-10</td>
+            <td class="text-[.78rem]" style="color:var(--color-muted);">CPL 80-200 &euro;</td>
+          </tr>
+          <tr class="highlight">
+            <td><strong>Gesamt Leads/Monat</strong></td>
+            <td style="text-align:right;font-weight:800;font-size:1.1rem;color:var(--color-accent);">15-40</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <div class="card">
-      <div class="flex items-center gap-2 mb-3">
-        <span class="pill" style="background:rgba(74,222,128,0.12);color:var(--color-good);">&#10003; Best&auml;tigt</span>
-        <span class="pill" style="background:rgba(251,191,36,0.12);color:var(--color-warn);">Frist bis 12/2027</span>
+
+    <div class="grid grid-cols-3 gap-4">
+      <div class="card text-center py-4">
+        <div class="text-[.7rem] uppercase tracking-widest mb-2" style="color:var(--color-muted);">Cost per Lead</div>
+        <div class="text-[1.2rem] font-bold" style="color:var(--color-accent);">40-130 &euro;</div>
       </div>
-      <div class="text-[1.1rem] font-bold mb-2">SAP S/4HANA</div>
-      <div class="text-[.82rem] mb-3" style="color:var(--color-muted);">andagon bietet <strong style="color:var(--color-text);">SAP-Migrations-QA</strong> an. Tausende Unternehmen m&uuml;ssen migrieren &mdash; jede Migration erfordert Regressions- und Integrationstests.</div>
-      <div class="text-[.72rem] font-mono" style="color:var(--color-sub);">
-        <div class="flex justify-between py-1" style="border-bottom:1px solid var(--color-surf2);"><span>sap s/4hana migration</span><span style="color:var(--color-accent);">&#8599;</span></div>
-        <div class="flex justify-between py-1" style="border-bottom:1px solid var(--color-surf2);"><span>sap testing</span><span style="color:var(--color-accent);">&#8599;</span></div>
-        <div class="flex justify-between py-1"><span>sap regressionstest</span><span style="color:var(--color-accent);">&#8599;</span></div>
+      <div class="card text-center py-4">
+        <div class="text-[.7rem] uppercase tracking-widest mb-2" style="color:var(--color-muted);">BFSG-Audit Marktpreis</div>
+        <div class="text-[1.2rem] font-bold" style="color:var(--color-good);">2.500-8.000 &euro;</div>
+      </div>
+      <div class="card text-center py-4" style="border-color:rgba(74,222,128,0.2);">
+        <div class="text-[.7rem] uppercase tracking-widest mb-2" style="color:var(--color-muted);">ROI pro Lead</div>
+        <div class="text-[1.2rem] font-bold" style="color:var(--color-good);">20-60x</div>
       </div>
     </div>
   </div>
 
-  <div class="mt-5 card max-w-[700px] w-full" style="background:rgba(74,222,128,0.04);border-color:rgba(74,222,128,0.15);">
-    <div class="flex items-start gap-3">
-      <i data-lucide="check-circle" style="width:20px;height:20px;color:var(--color-good);flex-shrink:0;margin-top:2px;"></i>
-      <div>
-        <div class="font-semibold text-[.9rem]">Beide Trigger best&auml;tigt</div>
-        <div class="text-[.85rem]" style="color:var(--color-muted);">andagon bietet beide Leistungen bereits an: <strong style="color:var(--color-text);">BFSG</strong> (fertiges Produkt + Schulung) und <strong style="color:var(--color-text);">SAP S/4HANA</strong> (wird aktiv angeboten). Kein Wettbewerber hat dedizierte Service-Seiten f&uuml;r diese Themen &mdash; andagon kann als Erster sichtbar werden.</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="sn">10 · 11</div>
+  <div class="sn">17 &middot; 18</div>
 </section>
 
-<!-- SLIDE 11 — CTA -->
-<section class="slide" id="s11">
+<!-- SLIDE 17 — CTA -->
+<section class="slide" id="s18">
   <div class="label" style="color: rgba(249,108,64,0.5);">N&auml;chste Schritte</div>
   <h2 class="text-[clamp(1.8rem,3.5vw,2.8rem)] font-bold text-center max-w-[650px] mb-8">
     Bereit f&uuml;r die Umsetzung?
@@ -741,10 +1477,10 @@ body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
       <i data-lucide="check-circle" style="width:28px;height:28px;color:var(--color-accent);margin:0 auto 12px;"></i>
       <div class="font-bold mb-2" style="font-size:.95rem;">Voraussetzungen</div>
       <div class="text-[.72rem] text-left flex flex-col gap-1" style="color:var(--color-muted);">
-        <div>&#10003; <strong style="color:var(--color-good);">V1 NPS:</strong> Freigabe erteilt (22.05.)</div>
-        <div>&#128992; <strong style="color:var(--color-warn);">V2 Logos:</strong> Teilweise &mdash; nicht alle formal genehmigt</div>
-        <div>&#128992; <strong style="color:var(--color-warn);">V3 Lead-Baseline:</strong> Daten vorhanden, Lieferung ausstehend</div>
-        <div>&#128992; <strong style="color:var(--color-warn);">V4 Newsletter:</strong> Zahlen kommen Di 27.05.</div>
+        <div>&#10003; <strong style="color:var(--color-good);">V1 NPS:</strong> Freigabe erteilt</div>
+        <div>&#128992; <strong style="color:var(--color-warn);">V2 Logos:</strong> Teilweise</div>
+        <div>&#128992; <strong style="color:var(--color-warn);">V3 Lead-Baseline:</strong> Ausstehend</div>
+        <div>&#10003; <strong style="color:var(--color-good);">V4 Newsletter:</strong> Daten erhalten</div>
         <div>&#9203; <strong style="color:var(--color-muted);">V5 Marketing-Spend:</strong> Offen</div>
       </div>
     </div>
@@ -760,7 +1496,7 @@ body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
     <div>Anna Schmidt &middot; team@wsagency.company</div>
   </div>
 
-  <div class="sn" style="color: rgba(255,255,255,0.15);">11 · 11</div>
+  <div class="sn" style="color: rgba(255,255,255,0.15);">18 &middot; 18</div>
 </section>
 
 <!-- SCRIPT -->
