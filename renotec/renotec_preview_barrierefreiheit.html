@@ -811,7 +811,7 @@ body {
         </div>
         <div class="seo-row">
           <span class="seo-label">Description</span>
-          <span class="seo-value">Hinweis zur Barrierefreiheit der Website renotec-shk.de. Wir orientieren uns an den WCAG 2.1 Level AA und freuen uns über Ihre Rückmeldung. <span class="len-badge len-ok">139 — OK</span></span>
+          <span class="seo-value">Barrierefreiheit bei renotec-shk.de: Was wir für die Zugänglichkeit tun, wie Sie die Darstellung anpassen können und wie Sie uns erreichen. <span class="len-badge len-ok">139 — OK</span></span>
         </div>
         <div class="seo-row">
           <span class="seo-label">URL</span>
@@ -844,8 +844,9 @@ body {
       <span class="block-label" style="display:none">Block 1 — </span>
       <button class="feedback-btn" onclick="toggleFeedback(1)">✏️ Vorschlag</button>
       <h2></h2>
-      <p># Hinweis zur Barrierefreiheit</p>
-<p>Die Website renotec-shk.de wird betrieben von der Renovira Dienstleistungs GmbH.</p>
+      <p># Barrierefreiheit</p>
+<p>Uns ist wichtig, dass möglichst alle Menschen unsere Website renotec-shk.de gut nutzen können – unabhängig von Einschränkungen oder verwendeten Hilfsmitteln. Deshalb achten wir bei Gestaltung und Entwicklung dieser Website auf Zugänglichkeit.</p>
+<p>Gesetzlich sind wir dazu nicht verpflichtet: Als Kleinstunternehmen im Sinne des § 3 Abs. 3 BFSG (weniger als 10 Beschäftigte und höchstens 2 Mio. € Jahresumsatz bzw. Bilanzsumme) sind wir von den Vorgaben des Barrierefreiheitsstärkungsgesetzes für diese Dienstleistung ausgenommen. Barrierefreiheit ist uns dennoch ein echtes Anliegen.</p>
       <div class="feedback-panel" id="feedback-panel-1">
         <label>Ihr Vorschlag für Block 1 — :</label>
         <textarea id="feedback-text-1" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
@@ -857,13 +858,43 @@ body {
         </div>
       </div>
     </div>
-    <div class="block block-generic" id="block-2">
-      <span class="block-label" style="display:none">Block 2 — Gesetzliche Einordnung</span>
+    <div class="block block-cards" id="block-2">
+      <span class="block-label" style="display:none">Block 2 — Was wir für die Barrierefreiheit tun</span>
       <button class="feedback-btn" onclick="toggleFeedback(2)">✏️ Vorschlag</button>
-      <h2>Gesetzliche Einordnung</h2>
-      <p>Die Renovira Dienstleistungs GmbH ist als Kleinstunternehmen im Sinne des § 3 Abs. 3 BFSG (weniger als 10 Beschäftigte und höchstens 2 Mio. € Jahresumsatz bzw. Bilanzsumme) von den Anforderungen des Barrierefreiheitsstärkungsgesetzes für die Erbringung dieser Dienstleistung ausgenommen.</p>
+      <h2>Was wir für die Barrierefreiheit tun</h2>
+      
+      <div class="cards-grid">
+        <div class="card">
+          <h3>Sehen</h3>
+          <p>- Wir achten auf ausreichende Kontraste zwischen Text und Hintergrund.
+- Die Schrift lässt sich im Browser vergrößern (bis 200 %), ohne dass Inhalte verloren gehen.
+- Wichtige Informationen vermitteln wir nicht allein über Farbe.</p>
+          
+        </div>
+        <div class="card">
+          <h3>Bedienung</h3>
+          <p>- Die Website lässt sich vollständig mit der Tastatur bedienen.
+- Die aktuelle Position ist durch eine sichtbare Markierung erkennbar.
+- Ein „Zum Inhalt springen"-Link erleichtert die Navigation.</p>
+          
+        </div>
+        <div class="card">
+          <h3>Verstehen</h3>
+          <p>- Die Navigation ist auf allen Seiten gleich aufgebaut und vorhersehbar.
+- Bewegungen und Animationen werden reduziert, wenn das in Ihrem System eingestellt ist.
+- Unsere Formulare (z. B. Kontakt- und Anfrageformular) geben verständliche Hinweise und Fehlermeldungen.</p>
+          
+        </div>
+        <div class="card">
+          <h3>Hilfsmittel</h3>
+          <p>- Die Seiten sind semantisch aufgebaut, mit klarer Überschriftenstruktur und gängigen Screenreadern (z. B. NVDA, VoiceOver) nutzbar.
+- Informative Bilder haben aussagekräftige Alternativtexte.
+
+---</p>
+          
+        </div></div>
       <div class="feedback-panel" id="feedback-panel-2">
-        <label>Ihr Vorschlag für Block 2 — Gesetzliche Einordnung:</label>
+        <label>Ihr Vorschlag für Block 2 — Was wir für die Barrierefreiheit tun:</label>
         <textarea id="feedback-text-2" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
         <div class="feedback-actions">
           <button class="btn-save" onclick="saveFeedback(2)">Speichern</button>
@@ -874,12 +905,19 @@ body {
       </div>
     </div>
     <div class="block block-generic" id="block-3">
-      <span class="block-label" style="display:none">Block 3 — Unser freiwilliges Engagement</span>
+      <span class="block-label" style="display:none">Block 3 — Was Sie tun können</span>
       <button class="feedback-btn" onclick="toggleFeedback(3)">✏️ Vorschlag</button>
-      <h2>Unser freiwilliges Engagement</h2>
-      <p>Dennoch ist uns die Zugänglichkeit unserer Website wichtig. Wir orientieren uns an den Anforderungen der WCAG 2.1 Level AA und arbeiten kontinuierlich an Verbesserungen.</p>
+      <h2>Was Sie tun können</h2>
+      <p>Unabhängig von Ihrem Gerät können Sie die Darstellung dieser Website an Ihre Bedürfnisse anpassen:</p>
+<ul>
+<li><strong>Vergrößern:</strong> Mit `Strg` + `+` (Windows) bzw. `Cmd` + `+` (Mac) vergrößern Sie die Seite – die Inhalte passen sich an.</li>
+<li><strong>Schrift und Kontrast:</strong> Über die Einstellungen Ihres Browsers oder Betriebssystems lassen sich Schriftgröße, Kontrast und Farben anpassen.</li>
+<li><strong>Tastatur:</strong> Sie können die Website mit der Tastatur bedienen (`Tab` zum Springen, `Enter` zum Aktivieren).</li>
+<li><strong>Screenreader:</strong> Die Website unterstützt gängige Screenreader (z. B. NVDA, VoiceOver, TalkBack).</li>
+<li><strong>Weniger Bewegung:</strong> Wenn Sie in Ihrem System „Bewegung reduzieren" aktiviert haben, werden Animationen entsprechend reduziert.</li>
+</ul>
       <div class="feedback-panel" id="feedback-panel-3">
-        <label>Ihr Vorschlag für Block 3 — Unser freiwilliges Engagement:</label>
+        <label>Ihr Vorschlag für Block 3 — Was Sie tun können:</label>
         <textarea id="feedback-text-3" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
         <div class="feedback-actions">
           <button class="btn-save" onclick="saveFeedback(3)">Speichern</button>
@@ -890,23 +928,39 @@ body {
       </div>
     </div>
     <div class="block block-generic" id="block-4">
-      <span class="block-label" style="display:none">Block 4 — Ihr Feedback</span>
+      <span class="block-label" style="display:none">Block 4 — Woran wir uns orientieren</span>
       <button class="feedback-btn" onclick="toggleFeedback(4)">✏️ Vorschlag</button>
-      <h2>Ihr Feedback</h2>
-      <p>Sollten Ihnen Mängel auffallen oder Inhalte für Sie nicht zugänglich sein, freuen wir uns über Ihre Rückmeldung:</p>
-<ul>
-<li><strong>E-Mail:</strong> barrierefreiheit@renotec-shk.de <!-- <span class="placeholder">[КЛИЕНТ: E-Mail-Postfach einrichten + Empfang testen vor Go-Live — docs/bfsg-email-setup.md]</span> --></li>
-<li><strong>Ansprechpartner:</strong> Kundenservice renotec. <!-- <span class="placeholder">[КЛИЕНТ: Funktion/Team bestätigen — kein persönlicher Name]</span> --></li>
-</ul>
-<p>Stand: 28.05.2026</p>
+      <h2>Woran wir uns orientieren</h2>
+      <p>Bei der Umsetzung orientieren wir uns an den anerkannten Web-Richtlinien WCAG 2.1 (Stufe AA) – als Leitlinie, nicht als förmliche Konformitätserklärung.</p>
       <div class="feedback-panel" id="feedback-panel-4">
-        <label>Ihr Vorschlag für Block 4 — Ihr Feedback:</label>
+        <label>Ihr Vorschlag für Block 4 — Woran wir uns orientieren:</label>
         <textarea id="feedback-text-4" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
         <div class="feedback-actions">
           <button class="btn-save" onclick="saveFeedback(4)">Speichern</button>
           <button class="btn-cancel" onclick="toggleFeedback(4)">Abbrechen</button>
           <button class="btn-delete" onclick="deleteFeedback(4)" style="display:none" id="delete-btn-4">Löschen</button>
           <span class="saved-indicator" id="saved-4">✓ Gespeichert</span>
+        </div>
+      </div>
+    </div>
+    <div class="block block-generic" id="block-5">
+      <span class="block-label" style="display:none">Block 5 — Ihre Rückmeldung ist willkommen</span>
+      <button class="feedback-btn" onclick="toggleFeedback(5)">✏️ Vorschlag</button>
+      <h2>Ihre Rückmeldung ist willkommen</h2>
+      <p>Ist Ihnen etwas aufgefallen, das sich schwer nutzen lässt? Dann freuen wir uns über eine kurze Nachricht – wir kümmern uns darum:</p>
+<ul>
+<li><strong>E-Mail:</strong> barrierefreiheit@renotec-shk.de <!-- <span class="placeholder">[КЛИЕНТ: E-Mail-Postfach einrichten + Empfang testen vor Go-Live — docs/bfsg-email-setup.md]</span> --></li>
+<li><strong>Ansprechpartner / Team:</strong> Kundenservice renotec. <!-- <span class="placeholder">[КЛИЕНТ: Funktion/Team bestätigen — kein persönlicher Name]</span> --></li>
+</ul>
+<p>Stand: 29.05.2026</p>
+      <div class="feedback-panel" id="feedback-panel-5">
+        <label>Ihr Vorschlag für Block 5 — Ihre Rückmeldung ist willkommen:</label>
+        <textarea id="feedback-text-5" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+        <div class="feedback-actions">
+          <button class="btn-save" onclick="saveFeedback(5)">Speichern</button>
+          <button class="btn-cancel" onclick="toggleFeedback(5)">Abbrechen</button>
+          <button class="btn-delete" onclick="deleteFeedback(5)" style="display:none" id="delete-btn-5">Löschen</button>
+          <span class="saved-indicator" id="saved-5">✓ Gespeichert</span>
         </div>
       </div>
     </div>
