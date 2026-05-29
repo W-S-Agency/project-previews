@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>sereda.de — Website-Audit &amp; Migrations-Empfehlung</title>
+<style>
+  :root{
+    --primary:#020381; --accent:#7a00df; --accent2:#0693e3;
+    --bg:#fff; --bg-alt:#f8f9fb; --text:#1a1a2e; --text-muted:#6b7280; --border:#e5e7eb;
+    --success:#10b981; --warning:#f59e0b; --error:#ef4444; --info:#3b82f6;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:var(--text);background:var(--bg);line-height:1.7;padding:40px 20px}
+  .container{max-width:900px;margin:0 auto}
+  .report-header{text-align:center;padding:50px 30px;background:linear-gradient(135deg,var(--primary) 0%,var(--accent) 100%);color:#fff;border-radius:16px;margin-bottom:40px}
+  .report-header h1{font-size:2.2em;margin-bottom:8px;font-weight:700}
+  .report-header .subtitle{font-size:1.1em;opacity:.9}
+  .report-header .meta{margin-top:20px;display:flex;justify-content:center;gap:30px;font-size:.9em;opacity:.8;flex-wrap:wrap}
+  .report-header .badge{display:inline-block;background:var(--accent2);padding:4px 14px;border-radius:20px;font-size:.85em;font-weight:600;margin-top:12px}
+  .section{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:30px;margin-bottom:24px}
+  .section h2{font-size:1.4em;margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid var(--accent);display:flex;align-items:center;gap:10px}
+  .section h3{font-size:1.1em;margin:20px 0 10px;color:var(--accent2)}
+  .section p,.section li{margin-bottom:8px}
+  .section ul,.section ol{padding-left:24px}
+  .section.highlight{border:2px solid var(--accent2);background:linear-gradient(to bottom,#f5f8ff,#fff)}
+  .kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;margin:20px 0}
+  .kpi-card{background:var(--bg-alt);border-radius:10px;padding:20px;text-align:center;border:1px solid var(--border)}
+  .kpi-value{font-size:1.9em;font-weight:700;color:var(--accent2)}
+  .kpi-label{font-size:.82em;color:var(--text-muted);margin-top:4px}
+  table{width:100%;border-collapse:collapse;margin:16px 0;font-size:.9em}
+  th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--border);vertical-align:top}
+  th{background:var(--bg-alt);font-weight:600;color:var(--text-muted);font-size:.82em;text-transform:uppercase;letter-spacing:.05em}
+  .severity-critical{background:#fee2e2;color:#991b1b;padding:2px 8px;border-radius:6px;font-weight:600;font-size:.8em}
+  .severity-high{background:#ffedd5;color:#9a3412;padding:2px 8px;border-radius:6px;font-weight:600;font-size:.8em}
+  .severity-medium{background:#fef3c7;color:#92400e;padding:2px 8px;border-radius:6px;font-weight:600;font-size:.8em}
+  .severity-low{background:#e0e7ff;color:#3730a3;padding:2px 8px;border-radius:6px;font-weight:600;font-size:.8em}
+  .severity-ok{background:#d1fae5;color:#065f46;padding:2px 8px;border-radius:6px;font-weight:600;font-size:.8em}
+  .rec-card{background:linear-gradient(135deg,#f0f9ff 0%,#e0f2fe 100%);border:1px solid #bae6fd;border-radius:10px;padding:18px 20px;margin:12px 0}
+  .rec-card.warning{background:linear-gradient(135deg,#fffbeb 0%,#fef3c7 100%);border-color:#fcd34d}
+  .rec-card strong{color:var(--accent)}
+  .note{font-size:.85em;color:var(--text-muted);font-style:italic}
+  .report-footer{text-align:center;padding:30px;color:var(--text-muted);font-size:.85em;border-top:1px solid var(--border);margin-top:40px}
+  @media print{body{padding:20px}.section{break-inside:avoid}}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="report-header">
+    <h1>sereda.de — Website-Audit &amp; Migrations-Empfehlung</h1>
+    <div class="subtitle">Umstieg auf Next.js + Sanity f&uuml;r die SEREDA GmbH</div>
+    <span class="badge">Audit-Bericht &middot; Entwurf</span>
+    <div class="meta">
+      <span>Kunde: SEREDA GmbH</span>
+      <span>Datum: 29.05.2026</span>
+      <span>Ersteller: 2Penguins</span>
+    </div>
+  </div>
+
+  <div class="section highlight">
+    <h2>Management Summary</h2>
+    <p>Die Website <strong>sereda.de</strong> l&auml;uft auf einem alten Joomla-System und ist seit <strong>1997</strong> online &mdash; ein gewachsener, dreisprachiger Auftritt (DE/RU/EN) mit fundierten Inhalten. Ihr eigentliches Pfund &mdash; <strong>&uuml;ber 28 Jahre Erfahrung, AEO-Zertifizierung, Zolllager-Lizenz und eigenes B&uuml;ro am Zollamt Dreilinden</strong> &mdash; wird technisch jedoch nicht in Sichtbarkeit umgesetzt.</p>
+    <p>Unsere Analyse zeigt: Die Seite rankt aktuell f&uuml;r <strong>nur sehr wenige Suchbegriffe</strong> (Authority Score 10, ~112 organische Keywords) und ist in KI-Antwortsystemen (ChatGPT, Gemini, Google AI Overview) praktisch unsichtbar. Es geht bei der Migration also <strong>nicht um das &bdquo;Retten&ldquo; von Positionen</strong> (davon gibt es wenig), sondern darum, Ihr vorhandenes Vertrauen und Ihre Inhalte endlich in <strong>Anfragen und KI-Sichtbarkeit</strong> umzum&uuml;nzen.</p>
+    <p><strong>Was von Ihnen ben&ouml;tigt wird:</strong></p>
+    <ul>
+      <li>Best&auml;tigung der Migrations-Richtung (Next.js + Sanity) als Grundlage f&uuml;r das Angebot.</li>
+      <li>Kurzfristige Entscheidung zu den <strong>rechtlichen Sofort-Themen</strong> (Cookie-Consent, BFSG) &mdash; siehe Abschnitt Compliance.</li>
+      <li>Optional: Zugang zur Google Search Console, um die Baseline pr&auml;zise zu best&auml;tigen.</li>
+    </ul>
+    <div class="kpi-grid">
+      <div class="kpi-card"><div class="kpi-value">seit&nbsp;1997</div><div class="kpi-label">~28 Jahre am Markt</div></div>
+      <div class="kpi-card"><div class="kpi-value">10</div><div class="kpi-label">Authority Score (niedrig)</div></div>
+      <div class="kpi-card"><div class="kpi-value">~112</div><div class="kpi-label">organische Keywords</div></div>
+      <div class="kpi-card"><div class="kpi-value">3</div><div class="kpi-label">Sprachen (DE/RU/EN)</div></div>
+      <div class="kpi-card"><div class="kpi-value">~85+</div><div class="kpi-label">URLs (Sitemap)</div></div>
+    </div>
+    <p class="note">Hinweis: Die SEO-Kennzahlen stammen aus SEMrush und sind ein Richtwert &mdash; f&uuml;r Nischen-B2B und den russischsprachigen Bereich untersch&auml;tzt SEMrush tendenziell. Eine exakte Baseline liefert die Google Search Console (derzeit kein Zugang).</p>
+  </div>
+
+  <div class="section">
+    <h2>Ihre St&auml;rken (Substanz ist da)</h2>
+    <ul>
+      <li><strong>Gewachsener Trust &amp; Historie:</strong> seit 1997, etablierte Domain.</li>
+      <li><strong>Fachliche Autorit&auml;t:</strong> AEO-Zertifizierung, Zolllager-Lizenz (zugelassener Empfänger/Versender), eigenes B&uuml;ro am Zollamt Dreilinden, Standort GVZ Berlin West Wustermark.</li>
+      <li><strong>Breites Leistungsspektrum:</strong> Zollabfertigung, Zolllager (3.000&nbsp;m&sup2;), Steuerlager Alkohol, KFZ-Import/-Export, M&ouml;beltransporte, Bio-Logistik, Spedition, 4PL, E-Commerce-Fulfillment.</li>
+      <li><strong>Solide Inhalte:</strong> Leistungsseiten mit echtem Tiefgang (z.&nbsp;B. ~759 W&ouml;rter, saubere &Uuml;berschriften, keyword-starke Titel auf Unterseiten).</li>
+      <li><strong>Mehrsprachigkeit:</strong> DE/RU/EN mit korrekten hreflang-Tags.</li>
+    </ul>
+    <p class="note">Fazit: Die Inhalte sind ein <strong>Asset zum Mitnehmen</strong>, nicht zum Neuschreiben. Die Probleme sind technischer Natur.</p>
+  </div>
+
+  <div class="section">
+    <h2>Audit-Ergebnisse (&Uuml;bersicht)</h2>
+    <table>
+      <tr><th>#</th><th>Bereich</th><th>Bewertung</th><th>Befund</th></tr>
+      <tr><td>1</td><td>Technische Basis</td><td><span class="severity-ok">OK</span></td><td>Joomla, dreisprachig, hreflang korrekt; robots.txt ohne Sitemap-Verweis.</td></tr>
+      <tr><td>2</td><td>Performance</td><td><span class="severity-medium">MITTEL</span></td><td>~2&nbsp;MB Seitengewicht, 18 Skripte; exakte Core Web Vitals noch offen.</td></tr>
+      <tr><td>3</td><td>On-Page-SEO</td><td><span class="severity-medium">MITTEL</span></td><td>Startseiten-Titel generisch, <strong>kein Canonical</strong> (+ Duplikat <code>?Itemid=116</code>); Unterseiten gut.</td></tr>
+      <tr><td>4</td><td>SEO-Sichtbarkeit</td><td><span class="severity-high">NIEDRIG</span></td><td>Authority Score 10, ~112 Keywords, geringer organischer Traffic.</td></tr>
+      <tr><td>5</td><td>Structured Data &amp; KI-Suche</td><td><span class="severity-critical">KRITISCH</span></td><td>Minimales Schema (kein LocalBusiness/Service/FAQ), kein OpenGraph, keine llms.txt &mdash; in KI-Antworten unsichtbar.</td></tr>
+      <tr><td>6</td><td>Analytics</td><td><span class="severity-medium">MITTEL</span></td><td>GA4 + GTM + Yandex aktiv; veraltetes Universal Analytics noch eingebunden.</td></tr>
+      <tr><td>7</td><td>Inhalte</td><td><span class="severity-ok">GUT</span></td><td>Tiefe Inhalte; Blog/News veraltet (~2019/20); RU-Struktur leicht asymmetrisch.</td></tr>
+      <tr><td>8</td><td>Compliance 2026</td><td><span class="severity-critical">KRITISCH</span></td><td>Kein Cookie-Banner / kein Consent Mode V2 (DSGVO-Pflicht). BFSG: f&uuml;r eine B2B-Seite ohne Verbraucher-Shop <strong>voraussichtlich nicht verpflichtend</strong>.</td></tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>Wof&uuml;r ranken Sie heute? (SEMrush, 28.05.2026)</h2>
+    <p>Wir haben gepr&uuml;ft, f&uuml;r welche Suchbegriffe sereda.de aktuell tats&auml;chlich rankt (DE: 148, RU: 138 Keywords; ~357 Besuche/Monat; Tendenz <strong>fallend: &minus;13 % Keywords / &minus;19 % Traffic</strong>).</p>
+    <ul>
+      <li><strong>&Uuml;berwiegend Marke:</strong> &bdquo;sereda gmbh&ldquo; / &bdquo;sereda&ldquo; (Platz 1) machen zusammen den Gro&szlig;teil des Traffics aus &mdash; <strong>nicht-markenbezogene Sichtbarkeit ist gering</strong>.</li>
+      <li><strong>Ihre echten Themen-Treffer</strong> (zu sichern und auszubauen): Zollamt <strong>Dreilinden</strong>, <strong>Ukraine-Zoll</strong> (z.&nbsp;B. &bdquo;zoll ukraine&ldquo;, &bdquo;zoll einfuhr ukraine nach deutschland&ldquo;), Zolllager / Warehouse Berlin sowie russischsprachige Logistik-Anfragen.</li>
+    </ul>
+    <p>Das best&auml;tigt den Kern: Ihre Marke ist bekannt &mdash; aber Ihr Angebot wird &uuml;ber generische Suchanfragen kaum gefunden. Genau hier liegt das Wachstum.</p>
+  </div>
+
+  <div class="section">
+    <h2>Warum migrieren? &mdash; Wachstum statt Positionsverlust</h2>
+    <p>Bei einer alten, vertrauensw&uuml;rdigen Domain ist die gr&ouml;&szlig;te Sorge meist: &bdquo;Verlieren wir beim Umzug unsere Rankings?&ldquo; Unsere Daten zeigen ein anderes Bild: <strong>organisch ist aktuell wenig zu verlieren</strong> (Authority Score 10, sehr wenige Keywords). Wir sichern die vorhandenen Positionen trotzdem vollst&auml;ndig ab (siehe Migrations-Konzept) &mdash; das eigentliche Potenzial liegt aber im <strong>Zugewinn</strong>:</p>
+    <ul>
+      <li>Ihre reale Autorit&auml;t (28 Jahre, AEO, Lizenz, Standort) wird vom alten Joomla nicht in Sichtbarkeit &uuml;bersetzt.</li>
+      <li>Ein moderner, technisch sauberer Auftritt erschlie&szlig;t Suchbegriffe, die die Seite heute gar nicht abdeckt.</li>
+      <li>Die Seite wird f&uuml;r <strong>KI-Antwortsysteme</strong> auffindbar &mdash; ein Kanal, der heute komplett ungenutzt ist.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>KI-Sichtbarkeit (AI-SEO / GEO) &mdash; der gr&ouml;&szlig;te Hebel</h2>
+    <p>Immer mehr Recherchen starten in ChatGPT, Gemini, Claude, Grok oder in der <strong>Google AI Overview</strong> &mdash; nicht mehr nur in der klassischen Suche. SEREDA ist als reales Unternehmen <strong>zitierbar</strong> (klare Fakten, Zertifizierung, Standort), aber technisch nicht darauf vorbereitet:</p>
+    <ul>
+      <li>Keine <code>llms.txt</code>, kein OpenGraph, nur minimales Schema &mdash; KI-Systeme &bdquo;verstehen&ldquo; die Seite kaum.</li>
+      <li>Keine FAQ-/Fakten-Struktur, die KI bevorzugt zitiert.</li>
+    </ul>
+    <p>Der neue Stack liefert genau die Bausteine, die f&uuml;r KI-Zitierf&auml;higkeit n&ouml;tig sind &mdash; strukturierte Daten, maschinenlesbare Inhalte, klare Entit&auml;ten.</p>
+  </div>
+
+  <div class="section">
+    <h2>&#9888;&#65039; Rechtliche Sofort-Themen (unabh&auml;ngig von der Migration)</h2>
+    <p>Diese Punkte betreffen die <strong>aktuelle Seite schon heute</strong> und sollten zeitnah adressiert werden:</p>
+    <div class="rec-card warning">
+      <strong>Cookie-Consent &amp; Consent Mode V2 fehlen.</strong> Die Seite l&auml;dt GA4, Universal Analytics, GTM und Yandex Metrica &mdash; ohne erkennbaren Cookie-Banner und ohne Google Consent Mode V2. Das ist ein konkretes DSGVO-Risiko (Tracking ohne Einwilligung).
+    </div>
+    <div class="rec-card">
+      <strong>BFSG / Barrierefreiheit &mdash; hier voraussichtlich KEINE Pflicht.</strong> Das BFSG (seit 28.06.2025) gilt vor allem f&uuml;r verbraucherorientierte Online-Dienste (z.&nbsp;B. Online-Shops mit Vertragsabschluss). Als <strong>B2B-Auftritt ohne Verbraucher-E-Commerce</strong> f&auml;llt sereda.de hier aller Voraussicht nach nicht darunter. Barrierefreiheit (WCAG&nbsp;2.1&nbsp;AA) bleibt damit <strong>Best-Practice / Zukunftssicherung</strong>, keine gesetzliche Pflicht.
+    </div>
+    <p class="note">Cookie-Consent/Consent Mode V2 werden im neuen Stack &bdquo;ab Werk&ldquo; korrekt umgesetzt. Die rechtliche Einordnung (insb. BFSG-Anwendbarkeit) ist abschlie&szlig;end durch eine/n Rechtsanw&auml;ltin/Rechtsanwalt zu best&auml;tigen.</p>
+  </div>
+
+  <div class="section">
+    <h2>Migrations-Konzept (Positionen absichern)</h2>
+    <p>Auch wenn organisch wenig zu verlieren ist, migrieren wir nach Best Practice &mdash; verlustfrei:</p>
+    <ul>
+      <li><strong>URL-Parit&auml;t + 301-Weiterleitungen</strong> f&uuml;r alle Bestands-URLs (DE/RU/EN) &mdash; alte Adressen leiten sauber auf die neuen.</li>
+      <li><strong>Canonical-Tags</strong> + Bereinigung von Duplikaten (<code>?Itemid</code>).</li>
+      <li><strong>Erhalt der hreflang-Struktur</strong> (DE/RU/EN) &amp; Angleichung der RU-Struktur.</li>
+      <li><strong>Backlink-Equity</strong> bleibt durch konsistente Weiterleitungen erhalten.</li>
+      <li><strong>Stufenweiser Go-Live + Monitoring</strong> (Rank-Tracking) zur fr&uuml;hen Erkennung etwaiger Abweichungen.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Was der neue Stack (Next.js + Sanity) liefert</h2>
+    <table>
+      <tr><th>Heute (Joomla)</th><th>Neu (Next.js + Sanity)</th></tr>
+      <tr><td>Kein Canonical, Duplikat <code>?Itemid</code></td><td>Saubere Canonicals, keine Duplikate</td></tr>
+      <tr><td>Generischer Startseiten-Titel</td><td>Steuerbare Titel-Vorlagen je Seite/Sprache</td></tr>
+      <tr><td>Minimales Schema, kein OpenGraph</td><td>Vollst&auml;ndiges Schema (LocalBusiness/Service/FAQ) + OG</td></tr>
+      <tr><td>Keine llms.txt / KI-unsichtbar</td><td>llms.txt + KI-freundliche Struktur (GEO/AEO)</td></tr>
+      <tr><td>~2&nbsp;MB, 18 Skripte</td><td>Bild-Optimierung, Code-Splitting, SSR/SSG &rarr; bessere Core Web Vitals</td></tr>
+      <tr><td>Kein Consent Mode V2 / kein Cookie-Banner</td><td>DSGVO-Cookie-Consent + Consent Mode V2 ab Werk</td></tr>
+      <tr><td>Barrierefreiheit (BFSG hier nicht verpflichtend)</td><td>WCAG 2.1 AA optional &mdash; Best-Practice / Zukunftssicherung</td></tr>
+      <tr><td>Veraltetes Universal Analytics</td><td>Sauberes GA4-Setup</td></tr>
+      <tr><td>Inhaltspflege nur &uuml;ber Joomla-Backend</td><td>Sanity-CMS: Inhalte/News selbst pflegen, mehrsprachig</td></tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>Vorgehen (Phasen)</h2>
+    <table>
+      <tr><th>Phase</th><th>Inhalt</th></tr>
+      <tr><td>1. Analyse &amp; Konzept</td><td>Vollst&auml;ndige URL-Erfassung, 301-Mapping, Informationsarchitektur, Blueprint.</td></tr>
+      <tr><td>2. Inhalte &amp; SEO</td><td>&Uuml;bernahme/Optimierung der Inhalte, Titel/Meta/Canonical, Schema, llms.txt, hreflang.</td></tr>
+      <tr><td>3. Entwicklung</td><td>Next.js + Sanity, mehrsprachig, Performance- &amp; KI-Optimierung, Consent/BFSG.</td></tr>
+      <tr><td>4. Go-Live &amp; Monitoring</td><td>Stufenweiser Umzug, 301 aktiv, Indexierung, Positions-Monitoring.</td></tr>
+      <tr><td>5. Wachstum (optional)</td><td>Content-Cluster f&uuml;r neue/KI-Anfragen, Blog reaktivieren, Trust sichtbar machen.</td></tr>
+    </table>
+    <p class="note">Detaillierte Leistungen, Termine und Investition folgen im separaten Angebot.</p>
+  </div>
+
+  <div class="section highlight">
+    <h2>N&auml;chster Schritt</h2>
+    <p>Auf Basis dieses Audits erstellen wir Ihnen ein konkretes <strong>Angebot</strong> f&uuml;r die Migration auf Next.js + Sanity &mdash; inkl. verlustfreier 301-Strategie, KI-SEO-Setup und DSGVO-/BFSG-Konformit&auml;t.</p>
+    <ul>
+      <li><strong>Sofort besprechen:</strong> die rechtlichen Themen (Cookie-Consent, BFSG) &mdash; unabh&auml;ngig vom Projektstart.</li>
+      <li><strong>Optional:</strong> Zugang zur Google Search Console f&uuml;r eine pr&auml;zise Baseline.</li>
+      <li><strong>Dann:</strong> Freigabe der Migrations-Richtung &rarr; detailliertes Angebot.</li>
+    </ul>
+    <p>Das konkrete <strong>Angebot</strong> zur Migration (Option A &bdquo;Technische Migration&ldquo; / Option B &bdquo;Migration + Wachstum&ldquo;) liegt diesem Bericht bei.</p>
+    <p>R&uuml;ckfragen jederzeit gern &mdash; telefonisch oder per E-Mail.</p>
+  </div>
+
+  <div class="report-footer">
+    <p><strong>sereda.de Website-Audit &amp; Migrations-Empfehlung</strong> &mdash; Erstellt von <strong>2Penguins</strong> f&uuml;r <strong>SEREDA GmbH</strong></p>
+    <p>Berichtsdatum: 29.05.2026</p>
+    <p style="margin-top:8px;opacity:.6">Entwurf &mdash; SEO-Kennzahlen sind Richtwerte (SEMrush); exakte Baseline via Google Search Console.</p>
+  </div>
+
+</div>
+</body>
+</html>
