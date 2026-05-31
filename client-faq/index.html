@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2Penguins — Häufige Fragen / Часто задаваемые вопросы</title>
+<style>
+  /* === 2PENGUINS BRAND TOKENS (live verified 2026-05-31, canon: Mem0 [AGENCY] BRAND_TOKENS_V1) === */
+  :root{
+    --primary:#172536;      /* navy */
+    --accent:#f37a11;       /* orange */
+    --accent2:#040b10;      /* near-black */
+    --orange-red:#f25830;
+    --green:#a0be47;
+    --gray-cool:#6f91a3;
+    --gray-light:#b6c3c9;
+    --bg:#e6e7ee;           /* brand light bg */
+    --card:#ffffff;
+    --text:#172536;
+    --muted:#5b6472;
+    --line:#d7dbe4;
+    --max:1000px;
+    --radius-card:24px;
+    --radius-pill:80px;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:var(--bg);color:var(--text);line-height:1.7}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+
+  /* === HEADER: navy → near-black gradient + orange glow === */
+  header{position:relative;overflow:hidden;color:#fff;
+    background:linear-gradient(135deg,var(--primary) 0%,var(--accent2) 100%);
+    padding:40px 20px 34px}
+  header::before{content:"";position:absolute;top:-120px;right:-80px;width:380px;height:380px;
+    background:radial-gradient(circle,rgba(243,122,17,.38) 0%,rgba(243,122,17,0) 70%);pointer-events:none}
+  .hbar{display:flex;align-items:center;gap:16px;position:relative;z-index:1}
+  .hbar img{height:42px;width:auto}
+  header h1{margin:18px 0 6px;font-size:26px;font-weight:700;letter-spacing:.04em;
+    text-transform:uppercase;position:relative;z-index:1}
+  header p{margin:0;color:#c2cdd9;font-size:15px;position:relative;z-index:1}
+  .langbar{display:flex;gap:8px;margin-top:18px;position:relative;z-index:1}
+  .langbtn{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.28);
+    padding:6px 18px;border-radius:var(--radius-pill);cursor:pointer;font-size:14px;font-weight:600;transition:.15s}
+  .langbtn:hover{background:rgba(255,255,255,.2)}
+  .langbtn.active{background:var(--accent);border-color:var(--accent)}
+
+  /* === TABS === */
+  nav.tabs{position:sticky;top:0;z-index:10;background:var(--primary);
+    box-shadow:0 2px 10px rgba(4,11,16,.25)}
+  .tabs-inner{max-width:var(--max);margin:0 auto;display:flex;gap:4px;overflow-x:auto;padding:0 12px}
+  .tab{flex:0 0 auto;background:none;border:none;padding:15px 15px;cursor:pointer;font-size:13px;
+    font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:rgba(255,255,255,.6);
+    border-bottom:3px solid transparent;white-space:nowrap;transition:.15s}
+  .tab:hover{color:#fff}
+  .tab.active{color:#fff;border-bottom-color:var(--accent)}
+
+  /* === PANELS === */
+  main{padding:34px 0 60px}
+  .panel{display:none;animation:fade .25s ease}
+  .panel.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-card);
+    padding:32px 34px;margin-bottom:22px;box-shadow:0 4px 18px rgba(23,37,54,.06);
+    border-top:4px solid var(--accent)}
+  .card h2{margin:0 0 20px;padding-bottom:12px;font-size:20px;color:var(--primary);line-height:1.4;
+    font-weight:700;letter-spacing:.02em;text-transform:uppercase;
+    border-bottom:2px solid var(--accent)}
+  .card h3{margin:24px 0 10px;font-size:16px;color:var(--accent);font-weight:700;
+    letter-spacing:.02em;text-transform:uppercase}
+  .card p{margin:0 0 14px}
+  .card ul{margin:0 0 16px;padding-left:0;list-style:none}
+  .card li{margin-bottom:10px;padding-left:26px;position:relative}
+  .card li::before{content:"";position:absolute;left:6px;top:.62em;width:7px;height:7px;
+    background:var(--accent);border-radius:50%}
+  .card strong{color:var(--primary);font-weight:700}
+  blockquote{margin:18px 0 0;padding:16px 20px;background:#fff6ee;border-left:4px solid var(--accent);
+    border-radius:0 12px 12px 0;color:#42342b;font-size:15px}
+  blockquote a{color:var(--accent);font-weight:700;text-decoration:none}
+  blockquote a:hover{text-decoration:underline}
+  .lang-de .ru,.lang-ru .de{display:none}
+
+  /* === FOOTER === */
+  footer{background:var(--accent2);color:#9fb0bd;padding:28px 20px;font-size:13px;text-align:center}
+  footer img{height:34px;margin-bottom:14px;opacity:.95}
+  footer a{color:var(--accent);text-decoration:none}
+  footer .legal{margin-top:10px;opacity:.6}
+  @media(max-width:600px){.card{padding:22px 18px}header h1{font-size:21px}}
+</style>
+</head>
+<body class="lang-de">
+
+<header>
+  <div class="wrap">
+    <div class="hbar">
+      <img src="https://2penguins.eu/wp-content/uploads/2022/08/Logo-F.svg" alt="2Penguins">
+    </div>
+    <h1>Häufige Fragen</h1>
+    <p class="de">Klare Antworten rund um moderne Websites, SEO &amp; KI-Sichtbarkeit</p>
+    <p class="ru">Понятные ответы по современным сайтам, SEO и AI-видимости</p>
+    <div class="langbar">
+      <button class="langbtn active" data-lang="de" onclick="setLang('de')">DE</button>
+      <button class="langbtn" data-lang="ru" onclick="setLang('ru')">RU</button>
+    </div>
+  </div>
+</header>
+
+<nav class="tabs">
+  <div class="tabs-inner" id="tabs"></div>
+</nav>
+
+<main>
+  <div class="wrap" id="panels"></div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <img src="https://2penguins.eu/wp-content/uploads/2022/08/Logo-F.svg" alt="2Penguins">
+    <p>Webdesign – E-Commerce – Online-Marketing<br>
+    Lehnitzstr. 11, 16515 Oranienburg · +49 (0) 3301/426 12 46 · <a href="mailto:team@2penguins.eu">team@2penguins.eu</a> · <a href="https://2penguins.eu" target="_blank" rel="noopener">www.2penguins.eu</a></p>
+    <p class="legal">© 2026 2Penguins, Inh. Alexander Wirt</p>
+  </div>
+</footer>
+
+<script>
+const TOPICS = [
+  {
+    id:"sanity", label:{de:"Sanity / CMS",ru:"Sanity / CMS"},
+    de:`<h2>Was ist ein Headless CMS / Sanity — und warum für Ihr Projekt?</h2>
+    <p>Ein klassisches CMS (z. B. WordPress, Joomla) vermischt Inhalt und Technik in einem System. Ein <strong>Headless CMS wie Sanity trennt beides</strong>: Sie pflegen Ihre Inhalte in einer aufgeräumten Oberfläche, und die Website (Next.js) zeigt sie schnell und flexibel an.</p>
+    <p>Was das für Sie konkret bedeutet:</p>
+    <ul>
+      <li><strong>Sie pflegen Inhalte selbst</strong> — Texte, News, Seiten — über klare Felder. Das Layout können Sie dabei <strong>nicht versehentlich „kaputt machen"</strong>.</li>
+      <li><strong>Mehrsprachigkeit ist eingebaut</strong> — derselbe Inhalt in DE/RU/EN an einem Ort.</li>
+      <li><strong>Schnell & zukunftssicher</strong> — die Website lädt schnell und bleibt technisch wartbar; Inhalte und Technik entwickeln sich unabhängig voneinander.</li>
+      <li><strong>Die Oberfläche wird auf Ihr Team zugeschnitten</strong> — sinnvolle Felder, logische Seitenstruktur, Vorschau, Kommentare und Echtzeit-Zusammenarbeit.</li>
+    </ul>
+    <blockquote><em>Optionaler Einstieg:</em> Ein kurzes deutschsprachiges Video erklärt die Idee einfach: <a href="https://www.youtube.com/watch?v=UoqGNi25do8" target="_blank" rel="noopener">Warum ein Headless CMS besser ist</a>. Am aussagekräftigsten ist aber eine <strong>kurze Live-Demo der Sanity Studio</strong> (10–15 Min.) mit Beispielseiten aus Ihrem Projekt — die zeigen wir Ihnen gern.</blockquote>`,
+    ru:`<h2>Что такое headless CMS / Sanity — и зачем это вам?</h2>
+    <p>Классическая CMS (WordPress, Joomla) смешивает контент и технику в одной системе. <strong>Headless CMS вроде Sanity разделяет их</strong>: вы ведёте контент в удобном редакторе, а сайт (Next.js) показывает его быстро и гибко.</p>
+    <p>Что это даёт вам на практике:</p>
+    <ul>
+      <li><strong>Вы сами правите контент</strong> — тексты, новости, страницы — через понятные поля. Оформление при этом <strong>нельзя случайно «сломать»</strong>.</li>
+      <li><strong>Многоязычность встроена</strong> — один материал в DE/RU/EN в одном месте.</li>
+      <li><strong>Быстро и на годы вперёд</strong> — сайт грузится быстро и остаётся обслуживаемым; контент и техника развиваются независимо.</li>
+      <li><strong>Интерфейс настраивается под вашу команду</strong> — логичные поля, структура страниц, превью, комментарии, совместная работа в реальном времени.</li>
+    </ul>
+    <blockquote><em>Опционально для первого знакомства:</em> короткое видео на немецком простым языком объясняет идею headless CMS: <a href="https://www.youtube.com/watch?v=UoqGNi25do8" target="_blank" rel="noopener">ссылка</a>. Но нагляднее всего — <strong>короткое live-демо Sanity Studio</strong> (10–15 мин) на примере ваших страниц; покажем с удовольствием.</blockquote>`
+  },
+  {
+    id:"nextjs", label:{de:"Next.js vs WordPress",ru:"Next.js vs WordPress"},
+    de:`<h2>Warum bauen wir auf Next.js — und nicht auf WordPress?</h2>
+    <p>WordPress ist weit verbreitet und für viele Websites völlig in Ordnung. Für einen modernen, schnellen und gut auffindbaren Geschäftsauftritt setzen wir jedoch auf <strong>Next.js</strong>, weil es bei den Punkten gewinnt, die für Ihr Ergebnis zählen:</p>
+    <ul>
+      <li><strong>Geschwindigkeit:</strong> Next.js liefert Seiten vorgerendert aus → schnellere Ladezeiten, bessere Core Web Vitals → besser für Google-Ranking und Nutzer.</li>
+      <li><strong>Sicherheit & Wartung:</strong> kein klassisches Plugin-Chaos und keine ständigen Sicherheits-Updates wie bei WordPress. Deutlich weniger Angriffsfläche, stabiler über Jahre.</li>
+      <li><strong>SEO & KI-Sichtbarkeit:</strong> saubere technische Basis für strukturierte Daten, schnelle Indexierung und Sichtbarkeit in KI-Antworten (ChatGPT, Google AI Overview).</li>
+      <li><strong>Zukunftssicher:</strong> moderne Technik, die Inhalt (CMS) und Darstellung trennt — Ihr Auftritt bleibt lange wartbar und erweiterbar.</li>
+    </ul>
+    <blockquote>Kurz: WordPress ist ein gutes Allround-Werkzeug. Next.js ist die bessere Wahl, wenn <strong>Tempo, Sichtbarkeit, Sicherheit und Langlebigkeit</strong> im Vordergrund stehen.</blockquote>`,
+    ru:`<h2>Почему мы делаем на Next.js, а не на WordPress?</h2>
+    <p>WordPress распространён и для многих сайтов вполне подходит. Но для современного, быстрого и хорошо находимого бизнес-сайта мы выбираем <strong>Next.js</strong> — он выигрывает там, где это влияет на ваш результат:</p>
+    <ul>
+      <li><strong>Скорость:</strong> Next.js отдаёт страницы предсобранными → быстрее загрузка, лучше Core Web Vitals → лучше для ранжирования в Google и для пользователя.</li>
+      <li><strong>Безопасность и обслуживание:</strong> нет «зоопарка плагинов» и постоянных security-обновлений как у WordPress. Меньше уязвимостей, стабильнее на годы.</li>
+      <li><strong>SEO и AI-видимость:</strong> чистая техническая база для structured data, быстрой индексации и попадания в ответы AI (ChatGPT, Google AI Overview).</li>
+      <li><strong>На годы вперёд:</strong> современная архитектура, разделяющая контент (CMS) и отображение — сайт долго остаётся обслуживаемым и расширяемым.</li>
+    </ul>
+    <blockquote>Коротко: WordPress — хороший универсальный инструмент. Next.js — лучший выбор, когда важны <strong>скорость, видимость, безопасность и долговечность</strong>.</blockquote>`
+  },
+  {
+    id:"wartung", label:{de:"Wartung & Support",ru:"Поддержка"},
+    de:`<h2>Was passiert nach dem Go-Live?</h2>
+    <p>Wir unterscheiden zwei Dinge:</p>
+    <h3>1. Gewährleistung direkt nach dem Launch (im Projekt enthalten)</h3>
+    <p>In den ersten <strong>30 Tagen</strong> beheben wir alle technischen Mängel, die mit der Umsetzung/Migration zusammenhängen — z. B. fehlerhafte Weiterleitungen (301), hreflang-Probleme, Indexierungs- oder Darstellungsfehler. Ohne Aufpreis.</p>
+    <h3>2. Laufende Wartung (optionaler Wartungsvertrag)</h3>
+    <p>Damit Ihre Website über Jahre stabil, sicher und aktuell bleibt, bieten wir eine laufende technische Betreuung an:</p>
+    <ul>
+      <li>regelmäßige Updates von Next.js und Abhängigkeiten,</li>
+      <li>Sicherheits-Monitoring,</li>
+      <li>regelmäßige Backups,</li>
+      <li>kleine inhaltliche/technische Anpassungen,</li>
+      <li>Erreichbarkeit bei Fragen.</li>
+    </ul>
+    <blockquote>Die gewählte Technik (Next.js + Sanity, modernes Hosting) ist bewusst <strong>wartungsarm</strong> — kein Plugin-Chaos wie bei klassischen Systemen. Modell und Umfang der Wartung stimmen wir individuell auf Ihren Bedarf ab.</blockquote>`,
+    ru:`<h2>Что происходит после запуска?</h2>
+    <p>Разделяем две вещи:</p>
+    <h3>1. Гарантия сразу после запуска (входит в проект)</h3>
+    <p>В первые <strong>30 дней</strong> мы устраняем все технические дефекты, связанные с реализацией/миграцией — битые редиректы (301), проблемы hreflang, ошибки индексации или отображения. Без доплаты.</p>
+    <h3>2. Текущая поддержка (опциональный договор)</h3>
+    <p>Чтобы сайт годами оставался стабильным, безопасным и актуальным, предлагаем регулярное техническое обслуживание:</p>
+    <ul>
+      <li>регулярные обновления Next.js и зависимостей,</li>
+      <li>мониторинг безопасности,</li>
+      <li>регулярные резервные копии,</li>
+      <li>мелкие контентные/технические правки,</li>
+      <li>доступность для вопросов.</li>
+    </ul>
+    <blockquote>Выбранная технология (Next.js + Sanity, современный хостинг) намеренно <strong>малозатратна в обслуживании</strong> — без «зоопарка плагинов». Модель и объём поддержки подбираем индивидуально под вашу потребность.</blockquote>`
+  },
+  {
+    id:"redirects", label:{de:"301 / SEO-Positionen",ru:"301 / SEO-позиции"},
+    de:`<h2>Verlieren wir bei der Migration unsere Positionen bei Google?</h2>
+    <p>Das ist die wichtigste Frage bei jedem Umzug — und genau dafür gibt es ein etabliertes Verfahren. Beim Wechsel ändert sich die Technik, aber <strong>Ihre Adressen (URLs) und Inhalte bleiben erhalten</strong>:</p>
+    <ul>
+      <li><strong>301-Weiterleitungen:</strong> Jede alte Seitenadresse wird dauerhaft auf die neue geleitet. Google überträgt damit die aufgebaute „Stärke" der alten Seite auf die neue.</li>
+      <li><strong>URL-Parität:</strong> Wo möglich behalten wir die bestehende Struktur bei, damit so wenig wie möglich umgeleitet werden muss.</li>
+      <li><strong>Canonical & hreflang:</strong> verhindern Duplikate und sorgen dafür, dass die richtige Sprachversion (DE/RU/EN) gefunden wird.</li>
+      <li><strong>Monitoring nach Go-Live:</strong> Wir prüfen Indexierung und Weiterleitungen aktiv und korrigieren Fehler.</li>
+    </ul>
+    <blockquote>Ehrlich: Die endgültige Position entscheidet Google. Aber wir setzen die Migration nach anerkannten Best Practices um, damit Ihre Sichtbarkeit erhalten bleibt — und durch die bessere Technik sogar wachsen kann.</blockquote>`,
+    ru:`<h2>Не потеряем ли мы позиции в Google при миграции?</h2>
+    <p>Это главный вопрос любого переезда — и под него есть отработанная процедура. При переходе меняется техника, но <strong>ваши адреса (URL) и контент сохраняются</strong>:</p>
+    <ul>
+      <li><strong>301-редиректы:</strong> каждый старый адрес постоянно перенаправляется на новый. Так Google переносит накопленную «силу» старой страницы на новую.</li>
+      <li><strong>URL-parity:</strong> где возможно, сохраняем существующую структуру, чтобы перенаправлять как можно меньше.</li>
+      <li><strong>Canonical и hreflang:</strong> убирают дубли и обеспечивают, что находится правильная языковая версия (DE/RU/EN).</li>
+      <li><strong>Мониторинг после запуска:</strong> активно проверяем индексацию и редиректы, исправляем ошибки.</li>
+    </ul>
+    <blockquote>Честно: финальную позицию решает Google. Но мы делаем миграцию по признанным best practices, чтобы ваша видимость сохранилась — а за счёт лучшей техники могла и вырасти.</blockquote>`
+  },
+  {
+    id:"tracking", label:{de:"Conversion-Tracking",ru:"Трекинг / GA4"},
+    de:`<h2>Wozu Conversion-Tracking und GA4?</h2>
+    <p>Eine Website ohne Messung ist eine Blackbox — Sie wissen nicht, <strong>was funktioniert und woher Ihre Anfragen kommen</strong>. Mit modernem Tracking ändern wir das:</p>
+    <ul>
+      <li><strong>GA4-Ereignisse:</strong> Wir messen die echten Lead-Aktionen — Formular abgeschickt, Klick auf Telefonnummer/E-Mail, Klicks auf wichtige Buttons (CTA).</li>
+      <li><strong>Schlüsselereignisse (Conversions):</strong> Die wichtigsten Aktionen werden als Conversion markiert — so sehen Sie, wie viele Anfragen die Website tatsächlich bringt.</li>
+      <li><strong>DSGVO-konform:</strong> alles mit Consent Mode V2 und Cookie-Banner — Messung nur mit Einwilligung.</li>
+      <li><strong>Optional Google Ads:</strong> Falls Sie Werbung schalten, lassen sich die Conversions automatisch importieren → Sie sehen, welche Anzeige echte Anfragen bringt, nicht nur Klicks.</li>
+      <li><strong>Nach dem Launch:</strong> eine Übersicht der eingerichteten Ereignisse, auf Wunsch ein kleines Dashboard.</li>
+    </ul>
+    <blockquote>Kurz: Sie sehen schwarz auf weiß, welche Seiten und Kanäle Anfragen bringen — und können fundierte Entscheidungen treffen statt zu raten.</blockquote>`,
+    ru:`<h2>Зачем conversion-tracking и GA4?</h2>
+    <p>Сайт без измерений — это «чёрный ящик»: вы не знаете, <strong>что работает и откуда приходят заявки</strong>. Современный трекинг это меняет:</p>
+    <ul>
+      <li><strong>GA4-события:</strong> измеряем реальные лид-действия — отправка формы, клик по телефону/e-mail, клики по важным кнопкам (CTA).</li>
+      <li><strong>Ключевые события (конверсии):</strong> самые важные действия отмечаются как конверсия — вы видите, сколько заявок реально приносит сайт.</li>
+      <li><strong>По DSGVO:</strong> всё через Consent Mode V2 и cookie-баннер — измерение только с согласия.</li>
+      <li><strong>Опционально Google Ads:</strong> если запускаете рекламу, конверсии импортируются автоматически → видно, какое объявление приносит реальные заявки, а не просто клики.</li>
+      <li><strong>После запуска:</strong> список настроенных событий, по желанию — небольшой dashboard.</li>
+    </ul>
+    <blockquote>Коротко: вы чёрным по белому видите, какие страницы и каналы приносят заявки — и принимаете решения на данных, а не наугад.</blockquote>`
+  },
+  {
+    id:"aiseo", label:{de:"AI-SEO / GEO",ru:"AI-SEO / GEO"},
+    de:`<h2>Was ist AI-SEO / GEO — und warum ist das wichtig?</h2>
+    <p>Immer mehr Menschen suchen nicht mehr nur bei Google, sondern fragen direkt <strong>ChatGPT, Gemini, Perplexity</strong> oder sehen die <strong>Google AI Overview</strong>. Diese Systeme geben fertige Antworten — und nennen dabei einige Quellen. <strong>AI-SEO (auch GEO)</strong> sorgt dafür, dass <strong>Ihr Unternehmen in diesen Antworten auftaucht</strong>, statt unsichtbar zu bleiben.</p>
+    <p>Was wir konkret tun:</p>
+    <ul>
+      <li><strong>Zitierbare Inhaltsstruktur:</strong> klare Fakten, FAQ, eindeutige Aussagen — so, dass KI sie sauber übernehmen kann.</li>
+      <li><strong>Strukturierte Daten (Schema):</strong> LocalBusiness, Service, FAQ — maschinenlesbar, damit KI Ihr Angebot versteht.</li>
+      <li><strong>llms.txt & technische Basis:</strong> moderne Signale, die KI-Systeme zur Orientierung nutzen.</li>
+    </ul>
+    <blockquote>Der Vorteil: Während klassisches SEO um Platz 1 bei Google kämpft, sichern Sie sich mit AI-SEO einen Platz <strong>in der Antwort selbst</strong> — dort, wo Ihre Kunden zunehmend zuerst hinschauen. Ein echter Vorsprung, solange die meisten Wettbewerber das noch nicht tun.</blockquote>`,
+    ru:`<h2>Что такое AI-SEO / GEO — и почему это важно?</h2>
+    <p>Всё больше людей ищут не только в Google, а спрашивают напрямую <strong>ChatGPT, Gemini, Perplexity</strong> или видят <strong>Google AI Overview</strong>. Эти системы дают готовый ответ — и называют в нём несколько источников. <strong>AI-SEO (он же GEO)</strong> обеспечивает, чтобы <strong>ваша компания появлялась в этих ответах</strong>, а не оставалась невидимой.</p>
+    <p>Что мы конкретно делаем:</p>
+    <ul>
+      <li><strong>Цитируемая структура контента:</strong> чёткие факты, FAQ, однозначные формулировки — так, чтобы AI мог их корректно использовать.</li>
+      <li><strong>Структурированные данные (Schema):</strong> LocalBusiness, Service, FAQ — машиночитаемо, чтобы AI понимал ваши услуги.</li>
+      <li><strong>llms.txt и техническая база:</strong> современные сигналы, которые AI-системы используют для ориентации.</li>
+    </ul>
+    <blockquote>Преимущество: пока классическое SEO бьётся за 1-е место в Google, с AI-SEO вы занимаете место <strong>в самом ответе</strong> — там, куда клиенты всё чаще смотрят первым делом. Реальная фора, пока большинство конкурентов этого ещё не делают.</blockquote>`
+  }
+];
+
+const tabsEl=document.getElementById("tabs"), panelsEl=document.getElementById("panels");
+TOPICS.forEach((t,i)=>{
+  const b=document.createElement("button");
+  b.className="tab"+(i===0?" active":""); b.dataset.id=t.id;
+  b.innerHTML='<span class="de">'+t.label.de+'</span><span class="ru">'+t.label.ru+'</span>';
+  b.onclick=()=>show(t.id); tabsEl.appendChild(b);
+  const p=document.createElement("div");
+  p.className="panel"+(i===0?" active":""); p.id="panel-"+t.id;
+  p.innerHTML='<div class="card"><div class="de">'+t.de+'</div><div class="ru">'+t.ru+'</div></div>';
+  panelsEl.appendChild(p);
+});
+function show(id){
+  document.querySelectorAll(".tab").forEach(t=>t.classList.toggle("active",t.dataset.id===id));
+  document.querySelectorAll(".panel").forEach(p=>p.classList.toggle("active",p.id==="panel-"+id));
+  if(history.replaceState)history.replaceState(null,"","#"+id);
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+function setLang(l){
+  document.body.className="lang-"+l;
+  document.documentElement.lang=l;
+  document.querySelectorAll(".langbtn").forEach(b=>b.classList.toggle("active",b.dataset.lang===l));
+}
+const h=location.hash.replace("#","");
+if(h&&TOPICS.some(t=>t.id===h))show(h);
+</script>
+</body>
+</html>
