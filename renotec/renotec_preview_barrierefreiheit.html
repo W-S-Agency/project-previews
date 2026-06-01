@@ -347,6 +347,44 @@ body {
 .card .card-link { color: var(--accent); text-decoration: none; font-weight: 600; font-size: 14px; }
 .card .card-link:hover { text-decoration: underline; }
 
+/* Groups — expanded accordion-style strips (FB-022, not tile grid) */
+.block-groups h2 { margin-bottom: 24px; }
+.groups-strips { display: flex; flex-direction: column; gap: 12px; }
+.group-strip {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.group-strip-label {
+  background: var(--bg-alt);
+  padding: 12px 20px;
+  font-weight: 600;
+  color: var(--primary);
+  font-size: 15px;
+  border-bottom: 1px solid var(--border);
+}
+.group-strip-list {
+  list-style: none;
+  margin: 0;
+  padding: 12px 20px;
+}
+.group-strip-list li {
+  position: relative;
+  padding-left: 22px;
+  margin: 6px 0;
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.5;
+}
+.group-strip-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 700;
+}
+
 /* Steps */
 .block-steps h2 { text-align: center; margin-bottom: 32px; }
 .steps-list { max-width: 700px; margin: 0 auto; }
@@ -858,40 +896,27 @@ body {
         </div>
       </div>
     </div>
-    <div class="block block-cards" id="block-2">
+    <div class="block block-groups" id="block-2">
       <span class="block-label" style="display:none">Block 2 — Was wir für die Barrierefreiheit tun</span>
       <button class="feedback-btn" onclick="toggleFeedback(2)">✏️ Vorschlag</button>
       <h2>Was wir für die Barrierefreiheit tun</h2>
       
-      <div class="cards-grid">
-        <div class="card">
-          <h3>Sehen</h3>
-          <p>- Wir achten auf ausreichende Kontraste zwischen Text und Hintergrund.
-- Die Schrift lässt sich im Browser vergrößern (bis 200 %), ohne dass Inhalte verloren gehen.
-- Wichtige Informationen vermitteln wir nicht allein über Farbe.</p>
-          
+      <div class="groups-strips">
+        <div class="group-strip">
+          <div class="group-strip-label">Sehen</div>
+          <ul class="group-strip-list"><li>Wir achten auf ausreichende Kontraste zwischen Text und Hintergrund.</li><li>Die Schrift lässt sich im Browser vergrößern (bis 200 %), ohne dass Inhalte verloren gehen.</li><li>Wichtige Informationen vermitteln wir nicht allein über Farbe.</li></ul>
         </div>
-        <div class="card">
-          <h3>Bedienung</h3>
-          <p>- Die Website lässt sich vollständig mit der Tastatur bedienen.
-- Die aktuelle Position ist durch eine sichtbare Markierung erkennbar.
-- Ein „Zum Inhalt springen"-Link erleichtert die Navigation.</p>
-          
+        <div class="group-strip">
+          <div class="group-strip-label">Bedienung</div>
+          <ul class="group-strip-list"><li>Wir gestalten die Website so, dass sie sich per Tastatur bedienen lässt.</li><li>Die jeweils aktive Position wird durch eine sichtbare Markierung hervorgehoben.</li><li>Ein „Zum Inhalt springen"-Link erleichtert die Navigation.</li></ul>
         </div>
-        <div class="card">
-          <h3>Verstehen</h3>
-          <p>- Die Navigation ist auf allen Seiten gleich aufgebaut und vorhersehbar.
-- Bewegungen und Animationen werden reduziert, wenn das in Ihrem System eingestellt ist.
-- Unsere Formulare (z. B. Kontakt- und Anfrageformular) geben verständliche Hinweise und Fehlermeldungen.</p>
-          
+        <div class="group-strip">
+          <div class="group-strip-label">Verstehen</div>
+          <ul class="group-strip-list"><li>Die Navigation ist auf allen Seiten gleich aufgebaut und vorhersehbar.</li><li>Bewegungen und Animationen werden reduziert, wenn das in Ihrem System eingestellt ist.</li><li>Unsere Formulare (z. B. Kontakt- und Anfrageformular) geben verständliche Hinweise und Fehlermeldungen.</li></ul>
         </div>
-        <div class="card">
-          <h3>Hilfsmittel</h3>
-          <p>- Die Seiten sind semantisch aufgebaut, mit klarer Überschriftenstruktur und gängigen Screenreadern (z. B. NVDA, VoiceOver) nutzbar.
-- Informative Bilder haben aussagekräftige Alternativtexte.
-
----</p>
-          
+        <div class="group-strip">
+          <div class="group-strip-label">Hilfsmittel</div>
+          <ul class="group-strip-list"><li>Wir setzen auf einen sauberen, semantischen Seitenaufbau mit klarer Überschriftenstruktur, damit gängige Screenreader (z. B. NVDA, VoiceOver) die Inhalte gut erfassen.</li><li>Informative Bilder erhalten aussagekräftige Alternativtexte.</li></ul>
         </div></div>
       <div class="feedback-panel" id="feedback-panel-2">
         <label>Ihr Vorschlag für Block 2 — Was wir für die Barrierefreiheit tun:</label>
@@ -952,7 +977,7 @@ body {
 <li><strong>E-Mail:</strong> barrierefreiheit@renotec-shk.de <!-- <span class="placeholder">[КЛИЕНТ: E-Mail-Postfach einrichten + Empfang testen vor Go-Live — docs/bfsg-email-setup.md]</span> --></li>
 <li><strong>Ansprechpartner / Team:</strong> Kundenservice renotec. <!-- <span class="placeholder">[КЛИЕНТ: Funktion/Team bestätigen — kein persönlicher Name]</span> --></li>
 </ul>
-<p>Stand: 29.05.2026</p>
+<p>Stand: 01.06.2026</p>
       <div class="feedback-panel" id="feedback-panel-5">
         <label>Ihr Vorschlag für Block 5 — Ihre Rückmeldung ist willkommen:</label>
         <textarea id="feedback-text-5" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
