@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rohrreinigung Berlin – Schnell erreichbar, klarer Ablauf | RenoTec — Preview</title>
+  <title>Rohrreinigung &amp; Notdienst Berlin – schnell &amp; gründlich | renotec. — Preview</title>
   <style>
 :root {
   --primary: #1e3a5f;
@@ -167,18 +167,83 @@ body {
   margin-left: 8px;
 }
 
-/* === META BAR === */
-.meta-bar {
+/* === SEO BAR === */
+.seo-bar {
   max-width: 1200px;
   margin: 16px auto;
-  padding: 12px 24px;
-  background: #f0f9ff;
-  border: 1px solid #bae6fd;
+  background: #1a1a2e;
   border-radius: var(--radius);
   font-size: 13px;
-  color: var(--text-light);
+  color: rgba(255,255,255,0.85);
+  overflow: hidden;
 }
-.meta-bar strong { color: var(--text); }
+.seo-bar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.15s;
+}
+.seo-bar-header:hover { background: rgba(255,255,255,0.05); }
+.seo-bar-header span { font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; color: rgba(255,255,255,0.6); }
+.seo-bar-header .seo-toggle { font-size: 11px; color: rgba(255,255,255,0.4); }
+.seo-bar-body { display: none; padding: 0 20px 16px; }
+.seo-bar.open .seo-bar-body { display: block; }
+.seo-bar.open .seo-toggle::after { content: '▲'; }
+.seo-bar:not(.open) .seo-toggle::after { content: '▼'; }
+.seo-row { display: flex; align-items: baseline; gap: 8px; margin-bottom: 8px; line-height: 1.6; }
+.seo-row .seo-label { color: rgba(255,255,255,0.5); font-size: 12px; min-width: 80px; flex-shrink: 0; }
+.seo-row .seo-value { color: rgba(255,255,255,0.9); word-break: break-word; }
+.seo-row code { background: rgba(255,255,255,0.1); padding: 2px 8px; border-radius: 4px; font-size: 12px; color: #93c5fd; }
+.len-badge {
+  display: inline-block;
+  padding: 1px 8px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+.len-ok { background: #065f46; color: #6ee7b7; }
+.len-warn { background: #78350f; color: #fcd34d; }
+.len-over { background: #7f1d1d; color: #fca5a5; }
+.schema-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.schema-tag {
+  display: inline-block;
+  background: rgba(99,102,241,0.2);
+  border: 1px solid rgba(99,102,241,0.4);
+  color: #a5b4fc;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 500;
+}
+.jsonld-toggle {
+  display: inline-block;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.6);
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 11px;
+  cursor: pointer;
+  margin-top: 8px;
+}
+.jsonld-toggle:hover { background: rgba(255,255,255,0.12); }
+.jsonld-preview { display: none; margin-top: 8px; }
+.jsonld-preview.open { display: block; }
+.jsonld-preview pre {
+  background: rgba(0,0,0,0.3);
+  padding: 12px 16px;
+  border-radius: var(--radius);
+  font-size: 12px;
+  color: #93c5fd;
+  overflow-x: auto;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
 
 /* === CONTENT === */
 .page-content {
@@ -196,6 +261,12 @@ body {
   border-radius: var(--radius);
 }
 .block:nth-child(even) { background: var(--bg-alt); }
+.block a { color: var(--accent); text-decoration: none; }
+.block a:hover { text-decoration: underline; }
+/* Override nth-child(even) for typed blocks with explicit backgrounds */
+.block.block-hero { background: linear-gradient(135deg, var(--primary) 0%, #0f2744 100%) !important; color: white !important; }
+.block.block-cta { background: var(--primary) !important; color: white !important; }
+.block.block-multistep { background: linear-gradient(135deg, #f0f7ff 0%, #e8f4f8 100%) !important; }
 .block-label {
   display: none; /* hidden, used by feedback JS */
 }
@@ -231,6 +302,7 @@ body {
 }
 .block-hero .btn:hover { transform: translateY(-2px); }
 .block-hero .btn-primary { background: var(--fb-accent); color: var(--text); }
+.block-hero a { color: white; }
 .block-hero .btn-secondary { background: rgba(255,255,255,0.15); color: white; border: 1px solid rgba(255,255,255,0.3); }
 
 /* Trust bar */
@@ -274,6 +346,44 @@ body {
 .card p { font-size: 14px; color: var(--text-light); margin-bottom: 12px; }
 .card .card-link { color: var(--accent); text-decoration: none; font-weight: 600; font-size: 14px; }
 .card .card-link:hover { text-decoration: underline; }
+
+/* Groups — expanded accordion-style strips (FB-022, not tile grid) */
+.block-groups h2 { margin-bottom: 24px; }
+.groups-strips { display: flex; flex-direction: column; gap: 12px; }
+.group-strip {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.group-strip-label {
+  background: var(--bg-alt);
+  padding: 12px 20px;
+  font-weight: 600;
+  color: var(--primary);
+  font-size: 15px;
+  border-bottom: 1px solid var(--border);
+}
+.group-strip-list {
+  list-style: none;
+  margin: 0;
+  padding: 12px 20px;
+}
+.group-strip-list li {
+  position: relative;
+  padding-left: 22px;
+  margin: 6px 0;
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.5;
+}
+.group-strip-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 700;
+}
 
 /* Steps */
 .block-steps h2 { text-align: center; margin-bottom: 32px; }
@@ -343,7 +453,10 @@ body {
 .block-cta h2 { margin-bottom: 16px; font-size: 26px; }
 .block-cta p { opacity: 0.9; margin-bottom: 24px; max-width: 600px; margin-left: auto; margin-right: auto; }
 .block-cta .contact-lines { font-size: 15px; margin-bottom: 20px; line-height: 2; }
+.block-cta a { color: white; text-decoration: underline; text-underline-offset: 2px; }
+.block-cta a:hover { opacity: 0.85; }
 .block-cta .btn { display: inline-block; background: var(--fb-accent); color: var(--text); padding: 14px 32px; border-radius: var(--radius); font-weight: 600; text-decoration: none; font-size: 16px; }
+.block-cta .contact-lines a { color: rgba(255,255,255,0.9); }
 
 /* Form */
 .block-form { background: var(--bg-alt); padding: 40px; border-radius: var(--radius); }
@@ -577,6 +690,110 @@ body {
 .btn-export.btn-copy:hover { background: var(--fb-accent-border); }
 .btn-close-overlay { display: inline-block; background: transparent; border: 1px solid var(--border); padding: 14px 32px; border-radius: var(--radius); font-size: 16px; cursor: pointer; margin: 8px; color: var(--text-light); }
 
+/* Multi-step Lead Magnet */
+.block-multistep {
+  background: linear-gradient(135deg, #f0f7ff 0%, #e8f4f8 100%);
+  border: 2px solid var(--primary);
+  border-radius: 12px;
+  padding: 40px 32px;
+}
+.ms-progress {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 32px;
+}
+.ms-step-dot {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid #cbd5e1;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 16px; color: #94a3b8;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+.ms-step-dot.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: white;
+  box-shadow: 0 0 0 4px rgba(30,58,95,0.15);
+}
+.ms-step-dot.completed {
+  background: var(--success);
+  border-color: var(--success);
+  color: white;
+}
+.ms-step-line {
+  width: 40px; height: 2px;
+  background: #cbd5e1;
+  flex-shrink: 0;
+}
+.ms-options { margin: 24px 0; }
+.ms-radios { display: flex; flex-direction: column; gap: 12px; }
+.ms-radio {
+  display: flex; align-items: flex-start; gap: 12px;
+  background: white;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  cursor: default;
+  transition: border-color 0.2s;
+}
+.ms-radio:hover { border-color: var(--primary-light); }
+.ms-radio input { margin-top: 4px; width: 18px; height: 18px; accent-color: var(--primary); }
+.ms-radio strong { display: block; font-size: 15px; color: var(--text); }
+.ms-opt-desc { display: block; font-size: 13px; color: var(--text-light); margin-top: 2px; }
+.ms-checkboxes { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
+.ms-checkbox {
+  display: flex; align-items: center; gap: 10px;
+  background: white;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  cursor: default;
+  font-size: 14px;
+}
+.ms-checkbox:hover { border-color: var(--primary-light); }
+.ms-checkbox input { width: 18px; height: 18px; accent-color: var(--primary); }
+.ms-table { margin: 20px 0; }
+.ms-table table { width: 100%; background: white; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); }
+.ms-table th, .ms-table td { padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--border); }
+.ms-table th { background: var(--bg-alt); font-size: 14px; font-weight: 600; }
+.ms-table td { font-size: 14px; }
+.ms-hint {
+  background: rgba(30,58,95,0.05);
+  border-left: 3px solid var(--primary);
+  padding: 12px 16px;
+  margin: 16px 0;
+  font-size: 14px;
+  color: var(--text-light);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+.ms-nav-buttons {
+  display: flex; justify-content: space-between; margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--border);
+}
+.ms-btn-back, .ms-btn-next {
+  padding: 12px 28px;
+  border-radius: var(--radius);
+  font-size: 15px; font-weight: 600;
+  cursor: default;
+}
+.ms-btn-back {
+  background: white; border: 2px solid var(--border); color: var(--text-light);
+}
+.ms-btn-next {
+  background: var(--primary); border: 2px solid var(--primary); color: white;
+}
+.ms-submit {
+  display: block; width: 100%; padding: 16px;
+  background: var(--primary); color: white;
+  border: none; border-radius: var(--radius);
+  font-size: 17px; font-weight: 700;
+  cursor: default; margin-top: 24px;
+}
+
 @media (max-width: 768px) {
   .feedback-btn { top: auto; bottom: -16px; right: 16px; font-size: 12px; }
   .block-hero { padding: 40px 20px; }
@@ -584,6 +801,10 @@ body {
   .cards-grid { grid-template-columns: 1fr; }
   .footer-inner { grid-template-columns: 1fr; }
   .preview-bar { flex-wrap: wrap; gap: 8px; }
+  .block-multistep { padding: 24px 16px; }
+  .ms-step-dot { width: 32px; height: 32px; font-size: 13px; }
+  .ms-step-line { width: 20px; }
+  .ms-checkboxes { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -601,7 +822,7 @@ body {
             <li><a href="renotec_preview_leistungen.html">Übersicht</a></li>
             <li><a href="renotec_preview_waermepumpen.html">Wärmepumpen</a></li><li><a href="renotec_preview_badsanierung.html">Badsanierung</a></li><li><a href="renotec_preview_heizungsinstallationen.html">Heizungsinstallation</a></li><li><a href="renotec_preview_sanitaerinstallationen.html">Sanitärinstallation</a></li><li><a href="renotec_preview_rohrreinigung.html" class="active">Rohrreinigung</a></li><li><a href="renotec_preview_sonstige.html">Sonstige Bauleistungen</a></li>
           </ul>
-        </li><li><a href="renotec_preview_bewertungen.html">Bewertungen</a></li><li><a href="renotec_preview_kontakt.html">Kontakt</a></li>
+        </li><li><a href="renotec_preview_bewertungen.html">Bewertungen</a></li><li><a href="renotec_preview_anfrage.html">Anfrage</a></li><li><a href="renotec_preview_kontakt.html">Kontakt</a></li>
         </ul>
       </div>
     </nav>
@@ -616,10 +837,46 @@ body {
       </div>
     </div>
   
-    <div class="meta-bar">
-      <strong>Title Tag:</strong> Rohrreinigung Berlin – Schnell erreichbar, klarer Ablauf | RenoTec<br>
-      <strong>Meta Description:</strong> Rohrreinigung in Berlin – schnell erreichbar, klarer Ablauf. Meisterbetrieb mit über 15 Jahren Erfahrung. Jetzt per WhatsApp anfragen!
-      <span class="source-badge">Spec</span>
+    <div class="seo-bar" id="seoBar">
+      <div class="seo-bar-header" onclick="document.getElementById('seoBar').classList.toggle('open')">
+        <span>SEO &amp; Schema.org</span>
+        <span class="seo-toggle"></span>
+      </div>
+      <div class="seo-bar-body">
+        <div class="seo-row">
+          <span class="seo-label">Title</span>
+          <span class="seo-value">Rohrreinigung &amp; Notdienst Berlin – schnell &amp; gründlich | renotec. <span class="len-badge len-over">65 — Over</span></span>
+        </div>
+        <div class="seo-row">
+          <span class="seo-label">Description</span>
+          <span class="seo-value">Rohrreinigung &amp; 24/7-Notdienst in Berlin – Rohrverstopfung schnell beseitigt, Reaktion in 60 Minuten. Meisterbetrieb mit über 15 Jahren Erfahrung. Jetzt anfragen! <span class="len-badge len-over">162 — Over</span></span>
+        </div>
+        <div class="seo-row">
+          <span class="seo-label">URL</span>
+          <span class="seo-value"><code>/rohrreinigung/</code></span>
+        </div>
+        <div class="seo-row">
+          <span class="seo-label">Schema.org</span>
+          <span class="seo-value"><div class="schema-tags"><span class="schema-tag">Service</span><span class="schema-tag">FAQPage</span></div></span>
+        </div>
+        <div class="jsonld-toggle" onclick="var el=document.getElementById('jsonldPreview');el.classList.toggle('open');this.textContent=el.classList.contains('open')?'▲ JSON-LD ausblenden':'▼ JSON-LD Vorschau'">▼ JSON-LD Vorschau</div>
+        <div class="jsonld-preview" id="jsonldPreview">
+          <pre><code>{
+  &quot;@context&quot;: &quot;https://schema.org&quot;,
+  &quot;@type&quot;: &quot;FAQPage&quot;,
+  &quot;mainEntity&quot;: [
+    {
+      &quot;@type&quot;: &quot;Question&quot;,
+      &quot;name&quot;: &quot;Beispielfrage?&quot;,
+      &quot;acceptedAnswer&quot;: {
+        &quot;@type&quot;: &quot;Answer&quot;,
+        &quot;text&quot;: &quot;Beispielantwort...&quot;
+      }
+    }
+  ]
+}</code></pre>
+        </div>
+      </div>
     </div>
   <main class="page-content">
     
@@ -627,7 +884,7 @@ body {
       <span class="block-label" style="display:none">Block 1 — Das Wichtigste auf einen Blick</span>
       <button class="feedback-btn" onclick="toggleFeedback(1)">✏️ Vorschlag</button>
       <h2>Das Wichtigste auf einen Blick</h2>
-      <p>Verstopfte Abflüsse oder Rohre sind ärgerlich – und können, wenn sie zu lange ignoriert werden, zu ernsthaften Schäden führen. RenoTec ist ein eingetragener SHK-Meisterbetrieb der Handwerkskammer (HWK) Berlin mit über 15 Jahren Erfahrung in der professionellen Rohrreinigung. Wir arbeiten strukturiert: zuerst die Ursache klären, dann die richtige Methode wählen, sauber dokumentieren. Wir sind per WhatsApp und Telefon erreichbar – unkompliziert und direkt.</p>
+      <p>Verstopfte Abflüsse oder Rohre sind ärgerlich – und können, wenn sie zu lange ignoriert werden, zu ernsthaften Schäden führen. renotec. ist ein eingetragener SHK-Meisterbetrieb der Handwerkskammer (HWK) Berlin mit über 15 Jahren Erfahrung in der professionellen Rohrreinigung. Für akute Fälle sind wir mit unserem <strong>24/7-Notdienst</strong> rund um die Uhr für Sie da. Wir arbeiten strukturiert: zuerst die Ursache klären, dann die richtige Methode wählen, sauber dokumentieren. Wir sind per WhatsApp und Telefon erreichbar – unkompliziert und direkt.</p>
       <div class="feedback-panel" id="feedback-panel-1">
         <label>Ihr Vorschlag für Block 1 — Das Wichtigste auf einen Blick:</label>
         <textarea id="feedback-text-1" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
@@ -706,8 +963,9 @@ body {
 
 ---
 
-<!-- NOTDIENST PLACEHOLDER — NICHT AKTIV ZUM RELEASE -->
-<!--</p>
+<!-- DATA: Notdienst AKTIV ✅ CLIENT — Daniel Notdienst-Konzept (Email #42481, 31.05) + D-CLIENT-MT-20260519-006/007. Notdienst = NUR Rohrreinigung/Rohrverstopfung (nicht Sanitär/Heizung). Reaktionszeit 60 min — D-CLIENT-MT-20260519-008. IMPLEMENTS: D-FB-260531-002 -->
+<!-- OPTION Festpreis-USP (Daniel-Konzept «Rohrreinigung zu Festpreisen», noch nicht final entschieden 31.05) — NICHT veröffentlicht bis ✅ CLIENT. Bei Bestätigung: prominenter Trust-Block. Siehe D-OPEN-008 -->
+<!-- Tracking Event (Implementation): emergency_click auf Notruf-CTA --></p>
           </div>
         </div></div>
       <div class="feedback-panel" id="feedback-panel-3">
@@ -722,22 +980,29 @@ body {
       </div>
     </div>
     <div class="block block-generic" id="block-4">
-      <span class="block-label" style="display:none">Block 4 — 24/7-Notdienst Berlin (geplant)</span>
+      <span class="block-label" style="display:none">Block 4 — 24/7-Notdienst für Rohrverstopfungen in Berlin</span>
       <button class="feedback-btn" onclick="toggleFeedback(4)">✏️ Vorschlag</button>
-      <h2>24/7-Notdienst Berlin (geplant)</h2>
-      <p>Dieser Abschnitt ist vorbereitet, aber noch NICHT AKTIV.</p>
-<p>Aktivierung nach Kundenbestätigung, voraussichtlich nach Go-Live.</p>
-<p>Geplanter Inhalt:</p>
+      <h2>24/7-Notdienst für Rohrverstopfungen in Berlin</h2>
+      <p>Eine verstopfte Hauptleitung oder ein überlaufender Abfluss wartet nicht – deshalb ist unser Rohrnotdienst rund um die Uhr für Sie da, auch an Wochenenden und Feiertagen. Nach Ihrem Anruf melden wir uns innerhalb von 60 Minuten und kümmern uns schnellstmöglich um Ihr Problem.</p>
+<p><strong>Unser Notdienst hilft bei:</strong></p>
 <ul>
-<li>24/7 Notdienst für Rohrreinigung, Sanitär und Heizung in Berlin</li>
-<li>Direkte Erreichbarkeit rund um die Uhr, auch an Wochenenden und Feiertagen</li>
-<li>Schnelle Reaktionszeiten für akute Rohr- und Abflussprobleme</li>
+<li>Akuten Rohrverstopfungen in Abflüssen, Toiletten und Hauptleitungen</li>
+<li>Professioneller Hochdruck- und Spiralreinigung</li>
+<li>Verstopfungen im privaten wie im gewerblichen Bereich</li>
 </ul>
-<p>Schema (auskommentiert): hasOfferCatalog mit Notdienst-Service</p>
-<p>Tracking Event (vorbereitet): emergency_click</p>
-<p>--></p>
+<p><strong>So läuft der Notdienst ab:</strong></p>
+<ol>
+<li><strong>Anruf oder Kontaktformular</strong> – Sie schildern uns kurz das Problem.</li>
+<li><strong>Sofortige Rückmeldung</strong> – wir reagieren innerhalb von 60 Minuten.</li>
+<li><strong>Techniker kommt</strong> – wir sind schnell bei Ihnen vor Ort.</li>
+<li><strong>Problem gelöst</strong> – wir beseitigen die Verstopfung fachgerecht.</li>
+</ol>
+<p><strong>Für wen:</strong> Privathaushalte, Vermieter & Hausverwaltungen, Wohnungseigentümer sowie Gewerbe und Restaurants.</p>
+<blockquote>
+<p>🚨 <strong>Notfall? Rohr verstopft?</strong> Rufen Sie uns direkt an: <strong>030 232 581 671</strong> – rund um die Uhr erreichbar.</p>
+</blockquote>
       <div class="feedback-panel" id="feedback-panel-4">
-        <label>Ihr Vorschlag für Block 4 — 24/7-Notdienst Berlin (geplant):</label>
+        <label>Ihr Vorschlag für Block 4 — 24/7-Notdienst für Rohrverstopfungen in Berlin:</label>
         <textarea id="feedback-text-4" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
         <div class="feedback-actions">
           <button class="btn-save" onclick="saveFeedback(4)">Speichern</button>
@@ -757,20 +1022,23 @@ body {
           <div class="faq-a"><p>Die Kosten richten sich nach Umfang und Methode – mechanische Reinigung und hydraulische Hochdruckspülung unterscheiden sich im Aufwand. Kontaktieren Sie uns per WhatsApp oder Telefon – wir besprechen Ihre Situation und geben Ihnen eine ehrliche Einschätzung.</p></div>
         </div>
         <div class="faq-item" onclick="this.classList.toggle('open')">
-          <div class="faq-q">Wie schnell kann RenoTec bei einem verstopften Abfluss helfen?</div>
+          <div class="faq-q">Wie schnell kann renotec. bei einem verstopften Abfluss helfen?</div>
           <div class="faq-a"><p>Wir wissen, dass ein blockierter Abfluss den Alltag schnell zum Stillstand bringen kann. Schreiben Sie uns per WhatsApp oder rufen Sie uns an – wir klären die Situation unkompliziert und vereinbaren schnellstmöglich einen Termin.</p></div>
         </div>
         <div class="faq-item" onclick="this.classList.toggle('open')">
-          <div class="faq-q">Bietet RenoTec eine Rohr-TV-Inspektion an?</div>
+          <div class="faq-q">Bietet renotec. eine Rohr-TV-Inspektion an?</div>
           <div class="faq-a"><p>Ja, die Rohr-TV-Inspektion gehört zu unserem festen Leistungsangebot. Mit einer Spezialkamera befahren wir die betroffene Leitung und machen sichtbar, was mit bloßem Auge verborgen bleibt: Ablagerungen, Risse, Wurzeleinwuchs oder Fehlstellungen. Das Ergebnis fließt in eine nachvollziehbare Schadensdokumentation ein.</p></div>
         </div>
         <div class="faq-item" onclick="this.classList.toggle('open')">
-          <div class="faq-q">Wann bietet RenoTec einen Notdienst an?</div>
-          <div class="faq-a"><p>Ein 24/7-Notdienst für Rohrreinigung, Sanitär und Heizung in Berlin befindet sich in Planung. Aktuell sind wir zu den regulären Geschäftszeiten erreichbar – per WhatsApp oder Telefon. Sobald der Notdienst verfügbar ist, informieren wir Sie über alle Kanäle.</p></div>
+          <div class="faq-q">Wann bietet renotec. einen Notdienst an?</div>
+          <div class="faq-a"><p>renotec. bietet einen 24/7-Notdienst für Rohrverstopfungen und Rohrreinigung in Berlin – rund um die Uhr, auch an Wochenenden und Feiertagen. Nach Ihrem Anruf melden wir uns innerhalb von 60 Minuten und kümmern uns schnellstmöglich um die Verstopfung. Der Notdienst gilt für akute Rohr- und Abflussprobleme.</p></div>
         </div>
         <div class="faq-item" onclick="this.classList.toggle('open')">
-          <div class="faq-q">In welchen Berliner Bezirken ist RenoTec für Rohrreinigung tätig?</div>
-          <div class="faq-a"><p>RenoTec ist in ganz Berlin tätig – von Mitte über Charlottenburg und Friedrichshain bis zu Spandau, Reinickendorf und Köpenick. Auch Aufträge im direkten Berliner Umland nehmen wir nach Absprache an.</p></div>
+          <div class="faq-q">In welchen Berliner Bezirken ist renotec. für Rohrreinigung tätig?</div>
+          <div class="faq-a"><p>renotec. ist in ganz Berlin tätig – von Mitte über Charlottenburg und Friedrichshain bis zu Spandau, Reinickendorf und Köpenick. Auch Aufträge im direkten Berliner Umland nehmen wir nach Absprache an.</p>
+<blockquote>
+<p><strong>Akutes Problem mit verstopftem Abfluss oder Rohr?</strong> Rufen Sie uns an oder schreiben Sie per WhatsApp – im Notdienst reagieren wir innerhalb von 60 Minuten. <!-- DATA: 60 min Reaktion ✅ CLIENT — D-CLIENT-MT-20260519-008 --></p>
+</blockquote></div>
         </div></div>
       <div class="feedback-panel" id="feedback-panel-5">
         <label>Ihr Vorschlag für Block 5 — Häufige Fragen zur Rohrreinigung in Berlin:</label>
@@ -787,8 +1055,8 @@ body {
       <span class="block-label" style="display:none">Block 6 — Kontakt – Rohrreinigung in Berlin anfragen</span>
       <button class="feedback-btn" onclick="toggleFeedback(6)" style="color:#1e293b;">✏️ Vorschlag</button>
       <h2>Kontakt – Rohrreinigung in Berlin anfragen</h2>
-      <p>RenoTec – SHK-Meisterbetrieb Berlin · Eingetragen bei der HWK Berlin · Über 15 Jahre Erfahrung</p>
-      <div class="contact-lines">📞 Telefon: <span class="placeholder">[PLATZHALTER]</span><br>📧 E-Mail: kontakt@renotec-shk.de<br>💬 <a href="#whatsapp">WhatsApp: Anfrage senden</a></div>
+      <p>renotec. – SHK-Meisterbetrieb Berlin · Eingetragen bei der HWK Berlin · Über 15 Jahre Erfahrung</p>
+      <div class="contact-lines">📞 Telefon: 030 232 581 671<br>📧 E-Mail: kontakt@renotec-shk.de<br>💬 <a href="#whatsapp">WhatsApp: Anfrage senden</a></div>
       <a class="btn" href="#">→ Jetzt anfragen</a>
       <div class="feedback-panel" id="feedback-panel-6">
         <label>Ihr Vorschlag für Block 6 — Kontakt – Rohrreinigung in Berlin anfragen:</label>
@@ -828,13 +1096,13 @@ body {
         </div>
         <div class="footer-col">
           <h4>Navigation</h4>
-          <ul><li><a href="#">Startseite</a></li><li><a href="#">Leistungen</a></li><li><a href="#">Bewertungen</a></li><li><a href="#">Kontakt</a></li></ul>
+          <ul><li><a href="#">Startseite</a></li><li><a href="#">Leistungen</a></li><li><a href="#">Bewertungen</a></li><li><a href="#">Anfrage</a></li><li><a href="#">Kontakt</a></li></ul>
         </div>
       </div>
       <div class="footer-bottom">
         <span>© 2026 RenoTec · Alle Rechte vorbehalten</span>
         <span>
-          <a href="#">Impressum</a> · <a href="#">Datenschutz</a>
+          <a href="#">Impressum</a> · <a href="#">Datenschutz</a> · <a href="renotec_preview_barrierefreiheit.html">Barrierefreiheit</a>
         </span>
       </div>
     </footer>
