@@ -1,7 +1,12 @@
 {
   "project": "renotec_preview",
-  "latest": "v1.3",
+  "latest": "v1.4",
   "versions": [
+    {
+      "version": "v1.4",
+      "date": "2026-06-02",
+      "summary": "Seite „Rohrreinigung / Notdienst" überarbeitet: eine zusammenhängende Seite, die die Leistung und den 24/7-Notdienst klar darstellt – Methoden (Spiral- & Hochdruckreinigung, Rohr-TV-Inspektion), Ablauf, Zielgruppen inkl. Hausverwaltungen/Gewerbe, erweiterte FAQ, SEO-optimiert."
+    },
     {
       "version": "v1.3",
       "date": "2026-06-02",
