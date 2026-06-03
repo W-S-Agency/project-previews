@@ -5,12 +5,12 @@
     {
       "version": "v1.1",
       "date": "2026-06-02",
-      "summary": "Design-Kit-Abgleich: Hero als Visualisierung, Trust-Block mit 3 Punkten, pro Leistungsseite thematisches Bild + Vorher/Nachher (Foto oder Visualisierung), aktualisierte Kontaktdaten. Abgeglichen mit Figma-Design-Kit (Startseite + Leistungsseite)."
+      "summary": "Design-Kit-Abgleich + Bild-Platzhalter: Hero als Visualisierung, Trust-Block mit 3 Punkten, pro Leistungsseite thematisches Bild + Vorher/Nachher (Foto oder Visualisierung), Notdienst aktiv, aktualisierte Kontaktdaten. Abgeglichen mit Figma-Design-Kit."
     },
     {
       "version": "v1.0",
-      "date": "2026-06-02",
-      "summary": "Erste Fassung mit Bild-Platzhaltern (visualisierte Seitenverhältnisse) + aktivem Notdienst auf Rohrreinigung/Notdienst + aktualisierten Kontaktdaten. Diese Version wurde anschließend zu v1.1 nach Design-Kit überarbeitet."
+      "date": "2026-03-19",
+      "summary": "An den Kunden geteilte Vorschau (Stand 20.05 zur Text- und FAQ-Abstimmung) – ohne Bild-Platzhalter. Diese Fassung war die Basis für das Kundenfeedback."
     }
   ]
 }
