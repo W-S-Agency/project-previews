@@ -1,16 +1,16 @@
 {
   "project": "renotec_preview",
-  "latest": "v1.1",
+  "latest": "v1.3",
   "versions": [
     {
-      "version": "v1.1",
+      "version": "v1.3",
       "date": "2026-06-02",
       "summary": "Design-Kit-Abgleich + Bild-Platzhalter: Hero als Visualisierung, Trust-Block mit 3 Punkten, pro Leistungsseite thematisches Bild + Vorher/Nachher (Foto oder Visualisierung), Notdienst aktiv, aktualisierte Kontaktdaten. Abgeglichen mit Figma-Design-Kit."
     },
     {
-      "version": "v1.0",
+      "version": "v1.2",
       "date": "2026-03-19",
-      "summary": "An den Kunden geteilte Vorschau (Stand 20.05 zur Text- und FAQ-Abstimmung) – ohne Bild-Platzhalter. Diese Fassung war die Basis für das Kundenfeedback."
+      "summary": "An den Kunden geteilte Vorschau (Stand 20.05 zur Text- und FAQ-Abstimmung) – ohne Bild-Platzhalter. Diese Fassung war die Basis für das Kundenfeedback. Versionsnummer fortgeführt aus der bisherigen internen Nummerierung."
     }
   ]
 }
