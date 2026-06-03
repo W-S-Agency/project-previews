@@ -1,11 +1,16 @@
 {
   "project": "renotec_preview",
-  "latest": "v1.0",
+  "latest": "v1.1",
   "versions": [
+    {
+      "version": "v1.1",
+      "date": "2026-06-02",
+      "summary": "Design-Kit-Abgleich: Hero als Visualisierung, Trust-Block mit 3 Punkten, pro Leistungsseite thematisches Bild + Vorher/Nachher (Foto oder Visualisierung), aktualisierte Kontaktdaten. Abgeglichen mit Figma-Design-Kit (Startseite + Leistungsseite)."
+    },
     {
       "version": "v1.0",
       "date": "2026-06-02",
-      "summary": "Erste versionierte Vorschau: Design-Kit-Abgleich (Hero-Visualisierung, Trust 3 Punkte), Notdienst aktiv auf Rohrreinigung/Notdienst, Bild-Platzhalter (Foto oder Visualisierung) auf allen Seiten – pro Leistungsseite thematisches Bild + Vorher/Nachher, aktualisierte Kontaktdaten (030 232 581671, kontakt@renotec-shk.de)."
+      "summary": "Erste Fassung mit Bild-Platzhaltern (visualisierte Seitenverhältnisse) + aktivem Notdienst auf Rohrreinigung/Notdienst + aktualisierten Kontaktdaten. Diese Version wurde anschließend zu v1.1 nach Design-Kit überarbeitet."
     }
   ]
 }
