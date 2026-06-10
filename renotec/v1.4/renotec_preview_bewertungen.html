@@ -347,6 +347,18 @@ body {
 .card .card-link { color: var(--accent); text-decoration: none; font-weight: 600; font-size: 14px; }
 .card .card-link:hover { text-decoration: underline; }
 
+/* Widget-Platzhalter + Referenz-Cases (09) */
+.block-widgetph h2 { margin-bottom: 12px; }
+.widget-ph { max-width: 760px; aspect-ratio: auto; min-height: 180px; }
+.case-card { position: relative; }
+.case-tag { position: absolute; top: 12px; right: 12px; background: #fef3c7; border: 1px dashed #f59e0b; color: #92400e; font-size: 10px; font-weight: 700; letter-spacing: .04em; padding: 2px 8px; border-radius: 10px; }
+.case-kv { display: flex; gap: 8px; font-size: 13px; margin-bottom: 5px; }
+.case-kv > span { flex: 0 0 84px; font-weight: 600; color: var(--text); }
+.case-kv > div { color: var(--text-light); }
+.case-txt { font-size: 13px; color: var(--text-light); font-style: italic; margin-top: 10px; }
+.case-foto { font-size: 12px; color: var(--text-light); margin-top: 10px; }
+.case-note { margin-top: 16px; font-size: 13px; color: var(--text-light); border-left: 3px solid var(--border); padding-left: 12px; }
+
 /* Glance (07 «Das Wichtigste») — Text links, Akut-Box (Logo-Farbe, pulsierend) rechts */
 .glance-cols { display: flex; gap: 36px; flex-wrap: wrap; align-items: flex-start; }
 .glance-text { flex: 1 1 420px; }
@@ -1064,15 +1076,12 @@ body {
         </div>
       </div>
     </div>
-    <div class="block block-generic" id="block-2">
+    <div class="block block-widgetph" id="block-2">
       <span class="block-label" style="display:none">Block 2 — Google Bewertungen</span>
       <button class="feedback-btn" onclick="toggleFeedback(2)">✏️ Vorschlag</button>
       <h2>Google Bewertungen</h2>
-      <blockquote>
-<p><strong>[Google Reviews Widget – Platzhalter]</strong></p>
-<p>Hier werden automatisch aktuelle Kundenbewertungen von Google Maps geladen.</p>
-<p>Durchschnittliche Bewertung und Anzahl der Rezensionen werden dynamisch angezeigt.</p>
-</blockquote>
+      
+      <figure class="img-ph img-ph--quer widget-ph"><div class="img-ph-inner"><span class="img-ph-icon">⭐</span><span class="img-ph-tag">WIDGET</span><span class="img-ph-desc">Live Google Reviews Plugin – hier werden automatisch aktuelle Kundenbewertungen von Google Maps geladen (Sternebewertung + Anzahl, dynamisch)</span><span class="img-ph-hint">Widget-Platzhalter – Einbindung bei Implementation (wie renovira.de, D-CLIENT-MT-20260519-002)</span></div></figure>
       <div class="feedback-panel" id="feedback-panel-2">
         <label>Ihr Vorschlag für Block 2 — Google Bewertungen:</label>
         <textarea id="feedback-text-2" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
@@ -1084,94 +1093,13 @@ body {
         </div>
       </div>
     </div>
-    <div class="block block-generic" id="block-3">
+    <div class="block block-cases" id="block-3">
       <span class="block-label" style="display:none">Block 3 — Ausgewählte Referenzprojekte</span>
       <button class="feedback-btn" onclick="toggleFeedback(3)">✏️ Vorschlag</button>
       <h2>Ausgewählte Referenzprojekte</h2>
-      <h3>Referenzprojekt 1 – <span class="placeholder">[PLATZHALTER]</span></h3>
-<table>
-<tr>
-<th></th>
-<th></th>
-</tr>
-<tr>
-<td><strong>Leistung</strong></td>
-<td>[z. B. Badsanierung komplett]</td>
-</tr>
-<tr>
-<td><strong>Dauer</strong></td>
-<td>[z. B. 5 Werktage]</td>
-</tr>
-<tr>
-<td><strong>Bezirk</strong></td>
-<td>[z. B. Berlin-Mitte]</td>
-</tr>
-<tr>
-<td><strong>Gewerke</strong></td>
-<td>[z. B. Sanitär, Fliesen]</td>
-</tr>
-</table>
-<p><span class="placeholder">[PLATZHALTER – 3–5 Sätze: Ausgangssituation → Herausforderung → Lösung → Ergebnis]</span></p>
-<blockquote>
-<p>📷 <em>Fotos folgen nach geplantem Fotoshooting.</em></p>
-</blockquote>
-<h3>Referenzprojekt 2 – <span class="placeholder">[PLATZHALTER]</span></h3>
-<table>
-<tr>
-<th></th>
-<th></th>
-</tr>
-<tr>
-<td><strong>Leistung</strong></td>
-<td>[z. B. Heizungsmodernisierung / Wärmepumpe]</td>
-</tr>
-<tr>
-<td><strong>Dauer</strong></td>
-<td>[z. B. 3 Werktage]</td>
-</tr>
-<tr>
-<td><strong>Bezirk</strong></td>
-<td>[z. B. Berlin-Charlottenburg]</td>
-</tr>
-<tr>
-<td><strong>Gewerke</strong></td>
-<td>[z. B. Heizungstechnik, Hydraulischer Abgleich]</td>
-</tr>
-</table>
-<p><span class="placeholder">[PLATZHALTER – 3–5 Sätze: Bestandsanlage → Kundenwunsch → Lösung → Ergebnis]</span></p>
-<blockquote>
-<p>📷 <em>Fotos folgen nach geplantem Fotoshooting.</em></p>
-</blockquote>
-<h3>Referenzprojekt 3 – <span class="placeholder">[PLATZHALTER]</span></h3>
-<table>
-<tr>
-<th></th>
-<th></th>
-</tr>
-<tr>
-<td><strong>Leistung</strong></td>
-<td>[z. B. Rohrreinigung + TV-Inspektion]</td>
-</tr>
-<tr>
-<td><strong>Dauer</strong></td>
-<td>[z. B. 1 Werktag]</td>
-</tr>
-<tr>
-<td><strong>Bezirk</strong></td>
-<td>[z. B. Berlin-Kreuzberg]</td>
-</tr>
-<tr>
-<td><strong>Gewerke</strong></td>
-<td>[z. B. Sanitär, Rohrdiagnostik]</td>
-</tr>
-</table>
-<p><span class="placeholder">[PLATZHALTER – 3–5 Sätze: Problem → Diagnose → Maßnahmen → Ergebnis]</span></p>
-<blockquote>
-<p>📷 <em>Fotos folgen nach geplantem Fotoshooting.</em></p>
-</blockquote>
-<blockquote>
-<p><strong>Hinweis:</strong> Weitere Referenzprojekte nach Fotoshooting als CPT-Einträge ergänzen. Empfohlene Anzahl: mindestens 3–5 abgeschlossene Projekte aus verschiedenen Leistungsbereichen und Berliner Bezirken.</p>
-</blockquote>
+      
+      <div class="numcards-grid"><div class="numcard case-card"><span class="case-tag">PLATZHALTER</span><h3>Referenzprojekt 1</h3><div class="case-kv"><span>Leistung</span><div>[z. B. Badsanierung komplett]</div></div><div class="case-kv"><span>Dauer</span><div>[z. B. 5 Werktage]</div></div><div class="case-kv"><span>Bezirk</span><div>[z. B. Berlin-Mitte]</div></div><div class="case-kv"><span>Gewerke</span><div>[z. B. Sanitär, Fliesen]</div></div><p class="case-txt"><span class="placeholder">[PLATZHALTER – 3–5 Sätze: Ausgangssituation → Herausforderung → Lösung → Ergebnis]</span></p><div class="case-foto">📷 <em>Fotos folgen nach geplantem Fotoshooting.</em></div></div><div class="numcard case-card"><span class="case-tag">PLATZHALTER</span><h3>Referenzprojekt 2</h3><div class="case-kv"><span>Leistung</span><div>[z. B. Heizungsmodernisierung / Wärmepumpe]</div></div><div class="case-kv"><span>Dauer</span><div>[z. B. 3 Werktage]</div></div><div class="case-kv"><span>Bezirk</span><div>[z. B. Berlin-Charlottenburg]</div></div><div class="case-kv"><span>Gewerke</span><div>[z. B. Heizungstechnik, Hydraulischer Abgleich]</div></div><p class="case-txt"><span class="placeholder">[PLATZHALTER – 3–5 Sätze: Bestandsanlage → Kundenwunsch → Lösung → Ergebnis]</span></p><div class="case-foto">📷 <em>Fotos folgen nach geplantem Fotoshooting.</em></div></div><div class="numcard case-card"><span class="case-tag">PLATZHALTER</span><h3>Referenzprojekt 3</h3><div class="case-kv"><span>Leistung</span><div>[z. B. Rohrreinigung + TV-Inspektion]</div></div><div class="case-kv"><span>Dauer</span><div>[z. B. 1 Werktag]</div></div><div class="case-kv"><span>Bezirk</span><div>[z. B. Berlin-Kreuzberg]</div></div><div class="case-kv"><span>Gewerke</span><div>[z. B. Sanitär, Rohrdiagnostik]</div></div><p class="case-txt"><span class="placeholder">[PLATZHALTER – 3–5 Sätze: Problem → Diagnose → Maßnahmen → Ergebnis]</span></p><div class="case-foto">📷 <em>Fotos folgen nach geplantem Fotoshooting.</em></div></div></div>
+      <p class="case-note"><strong>Hinweis:</strong> Weitere Referenzprojekte nach Fotoshooting als CPT-Einträge ergänzen. Empfohlene Anzahl: mindestens 3–5 abgeschlossene Projekte aus verschiedenen Leistungsbereichen und Berliner Bezirken.</p>
       <div class="feedback-panel" id="feedback-panel-3">
         <label>Ihr Vorschlag für Block 3 — Ausgewählte Referenzprojekte:</label>
         <textarea id="feedback-text-3" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
