@@ -347,6 +347,43 @@ body {
 .card .card-link { color: var(--accent); text-decoration: none; font-weight: 600; font-size: 14px; }
 .card .card-link:hover { text-decoration: underline; }
 
+/* Services-Akkordeon — untereinander (✅ CLIENT 24.04: statt Kacheln) */
+.block-accordion h2 { margin-bottom: 12px; }
+.block-accordion > p { margin-bottom: 20px; font-size: 15px; line-height: 1.7; }
+.acc-list { display: flex; flex-direction: column; gap: 10px; }
+.acc-item { background: white; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+.acc-q { padding: 16px 20px; font-weight: 600; font-size: 16px; color: var(--primary); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; transition: background 0.15s; }
+.acc-q:hover { background: var(--bg-alt); }
+.acc-q::after { content: '→'; color: var(--text-light); flex-shrink: 0; transition: transform 0.2s; }
+.acc-item.open .acc-q::after { transform: rotate(90deg); }
+.acc-a { display: none; padding: 0 20px 16px; font-size: 14px; color: var(--text-light); line-height: 1.7; }
+.acc-a p { margin-bottom: 10px; }
+.acc-item.open .acc-a { display: block; }
+.acc-a .card-link { color: var(--accent); font-weight: 600; font-size: 14px; text-decoration: none; }
+.acc-a .card-link:hover { text-decoration: underline; }
+
+/* Trust — 2 Spalten wie Design-Kit (Text links, blaue Chip-Box rechts) */
+.trust-cols { display: flex; gap: 32px; flex-wrap: wrap; align-items: flex-start; margin-top: 8px; }
+.trust-cols .trust-text { flex: 1 1 380px; }
+.trust-cols .trust-text p { margin-bottom: 12px; font-size: 15px; line-height: 1.7; }
+.trust-box { flex: 1 1 300px; background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%); border-radius: 12px; padding: 24px; }
+.trust-box--row { display: flex; gap: 12px; flex-wrap: wrap; }
+.trust-box--row .trust-chip { flex: 1 1 220px; margin-bottom: 0; }
+.trust-chip { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.18); border-radius: 8px; padding: 12px 16px; margin-bottom: 10px; color: white; font-weight: 600; font-size: 14px; line-height: 1.5; }
+.trust-box > .trust-chip:last-child { margin-bottom: 0; }
+@media (max-width: 768px) { .trust-cols { flex-direction: column; } }
+
+/* Lead-Magnet-Teaser (Startseite) — strukturiert wie Design-Kit */
+.block.block-msteaser { background: linear-gradient(135deg, var(--primary) 0%, #0f2744 100%) !important; color: white !important; padding: 40px; }
+.block-msteaser h2 { margin-bottom: 12px; }
+.block-msteaser .ms-teaser-intro { opacity: .9; max-width: 760px; margin-bottom: 18px; line-height: 1.7; }
+.block-msteaser .ms-teaser-sub { margin-bottom: 10px; }
+.ms-teaser-steps { list-style: none; counter-reset: mst; display: flex; flex-direction: column; gap: 10px; margin: 0 0 22px; padding: 0; max-width: 760px; }
+.ms-teaser-steps li { counter-increment: mst; background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0.16); border-radius: 8px; padding: 12px 16px 12px 54px; position: relative; font-size: 14px; line-height: 1.5; }
+.ms-teaser-steps li::before { content: counter(mst); position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 26px; height: 26px; border-radius: 50%; background: var(--fb-accent); color: #1e293b; font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; }
+.block-msteaser .btn { display: inline-block; background: var(--fb-accent); color: #1e293b; padding: 14px 32px; border-radius: var(--radius); font-weight: 700; text-decoration: none; font-size: 16px; }
+.block-msteaser .ms-teaser-hint { margin-top: 14px; font-size: 13px; opacity: .85; }
+
 /* Groups — expanded accordion-style strips (FB-022, not tile grid) */
 .block-groups h2 { margin-bottom: 24px; }
 .groups-strips { display: flex; flex-direction: column; gap: 12px; }
@@ -947,18 +984,8 @@ body {
       <span class="block-label" style="display:none">Block 2 — Warum renotec.? – Ihr Vorteil auf einen Blick</span>
       <button class="feedback-btn" onclick="toggleFeedback(2)">✏️ Vorschlag</button>
       <h2>Warum renotec.? – Ihr Vorteil auf einen Blick</h2>
-      <p>Wenn es um Sanitär und Heizung in Berlin geht, zählen Fachwissen, Verlässlichkeit und ehrliche Beratung. renotec. steht für über 15 Jahre Erfahrung im SHK-Bereich und den Anspruch, für jedes Projekt eine saubere und wirtschaftlich sinnvolle Lösung zu finden.</p>
-<p>Wir arbeiten mit geprüften Produkten namhafter Hersteller und setzen auf Qualität, die sich im Alltag bewährt. Unser Betrieb ist bei der Handwerkskammer Berlin eingetragen und Mitglied der Berliner SHK-Innung. Das ist für Sie nicht nur eine formale Garantie, sondern ein aktives Qualitätsversprechen.</p>
-      <div class="trust-items">
-                <div class="trust-item">
-                  <strong>🏅 Eingetragener Meister- und Innungsbetrieb</strong>
-                </div>
-                <div class="trust-item">
-                  <strong>🔧 Über 15 Jahre Erfahrung im SHK-Bereich</strong>
-                </div>
-                <div class="trust-item">
-                  <strong>🤝 Verbindliche, termingerechte und zuverlässige Ausführung</strong>
-                </div></div>
+      <div class="trust-cols"><div class="trust-text"><p>Wenn es um Sanitär und Heizung in Berlin geht, zählen Fachwissen, Verlässlichkeit und ehrliche Beratung. renotec. steht für über 15 Jahre Erfahrung im SHK-Bereich und den Anspruch, für jedes Projekt eine saubere und wirtschaftlich sinnvolle Lösung zu finden.</p>
+<p>Wir arbeiten mit geprüften Produkten namhafter Hersteller und setzen auf Qualität, die sich im Alltag bewährt. Unser Betrieb ist bei der Handwerkskammer Berlin eingetragen und Mitglied der Berliner SHK-Innung. Das ist für Sie nicht nur eine formale Garantie, sondern ein aktives Qualitätsversprechen.</p></div><div class="trust-box"><div class="trust-chip">🏅 Eingetragener Meister- und Innungsbetrieb</div><div class="trust-chip">🔧 Über 15 Jahre Erfahrung im SHK-Bereich</div><div class="trust-chip">🤝 Verbindliche, termingerechte und zuverlässige Ausführung</div></div></div>
       <div class="feedback-panel" id="feedback-panel-2">
         <label>Ihr Vorschlag für Block 2 — Warum renotec.? – Ihr Vorteil auf einen Blick:</label>
         <textarea id="feedback-text-2" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
@@ -986,41 +1013,35 @@ body {
         </div>
       </div>
     </div>
-    <div class="block block-cards" id="block-4">
+    <div class="block block-accordion" id="block-4">
       <span class="block-label" style="display:none">Block 4 — Unsere Leistungen in Berlin</span>
       <button class="feedback-btn" onclick="toggleFeedback(4)">✏️ Vorschlag</button>
       <h2>Unsere Leistungen in Berlin</h2>
       <p>Von der modernen Wärmepumpe über die komplette Badsanierung bis zur Rohrreinigung mit 24h-Notdienst – renotec. bietet Ihnen das gesamte Spektrum des SHK-Handwerks aus einer Hand. Alle Arbeiten werden fachgerecht nach Meisterstandard ausgeführt. So erhalten Sie nicht nur handwerklich einwandfreie Ergebnisse, sondern auch die nötige Rechtssicherheit für Förderanträge, Versicherungen und Gewährleistungsansprüche.</p>
-      <div class="cards-grid">
-        <div class="card">
-          <h3>Wärmepumpen</h3>
-          <p>Wärmepumpen sind die Heiztechnologie der Zukunft – effizient, umweltfreundlich und in vielen Fällen staatlich gefördert. Wir beraten Sie zur richtigen Wärmepumpenart, übernehmen die fachgerechte Installation und unterstützen Sie bei der BAFA-Förderung.</p>
-          <a class="card-link" href="/waermepumpen/">Mehr erfahren → Wärmepumpen</a>
+      <div class="acc-list">
+        <div class="acc-item open">
+          <div class="acc-q" onclick="this.parentElement.classList.toggle('open')">Wärmepumpen</div>
+          <div class="acc-a"><p>Wärmepumpen sind die Heiztechnologie der Zukunft – effizient, umweltfreundlich und in vielen Fällen staatlich gefördert. Wir beraten Sie zur richtigen Wärmepumpenart, übernehmen die fachgerechte Installation und unterstützen Sie bei der BAFA-Förderung.</p><a class="card-link" href="/waermepumpen/">Mehr erfahren → Wärmepumpen</a></div>
         </div>
-        <div class="card">
-          <h3>Badsanierung</h3>
-          <p>Ein neues Badezimmer ist mehr als Optik – es ist Lebensqualität. Wir planen und realisieren Ihre Badsanierung in Berlin von der Entwässerung bis zur Fliese, inklusive barrierefreier Umbau auf Wunsch.</p>
-          <a class="card-link" href="/badsanierung/">Mehr erfahren → Badsanierung</a>
+        <div class="acc-item">
+          <div class="acc-q" onclick="this.parentElement.classList.toggle('open')">Badsanierung</div>
+          <div class="acc-a"><p>Ein neues Badezimmer ist mehr als Optik – es ist Lebensqualität. Wir planen und realisieren Ihre Badsanierung in Berlin von der Entwässerung bis zur Fliese, inklusive barrierefreier Umbau auf Wunsch.</p><a class="card-link" href="/badsanierung/">Mehr erfahren → Badsanierung</a></div>
         </div>
-        <div class="card">
-          <h3>Heizungsinstallation & -modernisierung</h3>
-          <p>Ob Neuinstallation, Austausch einer veralteten Anlage oder hydraulischer Abgleich – wir sorgen dafür, dass Ihre Heizung zuverlässig, effizient und normgerecht läuft.</p>
-          <a class="card-link" href="/heizungsinstallationen/">Mehr erfahren → Heizungsinstallation</a>
+        <div class="acc-item">
+          <div class="acc-q" onclick="this.parentElement.classList.toggle('open')">Heizungsinstallation & -modernisierung</div>
+          <div class="acc-a"><p>Ob Neuinstallation, Austausch einer veralteten Anlage oder hydraulischer Abgleich – wir sorgen dafür, dass Ihre Heizung zuverlässig, effizient und normgerecht läuft.</p><a class="card-link" href="/heizungsinstallationen/">Mehr erfahren → Heizungsinstallation</a></div>
         </div>
-        <div class="card">
-          <h3>Sanitärinstallation</h3>
-          <p>Von der Einzelreparatur bis zur kompletten Neu-Installation: Wir übernehmen alle Sanitärarbeiten in Ihrem Berliner Objekt fachgerecht und terminzuverlässig.</p>
-          <a class="card-link" href="/sanitaerinstallationen/">Mehr erfahren → Sanitärinstallation</a>
+        <div class="acc-item">
+          <div class="acc-q" onclick="this.parentElement.classList.toggle('open')">Sanitärinstallation</div>
+          <div class="acc-a"><p>Von der Einzelreparatur bis zur kompletten Neu-Installation: Wir übernehmen alle Sanitärarbeiten in Ihrem Berliner Objekt fachgerecht und terminzuverlässig.</p><a class="card-link" href="/sanitaerinstallationen/">Mehr erfahren → Sanitärinstallation</a></div>
         </div>
-        <div class="card">
-          <h3>Rohrreinigung / 24h-Notdienst</h3>
-          <p>Verstopfte Abflüsse und Rohre können schnell zu größeren Schäden führen. Wir führen professionelle Rohrreinigungen durch – gründlich, sauber und mit moderner Technik. Für akute Fälle: 24h-Notdienst mit Reaktion innerhalb von 60 Minuten.</p>
-          <a class="card-link" href="/rohrreinigung/">Mehr erfahren → Rohrreinigung / Notdienst</a>
+        <div class="acc-item">
+          <div class="acc-q" onclick="this.parentElement.classList.toggle('open')">Rohrreinigung / 24h-Notdienst</div>
+          <div class="acc-a"><p>Verstopfte Abflüsse und Rohre können schnell zu größeren Schäden führen. Wir führen professionelle Rohrreinigungen durch – gründlich, sauber und mit moderner Technik. Für akute Fälle: 24h-Notdienst mit Reaktion innerhalb von 60 Minuten.</p><a class="card-link" href="/rohrreinigung/">Mehr erfahren → Rohrreinigung / Notdienst</a></div>
         </div>
-        <div class="card">
-          <h3>Sonstige Bauleistungen</h3>
-          <p>Für weitere Bauleistungen wie Innenausbau, Trockenbau oder Malerarbeiten empfehlen wir unseren Partner Renovira.</p>
-          <a class="card-link" href="https://renovira.de">Alle Leistungen ansehen → renovira.de</a>
+        <div class="acc-item">
+          <div class="acc-q" onclick="this.parentElement.classList.toggle('open')">Sonstige Bauleistungen</div>
+          <div class="acc-a"><p>Für weitere Bauleistungen wie Innenausbau, Trockenbau oder Malerarbeiten empfehlen wir unseren Partner Renovira.</p><a class="card-link" href="https://renovira.de">Alle Leistungen ansehen → renovira.de</a></div>
         </div></div>
       <div class="feedback-panel" id="feedback-panel-4">
         <label>Ihr Vorschlag für Block 4 — Unsere Leistungen in Berlin:</label>
@@ -1103,13 +1124,15 @@ body {
         </div>
       </div>
     </div>
-    <div class="block block-cta" id="block-7">
+    <div class="block block-msteaser" id="block-7">
       <span class="block-label" style="display:none">Block 7 — Wie dürfen wir Ihnen helfen? – Jetzt Anfrage starten</span>
-      <button class="feedback-btn" onclick="toggleFeedback(7)" style="color:#1e293b;">✏️ Vorschlag</button>
+      <button class="feedback-btn" onclick="toggleFeedback(7)">✏️ Vorschlag</button>
       <h2>Wie dürfen wir Ihnen helfen? – Jetzt Anfrage starten</h2>
-      <p>Sie wissen bereits, was Sie brauchen? In nur wenigen Schritten können Sie uns Ihr Anliegen schildern – unverbindlich und kostenlos. Wählen Sie Ihren Bereich, beschreiben Sie Ihr Vorhaben und wir melden uns mit einem individuellen Angebot. <strong>So funktioniert's:</strong> 1. <strong>Anliegen wählen</strong> – Kostenvoranschlag, Beratungstermin oder allgemeine Anfrage 2. <strong>Bereich angeben</strong> – Wärmepumpe & Heizung, Bad & Sanitär oder Rohrreinigung 3. <strong>Leistungen auswählen</strong> – Wählen Sie die passenden Leistungen (Mehrfachauswahl möglich) 4. <strong>Objektdaten ergänzen</strong> – Wohnfläche, Anzahl Bäder, Baujahr 5. <strong>Kontaktdaten hinterlassen</strong> – Wir melden uns innerhalb von 24 Stunden bei Ihnen <!-- DATA: Reaktionszeit ✅ CLIENT — D-CLIENT-MT-20260519-008 --> ⏱ <strong>Dauer: ca. 2 Minuten</strong> · Kostenlos & unverbindlich</p>
-      <div class="contact-lines"></div>
-      <a class="btn" href="#">→ Jetzt Anfrage starten</a>
+      <p class="ms-teaser-intro">Sie wissen bereits, was Sie brauchen? In nur wenigen Schritten können Sie uns Ihr Anliegen schildern – unverbindlich und kostenlos. Wählen Sie Ihren Bereich, beschreiben Sie Ihr Vorhaben und wir melden uns mit einem individuellen Angebot.</p>
+      <p class="ms-teaser-sub"><strong>So funktioniert&#x27;s:</strong></p>
+      <ol class="ms-teaser-steps"><li><strong>Anliegen wählen</strong> – Kostenvoranschlag, Beratungstermin oder allgemeine Anfrage</li><li><strong>Bereich angeben</strong> – Wärmepumpe & Heizung, Bad & Sanitär oder Rohrreinigung</li><li><strong>Leistungen auswählen</strong> – Wählen Sie die passenden Leistungen (Mehrfachauswahl möglich)</li><li><strong>Objektdaten ergänzen</strong> – Wohnfläche, Anzahl Bäder, Baujahr</li><li><strong>Kontaktdaten hinterlassen</strong> – Wir melden uns innerhalb von 24 Stunden bei Ihnen</li></ol>
+      <a class="btn" href="/anfrage/">→ Jetzt Anfrage starten</a>
+      <div class="ms-teaser-hint">⏱ <strong>Dauer: ca. 2 Minuten</strong> · Kostenlos & unverbindlich</div>
       <div class="feedback-panel" id="feedback-panel-7">
         <label>Ihr Vorschlag für Block 7 — Wie dürfen wir Ihnen helfen? – Jetzt Anfrage starten:</label>
         <textarea id="feedback-text-7" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
@@ -1126,7 +1149,7 @@ body {
       <button class="feedback-btn" onclick="toggleFeedback(8)">✏️ Vorschlag</button>
       <h2>Partner & Hersteller</h2>
       <p>Wir setzen auf geprüfte Qualität von führenden Herstellern der SHK-Branche. Diese Partnerschaften ermöglichen es uns, Ihnen aktuelle Technologien, zuverlässige Produkte und herstellergerechte Installation aus einer Hand anzubieten.</p>
-      <h3>Premium-Hersteller</h3><div class="logos-grid"><div class="logo-item">Vaillant</div><div class="logo-item">Viessmann</div><div class="logo-item">Bosch</div><div class="logo-item">Buderus</div><div class="logo-item">Geberit</div><div class="logo-item">Grohe</div><div class="logo-item">hansgrohe</div><div class="logo-item">TECE</div></div><h3>Fachhändler & Großhandelspartner</h3><div class="logos-grid"><div class="logo-item">ABEX</div><div class="logo-item">Wiedemann</div><div class="logo-item">Bergmann &amp; Franz</div><div class="logo-item">ATALA</div><div class="logo-item">ELEMENTS</div></div>
+      <h3>Partner / Lieferanten</h3><div class="logos-grid"><div class="logo-item">ABEX Bär &amp; Ollenroth</div><div class="logo-item">Wiedemann</div><div class="logo-item">Bergmann &amp; Franz</div><div class="logo-item">ATALA</div><div class="logo-item">ELEMENTS</div><div class="logo-item">Reuter</div></div><h3>Hersteller</h3><div class="logos-grid"><div class="logo-item">Vaillant</div><div class="logo-item">Viessmann</div><div class="logo-item">Bosch</div><div class="logo-item">Buderus</div><div class="logo-item">Geberit</div><div class="logo-item">Grohe</div><div class="logo-item">hansgrohe</div><div class="logo-item">TECE</div><div class="logo-item">Villeroy &amp; Boch</div><div class="logo-item">Kaldewei</div><div class="logo-item">Wolf</div><div class="logo-item">Stiebel Eltron</div><div class="logo-item">CONEL</div><div class="logo-item">Duravit</div></div>
       <div class="feedback-panel" id="feedback-panel-8">
         <label>Ihr Vorschlag für Block 8 — Partner &amp; Hersteller:</label>
         <textarea id="feedback-text-8" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>

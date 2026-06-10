@@ -347,6 +347,43 @@ body {
 .card .card-link { color: var(--accent); text-decoration: none; font-weight: 600; font-size: 14px; }
 .card .card-link:hover { text-decoration: underline; }
 
+/* Services-Akkordeon — untereinander (✅ CLIENT 24.04: statt Kacheln) */
+.block-accordion h2 { margin-bottom: 12px; }
+.block-accordion > p { margin-bottom: 20px; font-size: 15px; line-height: 1.7; }
+.acc-list { display: flex; flex-direction: column; gap: 10px; }
+.acc-item { background: white; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+.acc-q { padding: 16px 20px; font-weight: 600; font-size: 16px; color: var(--primary); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; transition: background 0.15s; }
+.acc-q:hover { background: var(--bg-alt); }
+.acc-q::after { content: '→'; color: var(--text-light); flex-shrink: 0; transition: transform 0.2s; }
+.acc-item.open .acc-q::after { transform: rotate(90deg); }
+.acc-a { display: none; padding: 0 20px 16px; font-size: 14px; color: var(--text-light); line-height: 1.7; }
+.acc-a p { margin-bottom: 10px; }
+.acc-item.open .acc-a { display: block; }
+.acc-a .card-link { color: var(--accent); font-weight: 600; font-size: 14px; text-decoration: none; }
+.acc-a .card-link:hover { text-decoration: underline; }
+
+/* Trust — 2 Spalten wie Design-Kit (Text links, blaue Chip-Box rechts) */
+.trust-cols { display: flex; gap: 32px; flex-wrap: wrap; align-items: flex-start; margin-top: 8px; }
+.trust-cols .trust-text { flex: 1 1 380px; }
+.trust-cols .trust-text p { margin-bottom: 12px; font-size: 15px; line-height: 1.7; }
+.trust-box { flex: 1 1 300px; background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%); border-radius: 12px; padding: 24px; }
+.trust-box--row { display: flex; gap: 12px; flex-wrap: wrap; }
+.trust-box--row .trust-chip { flex: 1 1 220px; margin-bottom: 0; }
+.trust-chip { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.18); border-radius: 8px; padding: 12px 16px; margin-bottom: 10px; color: white; font-weight: 600; font-size: 14px; line-height: 1.5; }
+.trust-box > .trust-chip:last-child { margin-bottom: 0; }
+@media (max-width: 768px) { .trust-cols { flex-direction: column; } }
+
+/* Lead-Magnet-Teaser (Startseite) — strukturiert wie Design-Kit */
+.block.block-msteaser { background: linear-gradient(135deg, var(--primary) 0%, #0f2744 100%) !important; color: white !important; padding: 40px; }
+.block-msteaser h2 { margin-bottom: 12px; }
+.block-msteaser .ms-teaser-intro { opacity: .9; max-width: 760px; margin-bottom: 18px; line-height: 1.7; }
+.block-msteaser .ms-teaser-sub { margin-bottom: 10px; }
+.ms-teaser-steps { list-style: none; counter-reset: mst; display: flex; flex-direction: column; gap: 10px; margin: 0 0 22px; padding: 0; max-width: 760px; }
+.ms-teaser-steps li { counter-increment: mst; background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0.16); border-radius: 8px; padding: 12px 16px 12px 54px; position: relative; font-size: 14px; line-height: 1.5; }
+.ms-teaser-steps li::before { content: counter(mst); position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 26px; height: 26px; border-radius: 50%; background: var(--fb-accent); color: #1e293b; font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; }
+.block-msteaser .btn { display: inline-block; background: var(--fb-accent); color: #1e293b; padding: 14px 32px; border-radius: var(--radius); font-weight: 700; text-decoration: none; font-size: 16px; }
+.block-msteaser .ms-teaser-hint { margin-top: 14px; font-size: 13px; opacity: .85; }
+
 /* Groups — expanded accordion-style strips (FB-022, not tile grid) */
 .block-groups h2 { margin-bottom: 24px; }
 .groups-strips { display: flex; flex-direction: column; gap: 12px; }
@@ -956,7 +993,7 @@ body {
         </div>
       </div>
     </div>
-    <div class="block block-cards" id="block-3">
+    <div class="block block-accordion" id="block-3">
       <span class="block-label" style="display:none">Block 3 — Unsere Leistungen rund um die Heizungsinstallation</span>
       <button class="feedback-btn" onclick="toggleFeedback(3)">✏️ Vorschlag</button>
       <h2>Unsere Leistungen rund um die Heizungsinstallation</h2>
@@ -969,7 +1006,7 @@ body {
 <li><strong>Heizkörpertausch:</strong> Austausch und Neuinstallation von Heizkörpern – passend zur bestehenden oder neuen Heizungsanlage.</li>
 <li><strong>Wartung & Reparatur:</strong> Regelmäßige Inspektion, Reinigung und Wartung sowie schnelle Störungsbeseitigung.</li>
 </ul>
-      <div class="cards-grid"></div>
+      <div class="acc-list"></div>
       <div class="feedback-panel" id="feedback-panel-3">
         <label>Ihr Vorschlag für Block 3 — Unsere Leistungen rund um die Heizungsinstallation:</label>
         <textarea id="feedback-text-3" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
