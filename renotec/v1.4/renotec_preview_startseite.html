@@ -503,9 +503,13 @@ body {
 .step-content h3 { font-size: 16px; margin-bottom: 4px; }
 .step-content p { font-size: 14px; color: var(--text-light); }
 
-/* FAQ */
-.block-faq h2 { text-align: center; margin-bottom: 32px; }
-.faq-list { max-width: 800px; margin: 0 auto; }
+/* FAQ — 2 Spalten wie Design-Kit (Eyebrow+H2 links, Akkordeon rechts) */
+.faq-cols { display: flex; gap: 40px; flex-wrap: wrap; align-items: flex-start; }
+.faq-left { flex: 1 1 280px; }
+.faq-eyebrow { color: var(--accent); font-size: 13px; font-weight: 600; margin-bottom: 8px; }
+.block-faq h2 { text-align: left; margin-bottom: 16px; }
+.faq-list { flex: 1 1 480px; margin: 0; max-width: none; }
+@media (max-width: 768px) { .faq-cols { flex-direction: column; } }
 .faq-item {
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -1216,9 +1220,10 @@ body {
     <div class="block block-faq" id="block-9">
       <span class="block-label" style="display:none">Block 9 — Häufige Fragen (FAQ)</span>
       <button class="feedback-btn" onclick="toggleFeedback(9)">✏️ Vorschlag</button>
-      <h2>Häufige Fragen (FAQ)</h2>
-      <div class="faq-list">
-        <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-cols">
+        <div class="faq-left"><div class="faq-eyebrow">FAQ</div><h2>Häufige Fragen (FAQ)</h2></div>
+        <div class="faq-list">
+        <div class="faq-item open" onclick="this.classList.toggle('open')">
           <div class="faq-q">Welche Leistungen bietet renotec. an?</div>
           <div class="faq-a"><p>Wir sind spezialisiert auf Wärmepumpen, Badsanierung, Heizungsinstallation, Sanitärarbeiten und Rohrreinigung in Berlin und Umgebung. Auch bei weiteren Aufgaben im SHK-Bereich sind wir der richtige Ansprechpartner – sprechen Sie uns gerne an.</p></div>
         </div>
@@ -1250,6 +1255,7 @@ body {
           <div class="faq-q">Was kostet eine Anfrage bei renotec.?</div>
           <div class="faq-a"><p>Die Anfrage und Erstberatung sind für Sie vollständig kostenlos und unverbindlich. Wir erstellen individuelle Angebote nach persönlicher Besichtigung vor Ort – ohne Pauschalen und ohne versteckte Kosten.</p></div>
         </div></div>
+      </div>
       <div class="feedback-panel" id="feedback-panel-9">
         <label>Ihr Vorschlag für Block 9 — Häufige Fragen (FAQ):</label>
         <textarea id="feedback-text-9" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>

@@ -503,9 +503,13 @@ body {
 .step-content h3 { font-size: 16px; margin-bottom: 4px; }
 .step-content p { font-size: 14px; color: var(--text-light); }
 
-/* FAQ */
-.block-faq h2 { text-align: center; margin-bottom: 32px; }
-.faq-list { max-width: 800px; margin: 0 auto; }
+/* FAQ — 2 Spalten wie Design-Kit (Eyebrow+H2 links, Akkordeon rechts) */
+.faq-cols { display: flex; gap: 40px; flex-wrap: wrap; align-items: flex-start; }
+.faq-left { flex: 1 1 280px; }
+.faq-eyebrow { color: var(--accent); font-size: 13px; font-weight: 600; margin-bottom: 8px; }
+.block-faq h2 { text-align: left; margin-bottom: 16px; }
+.faq-list { flex: 1 1 480px; margin: 0; max-width: none; }
+@media (max-width: 768px) { .faq-cols { flex-direction: column; } }
 .faq-item {
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -1202,9 +1206,10 @@ body {
     <div class="block block-faq" id="block-7">
       <span class="block-label" style="display:none">Block 7 — Häufige Fragen zur Rohrreinigung &amp; zum Notdienst in Berlin</span>
       <button class="feedback-btn" onclick="toggleFeedback(7)">✏️ Vorschlag</button>
-      <h2>Häufige Fragen zur Rohrreinigung & zum Notdienst in Berlin</h2>
-      <div class="faq-list">
-        <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-cols">
+        <div class="faq-left"><div class="faq-eyebrow">FAQ</div><h2>Häufige Fragen zur Rohrreinigung & zum Notdienst in Berlin</h2></div>
+        <div class="faq-list">
+        <div class="faq-item open" onclick="this.classList.toggle('open')">
           <div class="faq-q">Mein Abfluss ist verstopft – was tun?</div>
           <div class="faq-a"><p>Greifen Sie nicht zu aggressiven Chemikalien – sie können die Rohre angreifen und lösen eine Verstopfung selten dauerhaft. Schildern Sie uns die Situation per WhatsApp oder Telefon: Wir klären, ob eine schnelle Abflussreinigung genügt oder eine gründliche Rohrreinigung nötig ist. Im akuten Notfall reagieren wir innerhalb von 60 Minuten.</p></div>
         </div>
@@ -1235,6 +1240,7 @@ body {
 <p><strong>Akutes Problem mit verstopftem Abfluss oder Rohr?</strong> Rufen Sie uns an oder schreiben Sie per WhatsApp – im Notdienst reagieren wir innerhalb von 60 Minuten. <!-- DATA: 60 min Reaktion ✅ CLIENT — D-CLIENT-MT-20260519-008 --></p>
 </blockquote></div>
         </div></div>
+      </div>
       <div class="feedback-panel" id="feedback-panel-7">
         <label>Ihr Vorschlag für Block 7 — Häufige Fragen zur Rohrreinigung &amp; zum Notdienst in Berlin:</label>
         <textarea id="feedback-text-7" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>

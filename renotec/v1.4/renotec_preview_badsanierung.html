@@ -503,9 +503,13 @@ body {
 .step-content h3 { font-size: 16px; margin-bottom: 4px; }
 .step-content p { font-size: 14px; color: var(--text-light); }
 
-/* FAQ */
-.block-faq h2 { text-align: center; margin-bottom: 32px; }
-.faq-list { max-width: 800px; margin: 0 auto; }
+/* FAQ — 2 Spalten wie Design-Kit (Eyebrow+H2 links, Akkordeon rechts) */
+.faq-cols { display: flex; gap: 40px; flex-wrap: wrap; align-items: flex-start; }
+.faq-left { flex: 1 1 280px; }
+.faq-eyebrow { color: var(--accent); font-size: 13px; font-weight: 600; margin-bottom: 8px; }
+.block-faq h2 { text-align: left; margin-bottom: 16px; }
+.faq-list { flex: 1 1 480px; margin: 0; max-width: none; }
+@media (max-width: 768px) { .faq-cols { flex-direction: column; } }
 .faq-item {
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -1197,9 +1201,10 @@ body {
     <div class="block block-faq" id="block-8">
       <span class="block-label" style="display:none">Block 8 — Häufige Fragen zur Badsanierung in Berlin</span>
       <button class="feedback-btn" onclick="toggleFeedback(8)">✏️ Vorschlag</button>
-      <h2>Häufige Fragen zur Badsanierung in Berlin</h2>
-      <div class="faq-list">
-        <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-cols">
+        <div class="faq-left"><div class="faq-eyebrow">FAQ</div><h2>Häufige Fragen zur Badsanierung in Berlin</h2></div>
+        <div class="faq-list">
+        <div class="faq-item open" onclick="this.classList.toggle('open')">
           <div class="faq-q">Was kostet eine Badsanierung in Berlin?</div>
           <div class="faq-a"><p>Die Kosten hängen stark vom Umfang, der Größe des Bades und der Wahl der Materialien ab. Da jedes Projekt individuell ist, lässt sich ein Pauschalpreis nicht seriös nennen. renotec. erstellt Ihnen nach einem kostenlosen Vor-Ort-Termin ein detailliertes und transparentes Angebot.</p></div>
         </div>
@@ -1219,6 +1224,7 @@ body {
           <div class="faq-q">Welche Marken verwendet renotec. im Bad?</div>
           <div class="faq-a"><p>Bei Armaturen, Sanitärobjekten und Installationssystemen arbeiten wir mit <strong>Geberit</strong>, <strong>Grohe</strong>, <strong>hansgrohe</strong> und <strong>TECE</strong> zusammen. Diese Hersteller stehen für geprüfte Qualität, lange Lebensdauer und ein breites Produktsortiment.</p></div>
         </div></div>
+      </div>
       <div class="feedback-panel" id="feedback-panel-8">
         <label>Ihr Vorschlag für Block 8 — Häufige Fragen zur Badsanierung in Berlin:</label>
         <textarea id="feedback-text-8" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
