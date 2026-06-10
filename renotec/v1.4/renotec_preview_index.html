@@ -348,6 +348,35 @@ body {
 .card .card-link { color: var(--accent); text-decoration: none; font-weight: 600; font-size: 14px; }
 .card .card-link:hover { text-decoration: underline; }
 
+/* Kontakt-Split (Seitenende) — hell, 2 Spalten wie Design-Kit */
+.block.block-contactsplit { background: linear-gradient(135deg, #eef2fb 0%, #f8fafc 100%) !important; padding: 48px 40px; }
+.cs-cols { display: flex; gap: 40px; flex-wrap: wrap; align-items: flex-start; }
+.cs-info { flex: 1 1 320px; }
+.cs-info h2 { font-size: 28px; margin-bottom: 14px; color: var(--text); }
+.cs-intro { color: var(--text-light); font-size: 14px; line-height: 1.7; max-width: 480px; margin-bottom: 24px; }
+.cs-label { color: var(--accent); font-size: 13px; font-weight: 600; margin-bottom: 10px; }
+.cs-info p { font-size: 14px; margin-bottom: 6px; }
+.cs-wa-btn { display: inline-block; margin-top: 16px; background: white; border: 1px solid var(--border); border-radius: 24px; padding: 9px 18px; font-size: 14px; font-weight: 600; color: var(--text) !important; text-decoration: none !important; }
+.cs-wa-btn:hover { border-color: var(--accent); }
+.cs-form { flex: 1 1 380px; background: white; border: 1px solid var(--border); border-radius: 12px; padding: 28px; box-shadow: var(--shadow); }
+.cs-form-row { display: flex; gap: 16px; }
+.cs-form-row .cs-field { flex: 1; }
+.cs-field { margin-bottom: 14px; }
+.cs-field label { display: block; font-size: 12px; color: var(--text-light); margin-bottom: 5px; }
+.cs-field input, .cs-field textarea { width: 100%; padding: 9px 12px; border: 1px solid var(--border); border-radius: 6px; font-size: 14px; font-family: inherit; background: white; }
+.cs-field textarea { min-height: 80px; resize: vertical; }
+.cs-send { display: block; margin-left: auto; background: var(--primary-light); color: white; border: none; border-radius: var(--radius); padding: 10px 28px; font-size: 14px; font-weight: 600; cursor: not-allowed; opacity: .85; }
+@media (max-width: 768px) { .cs-cols { flex-direction: column; } .cs-form-row { flex-direction: column; gap: 0; } }
+
+/* Steps — 2 Spalten wie Design-Kit (Heading/Intro/CTA links, Schritte rechts) */
+.steps-cols { display: flex; gap: 40px; flex-wrap: wrap; align-items: flex-start; }
+.steps-cols .steps-left { flex: 1 1 300px; }
+.steps-cols .steps-left h2 { text-align: left; margin-bottom: 16px; }
+.steps-cols .steps-left p { font-size: 15px; line-height: 1.7; margin-bottom: 12px; }
+.steps-cols .steps-list { flex: 1 1 420px; margin: 0; max-width: none; }
+.steps-cta { display: inline-block; margin-top: 8px; background: var(--accent); color: white !important; padding: 12px 26px; border-radius: var(--radius); font-weight: 600; text-decoration: none !important; }
+@media (max-width: 768px) { .steps-cols { flex-direction: column; } }
+
 /* Services-Akkordeon — untereinander (✅ CLIENT 24.04: statt Kacheln) */
 .block-accordion h2 { margin-bottom: 12px; }
 .block-accordion > p { margin-bottom: 20px; font-size: 15px; line-height: 1.7; }
@@ -1153,12 +1182,6 @@ body {
           <h4>renotec.</h4>
           <p>SHK-Meisterbetrieb Berlin</p>
           <p>Eingetragen bei der<br>Handwerkskammer Berlin</p>
-        </div>
-        <div class="footer-col">
-          <h4>Kontakt</h4>
-          <p>📍 Pohlstraße 71, 10785 Berlin</p>
-          <p>📞 030 232 581 671</p>
-          <p>📧 kontakt@renotec-shk.de</p>
         </div>
         <div class="footer-col">
           <h4>Leistungen</h4>
