@@ -423,6 +423,7 @@ body {
 .trust-box--row .trust-chip { flex: 1 1 220px; margin-bottom: 0; }
 .trust-chip { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.18); border-radius: 8px; padding: 12px 16px; margin-bottom: 10px; color: white; font-weight: 600; font-size: 14px; line-height: 1.5; }
 .trust-box > .trust-chip:last-child { margin-bottom: 0; }
+.tc-tick { flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; background: rgba(255,255,255,0.22); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; }
 @media (max-width: 768px) { .trust-cols { flex-direction: column; } }
 
 /* Lead-Magnet-Teaser (Startseite) — strukturiert wie Design-Kit */
@@ -1037,7 +1038,7 @@ body {
       <button class="feedback-btn" onclick="toggleFeedback(2)">✏️ Vorschlag</button>
       <h2>Warum renotec.? – Ihr Vorteil auf einen Blick</h2>
       <div class="trust-cols"><div class="trust-text"><p>Wenn es um Sanitär und Heizung in Berlin geht, zählen Fachwissen, Verlässlichkeit und ehrliche Beratung. renotec. steht für über 15 Jahre Erfahrung im SHK-Bereich und den Anspruch, für jedes Projekt eine saubere und wirtschaftlich sinnvolle Lösung zu finden.</p>
-<p>Wir arbeiten mit geprüften Produkten namhafter Hersteller und setzen auf Qualität, die sich im Alltag bewährt. Unser Betrieb ist bei der Handwerkskammer Berlin eingetragen und Mitglied der Berliner SHK-Innung. Das ist für Sie nicht nur eine formale Garantie, sondern ein aktives Qualitätsversprechen.</p></div><div class="trust-box"><div class="trust-chip">🏅 Eingetragener Meister- und Innungsbetrieb</div><div class="trust-chip">🔧 Über 15 Jahre Erfahrung im SHK-Bereich</div><div class="trust-chip">🤝 Verbindliche, termingerechte und zuverlässige Ausführung</div></div></div>
+<p>Wir arbeiten mit geprüften Produkten namhafter Hersteller und setzen auf Qualität, die sich im Alltag bewährt. Unser Betrieb ist bei der Handwerkskammer Berlin eingetragen und Mitglied der Berliner SHK-Innung. Das ist für Sie nicht nur eine formale Garantie, sondern ein aktives Qualitätsversprechen.</p></div><div class="trust-box"><div class="trust-chip"><span class="tc-tick">✓</span><div>Eingetragener Meister- und Innungsbetrieb</div></div><div class="trust-chip"><span class="tc-tick">✓</span><div>Über 15 Jahre Erfahrung im SHK-Bereich</div></div><div class="trust-chip"><span class="tc-tick">✓</span><div>Verbindliche, termingerechte und zuverlässige Ausführung</div></div></div></div>
       <div class="feedback-panel" id="feedback-panel-2">
         <label>Ihr Vorschlag für Block 2 — Warum renotec.? – Ihr Vorteil auf einen Blick:</label>
         <textarea id="feedback-text-2" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
