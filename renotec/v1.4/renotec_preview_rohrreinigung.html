@@ -347,6 +347,33 @@ body {
 .card .card-link { color: var(--accent); text-decoration: none; font-weight: 600; font-size: 14px; }
 .card .card-link:hover { text-decoration: underline; }
 
+/* Glance (07 «Das Wichtigste») — Text links, Akut-Box (Logo-Farbe, pulsierend) rechts */
+.glance-cols { display: flex; gap: 36px; flex-wrap: wrap; align-items: flex-start; }
+.glance-text { flex: 1 1 420px; }
+.glance-text h2 { margin-bottom: 14px; }
+.glance-text p { margin-bottom: 12px; font-size: 15px; line-height: 1.7; }
+.akut-box { flex: 1 1 300px; max-width: 420px; background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%); border-radius: 12px; padding: 24px; color: white; animation: akutPulse 2.5s infinite; }
+.akut-box .akut-title { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+.akut-box p { font-size: 14px; line-height: 1.6; opacity: .92; margin-bottom: 14px; }
+.akut-phone { display: block; background: white; color: var(--primary) !important; text-align: center; padding: 11px 18px; border-radius: var(--radius); font-weight: 700; font-size: 15px; text-decoration: none !important; }
+@keyframes akutPulse { 0%,100% { box-shadow: 0 0 0 0 rgba(37,99,235,0.45); } 50% { box-shadow: 0 0 0 10px transparent; } }
+@media (max-width: 768px) { .glance-cols { flex-direction: column; } .akut-box { max-width: none; } }
+
+/* Notdienst-Band (07) — dunkelblau, Checks links / Ablauf rechts / Notfall-Bar */
+.block.block-notdienst { background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%) !important; color: white !important; padding: 40px; }
+.block-notdienst h2 { margin-bottom: 10px; }
+.nd-intro { max-width: 760px; opacity: .92; margin-bottom: 22px; }
+.nd-intro p { font-size: 14px; line-height: 1.7; }
+.nd-cols { display: flex; gap: 36px; flex-wrap: wrap; align-items: flex-start; }
+.nd-col { flex: 1 1 320px; }
+.nd-label { font-weight: 700; margin-bottom: 12px; }
+.nd-step { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0.16); border-radius: 8px; padding: 11px 14px; margin-bottom: 10px; font-size: 14px; line-height: 1.5; }
+.nd-num { flex-shrink: 0; width: 24px; height: 24px; border-radius: 6px; background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; }
+.nd-fw { margin-top: 16px; font-size: 13px; opacity: .9; }
+.nd-bar { margin-top: 18px; display: flex; gap: 16px; align-items: center; justify-content: space-between; flex-wrap: wrap; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: 10px; padding: 14px 18px; font-size: 14px; }
+.nd-phone { background: white; color: var(--primary) !important; padding: 10px 22px; border-radius: 24px; font-weight: 700; font-size: 15px; text-decoration: none !important; white-space: nowrap; }
+@media (max-width: 768px) { .nd-cols { flex-direction: column; } }
+
 /* Nummerierte Leistungs-Karten (LP-Template 29.04 / Design-Kit) */
 .block-numcards h2 { margin-bottom: 12px; }
 .block-numcards > p { margin-bottom: 20px; font-size: 15px; line-height: 1.7; }
@@ -1023,16 +1050,12 @@ body {
     <div class="page-header"><h1>Rohrreinigung & 24h-Notdienst in Berlin</h1><div class="page-sub">schnell, gründlich, zuverlässig</div></div>
     
     <div class="block block-generic" id="block-1">
-      <span class="block-label" style="display:none">Block 1 — Das Wichtigste auf einen Blick</span>
+      <span class="block-label" style="display:none">Block 1 — </span>
       <button class="feedback-btn" onclick="toggleFeedback(1)">✏️ Vorschlag</button>
-      <h2>Das Wichtigste auf einen Blick</h2>
-      <p>Ein verstopfter Abfluss oder ein blockiertes Rohr legt schnell den ganzen Alltag lahm – und kann, wenn es zu lange dauert, ernsthafte Schäden verursachen. renotec. ist Ihr eingetragener SHK-Meisterbetrieb der Handwerkskammer (HWK) Berlin mit über 15 Jahren Erfahrung in der professionellen Rohrreinigung und Abflussreinigung. Wir arbeiten strukturiert: erst die Ursache klären, dann die passende Methode wählen, sauber dokumentieren – für Privathaushalte, Hausverwaltungen und Gewerbe. Was uns unterscheidet: Als <strong>Meister- und Innungsbetrieb</strong> arbeiten wir nachvollziehbar und dokumentiert – mit einer fairen, transparenten Einschätzung statt Preisschock nach dem Einsatz.</p>
-<p>Für akute Fälle sind wir zusätzlich mit unserem <strong>24/7-Notdienst</strong> rund um die Uhr für Sie da – mit einer Reaktion innerhalb von 60 Minuten in Berlin. Erreichbar unkompliziert per WhatsApp und Telefon.</p>
-<blockquote>
-<p>🚨 <strong>Rohr oder Abfluss verstopft? Akuter Notfall?</strong> Unser Rohr-Notdienst in Berlin ist rund um die Uhr erreichbar – Reaktion innerhalb von 60 Minuten. <strong>☎ 030 232 581 671</strong> <!-- DATA: 24/7 + 60 min Reaktion ✅ CLIENT — D-CLIENT-MT-20260519-008 + Notdienst-Konzept #42481. emergency_click bei Implementation --></p>
-</blockquote>
+      
+      <p>Für akute Fälle sind wir zusätzlich mit unserem <strong>24/7-Notdienst</strong> rund um die Uhr für Sie da – mit einer Reaktion innerhalb von 60 Minuten in Berlin. Erreichbar unkompliziert per WhatsApp und Telefon.</p>
       <div class="feedback-panel" id="feedback-panel-1">
-        <label>Ihr Vorschlag für Block 1 — Das Wichtigste auf einen Blick:</label>
+        <label>Ihr Vorschlag für Block 1 — :</label>
         <textarea id="feedback-text-1" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
         <div class="feedback-actions">
           <button class="btn-save" onclick="saveFeedback(1)">Speichern</button>
@@ -1042,13 +1065,15 @@ body {
         </div>
       </div>
     </div>
-    <div class="block block-imgph" id="block-2">
-      <span class="block-label" style="display:none">Block 2 — Bildbereich</span>
+    <div class="block block-glance" id="block-2">
+      <span class="block-label" style="display:none">Block 2 — Das Wichtigste auf einen Blick</span>
       <button class="feedback-btn" onclick="toggleFeedback(2)">✏️ Vorschlag</button>
-      
-      <figure class="img-ph img-ph--quer"><div class="img-ph-inner"><span class="img-ph-icon">📷</span><span class="img-ph-desc">Thematisches Bild – Rohrreinigung / Notdienst im Einsatz (Foto oder Visualisierung)</span><span class="img-ph-orient">Querformat</span><span class="img-ph-hint">wie Design-Kit: großes Bild direkt unter Hero</span></div></figure>
+      <div class="glance-cols">
+        <div class="glance-text"><div class="steps-eyebrow">24h-Notdienst</div><h2>Das Wichtigste auf einen Blick</h2><p>Ein verstopfter Abfluss oder ein blockiertes Rohr legt schnell den ganzen Alltag lahm – und kann, wenn es zu lange dauert, ernsthafte Schäden verursachen. renotec. ist Ihr eingetragener SHK-Meisterbetrieb der Handwerkskammer (HWK) Berlin mit über 15 Jahren Erfahrung in der professionellen Rohrreinigung und Abflussreinigung. Wir arbeiten strukturiert: erst die Ursache klären, dann die passende Methode wählen, sauber dokumentieren – für Privathaushalte, Hausverwaltungen und Gewerbe. Was uns unterscheidet: Als <strong>Meister- und Innungsbetrieb</strong> arbeiten wir nachvollziehbar und dokumentiert – mit einer fairen, transparenten Einschätzung statt Preisschock nach dem Einsatz.</p></div>
+        <div class="akut-box"><div class="akut-title">Rohr oder Abfluss verstopft? Akuter Notfall?</div><p>Unser Rohr-Notdienst in Berlin ist rund um die Uhr erreichbar – Reaktion innerhalb von 60 Minuten.</p><a class="akut-phone" href="tel:030232581671">📞 030 232 581 671</a></div>
+      </div>
       <div class="feedback-panel" id="feedback-panel-2">
-        <label>Ihr Vorschlag für Block 2 — Bildbereich:</label>
+        <label>Ihr Vorschlag für Block 2 — Das Wichtigste auf einen Blick:</label>
         <textarea id="feedback-text-2" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
         <div class="feedback-actions">
           <button class="btn-save" onclick="saveFeedback(2)">Speichern</button>
@@ -1058,9 +1083,25 @@ body {
         </div>
       </div>
     </div>
-    <div class="block block-numcards" id="block-3">
-      <span class="block-label" style="display:none">Block 3 — Unsere Leistungen rund um die Rohrreinigung in Berlin</span>
+    <div class="block block-imgph" id="block-3">
+      <span class="block-label" style="display:none">Block 3 — Bildbereich</span>
       <button class="feedback-btn" onclick="toggleFeedback(3)">✏️ Vorschlag</button>
+      
+      <figure class="img-ph img-ph--quer"><div class="img-ph-inner"><span class="img-ph-icon">📷</span><span class="img-ph-desc">Thematisches Bild – Rohrreinigung / Notdienst im Einsatz (Foto oder Visualisierung)</span><span class="img-ph-orient">Querformat</span><span class="img-ph-hint">wie Design-Kit: großes Bild direkt unter Hero</span></div></figure>
+      <div class="feedback-panel" id="feedback-panel-3">
+        <label>Ihr Vorschlag für Block 3 — Bildbereich:</label>
+        <textarea id="feedback-text-3" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+        <div class="feedback-actions">
+          <button class="btn-save" onclick="saveFeedback(3)">Speichern</button>
+          <button class="btn-cancel" onclick="toggleFeedback(3)">Abbrechen</button>
+          <button class="btn-delete" onclick="deleteFeedback(3)" style="display:none" id="delete-btn-3">Löschen</button>
+          <span class="saved-indicator" id="saved-3">✓ Gespeichert</span>
+        </div>
+      </div>
+    </div>
+    <div class="block block-numcards" id="block-4">
+      <span class="block-label" style="display:none">Block 4 — Unsere Leistungen rund um die Rohrreinigung in Berlin</span>
+      <button class="feedback-btn" onclick="toggleFeedback(4)">✏️ Vorschlag</button>
       <h2>Unsere Leistungen rund um die Rohrreinigung in Berlin</h2>
       <p>Als erfahrener Meisterbetrieb bieten wir das gesamte Leistungsspektrum der professionellen Rohr-, Abfluss- und Kanalreinigung in Berlin. Jede Verstopfung ist anders – deshalb wählen wir nach einer sorgfältigen Diagnose die passende Methode, statt pauschal vorzugehen.</p>
 <p>So lösen wir nicht nur die akute Verstopfung, sondern klären auch, warum sie entstanden ist – damit das Ergebnis dauerhaft bleibt.</p>
@@ -1090,20 +1131,20 @@ body {
           <h3>Ursachenklärung & Schadensdokumentation</h3>
           <p>nachvollziehbare Befunde als Grundlage für weitere Maßnahmen</p>
         </div></div>
-      <div class="feedback-panel" id="feedback-panel-3">
-        <label>Ihr Vorschlag für Block 3 — Unsere Leistungen rund um die Rohrreinigung in Berlin:</label>
-        <textarea id="feedback-text-3" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+      <div class="feedback-panel" id="feedback-panel-4">
+        <label>Ihr Vorschlag für Block 4 — Unsere Leistungen rund um die Rohrreinigung in Berlin:</label>
+        <textarea id="feedback-text-4" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
         <div class="feedback-actions">
-          <button class="btn-save" onclick="saveFeedback(3)">Speichern</button>
-          <button class="btn-cancel" onclick="toggleFeedback(3)">Abbrechen</button>
-          <button class="btn-delete" onclick="deleteFeedback(3)" style="display:none" id="delete-btn-3">Löschen</button>
-          <span class="saved-indicator" id="saved-3">✓ Gespeichert</span>
+          <button class="btn-save" onclick="saveFeedback(4)">Speichern</button>
+          <button class="btn-cancel" onclick="toggleFeedback(4)">Abbrechen</button>
+          <button class="btn-delete" onclick="deleteFeedback(4)" style="display:none" id="delete-btn-4">Löschen</button>
+          <span class="saved-indicator" id="saved-4">✓ Gespeichert</span>
         </div>
       </div>
     </div>
-    <div class="block block-steps" id="block-4">
-      <span class="block-label" style="display:none">Block 4 — In 5 Schritten zum Ziel</span>
-      <button class="feedback-btn" onclick="toggleFeedback(4)">✏️ Vorschlag</button>
+    <div class="block block-steps" id="block-5">
+      <span class="block-label" style="display:none">Block 5 — In 5 Schritten zum Ziel</span>
+      <button class="feedback-btn" onclick="toggleFeedback(5)">✏️ Vorschlag</button>
       <div class="steps-cols"><div class="steps-left"><div class="steps-eyebrow">In 5 Schritten zum freien Abfluss</div><h2>In 5 Schritten zum Ziel</h2><p>Von der ersten Kontaktaufnahme bis zum freien Abfluss – transparent, ohne versteckte Kosten.</p></div><div class="steps-list">
         <div class="step">
           <div class="step-num">1</div>
@@ -1137,48 +1178,11 @@ body {
           <div class="step-num">5</div>
           <div class="step-content">
             <h3>Dokumentation & Empfehlung</h3>
-            <p>Nach dem Einsatz erhalten Sie eine klare Rückmeldung und, falls sinnvoll, eine Empfehlung zur Vorbeugung.
-
-
-<!-- DATA: Notdienst AKTIV ✅ CLIENT — Daniel Notdienst-Konzept (Email #42481, 31.05) + D-CLIENT-MT-20260519-006/007. Notdienst = NUR Rohrreinigung/Rohrverstopfung (nicht Sanitär/Heizung). Reaktionszeit 60 min — D-CLIENT-MT-20260519-008. IMPLEMENTS: D-FB-260531-002 -->
-<!-- OPTION Festpreis-USP (Daniel-Konzept «Rohrreinigung zu Festpreisen», noch nicht final entschieden 31.05) — NICHT veröffentlicht bis ✅ CLIENT. Bei Bestätigung: prominenter Trust-Block. Siehe D-OPEN-008 --></p>
+            <p>Nach dem Einsatz erhalten Sie eine klare Rückmeldung und, falls sinnvoll, eine Empfehlung zur Vorbeugung.</p>
           </div>
         </div></div></div>
-      <div class="feedback-panel" id="feedback-panel-4">
-        <label>Ihr Vorschlag für Block 4 — In 5 Schritten zum Ziel:</label>
-        <textarea id="feedback-text-4" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
-        <div class="feedback-actions">
-          <button class="btn-save" onclick="saveFeedback(4)">Speichern</button>
-          <button class="btn-cancel" onclick="toggleFeedback(4)">Abbrechen</button>
-          <button class="btn-delete" onclick="deleteFeedback(4)" style="display:none" id="delete-btn-4">Löschen</button>
-          <span class="saved-indicator" id="saved-4">✓ Gespeichert</span>
-        </div>
-      </div>
-    </div>
-    <div class="block block-generic" id="block-5">
-      <span class="block-label" style="display:none">Block 5 — 24/7-Notdienst für Rohrverstopfungen in Berlin</span>
-      <button class="feedback-btn" onclick="toggleFeedback(5)">✏️ Vorschlag</button>
-      <h2>24/7-Notdienst für Rohrverstopfungen in Berlin</h2>
-      <p>Eine verstopfte Hauptleitung oder ein überlaufender Abfluss wartet nicht. Deshalb ist unser Rohr-Notdienst rund um die Uhr für Sie da – auch an Wochenenden und Feiertagen. Nach Ihrem Anruf melden wir uns innerhalb von 60 Minuten und kümmern uns schnellstmöglich um Ihr Problem.</p>
-<p><strong>Unser Notdienst hilft bei:</strong></p>
-<ul>
-<li>Akuten Rohrverstopfungen in Abflüssen, Toiletten und Hauptleitungen</li>
-<li>Rückstau und blockierten Fallrohren</li>
-<li>Verstopfungen im privaten wie im gewerblichen Bereich – mit Hochdruck- und Spiralreinigung</li>
-</ul>
-<p><strong>So läuft der Notdienst ab:</strong></p>
-<ol>
-<li><strong>Anruf oder Kontaktformular</strong> – Sie schildern uns kurz das Problem.</li>
-<li><strong>Sofortige Rückmeldung</strong> – wir reagieren innerhalb von 60 Minuten.</li>
-<li><strong>Techniker kommt</strong> – wir sind schnell bei Ihnen vor Ort.</li>
-<li><strong>Problem gelöst</strong> – wir beseitigen die Verstopfung fachgerecht.</li>
-</ol>
-<p><strong>Für wen:</strong> Privathaushalte, Vermieter & Hausverwaltungen, Wohnungseigentümer sowie Gewerbe und Restaurants – auch bei regelmäßigem Bedarf.</p>
-<blockquote>
-<p>🚨 <strong>Notfall? Rohr verstopft?</strong> Rufen Sie uns direkt an: <strong>030 232 581 671</strong> – rund um die Uhr erreichbar.</p>
-</blockquote>
       <div class="feedback-panel" id="feedback-panel-5">
-        <label>Ihr Vorschlag für Block 5 — 24/7-Notdienst für Rohrverstopfungen in Berlin:</label>
+        <label>Ihr Vorschlag für Block 5 — In 5 Schritten zum Ziel:</label>
         <textarea id="feedback-text-5" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
         <div class="feedback-actions">
           <button class="btn-save" onclick="saveFeedback(5)">Speichern</button>
@@ -1192,7 +1196,7 @@ body {
       <span class="block-label" style="display:none">Block 6 — Bildbereich</span>
       <button class="feedback-btn" onclick="toggleFeedback(6)">✏️ Vorschlag</button>
       
-      <div class="img-ph-vn-wrap"><span class="img-ph-vn-label">Vorher / Nachher – Slider-Element</span><div class="img-ph-vn-row"><figure class="img-ph img-ph--quer"><div class="img-ph-inner"><span class="img-ph-icon">📷</span><span class="img-ph-tag">Vorher</span><span class="img-ph-desc">Vorher/Nachher – verstopftes vs. gereinigtes Rohr (Foto oder Visualisierung)</span><span class="img-ph-orient">Querformat</span></div></figure><figure class="img-ph img-ph--quer"><div class="img-ph-inner"><span class="img-ph-icon">📷</span><span class="img-ph-tag">Nachher</span><span class="img-ph-desc">Vorher/Nachher – verstopftes vs. gereinigtes Rohr (Foto oder Visualisierung)</span><span class="img-ph-orient">Querformat</span></div></figure></div><span class="img-ph-hint">Ergebnis</span></div>
+      <figure class="img-ph img-ph--quer"><div class="img-ph-inner"><span class="img-ph-icon">📷</span><span class="img-ph-desc">Foto-Galerie / Slider – 3 Bilder (Rohrreinigungs-Einsätze, Beispiel-Platzhalter)</span><span class="img-ph-orient">Querformat</span><span class="img-ph-hint">wie Design-Kit: Bildband zwischen Ablauf und Notdienst-Band</span></div></figure>
       <div class="feedback-panel" id="feedback-panel-6">
         <label>Ihr Vorschlag für Block 6 — Bildbereich:</label>
         <textarea id="feedback-text-6" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
@@ -1204,9 +1208,47 @@ body {
         </div>
       </div>
     </div>
-    <div class="block block-faq" id="block-7">
-      <span class="block-label" style="display:none">Block 7 — Häufige Fragen zur Rohrreinigung in Berlin</span>
+    <div class="block block-notdienst" id="block-7">
+      <span class="block-label" style="display:none">Block 7 — 24/7-Notdienst für Rohrverstopfungen in Berlin</span>
       <button class="feedback-btn" onclick="toggleFeedback(7)">✏️ Vorschlag</button>
+      <h2>24/7-Notdienst für Rohrverstopfungen in Berlin</h2>
+      <div class="nd-intro"><p>Eine verstopfte Hauptleitung oder ein überlaufender Abfluss wartet nicht. Deshalb ist unser Rohr-Notdienst rund um die Uhr für Sie da – auch an Wochenenden und Feiertagen. Nach Ihrem Anruf melden wir uns innerhalb von 60 Minuten und kümmern uns schnellstmöglich um Ihr Problem.</p></div>
+      <div class="nd-cols">
+        <div class="nd-col"><div class="nd-label">Unser Notdienst hilft bei:</div><div class="hl-check"><span class="hl-tick">✓</span><div>Akuten Rohrverstopfungen in Abflüssen, Toiletten und Hauptleitungen</div></div><div class="hl-check"><span class="hl-tick">✓</span><div>Rückstau und blockierten Fallrohren</div></div><div class="hl-check"><span class="hl-tick">✓</span><div>Verstopfungen im privaten wie im gewerblichen Bereich – mit Hochdruck- und Spiralreinigung</div></div></div>
+        <div class="nd-col"><div class="nd-label">So läuft der Notdienst ab:</div><div class="nd-step"><span class="nd-num">1</span><div><strong>Anruf oder Kontaktformular</strong> Sie schildern uns kurz das Problem.</div></div><div class="nd-step"><span class="nd-num">2</span><div><strong>Sofortige Rückmeldung</strong> wir reagieren innerhalb von 60 Minuten.</div></div><div class="nd-step"><span class="nd-num">3</span><div><strong>Techniker kommt</strong> wir sind schnell bei Ihnen vor Ort.</div></div><div class="nd-step"><span class="nd-num">4</span><div><strong>Problem gelöst</strong> wir beseitigen die Verstopfung fachgerecht.</div></div></div>
+      </div>
+      <p class="nd-fw"><strong>Für wen:</strong> Privathaushalte, Vermieter & Hausverwaltungen, Wohnungseigentümer sowie Gewerbe und Restaurants – auch bei regelmäßigem Bedarf.</p>
+      <div class="nd-bar"><div><strong>Notfall? Rohr verstopft?</strong> Rufen Sie uns direkt an:  – rund um die Uhr erreichbar</div><a class="nd-phone" href="tel:030232581671">📞 030 232 581 671</a></div>
+      <div class="feedback-panel" id="feedback-panel-7">
+        <label>Ihr Vorschlag für Block 7 — 24/7-Notdienst für Rohrverstopfungen in Berlin:</label>
+        <textarea id="feedback-text-7" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+        <div class="feedback-actions">
+          <button class="btn-save" onclick="saveFeedback(7)">Speichern</button>
+          <button class="btn-cancel" onclick="toggleFeedback(7)">Abbrechen</button>
+          <button class="btn-delete" onclick="deleteFeedback(7)" style="display:none" id="delete-btn-7">Löschen</button>
+          <span class="saved-indicator" id="saved-7">✓ Gespeichert</span>
+        </div>
+      </div>
+    </div>
+    <div class="block block-imgph" id="block-8">
+      <span class="block-label" style="display:none">Block 8 — Bildbereich</span>
+      <button class="feedback-btn" onclick="toggleFeedback(8)">✏️ Vorschlag</button>
+      
+      <div class="img-ph-vn-wrap"><span class="img-ph-vn-label">Vorher / Nachher – Slider-Element</span><div class="img-ph-vn-row"><figure class="img-ph img-ph--quer"><div class="img-ph-inner"><span class="img-ph-icon">📷</span><span class="img-ph-tag">Vorher</span><span class="img-ph-desc">Vorher/Nachher – verstopftes vs. gereinigtes Rohr (Foto oder Visualisierung)</span><span class="img-ph-orient">Querformat</span></div></figure><figure class="img-ph img-ph--quer"><div class="img-ph-inner"><span class="img-ph-icon">📷</span><span class="img-ph-tag">Nachher</span><span class="img-ph-desc">Vorher/Nachher – verstopftes vs. gereinigtes Rohr (Foto oder Visualisierung)</span><span class="img-ph-orient">Querformat</span></div></figure></div><span class="img-ph-hint">Ergebnis</span></div>
+      <div class="feedback-panel" id="feedback-panel-8">
+        <label>Ihr Vorschlag für Block 8 — Bildbereich:</label>
+        <textarea id="feedback-text-8" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+        <div class="feedback-actions">
+          <button class="btn-save" onclick="saveFeedback(8)">Speichern</button>
+          <button class="btn-cancel" onclick="toggleFeedback(8)">Abbrechen</button>
+          <button class="btn-delete" onclick="deleteFeedback(8)" style="display:none" id="delete-btn-8">Löschen</button>
+          <span class="saved-indicator" id="saved-8">✓ Gespeichert</span>
+        </div>
+      </div>
+    </div>
+    <div class="block block-faq" id="block-9">
+      <span class="block-label" style="display:none">Block 9 — Häufige Fragen zur Rohrreinigung in Berlin</span>
+      <button class="feedback-btn" onclick="toggleFeedback(9)">✏️ Vorschlag</button>
       <div class="faq-cols">
         <div class="faq-left"><div class="faq-eyebrow">FAQ</div><h2>Häufige Fragen zur Rohrreinigung in Berlin</h2></div>
         <div class="faq-list">
@@ -1236,26 +1278,23 @@ body {
         </div>
         <div class="faq-item" onclick="this.classList.toggle('open')">
           <div class="faq-q">In welchen Berliner Bezirken ist renotec. für Rohrreinigung tätig?</div>
-          <div class="faq-a"><p>renotec. ist in ganz Berlin tätig – von Mitte über Charlottenburg und Friedrichshain bis zu Spandau, Reinickendorf und Köpenick. Auch Aufträge im direkten Berliner Umland nehmen wir nach Absprache an.</p>
-<blockquote>
-<p><strong>Akutes Problem mit verstopftem Abfluss oder Rohr?</strong> Rufen Sie uns an oder schreiben Sie per WhatsApp – im Notdienst reagieren wir innerhalb von 60 Minuten. <!-- DATA: 60 min Reaktion ✅ CLIENT — D-CLIENT-MT-20260519-008 --></p>
-</blockquote></div>
+          <div class="faq-a"><p>renotec. ist in ganz Berlin tätig – von Mitte über Charlottenburg und Friedrichshain bis zu Spandau, Reinickendorf und Köpenick. Auch Aufträge im direkten Berliner Umland nehmen wir nach Absprache an.</p></div>
         </div></div>
       </div>
-      <div class="feedback-panel" id="feedback-panel-7">
-        <label>Ihr Vorschlag für Block 7 — Häufige Fragen zur Rohrreinigung in Berlin:</label>
-        <textarea id="feedback-text-7" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+      <div class="feedback-panel" id="feedback-panel-9">
+        <label>Ihr Vorschlag für Block 9 — Häufige Fragen zur Rohrreinigung in Berlin:</label>
+        <textarea id="feedback-text-9" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
         <div class="feedback-actions">
-          <button class="btn-save" onclick="saveFeedback(7)">Speichern</button>
-          <button class="btn-cancel" onclick="toggleFeedback(7)">Abbrechen</button>
-          <button class="btn-delete" onclick="deleteFeedback(7)" style="display:none" id="delete-btn-7">Löschen</button>
-          <span class="saved-indicator" id="saved-7">✓ Gespeichert</span>
+          <button class="btn-save" onclick="saveFeedback(9)">Speichern</button>
+          <button class="btn-cancel" onclick="toggleFeedback(9)">Abbrechen</button>
+          <button class="btn-delete" onclick="deleteFeedback(9)" style="display:none" id="delete-btn-9">Löschen</button>
+          <span class="saved-indicator" id="saved-9">✓ Gespeichert</span>
         </div>
       </div>
     </div>
-    <div class="block block-contactsplit" id="block-8">
-      <span class="block-label" style="display:none">Block 8 — Jetzt kostenlos anfragen</span>
-      <button class="feedback-btn" onclick="toggleFeedback(8)">✏️ Vorschlag</button>
+    <div class="block block-contactsplit" id="block-10">
+      <span class="block-label" style="display:none">Block 10 — Jetzt kostenlos anfragen</span>
+      <button class="feedback-btn" onclick="toggleFeedback(10)">✏️ Vorschlag</button>
       <div class="cs-cols">
         <div class="cs-info">
           <h2>Jetzt kostenlos anfragen</h2>
@@ -1278,14 +1317,14 @@ body {
           <button class="cs-send" disabled>Senden</button>
         </div>
       </div>
-      <div class="feedback-panel" id="feedback-panel-8">
-        <label>Ihr Vorschlag für Block 8 — Jetzt kostenlos anfragen:</label>
-        <textarea id="feedback-text-8" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+      <div class="feedback-panel" id="feedback-panel-10">
+        <label>Ihr Vorschlag für Block 10 — Jetzt kostenlos anfragen:</label>
+        <textarea id="feedback-text-10" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
         <div class="feedback-actions">
-          <button class="btn-save" onclick="saveFeedback(8)">Speichern</button>
-          <button class="btn-cancel" onclick="toggleFeedback(8)">Abbrechen</button>
-          <button class="btn-delete" onclick="deleteFeedback(8)" style="display:none" id="delete-btn-8">Löschen</button>
-          <span class="saved-indicator" id="saved-8">✓ Gespeichert</span>
+          <button class="btn-save" onclick="saveFeedback(10)">Speichern</button>
+          <button class="btn-cancel" onclick="toggleFeedback(10)">Abbrechen</button>
+          <button class="btn-delete" onclick="deleteFeedback(10)" style="display:none" id="delete-btn-10">Löschen</button>
+          <span class="saved-indicator" id="saved-10">✓ Gespeichert</span>
         </div>
       </div>
     </div>

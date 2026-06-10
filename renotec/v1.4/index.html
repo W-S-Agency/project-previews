@@ -348,6 +348,33 @@ body {
 .card .card-link { color: var(--accent); text-decoration: none; font-weight: 600; font-size: 14px; }
 .card .card-link:hover { text-decoration: underline; }
 
+/* Glance (07 «Das Wichtigste») — Text links, Akut-Box (Logo-Farbe, pulsierend) rechts */
+.glance-cols { display: flex; gap: 36px; flex-wrap: wrap; align-items: flex-start; }
+.glance-text { flex: 1 1 420px; }
+.glance-text h2 { margin-bottom: 14px; }
+.glance-text p { margin-bottom: 12px; font-size: 15px; line-height: 1.7; }
+.akut-box { flex: 1 1 300px; max-width: 420px; background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%); border-radius: 12px; padding: 24px; color: white; animation: akutPulse 2.5s infinite; }
+.akut-box .akut-title { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+.akut-box p { font-size: 14px; line-height: 1.6; opacity: .92; margin-bottom: 14px; }
+.akut-phone { display: block; background: white; color: var(--primary) !important; text-align: center; padding: 11px 18px; border-radius: var(--radius); font-weight: 700; font-size: 15px; text-decoration: none !important; }
+@keyframes akutPulse { 0%,100% { box-shadow: 0 0 0 0 rgba(37,99,235,0.45); } 50% { box-shadow: 0 0 0 10px transparent; } }
+@media (max-width: 768px) { .glance-cols { flex-direction: column; } .akut-box { max-width: none; } }
+
+/* Notdienst-Band (07) — dunkelblau, Checks links / Ablauf rechts / Notfall-Bar */
+.block.block-notdienst { background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%) !important; color: white !important; padding: 40px; }
+.block-notdienst h2 { margin-bottom: 10px; }
+.nd-intro { max-width: 760px; opacity: .92; margin-bottom: 22px; }
+.nd-intro p { font-size: 14px; line-height: 1.7; }
+.nd-cols { display: flex; gap: 36px; flex-wrap: wrap; align-items: flex-start; }
+.nd-col { flex: 1 1 320px; }
+.nd-label { font-weight: 700; margin-bottom: 12px; }
+.nd-step { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0.16); border-radius: 8px; padding: 11px 14px; margin-bottom: 10px; font-size: 14px; line-height: 1.5; }
+.nd-num { flex-shrink: 0; width: 24px; height: 24px; border-radius: 6px; background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; }
+.nd-fw { margin-top: 16px; font-size: 13px; opacity: .9; }
+.nd-bar { margin-top: 18px; display: flex; gap: 16px; align-items: center; justify-content: space-between; flex-wrap: wrap; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: 10px; padding: 14px 18px; font-size: 14px; }
+.nd-phone { background: white; color: var(--primary) !important; padding: 10px 22px; border-radius: 24px; font-weight: 700; font-size: 15px; text-decoration: none !important; white-space: nowrap; }
+@media (max-width: 768px) { .nd-cols { flex-direction: column; } }
+
 /* Nummerierte Leistungs-Karten (LP-Template 29.04 / Design-Kit) */
 .block-numcards h2 { margin-bottom: 12px; }
 .block-numcards > p { margin-bottom: 20px; font-size: 15px; line-height: 1.7; }
