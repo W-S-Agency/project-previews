@@ -392,6 +392,7 @@ body {
 .cs-send { display: block; margin-left: auto; background: var(--primary-light); color: white; border: none; border-radius: var(--radius); padding: 10px 28px; font-size: 14px; font-weight: 600; cursor: not-allowed; opacity: .85; }
 @media (max-width: 768px) { .cs-cols { flex-direction: column; } .cs-form-row { flex-direction: column; gap: 0; } }
 
+.steps-eyebrow { color: var(--accent); font-size: 13px; font-weight: 600; margin-bottom: 8px; }
 /* Steps — 2 Spalten wie Design-Kit (Heading/Intro/CTA links, Schritte rechts) */
 .steps-cols { display: flex; gap: 40px; flex-wrap: wrap; align-items: flex-start; }
 .steps-cols .steps-left { flex: 1 1 300px; }
@@ -1142,9 +1143,9 @@ body {
       </div>
     </div>
     <div class="block block-steps" id="block-7">
-      <span class="block-label" style="display:none">Block 7 — So läuft Ihr Wärmepumpen-Projekt ab</span>
+      <span class="block-label" style="display:none">Block 7 — In 5 Schritten zum Ziel</span>
       <button class="feedback-btn" onclick="toggleFeedback(7)">✏️ Vorschlag</button>
-      <h2>So läuft Ihr Wärmepumpen-Projekt ab</h2><div class="steps-list">
+      <div class="steps-cols"><div class="steps-left"><div class="steps-eyebrow">In 5 Schritten zur Wärmepumpe</div><h2>In 5 Schritten zum Ziel</h2><p>Von der ersten Kontaktaufnahme bis zur fertigen Wärmepumpe – transparent, ohne versteckte Kosten.</p></div><div class="steps-list">
         <div class="step">
           <div class="step-num">1</div>
           <div class="step-content">
@@ -1179,9 +1180,9 @@ body {
             <h3>Inbetriebnahme & Einweisung</h3>
             <p>Wir nehmen Ihre neue Wärmepumpe gemeinsam mit Ihnen in Betrieb, prüfen alle Einstellungen und erklären Ihnen die Bedienung.</p>
           </div>
-        </div></div>
+        </div></div></div>
       <div class="feedback-panel" id="feedback-panel-7">
-        <label>Ihr Vorschlag für Block 7 — So läuft Ihr Wärmepumpen-Projekt ab:</label>
+        <label>Ihr Vorschlag für Block 7 — In 5 Schritten zum Ziel:</label>
         <textarea id="feedback-text-7" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
         <div class="feedback-actions">
           <button class="btn-save" onclick="saveFeedback(7)">Speichern</button>

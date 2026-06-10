@@ -392,6 +392,7 @@ body {
 .cs-send { display: block; margin-left: auto; background: var(--primary-light); color: white; border: none; border-radius: var(--radius); padding: 10px 28px; font-size: 14px; font-weight: 600; cursor: not-allowed; opacity: .85; }
 @media (max-width: 768px) { .cs-cols { flex-direction: column; } .cs-form-row { flex-direction: column; gap: 0; } }
 
+.steps-eyebrow { color: var(--accent); font-size: 13px; font-weight: 600; margin-bottom: 8px; }
 /* Steps — 2 Spalten wie Design-Kit (Heading/Intro/CTA links, Schritte rechts) */
 .steps-cols { display: flex; gap: 40px; flex-wrap: wrap; align-items: flex-start; }
 .steps-cols .steps-left { flex: 1 1 300px; }
@@ -1112,9 +1113,9 @@ body {
       </div>
     </div>
     <div class="block block-steps" id="block-5">
-      <span class="block-label" style="display:none">Block 5 — So läuft Ihr Heizungsprojekt bei renotec. ab</span>
+      <span class="block-label" style="display:none">Block 5 — In 5 Schritten zum Ziel</span>
       <button class="feedback-btn" onclick="toggleFeedback(5)">✏️ Vorschlag</button>
-      <h2>So läuft Ihr Heizungsprojekt bei renotec. ab</h2><div class="steps-list">
+      <div class="steps-cols"><div class="steps-left"><div class="steps-eyebrow">In 5 Schritten zur neuen Heizung</div><h2>In 5 Schritten zum Ziel</h2><p>Von der ersten Kontaktaufnahme bis zur fertigen Heizungsanlage – transparent, ohne versteckte Kosten.</p></div><div class="steps-list">
         <div class="step">
           <div class="step-num">1</div>
           <div class="step-content">
@@ -1149,9 +1150,9 @@ body {
             <h3>Inbetriebnahme:</h3>
             <p>Gemeinsame Inbetriebnahme, Einweisung in die Bedienung und Übergabe aller Unterlagen und Protokolle.</p>
           </div>
-        </div></div>
+        </div></div></div>
       <div class="feedback-panel" id="feedback-panel-5">
-        <label>Ihr Vorschlag für Block 5 — So läuft Ihr Heizungsprojekt bei renotec. ab:</label>
+        <label>Ihr Vorschlag für Block 5 — In 5 Schritten zum Ziel:</label>
         <textarea id="feedback-text-5" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
         <div class="feedback-actions">
           <button class="btn-save" onclick="saveFeedback(5)">Speichern</button>
