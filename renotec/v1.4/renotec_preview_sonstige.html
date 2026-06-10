@@ -1082,21 +1082,6 @@ body {
       <button class="feedback-btn" onclick="toggleFeedback(2)">✏️ Vorschlag</button>
       <h2>renovira. – Sanierungen aller Art in Berlin</h2>
       <p><strong>renovira.</strong> steht für ganzheitliche Bau- und Sanierungsleistungen aus einer Hand. Mit über <strong>100 abgeschlossenen Projekten</strong> in Berlin realisiert renovira. sowohl einzelne Handwerkerleistungen als auch komplette Wohnungs- und Haussanierungen – termingerecht, transparent und koordiniert. Der Leitspruch: <strong>„Einfach. Besser. Machen."</strong></p>
-<h3>Leistungen bei renovira.:</h3>
-<ul>
-<li><strong>Komplettsanierungen</strong> – Wohnungen und Häuser von A bis Z sanieren</li>
-<li><strong>Altbausanierung</strong> – fachgerechte Sanierung von Berliner Altbauten</li>
-<li><strong>Trockenbau</strong> – Wände, Decken, Dachausbau, Raumtrennung</li>
-<li><strong>Maler- & Lackierarbeiten</strong> – Innen- und Außenanstrich, Tapezierarbeiten</li>
-<li><strong>Fliesen- & Bodenverlegung</strong> – Fliesen, Parkett, Laminat, Vinyl und mehr</li>
-<li><strong>Dachsanierung</strong> – Dachabdichtung, Dachausbau, Wärmedämmung</li>
-<li><strong>Fassadensanierung</strong> – Außenputz, Fassadenanstrich, Wärmedämmverbundsysteme</li>
-<li><strong>Fenster- & Türeneinbau</strong> – Austausch und Neueinbau</li>
-<li><strong>Elektroinstallation</strong> – Elektrik, Beleuchtung, Verkabelung</li>
-<li><strong>Heizungs- & Klimainstallation</strong> – in Kooperation mit renotec.</li>
-</ul>
-<h3>renotec. + renovira.: Ihr Vorteil</h3>
-<p>Wenn Ihr Projekt sowohl SHK-Leistungen (Sanitär, Heizung, Wärmepumpe) als auch Ausbaugewerke (Trockenbau, Fliesen, Maler) umfasst, profitieren Sie von unserer eingespielten Zusammenarbeit: <strong>Ein Sanierungsprojekt – zwei spezialisierte Partner – eine reibungslose Koordination.</strong> Sie müssen sich nicht selbst um die Abstimmung zwischen verschiedenen Gewerken kümmern.</p>
       <div class="feedback-panel" id="feedback-panel-2">
         <label>Ihr Vorschlag für Block 2 — renovira. – Sanierungen aller Art in Berlin:</label>
         <textarea id="feedback-text-2" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
@@ -1108,21 +1093,94 @@ body {
         </div>
       </div>
     </div>
-    <div class="block block-cta" id="block-3">
-      <span class="block-label" style="display:none">Block 3 — Direkt zu renovira.</span>
-      <button class="feedback-btn" onclick="toggleFeedback(3)" style="color:#1e293b;">✏️ Vorschlag</button>
-      <h2>Direkt zu renovira.</h2>
-      <p>Besuchen Sie renovira. für alle weiteren Bauleistungen in Berlin: <em>renotec. und renovira. – starke Partner für Ihr Bauprojekt in Berlin.</em></p>
-      <div class="contact-lines">📞 renovira. Telefon: +49 30 232 581 670</div>
-      <a class="btn" href="https://www.renovira.de">→ Jetzt renovira.de besuchen</a>
+    <div class="block block-accordion" id="block-3">
+      <span class="block-label" style="display:none">Block 3 — Leistungen bei renovira.</span>
+      <button class="feedback-btn" onclick="toggleFeedback(3)">✏️ Vorschlag</button>
+      <h2>Leistungen bei renovira.</h2>
+      
+      <div class="acc-list">
+        <div class="acc-item open">
+          <div class="acc-q" onclick="this.parentElement.classList.toggle('open')">Komplettsanierungen</div>
+          <div class="acc-a"><p>Wohnungen und Häuser von A bis Z sanieren</p></div>
+        </div>
+        <div class="acc-item">
+          <div class="acc-q" onclick="this.parentElement.classList.toggle('open')">Altbausanierung</div>
+          <div class="acc-a"><p>fachgerechte Sanierung von Berliner Altbauten</p></div>
+        </div>
+        <div class="acc-item">
+          <div class="acc-q" onclick="this.parentElement.classList.toggle('open')">Trockenbau</div>
+          <div class="acc-a"><p>Wände, Decken, Dachausbau, Raumtrennung</p></div>
+        </div>
+        <div class="acc-item">
+          <div class="acc-q" onclick="this.parentElement.classList.toggle('open')">Maler- & Lackierarbeiten</div>
+          <div class="acc-a"><p>Innen- und Außenanstrich, Tapezierarbeiten</p></div>
+        </div>
+        <div class="acc-item">
+          <div class="acc-q" onclick="this.parentElement.classList.toggle('open')">Fliesen- & Bodenverlegung</div>
+          <div class="acc-a"><p>Fliesen, Parkett, Laminat, Vinyl und mehr</p></div>
+        </div>
+        <div class="acc-item">
+          <div class="acc-q" onclick="this.parentElement.classList.toggle('open')">Dachsanierung</div>
+          <div class="acc-a"><p>Dachabdichtung, Dachausbau, Wärmedämmung</p></div>
+        </div>
+        <div class="acc-item">
+          <div class="acc-q" onclick="this.parentElement.classList.toggle('open')">Fassadensanierung</div>
+          <div class="acc-a"><p>Außenputz, Fassadenanstrich, Wärmedämmverbundsysteme</p></div>
+        </div>
+        <div class="acc-item">
+          <div class="acc-q" onclick="this.parentElement.classList.toggle('open')">Fenster- & Türeneinbau</div>
+          <div class="acc-a"><p>Austausch und Neueinbau</p></div>
+        </div>
+        <div class="acc-item">
+          <div class="acc-q" onclick="this.parentElement.classList.toggle('open')">Elektroinstallation</div>
+          <div class="acc-a"><p>Elektrik, Beleuchtung, Verkabelung</p></div>
+        </div>
+        <div class="acc-item">
+          <div class="acc-q" onclick="this.parentElement.classList.toggle('open')">Heizungs- & Klimainstallation</div>
+          <div class="acc-a"><p>in Kooperation mit renotec.</p></div>
+        </div></div>
       <div class="feedback-panel" id="feedback-panel-3">
-        <label>Ihr Vorschlag für Block 3 — Direkt zu renovira.:</label>
+        <label>Ihr Vorschlag für Block 3 — Leistungen bei renovira.:</label>
         <textarea id="feedback-text-3" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
         <div class="feedback-actions">
           <button class="btn-save" onclick="saveFeedback(3)">Speichern</button>
           <button class="btn-cancel" onclick="toggleFeedback(3)">Abbrechen</button>
           <button class="btn-delete" onclick="deleteFeedback(3)" style="display:none" id="delete-btn-3">Löschen</button>
           <span class="saved-indicator" id="saved-3">✓ Gespeichert</span>
+        </div>
+      </div>
+    </div>
+    <div class="block block-generic" id="block-4">
+      <span class="block-label" style="display:none">Block 4 — renotec. + renovira.: Ihr Vorteil</span>
+      <button class="feedback-btn" onclick="toggleFeedback(4)">✏️ Vorschlag</button>
+      <h2>renotec. + renovira.: Ihr Vorteil</h2>
+      <p>Wenn Ihr Projekt sowohl SHK-Leistungen (Sanitär, Heizung, Wärmepumpe) als auch Ausbaugewerke (Trockenbau, Fliesen, Maler) umfasst, profitieren Sie von unserer eingespielten Zusammenarbeit: <strong>Ein Sanierungsprojekt – zwei spezialisierte Partner – eine reibungslose Koordination.</strong> Sie müssen sich nicht selbst um die Abstimmung zwischen verschiedenen Gewerken kümmern.</p>
+      <div class="feedback-panel" id="feedback-panel-4">
+        <label>Ihr Vorschlag für Block 4 — renotec. + renovira.: Ihr Vorteil:</label>
+        <textarea id="feedback-text-4" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+        <div class="feedback-actions">
+          <button class="btn-save" onclick="saveFeedback(4)">Speichern</button>
+          <button class="btn-cancel" onclick="toggleFeedback(4)">Abbrechen</button>
+          <button class="btn-delete" onclick="deleteFeedback(4)" style="display:none" id="delete-btn-4">Löschen</button>
+          <span class="saved-indicator" id="saved-4">✓ Gespeichert</span>
+        </div>
+      </div>
+    </div>
+    <div class="block block-cta" id="block-5">
+      <span class="block-label" style="display:none">Block 5 — Direkt zu renovira.</span>
+      <button class="feedback-btn" onclick="toggleFeedback(5)" style="color:#1e293b;">✏️ Vorschlag</button>
+      <h2>Direkt zu renovira.</h2>
+      <p>Besuchen Sie renovira. für alle weiteren Bauleistungen in Berlin: <em>renotec. und renovira. – starke Partner für Ihr Bauprojekt in Berlin.</em></p>
+      <div class="contact-lines">📞 renovira. Telefon: +49 30 232 581 670</div>
+      <a class="btn" href="https://www.renovira.de">→ Jetzt renovira.de besuchen</a>
+      <div class="feedback-panel" id="feedback-panel-5">
+        <label>Ihr Vorschlag für Block 5 — Direkt zu renovira.:</label>
+        <textarea id="feedback-text-5" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+        <div class="feedback-actions">
+          <button class="btn-save" onclick="saveFeedback(5)">Speichern</button>
+          <button class="btn-cancel" onclick="toggleFeedback(5)">Abbrechen</button>
+          <button class="btn-delete" onclick="deleteFeedback(5)" style="display:none" id="delete-btn-5">Löschen</button>
+          <span class="saved-indicator" id="saved-5">✓ Gespeichert</span>
         </div>
       </div>
     </div>
