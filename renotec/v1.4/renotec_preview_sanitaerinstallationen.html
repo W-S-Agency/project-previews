@@ -347,6 +347,28 @@ body {
 .card .card-link { color: var(--accent); text-decoration: none; font-weight: 600; font-size: 14px; }
 .card .card-link:hover { text-decoration: underline; }
 
+/* Nummerierte Leistungs-Karten (LP-Template 29.04 / Design-Kit) */
+.block-numcards h2 { margin-bottom: 12px; }
+.block-numcards > p { margin-bottom: 20px; font-size: 15px; line-height: 1.7; }
+.numcards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.numcard { background: white; border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; }
+.numcard .nc-num { font-size: 13px; font-weight: 700; color: var(--accent); margin-bottom: 8px; }
+.numcard h3 { font-size: 16px; margin-bottom: 8px; color: var(--primary); }
+.numcard p { font-size: 14px; color: var(--text-light); line-height: 1.6; }
+
+/* Förder-Highlight (BAFA) — dunkelblaues Band wie Design-Kit */
+.block.block-highlight { background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%) !important; color: white !important; padding: 40px; }
+.block-highlight h2 { margin-bottom: 18px; }
+.hl-cols { display: flex; gap: 36px; flex-wrap: wrap; align-items: flex-start; }
+.hl-text { flex: 1 1 360px; }
+.hl-text p { margin-bottom: 12px; font-size: 14px; line-height: 1.7; opacity: .95; }
+.hl-list { flex: 1 1 320px; }
+.hl-sub { font-weight: 700; margin-bottom: 12px; }
+.hl-check { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0.16); border-radius: 8px; padding: 11px 14px; margin-bottom: 10px; font-size: 14px; line-height: 1.5; }
+.hl-tick { flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; }
+.hl-note { margin-top: 14px; font-size: 13px; opacity: .9; border-left: 3px solid var(--fb-accent); padding-left: 12px; }
+@media (max-width: 768px) { .hl-cols { flex-direction: column; } }
+
 /* Kontakt-Split (Seitenende) — hell, 2 Spalten wie Design-Kit */
 .block.block-contactsplit { background: linear-gradient(135deg, #eef2fb 0%, #f8fafc 100%) !important; padding: 48px 40px; }
 .cs-cols { display: flex; gap: 40px; flex-wrap: wrap; align-items: flex-start; }
@@ -1024,35 +1046,41 @@ body {
         </div>
       </div>
     </div>
-    <div class="block block-accordion" id="block-3">
+    <div class="block block-numcards" id="block-3">
       <span class="block-label" style="display:none">Block 3 — Unsere Leistungen im Bereich Sanitär Berlin</span>
       <button class="feedback-btn" onclick="toggleFeedback(3)">✏️ Vorschlag</button>
       <h2>Unsere Leistungen im Bereich Sanitär Berlin</h2>
       
-      <div class="acc-list">
-        <div class="acc-item open">
-          <div class="acc-q" onclick="this.parentElement.classList.toggle('open')">Sanitärinstallation – Neubau & Sanierung</div>
-          <div class="acc-a"><p>Wir planen und installieren vollständige Sanitäranlagen in Neubauprojekten sowie in bestehenden Gebäuden. Dabei berücksichtigen wir aktuelle Normen und individuelle Anforderungen — vom Einfamilienhaus bis zum Mehrparteiengebäude.</p></div>
+      <div class="numcards-grid">
+        <div class="numcard">
+          <div class="nc-num">01</div>
+          <h3>Sanitärinstallation – Neubau & Sanierung</h3>
+          <p>Wir planen und installieren vollständige Sanitäranlagen in Neubauprojekten sowie in bestehenden Gebäuden. Dabei berücksichtigen wir aktuelle Normen und individuelle Anforderungen — vom Einfamilienhaus bis zum Mehrparteiengebäude.</p>
         </div>
-        <div class="acc-item">
-          <div class="acc-q" onclick="this.parentElement.classList.toggle('open')">Wasseranschlüsse & Leitungen</div>
-          <div class="acc-a"><p>Fachgerechte Verlegung von Trinkwasser- und Kaltwasserleitungen, Anschluss an das öffentliche Versorgungsnetz sowie Erneuerung veralteter Rohrsysteme — alles aus einer Hand.</p></div>
+        <div class="numcard">
+          <div class="nc-num">02</div>
+          <h3>Wasseranschlüsse & Leitungen</h3>
+          <p>Fachgerechte Verlegung von Trinkwasser- und Kaltwasserleitungen, Anschluss an das öffentliche Versorgungsnetz sowie Erneuerung veralteter Rohrsysteme — alles aus einer Hand.</p>
         </div>
-        <div class="acc-item">
-          <div class="acc-q" onclick="this.parentElement.classList.toggle('open')">Armaturen & Waschtische</div>
-          <div class="acc-a"><p>Installation und Austausch von Waschtischen, Armaturen und Spülbecken führender Hersteller. Wir beraten Sie bei der Auswahl passender Produkte für Ihre Räumlichkeiten.</p></div>
+        <div class="numcard">
+          <div class="nc-num">03</div>
+          <h3>Armaturen & Waschtische</h3>
+          <p>Installation und Austausch von Waschtischen, Armaturen und Spülbecken führender Hersteller. Wir beraten Sie bei der Auswahl passender Produkte für Ihre Räumlichkeiten.</p>
         </div>
-        <div class="acc-item">
-          <div class="acc-q" onclick="this.parentElement.classList.toggle('open')">WC- & Duschinstallation</div>
-          <div class="acc-a"><p>Montage und Anschluss von WC-Anlagen, Vorwandelementen, Duschen und Badewannen — einschließlich Unterputz-Spülkästen und bodengleichen Duschsystemen.</p></div>
+        <div class="numcard">
+          <div class="nc-num">04</div>
+          <h3>WC- & Duschinstallation</h3>
+          <p>Montage und Anschluss von WC-Anlagen, Vorwandelementen, Duschen und Badewannen — einschließlich Unterputz-Spülkästen und bodengleichen Duschsystemen.</p>
         </div>
-        <div class="acc-item">
-          <div class="acc-q" onclick="this.parentElement.classList.toggle('open')">Abwassertechnik</div>
-          <div class="acc-a"><p>Fachgerechte Verlegung und Wartung von Abwasserleitungen, Anschluss an die Kanalisation sowie Rohrinnensanierung bei Verstopfungen oder altersbedingten Schäden.</p></div>
+        <div class="numcard">
+          <div class="nc-num">05</div>
+          <h3>Abwassertechnik</h3>
+          <p>Fachgerechte Verlegung und Wartung von Abwasserleitungen, Anschluss an die Kanalisation sowie Rohrinnensanierung bei Verstopfungen oder altersbedingten Schäden.</p>
         </div>
-        <div class="acc-item">
-          <div class="acc-q" onclick="this.parentElement.classList.toggle('open')">Reparatur & Instandhaltung</div>
-          <div class="acc-a"><p>Schnelle Hilfe bei tropfenden Armaturen, defekten Spülkästen, Rohrbrüchen und anderen Sanitärproblemen. Regelmäßige Wartung verlängert die Lebensdauer Ihrer Anlagen und beugt Folgeschäden vor.</p></div>
+        <div class="numcard">
+          <div class="nc-num">06</div>
+          <h3>Reparatur & Instandhaltung</h3>
+          <p>Schnelle Hilfe bei tropfenden Armaturen, defekten Spülkästen, Rohrbrüchen und anderen Sanitärproblemen. Regelmäßige Wartung verlängert die Lebensdauer Ihrer Anlagen und beugt Folgeschäden vor.</p>
         </div></div>
       <div class="feedback-panel" id="feedback-panel-3">
         <label>Ihr Vorschlag für Block 3 — Unsere Leistungen im Bereich Sanitär Berlin:</label>

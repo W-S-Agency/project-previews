@@ -347,6 +347,28 @@ body {
 .card .card-link { color: var(--accent); text-decoration: none; font-weight: 600; font-size: 14px; }
 .card .card-link:hover { text-decoration: underline; }
 
+/* Nummerierte Leistungs-Karten (LP-Template 29.04 / Design-Kit) */
+.block-numcards h2 { margin-bottom: 12px; }
+.block-numcards > p { margin-bottom: 20px; font-size: 15px; line-height: 1.7; }
+.numcards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.numcard { background: white; border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; }
+.numcard .nc-num { font-size: 13px; font-weight: 700; color: var(--accent); margin-bottom: 8px; }
+.numcard h3 { font-size: 16px; margin-bottom: 8px; color: var(--primary); }
+.numcard p { font-size: 14px; color: var(--text-light); line-height: 1.6; }
+
+/* Förder-Highlight (BAFA) — dunkelblaues Band wie Design-Kit */
+.block.block-highlight { background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%) !important; color: white !important; padding: 40px; }
+.block-highlight h2 { margin-bottom: 18px; }
+.hl-cols { display: flex; gap: 36px; flex-wrap: wrap; align-items: flex-start; }
+.hl-text { flex: 1 1 360px; }
+.hl-text p { margin-bottom: 12px; font-size: 14px; line-height: 1.7; opacity: .95; }
+.hl-list { flex: 1 1 320px; }
+.hl-sub { font-weight: 700; margin-bottom: 12px; }
+.hl-check { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0.16); border-radius: 8px; padding: 11px 14px; margin-bottom: 10px; font-size: 14px; line-height: 1.5; }
+.hl-tick { flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; }
+.hl-note { margin-top: 14px; font-size: 13px; opacity: .9; border-left: 3px solid var(--fb-accent); padding-left: 12px; }
+@media (max-width: 768px) { .hl-cols { flex-direction: column; } }
+
 /* Kontakt-Split (Seitenende) — hell, 2 Spalten wie Design-Kit */
 .block.block-contactsplit { background: linear-gradient(135deg, #eef2fb 0%, #f8fafc 100%) !important; padding: 48px 40px; }
 .cs-cols { display: flex; gap: 40px; flex-wrap: wrap; align-items: flex-start; }
@@ -1027,20 +1049,38 @@ body {
         </div>
       </div>
     </div>
-    <div class="block block-accordion" id="block-3">
+    <div class="block block-numcards" id="block-3">
       <span class="block-label" style="display:none">Block 3 — Unsere Leistungen rund um die Rohrreinigung in Berlin</span>
       <button class="feedback-btn" onclick="toggleFeedback(3)">✏️ Vorschlag</button>
       <h2>Unsere Leistungen rund um die Rohrreinigung in Berlin</h2>
       <p>Als erfahrener Meisterbetrieb bieten wir das gesamte Leistungsspektrum der professionellen Rohr-, Abfluss- und Kanalreinigung in Berlin. Jede Verstopfung ist anders – deshalb wählen wir nach einer sorgfältigen Diagnose die passende Methode, statt pauschal vorzugehen.</p>
-<ul>
-<li><strong>Rohrreinigung (mechanisch & hydraulisch)</strong> – Spiralreinigung für hartnäckige Verstopfungen, Hochdruckspülung für Abfluss- und Fallleitungen</li>
-<li><strong>Abflussreinigung</strong> – für Küche, Bad, Dusche, WC und alle haushaltsnahen Abflussleitungen</li>
-<li><strong>Kanalreinigung</strong> – professionelle Reinigung von Grund- und Außenleitungen</li>
-<li><strong>Rohr-TV-Inspektion / Kamerabefahrung</strong> – präzise Ursachenklärung mit moderner Videotechnik, ohne unnötige Öffnungsarbeiten</li>
-<li><strong>Ursachenklärung & Schadensdokumentation</strong> – nachvollziehbare Befunde als Grundlage für weitere Maßnahmen</li>
-</ul>
 <p>So lösen wir nicht nur die akute Verstopfung, sondern klären auch, warum sie entstanden ist – damit das Ergebnis dauerhaft bleibt.</p>
-      <div class="acc-list"></div>
+      <div class="numcards-grid">
+        <div class="numcard">
+          <div class="nc-num">01</div>
+          <h3>Rohrreinigung (mechanisch & hydraulisch)</h3>
+          <p>Spiralreinigung für hartnäckige Verstopfungen, Hochdruckspülung für Abfluss- und Fallleitungen</p>
+        </div>
+        <div class="numcard">
+          <div class="nc-num">02</div>
+          <h3>Abflussreinigung</h3>
+          <p>für Küche, Bad, Dusche, WC und alle haushaltsnahen Abflussleitungen</p>
+        </div>
+        <div class="numcard">
+          <div class="nc-num">03</div>
+          <h3>Kanalreinigung</h3>
+          <p>professionelle Reinigung von Grund- und Außenleitungen</p>
+        </div>
+        <div class="numcard">
+          <div class="nc-num">04</div>
+          <h3>Rohr-TV-Inspektion / Kamerabefahrung</h3>
+          <p>präzise Ursachenklärung mit moderner Videotechnik, ohne unnötige Öffnungsarbeiten</p>
+        </div>
+        <div class="numcard">
+          <div class="nc-num">05</div>
+          <h3>Ursachenklärung & Schadensdokumentation</h3>
+          <p>nachvollziehbare Befunde als Grundlage für weitere Maßnahmen</p>
+        </div></div>
       <div class="feedback-panel" id="feedback-panel-3">
         <label>Ihr Vorschlag für Block 3 — Unsere Leistungen rund um die Rohrreinigung in Berlin:</label>
         <textarea id="feedback-text-3" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
