@@ -116,6 +116,10 @@ h1,h2,h3,h4{font-family:'Sora','Inter',sans-serif;color:var(--navy);line-height:
 .embed-ph{background:var(--soft);border:2px dashed var(--tuerkis);border-radius:12px;padding:46px 20px;text-align:center;color:var(--muted);font-weight:600;margin:8px 0}
 .img-ph{background:var(--soft);border:1px dashed #b9c6d8;border-radius:10px;padding:20px;text-align:center;color:var(--muted);font-size:.9rem;margin:8px 0}
 .logo-caption{color:var(--muted);font-size:.92rem;font-style:italic}
+.reviews-ph{max-width:520px;margin:18px auto 0;background:var(--soft);border:1px dashed var(--gold);border-radius:12px;padding:24px;text-align:center}
+.rev-stars{color:var(--gold);font-size:1.8rem;letter-spacing:4px}
+.rev-cap{color:var(--muted);font-size:.9rem;margin-top:6px}
+.block.reviews{text-align:center}
 .field-note{color:var(--muted);font-size:.88rem}
 /* footer */
 .site-footer{background:#0a1830;color:#c7d4e8;padding:36px 0 20px;font-size:.9rem}
