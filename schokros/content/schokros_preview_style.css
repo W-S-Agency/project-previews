@@ -121,6 +121,7 @@ h1,h2,h3,h4{font-family:'Sora','Inter',sans-serif;color:var(--navy);line-height:
 .rev-cap{color:var(--muted);font-size:.9rem;margin-top:6px}
 .block.reviews{text-align:center}
 .field-note{color:var(--muted);font-size:.88rem}
+.input-ph{display:inline-block;min-width:260px;max-width:340px;background:#fff;border:1px solid #cdd8e8;border-radius:8px;padding:11px 14px;color:var(--muted);font-size:.95rem;margin:6px 0}
 /* footer */
 .site-footer{background:#0a1830;color:#c7d4e8;padding:36px 0 20px;font-size:.9rem}
 .f-cols{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
