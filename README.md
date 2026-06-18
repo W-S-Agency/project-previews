@@ -1,36 +1,26 @@
-# Project Previews
+# project-previews
 
-Client-facing HTML previews for website projects.
+Client preview deliverables for 2Penguins / WS Agency.
 
-## Structure
+> ⚠️ **Active content lives on the `gh-pages` branch** — that is the live branch
+> served by GitHub Pages.
+>
+> ➡️ **https://w-s-agency.github.io/project-previews/**
 
-Each project has its own folder:
+This `main` branch is intentionally a **pointer only** and is no longer the
+default branch. Do **not** push previews here — they would not be published.
 
+To publish a preview, push to `gh-pages`:
+
+```bash
+git checkout gh-pages
+# add  <project>/  files (each folder needs an index.html)
+git add <project>/
+git commit -m "Add <project> preview"
+git push origin gh-pages
 ```
-project-previews/
-├── {project-name}/
-│   ├── index.html          ← Main page (page list)
-│   ├── *_preview_*.html    ← Individual page previews
-│   └── *_preview_style.css ← Shared styles
-```
 
-## Access
+URL pattern: `https://w-s-agency.github.io/project-previews/<project>/`
 
-Previews are available at:
-```
-https://w-s-agency.github.io/project-previews/{project-name}/
-```
-
-## Feedback
-
-Each preview page includes an inline feedback system. Clients can:
-1. Click "✏️ Vorschlag" on any content block
-2. Write their comment
-3. Download all comments as a `.txt` file
-4. Send the file to the project team
-
-No login or account required.
-
----
-
-*Generated and maintained by [2p-preview](https://github.com/W-S-Agency/skills-library/tree/main/skills/2P/2p-preview) skill.*
+The previous content of this `main` branch is preserved in git history
+(restore any file with `git checkout <old-sha> -- <path>`).
