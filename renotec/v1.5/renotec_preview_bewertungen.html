@@ -1242,7 +1242,24 @@ body {
   var steps = Array.prototype.slice.call(document.querySelectorAll('.block-multistep'));
   if (steps.length < 2) return;
   var idx = 0;
+  function applyBereichFilter(){
+    var s2 = steps[1], s3 = steps[2];
+    if (!s2 || !s3) return;
+    var sel = s2.querySelector('input:checked');
+    var key = '';
+    if (sel && sel.closest('.ms-radio')){
+      var t = sel.closest('.ms-radio').innerText.toLowerCase();
+      if (/w[äa]rmepumpe|heizung/.test(t)) key = 'wp';
+      else if (/bad|sanit/.test(t)) key = 'bad';
+      else if (/rohr/.test(t)) key = 'rohr';
+    }
+    s3.querySelectorAll('.ms-checkbox').forEach(function(cb){
+      var b = cb.getAttribute('data-bereich') || '';
+      cb.style.display = (!key || b.indexOf(key) >= 0) ? '' : 'none';
+    });
+  }
   function render(scroll){
+    applyBereichFilter();
     steps.forEach(function(s,j){ s.style.display = (j===idx) ? '' : 'none'; });
     var cur = steps[idx];
     var back = cur.querySelector('.ms-btn-back');

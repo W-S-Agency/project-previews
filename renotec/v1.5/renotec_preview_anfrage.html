@@ -1145,7 +1145,7 @@ body {
       <div class="ms-progress"><div class="ms-step-dot completed"><span>1</span></div><div class="ms-step-line"></div><div class="ms-step-dot completed"><span>2</span></div><div class="ms-step-line"></div><div class="ms-step-dot active"><span>3</span></div><div class="ms-step-line"></div><div class="ms-step-dot"><span>4</span></div><div class="ms-step-line"></div><div class="ms-step-dot"><span>5</span></div></div>
       <h2>Welche Leistungen benötigen Sie?</h2>
       <p>Wählen Sie alle zutreffenden Leistungen (Mehrfachauswahl möglich):</p>
-      <div class="ms-options ms-checkboxes"><label class="ms-checkbox"><input type="checkbox"><span>Wärmepumpe Installation</span></label><label class="ms-checkbox"><input type="checkbox"><span>Heizungsinstallation / -modernisierung</span></label><label class="ms-checkbox"><input type="checkbox"><span>Badsanierung (komplett)</span></label><label class="ms-checkbox"><input type="checkbox"><span>Sanitärinstallation</span></label><label class="ms-checkbox"><input type="checkbox"><span>Rohrreinigung</span></label><label class="ms-checkbox"><input type="checkbox"><span>Rohr-TV-Inspektion</span></label><label class="ms-checkbox"><input type="checkbox"><span>Wartung &amp; Service</span></label><label class="ms-checkbox"><input type="checkbox"><span>Sonstiges</span></label></div>
+      <div class="ms-options ms-checkboxes"><label class="ms-checkbox" data-bereich="wp"><input type="checkbox"><span>Wärmepumpe Installation</span></label><label class="ms-checkbox" data-bereich="wp"><input type="checkbox"><span>Heizungsinstallation / -modernisierung</span></label><label class="ms-checkbox" data-bereich="bad"><input type="checkbox"><span>Badsanierung (komplett)</span></label><label class="ms-checkbox" data-bereich="bad"><input type="checkbox"><span>Sanitärinstallation</span></label><label class="ms-checkbox" data-bereich="rohr"><input type="checkbox"><span>Rohrreinigung</span></label><label class="ms-checkbox" data-bereich="rohr"><input type="checkbox"><span>Rohr-TV-Inspektion</span></label><label class="ms-checkbox" data-bereich="wp bad rohr"><input type="checkbox"><span>Wartung &amp; Service</span></label><label class="ms-checkbox" data-bereich="wp bad rohr"><input type="checkbox"><span>Sonstiges</span></label></div>
       <div class="ms-nav-buttons"><button type="button" class="ms-btn-back">← Zurück</button><button type="button" class="ms-btn-next">Weiter →</button></div>
       <div class="feedback-panel" id="feedback-panel-4">
         <label>Ihr Vorschlag für Block 4 — Schritt 3 – Welche Leistungen benötigen Sie?:</label>
@@ -1308,7 +1308,24 @@ body {
   var steps = Array.prototype.slice.call(document.querySelectorAll('.block-multistep'));
   if (steps.length < 2) return;
   var idx = 0;
+  function applyBereichFilter(){
+    var s2 = steps[1], s3 = steps[2];
+    if (!s2 || !s3) return;
+    var sel = s2.querySelector('input:checked');
+    var key = '';
+    if (sel && sel.closest('.ms-radio')){
+      var t = sel.closest('.ms-radio').innerText.toLowerCase();
+      if (/w[äa]rmepumpe|heizung/.test(t)) key = 'wp';
+      else if (/bad|sanit/.test(t)) key = 'bad';
+      else if (/rohr/.test(t)) key = 'rohr';
+    }
+    s3.querySelectorAll('.ms-checkbox').forEach(function(cb){
+      var b = cb.getAttribute('data-bereich') || '';
+      cb.style.display = (!key || b.indexOf(key) >= 0) ? '' : 'none';
+    });
+  }
   function render(scroll){
+    applyBereichFilter();
     steps.forEach(function(s,j){ s.style.display = (j===idx) ? '' : 'none'; });
     var cur = steps[idx];
     var back = cur.querySelector('.ms-btn-back');
