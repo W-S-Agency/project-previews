@@ -1,0 +1,1584 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wärmepumpe Berlin – Einbau &amp; Service | renotec. — Preview</title>
+  <style>
+:root {
+  --primary: #1e3a5f;
+  --primary-light: #2563eb;
+  --secondary: #f8fafc;
+  --accent: #2563eb;
+  --text: #1e293b;
+  --text-light: #64748b;
+  --bg: #ffffff;
+  --bg-alt: #f1f5f9;
+  --border: #e2e8f0;
+  --radius: 8px;
+  --shadow: 0 1px 3px rgba(0,0,0,0.1);
+  --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
+  /* Feedback UI — контрастны к сине-белой схеме */
+  --fb-accent: #f59e0b;
+  --fb-accent-border: #d97706;
+  --fb-accent-hover: #d97706;
+  --fb-saved: #10b981;
+  --fb-saved-border: #059669;
+  --fb-save: #7c3aed;
+  --fb-save-border: #6d28d9;
+  --fb-save-hover: #6d28d9;
+  --fb-panel-bg: #fef3c7;
+  --fb-panel-border: #f59e0b;
+  --fb-delete: #dc2626;
+  --fb-delete-bg: #fef2f2;
+  --fb-delete-border: #fca5a5;
+  --success: #10b981;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+/* === NAV === */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--primary);
+  color: white;
+  box-shadow: var(--shadow-md);
+}
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  height: 56px;
+}
+.nav-logo {
+  font-weight: 700;
+  font-size: 18px;
+  color: white;
+  text-decoration: none;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  list-style: none;
+}
+.nav-links > li { position: relative; }
+.nav-links > li > a {
+  display: block;
+  padding: 16px 14px;
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.nav-links > li > a:hover,
+.nav-links > li > a.active { color: white; background: rgba(255,255,255,0.1); }
+
+/* Dropdown */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  border-radius: 0 0 var(--radius) var(--radius);
+  box-shadow: var(--shadow-md);
+  min-width: 240px;
+  z-index: 101;
+  list-style: none;
+  padding: 4px 0;
+}
+.dropdown:hover .dropdown-menu { display: block; }
+.dropdown-menu a {
+  display: block;
+  padding: 10px 20px;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 14px;
+  transition: background 0.15s;
+}
+.dropdown-menu a:hover { background: var(--bg-alt); }
+.dropdown-menu a.active { color: var(--accent); font-weight: 600; }
+
+/* Mobile nav */
+.nav-toggle { display: none; background: none; border: none; color: white; font-size: 24px; cursor: pointer; }
+@media (max-width: 768px) {
+  .nav-toggle { display: block; }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 56px;
+    left: 0;
+    right: 0;
+    background: var(--primary);
+    flex-direction: column;
+    padding: 8px 0;
+    box-shadow: var(--shadow-md);
+  }
+  .nav-links.open { display: flex; }
+  .nav-links > li > a { padding: 12px 24px; }
+  .dropdown-menu {
+    position: static;
+    box-shadow: none;
+    background: rgba(0,0,0,0.15);
+  }
+  .dropdown-menu a { color: rgba(255,255,255,0.85); padding-left: 40px; }
+  .dropdown-menu a:hover { background: rgba(255,255,255,0.1); }
+  .dropdown-menu a.active { color: white; }
+  .dropdown:hover .dropdown-menu { display: none; }
+  .dropdown.open .dropdown-menu { display: block; }
+}
+
+/* === PREVIEW BAR === */
+.preview-bar {
+  background: var(--bg-alt);
+  border-bottom: 1px solid var(--border);
+  padding: 8px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--text-light);
+}
+.preview-bar .project-name { font-weight: 700; color: var(--text); }
+.preview-bar .meta-info { font-size: 12px; }
+.source-badge {
+  display: inline-block;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 2px 10px;
+  font-size: 11px;
+  color: var(--text-light);
+  margin-left: 8px;
+}
+
+/* === SEO BAR === */
+.seo-bar {
+  max-width: 1200px;
+  margin: 16px auto;
+  background: #1a1a2e;
+  border-radius: var(--radius);
+  font-size: 13px;
+  color: rgba(255,255,255,0.85);
+  overflow: hidden;
+}
+.seo-bar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.15s;
+}
+.seo-bar-header:hover { background: rgba(255,255,255,0.05); }
+.seo-bar-header span { font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; color: rgba(255,255,255,0.6); }
+.seo-bar-header .seo-toggle { font-size: 11px; color: rgba(255,255,255,0.4); }
+.seo-bar-body { display: none; padding: 0 20px 16px; }
+.seo-bar.open .seo-bar-body { display: block; }
+.seo-bar.open .seo-toggle::after { content: '▲'; }
+.seo-bar:not(.open) .seo-toggle::after { content: '▼'; }
+.seo-row { display: flex; align-items: baseline; gap: 8px; margin-bottom: 8px; line-height: 1.6; }
+.seo-row .seo-label { color: rgba(255,255,255,0.5); font-size: 12px; min-width: 80px; flex-shrink: 0; }
+.seo-row .seo-value { color: rgba(255,255,255,0.9); word-break: break-word; }
+.seo-row code { background: rgba(255,255,255,0.1); padding: 2px 8px; border-radius: 4px; font-size: 12px; color: #93c5fd; }
+.len-badge {
+  display: inline-block;
+  padding: 1px 8px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+.len-ok { background: #065f46; color: #6ee7b7; }
+.len-warn { background: #78350f; color: #fcd34d; }
+.len-over { background: #7f1d1d; color: #fca5a5; }
+.schema-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.schema-tag {
+  display: inline-block;
+  background: rgba(99,102,241,0.2);
+  border: 1px solid rgba(99,102,241,0.4);
+  color: #a5b4fc;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 500;
+}
+.jsonld-toggle {
+  display: inline-block;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.6);
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 11px;
+  cursor: pointer;
+  margin-top: 8px;
+}
+.jsonld-toggle:hover { background: rgba(255,255,255,0.12); }
+.jsonld-preview { display: none; margin-top: 8px; }
+.jsonld-preview.open { display: block; }
+.jsonld-preview pre {
+  background: rgba(0,0,0,0.3);
+  padding: 12px 16px;
+  border-radius: var(--radius);
+  font-size: 12px;
+  color: #93c5fd;
+  overflow-x: auto;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+/* === CONTENT === */
+.page-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px 60px;
+}
+
+/* === BLOCKS === */
+.block {
+  position: relative;
+  margin: 32px 0;
+  padding: 32px;
+  background: var(--bg);
+  border-radius: var(--radius);
+}
+.block:nth-child(even) { background: var(--bg-alt); }
+.block a { color: var(--accent); text-decoration: none; }
+.block a:hover { text-decoration: underline; }
+/* Override nth-child(even) for typed blocks with explicit backgrounds */
+.block.block-hero { background: linear-gradient(135deg, var(--primary) 0%, #0f2744 100%) !important; color: white !important; }
+.block.block-cta { background: var(--primary) !important; color: white !important; }
+.block.block-multistep { background: linear-gradient(135deg, #f0f7ff 0%, #e8f4f8 100%) !important; }
+.block-label {
+  display: none; /* hidden, used by feedback JS */
+}
+
+/* Hero */
+.block-hero {
+  background: linear-gradient(135deg, var(--primary) 0%, #0f2744 100%);
+  color: white;
+  padding: 60px 40px;
+  border-radius: var(--radius);
+  text-align: center;
+}
+.block-hero h1 { font-size: 32px; margin-bottom: 16px; line-height: 1.3; }
+.block-hero .hero-sub { font-size: 18px; opacity: 0.9; margin-bottom: 24px; max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.6; }
+.block-hero .hero-badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  padding: 8px 20px;
+  border-radius: 24px;
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+.block-hero .hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 24px; }
+.block-hero .btn {
+  display: inline-block;
+  padding: 12px 28px;
+  border-radius: var(--radius);
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 15px;
+  transition: transform 0.2s;
+}
+.block-hero .btn:hover { transform: translateY(-2px); }
+.block-hero .btn-primary { background: var(--fb-accent); color: var(--text); }
+.block-hero a { color: white; }
+.block-hero .btn-secondary { background: rgba(255,255,255,0.15); color: white; border: 1px solid rgba(255,255,255,0.3); }
+
+/* Trust bar */
+.block-trust {
+  background: var(--bg-alt);
+  padding: 24px 32px;
+  border-radius: var(--radius);
+}
+.trust-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+}
+.trust-item {
+  text-align: center;
+  flex: 1;
+  min-width: 180px;
+  padding: 16px;
+}
+.trust-item .trust-icon { font-size: 28px; margin-bottom: 8px; }
+.trust-item strong { display: block; font-size: 15px; margin-bottom: 4px; }
+.trust-item p { font-size: 13px; color: var(--text-light); }
+
+/* Cards */
+.block-cards h2 { text-align: center; margin-bottom: 32px; }
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+.card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  transition: box-shadow 0.2s;
+}
+.card:hover { box-shadow: var(--shadow-md); }
+.card h3 { font-size: 18px; margin-bottom: 8px; color: var(--primary); }
+.card p { font-size: 14px; color: var(--text-light); margin-bottom: 12px; }
+.card .card-link { color: var(--accent); text-decoration: none; font-weight: 600; font-size: 14px; }
+.card .card-link:hover { text-decoration: underline; }
+
+/* Widget-Platzhalter + Referenz-Cases (09) */
+.block-widgetph h2 { margin-bottom: 12px; }
+.widget-ph { max-width: 760px; aspect-ratio: auto; min-height: 180px; }
+.case-card { position: relative; }
+.case-tag { position: absolute; top: 12px; right: 12px; background: #fef3c7; border: 1px dashed #f59e0b; color: #92400e; font-size: 10px; font-weight: 700; letter-spacing: .04em; padding: 2px 8px; border-radius: 10px; }
+.case-kv { display: flex; gap: 8px; font-size: 13px; margin-bottom: 5px; }
+.case-kv > span { flex: 0 0 84px; font-weight: 600; color: var(--text); }
+.case-kv > div { color: var(--text-light); }
+.case-txt { font-size: 13px; color: var(--text-light); font-style: italic; margin-top: 10px; }
+.case-foto { font-size: 12px; color: var(--text-light); margin-top: 10px; }
+.case-note { margin-top: 16px; font-size: 13px; color: var(--text-light); border-left: 3px solid var(--border); padding-left: 12px; }
+
+/* Glance (07 «Das Wichtigste») — Text links, Akut-Box (Logo-Farbe, pulsierend) rechts */
+.glance-cols { display: flex; gap: 36px; flex-wrap: wrap; align-items: flex-start; }
+.glance-text { flex: 1 1 420px; }
+.glance-text h2 { margin-bottom: 14px; }
+.glance-text p { margin-bottom: 12px; font-size: 15px; line-height: 1.7; }
+.akut-box { flex: 1 1 300px; max-width: 420px; background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%); border-radius: 12px; padding: 24px; color: white; animation: akutPulse 2.5s infinite; }
+.akut-box .akut-title { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+.akut-box p { font-size: 14px; line-height: 1.6; opacity: .92; margin-bottom: 14px; }
+.akut-phone { display: block; background: white; color: var(--primary) !important; text-align: center; padding: 11px 18px; border-radius: var(--radius); font-weight: 700; font-size: 15px; text-decoration: none !important; }
+@keyframes akutPulse { 0%,100% { box-shadow: 0 0 0 0 rgba(37,99,235,0.45); } 50% { box-shadow: 0 0 0 10px transparent; } }
+@media (max-width: 768px) { .glance-cols { flex-direction: column; } .akut-box { max-width: none; } }
+
+/* Notdienst-Band (07) — dunkelblau, Checks links / Ablauf rechts / Notfall-Bar */
+.block.block-notdienst { background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%) !important; color: white !important; padding: 40px; }
+.block-notdienst h2 { margin-bottom: 10px; }
+.nd-intro { max-width: 760px; opacity: .92; margin-bottom: 22px; }
+.nd-intro p { font-size: 14px; line-height: 1.7; }
+.nd-cols { display: flex; gap: 36px; flex-wrap: wrap; align-items: flex-start; }
+.nd-col { flex: 1 1 320px; }
+.nd-label { font-weight: 700; margin-bottom: 12px; }
+.nd-step { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0.16); border-radius: 8px; padding: 11px 14px; margin-bottom: 10px; font-size: 14px; line-height: 1.5; }
+.nd-num { flex-shrink: 0; width: 24px; height: 24px; border-radius: 6px; background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; }
+.nd-fw { margin-top: 16px; font-size: 13px; opacity: .9; }
+.nd-bar { margin-top: 18px; display: flex; gap: 16px; align-items: center; justify-content: space-between; flex-wrap: wrap; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: 10px; padding: 14px 18px; font-size: 14px; }
+.nd-phone { background: white; color: var(--primary) !important; padding: 10px 22px; border-radius: 24px; font-weight: 700; font-size: 15px; text-decoration: none !important; white-space: nowrap; }
+@media (max-width: 768px) { .nd-cols { flex-direction: column; } }
+
+/* Nummerierte Leistungs-Karten (LP-Template 29.04 / Design-Kit) */
+.block-numcards h2 { margin-bottom: 12px; }
+.block-numcards > p { margin-bottom: 20px; font-size: 15px; line-height: 1.7; }
+.numcards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.numcard { background: white; border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; }
+.numcard .nc-num { font-size: 13px; font-weight: 700; color: var(--accent); margin-bottom: 8px; }
+.numcard h3 { font-size: 16px; margin-bottom: 8px; color: var(--primary); }
+.numcard p { font-size: 14px; color: var(--text-light); line-height: 1.6; }
+
+/* Förder-Highlight (BAFA) — dunkelblaues Band wie Design-Kit */
+.block.block-highlight { background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%) !important; color: white !important; padding: 40px; }
+.block-highlight h2 { margin-bottom: 18px; }
+.hl-cols { display: flex; gap: 36px; flex-wrap: wrap; align-items: flex-start; }
+.hl-text { flex: 1 1 360px; }
+.hl-text p { margin-bottom: 12px; font-size: 14px; line-height: 1.7; opacity: .95; }
+.hl-list { flex: 1 1 320px; }
+.hl-sub { font-weight: 700; margin-bottom: 12px; }
+.hl-check { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0.16); border-radius: 8px; padding: 11px 14px; margin-bottom: 10px; font-size: 14px; line-height: 1.5; }
+.hl-tick { flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; }
+.hl-note { margin-top: 14px; font-size: 13px; opacity: .9; border-left: 3px solid var(--fb-accent); padding-left: 12px; }
+.hl-cta { display: inline-block; margin-top: 18px; background: white; color: var(--primary) !important; padding: 12px 26px; border-radius: var(--radius); font-weight: 600; font-size: 14px; text-decoration: none !important; }
+.hl-cta:hover { opacity: .92; }
+@media (max-width: 768px) { .hl-cols { flex-direction: column; } }
+
+/* Kontakt-Split (Seitenende) — hell, 2 Spalten wie Design-Kit */
+.block.block-contactsplit { background: linear-gradient(135deg, #eef2fb 0%, #f8fafc 100%) !important; padding: 48px 40px; }
+.cs-cols { display: flex; gap: 40px; flex-wrap: wrap; align-items: flex-start; }
+.cs-info { flex: 1 1 320px; }
+.cs-info h2 { font-size: 28px; margin-bottom: 14px; color: var(--text); }
+.cs-intro { color: var(--text-light); font-size: 14px; line-height: 1.7; max-width: 480px; margin-bottom: 24px; }
+.cs-label { color: var(--accent); font-size: 13px; font-weight: 600; margin-bottom: 10px; }
+.cs-info p { font-size: 14px; margin-bottom: 6px; }
+.cs-wa-btn { display: inline-block; margin-top: 16px; background: white; border: 1px solid var(--border); border-radius: 24px; padding: 9px 18px; font-size: 14px; font-weight: 600; color: var(--text) !important; text-decoration: none !important; }
+.cs-wa-btn:hover { border-color: var(--accent); }
+.cs-cta-btn { display: inline-block; margin: 16px 0 0 10px; background: var(--accent); border-radius: 24px; padding: 9px 18px; font-size: 14px; font-weight: 600; color: white !important; text-decoration: none !important; }
+.cs-form { flex: 1 1 380px; background: white; border: 1px solid var(--border); border-radius: 12px; padding: 28px; box-shadow: var(--shadow); }
+.cs-form-row { display: flex; gap: 16px; }
+.cs-form-row .cs-field { flex: 1; }
+.cs-field { margin-bottom: 14px; }
+.cs-field label { display: block; font-size: 12px; color: var(--text-light); margin-bottom: 5px; }
+.cs-field input, .cs-field textarea { width: 100%; padding: 9px 12px; border: 1px solid var(--border); border-radius: 6px; font-size: 14px; font-family: inherit; background: white; }
+.cs-field textarea { min-height: 80px; resize: vertical; }
+.cs-send { display: block; margin-left: auto; background: var(--primary-light); color: white; border: none; border-radius: var(--radius); padding: 10px 28px; font-size: 14px; font-weight: 600; cursor: not-allowed; opacity: .85; }
+@media (max-width: 768px) { .cs-cols { flex-direction: column; } .cs-form-row { flex-direction: column; gap: 0; } }
+
+.steps-eyebrow { color: var(--accent); font-size: 13px; font-weight: 600; margin-bottom: 8px; }
+/* Steps — 2 Spalten wie Design-Kit (Heading/Intro/CTA links, Schritte rechts) */
+.steps-cols { display: flex; gap: 40px; flex-wrap: wrap; align-items: flex-start; }
+.steps-cols .steps-left { flex: 1 1 300px; }
+.steps-cols .steps-left h2 { text-align: left; margin-bottom: 16px; }
+.steps-cols .steps-left p { font-size: 15px; line-height: 1.7; margin-bottom: 12px; }
+.steps-cols .steps-list { flex: 1 1 420px; margin: 0; max-width: none; }
+.steps-cta { display: inline-block; margin-top: 8px; background: var(--accent); color: white !important; padding: 12px 26px; border-radius: var(--radius); font-weight: 600; text-decoration: none !important; }
+@media (max-width: 768px) { .steps-cols { flex-direction: column; } }
+
+/* Services-Akkordeon — untereinander (✅ CLIENT 24.04: statt Kacheln) */
+.block-accordion h2 { margin-bottom: 12px; }
+.block-accordion > p { margin-bottom: 20px; font-size: 15px; line-height: 1.7; }
+.acc-list { display: flex; flex-direction: column; gap: 10px; }
+.acc-item { background: white; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+.acc-q { padding: 16px 20px; font-weight: 600; font-size: 16px; color: var(--primary); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; transition: background 0.15s; }
+.acc-q:hover { background: var(--bg-alt); }
+.acc-q::after { content: '→'; color: var(--text-light); flex-shrink: 0; transition: transform 0.2s; }
+.acc-item.open .acc-q::after { transform: rotate(90deg); }
+.acc-a { display: none; padding: 0 20px 16px; font-size: 14px; color: var(--text-light); line-height: 1.7; }
+.acc-a p { margin-bottom: 10px; }
+.acc-item.open .acc-a { display: block; }
+.acc-a .card-link { color: var(--accent); font-weight: 600; font-size: 14px; text-decoration: none; }
+.acc-a .card-link:hover { text-decoration: underline; }
+
+/* Trust — 2 Spalten wie Design-Kit (Text links, blaue Chip-Box rechts) */
+.trust-cols { display: flex; gap: 32px; flex-wrap: wrap; align-items: flex-start; margin-top: 8px; }
+.trust-cols .trust-text { flex: 1 1 380px; }
+.trust-cols .trust-text p { margin-bottom: 12px; font-size: 15px; line-height: 1.7; }
+.trust-box { flex: 1 1 300px; background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%); border-radius: 12px; padding: 24px; }
+.trust-box--row { display: flex; gap: 12px; flex-wrap: wrap; }
+.trust-box--row .trust-chip { flex: 1 1 220px; margin-bottom: 0; }
+.trust-chip { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.18); border-radius: 8px; padding: 12px 16px; margin-bottom: 10px; color: white; font-weight: 600; font-size: 14px; line-height: 1.5; }
+.trust-box > .trust-chip:last-child { margin-bottom: 0; }
+.tc-tick { flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; background: rgba(255,255,255,0.22); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; }
+.tc-desc { display: block; font-weight: 400; font-size: 12.5px; opacity: .82; margin-top: 3px; }
+@media (max-width: 768px) { .trust-cols { flex-direction: column; } }
+
+/* Lead-Magnet-Teaser (Startseite) — strukturiert wie Design-Kit */
+.block.block-msteaser { background: linear-gradient(135deg, var(--primary) 0%, #0f2744 100%) !important; color: white !important; padding: 40px; }
+.block-msteaser h2 { margin-bottom: 12px; }
+.block-msteaser .ms-teaser-intro { opacity: .9; max-width: 760px; margin-bottom: 18px; line-height: 1.7; }
+.block-msteaser .ms-teaser-sub { margin-bottom: 10px; }
+.ms-teaser-steps { list-style: none; counter-reset: mst; display: flex; flex-direction: column; gap: 10px; margin: 0 0 22px; padding: 0; max-width: 760px; }
+.ms-teaser-steps li { counter-increment: mst; background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0.16); border-radius: 8px; padding: 12px 16px 12px 54px; position: relative; font-size: 14px; line-height: 1.5; }
+.ms-teaser-steps li::before { content: counter(mst); position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 26px; height: 26px; border-radius: 50%; background: var(--fb-accent); color: #1e293b; font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; }
+.block-msteaser .btn { display: inline-block; background: var(--fb-accent); color: #1e293b; padding: 14px 32px; border-radius: var(--radius); font-weight: 700; text-decoration: none; font-size: 16px; }
+.block-msteaser .ms-teaser-hint { margin-top: 14px; font-size: 13px; opacity: .85; }
+
+/* Groups — expanded accordion-style strips (FB-022, not tile grid) */
+.block-groups h2 { margin-bottom: 24px; }
+.groups-strips { display: flex; flex-direction: column; gap: 12px; }
+.group-strip {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.group-strip-label {
+  background: var(--bg-alt);
+  padding: 12px 20px;
+  font-weight: 600;
+  color: var(--primary);
+  font-size: 15px;
+  border-bottom: 1px solid var(--border);
+}
+.group-strip-list {
+  list-style: none;
+  margin: 0;
+  padding: 12px 20px;
+}
+.group-strip-list li {
+  position: relative;
+  padding-left: 22px;
+  margin: 6px 0;
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.5;
+}
+.group-strip-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* Steps */
+.block-steps h2 { text-align: center; margin-bottom: 32px; }
+.steps-list { max-width: 700px; margin: 0 auto; }
+.step {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 24px;
+  align-items: flex-start;
+}
+.step-num {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  background: var(--accent);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 16px;
+}
+.step-content h3 { font-size: 16px; margin-bottom: 4px; }
+.step-content p { font-size: 14px; color: var(--text-light); }
+
+/* FAQ — 2 Spalten wie Design-Kit (Eyebrow+H2 links, Akkordeon rechts) */
+.faq-cols { display: flex; gap: 40px; flex-wrap: wrap; align-items: flex-start; }
+.faq-left { flex: 1 1 280px; }
+.faq-eyebrow { color: var(--accent); font-size: 13px; font-weight: 600; margin-bottom: 8px; }
+.block-faq h2 { text-align: left; margin-bottom: 16px; }
+.faq-list { flex: 1 1 480px; margin: 0; max-width: none; }
+@media (max-width: 768px) { .faq-cols { flex-direction: column; } }
+.faq-item {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 8px;
+  overflow: hidden;
+}
+.faq-q {
+  padding: 16px 20px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  transition: background 0.15s;
+  font-size: 15px;
+}
+.faq-q:hover { background: var(--bg-alt); }
+.faq-q::after { content: '+'; font-size: 20px; color: var(--text-light); transition: transform 0.2s; }
+.faq-item.open .faq-q::after { transform: rotate(45deg); }
+.faq-a {
+  display: none;
+  padding: 0 20px 16px;
+  font-size: 14px;
+  color: var(--text-light);
+  line-height: 1.7;
+}
+.faq-item.open .faq-a { display: block; }
+
+/* CTA */
+.block-cta {
+  background: var(--primary);
+  color: white;
+  padding: 48px 40px;
+  border-radius: var(--radius);
+  text-align: center;
+}
+.block-cta h2 { margin-bottom: 16px; font-size: 26px; }
+.block-cta p { opacity: 0.9; margin-bottom: 24px; max-width: 600px; margin-left: auto; margin-right: auto; }
+.block-cta .contact-lines { font-size: 15px; margin-bottom: 20px; line-height: 2; }
+.block-cta a { color: white; text-decoration: underline; text-underline-offset: 2px; }
+.block-cta a:hover { opacity: 0.85; }
+.block-cta .btn { display: inline-block; background: var(--fb-accent); color: var(--text); padding: 14px 32px; border-radius: var(--radius); font-weight: 600; text-decoration: none; font-size: 16px; }
+.block-cta .contact-lines a { color: rgba(255,255,255,0.9); }
+
+/* Form */
+.block-form { background: var(--bg-alt); padding: 40px; border-radius: var(--radius); }
+.block-form h2 { margin-bottom: 24px; }
+.form-preview { max-width: 600px; margin: 0 auto; }
+.form-field {
+  margin-bottom: 16px;
+}
+.form-field label {
+  display: block;
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 6px;
+  color: var(--text);
+}
+.form-field input, .form-field textarea, .form-field select {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 15px;
+  font-family: inherit;
+  background: white;
+}
+.form-field textarea { min-height: 100px; resize: vertical; }
+.form-field .hint { font-size: 12px; color: var(--text-light); margin-top: 4px; }
+.form-submit {
+  display: inline-block;
+  background: var(--accent);
+  color: white;
+  padding: 12px 28px;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: not-allowed;
+  opacity: 0.7;
+  margin-top: 8px;
+}
+
+/* Proof / numbers */
+.block-proof { text-align: center; padding: 40px 32px; }
+.proof-items { display: flex; flex-wrap: wrap; gap: 32px; justify-content: center; }
+.proof-item { flex: 1; min-width: 160px; }
+.proof-num { font-size: 36px; font-weight: 800; color: var(--accent); }
+.proof-label { font-size: 14px; color: var(--text-light); margin-top: 4px; }
+
+/* Logos */
+.block-logos { text-align: center; padding: 32px; }
+.block-logos h2 { margin-bottom: 24px; }
+.logos-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+.logo-item {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px 20px;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--text-light);
+}
+
+/* Generic */
+.block-generic { padding: 32px; }
+.block-generic h2 { margin-bottom: 16px; font-size: 24px; }
+.block-generic h3 { margin: 20px 0 8px; font-size: 18px; color: var(--primary); }
+.block-generic p { margin-bottom: 12px; font-size: 15px; color: var(--text); line-height: 1.7; }
+.block-generic ul, .block-generic ol { margin: 12px 0; padding-left: 24px; }
+.block-generic li { margin-bottom: 8px; font-size: 15px; line-height: 1.6; }
+.block-generic strong { color: var(--text); }
+.block-generic blockquote {
+  border-left: 3px solid var(--accent);
+  padding: 12px 20px;
+  margin: 16px 0;
+  background: var(--bg-alt);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  font-size: 14px;
+  color: var(--text-light);
+}
+.block-generic table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+}
+.block-generic th, .block-generic td {
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  font-size: 14px;
+  text-align: left;
+}
+.block-generic th { background: var(--bg-alt); font-weight: 600; }
+.block-generic a { color: var(--accent); }
+
+/* Solution cards */
+.block-solution .solution-card {
+  border-left: 4px solid var(--accent);
+  background: white;
+  padding: 20px 24px;
+  margin-bottom: 16px;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  box-shadow: var(--shadow);
+}
+.block-solution .solution-card h3 { margin-bottom: 8px; color: var(--primary); }
+.block-solution .solution-card p { font-size: 14px; color: var(--text-light); }
+
+/* Placeholder highlight */
+.placeholder {
+  background: #fef3c7;
+  border: 1px dashed #f59e0b;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+/* === PAGE HEADER (H1) === */
+.page-header { max-width: 1200px; margin: 0 auto; padding: 36px 24px 4px; }
+.page-header h1 { font-size: 30px; line-height: 1.25; color: var(--primary); margin: 0; }
+.page-sub { font-size: 17px; color: var(--text-light); margin-top: 6px; }
+@media (max-width: 768px) { .page-header { padding: 24px 20px 4px; } .page-header h1 { font-size: 24px; } }
+
+/* === FOOTER === */
+.site-footer {
+  background: #0f1f33;
+  color: rgba(255,255,255,0.7);
+  padding: 48px 24px 24px;
+  margin-top: 60px;
+}
+.footer-gruppe { max-width: 1200px; margin: 0 auto 36px; padding-bottom: 28px; border-bottom: 1px solid rgba(255,255,255,0.12); }
+.footer-gruppe-label { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: rgba(255,255,255,0.5); margin-bottom: 14px; }
+.footer-brands { display: flex; gap: 28px; flex-wrap: wrap; align-items: center; }
+.fb-brand { font-size: 22px; font-weight: 700; color: rgba(255,255,255,0.55); }
+.fb-brand.fb-active { color: #fff; }
+.fb-brand.fb-soon { color: rgba(255,255,255,0.32); font-weight: 600; }
+.fb-brand.fb-soon small { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: .05em; vertical-align: middle; margin-left: 4px; }
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 32px;
+}
+.footer-col h4 { color: white; font-size: 15px; margin-bottom: 12px; }
+.footer-col p, .footer-col a { font-size: 13px; line-height: 1.8; }
+.footer-col a { color: rgba(255,255,255,0.7); text-decoration: none; }
+.footer-col a:hover { color: white; }
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 4px; }
+.footer-bottom {
+  max-width: 1200px;
+  margin: 32px auto 0;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* === FEEDBACK UI === */
+.feedback-counter {
+  background: var(--fb-accent);
+  color: #1e293b;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s;
+  font-size: 13px;
+  white-space: nowrap;
+}
+.feedback-counter:hover { transform: scale(1.05); }
+.feedback-counter.has-feedback { animation: fb-pulse 2s infinite; }
+@keyframes fb-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(245,158,11,0.4); }
+  50% { box-shadow: 0 0 0 8px transparent; }
+}
+.feedback-btn {
+  position: absolute;
+  top: 12px;
+  right: 24px;
+  background: var(--fb-accent);
+  border: 2px solid var(--fb-accent-border);
+  padding: 6px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 13px;
+  color: #1e293b;
+  font-weight: 600;
+  transition: all 0.2s;
+  z-index: 10;
+}
+.feedback-btn:hover { background: var(--fb-accent-hover); border-color: var(--fb-accent-border); color: white; }
+.feedback-btn.has-comment { background: var(--fb-saved); border-color: var(--fb-saved-border); color: white; }
+.feedback-panel {
+  display: none;
+  margin-top: 24px;
+  background: var(--fb-panel-bg);
+  border: 2px solid var(--fb-panel-border);
+  border-radius: var(--radius);
+  padding: 20px;
+  animation: fb-slideDown 0.3s ease;
+}
+.feedback-panel.open { display: block; }
+@keyframes fb-slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.feedback-panel label { display: block; font-weight: 600; margin-bottom: 8px; color: var(--primary); font-size: 14px; }
+.feedback-panel textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-family: inherit;
+  font-size: 15px;
+  resize: vertical;
+  line-height: 1.5;
+}
+.feedback-panel textarea:focus { outline: none; border-color: var(--primary-light); box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
+.feedback-actions { display: flex; gap: 12px; margin-top: 12px; align-items: center; }
+.btn-save { background: var(--fb-save); color: white; border: 2px solid var(--fb-save-border); padding: 8px 20px; border-radius: var(--radius); cursor: pointer; font-size: 14px; font-weight: 600; }
+.btn-save:hover { background: var(--fb-save-hover); }
+.btn-cancel { background: white; border: 2px solid #94a3b8; padding: 8px 20px; border-radius: var(--radius); cursor: pointer; font-size: 14px; color: #334155; font-weight: 500; }
+.btn-cancel:hover { background: #f1f5f9; }
+.btn-delete { background: var(--fb-delete-bg); border: 2px solid var(--fb-delete-border); padding: 8px 16px; border-radius: var(--radius); cursor: pointer; font-size: 14px; color: var(--fb-delete); font-weight: 500; margin-left: auto; }
+.btn-delete:hover { background: #fee2e2; border-color: var(--fb-delete); }
+.saved-indicator { display: none; color: var(--success); font-size: 13px; align-items: center; gap: 4px; }
+.export-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 200; justify-content: center; align-items: center; }
+.export-overlay.open { display: flex; }
+.export-box { background: white; border-radius: 12px; padding: 32px; max-width: 500px; width: 90%; text-align: center; }
+.export-box h2 { margin-bottom: 16px; font-size: 22px; }
+.export-box p { color: var(--text-light); margin-bottom: 24px; }
+.export-box .count { font-size: 48px; font-weight: 800; color: var(--fb-save); }
+.btn-export { display: inline-block; background: var(--fb-save); color: white; padding: 14px 32px; border-radius: var(--radius); border: none; font-size: 16px; font-weight: 600; cursor: pointer; margin: 8px; }
+.btn-export:hover { background: var(--fb-save-hover); }
+.btn-export.btn-copy { background: var(--fb-accent); color: #1e293b; }
+.btn-export.btn-copy:hover { background: var(--fb-accent-border); }
+.btn-close-overlay { display: inline-block; background: transparent; border: 1px solid var(--border); padding: 14px 32px; border-radius: var(--radius); font-size: 16px; cursor: pointer; margin: 8px; color: var(--text-light); }
+
+/* Multi-step Lead Magnet */
+.block-multistep {
+  background: linear-gradient(135deg, #f0f7ff 0%, #e8f4f8 100%);
+  border: 2px solid var(--primary);
+  border-radius: 12px;
+  padding: 40px 32px;
+}
+.ms-progress {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 32px;
+}
+.ms-step-dot {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid #cbd5e1;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 16px; color: #94a3b8;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+.ms-step-dot.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: white;
+  box-shadow: 0 0 0 4px rgba(30,58,95,0.15);
+}
+.ms-step-dot.completed {
+  background: var(--success);
+  border-color: var(--success);
+  color: white;
+}
+.ms-step-line {
+  width: 40px; height: 2px;
+  background: #cbd5e1;
+  flex-shrink: 0;
+}
+.ms-options { margin: 24px 0; }
+.ms-radios { display: flex; flex-direction: column; gap: 12px; }
+.ms-radio {
+  display: flex; align-items: flex-start; gap: 12px;
+  background: white;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  cursor: default;
+  transition: border-color 0.2s;
+}
+.ms-radio:hover { border-color: var(--primary-light); }
+.ms-radio input { margin-top: 4px; width: 18px; height: 18px; accent-color: var(--primary); }
+.ms-radio strong { display: block; font-size: 15px; color: var(--text); }
+.ms-opt-desc { display: block; font-size: 13px; color: var(--text-light); margin-top: 2px; }
+.ms-checkboxes { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
+.ms-checkbox {
+  display: flex; align-items: center; gap: 10px;
+  background: white;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  cursor: default;
+  font-size: 14px;
+}
+.ms-checkbox:hover { border-color: var(--primary-light); }
+.ms-checkbox input { width: 18px; height: 18px; accent-color: var(--primary); }
+.ms-table { margin: 20px 0; }
+.ms-table table { width: 100%; background: white; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); }
+.ms-table th, .ms-table td { padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--border); }
+.ms-table th { background: var(--bg-alt); font-size: 14px; font-weight: 600; }
+.ms-table td { font-size: 14px; }
+.ms-hint {
+  background: rgba(30,58,95,0.05);
+  border-left: 3px solid var(--primary);
+  padding: 12px 16px;
+  margin: 16px 0;
+  font-size: 14px;
+  color: var(--text-light);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+.ms-nav-buttons {
+  display: flex; justify-content: space-between; margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--border);
+}
+.ms-btn-back, .ms-btn-next {
+  padding: 12px 28px;
+  border-radius: var(--radius);
+  font-size: 15px; font-weight: 600;
+  cursor: default;
+}
+.ms-btn-back {
+  background: white; border: 2px solid var(--border); color: var(--text-light);
+}
+.ms-btn-next {
+  background: var(--primary); border: 2px solid var(--primary); color: white;
+}
+.ms-submit {
+  display: block; width: 100%; padding: 16px;
+  background: var(--primary); color: white;
+  border: none; border-radius: var(--radius);
+  font-size: 17px; font-weight: 700;
+  cursor: default; margin-top: 24px;
+}
+
+/* Multi-step wizard — interactive controls (Lead-Magnet) */
+.ms-btn-back, .ms-btn-next, .ms-nav-buttons .ms-submit { cursor: pointer; }
+.ms-btn-back:disabled { opacity: .45; cursor: not-allowed; }
+.ms-nav-buttons .ms-submit { display: inline-block; width: auto; margin: 0; padding: 12px 28px; font-size: 15px; border-radius: var(--radius); }
+.ms-radio, .ms-checkbox, .ms-radio input, .ms-checkbox input { cursor: pointer; }
+.ms-sliders { display: flex; flex-direction: column; gap: 18px; margin: 20px 0; }
+.ms-slider { background: white; border: 2px solid var(--border); border-radius: var(--radius); padding: 14px 18px; }
+.ms-slider-head { display: flex; justify-content: space-between; align-items: baseline; font-size: 14px; font-weight: 600; margin-bottom: 8px; }
+.ms-slider-head output { color: var(--primary); font-weight: 700; }
+.ms-slider input[type=range] { width: 100%; accent-color: var(--primary); }
+.ms-wizard-hint { text-align: center; font-size: 13px; color: var(--text-light); margin: 0 0 18px; }
+.ms-success { background: white; border: 2px solid var(--success); border-radius: 12px; padding: 40px 32px; text-align: center; margin-top: 8px; }
+.ms-success-icon { width: 56px; height: 56px; border-radius: 50%; background: var(--success); color: white; font-size: 30px; line-height: 56px; margin: 0 auto 16px; }
+.ms-success h3 { font-size: 20px; margin-bottom: 8px; }
+.ms-success p { color: var(--text-light); }
+.ms-btn-restart { margin-top: 18px; background: var(--primary); color: white; border: none; padding: 12px 28px; border-radius: var(--radius); font-weight: 600; cursor: pointer; }
+
+@media (max-width: 768px) {
+  .feedback-btn { top: auto; bottom: -16px; right: 16px; font-size: 12px; }
+  .block-hero { padding: 40px 20px; }
+  .block-hero h1 { font-size: 24px; }
+  .cards-grid { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr; }
+  .preview-bar { flex-wrap: wrap; gap: 8px; }
+  .block-multistep { padding: 24px 16px; }
+  .ms-step-dot { width: 32px; height: 32px; font-size: 13px; }
+  .ms-step-line { width: 20px; }
+  .ms-checkboxes { grid-template-columns: 1fr; }
+}
+
+/* === Image placeholders (Bildkonzept — visualisierte aspect ratio pro Block) === */
+.block-imgph { padding: 18px 24px; }
+.img-ph-caption { font-size: 13px; font-weight: 700; color: var(--primary); text-align: center; margin-bottom: 4px; }
+.img-ph { margin: 18px 0; }
+.img-ph-inner {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 6px; text-align: center; padding: 14px; box-sizing: border-box;
+  width: 100%; height: 100%;
+  border: 2px dashed var(--primary); border-radius: var(--radius);
+  background: repeating-linear-gradient(45deg, var(--bg-alt), var(--bg-alt) 11px, #fff 11px, #fff 22px);
+}
+.img-ph-icon { font-size: 30px; opacity: .65; line-height: 1; }
+.img-ph-desc { font-size: 14px; font-weight: 600; color: #333; max-width: 92%; }
+.img-ph-orient { font-size: 11px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--primary); }
+.img-ph-hint { font-size: 12px; color: #777; font-style: italic; }
+.img-ph-tag { font-size: 11px; font-weight: 700; color: #777; text-transform: uppercase; letter-spacing: .04em; }
+/* Orientierung = echte aspect ratio + Größe relativ zur Inhaltsspalte */
+.img-ph--quer    { width: 100%; max-width: 640px; aspect-ratio: 3 / 2; margin: 18px auto; }
+.img-ph--hoch    { width: 58%;  max-width: 300px; aspect-ratio: 4 / 5; margin: 18px auto; }
+.img-ph--quadrat { width: 68%;  max-width: 360px; aspect-ratio: 1 / 1; margin: 18px auto; }
+.img-ph-hero     { width: 100%; max-width: 560px; aspect-ratio: 16 / 9; margin: 22px auto 0; }
+/* Vorher/Nachher-Paar (Slider-Hinweis) */
+.img-ph-vn-wrap { margin: 18px 0; }
+.img-ph-vn-label { display: block; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: var(--primary); margin-bottom: 6px; }
+.img-ph-vn-row { display: flex; gap: 12px; }
+.img-ph-vn-row .img-ph { flex: 1; margin: 0; max-width: none; }
+@media (max-width: 768px) {
+  .img-ph-vn-row { flex-direction: column; }
+  .img-ph--hoch, .img-ph--quadrat { width: 85%; }
+}
+</style>
+</head>
+<body>
+  
+    <nav class="nav">
+      <div class="nav-inner">
+        <a class="nav-logo" href="index.html">renotec.</a>
+        <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+        <ul class="nav-links">
+          <li><a href="renotec_preview_startseite.html">Startseite</a></li>
+        <li class="dropdown">
+          <a href="renotec_preview_leistungen.html" class="active">Leistungen ▾</a>
+          <ul class="dropdown-menu">
+            <li><a href="renotec_preview_leistungen.html">Übersicht</a></li>
+            <li><a href="renotec_preview_waermepumpen.html" class="active">Wärmepumpen</a></li><li><a href="renotec_preview_badsanierung.html">Badsanierung</a></li><li><a href="renotec_preview_heizungsinstallationen.html">Heizungsinstallation</a></li><li><a href="renotec_preview_sanitaerinstallationen.html">Sanitärinstallation</a></li><li><a href="renotec_preview_rohrreinigung.html">Rohrreinigung / 24h-Notdienst</a></li><li><a href="renotec_preview_sonstige.html">Sonstige Bauleistungen</a></li>
+          </ul>
+        </li><li><a href="renotec_preview_bewertungen.html">Bewertungen</a></li><li><a href="renotec_preview_anfrage.html">Anfrage</a></li><li><a href="renotec_preview_kontakt.html">Kontakt</a></li>
+        </ul>
+      </div>
+    </nav>
+  
+    <div class="preview-bar">
+      <div>
+        <span class="project-name">renotec.</span>
+        <span class="meta-info"> — Wärmepumpen — Preview</span>
+      </div>
+      <div class="feedback-counter" id="feedbackCounter" onclick="openExportOverlay()">
+        Feedback: 0 Kommentare
+      </div>
+    </div>
+  
+    <div class="seo-bar" id="seoBar">
+      <div class="seo-bar-header" onclick="document.getElementById('seoBar').classList.toggle('open')">
+        <span>SEO &amp; Schema.org</span>
+        <span class="seo-toggle"></span>
+      </div>
+      <div class="seo-bar-body">
+        <div class="seo-row">
+          <span class="seo-label">Title</span>
+          <span class="seo-value">Wärmepumpe Berlin – Einbau &amp; Service | renotec. <span class="len-badge len-ok">47 — OK</span></span>
+        </div>
+        <div class="seo-row">
+          <span class="seo-label">Description</span>
+          <span class="seo-value">Wärmepumpe in Berlin installieren lassen – vom eingetragenen Meisterbetrieb. BAFA-Förderung inkl. Beratung. Jetzt unverbindlich anfragen! <span class="len-badge len-ok">137 — OK</span></span>
+        </div>
+        <div class="seo-row">
+          <span class="seo-label">URL</span>
+          <span class="seo-value"><code>/waermepumpen/</code></span>
+        </div>
+        <div class="seo-row">
+          <span class="seo-label">Schema.org</span>
+          <span class="seo-value"><div class="schema-tags"><span class="schema-tag">Service</span><span class="schema-tag">FAQPage</span></div></span>
+        </div>
+        <div class="jsonld-toggle" onclick="var el=document.getElementById('jsonldPreview');el.classList.toggle('open');this.textContent=el.classList.contains('open')?'▲ JSON-LD ausblenden':'▼ JSON-LD Vorschau'">▼ JSON-LD Vorschau</div>
+        <div class="jsonld-preview" id="jsonldPreview">
+          <pre><code>{
+  &quot;@context&quot;: &quot;https://schema.org&quot;,
+  &quot;@type&quot;: &quot;FAQPage&quot;,
+  &quot;mainEntity&quot;: [
+    {
+      &quot;@type&quot;: &quot;Question&quot;,
+      &quot;name&quot;: &quot;Beispielfrage?&quot;,
+      &quot;acceptedAnswer&quot;: {
+        &quot;@type&quot;: &quot;Answer&quot;,
+        &quot;text&quot;: &quot;Beispielantwort...&quot;
+      }
+    }
+  ]
+}</code></pre>
+        </div>
+      </div>
+    </div>
+  <main class="page-content">
+    <div class="page-header"><h1>Wärmepumpe in Berlin</h1><div class="page-sub">Einbau, Installation & Service</div></div>
+    
+    <div class="block block-generic" id="block-1">
+      <span class="block-label" style="display:none">Block 1 — </span>
+      <button class="feedback-btn" onclick="toggleFeedback(1)">✏️ Vorschlag</button>
+      
+      <p>Sie möchten eine Wärmepumpe in Berlin installieren lassen – effizient, förderfähig und fachgerecht? renotec. ist Ihr eingetragener SHK-Meisterbetrieb aus Berlin mit über 15 Jahren Meistererfahrung im Bereich Heizung, Sanitär und Klimatechnik. Wir planen, liefern und installieren Ihre Wärmepumpe – von der ersten Beratung bis zur Inbetriebnahme – und begleiten Sie vollständig durch die BAFA-Förderung.</p>
+      <div class="feedback-panel" id="feedback-panel-1">
+        <label>Ihr Vorschlag für Block 1 — :</label>
+        <textarea id="feedback-text-1" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+        <div class="feedback-actions">
+          <button class="btn-save" onclick="saveFeedback(1)">Speichern</button>
+          <button class="btn-cancel" onclick="toggleFeedback(1)">Abbrechen</button>
+          <button class="btn-delete" onclick="deleteFeedback(1)" style="display:none" id="delete-btn-1">Löschen</button>
+          <span class="saved-indicator" id="saved-1">✓ Gespeichert</span>
+        </div>
+      </div>
+    </div>
+    <div class="block block-imgph" id="block-2">
+      <span class="block-label" style="display:none">Block 2 — Bildbereich</span>
+      <button class="feedback-btn" onclick="toggleFeedback(2)">✏️ Vorschlag</button>
+      
+      <figure class="img-ph img-ph--quer"><div class="img-ph-inner"><span class="img-ph-icon">📷</span><span class="img-ph-desc">Thematisches Bild – Wärmepumpe an einem Wohnhaus (Foto oder Visualisierung)</span><span class="img-ph-orient">Querformat</span><span class="img-ph-hint">wie Design-Kit: großes Bild direkt unter Hero</span></div></figure>
+      <div class="feedback-panel" id="feedback-panel-2">
+        <label>Ihr Vorschlag für Block 2 — Bildbereich:</label>
+        <textarea id="feedback-text-2" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+        <div class="feedback-actions">
+          <button class="btn-save" onclick="saveFeedback(2)">Speichern</button>
+          <button class="btn-cancel" onclick="toggleFeedback(2)">Abbrechen</button>
+          <button class="btn-delete" onclick="deleteFeedback(2)" style="display:none" id="delete-btn-2">Löschen</button>
+          <span class="saved-indicator" id="saved-2">✓ Gespeichert</span>
+        </div>
+      </div>
+    </div>
+    <div class="block block-trust" id="block-3">
+      <span class="block-label" style="display:none">Block 3 — Ihre Vorteile auf einen Blick</span>
+      <button class="feedback-btn" onclick="toggleFeedback(3)">✏️ Vorschlag</button>
+      <h2>Ihre Vorteile auf einen Blick</h2>
+      <div class="trust-cols"><div class="trust-text"><p>Als Berliner Meisterbetrieb bieten wir Ihnen nicht nur handwerkliche Qualität, sondern auch die Sicherheit eines eingetragenen Fachbetriebs der Handwerkskammer Berlin.</p></div><div class="trust-box"><div class="trust-chip"><span class="tc-tick">✓</span><div><strong>Eingetragener Meister- und Innungsbetrieb</strong><span class="tc-desc">Handwerkskammer Berlin & Berliner SHK-Innung</span></div></div><div class="trust-chip"><span class="tc-tick">✓</span><div><strong>Über 15 Jahre Erfahrung im SHK-Bereich</strong><span class="tc-desc">In Berlin und Umgebung</span></div></div><div class="trust-chip"><span class="tc-tick">✓</span><div><strong>Verbindliche, termingerechte und zuverlässige Ausführung</strong><span class="tc-desc">Vom Angebot bis zur Abnahme</span></div></div><div class="trust-chip"><span class="tc-tick">✓</span><div><strong>Individuelle Beratung vor Ort</strong><span class="tc-desc">Keine Pauschallösungen, sondern maßgeschneiderte Planung</span></div></div><div class="trust-chip"><span class="tc-tick">✓</span><div><strong>Antwort innerhalb von 24 Stunden</strong><span class="tc-desc">Im Notdienst Reaktion binnen 60 Minuten</span></div></div></div></div>
+      <div class="feedback-panel" id="feedback-panel-3">
+        <label>Ihr Vorschlag für Block 3 — Ihre Vorteile auf einen Blick:</label>
+        <textarea id="feedback-text-3" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+        <div class="feedback-actions">
+          <button class="btn-save" onclick="saveFeedback(3)">Speichern</button>
+          <button class="btn-cancel" onclick="toggleFeedback(3)">Abbrechen</button>
+          <button class="btn-delete" onclick="deleteFeedback(3)" style="display:none" id="delete-btn-3">Löschen</button>
+          <span class="saved-indicator" id="saved-3">✓ Gespeichert</span>
+        </div>
+      </div>
+    </div>
+    <div class="block block-numcards" id="block-4">
+      <span class="block-label" style="display:none">Block 4 — Unsere Leistungen rund um die Wärmepumpe in Berlin</span>
+      <button class="feedback-btn" onclick="toggleFeedback(4)">✏️ Vorschlag</button>
+      <h2>Unsere Leistungen rund um die Wärmepumpe in Berlin</h2>
+      <p>Von der Planung bis zum Dauerbetrieb begleitet renotec. Sie durch jeden Schritt Ihres Wärmepumpen-Projekts. Wir kennen die baulichen Besonderheiten Berliner Gebäude – ob Gründerzeithaus, Nachkriegsbau oder Neubau.</p>
+      <div class="numcards-grid">
+        <div class="numcard">
+          <div class="nc-num">01</div>
+          <h3>Beratung & Planung</h3>
+          <p>Wir analysieren Ihr Gebäude, Ihren Energieverbrauch und Ihre Heizlast, um die optimale Wärmepumpenlösung für Sie zu identifizieren. Dabei berücksichtigen wir Faktoren wie Dämmstandard, Heizkörper- oder Fußbodenheizungssystem sowie vorhandene Infrastruktur.</p>
+        </div>
+        <div class="numcard">
+          <div class="nc-num">02</div>
+          <h3>Wärmepumpenauswahl: Luft-Wasser, Sole-Wasser & mehr</h3>
+          <p>Je nach Grundstück, Gebäude und Budget kommen unterschiedliche Wärmepumpentypen in Frage. Luft-Wasser-Wärmepumpen sind besonders flexibel einsetzbar und eignen sich häufig auch für Berliner Altbauten. Wir erläutern die Unterschiede transparent und helfen Ihnen, die richtige Entscheidung zu treffen.</p>
+        </div>
+        <div class="numcard">
+          <div class="nc-num">03</div>
+          <h3>Fachgerechter Einbau</h3>
+          <p>Die Installation erfolgt fachgerecht gemäß allen relevanten Normen und Herstellervorgaben. Ein sauberer Einbau ist die Grundlage für einen störungsfreien und effizienten Betrieb über viele Jahre.</p>
+        </div>
+        <div class="numcard">
+          <div class="nc-num">04</div>
+          <h3>Inbetriebnahme & Einweisung</h3>
+          <p>Nach dem Einbau nehmen wir die Anlage fachgerecht in Betrieb und prüfen alle Parameter auf optimale Funktion. Sie erhalten eine verständliche Einweisung in die Bedienung Ihrer neuen Heizung.</p>
+        </div>
+        <div class="numcard">
+          <div class="nc-num">05</div>
+          <h3>Wartung & Service</h3>
+          <p>Eine regelmäßige Wartung verlängert die Lebensdauer Ihrer Wärmepumpe und sichert die Effizienz langfristig. renotec. bietet maßgeschneiderte Wartungsverträge und steht Ihnen als verlässlicher Servicepartner zur Verfügung.</p>
+        </div></div>
+      <div class="feedback-panel" id="feedback-panel-4">
+        <label>Ihr Vorschlag für Block 4 — Unsere Leistungen rund um die Wärmepumpe in Berlin:</label>
+        <textarea id="feedback-text-4" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+        <div class="feedback-actions">
+          <button class="btn-save" onclick="saveFeedback(4)">Speichern</button>
+          <button class="btn-cancel" onclick="toggleFeedback(4)">Abbrechen</button>
+          <button class="btn-delete" onclick="deleteFeedback(4)" style="display:none" id="delete-btn-4">Löschen</button>
+          <span class="saved-indicator" id="saved-4">✓ Gespeichert</span>
+        </div>
+      </div>
+    </div>
+    <div class="block block-highlight" id="block-5">
+      <span class="block-label" style="display:none">Block 5 — BAFA-Förderung: Bis zu 70 % der Kosten sparen</span>
+      <button class="feedback-btn" onclick="toggleFeedback(5)">✏️ Vorschlag</button>
+      <h2>BAFA-Förderung: Bis zu 70 % der Kosten sparen</h2>
+      <div class="hl-cols">
+        <div class="hl-text"><p>Die Anschaffung einer Wärmepumpe ist eine Investition in die Zukunft – und der deutsche Staat fördert diese Investition erheblich. Über das Bundesamt für Wirtschaft und Ausfuhrkontrolle (BAFA) sind im Rahmen der Bundesförderung für effiziente Gebäude (BEG) Zuschüsse von bis zu 70 % der förderfähigen Kosten möglich. Viele Berliner Haushalte lassen diese Förderung ungenutzt, weil der Antragsprozess komplex erscheint – genau hier unterstützen wir Sie aktiv.</p><a class="hl-cta" href="/kontakt/">→ Jetzt Förderberatung anfragen</a></div>
+        <div class="hl-list"><div class="hl-sub">So hilft renotec. bei der BAFA-Förderung:</div><div class="hl-check"><span class="hl-tick">✓</span><div><strong>Förderberatung</strong> Wir klären gemeinsam, welche Förderprogramme für Ihr Vorhaben in Frage kommen und welche Voraussetzungen erfüllt sein müssen.</div></div><div class="hl-check"><span class="hl-tick">✓</span><div><strong>Energieberater-Vermittlung</strong> Für die BAFA-Förderung ist ein zugelassener Energieeffizienz-Experte zwingend erforderlich. Wir vermitteln Ihnen zertifizierte Energieberater aus unserem Netzwerk.</div></div><div class="hl-check"><span class="hl-tick">✓</span><div><strong>Unterstützung bei der Antragstellung</strong> Wir begleiten Sie durch den Antragsprozess und stellen sicher, dass alle erforderlichen Unterlagen korrekt und vollständig eingereicht werden.</div></div><div class="hl-note"><strong>Wichtig:</strong> Der Förderantrag muss vor Beginn der Maßnahme gestellt werden. Sprechen Sie uns daher so früh wie möglich an.</div></div>
+      </div>
+      <div class="feedback-panel" id="feedback-panel-5">
+        <label>Ihr Vorschlag für Block 5 — BAFA-Förderung: Bis zu 70 % der Kosten sparen:</label>
+        <textarea id="feedback-text-5" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+        <div class="feedback-actions">
+          <button class="btn-save" onclick="saveFeedback(5)">Speichern</button>
+          <button class="btn-cancel" onclick="toggleFeedback(5)">Abbrechen</button>
+          <button class="btn-delete" onclick="deleteFeedback(5)" style="display:none" id="delete-btn-5">Löschen</button>
+          <span class="saved-indicator" id="saved-5">✓ Gespeichert</span>
+        </div>
+      </div>
+    </div>
+    <div class="block block-imgph" id="block-6">
+      <span class="block-label" style="display:none">Block 6 — Bildbereich</span>
+      <button class="feedback-btn" onclick="toggleFeedback(6)">✏️ Vorschlag</button>
+      
+      <figure class="img-ph img-ph--quer"><div class="img-ph-inner"><span class="img-ph-icon">📷</span><span class="img-ph-desc">Foto-Galerie / Slider – 3 Bilder (Wärmepumpen-Projekte, Beispiel-Platzhalter)</span><span class="img-ph-orient">Querformat</span><span class="img-ph-hint">wie Design-Kit: Bildband zwischen BAFA und Ablauf</span></div></figure>
+      <div class="feedback-panel" id="feedback-panel-6">
+        <label>Ihr Vorschlag für Block 6 — Bildbereich:</label>
+        <textarea id="feedback-text-6" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+        <div class="feedback-actions">
+          <button class="btn-save" onclick="saveFeedback(6)">Speichern</button>
+          <button class="btn-cancel" onclick="toggleFeedback(6)">Abbrechen</button>
+          <button class="btn-delete" onclick="deleteFeedback(6)" style="display:none" id="delete-btn-6">Löschen</button>
+          <span class="saved-indicator" id="saved-6">✓ Gespeichert</span>
+        </div>
+      </div>
+    </div>
+    <div class="block block-steps" id="block-7">
+      <span class="block-label" style="display:none">Block 7 — In 5 Schritten zum Ziel</span>
+      <button class="feedback-btn" onclick="toggleFeedback(7)">✏️ Vorschlag</button>
+      <div class="steps-cols"><div class="steps-left"><div class="steps-eyebrow">In 5 Schritten zur Wärmepumpe</div><h2>In 5 Schritten zum Ziel</h2><p>Von der ersten Kontaktaufnahme bis zur fertigen Wärmepumpe – transparent, ohne versteckte Kosten.</p></div><div class="steps-list">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <h3>Kostenlose Erstberatung</h3>
+            <p>Kontaktieren Sie uns per WhatsApp, Telefon oder Formular. In einem ersten Gespräch erfassen wir Ihre Situation und klären erste Fragen unverbindlich.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <h3>Vor-Ort-Besichtigung</h3>
+            <p>Wir besichtigen Ihr Gebäude, prüfen die technischen Voraussetzungen und nehmen alle relevanten Maße und Gegebenheiten auf.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <h3>Angebot & Förderberatung</h3>
+            <p>Sie erhalten ein detailliertes, transparentes Angebot. Gleichzeitig beraten wir Sie zu den passenden BAFA-Fördermöglichkeiten und vermitteln bei Bedarf einen Energieberater.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <h3>Fachgerechte Installation</h3>
+            <p>Nach Auftragserteilung und Terminabstimmung führen wir den Einbau fachgerecht, sauber und termingerecht durch.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">5</div>
+          <div class="step-content">
+            <h3>Inbetriebnahme & Einweisung</h3>
+            <p>Wir nehmen Ihre neue Wärmepumpe gemeinsam mit Ihnen in Betrieb, prüfen alle Einstellungen und erklären Ihnen die Bedienung.</p>
+          </div>
+        </div></div></div>
+      <div class="feedback-panel" id="feedback-panel-7">
+        <label>Ihr Vorschlag für Block 7 — In 5 Schritten zum Ziel:</label>
+        <textarea id="feedback-text-7" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+        <div class="feedback-actions">
+          <button class="btn-save" onclick="saveFeedback(7)">Speichern</button>
+          <button class="btn-cancel" onclick="toggleFeedback(7)">Abbrechen</button>
+          <button class="btn-delete" onclick="deleteFeedback(7)" style="display:none" id="delete-btn-7">Löschen</button>
+          <span class="saved-indicator" id="saved-7">✓ Gespeichert</span>
+        </div>
+      </div>
+    </div>
+    <div class="block block-faq" id="block-8">
+      <span class="block-label" style="display:none">Block 8 — Häufige Fragen zur Wärmepumpe in Berlin</span>
+      <button class="feedback-btn" onclick="toggleFeedback(8)">✏️ Vorschlag</button>
+      <div class="faq-cols">
+        <div class="faq-left"><div class="faq-eyebrow">FAQ</div><h2>Häufige Fragen zur Wärmepumpe in Berlin</h2></div>
+        <div class="faq-list">
+        <div class="faq-item open" onclick="this.classList.toggle('open')">
+          <div class="faq-q">Was kostet eine Wärmepumpe in Berlin?</div>
+          <div class="faq-a"><p>Die Gesamtkosten hängen von vielen Faktoren ab: Gebäudegröße, Heizlast, Wärmepumpentyp und Aufwand für eventuelle Begleitmaßnahmen. Eine seriöse Pauschalangabe ist daher nicht möglich. Durch die BAFA-Förderung von bis zu 70 % reduziert sich Ihr tatsächlicher Eigenanteil erheblich. Wir erstellen Ihnen nach einer kostenlosen Besichtigung ein transparentes, individuelles Angebot.</p></div>
+        </div>
+        <div class="faq-item" onclick="this.classList.toggle('open')">
+          <div class="faq-q">Welche Wärmepumpe ist für den Altbau geeignet?</div>
+          <div class="faq-a"><p>Wärmepumpen im Altbau sind längst keine Ausnahme mehr. Luft-Wasser-Wärmepumpen arbeiten besonders flexibel und kommen mit vergleichsweise geringem Installationsaufwand aus. Entscheidend ist die sorgfältige Auslegung der Anlage auf die tatsächliche Heizlast. Mit einer modernen Hochtemperatur-Wärmepumpe lassen sich auch ältere Heizkörper effizient betreiben. Ob und welche Lösung für Ihren Altbau sinnvoll ist, klären wir bei der kostenlosen Vor-Ort-Beratung.</p></div>
+        </div>
+        <div class="faq-item" onclick="this.classList.toggle('open')">
+          <div class="faq-q">Wie lange dauert der Einbau einer Wärmepumpe?</div>
+          <div class="faq-a"><p>Die reine Montagezeit liegt je nach Anlage und baulichen Gegebenheiten in der Regel zwischen zwei und fünf Arbeitstagen. Bei umfangreicheren Umbauten kann sich der Zeitrahmen entsprechend verlängern. Eine verbindliche Einschätzung erhalten Sie nach der Vor-Ort-Besichtigung.</p></div>
+        </div>
+        <div class="faq-item" onclick="this.classList.toggle('open')">
+          <div class="faq-q">Gibt es Förderung für Wärmepumpen in Berlin?</div>
+          <div class="faq-a"><p>Ja – der Einbau einer Wärmepumpe wird durch die BAFA im Rahmen der Bundesförderung für effiziente Gebäude (BEG) gefördert. Abhängig von Ihrer Ausgangssituation sind Zuschüsse von bis zu 70 % der förderfähigen Kosten möglich. renotec. berät Sie umfassend zu allen verfügbaren Förderoptionen und unterstützt Sie aktiv bei der Antragstellung.</p></div>
+        </div>
+        <div class="faq-item" onclick="this.classList.toggle('open')">
+          <div class="faq-q">Welcher Abstand zur Nachbargrenze muss bei einer Wärmepumpe eingehalten werden?</div>
+          <div class="faq-a"><p>In Berlin gelten für die Aufstellung von Luft-Wasser-Wärmepumpen im Außenbereich Regelungen aus der Berliner Bauordnung sowie dem Nachbarschaftsgesetz. Die genauen Anforderungen hängen vom Aufstellort und der Geräteklasse ab. Im Rahmen unserer Vor-Ort-Beratung prüfen wir die Rahmenbedingungen und wählen die optimale Aufstellposition.</p></div>
+        </div>
+        <div class="faq-item" onclick="this.classList.toggle('open')">
+          <div class="faq-q">Welche Hersteller verbaut renotec.?</div>
+          <div class="faq-a"><p>Wir arbeiten mit <strong>Vaillant</strong>, <strong>Viessmann</strong>, <strong>Bosch</strong> und <strong>Buderus</strong> zusammen – führende Namen im Bereich der Wärmepumpentechnik mit umfangreichem Service- und Ersatzteilnetzwerk. Die Auswahl treffen wir gemeinsam mit Ihnen auf Basis der technischen Anforderungen.</p></div>
+        </div>
+        <div class="faq-item" onclick="this.classList.toggle('open')">
+          <div class="faq-q">Brauche ich einen Energieberater für die BAFA-Förderung?</div>
+          <div class="faq-a"><p>Ja, ein zugelassener Energieeffizienz-Experte ist eine Pflichtvoraussetzung für die Beantragung der BAFA-Förderung. renotec. vermittelt Ihnen zertifizierte Energieberater aus unserem bewährten Netzwerk und koordiniert die Zusammenarbeit für Sie.</p></div>
+        </div></div>
+      </div>
+      <div class="feedback-panel" id="feedback-panel-8">
+        <label>Ihr Vorschlag für Block 8 — Häufige Fragen zur Wärmepumpe in Berlin:</label>
+        <textarea id="feedback-text-8" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+        <div class="feedback-actions">
+          <button class="btn-save" onclick="saveFeedback(8)">Speichern</button>
+          <button class="btn-cancel" onclick="toggleFeedback(8)">Abbrechen</button>
+          <button class="btn-delete" onclick="deleteFeedback(8)" style="display:none" id="delete-btn-8">Löschen</button>
+          <span class="saved-indicator" id="saved-8">✓ Gespeichert</span>
+        </div>
+      </div>
+    </div>
+    <div class="block block-contactsplit" id="block-9">
+      <span class="block-label" style="display:none">Block 9 — Jetzt kostenlos anfragen</span>
+      <button class="feedback-btn" onclick="toggleFeedback(9)">✏️ Vorschlag</button>
+      <div class="cs-cols">
+        <div class="cs-info">
+          <h2>Jetzt kostenlos anfragen</h2>
+          <p class="cs-intro">Sie haben ein Projekt geplant oder eine dringende Frage zu Ihrer Heizung oder Sanitäranlage? Wir freuen uns auf Ihre Nachricht. Die Erstberatung ist kostenlos, unverbindlich und schnell.</p>
+          <div class="cs-label">Kontakt</div>
+          <p>📞 030 232 581 671</p><p>📧 kontakt@renotec-shk.de</p><p>📍 Pohlstraße 71, 10785 Berlin</p>
+          <a class="cs-wa-btn" href="#whatsapp">💬 Auf WhatsApp kontaktieren</a>
+          
+        </div>
+        <div class="cs-form">
+          <div class="cs-form-row">
+            <div class="cs-field"><label>Vorname</label><input type="text" disabled></div>
+            <div class="cs-field"><label>Nachname *</label><input type="text" disabled></div>
+          </div>
+          <div class="cs-form-row">
+            <div class="cs-field"><label>Telefon *</label><input type="tel" disabled></div>
+            <div class="cs-field"><label>E-Mail *</label><input type="email" disabled></div>
+          </div>
+          <div class="cs-field"><label>Weitere Information</label><textarea disabled></textarea></div>
+          <button class="cs-send" disabled>Senden</button>
+        </div>
+      </div>
+      <div class="feedback-panel" id="feedback-panel-9">
+        <label>Ihr Vorschlag für Block 9 — Jetzt kostenlos anfragen:</label>
+        <textarea id="feedback-text-9" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+        <div class="feedback-actions">
+          <button class="btn-save" onclick="saveFeedback(9)">Speichern</button>
+          <button class="btn-cancel" onclick="toggleFeedback(9)">Abbrechen</button>
+          <button class="btn-delete" onclick="deleteFeedback(9)" style="display:none" id="delete-btn-9">Löschen</button>
+          <span class="saved-indicator" id="saved-9">✓ Gespeichert</span>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+    <footer class="site-footer">
+      <div class="footer-gruppe">
+        <span class="footer-gruppe-label">renovira. Gruppe</span>
+        <div class="footer-brands">
+          <span class="fb-brand">renovira.</span>
+          <span class="fb-brand fb-active">renotec.</span>
+          <span class="fb-brand fb-soon">renovolt. <small>coming soon</small></span>
+        </div>
+      </div>
+      <div class="footer-inner">
+        <div class="footer-col">
+          <h4>renotec.</h4>
+          <p>SHK-Meisterbetrieb Berlin</p>
+          <p>Eingetragen bei der<br>Handwerkskammer Berlin</p>
+        </div>
+        <div class="footer-col">
+          <h4>Leistungen</h4>
+          <ul>
+            <li><a href="#">Wärmepumpen</a></li>
+            <li><a href="#">Badsanierung</a></li>
+            <li><a href="#">Heizungsinstallation</a></li>
+            <li><a href="#">Sanitärinstallation</a></li>
+            <li><a href="#">Rohrreinigung / 24h-Notdienst</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul><li><a href="#">Startseite</a></li><li><a href="#">Leistungen</a></li><li><a href="#">Bewertungen</a></li><li><a href="#">Anfrage</a></li><li><a href="#">Kontakt</a></li></ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 renotec. · Alle Rechte vorbehalten</span>
+        <span>
+          <a href="#">Impressum</a> · <a href="#">Datenschutz</a> · <a href="renotec_preview_barrierefreiheit.html">Barrierefreiheit</a>
+        </span>
+      </div>
+    </footer>
+  
+    <div class="export-overlay" id="exportOverlay">
+      <div class="export-box">
+        <div class="count" id="exportCount">0</div>
+        <h2>Kommentare bereit</h2>
+        <p>Alle Ihre Änderungsvorschläge für alle Seiten in einer Datei. Laden Sie sie herunter und senden Sie diese an Ihr Projektteam.</p>
+        <button class="btn-export" onclick="exportFeedback()">📥 Als Datei herunterladen</button>
+        <button class="btn-export btn-copy" onclick="copyFeedback()">📋 In Zwischenablage kopieren</button>
+        <button class="btn-close-overlay" onclick="closeExportOverlay()">Schließen</button>
+      </div>
+    </div>
+  
+<script>
+(function(){
+  var steps = Array.prototype.slice.call(document.querySelectorAll('.block-multistep'));
+  if (steps.length < 2) return;
+  var idx = 0;
+  function render(scroll){
+    steps.forEach(function(s,j){ s.style.display = (j===idx) ? '' : 'none'; });
+    var cur = steps[idx];
+    var back = cur.querySelector('.ms-btn-back');
+    if (back) back.disabled = (idx === 0);
+    if (scroll){
+      var top = cur.getBoundingClientRect().top + window.pageYOffset - 90;
+      window.scrollTo({ top: top, behavior: 'smooth' });
+    }
+  }
+  steps.forEach(function(s){
+    var back = s.querySelector('.ms-btn-back');
+    var next = s.querySelector('.ms-btn-next');
+    var sub  = s.querySelector('.ms-submit');
+    if (back) back.addEventListener('click', function(e){ e.preventDefault(); if (idx>0){ idx--; render(true); } });
+    if (next) next.addEventListener('click', function(e){ e.preventDefault(); if (idx<steps.length-1){ idx++; render(true); } });
+    if (sub)  sub.addEventListener('click', function(e){
+      e.preventDefault();
+      var host = steps[steps.length-1];
+      var ok = document.createElement('div');
+      ok.className = 'ms-success';
+      ok.innerHTML = '<div class="ms-success-icon">✓</div><h3>Vielen Dank!</h3><p>Wir melden uns innerhalb von 24 Stunden persönlich bei Ihnen.</p><button class="ms-btn-restart" type="button">Neue Anfrage starten</button>';
+      host.style.display = 'none';
+      host.parentNode.insertBefore(ok, host.nextSibling);
+      ok.querySelector('.ms-btn-restart').addEventListener('click', function(){ ok.remove(); idx=0; render(true); });
+      var top = ok.getBoundingClientRect().top + window.pageYOffset - 90;
+      window.scrollTo({ top: top, behavior: 'smooth' });
+    });
+  });
+  render(false);
+})();
+</script>
+
+  <script>
+(function() {
+  var PROJECT = 'renotec';
+  var PAGE = 'waermepumpen';
+  var PAGE_TITLE = 'Wärmepumpen';
+  var STORAGE_KEY = '2p-feedback-' + PROJECT;
+
+  function getAllFeedback() {
+    return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+  }
+  function getPageFeedback() {
+    var all = getAllFeedback();
+    return all[PAGE] || {};
+  }
+  function savePageFeedback(pageData) {
+    var all = getAllFeedback();
+    if (Object.keys(pageData).length === 1 && pageData._title) {
+      delete all[PAGE];
+    } else {
+      all[PAGE] = pageData;
+    }
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(all));
+  }
+  function getTotalCount() {
+    var all = getAllFeedback();
+    var count = 0;
+    for (var page in all) {
+      for (var key in all[page]) {
+        if (key !== '_title') count++;
+      }
+    }
+    return count;
+  }
+  function loadFeedback() {
+    var pageData = getPageFeedback();
+    for (var blockId in pageData) {
+      if (blockId === '_title') continue;
+      var entry = pageData[blockId];
+      var text = (typeof entry === 'object') ? entry.text : entry;
+      var textarea = document.getElementById('feedback-text-' + blockId);
+      var btn = document.querySelector('#block-' + blockId + ' .feedback-btn');
+      var deleteBtn = document.getElementById('delete-btn-' + blockId);
+      if (textarea) textarea.value = text;
+      if (btn) { btn.classList.add('has-comment'); btn.textContent = '✏️ Kommentar bearbeiten'; }
+      if (deleteBtn) deleteBtn.style.display = 'inline-block';
+    }
+    updateCounter();
+  }
+  window.toggleFeedback = function(blockId) {
+    var panel = document.getElementById('feedback-panel-' + blockId);
+    panel.classList.toggle('open');
+    if (panel.classList.contains('open')) {
+      document.getElementById('feedback-text-' + blockId).focus();
+    }
+  };
+  window.saveFeedback = function(blockId) {
+    var text = document.getElementById('feedback-text-' + blockId).value.trim();
+    if (!text) return;
+    var blockEl = document.getElementById('block-' + blockId);
+    var labelEl = blockEl ? blockEl.querySelector('.block-label') : null;
+    var label = labelEl ? labelEl.textContent : ('Block ' + blockId);
+    var pageData = getPageFeedback();
+    pageData._title = PAGE_TITLE;
+    pageData[blockId] = { text: text, label: label };
+    savePageFeedback(pageData);
+    var btn = document.querySelector('#block-' + blockId + ' .feedback-btn');
+    btn.classList.add('has-comment');
+    btn.textContent = '✏️ Kommentar bearbeiten';
+    document.getElementById('delete-btn-' + blockId).style.display = 'inline-block';
+    var indicator = document.getElementById('saved-' + blockId);
+    indicator.style.display = 'flex';
+    setTimeout(function() { indicator.style.display = 'none'; }, 2000);
+    updateCounter();
+    setTimeout(function() { window.toggleFeedback(blockId); }, 1500);
+  };
+  window.deleteFeedback = function(blockId) {
+    var pageData = getPageFeedback();
+    delete pageData[blockId];
+    savePageFeedback(pageData);
+    document.getElementById('feedback-text-' + blockId).value = '';
+    var btn = document.querySelector('#block-' + blockId + ' .feedback-btn');
+    btn.classList.remove('has-comment');
+    btn.textContent = '✏️ Vorschlag';
+    document.getElementById('delete-btn-' + blockId).style.display = 'none';
+    updateCounter();
+    window.toggleFeedback(blockId);
+  };
+  function updateCounter() {
+    var count = getTotalCount();
+    var counterEl = document.getElementById('feedbackCounter');
+    if (count > 0) {
+      counterEl.classList.add('has-feedback');
+      counterEl.innerHTML = '📥 Feedback: ' + count + ' Kommentar' + (count > 1 ? 'e' : '');
+    } else {
+      counterEl.classList.remove('has-feedback');
+      counterEl.innerHTML = 'Feedback: 0 Kommentare';
+    }
+  }
+  window.openExportOverlay = function() {
+    var count = getTotalCount();
+    if (count === 0) return;
+    document.getElementById('exportCount').textContent = count;
+    document.getElementById('exportOverlay').classList.add('open');
+  };
+  window.closeExportOverlay = function() {
+    document.getElementById('exportOverlay').classList.remove('open');
+  };
+  function buildFeedbackText() {
+    var all = getAllFeedback();
+    var totalCount = getTotalCount();
+    var text = 'FEEDBACK — ' + PROJECT.toUpperCase() + '\n';
+    text += 'Datum: ' + new Date().toLocaleDateString('de-DE') + '\n';
+    text += totalCount + ' Kommentar(e) insgesamt\n';
+    text += '==================================================\n\n';
+    for (var page in all) {
+      var pageData = all[page];
+      var pageTitle = pageData._title || page;
+      text += '━━━ ' + pageTitle + ' ━━━\n\n';
+      for (var blockId in pageData) {
+        if (blockId === '_title') continue;
+        var entry = pageData[blockId];
+        var commentText = (typeof entry === 'object') ? entry.text : entry;
+        var label = (typeof entry === 'object' && entry.label) ? entry.label : ('Block ' + blockId);
+        text += '📌 ' + label + '\n';
+        text += '----------------------------------------\n';
+        text += commentText + '\n\n';
+      }
+    }
+    text += '==================================================\n';
+    text += 'Erstellt am ' + new Date().toLocaleString('de-DE') + '\n';
+    return text;
+  }
+  window.exportFeedback = function() {
+    var text = buildFeedbackText();
+    var blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'feedback_' + PROJECT + '_' + new Date().toISOString().slice(0,10) + '.txt';
+    a.click();
+    URL.revokeObjectURL(url);
+    window.closeExportOverlay();
+  };
+  window.copyFeedback = function() {
+    var text = buildFeedbackText();
+    navigator.clipboard.writeText(text).then(function() {
+      var btn = document.querySelector('.btn-copy');
+      var original = btn.textContent;
+      btn.textContent = '✅ Kopiert!';
+      setTimeout(function() { btn.textContent = original; }, 2000);
+    });
+  };
+  loadFeedback();
+})();
+</script>
+</body>
+</html>

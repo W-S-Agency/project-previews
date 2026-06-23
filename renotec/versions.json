@@ -1,7 +1,12 @@
 {
   "project": "renotec_preview",
-  "latest": "v1.4",
+  "latest": "v1.5",
   "versions": [
+    {
+      "version": "v1.5",
+      "date": "2026-06-18",
+      "summary": "Lead-Magnet (Anfrage-Formular) in der Vorschau als interaktiver 5-Schritt-Assistent: durchklickbar (Weiter/Zurueck), Fortschrittsanzeige, Auswahl-Kacheln, Mehrfachauswahl, Schieberegler (Wohnflaeche/Baeder/Baujahr), Abschluss-Bestaetigung. Uebrige Seiten inhaltlich wie V1.4 (freigegebene Fassung)."
+    },
     {
       "version": "v1.4",
       "date": "2026-06-02",
