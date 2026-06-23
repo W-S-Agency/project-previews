@@ -962,6 +962,8 @@ body {
 .ms-success-icon { width: 56px; height: 56px; border-radius: 50%; background: var(--success); color: white; font-size: 30px; line-height: 56px; margin: 0 auto 16px; }
 .ms-success h3 { font-size: 20px; margin-bottom: 8px; }
 .ms-success p { color: var(--text-light); }
+.block-lmwrap > h2 { margin-bottom: 8px; }
+.block-lmwrap > .ms-teaser-intro { color: var(--text-light); max-width: 760px; margin-bottom: 22px; line-height: 1.7; }
 .ms-btn-restart { margin-top: 18px; background: var(--primary); color: white; border: none; padding: 12px 28px; border-radius: var(--radius); font-weight: 600; cursor: pointer; }
 
 @media (max-width: 768px) {
@@ -1257,6 +1259,7 @@ body {
   
 <script>
 (function(){
+  var CALENDLY_URL = "https://calendly.com/"; /* [KLIENT: Calendly-Terminlink folgt] */
   var steps = Array.prototype.slice.call(document.querySelectorAll('.block-multistep'));
   if (steps.length < 2) return;
   var idx = 0;
@@ -1270,12 +1273,26 @@ body {
       window.scrollTo({ top: top, behavior: 'smooth' });
     }
   }
+  function scrollToContact(){
+    var t = document.querySelector('[data-contact]');
+    if (!t){ var bl = document.querySelectorAll('main .block'); t = bl[bl.length-1]; }
+    if (t){ var top = t.getBoundingClientRect().top + window.pageYOffset - 80; window.scrollTo({ top: top, behavior: 'smooth' }); }
+  }
+  function advance(){
+    if (idx === 0){
+      var sel = steps[0].querySelector('input:checked');
+      var label = sel && sel.closest('.ms-radio') ? sel.closest('.ms-radio').innerText.toLowerCase() : '';
+      if (/beratungstermin|termin/.test(label)){ window.open(CALENDLY_URL, '_blank'); return; }
+      if (/allgemein/.test(label)){ scrollToContact(); return; }
+    }
+    if (idx < steps.length-1){ idx++; render(true); }
+  }
   steps.forEach(function(s){
     var back = s.querySelector('.ms-btn-back');
     var next = s.querySelector('.ms-btn-next');
     var sub  = s.querySelector('.ms-submit');
     if (back) back.addEventListener('click', function(e){ e.preventDefault(); if (idx>0){ idx--; render(true); } });
-    if (next) next.addEventListener('click', function(e){ e.preventDefault(); if (idx<steps.length-1){ idx++; render(true); } });
+    if (next) next.addEventListener('click', function(e){ e.preventDefault(); advance(); });
     if (sub)  sub.addEventListener('click', function(e){
       e.preventDefault();
       var host = steps[steps.length-1];

@@ -962,6 +962,8 @@ body {
 .ms-success-icon { width: 56px; height: 56px; border-radius: 50%; background: var(--success); color: white; font-size: 30px; line-height: 56px; margin: 0 auto 16px; }
 .ms-success h3 { font-size: 20px; margin-bottom: 8px; }
 .ms-success p { color: var(--text-light); }
+.block-lmwrap > h2 { margin-bottom: 8px; }
+.block-lmwrap > .ms-teaser-intro { color: var(--text-light); max-width: 760px; margin-bottom: 22px; line-height: 1.7; }
 .ms-btn-restart { margin-top: 18px; background: var(--primary); color: white; border: none; padding: 12px 28px; border-radius: var(--radius); font-weight: 600; cursor: pointer; }
 
 @media (max-width: 768px) {
@@ -1241,15 +1243,122 @@ body {
         </div>
       </div>
     </div>
-    <div class="block block-msteaser" id="block-7">
+    <div class="block block-lmwrap" id="block-7">
       <span class="block-label" style="display:none">Block 7 — Wie dürfen wir Ihnen helfen? – Jetzt Anfrage starten</span>
       <button class="feedback-btn" onclick="toggleFeedback(7)">✏️ Vorschlag</button>
       <h2>Wie dürfen wir Ihnen helfen? – Jetzt Anfrage starten</h2>
       <p class="ms-teaser-intro">Sie wissen bereits, was Sie brauchen? In nur wenigen Schritten können Sie uns Ihr Anliegen schildern – unverbindlich und kostenlos. Wählen Sie Ihren Bereich, beschreiben Sie Ihr Vorhaben und wir melden uns mit einem individuellen Angebot.</p>
-      <p class="ms-teaser-sub"><strong>So funktioniert&#x27;s:</strong></p>
-      <ol class="ms-teaser-steps"><li><strong>Anliegen wählen</strong> – Kostenvoranschlag, Beratungstermin oder allgemeine Anfrage</li><li><strong>Bereich angeben</strong> – Wärmepumpe & Heizung, Bad & Sanitär oder Rohrreinigung</li><li><strong>Leistungen auswählen</strong> – Wählen Sie die passenden Leistungen (Mehrfachauswahl möglich)</li><li><strong>Objektdaten ergänzen</strong> – Wohnfläche, Anzahl Bäder, Baujahr</li><li><strong>Kontaktdaten hinterlassen</strong> – Wir melden uns innerhalb von 24 Stunden bei Ihnen</li></ol>
-      <a class="btn" href="renotec_preview_anfrage.html">→ Jetzt Anfrage starten</a>
-      <div class="ms-teaser-hint">⏱ <strong>Dauer: ca. 2 Minuten</strong> · Kostenlos & unverbindlich</div>
+      
+    <div class="block block-multistep" id="block-71" data-ms-step="1">
+      <span class="block-label" style="display:none">Block 71 — Schritt 1 – Wie dürfen wir Ihnen helfen?</span>
+      <button class="feedback-btn" onclick="toggleFeedback(71)">✏️ Vorschlag</button>
+      <div class="ms-progress"><div class="ms-step-dot active"><span>1</span></div><div class="ms-step-line"></div><div class="ms-step-dot"><span>2</span></div><div class="ms-step-line"></div><div class="ms-step-dot"><span>3</span></div><div class="ms-step-line"></div><div class="ms-step-dot"><span>4</span></div><div class="ms-step-line"></div><div class="ms-step-dot"><span>5</span></div></div>
+      <h2>Wie dürfen wir Ihnen helfen?</h2>
+      <p>Bitte wählen Sie, wie wir Sie unterstützen können:</p>
+      <div class="ms-options ms-radios"><label class="ms-radio"><input type="radio" name="step1"><div><strong>Kostenvoranschlag anfordern</strong><span class="ms-opt-desc">Sie haben ein konkretes Vorhaben und möchten wissen, was es kostet.</span></div></label><label class="ms-radio"><input type="radio" name="step1"><div><strong>Beratungstermin vereinbaren</strong><span class="ms-opt-desc">Sie möchten sich persönlich beraten lassen, bevor Sie sich entscheiden.</span></div></label><label class="ms-radio"><input type="radio" name="step1"><div><strong>Allgemeine Anfrage</strong><span class="ms-opt-desc">Sie haben eine Frage oder ein anderes Anliegen.</span></div></label></div>
+      <div class="ms-nav-buttons"><button type="button" class="ms-btn-back">← Zurück</button><button type="button" class="ms-btn-next">Weiter →</button></div>
+      <div class="feedback-panel" id="feedback-panel-71">
+        <label>Ihr Vorschlag für Block 71 — Schritt 1 – Wie dürfen wir Ihnen helfen?:</label>
+        <textarea id="feedback-text-71" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+        <div class="feedback-actions">
+          <button class="btn-save" onclick="saveFeedback(71)">Speichern</button>
+          <button class="btn-cancel" onclick="toggleFeedback(71)">Abbrechen</button>
+          <button class="btn-delete" onclick="deleteFeedback(71)" style="display:none" id="delete-btn-71">Löschen</button>
+          <span class="saved-indicator" id="saved-71">✓ Gespeichert</span>
+        </div>
+      </div>
+    </div>
+    <div class="block block-multistep" id="block-72" data-ms-step="2">
+      <span class="block-label" style="display:none">Block 72 — Schritt 2 – Um welchen Bereich geht es?</span>
+      <button class="feedback-btn" onclick="toggleFeedback(72)">✏️ Vorschlag</button>
+      <div class="ms-progress"><div class="ms-step-dot completed"><span>1</span></div><div class="ms-step-line"></div><div class="ms-step-dot active"><span>2</span></div><div class="ms-step-line"></div><div class="ms-step-dot"><span>3</span></div><div class="ms-step-line"></div><div class="ms-step-dot"><span>4</span></div><div class="ms-step-line"></div><div class="ms-step-dot"><span>5</span></div></div>
+      <h2>Um welchen Bereich geht es?</h2>
+      <p>Wählen Sie den Bereich, der am besten zu Ihrem Anliegen passt:</p>
+      <div class="ms-options ms-radios"><label class="ms-radio"><input type="radio" name="step2"><div><strong>Wärmepumpe &amp; Heizung</strong><span class="ms-opt-desc">Installation, Modernisierung, Wartung, BAFA-Förderung</span></div></label><label class="ms-radio"><input type="radio" name="step2"><div><strong>Bad &amp; Sanitär</strong><span class="ms-opt-desc">Badsanierung, Sanitärinstallation, Reparatur</span></div></label><label class="ms-radio"><input type="radio" name="step2"><div><strong>Rohrreinigung</strong><span class="ms-opt-desc">Verstopfung, Abflussreinigung, Rohr-TV-Inspektion</span></div></label></div>
+      <div class="ms-nav-buttons"><button type="button" class="ms-btn-back">← Zurück</button><button type="button" class="ms-btn-next">Weiter →</button></div>
+      <div class="feedback-panel" id="feedback-panel-72">
+        <label>Ihr Vorschlag für Block 72 — Schritt 2 – Um welchen Bereich geht es?:</label>
+        <textarea id="feedback-text-72" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+        <div class="feedback-actions">
+          <button class="btn-save" onclick="saveFeedback(72)">Speichern</button>
+          <button class="btn-cancel" onclick="toggleFeedback(72)">Abbrechen</button>
+          <button class="btn-delete" onclick="deleteFeedback(72)" style="display:none" id="delete-btn-72">Löschen</button>
+          <span class="saved-indicator" id="saved-72">✓ Gespeichert</span>
+        </div>
+      </div>
+    </div>
+    <div class="block block-multistep" id="block-73" data-ms-step="3">
+      <span class="block-label" style="display:none">Block 73 — Schritt 3 – Welche Leistungen benötigen Sie?</span>
+      <button class="feedback-btn" onclick="toggleFeedback(73)">✏️ Vorschlag</button>
+      <div class="ms-progress"><div class="ms-step-dot completed"><span>1</span></div><div class="ms-step-line"></div><div class="ms-step-dot completed"><span>2</span></div><div class="ms-step-line"></div><div class="ms-step-dot active"><span>3</span></div><div class="ms-step-line"></div><div class="ms-step-dot"><span>4</span></div><div class="ms-step-line"></div><div class="ms-step-dot"><span>5</span></div></div>
+      <h2>Welche Leistungen benötigen Sie?</h2>
+      <p>Wählen Sie alle zutreffenden Leistungen (Mehrfachauswahl möglich):</p>
+      <div class="ms-options ms-checkboxes"><label class="ms-checkbox"><input type="checkbox"><span>Wärmepumpe Installation</span></label><label class="ms-checkbox"><input type="checkbox"><span>Heizungsinstallation / -modernisierung</span></label><label class="ms-checkbox"><input type="checkbox"><span>Badsanierung (komplett)</span></label><label class="ms-checkbox"><input type="checkbox"><span>Sanitärinstallation</span></label><label class="ms-checkbox"><input type="checkbox"><span>Rohrreinigung</span></label><label class="ms-checkbox"><input type="checkbox"><span>Rohr-TV-Inspektion</span></label><label class="ms-checkbox"><input type="checkbox"><span>Wartung &amp; Service</span></label><label class="ms-checkbox"><input type="checkbox"><span>Sonstiges</span></label></div>
+      <div class="ms-nav-buttons"><button type="button" class="ms-btn-back">← Zurück</button><button type="button" class="ms-btn-next">Weiter →</button></div>
+      <div class="feedback-panel" id="feedback-panel-73">
+        <label>Ihr Vorschlag für Block 73 — Schritt 3 – Welche Leistungen benötigen Sie?:</label>
+        <textarea id="feedback-text-73" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+        <div class="feedback-actions">
+          <button class="btn-save" onclick="saveFeedback(73)">Speichern</button>
+          <button class="btn-cancel" onclick="toggleFeedback(73)">Abbrechen</button>
+          <button class="btn-delete" onclick="deleteFeedback(73)" style="display:none" id="delete-btn-73">Löschen</button>
+          <span class="saved-indicator" id="saved-73">✓ Gespeichert</span>
+        </div>
+      </div>
+    </div>
+    <div class="block block-multistep" id="block-74" data-ms-step="4">
+      <span class="block-label" style="display:none">Block 74 — Schritt 4 – Details zu Ihrem Objekt</span>
+      <button class="feedback-btn" onclick="toggleFeedback(74)">✏️ Vorschlag</button>
+      <div class="ms-progress"><div class="ms-step-dot completed"><span>1</span></div><div class="ms-step-line"></div><div class="ms-step-dot completed"><span>2</span></div><div class="ms-step-line"></div><div class="ms-step-dot completed"><span>3</span></div><div class="ms-step-line"></div><div class="ms-step-dot active"><span>4</span></div><div class="ms-step-line"></div><div class="ms-step-dot"><span>5</span></div></div>
+      <h2>Details zu Ihrem Objekt</h2>
+      <p>Damit wir Ihre Anfrage besser einschätzen können, geben Sie bitte die ungefähren Eckdaten Ihres Objekts an:</p>
+      <div class="ms-sliders">
+                <div class="ms-slider">
+                  <div class="ms-slider-head"><span><strong>Wohnfläche (m²)</strong></span><output>100 m²</output></div>
+                  <input type="range" min="20" max="500" value="100"
+                         oninput="this.parentNode.querySelector('output').textContent=this.value+' m²'">
+                </div>
+                <div class="ms-slider">
+                  <div class="ms-slider-head"><span><strong>Anzahl Bäder</strong></span><output>1</output></div>
+                  <input type="range" min="1" max="5" value="1"
+                         oninput="this.parentNode.querySelector('output').textContent=this.value+''">
+                </div>
+                <div class="ms-slider">
+                  <div class="ms-slider-head"><span><strong>Baujahr (ca.)</strong></span><output>1990</output></div>
+                  <input type="range" min="1900" max="2026" value="1990"
+                         oninput="this.parentNode.querySelector('output').textContent=this.value+''">
+                </div></div><div class="ms-hint">Diese Angaben sind optional und helfen uns, Ihre Anfrage schneller zu bearbeiten. Falls Sie unsicher sind, lassen Sie die Felder einfach auf dem Standardwert.</div>
+      <div class="ms-nav-buttons"><button type="button" class="ms-btn-back">← Zurück</button><button type="button" class="ms-btn-next">Weiter →</button></div>
+      <div class="feedback-panel" id="feedback-panel-74">
+        <label>Ihr Vorschlag für Block 74 — Schritt 4 – Details zu Ihrem Objekt:</label>
+        <textarea id="feedback-text-74" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+        <div class="feedback-actions">
+          <button class="btn-save" onclick="saveFeedback(74)">Speichern</button>
+          <button class="btn-cancel" onclick="toggleFeedback(74)">Abbrechen</button>
+          <button class="btn-delete" onclick="deleteFeedback(74)" style="display:none" id="delete-btn-74">Löschen</button>
+          <span class="saved-indicator" id="saved-74">✓ Gespeichert</span>
+        </div>
+      </div>
+    </div>
+    <div class="block block-multistep" id="block-75" data-ms-step="5">
+      <span class="block-label" style="display:none">Block 75 — Schritt 5 – Ihre Kontaktdaten</span>
+      <button class="feedback-btn" onclick="toggleFeedback(75)">✏️ Vorschlag</button>
+      <div class="ms-progress"><div class="ms-step-dot completed"><span>1</span></div><div class="ms-step-line"></div><div class="ms-step-dot completed"><span>2</span></div><div class="ms-step-line"></div><div class="ms-step-dot completed"><span>3</span></div><div class="ms-step-line"></div><div class="ms-step-dot completed"><span>4</span></div><div class="ms-step-line"></div><div class="ms-step-dot active"><span>5</span></div></div>
+      <h2>Ihre Kontaktdaten</h2>
+      <p>Wie können wir Sie erreichen? Bitte geben Sie Ihre Daten ein.</p>
+      <div class="ms-table"><table><tr><th>Feld</th><th>Pflichtfeld</th></tr><tr><td>Vorname</td><td>–</td></tr><tr><td><strong>Nachname</strong></td><td>✓</td></tr><tr><td><strong>Telefonnummer</strong></td><td>✓</td></tr><tr><td><strong>E-Mail</strong></td><td>✓</td></tr><tr><td>Adresse / Stadtteil</td><td>–</td></tr><tr><td><strong>Postleitzahl</strong></td><td>✓</td></tr></table></div><div class="ms-hint">🔒 Ihre Daten werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet und nicht an Dritte weitergegeben. Weitere Informationen finden Sie in unserer <a href="#">Datenschutzerklärung</a>.</div>
+      <div class="ms-nav-buttons"><button type="button" class="ms-btn-back">← Zurück</button><button type="button" class="ms-submit">Anfrage absenden</button></div>
+      <div class="feedback-panel" id="feedback-panel-75">
+        <label>Ihr Vorschlag für Block 75 — Schritt 5 – Ihre Kontaktdaten:</label>
+        <textarea id="feedback-text-75" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+        <div class="feedback-actions">
+          <button class="btn-save" onclick="saveFeedback(75)">Speichern</button>
+          <button class="btn-cancel" onclick="toggleFeedback(75)">Abbrechen</button>
+          <button class="btn-delete" onclick="deleteFeedback(75)" style="display:none" id="delete-btn-75">Löschen</button>
+          <span class="saved-indicator" id="saved-75">✓ Gespeichert</span>
+        </div>
+      </div>
+    </div>
       <div class="feedback-panel" id="feedback-panel-7">
         <label>Ihr Vorschlag für Block 7 — Wie dürfen wir Ihnen helfen? – Jetzt Anfrage starten:</label>
         <textarea id="feedback-text-7" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
@@ -1328,7 +1437,7 @@ body {
         </div>
       </div>
     </div>
-    <div class="block block-contactsplit" id="block-10">
+    <div class="block block-contactsplit" id="block-10" data-contact="1">
       <span class="block-label" style="display:none">Block 10 — Jetzt kostenlos anfragen</span>
       <button class="feedback-btn" onclick="toggleFeedback(10)">✏️ Vorschlag</button>
       <div class="cs-cols">
@@ -1417,6 +1526,7 @@ body {
   
 <script>
 (function(){
+  var CALENDLY_URL = "https://calendly.com/"; /* [KLIENT: Calendly-Terminlink folgt] */
   var steps = Array.prototype.slice.call(document.querySelectorAll('.block-multistep'));
   if (steps.length < 2) return;
   var idx = 0;
@@ -1430,12 +1540,26 @@ body {
       window.scrollTo({ top: top, behavior: 'smooth' });
     }
   }
+  function scrollToContact(){
+    var t = document.querySelector('[data-contact]');
+    if (!t){ var bl = document.querySelectorAll('main .block'); t = bl[bl.length-1]; }
+    if (t){ var top = t.getBoundingClientRect().top + window.pageYOffset - 80; window.scrollTo({ top: top, behavior: 'smooth' }); }
+  }
+  function advance(){
+    if (idx === 0){
+      var sel = steps[0].querySelector('input:checked');
+      var label = sel && sel.closest('.ms-radio') ? sel.closest('.ms-radio').innerText.toLowerCase() : '';
+      if (/beratungstermin|termin/.test(label)){ window.open(CALENDLY_URL, '_blank'); return; }
+      if (/allgemein/.test(label)){ scrollToContact(); return; }
+    }
+    if (idx < steps.length-1){ idx++; render(true); }
+  }
   steps.forEach(function(s){
     var back = s.querySelector('.ms-btn-back');
     var next = s.querySelector('.ms-btn-next');
     var sub  = s.querySelector('.ms-submit');
     if (back) back.addEventListener('click', function(e){ e.preventDefault(); if (idx>0){ idx--; render(true); } });
-    if (next) next.addEventListener('click', function(e){ e.preventDefault(); if (idx<steps.length-1){ idx++; render(true); } });
+    if (next) next.addEventListener('click', function(e){ e.preventDefault(); advance(); });
     if (sub)  sub.addEventListener('click', function(e){
       e.preventDefault();
       var host = steps[steps.length-1];
