@@ -881,18 +881,21 @@ body {
   flex-shrink: 0;
 }
 .ms-options { margin: 24px 0; }
-.ms-radios { display: flex; flex-direction: column; gap: 12px; }
+/* Schritt 1/2 — Richtungs-Kacheln (Tiles, wie renovira) statt vertikale Liste */
+.ms-radios { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; }
 .ms-radio {
-  display: flex; align-items: flex-start; gap: 12px;
+  position: relative;
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  text-align: center;
   background: white;
   border: 2px solid var(--border);
   border-radius: var(--radius);
-  padding: 16px 20px;
-  cursor: default;
-  transition: border-color 0.2s;
+  padding: 24px 18px;
+  transition: all 0.15s;
 }
-.ms-radio:hover { border-color: var(--primary-light); }
-.ms-radio input { margin-top: 4px; width: 18px; height: 18px; accent-color: var(--primary); }
+.ms-radio:hover { border-color: var(--primary-light); box-shadow: var(--shadow-md); }
+.ms-radio:has(input:checked) { border-color: var(--primary); background: rgba(30,58,95,0.06); box-shadow: 0 0 0 3px rgba(30,58,95,0.12); }
+.ms-radio input { position: absolute; opacity: 0; pointer-events: none; }
 .ms-radio strong { display: block; font-size: 15px; color: var(--text); }
 .ms-opt-desc { display: block; font-size: 13px; color: var(--text-light); margin-top: 2px; }
 .ms-checkboxes { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
