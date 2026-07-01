@@ -75,6 +75,17 @@ code{background:#eef2f7;padding:1px 5px;border-radius:4px;font-size:.85em;}
 .arrow{color:var(--accent-dark);font-weight:700;}
 mark.ph{background:#fff3bf;color:#664d03;padding:1px 5px;border-radius:4px;font-size:.92em;}
 
+/* FAQ Accordion */
+.faq{max-width:840px;}
+.faq-item{border:1px solid var(--border);border-radius:var(--radius);margin:0 0 10px;background:var(--bg);overflow:hidden;}
+.faq-item summary{cursor:pointer;list-style:none;padding:16px 48px 16px 20px;font-weight:600;color:var(--primary);position:relative;font-size:17px;}
+.faq-item summary::-webkit-details-marker{display:none;}
+.faq-item summary::after{content:"+";position:absolute;right:20px;top:50%;transform:translateY(-50%);font-size:22px;font-weight:400;line-height:1;color:var(--accent-dark);}
+.faq-item[open] summary::after{content:"\2212";}
+.faq-item summary:hover{background:var(--bg-soft);}
+.faq-a{padding:2px 20px 18px;color:var(--text-light);}
+.faq-a p{margin:0;}
+
 /* Hero */
 .block-hero{background:linear-gradient(135deg,var(--primary),var(--primary-light));color:#fff;padding:70px 40px;}
 .block-hero h1{font-size:40px;line-height:1.15;margin:0 0 18px;color:#fff;}
@@ -341,6 +352,23 @@ mark.ph{background:#fff3bf;color:#664d03;padding:1px 5px;border-radius:4px;font-
     <button class="btn-cancel" onclick="toggleFeedback(5)">Abbrechen</button>
     <button class="btn-delete" onclick="deleteFeedback(5)" style="display:none" id="delete-btn-5">Löschen</button>
     <span class="saved-indicator" id="saved-5">✓ Gespeichert</span>
+  </div>
+</div>
+</section>
+<section class="block block-faq" id="block-6">
+  <span class="block-label" style="display:none">Block 6 — Faq</span>
+  <button class="feedback-btn" onclick="toggleFeedback(6)">✏️ Vorschlag</button>
+  <div class="block-inner">
+  <h2>Häufige Fragen zur Halteverbotszone</h2><div class='faq'><details class='faq-item' open><summary>Was kostet eine Halteverbotszone?</summary><div class='faq-a'>Der Preis besteht aus zwei Teilen: unserer Leistung fürs Aufstellen und Abholen der Schilder und der amtlichen Genehmigungsgebühr. Wie hoch beides ausfällt, hängt von Stadt, Dauer und benötigter Länge ab. Beides fassen wir für Sie in einem Festpreis-Angebot zusammen, am besten gleich zusammen mit Ihrem Umzug.</div></details><details class='faq-item'><summary>Beantragt ihr die Genehmigung, oder muss ich das selbst tun?</summary><div class='faq-a'>Auf Wunsch übernehmen wir alles: Wir beantragen die Genehmigung bei der Behörde, stellen die Schilder rechtzeitig auf und holen sie nach dem Umzug wieder ab. Wenn Sie lieber selbst aufstellen, holen Sie die Schilder günstiger bei uns ab.</div></details><details class='faq-item'><summary>Wie viel Vorlauf braucht die Beantragung?</summary><div class='faq-a'>Eine Halteverbotszone braucht einige Werktage Vorlauf, da die behördliche Genehmigung Zeit braucht. Melden Sie sich also rechtzeitig vor dem Umzugstermin, dann ist alles fristgerecht eingerichtet.</div></details><details class='faq-item'><summary>Kann ich die Halteverbotszone auch als Privatperson beantragen?</summary><div class='faq-a'>Ja. Ob privat oder gewerblich, wir richten die Zone für jeden ein, der vor der eigenen Tür freie Fläche für den Umzugswagen braucht.</div></details><details class='faq-item'><summary>Was passiert, wenn jemand unbefugt in der Zone parkt?</summary><div class='faq-a'>Eine rechtssicher genehmigte Halteverbotszone gilt verbindlich. Steht am Umzugstag trotzdem ein fremdes Fahrzeug darin, kann es kostenpflichtig abgeschleppt werden, damit der Platz frei wird.</div></details></div>
+  </div>
+  <div class="feedback-panel" id="feedback-panel-6">
+  <label>Ihr Vorschlag für Block 6 — Faq:</label>
+  <textarea id="feedback-text-6" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+  <div class="feedback-actions">
+    <button class="btn-save" onclick="saveFeedback(6)">Speichern</button>
+    <button class="btn-cancel" onclick="toggleFeedback(6)">Abbrechen</button>
+    <button class="btn-delete" onclick="deleteFeedback(6)" style="display:none" id="delete-btn-6">Löschen</button>
+    <span class="saved-indicator" id="saved-6">✓ Gespeichert</span>
   </div>
 </div>
 </section>

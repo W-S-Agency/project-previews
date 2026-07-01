@@ -75,6 +75,17 @@ code{background:#eef2f7;padding:1px 5px;border-radius:4px;font-size:.85em;}
 .arrow{color:var(--accent-dark);font-weight:700;}
 mark.ph{background:#fff3bf;color:#664d03;padding:1px 5px;border-radius:4px;font-size:.92em;}
 
+/* FAQ Accordion */
+.faq{max-width:840px;}
+.faq-item{border:1px solid var(--border);border-radius:var(--radius);margin:0 0 10px;background:var(--bg);overflow:hidden;}
+.faq-item summary{cursor:pointer;list-style:none;padding:16px 48px 16px 20px;font-weight:600;color:var(--primary);position:relative;font-size:17px;}
+.faq-item summary::-webkit-details-marker{display:none;}
+.faq-item summary::after{content:"+";position:absolute;right:20px;top:50%;transform:translateY(-50%);font-size:22px;font-weight:400;line-height:1;color:var(--accent-dark);}
+.faq-item[open] summary::after{content:"\2212";}
+.faq-item summary:hover{background:var(--bg-soft);}
+.faq-a{padding:2px 20px 18px;color:var(--text-light);}
+.faq-a p{margin:0;}
+
 /* Hero */
 .block-hero{background:linear-gradient(135deg,var(--primary),var(--primary-light));color:#fff;padding:70px 40px;}
 .block-hero h1{font-size:40px;line-height:1.15;margin:0 0 18px;color:#fff;}
@@ -412,6 +423,23 @@ mark.ph{background:#fff3bf;color:#664d03;padding:1px 5px;border-radius:4px;font-
     <button class="btn-cancel" onclick="toggleFeedback(7)">Abbrechen</button>
     <button class="btn-delete" onclick="deleteFeedback(7)" style="display:none" id="delete-btn-7">Löschen</button>
     <span class="saved-indicator" id="saved-7">✓ Gespeichert</span>
+  </div>
+</div>
+</section>
+<section class="block block-faq" id="block-8">
+  <span class="block-label" style="display:none">Block 8 — Faq</span>
+  <button class="feedback-btn" onclick="toggleFeedback(8)">✏️ Vorschlag</button>
+  <div class="block-inner">
+  <h2>Häufige Fragen</h2><div class='faq'><details class='faq-item' open><summary>Ist die Besichtigung kostenlos und das Angebot unverbindlich?</summary><div class='faq-a'>Ja. Wir schauen uns den Umfang vor Ort an, und Sie erhalten ein unverbindliches Festpreis-Angebot. Für Besichtigung und Angebot entstehen Ihnen keine Kosten.</div></details><details class='faq-item'><summary>Wie schnell bekomme ich ein Angebot?</summary><div class='faq-a'>In der Regel innerhalb eines Werktags. Sie schildern uns kurz, was ansteht, wir prüfen es und nennen Ihnen einen Festpreis.</div></details><details class='faq-item'><summary>Was bedeutet Festpreis, und gibt es versteckte Kosten?</summary><div class='faq-a'>Der Preis, den wir nach der Besichtigung nennen, gilt. Keine Stundenabrechnung mit offenem Ende, keine Nachforderungen, keine versteckten Posten. Was wir nennen, zahlen Sie.</div></details><details class='faq-item'><summary>In welchem Gebiet seid ihr tätig?</summary><div class='faq-a'>Unser Standort ist Wiesbaden, unser Schwerpunkt liegt in Frankfurt am Main sowie in Offenbach, Mainz und Wiesbaden. Im gesamten Rhein-Main-Gebiet sind wir regelmäßig unterwegs, für besondere Aufträge auch darüber hinaus.</div></details><details class='faq-item'><summary>Wie läuft eine Beauftragung ab?</summary><div class='faq-a'>In vier Schritten: Sie schildern uns Ihr Vorhaben, wir besichtigen und nennen einen Festpreis, wir führen den Auftrag zum vereinbarten Termin aus, und am Ende steht die saubere Übergabe.</div></details><details class='faq-item'><summary>Kann ich mehrere Leistungen aus einer Hand bekommen?</summary><div class='faq-a'>Ja. Umzug, Entrümpelung, Montage, Material, Halteverbotszone und Einlagerung lassen sich frei kombinieren. So haben Sie einen Ansprechpartner statt vieler einzelner Dienstleister.</div></details><details class='faq-item'><summary>Arbeitet ihr mit eigenem Team und eigenem Fuhrpark?</summary><div class='faq-a'>Immer. Sechs eingespielte Mitarbeiter, drei voll ausgestattete Fahrzeuge, keine Subunternehmer. Die Leute, die Sie buchen, sind auch die, die bei Ihnen arbeiten.</div></details></div>
+  </div>
+  <div class="feedback-panel" id="feedback-panel-8">
+  <label>Ihr Vorschlag für Block 8 — Faq:</label>
+  <textarea id="feedback-text-8" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+  <div class="feedback-actions">
+    <button class="btn-save" onclick="saveFeedback(8)">Speichern</button>
+    <button class="btn-cancel" onclick="toggleFeedback(8)">Abbrechen</button>
+    <button class="btn-delete" onclick="deleteFeedback(8)" style="display:none" id="delete-btn-8">Löschen</button>
+    <span class="saved-indicator" id="saved-8">✓ Gespeichert</span>
   </div>
 </div>
 </section>

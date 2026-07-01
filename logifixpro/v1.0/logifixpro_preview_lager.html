@@ -75,6 +75,17 @@ code{background:#eef2f7;padding:1px 5px;border-radius:4px;font-size:.85em;}
 .arrow{color:var(--accent-dark);font-weight:700;}
 mark.ph{background:#fff3bf;color:#664d03;padding:1px 5px;border-radius:4px;font-size:.92em;}
 
+/* FAQ Accordion */
+.faq{max-width:840px;}
+.faq-item{border:1px solid var(--border);border-radius:var(--radius);margin:0 0 10px;background:var(--bg);overflow:hidden;}
+.faq-item summary{cursor:pointer;list-style:none;padding:16px 48px 16px 20px;font-weight:600;color:var(--primary);position:relative;font-size:17px;}
+.faq-item summary::-webkit-details-marker{display:none;}
+.faq-item summary::after{content:"+";position:absolute;right:20px;top:50%;transform:translateY(-50%);font-size:22px;font-weight:400;line-height:1;color:var(--accent-dark);}
+.faq-item[open] summary::after{content:"\2212";}
+.faq-item summary:hover{background:var(--bg-soft);}
+.faq-a{padding:2px 20px 18px;color:var(--text-light);}
+.faq-a p{margin:0;}
+
 /* Hero */
 .block-hero{background:linear-gradient(135deg,var(--primary),var(--primary-light));color:#fff;padding:70px 40px;}
 .block-hero h1{font-size:40px;line-height:1.15;margin:0 0 18px;color:#fff;}
@@ -331,6 +342,23 @@ mark.ph{background:#fff3bf;color:#664d03;padding:1px 5px;border-radius:4px;font-
     <button class="btn-cancel" onclick="toggleFeedback(4)">Abbrechen</button>
     <button class="btn-delete" onclick="deleteFeedback(4)" style="display:none" id="delete-btn-4">Löschen</button>
     <span class="saved-indicator" id="saved-4">✓ Gespeichert</span>
+  </div>
+</div>
+</section>
+<section class="block block-faq" id="block-5">
+  <span class="block-label" style="display:none">Block 5 — Faq</span>
+  <button class="feedback-btn" onclick="toggleFeedback(5)">✏️ Vorschlag</button>
+  <div class="block-inner">
+  <h2>Häufige Fragen zum Lager</h2><div class='faq'><details class='faq-item' open><summary>Was kostet die Einlagerung?</summary><div class='faq-a'>Der Preis richtet sich nach Größe und Dauer. Sie mieten genau so viel Fläche, wie Sie brauchen, und bekommen vorab ein klares Angebot.</div></details><details class='faq-item'><summary>Welche Größen gibt es?</summary><div class='faq-a'>Bei uns lagern Sie ab einem Quadratmeter, vom kleinen Abteil für ein paar Kisten bis zur größeren Fläche für den ganzen Hausstand. Sie mieten nur, was Sie wirklich brauchen.</div></details><details class='faq-item'><summary>Wie flexibel ist die Laufzeit?</summary><div class='faq-a'>Sehr flexibel. Ob ein paar Wochen während des Umzugs oder dauerhaft über Jahre, Sie legen sich nicht auf eine starre Laufzeit fest.</div></details><details class='faq-item'><summary>Sind meine Sachen sicher und trocken?</summary><div class='faq-a'>Ja. Ihre Sachen sind vor Wetter und unbefugtem Zugriff geschützt, trocken und sicher verwahrt.</div></details><details class='faq-item'><summary>Helft ihr auch beim Transport ins Lager?</summary><div class='faq-a'>Ja. Auf Wunsch bringen wir Ihre Sachen gleich mit ins Lager, Umzug und Einlagerung aus einer Hand. So müssen Sie nichts selbst schleppen.</div></details><details class='faq-item'><summary>Wo ist das Lager?</summary><div class='faq-a'>In Wiesbaden, Am Speiergarten 11, mit Empfang für Kunden. Von dort sind die Wege kurz, auch für den Frankfurter Raum und das westliche Rhein-Main-Gebiet.</div></details></div>
+  </div>
+  <div class="feedback-panel" id="feedback-panel-5">
+  <label>Ihr Vorschlag für Block 5 — Faq:</label>
+  <textarea id="feedback-text-5" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+  <div class="feedback-actions">
+    <button class="btn-save" onclick="saveFeedback(5)">Speichern</button>
+    <button class="btn-cancel" onclick="toggleFeedback(5)">Abbrechen</button>
+    <button class="btn-delete" onclick="deleteFeedback(5)" style="display:none" id="delete-btn-5">Löschen</button>
+    <span class="saved-indicator" id="saved-5">✓ Gespeichert</span>
   </div>
 </div>
 </section>

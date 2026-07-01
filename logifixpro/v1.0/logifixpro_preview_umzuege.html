@@ -75,6 +75,17 @@ code{background:#eef2f7;padding:1px 5px;border-radius:4px;font-size:.85em;}
 .arrow{color:var(--accent-dark);font-weight:700;}
 mark.ph{background:#fff3bf;color:#664d03;padding:1px 5px;border-radius:4px;font-size:.92em;}
 
+/* FAQ Accordion */
+.faq{max-width:840px;}
+.faq-item{border:1px solid var(--border);border-radius:var(--radius);margin:0 0 10px;background:var(--bg);overflow:hidden;}
+.faq-item summary{cursor:pointer;list-style:none;padding:16px 48px 16px 20px;font-weight:600;color:var(--primary);position:relative;font-size:17px;}
+.faq-item summary::-webkit-details-marker{display:none;}
+.faq-item summary::after{content:"+";position:absolute;right:20px;top:50%;transform:translateY(-50%);font-size:22px;font-weight:400;line-height:1;color:var(--accent-dark);}
+.faq-item[open] summary::after{content:"\2212";}
+.faq-item summary:hover{background:var(--bg-soft);}
+.faq-a{padding:2px 20px 18px;color:var(--text-light);}
+.faq-a p{margin:0;}
+
 /* Hero */
 .block-hero{background:linear-gradient(135deg,var(--primary),var(--primary-light));color:#fff;padding:70px 40px;}
 .block-hero h1{font-size:40px;line-height:1.15;margin:0 0 18px;color:#fff;}
@@ -387,6 +398,23 @@ mark.ph{background:#fff3bf;color:#664d03;padding:1px 5px;border-radius:4px;font-
     <button class="btn-cancel" onclick="toggleFeedback(7)">Abbrechen</button>
     <button class="btn-delete" onclick="deleteFeedback(7)" style="display:none" id="delete-btn-7">Löschen</button>
     <span class="saved-indicator" id="saved-7">✓ Gespeichert</span>
+  </div>
+</div>
+</section>
+<section class="block block-faq" id="block-8">
+  <span class="block-label" style="display:none">Block 8 — Faq</span>
+  <button class="feedback-btn" onclick="toggleFeedback(8)">✏️ Vorschlag</button>
+  <div class="block-inner">
+  <h2>Häufige Fragen zu Umzügen</h2><div class='faq'><details class='faq-item' open><summary>Wovon hängt der Preis für einen Umzug ab?</summary><div class='faq-a'>Vom Umfang, von der Etage und von der Entfernung. Nach einer kostenlosen Besichtigung nennen wir Ihnen einen Festpreis, damit Sie vor Auftragsbeginn genau wissen, was der Umzug kostet.</div></details><details class='faq-item'><summary>Übernehmt ihr auch das Ein- und Auspacken?</summary><div class='faq-a'>Auf Wunsch ja. Sie entscheiden, ob wir komplett übernehmen oder nur einen Teil: vom reinen Transport bis zum Vollservice inklusive Verpacken und Auspacken.</div></details><details class='faq-item'><summary>Macht ihr auch Büro- und Geschäftsumzüge?</summary><div class='faq-a'>Ja, Privat- und Geschäftsumzüge. Bei Büros, Praxen und kleinen Betrieben arbeiten wir termingenau, damit Ihr Betrieb schnell weiterläuft.</div></details><details class='faq-item'><summary>Baut ihr Möbel ab und wieder auf?</summary><div class='faq-a'>Ja. Auf Wunsch bauen wir Ihre Möbel am alten Ort ab und am neuen Ort wieder auf. Auch Küchen und komplexere Montagen übernehmen wir, siehe unsere Möbel- und Küchenmontage.</div></details><details class='faq-item'><summary>Braucht es eine Halteverbotszone, und organisiert ihr die?</summary><div class='faq-a'>Wenn vor Ihrer Tür kein Platz für den Umzugswagen ist, richten wir die Halteverbotszone ein, inklusive der behördlichen Genehmigung. Am einfachsten gleich zusammen mit dem Umzug.</div></details><details class='faq-item'><summary>Kann ich eine Zwischenlagerung dazubuchen?</summary><div class='faq-a'>Ja. Wenn die neue Wohnung noch nicht frei ist oder Sie sich verkleinern, lagern wir Ihre Sachen sicher und trocken ein, in unserem Lager in Wiesbaden.</div></details><details class='faq-item'><summary>Wie kurzfristig ist ein Umzugstermin möglich?</summary><div class='faq-a'>Wir richten uns nach Ihrem Wunschtermin und sind sechs Tage die Woche im Einsatz. Auch kurzfristige Umzüge lassen sich oft einrichten. Fragen Sie einfach an, dann sagen wir Ihnen, was möglich ist.</div></details></div>
+  </div>
+  <div class="feedback-panel" id="feedback-panel-8">
+  <label>Ihr Vorschlag für Block 8 — Faq:</label>
+  <textarea id="feedback-text-8" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+  <div class="feedback-actions">
+    <button class="btn-save" onclick="saveFeedback(8)">Speichern</button>
+    <button class="btn-cancel" onclick="toggleFeedback(8)">Abbrechen</button>
+    <button class="btn-delete" onclick="deleteFeedback(8)" style="display:none" id="delete-btn-8">Löschen</button>
+    <span class="saved-indicator" id="saved-8">✓ Gespeichert</span>
   </div>
 </div>
 </section>

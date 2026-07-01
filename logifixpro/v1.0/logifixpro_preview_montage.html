@@ -75,6 +75,17 @@ code{background:#eef2f7;padding:1px 5px;border-radius:4px;font-size:.85em;}
 .arrow{color:var(--accent-dark);font-weight:700;}
 mark.ph{background:#fff3bf;color:#664d03;padding:1px 5px;border-radius:4px;font-size:.92em;}
 
+/* FAQ Accordion */
+.faq{max-width:840px;}
+.faq-item{border:1px solid var(--border);border-radius:var(--radius);margin:0 0 10px;background:var(--bg);overflow:hidden;}
+.faq-item summary{cursor:pointer;list-style:none;padding:16px 48px 16px 20px;font-weight:600;color:var(--primary);position:relative;font-size:17px;}
+.faq-item summary::-webkit-details-marker{display:none;}
+.faq-item summary::after{content:"+";position:absolute;right:20px;top:50%;transform:translateY(-50%);font-size:22px;font-weight:400;line-height:1;color:var(--accent-dark);}
+.faq-item[open] summary::after{content:"\2212";}
+.faq-item summary:hover{background:var(--bg-soft);}
+.faq-a{padding:2px 20px 18px;color:var(--text-light);}
+.faq-a p{margin:0;}
+
 /* Hero */
 .block-hero{background:linear-gradient(135deg,var(--primary),var(--primary-light));color:#fff;padding:70px 40px;}
 .block-hero h1{font-size:40px;line-height:1.15;margin:0 0 18px;color:#fff;}
@@ -367,6 +378,23 @@ mark.ph{background:#fff3bf;color:#664d03;padding:1px 5px;border-radius:4px;font-
     <button class="btn-cancel" onclick="toggleFeedback(6)">Abbrechen</button>
     <button class="btn-delete" onclick="deleteFeedback(6)" style="display:none" id="delete-btn-6">Löschen</button>
     <span class="saved-indicator" id="saved-6">✓ Gespeichert</span>
+  </div>
+</div>
+</section>
+<section class="block block-faq" id="block-7">
+  <span class="block-label" style="display:none">Block 7 — Faq</span>
+  <button class="feedback-btn" onclick="toggleFeedback(7)">✏️ Vorschlag</button>
+  <div class="block-inner">
+  <h2>Häufige Fragen zur Montage</h2><div class='faq'><details class='faq-item' open><summary>Baut ihr auch Einbauküchen auf?</summary><div class='faq-a'>Ja. Wir montieren komplette Einbauküchen passgenau nach Ihrem Raum, auch wenn Wände oder Böden nicht ganz gerade sind. Am Ende sitzt alles bündig.</div></details><details class='faq-item'><summary>Montiert ihr Möbel jeder Marke, auch von IKEA?</summary><div class='faq-a'>Ja, wir montieren herstellerunabhängig. Ob IKEA, ein anderer Möbelhändler oder ein Einzelstück, wir bauen es fachgerecht auf.</div></details><details class='faq-item'><summary>Macht ihr auch kleine Aufträge wie Lampen, Bilder oder Bohren?</summary><div class='faq-a'>Ja. Auch einzelne Montagearbeiten übernehmen wir, vom Aufhängen der Lampe über Gardinenstangen bis zu ein paar fachgerecht gesetzten Bohrlöchern.</div></details><details class='faq-item'><summary>Übernehmt ihr Auf- und Abbau direkt im Rahmen eines Umzugs?</summary><div class='faq-a'>Ja, das ist sogar der häufigste Fall. Buchen Sie die Montage direkt zum Umzug dazu, dann erledigen wir Abbau und Aufbau in einem Rutsch. Mehr dazu steht oben unter „Besonders praktisch beim Umzug&quot;.</div></details></div>
+  </div>
+  <div class="feedback-panel" id="feedback-panel-7">
+  <label>Ihr Vorschlag für Block 7 — Faq:</label>
+  <textarea id="feedback-text-7" placeholder="Schreiben Sie hier Ihren Änderungsvorschlag oder Kommentar..."></textarea>
+  <div class="feedback-actions">
+    <button class="btn-save" onclick="saveFeedback(7)">Speichern</button>
+    <button class="btn-cancel" onclick="toggleFeedback(7)">Abbrechen</button>
+    <button class="btn-delete" onclick="deleteFeedback(7)" style="display:none" id="delete-btn-7">Löschen</button>
+    <span class="saved-indicator" id="saved-7">✓ Gespeichert</span>
   </div>
 </div>
 </section>
