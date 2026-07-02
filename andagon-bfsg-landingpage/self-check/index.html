@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>andagon Self-Check — Standalone-Demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="andagon_self_check.css">
 <style>
   :root{
@@ -11,7 +14,7 @@
     --blue:#1763b8; --blue-d:#114a8a; --red:#c62828; --amber:#b26a00; --green:#1f7a3d;
     font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   }
-  body{margin:0;color:var(--ink);background:#f4f7fb;line-height:1.6}
+  body{margin:0;color:var(--ink);background:#f4f7fb;line-height:1.6;font-family:"Source Sans 3","Source Sans Pro",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
   .wrap{max-width:760px;margin:0 auto;padding:40px 22px 80px}
   .demo-note{background:#fff8e6;border:1px solid #f0dca0;color:#7a5b00;font-size:.85rem;border-radius:10px;padding:10px 14px;margin-bottom:24px}
   h1{font-size:1.6rem;color:var(--blue-d);margin:0 0 4px}
@@ -32,11 +35,7 @@
   <h1>andagon Self-Check — Widget-Demo</h1>
   <p class="sub">Muster: Panacea Kostenrechner · Datei-Quelle: <code>andagon_self_check.js</code> / <code>.css</code></p>
 
-  <div class="panel">
-    <h2>Sind Sie betroffen? Finden Sie es heraus.</h2>
-    <p class="lead">Beantworten Sie 5 kurze Fragen. Sie sehen sofort, ob das Gesetz für Sie gilt – und wie dringend Sie handeln sollten.</p>
-    <div id="self-check"></div>
-  </div>
+  <div id="self-check"></div>
 
   <div id="kontakt">
     <div class="kf">
