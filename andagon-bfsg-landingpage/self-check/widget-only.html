@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>andagon Self-Check — Standalone-Demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="andagon_self_check.css">
+<style>
+  :root{
+    --ink:#15212e; --muted:#56657a; --line:#e2e8f0; --bg:#ffffff;
+    --blue:#1763b8; --blue-d:#114a8a; --red:#c62828; --amber:#b26a00; --green:#1f7a3d;
+    font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  body{margin:0;color:var(--ink);background:#f4f7fb;line-height:1.6;font-family:"Source Sans 3","Source Sans Pro",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+  .wrap{max-width:760px;margin:0 auto;padding:40px 22px 80px}
+  .demo-note{background:#fff8e6;border:1px solid #f0dca0;color:#7a5b00;font-size:.85rem;border-radius:10px;padding:10px 14px;margin-bottom:24px}
+  h1{font-size:1.6rem;color:var(--blue-d);margin:0 0 4px}
+  .sub{color:var(--muted);margin:0 0 26px}
+  .panel{background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px;box-shadow:0 10px 30px rgba(11,42,69,.08)}
+  h2{font-size:1.3rem;color:var(--ink);margin:0 0 6px}
+  .lead{color:var(--muted);margin:0 0 20px}
+  #kontakt{margin-top:40px}
+  .kf{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;margin-top:12px}
+  .kf label{display:block;font-weight:600;margin:12px 0 4px}
+  .kf input{width:100%;box-sizing:border-box;border:1px solid var(--line);border-radius:10px;padding:11px 13px;font-size:1rem}
+  .payload{margin-top:16px;background:#0b2a45;color:#cde;border-radius:10px;padding:14px;font-size:.82rem;white-space:pre-wrap;font-family:ui-monospace,Menlo,Consolas,monospace}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="demo-note">🔎 <strong>Standalone-Demo</strong> des Self-Check-Widgets (neutrales Branding, Platzhalter-Kontaktblock). Logik/Copy = <code>andagon_self_check.js</code>. Finales Design/Farben kommen aus Figma.</div>
+  <h1>andagon Self-Check — Widget-Demo</h1>
+  <p class="sub">Muster: Panacea Kostenrechner · Datei-Quelle: <code>andagon_self_check.js</code> / <code>.css</code></p>
+
+  <div id="self-check"></div>
+
+  <div id="kontakt">
+    <div class="kf">
+      <h2 style="margin-top:0">Lead-Formular (Platzhalter)</h2>
+      <p class="lead" style="margin-bottom:0">Das Ergebnis + die Antworten werden per <code>onComplete</code> in den Payload gehängt (unten sichtbar gemacht).</p>
+      <label for="n">Name</label><input id="n" type="text">
+      <label for="e">E-Mail (geschäftlich)</label><input id="e" type="email">
+      <input type="hidden" id="lead-ampel">
+      <input type="hidden" id="lead-antworten">
+      <div class="payload" id="payloadView">Payload: (noch kein Ergebnis)</div>
+    </div>
+  </div>
+</div>
+
+<script src="andagon_self_check.js"></script>
+<script>
+  AndagonSelfCheck.init("#self-check", {
+    ctaHref: "#kontakt",
+    onComplete: function (data) {
+      document.getElementById("lead-ampel").value = data.result;
+      document.getElementById("lead-antworten").value = JSON.stringify(data.answers);
+      document.getElementById("payloadView").textContent =
+        "Payload:\n  ampel  = " + data.result + "\n  answers = " + JSON.stringify(data.answers, null, 2);
+    }
+  });
+</script>
+</body>
+</html>

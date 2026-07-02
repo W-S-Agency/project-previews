@@ -3,51 +3,208 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>andagon Self-Check — Standalone-Demo</title>
+<title>andagon BFSG Self-Check — ТЗ + живой виджет</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="andagon_self_check.css">
 <style>
   :root{
-    --ink:#15212e; --muted:#56657a; --line:#e2e8f0; --bg:#ffffff;
+    --ink:#15212e; --muted:#56657a; --line:#e2e8f0; --bg:#ffffff; --soft:#f4f7fb;
     --blue:#1763b8; --blue-d:#114a8a; --red:#c62828; --amber:#b26a00; --green:#1f7a3d;
-    font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --yellow:#F6D709; --maxw:920px;
   }
-  body{margin:0;color:var(--ink);background:#f4f7fb;line-height:1.6;font-family:"Source Sans 3","Source Sans Pro",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
-  .wrap{max-width:760px;margin:0 auto;padding:40px 22px 80px}
-  .demo-note{background:#fff8e6;border:1px solid #f0dca0;color:#7a5b00;font-size:.85rem;border-radius:10px;padding:10px 14px;margin-bottom:24px}
-  h1{font-size:1.6rem;color:var(--blue-d);margin:0 0 4px}
-  .sub{color:var(--muted);margin:0 0 26px}
-  .panel{background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px;box-shadow:0 10px 30px rgba(11,42,69,.08)}
-  h2{font-size:1.3rem;color:var(--ink);margin:0 0 6px}
-  .lead{color:var(--muted);margin:0 0 20px}
-  #kontakt{margin-top:40px}
-  .kf{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;margin-top:12px}
-  .kf label{display:block;font-weight:600;margin:12px 0 4px}
-  .kf input{width:100%;box-sizing:border-box;border:1px solid var(--line);border-radius:10px;padding:11px 13px;font-size:1rem}
-  .payload{margin-top:16px;background:#0b2a45;color:#cde;border-radius:10px;padding:14px;font-size:.82rem;white-space:pre-wrap;font-family:ui-monospace,Menlo,Consolas,monospace}
+  *{box-sizing:border-box}
+  body{margin:0;color:var(--ink);background:var(--soft);line-height:1.65;
+    font-family:"Source Sans 3","Source Sans Pro",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:36px 22px 90px}
+  h1{font-size:1.8rem;margin:0 0 6px;color:var(--ink)}
+  h2{font-size:1.35rem;margin:36px 0 12px;padding-top:14px;border-top:1px solid var(--line);color:var(--ink)}
+  h3{font-size:1.05rem;margin:20px 0 8px}
+  p{margin:0 0 12px}
+  code{background:#eef2f7;border-radius:5px;padding:1px 6px;font-size:.9em;font-family:ui-monospace,Menlo,Consolas,monospace}
+  pre{background:#0b2a45;color:#dbe7f3;border-radius:10px;padding:16px 18px;overflow:auto;font-size:.86rem;line-height:1.55}
+  pre code{background:none;padding:0;color:inherit}
+  a{color:var(--blue)}
+  table{border-collapse:collapse;width:100%;margin:8px 0 14px;font-size:.94rem}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+  th{background:#eef2f7}
+  .meta{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:14px 0 8px;font-size:.94rem}
+  .meta div{margin:3px 0}
+  .flag{background:#fff8e6;border:1px solid #f0dca0;color:#7a5b00;border-radius:10px;padding:12px 16px;margin:14px 0}
+  .flag strong{color:#5e4600}
+  .demo-shell{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px;margin:10px 0 6px;box-shadow:0 10px 30px rgba(11,42,69,.06)}
+  .kf{background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:16px;margin-top:12px}
+  .kf label{display:block;font-weight:600;margin:10px 0 4px;font-size:.92rem}
+  .kf input{width:100%;border:1px solid var(--line);border-radius:8px;padding:9px 11px;font-size:.95rem}
+  .payload{margin-top:12px;background:#0b2a45;color:#cde;border-radius:8px;padding:12px;font-size:.8rem;white-space:pre-wrap;font-family:ui-monospace,Menlo,Consolas,monospace}
+  .toc{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:16px 0}
+  .toc a{display:inline-block;margin:2px 14px 2px 0;font-size:.92rem}
+  .sev-red{color:var(--red);font-weight:700}.sev-amber{color:var(--amber);font-weight:700}.sev-green{color:var(--green);font-weight:700}
+  .lead{color:var(--muted);font-size:1.05rem}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <div class="demo-note">🔎 <strong>Standalone-Demo</strong> des Self-Check-Widgets (neutrales Branding, Platzhalter-Kontaktblock). Logik/Copy = <code>andagon_self_check.js</code>. Finales Design/Farben kommen aus Figma.</div>
-  <h1>andagon Self-Check — Widget-Demo</h1>
-  <p class="sub">Muster: Panacea Kostenrechner · Datei-Quelle: <code>andagon_self_check.js</code> / <code>.css</code></p>
 
-  <div id="self-check"></div>
+  <h1>andagon BFSG Self-Check — ТЗ для верстальщика + живой виджет</h1>
+  <p class="lead">Один документ: сверху рабочий виджет (можно кликать), ниже — полная спецификация с логикой на русском. Тексты, которые видит пользователь на сайте, — на немецком (менять нельзя).</p>
 
-  <div id="kontakt">
-    <div class="kf">
-      <h2 style="margin-top:0">Lead-Formular (Platzhalter)</h2>
-      <p class="lead" style="margin-bottom:0">Das Ergebnis + die Antworten werden per <code>onComplete</code> in den Payload gehängt (unten sichtbar gemacht).</p>
-      <label for="n">Name</label><input id="n" type="text">
-      <label for="e">E-Mail (geschäftlich)</label><input id="e" type="email">
-      <input type="hidden" id="lead-ampel">
-      <input type="hidden" id="lead-antworten">
-      <div class="payload" id="payloadView">Payload: (noch kein Ergebnis)</div>
-    </div>
+  <div class="meta">
+    <div><strong>Для:</strong> верстальщик Vladyslav Hubanov · Bitrix Task #4121</div>
+    <div><strong>Источник истины (код):</strong> <code>andagon_self_check.js</code> (+ <code>.css</code>) — единственная копия логики</div>
+    <div><strong>Дизайн (пиксели):</strong> Figma «andagon (Copy) 23/06», фреймы «Section / 2-Minuten-Check» (Dev Mode)</div>
+    <div><strong>Тексты (DE):</strong> из <code>index.html</code> v3.4 — <strong>только тексты, не логику</strong></div>
   </div>
+
+  <div class="flag">⚖️ <strong>Legal-Vorbehalt (D-PROJ-010 / D-PROJ-011):</strong> пороги F3, логика 🟢 и финальные тексты результата — до запуска подтверждает andagon/Legal. Пока верстаем как здесь, помечено «vorbehaltlich Freigabe». Все настраиваемые значения — только в блоке <code>CONFIG</code> в JS.</div>
+
+  <div class="toc">
+    <strong>Разделы:</strong>
+    <a href="#widget">▶ Живой виджет</a>
+    <a href="#s1">1. Что это</a>
+    <a href="#s2">2. Встраивание</a>
+    <a href="#s3">3. Вопросы</a>
+    <a href="#s4">4. Логика результата</a>
+    <a href="#s5">5. Тест-кейсы</a>
+    <a href="#s6">6. Лид</a>
+    <a href="#s7">7. Трекинг</a>
+    <a href="#s8">8. Доступность</a>
+    <a href="#s9">9. Figma</a>
+    <a href="#s10">10. Не финально</a>
+  </div>
+
+  <!-- ЖИВОЙ ВИДЖЕТ -->
+  <h2 id="widget">▶ Живой виджет (рабочий)</h2>
+  <p>Ровно то, что выдаёт <code>andagon_self_check.js</code>. Пройдите 5 шагов — увидите результат-карточку и payload лида ниже.</p>
+  <div class="demo-shell">
+    <div id="self-check"></div>
+  </div>
+  <div id="kontakt" class="kf">
+    <h3 style="margin-top:0">Лид-форма (заглушка)</h3>
+    <p style="margin:0;color:var(--muted);font-size:.92rem">Результат + ответы прокидываются через <code>onComplete</code> в payload (виден ниже).</p>
+    <label for="n">Name</label><input id="n" type="text">
+    <label for="e">E-Mail (geschäftlich)</label><input id="e" type="email">
+    <input type="hidden" id="lead-ampel"><input type="hidden" id="lead-antworten">
+    <div class="payload" id="payloadView">payload: (пока нет результата)</div>
+  </div>
+
+  <!-- 1 -->
+  <h2 id="s1">1. Что это</h2>
+  <p><strong>Лид-магнит</strong>, встраивается в BFSG-лендинг. Пользователь отвечает на <strong>5 вопросов</strong> (пошагово, 1 вопрос на экран) → сразу и бесплатно видит результат-«светофор» → кнопка ведёт к лид-форме (бесплатная первичная консультация). Результат + 5 ответов уходят в payload лида.</p>
+  <p><strong>Модель взаимодействия — stepper</strong> (как в Figma «Section / 2-Minuten-Check», 5 фреймов = Frage 1/5 … 5/5): 1 вопрос на шаг, прогресс «Frage N/5», навигация «← Zurück» / «Weiter →», после Frage 5 — «Mein Ergebnis anzeigen». Слева — фиксированная шапка (eyebrow «2-MINUTEN-CHECK» + H2 + интро), справа — шаг. На мобильном колонки складываются в одну.</p>
+  <p>Поток: <code>Шаг 1 (F1) → … → Шаг 5 (F5) → «Mein Ergebnis anzeigen» → результат → CTA → лид-форма (#kontakt)</code>. «Zurück» сохраняет уже данные ответы; «Zum Start zurück» после результата сбрасывает. Self-Service нет — только Managed Service (D-CLNT-010), фикс-цен в инструменте нет.</p>
+
+  <!-- 2 -->
+  <h2 id="s2">2. Встраивание (2 файла + init)</h2>
+<pre><code>&lt;link rel="stylesheet" href="andagon_self_check.css"&gt;
+&lt;div id="self-check"&gt;&lt;/div&gt;
+&lt;script src="andagon_self_check.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  AndagonSelfCheck.init("#self-check", {
+    ctaHref: "#kontakt",                 // якорь лид-формы
+    onComplete: function (data) {
+      // data = { result: "red"|"amber"|"green", answers: {q1..q5} }
+      var a = document.getElementById("lead-ampel");
+      var b = document.getElementById("lead-antworten");
+      if (a) a.value = data.result;                 // guard: поля должны быть на странице
+      if (b) b.value = JSON.stringify(data.answers);
+    }
+  });
+&lt;/script&gt;</code></pre>
+  <p>Без зависимостей. Тема — через CSS-переменные (andagon: жёлтый #F6D709 только как фон с <strong>чёрным</strong> текстом). В WordPress — отдельный template-part / блок, JS/CSS через enqueue; <strong>инлайн-копию логики не делать</strong> — единственный источник это JS. При будущей миграции на Next.js — <code>evaluate</code> переносится 1:1, тексты/пороги в конфиг/CMS.</p>
+
+  <!-- 3 -->
+  <h2 id="s3">3. Пять вопросов</h2>
+  <p>Полные тексты + коды <code>value</code> — в <code>CONFIG.questions</code> (verbatim v3.4). Не перебивать — брать из файла. Все 5 обязательны.</p>
+  <table>
+    <tr><th>Вопрос</th><th>Коды <code>value</code></th></tr>
+    <tr><td>F1 — отрасль</td><td><code>ecommerce</code> · <code>bank</code> · <code>telko</code> · <code>saas</code> · <code>b2b</code></td></tr>
+    <tr><td>F2 — потребители (B2C)?</td><td><code>ja</code> · <code>nein</code> · <code>unsicher</code></td></tr>
+    <tr><td>F3 — размер</td><td><code>klein</code> · <code>gross</code></td></tr>
+    <tr><td>F4 — проверялась ли на доступность?</td><td><code>ja</code> (с подтверждением) · <code>nein</code> · <code>weiss</code></td></tr>
+    <tr><td>F5 — клавиатура + скринридер?</td><td><code>ja</code> · <code>teilweise</code> · <code>nein</code> · <code>weiss</code></td></tr>
+  </table>
+
+  <!-- 4 -->
+  <h2 id="s4">4. Логика формирования результата (RU)</h2>
+  <p>Реализована в <code>evaluate(answers)</code> (вынесена и экспортирована для тестов). Считаем <strong>сверху вниз, первое сработавшее правило выигрывает</strong>. По умолчанию всегда 🟡 (жёлтый) — 🟢 никогда «по умолчанию».</p>
+  <h3>Шаг 1 — промежуточные признаки (посчитать первыми)</h3>
+<pre><code>verbraucherbezug (есть обращение к B2C)  = F1 ∈ {ecommerce, bank, telko, saas}  ИЛИ  F2 ∈ {ja, unsicher}
+luecke           (есть пробел)           = F4 ∈ {nein, weiss}                   ИЛИ  F5 ∈ {teilweise, nein, weiss}
+voll_abgesichert (всё закрыто)           = F4 == ja                             И    F5 == ja
+reine_dl_ohne_vb (чистая B2B-услуга)     = F1 == b2b                            И    F2 == nein
+klein            (микропредприятие)      = F3 == klein</code></pre>
+  <h3>Шаг 2 — правила (строго в этом порядке!)</h3>
+<pre><code>Правило 1 → 🔴 «hoch»    (заголовок: «Sie sollten handeln»)
+   ЕСЛИ verbraucherbezug И luecke
+   (сюда попадают ВСЕ магазины/шопы с любым пробелом — размер не важен)
+
+Правило 2 → 🟡 «mittel»  (заголовок: «Teilweise abgesichert»)
+   ЕСЛИ verbraucherbezug И voll_abgesichert
+   (есть B2C-релевантность, но уже всё проверено и технически ок)
+
+Правило 3 → 🟢 «gering»  (заголовок: «Wenig dringend»)
+   ЕСЛИ reine_dl_ohne_vb И klein И F4 == ja
+   (только чистая услуга без продажи товара + микропредприятие + есть подтверждение)
+
+Правило 4 → 🟡 «mittel»  [ПО УМОЛЧАНИЮ]
+   во всех остальных случаях
+   (в т.ч. B2B без подтверждения, «не уверен», крупные без проверки — безопасный жёлтый, не зелёный)</code></pre>
+  <p><strong>Как показывается</strong> (карточка, §-тексты DE менять нельзя): «<strong>Handlungsbedarf: <span class="sev-red">hoch</span> / <span class="sev-amber">mittel</span> / <span class="sev-green">gering</span></strong>» — слово окрашено + заголовок + текст + жёлтая CTA. Цвет никогда не единственный носитель смысла (слово hoch/mittel/gering несёт смысл — для доступности).</p>
+  <div class="flag">⚠️ <strong>Решение по логике (отличие от старой версии в <code>index.html</code>):</strong> старый скрипт отправлял чистый B2B без подтверждения (<code>b2b / nein / gross / nein / …</code>) на 🔴; эта версия — на 🟡 (по умолчанию). Причина: чистый B2B редко подпадает под BFSG, «жёлтый/уточнить» корректнее категоричного «Sie sollten handeln». Требует подтверждения andagon/Legal (D-PROJ-011). Хотят старое 🔴 — правится только Правило 4 в <code>evaluate</code>.</div>
+
+  <!-- 5 -->
+  <h2 id="s5">5. Тест-кейсы (должны совпасть точно)</h2>
+  <p>Проверить вручную или через <code>AndagonSelfCheck.evaluate({q1,q2,q3,q4,q5})</code>.</p>
+  <table>
+    <tr><th>F1</th><th>F2</th><th>F3</th><th>F4</th><th>F5</th><th>→</th><th>Почему</th></tr>
+    <tr><td><code>ecommerce</code></td><td>ja</td><td>gross</td><td>nein</td><td>teilweise</td><td>🔴</td><td>verbraucherbezug + luecke (Правило 1)</td></tr>
+    <tr><td><code>ecommerce</code></td><td>nein</td><td>klein</td><td>ja</td><td>ja</td><td>🟡</td><td>магазин = verbraucherbezug, при этом voll_abgesichert (Правило 2). Микро НЕ делает зелёным (товар)</td></tr>
+    <tr><td><code>saas</code></td><td>unsicher</td><td>gross</td><td>weiss</td><td>ja</td><td>🔴</td><td>verbraucherbezug + luecke по F4 (Правило 1)</td></tr>
+    <tr><td><code>bank</code></td><td>ja</td><td>gross</td><td>ja</td><td>teilweise</td><td>🔴</td><td>пробел по F5 бьёт «есть подтверждение» (порядок правил)</td></tr>
+    <tr><td><code>b2b</code></td><td>nein</td><td>klein</td><td>ja</td><td>ja</td><td>🟢</td><td>чистая услуга + микро + подтверждение (Правило 3)</td></tr>
+    <tr><td><code>b2b</code></td><td>nein</td><td>klein</td><td>nein</td><td>ja</td><td>🟡</td><td>нет подтверждения → по умолчанию (Правило 4)</td></tr>
+    <tr><td><code>b2b</code></td><td>nein</td><td>gross</td><td>nein</td><td>weiss</td><td>🟡</td><td>не B2C, исключения нет → по умолчанию (старый HTML давал 🔴 — см. §4)</td></tr>
+    <tr><td><code>b2b</code></td><td>ja</td><td>gross</td><td>nein</td><td>nein</td><td>🔴</td><td>F2=ja → verbraucherbezug + luecke (Правило 1)</td></tr>
+  </table>
+
+  <!-- 6 -->
+  <h2 id="s6">6. Передача лида (конверсия)</h2>
+  <p>Лид-форма — <strong>отдельный блок страницы</strong> (<code>#kontakt</code>), не часть виджета. CTA результата ведёт туда (<code>ctaHref</code>). Через <code>onComplete({result, answers})</code> прокидываем ампел + F1–F5 в payload лида (скрытые поля), чтобы Sales видел контекст.</p>
+  <p><strong>Отправка лид-формы = конверсия.</strong> Форму верстаем мы; поток в тикет-систему (Brevo/sibforms → Ticketsystem → Sales) строит andagon — маппинг полей согласовать с их техникой. Odoo не трогаем. Обязательные поля: Name · E-Mail (geschäftlich) · Unternehmen · Website-URL · <strong>DSGVO-чекбокс</strong> (без галочки submit заблокирован). Телефон/сообщение — опционально. Добавить ссылку на Datenschutz.</p>
+
+  <!-- 7 -->
+  <h2 id="s7">7. Трекинг (после доступов)</h2>
+  <p>События GA4 (имена в <code>CONFIG.events</code>): <code>assessment_start</code> (первый клик), <code>assessment_complete</code> (параметр <code>result</code> = ампел), <code>lead_submit</code> (ключевая конверсия, на лид-форме). Стек GA4 + GTM → импорт в Google Ads.</p>
+  <div class="flag">⚠️ <strong>До согласия (Pre-Consent):</strong> <code>assessment_start</code>/<code>assessment_complete</code> срабатывают <strong>до</strong> DSGVO-галочки. Пропускать их только при наличии Analytics-Consent (Consent Mode / условие триггера в GTM) — на BFSG-странице иначе рискованно. Виджет только шлёт в <code>gtag</code>/<code>dataLayer</code>; гейтинг — в GTM/Consent Mode. НЕ переносить инвертированный Consent-Mode главного сайта (D-AUDIT-001). Google-Ads-доступ ещё не получен (GA4 ✅ / GTM ✅) — трекинг включаем, когда будет.</p>
+
+  <!-- 8 -->
+  <h2 id="s8">8. Доступность (обязательно — это BFSG-страница)</h2>
+  <p>Виджет уже собран доступным; при встраивании сохранить: полная навигация с клавиатуры (Tab/Enter/Space), видимый фокус (3px); каждый вопрос — <code>fieldset</code>/<code>legend</code> + <code>role="radiogroup"</code>, нативные радио; результат в <code>role="region" aria-live="polite"</code> с программным фокусом; при смене шага фокус уходит на «Frage N/5» (объявляется скринридером); ампел не только цветом (слово hoch/mittel/gering + цвет); ошибка как <code>role="alert"</code>; контраст ≥ 4.5:1; жёлтый только с чёрным текстом. В WordPress не оборачивать в page-builder-конструкции, ломающие семантику. См. Dev-Notes дизайнера в Figma + <code>build-todo.md</code>.</p>
+
+  <!-- 9 -->
+  <h2 id="s9">9. Figma-референс (пиксели)</h2>
+  <p>Файл «andagon (Copy) 23/06», страница <strong>home</strong> (Desktop 1440/1920) + <strong>mobile</strong> (393). Фреймы <code>Section / 2-Minuten-Check</code> (Frage 1/5 … 5/5 + result-state) + <code>focus-states-documentation</code>. Дизайнер встроил Dev-Notes в макет (Alt-Text, Tastaturnavigation, HTML lang, WCAG-Checkliste, focus-состояния) — использовать, не изобретать. ⚠️ Export/Copy в файле отключён + полный Dev Mode за «Request access»: верстальщику нужен доступ к файлу с <strong>инспекцией/Dev Mode</strong> (проверить шаринг). Пиксели/отступы — из Figma Dev Mode; эта страница — то, что Figma не кодирует (логика, тексты verbatim, лид/трекинг, a11y-приёмка).</p>
+
+  <!-- 10 -->
+  <h2 id="s10">10. Что не финально (уточнить до запуска)</h2>
+  <ul>
+    <li>⚖️ Пороги F3 + логика 🟢 + дефолт-корзина (§4) + тексты результата → andagon/Legal (D-PROJ-010/011).</li>
+    <li>Передача полей лид-формы в тикет-систему → техника andagon.</li>
+    <li>Субдомен/SFTP/БД → Task #4123 (andagon-IT, Yana Hoecker).</li>
+    <li>Доступ Google Ads → включение трекинга.</li>
+  </ul>
+
+  <h2>Quick-Reference</h2>
+  <ul>
+    <li><strong>JS (SoT):</strong> <code>andagon_self_check.js</code> · <strong>CSS:</strong> <code>andagon_self_check.css</code> (в этой же папке)</li>
+    <li><strong>Дизайн:</strong> Figma «andagon (Copy) 23/06» → Dev Mode</li>
+    <li><strong>DVL:</strong> D-CLNT-010, D-CLNT-012 (механика); D-PROJ-010/011 (логика ампела)</li>
+    <li><strong>Bitrix:</strong> Task #4121 (реализация, Vladyslav) · #4123 (доступы)</li>
+  </ul>
+  <p style="color:var(--muted);font-size:.85rem;margin-top:24px">Черновик/превью — нейтральный рендер поверх andagon-CI; финальные пиксели из Figma. Подготовлено W&amp;S Agency для andagon. Страница сама реализуется барьеронезависимо.</p>
+
 </div>
 
 <script src="andagon_self_check.js"></script>
@@ -55,10 +212,10 @@
   AndagonSelfCheck.init("#self-check", {
     ctaHref: "#kontakt",
     onComplete: function (data) {
-      document.getElementById("lead-ampel").value = data.result;
-      document.getElementById("lead-antworten").value = JSON.stringify(data.answers);
+      var a=document.getElementById("lead-ampel"); if(a) a.value=data.result;
+      var b=document.getElementById("lead-antworten"); if(b) b.value=JSON.stringify(data.answers);
       document.getElementById("payloadView").textContent =
-        "Payload:\n  ampel  = " + data.result + "\n  answers = " + JSON.stringify(data.answers, null, 2);
+        "payload:\n  ampel   = " + data.result + "\n  answers = " + JSON.stringify(data.answers, null, 2);
     }
   });
 </script>
