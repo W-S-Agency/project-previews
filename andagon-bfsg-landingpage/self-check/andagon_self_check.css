@@ -1,0 +1,81 @@
+/* andagon BFSG Self-Check — Widget-Styles (standalone, WCAG 2.2 AA-bewusst)
+   Muster: Panacea (preview/panacea_preview_rechner.css). Alle Klassen mit Prefix `asc-`.
+   Theming über CSS-Variablen mit Fallbacks — die Seite kann Brand-Tokens setzen
+   (andagon: Gelb #F6D709 nur als Fläche mit SCHWARZER Schrift; Text sonst schwarz — brand-tokens-andagon.md).
+   Farbe wird NIE als einziger Bedeutungsträger genutzt (Ampel: Emoji + Wort + Text). */
+
+.asc-form,
+.asc-result {
+  /* Theming-Hooks — von der Seite überschreibbar */
+  --asc-ink:      var(--ink, #15212e);
+  --asc-muted:    var(--muted, #56657a);
+  --asc-line:     var(--line, #e2e8f0);
+  --asc-accent:   var(--blue, #1763b8);   /* interaktive Akzentfarbe (Auswahl/Fokus) */
+  --asc-accent-d: var(--blue-d, #114a8a);
+  --asc-bg:       var(--bg, #ffffff);
+  --asc-red:      var(--red, #c62828);
+  --asc-amber:    var(--amber, #b26a00);
+  --asc-green:    var(--green, #1f7a3d);
+  --asc-radius:   var(--radius, 12px);
+  color: var(--asc-ink);
+  font-family: inherit;
+  line-height: 1.6;
+}
+
+/* ── Fragen ── */
+.asc-fieldset { border: 0; padding: 0; margin: 0 0 18px; }
+.asc-legend { font-weight: 700; color: var(--asc-ink); margin-bottom: 10px; font-size: 1.05rem; }
+.asc-hint { font-weight: 400; color: var(--asc-muted); font-size: .92rem; }
+
+.asc-opts { display: grid; gap: 8px; }
+.asc-opt {
+  display: flex; align-items: center; gap: 11px;
+  border: 1px solid var(--asc-line); border-radius: 10px;
+  padding: 11px 14px; cursor: pointer; background: var(--asc-bg);
+  transition: border-color .12s, background .12s;
+}
+.asc-opt:hover { border-color: var(--asc-accent); }
+.asc-opt input { width: 19px; height: 19px; accent-color: var(--asc-accent); flex: 0 0 auto; }
+.asc-opt:has(input:checked) { border-color: var(--asc-accent); background: color-mix(in srgb, var(--asc-accent) 7%, transparent); }
+
+/* ── Buttons ── */
+.asc-btn {
+  display: inline-block; background: var(--asc-accent); color: #fff; font-weight: 700;
+  text-decoration: none; padding: 13px 22px; border-radius: 999px; border: 0;
+  cursor: pointer; font-size: 1rem; transition: background .15s;
+}
+.asc-btn:hover { background: var(--asc-accent-d); }
+.asc-btn-lg { padding: 15px 28px; font-size: 1.05rem; }
+
+/* ── Fehler ── */
+.asc-err { color: var(--asc-red); font-weight: 600; margin-top: 8px; display: none; }
+
+/* ── Ergebnis (Ampel) ── */
+.asc-result { margin-top: 12px; border-radius: 14px; padding: 22px; display: none; }
+.asc-result.asc-show { display: block; }
+.asc-r-red   { background: #fdecec; border: 1px solid #f3b9b9; }
+.asc-r-amber { background: #fdf4e3; border: 1px solid #f0d79a; }
+.asc-r-green { background: #e9f6ee; border: 1px solid #aed9bd; }
+
+.asc-badge {
+  display: inline-flex; align-items: center; gap: 8px; font-weight: 800;
+  padding: 5px 12px; border-radius: 999px; color: #fff; font-size: .85rem; margin-bottom: 8px;
+}
+.asc-b-red   { background: var(--asc-red); }
+.asc-b-amber { background: var(--asc-amber); }
+.asc-b-green { background: var(--asc-green); }
+
+.asc-result-title { margin: .2em 0; font-size: 1.15rem; }
+.asc-disc { font-size: .82rem; color: var(--asc-muted); margin-top: 12px; font-style: italic; }
+
+/* ── Fokus-Indikator (WCAG 2.4.7 / 2.4.11) — sichtbar, ausreichend kontrastiert ── */
+.asc-opt:focus-within,
+.asc-form :focus-visible,
+.asc-result :focus-visible {
+  outline: 3px solid var(--asc-accent);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+/* Ergebnis-Container erhält beim programmatischen Fokus keinen störenden Rahmen, aber bleibt fokussierbar */
+.asc-result:focus { outline: none; }
+.asc-result:focus-visible { outline: 3px solid var(--asc-accent); outline-offset: 2px; }
