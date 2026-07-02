@@ -82,22 +82,28 @@
 /* ── Fehler ── */
 .asc-err { color: var(--asc-red); font-weight: 600; margin: 12px 0 0; display: none; }
 
-/* ── Ergebnis (Ampel) ── */
-.asc-result { margin-top: 6px; border-radius: 14px; padding: 22px; display: none; }
-.asc-result.asc-show { display: block; }
-.asc-r-red   { background: #fdecec; border: 1px solid #f3b9b9; }
-.asc-r-amber { background: #fdf4e3; border: 1px solid #f0d79a; }
-.asc-r-green { background: #e9f6ee; border: 1px solid #aed9bd; }
-
-.asc-badge {
-  display: inline-flex; align-items: center; gap: 8px; font-weight: 800;
-  padding: 5px 12px; border-radius: 999px; color: #fff; font-size: .85rem; margin-bottom: 8px;
+/* ── Ergebnis-Karte (weiß, umrandet; Ampel via farbiges „Handlungsbedarf"-Wort — Figma) ── */
+.asc-result {
+  display: none; background: #fff; border: 1px solid var(--asc-line);
+  border-radius: 16px; padding: 26px 28px; text-align: center;
 }
-.asc-b-red   { background: var(--asc-red); }
-.asc-b-amber { background: var(--asc-amber); }
-.asc-b-green { background: var(--asc-green); }
-.asc-result-title { margin: .2em 0; font-size: 1.25rem; color: var(--asc-ink); }
-.asc-disc { font-size: .82rem; color: var(--asc-muted); margin-top: 14px; font-style: italic; }
+.asc-result.asc-show { display: block; }
+.asc-result-label {
+  display: inline-block; text-align: left; float: left;
+  margin: 0 0 6px; padding-bottom: 6px; font-weight: 800; font-size: 1rem;
+  color: var(--asc-ink); border-bottom: 3px solid var(--asc-yellow);
+}
+.asc-result-title { clear: both; margin: 10px 0 6px; font-size: 1.25rem; font-weight: 800; color: var(--asc-ink); }
+.asc-bedarf { margin: 0 0 12px; font-weight: 700; color: var(--asc-ink); }
+.asc-sev-red   { color: var(--asc-red); }
+.asc-sev-amber { color: var(--asc-amber); }
+.asc-sev-green { color: var(--asc-green); }
+.asc-result-text { max-width: 52ch; margin: 0 auto 18px; color: var(--asc-muted); }
+.asc-result .asc-btn-lg { display: inline-block; }
+.asc-disc { font-size: .82rem; color: var(--asc-muted); margin: 14px 0 0; }
+
+/* „← Zum Start zurück" unter der Karte */
+.asc-restart-wrap { margin-top: 16px; }
 
 /* ── Fokus-Indikator (WCAG 2.4.7 / 2.4.11) ── */
 .asc-opt:focus-within,

@@ -69,26 +69,26 @@
       }
     ],
 
-    // ── Ergebnistexte (DE = verbatim aus index.html v3.4; vor Live Legal-Freigabe) ──
+    // ── Ergebnis (DE = verbatim aus index.html v3.4; Ampel = farbiges Wort „Handlungsbedarf", kein Emoji — Figma-Abgleich) ──
+    resultLabel: "Ergebnis",
+    bedarfLabel: "Handlungsbedarf:",
     results: {
       red: {
-        cls: "asc-r-red", badgeCls: "asc-b-red",
-        badge: "🔴 Sie sollten handeln", title: "Sie sollten handeln",
+        sevCls: "asc-sev-red", handlungsbedarf: "hoch", title: "Sie sollten handeln",
         text: "Nach Ihren Antworten gilt das Gesetz wahrscheinlich für Sie – und ein Nachweis fehlt noch. Wird das nicht behoben, kann die Marktaufsicht Nachbesserungen verlangen – und bei ausbleibender Nachbesserung Nutzungsverbote oder Bußgelder (bis 100.000 €) verhängen. Unser Tipp: Lassen Sie Ihre Website prüfen. In der kostenlosen Erstberatung sagen wir Ihnen, was für Sie konkret nötig ist."
       },
       amber: {
-        cls: "asc-r-amber", badgeCls: "asc-b-amber",
-        badge: "🟡 Teilweise abgesichert", title: "Teilweise abgesichert",
+        sevCls: "asc-sev-amber", handlungsbedarf: "mittel", title: "Teilweise abgesichert",
         text: "Sie sind wahrscheinlich betroffen und haben schon etwas getan – gut. Oft bleiben aber Lücken, die im Ernstfall zählen. Eine gezielte Prüfung zeigt Ihnen genau, wo Sie stehen. Reden wir unverbindlich darüber – die Erstberatung ist kostenlos."
       },
       green: {
-        cls: "asc-r-green", badgeCls: "asc-b-green",
-        badge: "🟢 Wenig dringend", title: "Wenig dringend",
+        sevCls: "asc-sev-green", handlungsbedarf: "gering", title: "Wenig dringend",
         text: "Nach Ihren Antworten haben Sie es vermutlich nicht eilig. Ganz sicher wissen Sie es aber erst nach einer Prüfung – und die Regeln ändern sich. In der kostenlosen Erstberatung zeigen wir Ihnen, wie Sie auf der sicheren Seite bleiben."
       }
     },
 
     cta: "Kostenlose Erstberatung anfragen",
+    restart: "← Zum Start zurück",
     disclaimer: "Das ist eine erste Einschätzung und ersetzt keine rechtliche Prüfung.",
 
     // ── GA4-Ereignisnamen. ⚠️ Consent: NUR feuern, wenn Analytics-Consent vorliegt (Consent Mode) —
@@ -138,11 +138,13 @@
         '<div class="asc-stage">' +
           '<div class="asc-step" role="group" aria-live="polite"></div>' +
           '<div class="asc-result" role="region" aria-live="polite" tabindex="-1"></div>' +
+          '<div class="asc-restart-wrap" hidden></div>' +
         '</div>' +
       '</div>';
 
     const card = root.querySelector(".asc-step");
     const res = root.querySelector(".asc-result");
+    const restartWrap = root.querySelector(".asc-restart-wrap");
     const state = { step: 0, answers: {}, startFired: false, completeFired: false };
 
     function fireStart() { if (!state.startFired) { state.startFired = true; track(CONFIG.events.start); } }
@@ -150,6 +152,7 @@
     function renderStep() {
       res.className = "asc-result";              // Ergebnis ausblenden, falls man zurückgeht
       res.innerHTML = "";
+      restartWrap.hidden = true; restartWrap.innerHTML = "";
       const q = Q[state.step];
       const isLast = state.step === total - 1;
       const progress = CONFIG.progressTpl.replace("{n}", state.step + 1).replace("{total}", total);
@@ -198,16 +201,20 @@
       if (!state.completeFired) { state.completeFired = true; track(CONFIG.events.complete, { result: level }); }
 
       card.innerHTML = "";                        // Schritt-Karte ausblenden
-      res.className = "asc-result asc-show " + r.cls;
+      res.className = "asc-result asc-show";       // weiße Ergebnis-Karte (Ampel via farbiges „Handlungsbedarf"-Wort)
       res.innerHTML =
-        '<span class="asc-badge ' + r.badgeCls + '">' + r.badge + '</span>' +
+        '<p class="asc-result-label">' + CONFIG.resultLabel + '</p>' +
         '<h3 class="asc-result-title">' + r.title + '</h3>' +
-        '<p>' + r.text + '</p>' +
-        '<a class="asc-btn asc-btn-lg" href="' + ctaHref + '">' + CONFIG.cta + '</a> ' +
-        '<button type="button" class="asc-btn asc-btn-back asc-restart">Erneut starten</button>' +
+        '<p class="asc-bedarf">' + CONFIG.bedarfLabel + ' <strong class="' + r.sevCls + '">' + r.handlungsbedarf + '</strong></p>' +
+        '<p class="asc-result-text">' + r.text + '</p>' +
+        '<a class="asc-btn asc-btn-lg" href="' + ctaHref + '">' + CONFIG.cta + ' →</a>' +
         '<p class="asc-disc">' + CONFIG.disclaimer + '</p>';
       res.focus();
-      res.querySelector(".asc-restart").addEventListener("click", function () {
+
+      // „← Zum Start zurück" unter der Karte (wie Figma)
+      restartWrap.hidden = false;
+      restartWrap.innerHTML = '<button type="button" class="asc-btn asc-btn-back asc-restart">' + CONFIG.restart + '</button>';
+      restartWrap.querySelector(".asc-restart").addEventListener("click", function () {
         state.step = 0; state.answers = {}; state.completeFired = false; renderStep();
       });
 
