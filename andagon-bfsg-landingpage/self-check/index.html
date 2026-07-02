@@ -119,20 +119,20 @@
   <p>Полные тексты + коды <code>value</code> — в <code>CONFIG.questions</code> (verbatim v3.4). Не перебивать — брать из файла. Все 5 обязательны.</p>
   <table>
     <tr><th>Вопрос</th><th>Коды <code>value</code></th></tr>
-    <tr><td>F1 — отрасль</td><td><code>ecommerce</code> · <code>bank</code> · <code>telko</code> · <code>saas</code> · <code>b2b</code></td></tr>
+    <tr><td>F1 — отрасль</td><td><code>shop</code> · <code>bank</code> · <code>telko</code> · <code>saas</code> · <code>b2b</code></td></tr>
     <tr><td>F2 — потребители (B2C)?</td><td><code>ja</code> · <code>nein</code> · <code>unsicher</code></td></tr>
     <tr><td>F3 — размер</td><td><code>klein</code> · <code>gross</code></td></tr>
-    <tr><td>F4 — проверялась ли на доступность?</td><td><code>ja</code> (с подтверждением) · <code>nein</code> · <code>weiss</code></td></tr>
-    <tr><td>F5 — клавиатура + скринридер?</td><td><code>ja</code> · <code>teilweise</code> · <code>nein</code> · <code>weiss</code></td></tr>
+    <tr><td>F4 — проверялась ли на доступность?</td><td><code>ja_nachweis</code> · <code>nein</code> · <code>weiss_nicht</code></td></tr>
+    <tr><td>F5 — клавиатура + скринридер?</td><td><code>ja</code> · <code>teilweise</code> · <code>nein</code> · <code>weiss_nicht</code></td></tr>
   </table>
 
   <!-- 4 -->
   <h2 id="s4">4. Логика формирования результата (RU)</h2>
   <p>Реализована в <code>evaluate(answers)</code> (вынесена и экспортирована для тестов). Считаем <strong>сверху вниз, первое сработавшее правило выигрывает</strong>. По умолчанию всегда 🟡 (жёлтый) — 🟢 никогда «по умолчанию».</p>
   <h3>Шаг 1 — промежуточные признаки (посчитать первыми)</h3>
-<pre><code>verbraucherbezug (есть обращение к B2C)  = F1 ∈ {ecommerce, bank, telko, saas}  ИЛИ  F2 ∈ {ja, unsicher}
-luecke           (есть пробел)           = F4 ∈ {nein, weiss}                   ИЛИ  F5 ∈ {teilweise, nein, weiss}
-voll_abgesichert (всё закрыто)           = F4 == ja                             И    F5 == ja
+<pre><code>verbraucherbezug (есть обращение к B2C)  = F1 ∈ {shop, bank, telko, saas}       ИЛИ  F2 ∈ {ja, unsicher}
+luecke           (есть пробел)           = F4 ∈ {nein, weiss_nicht}             ИЛИ  F5 ∈ {teilweise, nein, weiss_nicht}
+voll_abgesichert (всё закрыто)           = F4 == ja_nachweis                    И    F5 == ja
 reine_dl_ohne_vb (чистая B2B-услуга)     = F1 == b2b                            И    F2 == nein
 klein            (микропредприятие)      = F3 == klein</code></pre>
   <h3>Шаг 2 — правила (строго в этом порядке!)</h3>
@@ -145,27 +145,27 @@ klein            (микропредприятие)      = F3 == klein</code></p
    (есть B2C-релевантность, но уже всё проверено и технически ок)
 
 Правило 3 → 🟢 «gering»  (заголовок: «Wenig dringend»)
-   ЕСЛИ reine_dl_ohne_vb И klein И F4 == ja
+   ЕСЛИ reine_dl_ohne_vb И klein И F4 == ja_nachweis
    (только чистая услуга без продажи товара + микропредприятие + есть подтверждение)
 
 Правило 4 → 🟡 «mittel»  [ПО УМОЛЧАНИЮ]
    во всех остальных случаях
    (в т.ч. B2B без подтверждения, «не уверен», крупные без проверки — безопасный жёлтый, не зелёный)</code></pre>
   <p><strong>Как показывается</strong> (карточка, §-тексты DE менять нельзя): «<strong>Handlungsbedarf: <span class="sev-red">hoch</span> / <span class="sev-amber">mittel</span> / <span class="sev-green">gering</span></strong>» — слово окрашено + заголовок + текст + жёлтая CTA. Цвет никогда не единственный носитель смысла (слово hoch/mittel/gering несёт смысл — для доступности).</p>
-  <div class="flag">⚠️ <strong>Решение по логике (отличие от старой версии в <code>index.html</code>):</strong> старый скрипт отправлял чистый B2B без подтверждения (<code>b2b / nein / gross / nein / …</code>) на 🔴; эта версия — на 🟡 (по умолчанию). Причина: чистый B2B редко подпадает под BFSG, «жёлтый/уточнить» корректнее категоричного «Sie sollten handeln». Требует подтверждения andagon/Legal (D-PROJ-011). Хотят старое 🔴 — правится только Правило 4 в <code>evaluate</code>.</div>
+  <div class="flag">✅ <strong>Соответствие спеке Анны:</strong> логика <strong>1:1 совпадает с <code>programmierer-anweisung-self-check.md</code> (Анна, D-PROJ-010)</strong> — правила, порядок и дефолт 🟡 (это Правило 4 Анны). Проверено на <strong>всех 360 комбинациях — 0 расхождений</strong>; коды <code>value</code> тоже как у Анны. ⚠️ Отличается только <strong>старый скрипт в <code>index.html</code></strong> (там else → 🔴 для чистого B2B) — он устарел и не используется (index.html = источник DE-текстов, не логики). Пороги F3 и финальные тексты ждут подтверждения andagon/Legal (D-PROJ-010).</div>
 
   <!-- 5 -->
   <h2 id="s5">5. Тест-кейсы (должны совпасть точно)</h2>
   <p>Проверить вручную или через <code>AndagonSelfCheck.evaluate({q1,q2,q3,q4,q5})</code>.</p>
   <table>
     <tr><th>F1</th><th>F2</th><th>F3</th><th>F4</th><th>F5</th><th>→</th><th>Почему</th></tr>
-    <tr><td><code>ecommerce</code></td><td>ja</td><td>gross</td><td>nein</td><td>teilweise</td><td>🔴</td><td>verbraucherbezug + luecke (Правило 1)</td></tr>
-    <tr><td><code>ecommerce</code></td><td>nein</td><td>klein</td><td>ja</td><td>ja</td><td>🟡</td><td>магазин = verbraucherbezug, при этом voll_abgesichert (Правило 2). Микро НЕ делает зелёным (товар)</td></tr>
-    <tr><td><code>saas</code></td><td>unsicher</td><td>gross</td><td>weiss</td><td>ja</td><td>🔴</td><td>verbraucherbezug + luecke по F4 (Правило 1)</td></tr>
-    <tr><td><code>bank</code></td><td>ja</td><td>gross</td><td>ja</td><td>teilweise</td><td>🔴</td><td>пробел по F5 бьёт «есть подтверждение» (порядок правил)</td></tr>
-    <tr><td><code>b2b</code></td><td>nein</td><td>klein</td><td>ja</td><td>ja</td><td>🟢</td><td>чистая услуга + микро + подтверждение (Правило 3)</td></tr>
+    <tr><td><code>shop</code></td><td>ja</td><td>gross</td><td>nein</td><td>teilweise</td><td>🔴</td><td>verbraucherbezug + luecke (Правило 1)</td></tr>
+    <tr><td><code>shop</code></td><td>nein</td><td>klein</td><td>ja_nachweis</td><td>ja</td><td>🟡</td><td>магазин = verbraucherbezug, при этом voll_abgesichert (Правило 2). Микро НЕ делает зелёным (товар)</td></tr>
+    <tr><td><code>saas</code></td><td>unsicher</td><td>gross</td><td>weiss_nicht</td><td>ja</td><td>🔴</td><td>verbraucherbezug + luecke по F4 (Правило 1)</td></tr>
+    <tr><td><code>bank</code></td><td>ja</td><td>gross</td><td>ja_nachweis</td><td>teilweise</td><td>🔴</td><td>пробел по F5 бьёт «есть подтверждение» (порядок правил)</td></tr>
+    <tr><td><code>b2b</code></td><td>nein</td><td>klein</td><td>ja_nachweis</td><td>ja</td><td>🟢</td><td>чистая услуга + микро + подтверждение (Правило 3)</td></tr>
     <tr><td><code>b2b</code></td><td>nein</td><td>klein</td><td>nein</td><td>ja</td><td>🟡</td><td>нет подтверждения → по умолчанию (Правило 4)</td></tr>
-    <tr><td><code>b2b</code></td><td>nein</td><td>gross</td><td>nein</td><td>weiss</td><td>🟡</td><td>не B2C, исключения нет → по умолчанию (старый HTML давал 🔴 — см. §4)</td></tr>
+    <tr><td><code>b2b</code></td><td>nein</td><td>gross</td><td>nein</td><td>weiss_nicht</td><td>🟡</td><td>не B2C, исключения нет → по умолчанию (старый HTML давал 🔴 — см. §4)</td></tr>
     <tr><td><code>b2b</code></td><td>ja</td><td>gross</td><td>nein</td><td>nein</td><td>🔴</td><td>F2=ja → verbraucherbezug + luecke (Правило 1)</td></tr>
   </table>
 

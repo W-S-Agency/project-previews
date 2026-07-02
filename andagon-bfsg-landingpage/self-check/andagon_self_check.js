@@ -27,7 +27,7 @@
       {
         id: "q1", legend: "In welcher Branche arbeiten Sie?",
         options: [
-          { value: "ecommerce", label: "Online-Shop / E-Commerce" },
+          { value: "shop", label: "Online-Shop / E-Commerce" },
           { value: "bank",      label: "Bank, Finanzen oder Versicherung" },
           { value: "telko",     label: "Telekommunikation" },
           { value: "saas",      label: "Software/Online-Dienst (SaaS)" },
@@ -52,19 +52,19 @@
       {
         id: "q4", legend: "Wurde Ihre Website schon einmal auf Barrierefreiheit geprüft?",
         options: [
-          { value: "ja",    label: "Ja, mit einem schriftlichen Nachweis" },
-          { value: "nein",  label: "Nein" },
-          { value: "weiss", label: "Weiß ich nicht" }
+          { value: "ja_nachweis", label: "Ja, mit einem schriftlichen Nachweis" },
+          { value: "nein",        label: "Nein" },
+          { value: "weiss_nicht", label: "Weiß ich nicht" }
         ]
       },
       {
         id: "q5", legend: "Kann man Ihre Website allein mit der Tastatur bedienen, und liest ein Screenreader sie vor?",
         legendHint: "(Ein Screenreader ist ein Programm, das blinden Menschen die Seite vorliest.)",
         options: [
-          { value: "ja",        label: "Ja" },
-          { value: "teilweise", label: "Teilweise" },
-          { value: "nein",      label: "Nein" },
-          { value: "weiss",     label: "Weiß ich nicht" }
+          { value: "ja",          label: "Ja" },
+          { value: "teilweise",   label: "Teilweise" },
+          { value: "nein",        label: "Nein" },
+          { value: "weiss_nicht", label: "Weiß ich nicht" }
         ]
       }
     ],
@@ -101,19 +101,19 @@
      ⚠️ ABWEICHUNG zur alten index.html-JS: reines B2B ohne Nachweis → hier DEFAULT 🟡 (nicht 🔴). Legal-Confirm (D-PROJ-011). */
   function evaluate(a) {
     const verbraucherbezug =
-      ["ecommerce", "bank", "telko", "saas"].indexOf(a.q1) !== -1 ||
+      ["shop", "bank", "telko", "saas"].indexOf(a.q1) !== -1 ||
       ["ja", "unsicher"].indexOf(a.q2) !== -1;
     const luecke =
-      ["nein", "weiss"].indexOf(a.q4) !== -1 ||
-      ["teilweise", "nein", "weiss"].indexOf(a.q5) !== -1;
-    const vollAbgesichert = a.q4 === "ja" && a.q5 === "ja";
+      ["nein", "weiss_nicht"].indexOf(a.q4) !== -1 ||
+      ["teilweise", "nein", "weiss_nicht"].indexOf(a.q5) !== -1;
+    const vollAbgesichert = a.q4 === "ja_nachweis" && a.q5 === "ja";
     const reineDienstleistungOhneVerbraucher = a.q1 === "b2b" && a.q2 === "nein";
     const kleinstunternehmen = a.q3 === "klein";
 
-    if (verbraucherbezug && luecke) return "red";                                    // Regel 1
-    if (verbraucherbezug && vollAbgesichert) return "amber";                         // Regel 2
-    if (reineDienstleistungOhneVerbraucher && kleinstunternehmen && a.q4 === "ja") return "green"; // Regel 3
-    return "amber";                                                                  // Regel 4 [DEFAULT]
+    if (verbraucherbezug && luecke) return "red";                                          // Regel 1
+    if (verbraucherbezug && vollAbgesichert) return "amber";                               // Regel 2
+    if (reineDienstleistungOhneVerbraucher && kleinstunternehmen && a.q4 === "ja_nachweis") return "green"; // Regel 3
+    return "amber";                                                                        // Regel 4 [DEFAULT]
   }
 
   function track(name, params) {
