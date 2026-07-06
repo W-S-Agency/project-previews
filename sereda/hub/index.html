@@ -32,8 +32,8 @@
   .hub-tabs{max-width:var(--maxw);margin:18px auto 0;display:flex;gap:4px;flex-wrap:wrap}
   .hub-tab{padding:12px 20px;color:rgba(255,255,255,.65);text-decoration:none;font-size:.95em;font-weight:500;border-radius:10px 10px 0 0;border-bottom:3px solid transparent;transition:.15s;white-space:nowrap}
   .hub-tab:hover{color:#fff;background:rgba(255,255,255,.06)}
-  .hub-tab.active{color:#fff;background:var(--bg);border-bottom-color:var(--accent);font-weight:700}
-  .hub-tab.active .tab-ico{filter:none}
+  .hub-tab.active{color:var(--navy);background:var(--bg);border-bottom-color:var(--accent);font-weight:700}
+  .hub-tab.active:hover{color:var(--navy);background:var(--bg)}
 
   /* Content shell */
   .hub-body{max-width:var(--maxw);margin:0 auto;padding:34px 20px 60px}
@@ -95,6 +95,7 @@
     <a href="#audit" class="hub-tab active" data-tab="audit">🔍 Website-Audit</a>
     <a href="#migration" class="hub-tab" data-tab="migration">🔀 Migrations- &amp; 301-Konzept</a>
     <a href="#markt" class="hub-tab" data-tab="markt">📊 Marktüberblick <span style="opacity:.7">(läuft)</span></a>
+    <a href="#aufgaben" class="hub-tab" data-tab="aufgaben">📋 Aufgaben &amp; Checkliste</a>
   </nav>
 </header>
 
@@ -314,6 +315,59 @@
         <li>Welche 3–5 Leistungen bringen den größten Umsatz? → danach analysieren wir die Wettbewerber dieser Richtung <strong>in der Tiefe</strong>.</li>
       </ul>
     </div>
+  </div>
+
+  <!-- ================= TAB 4: AUFGABEN / CHECKLISTE ================= -->
+  <div class="tabpanel" id="panel-aufgaben">
+    <div class="lead">
+      Hier sehen Sie auf einen Blick, <strong>was wir von Ihnen benötigen</strong> und <strong>was bereits erledigt ist</strong>.
+      Wir haken ab, sobald etwas eingegangen ist — so bleibt der Fortschritt für beide Seiten transparent.
+    </div>
+
+    <section class="card">
+      <h2>Von Ihnen benötigt</h2>
+      <table>
+        <tr><th>#</th><th>Was</th><th>Status</th></tr>
+        <tr><td>1</td><td><strong>Wettbewerber</strong> — 2–3 Namen, gegen die Sie aktiv konkurrieren (Ihr Blick von innen)</td><td><span class="sev s-mid">⏳ offen</span></td></tr>
+        <tr><td>2</td><td><strong>7 margenstärkste Leistungen</strong> — welche bringen den größten Umsatz (Fokus der SEO-Strategie; lt. Vertrag 7)</td><td><span class="sev s-mid">⏳ offen</span></td></tr>
+        <tr><td>3</td><td><strong>Zugänge</strong> — Google Analytics + Search Console + Joomla-Admin (auf <code>2penguins.eu@gmail.com</code>, wo möglich nur Ansichtsrecht)</td><td><span class="sev s-mid">⏳ offen</span></td></tr>
+        <tr><td>4</td><td><strong>Materialien</strong> — Logo (Vektor), Farben/Schriften, ggf. Styleguide + 2–3 Referenz-Websites, die Ihnen gefallen</td><td><span class="sev s-mid">⏳ offen</span></td></tr>
+      </table>
+      <p class="note">Details + kurze Anleitungen kommen zusätzlich per E-Mail an stefanie.lotz@sereda.de.</p>
+    </section>
+
+    <section class="card">
+      <h2>Region je Leistung — kurz bestätigen</h2>
+      <p>Für die Suchmaschinen-/KI-Optimierung ist wichtig, <strong>ob eine Leistung regional gebunden ist</strong> oder überall angeboten wird.
+        Unser Vorschlag — bitte nur korrigieren, wo nötig:</p>
+      <table>
+        <tr><th>Leistung</th><th>Annahme Region</th></tr>
+        <tr><td>Zollabfertigung / Büro Dreilinden</td><td>Berlin/Brandenburg (standortgebunden)</td></tr>
+        <tr><td>Zolllager / Steuerlager</td><td>Standort Wustermark (physisch gebunden)</td></tr>
+        <tr><td>E-Commerce-Fulfillment</td><td><strong>ohne Region</strong> (bundesweit/EU) ✓ lt. Ihrem Hinweis</td></tr>
+        <tr><td>Logistik GUS / Ost-Europa</td><td>Korridor DE ↔ UA/GE/… (länderbezogen)</td></tr>
+      </table>
+      <p class="note">(Ausführliche Liste je Leistung kommt in der E-Mail.)</p>
+    </section>
+
+    <section class="card">
+      <h2>Wie wir Wettbewerber ausgewählt haben (Kriterien)</h2>
+      <p>Sie hatten nach den Kriterien gefragt — so sind wir vorgegangen: Wir sind von <strong>Ihren eigenen Leistungen und deren Suchbegriffen</strong>
+        ausgegangen, haben diese durch die <strong>reale Google-/Suchergebnis-Auswertung</strong> geschickt und die gefundenen Anbieter in 3 Gruppen sortiert
+        (national · Berlin-lokal · GUS/Ost-Europa). Das ist ein erster Überblick — <strong>Ihre Namen ergänzen und schärfen ihn</strong>.</p>
+    </section>
+
+    <section class="card">
+      <h2>Bereits von uns erledigt</h2>
+      <table>
+        <tr><th>Schritt</th><th>Status</th></tr>
+        <tr><td>Website-Audit (9 Bereiche)</td><td><span class="sev s-ok">✅ fertig</span></td></tr>
+        <tr><td>Migrations- &amp; 301-Konzept (85 URLs geprüft)</td><td><span class="sev s-ok">✅ fertig</span></td></tr>
+        <tr><td>Wettbewerbsanalyse (erste Sichtung, ~25 Anbieter)</td><td><span class="sev s-mid">🔄 läuft</span></td></tr>
+        <tr><td>Dieses Dashboard</td><td><span class="sev s-ok">✅ online</span></td></tr>
+      </table>
+      <p class="note">Alles im Fixpreis enthalten — keine versteckten Zusatzkosten. Was separat/optional wäre, sagen wir immer vorher.</p>
+    </section>
   </div>
 
 </main>
