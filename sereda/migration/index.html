@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>sereda.de — Migrations- &amp; 301-Konzept (SEO-Schonung)</title>
+<style>
+  :root{
+    --primary:#020381; --accent:#7a00df; --accent2:#0693e3;
+    --bg:#fff; --bg-alt:#f8f9fb; --text:#1a1a2e; --text-muted:#6b7280; --border:#e5e7eb;
+    --success:#10b981; --warning:#f59e0b; --error:#ef4444; --info:#3b82f6;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:var(--text);background:var(--bg);line-height:1.7;padding:40px 20px}
+  .container{max-width:900px;margin:0 auto}
+  .report-header{text-align:center;padding:50px 30px;background:linear-gradient(135deg,var(--primary) 0%,var(--accent) 100%);color:#fff;border-radius:16px;margin-bottom:40px}
+  .report-header h1{font-size:2.2em;margin-bottom:8px;font-weight:700}
+  .report-header .subtitle{font-size:1.1em;opacity:.9}
+  .report-header .meta{margin-top:20px;display:flex;justify-content:center;gap:30px;font-size:.9em;opacity:.8;flex-wrap:wrap}
+  .report-header .badge{display:inline-block;background:var(--accent2);padding:4px 14px;border-radius:20px;font-size:.85em;font-weight:600;margin-top:12px}
+  .section{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:30px;margin-bottom:24px}
+  .section h2{font-size:1.4em;margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid var(--accent);display:flex;align-items:center;gap:10px}
+  .section h3{font-size:1.1em;margin:20px 0 10px;color:var(--accent2)}
+  .section p,.section li{margin-bottom:8px}
+  .section ul,.section ol{padding-left:24px}
+  .section.highlight{border:2px solid var(--accent2);background:linear-gradient(to bottom,#f5f8ff,#fff)}
+  .kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;margin:20px 0}
+  .kpi-card{background:var(--bg-alt);border-radius:10px;padding:20px;text-align:center;border:1px solid var(--border)}
+  .kpi-value{font-size:1.9em;font-weight:700;color:var(--accent2)}
+  .kpi-label{font-size:.82em;color:var(--text-muted);margin-top:4px}
+  table{width:100%;border-collapse:collapse;margin:16px 0;font-size:.9em}
+  th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--border);vertical-align:top}
+  th{background:var(--bg-alt);font-weight:600;color:var(--text-muted);font-size:.82em;text-transform:uppercase;letter-spacing:.05em}
+  code{background:var(--bg-alt);padding:1px 6px;border-radius:5px;font-size:.88em}
+  .severity-critical{background:#fee2e2;color:#991b1b;padding:2px 8px;border-radius:6px;font-weight:600;font-size:.8em}
+  .severity-ok{background:#d1fae5;color:#065f46;padding:2px 8px;border-radius:6px;font-weight:600;font-size:.8em}
+  .severity-warn{background:#fef3c7;color:#92400e;padding:2px 8px;border-radius:6px;font-weight:600;font-size:.8em}
+  .rec-card{background:linear-gradient(135deg,#f0f9ff 0%,#e0f2fe 100%);border:1px solid #bae6fd;border-radius:10px;padding:18px 20px;margin:12px 0}
+  .rec-card.warning{background:linear-gradient(135deg,#fffbeb 0%,#fef3c7 100%);border-color:#fcd34d}
+  .rec-card strong{color:var(--accent)}
+  .note{font-size:.85em;color:var(--text-muted);font-style:italic}
+  .steps{counter-reset:step}
+  .steps li{list-style:none;position:relative;padding-left:44px;margin-bottom:16px}
+  .steps li::before{counter-increment:step;content:counter(step);position:absolute;left:0;top:0;width:30px;height:30px;background:linear-gradient(135deg,var(--primary),var(--accent));color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9em}
+  .report-footer{text-align:center;padding:30px;color:var(--text-muted);font-size:.85em;border-top:1px solid var(--border);margin-top:40px}
+  @media print{body{padding:20px}.section{break-inside:avoid}}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="report-header">
+    <h1>Migrations- &amp; 301-Konzept</h1>
+    <div class="subtitle">sereda.de &mdash; sichere &Uuml;berf&uuml;hrung von Joomla nach Next.js + Sanity</div>
+    <span class="badge">Zwischenstand &middot; Phase 1</span>
+    <div class="meta">
+      <span>Kunde: SEREDA GmbH</span>
+      <span>Datum: 06.07.2026</span>
+      <span>Ersteller: 2Penguins</span>
+    </div>
+  </div>
+
+  <div class="section highlight">
+    <h2>Worum es hier geht</h2>
+    <p>Ihre gr&ouml;&szlig;te Sorge beim Umstieg ist verst&auml;ndlich: <strong>&bdquo;Verlieren wir beim Umzug unsere Sichtbarkeit bei Google?&ldquo;</strong> Damit genau das nicht passiert, haben wir <strong>bereits vor dem Umbau</strong> Ihre komplette Website vermessen und eine Grundlage f&uuml;r saubere Weiterleitungen (301) erstellt.</p>
+    <p>Konkret haben wir <strong>alle 85 Adressen (URLs)</strong> Ihrer Seite aus der Sitemap gezogen, in einer <strong>DE/RU/EN-&Uuml;bersicht gegen&uuml;bergestellt</strong> und <strong>am 06.07.2026 live gepr&uuml;ft</strong>, welche davon technisch sauber erreichbar sind. So ist sichergestellt, dass beim Umzug <strong>jede Seite ein definiertes Ziel</strong> bekommt und nichts ins Leere l&auml;uft.</p>
+    <div class="kpi-grid">
+      <div class="kpi-card"><div class="kpi-value">85</div><div class="kpi-label">URLs erfasst (Sitemap)</div></div>
+      <div class="kpi-card"><div class="kpi-value">82</div><div class="kpi-label">technisch OK (Status 200)</div></div>
+      <div class="kpi-card"><div class="kpi-value">3</div><div class="kpi-label">tote Links gefunden (404)</div></div>
+      <div class="kpi-card"><div class="kpi-value">3</div><div class="kpi-label">Sprachen abgeglichen</div></div>
+    </div>
+    <p class="note">Hinweis: Rankings h&auml;ngen von Google ab und lassen sich nicht garantieren. Unser Ziel und unsere Methode ist die <strong>gr&ouml;&szlig;tm&ouml;gliche Schonung</strong> Ihrer bestehenden Positionen &mdash; das Risiko wird durch die 301-Karte minimiert.</p>
+  </div>
+
+  <div class="section">
+    <h2>Was wir bereits erledigt haben</h2>
+    <ul>
+      <li><strong>Vollst&auml;ndige URL-Inventur:</strong> alle 85 Adressen aus <code>sereda.de/sitemap.xml</code> erfasst &mdash; DE 30 / RU 31 / EN 24.</li>
+      <li><strong>Sprach-Abgleich (DE&nbsp;&harr;&nbsp;RU&nbsp;&harr;&nbsp;EN):</strong> jede Seite ihren fremdsprachigen Gegenst&uuml;cken zugeordnet &mdash; Grundlage f&uuml;r korrekte hreflang-Verkn&uuml;pfungen und l&uuml;ckenlose Weiterleitungen.</li>
+      <li><strong>Live-Statuspr&uuml;fung (06.07.2026):</strong> jede der 85 Adressen einzeln aufgerufen und den HTTP-Status protokolliert.</li>
+      <li><strong>Erste Befunde dokumentiert:</strong> tote Links, ein Duplikat und Sprachl&uuml;cken bereits identifiziert (siehe unten) &mdash; das reparieren wir im Zuge der Migration.</li>
+    </ul>
+    <p class="note">Diese Inventur ist die technische Grundlage f&uuml;r die sp&auml;tere &bdquo;alt&nbsp;&rarr;&nbsp;neu&ldquo;-Weiterleitungstabelle. Sie entsteht bewusst <strong>vor</strong> dem Umbau &mdash; nicht danach.</p>
+  </div>
+
+  <div class="section">
+    <h2>Befunde aus der Live-Pr&uuml;fung</h2>
+
+    <h3>1. Drei tote Links in der Sitemap (Status 404)</h3>
+    <p>Diese drei Adressen stehen in Ihrer Sitemap, liefern aber eine Fehlerseite &mdash; Google verschwendet daf&uuml;r Crawl-Budget:</p>
+    <table>
+      <tr><th>Adresse</th><th>Status</th><th>Vorgehen bei Migration</th></tr>
+      <tr><td><code>/de/logistik/logistik-fuer-bio-und-naturprodukte</code></td><td><span class="severity-critical">404</span></td><td>Seite wiederherstellen oder sauber auf <code>/de/logistik</code> weiterleiten</td></tr>
+      <tr><td><code>/en/logistics/logistics-for-organic-and-natural-products</code></td><td><span class="severity-critical">404</span></td><td>EN-Pendant &mdash; gleiche Behandlung</td></tr>
+      <tr><td><code>/en/warehouse/customs-warehouse</code></td><td><span class="severity-critical">404</span></td><td>EN-Zolllager fehlt (DE/RU vorhanden) &mdash; wiederherstellen oder weiterleiten</td></tr>
+    </table>
+
+    <h3>2. Ein doppelter Inhalt (Duplicate Content)</h3>
+    <p><code>/ru/?Itemid=116</code> zeigt denselben Inhalt wie <code>/ru/</code>, ohne Canonical-Kennzeichnung. <span class="severity-warn">Wird bereinigt</span> &mdash; 301 auf <code>/ru/</code> + sauberer Canonical.</p>
+
+    <h3>3. Sprachl&uuml;cken (parity gaps)</h3>
+    <p>Einige Seiten existieren nur in einer Sprache &mdash; z.&nbsp;B. rechtliche Seiten (AGB/Datenschutz/Impressum) auf RU/EN unvollst&auml;ndig, und das wertvolle Thema <strong>&bdquo;Zoll Ukraine&ldquo;</strong> bislang nur auf Russisch. <span class="severity-warn">Chance</span>: hier entsteht beim Neuaufbau zus&auml;tzliche Sichtbarkeit.</p>
+  </div>
+
+  <div class="section">
+    <h2>So sch&uuml;tzen wir Ihre Positionen (Methode)</h2>
+    <div class="rec-card">
+      <p><strong>URL-Parit&auml;t als Standard:</strong> Jede alte Adresse bekommt auf der neuen Seite eine passende Ziel-Adresse &mdash; per 301-Weiterleitung. Google (und Ihre Backlinks) landen weiterhin am richtigen Ort.</p>
+    </div>
+    <div class="rec-card">
+      <p><strong>hreflang &amp; Canonical sauber:</strong> Sprachverkn&uuml;pfungen DE/RU/EN bleiben korrekt, Duplikate werden per Canonical aufgel&ouml;st.</p>
+    </div>
+    <div class="rec-card warning">
+      <p><strong>Saubere neue Sitemap:</strong> Nur echte, erreichbare Seiten &mdash; keine toten Links mehr. Das verbessert die Crawl-Effizienz.</p>
+    </div>
+    <div class="rec-card">
+      <p><strong>&Uuml;berwachung nach dem Umzug:</strong> Nach dem Livegang beobachten wir Indexierung und Rankings, um Auff&auml;lligkeiten sofort nachzusteuern.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>N&auml;chste Schritte</h2>
+    <ol class="steps">
+      <li><strong>Zug&auml;nge &amp; Materialien</strong> (im Orga-Call besprechen): Google Search Console f&uuml;r die exakte Baseline, Zugang zu Joomla/Hosting f&uuml;r die Inhalts&uuml;bernahme.</li>
+      <li><strong>Auswahl der 5&ndash;7 Kern-Leistungsseiten</strong> gemeinsam festlegen &mdash; darauf legen wir den inhaltlichen Schwerpunkt.</li>
+      <li><strong>Wettbewerbs- &amp; Keyword-Analyse</strong> (l&auml;uft) &mdash; wir freuen uns &uuml;ber 2&ndash;3 Namen von Mitbewerbern aus Ihrer Sicht.</li>
+      <li><strong>Finale 301-Karte</strong> &bdquo;alt&nbsp;&rarr;&nbsp;neu&ldquo; erstellen, sobald die Struktur der neuen Seite steht.</li>
+    </ol>
+  </div>
+
+  <div class="report-footer">
+    <p>2Penguins &middot; Webentwicklung &amp; SEO &middot; Zwischenstand Phase 1 zum Projekt sereda.de</p>
+    <p>Dieser Bericht ist ein Arbeitsstand und wird im Projektverlauf fortgeschrieben.</p>
+  </div>
+
+</div>
+</body>
+</html>
