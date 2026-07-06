@@ -150,8 +150,74 @@
         <strong>Genau hier liegt das Wachstum.</strong></p>
     </section>
 
-    <div class="flag">💡 <strong>Nächster Schritt (Audit):</strong> Für die exakte SEO-Baseline benötigen wir Zugriff auf
-      Google Analytics &amp; Search Console — damit wir den Umzug datenbasiert absichern.</div>
+    <section class="card">
+      <h2>Warum migrieren? — Wachstum statt Positionsverlust</h2>
+      <p>Bei einer alten, vertrauenswürdigen Domain ist die größte Sorge meist: „Verlieren wir beim Umzug unsere Rankings?"
+        Unsere Daten zeigen ein anderes Bild: <strong>organisch ist aktuell wenig zu verlieren</strong> (sehr wenige nicht-markenbezogene Keywords).
+        Wir sichern die vorhandenen Positionen trotzdem vollständig ab (siehe Tab „Migrations-Konzept") — das eigentliche Potenzial liegt im <strong>Zugewinn</strong>:</p>
+      <ul>
+        <li>Ihre reale Autorität (28 Jahre, AEO, Lizenz, Standort Dreilinden) wird vom alten Joomla nicht in Sichtbarkeit übersetzt.</li>
+        <li>Ein moderner, technisch sauberer Auftritt erschließt Suchbegriffe, die die Seite heute gar nicht abdeckt.</li>
+        <li>Die Seite wird für <strong>KI-Antwortsysteme</strong> auffindbar — ein Kanal, der heute komplett ungenutzt ist.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>KI-Sichtbarkeit (AI-SEO / GEO) — ein großer Hebel</h2>
+      <p>Immer mehr Recherchen starten in ChatGPT, Gemini, Claude, Grok oder in der <strong>Google AI Overview</strong> — nicht mehr nur in der klassischen Suche.
+        SEREDA ist als reales Unternehmen mit klaren Fakten (Zertifizierung, Lizenz, Standort) grundsätzlich <strong>zitierbar</strong>, aber technisch nicht darauf vorbereitet:</p>
+      <ul>
+        <li>Kein OpenGraph, nur minimales Schema — KI-Systeme „verstehen" die Seite kaum.</li>
+        <li>Keine FAQ-/Fakten-Struktur, die KI bevorzugt zitiert.</li>
+      </ul>
+      <p>Der neue Stack liefert genau die Bausteine für KI-Zitierfähigkeit — strukturierte Daten, maschinenlesbare Inhalte, klare Entitäten.
+        <span class="note">Ob eine Seite tatsächlich zitiert wird, prüfen wir live im Projektverlauf — es ist ein Ziel, keine Garantie.</span></p>
+    </section>
+
+    <section class="card">
+      <h2>⚠️ Rechtliche Sofort-Themen (unabhängig von der Migration)</h2>
+      <p>Diese Punkte betreffen die <strong>aktuelle Seite schon heute</strong> und sollten zeitnah adressiert werden:</p>
+      <div class="rec" style="background:#fff8e6;border-color:#f0dca0">
+        <strong>Cookie-Consent &amp; Consent Mode V2 fehlen.</strong> Die Seite lädt GA4, Universal Analytics, GTM und Yandex Metrica —
+        ohne erkennbaren Cookie-Banner und ohne Google Consent Mode V2. Das ist ein konkretes DSGVO-Risiko (Tracking ohne Einwilligung).
+      </div>
+      <div class="rec">
+        <strong>BFSG / Barrierefreiheit — hier voraussichtlich KEINE Pflicht.</strong> Als B2B-Auftritt ohne Verbraucher-E-Commerce
+        fällt sereda.de aller Voraussicht nach nicht unter das BFSG. Barrierefreiheit (WCAG 2.1 AA) bleibt Best-Practice / Zukunftssicherung.
+      </div>
+      <p class="note">Cookie-Consent/Consent Mode V2 werden im neuen Stack „ab Werk" korrekt umgesetzt. Die rechtliche Einordnung (insb. BFSG) ist abschließend anwaltlich zu bestätigen.</p>
+    </section>
+
+    <section class="card">
+      <h2>Was der neue Stack (Next.js + Sanity) liefert</h2>
+      <table>
+        <tr><th>Heute (Joomla)</th><th>Neu (Next.js + Sanity)</th></tr>
+        <tr><td>Kein Canonical, Duplikat <code>?Itemid</code></td><td>Saubere Canonicals, keine Duplikate</td></tr>
+        <tr><td>Generischer Startseiten-Titel</td><td>Steuerbare Titel-Vorlagen je Seite/Sprache</td></tr>
+        <tr><td>Minimales Schema, kein OpenGraph</td><td>Vollständiges Schema (LocalBusiness/Service/FAQ) + OG</td></tr>
+        <tr><td>KI-unsichtbar</td><td>KI-freundliche Struktur (GEO/AEO)</td></tr>
+        <tr><td>~2 MB, viele Skripte</td><td>Bild-Optimierung, Code-Splitting, SSR/SSG → bessere Core Web Vitals</td></tr>
+        <tr><td>Kein Consent Mode V2 / kein Cookie-Banner</td><td>DSGVO-Cookie-Consent + Consent Mode V2 ab Werk</td></tr>
+        <tr><td>Veraltetes Universal Analytics</td><td>Sauberes GA4-Setup</td></tr>
+        <tr><td>Inhaltspflege nur über Joomla-Backend</td><td>Sanity-CMS: Inhalte/News selbst pflegen, mehrsprachig</td></tr>
+      </table>
+    </section>
+
+    <section class="card">
+      <h2>Vorgehen (Phasen)</h2>
+      <table>
+        <tr><th>Phase</th><th>Inhalt</th></tr>
+        <tr><td>1. Analyse &amp; Konzept</td><td>Vollständige URL-Erfassung, 301-Mapping, Informationsarchitektur, Blueprint.</td></tr>
+        <tr><td>2. Inhalte &amp; SEO</td><td>Übernahme/Optimierung der Inhalte, Titel/Meta/Canonical, Schema, hreflang.</td></tr>
+        <tr><td>3. Entwicklung</td><td>Next.js + Sanity, mehrsprachig, Performance- &amp; KI-Optimierung, Consent/BFSG.</td></tr>
+        <tr><td>4. Go-Live &amp; Monitoring</td><td>Stufenweiser Umzug, 301 aktiv, Indexierung, Positions-Monitoring.</td></tr>
+        <tr><td>5. Wachstum (optional)</td><td>Content-Cluster für neue/KI-Anfragen, Blog reaktivieren, Trust sichtbar machen.</td></tr>
+      </table>
+    </section>
+
+    <div class="flag">💡 <strong>Nächster Schritt:</strong> Für die exakte SEO-Baseline benötigen wir Zugriff auf
+      <strong>Google Analytics &amp; Search Console</strong> — damit wir den Umzug datenbasiert absichern. Parallel: die
+      <strong>rechtlichen Themen</strong> (Cookie-Consent) sind unabhängig vom Projektstart zeitnah zu klären.</div>
   </div>
 
   <!-- ================= TAB 2: MIGRATION ================= -->
