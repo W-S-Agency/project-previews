@@ -1,7 +1,12 @@
 {
   "project": "renotec_preview",
-  "latest": "v1.5",
+  "latest": "v1.6",
   "versions": [
+    {
+      "version": "v1.6",
+      "date": "2026-07-06",
+      "summary": "Kundenfeedback 01.-02.07 eingearbeitet: Betriebszeit 24h-Notdienst -> Notdienst 6-24 Uhr (Titel, Navigation, Texte; die Anfrage-Reaktionszeit 'innerhalb von 24 Stunden' bleibt unveraendert). Neuer Preis-Block 'Festpreis Rohrreinigung - Preismodelle im Ueberblick' auf der Rohrreinigungs-Seite (Privatkunden 285 EUR Festpreis / Gewerbekunden nach Begutachtung - Struktur wie das Preismodell-PDF des Kunden). Preis als editierbares Feld angelegt. Lead-Magnet: 'Beratungstermin' oeffnet jetzt den echten Calendly-Terminkalender. Hinweis: Festpreis-Texte stehen noch unter Vorbehalt der finalen Abstimmung mit renotec."
+    },
     {
       "version": "v1.5",
       "date": "2026-06-18",
