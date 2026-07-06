@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Projekt-Hub — Website-Relaunch sereda.de</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#2e374f; --navy-900:#2c2e36; --slate:#515e82; --slate-lite:#6c757d;
+    --bg:#f4f6fe; --surface:#ffffff; --border:#e2e6f0; --text:#222222; --muted:#6c757d;
+    --accent:#ff3366;
+    --ok:#2e9e5b; --warn:#c07a12; --crit:#c0392b; --info:#2c6fb3;
+    --maxw:1080px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Roboto',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--text);background:var(--bg);line-height:1.65}
+  a{color:var(--slate)}
+  code{background:#eef1f8;padding:1px 6px;border-radius:4px;font-size:.88em;color:var(--navy)}
+
+  /* Header */
+  .hub-header{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-900) 100%);color:#fff;padding:26px 20px 0}
+  .hub-header-inner{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+  .hub-header img{height:46px;width:auto}
+  .hub-titles h1{font-size:1.5em;font-weight:700;letter-spacing:.2px}
+  .hub-titles .sub{font-size:.9em;opacity:.8;font-weight:300;margin-top:2px}
+  .hub-badge{margin-left:auto;background:var(--accent);color:#fff;font-size:.72em;font-weight:600;padding:5px 12px;border-radius:20px;text-transform:uppercase;letter-spacing:.5px}
+
+  /* Tabs */
+  .hub-tabs{max-width:var(--maxw);margin:18px auto 0;display:flex;gap:4px;flex-wrap:wrap}
+  .hub-tab{padding:12px 20px;color:rgba(255,255,255,.65);text-decoration:none;font-size:.95em;font-weight:500;border-radius:10px 10px 0 0;border-bottom:3px solid transparent;transition:.15s;white-space:nowrap}
+  .hub-tab:hover{color:#fff;background:rgba(255,255,255,.06)}
+  .hub-tab.active{color:#fff;background:var(--bg);border-bottom-color:var(--accent);font-weight:700}
+  .hub-tab.active .tab-ico{filter:none}
+
+  /* Content shell */
+  .hub-body{max-width:var(--maxw);margin:0 auto;padding:34px 20px 60px}
+  .tabpanel{display:none;animation:fade .2s ease}
+  .tabpanel.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+  .lead{font-size:1.05em;color:var(--navy);background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--slate);border-radius:10px;padding:20px 22px;margin-bottom:26px}
+  .lead strong{color:var(--navy)}
+  section.card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px 26px;margin-bottom:22px}
+  section.card h2{font-size:1.25em;color:var(--navy);font-weight:700;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid var(--slate)}
+  section.card h3{font-size:1.02em;color:var(--slate);font-weight:500;margin:18px 0 8px}
+  section.card p,section.card li{margin-bottom:8px}
+  section.card ul,section.card ol{padding-left:22px}
+
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:14px;margin:18px 0}
+  .kpi{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center}
+  .kpi .v{font-size:1.7em;font-weight:700;color:var(--navy)}
+  .kpi .l{font-size:.78em;color:var(--muted);margin-top:3px}
+
+  table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.9em}
+  th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top}
+  th{background:var(--bg);font-weight:600;color:var(--muted);font-size:.8em;text-transform:uppercase;letter-spacing:.03em}
+  .sev{padding:2px 8px;border-radius:6px;font-weight:600;font-size:.78em;white-space:nowrap}
+  .s-ok{background:#e2f3ea;color:var(--ok)} .s-mid{background:#fbeecf;color:var(--warn)}
+  .s-crit{background:#fbe3df;color:var(--crit)} .s-low{background:#e5ecf7;color:var(--info)}
+
+  .note{font-size:.86em;color:var(--muted);font-style:italic}
+  .pill{display:inline-block;background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:3px 11px;font-size:.8em;color:var(--slate);margin:2px}
+  .rec{background:linear-gradient(135deg,#eef2fb,#f4f6fe);border:1px solid #d6ddef;border-radius:10px;padding:15px 18px;margin:10px 0}
+  .rec strong{color:var(--navy)}
+  .flag{background:#fff8e6;border:1px solid #f0dca0;border-radius:10px;padding:14px 18px;margin:14px 0;font-size:.92em}
+
+  .hub-footer{background:var(--navy);color:rgba(255,255,255,.75);font-size:.85em}
+  .hub-footer-inner{max-width:var(--maxw);margin:0 auto;padding:26px 20px;display:flex;gap:30px;flex-wrap:wrap;justify-content:space-between}
+  .hub-footer strong{color:#fff}
+  .hub-footer a{color:rgba(255,255,255,.75)}
+
+  @media(max-width:640px){
+    .hub-header-inner{gap:12px}
+    .hub-badge{margin-left:0;order:3}
+    .hub-titles h1{font-size:1.2em}
+    .hub-tab{padding:10px 13px;font-size:.85em}
+  }
+</style>
+</head>
+<body>
+
+<header class="hub-header">
+  <div class="hub-header-inner">
+    <img src="https://sereda.de/images/headers/SEREDA-GmbH-Logo-white.png" alt="SEREDA GmbH">
+    <div class="hub-titles">
+      <h1>Projekt-Hub — Website-Relaunch sereda.de</h1>
+      <div class="sub">Joomla → Next.js + Sanity · SEO-Schonung + KI-Sichtbarkeit</div>
+    </div>
+    <span class="hub-badge">Arbeitsstand</span>
+  </div>
+  <nav class="hub-tabs" id="tabs">
+    <a href="#audit" class="hub-tab active" data-tab="audit">🔍 Website-Audit</a>
+    <a href="#migration" class="hub-tab" data-tab="migration">🔀 Migrations- &amp; 301-Konzept</a>
+    <a href="#markt" class="hub-tab" data-tab="markt">📊 Marktüberblick <span style="opacity:.7">(läuft)</span></a>
+  </nav>
+</header>
+
+<main class="hub-body">
+
+  <!-- ================= TAB 1: AUDIT ================= -->
+  <div class="tabpanel active" id="panel-audit">
+    <div class="lead">
+      Wir haben Ihre bestehende Website <strong>sereda.de</strong> vollständig analysiert (9 Bereiche). Kurzfassung:
+      Ihre <strong>Substanz ist stark</strong> (über 28 Jahre, AEO, Zolllager-Lizenz, Büro am Zollamt Dreilinden, eigenes Lager) —
+      aber die alte Joomla-Technik setzt das nicht in <strong>Sichtbarkeit und Anfragen</strong> um. Der Relaunch dreht sich
+      deshalb um <strong>Wachstum</strong>, nicht ums „Retten" von Positionen.
+    </div>
+
+    <div class="kpis">
+      <div class="kpi"><div class="v">seit&nbsp;1997</div><div class="l">~28 Jahre am Markt</div></div>
+      <div class="kpi"><div class="v">3</div><div class="l">Sprachen DE/RU/EN</div></div>
+      <div class="kpi"><div class="v">85</div><div class="l">URLs (Sitemap)</div></div>
+      <div class="kpi"><div class="v">AEO</div><div class="l">zertifiziert + Zolllager-Lizenz</div></div>
+    </div>
+
+    <section class="card">
+      <h2>Ihre Stärken (die Substanz ist da)</h2>
+      <ul>
+        <li><strong>Vertrauen &amp; Historie:</strong> seit 1997, etablierte Domain.</li>
+        <li><strong>Fachautorität:</strong> AEO-Zertifizierung, Zolllager-Lizenz, eigenes Büro am <strong>Zollamt Dreilinden</strong>, eigenes Lager im GVZ Berlin West (Wustermark).</li>
+        <li><strong>Breites Leistungsspektrum:</strong> Zollabfertigung, Zolllager, Steuerlager, KFZ-Import/-Export, Logistik, Fulfillment.</li>
+        <li><strong>Solide Inhalte + Mehrsprachigkeit</strong> DE/RU/EN mit korrekten hreflang-Tags · Trust-Badge „Sehr gut".</li>
+      </ul>
+      <p class="note">Fazit: Ihre Inhalte sind ein Asset zum Mitnehmen — die Probleme sind technischer Natur.</p>
+    </section>
+
+    <section class="card">
+      <h2>Audit-Ergebnisse (Übersicht)</h2>
+      <table>
+        <tr><th>Bereich</th><th>Bewertung</th><th>Befund (Kurz)</th></tr>
+        <tr><td>Technische Basis</td><td><span class="sev s-ok">OK</span></td><td>Joomla, dreisprachig, hreflang korrekt; robots ohne Sitemap-Verweis.</td></tr>
+        <tr><td>Performance</td><td><span class="sev s-mid">MITTEL</span></td><td>Seitengewicht/Skripte hoch; genaue Core Web Vitals noch offen.</td></tr>
+        <tr><td>On-Page-SEO</td><td><span class="sev s-mid">MITTEL</span></td><td>Startseiten-Titel generisch, <strong>kein Canonical</strong> (+ Duplikat <code>?Itemid=116</code>); Unterseiten gut.</td></tr>
+        <tr><td>SEO-Sichtbarkeit</td><td><span class="sev s-crit">NIEDRIG</span></td><td>Geringe organische Sichtbarkeit; Traffic überwiegend über die Marke.</td></tr>
+        <tr><td>Structured Data &amp; KI-Suche</td><td><span class="sev s-crit">KRITISCH</span></td><td>Minimales Schema, kein OpenGraph — in KI-Antworten kaum präsent.</td></tr>
+        <tr><td>Inhalte</td><td><span class="sev s-ok">GUT</span></td><td>Tiefe Inhalte; Blog/News veraltet (2019/20).</td></tr>
+        <tr><td>Compliance 2026</td><td><span class="sev s-crit">KRITISCH</span></td><td>Kein Cookie-Banner / kein Consent Mode V2 (DSGVO — dringend).</td></tr>
+      </table>
+    </section>
+
+    <section class="card">
+      <h2>Wofür ranken Sie heute?</h2>
+      <p>Ihre Sichtbarkeit ist <strong>überwiegend markenbezogen</strong> („sereda", „sereda gmbh"). Ihre echten Themen-Treffer
+        zum Ausbauen: <span class="pill">Zollamt Dreilinden</span> <span class="pill">Zoll Ukraine</span>
+        <span class="pill">Zolllager / Warehouse Berlin</span> <span class="pill">russischsprachige Logistik</span>.</p>
+      <p>Das bestätigt den Kern: Ihre Marke ist bekannt — Ihr Angebot wird über allgemeine Suchanfragen aber kaum gefunden.
+        <strong>Genau hier liegt das Wachstum.</strong></p>
+    </section>
+
+    <div class="flag">💡 <strong>Nächster Schritt (Audit):</strong> Für die exakte SEO-Baseline benötigen wir Zugriff auf
+      Google Analytics &amp; Search Console — damit wir den Umzug datenbasiert absichern.</div>
+  </div>
+
+  <!-- ================= TAB 2: MIGRATION ================= -->
+  <div class="tabpanel" id="panel-migration">
+    <div class="lead">
+      Damit beim Umzug <strong>nichts an Sichtbarkeit verloren geht</strong>, haben wir <strong>bereits vor dem Umbau</strong>
+      Ihre komplette Seite vermessen und eine Grundlage für saubere Weiterleitungen (301) erstellt.
+    </div>
+
+    <div class="kpis">
+      <div class="kpi"><div class="v">85</div><div class="l">URLs erfasst</div></div>
+      <div class="kpi"><div class="v">82</div><div class="l">technisch OK (200)</div></div>
+      <div class="kpi"><div class="v">3</div><div class="l">tote Links gefunden (404)</div></div>
+      <div class="kpi"><div class="v">3</div><div class="l">Sprachen abgeglichen</div></div>
+    </div>
+
+    <section class="card">
+      <h2>Was wir bereits erledigt haben</h2>
+      <ul>
+        <li><strong>Vollständige URL-Inventur:</strong> alle 85 Adressen aus der Sitemap erfasst (DE 30 / RU 31 / EN 24).</li>
+        <li><strong>Sprach-Abgleich DE ↔ RU ↔ EN:</strong> Grundlage für korrekte hreflang-Verknüpfungen und lückenlose Weiterleitungen.</li>
+        <li><strong>Live-Statusprüfung (06.07.2026):</strong> jede der 85 Adressen einzeln aufgerufen und protokolliert.</li>
+      </ul>
+      <p class="note">Diese Inventur entsteht bewusst <strong>vor</strong> dem Umbau — sie ist die Basis der späteren „alt&nbsp;→&nbsp;neu"-Weiterleitungstabelle.</p>
+    </section>
+
+    <section class="card">
+      <h2>Befunde</h2>
+      <h3>1. Drei tote Links in der Sitemap (404)</h3>
+      <p>Diese Adressen stehen in Ihrer Sitemap, liefern aber eine Fehlerseite — Google verschwendet dafür Crawl-Budget:</p>
+      <table>
+        <tr><th>Adresse</th><th>Status</th><th>Vorgehen bei Migration</th></tr>
+        <tr><td><code>/de/logistik/logistik-fuer-bio-und-naturprodukte</code></td><td><span class="sev s-crit">404</span></td><td>wiederherstellen oder auf <code>/de/logistik</code> weiterleiten</td></tr>
+        <tr><td><code>/en/logistics/…organic-and-natural-products</code></td><td><span class="sev s-crit">404</span></td><td>EN-Pendant, gleiche Behandlung</td></tr>
+        <tr><td><code>/en/warehouse/customs-warehouse</code></td><td><span class="sev s-crit">404</span></td><td>EN-Zolllager fehlt (DE/RU vorhanden)</td></tr>
+      </table>
+      <h3>2. Ein doppelter Inhalt</h3>
+      <p><code>/ru/?Itemid=116</code> zeigt denselben Inhalt wie <code>/ru/</code> ohne Canonical → <span class="sev s-mid">wird bereinigt</span> (301 + Canonical).</p>
+      <h3>3. Sprachlücken (Chance)</h3>
+      <p>Einige Seiten existieren nur in einer Sprache (z.&nbsp;B. „Zoll Ukraine" bislang nur RU) — beim Neuaufbau entsteht hier zusätzliche Sichtbarkeit.</p>
+    </section>
+
+    <section class="card">
+      <h2>So schützen wir Ihre Positionen</h2>
+      <div class="rec"><strong>URL-Parität:</strong> jede alte Adresse bekommt auf der neuen Seite eine passende Ziel-Adresse per 301 — Google und Ihre Backlinks landen weiterhin richtig.</div>
+      <div class="rec"><strong>hreflang &amp; Canonical sauber:</strong> Sprachverknüpfungen DE/RU/EN bleiben korrekt, Duplikate werden aufgelöst.</div>
+      <div class="rec"><strong>Saubere neue Sitemap + Monitoring nach Livegang</strong> — keine toten Links mehr; Indexierung/Rankings werden beobachtet und nachgesteuert.</div>
+      <p class="note">Hinweis: Rankings hängen von Google ab und lassen sich nicht garantieren. Ziel und Methode = <strong>größtmögliche Schonung</strong> Ihrer Positionen; das Risiko wird durch die 301-Karte minimiert.</p>
+    </section>
+  </div>
+
+  <!-- ================= TAB 3: MARKT ================= -->
+  <div class="tabpanel" id="panel-markt">
+    <div class="lead">
+      <strong>Arbeitsstand.</strong> Wir haben begonnen, Ihr Wettbewerbsumfeld zu sichten — anhand Ihrer eigenen
+      Such­begriffe. Erste Struktur unten. Für die Tiefe brauchen wir noch <strong>Ihren Blick von innen</strong> (siehe Ende).
+    </div>
+
+    <div class="kpis">
+      <div class="kpi"><div class="v">~25</div><div class="l">Wettbewerber gesichtet</div></div>
+      <div class="kpi"><div class="v">3</div><div class="l">Gruppen</div></div>
+      <div class="kpi"><div class="v">1</div><div class="l">Ihr Alleinstellungs-Bündel</div></div>
+    </div>
+
+    <section class="card">
+      <h2>Das Feld — drei Gruppen</h2>
+      <table>
+        <tr><th>Gruppe</th><th>Beispiele (real)</th><th>Kurz</th></tr>
+        <tr><td><strong>National</strong> (Zoll-Dienstleister DE)</td><td>SW Zoll-Beratung, ZOLL-frei, Butz, Zollflix</td><td>größer/älter, aber nicht Berlin-lokal &amp; nicht Ost-Europa</td></tr>
+        <tr><td><strong>Berlin/Brandenburg-lokal</strong></td><td>GTLS, Zollagentur Berlin, TRID, BLG</td><td>direkte Nachbarn — GTLS am nächsten (Zolllager+Fulfillment, auch seit 1997)</td></tr>
+        <tr><td><strong>GUS / Ost-Europa</strong></td><td>MARTIN, HUGO, TRANSALEX, Atlantis</td><td>Nische umkämpft; viele nach 2022 Richtung UA/Georgien/Zentralasien verschoben</td></tr>
+      </table>
+      <p class="note">Reale Firmen aus der Live-Suche, keine Erfindungen. Vollständige Analyse folgt (siehe unten).</p>
+    </section>
+
+    <section class="card">
+      <h2>Ihr eigentlicher Vorsprung</h2>
+      <p>Einzeln ist fast jedes Merkmal auch bei Wettbewerbern zu finden:</p>
+      <table>
+        <tr><th>Merkmal</th><th>einzigartig?</th></tr>
+        <tr><td>Eigenes Zolllager</td><td><span class="sev s-mid">nein</span> — auch GTLS, TRID, BLG …</td></tr>
+        <tr><td>Russischsprachiger Service</td><td><span class="sev s-mid">nein</span> — auch Zollagentur Berlin, HUGO …</td></tr>
+        <tr><td>Größe / Netz</td><td><span class="sev s-mid">nein</span> — SW Zoll ist größer</td></tr>
+        <tr><td><strong>Bündel:</strong> Büro am Zollamt Dreilinden + eigenes Zoll-/Steuerlager + AEO + 28 Jahre + RU-Betreuung — integriert</td><td><span class="sev s-ok">JA</span> — diese Kombination hat keiner der ~25</td></tr>
+      </table>
+      <div class="rec"><strong>Positionierung:</strong> Nicht „Lager" oder „russisch" einzeln verkaufen (Standard), sondern das
+        <strong>integrierte Bündel</strong> — schnelle Abfertigung direkt am Zollamt Dreilinden, eigenes Lager gleich dahinter, AEO-Status, 28 Jahre Vertrauen.</div>
+      <p><strong>Chance Steuerlager (Alkohol):</strong> lokal fast ohne Wettbewerb (nur TRID) — potenziell eine Ihrer wichtigsten Seiten.</p>
+    </section>
+
+    <div class="flag">📩 <strong>Was wir von Ihnen brauchen (dann vertiefen wir):</strong>
+      <ul style="margin-top:8px">
+        <li>Gegen wen werden Sie von Kunden am häufigsten verglichen? (2–3 Namen genügen)</li>
+        <li>Welche 3–5 Leistungen bringen den größten Umsatz? → danach analysieren wir die Wettbewerber dieser Richtung <strong>in der Tiefe</strong>.</li>
+      </ul>
+    </div>
+  </div>
+
+</main>
+
+<footer class="hub-footer">
+  <div class="hub-footer-inner">
+    <div>
+      <strong>SEREDA GmbH</strong><br>
+      Magdeburger Str. 3, 14641 Wustermark<br>
+      Impressum · Datenschutz
+    </div>
+    <div style="text-align:right">
+      Projekt-Hub · Arbeitsstand 06.07.2026<br>
+      Webentwicklung: 2Penguins<br>
+      <span style="opacity:.6">Wird im Projektverlauf laufend erweitert.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var tabs=document.querySelectorAll('.hub-tab');
+  var panels=document.querySelectorAll('.tabpanel');
+  function show(name){
+    tabs.forEach(function(t){t.classList.toggle('active',t.dataset.tab===name);});
+    panels.forEach(function(p){p.classList.toggle('active',p.id==='panel-'+name);});
+  }
+  tabs.forEach(function(t){
+    t.addEventListener('click',function(e){e.preventDefault();var n=t.dataset.tab;show(n);history.replaceState(null,'','#'+n);});
+  });
+  var h=(location.hash||'').replace('#','');
+  if(h&&document.getElementById('panel-'+h))show(h);
+})();
+</script>
+</body>
+</html>
