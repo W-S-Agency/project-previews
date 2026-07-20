@@ -1,0 +1,165 @@
+<!doctype html><html lang="de"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Hotel AVAlex — Website-Vorschau (Project Hub)</title><style>
+:root{
+ --primary:#1d1d1b; --accent:#b3121f; --bg:#ffffff; --text:#1d1d1b;
+ --muted:#6b6b68; --line:#e6e6e3; --soft:#f6f5f2; --radius:10px; --max-width:1160px;
+ --fb-accent:#f59e0b; --fb-accent-border:#d97706; --fb-accent-hover:#d97706;
+ --fb-saved:#10b981; --fb-saved-border:#059669; --fb-save:#2563eb; --fb-save-border:#1d4ed8;
+ --fb-save-hover:#1d4ed8; --fb-panel-bg:#fff8e6; --fb-panel-border:#f59e0b;
+ --fb-delete:#dc2626; --fb-delete-bg:#fef2f2; --fb-delete-border:#fca5a5; --success:#10b981;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+ color:var(--text);background:var(--soft);line-height:1.6;font-size:16px}
+a{color:var(--accent)}
+.topnav{position:sticky;top:0;z-index:100;background:var(--primary);color:#fff;
+ display:flex;align-items:center;justify-content:space-between;padding:10px 20px;gap:12px;flex-wrap:wrap}
+.topnav .brand{font-weight:800;letter-spacing:.5px;color:#fff;text-decoration:none;font-size:18px}
+.topnav .brand b{color:#fff}.topnav .brand .va{color:#fff}
+.navlinks{display:flex;gap:4px;flex-wrap:wrap}
+.navlinks a{color:rgba(255,255,255,.85);text-decoration:none;padding:6px 10px;border-radius:6px;font-size:14px}
+.navlinks a.active,.navlinks a:hover{background:rgba(255,255,255,.15);color:#fff}
+.feedback-counter{background:var(--fb-accent);color:#1e293b;padding:6px 16px;border-radius:22px;font-weight:700;cursor:pointer;font-size:14px;border:none;min-height:44px;display:inline-flex;align-items:center}
+.feedback-counter:hover{transform:scale(1.04)}
+.feedback-counter.has-feedback{box-shadow:0 0 0 3px rgba(245,158,11,.35)}
+.hamb{display:none;background:none;border:1px solid rgba(255,255,255,.4);color:#fff;font-size:20px;border-radius:6px;padding:2px 10px;cursor:pointer;min-height:44px;min-width:44px}
+
+.wrap{max-width:var(--max-width);margin:0 auto;padding:0 24px}
+.pagehead{background:var(--primary);color:#fff;padding:14px 0}
+.pagehead .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.pagehead .ptitle{font-weight:700}
+.badge-draft{background:var(--fb-accent);color:#1e293b;padding:3px 10px;border-radius:12px;font-size:12px;font-weight:700}
+
+/* SEO bar */
+.seobar{background:#1a1a2e;color:#e6e6f0;margin:0}
+.seobar .wrap{padding:10px 24px}
+.seobar summary{cursor:pointer;font-weight:600;font-size:13px;color:#9fa8da}
+.seobar .kv{display:grid;grid-template-columns:120px 1fr;gap:6px 12px;margin-top:8px;font-size:13px}
+.seobar code{background:#12122099;padding:2px 6px;border-radius:4px}
+.len-badge{padding:1px 7px;border-radius:10px;font-size:11px;font-weight:700;margin-left:8px}
+.len-ok{background:#14532d;color:#bbf7d0}.len-warn{background:#78350f;color:#fde68a}.len-over{background:#7f1d1d;color:#fecaca}
+.schema-tag{display:inline-block;background:#312e81;color:#c7d2fe;padding:2px 8px;border-radius:10px;font-size:11px;margin:2px 4px 2px 0}
+
+main{padding:20px 0 0}
+.block{position:relative;background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+ padding:26px 28px;margin:0 auto 18px;max-width:var(--max-width)}
+.block-label{position:absolute;top:-9px;left:16px;background:var(--soft);color:var(--muted);
+ font-size:11px;padding:1px 8px;border-radius:8px;border:1px solid var(--line)}
+.block h1{font-size:30px;line-height:1.2;margin:.2em 0}
+.block h3{font-size:20px;margin:.4em 0}
+.block h4{font-size:16px;margin:.6em 0 .2em}
+.block .sub{font-size:18px;color:var(--muted)}
+.link-row{color:var(--accent);font-weight:600}
+.phone{font-weight:700}
+.ph{background:#fff3bf;border:1px dashed #e0b000;border-radius:4px;padding:1px 5px;color:#7a5b00;font-size:.92em}
+.btn{display:inline-block;padding:11px 20px;border-radius:8px;text-decoration:none;font-weight:700;cursor:pointer;border:none}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-outline{background:#fff;color:var(--primary);border:1.5px solid var(--line)}
+.book-cta{display:inline-flex;flex-direction:column;gap:3px;vertical-align:top;padding:9px 16px;border-radius:8px;background:var(--soft);border:1.5px dashed var(--accent);min-height:44px;box-sizing:border-box}
+.book-cta-label{font-weight:700;color:var(--accent)}
+.book-cta-ext{font-size:.78em;font-weight:600;color:var(--muted);letter-spacing:.02em}
+.link-row .book-cta,.link-row .btn{margin:4px 6px 4px 0}
+.hero{background:linear-gradient(135deg,#1d1d1b,#33322f);color:#fff;border-radius:var(--radius);padding:44px 30px}
+.hero h1{color:#fff}.hero .sub{color:rgba(255,255,255,.85)}
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-top:12px}
+.card{border:1px solid var(--line);border-radius:8px;padding:16px;background:var(--soft)}
+.card h4{margin-top:0;color:var(--primary)}
+.trust-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-top:10px}
+.trust-cell{background:var(--soft);border-radius:8px;padding:14px}
+.trust-cell strong{color:var(--accent)}
+.faq-item{border-bottom:1px solid var(--line);padding:6px 0}
+.faq-item summary{cursor:pointer;font-weight:600;padding:8px 0}
+.faq-item div{color:var(--muted);padding:0 0 8px}
+.form-preview{background:var(--soft);border-radius:8px;padding:18px;margin-top:12px;display:flex;flex-direction:column;gap:10px}
+.form-preview .frm{display:flex;flex-direction:column;font-weight:600;gap:4px}
+.form-preview input{padding:10px;border:1px solid var(--line);border-radius:6px;background:#fff}
+.cta-block{background:var(--soft);border-left:4px solid var(--accent);border-radius:8px;padding:18px}
+
+footer.site{background:var(--primary);color:#cfcfcc;margin-top:30px;padding:30px 0}
+footer.site .wrap{display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between}
+footer.site a{color:#e6e6e3}
+footer.site .fcol h5{color:#fff;margin:0 0 8px}
+footer.site .copy{width:100%;border-top:1px solid rgba(255,255,255,.15);padding-top:14px;font-size:13px;color:#9a9a97}
+
+/* feedback panel */
+.feedback-btn{position:absolute;top:10px;right:18px;background:var(--fb-accent);border:2px solid var(--fb-accent-border);
+ padding:8px 14px;border-radius:22px;cursor:pointer;font-size:13px;color:#1e293b;font-weight:600;z-index:10;min-height:44px}
+.feedback-btn.has-comment{background:var(--fb-saved);border-color:var(--fb-saved-border);color:#fff}
+.feedback-panel{display:none;position:absolute;top:3rem;right:.75rem;width:320px;max-width:calc(100% - 1.5rem);
+ z-index:200;background:var(--fb-panel-bg);border:2px solid var(--fb-panel-border);border-radius:8px;padding:18px;box-shadow:0 4px 16px rgba(0,0,0,.2)}
+.feedback-panel.open{display:block}
+.feedback-panel label{display:block;font-weight:600;margin-bottom:8px;font-size:14px}
+.feedback-panel textarea{width:100%;min-height:90px;padding:10px;border:1px solid var(--line);border-radius:8px;font-family:inherit;font-size:15px}
+.feedback-actions{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+.btn-save{background:var(--fb-save);color:#fff;border:2px solid var(--fb-save-border);padding:8px 18px;border-radius:8px;cursor:pointer;font-weight:600;min-height:40px}
+.btn-cancel{background:#fff;border:2px solid #94a3b8;padding:8px 16px;border-radius:8px;cursor:pointer;min-height:40px}
+.btn-delete{background:var(--fb-delete-bg);border:2px solid var(--fb-delete-border);padding:8px 14px;border-radius:8px;cursor:pointer;color:var(--fb-delete);margin-left:auto;min-height:40px}
+.saved-indicator{display:none;color:var(--success);font-size:13px;align-items:center;gap:4px}
+.export-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;justify-content:center;align-items:center}
+.export-overlay.open{display:flex}
+.export-box{background:#fff;border-radius:12px;padding:30px;max-width:480px;width:90%;text-align:center}
+.export-box .count{font-size:44px;font-weight:800;color:var(--fb-save)}
+.btn-export{display:inline-block;background:var(--fb-save);color:#fff;padding:13px 26px;border-radius:8px;border:none;font-size:15px;font-weight:600;cursor:pointer;margin:6px}
+.btn-export.btn-copy{background:var(--fb-accent);color:#1e293b}
+.btn-close-overlay{background:transparent;border:1px solid var(--line);padding:13px 26px;border-radius:8px;cursor:pointer;margin:6px}
+
+/* hub / index */
+.guide{background:#fff;border:1px solid var(--fb-panel-border);border-left:4px solid var(--fb-accent);border-radius:10px;padding:18px 22px;margin:20px auto}
+.guide h3{margin:0 0 8px}
+.hub-tabs{display:flex;gap:8px;margin:18px auto 0;flex-wrap:wrap}
+.hub-tab{padding:9px 16px;border-radius:8px;text-decoration:none;font-weight:600;border:1px solid var(--line);background:#fff;color:var(--primary)}
+.hub-tab.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+.pagecards{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin:16px auto}
+.pagecard{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px;text-decoration:none;color:var(--primary)}
+.pagecard:hover{border-color:var(--accent)}
+.pagecard .u{color:var(--muted);font-size:13px}
+.seotable{width:100%;border-collapse:collapse;background:#fff;border-radius:10px;overflow:hidden;margin:10px auto;font-size:13px}
+.seotable th,.seotable td{padding:9px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.seotable th{background:var(--soft)}
+.dbrief h2{border-bottom:2px solid var(--accent);padding-bottom:6px;margin-top:28px}
+.dbrief .tokrow{display:flex;gap:14px;flex-wrap:wrap;margin:10px 0}
+.swatch{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.chip{width:26px;height:26px;border-radius:6px;border:1px solid #0002}
+
+@media(max-width:768px){
+ .navlinks{display:none;width:100%;flex-direction:column}
+ .navlinks.open{display:flex}
+ .hamb{display:inline-block}
+ .block{padding:22px 18px}
+ .feedback-btn{top:auto;bottom:-14px;right:14px}
+}
+</style></head>
+<body>
+<nav class="topnav"><a class="brand" href="index.html">Hotel <span class="va">AV</span>Alex · Preview</a>
+ <button class="hamb" onclick="document.querySelector('.navlinks').classList.toggle('open')">☰</button>
+ <div class="navlinks"><a class="active" href="index.html">Übersicht</a><a href="hotel-avalex_design_brief.html">📐 Design-Brief</a></div></nav>
+<main><div class="wrap">
+ <h1>Hotel AVAlex — Website-Vorschau</h1>
+ <p style="color:var(--muted)">Inhaltliche Vorschau aller Seiten (Texte im Seitenkontext). Kein finales Design — die Gestaltung entsteht im Design-Kit.</p>
+ <div class="hub-tabs"><a class="hub-tab primary" href="index.html">👁 Content (Kunde)</a><a class="hub-tab" href="hotel-avalex_design_brief.html">📐 Design-Brief (Team)</a></div>
+ <section class="guide"><h3>📝 So geben Sie Feedback</h3>
+ <ol>
+  <li><strong>Seite öffnen</strong> — oben in der Navigation. Alle Seiten sind erreichbar.</li>
+  <li><strong>Kommentar hinterlassen</strong> — neben jedem Textblock „✏️ Vorschlag" klicken, schreiben, „Speichern".</li>
+  <li><strong>Mehrere Seiten</strong> — Kommentare werden seitenübergreifend gespeichert.</li>
+  <li><strong>Feedback absenden</strong> — oben rechts „📥 Feedback: X Kommentare" → „Als Datei herunterladen" oder „In Zwischenablage kopieren".</li>
+  <li><strong>An uns senden</strong> — Datei oder Text per E-Mail/WhatsApp schicken.</li>
+ </ol>
+ <p><em>Hinweis: Kommentare werden lokal im Browser gespeichert. Diese Vorschau ist kein Live-Stand — Fotos, Gäste-Zitate und einige Angaben (Lokale, ÖPNV, Öffnungszeiten) sind noch Platzhalter.</em></p>
+</section>
+ <h3>Seiten</h3>
+ <div class="pagecards"><a class="pagecard" href="hotel-avalex_preview_01_startseite.html"><strong>Startseite</strong><div class="u">/</div></a><a class="pagecard" href="hotel-avalex_preview_02_zimmer-uebersicht.html"><strong>Zimmer</strong><div class="u">/zimmer/</div></a><a class="pagecard" href="hotel-avalex_preview_03_zimmer-detail-template.html"><strong>Zimmer-Detail (Template)</strong><div class="u">/zimmer/{kategorie}/</div></a><a class="pagecard" href="hotel-avalex_preview_04_gastronomie-umgebung.html"><strong>Gastronomie</strong> <span class="badge-draft">DRAFT</span><div class="u">/gastronomie-umgebung/</div></a><a class="pagecard" href="hotel-avalex_preview_05_reisefuehrer.html"><strong>Reiseführer</strong> <span class="badge-draft">DRAFT</span><div class="u">/reisefuehrer/</div></a><a class="pagecard" href="hotel-avalex_preview_06_kontakt.html"><strong>Kontakt</strong><div class="u">/kontakt/</div></a><a class="pagecard" href="hotel-avalex_preview_07_meldeschein.html"><strong>Meldeschein</strong><div class="u">/meldeschein/</div></a></div>
+ <h3>SEO-Übersicht</h3><table class="seotable"><thead><tr>
+ <th>Seite</th><th>Title Tag</th><th>Len</th><th>Description</th><th>Len</th><th>Schema.org</th></tr></thead>
+ <tbody><tr><td><a href="hotel-avalex_preview_01_startseite.html">Startseite</a></td><td>Hotel AVAlex Berlin – günstig, Prenzlauer Berg nahe Alex</td><td><span class="len-badge len-warn">56</span></td><td>Economy-Hotel im Berliner Altbau, 15 Min zum A…</td><td><span class="len-badge len-warn">160</span></td><td>Hotel, WebSite, FAQPage</td></tr><tr><td><a href="hotel-avalex_preview_02_zimmer-uebersicht.html">Zimmer</a></td><td>Zimmer in Berlin – Hotel AVAlex, zentral nahe Alexanderplatz</td><td><span class="len-badge len-warn">60</span></td><td>Fünf Zimmerkategorien im Berliner Altbau: vom …</td><td><span class="len-badge len-over">179</span></td><td>Organization, BreadcrumbList</td></tr><tr><td><a href="hotel-avalex_preview_03_zimmer-detail-template.html">Zimmer-Detail (Template)</a></td><td>Einzelzimmer Berlin günstig – zentral nahe Alexanderplatz</td><td><span class="len-badge len-warn">57</span></td><td>Einzelzimmer im Berliner Altbau, ca. 12 m², 15…</td><td><span class="len-badge len-warn">159</span></td><td>Organization, BreadcrumbList, FAQPage</td></tr><tr><td><a href="hotel-avalex_preview_04_gastronomie-umgebung.html">Gastronomie</a></td><td>Gastronomie rund ums Hotel AVAlex – Berlin, zentral &amp; fußläufig</td><td><span class="len-badge len-over">63</span></td><td>Kein Hotelfrühstück? Kein Problem: Bäckerei di…</td><td><span class="len-badge len-warn">156</span></td><td>Organization, BreadcrumbList</td></tr><tr><td><a href="hotel-avalex_preview_05_reisefuehrer.html">Reiseführer</a></td><td>Berlin-Tipps &amp; Anreise – Hotel AVAlex, zentral nahe Alexanderplatz</td><td><span class="len-badge len-over">66</span></td><td>Ihr Citytrip ab dem Hotel AVAlex: die wichtigs…</td><td><span class="len-badge len-over">168</span></td><td>Organization, BreadcrumbList</td></tr><tr><td><a href="hotel-avalex_preview_06_kontakt.html">Kontakt</a></td><td>Kontakt – Hotel AVAlex Berlin, zentral nahe Alexanderplatz</td><td><span class="len-badge len-warn">58</span></td><td>So erreichen Sie das Hotel AVAlex: Telefon, E-…</td><td><span class="len-badge len-over">170</span></td><td>Organization, BreadcrumbList</td></tr><tr><td><a href="hotel-avalex_preview_07_meldeschein.html">Meldeschein</a></td><td>Online-Meldeschein – kontaktloser Check-in im Hotel AVAlex</td><td><span class="len-badge len-warn">58</span></td><td>Füllen Sie Ihren Meldeschein bequem vorab onli…</td><td><span class="len-badge len-warn">155</span></td><td>Organization, BreadcrumbList</td></tr></tbody></table>
+ <p style="color:var(--muted);font-size:13px">OK ≤ Title 55 / Desc 150 · Warn Grenzbereich · Over über Limit</p>
+</div></main>
+<footer class="site"><div class="wrap">
+ <div class="fcol"><h5>Hotel AVAlex</h5>Inh. Anfissa Schäfer<br>Greifswalder Straße 225, 10405 Berlin</div>
+ <div class="fcol"><h5>Kontakt</h5>Tel: <a href="tel:+493041725729">+49 30 41 725 729</a><br>E-Mail: <a href="mailto:info@hotelavalex.de">info@hotelavalex.de</a><br>Instagram: @hotelavalex</div>
+ <div class="fcol"><h5>Rechtliches</h5>Impressum · Datenschutz · AGB</div>
+ <div class="copy">© 2026 Hotel AVAlex — Vorschau (kein Live-Stand). Fotos, Zitate & einige Angaben sind Platzhalter.</div>
+</div></footer>
+</body></html>

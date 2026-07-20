@@ -1,0 +1,202 @@
+<!doctype html><html lang="de"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Hotel AVAlex — Design-Brief (Design-Kit)</title><style>
+:root{
+ --primary:#1d1d1b; --accent:#b3121f; --bg:#ffffff; --text:#1d1d1b;
+ --muted:#6b6b68; --line:#e6e6e3; --soft:#f6f5f2; --radius:10px; --max-width:1160px;
+ --fb-accent:#f59e0b; --fb-accent-border:#d97706; --fb-accent-hover:#d97706;
+ --fb-saved:#10b981; --fb-saved-border:#059669; --fb-save:#2563eb; --fb-save-border:#1d4ed8;
+ --fb-save-hover:#1d4ed8; --fb-panel-bg:#fff8e6; --fb-panel-border:#f59e0b;
+ --fb-delete:#dc2626; --fb-delete-bg:#fef2f2; --fb-delete-border:#fca5a5; --success:#10b981;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+ color:var(--text);background:var(--soft);line-height:1.6;font-size:16px}
+a{color:var(--accent)}
+.topnav{position:sticky;top:0;z-index:100;background:var(--primary);color:#fff;
+ display:flex;align-items:center;justify-content:space-between;padding:10px 20px;gap:12px;flex-wrap:wrap}
+.topnav .brand{font-weight:800;letter-spacing:.5px;color:#fff;text-decoration:none;font-size:18px}
+.topnav .brand b{color:#fff}.topnav .brand .va{color:#fff}
+.navlinks{display:flex;gap:4px;flex-wrap:wrap}
+.navlinks a{color:rgba(255,255,255,.85);text-decoration:none;padding:6px 10px;border-radius:6px;font-size:14px}
+.navlinks a.active,.navlinks a:hover{background:rgba(255,255,255,.15);color:#fff}
+.feedback-counter{background:var(--fb-accent);color:#1e293b;padding:6px 16px;border-radius:22px;font-weight:700;cursor:pointer;font-size:14px;border:none;min-height:44px;display:inline-flex;align-items:center}
+.feedback-counter:hover{transform:scale(1.04)}
+.feedback-counter.has-feedback{box-shadow:0 0 0 3px rgba(245,158,11,.35)}
+.hamb{display:none;background:none;border:1px solid rgba(255,255,255,.4);color:#fff;font-size:20px;border-radius:6px;padding:2px 10px;cursor:pointer;min-height:44px;min-width:44px}
+
+.wrap{max-width:var(--max-width);margin:0 auto;padding:0 24px}
+.pagehead{background:var(--primary);color:#fff;padding:14px 0}
+.pagehead .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.pagehead .ptitle{font-weight:700}
+.badge-draft{background:var(--fb-accent);color:#1e293b;padding:3px 10px;border-radius:12px;font-size:12px;font-weight:700}
+
+/* SEO bar */
+.seobar{background:#1a1a2e;color:#e6e6f0;margin:0}
+.seobar .wrap{padding:10px 24px}
+.seobar summary{cursor:pointer;font-weight:600;font-size:13px;color:#9fa8da}
+.seobar .kv{display:grid;grid-template-columns:120px 1fr;gap:6px 12px;margin-top:8px;font-size:13px}
+.seobar code{background:#12122099;padding:2px 6px;border-radius:4px}
+.len-badge{padding:1px 7px;border-radius:10px;font-size:11px;font-weight:700;margin-left:8px}
+.len-ok{background:#14532d;color:#bbf7d0}.len-warn{background:#78350f;color:#fde68a}.len-over{background:#7f1d1d;color:#fecaca}
+.schema-tag{display:inline-block;background:#312e81;color:#c7d2fe;padding:2px 8px;border-radius:10px;font-size:11px;margin:2px 4px 2px 0}
+
+main{padding:20px 0 0}
+.block{position:relative;background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+ padding:26px 28px;margin:0 auto 18px;max-width:var(--max-width)}
+.block-label{position:absolute;top:-9px;left:16px;background:var(--soft);color:var(--muted);
+ font-size:11px;padding:1px 8px;border-radius:8px;border:1px solid var(--line)}
+.block h1{font-size:30px;line-height:1.2;margin:.2em 0}
+.block h3{font-size:20px;margin:.4em 0}
+.block h4{font-size:16px;margin:.6em 0 .2em}
+.block .sub{font-size:18px;color:var(--muted)}
+.link-row{color:var(--accent);font-weight:600}
+.phone{font-weight:700}
+.ph{background:#fff3bf;border:1px dashed #e0b000;border-radius:4px;padding:1px 5px;color:#7a5b00;font-size:.92em}
+.btn{display:inline-block;padding:11px 20px;border-radius:8px;text-decoration:none;font-weight:700;cursor:pointer;border:none}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-outline{background:#fff;color:var(--primary);border:1.5px solid var(--line)}
+.book-cta{display:inline-flex;flex-direction:column;gap:3px;vertical-align:top;padding:9px 16px;border-radius:8px;background:var(--soft);border:1.5px dashed var(--accent);min-height:44px;box-sizing:border-box}
+.book-cta-label{font-weight:700;color:var(--accent)}
+.book-cta-ext{font-size:.78em;font-weight:600;color:var(--muted);letter-spacing:.02em}
+.link-row .book-cta,.link-row .btn{margin:4px 6px 4px 0}
+.hero{background:linear-gradient(135deg,#1d1d1b,#33322f);color:#fff;border-radius:var(--radius);padding:44px 30px}
+.hero h1{color:#fff}.hero .sub{color:rgba(255,255,255,.85)}
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-top:12px}
+.card{border:1px solid var(--line);border-radius:8px;padding:16px;background:var(--soft)}
+.card h4{margin-top:0;color:var(--primary)}
+.trust-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-top:10px}
+.trust-cell{background:var(--soft);border-radius:8px;padding:14px}
+.trust-cell strong{color:var(--accent)}
+.faq-item{border-bottom:1px solid var(--line);padding:6px 0}
+.faq-item summary{cursor:pointer;font-weight:600;padding:8px 0}
+.faq-item div{color:var(--muted);padding:0 0 8px}
+.form-preview{background:var(--soft);border-radius:8px;padding:18px;margin-top:12px;display:flex;flex-direction:column;gap:10px}
+.form-preview .frm{display:flex;flex-direction:column;font-weight:600;gap:4px}
+.form-preview input{padding:10px;border:1px solid var(--line);border-radius:6px;background:#fff}
+.cta-block{background:var(--soft);border-left:4px solid var(--accent);border-radius:8px;padding:18px}
+
+footer.site{background:var(--primary);color:#cfcfcc;margin-top:30px;padding:30px 0}
+footer.site .wrap{display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between}
+footer.site a{color:#e6e6e3}
+footer.site .fcol h5{color:#fff;margin:0 0 8px}
+footer.site .copy{width:100%;border-top:1px solid rgba(255,255,255,.15);padding-top:14px;font-size:13px;color:#9a9a97}
+
+/* feedback panel */
+.feedback-btn{position:absolute;top:10px;right:18px;background:var(--fb-accent);border:2px solid var(--fb-accent-border);
+ padding:8px 14px;border-radius:22px;cursor:pointer;font-size:13px;color:#1e293b;font-weight:600;z-index:10;min-height:44px}
+.feedback-btn.has-comment{background:var(--fb-saved);border-color:var(--fb-saved-border);color:#fff}
+.feedback-panel{display:none;position:absolute;top:3rem;right:.75rem;width:320px;max-width:calc(100% - 1.5rem);
+ z-index:200;background:var(--fb-panel-bg);border:2px solid var(--fb-panel-border);border-radius:8px;padding:18px;box-shadow:0 4px 16px rgba(0,0,0,.2)}
+.feedback-panel.open{display:block}
+.feedback-panel label{display:block;font-weight:600;margin-bottom:8px;font-size:14px}
+.feedback-panel textarea{width:100%;min-height:90px;padding:10px;border:1px solid var(--line);border-radius:8px;font-family:inherit;font-size:15px}
+.feedback-actions{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+.btn-save{background:var(--fb-save);color:#fff;border:2px solid var(--fb-save-border);padding:8px 18px;border-radius:8px;cursor:pointer;font-weight:600;min-height:40px}
+.btn-cancel{background:#fff;border:2px solid #94a3b8;padding:8px 16px;border-radius:8px;cursor:pointer;min-height:40px}
+.btn-delete{background:var(--fb-delete-bg);border:2px solid var(--fb-delete-border);padding:8px 14px;border-radius:8px;cursor:pointer;color:var(--fb-delete);margin-left:auto;min-height:40px}
+.saved-indicator{display:none;color:var(--success);font-size:13px;align-items:center;gap:4px}
+.export-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;justify-content:center;align-items:center}
+.export-overlay.open{display:flex}
+.export-box{background:#fff;border-radius:12px;padding:30px;max-width:480px;width:90%;text-align:center}
+.export-box .count{font-size:44px;font-weight:800;color:var(--fb-save)}
+.btn-export{display:inline-block;background:var(--fb-save);color:#fff;padding:13px 26px;border-radius:8px;border:none;font-size:15px;font-weight:600;cursor:pointer;margin:6px}
+.btn-export.btn-copy{background:var(--fb-accent);color:#1e293b}
+.btn-close-overlay{background:transparent;border:1px solid var(--line);padding:13px 26px;border-radius:8px;cursor:pointer;margin:6px}
+
+/* hub / index */
+.guide{background:#fff;border:1px solid var(--fb-panel-border);border-left:4px solid var(--fb-accent);border-radius:10px;padding:18px 22px;margin:20px auto}
+.guide h3{margin:0 0 8px}
+.hub-tabs{display:flex;gap:8px;margin:18px auto 0;flex-wrap:wrap}
+.hub-tab{padding:9px 16px;border-radius:8px;text-decoration:none;font-weight:600;border:1px solid var(--line);background:#fff;color:var(--primary)}
+.hub-tab.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+.pagecards{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin:16px auto}
+.pagecard{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px;text-decoration:none;color:var(--primary)}
+.pagecard:hover{border-color:var(--accent)}
+.pagecard .u{color:var(--muted);font-size:13px}
+.seotable{width:100%;border-collapse:collapse;background:#fff;border-radius:10px;overflow:hidden;margin:10px auto;font-size:13px}
+.seotable th,.seotable td{padding:9px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.seotable th{background:var(--soft)}
+.dbrief h2{border-bottom:2px solid var(--accent);padding-bottom:6px;margin-top:28px}
+.dbrief .tokrow{display:flex;gap:14px;flex-wrap:wrap;margin:10px 0}
+.swatch{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.chip{width:26px;height:26px;border-radius:6px;border:1px solid #0002}
+
+@media(max-width:768px){
+ .navlinks{display:none;width:100%;flex-direction:column}
+ .navlinks.open{display:flex}
+ .hamb{display:inline-block}
+ .block{padding:22px 18px}
+ .feedback-btn{top:auto;bottom:-14px;right:14px}
+}
+</style></head>
+<body>
+<nav class="topnav"><a class="brand" href="index.html">Hotel <span class="va">AV</span>Alex · Preview</a>
+ <button class="hamb" onclick="document.querySelector('.navlinks').classList.toggle('open')">☰</button>
+ <div class="navlinks"><a href="index.html">👁 Content</a><a class="active" href="hotel-avalex_design_brief.html">📐 Design-Brief</a></div></nav>
+<main><div class="wrap dbrief">
+ <h1>Design-Brief — Hotel AVAlex</h1>
+ <p style="color:var(--muted)">Input für das <strong>Design-Kit</strong>. Ziel: konsistentes UI-System für alle Seitentypen und Block-Typen unten. Feedback läuft über Bitrix24-Task, nicht über Kommentare hier.</p>
+ <div style="border-left:4px solid var(--accent);background:var(--soft);border-radius:8px;padding:14px 16px;margin:14px 0">
+  <strong>Kurz-Orientierung (falls du neu im Projekt bist):</strong> Dies ist der <strong>komplette Relaunch der bestehenden Website</strong>
+  <a href="https://hotelavalex.de" target="_blank" rel="noopener">hotelavalex.de ↗</a> — ein zentrales Economy-/Budget-Hotel in Berlin (Prenzlauer Berg, nahe Alexanderplatz), Neubau in Next.js.
+  Die <strong>alte Seite dient nur als Referenz für den aktuellen Stand &amp; die Inhalte</strong> (u. a. die Buchungs-/Suchleiste oben, das Meldeschein-Formular, die Zimmerkategorien) — <strong>nicht als Design-Vorlage</strong>: Look &amp; UI werden komplett neu gestaltet (siehe Design-Referenzen unten). Die Altseite wird <strong>nicht angefasst</strong>.
+ </div>
+
+ <h2>1. Marke &amp; Brand-Tokens</h2>
+ <div class="tokrow">
+  <div class="swatch"><span class="chip" style="background:#1d1d1b"></span> Primär <code>#1d1d1b</code></div>
+  <div class="swatch"><span class="chip" style="background:#b3121f"></span> Roter Akzent <code>#b3121f</code> (Wert TBD)</div>
+  <div class="swatch"><span class="chip" style="background:#ffffff;border-color:#ccc"></span> Hintergrund <code>#ffffff</code></div>
+ </div>
+ <p>Logo: Wortmarke „AVAlex" / „AVAlex HOTEL" (weiß auf #1d1d1b), Varianten .ai/.png/.jpg in <code>materials/brand/</code>. Markenname immer <strong>„Hotel AVAlex"</strong> („VA" groß). Finales/aktualisiertes Logo von Kundin noch offen.</p>
+ <p><strong>Kein Brandbook / keine Fonts vorhanden</strong> (Kundin bestätigt) → Design-System aus Logo + Tokens ableiten. Font-Empfehlung: moderne Open-Source-Sans (z. B. Inter), klare Größen-Hierarchie, keine Lizenzkosten (Budget). Roter Akzent nur für CTA/Hover/aktive Zustände, sparsam, WCAG-AA auf #1d1d1b + Weiß.</p>
+
+ <h2>2. Positionierung &amp; Ton</h2>
+ <p>Zentrales Economy-/Budget-Hotel in Berlin, denkmalgeschützter Altbau, ehrlich &amp; fair. Positionierung: <strong>„Ehrlich · Zentral · Günstig"</strong>. Zielgruppe: preisbewusste Citytrip-Gäste (~2 Tage), alle Altersgruppen, Familien (Vierbettzimmer). Ton: freundlich, klar, ehrlich — kein Luxus-Look, aber sauber und vertrauenswürdig. <strong>Mobile-first (~90 % der Gäste mobil).</strong></p>
+ <p><strong>Optik-Anspruch der Kundin (wörtlich):</strong> „moderner, schöner". <strong>Design-Referenzen der Kundin</strong> (von ihr per WhatsApp 11.06 geschickt): <em>Michelberger</em> <a href="https://www.michelbergerhotel.com/en/" target="_blank" rel="noopener">michelbergerhotel.com ↗</a> · <em>Ruby Hotels</em> <a href="https://www.ruby-hotels.com/en" target="_blank" rel="noopener">ruby-hotels.com ↗</a> · <em>Volkshotel</em> <a href="https://www.volkshotel.nl/en" target="_blank" rel="noopener">volkshotel.nl ↗</a>. Abgeleitete Richtung: Foto-first, neutrale Palette + 1 Akzent, viel Whitespace, klare Sans-Serif, „Reduktion als Charakter" (Economy nicht entschuldigen) — aber <strong>budget-tauglich, keine 1:1-Kopie</strong> der teuren Boutique-Ausführung.</p>
+ <p><strong>Hero:</strong> ein starkes Standbild (kein Slideshow-/Video-Hero) — budget- und mobil-tauglich.</p>
+
+ <h2>3. Seiten-Inventar (7 inhaltliche Seiten)</h2>
+ <table class="seotable"><thead><tr><th>Seite</th><th>URL</th></tr></thead><tbody><tr><td>Startseite</td><td><code>/</code></td></tr><tr><td>Zimmer</td><td><code>/zimmer/</code></td></tr><tr><td>Zimmer-Detail (Template)</td><td><code>/zimmer/{kategorie}/</code></td></tr><tr><td>Gastronomie</td><td><code>/gastronomie-umgebung/</code></td></tr><tr><td>Reiseführer</td><td><code>/reisefuehrer/</code></td></tr><tr><td>Kontakt</td><td><code>/kontakt/</code></td></tr><tr><td>Meldeschein</td><td><code>/meldeschein/</code></td></tr></tbody></table>
+ <p style="color:var(--muted)">+ Pflichtseiten Impressum / Datenschutz+AGB (eRecht24-Text, kein Design-Sonderfall).</p>
+
+ <h2>4. Block-/Komponenten-Inventar (fürs Design-Kit)</h2>
+ <p>Diese Block-Typen kommen im Content vor — jeder braucht ein UI-Muster im Kit:</p>
+ <ul><li>booking-cta (extern ↗)</li><li>booking-searchbar (Check-in/Check-out/Personen, sticky)</li><li>contact-form</li><li>deep-link-cta</li><li>economy-reframe</li><li>faq-accordion</li><li>feature-grid</li><li>gallery</li><li>gastro-list</li><li>guide/sights</li><li>hero (1 Standbild)</li><li>language-switch (DE/EN)</li><li>map-embed</li><li>meldeschein-form (BMG §29)</li><li>mid-cta</li><li>room-cards</li><li>trust-list</li></ul>
+
+ <h2>5. Besonderheiten / Design-relevant</h2>
+ <ul>
+  <li><strong>Buchungs-/Suchleiste oben (Kundenwunsch: „Check-in/Check-out hervorheben")</strong> = prominente, above-the-fold / sticky Buchungsmaske mit <strong>Check-in · Check-out · Personen</strong> + „Verfügbarkeit prüfen" (wie auf Altsite &amp; in den Referenzen Ruby/Volkshotel). Realisiert als externes SiteMinder-Widget. <em>Direkter Kundenwunsch aus Orga-Call 03.06 — im Kit einplanen.</em></li>
+  <li><strong>Buchung</strong> = externer SiteMinder-IBE / direct-book (Little Hotelier), <strong>kein eigener Engine</strong>. Einbettung <code>widget.siteminder.com/ibe.min.js</code> + <code>data-channelcode=gästehausdirect</code>. CTA muss <strong>externen Charakter</strong> zeigen (↗ „öffnet Buchungsportal"); <strong>Deep-Link je Zimmerkategorie</strong> (roomType-IDs 62916–62921) auf den Detailseiten. Preise dynamisch über Engine (keine statischen Preise pflegen).</li>
+  <li><strong>Sprachen-Switch DE/EN</strong> im Header (RU ausgeschlossen). Draft-Seiten aktuell DE-only (EN = Kundin), aber die Switch-UI muss existieren.</li>
+  <li><strong>Schlanke Navigation</strong> (z. B. Zimmer · Lage/Reiseführer · Gut zu wissen · Kontakt · Buchen) — kein Multi-Venue-/Ökosystem-Menü (reines Beherbergungshaus).</li>
+  <li><strong>Zimmer</strong> = 5 Kategorien (Dreibettzimmer Economy entfernt). <strong>Vierbettzimmer zusätzlich als „Familienzimmer Berlin" labeln</strong> (Erdgeschoss = barrierearm, Familien-Trumpf).</li>
+  <li><strong>Instagram</strong> = nur Link/Button (Header/Footer), <strong>KEIN Feed/Post-Karussell</strong> (Handle @hotelavalex).</li>
+  <li><strong>Meldeschein</strong> = mehrstufiges Formular (BMG §29) mit Signature-Canvas + Consent — eigenes Form-Design; Trust-Block VOR dem Formular; nicht in naives Multi-Step zwingen.</li>
+  <li><strong>Kontaktseite</strong> = Rezeptions-/Check-in-/Check-out-Zeiten prominent (Rezeption tägl. 09–18 · Check-in 14–23 · Check-out bis 11 — Werte Kundin bestätigt noch); minimales Kontaktformular. Buchung ≠ Kontakt klar getrennt.</li>
+  <li><strong>Fotos</strong> = Platzhalter (Vika-Shooting nach Preview) — Bild-Slots + <strong>Seitenverhältnisse pro Block</strong> im Kit festlegen (Hero quer, Zimmer-Galerie ×5, Umgebung); Formate an Vika kommunizieren. Swap-fähige Image-Komponente.</li>
+  <li><strong>Trust</strong> = <strong>kein Sterne-/Score-Widget, kein AggregateRating</strong>; Stärken (Lage/Sauberkeit/Preis/Service/Ruhe) + kontaktloser Check-in als USP. Gästezitate-Slot einplanen, aber leer/markiert bis DSGVO-Freigabe.</li>
+  <li><strong>Economy-Reframe</strong> = ehrlich-positiv (Etagenbad, obere Etagen) — kein „billig"-Look, Einschränkungen als Charakter rahmen.</li>
+  <li><strong>Footer</strong> = dynamisch (Copyright-Jahr per Code), breit mit Legal-Links (Impressum · Datenschutz · AGB · Barrierefreiheit); <strong>nur 1 Telefon</strong> +49 30 41 725 729, E-Mail info@ (nicht schaefer@).</li>
+  <li><strong>Barrierefreiheit (BFSG)</strong> = Pflicht ab Livegang: Kontraste, Fokus-Sichtbarkeit, Tastatur-Bedienung, ein sichtbarer H1/Seite, Touch-Targets ≥44px, Barrierefreiheitserklärung.</li>
+ </ul>
+
+ <h2>6. Offen / Platzhalter (kein Design-Blocker)</h2>
+ <ul>
+  <li>Finales Logo + echte Fotos (Kundin)</li>
+  <li>Exakter roter Akzent-Hex</li>
+  <li>Gastronomie-Lokale, ÖPNV-Details, Öffnungszeiten, Gäste-Zitate — im Content gelb markiert</li>
+  <li>H1 „Prenzlauer Berg" — Kundin-Abstimmung offen (D-STRAT-005)</li>
+  <li>Tab-Verhalten des externen Buchungslinks (<code>target="_blank"</code>) — nicht spezifiziert, Design-Entscheidung fürs Kit</li>
+  <li>Exakter Rot-Hex, finales Logo, Check-in-Zeiten-Bestätigung, Sanity-CMS-Bestätigung der Kundin</li>
+ </ul>
+</div></main>
+<footer class="site"><div class="wrap">
+ <div class="fcol"><h5>Hotel AVAlex</h5>Inh. Anfissa Schäfer<br>Greifswalder Straße 225, 10405 Berlin</div>
+ <div class="fcol"><h5>Kontakt</h5>Tel: <a href="tel:+493041725729">+49 30 41 725 729</a><br>E-Mail: <a href="mailto:info@hotelavalex.de">info@hotelavalex.de</a><br>Instagram: @hotelavalex</div>
+ <div class="fcol"><h5>Rechtliches</h5>Impressum · Datenschutz · AGB</div>
+ <div class="copy">© 2026 Hotel AVAlex — Vorschau (kein Live-Stand). Fotos, Zitate & einige Angaben sind Platzhalter.</div>
+</div></footer>
+</body></html>
