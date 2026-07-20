@@ -5,6 +5,7 @@
     {
       "version": "v1.0",
       "date": "2026-07-20",
+      "revision": "2026-07-20 (Korrektur am selben Tag, vor Kundin-Freigabe): doppelte Zwischenueberschriften auf Meldeschein + Kontakt entfernt; Datenschutz-Hinweis wird nicht mehr faelschlich als Formular-Block gerendert; verschachtelter Link im Datenschutz-Hinweis korrigiert.",
       "summary": "Erste Vorschau-Version (Document-Mode Project-Hub): 7 Inhaltsseiten (Startseite, Zimmer-Uebersicht, Zimmer-Detail-Template, Gastronomie & Umgebung [Draft], Reisefuehrer [Draft], Kontakt, Elektronischer Meldeschein) mit Feedback-Funktion pro Textblock, SEO-Uebersicht sowie separater Design-Brief fuer das Design-Kit (Figma, Desktop + Mobile). Stand nach Content-QA (copy-editing, Kritik 8/10, Verify 95/100 PASS) und Preview-Review gegen Kundenvorgaben vom 17.07. Buchung laeuft ueber das externe System direct-book.com (als externes Element gekennzeichnet). Fotos, finales Logo, Gaeste-Zitate sowie die Inhalte fuer Gastronomie/Reisefuehrer sind Platzhalter. Impressum/Datenschutz/AGB folgen separat."
     }
   ]
