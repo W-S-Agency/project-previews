@@ -165,25 +165,69 @@ footer.site .copy{width:100%;border-top:1px solid rgba(255,255,255,.15);padding-
  <h2>4. Block-/Komponenten-Inventar (fürs Design-Kit)</h2>
  <p>Diese Block-Typen kommen im Content vor — jeder braucht ein UI-Muster im Kit:</p>
  <ul><li>booking-cta (extern ↗)</li><li>booking-searchbar (Check-in/Check-out/Personen, sticky)</li><li>contact-form</li><li>deep-link-cta</li><li>economy-reframe</li><li>faq-accordion</li><li>feature-grid</li><li>gallery</li><li>gastro-list</li><li>guide/sights</li><li>hero (1 Standbild)</li><li>language-switch (DE/EN)</li><li>map-embed</li><li>meldeschein-form (BMG §29)</li><li>mid-cta</li><li>room-cards</li><li>trust-list</li></ul>
+ <p style="color:var(--muted)">Verbindliche <strong>Reihenfolge je Seite</strong>: siehe Abschnitt 4a. <strong>Bild-Anzahl/-Format</strong>: Abschnitt 4b.</p>
+
+ <h2>4a. Blockreihenfolge je Seite (verbindlich — aus eingefrorenen Drehbüchern)</h2>
+ <table class="seotable"><thead><tr><th>Seite</th><th>Blockreihenfolge (eingefroren, nicht umsortieren)</th></tr></thead><tbody>
+  <tr><td>Startseite</td><td>1 Hero · 2 Lage &amp; Vertrauen · 3 Unsere Zimmer (5 Kat.) · 4 Ehrliches Economy-Versprechen · 5 Ausstattung auf einen Blick · 6 Gastronomie &amp; Umgebung · 7 Häufige Fragen · 8 Jetzt buchen (CTA)</td></tr>
+  <tr><td>Zimmer-Übersicht</td><td>1 Intro/Orientierung · 2 Auswahl-Hilfe (Reisetyp → Kategorie) · 3 Karten-Grid (5 Kat.) · 4 Economy-/Trust-Kurzstreifen · 5 CTA-Abschluss</td></tr>
+  <tr><td>Zimmer-Detail (Template ×5)</td><td>1 Galerie · 2 Room-Header (Titel + Stimmung + Eckdaten) · 3 Ausstattung (Grid) · 4 „Für wen?" (Audience) · 5 Economy-Reframe · 6 Häufige Fragen (FAQ je Kat.) · 7 Buchungs-CTA (Deep-Link)</td></tr>
+  <tr><td>Gastronomie/Umgebung</td><td>1 Intro/Sofort-Antwort · 2 Bäckerei am Eingang · 3 Cafés &amp; Restaurants · 4 Orientierung · 5 Kein Frühstück = mehr Freiheit · 6 Weiche CTA</td></tr>
+  <tr><td>Reiseführer</td><td>1 Intro/Orientierung · 2 Sehenswürdigkeiten · 3 Anreise &amp; ÖPNV · 4 Citytrip-Tipps · 5 Zentral wohnen · 6 Weiche CTA</td></tr>
+  <tr><td>Kontakt</td><td>1 Intro/Erwartung · 2 Kontaktkanäle · 3 Anfahrt/Karte · 4 Kontaktformular · 5 Hinweis Buchung &amp; kontaktloser Check-in</td></tr>
+  <tr><td>Meldeschein</td><td>1 Erklärung/Nutzen · 2 Datenschutz-Hinweis (vor dem Formular) · 3 Formular (mehrstufig, BMG §29) · 4 Abschluss/Bestätigung</td></tr>
+ </tbody></table>
+ <p style="color:var(--muted)">Zusätzlich: <strong>sticky mid-CTA „Verfügbarkeit prüfen"</strong> (mobil) auf Startseite, Zimmer-Übersicht &amp; Zimmer-Detail (Drehbücher 01/02/03). <strong>Breadcrumbs</strong> auf allen Unterseiten (Internal Spec §6). Quelle: eingefrorene Drehbücher (D-PARCH-2026-06-24-001).</p>
+
+ <h2>4b. Bildmatrix (Festlegung — zugleich Foto-Briefing für Vika)</h2>
+ <table class="seotable"><thead><tr><th>Seite / Block</th><th>Anzahl</th><th>Seitenverhältnis</th><th>Hinweis</th></tr></thead><tbody>
+  <tr><td>Startseite — Hero (B1)</td><td>1</td><td>16:9 quer</td><td>1 starkes Standbild (kein Video), Fokus mittig; LCP-kritisch → stark optimieren</td></tr>
+  <tr><td>Startseite — Lage &amp; Vertrauen (B2)</td><td>1 (optional)</td><td>4:3 quer</td><td>Kiez/Umgebung</td></tr>
+  <tr><td>Zimmer-Karten (Startseite B3 · Übersicht B3)</td><td>1 je Karte (×5)</td><td>4:3 quer</td><td>einheitlich — Altbestand legt 4:3 nahe (420×323)</td></tr>
+  <tr><td>Zimmer-Detail — Galerie (B1)</td><td>4 je Kategorie</td><td>3:2 quer</td><td>einheitlich 4 festgelegt (Altsite 3–6); Motive Raum / Bad-Situation / Etage</td></tr>
+  <tr><td>Gastronomie/Umgebung (04)</td><td>1 (empfohlen)</td><td>16:9 quer</td><td>1 Stimmungsbild Umgebung; sonst bewusst bildlos</td></tr>
+  <tr><td>Reiseführer (05)</td><td>1 Hero (+ optional 3 Sights)</td><td>Hero 16:9 · Sights 3:2</td><td>Sehenswürdigkeiten optional als kleine Serie</td></tr>
+  <tr><td>Kontakt (06)</td><td>0 Foto</td><td>—</td><td>bewusst bildlos — statt Foto: Karten-Embed (Map)</td></tr>
+  <tr><td>Meldeschein (07)</td><td>0 Foto</td><td>—</td><td>bewusst bildlos — Formularseite</td></tr>
+ </tbody></table>
+ <p style="color:var(--muted)"><strong>Technik:</strong> Zielformat WebP/AVIF; Richtwert ≤ 200 KB je Bild (Hero ≤ 300 KB); Performance-Ziele Desktop ≥ 90 / Mobile ≥ 80, <strong>LCP ≤ 2,5 s</strong> (vertraglich); <strong>Alt-Text Pflicht</strong> (BFSG). Bild-Slots als Rahmen mit echtem Seitenverhältnis vorsehen (Blocktyp <code>imgph</code>). Fotos = Platzhalter bis Vika-Shooting — diese Matrix ist zugleich das Motiv-/Format-Briefing für Vika (D-PROJ-2026-05-17-004). Werte = Festlegung HW (mit Kundin/Andrey anpassbar).</p>
 
  <h2>5. Besonderheiten / Design-relevant</h2>
  <ul>
   <li><strong>Buchungs-/Suchleiste oben (Kundenwunsch: „Check-in/Check-out hervorheben")</strong> = prominente, above-the-fold / sticky Buchungsmaske mit <strong>Check-in · Check-out · Personen</strong> + „Verfügbarkeit prüfen" (wie auf Altsite &amp; in den Referenzen Ruby/Volkshotel). Realisiert als externes SiteMinder-Widget. <em>Direkter Kundenwunsch aus Orga-Call 03.06 — im Kit einplanen.</em></li>
-  <li><strong>Buchung</strong> = externer SiteMinder-IBE / direct-book (Little Hotelier), <strong>kein eigener Engine</strong>. Einbettung <code>widget.siteminder.com/ibe.min.js</code> + <code>data-channelcode=gästehausdirect</code>. CTA muss <strong>externen Charakter</strong> zeigen (↗ „öffnet Buchungsportal"); <strong>Deep-Link je Zimmerkategorie</strong> (roomType-IDs 62916–62921) auf den Detailseiten. Preise dynamisch über Engine (keine statischen Preise pflegen).</li>
+  <li><strong>Buchung</strong> = externer SiteMinder-IBE / direct-book (Little Hotelier), <strong>kein eigener Engine</strong>. Einbettung <code>widget.siteminder.com/ibe.min.js</code> + <code>data-channelcode=gästehausdirect</code>. CTA muss <strong>externen Charakter</strong> zeigen (↗ „öffnet Buchungsportal"); <strong>Deep-Link je Zimmerkategorie</strong> auf den Detailseiten — Einzel-IDs: Einzelzimmer <code>62920</code> · Doppelzimmer Economy <code>62916</code> · Doppelzimmer Standard <code>62917</code> · Dreibettzimmer Standard <code>62919</code> · Vierbettzimmer <code>62921</code>. <strong>62918 (Dreibettzimmer Economy, entfernte Kategorie) NICHT verlinken</strong> — nur 301-Redirect (im Engine noch buchbar → Kundin muss deaktivieren). Preise dynamisch über Engine (keine statischen Preise pflegen).</li>
   <li><strong>Sprachen-Switch DE/EN</strong> im Header (RU ausgeschlossen). Draft-Seiten aktuell DE-only (EN = Kundin), aber die Switch-UI muss existieren.</li>
-  <li><strong>Schlanke Navigation</strong> (z. B. Zimmer · Lage/Reiseführer · Gut zu wissen · Kontakt · Buchen) — kein Multi-Venue-/Ökosystem-Menü (reines Beherbergungshaus).</li>
+  <li><strong>Navigation (festgelegt, nicht beispielhaft)</strong> — Header: <strong>Zimmer · Reiseführer · Kontakt · [Verfügbarkeit prüfen]</strong> (Akzent-Button, sticky mobil). „Lage" = Sprung-Anker <code>#lage</code> zur Startseite (keine eigene Seite). Kein Multi-Venue-/Ökosystem-Menü. Quelle: <code>00_sitemap.md</code> (frozen).</li>
   <li><strong>Zimmer</strong> = 5 Kategorien (Dreibettzimmer Economy entfernt). <strong>Vierbettzimmer zusätzlich als „Familienzimmer Berlin" labeln</strong> (Erdgeschoss = barrierearm, Familien-Trumpf).</li>
   <li><strong>Instagram</strong> = nur Link/Button (Header/Footer), <strong>KEIN Feed/Post-Karussell</strong> (Handle @hotelavalex).</li>
   <li><strong>Meldeschein</strong> = mehrstufiges Formular (BMG §29) mit Signature-Canvas + Consent — eigenes Form-Design; Trust-Block VOR dem Formular; nicht in naives Multi-Step zwingen.</li>
   <li><strong>Kontaktseite</strong> = Rezeptions-/Check-in-/Check-out-Zeiten prominent (Rezeption tägl. 09–18 · Check-in 14–23 · Check-out bis 11 — Werte Kundin bestätigt noch); minimales Kontaktformular. Buchung ≠ Kontakt klar getrennt.</li>
-  <li><strong>Fotos</strong> = Platzhalter (Vika-Shooting nach Preview) — Bild-Slots + <strong>Seitenverhältnisse pro Block</strong> im Kit festlegen (Hero quer, Zimmer-Galerie ×5, Umgebung); Formate an Vika kommunizieren. Swap-fähige Image-Komponente.</li>
+  <li><strong>Fotos</strong> = Platzhalter (Vika-Shooting nach Preview). <strong>Anzahl + Seitenverhältnis je Block: siehe Abschnitt „4b. Bildmatrix"</strong> (dort festgelegt, zugleich Vika-Briefing). Swap-fähige Image-Komponente; Alt-Text Pflicht (BFSG).</li>
   <li><strong>Trust</strong> = <strong>kein Sterne-/Score-Widget, kein AggregateRating</strong>; Stärken (Lage/Sauberkeit/Preis/Service/Ruhe) + kontaktloser Check-in als USP. Gästezitate-Slot einplanen, aber leer/markiert bis DSGVO-Freigabe.</li>
   <li><strong>Economy-Reframe</strong> = ehrlich-positiv (Etagenbad, obere Etagen) — kein „billig"-Look, Einschränkungen als Charakter rahmen.</li>
   <li><strong>Footer</strong> = dynamisch (Copyright-Jahr per Code), breit mit Legal-Links (Impressum · Datenschutz · AGB · Barrierefreiheit); <strong>nur 1 Telefon</strong> +49 30 41 725 729, E-Mail info@ (nicht schaefer@).</li>
   <li><strong>Barrierefreiheit (BFSG)</strong> = Pflicht ab Livegang: Kontraste, Fokus-Sichtbarkeit, Tastatur-Bedienung, ein sichtbarer H1/Seite, Touch-Targets ≥44px, Barrierefreiheitserklärung.</li>
  </ul>
 
- <h2>6. Offen / Platzhalter (kein Design-Blocker)</h2>
+ <h2>6. Design-System-Rahmen (Festlegung HW — anpassbar)</h2>
+ <p style="color:var(--muted)">Bisher nirgends im Projekt definiert; hier gesetzt, damit Andrey nicht raten muss. Stack nutzt Tailwind → Tailwind-nahe Werte.</p>
+ <ul>
+  <li><strong>Breakpoints (mobile-first):</strong> sm 640 · md 768 · lg 1024 · xl 1280 px.</li>
+  <li><strong>Grid &amp; Container:</strong> Content-Container max-width 1200 px, Fließtext max ~720 px; 12 Spalten Desktop / 4 mobil; Gutter 16 px (mobil) → 24 px (Desktop).</li>
+  <li><strong>Spacing-Skala:</strong> 4-px-Basis — 4 · 8 · 12 · 16 · 24 · 32 · 48 · 64.</li>
+  <li><strong>Typo-Skala:</strong> Basis 16 px / Zeilenhöhe 1.6; H1 40/44 · H2 30 · H3 22 · Small 14 (mobil H1 ~30). Sans (Inter o. ä.), max. 2 Schnitte.</li>
+  <li><strong>Icon-Set:</strong> eine konsistente Line-Icon-Bibliothek (z. B. Lucide — passt zu shadcn), 24 px, <code>currentColor</code>. Betrifft Ausstattung-Grid + Trust-Streifen (bestehen komplett aus Icons).</li>
+  <li><strong>Mobile Sticky-Buchungsleiste:</strong> Höhe 56–64 px, unten fixiert, Inhalt „Verfügbarkeit prüfen" (Akzent-Button, Touch ≥ 44 px); erscheint beim Scrollen, immer erreichbar. Auf Startseite / Zimmer-Übersicht / Zimmer-Detail.</li>
+  <li><strong>Komponenten-Basis:</strong> Tailwind + <strong>shadcn/ui nur für Accordion (FAQ) und Dialog/Sheet (mobile Nav / Buchungs-Overlay)</strong> — sonst eigene Tailwind-Komponenten (Internal Spec §9.5, D-KRIT-2026-06-23-003).</li>
+  <li><strong>Komponenten-Zustände:</strong> für Buttons/Links/Inputs je Hover / <strong>Focus (sichtbarer Fokusring — BFSG-Pflicht)</strong> / Active / Disabled definieren.</li>
+  <li><strong>Performance-Ziele (vertraglich):</strong> Lighthouse Desktop ≥ 90 / Mobile ≥ 80, <strong>LCP ≤ 2,5 s</strong> — begrenzt Bildgewicht/Formate (siehe 4b).</li>
+  <li><strong>Breadcrumbs</strong> auf allen Unterseiten (nicht Startseite) — Internal Spec §6.</li>
+  <li><strong>Cookie-Banner / Consent Mode V2</strong> überlagert den First View — im Layout/Hero berücksichtigen (D-AUDIT-002).</li>
+  <li><strong>RoomCard „ab-Preis":</strong> Slot einplanen (Wert dynamisch/offen, CR-2) — Karte muss den Platz vorsehen.</li>
+  <li><strong>Alt-Texte</strong> für alle Bilder Pflicht (BFSG); Dark Mode + <code>prefers-reduced-motion</code> berücksichtigen.</li>
+ </ul>
+
+ <h2>7. Offen / Platzhalter (kein Design-Blocker)</h2>
  <ul>
   <li>Finales Logo + echte Fotos (Kundin)</li>
   <li>Exakter roter Akzent-Hex</li>
