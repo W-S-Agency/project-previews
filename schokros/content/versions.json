@@ -1,8 +1,13 @@
 {
     "project":  "schokros_content_preview",
-    "latest":  "v3.26",
+    "latest":  "v3.27",
     "note":  "Bis v3.22 wurde flach nach /content/ deployt (Historie nicht archiviert). Ab v3.23: /content/ = stabiler Klient-Link, zusaetzlich immutable /vX.Y/. Grandfather: alte Klient-Links bleiben gueltig.",
     "versions":  [
+                     {
+                         "version":  "v3.27",
+                         "date":  "2026-07-23",
+                         "summary":  "SEO-Metadaten an die neuen Texte angeglichen (AW-Catch): Meta Descriptions von 03 (Bogen jetzt bis zur Auszahlung), 06 (Marktwert UND Beleihungswert, zugleich von 164 auf 148 Zeichen gekuerzt), 07 (Pruefung auch ohne Finanzierungsantrag) und 08 (kein Abschlusszwang, Honorarbasis) neu geschrieben. Die SEO-Leiste selbst war technisch aktuell (ein Quell-Prinzip .md -> head), inhaltlich hingen die Beschreibungen den Textaenderungen hinterher."
+                     },
                      {
                          "version":  "v3.26",
                          "date":  "2026-07-23",
