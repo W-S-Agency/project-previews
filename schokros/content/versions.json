@@ -1,8 +1,13 @@
 {
     "project":  "schokros_content_preview",
-    "latest":  "v3.25",
+    "latest":  "v3.26",
     "note":  "Bis v3.22 wurde flach nach /content/ deployt (Historie nicht archiviert). Ab v3.23: /content/ = stabiler Klient-Link, zusaetzlich immutable /vX.Y/. Grandfather: alte Klient-Links bleiben gueltig.",
     "versions":  [
+                     {
+                         "version":  "v3.26",
+                         "date":  "2026-07-23",
+                         "summary":  "Letzter Rest aus dem Klient-Feedback: der vom Klienten korrigierte Titel wurde auch im Fliesstext der Leistungsseiten 05/06/07/08 nachgezogen (unsere verkuerzte Eigenschoepfung «Finanzierungsspezialist (IHK)» -> «geprüfter Fachmann fuer Immobiliardarlehensvermittlung (IHK)»). Bei erlaubnispflichtiger Taetigkeit nach §34i ist der korrekte Titel nicht kosmetisch. D-FB-059."
+                     },
                      {
                          "version":  "v3.25",
                          "date":  "2026-07-23",
