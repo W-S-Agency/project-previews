@@ -1,12 +1,17 @@
-﻿{
+{
     "project":  "schokros_content_preview",
-    "latest":  "v3.23",
+    "latest":  "v3.24",
     "note":  "Bis v3.22 wurde flach nach /content/ deployt (Historie nicht archiviert). Ab v3.23: /content/ = stabiler Klient-Link, zusaetzlich immutable /vX.Y/. Grandfather: alte Klient-Links bleiben gueltig.",
     "versions":  [
                      {
+                         "version":  "v3.24",
+                         "date":  "2026-07-23",
+                         "summary":  "Klient-Antwort #43987 (16.07) eingearbeitet: Preise 100 EUR pauschal / ab 75 EUR pro Stunde vom Klienten bestaetigt (03 Block 4.5 ist damit kein Entwurf mehr; Auszeichnung netto zzgl. MwSt = bewusster Entscheid D-PROJ-017, PAngV-Endpreisfrage wird beim 2p-legal-Lauf mit dem Klienten geklaert). FAQ-Ablauf Schritt 3 praezisiert: schnelle Einschaetzung/Zweitmeinung zum gefundenen Objekt statt Hilfestellung bei der Immobiliensuche (D-FB-073). Kein Layout-Eingriff."
+                     },
+                     {
                          "version":  "v3.23",
                          "date":  "2026-07-15",
-                         "summary":  "Seite 10 Kontakt V2.0 (Klient-Feedback D-FB-046..049) + FB-040 geschlossen: SEO/AEO-Head (canonical, robots=noindex, OG, JSON-LD inkl. FAQPage 10/10), Mobile-Gate (Hamburger \u003c=768px, Touch \u003e=44px, kein H-Overflow), Beratungssprachen DE/RU/EN projektweit im Footer."
+                         "summary":  "Seite 10 Kontakt V2.0 (Klient-Feedback D-FB-046..049) + FB-040 geschlossen: SEO/AEO-Head (canonical, robots=noindex, OG, JSON-LD inkl. FAQPage 10/10), Mobile-Gate (Hamburger <=768px, Touch >=44px, kein H-Overflow), Beratungssprachen DE/RU/EN projektweit im Footer."
                      }
                  ]
 }
