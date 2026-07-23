@@ -1,8 +1,13 @@
 {
     "project":  "schokros_content_preview",
-    "latest":  "v3.24",
+    "latest":  "v3.25",
     "note":  "Bis v3.22 wurde flach nach /content/ deployt (Historie nicht archiviert). Ab v3.23: /content/ = stabiler Klient-Link, zusaetzlich immutable /vX.Y/. Grandfather: alte Klient-Links bleiben gueltig.",
     "versions":  [
+                     {
+                         "version":  "v3.25",
+                         "date":  "2026-07-23",
+                         "summary":  "Restliche Punkte aus dem Klient-Textfeedback vom 13.07 umgesetzt: Leistung 1 projektweit umbenannt in «Finanzierungsgespraech - Einschaetzung & Empfehlung» (Nav, Footer, Karten auf Start + Hub, Seite 05 H1/Title, Kontakt-Select; Slug unveraendert) sowie neue Klient-Beschreibungen fuer Immobilienbewertung (Marktwert + Beleihungswert), Dokumentenpruefung (auch unabhaengig von einer Finanzierung) und Vorhabensbegleitung (kein Abschlusszwang, Honorarbasis). Hub-Intro in Klient-Fassung inkl. Bankenauswahl/Beantragung/Auszahlung. D-FB-050/052/053/054/055."
+                     },
                      {
                          "version":  "v3.24",
                          "date":  "2026-07-23",
