@@ -1,0 +1,95 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DK Real Estate &ndash; Bildkompression: Vorher/Nachher</title>
+<style>
+ body{font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;max-width:1080px;margin:0 auto;padding:32px 20px;color:#1a1a1a;line-height:1.55}
+ h1{font-size:24px;margin-bottom:2px} .sub{color:#666;margin-top:0;font-size:14px}
+ .intro{background:#f6f7f9;border-radius:10px;padding:16px 20px;margin:18px 0;font-size:15px}
+ .intro p{margin:8px 0}
+ table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14px}
+ th,td{border:1px solid #e2e5ea;padding:7px 10px;text-align:left} th{background:#f0f2f5}
+ .card{border:1px solid #e2e5ea;border-radius:10px;padding:20px;margin:22px 0}
+ .card h2{font-size:18px;margin:0 0 2px} .card h3{font-size:14px;color:#333;margin:16px 0 8px}
+ .dims{color:#666;margin:0 0 12px;font-size:13px}
+ .ab{display:grid;grid-template-columns:1fr 1fr;gap:14px} .ab img{width:100%;border-radius:6px;display:block}
+ .crops{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+ .crop{width:100%;aspect-ratio:4/3;overflow:hidden;border-radius:6px;background:#eee}
+ .crop img{width:100%;height:100%;object-fit:none;object-position:center}
+ figure{margin:0} figcaption{font-size:12px;color:#555;margin-bottom:6px}
+ .mini{max-width:420px}
+ @media(max-width:640px){.ab{grid-template-columns:1fr} .crops{grid-template-columns:1fr}}
+</style></head><body>
+<h1>Bildkompression &ndash; Vorher/Nachher</h1>
+<p class="sub">DK Real Estate &middot; dk360.de &middot; Stand 25.07.2026</p>
+<div class="intro">
+<p>Wie besprochen ein direkter Vorher-Nachher-Vergleich an konkreten Bildern, bevor wir global etwas umstellen. Es geht ausschließlich um die wenigen unkomprimiert abgelegten Fotos &ndash; die übrigen Bilder liegen bereits als WebP vor.</p>
+<p>Alle Zahlen sind an den echten Dateien der Live-Seite gemessen. <b>SSIM</b> misst die wahrgenommene Bildähnlichkeit (1,000 = identisch); ab etwa 0,97 ist ein Unterschied für das Auge kaum feststellbar. Bitte besonders die 100&nbsp;%-Ausschnitte prüfen &ndash; dort wäre ein Unterschied am ehesten sichtbar.</p>
+<p>Unsere Empfehlung: <b>WebP Q90</b> (praktisch unveränderte Qualität, dennoch rund 82&nbsp;% kleiner) plus <b>AVIF</b> über responsive srcset für Browser, die es unterstützen.</p>
+</div>
+<h2>Überblick</h2>
+<table>
+<tr><th>Bild</th><th>Original</th><th>WebP Q82</th><th>WebP Q90</th><th>AVIF Q82</th></tr>
+<tr><td>Objektfoto 1</td><td>513 KB</td><td>58 KB (&minus;89%)</td><td>93 KB (&minus;82%)</td><td>103 KB (&minus;80%)</td></tr><tr><td>Objektfoto 2</td><td>487 KB</td><td>49 KB (&minus;90%)</td><td>82 KB (&minus;83%)</td><td>96 KB (&minus;80%)</td></tr><tr><td>Panorama</td><td>324 KB</td><td>41 KB (&minus;88%)</td><td>59 KB (&minus;82%)</td><td>75 KB (&minus;77%)</td></tr>
+</table>
+
+    <section class="card">
+      <h2>Objektfoto 1</h2>
+      <p class="dims">Original: 990x660 px &middot; 513 KB (JPEG, nahezu unkomprimiert)</p>
+      <div class="ab">
+        <figure><figcaption>Vorher &ndash; Original (513 KB)</figcaption>
+          <img loading="lazy" src="https://dk360.de/wp-content/uploads/26.03.18_DK_Immo-378_New.jpg"></figure>
+        <figure><figcaption>Nachher &ndash; WebP Q90 (93 KB, &minus;82%)</figcaption>
+          <img loading="lazy" src="./378_q90.webp"></figure>
+      </div>
+      <h3>Detail bei 100&nbsp;% (hier ist ein Unterschied am ehesten sichtbar)</h3>
+      <div class="crops">
+        <figure><figcaption>Original</figcaption><div class="crop"><img loading="lazy" src="https://dk360.de/wp-content/uploads/26.03.18_DK_Immo-378_New.jpg"></div></figure>
+        <figure><figcaption>WebP Q82</figcaption><div class="crop"><img loading="lazy" src="./378_q82.webp"></div></figure>
+        <figure><figcaption>WebP Q90</figcaption><div class="crop"><img loading="lazy" src="./378_q90.webp"></div></figure>
+      </div>
+      <table class="mini">
+        <tr><th>Variante</th><th>Größe</th><th>Ersparnis</th><th>SSIM</th></tr>
+        <tr><td>WebP Q82</td><td>58 KB</td><td>&minus;89%</td><td>0.954</td></tr><tr><td>WebP Q90</td><td>93 KB</td><td>&minus;82%</td><td>0.972</td></tr><tr><td>AVIF Q82</td><td>103 KB</td><td>&minus;80%</td><td>0.976</td></tr>
+      </table>
+    </section>
+    <section class="card">
+      <h2>Objektfoto 2</h2>
+      <p class="dims">Original: 990x660 px &middot; 487 KB (JPEG, nahezu unkomprimiert)</p>
+      <div class="ab">
+        <figure><figcaption>Vorher &ndash; Original (487 KB)</figcaption>
+          <img loading="lazy" src="https://dk360.de/wp-content/uploads/26.03.18_DK_Immo-1535_New.jpg"></figure>
+        <figure><figcaption>Nachher &ndash; WebP Q90 (82 KB, &minus;83%)</figcaption>
+          <img loading="lazy" src="./1535_q90.webp"></figure>
+      </div>
+      <h3>Detail bei 100&nbsp;% (hier ist ein Unterschied am ehesten sichtbar)</h3>
+      <div class="crops">
+        <figure><figcaption>Original</figcaption><div class="crop"><img loading="lazy" src="https://dk360.de/wp-content/uploads/26.03.18_DK_Immo-1535_New.jpg"></div></figure>
+        <figure><figcaption>WebP Q82</figcaption><div class="crop"><img loading="lazy" src="./1535_q82.webp"></div></figure>
+        <figure><figcaption>WebP Q90</figcaption><div class="crop"><img loading="lazy" src="./1535_q90.webp"></div></figure>
+      </div>
+      <table class="mini">
+        <tr><th>Variante</th><th>Größe</th><th>Ersparnis</th><th>SSIM</th></tr>
+        <tr><td>WebP Q82</td><td>49 KB</td><td>&minus;90%</td><td>0.954</td></tr><tr><td>WebP Q90</td><td>82 KB</td><td>&minus;83%</td><td>0.969</td></tr><tr><td>AVIF Q82</td><td>96 KB</td><td>&minus;80%</td><td>0.975</td></tr>
+      </table>
+    </section>
+    <section class="card">
+      <h2>Panorama</h2>
+      <p class="dims">Original: 990x477 px &middot; 324 KB (JPEG, nahezu unkomprimiert)</p>
+      <div class="ab">
+        <figure><figcaption>Vorher &ndash; Original (324 KB)</figcaption>
+          <img loading="lazy" src="https://dk360.de/wp-content/uploads/Untitled_Panorama-3_New.jpg"></figure>
+        <figure><figcaption>Nachher &ndash; WebP Q90 (59 KB, &minus;82%)</figcaption>
+          <img loading="lazy" src="./panorama_q90.webp"></figure>
+      </div>
+      <h3>Detail bei 100&nbsp;% (hier ist ein Unterschied am ehesten sichtbar)</h3>
+      <div class="crops">
+        <figure><figcaption>Original</figcaption><div class="crop"><img loading="lazy" src="https://dk360.de/wp-content/uploads/Untitled_Panorama-3_New.jpg"></div></figure>
+        <figure><figcaption>WebP Q82</figcaption><div class="crop"><img loading="lazy" src="./panorama_q82.webp"></div></figure>
+        <figure><figcaption>WebP Q90</figcaption><div class="crop"><img loading="lazy" src="./panorama_q90.webp"></div></figure>
+      </div>
+      <table class="mini">
+        <tr><th>Variante</th><th>Größe</th><th>Ersparnis</th><th>SSIM</th></tr>
+        <tr><td>WebP Q82</td><td>41 KB</td><td>&minus;88%</td><td>0.975</td></tr><tr><td>WebP Q90</td><td>59 KB</td><td>&minus;82%</td><td>0.983</td></tr><tr><td>AVIF Q82</td><td>75 KB</td><td>&minus;77%</td><td>0.985</td></tr>
+      </table>
+    </section>
+</body></html>
