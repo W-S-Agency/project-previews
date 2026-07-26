@@ -44,8 +44,7 @@
   .hero{position:relative;border-radius:var(--radius-xl);overflow:hidden;min-height:620px;
         display:flex;flex-direction:column;justify-content:center;align-items:center;padding:0;
         background:linear-gradient(135deg,#3a4a63,#1f2733)}
-  .hero video,.hero .fallback{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
-  .hero .fallback{background:linear-gradient(135deg,#3a4a63,#1f2733)}
+  .hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
   .hero .overlay{position:absolute;inset:0;z-index:1;
      background:linear-gradient(180deg,rgba(43,29,19,.55) 0%,rgba(43,29,19,.25) 35%,rgba(43,29,19,.35) 100%)}
   .hero .inner{position:relative;z-index:2;padding:56px 44px;width:100%;
@@ -56,7 +55,6 @@
                  line-height:1.35;margin:0 auto;max-width:40ch;
                  opacity:0;max-height:0;overflow:hidden;transition:opacity .35s ease, max-height .45s ease, margin .35s ease}
   .hero.variant .subline{opacity:1;max-height:140px;margin:16px auto 0}
-  .hero .subline .kw{border-bottom:2px solid rgba(255,255,255,.55);padding-bottom:1px}
   .formcard{margin:34px auto 0;max-width:640px;width:100%;
      border-top:1px solid rgba(255,255,255,.8);border-left:1px solid rgba(255,255,255,.8);
      background:rgba(255,255,255,.5);backdrop-filter:blur(8px);
@@ -124,11 +122,10 @@
     <video id="heroVid" autoplay muted loop playsinline preload="auto">
       <source src="DK-hero-m.mp4" type="video/mp4">
     </video>
-    <div class="fallback" aria-hidden="true"></div>
     <div class="overlay"></div>
     <div class="inner">
       <h2 class="h1">Ihr Partner rund um das Thema Immobilien in Berlin</h2>
-      <p class="subline"><span class="kw">Ihr Immobilienmakler in Berlin</span> – Verkauf, Bewertung &amp; Finanzierung</p>
+      <p class="subline">Ihr Immobilienmakler in Berlin – Verkauf, Bewertung &amp; Finanzierung</p>
       <div class="formcard">
         <p class="ftitle">Jetzt Immobilie kostenlos bewerten</p>
         <div class="field">
