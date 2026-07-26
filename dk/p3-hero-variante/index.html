@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>DK Real Estate — Startseite: Keyword-Unterüberschrift (Variante zur Abstimmung)</title>
+<style>
+  @font-face{
+    font-family:'Bounded';
+    src:url('Bounded-Variable.woff2') format('woff2');
+    font-weight:100 900; font-display:swap;
+  }
+  :root{
+    --mainblue:#2b3a5b; --midblue:#3c507d; --biege:#ebe4dc;
+    --line:#c4cad2; --softline:#e6e7eb; --ink:#232426; --white:#fff;
+    --radius-lg:16px; --radius-xl:24px;
+  }
+  *{box-sizing:border-box}
+  html{font-size:62.5%}
+  body{margin:0;font-family:'Inter',-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+       font-size:1.6rem;line-height:1.6;color:var(--ink);background:#f5f6f8}
+  .wrap{max-width:1180px;margin:0 auto;padding:32px 20px 80px}
+
+  /* Erklärungs-Panel */
+  .brief{background:#fff;border:1px solid var(--softline);border-radius:14px;
+         padding:28px 30px;margin-bottom:28px;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+  .brief h1{font-family:'Bounded',sans-serif;font-weight:600;color:var(--mainblue);
+            font-size:clamp(2.2rem,1.6vw+1.6rem,3.2rem);line-height:1.2;margin:0 0 14px}
+  .brief p{margin:0 0 12px;max-width:78ch}
+  .brief .flag{background:#fdf6e6;border-left:4px solid #d9a441;padding:12px 16px;border-radius:6px;margin:16px 0}
+  .brief ul{margin:8px 0 0;padding-left:20px}
+  .brief li{margin:6px 0}
+  .brief .small{font-size:1.3rem;color:#6a6d72;margin-top:18px}
+
+  /* Umschalter */
+  .toggle{display:inline-flex;background:var(--softline);border-radius:999px;padding:5px;margin:0 0 18px}
+  .toggle button{border:0;background:transparent;font:inherit;font-size:1.45rem;font-weight:600;
+                 color:var(--midblue);padding:10px 22px;border-radius:999px;cursor:pointer;transition:.2s}
+  .toggle button.active{background:var(--mainblue);color:#fff}
+  .state-label{font-size:1.35rem;color:#6a6d72;margin:0 0 10px}
+
+  /* Hero-Nachbau */
+  .hero{position:relative;border-radius:var(--radius-xl);overflow:hidden;min-height:620px;
+        display:flex;flex-direction:column;justify-content:center;align-items:center;padding:0;
+        background:linear-gradient(135deg,#3a4a63,#1f2733)}
+  .hero video,.hero .fallback{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+  .hero .fallback{background:linear-gradient(135deg,#3a4a63,#1f2733)}
+  .hero .overlay{position:absolute;inset:0;z-index:1;
+     background:linear-gradient(180deg,rgba(43,29,19,.55) 0%,rgba(43,29,19,.25) 35%,rgba(43,29,19,.35) 100%)}
+  .hero .inner{position:relative;z-index:2;padding:56px 44px;width:100%;
+     display:flex;flex-direction:column;align-items:center;text-align:center}
+  .hero h2.h1{font-family:'Bounded',sans-serif;font-weight:500;color:#fff;
+              font-size:clamp(3rem,3.4vw+1.8rem,5.6rem);line-height:1.05;margin:0 auto;max-width:18ch}
+  .hero .subline{color:#fff;font-weight:500;font-size:clamp(1.7rem,1.1vw+1.2rem,2.4rem);
+                 line-height:1.35;margin:0 auto;max-width:40ch;
+                 opacity:0;max-height:0;overflow:hidden;transition:opacity .35s ease, max-height .45s ease, margin .35s ease}
+  .hero.variant .subline{opacity:1;max-height:140px;margin:16px auto 0}
+  .hero .subline .kw{border-bottom:2px solid rgba(255,255,255,.55);padding-bottom:1px}
+  .formcard{margin:34px auto 0;max-width:640px;width:100%;
+     border-top:1px solid rgba(255,255,255,.8);border-left:1px solid rgba(255,255,255,.8);
+     background:rgba(255,255,255,.5);backdrop-filter:blur(8px);
+     border-radius:var(--radius-lg);padding:26px 28px;text-align:center}
+  .formcard .ftitle{color:var(--midblue);font-weight:600;font-size:2rem;margin:0 0 14px}
+  .formcard .field{display:flex;gap:10px}
+  .formcard input{flex:1;border:1px solid var(--line);border-radius:8px;padding:14px 16px;font:inherit;font-size:1.5rem;background:#fff;text-align:left}
+  .formcard .btn{background:var(--midblue);color:#fff;border:0;border-radius:8px;
+                 padding:0 26px;font:inherit;font-size:1.3rem;font-weight:600;text-transform:uppercase;letter-spacing:.5px;cursor:default;white-space:nowrap}
+  .badge{position:absolute;top:18px;left:20px;z-index:3;background:rgba(0,0,0,.55);color:#fff;
+         font-size:1.2rem;font-weight:600;padding:6px 14px;border-radius:999px;letter-spacing:.3px}
+  .hero .shiftnote{position:relative;z-index:2;margin:16px auto 0;color:#fff;font-size:1.25rem;opacity:.85;
+     text-align:center;display:none}
+  .hero.variant .shiftnote{display:block}
+
+  .caption{font-size:1.3rem;color:#6a6d72;margin:12px 2px 0;max-width:80ch}
+  @media(max-width:640px){
+    .hero .inner{padding:34px 22px 28px}
+    .formcard{padding:20px}
+    .formcard .field{flex-direction:column}
+    .formcard .btn{padding:14px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="brief">
+    <h1>Startseite-Überschrift: Variante mit Keyword-Unterüberschrift</h1>
+    <p>Hallo Dennis, wie besprochen zu deinem Punkt „Keywords in die Überschriften“: Die
+    <strong>H1 lassen wir wie freigegeben</strong> („Ihr Partner rund um das Thema Immobilien in Berlin“) – so hattest
+    du es bestätigt. Um dein Keyword trotzdem sichtbar zu machen, würden wir es in eine
+    <strong>neue Unterüberschrift direkt unter der H1</strong> setzen.</p>
+
+    <div class="flag">
+      <strong>Bitte einordnen:</strong> Das ist eine <strong>Änderung am bereits freigegebenen Design/Layout</strong>
+      des Hero-Bereichs. Aktuell steht unter der H1 direkt das Bewertungs-Formular – es gibt dort keinen Platz für eine
+      Unterüberschrift. Die neue Zeile <strong>schiebt das Formular nach unten</strong>. Deshalb zeigen wir es dir erst
+      als Vorschau zur gemeinsamen Entscheidung, statt es still zu ändern.
+    </div>
+
+    <p>Unten kannst du zwischen <strong>„Aktuell (freigegeben)“</strong> und <strong>„Variante mit Unterüberschrift“</strong>
+    umschalten. Der Vorschlagstext ist <strong>deine eigene Formulierung</strong> aus deinem Audit
+    („Ihr Immobilienmakler in Berlin – Verkauf, Bewertung &amp; Finanzierung“) – die genaue Wortwahl passen wir gern noch an.</p>
+
+    <ul>
+      <li><strong>Auf den Unterseiten</strong> (Verkaufen, Bewerten, Finanzierung, Kaufen, Investment) enthalten die
+      Überschriften bereits Keywords bzw. es gibt echte Zwischenüberschriften – dort setzen wir es ohne Design-Eingriff um.</li>
+      <li><strong>Zwei offene Punkte an dich:</strong> (1) Auf <em>welchen Seiten</em> möchtest du das umgesetzt haben –
+      alle Hauptseiten oder ausgewählte? (2) Passt dir die Homepage-Variante wie hier gezeigt?
+      Danach nennen wir dir den konkreten Zeitaufwand für die Umsetzung.</li>
+    </ul>
+    <p class="small">Hinweis: Diese Seite ist ein Vorschau-Nachbau (schematisch, mit dem echten Hero-Video und der
+    Marken-Schrift der Live-Seite), kein fertiger Stand und nicht öffentlich indexiert.</p>
+  </div>
+
+  <div class="toggle" role="tablist" aria-label="Ansicht wählen">
+    <button id="btn-ist" class="active" onclick="setState('ist')">Aktuell (freigegeben)</button>
+    <button id="btn-var" onclick="setState('var')">Variante mit Unterüberschrift</button>
+  </div>
+  <p class="state-label" id="stateLabel">Aktueller, freigegebener Stand: H1 → direkt das Bewertungs-Formular.</p>
+
+  <div class="hero" id="hero">
+    <span class="badge" id="badge">Aktuell</span>
+    <video id="heroVid" autoplay muted loop playsinline preload="auto">
+      <source src="DK-hero-m.mp4" type="video/mp4">
+    </video>
+    <div class="fallback" aria-hidden="true"></div>
+    <div class="overlay"></div>
+    <div class="inner">
+      <h2 class="h1">Ihr Partner rund um das Thema Immobilien in Berlin</h2>
+      <p class="subline"><span class="kw">Ihr Immobilienmakler in Berlin</span> – Verkauf, Bewertung &amp; Finanzierung</p>
+      <div class="formcard">
+        <p class="ftitle">Jetzt Immobilie kostenlos bewerten</p>
+        <div class="field">
+          <input type="text" placeholder="Adresse Ihrer Immobilie eingeben …" disabled>
+          <button class="btn" type="button">Bewertung starten</button>
+        </div>
+      </div>
+    </div>
+    <p class="shiftnote">↑ Durch die neue Unterüberschrift rückt das Formular etwas nach unten.</p>
+  </div>
+  <p class="caption">Nachbau des Hero-Bereichs von dk360.de (echtes Hintergrund-Video + Marken-Schrift „Bounded“, Farben der Live-Seite). Auf Mobilgeräten verhält sich die Zeile analog – Formular rückt nach.</p>
+
+</div>
+
+<script>
+  // Video-Autoplay in manchen Browsern anstoßen; bei Fehler bleibt der dunkle Fallback sichtbar
+  (function(){var v=document.getElementById('heroVid');if(v){var p=v.play();if(p&&p.catch){p.catch(function(){});}}})();
+
+  function setState(s){
+    var hero=document.getElementById('hero');
+    var ist=document.getElementById('btn-ist'), varb=document.getElementById('btn-var');
+    var label=document.getElementById('stateLabel'), badge=document.getElementById('badge');
+    if(s==='var'){
+      hero.classList.add('variant');
+      varb.classList.add('active'); ist.classList.remove('active');
+      label.textContent='Variante: H1 (unverändert) → neue Keyword-Unterüberschrift → Formular (rückt nach unten).';
+      badge.textContent='Variante';
+    }else{
+      hero.classList.remove('variant');
+      ist.classList.add('active'); varb.classList.remove('active');
+      label.textContent='Aktueller, freigegebener Stand: H1 → direkt das Bewertungs-Formular.';
+      badge.textContent='Aktuell';
+    }
+  }
+</script>
+</body>
+</html>
