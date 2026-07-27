@@ -1,0 +1,7 @@
+{
+  "project": "steuerakademie_preview",
+  "latest": "v1.0",
+  "versions": [
+    { "version": "v1.0", "date": "2026-07-27", "summary": "RU-Landing (Content V1.1) + Anmelde-Formular (eigene Seite, 3 Modi). Erste Client-Vorschau — Farben approximativ, finales CI (#4133) folgt." }
+  ]
+}
