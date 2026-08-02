@@ -99,6 +99,7 @@
     <a href="#audit" class="hub-tab" data-tab="audit">🔍 Website-Audit</a>
     <a href="#migration" class="hub-tab" data-tab="migration">🔀 Migrations- &amp; 301-Konzept</a>
     <a href="#markt" class="hub-tab" data-tab="markt">📊 Marktüberblick</a>
+    <a href="sereda_site_konzept.html" class="hub-tab">🗺 Site-Konzept</a>
     <a href="#aufgaben" class="hub-tab" data-tab="aufgaben">📋 Aufgaben &amp; Checkliste</a>
   </nav>
 </header>
@@ -629,7 +630,7 @@
     panels.forEach(function(p){p.classList.toggle('active',p.id==='panel-'+name);});
   }
   tabs.forEach(function(t){
-    t.addEventListener('click',function(e){e.preventDefault();var n=t.dataset.tab;show(n);history.replaceState(null,'','#'+n);});
+    t.addEventListener('click',function(e){var n=t.dataset.tab;if(!n)return;e.preventDefault();show(n);history.replaceState(null,'','#'+n);});
   });
   var h=(location.hash||'').replace('#','');
   if(h&&document.getElementById('panel-'+h))show(h);
