@@ -1,7 +1,13 @@
 {
   "project": "hotel-avalex_preview",
-  "latest": "v1.0",
+  "latest": "v1.1",
   "versions": [
+    {
+      "version": "v1.1",
+      "date": "2026-08-06",
+      "revision": "2026-08-06 (HW): Kundenseitige Version ohne Team-Design-Brief-Tab. Startseite-Hero mit Buchungs-/Suchleiste (Check-in/Check-out/Gaeste, direct-book.com als externes Element); neuer Karten-Platzhalter (Position zwischen Lage-Block und Zimmern) mit Hotel, Cafes und Sehenswuerdigkeiten (interaktive Karte folgt im Build); Buchungs-CTA je Zimmerkategorie als Deep-Link; Meta-Beschreibung Zimmer-Uebersicht auf <=170 Zeichen gekuerzt.",
+      "summary": "Kundenseitige Vorschau (7 Inhaltsseiten) ohne Team-Design-Brief. Neu ggue. V1.0: prominente Buchungs-/Suchleiste im Startseiten-Hero, interaktive Karte (Platzhalter) mit Cafes & Sehenswuerdigkeiten zwischen Lage und Zimmern, Deep-Link-Buchungs-CTAs je Zimmerkategorie. Buchung laeuft weiter ueber das externe System direct-book.com. Fotos, finales Logo und Gaeste-Zitate bleiben Platzhalter."
+    },
     {
       "version": "v1.0",
       "date": "2026-07-20",
