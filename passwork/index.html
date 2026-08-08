@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Passwork — структура хранилища</title>
+<style>
+  :root{
+    --bg:#0e1116;--panel:#161b22;--panel2:#1c232d;--line:#2a3441;
+    --tx:#e6edf3;--dim:#96a3b3;--acc:#4c8dff;--ok:#3fb950;--warn:#d29922;--bad:#f85149;--gold:#d4a843;
+    --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,monospace;
+  }
+  @media (prefers-color-scheme:light){
+    :root{--bg:#f6f8fa;--panel:#fff;--panel2:#f0f3f7;--line:#d7dee6;--tx:#111820;--dim:#57636f;}
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--tx);
+    font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+  .wrap{max-width:1080px;margin:0 auto;padding:32px 20px 80px}
+  h1{font-size:30px;margin:0 0 6px;letter-spacing:-.5px}
+  h2{font-size:20px;margin:46px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+  h3{font-size:14px;margin:20px 0 8px;color:var(--dim);text-transform:uppercase;letter-spacing:.08em}
+  p{margin:0 0 12px}
+  .sub{color:var(--dim);margin-bottom:22px}
+  code{font-family:var(--mono);font-size:.87em;background:var(--panel2);padding:1px 5px;border-radius:4px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin:12px 0}
+  .grid{display:grid;gap:12px}
+  .g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+  .g4{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+  .kpi{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+  .kpi .n{font-size:26px;font-weight:650;letter-spacing:-1px}
+  .kpi .l{color:var(--dim);font-size:12.5px;margin-top:2px}
+  .badge{display:inline-block;padding:2px 9px;border-radius:999px;font-size:12px;font-weight:600;border:1px solid transparent;white-space:nowrap}
+  .b-ok{background:rgba(63,185,80,.14);color:var(--ok);border-color:rgba(63,185,80,.35)}
+  .b-warn{background:rgba(210,153,34,.14);color:var(--warn);border-color:rgba(210,153,34,.35)}
+  .b-bad{background:rgba(248,81,73,.14);color:var(--bad);border-color:rgba(248,81,73,.35)}
+  .b-new{background:rgba(76,141,255,.14);color:var(--acc);border-color:rgba(76,141,255,.35)}
+  .b-dim{background:var(--panel2);color:var(--dim);border-color:var(--line)}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--dim);font-weight:600;font-size:12.5px;text-transform:uppercase;letter-spacing:.05em}
+  .scroll{overflow-x:auto}
+  .note{font-size:13px;color:var(--dim)}
+  /* дерево */
+  .tree{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:6px 4px;overflow-x:auto}
+  .vault{border-left:3px solid var(--gold);margin:10px 8px;padding:10px 14px;background:var(--panel2);border-radius:0 10px 10px 0}
+  .vault.new{border-left-color:var(--bad)}
+  .vault.temp{border-left-color:var(--warn);opacity:.85}
+  .vname{font-weight:650;font-size:15.5px}
+  .vmeta{color:var(--dim);font-size:12.5px;margin-top:2px}
+  .folder{margin:8px 0 0 14px;padding-left:14px;border-left:1px dashed var(--line)}
+  .fname{font-size:14px}
+  .fdesc{color:var(--dim);font-size:12.5px}
+  .sub2{margin:4px 0 0 16px;font-family:var(--mono);font-size:12.5px;color:var(--dim);line-height:1.9}
+  .sub2 span{display:inline-block;background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:1px 8px;margin:0 4px 2px 0}
+  ol{padding-left:20px;margin:0}
+  ol li{margin-bottom:7px}
+  .rule{border-left:3px solid var(--acc);padding-left:14px;margin:16px 0}
+  .rule b{display:block;margin-bottom:3px}
+  .danger{border-left:3px solid var(--bad)}
+  .foot{color:var(--dim);font-size:12.5px;margin-top:44px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>Passwork — структура хранилища</h1>
+<p class="sub">Предложение AD, обновлено 08.08.2026 после обновления системы. Каркас — из согласованного <code>vault-structure.md</code> Михаила (02.04.2026), детализация — под наши серверы и доступы.</p>
+
+<div class="grid g4">
+  <div class="kpi"><div class="n">8</div><div class="l">сейфов (7 + Break-Glass)</div></div>
+  <div class="kpi"><div class="n">2</div><div class="l">уровня папок — проверено в коде</div></div>
+  <div class="kpi"><div class="n">6</div><div class="l">наших серверов разложены</div></div>
+  <div class="kpi"><div class="n" style="color:var(--bad)">3</div><div class="l">места в лицензии — все заняты</div></div>
+</div>
+
+<h2>0. Состояние на 08.08.2026</h2>
+<div class="card" style="border-left:3px solid var(--ok)">
+  <b>Каркас построен, наполнение началось</b>
+  <p class="note" style="margin:8px 0 0">В сейфе <b>2Penguins</b> созданы три папки верхнего уровня и пять вложенных внутри <code>Internal Tools</code>. Импортированы <b>168 доступов к клиентским сайтам</b> из браузерной библиотеки — WP-админки, вебмейлы, панели. Разобрана бо́льшая часть сейфа IT-Infrastruktur.</p>
+  <div class="scroll" style="margin-top:12px"><table>
+    <tr><th>Где</th><th>Записей</th><th>Статус</th></tr>
+    <tr><td><b>2Penguins → WEB-Projekte</b></td><td>142</td><td><span class="badge b-ok">клиентские сайты на месте</span></td></tr>
+    <tr><td>2Penguins → корень сейфа</td><td>26</td><td><span class="badge b-warn">ждут перемещения в папки</span></td></tr>
+    <tr><td>2Penguins → Server &amp; Hosting</td><td>5</td><td><span class="badge b-ok">разобрано</span></td></tr>
+    <tr><td>2Penguins → Dev &amp; Deploy</td><td>5</td><td><span class="badge b-ok">разобрано</span></td></tr>
+    <tr><td>2Penguins → Workspace &amp; Kommunikation</td><td>3</td><td><span class="badge b-ok">разобрано</span></td></tr>
+    <tr><td>2Penguins → AI &amp; APIs</td><td>2</td><td><span class="badge b-ok">разобрано</span></td></tr>
+    <tr><td>2Penguins → Business &amp; Legal</td><td>1</td><td><span class="badge b-ok">разобрано</span></td></tr>
+    <tr><td>IT-Infrastruktur</td><td>5</td><td><span class="badge b-warn">осталось разнести (было 18)</span></td></tr>
+    <tr><td>«Разобрать»</td><td>6</td><td><span class="badge b-warn">разнести и удалить сейф</span></td></tr>
+    <tr><td colspan="3" class="note">Итого в системе <b>196 записей</b> против 27 на старте работ. Сейфы W&amp;S Agency, W&amp;K Connect, TopHolz24, Werbetechnik, Wirts Holding UG и Zulassungsservice пока пустые.</td></tr>
+  </table></div>
+</div>
+
+<h2>0b. Что изменилось сегодня — контекст решений</h2>
+<div class="grid g2">
+  <div class="card" style="border-left:3px solid var(--ok)">
+    <b>Система обновлена: 7.2.4 → 7.7.0</b> <span class="badge b-ok">сделано</span>
+    <p class="note">Стояло из-за пустого <code>PORTAL_KEY</code> — ключа для скачивания дистрибутива, который путали с лицензией приложения. 24 миграции, данные целы. Бэкап базы ежедневный, восстановление проверено.</p>
+  </div>
+  <div class="card" style="border-left:3px solid var(--bad)">
+    <b>Лицензия: Standard, 3 места, до 06.02.2027</b> <span class="badge b-bad">ограничивает всё</span>
+    <p class="note">Все три заняты: Михаил, Александр, Azat. Демо было на пятерых — купили на троих. <b>Пока места не докупят, структура обслуживает трёх администраторов, а не команду.</b> Раздавать права по ней некому.</p>
+  </div>
+  <div class="card" style="border-left:3px solid var(--bad)">
+    <b>Клиентское шифрование выключено</b> <span class="badge b-bad">меняет модель угроз</span>
+    <p class="note">Включается только при установке — флага <code>.env.local</code> у нас нет, мастер-пароля нет ни у кого. Значит пароли шифруются ключом, который лежит <b>на сервере</b>: администратор сервера технически может их расшифровать. Zero-knowledge — отдельная процедура через вендора, переключателем на живой базе не делается.</p>
+  </div>
+  <div class="card" style="border-left:3px solid var(--warn)">
+    <b>Почта — наполовину</b> <span class="badge b-warn">ждёт внешнего шага</span>
+    <p class="note">Отправитель и SMTP настроены, соединение с Gmail проходит. Упёрлось в пароль приложения для <code>team@workspace.it-reality.de</code> — его создаёт владелец ящика. Без почты не работают приглашения и восстановление пароля.</p>
+  </div>
+</div>
+
+<!-- ── 1 ── -->
+<h2>1. Что уже решено — не трогаем</h2>
+<div class="card">
+  <div class="scroll"><table>
+    <tr><th>Решение</th><th>Обоснование Михаила</th></tr>
+    <tr><td><b>Сейф = владелец аккаунта</b></td><td>кто оплачивает и отвечает — у того лежит; остальные направления помечаются тегом</td></tr>
+    <tr><td>7 сейфов по юрлицам и направлениям</td><td>совпадает с оргструктурой</td></tr>
+    <tr><td>Werbetechnik — отдельный сейф</td><td>своя команда (Hermann, Azat, Andrey), свои клиенты, другой тип работ</td></tr>
+    <tr><td>Internal Tools — папка, а не сейф</td><td>инфраструктуру оплачивает 2Penguins</td></tr>
+    <tr><td>Имена без юр. суффиксов</td><td>«W&amp;S Agency», не «W&amp;S Agency GmbH» — единообразие</td></tr>
+    <tr><td>Именование: <code>[Service / Client] — [Beschreibung]</code></td><td>по названию понятно что и чьё, без открытия записи</td></tr>
+  </table></div>
+</div>
+
+<!-- ── 2 ── -->
+<h2>2. Карта сейфов</h2>
+<p class="note">Золотая полоса — сейфы Михаила. <span class="badge b-new">синее</span> — что добавляю я. <span class="badge b-warn">жёлтое</span> — временное, подлежит расформированию.</p>
+
+<div class="tree">
+
+  <div class="vault">
+    <div class="vname">📦 2Penguins</div>
+    <div class="vmeta">операционное юрлицо — владелец инфраструктуры</div>
+
+    <div class="folder">
+      <div class="fname">📁 WEB-Projekte</div>
+      <div class="fdesc">клиентские сайты — по папке на клиента</div>
+      <div class="sub2">
+        <span>dk360</span><span>crystal-fs</span><span>hygger</span><span>bonakbeauty</span><span>traumtrachten</span>
+        <span>niklaus</span><span>a-drive</span><span>bashspecodezhda</span><span>4moods</span><span>stile-italiano</span><span>pos-piter</span>
+      </div>
+    </div>
+
+    <div class="folder">
+      <div class="fname">📁 Internal Tools <span class="badge b-new">подпапки — новое</span></div>
+      <div class="sub2">
+        <span>Server &amp; Hosting</span><span>Domains &amp; DNS</span><span>Dev &amp; Deploy</span><span>AI &amp; APIs</span><span>Workspace &amp; Kommunikation</span>
+      </div>
+      <div class="fdesc" style="margin-top:6px">без второго уровня все серверы, токены и панели свалятся в одну плоскую кучу</div>
+    </div>
+
+    <div class="folder">
+      <div class="fname">📁 Business &amp; Legal</div>
+      <div class="fdesc">банк, DATEV, Steuerberater</div>
+    </div>
+  </div>
+
+  <div class="vault">
+    <div class="vname">📦 W&amp;S Agency</div>
+    <div class="vmeta">WS Agency GmbH — маркетинг</div>
+    <div class="folder"><div class="fname">📁 Marketing-Kunden</div><div class="fdesc">рекламные кабинеты клиентов, Analytics, GMB — тег <code>@client</code></div></div>
+    <div class="folder"><div class="fname">📁 Werbetools</div><div class="fdesc">агентские: Google Ads, Meta Business, Semrush, E-Mail-Marketing</div></div>
+    <div class="folder"><div class="fname">📁 Business &amp; Legal</div><div class="fdesc">банк W&amp;S</div></div>
+  </div>
+
+  <div class="vault">
+    <div class="vname">📦 W&amp;K Connect</div>
+    <div class="vmeta">W&amp;K Connect GmbH — CRM и автоматизация</div>
+    <div class="folder"><div class="fname">📁 CRM-Systeme</div></div>
+    <div class="folder"><div class="fname">📁 AI &amp; Automation</div><div class="fdesc">n8n, специфичные токены</div></div>
+    <div class="folder"><div class="fname">📁 Business &amp; Legal</div></div>
+  </div>
+
+  <div class="vault">
+    <div class="vname">📦 TopHolz24</div>
+    <div class="folder"><div class="fname">📁 Website &amp; Hosting</div></div>
+    <div class="folder"><div class="fname">📁 Business &amp; Legal</div></div>
+  </div>
+
+  <div class="vault">
+    <div class="vname">📦 Werbetechnik</div>
+    <div class="vmeta">Leuchtreklame — отдельная команда, подпапки позже</div>
+  </div>
+
+  <div class="vault">
+    <div class="vname">📦 Wirts Holding UG &nbsp;·&nbsp; 📦 Zulassungsservice</div>
+    <div class="vmeta">реальные юрлица, мало записей — без подпапок</div>
+  </div>
+
+  <div class="vault new">
+    <div class="vname">📦 Break-Glass <span class="badge b-new">новое</span></div>
+    <div class="vmeta">доступ: только владелец + один админ</div>
+    <div class="sub2">
+      <span>регистраторы доменов</span><span>owner Google Workspace</span><span>owner Bitrix24</span><span>банк</span><span>PORTAL_KEY Passwork</span><span>root-ключи серверов</span>
+    </div>
+  </div>
+
+  <div class="vault temp">
+    <div class="vname">📦 Разобрать <span class="badge b-warn">расформировать</span></div>
+    <div class="vmeta">6 записей разнести по местам, сейф удалить — иначе туда продолжат складывать «на потом»</div>
+  </div>
+
+</div>
+
+<!-- ── 3 ── -->
+<h2>3. Наши серверы — куда и как</h2>
+<p>Всё ниже ложится в <code>2Penguins → Internal Tools → Server &amp; Hosting</code>.</p>
+
+<div class="card scroll" style="padding-top:8px">
+<table>
+  <tr><th>Сервер</th><th>Отдельные записи</th><th>Важное</th></tr>
+  <tr><td><b>gate.2penguins.eu</b><br><span class="note">Fornex · 91.228.153.141</span></td>
+      <td>SSH root · SSH mikhail · панель Fornex</td>
+      <td><span class="badge b-warn">порт 8844, не 22</span><br><span class="note">Passwork, n8n, Outline VPN</span></td></tr>
+  <tr><td><b>nextjs-01</b><br><span class="note">netcup VPS 2000 G12</span></td>
+      <td>SSH root · Coolify UI · Coolify API-токен · Storage Box</td>
+      <td><span class="note">deploy.it-reality.de — все новые Next.js-сайты</span></td></tr>
+  <tr><td><b>37.27.105.225</b></td>
+      <td>SSH root · <code>bonak_u</code> · <code>panacea_dev_u</code> · <code>tech_u</code></td>
+      <td><span class="badge b-warn">порт 4989</span></td></tr>
+  <tr><td><b>217.177.74.207</b></td>
+      <td>SSH root · n8n</td>
+      <td><span class="note">Karmalinskaya + content factory</span></td></tr>
+  <tr><td><b>IONOS Webhosting Pro</b><br><span class="note">u84358074</span></td>
+      <td>панель · SFTP · база данных</td>
+      <td><span class="note">webseite-wartung.de / MainWP</span></td></tr>
+  <tr><td><b>netcup CCP</b></td>
+      <td>customercontrolpanel.de</td>
+      <td><span class="note">владелец VPS и доменов</span></td></tr>
+</table>
+</div>
+
+<div class="grid g2">
+  <div class="card rule">
+    <b>Одна запись = один уровень доступа</b>
+    <p class="note">Root, каждый пользовательский аккаунт, панель и база — отдельными записями. Разным людям нужен разный уровень: разработчику — свой <code>u_</code>-аккаунт, а не root. Одна запись «сервер такой-то» делает выдачу прав невозможной.</p>
+  </div>
+  <div class="card rule">
+    <b>SSH-ключи — вложением</b>
+    <p class="note">Приватный ключ прикрепляется файлом к записи, пароль-фраза — в поле пароля, в заметке — путь на рабочей машине. Обязательные доп. поля серверной записи: <code>IP</code>, <code>Port</code>, <code>User</code>.</p>
+  </div>
+  <div class="card rule">
+    <b>Токен без scope — мёртвый токен</b>
+    <p class="note">Для каждого API-ключа в заметке: владелец, область действия, дата выдачи. Иначе через полгода никто не рискнёт его отозвать — неясно, что отвалится.</p>
+  </div>
+  <div class="card rule">
+    <b>Типовой набор на клиентский сайт</b>
+    <p class="note">WP-Admin · SSH/SFTP · база данных · DNS-панель · SMTP. Плюс запись «Übersicht» с адресами прода и стейджинга и ссылкой на <code>PROJECT.md</code>.</p>
+  </div>
+</div>
+
+<!-- ── 4 ── -->
+<h2>4. Откуда переносим</h2>
+<div class="card scroll" style="padding-top:8px">
+<table>
+  <tr><th>Источник</th><th>Что там</th><th>Приоритет</th></tr>
+  <tr><td><code>web_work/доступы 2penguins.txt</code></td><td>Fornex, netcup, Coolify, Claude, доступ к серверу — <b>открытым текстом</b></td><td><span class="badge b-bad">первым</span></td></tr>
+  <tr><td><code>PROJECT.md</code> в папках проектов</td><td>доступы по каждому клиенту</td><td><span class="badge b-bad">высокий</span></td></tr>
+  <tr><td>Сейф IT-Infrastruktur</td><td>18 записей — уже в Passwork, но вне структуры</td><td><span class="badge b-warn">разнести</span></td></tr>
+  <tr><td>Сейф «Разобрать»</td><td>6 записей</td><td><span class="badge b-warn">разнести и удалить</span></td></tr>
+  <tr><td>Браузеры, чаты, заметки</td><td>остальное</td><td><span class="badge b-dim">по ходу</span></td></tr>
+</table>
+</div>
+<div class="card danger" style="border-left-width:3px;border-left-style:solid">
+  <b>После переноса исходник удаляется</b>
+  <p class="note" style="margin:6px 0 0">Пароль остаётся в одном месте, в файле — только ссылка на запись. Два источника правды протухают оба, и в нужный момент непонятно, какой из них настоящий.</p>
+</div>
+
+<!-- ── 5 ── -->
+<h2>5. Break-Glass — зачем отдельный сейф</h2>
+<div class="card">
+  <p>Это доступы, которыми восстанавливают всё остальное: регистраторы доменов, owner-аккаунты Google Workspace и Bitrix24, банк, root-ключи серверов, <code>PORTAL_KEY</code> Passwork.</p>
+  <p>Если они лежат вместе с рабочими записями, то любой, кто получил право писать в общий сейф, получает ключи от всего сразу. Отдельный сейф с доступом у двоих решает это без усложнения остальной структуры.</p>
+  <p class="note"><b style="color:var(--bad)">⚠️ Ключ от самого Passwork не может лежать только в Passwork.</b> Доступ к серверу <code>gate</code> и владельческие аккаунты — вне системы: бумага в сейфе или оффлайн-носитель. Иначе потеря доступа к хранилищу означает потерю средств его восстановления.</p>
+  <p class="note" style="margin-bottom:0"><b style="color:var(--bad)">⚠️ И отдельно, раз шифрование серверное:</b> дамп базы вместе с файлом <code>conf/keys/encryption_key</code> — это все пароли компании в открытом виде. Пока бэкапы лежат только на самом сервере, это терпимо. В момент, когда начнём выгружать их наружу — на Drive, Storage Box, куда угодно — шифрование выгрузки становится обязательным, а ключ от неё не может храниться на том же сервере.</p>
+</div>
+
+<!-- ── 6 ── -->
+<h2>6. Права</h2>
+<div class="card scroll" style="padding-top:8px">
+<table>
+  <tr><th>Роль</th><th>Кому</th><th>Что может</th></tr>
+  <tr><td><b>Admin</b></td><td>Mihail, Alexander, Azat</td><td>всё, включая раздачу прав</td></tr>
+  <tr><td><b>Manage</b></td><td>ведущий направления</td><td>править, экспортировать, смотреть журнал</td></tr>
+  <tr><td><b>Write</b></td><td>сотрудник на проекте</td><td>читать и добавлять записи</td></tr>
+  <tr><td><b>Read</b></td><td>подрядчик, временный доступ</td><td>только смотреть</td></tr>
+  <tr><td><b>Forbidden</b></td><td>явный запрет поверх группы</td><td>ничего</td></tr>
+</table>
+<p class="note" style="margin-top:12px">Права выдаём <b>на сейф или папку</b>, не на отдельные записи — иначе матрица прав станет неуправляемой уже на третьем клиенте.</p>
+<p class="note" style="margin-top:8px;color:var(--bad)"><b>Оговорка на сегодня:</b> в лицензии 3 места и все заняты администраторами. Роли Manage / Write / Read сейчас выдавать некому — таблица описывает целевое состояние, а не текущее. Пока места не докупят, каркас строим «на вырост».</p>
+</div>
+
+<!-- ── 7 ── -->
+<h2>7. Каркас — что делаем руками прямо сейчас</h2>
+<p class="note">Порядок важен: сначала пустая структура, только потом содержимое. Переносить записи в недостроенный каркас — значит перекладывать их дважды.</p>
+
+<div class="card">
+  <h3 style="margin-top:0">Шаг 1 — переименовать <span class="badge b-warn">нужен доступ от Михаила</span></h3>
+  <p class="note" style="margin:0 0 10px">Оба сейфа не видны Azat — администратор системы не то же самое, что участник сейфа. Переименовать может Михаил, он участник всех двенадцати.</p>
+  <div class="scroll"><table>
+    <tr><th>Сейчас</th><th>Станет</th></tr>
+    <tr><td>W&amp;S Agency GmbH</td><td><b>W&amp;S Agency</b></td></tr>
+    <tr><td>W&amp;K Connect GmbH</td><td><b>W&amp;K Connect</b></td></tr>
+  </table></div>
+  <p class="note" style="margin-top:10px">Остальные пять сейфов уже названы верно. Переименование не трогает содержимое и права.</p>
+</div>
+
+<div class="card" style="border-left:3px solid var(--ok)">
+  <h3 style="margin-top:0">Шаг 2 — создать папки <span class="badge b-ok">сделано для 2Penguins</span></h3>
+  <div class="scroll"><table>
+    <tr><th>В сейфе</th><th>Создать папки</th></tr>
+    <tr><td><b>2Penguins</b></td><td>WEB-Projekte · Internal Tools · Business &amp; Legal</td></tr>
+    <tr><td>↳ внутри Internal Tools</td><td>Server &amp; Hosting · Domains &amp; DNS · Dev &amp; Deploy · AI &amp; APIs · Workspace &amp; Kommunikation</td></tr>
+    <tr><td><b>W&amp;S Agency</b></td><td>Marketing-Kunden · Werbetools · Business &amp; Legal</td></tr>
+    <tr><td><b>W&amp;K Connect</b></td><td>CRM-Systeme · AI &amp; Automation · Business &amp; Legal</td></tr>
+    <tr><td><b>TopHolz24</b></td><td>Website &amp; Hosting · Business &amp; Legal</td></tr>
+    <tr><td>Werbetechnik · Wirts Holding UG · Zulassungsservice</td><td><span class="note">без папок — записей мало</span></td></tr>
+  </table></div>
+  <p class="note" style="margin-top:10px">Папки внутри <code>WEB-Projekte</code> заводим по мере переноса клиентов, а не заранее: пустая папка на каждого из одиннадцати клиентов только зашумит список.</p>
+</div>
+
+<div class="card">
+  <h3 style="margin-top:0">Шаг 3 — создать сейф Break-Glass</h3>
+  <p class="note" style="margin:0">Новый сейф, доступ только у Александра и одного администратора. Наполним на этапе переноса — сначала он просто должен существовать, чтобы критичные доступы не осели «пока что» в общем сейфе.</p>
+</div>
+
+<div class="card">
+  <h3 style="margin-top:0">Шаг 4 — навести порядок в том, что уже есть</h3>
+  <ol style="margin:0">
+    <li><b>IT-Infrastruktur</b> (18 записей) — разнести по новым папкам. Это основной массив, что у нас есть сейчас.</li>
+    <li><b>«Разобрать»</b> (6 записей) — разнести и <b>удалить сейф</b>. Пока он существует, туда будут складывать «на потом».</li>
+    <li><b>«Азат»</b> — личный сейф, создан 08.08. Решить: рабочее выносим в общие, личное остаётся.</li>
+    <li><b>2Penguins</b> (2 записи) — проверить, что они лежат в правильных папках.</li>
+  </ol>
+</div>
+
+<div class="card">
+  <h3 style="margin-top:0">Дальше, после каркаса</h3>
+  <ol style="margin:0">
+    <li>Перенести <code>доступы 2penguins.txt</code> → удалить исходник.</li>
+    <li>Пройти проекты по <code>PROJECT.md</code> — по клиенту за раз.</li>
+    <li>Анализ безопасности Passwork → план ротации слабых и повторяющихся паролей.</li>
+    <li>Когда будут места: пригласить команду, выдать права, инструкция на одну страницу.</li>
+  </ol>
+</div>
+
+<!-- ── 8 ── -->
+<h2>8. Открытые вопросы — не технические</h2>
+<div class="card" style="border-left:3px solid var(--warn)">
+<ol>
+  <li><b>Личные сейфы</b> (Alexander Privat, Mihail Taube) остаются в корпоративной системе? При уходе человека их содержимое не восстановит никто.</li>
+  <li><b>Сколько мест докупаем.</b> Сейчас три, и все заняты администраторами. Команда — Диана, Анна, Эмили, плюс Hermann и Andrey на Werbetechnik — это примерно восемь мест вместо трёх, порядка 180 € в год сверх текущего. Без этого решения структура остаётся хранилищем для троих.</li>
+  <li><b>Клиентское шифрование</b> — оставляем как есть (ключ на сервере) или запрашиваем у вендора процедуру перехода на zero-knowledge? Второе означает, что пароли перестанут быть доступны с сервера, но появится мастер-пароль у каждого и риск безвозвратной потери записей.</li>
+  <li><b>Клиентские доступы</b> — храним ли у себя то, что принадлежит клиенту: его хостинг, его рекламный кабинет? Это вопрос ответственности, а не техники.</li>
+</ol>
+</div>
+
+<p class="foot">
+Источники: <code>vault-structure.md</code> и <code>setup-plan.md</code> Михаила (Google Drive), описание и чеклист задачи Bitrix #3451, проверка приложения и базы на <code>gate.2penguins.eu</code> 08.08.2026.<br>
+Файл: <code>/Users/macbook/Projects/passwork-setup/struktura-passwork.html</code> · текстовая версия рядом: <code>struktura-passwork.md</code> · AD
+</p>
+
+</div>
+</body>
+</html>
