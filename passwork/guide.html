@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Passwork — как работать с хранилищем</title>
+<style>
+  :root{
+    --bg:#0e1116;--panel:#161b22;--panel2:#1c232d;--line:#2a3441;
+    --tx:#e6edf3;--dim:#96a3b3;--acc:#4c8dff;--ok:#3fb950;--warn:#d29922;--bad:#f85149;--gold:#d4a843;
+    --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,monospace;
+  }
+  @media (prefers-color-scheme:light){
+    :root{--bg:#f6f8fa;--panel:#fff;--panel2:#f0f3f7;--line:#d7dee6;--tx:#111820;--dim:#57636f;}
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--tx);
+    font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+  .wrap{max-width:900px;margin:0 auto;padding:28px 20px 80px}
+  h1{font-size:30px;margin:0 0 6px;letter-spacing:-.5px}
+  h2{font-size:20px;margin:42px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+  h3{font-size:16px;margin:22px 0 8px}
+  p{margin:0 0 12px}
+  .sub{color:var(--dim);margin-bottom:20px}
+  code{font-family:var(--mono);font-size:.87em;background:var(--panel2);padding:1px 5px;border-radius:4px}
+  a{color:var(--acc)}
+  /* навигация хаба */
+  .hubnav{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 24px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+  .hubnav a{display:inline-block;padding:7px 14px;border-radius:8px;text-decoration:none;font-size:14px;
+    border:1px solid var(--line);color:var(--dim);background:var(--panel)}
+  .hubnav a.active{background:var(--acc);border-color:var(--acc);color:#fff;font-weight:600}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin:14px 0}
+  .grid{display:grid;gap:12px}
+  .g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--dim);font-weight:600;font-size:12.5px;text-transform:uppercase;letter-spacing:.05em}
+  .scroll{overflow-x:auto}
+  .note{font-size:13.5px;color:var(--dim)}
+  .rule{border-left:3px solid var(--acc);padding-left:14px;margin:14px 0}
+  .rule b{display:block;margin-bottom:3px}
+  .danger{border-left-color:var(--bad)}
+  .warn{border-left-color:var(--warn)}
+  .ok{border-left-color:var(--ok)}
+  .ex{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:12px 14px;
+    font-family:var(--mono);font-size:13px;line-height:1.9;margin:10px 0;overflow-x:auto}
+  .ex .y{color:var(--ok)} .ex .n{color:var(--bad)}
+  ol,ul{padding-left:20px;margin:0 0 12px}
+  li{margin-bottom:6px}
+  .foot{color:var(--dim);font-size:12.5px;margin-top:44px;border-top:1px solid var(--line);padding-top:16px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="hubnav">
+  <a href="./">Структура хранилища</a>
+  <a href="./guide.html" class="active">Как работать</a>
+</div>
+
+<h1>Passwork — как работать с хранилищем</h1>
+<p class="sub">Памятка для администраторов. Учитывает особенности именно нашей установки: часть вещей здесь работает не так, как написано в документации вендора.</p>
+
+<!-- ── ВХОД ── -->
+<h2>Вход</h2>
+<div class="card">
+  <p><code>pass.it-reality.de</code> → логин → пароль → шестизначный код из аутентификатора.</p>
+  <p><b>Мастер-пароль не спрашивают.</b> В нашей установке клиентское шифрование выключено — его включают только при первичной установке. Практический смысл: содержимое записей шифруется ключом, который лежит на сервере, поэтому администратор сервера технически может его прочитать. Держи это в голове, решая, что сюда класть.</p>
+  <p class="note" style="margin-bottom:0"><b>Резервных кодов 2FA продукт не выдаёт.</b> Потерял телефон — второй фактор сбрасывает другой администратор. Если администраторы недоступны, остаётся аварийная команда на сервере.</p>
+</div>
+
+<!-- ── ГДЕ ЧТО ── -->
+<h2>Где что лежит</h2>
+<div class="card scroll">
+<table>
+  <tr><th>Сейф</th><th>Что внутри</th></tr>
+  <tr><td><b>2Penguins</b></td><td>Вся операционная инфраструктура. <code>WEB-Projekte</code> — доступы к клиентским сайтам плоским списком · <code>Internal Tools</code> с пятью подпапками (серверы, домены, разработка, ИИ-сервисы, рабочие аккаунты) · <code>Business &amp; Legal</code></td></tr>
+  <tr><td><b>Break-Glass</b></td><td>То, чем восстанавливают всё остальное: ключ портала, вебхуки Битрикса, токен к Диску. Рабочие пароли сюда не кладут</td></tr>
+  <tr><td><b>W&amp;S Agency · W&amp;K Connect · TopHolz24 · Werbetechnik</b></td><td>По направлениям и юрлицам</td></tr>
+</table>
+</div>
+<div class="card rule ok">
+  <b>Правило размещения — одно</b>
+  <p style="margin:0">Сейф определяется тем, <b>кто платит за аккаунт</b>. Если сервисом пользуется ещё кто-то — это помечается тегом, а не копией записи в двух сейфах.</p>
+</div>
+
+<!-- ── ДОБАВИТЬ ── -->
+<h2>Добавить запись</h2>
+
+<h3>Название решает всё</h3>
+<p>Поиск идёт по названию и адресу. По имени должно быть понятно, <b>что это и чьё</b>, без открытия записи.</p>
+<div class="ex">
+Формат:  [Сервис / Клиент] — [что это]
+
+<span class="y">✅ Hetzner — 2Penguins Main Server</span>
+<span class="y">✅ WP-Admin — dk360.de</span>
+<span class="y">✅ Google Ads — Traumtrachten</span>
+<span class="y">✅ Sanity — BieneGold (CMS)</span>
+
+<span class="n">❌ хостинг</span>
+<span class="n">❌ пароль от сайта</span>
+<span class="n">❌ ftp (2)</span>
+</div>
+
+<h3>Заметка — не формальность</h3>
+<p>В неё идёт всё, без чего запись бесполезна: порт, путь, отпечаток ключа, чем эта учётка отличается от соседней, что отвалится при отзыве токена.</p>
+<div class="card rule warn">
+  <b>Для серверов обязательны IP и порт</b>
+  <p style="margin:0">У нас нестандартные — <code>8844</code> на gate и <code>4989</code> на Hetzner и nextjs-01. Запись без порта заставит следующего человека искать его заново.</p>
+</div>
+
+<h3>Одна запись — один уровень доступа</h3>
+<p>Root, пользовательская учётка, панель хостинга и база данных — это <b>четыре записи</b>, а не одна «сервер такой-то». Иначе невозможно выдать разработчику доступ к базе, не отдав ему root.</p>
+
+<h3>Ключи — файлом</h3>
+<p>Приватный SSH-ключ прикладывается <b>вложением</b> к записи, парольная фраза — в поле пароля, в заметке — путь на рабочей машине и к какому хосту он подходит.</p>
+
+<!-- ── НАЙТИ И ПЕРЕДАТЬ ── -->
+<h2>Найти и передать</h2>
+<div class="grid g2">
+  <div class="card">
+    <h3 style="margin-top:0">Поиск</h3>
+    <p class="note" style="margin:0">Строка поиска сверху слева — по названию, логину и адресу. Поэтому имена и заполненные URL важнее, чем кажется.</p>
+  </div>
+  <div class="card rule danger" style="margin:0">
+    <b>Передавать — только временной ссылкой</b>
+    <p class="note" style="margin:0">Ссылка из самой записи истекает и оставляет след: видно, кто выдал, кому и сколько раз открывали. <b>Не копируй пароль в чат</b> — там он живёт вечно и виден всем участникам задачи. У нас уже был такой случай: ключ портала засветился в чате и теперь подлежит замене.</p>
+  </div>
+</div>
+<p class="note">Права выдаются <b>на сейф или папку</b>, не на отдельную запись — иначе матрица прав становится неуправляемой уже на третьем клиенте.</p>
+
+<!-- ── ЧЕГО НЕ ДЕЛАТЬ ── -->
+<h2>Чего не делать</h2>
+<div class="card">
+  <ul style="margin:0">
+    <li><b>Не класть записи в корень сейфа</b> — они там теряются. У нас так уже лежит 26 штук, ждущих разбора.</li>
+    <li><b>Не заводить сейф под каждую мелочь.</b> Сейф — это граница прав, а не папка. Папки внутри сейфа бесплатны, сейфы — нет.</li>
+    <li><b>Не переименовывать записи на ходу при разборе.</b> Сначала разложить по папкам, потом отдельным проходом привести названия к формату. Две задачи одновременно — верный способ бросить на середине.</li>
+  </ul>
+</div>
+<div class="card rule danger">
+  <b>Доступ к самому Passwork не может храниться только в Passwork</b>
+  <p style="margin:0">Пароль от сервера <code>gate</code> и владельческий аккаунт — вне системы: на бумаге или офлайн-носителе. Иначе потеря доступа к хранилищу означает и потерю средств его восстановления.</p>
+</div>
+
+<!-- ── ОГРАНИЧЕНИЯ ── -->
+<h2>Ограничения нашей установки</h2>
+<div class="card scroll">
+<table>
+  <tr><th>Что</th><th>Как есть сейчас</th></tr>
+  <tr><td>Мест в лицензии</td><td><b>Три, все заняты.</b> Пока не докупим — новых людей завести нельзя, команда получает пароли через администраторов, ссылками</td></tr>
+  <tr><td>Клиентское шифрование</td><td>Выключено. Мастер-пароля нет ни у кого, ключ шифрования на сервере</td></tr>
+  <tr><td>Роль администратора</td><td><b>Не даёт доступа к сейфам.</b> Доступ выдаётся по каждому сейфу отдельно — можно быть админом системы и не видеть половину хранилища</td></tr>
+  <tr><td>Резервные коды 2FA</td><td>Продукт их не выдаёт. Восстановление — через второго администратора</td></tr>
+  <tr><td>Импорт CSV</td><td>Игнорирует выбранную папку, всё кладёт в корень сейфа. Раскладывать приходится отдельно</td></tr>
+</table>
+</div>
+
+<p class="foot">
+Памятка для администраторов: Mihail · Alexander · Azat. Составлено по итогам работ 30.07–10.08.2026 [AD].<br>
+Регламент выдачи паролей команде — отдельный документ в PCM проекта (<code>passwork/team-guide.md</code>).<br>
+Структура хранилища — <a href="./">соседняя страница этого хаба</a>.
+</p>
+
+</div>
+</body>
+</html>

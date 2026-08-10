@@ -59,10 +59,19 @@
   .rule b{display:block;margin-bottom:3px}
   .danger{border-left:3px solid var(--bad)}
   .foot{color:var(--dim);font-size:12.5px;margin-top:44px}
+  .hubnav{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 24px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+  .hubnav a{display:inline-block;padding:7px 14px;border-radius:8px;text-decoration:none;font-size:14px;
+    border:1px solid var(--line);color:var(--dim);background:var(--panel)}
+  .hubnav a.active{background:var(--acc);border-color:var(--acc);color:#fff;font-weight:600}
 </style>
 </head>
 <body>
 <div class="wrap">
+
+<div class="hubnav">
+  <a href="./" class="active">Структура хранилища</a>
+  <a href="./guide.html">Как работать</a>
+</div>
 
 <h1>Passwork — структура хранилища</h1>
 <p class="sub">Предложение AD, обновлено 08.08.2026 после обновления системы. Каркас — из согласованного <code>vault-structure.md</code> Михаила (02.04.2026), детализация — под наши серверы и доступы.</p>
@@ -74,22 +83,23 @@
   <div class="kpi"><div class="n" style="color:var(--bad)">3</div><div class="l">места в лицензии — все заняты</div></div>
 </div>
 
-<h2>0. Состояние на 08.08.2026</h2>
+<h2>0. Состояние на 10.08.2026</h2>
 <div class="card" style="border-left:3px solid var(--ok)">
   <b>Каркас построен, наполнение началось</b>
-  <p class="note" style="margin:8px 0 0">В сейфе <b>2Penguins</b> созданы три папки верхнего уровня и пять вложенных внутри <code>Internal Tools</code>. Импортированы <b>168 доступов к клиентским сайтам</b> из браузерной библиотеки — WP-админки, вебмейлы, панели. Разобрана бо́льшая часть сейфа IT-Infrastruktur.</p>
+  <p class="note" style="margin:8px 0 0">В сейфе <b>2Penguins</b> созданы три папки верхнего уровня и пять вложенных внутри <code>Internal Tools</code>. Импортированы <b>168 доступов к клиентским сайтам</b> из браузерной библиотеки и <b>25 записей инфраструктуры</b> — серверы, деплой, CMS, лицензии. Заведён сейф <b>Break-Glass</b>.</p>
   <div class="scroll" style="margin-top:12px"><table>
     <tr><th>Где</th><th>Записей</th><th>Статус</th></tr>
-    <tr><td><b>2Penguins → WEB-Projekte</b></td><td>142</td><td><span class="badge b-ok">клиентские сайты на месте</span></td></tr>
-    <tr><td>2Penguins → корень сейфа</td><td>26</td><td><span class="badge b-warn">ждут перемещения в папки</span></td></tr>
-    <tr><td>2Penguins → Server &amp; Hosting</td><td>5</td><td><span class="badge b-ok">разобрано</span></td></tr>
-    <tr><td>2Penguins → Dev &amp; Deploy</td><td>5</td><td><span class="badge b-ok">разобрано</span></td></tr>
-    <tr><td>2Penguins → Workspace &amp; Kommunikation</td><td>3</td><td><span class="badge b-ok">разобрано</span></td></tr>
+    <tr><td><b>2Penguins → WEB-Projekte</b></td><td>142</td><td><span class="badge b-ok">клиентские сайты</span></td></tr>
+    <tr><td>2Penguins → Server &amp; Hosting</td><td>15</td><td><span class="badge b-ok">+9 залито 10.08</span></td></tr>
+    <tr><td>2Penguins → Dev &amp; Deploy</td><td>13</td><td><span class="badge b-ok">+8 залито 10.08</span></td></tr>
+    <tr><td>2Penguins → Workspace &amp; Kommunikation</td><td>6</td><td><span class="badge b-ok">+3 залито 10.08</span></td></tr>
+    <tr><td><b>Break-Glass</b></td><td>5</td><td><span class="badge b-ok">сейф создан 10.08</span></td></tr>
     <tr><td>2Penguins → AI &amp; APIs</td><td>2</td><td><span class="badge b-ok">разобрано</span></td></tr>
     <tr><td>2Penguins → Business &amp; Legal</td><td>1</td><td><span class="badge b-ok">разобрано</span></td></tr>
-    <tr><td>IT-Infrastruktur</td><td>5</td><td><span class="badge b-warn">осталось разнести (было 18)</span></td></tr>
-    <tr><td>«Разобрать»</td><td>6</td><td><span class="badge b-warn">разнести и удалить сейф</span></td></tr>
-    <tr><td colspan="3" class="note">Итого в системе <b>196 записей</b> против 27 на старте работ. Сейфы W&amp;S Agency, W&amp;K Connect, TopHolz24, Werbetechnik, Wirts Holding UG и Zulassungsservice пока пустые.</td></tr>
+    <tr><td>2Penguins → корень сейфа</td><td>26</td><td><span class="badge b-warn">ждут разбора</span></td></tr>
+    <tr><td>IT-Infrastruktur</td><td>5</td><td><span class="badge b-warn">остаток, было 18</span></td></tr>
+    <tr><td>«Разобрать»</td><td>6</td><td><span class="badge b-warn">расформировать</span></td></tr>
+    <tr><td colspan="3" class="note">Итого в системе <b>222 записи</b> против 27 на старте работ. Сейфы W&amp;S Agency, W&amp;K Connect, TopHolz24, Werbetechnik, Wirts Holding UG и Zulassungsservice пока пустые.</td></tr>
   </table></div>
 </div>
 
