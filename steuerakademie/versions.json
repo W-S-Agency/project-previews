@@ -1,7 +1,8 @@
 {
   "project": "steuerakademie_preview",
-  "latest": "v1.0",
+  "latest": "v1.1",
   "versions": [
+    { "version": "v1.1", "date": "2026-08-12", "summary": "Lilia-Feedback vom 09.08. eingearbeitet (9/10 Punkte: Hero ohne ex-KPMG, Trust-Reihenfolge, Für-wen RU, Dozentin-CV, Curriculum 1:1 aus Flyer + Anlagenteil, Format/Aufzeichnungen, Preis §19 raus/Probeunterrichte). Widerruf-Button offen — wird separat geklärt." },
     { "version": "v1.0", "date": "2026-07-27", "summary": "RU-Landing (Content V1.1) + Anmelde-Formular (eigene Seite, 3 Modi). Erste Client-Vorschau — Farben approximativ, finales CI (#4133) folgt." }
   ]
 }
