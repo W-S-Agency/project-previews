@@ -1,7 +1,13 @@
 {
   "project": "hotel-avalex_preview",
-  "latest": "v1.1",
+  "latest": "v1.2",
   "versions": [
+    {
+      "version": "v1.2",
+      "date": "2026-08-13",
+      "revision": "2026-08-13 (HW): Kundenfeedback vom 12.08 eingearbeitet. Startseite: Economy-Zimmer 'ohne Fahrstuhl' praezisiert; Etagenbaeder-Hinweis um Toiletten auf jeder Etage ergaenzt; Ausstattungs-Kacheln neu geordnet (Lage zuerst); Baeckerei 'gleich gegenueber' statt am Eingang. Gastronomie: Baeckerei gegenueber, Strasse voller internationaler Restaurants; zwei konkrete Cafe-Empfehlungen (Cafe Melon, Leo's Coffee) statt Platzhalter. Vierbettzimmer: 'ebenerdig/ohne Treppen' entfernt (Zimmer liegt im Erdgeschoss, zum Hauseingang fuehren jedoch einige Stufen) -> 'im Erdgeschoss gelegen, ideal fuer Familien'.",
+      "summary": "Kundenseitige Vorschau (7 Inhaltsseiten) ohne Team-Design-Brief. Aenderungen ggue. V1.1: Textkorrekturen der Kundin (Fahrstuhl-/Etagenbaeder-Hinweise, Kachel-Reihenfolge Lage zuerst, Baeckerei gegenueber, konkrete Cafe-Empfehlungen, Vierbettzimmer-Formulierung). Buchung laeuft weiter ueber das externe System direct-book.com. Fotos, finales Logo und Gaeste-Zitate bleiben Platzhalter."
+    },
     {
       "version": "v1.1",
       "date": "2026-08-06",
