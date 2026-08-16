@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex,nofollow">
-<meta name="description" content="Site-Konzept SEREDA: интерактивная карта нового sereda.de, пересечения услуг и кликабельные каркасы четырёх типов страниц. Внутренний концепт, черновик.">
-<title>Site-Konzept — новый sereda.de (Entwurf)</title>
+<meta name="description" content="Site-Konzept SEREDA v2 (16.08): интерактивная карта нового sereda.de — 19 типов страниц, пересечения услуг, клиентские цепочки и кликабельные каркасы. Переработано по фидбэку 15.08.">
+<title>Site-Konzept v2 — новый sereda.de (Entwurf)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
@@ -182,7 +182,7 @@
       <h1>Site-Konzept: как будет работать новый sereda.de</h1>
       <div class="sub">Интерактивная карта · пересечения услуг · каркасы страниц (без текстов — только логика)</div>
     </div>
-    <span class="hub-badge">Entwurf</span>
+    <span class="hub-badge">Entwurf v2 · 16.08</span>
     <div class="feedback-counter" id="feedbackCounter" onclick="openExportOverlay()">Feedback: <span id="feedbackCount">0</span> Kommentare</div>
   </div>
 </header>
@@ -190,7 +190,8 @@
 <div class="page">
 
   <div class="lead">
-    <strong>Как читать эту страницу.</strong> Тексты сайта ещё не написаны — здесь показана <strong>логика</strong>: какие страницы существуют (карта), как услуги ссылаются друг на друга (пересечения) и из каких блоков строится каждый тип страницы (каркасы). Всё кликабельно: нажимайте на страницы, связи и кнопки в каркасах — так вы пройдёте путь будущего посетителя сайта.
+    <strong>Версия 2 — переработана по вашим замечаниям от 15.08.</strong> Карта выросла с 15 до <strong>19 типов страниц</strong>: Import и Export как самостоятельные страницы, Dreilinden как отдельная Standort-страница, «Steuerlager Alkohol» (переименовано), конверсионная страница алкогольной цепочки. Два вопроса помечены ⏳ и вынесены на созвон в понедельник.<br><br>
+    <strong>Как читать эту страницу.</strong> Тексты сайта ещё не написаны — здесь показана <strong>логика</strong>: какие страницы существуют (карта), как услуги ссылаются друг на друга (пересечения + клиентские цепочки) и из каких блоков строится каждый тип страницы (каркасы). Всё кликабельно: нажимайте на страницы, связи и кнопки в каркасах — так вы пройдёте путь будущего посетителя сайта.
   </div>
 
   <section class="feedback-guide">
@@ -208,8 +209,8 @@
   <!-- BLOCK 1: Site-Map -->
   <div class="block-wrapper" id="block-1">
     <button class="feedback-btn" onclick="toggleFeedback(1)">✏️ Vorschlag</button>
-    <span class="block-label">Block 1 — Site-Map (структура)</span>
-    <h2>Карта сайта: 4 хаба + зонтичный продукт + отдельная страница</h2>
+    <span class="block-label">Block 1 — Site-Map (структура, v2)</span>
+    <h2>Карта сайта: 19 типов страниц — 4 хаба, зонтичный продукт, Standort-страница</h2>
     <div class="legend">
       <span class="leg leg-umb">Зонтичный продукт</span>
       <span class="leg leg-hub">Хаб</span>
@@ -235,7 +236,7 @@
 
         <div class="node typ-hub" id="n-z" onclick="selNode('z')">
           <span class="t">2. Zollabwicklung</span><span class="k">хаб</span>
-          <div class="d">Import / Export / T1 · Dreilinden</div>
+          <div class="d">Оформление: Import и Export — свои страницы (разные интенты и документы)</div>
           <div class="subwrap">
             <div class="node typ-sub" id="n-kfz" onclick="selNode('kfz');event.stopPropagation()">
               <span class="t">2a. KFZ-Verzollung</span><span class="k">подстр.</span>
@@ -248,6 +249,14 @@
             <div class="node typ-sub" id="n-sp" onclick="selNode('sp');event.stopPropagation()">
               <span class="t">2c. Zollrechtliche Speziallösungen</span><span class="k">подстр.</span>
               <div class="linkbadges" id="lb-sp"></div>
+            </div>
+            <div class="node typ-sub" id="n-imp" onclick="selNode('imp');event.stopPropagation()">
+              <span class="t">2d. Importzollabfertigung 🆕</span><span class="k">подстр.</span>
+              <div class="linkbadges" id="lb-imp"></div>
+            </div>
+            <div class="node typ-sub" id="n-exp" onclick="selNode('exp');event.stopPropagation()">
+              <span class="t">2e. Export / Ausfuhranmeldung 🆕</span><span class="k">подстр.</span>
+              <div class="linkbadges" id="lb-exp"></div>
             </div>
           </div>
           <div class="linkbadges" id="lb-z"></div>
@@ -262,8 +271,13 @@
               <div class="linkbadges" id="lb-zl"></div>
             </div>
             <div class="node typ-sub" id="n-sl" onclick="selNode('sl');event.stopPropagation()">
-              <span class="t">3b. Steuerlager (алкоголь) ⭐</span><span class="k">подстр.</span>
+              <span class="t">3b. Steuerlager Alkohol ⭐ <span style="font-weight:400;color:var(--muted)">(переименовано)</span></span><span class="k">подстр.</span>
               <div class="linkbadges" id="lb-sl"></div>
+            </div>
+            <div class="node typ-sub" id="n-al" onclick="selNode('al');event.stopPropagation()">
+              <span class="t">3c. Alkoholimport, Steuerlager &amp; Distribution 🆕</span><span class="k">конверс.</span>
+              <div class="d">Продающая страница полной цепочки (без SEO-ставки — трафик через 3b и пересечения)</div>
+              <div class="linkbadges" id="lb-al"></div>
             </div>
           </div>
           <div class="linkbadges" id="lb-l"></div>
@@ -287,11 +301,25 @@
           <div class="linkbadges" id="lb-ll"></div>
         </div>
 
+        <div class="node typ-alone" id="n-dl" onclick="selNode('dl')">
+          <span class="t">9. Dreilinden 🆕</span><span class="k">Standort</span>
+          <div class="d">Standort-страница бюро: адрес, маршрут, часы, документы, Import/Export/KFZ, прямой контакт · честные рамки: без завершения T1</div>
+          <div class="linkbadges" id="lb-dl"></div>
+        </div>
+
         <div class="node typ-srv" id="n-srv" onclick="selNode('srv')">
-          <span class="t">7. Über uns · 8. FAQ · Kontakt (+ Dreilinden)</span><span class="k" style="background:var(--service)">сервис</span>
-          <div class="d">История и лицензии · сводная FAQ · 2 локации раздельно</div>
+          <span class="t">7. Über uns · 8. Kontakt · 10. FAQ</span><span class="k" style="background:var(--service)">сервис</span>
+          <div class="d">История и лицензии · контакты обеих локаций · сводная FAQ</div>
         </div>
       </div>
+    </div>
+
+    <div class="map-info on">
+      <b>⏳ Два вопроса — решаем вместе на созвоне (пн 17.08):</b>
+      <ul>
+        <li><b>Вход для Mittelstand</b> («Zoll- und Lagerlogistik auslagern»): отдельная целевая страница — или усиленная развилка на главной без новой страницы. Наша рекомендация — в письме.</li>
+        <li><b>Вторичный вход для разовых оформлений</b> (KFZ, водители, Autohaus, Dreilinden): компактная страница-маршрутизатор — или ведём напрямую через страницы услуг.</li>
+      </ul>
     </div>
 
     <div class="map-info" id="mapInfo"></div>
@@ -311,10 +339,33 @@
   <!-- BLOCK 2: Пересечения -->
   <div class="block-wrapper" id="block-2">
     <button class="feedback-btn" onclick="toggleFeedback(2)">✏️ Vorschlag</button>
-    <span class="block-label">Block 2 — Пересечения услуг (ярус 3)</span>
+    <span class="block-label">Block 2 — Пересечения услуг + клиентские цепочки (v2)</span>
     <h2>Пересечения услуг: клиент одной услуги видит смежные</h2>
-    <p class="hint">Кликните на связку — она подсветится на карте выше.</p>
+    <p class="hint">Кликните на связку — она подсветится на карте выше. Ваше правило учтено: на каждой странице показываем только <strong>действительно релевантные следующие шаги</strong> — блок пересечений не превращается в каталог всех услуг.</p>
     <div class="xgrid" id="xgrid"></div>
+
+    <h2 style="margin-top:26px">Две приоритетные клиентские цепочки <span style="font-weight:400;font-size:.7em;color:var(--muted)">(из ваших сценариев, 15.08)</span></h2>
+    <p class="hint">Каждый шаг кликабелен — подсвечивает страницу-носителя на карте.</p>
+    <div style="margin-bottom:14px">
+      <div style="font-weight:700;color:var(--navy);font-size:.92em">Цепочка 1 · Иностранный производитель выходит на рынок</div>
+      <div class="chain">
+        <button class="step" onclick="selNode('imp');document.getElementById('block-1').scrollIntoView({behavior:'smooth'})">Import&shy;zollabfertigung (2d)</button><span class="arr">→</span>
+        <button class="step" onclick="selNode('zl');document.getElementById('block-1').scrollIntoView({behavior:'smooth'})">Zolllager (3a)</button><span class="arr">→</span>
+        <button class="step" onclick="selNode('ll');document.getElementById('block-1').scrollIntoView({behavior:'smooth'})">Bearbeitung / Lagerlogistik (6)</button><span class="arr">→</span>
+        <button class="step" onclick="selNode('f');document.getElementById('block-1').scrollIntoView({behavior:'smooth'})">B2B-Distribution (4)</button><span class="arr">/</span>
+        <button class="step" onclick="selNode('ff');document.getElementById('block-1').scrollIntoView({behavior:'smooth'})">B2C-Fulfillment (5)</button>
+      </div>
+    </div>
+    <div>
+      <div style="font-weight:700;color:var(--navy);font-size:.92em">Цепочка 2 · Алкогольный бренд <span style="font-weight:400;color:var(--muted)">— вся цепочка на одной странице: 3c</span></div>
+      <div class="chain">
+        <button class="step" onclick="selNode('imp');document.getElementById('block-1').scrollIntoView({behavior:'smooth'})">EMCS / Import</button><span class="arr">→</span>
+        <button class="step" onclick="selNode('sl');document.getElementById('block-1').scrollIntoView({behavior:'smooth'})">Steuerlager Alkohol (3b)</button><span class="arr">→</span>
+        <button class="step" onclick="selNode('ll');document.getElementById('block-1').scrollIntoView({behavior:'smooth'})">Kommissionierung (6)</button><span class="arr">→</span>
+        <button class="step" onclick="selNode('f');document.getElementById('block-1').scrollIntoView({behavior:'smooth'})">Handel (4)</button><span class="arr">/</span>
+        <button class="step" onclick="selNode('ff');document.getElementById('block-1').scrollIntoView({behavior:'smooth'})">Fulfillment (5)</button>
+      </div>
+    </div>
 
     <div class="feedback-panel" id="feedback-panel-2">
       <label>Ihr Vorschlag für Block 2 — Пересечения:</label>
@@ -333,7 +384,7 @@
     <button class="feedback-btn" onclick="toggleFeedback(3)">✏️ Vorschlag</button>
     <span class="block-label">Block 3 — Каркасы четырёх типов страниц</span>
     <h2>Каркасы: из каких блоков строится каждый тип страницы</h2>
-    <p class="hint">Показаны четыре <strong>типа</strong> страниц — каждый на одном примере: все страницы одного типа строятся одинаково. Поэтому, например, кнопка «Fulfillment» открывает каркас типа «Хаб» (показан на примере Zoll- &amp; Steuerlager). Серые блоки = места будущих текстов; кнопки и карточки кликабельны — они ведут туда же, куда поведут посетителя на настоящем сайте.</p>
+    <p class="hint">Показаны четыре <strong>типа</strong> страниц — каждый на одном примере: все страницы одного типа строятся одинаково. Поэтому, например, кнопка «Fulfillment» открывает каркас типа «Хаб» (показан на примере Zoll- &amp; Steuerlager). Новые страницы v2 строятся по этим же типам: 2d/2e — «Страница услуги»; 9. Dreilinden — «Страница услуги» с адресно-практическим блоком (маршрут, часы, документы); 3c — продающий вариант «Страницы услуги» вокруг цепочки. Серые блоки = места будущих текстов; кнопки и карточки кликабельны — они ведут туда же, куда поведут посетителя на настоящем сайте.</p>
 
     <div class="wf-pills">
       <button class="wf-pill active" data-wf="home" onclick="showWf('home')">Главная</button>
@@ -414,12 +465,14 @@
           <div class="bt">Карточки подстраниц</div>
           <div class="wf-cards-row">
             <div class="wf-mini" onclick="showWf('service')">3a. Zolllager (Typ C)<span class="s">→ страница услуги</span></div>
-            <div class="wf-mini" onclick="showWf('service');toast('Steuerlager — тип «Страница услуги» (5.3); показан пример Zolllager')">3b. Steuerlager ⭐<span class="s">→ страница услуги</span></div>
+            <div class="wf-mini" onclick="showWf('service');toast('Steuerlager Alkohol — тип «Страница услуги» (5.3); показан пример Zolllager')">3b. Steuerlager Alkohol ⭐<span class="s">→ страница услуги</span></div>
+            <div class="wf-mini" onclick="showWf('service');toast('3c — продающая страница полной алкогольной цепочки (без SEO-ставки)')">3c. Alkohol-цепочка 🆕<span class="s">→ конверсионная</span></div>
           </div>
         </div>
         <div class="wf-block">
           <span class="n">Блок 3 · Дифференциатор хаба</span>
-          <div class="bt">«Оба склада + оформление на одной площадке: никто не даёт вместе»</div>
+          <div class="bt">Оба склада + оформление на одной площадке</div>
+          <div class="bd">Честная форма: «в публичных предложениях проверенных конкурентов сопоставимой связки мы не нашли»</div>
         </div>
         <div class="wf-block wf-proof">
           <span class="n">Блок 4 · Доказательство</span>
@@ -476,8 +529,9 @@
           <div class="bt">Кейс / цифры</div>
         </div>
         <div class="wf-block">
-          <span class="n">Блок 6 · Условия и честные рамки</span>
-          <div class="bt">+ полоса сервис-обещания (ответ ≤ 3 ч · декларация ≤ 16 ч)</div>
+          <span class="n">Блок 6 · Условия и честные рамки (Voraussetzungen &amp; Grenzen)</span>
+          <div class="bt">+ полоса сервис-обещания: ответ ≤ 3 раб. ч · декларация ≤ 16 раб. ч — для стандартных случаев</div>
+          <div class="bd">Рядом честно: исключения (сложная тарификация, санкционная проверка, досмотр и т.п.) и что в услугу НЕ входит</div>
         </div>
         <div class="wf-block">
           <span class="n">Блок 7 · Пересечения</span>
@@ -505,8 +559,8 @@
       <div class="wf-stack">
         <div class="wf-block wf-hero">
           <span class="n">Блок 1 · Hero</span>
-          <div class="bt">«Выход на рынок Германии/EU под ключ»</div>
-          <div class="bd">Продукт, которого нет ни у одного конкурента</div>
+          <div class="bt">«Выход на рынок Германии/EU под ключ» — мы координируем и управляем операционной цепочкой из одних рук</div>
+          <div class="bd">Честная форма: в публичных предложениях проверенных конкурентов сопоставимого продукта мы не нашли</div>
         </div>
         <div class="wf-block">
           <span class="n">Блок 2 · Цепочка-визуализация</span>
@@ -559,7 +613,7 @@
 
 <footer>
   <div class="inner">
-    <span>SEREDA GmbH — Site-Konzept (Entwurf, не дизайн) · подготовлено 2Penguins</span>
+    <span>SEREDA GmbH — Site-Konzept v2 (Entwurf, не дизайн) · переработано по фидбэку 15.08 · подготовлено 2Penguins · 16.08.2026</span>
     <a href="index.html">← Projekt-Hub</a>
   </div>
 </footer>
@@ -578,7 +632,7 @@
 </div>
 
 <script>
-// ===== Site-Map данные (источник: Blueprint §4, таблица «Пересечения услуг») =====
+// ===== Site-Map данные v2 (источник: 00_sitemap v2 + entity_graph v1.2, рёбра C1–C11 из клиентских сценариев 15.08) =====
 var NODES = {
   home:{el:'n-home', name:'Главная'},
   m:{el:'n-m', name:'Markteintritt DE/EU'},
@@ -586,26 +640,37 @@ var NODES = {
   kfz:{el:'n-kfz', name:'KFZ-Verzollung'},
   ua:{el:'n-ua', name:'Импорт из Украины'},
   sp:{el:'n-sp', name:'Zollrechtliche Speziallösungen'},
+  imp:{el:'n-imp', name:'Importzollabfertigung'},
+  exp:{el:'n-exp', name:'Export / Ausfuhranmeldung'},
   l:{el:'n-l', name:'Zoll- & Steuerlager'},
   zl:{el:'n-zl', name:'Zolllager (Typ C)'},
-  sl:{el:'n-sl', name:'Steuerlager'},
+  sl:{el:'n-sl', name:'Steuerlager Alkohol'},
+  al:{el:'n-al', name:'Alkoholimport, Steuerlager & Distribution'},
   f:{el:'n-f', name:'Food & Beverage'},
   ff:{el:'n-ff', name:'Fulfillment'},
   ll:{el:'n-ll', name:'Lagerlogistik'},
+  dl:{el:'n-dl', name:'Dreilinden (Standort)'},
   srv:{el:'n-srv', name:'Сервисные страницы'}
 };
 var XLINKS = [
   {a:'sl', b:'f',  why:'Алкоголь = напиток: акциз + доставка в торговые сети как одна цепочка'},
   {a:'sl', b:'ff', why:'Алкоголь-D2C: акцизный склад + отправка конечному покупателю (спрос «alkohol fulfillment» найден в данных)'},
-  {a:'zl', b:'sl', why:'Комбо-дифференциатор: «все дают по отдельности, никто вместе»'},
-  {a:'z',  b:'zl', why:'Не растамаживать сразу: склад даёт отсрочку пошлин (ликвидность)'},
+  {a:'sl', b:'al', why:'Полная алкогольная цепочка (EMCS → склад → комиссионирование → Handel/Fulfillment) продаётся на странице 3c'},
+  {a:'zl', b:'sl', why:'Комбо-дифференциатор: в публичных предложениях проверенных конкурентов такой связки мы не нашли'},
+  {a:'imp', b:'zl', why:'Не растамаживать сразу: склад даёт отсрочку пошлин (ликвидность)'},
+  {a:'imp', b:'m',  why:'Импорт — первый шаг входа на рынок: путь ведёт в Markteintritt'},
+  {a:'exp', b:'dl', why:'Export/Ausfuhranmeldung через бюро Dreilinden — где это соответствует ситуации клиента'},
+  {a:'dl', b:'imp', why:'Standort-страница ведёт к услугам площадки: Import-оформление'},
+  {a:'dl', b:'kfz', why:'KFZ-Verzollung выполняется в бюро Dreilinden'},
   {a:'sp', b:'zl', why:'Nachbesserung технически требует таможенного склада'},
   {a:'ll', b:'zl', why:'Операции (сортировка, комиссионирование, этикетки) поверх любого хранения'},
   {a:'ll', b:'sl', why:'Операции поверх любого хранения — включая акцизный склад'},
   {a:'ff', b:'m',  why:'Вышел на рынок → нужна отправка заказов: большая связка с Markteintritt'},
+  {a:'ff', b:'ll', why:'Fulfillment тянет операции склада (комиссионирование, упаковка)'},
   {a:'z',  b:'m',  why:'Зонтик разворачивает оформление в полную цепочку входа на рынок'},
   {a:'l',  b:'m',  why:'Зонтик опирается на оба склада как на этап цепочки'},
-  {a:'f',  b:'m',  why:'Кейс «яйца»: Markteintritt + Food + Lagerlogistik + Fulfillment'}
+  {a:'f',  b:'m',  why:'Кейс «яйца»: Markteintritt + Food + Lagerlogistik + Fulfillment'},
+  {a:'sl', b:'m',  why:'Иностранный алкобренд заходит на рынок через акцизную цепочку'}
 ];
 
 function linksFor(id){
