@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex,nofollow">
-<meta name="description" content="Site-Konzept SEREDA v2 (16.08): интерактивная карта нового sereda.de — 19 типов страниц, пересечения услуг, клиентские цепочки и кликабельные каркасы. Переработано по фидбэку 15.08.">
+<meta name="description" content="Site-Konzept SEREDA v2.2 (17.08): интерактивная карта нового sereda.de — 20 типов страниц, пересечения услуг, клиентские цепочки и кликабельные каркасы. Переработано по фидбэку 15.08 и вашему ответу 17.08.">
 <title>Site-Konzept v2 — новый sereda.de (Entwurf)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -182,7 +182,7 @@
       <h1>Site-Konzept: как будет работать новый sereda.de</h1>
       <div class="sub">Интерактивная карта · пересечения услуг · каркасы страниц (без текстов — только логика)</div>
     </div>
-    <span class="hub-badge">Entwurf v2 · 16.08</span>
+    <span class="hub-badge">Entwurf v2.2 · 17.08</span>
     <div class="feedback-counter" id="feedbackCounter" onclick="openExportOverlay()">Feedback: <span id="feedbackCount">0</span> Kommentare</div>
   </div>
 </header>
@@ -190,7 +190,7 @@
 <div class="page">
 
   <div class="lead">
-    <strong>Версия 2 — переработана по вашим замечаниям от 15.08.</strong> Карта выросла с 15 до <strong>19 типов страниц</strong>: Import и Export как самостоятельные страницы, Dreilinden как отдельная Standort-страница, «Steuerlager Alkohol» (переименовано), конверсионная страница алкогольной цепочки. Два вопроса помечены ⏳ и вынесены на созвон в понедельник.<br><br>
+    <strong>Версия 2.2 — учтён ваш ответ от 17.08 (спасибо за точный разбор).</strong> Карта теперь <strong>20 типов страниц</strong>: оба открытых вопроса закрыты вашим письмом — добавлена страница-решение «Zoll- und Lagerlogistik auslagern» (Mittelstand), развилка разовых оформлений на главной расширена до 5 прямых маршрутов (вкл. Fahrer и Umzugsgut). Также: связь Speziallösungen ↔ zollamtlich überwachte Vernichtung добавлена в пересечения, состав форм закреплён в каркасах, уточнена алкогольная цепочка, терминология приведена к UZK («Zolllager» / «privates Zolllager», без устаревшего «Typ C»). Созвон в среду 19.08 — финальный проход и утверждение структуры.<br><br>
     <strong>Как читать эту страницу.</strong> Тексты сайта ещё не написаны — здесь показана <strong>логика</strong>: какие страницы существуют (карта), как услуги ссылаются друг на друга (пересечения + клиентские цепочки) и из каких блоков строится каждый тип страницы (каркасы). Всё кликабельно: нажимайте на страницы, связи и кнопки в каркасах — так вы пройдёте путь будущего посетителя сайта.
   </div>
 
@@ -210,7 +210,7 @@
   <div class="block-wrapper" id="block-1">
     <button class="feedback-btn" onclick="toggleFeedback(1)">✏️ Vorschlag</button>
     <span class="block-label">Block 1 — Site-Map (структура, v2)</span>
-    <h2>Карта сайта: 19 типов страниц — 4 хаба, зонтичный продукт, Standort-страница</h2>
+    <h2>Карта сайта: 20 типов страниц — 4 хаба, зонтичный продукт, Standort-страница, 2 страницы-решения</h2>
     <div class="legend">
       <span class="leg leg-umb">Зонтичный продукт</span>
       <span class="leg leg-hub">Хаб</span>
@@ -224,7 +224,7 @@
     <div class="map-root">
       <div class="node typ-srv map-home" id="n-home" onclick="selNode('home')">
         <span class="t">Главная</span><span class="k" style="background:var(--service)">вход</span>
-        <div class="d">Формула центра + развилка «кому мы» (3 кнопки)</div>
+        <div class="d">Формула центра + развилка «кому мы» (3 кнопки) + вторичная развилка «Einmalige Zollabfertigung»: 5 прямых маршрутов (KFZ · Import/Export · Dreilinden · Fahrer · Umzugsgut) — ваше решение 17.08</div>
       </div>
 
       <div class="map-grid">
@@ -248,6 +248,13 @@
             </div>
             <div class="node typ-sub" id="n-sp" onclick="selNode('sp');event.stopPropagation()">
               <span class="t">2c. Zollrechtliche Speziallösungen</span><span class="k">подстр.</span>
+              <div class="d">Nachbesserung · zollamtlich überwachte Vernichtung</div>
+              <div class="subwrap">
+                <div class="node typ-sub" id="n-vern" style="border-style:dashed" onclick="selNode('vern');event.stopPropagation()">
+                  <span class="t">↳ Zollamtlich überwachte Vernichtung 🆕</span><span class="k">процесс</span>
+                  <div class="linkbadges" id="lb-vern"></div>
+                </div>
+              </div>
               <div class="linkbadges" id="lb-sp"></div>
             </div>
             <div class="node typ-sub" id="n-imp" onclick="selNode('imp');event.stopPropagation()">
@@ -267,7 +274,7 @@
           <div class="d">Витрина связки: оба склада + оформление на одной площадке</div>
           <div class="subwrap">
             <div class="node typ-sub" id="n-zl" onclick="selNode('zl');event.stopPropagation()">
-              <span class="t">3a. Zolllager (Typ C)</span><span class="k">подстр.</span>
+              <span class="t">3a. Zolllager</span><span class="k">подстр.</span>
               <div class="linkbadges" id="lb-zl"></div>
             </div>
             <div class="node typ-sub" id="n-sl" onclick="selNode('sl');event.stopPropagation()">
@@ -303,8 +310,14 @@
 
         <div class="node typ-alone" id="n-dl" onclick="selNode('dl')">
           <span class="t">9. Dreilinden 🆕</span><span class="k">Standort</span>
-          <div class="d">Standort-страница бюро: адрес, маршрут, часы, документы, Import/Export/KFZ, прямой контакт · честные рамки: без завершения T1</div>
+          <div class="d">Standort-страница бюро: адрес, маршрут, часы, документы, Import/Export/KFZ, прямой контакт · честные рамки: без завершения T1 · + блок «Informationen für Fahrer» (цель маршрута с главной)</div>
           <div class="linkbadges" id="lb-dl"></div>
+        </div>
+
+        <div class="node typ-alone" id="n-ms" onclick="selNode('ms')">
+          <span class="t">Zoll- &amp; Lagerlogistik auslagern 🆕</span><span class="k">конверс.</span>
+          <div class="d">Страница-решение для Mittelstand (ваше решение 17.08): передать таможенные и складские операции одному оператору. Продающая, без SEO-ставки — модель как 3c; вход с главной</div>
+          <div class="linkbadges" id="lb-ms"></div>
         </div>
 
         <div class="node typ-srv" id="n-srv" onclick="selNode('srv')">
@@ -315,11 +328,12 @@
     </div>
 
     <div class="map-info on">
-      <b>⏳ Два вопроса — решаем вместе на созвоне (пн 17.08):</b>
+      <b>✅ Оба вопроса закрыты вашим письмом от 17.08 — внесено в карту:</b>
       <ul>
-        <li><b>Вход для Mittelstand</b> («Zoll- und Lagerlogistik auslagern»): отдельная целевая страница — или усиленная развилка на главной без новой страницы. Наша рекомендация — в письме.</li>
-        <li><b>Вторичный вход для разовых оформлений</b> (KFZ, водители, Autohaus, Dreilinden): компактная страница-маршрутизатор — или ведём напрямую через страницы услуг.</li>
+        <li><b>Вход для Mittelstand:</b> отдельная страница-решение «Zoll- und Lagerlogistik auslagern» (ваше решение) — добавлена на карту.</li>
+        <li><b>Разовые оформления:</b> без промежуточной страницы, но развилка на главной полноценная — 5 прямых маршрутов: KFZ importieren/exportieren → 2a · Import-/Export-Sendung anmelden → 2d/2e · Zum Zollbüro Dreilinden → 9 · Informationen für Fahrer → блок на 9 · Umzugsgut &amp; einzelne Sendungen → блок на 2d.</li>
       </ul>
+      Созвон ср 19.08: финальный проход карты и утверждение структуры.
     </div>
 
     <div class="map-info" id="mapInfo"></div>
@@ -357,13 +371,14 @@
       </div>
     </div>
     <div>
-      <div style="font-weight:700;color:var(--navy);font-size:.92em">Цепочка 2 · Алкогольный бренд <span style="font-weight:400;color:var(--muted)">— вся цепочка на одной странице: 3c</span></div>
+      <div style="font-weight:700;color:var(--navy);font-size:.92em">Цепочка 2 · Алкогольный бренд <span style="font-weight:400;color:var(--muted)">— вся цепочка на одной странице: 3c · последовательность по вашему письму 17.08</span></div>
       <div class="chain">
         <button class="step" onclick="selNode('imp');document.getElementById('block-1').scrollIntoView({behavior:'smooth'})">EMCS / Import</button><span class="arr">→</span>
         <button class="step" onclick="selNode('sl');document.getElementById('block-1').scrollIntoView({behavior:'smooth'})">Steuerlager Alkohol (3b)</button><span class="arr">→</span>
         <button class="step" onclick="selNode('ll');document.getElementById('block-1').scrollIntoView({behavior:'smooth'})">Kommissionierung (6)</button><span class="arr">→</span>
+        <button class="step" onclick="selNode('f');document.getElementById('block-1').scrollIntoView({behavior:'smooth'})">B2B-Distribution (4)</button><span class="arr">→</span>
         <button class="step" onclick="selNode('f');document.getElementById('block-1').scrollIntoView({behavior:'smooth'})">Handel (4)</button><span class="arr">/</span>
-        <button class="step" onclick="selNode('ff');document.getElementById('block-1').scrollIntoView({behavior:'smooth'})">Fulfillment (5)</button>
+        <button class="step" onclick="selNode('ff');document.getElementById('block-1').scrollIntoView({behavior:'smooth'})">B2B-Distribution / Fulfillment (5)</button>
       </div>
     </div>
 
@@ -408,8 +423,18 @@
           </div>
         </div>
         <div class="wf-block">
+          <span class="n">Блок 1b · Вторичная развилка «Einmalige Zollabfertigung» 🆕 <span style="font-weight:400">(ваше решение 17.08: без промежуточной страницы, 5 прямых маршрутов)</span></span>
+          <div class="wf-cta">
+            <button class="wf-btn ghost" onclick="showWf('service');toast('KFZ-Verzollung — страница услуги 2a')">KFZ importieren / exportieren →</button>
+            <button class="wf-btn ghost" onclick="showWf('service');toast('Import (2d) / Export (2e) — страницы услуг')">Import-/Export-Sendung anmelden →</button>
+            <button class="wf-btn ghost" onclick="showWf('service');toast('Dreilinden — Standort-страница 9')">Zum Zollbüro Dreilinden →</button>
+            <button class="wf-btn ghost" onclick="showWf('service');toast('Informationen für Fahrer — блок на странице Dreilinden (9)')">Informationen für Fahrer →</button>
+            <button class="wf-btn ghost" onclick="showWf('service');toast('Umzugsgut & einzelne Sendungen — блок на странице Import (2d)')">Umzugsgut &amp; einzelne Sendungen →</button>
+          </div>
+        </div>
+        <div class="wf-block">
           <span class="n">Блок 2 · Trust-лента</span>
-          <div class="bt">Typ C · Steuerlager · AEO-C · EcoVadis · seit 1997 · Dreilinden</div>
+          <div class="bt">Privates Zolllager · Steuerlager · AEO-C · EcoVadis · seit 1997 · Dreilinden</div>
           <div class="bd">Лицензионный стек сразу виден</div>
         </div>
         <div class="wf-block">
@@ -422,6 +447,7 @@
             <div class="wf-mini" onclick="showWf('hub');toast('Food & Beverage — тип «Хаб» (5.2)')">Food &amp; Beverage ⭐<span class="s">хаб</span></div>
             <div class="wf-mini" onclick="showWf('hub');toast('Fulfillment — тип «Хаб» (5.2)')">Fulfillment<span class="s">хаб</span></div>
             <div class="wf-mini" onclick="showWf('service');toast('Lagerlogistik — тип «Страница услуги» (5.3); показан пример Zolllager')">Lagerlogistik<span class="s">отдельная</span></div>
+            <div class="wf-mini" onclick="showWf('service');toast('Zoll- & Lagerlogistik auslagern — страница-решение для Mittelstand (ваше решение 17.08)')">Zoll- &amp; Lagerlogistik auslagern 🆕<span class="s">решение · Mittelstand</span></div>
           </div>
         </div>
         <div class="wf-block">
@@ -464,7 +490,7 @@
           <span class="n">Блок 2 · Витрина состава</span>
           <div class="bt">Карточки подстраниц</div>
           <div class="wf-cards-row">
-            <div class="wf-mini" onclick="showWf('service')">3a. Zolllager (Typ C)<span class="s">→ страница услуги</span></div>
+            <div class="wf-mini" onclick="showWf('service')">3a. Zolllager<span class="s">→ страница услуги</span></div>
             <div class="wf-mini" onclick="showWf('service');toast('Steuerlager Alkohol — тип «Страница услуги» (5.3); показан пример Zolllager')">3b. Steuerlager Alkohol ⭐<span class="s">→ страница услуги</span></div>
             <div class="wf-mini" onclick="showWf('service');toast('3c — продающая страница полной алкогольной цепочки (без SEO-ставки)')">3c. Alkohol-цепочка 🆕<span class="s">→ конверсионная</span></div>
           </div>
@@ -499,7 +525,8 @@
         </div>
         <div class="wf-block wf-ctafinal">
           <span class="n">Блок 8 · CTA</span>
-          <div class="bt">Короткая форма (3–5 полей) + личный менеджер</div>
+          <div class="bt">Service-Form (короткая, 3–5 полей) + личный менеджер</div>
+          <div class="bd">Состав каждой формы 🆕 (закреплено, ваш п.3 от 17.08): Datenschutz-чекбокс со ссылкой на Datenschutzerklärung · Danke-Seite · analytics-события · серверный журнал отправок + уведомление о недоставке · для сложных запросов — 2-й шаг: детали груза (Warenart, Herkunft/Ziel, объём, срок) + загрузка документов</div>
         </div>
       </div>
     </div>
@@ -548,7 +575,8 @@
         </div>
         <div class="wf-block wf-ctafinal">
           <span class="n">Блок 9 · CTA</span>
-          <div class="bt">Короткая форма + личный менеджер</div>
+          <div class="bt">Service-Form (короткая) + личный менеджер</div>
+          <div class="bd">Состав каждой формы 🆕 (закреплено, ваш п.3 от 17.08): Datenschutz-чекбокс со ссылкой · Danke-Seite · analytics-события · серверный журнал отправок + уведомление о недоставке · 2-этапная для сложных запросов (детали груза + загрузка документов)</div>
         </div>
       </div>
     </div>
@@ -613,7 +641,7 @@
 
 <footer>
   <div class="inner">
-    <span>SEREDA GmbH — Site-Konzept v2 (Entwurf, не дизайн) · переработано по фидбэку 15.08 · подготовлено 2Penguins · 16.08.2026</span>
+    <span>SEREDA GmbH — Site-Konzept v2.2 (Entwurf, не дизайн) · переработано по фидбэку 15.08 и вашему ответу 17.08 · подготовлено 2Penguins · 17.08.2026</span>
     <a href="index.html">← Projekt-Hub</a>
   </div>
 </footer>
@@ -632,7 +660,7 @@
 </div>
 
 <script>
-// ===== Site-Map данные v2 (источник: 00_sitemap v2 + entity_graph v1.2, рёбра C1–C11 из клиентских сценариев 15.08) =====
+// ===== Site-Map данные v2.2 (источник: 00_sitemap v3 + entity_graph v1.3, рёбра C1–C11 15.08 + фидбэк #44490 17.08) =====
 var NODES = {
   home:{el:'n-home', name:'Главная'},
   m:{el:'n-m', name:'Markteintritt DE/EU'},
@@ -643,13 +671,15 @@ var NODES = {
   imp:{el:'n-imp', name:'Importzollabfertigung'},
   exp:{el:'n-exp', name:'Export / Ausfuhranmeldung'},
   l:{el:'n-l', name:'Zoll- & Steuerlager'},
-  zl:{el:'n-zl', name:'Zolllager (Typ C)'},
+  zl:{el:'n-zl', name:'Zolllager'},
   sl:{el:'n-sl', name:'Steuerlager Alkohol'},
   al:{el:'n-al', name:'Alkoholimport, Steuerlager & Distribution'},
   f:{el:'n-f', name:'Food & Beverage'},
   ff:{el:'n-ff', name:'Fulfillment'},
   ll:{el:'n-ll', name:'Lagerlogistik'},
   dl:{el:'n-dl', name:'Dreilinden (Standort)'},
+  ms:{el:'n-ms', name:'Zoll- & Lagerlogistik auslagern (Mittelstand)'},
+  vern:{el:'n-vern', name:'Zollamtlich überwachte Vernichtung'},
   srv:{el:'n-srv', name:'Сервисные страницы'}
 };
 var XLINKS = [
@@ -663,6 +693,9 @@ var XLINKS = [
   {a:'dl', b:'imp', why:'Standort-страница ведёт к услугам площадки: Import-оформление'},
   {a:'dl', b:'kfz', why:'KFZ-Verzollung выполняется в бюро Dreilinden'},
   {a:'sp', b:'zl', why:'Nachbesserung технически требует таможенного склада'},
+  {a:'sp', b:'vern', why:'Zollamtlich überwachte Vernichtung — явный следующий шаг из спецрешений (добавлено по вашему письму 17.08)'},
+  {a:'ms', b:'l',  why:'Аутсорсинг Mittelstand разворачивается в оба склада + оформление на одной площадке'},
+  {a:'ms', b:'ll', why:'Аутсорсинг включает операционную складскую логистику'},
   {a:'ll', b:'zl', why:'Операции (сортировка, комиссионирование, этикетки) поверх любого хранения'},
   {a:'ll', b:'sl', why:'Операции поверх любого хранения — включая акцизный склад'},
   {a:'ff', b:'m',  why:'Вышел на рынок → нужна отправка заказов: большая связка с Markteintritt'},
