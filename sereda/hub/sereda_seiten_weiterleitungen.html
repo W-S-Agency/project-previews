@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="Seiten &amp; Weiterleitungen (Entwurf): полная Page Matrix нового sereda.de (20 типов страниц, 3 языка) и предварительная таблица переадресаций старых адресов sereda.de и zoll-agentur.eu.">
+<title>Seiten &amp; Weiterleitungen (Entwurf) — новый sereda.de</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#2e374f; --navy-900:#2c2e36; --slate:#515e82; --slate-lite:#6c757d;
+    --bg:#f4f6fe; --surface:#ffffff; --border:#e2e6f0; --text:#222222; --muted:#6c757d;
+    --accent:#ff3366;
+    --maxw:1080px; --radius:10px;
+    --fb-accent:#f59e0b; --fb-accent-border:#d97706; --fb-accent-hover:#d97706;
+    --fb-saved:#10b981; --fb-saved-border:#059669;
+    --fb-save:#2563eb; --fb-save-border:#1d4ed8; --fb-save-hover:#1d4ed8;
+    --fb-panel-bg:#fef3c7; --fb-panel-border:#f59e0b;
+    --fb-delete:#dc2626; --fb-delete-bg:#fef2f2; --fb-delete-border:#fca5a5;
+    --success:#10b981;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Roboto',-apple-system,'Segoe UI',sans-serif;color:var(--text);background:var(--bg);line-height:1.6}
+  a{color:var(--slate)}
+
+  .hub-header{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-900) 100%);color:#fff;padding:22px 20px}
+  .hub-header-inner{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .hub-titles h1{font-size:1.35em;font-weight:700}
+  .hub-titles .sub{font-size:.88em;opacity:.8;font-weight:300;margin-top:2px}
+  .hub-badge{background:var(--accent);color:#fff;font-size:.7em;font-weight:600;padding:5px 12px;border-radius:20px;text-transform:uppercase;letter-spacing:.5px}
+  .back-link{color:rgba(255,255,255,.75);text-decoration:none;font-size:.9em;white-space:nowrap}
+  .back-link:hover{color:#fff}
+  .feedback-counter{margin-left:auto;background:var(--fb-accent);color:#1e293b;padding:6px 16px;border-radius:20px;font-weight:700;cursor:pointer;transition:transform .2s;font-size:.85em;min-height:44px;display:flex;align-items:center}
+  .feedback-counter:hover{transform:scale(1.05)}
+  .feedback-counter.has-feedback{animation:fb-pulse 2s infinite}
+  @keyframes fb-pulse{0%,100%{box-shadow:0 0 0 0 rgba(245,158,11,.4)}50%{box-shadow:0 0 0 8px transparent}}
+
+  .page{max-width:var(--maxw);margin:0 auto;padding:28px 20px 60px}
+  .lead{font-size:1em;color:var(--navy);background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--slate);border-radius:var(--radius);padding:18px 20px;margin-bottom:18px}
+  .feedback-guide{background:#fffdf4;border:1px solid var(--fb-accent);border-radius:var(--radius);padding:18px 20px;margin-bottom:26px}
+  .feedback-guide h3{font-size:1.05em;color:var(--navy);margin-bottom:10px}
+  .feedback-guide ol{margin:0 0 10px 20px}
+  .feedback-guide li{margin-bottom:7px;font-size:.95em}
+  .feedback-guide em{color:var(--muted);font-size:.88em}
+
+  .block-wrapper{position:relative;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px 26px;margin-bottom:26px}
+  .block-wrapper h2{font-size:1.25em;color:var(--navy);font-weight:700;margin-bottom:6px;padding-bottom:10px;border-bottom:2px solid var(--slate)}
+  .block-label{display:block;font-size:.72em;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin-bottom:6px}
+  .hint{font-size:.88em;color:var(--muted);margin:8px 0 16px}
+
+  .tablewrap{overflow-x:auto;margin:14px 0}
+  table{width:100%;border-collapse:collapse;font-size:.88em;min-width:640px}
+  th{background:var(--navy);color:#fff;text-align:left;padding:9px 12px;font-weight:600;font-size:.92em}
+  td{padding:8px 12px;border-bottom:1px solid var(--border);vertical-align:top}
+  tr:nth-child(even) td{background:#f8f9fd}
+  td code, .slug{font-family:Consolas,Menlo,monospace;font-size:.92em;background:#eef1fb;border-radius:5px;padding:1px 6px;white-space:nowrap;color:var(--navy)}
+  .tag{display:inline-block;font-size:.78em;border-radius:10px;padding:1px 9px;font-weight:600;white-space:nowrap}
+  .tag-keep{background:#e7f6ee;color:#1c7a45;border:1px solid #b7e2c8}
+  .tag-301{background:#eef1fb;color:var(--slate);border:1px solid #c9d2ea}
+  .tag-merge{background:#fff7e6;color:#7a5000;border:1px solid var(--fb-accent)}
+  .tag-final{background:#fef2f2;color:#a33;border:1px solid #f2c4c4}
+  .tag-lang{background:#f3eefb;color:#5b3e8f;border:1px solid #d9ccee}
+  .star{color:var(--accent);font-weight:700}
+  .note{font-size:.85em;color:var(--muted);margin-top:10px}
+  .callout{border:1px dashed var(--fb-accent);background:#fffdf4;border-radius:var(--radius);padding:14px 16px;font-size:.92em;margin-top:14px}
+  .callout b{color:var(--navy)}
+  ol.fin{margin:8px 0 0 20px}
+  ol.fin li{margin-bottom:6px;font-size:.95em}
+
+  footer{background:var(--navy-900);color:rgba(255,255,255,.75);font-size:.85em;padding:22px 20px;margin-top:20px}
+  footer .inner{max-width:var(--maxw);margin:0 auto;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  footer a{color:#fff}
+
+  /* Feedback UI (канон 2p-preview) */
+  .feedback-btn{position:absolute;top:12px;right:24px;background:var(--fb-accent);border:2px solid var(--fb-accent-border);padding:8px 14px;border-radius:20px;cursor:pointer;font-size:13px;color:#1e293b;font-weight:600;transition:all .2s;z-index:10;min-height:44px}
+  .feedback-btn:hover{background:var(--fb-accent-hover);color:#fff}
+  .feedback-btn.has-comment{background:var(--fb-saved);border-color:var(--fb-saved-border);color:#fff}
+  .feedback-panel{display:none;position:absolute;top:3rem;right:.75rem;width:320px;max-width:calc(100% - 1.5rem);z-index:200;background:var(--fb-panel-bg);border:2px solid var(--fb-panel-border);border-radius:var(--radius);padding:20px;box-shadow:0 4px 16px rgba(0,0,0,.2);animation:fb-slideDown .3s ease}
+  .feedback-panel.open{display:block}
+  @keyframes fb-slideDown{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+  .feedback-panel label{display:block;font-weight:600;margin-bottom:8px;color:var(--navy);font-size:14px}
+  .feedback-panel textarea{width:100%;min-height:100px;padding:12px;border:1px solid var(--border);border-radius:var(--radius);font-family:inherit;font-size:15px;resize:vertical;line-height:1.5}
+  .feedback-panel textarea:focus{outline:none;border-color:var(--fb-save);box-shadow:0 0 0 3px rgba(37,99,235,.1)}
+  .feedback-actions{display:flex;gap:12px;margin-top:12px;flex-wrap:wrap}
+  .btn-save{background:var(--fb-save);color:#fff;border:2px solid var(--fb-save-border);padding:8px 20px;border-radius:var(--radius);cursor:pointer;font-size:14px;font-weight:600;min-height:44px}
+  .btn-save:hover{background:var(--fb-save-hover)}
+  .btn-cancel{background:#fff;border:2px solid #94a3b8;padding:8px 20px;border-radius:var(--radius);cursor:pointer;font-size:14px;color:#334155;font-weight:500;min-height:44px}
+  .btn-cancel:hover{background:#f1f5f9}
+  .btn-delete{background:var(--fb-delete-bg);border:2px solid var(--fb-delete-border);padding:8px 16px;border-radius:var(--radius);cursor:pointer;font-size:14px;color:var(--fb-delete);font-weight:500;margin-left:auto;min-height:44px}
+  .saved-indicator{display:none;color:var(--success);font-size:13px;align-items:center;gap:4px}
+  .export-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:400;justify-content:center;align-items:center}
+  .export-overlay.open{display:flex}
+  .export-box{background:#fff;border-radius:12px;padding:32px;max-width:500px;width:90%;text-align:center}
+  .export-box h2{margin-bottom:16px;font-size:22px}
+  .export-box p{color:var(--muted);margin-bottom:24px}
+  .export-box .count{font-size:48px;font-weight:800;color:var(--fb-save)}
+  .btn-export{display:inline-block;background:var(--fb-save);color:#fff;padding:14px 32px;border-radius:var(--radius);border:none;font-size:16px;font-weight:600;cursor:pointer;margin:8px;min-height:44px}
+  .btn-export:hover{background:var(--fb-save-hover)}
+  .btn-export.btn-copy{background:var(--fb-accent)}
+  .btn-export.btn-copy:hover{background:var(--fb-accent-border)}
+  .btn-close-overlay{display:inline-block;background:transparent;border:1px solid var(--border);padding:14px 32px;border-radius:var(--radius);font-size:16px;cursor:pointer;margin:8px;color:var(--muted);min-height:44px}
+
+  @media (max-width:768px){
+    .hub-header-inner{gap:10px}
+    .feedback-counter{margin-left:0}
+    .page{padding:20px 16px 50px}
+    .block-wrapper{padding:18px 16px}
+    .feedback-btn{top:auto;bottom:-16px;right:16px;font-size:12px}
+    .feedback-panel{padding:16px}
+  }
+</style>
+</head>
+<body>
+
+<header class="hub-header">
+  <div class="hub-header-inner">
+    <a class="back-link" href="index.html">← Projekt-Hub</a>
+    <div class="hub-titles">
+      <h1>Seiten &amp; Weiterleitungen: карта страниц и переадресации</h1>
+      <div class="sub">Полная Page Matrix (20 типов × 3 языка) · предварительная таблица «старый адрес → новая цель»</div>
+    </div>
+    <span class="hub-badge">Entwurf v1 · 17.08</span>
+    <div class="feedback-counter" id="feedbackCounter" onclick="openExportOverlay()">Feedback: <span id="feedbackCount">0</span> Kommentare</div>
+  </div>
+</header>
+
+<div class="page">
+
+  <div class="lead">
+    <strong>Статус: Entwurf (предварительная версия).</strong> Это обещанные до заморозки структуры полная Page Matrix и предварительная таблица переадресаций (ваш пункт 7 от 15.08, наш ответ от 16.08, пункт 5). Слаги и статусы финализируются сразу после утверждения структуры: каждая правка карты меняет таблицу, поэтому порядок двухшаговый.<br><br>
+    <strong>База.</strong> Карта 20 типов страниц (версия после вашего письма от 17.08, см. таб <a href="sereda_site_konzept.html">Site-Konzept</a>) плюс полная инвентаризация действующих адресов: sereda.de (данные Google Search Console за 16 месяцев, 110 адресов, статус каждого проверен) и zoll-agentur.eu (27 адресов).
+  </div>
+
+  <section class="feedback-guide">
+    <h3>📝 Как оставить замечания</h3>
+    <ol>
+      <li><strong>Смотрите таблицы</strong> — у каждого раздела справа есть кнопка «✏️ Vorschlag»: нажмите, напишите замечание, «Speichern».</li>
+      <li><strong>Соберите фидбэк</strong> — вверху справа кнопка «📥 Feedback»: скачать файлом или скопировать текст для письма.</li>
+      <li>Если удобнее без кнопок — просто напишите замечания обычным письмом, это тоже отлично работает.</li>
+    </ol>
+    <em>Комментарии сохраняются локально в браузере на этом устройстве (общий сборник с табом Site-Konzept).</em>
+  </section>
+
+  <!-- BLOCK 1: Page Matrix -->
+  <div class="block-wrapper" id="block-1">
+    <button class="feedback-btn" onclick="toggleFeedback(1)">✏️ Vorschlag</button>
+    <span class="block-label">Block 1 — Page Matrix (Entwurf)</span>
+    <h2>20 типов страниц × 3 языка</h2>
+    <p class="hint">Каждая страница получает собственный немецкий текст по структуре своего типа (как в каркасах Site-Konzept). RU: полный паритет структуры 1:1. EN: стартовый слой (отмеченные страницы), расширение после запуска.</p>
+    <div class="tablewrap">
+    <table>
+      <tr><th>#</th><th>Страница</th><th>Slug DE (Entwurf)</th><th>RU</th><th>EN-старт</th></tr>
+      <tr><td>00</td><td>Startseite (развилка «кому мы» + вторичная развилка 5 маршрутов)</td><td><span class="slug">/</span></td><td>✅</td><td>✅</td></tr>
+      <tr><td>01</td><td>Markteintritt DE/EU <span class="star">⭐</span> (зонтичный продукт)</td><td><span class="slug">/markteintritt-deutschland/</span></td><td>✅</td><td>✅</td></tr>
+      <tr><td>02</td><td>Zollabwicklung (хаб)</td><td><span class="slug">/zollabwicklung/</span></td><td>✅</td><td>нет</td></tr>
+      <tr><td>02a</td><td>KFZ-Verzollung</td><td><span class="slug">/zollabwicklung/kfz-verzollung/</span></td><td>✅</td><td>нет</td></tr>
+      <tr><td>02b</td><td>Import Ukraine (сегодня: №4 всего домена по кликам)</td><td><span class="slug">/zollabwicklung/import-ukraine/</span></td><td>✅</td><td>✅</td></tr>
+      <tr><td>02c</td><td>Zollrechtliche Speziallösungen (+ zollamtlich überwachte Vernichtung)</td><td><span class="slug">/zollabwicklung/speziallosungen/</span></td><td>✅</td><td>нет</td></tr>
+      <tr><td>02d</td><td>Importzollabfertigung (+ блок Umzugsgut &amp; einzelne Sendungen)</td><td><span class="slug">/zollabwicklung/importzollabfertigung/</span></td><td>✅ (RU-топ №1 сегодня)</td><td>нет</td></tr>
+      <tr><td>02e</td><td>Export / Ausfuhranmeldung</td><td><span class="slug">/zollabwicklung/export-ausfuhranmeldung/</span></td><td>✅ (RU-топ №2 сегодня)</td><td>нет</td></tr>
+      <tr><td>03</td><td>Zoll- &amp; Steuerlager (хаб)</td><td><span class="slug">/zoll-und-steuerlager/</span></td><td>✅</td><td>нет</td></tr>
+      <tr><td>03a</td><td>Zolllager</td><td><span class="slug">/zolllager/</span> ⏳</td><td>✅</td><td>после запуска</td></tr>
+      <tr><td>03b</td><td>Steuerlager Alkohol <span class="star">⭐</span></td><td><span class="slug">/steuerlager-alkohol/</span> ⏳</td><td>✅</td><td>✅</td></tr>
+      <tr><td>03c</td><td>Alkoholimport, Steuerlager &amp; Distribution (продающая страница)</td><td><span class="slug">/alkohol-import-distribution/</span> ⏳</td><td>✅</td><td>✅</td></tr>
+      <tr><td>04</td><td>Food &amp; Beverage Logistik <span class="star">⭐</span> (хаб)</td><td><span class="slug">/food-beverage-logistik/</span></td><td>✅</td><td>нет</td></tr>
+      <tr><td>05</td><td>Fulfillment DE+EU (хаб)</td><td><span class="slug">/fulfillment/</span></td><td>✅</td><td>✅</td></tr>
+      <tr><td>06</td><td>Lagerlogistik</td><td><span class="slug">/lagerlogistik/</span></td><td>✅</td><td>нет</td></tr>
+      <tr><td>07</td><td>Über uns</td><td><span class="slug">/ueber-uns/</span></td><td>✅</td><td>нет</td></tr>
+      <tr><td>08</td><td>Kontakt (обе локации)</td><td><span class="slug">/kontakt/</span></td><td>✅</td><td>нет</td></tr>
+      <tr><td>09</td><td>Dreilinden (Standort, + блок Informationen für Fahrer)</td><td><span class="slug">/zollbuero-dreilinden/</span> ⏳</td><td>✅</td><td>нет</td></tr>
+      <tr><td>10</td><td>FAQ (сводная)</td><td><span class="slug">/faq/</span></td><td>✅</td><td>нет</td></tr>
+      <tr><td>11</td><td>Zoll- und Lagerlogistik auslagern (Mittelstand, продающая страница)</td><td><span class="slug">/zoll-lagerlogistik-auslagern/</span> ⏳</td><td>✅</td><td>нет</td></tr>
+      <tr><td>—</td><td>Сервисные: Impressum · Datenschutz · AGB</td><td>стандартные</td><td>✅</td><td>✅</td></tr>
+    </table>
+    </div>
+    <p class="note">Пометка ⏳ у слага: точная форма (в том числе глубина вложенности) уточняется по SEO-данным на финализации. EN-старт: главная, Markteintritt, алкогольная зона, Fulfillment, Ukraine (как согласовано 16.08, пункт 4); остальные EN-страницы добавляются после запуска.</p>
+    <div class="feedback-panel" id="feedback-panel-1">
+      <label>Ваше замечание к Page Matrix:</label>
+      <textarea id="feedback-text-1" placeholder="Ваше замечание к карте страниц..."></textarea>
+      <div class="feedback-actions">
+        <button class="btn-save" onclick="saveFeedback(1)">Speichern</button>
+        <button class="btn-cancel" onclick="toggleFeedback(1)">Abbrechen</button>
+        <button class="btn-delete" onclick="deleteFeedback(1)" style="display:none" id="delete-btn-1">Löschen</button>
+      </div>
+      <div class="saved-indicator" id="saved-1">✓ Gespeichert</div>
+    </div>
+  </div>
+
+  <!-- BLOCK 2: Redirects sereda.de -->
+  <div class="block-wrapper" id="block-2">
+    <button class="feedback-btn" onclick="toggleFeedback(2)">✏️ Vorschlag</button>
+    <span class="block-label">Block 2 — Weiterleitungen sereda.de (предварительно)</span>
+    <h2>Предварительная таблица переадресаций: sereda.de</h2>
+    <p class="hint">Принцип: ни один работающий адрес старого сайта не теряется. Где слаг можно сохранить, сохраняем; где страница переезжает, ставим 301-переадресацию (постоянный редирект, передающий накопленный поисковый вес страницы). <span class="star">⭐</span> = страницы с существенным трафиком, обязательные к переадресации.</p>
+    <div class="tablewrap">
+    <table>
+      <tr><th>Старый адрес / раздел</th><th>Новая цель</th><th>Статус (кандидат)</th></tr>
+      <tr><td><span class="slug">/</span> и <span class="slug">/de/</span> (главная)</td><td>00 Startseite</td><td><span class="tag tag-keep">сохраняем</span></td></tr>
+      <tr><td><span class="slug">/de/zollservice/</span></td><td>02 Zollabwicklung</td><td><span class="tag tag-301">301</span></td></tr>
+      <tr><td><span class="slug">/de/zollservice/import</span></td><td>02d Importzollabfertigung</td><td><span class="tag tag-301">301</span></td></tr>
+      <tr><td><span class="slug">/de/zollservice/export</span></td><td>02e Export / Ausfuhranmeldung</td><td><span class="tag tag-301">301</span></td></tr>
+      <tr><td><span class="slug">/de/zollservice/kfz-import-und-export</span></td><td>02a KFZ-Verzollung</td><td><span class="tag tag-301">301</span></td></tr>
+      <tr><td><span class="slug">/de/zollservice/zertifizierung</span></td><td>02c Speziallösungen или блок на 02d</td><td><span class="tag tag-merge">объединение · финал</span></td></tr>
+      <tr><td><span class="star">⭐</span> <span class="slug">/de/zollservice/einfuhr-aus-der-ukraine-nach-deutschland</span> (№4 домена по кликам)</td><td>02b Import Ukraine</td><td><span class="tag tag-301">301 обязательный</span></td></tr>
+      <tr><td><span class="slug">/de/lager</span> (раздел)</td><td>03 Zoll- &amp; Steuerlager</td><td><span class="tag tag-301">301</span></td></tr>
+      <tr><td><span class="slug">/de/lager/zolllager</span></td><td>03a Zolllager</td><td><span class="tag tag-301">301</span></td></tr>
+      <tr><td><span class="slug">/de/lager/steuerlager</span></td><td>03b Steuerlager Alkohol</td><td><span class="tag tag-301">301</span></td></tr>
+      <tr><td><span class="slug">/de/lager/lagerleistungen</span></td><td>06 Lagerlogistik</td><td><span class="tag tag-301">301</span></td></tr>
+      <tr><td><span class="slug">/de/lager/e-commerce-fulfillment</span></td><td>05 Fulfillment</td><td><span class="tag tag-301">301</span></td></tr>
+      <tr><td><span class="slug">/de/lager/konsultation</span></td><td>08 Kontakt (блок консультации)</td><td><span class="tag tag-merge">объединение</span></td></tr>
+      <tr><td><span class="slug">/de/logistik</span> и подстраницы (Transport, Versicherung, 4PL и др.)</td><td>06 Lagerlogistik / 04 Food &amp; Beverage (по странице)</td><td><span class="tag tag-301">301</span> <span class="tag tag-final">маппинг · финал</span></td></tr>
+      <tr><td><span class="slug">/de/logistik/logistik-fuer-bio-und-naturprodukte</span></td><td>услуга не предлагается (ваше уточнение); страница без показов</td><td><span class="tag tag-final">снятие (410) или 301 на 04 · финал</span></td></tr>
+      <tr><td><span class="star">⭐</span> <span class="slug">/de/logistik/lebensmittellogistik…</span> (Food-страница с трафиком)</td><td>04 Food &amp; Beverage</td><td><span class="tag tag-301">301</span></td></tr>
+      <tr><td><span class="slug">/de/home/ueber-uns</span>, <span class="slug">/zertifikate</span>, <span class="slug">/verhaltenskodex</span></td><td>07 Über uns (сертификаты: блок Trust)</td><td><span class="tag tag-301">301</span></td></tr>
+      <tr><td><span class="slug">/de/home/news</span> + старые новости</td><td>раздел Nachrichten (CMS)</td><td><span class="tag tag-301">301 на раздел</span> <span class="tag tag-final">старые новости · финал</span></td></tr>
+      <tr><td><span class="slug">/de/kontakt</span> (+kontaktformular)</td><td>08 Kontakt</td><td><span class="tag tag-keep">сохраняем</span> / <span class="tag tag-301">301</span></td></tr>
+      <tr><td><span class="slug">/de/kontakt/zollbuero-dreilinden</span> (заметный кластер показов)</td><td>09 Dreilinden</td><td><span class="tag tag-301">301</span>; слаг намеренно сохранён в новом адресе</td></tr>
+      <tr><td><span class="slug">/de/kontakt/zolllager-berlin</span></td><td>03a / 08</td><td><span class="tag tag-merge">объединение · финал</span></td></tr>
+      <tr><td><span class="slug">/ru/*</span> (все разделы; RU-ядро = самый ценный переадресационный актив домена)</td><td>RU-паритет новых страниц 1:1 (топ-3: оформление импорта → RU-02d · оформление экспорта → RU-02e · таможенное оформление → RU-02)</td><td><span class="tag tag-301">301 по-страничный</span></td></tr>
+      <tr><td><span class="star">⭐</span> <span class="slug">/ru/tamozhennoe-oformlenie/import-iz-ukrainy-v-germaniu</span> (№6 домена)</td><td>RU-02b Import Ukraine</td><td><span class="tag tag-301">301 обязательный</span></td></tr>
+      <tr><td><span class="slug">/en/*</span> (все)</td><td>EN-стартовый слой; страницы вне слоя: ближайшая EN-зона или DE-аналог с языковой разметкой (hreflang)</td><td><span class="tag tag-301">301</span></td></tr>
+      <tr><td>Битые адреса (напр. <span class="slug">/en/warehouse/customs-warehouse</span>)</td><td>ближайшая живая цель по языковой матрице</td><td><span class="tag tag-301">301</span></td></tr>
+      <tr><td>Технические параметры-адреса (<span class="slug">?rCH=…</span> и подобные)</td><td>канонические новые страницы</td><td><span class="tag tag-final">canonical / снятие</span></td></tr>
+      <tr><td>Поддомены <span class="slug">scp.sereda.de</span> (портал, кнопка SCP-Login) и <span class="slug">uag.sereda.de</span></td><td>сохраняются как есть</td><td><span class="tag tag-keep">без изменений</span></td></tr>
+    </table>
+    </div>
+    <div class="feedback-panel" id="feedback-panel-2">
+      <label>Ваше замечание к переадресациям sereda.de:</label>
+      <textarea id="feedback-text-2" placeholder="Ваше замечание к таблице..."></textarea>
+      <div class="feedback-actions">
+        <button class="btn-save" onclick="saveFeedback(2)">Speichern</button>
+        <button class="btn-cancel" onclick="toggleFeedback(2)">Abbrechen</button>
+        <button class="btn-delete" onclick="deleteFeedback(2)" style="display:none" id="delete-btn-2">Löschen</button>
+      </div>
+      <div class="saved-indicator" id="saved-2">✓ Gespeichert</div>
+    </div>
+  </div>
+
+  <!-- BLOCK 3: zoll-agentur.eu -->
+  <div class="block-wrapper" id="block-3">
+    <button class="feedback-btn" onclick="toggleFeedback(3)">✏️ Vorschlag</button>
+    <span class="block-label">Block 3 — Weiterleitungen zoll-agentur.eu</span>
+    <h2>zoll-agentur.eu (27 адресов): консолидация на sereda.de</h2>
+    <div class="tablewrap">
+    <table>
+      <tr><th>Старый адрес (www.zoll-agentur.eu)</th><th>Новая цель</th></tr>
+      <tr><td><span class="slug">/</span> (главная)</td><td>02 Zollabwicklung (или 00, решение на финале)</td></tr>
+      <tr><td><span class="slug">/import-zollabfertigung</span></td><td>02d (на старом сайте Import уже отдельная страница; это подтверждает ваш пункт 1 от 15.08)</td></tr>
+      <tr><td><span class="slug">/export-zollabfertigung</span></td><td>02e</td></tr>
+      <tr><td><span class="slug">/zollamt-dreilinden</span></td><td>09 Dreilinden</td></tr>
+      <tr><td><span class="slug">/alkohol-tabak</span></td><td>03b Steuerlager Alkohol (табачная часть: честная обработка на финале)</td></tr>
+      <tr><td><span class="slug">/spezialthemen</span>, <span class="slug">/kfz-import-export</span>, <span class="slug">/ukraine-import-export</span></td><td>02c · 02a · 02b</td></tr>
+      <tr><td><span class="slug">/zolldokumente</span>, <span class="slug">/eori-atr-eur1</span></td><td>02 / FAQ-слой (объединение, решение на финале)</td></tr>
+      <tr><td><span class="slug">/services</span>, <span class="slug">/tools-und-tips</span>, <span class="slug">/zoll-news-eu</span></td><td>02 · FAQ/Ratgeber · Nachrichten</td></tr>
+      <tr><td><span class="slug">/über-sereda</span>, <span class="slug">/lager-wustermark</span></td><td>07 Über uns (+03/07)</td></tr>
+      <tr><td><span class="slug">/kontakt</span>, Impressum / Datenschutz / AGB / Cookies</td><td>08 · новые сервисные страницы</td></tr>
+      <tr><td>Booking-страницы (6 шт.) + Pricing</td><td>формы соответствующих услуг (02a / 02d / 02e / 09), маппинг на финале</td></tr>
+      <tr><td>Языковые ветки <span class="slug">/en</span> <span class="slug">/ru</span> <span class="slug">/uk</span></td><td>соответствующий языковой слой (украинская ветка: решение на финале)</td></tr>
+    </table>
+    </div>
+    <div class="feedback-panel" id="feedback-panel-3">
+      <label>Ваше замечание к zoll-agentur.eu:</label>
+      <textarea id="feedback-text-3" placeholder="Ваше замечание..."></textarea>
+      <div class="feedback-actions">
+        <button class="btn-save" onclick="saveFeedback(3)">Speichern</button>
+        <button class="btn-cancel" onclick="toggleFeedback(3)">Abbrechen</button>
+        <button class="btn-delete" onclick="deleteFeedback(3)" style="display:none" id="delete-btn-3">Löschen</button>
+      </div>
+      <div class="saved-indicator" id="saved-3">✓ Gespeichert</div>
+    </div>
+  </div>
+
+  <!-- BLOCK 4: Vollständigkeit + Finalisierung -->
+  <div class="block-wrapper" id="block-4">
+    <button class="feedback-btn" onclick="toggleFeedback(4)">✏️ Vorschlag</button>
+    <span class="block-label">Block 4 — Гарантия полноты · финализация</span>
+    <h2>Гарантия полноты и что финализируется после утверждения</h2>
+    <div class="callout"><b>Гарантия полноты:</b> все 90 работающих адресов sereda.de и все 27 адресов zoll-agentur.eu имеют целевую страницу в новой карте, включая 10 страниц с трафиком, которых нет в текущем sitemap старого сайта (проверено по полной выгрузке Google Search Console за 16 месяцев).</div>
+    <p class="hint" style="margin-top:16px"><b>После утверждения структуры финализируем:</b></p>
+    <ol class="fin">
+      <li>Точные слаги (позиции с пометкой ⏳).</li>
+      <li>По-страничный прогон «хвоста» адресов с малым трафиком (сейчас они сведены по разделам).</li>
+      <li>Все решения «объединить / снять» (помечены в таблицах).</li>
+      <li>Языковую матрицу DE↔RU↔EN (hreflang) для корректной работы трёх языковых версий.</li>
+    </ol>
+    <div class="feedback-panel" id="feedback-panel-4">
+      <label>Ваше замечание:</label>
+      <textarea id="feedback-text-4" placeholder="Ваше замечание..."></textarea>
+      <div class="feedback-actions">
+        <button class="btn-save" onclick="saveFeedback(4)">Speichern</button>
+        <button class="btn-cancel" onclick="toggleFeedback(4)">Abbrechen</button>
+        <button class="btn-delete" onclick="deleteFeedback(4)" style="display:none" id="delete-btn-4">Löschen</button>
+      </div>
+      <div class="saved-indicator" id="saved-4">✓ Gespeichert</div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="inner">
+    <span>SEREDA GmbH · Website-Relaunch sereda.de · Seiten &amp; Weiterleitungen (Entwurf v1, 17.08.2026)</span>
+    <span><a href="index.html">← Projekt-Hub</a> · <a href="sereda_site_konzept.html">Site-Konzept</a></span>
+  </div>
+</footer>
+
+<!-- Export Overlay -->
+<div class="export-overlay" id="exportOverlay" onclick="if(event.target===this)closeExportOverlay()">
+  <div class="export-box">
+    <h2>📥 Feedback exportieren</h2>
+    <div class="count" id="exportCount">0</div>
+    <p>Kommentar(e) gesammelt (alle Tabs zusammen). Als Datei herunterladen oder in die Zwischenablage kopieren:</p>
+    <button class="btn-export" onclick="exportFeedback()">💾 Als Datei herunterladen</button>
+    <button class="btn-export btn-copy" onclick="copyFeedback()">📋 In Zwischenablage kopieren</button><br>
+    <button class="btn-close-overlay" onclick="closeExportOverlay()">Schließen</button>
+  </div>
+</div>
+
+<script>
+// ===== Feedback (канон 2p-preview, cross-page ключ 2p-feedback-sereda) =====
+(function() {
+  var PROJECT = 'sereda';
+  var PAGE = 'seiten_weiterleitungen';
+  var PAGE_TITLE = 'Seiten & Weiterleitungen';
+  var STORAGE_KEY = '2p-feedback-' + PROJECT;
+
+  function getAllFeedback(){ return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); }
+  function getPageFeedback(){ var all=getAllFeedback(); return all[PAGE]||{}; }
+  function savePageFeedback(pageData){
+    var all=getAllFeedback();
+    if(Object.keys(pageData).length===1 && pageData._title){ delete all[PAGE]; }
+    else { all[PAGE]=pageData; }
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(all));
+  }
+  function getTotalCount(){
+    var all=getAllFeedback(),count=0;
+    for(var page in all){ for(var key in all[page]){ if(key!=='_title')count++; } }
+    return count;
+  }
+  function loadFeedback(){
+    var pageData=getPageFeedback();
+    for(var blockId in pageData){
+      if(blockId==='_title')continue;
+      var entry=pageData[blockId];
+      var text=(typeof entry==='object')?entry.text:entry;
+      var textarea=document.getElementById('feedback-text-'+blockId);
+      var btn=document.querySelector('#block-'+blockId+' .feedback-btn');
+      var deleteBtn=document.getElementById('delete-btn-'+blockId);
+      if(textarea)textarea.value=text;
+      if(btn){btn.classList.add('has-comment');btn.textContent='✏️ Kommentar bearbeiten';}
+      if(deleteBtn)deleteBtn.style.display='inline-block';
+    }
+    updateCounter();
+  }
+  window.toggleFeedback=function(blockId){
+    var panel=document.getElementById('feedback-panel-'+blockId);
+    panel.classList.toggle('open');
+    if(panel.classList.contains('open')){document.getElementById('feedback-text-'+blockId).focus();}
+  };
+  window.saveFeedback=function(blockId){
+    var text=document.getElementById('feedback-text-'+blockId).value.trim();
+    if(!text)return;
+    var blockEl=document.getElementById('block-'+blockId);
+    var labelEl=blockEl?blockEl.querySelector('.block-label'):null;
+    var label=labelEl?labelEl.textContent:('Block '+blockId);
+    var pageData=getPageFeedback();
+    pageData._title=PAGE_TITLE;
+    pageData[blockId]={text:text,label:label};
+    savePageFeedback(pageData);
+    var btn=document.querySelector('#block-'+blockId+' .feedback-btn');
+    btn.classList.add('has-comment');btn.textContent='✏️ Kommentar bearbeiten';
+    document.getElementById('delete-btn-'+blockId).style.display='inline-block';
+    var indicator=document.getElementById('saved-'+blockId);
+    indicator.style.display='flex';
+    setTimeout(function(){indicator.style.display='none'},2000);
+    updateCounter();
+    setTimeout(function(){window.toggleFeedback(blockId)},1500);
+  };
+  window.deleteFeedback=function(blockId){
+    var pageData=getPageFeedback();
+    delete pageData[blockId];
+    savePageFeedback(pageData);
+    document.getElementById('feedback-text-'+blockId).value='';
+    var btn=document.querySelector('#block-'+blockId+' .feedback-btn');
+    btn.classList.remove('has-comment');btn.textContent='✏️ Vorschlag';
+    document.getElementById('delete-btn-'+blockId).style.display='none';
+    updateCounter();
+    window.toggleFeedback(blockId);
+  };
+  function updateCounter(){
+    var count=getTotalCount();
+    var counterEl=document.getElementById('feedbackCounter');
+    if(count>0){
+      counterEl.classList.add('has-feedback');
+      counterEl.innerHTML='📥 Feedback: '+count+' Kommentar'+(count>1?'e':'');
+    } else {
+      counterEl.classList.remove('has-feedback');
+      counterEl.innerHTML='Feedback: 0 Kommentare';
+    }
+  }
+  window.openExportOverlay=function(){
+    var count=getTotalCount();
+    if(count===0)return;
+    document.getElementById('exportCount').textContent=count;
+    document.getElementById('exportOverlay').classList.add('open');
+  };
+  window.closeExportOverlay=function(){
+    document.getElementById('exportOverlay').classList.remove('open');
+  };
+  function buildFeedbackText(){
+    var all=getAllFeedback();
+    var totalCount=getTotalCount();
+    var text='FEEDBACK — '+PROJECT.toUpperCase()+'\n';
+    text+='Datum: '+new Date().toLocaleDateString('de-DE')+'\n';
+    text+=totalCount+' Kommentar(e) insgesamt\n';
+    text+='==================================================\n\n';
+    for(var page in all){
+      var pageData=all[page];
+      var pageTitle=pageData._title||page;
+      text+='━━━ '+pageTitle+' ━━━\n\n';
+      for(var blockId in pageData){
+        if(blockId==='_title')continue;
+        var entry=pageData[blockId];
+        var commentText=(typeof entry==='object')?entry.text:entry;
+        var label=(typeof entry==='object'&&entry.label)?entry.label:('Block '+blockId);
+        text+='📌 '+label+'\n';
+        text+='----------------------------------------\n';
+        text+=commentText+'\n\n';
+      }
+    }
+    text+='==================================================\n';
+    text+='Erstellt am '+new Date().toLocaleString('de-DE')+'\n';
+    return text;
+  }
+  window.exportFeedback=function(){
+    var text=buildFeedbackText();
+    var blob=new Blob([text],{type:'text/plain;charset=utf-8'});
+    var url=URL.createObjectURL(blob);
+    var a=document.createElement('a');
+    a.href=url;
+    a.download='feedback_'+PROJECT+'_'+new Date().toISOString().slice(0,10)+'.txt';
+    a.click();
+    URL.revokeObjectURL(url);
+    window.closeExportOverlay();
+  };
+  window.copyFeedback=function(){
+    var text=buildFeedbackText();
+    navigator.clipboard.writeText(text).then(function(){
+      var btn=document.querySelector('.btn-copy');
+      var original=btn.textContent;
+      btn.textContent='✅ Kopiert!';
+      setTimeout(function(){btn.textContent=original},2000);
+    });
+  };
+  loadFeedback();
+})();
+</script>
+</body>
+</html>
