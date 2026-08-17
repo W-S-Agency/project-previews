@@ -129,8 +129,8 @@
 <div class="page">
 
   <div class="lead">
-    <strong>Статус: Entwurf (предварительная версия).</strong> Это обещанные до заморозки структуры полная Page Matrix и предварительная таблица переадресаций (Ваш пункт 7 от 15.08, наш ответ от 16.08, пункт 5). Слаги и статусы финализируются сразу после утверждения структуры: каждая правка карты меняет таблицу, поэтому порядок двухшаговый.<br><br>
-    <strong>База.</strong> Карта 20 типов страниц (версия после Вашего письма от 17.08, см. таб <a href="sereda_site_konzept.html">Site-Konzept</a>) плюс полная инвентаризация действующих адресов: sereda.de (данные Google Search Console за 16 месяцев, 110 адресов, статус каждого проверен) и zoll-agentur.eu (27 адресов).
+    <strong>Статус: Entwurf (предварительная версия).</strong> Это полная Page Matrix и предварительная таблица переадресаций, обещанные Вам до заморозки структуры (Ваш пункт 7 от 15.08, наш ответ от 16.08, пункт 5). Слаги и статусы финализируются сразу после утверждения структуры: каждая правка карты меняет таблицу, поэтому порядок двухшаговый.<br><br>
+    <strong>База.</strong> Карта 20 типов страниц (версия после Вашего письма от 17.08, см. таб <a href="sereda_site_konzept.html">Site-Konzept</a>) плюс полная инвентаризация действующих адресов: sereda.de (данные Google Search Console за 16 месяцев: 110 адресов, у 97 из них дополнительно проверен текущий статус ответа) и zoll-agentur.eu (27 адресов).
   </div>
 
   <section class="feedback-guide">
@@ -193,7 +193,7 @@
     <button class="feedback-btn" onclick="toggleFeedback(2)">✏️ Vorschlag</button>
     <span class="block-label">Block 2 — Weiterleitungen sereda.de (предварительно)</span>
     <h2>Предварительная таблица переадресаций: sereda.de</h2>
-    <p class="hint">Принцип: ни один работающий адрес старого сайта не теряется. Где слаг можно сохранить, сохраняем; где страница переезжает, ставим 301-переадресацию (постоянный редирект, передающий накопленный поисковый вес страницы). <span class="star">⭐</span> = страницы с существенным трафиком, обязательные к переадресации.</p>
+    <p class="hint">Принцип: ни один работающий адрес старого сайта не теряется. Где слаг можно сохранить, сохраняем; где страница переезжает, ставим 301-переадресацию (постоянный редирект, передающий накопленный поисковый вес страницы). <span class="star">⭐</span> = страницы с существенным трафиком, обязательные к переадресации. Целевые адреса указаны типом страницы, их будущие слаги см. в Page Matrix выше; финальная версия (после утверждения структуры) будет постраничной таблицей «старый URL → новый URL».</p>
     <div class="tablewrap">
     <table>
       <tr><th>Старый адрес / раздел</th><th>Новая цель</th><th>Статус (кандидат)</th></tr>
@@ -210,7 +210,7 @@
       <tr><td><span class="slug">/de/lager/lagerleistungen</span></td><td>06 Lagerlogistik</td><td><span class="tag tag-301">301</span></td></tr>
       <tr><td><span class="slug">/de/lager/e-commerce-fulfillment</span></td><td>05 Fulfillment</td><td><span class="tag tag-301">301</span></td></tr>
       <tr><td><span class="slug">/de/lager/konsultation</span></td><td>08 Kontakt (блок консультации)</td><td><span class="tag tag-merge">объединение</span></td></tr>
-      <tr><td><span class="slug">/de/logistik</span> и подстраницы (Transport, Versicherung, 4PL и др.)</td><td>06 Lagerlogistik / 04 Food &amp; Beverage (по странице)</td><td><span class="tag tag-301">301</span> <span class="tag tag-final">маппинг · финал</span></td></tr>
+      <tr><td><span class="slug">/de/logistik</span> и подстраницы (Transport, Versicherung, 4PL и др.)</td><td>06 Lagerlogistik / 04 Food &amp; Beverage (по странице)</td><td><span class="tag tag-301">301</span> <span class="tag tag-final">постраничный маппинг · финал</span></td></tr>
       <tr><td><span class="slug">/de/logistik/logistik-fuer-bio-und-naturprodukte</span></td><td>услуга не предлагается (Ваше уточнение); страница без показов</td><td><span class="tag tag-final">снятие (410) или 301 на 04 · финал</span></td></tr>
       <tr><td><span class="star">⭐</span> <span class="slug">/de/logistik/lebensmittellogistik…</span> (Food-страница с трафиком)</td><td>04 Food &amp; Beverage</td><td><span class="tag tag-301">301</span></td></tr>
       <tr><td><span class="slug">/de/home/ueber-uns</span>, <span class="slug">/zertifikate</span>, <span class="slug">/verhaltenskodex</span></td><td>07 Über uns (сертификаты: блок Trust)</td><td><span class="tag tag-301">301</span></td></tr>
@@ -218,7 +218,7 @@
       <tr><td><span class="slug">/de/kontakt</span> (+kontaktformular)</td><td>08 Kontakt</td><td><span class="tag tag-keep">сохраняем</span> / <span class="tag tag-301">301</span></td></tr>
       <tr><td><span class="slug">/de/kontakt/zollbuero-dreilinden</span> (заметный кластер показов)</td><td>09 Dreilinden</td><td><span class="tag tag-301">301</span>; слаг намеренно сохранён в новом адресе</td></tr>
       <tr><td><span class="slug">/de/kontakt/zolllager-berlin</span></td><td>03a / 08</td><td><span class="tag tag-merge">объединение · финал</span></td></tr>
-      <tr><td><span class="slug">/ru/*</span> (все разделы; RU-ядро = самый ценный переадресационный актив домена)</td><td>RU-паритет новых страниц 1:1 (топ-3: оформление импорта → RU-02d · оформление экспорта → RU-02e · таможенное оформление → RU-02)</td><td><span class="tag tag-301">301 по-страничный</span></td></tr>
+      <tr><td><span class="slug">/ru/*</span> (все разделы; RU-ядро = самый ценный переадресационный актив домена)</td><td>RU-паритет новых страниц 1:1 (топ-3: оформление импорта → RU-02d · оформление экспорта → RU-02e · таможенное оформление → RU-02)</td><td><span class="tag tag-301">301 постраничный</span></td></tr>
       <tr><td><span class="star">⭐</span> <span class="slug">/ru/tamozhennoe-oformlenie/import-iz-ukrainy-v-germaniu</span> (№6 домена)</td><td>RU-02b Import Ukraine</td><td><span class="tag tag-301">301 обязательный</span></td></tr>
       <tr><td><span class="slug">/en/*</span> (все)</td><td>EN-стартовый слой; страницы вне слоя: ближайшая EN-зона или DE-аналог с языковой разметкой (hreflang)</td><td><span class="tag tag-301">301</span></td></tr>
       <tr><td>Битые адреса (напр. <span class="slug">/en/warehouse/customs-warehouse</span>)</td><td>ближайшая живая цель по языковой матрице</td><td><span class="tag tag-301">301</span></td></tr>
