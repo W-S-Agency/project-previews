@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>SEREDA — Content-Vorlagen (шаблоны текстов) v1</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<style>
+  :root{ --navy:#2e374f; --navy-900:#2c2e36; --slate:#515e82; --slate-lite:#6c757d; --accent:#e8b54a; --bg:#f4f5f7; --surface:#fff; --border:#e2e6ec; --maxw:1080px; }
+  *{box-sizing:border-box;margin:0}
+  body{font:15px/1.5 "Segoe UI",system-ui,sans-serif;color:#22252e;background:var(--bg)}
+  code{background:#eef1f8;padding:1px 6px;border-radius:4px;font-size:.88em;color:var(--navy)}
+  .hub-header{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-900) 100%);color:#fff;padding:26px 20px 0}
+  .hub-header .inner{max-width:var(--maxw);margin:0 auto}
+  .hub-header h1{font-size:1.35em}
+  .hub-header p{opacity:.75;font-size:.92em;margin-top:4px}
+  .hub-tabs{max-width:var(--maxw);margin:18px auto 0;display:flex;gap:4px;flex-wrap:wrap}
+  .hub-tab{padding:12px 20px;color:rgba(255,255,255,.65);text-decoration:none;font-size:.95em;font-weight:500;border-radius:10px 10px 0 0;border-bottom:3px solid transparent;white-space:nowrap}
+  .hub-tab:hover{color:#fff;background:rgba(255,255,255,.06)}
+  .hub-tab.active{color:var(--navy);background:var(--bg);border-bottom-color:var(--accent);font-weight:700}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:24px 20px 70px}
+  .lead{font-size:1.02em;color:var(--navy);background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--slate);border-radius:10px;padding:18px 20px;margin-bottom:20px}
+  .subnav{position:sticky;top:0;background:var(--bg);padding:10px 0;z-index:5;display:flex;gap:6px;flex-wrap:wrap;border-bottom:1px solid var(--border);margin-bottom:18px}
+  .subnav a{font-size:.85em;background:var(--surface);border:1px solid var(--border);border-radius:99px;padding:4px 12px;text-decoration:none;color:var(--navy)}
+  .subnav a:hover{border-color:var(--slate)}
+  section.card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px 22px;margin-bottom:20px}
+  section.card h2{font-size:1.2em;color:var(--navy);margin-bottom:6px;padding-bottom:8px;border-bottom:2px solid var(--slate)}
+  .meta{font-size:.9em;color:var(--slate-lite);margin-bottom:12px}
+  .meta b{color:var(--navy)}
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.9em}
+  th{background:var(--navy);color:#fff;padding:7px 10px;text-align:left;font-weight:600}
+  td{border-bottom:1px solid var(--border);padding:7px 10px;vertical-align:top}
+  tr:nth-child(even) td{background:#fafbfd}
+  .tablewrap{overflow-x:auto}
+  .tablewrap table{min-width:640px}
+  .pill{display:inline-block;font-size:.78em;font-weight:700;padding:1px 9px;border-radius:99px;vertical-align:middle}
+  .p-wir{background:#e3ecf7;color:#2c5490}
+  .p-sie{background:#e8f0e8;color:#2e5c2e}
+  .p-opt{background:#f3f4f6;color:#6c757d}
+  .note{background:#fdf6e3;border-left:4px solid #b07d1e;border-radius:8px;padding:12px 16px;margin:12px 0;font-size:.92em}
+  .stop{background:#fdecec;border-left:4px solid #c0392b;border-radius:8px;padding:12px 16px;margin:12px 0;font-size:.92em}
+  ul{margin:8px 0 8px 20px}
+  li{margin:4px 0}
+  .counter{background:#e8f0e8;border-radius:8px;padding:8px 14px;font-size:.9em;display:inline-block;margin-top:6px}
+  .hub-footer{background:var(--navy);color:rgba(255,255,255,.75);font-size:.85em;padding:16px 20px;text-align:center;margin-top:30px}
+</style>
+</head>
+<body>
+
+<header class="hub-header">
+  <div class="inner">
+    <h1>Content-Vorlagen — шаблоны текстов по типам страниц · v1</h1>
+    <p>SEREDA GmbH · Website-Relaunch · 01.09.2026 · рабочий документ для подготовки текстов</p>
+  </div>
+  <nav class="hub-tabs">
+    <a href="index.html" class="hub-tab">📈 Arbeitsstand</a>
+    <a href="sereda_site_konzept.html" class="hub-tab">🗺 Site-Konzept</a>
+    <a href="sereda_seiten_weiterleitungen.html" class="hub-tab">📄 Seiten &amp; Weiterleitungen</a>
+    <a href="sereda_muster_startseite.html" class="hub-tab">👁 Muster-Startseite</a>
+    <a href="sereda_content_vorlagen.html" class="hub-tab active">📝 Content-Vorlagen</a>
+  </nav>
+</header>
+
+<div class="wrap">
+
+<div class="lead">
+  <b>Как этим пользоваться.</b> Для каждого типа страницы ниже: из каких блоков она состоит, что писать в каждый блок и какой длины. Порядок работы: <b>1)</b> откройте <a href="sereda_muster_startseite.html">образцовую страницу</a> — там видно, как блоки выглядят вживую и какой длины тексты · <b>2)</b> пишете текст страницы прямо по таблице её типа (обычный Word/Google-документ, блок за блоком) · <b>3)</b> мы проверяем по этим же правилам (лимиты, обязательные поля, стоп-лист) и заводим в систему — на сайте текст появляется в оформлении, как в образце.<br><br>
+  <b>Лимиты — это ориентиры (Richtwert),</b> а не жёсткие рамки: ±10–15% — нормально; если при заведении поле потребует уточнения, адаптируем мы, Ваши тексты переписывать не придётся. Главный запрос каждой страницы — в «Карте запросов» (идёт в этом же пакете): он должен прозвучать в заголовке H1, SEO-Title и первом абзаце.
+</div>
+
+<nav class="subnav">
+  <a href="#pflicht">Обязательные поля</a>
+  <a href="#gemeinsam">Общие блоки</a>
+  <a href="#stop">Стоп-лист</a>
+  <a href="#t1">1 · Startseite</a>
+  <a href="#t2">2 · Hub</a>
+  <a href="#t3">3 · Leistungsseite</a>
+  <a href="#t4">4 · Conversion-LP</a>
+  <a href="#t5">5 · Markteintritt</a>
+  <a href="#t6">6 · Dreilinden</a>
+  <a href="#t7">7 · Über uns / Kontakt / FAQ</a>
+  <a href="#t8">8 · Nachrichten</a>
+</nav>
+
+<section class="card" id="pflicht">
+  <h2>Обязательные поля каждой страницы</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Поле</th><th>Лимит</th><th>Что это</th></tr>
+    <tr><td><b>SEO-Title</b></td><td>≤ 60 знаков</td><td>Заголовок в Google; начинается с главного запроса страницы, бренд « | SEREDA» в конце</td></tr>
+    <tr><td><b>Meta-Description</b></td><td>≤ 155 знаков</td><td>Описание под заголовком в Google: что + для кого + 1 выгода</td></tr>
+    <tr><td><b>H1</b></td><td>≤ 70 знаков</td><td>Видимый заголовок страницы (не дублирует Title слово в слово)</td></tr>
+    <tr><td><b>Прямой ответ (answerBox)</b></td><td>40–60 слов</td><td>Абзац сразу под H1: что это, для кого, ключевая выгода. Именно его цитируют Google и AI-ассистенты (ChatGPT, Perplexity). Обязателен на всех содержательных страницах; исключения: Conversion-LP (тип 4) и правовые</td></tr>
+    <tr><td><b>FAQ</b></td><td>5–7 вопросов; вопрос ≤ 90 зн., ответ 40–60 слов</td><td>На каждой услуге и хабе (её нет только на Kontakt и Nachrichten). Один вопрос = одна тема; ответ самодостаточен</td></tr>
+    <tr><td><b>CTA-текст</b></td><td>≤ 20 знаков</td><td>Надпись на кнопке (стандарт: «Anfrage»)</td></tr>
+  </table></div>
+</section>
+
+<section class="card" id="gemeinsam">
+  <h2>Общие блоки (⟲ одинаковы на всех страницах — пишутся один раз или не пишутся вовсе)</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Блок</th><th>Кто</th><th>Что с ним делать</th></tr>
+    <tr><td>Шапка (навигация) и подвал</td><td><span class="pill p-wir">мы</span></td><td>Тексты не нужны — фиксированы структурой</td></tr>
+    <tr><td>Отзывы («Kundenstimmen»)</td><td><span class="pill p-wir">мы</span></td><td>Живой виджет Google (рейтинг + 3 отзыва) — тексты не пишутся; нужен только Widget-ID Вашего профиля</td></tr>
+    <tr><td>CTA-полоса посреди страницы</td><td><span class="pill p-sie">Вы</span></td><td>1 строка ≤ 90 знаков: вопрос/приглашение по теме страницы + кнопка</td></tr>
+    <tr><td>Контакт + форма (низ каждой страницы)</td><td><span class="pill p-wir">мы</span> <span class="pill p-sie">частично Вы</span></td><td>Форма стандартная; от Вас — 1–2 строки приветствия и контактное лицо (имя, роль, фото — можно без фото)</td></tr>
+    <tr><td>Сервис-обещание (таможенные страницы)</td><td><span class="pill p-wir">мы</span></td><td>Только проверяемая формула: ответ ≤ 3 раб. часов · декларация ≤ 16 раб. часов после полного пакета документов, с перечнем исключений. Формулировка фиксирована — не переписывается</td></tr>
+  </table></div>
+</section>
+
+<section class="card" id="stop">
+  <h2>Стоп-лист формулировок (для всех текстов, все языки)</h2>
+  <div class="stop">
+    Эти формулировки не используются нигде — при проверке мы вернём текст с пометкой (по Вашим же решениям от 22.08):
+    <ul>
+      <li>«Zolllager <b>Typ C</b>» — только «Zolllager» / «privates Zolllager»</li>
+      <li>«<b>Lager mieten</b>» — аренду не продвигаем</li>
+      <li>Публичные цены «<b>ab X €</b>» — сейчас не публикуются</li>
+      <li>Безусловное «<b>24 Stunden</b>» — только формулы с условиями (см. сервис-обещание выше)</li>
+      <li>«<b>garantiert</b>», «<b>rechtssichere Zollabfertigung</b>» и любые абсолютные гарантии</li>
+      <li>«Никто не предлагает» — только форма «в открытых предложениях проверенных анбитеров мы такой связки не нашли»</li>
+      <li>Впечатление <b>холодного склада</b> — хранение сухое при комнатной температуре; Kühl/Tiefkühl только через партнёра (от 50 паллет/мес)</li>
+      <li><b>Bio / EU-Öko</b> — в любой форме отсутствует</li>
+      <li>Частные переезды — не обслуживаются (таможенная часть = блок «Umzugsgut» на странице Importzollabfertigung)</li>
+      <li>Для Dreilinden: не «T1 eröffnen/beenden» — корректно TIR</li>
+      <li>Перевозки своим транспортом — мы Spediteur: «Distribution organisieren wir über geprüfte Partner»</li>
+    </ul>
+  </div>
+</section>
+
+<section class="card" id="t1">
+  <h2>Тип 1 · Startseite (стартовая) — 1 страница</h2>
+  <div class="meta"><b>Статус: тексты уже написаны нами</b> (это образцовая страница пакета — <a href="sereda_muster_startseite.html">смотреть</a>). Ваша роль: проверить/финализировать + прислать данные для 8 слотов (выделены на образце жёлтым).</div>
+  <div class="tablewrap"><table>
+    <tr><th>Слот на странице</th><th>Что нужно от Вас</th></tr>
+    <tr><td>WhatsApp</td><td>Какой номер используем для кнопки WhatsApp?</td></tr>
+    <tr><td>Фото Hero</td><td>Фото площадки/рамп (16:9 или 3:2) — или берём сток?</td></tr>
+    <tr><td>Отзывы</td><td>Google-Widget-ID Вашего профиля</td></tr>
+    <tr><td>Кейс</td><td>Можно ли назвать клиента по имени (да/нет)? Без письменного «да» — обезличенно</td></tr>
+    <tr><td>Фото к кейсу</td><td>Снимок по теме цепочки (3:2) — или сток</td></tr>
+    <tr><td>FAQ</td><td>1–2 вопроса, которые клиенты задают Вам чаще всего</td></tr>
+    <tr><td>Контактное лицо</td><td>Имя, роль, фото 1:1 (можно без фото)</td></tr>
+    <tr><td>Barrierefreiheit</td><td>Ссылка-заявление в подвале — желаете? (для SEREDA добровольно, рекомендуем как сигнал доверия)</td></tr>
+  </table></div>
+</section>
+
+<section class="card" id="t2">
+  <h2>Тип 2 · Hub (страница-раздел) — Zollabwicklung · Zoll- &amp; Steuerlager · Food &amp; Beverage · Fulfillment</h2>
+  <div class="meta"><b>Кто пишет:</b> Zoll- &amp; Steuerlager — короткий навигационный хаб, драфт сделаем <span class="pill p-wir">мы</span>; Zollabwicklung / Food / Fulfillment — <span class="pill p-sie">Вы по шаблону</span> (для Food и Fulfillment — из круга страниц глубокой проработки, состав которого финализируем с Вами — сначала наш SEO-драфт). <b>Объём:</b> ≥ 500 слов; заполненные блоки дают ~600–750 ✓</div>
+  <div class="tablewrap"><table>
+    <tr><th>#</th><th>Блок</th><th>Что писать</th><th>Лимит</th></tr>
+    <tr><td>1</td><td>H1 + прямой ответ</td><td>Заголовок раздела + абзац: что входит, для кого, ключевая связка</td><td>H1 ≤70 · 40–60 слов</td></tr>
+    <tr><td>2</td><td>Витрина состава</td><td>Карточка на каждую подстрагицу/направление раздела: название + 1 предложение</td><td>Titel ≤36 · Satz ≤140 на карточку</td></tr>
+    <tr><td>3</td><td>Дифференциатор</td><td>Почему это связка, а не сумма услуг (напр. «оба склада + оформление на одной площадке»)</td><td>1 абзац ≤300</td></tr>
+    <tr><td>4</td><td>Доказательство</td><td>Стек допусков/лицензий с годами ИЛИ цифры + мини-пример из практики</td><td>5–7 пунктов ≤60 зн.</td></tr>
+    <tr><td>5</td><td>Процесс</td><td>5 шагов тематического цикла (напр. приём → размещение → хранение → обработка → выдача)</td><td>шаг: Titel ≤24 + Satz ≤120</td></tr>
+    <tr><td>6</td><td>Честные рамки (Grenzen)</td><td>Voraussetzungen, Grenzen und nicht enthaltene Leistungen — 3–5 пунктов</td><td>пункт ≤160</td></tr>
+    <tr><td>7</td><td>Смежные услуги</td><td>3 перехода: куда идти с более широкой задачей (по карте пересечений — согласуем)</td><td>карточка ≤140</td></tr>
+    <tr><td>8–10</td><td>Отзывы ⟲ · FAQ (5) · Контакт ⟲</td><td>см. «Общие блоки» и «Обязательные поля»</td><td>—</td></tr>
+  </table></div>
+</section>
+
+<section class="card" id="t3">
+  <h2>Тип 3 · Leistungsseite (страница услуги) — KFZ · Ukraine · Speziallösungen · Import · Export · Zolllager · Steuerlager · Lagerlogistik</h2>
+  <div class="meta"><b>Кто пишет:</b> страницы глубокой проработки (состав финализируем с Вами) — сначала наш SEO-драфт <span class="pill p-wir">мы</span>, Вы финализируете; остальные — <span class="pill p-sie">Вы по шаблону</span>. <b>Объём:</b> ≥ 700–900 слов; заполненные блоки дают ~900–1200 ✓</div>
+  <div class="tablewrap"><table>
+    <tr><th>#</th><th>Блок</th><th>Что писать</th><th>Лимит</th></tr>
+    <tr><td>1</td><td>H1 + прямой ответ + строка доверия</td><td>Заголовок с главным запросом + абзац (что/для кого/выгода) + одна строка «SEREDA · допуск · опыт с 1997»</td><td>H1 ≤70 · 40–60 слов · строка ≤90</td></tr>
+    <tr><td>2</td><td>Проблема клиента</td><td>«Домашняя» боль именно этой услуги, её словами клиента (1–2 грани)</td><td>2 абзаца ≤300 сумм.</td></tr>
+    <tr><td>3</td><td>Наше решение</td><td>Механика: как услуга снимает проблему, 3–5 пунктов</td><td>пункт ≤160</td></tr>
+    <tr><td>4</td><td>Процесс</td><td>5 шагов от обращения до результата</td><td>шаг: Titel ≤24 + Satz ≤120</td></tr>
+    <tr><td>5</td><td>Доказательство</td><td>Допуски/цифры + 2–3 примера из практики (сценарии; клиентов без письменного «да» не называем)</td><td>карточка ≤140</td></tr>
+    <tr><td>6</td><td>Честные рамки (Grenzen)</td><td>Что нужно от клиента, чего не делаем — обязательный блок</td><td>3–5 пунктов ≤160</td></tr>
+    <tr><td>7</td><td>Смежные услуги</td><td>3 перехода + ссылка вверх на раздел</td><td>карточка ≤140</td></tr>
+    <tr><td>8</td><td>Основы темы (Grundlagen)</td><td>Мини-справка: 2–3 подзаголовка с ответами («Was ist …?», «Wie funktioniert …?») — то, что спрашивают у Google и AI</td><td>H3 + 60–100 слов каждый</td></tr>
+    <tr><td>9–11</td><td>Отзывы ⟲ · FAQ (5–7) · Контакт ⟲</td><td>см. общие</td><td>—</td></tr>
+  </table></div>
+  <div class="note"><b>Особые строки (фиксированы решениями, в тексты включаем):</b> Steuerlager — двухступенчатая очистка + EMCS/e-VD + один нейтральный FAQ-пункт «Tabakwaren bieten wir nicht an» · Food — LEH-нарратив, холодная логистика честно через партнёра · Fulfillment — термины FBA/FBM/FBA Prep, оба сценария B2C и B2B, тон без переобещаний · KFZ — форма-фильтр от нецелевых запросов.</div>
+</section>
+
+<section class="card" id="t4">
+  <h2>Тип 4 · Conversion-Seite — «Alkoholimport &amp; Distribution» · «Zoll- und Lagerlogistik auslagern»</h2>
+  <div class="meta"><b>Кто пишет:</b> Alkohol-цепочка (кандидат глубокой проработки) — драфт <span class="pill p-wir">мы</span>; Auslagern — <span class="pill p-sie">Вы по шаблону</span>. Эти две страницы продают напрямую (вход с главной и рекламы), у них нет ставки на поиск — прямой ответ не обязателен, текст свободнее.</div>
+  <div class="tablewrap"><table>
+    <tr><th>#</th><th>Блок</th><th>Что писать</th><th>Лимит</th></tr>
+    <tr><td>1</td><td>Hero: для кого</td><td>Одна фраза, из которой целевой клиент узнаёт себя</td><td>H1 ≤70 + подзаголовок ≤160</td></tr>
+    <tr><td>2</td><td>Цепочка-визуализация</td><td>Шаги полной цепочки (Import → Оформление → Склад → Обработка → Distribution); подписи к шагам</td><td>шаг: Titel ≤24 + Satz ≤120</td></tr>
+    <tr><td>3</td><td>Кейс-«судьба»</td><td>Живой пример от первой поставки до продаж (обезличенно без письменного «да»)</td><td>3 абзаца ≤300 сумм.</td></tr>
+    <tr><td>4</td><td>Что вы получаете</td><td>3–5 выгод: один партнёр, один договор, личный менеджер…</td><td>пункт ≤160</td></tr>
+    <tr><td>5</td><td>Условия честно</td><td>DE/EU-фирма (сопровождаем и на этапе создания структуры), все услуги через наш склад</td><td>3–4 пункта ≤160</td></tr>
+    <tr><td>6–7</td><td>FAQ (3–5) · CTA-консультация</td><td>Вопросы входа в тему; CTA = личная консультация, не «корзина»</td><td>стандарт</td></tr>
+  </table></div>
+</section>
+
+<section class="card" id="t5">
+  <h2>Тип 5 · Markteintritt DE/EU (зонтичная) — 1 страница</h2>
+  <div class="meta"><b>Кто пишет:</b> <span class="pill p-sie">Вы по шаблону</span>, мы поддержим формулировками позиционирования. Продуктовая страница: «мы координируем и управляем всей операционной цепочкой из одних рук».</div>
+  <div class="tablewrap"><table>
+    <tr><th>#</th><th>Блок</th><th>Что писать</th><th>Лимит</th></tr>
+    <tr><td>1</td><td>Hero</td><td>«Выход на рынок Германии/EU под ключ» + для кого (иностранные производители/торговые компании)</td><td>H1 ≤70 + прямой ответ 40–60 слов</td></tr>
+    <tr><td>2</td><td>Цепочка-визуализация</td><td>Import → Zollabwicklung → Lagerung → Bearbeitung → Distribution; каждый шаг = ссылка в свой раздел</td><td>шаг: Titel ≤24 + Satz ≤120</td></tr>
+    <tr><td>3</td><td>Кейс-«судьба»</td><td>От первой поставки до продаж — сразу за цепочкой</td><td>3 абзаца ≤300</td></tr>
+    <tr><td>4</td><td>Что вы получаете</td><td>Один партнёр · один договор · личный менеджер вместо 4–5 подрядчиков</td><td>3–5 пунктов ≤160</td></tr>
+    <tr><td>5</td><td>Условия входа честно</td><td>Работа через DE/EU-фирму; если структура создаётся — сопровождаем и на этом этапе</td><td>3–4 пункта</td></tr>
+    <tr><td>6–7</td><td>FAQ · CTA-консультация</td><td>Сроки, документы, риски входа на рынок</td><td>стандарт</td></tr>
+  </table></div>
+</section>
+
+<section class="card" id="t6">
+  <h2>Тип 6 · Standort Zollbüro Dreilinden — 1 страница</h2>
+  <div class="meta"><b>Кто пишет:</b> <span class="pill p-sie">Вы</span> (фактура площадки — у Вас). Страница с живым поисковым трафиком (тысячи показов) — прямой ответ и FAQ обязательны.</div>
+  <div class="tablewrap"><table>
+    <tr><th>#</th><th>Блок</th><th>Что писать</th><th>Лимит</th></tr>
+    <tr><td>1</td><td>H1 + прямой ответ</td><td>Что это за площадка, кому и чем полезна</td><td>40–60 слов</td></tr>
+    <tr><td>2</td><td>Практика: адрес · маршрут · часы · документы</td><td>Как доехать, когда открыто, что взять с собой</td><td>по пунктам, коротко</td></tr>
+    <tr><td>3</td><td>Услуги площадки</td><td>Import / Export / KFZ на месте — по 1–2 предложения</td><td>≤140 на услугу</td></tr>
+    <tr><td>4</td><td>Честные рамки</td><td>Что на площадке НЕ делается (в т.ч. корректная формулировка про TIR — без «T1 beenden»)</td><td>3–4 пункта</td></tr>
+    <tr><td>5</td><td>Информация для водителей</td><td>Постоянный блок-инструкция (на него ведут ссылки с визиток и QR-кодов — не переименовывается)</td><td>чек-лист 5–8 пунктов</td></tr>
+    <tr><td>6</td><td>Дисклеймер</td><td>Фиксированная строка: «SEREDA ist eine unabhängige Zollagentur … nicht Teil der Zollverwaltung» — обязательна</td><td>фиксировано</td></tr>
+    <tr><td>7–8</td><td>FAQ (5) · Контакт бюро</td><td>Частые вопросы водителей и отправителей; прямой контакт площадки</td><td>стандарт</td></tr>
+  </table></div>
+</section>
+
+<section class="card" id="t7">
+  <h2>Тип 7 · Über uns · Kontakt · FAQ-Übersicht — 3 страницы</h2>
+  <div class="meta"><b>Кто пишет:</b> <span class="pill p-sie">Вы</span> (история и лица — Ваши), мы структурируем.</div>
+  <div class="tablewrap"><table>
+    <tr><th>Страница</th><th>Состав</th><th>Лимиты</th></tr>
+    <tr><td><b>Über uns</b></td><td>История компании (с 1997) · команда/лица (по желанию) · единый Trust-блок: все сертификаты и допуски с годами (отдельной страницы сертификатов не будет — всё здесь) · FAQ (вкл. «Sprechen Sie Russisch und Englisch?»)</td><td>история 3–5 абзацев ≤300 · сертификат: название + год</td></tr>
+    <tr><td><b>Kontakt</b></td><td>Обе локации адресно (Hauptsitz Wustermark · Zollbüro Dreilinden): адрес, телефон, e-mail, часы + форма. Услуги площадок здесь не описываются (это делает страница Dreilinden)</td><td>по пунктам</td></tr>
+    <tr><td><b>FAQ-Übersicht</b></td><td>Сводная страница вопросов, кластерами по темам (склад / оформление / логистика / оплата…). Основа — FAQ существующих страниц; добавляются только сквозные вопросы</td><td>вопрос ≤90 · ответ 40–60 слов</td></tr>
+  </table></div>
+</section>
+
+<section class="card" id="t8">
+  <h2>Тип 8 · Nachrichten (новости) — повторяемый тип</h2>
+  <div class="meta"><b>Кто пишет:</b> <span class="pill p-sie">Вы</span>, по мере инфоповодов (регуляторный календарь 2026 даёт готовые темы: пошлина 3 € с 01.07 · GPSR · упаковка с 12.08 · EUDR). Существующие Beiträge переносим.</div>
+  <div class="tablewrap"><table>
+    <tr><th>Поле</th><th>Что писать</th><th>Лимит</th></tr>
+    <tr><td>Заголовок</td><td>Суть новости, без кликбейта</td><td>≤ 90</td></tr>
+    <tr><td>Дата · Автор</td><td>Дата обязательна; автор — по желанию (для регуляторики рекомендуем видимого эксперта: имя, роль)</td><td>—</td></tr>
+    <tr><td>Текст</td><td>Свободная длина; первый абзац = суть (его берут поисковики)</td><td>первый абзац ≤ 60 слов</td></tr>
+    <tr><td>Связанные услуги</td><td>1–3 ссылки на страницы, которых касается новость</td><td>—</td></tr>
+  </table></div>
+</section>
+
+<div class="note">
+  <b>Что дальше.</b> Вопросы по любому блоку — комментарием прямо на <a href="sereda_muster_startseite.html">образцовой странице</a> (кнопка «Vorschlag» у каждого блока) или письмом. Готовые тексты присылайте любыми порциями — проверяем по мере поступления, ждать полного комплекта не нужно.
+</div>
+
+</div>
+
+<footer class="hub-footer">SEREDA GmbH × 2Penguins · Projekt-Hub · Content-Vorlagen v1 · 01.09.2026 · интерн, не индексируется</footer>
+
+</body>
+</html>
