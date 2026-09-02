@@ -1,0 +1,785 @@
+﻿<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MEDILUX Berlin &mdash; Standorte v0.9 (Preview)</title>
+<style>
+:root {
+  --primary: #1A1A1A;
+  --secondary: #2B55C0;
+  --mid-blue: #4C7CDA;
+  --text: #2F2F2F;
+  --text-gray: #818791;
+  --white: #FFFFFF;
+  --yellow: #E8C830;
+  --line: #C1C6CF;
+  --light-bg: #ECF3F7;
+  --card-gradient: linear-gradient(135deg, #EFF4F6 0%, #DAEAF6 100%);
+  --placeholder-bg: #FFF3CD;
+  --placeholder-border: #FFC107;
+  --radius-lg: 20px;
+  --radius-md: 12px;
+  --radius-btn: 30px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* === NAV (standardized) === */
+.nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); padding: 0 40px; display: flex; align-items: center; height: 52px; }
+.nav-logo { font-weight: 700; font-size: 15px; color: var(--secondary); letter-spacing: 1px; text-decoration: none; }
+.nav-links { display: flex; gap: 4px; margin-left: auto; align-items: center; }
+.nav-links > a { padding: 5px 12px; border-radius: var(--radius-btn); text-decoration: none; font-size: 12px; font-weight: 500; color: var(--text-gray); transition: color 0.2s; }
+.nav-links > a:hover { color: var(--secondary); }
+.nav-links > a.active { background: var(--secondary); color: var(--white); }
+.nav-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--yellow); display: inline-block; }
+.nav-cta { padding: 6px 16px; border-radius: var(--radius-btn); border: 1px solid var(--line); font-size: 12px; font-weight: 500; color: var(--text); text-decoration: none; margin-left: 8px; transition: all 0.2s; }
+.nav-cta:hover { border-color: var(--secondary); color: var(--secondary); }
+.nav-dropdown { position: relative; }
+.nav-dropdown-trigger { padding: 5px 12px; border-radius: var(--radius-btn); font-size: 12px; font-weight: 500; color: var(--text-gray); cursor: pointer; background: none; border: none; font-family: inherit; transition: background 0.2s, color 0.2s; }
+.nav-dropdown-trigger.active { background: var(--secondary); color: var(--white); }
+.nav-dropdown-menu { display: none; position: absolute; top: 100%; left: 0; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius-md); padding: 6px 0; min-width: 180px; box-shadow: 0 4px 16px rgba(0,0,0,0.12); z-index: 200; margin-top: 4px; }
+.nav-dropdown:hover .nav-dropdown-menu { display: block; }
+.nav-dropdown-menu a { display: block; padding: 8px 16px; font-size: 12px; color: var(--text); text-decoration: none; font-weight: 500; }
+.nav-dropdown-menu a:hover { background: var(--light-bg); color: var(--secondary); }
+.nav-dropdown-menu a.dd-active { color: var(--secondary); font-weight: 700; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: var(--text); background: var(--white);
+  line-height: 1.5; font-size: 15px;
+}
+.page { max-width: 1200px; margin: 0 auto; }
+
+
+/* ===== META BAR ===== */
+.meta-bar {
+  background: var(--light-bg); border-left: 4px solid var(--secondary);
+  padding: 12px 18px; margin: 12px 40px; border-radius: var(--radius-md);
+  font-size: 11px; line-height: 1.8;
+}
+.meta-bar strong { color: var(--secondary); }
+
+/* ===== HERO ===== */
+.hero {
+  position: relative;
+  background: linear-gradient(135deg, #1a1a2e 0%, #1e2d5a 50%, #1a2a3e 100%);
+  color: var(--white); border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  overflow: hidden; min-height: 380px;
+}
+.hero-inner {
+  display: grid; grid-template-columns: 1.1fr 0.9fr;
+  gap: 32px; padding: 80px 40px 48px; align-items: end;
+}
+.hero h1 { font-size: 32px; line-height: 1.1; font-weight: 700; }
+.hero-right { display: flex; flex-direction: column; gap: 16px; }
+.hero .subline { font-size: 15px; opacity: 0.88; line-height: 1.5; font-weight: 300; }
+.hero .btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--mid-blue); color: var(--white);
+  padding: 10px 12px 10px 22px; border-radius: var(--radius-btn);
+  font-weight: 600; font-size: 13px; text-decoration: none; width: fit-content;
+  transition: background 0.2s;
+}
+.hero .btn:hover { background: #3a6ac4; }
+.btn-arrow {
+  display: flex; align-items: center; justify-content: center;
+  width: 28px; height: 28px; background: rgba(255,255,255,0.2);
+  border-radius: 50%; font-size: 14px;
+}
+.hero-badge {
+  position: absolute; top: 20px; right: 40px;
+  background: var(--yellow); color: var(--primary);
+  font-size: 10px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1px; padding: 5px 14px; border-radius: var(--radius-btn);
+}
+
+/* ===== SECTIONS ===== */
+.section { padding: 48px 40px; }
+.section-alt { background: var(--light-bg); }
+.section h2 {
+  font-size: 26px; font-weight: 700; color: var(--primary);
+  margin-bottom: 8px; line-height: 1.2;
+}
+.section-intro {
+  font-size: 14px; color: var(--text); line-height: 1.6;
+  max-width: 720px; margin-bottom: 24px;
+}
+
+/* ===== PAIN CARDS ===== */
+.pain-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 20px; }
+.pain-card {
+  border: 1px solid var(--line); border-radius: var(--radius-lg);
+  padding: 24px 20px; display: flex; flex-direction: column; gap: 10px;
+  background: var(--white); transition: border-color 0.2s;
+}
+.pain-card:hover { border-color: var(--secondary); }
+.pain-icon {
+  width: 40px; height: 40px; border-radius: 10px;
+  background: #FDECEA; display: flex; align-items: center;
+  justify-content: center; font-size: 20px;
+}
+.pain-card h3 { font-size: 15px; font-weight: 700; color: var(--primary); }
+.pain-card p { font-size: 13px; color: var(--text); line-height: 1.5; }
+
+/* ===== SOLUTION BLOCKS ===== */
+.solution-block {
+  border-left: 3px solid var(--secondary); padding-left: 20px;
+  margin-bottom: 28px;
+}
+.solution-block h3 {
+  font-size: 17px; font-weight: 700; color: var(--primary);
+  margin-bottom: 8px;
+}
+.solution-block p {
+  font-size: 13px; color: var(--text); line-height: 1.6;
+  margin-bottom: 10px;
+}
+.solution-block ul {
+  list-style: none; padding: 0; margin: 0;
+}
+.solution-block ul li {
+  display: flex; align-items: baseline; gap: 8px;
+  padding: 4px 0; font-size: 13px; color: var(--text);
+}
+.solution-block ul li::before {
+  content: '\2713'; display: flex; align-items: center; justify-content: center;
+  width: 18px; height: 18px; min-width: 18px;
+  background: var(--secondary); color: var(--white);
+  border-radius: 50%; font-size: 10px;
+}
+.wohnform-tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0; }
+.wohnform-tag {
+  background: var(--light-bg); border: 1px solid var(--line);
+  border-radius: var(--radius-btn); padding: 4px 12px;
+  font-size: 11px; font-weight: 600; color: var(--secondary);
+}
+
+/* ===== TABLES ===== */
+.b2b-table {
+  width: 100%; border-collapse: collapse; font-size: 13px;
+  margin: 14px 0; border-radius: var(--radius-md); overflow: hidden;
+  border: 1px solid var(--line);
+}
+.b2b-table thead { background: var(--secondary); color: var(--white); }
+.b2b-table th {
+  padding: 10px 14px; text-align: left; font-weight: 600;
+  font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px;
+}
+.b2b-table td {
+  padding: 10px 14px; border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+.b2b-table tbody tr:last-child td { border-bottom: none; }
+.b2b-table tbody tr:nth-child(even) { background: #F8FAFC; }
+.b2b-table tbody tr:hover { background: var(--light-bg); }
+.b2b-table .td-label {
+  font-weight: 700; color: var(--primary); white-space: nowrap;
+  min-width: 160px;
+}
+.b2b-table .td-value { color: var(--text); }
+.b2b-table .td-price {
+  font-weight: 700; color: var(--secondary); text-align: right; white-space: nowrap;
+}
+.b2b-table .td-note { font-size: 11px; color: var(--text-gray); font-style: italic; }
+
+/* Detail table (vertical key-value) */
+.detail-table {
+  width: 100%; border-collapse: collapse; font-size: 13px;
+  border: 1px solid var(--line); border-radius: var(--radius-md); overflow: hidden;
+}
+.detail-table th {
+  padding: 9px 14px; text-align: left; font-weight: 600;
+  color: var(--primary); background: #F8FAFC; width: 200px;
+  border-bottom: 1px solid var(--line); font-size: 12px;
+}
+.detail-table td {
+  padding: 9px 14px; border-bottom: 1px solid var(--line);
+  color: var(--text);
+}
+.detail-table tr:last-child th,
+.detail-table tr:last-child td { border-bottom: none; }
+.detail-table tr:hover { background: var(--light-bg); }
+
+/* ===== STEPS ===== */
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 20px; }
+.step {
+  background: var(--card-gradient); border-radius: var(--radius-lg);
+  padding: 24px 20px; position: relative;
+}
+.step-num {
+  position: absolute; top: 16px; right: 16px;
+  background: var(--secondary); color: var(--white);
+  width: 32px; height: 32px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; font-weight: 700;
+}
+.step h3 { font-size: 15px; font-weight: 700; color: var(--primary); margin-bottom: 8px; padding-right: 40px; }
+.step p { font-size: 13px; color: var(--text); line-height: 1.5; }
+
+/* ===== STANDORTE 2-COL ===== */
+.standorte-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
+.standort-card {
+  border: 1px solid var(--line); border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.standort-header {
+  background: var(--secondary); color: var(--white);
+  padding: 16px 20px; display: flex; align-items: center; gap: 12px;
+}
+.standort-header h3 { font-size: 16px; font-weight: 700; margin: 0; }
+.standort-header .standort-icon {
+  width: 36px; height: 36px; background: rgba(255,255,255,0.15);
+  border-radius: 8px; display: flex; align-items: center;
+  justify-content: center; font-size: 18px;
+}
+
+/* ===== TRUST SECTION ===== */
+.trust-list {
+  list-style: none; padding: 0; margin: 16px 0;
+}
+.trust-list li {
+  display: flex; align-items: baseline; gap: 10px;
+  padding: 6px 0; font-size: 13px; color: var(--text); line-height: 1.5;
+}
+.trust-list li::before {
+  content: '\2713'; display: flex; align-items: center; justify-content: center;
+  width: 20px; height: 20px; min-width: 20px;
+  background: var(--secondary); color: var(--white);
+  border-radius: 50%; font-size: 11px;
+}
+.ansprechpartner-card {
+  display: flex; align-items: center; gap: 16px;
+  background: var(--light-bg); border-radius: var(--radius-md);
+  padding: 16px 20px; margin-top: 20px;
+  border: 1px solid var(--line);
+}
+.ansprechpartner-avatar {
+  width: 48px; height: 48px; border-radius: 50%;
+  background: var(--secondary); color: var(--white);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; font-weight: 700; flex-shrink: 0;
+}
+.ansprechpartner-info { font-size: 13px; color: var(--text); }
+.ansprechpartner-info strong { color: var(--primary); font-size: 14px; display: block; }
+.ansprechpartner-info span { color: var(--text-gray); font-size: 12px; }
+
+/* ===== FAQ ===== */
+.faq-section { padding: 48px 40px; }
+.faq-section h2 { font-size: 26px; font-weight: 700; color: var(--primary); margin-bottom: 18px; }
+details.faq { border-bottom: 1px solid var(--line); }
+details.faq summary {
+  padding: 14px 0; font-weight: 700; font-size: 13px; cursor: pointer;
+  list-style: none; display: flex; justify-content: space-between;
+  align-items: center; color: var(--primary); gap: 16px;
+}
+details.faq summary::-webkit-details-marker { display: none; }
+details.faq summary::after {
+  content: '+'; display: flex; align-items: center; justify-content: center;
+  width: 24px; height: 24px; min-width: 24px;
+  background: var(--light-bg); border-radius: 50%;
+  font-size: 14px; color: var(--secondary); flex-shrink: 0;
+  transition: all 0.2s;
+}
+details.faq[open] summary::after {
+  content: '\2212'; background: var(--secondary); color: var(--white);
+}
+details.faq .faq-a {
+  padding: 0 0 14px; font-size: 13px; color: var(--text); line-height: 1.6;
+}
+
+/* ===== CTA BANNER ===== */
+.cta-banner {
+  background: var(--secondary); color: var(--white);
+  padding: 32px 28px; border-radius: var(--radius-lg);
+  margin: 0 40px 40px; display: flex; align-items: center;
+  justify-content: space-between; gap: 24px;
+}
+.cta-content { flex: 1; }
+.cta-banner h2 { font-size: 22px; font-weight: 700; margin-bottom: 8px; color: var(--white); }
+.cta-banner p { font-size: 13px; opacity: 0.92; margin: 0; color: var(--white); line-height: 1.5; }
+.cta-banner .btn { flex-shrink: 0; background: var(--white); color: var(--secondary); font-weight: 700; }
+.cta-banner .btn:hover { background: var(--yellow); color: var(--primary); }
+.cta-banner .btn .btn-arrow { background: rgba(43,85,192,0.15); }
+.cta-contact { display: flex; gap: 20px; margin-top: 10px; font-size: 12px; opacity: 0.8; }
+
+/* ===== FOOTER ===== */
+.footer {
+  background: linear-gradient(180deg, #ECF3F7 0%, #FFFFFF 100%);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  padding: 28px 40px 16px; margin-top: 0;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 28px;
+}
+.footer-label { font-size: 11px; color: var(--text-gray); margin-bottom: 2px; }
+.footer-value { font-size: 15px; font-weight: 500; color: var(--secondary); margin-bottom: 10px; }
+.footer-menu { list-style: none; padding: 0; }
+.footer-menu li { font-size: 12px; color: var(--text); padding: 3px 0; }
+.footer-legal { font-size: 11px; color: var(--text-gray); margin-top: 8px; }
+.footer-copyright {
+  grid-column: 1/-1; font-size: 10px; color: var(--text-gray);
+  border-top: 1px dashed var(--line); padding-top: 10px; margin-top: 6px;
+}
+
+/* ===== PLACEHOLDER ===== */
+.placeholder {
+  background: var(--placeholder-bg); border: 1px dashed var(--placeholder-border);
+  border-radius: 6px; padding: 8px 14px; font-size: 12px;
+  font-style: italic; color: #856404; display: block; margin: 10px 0;
+  line-height: 1.5;
+}
+
+/* ===== VERSION BADGE ===== */
+.version-badge {
+  position: fixed; bottom: 14px; right: 14px;
+  background: var(--secondary); color: var(--white);
+  padding: 5px 12px; border-radius: var(--radius-btn);
+  font-size: 10px; font-weight: 700; z-index: 200;
+}
+
+/* ===== STANDORT DETAIL SECTIONS ===== */
+.standort-detail-body { padding: 20px; }
+.standort-detail-body p { font-size: 13px; color: var(--text); line-height: 1.6; margin-bottom: 12px; }
+.standort-detail-body h4 { font-size: 14px; font-weight: 700; color: var(--primary); margin: 18px 0 8px; }
+.standort-detail-body ul { list-style: none; padding: 0; margin: 0 0 12px; }
+.standort-detail-body ul li {
+  display: flex; align-items: baseline; gap: 8px;
+  padding: 3px 0; font-size: 13px; color: var(--text);
+}
+.standort-detail-body ul li::before {
+  content: '\2713'; display: flex; align-items: center; justify-content: center;
+  width: 16px; height: 16px; min-width: 16px;
+  background: var(--secondary); color: var(--white);
+  border-radius: 50%; font-size: 9px;
+}
+.wg-model { margin-bottom: 16px; }
+.wg-model h5 { font-size: 13px; font-weight: 700; color: var(--secondary); margin-bottom: 4px; }
+.wg-model p { font-size: 12px; color: var(--text); line-height: 1.5; margin: 0; }
+.standort-cta {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--secondary); color: var(--white);
+  padding: 8px 18px; border-radius: var(--radius-btn);
+  font-weight: 600; font-size: 12px; text-decoration: none;
+  margin-top: 12px; transition: background 0.2s;
+}
+.standort-cta:hover { background: var(--mid-blue); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 860px) {
+  .hero-inner { grid-template-columns: 1fr; }
+  .pain-grid { grid-template-columns: 1fr; }
+  .steps { grid-template-columns: 1fr; }
+  .standorte-grid { grid-template-columns: 1fr; }
+  .cta-banner { flex-direction: column; text-align: center; }
+  .footer { grid-template-columns: 1fr; }
+
+  .section { padding: 32px 16px; }
+  .faq-section { padding: 32px 16px; }
+  .meta-bar { margin: 12px 16px; }
+  .cta-banner { margin: 0 16px 32px; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- NAV (standardized) -->
+<nav class="nav">
+  <a href="index.html" class="nav-logo">MEDILUX</a>
+  <div class="nav-links">
+    <a href="startseite_v081.html">Startseite</a>
+    <span class="nav-dot"></span>
+    <a href="leistungen_v081.html">Leistungen</a>
+    <span class="nav-dot"></span>
+    <div class="nav-dropdown">
+      <button class="nav-dropdown-trigger">F&uuml;r wen? &#9662;</button>
+      <div class="nav-dropdown-menu">
+        <a href="fuer_angehoerige_v09.html">F&uuml;r Angeh&ouml;rige</a>
+        <a href="fuer_senioren_v09.html">F&uuml;r Senioren</a>
+        <a href="fuer_berufsbetreuer_v09.html">F&uuml;r Berufsbetreuer</a>
+        <a href="fuer_sozialdienste_v09.html">F&uuml;r Sozialdienste</a>
+        <a href="fuer_aerzte_v09.html">F&uuml;r &Auml;rzte</a>
+        <a href="fuer_pflegeberater_v09.html">F&uuml;r Pflegeberater</a>
+        <a href="fuer_sozialamter_v09.html">F&uuml;r Sozial&auml;mter</a>
+      </div>
+    </div>
+    <span class="nav-dot"></span>
+    <a href="standorte_v09.html" class="active">Standorte</a>
+    <span class="nav-dot"></span>
+    <a href="ueber_uns_v09.html">&Uuml;ber uns</a>
+    <span class="nav-dot"></span>
+    <a href="karriere_v09.html">Karriere</a>
+    <span class="nav-dot"></span>
+    <a href="kontakt_v09.html">Kontakt</a>
+    <a href="#cta-final" class="nav-cta">Besichtigung vereinbaren &rarr;</a>
+  </div>
+</nav>
+
+<!-- ===== META BAR ===== -->
+<div class="meta-bar">
+  <strong>STANDORTE v0.9</strong><br>
+  Datum: 10.03.2026 &nbsp;|&nbsp; Cross-page KW: Pflege-WG Berlin (140 SV/mo), betreutes Wohnen Berlin (1.600 SV/mo)<br>
+  <em>Info-Seite &mdash; Objektkartenvergleich beider Standorte mit Detailkarten</em>
+</div>
+
+<!-- ===== BLOCK 1: HERO ===== -->
+<div class="hero">
+  <div class="hero-badge">Standorte</div>
+  <div class="hero-inner">
+    <h1>Unsere Standorte in Berlin &mdash; Pflege-WG und betreutes Wohnen in Zehlendorf und Spandau</h1>
+    <div class="hero-right">
+      <p class="subline">Zwei H&auml;user, ein Versprechen: ein Zuhause, in dem Pflege, Gemeinschaft und Selbstbestimmung zusammengeh&ouml;ren. Lernen Sie unsere Standorte kennen &mdash; pers&ouml;nlich, vor Ort.</p>
+      <a class="btn" href="#kontakt">Besichtigungstermin vereinbaren <span class="btn-arrow">&rarr;</span></a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== BLOCK 2: VERGLEICHSTABELLE ===== -->
+<div class="section">
+  <h2>Zwei Standorte &mdash; auf einen Blick</h2>
+
+  <table class="b2b-table">
+    <thead>
+      <tr>
+        <th>Merkmal</th>
+        <th>Villa Civitas</th>
+        <th>Residenz Heerstra&szlig;e</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="td-label">Bezirk</td>
+        <td class="td-value">Berlin-Zehlendorf</td>
+        <td class="td-value">Berlin-Spandau</td>
+      </tr>
+      <tr>
+        <td class="td-label">Adresse</td>
+        <td class="td-value">Lindenthaler Allee 20, 14163 Berlin</td>
+        <td class="td-value">G&auml;rtnereiring 56, 13593 Berlin</td>
+      </tr>
+      <tr>
+        <td class="td-label">Pflege-WG-Pl&auml;tze</td>
+        <td class="td-value">35 (in 4 WGs)</td>
+        <td class="td-value">24 (in 2 WGs &agrave; 12 Pl&auml;tze)</td>
+      </tr>
+      <tr>
+        <td class="td-label">Betreutes Wohnen</td>
+        <td class="td-value">Vorhanden</td>
+        <td class="td-value">42 Wohneinheiten (18&ndash;48 m&sup2;)</td>
+      </tr>
+      <tr>
+        <td class="td-label">Gesamtkapazit&auml;t</td>
+        <td class="td-value">35+ Bewohner</td>
+        <td class="td-value">66 Bewohner</td>
+      </tr>
+      <tr>
+        <td class="td-label">Spezialisierung</td>
+        <td class="td-value">Demenz, Intensivpflege, Palliativ, Junge Pflege</td>
+        <td class="td-value">Demenz (besch&uuml;tzter Bereich), Verhinderungspflege</td>
+      </tr>
+      <tr>
+        <td class="td-label">Zimmer WG</td>
+        <td class="td-value">12&ndash;20 m&sup2;, Einzelzimmer + 3 Doppelzimmer</td>
+        <td class="td-value">15&ndash;22 m&sup2;, &uuml;berwiegend mit eigenem Bad</td>
+      </tr>
+      <tr>
+        <td class="td-label">Aufnahme</td>
+        <td class="td-value">Ab Pflegegrad 2</td>
+        <td class="td-value">Ab Pflegegrad 2 (WG) &middot; ohne PG (Betreutes Wohnen)</td>
+      </tr>
+      <tr>
+        <td class="td-label">Besonderheit</td>
+        <td class="td-value">Historische Villa im Gr&uuml;nen, alter Baumbestand</td>
+        <td class="td-value">Pflege-WG + Betreutes Wohnen unter einem Dach</td>
+      </tr>
+      <tr>
+        <td class="td-label">Beratung</td>
+        <td class="td-value">Mo&ndash;Fr 8:00&ndash;16:30 Uhr</td>
+        <td class="td-value">Mo&ndash;Fr 8:00&ndash;16:30 Uhr</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="text-align: center; margin-top: 18px;">
+    <a class="btn" href="#kontakt" style="background: var(--secondary); display: inline-flex;">Welcher Standort passt? &rarr; Lassen Sie sich beraten <span class="btn-arrow">&rarr;</span></a>
+  </div>
+</div>
+
+<!-- ===== BLOCK 3: VILLA CIVITAS &mdash; DETAILKARTE ===== -->
+<div class="section section-alt">
+  <h2>Villa Civitas &mdash; Pflege-Wohngemeinschaften in Berlin-Zehlendorf</h2>
+
+  <div class="standorte-grid" style="grid-template-columns: 1fr;">
+    <div class="standort-card">
+      <div class="standort-header">
+        <div class="standort-icon">&#x1F3DB;</div>
+        <h3>Villa Civitas &mdash; Zehlendorf</h3>
+      </div>
+      <div class="standort-detail-body">
+
+        <span class="placeholder">[PLACEHOLDER: Au&szlig;enansicht Villa Civitas &mdash; historische Villa mit Gartenanlage]</span>
+
+        <p>Die Villa Civitas liegt im gr&uuml;nen Herzen von Berlin-Zehlendorf, umgeben vom Berliner Forst und unweit des Schlachtensees. In einer liebevoll renovierten historischen Villa leben bis zu 35 Bewohner in vier Pflege-Wohngemeinschaften &mdash; betreut rund um die Uhr von examinierten Pflegekr&auml;ften.</p>
+        <p>Jede Wohngemeinschaft hat ihren eigenen Charakter: Von der spezialisierten Intensivpflege-WG &uuml;ber die Demenz-WG mit geschultem Fachpersonal bis zur Senioren-WG mit ambulanter Pflege. Was alle verbindet: famili&auml;re Atmosph&auml;re, pers&ouml;nliche Bezugspflege und ein Alltag, der sich nach den Bewohnern richtet &mdash; nicht nach einem Dienstplan.</p>
+
+        <h4>4 WG-Modelle</h4>
+
+        <div class="wg-model">
+          <h5>Intensivpflege-WG (4&ndash;12 Bewohner)</h5>
+          <p>F&uuml;r Menschen mit hohem medizinischen Pflegebedarf. 24-Stunden-Betreuung durch examinierte Pflegekr&auml;fte mit Spezialisierung auf Behandlungspflege.</p>
+        </div>
+        <div class="wg-model">
+          <h5>Demenz-WG 24h (6&ndash;12 Bewohner)</h5>
+          <p>Spezialisierte Betreuung f&uuml;r Menschen mit Demenz. Geschultes Fachpersonal, strukturierter Tagesablauf, sichere Umgebung &mdash; mit viel Raum f&uuml;r individuelle Gewohnheiten.</p>
+        </div>
+        <div class="wg-model">
+          <h5>Senioren-WG mit 24h-Betreuung</h5>
+          <p>F&uuml;r Senioren ab Pflegegrad 2, die Gemeinschaft und Sicherheit suchen. Rund um die Uhr betreut, mit Teilhabe am Gemeinschaftsleben.</p>
+        </div>
+        <div class="wg-model">
+          <h5>Senioren-WG mit ambulanter Pflege</h5>
+          <p>F&uuml;r Senioren, die weniger intensive Betreuung ben&ouml;tigen. Ambulante Pflegekr&auml;fte kommen nach Bedarf &mdash; die WG-Gemeinschaft bleibt.</p>
+        </div>
+
+        <h4>Zimmer &amp; Ausstattung</h4>
+
+        <table class="detail-table">
+          <tr><th>Zimmer</th><td>&Uuml;berwiegend Einzelzimmer, drei Doppelzimmer verf&uuml;gbar &middot; 12&ndash;20 m&sup2; &middot; Barrierefrei, TV-Anschluss, Platz f&uuml;r eigene M&ouml;bel &middot; Helle R&auml;ume mit gro&szlig;en Fenstern</td></tr>
+          <tr><th>Gemeinschaft</th><td>Gemeinschaftsk&uuml;che und Wohnzimmer in jeder WG &middot; Moderne Pflegeb&auml;der &middot; Barrierefreie Zug&auml;nge und Aufzug</td></tr>
+          <tr><th>Au&szlig;enbereich</th><td>Gro&szlig;z&uuml;gige Gartenanlage mit altem Baumbestand &middot; Weitl&auml;ufige Terrasse f&uuml;r Aktivit&auml;ten im Freien &middot; Barrierefreie Wege und Sitzpl&auml;tze &middot; Gesch&uuml;tzte, ruhige Lage</td></tr>
+        </table>
+
+        <h4>Aktivit&auml;ten &amp; Tagesgestaltung</h4>
+        <p>Der Alltag in der Villa Civitas folgt keinem starren Schema. Bewohner gestalten ihren Tag nach eigenen W&uuml;nschen &mdash; mit Angeboten, die K&ouml;rper und Geist in Bewegung halten:</p>
+        <ul>
+          <li><strong>Kreativ:</strong> Basteln, Malen, handwerkliche Projekte</li>
+          <li><strong>Musik:</strong> Musikkreise und gemeinsames Singen</li>
+          <li><strong>Geistig:</strong> Ged&auml;chtnistraining, Lesen, Erz&auml;hlrunden</li>
+          <li><strong>K&ouml;rperlich:</strong> Gymnastik, Spazierg&auml;nge, Gartenarbeit</li>
+          <li><strong>Hauswirtschaftlich:</strong> Gemeinsames Kochen und Backen</li>
+          <li><strong>Besonderes:</strong> Haustiere sind willkommen</li>
+        </ul>
+
+        <h4>Lage &amp; Anfahrt</h4>
+        <p><strong>Adresse:</strong> Lindenthaler Allee 20, 14163 Berlin-Zehlendorf</p>
+        <p>Die Villa Civitas befindet sich in einer der ruhigsten Wohngegenden Berlins. Der Berliner Forst und der Schlachtensee sind fu&szlig;l&auml;ufig erreichbar.</p>
+        <ul>
+          <li>S-Bahn Mexikoplatz (wenige Gehminuten)</li>
+          <li>Mehrere Buslinien zum Berliner Stadtzentrum</li>
+          <li>Einkaufsm&ouml;glichkeiten, &Auml;rzte und Apotheken in der N&auml;he</li>
+        </ul>
+
+        <a class="standort-cta" href="#kontakt">Villa Civitas besichtigen &rarr; Termin vereinbaren</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== BLOCK 4: RESIDENZ HEERSTRASSE &mdash; DETAILKARTE ===== -->
+<div class="section">
+  <h2>Residenz Heerstra&szlig;e &mdash; Pflege-WG und betreutes Wohnen in Berlin-Spandau</h2>
+
+  <div class="standorte-grid" style="grid-template-columns: 1fr;">
+    <div class="standort-card">
+      <div class="standort-header">
+        <div class="standort-icon">&#x1F3E2;</div>
+        <h3>Residenz Heerstra&szlig;e &mdash; Spandau</h3>
+      </div>
+      <div class="standort-detail-body">
+
+        <span class="placeholder">[PLACEHOLDER: Au&szlig;enansicht Residenz Heerstra&szlig;e &mdash; modernes Geb&auml;ude mit Dachterrasse]</span>
+
+        <p>Die Residenz Heerstra&szlig;e in Spandau ist das Beste aus zwei Welten: Zwei Pflege-Wohngemeinschaften mit je 12 Pl&auml;tzen f&uuml;r Menschen mit h&ouml;herem Pflegebedarf &mdash; und 42 barrierefreie Wohneinheiten f&uuml;r selbstbestimmtes Leben mit Unterst&uuml;tzung. Alles unter einem Dach, mit einer gro&szlig;en Dachterrasse und Panoramablick &uuml;ber Berlin-Spandau.</p>
+        <p>Dieses Konzept bedeutet: Wenn sich der Pflegebedarf ver&auml;ndert, muss niemand umziehen. Vom betreuten Wohnen in die Pflege-WG &mdash; der &Uuml;bergang ist flie&szlig;end, die Umgebung bleibt vertraut.</p>
+
+        <h4>Wohn- und Betreuungsmodelle</h4>
+
+        <div class="wg-model">
+          <h5>Senioren-WG mit 24h-Pflege (2 WGs &agrave; 12 Pl&auml;tze)</h5>
+          <p>Rund-um-die-Uhr-Betreuung f&uuml;r Senioren ab Pflegegrad 2. Examinierte Pflegekr&auml;fte, Nachtbereitschaft, strukturierter Tagesablauf.</p>
+        </div>
+        <div class="wg-model">
+          <h5>Betreutes Wohnen (42 Wohneinheiten)</h5>
+          <p>Eigenst&auml;ndig wohnen in barrierefreien Einzel- und Zweiraumwohnungen von 18 bis 48 m&sup2;. Notrufanlage rund um die Uhr, Serviceleistungen nach Bedarf &mdash; ohne Pflegegrad m&ouml;glich.</p>
+        </div>
+        <div class="wg-model">
+          <h5>Besch&uuml;tzter Demenzbereich</h5>
+          <p>Ein eigener, gesicherter Wohnbereich f&uuml;r Menschen mit Demenz. Speziell geschultes Personal, angepasste Tagesstruktur, sichere Bewegungsfreiheit.</p>
+        </div>
+        <div class="wg-model">
+          <h5>Verhinderungspflege</h5>
+          <p>Kurzzeitige Aufnahme, wenn die regul&auml;re Pflegeperson verhindert ist. Bis zu 6 Wochen pro Kalenderjahr, Kosten &uuml;bernimmt die Pflegekasse.</p>
+        </div>
+
+        <h4>Zimmer &amp; Wohnungen</h4>
+
+        <table class="detail-table">
+          <tr><th>Pflege-WG-Zimmer</th><td>15&ndash;22 m&sup2;, &uuml;berwiegend mit eigenem Bad &middot; Hell, modern, Platz f&uuml;r pers&ouml;nliche M&ouml;bel &middot; TV-Anschluss</td></tr>
+          <tr><th>Betreute Wohnungen</th><td>Einzel- und Zweiraumwohnungen: 18&ndash;48 m&sup2; &middot; Barrierefrei, teils mit Balkon &middot; Eigene K&uuml;chenzeile und Bad</td></tr>
+          <tr><th>Gemeinschaft</th><td>Gro&szlig;z&uuml;gige Aufenthaltsr&auml;ume &middot; Aufzug, barrierefreie Zug&auml;nge &middot; 24-Stunden-Notruf- und Sicherheitssystem &middot; Besucherparkplatz vorhanden</td></tr>
+          <tr><th>Dachterrasse</th><td>Gro&szlig;e Dachterrasse mit Panoramablick &middot; Sitzm&ouml;bel und begr&uuml;nte Bereiche &middot; Treffpunkt f&uuml;r Gemeinschaftsaktivit&auml;ten</td></tr>
+        </table>
+
+        <h4>Verpflegung</h4>
+        <p>In der Residenz Heerstra&szlig;e wird t&auml;glich frisch gekocht. Sonderkost und spezielle Di&auml;ten werden ber&uuml;cksichtigt. Die Bewohner k&ouml;nnen bei der Men&uuml;planung mitbestimmen. Zwischendurch stehen Snacks und Getr&auml;nke bereit.</p>
+
+        <h4>Aktivit&auml;ten &amp; Tagesgestaltung</h4>
+        <p>Das Betreuungsteam organisiert ein abwechslungsreiches Programm &mdash; Teilnahme ist freiwillig, nicht verpflichtend:</p>
+        <ul>
+          <li><strong>Gesellig:</strong> Erz&auml;hlrunden, Spiele, Filmvorf&uuml;hrungen, Themen-Nachmittage</li>
+          <li><strong>Kreativ:</strong> Basteln, Malen, Musikkreise</li>
+          <li><strong>K&ouml;rperlich:</strong> Gymnastik, Tanzen, Spazierg&auml;nge</li>
+          <li><strong>Geistig:</strong> Ged&auml;chtnistraining, Lesen, Vortr&auml;ge</li>
+          <li><strong>Unterwegs:</strong> Ausfl&uuml;ge und kulturelle Exkursionen</li>
+          <li><strong>Besonderes:</strong> Haustiere nach Absprache erlaubt</li>
+        </ul>
+
+        <h4>Lage &amp; Anfahrt</h4>
+        <p><strong>Adresse:</strong> G&auml;rtnereiring 56, 13593 Berlin-Spandau</p>
+        <p>Die Residenz liegt in einer ruhigen, gesch&uuml;tzten Wohnlage im gr&uuml;nen Spandau.</p>
+        <ul>
+          <li>Gute &Ouml;PNV-Anbindung (Bus und Bahn)</li>
+          <li>Einkaufsm&ouml;glichkeiten, &Auml;rzte und Apotheken in der N&auml;he</li>
+          <li>Besucherparkplatz direkt am Haus</li>
+        </ul>
+
+        <a class="standort-cta" href="#kontakt">Residenz Heerstra&szlig;e besichtigen &rarr; Termin vereinbaren</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== BLOCK 5: WAS BEIDE STANDORTE VERBINDET ===== -->
+<div class="section section-alt">
+  <h2>Was beide Standorte verbindet</h2>
+  <p class="section-intro">Unabh&auml;ngig davon, welcher Standort besser zu Ihnen passt &mdash; bei MEDILUX Berlin gelten dieselben Grunds&auml;tze:</p>
+
+  <ul class="trust-list">
+    <li><strong>Examinierte Pflegekr&auml;fte</strong> mit regelm&auml;&szlig;iger Fortbildung in Demenzpflege und Intensivpflege</li>
+    <li><strong>Nachtbereitschaft</strong> an beiden Standorten</li>
+    <li><strong>Famili&auml;re Atmosph&auml;re</strong> &mdash; kleine Wohngruppen statt Gro&szlig;einrichtung</li>
+    <li><strong>Transparente Kosten</strong> &mdash; keine versteckten Zuschl&auml;ge</li>
+    <li><strong>Pflegekassen-Zulassung</strong> &mdash; alle Leistungen kassenfinanziert</li>
+    <li><strong>17+ Jahre Erfahrung</strong> der MEDILUX GmbH in der Pflege</li>
+    <li><strong>Aufnahme ab Pflegegrad 2</strong> (Pflege-WG) &middot; ohne Pflegegrad m&ouml;glich (Betreutes Wohnen)</li>
+  </ul>
+
+  <span class="placeholder">[PLACEHOLDER #3: Qualit&auml;tsnachweise &mdash; MDK-Bewertung, T&Uuml;V-Zertifikat, Qualit&auml;tssiegel. Wird nach Kundencall erg&auml;nzt.]</span>
+</div>
+
+<!-- ===== BLOCK 6: KONTAKT UND BESICHTIGUNG ===== -->
+<div class="section">
+  <h2>Besuchen Sie uns &mdash; wir zeigen Ihnen alles pers&ouml;nlich</h2>
+  <p class="section-intro">Ein Pflegeplatz ist eine Entscheidung, die man nicht am Bildschirm trifft. Vereinbaren Sie einen unverbindlichen Besichtigungstermin und lernen Sie unsere R&auml;umlichkeiten, das Pflegeteam und den Alltag vor Ort kennen.</p>
+
+  <div class="ansprechpartner-card">
+    <div class="ansprechpartner-avatar">JS</div>
+    <div class="ansprechpartner-info">
+      <strong>Herr Joe Schermer</strong>
+      <span>Prokurist &middot; Ihr Ansprechpartner f&uuml;r Besichtigungen</span><br>
+      <span style="color: var(--secondary); font-weight: 600;">0391/6076062 &middot; Mo&ndash;Fr 8:00&ndash;16:30</span><br>
+      <span>E-Mail: <span class="placeholder" style="display:inline; padding:3px 8px; margin:0;">[PLACEHOLDER #9 &mdash; Email-Adresse]</span></span>
+    </div>
+  </div>
+
+  <div style="text-align: center; margin-top: 24px; font-size: 12px; color: var(--text-gray);">
+    Unverbindlich &middot; Beide Standorte &middot; Auch f&uuml;r Angeh&ouml;rige
+  </div>
+</div>
+
+<!-- ===== BLOCK 7: FAQ ===== -->
+<div class="faq-section">
+  <h2>H&auml;ufige Fragen zu unseren Standorten</h2>
+
+  <details class="faq" open>
+    <summary>Kann ich beide Standorte besichtigen, bevor ich mich entscheide?</summary>
+    <div class="faq-a">Ja, selbstverst&auml;ndlich. Wir empfehlen sogar, beide H&auml;user zu besuchen. So k&ouml;nnen Sie die Atmosph&auml;re vergleichen und den Standort w&auml;hlen, der am besten zu Ihren Bed&uuml;rfnissen passt. Vereinbaren Sie einfach zwei separate Termine unter 0391/6076062.</div>
+  </details>
+
+  <details class="faq">
+    <summary>Worin unterscheiden sich die beiden Standorte?</summary>
+    <div class="faq-a">Die Villa Civitas in Zehlendorf bietet ausschlie&szlig;lich Pflege-Wohngemeinschaften in einer historischen Villa mit Gartenanlage &mdash; darunter spezialisierte Demenz- und Intensivpflege-WGs. Die Residenz Heerstra&szlig;e in Spandau kombiniert Pflege-WGs mit betreutem Wohnen unter einem Dach und bietet auch Wohneinheiten ohne Pflegegrad.</div>
+  </details>
+
+  <details class="faq">
+    <summary>Kann ich vom betreuten Wohnen in die Pflege-WG wechseln?</summary>
+    <div class="faq-a">Ja, das ist einer der gr&ouml;&szlig;ten Vorteile der Residenz Heerstra&szlig;e. Wenn sich Ihr Pflegebedarf ver&auml;ndert, k&ouml;nnen Sie innerhalb des Hauses in eine Pflege-WG wechseln &mdash; ohne Umzug in eine andere Einrichtung. Die vertraute Umgebung bleibt erhalten.</div>
+  </details>
+
+  <details class="faq">
+    <summary>Ab welchem Pflegegrad kann ich einziehen?</summary>
+    <div class="faq-a">F&uuml;r die Pflege-WGs an beiden Standorten ben&ouml;tigen Sie mindestens Pflegegrad 2 oder einen laufenden Antrag. F&uuml;r das betreute Wohnen in der Residenz Heerstra&szlig;e ist kein Pflegegrad erforderlich.</div>
+  </details>
+
+  <details class="faq">
+    <summary>Wie komme ich mit &ouml;ffentlichen Verkehrsmitteln zu den Standorten?</summary>
+    <div class="faq-a">Die Villa Civitas ist &uuml;ber die S-Bahn-Station Mexikoplatz und Buslinien erreichbar. Die Residenz Heerstra&szlig;e hat ebenfalls eine gute &Ouml;PNV-Anbindung. An der Residenz gibt es zus&auml;tzlich einen Besucherparkplatz.</div>
+  </details>
+
+  <details class="faq">
+    <summary>K&ouml;nnen pers&ouml;nliche M&ouml;bel mitgebracht werden?</summary>
+    <div class="faq-a">Ja, an beiden Standorten. Die Zimmer bieten ausreichend Platz f&uuml;r eigene M&ouml;bel, Bilder und pers&ouml;nliche Gegenst&auml;nde. Uns ist wichtig, dass sich jeder Bewohner in seinem Zimmer wirklich zu Hause f&uuml;hlt.</div>
+  </details>
+
+  <details class="faq">
+    <summary>Sind Haustiere erlaubt?</summary>
+    <div class="faq-a">In der Villa Civitas sind Haustiere willkommen. In der Residenz Heerstra&szlig;e ist die Haltung nach Absprache m&ouml;glich. Sprechen Sie uns bei der Besichtigung darauf an &mdash; wir finden gemeinsam eine L&ouml;sung.</div>
+  </details>
+</div>
+
+<!-- ===== CTA FINAL ===== -->
+<div class="cta-banner" id="cta-final">
+  <div class="cta-content">
+    <h2>Jetzt Besichtigungstermin vereinbaren</h2>
+    <p>Ein Pflegeplatz ist eine Entscheidung, die man nicht am Bildschirm trifft. Lernen Sie unsere R&auml;umlichkeiten, das Pflegeteam und den Alltag vor Ort kennen &mdash; unverbindlich und pers&ouml;nlich.</p>
+    <div class="cta-contact">
+      <span>Tel: 0391/6076062</span>
+      <span>Mo&ndash;Fr 8:00&ndash;16:30</span>
+      <span>Beide Standorte besichtigbar</span>
+    </div>
+  </div>
+  <a class="btn" href="#kontakt">Termin vereinbaren <span class="btn-arrow">&rarr;</span></a>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<div class="footer">
+  <div>
+    <div class="footer-label">Telefon</div>
+    <div class="footer-value">0391/6076062</div>
+    <div class="footer-label">E-Mail</div>
+    <div class="footer-value"><span class="placeholder" style="display:inline; padding:3px 8px; margin:0;">[PLACEHOLDER #9]</span></div>
+    <div class="footer-label" style="margin-top:12px;">Men&uuml;</div>
+    <ul class="footer-menu">
+      <li>Startseite</li>
+      <li>Leistungen</li>
+      <li>F&uuml;r Angeh&ouml;rige</li>
+      <li>F&uuml;r Senioren</li>
+      <li>Standorte</li>
+    </ul>
+    <div class="footer-legal">Datenschutz &middot; Impressum &middot; Cookies</div>
+  </div>
+  <div>
+    <div class="footer-label" style="margin-bottom:10px;">Standorte</div>
+    <div style="font-size:12px; color:var(--text); line-height:1.6;">
+      <strong>Villa Civitas</strong><br>
+      Lindenthaler Allee 20, 14163 Berlin-Zehlendorf<br><br>
+      <strong>Residenz Heerstra&szlig;e</strong><br>
+      G&auml;rtnereiring 56, 13593 Berlin-Spandau
+    </div>
+    <div style="margin-top:16px;">
+      <div class="footer-label">Ansprechpartner</div>
+      <div style="font-size:12px; color:var(--text); margin-top:4px;">
+        Herr Joe Schermer (Prokurist)<br>
+        0391/6076062 &middot; Mo&ndash;Fr 8:00&ndash;16:30
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright">
+    &copy; 2026 MEDILUX GmbH. Alle Rechte vorbehalten. &nbsp;|&nbsp;
+    <em style="font-size:9px;">Preview v0.9 &middot; Standorte &middot; Objektkartenvergleich &middot; Figma-aligned Layout &middot; Nur zur Pr&uuml;fung</em>
+  </div>
+</div>
+
+<div class="version-badge">v0.9</div>
+
+</div>
+</body>
+</html>

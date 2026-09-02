@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Für Angehörige — MEDILUX Berlin Preview</title>
+<style>
+:root {
+  --primary: #1A1A1A;
+  --secondary: #2B55C0;
+  --mid-blue: #4C7CDA;
+  --yellow: #E8C830;
+  --light-bg: #ECF3F7;
+  --white: #FFFFFF;
+  --text: #333333;
+  --text-gray: #7A8A9E;
+  --line: #D9E3EC;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-btn: 30px;
+  --placeholder-bg: #FFF3CD;
+  --placeholder-border: #FFD93D;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--light-bg); color: var(--text); line-height: 1.6; }
+.page { max-width: 1200px; margin: 0 auto; background: var(--white); min-height: 100vh;
+  box-shadow: 0 0 40px rgba(0,0,0,0.08); }
+
+/* NAV */
+.nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); padding: 0 40px;
+  height: 52px; display: flex; align-items: center; }
+.nav-logo { font-size: 18px; font-weight: 800; color: var(--secondary);
+  letter-spacing: 2px; text-decoration: none; }
+.nav-links { display: flex; align-items: center; gap: 4px; margin-left: auto; }
+.nav-links a { padding: 5px 12px; border-radius: var(--radius-btn);
+  text-decoration: none; font-size: 12px; font-weight: 500; color: var(--text-gray); }
+.nav-links a:hover { color: var(--secondary); }
+.nav-links a.active { background: var(--secondary); color: var(--white); }
+.nav-dot { width: 4px; height: 4px; background: var(--yellow); border-radius: 50%; }
+.nav-cta { background: var(--secondary) !important; color: var(--white) !important;
+  font-weight: 600 !important; }
+
+/* NAV DROPDOWN */
+.nav-dropdown { position: relative; }
+.nav-dropdown-trigger { padding: 5px 12px; border-radius: var(--radius-btn);
+  text-decoration: none; font-size: 12px; font-weight: 500; color: var(--text-gray);
+  cursor: pointer; background: none; border: none; font-family: inherit; }
+.nav-dropdown-trigger.active { background: var(--secondary); color: var(--white); }
+.nav-dropdown-menu { display: none; position: absolute; top: 100%; left: 0;
+  background: var(--white); border: 1px solid var(--line); border-radius: var(--radius-md);
+  padding: 6px 0; min-width: 180px; box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  z-index: 200; margin-top: 4px; }
+.nav-dropdown:hover .nav-dropdown-menu { display: block; }
+.nav-dropdown-menu a { display: block; padding: 8px 16px; font-size: 12px;
+  color: var(--text); text-decoration: none; font-weight: 500; }
+.nav-dropdown-menu a:hover { background: var(--light-bg); }
+.nav-dropdown-menu a.dd-active { color: var(--secondary); font-weight: 700; }
+
+/* META BAR */
+.meta-bar { background: var(--light-bg); border-left: 4px solid var(--secondary);
+  padding: 12px 18px; margin: 12px 40px; border-radius: var(--radius-md);
+  font-size: 11px; line-height: 1.8; }
+.meta-bar strong { color: var(--secondary); }
+
+/* HERO */
+.hero { position: relative; background: linear-gradient(135deg, #1a1a2e 0%, #2a2a4e 50%, #1a2a3e 100%);
+  color: var(--white); border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  overflow: hidden; padding: 72px 40px 48px; }
+.hero h1 { font-size: 32px; line-height: 1.1; font-weight: 700; max-width: 700px; margin-bottom: 18px; }
+.hero .subline { font-size: 15px; opacity: 0.88; line-height: 1.5; max-width: 640px; margin-bottom: 28px; }
+.hero .btn { display: inline-flex; align-items: center; gap: 10px;
+  background: var(--mid-blue); color: var(--white); padding: 10px 24px;
+  border-radius: var(--radius-btn); font-weight: 600; font-size: 13px; text-decoration: none; }
+.hero .btn-secondary { background: transparent; border: 1px solid rgba(255,255,255,0.4); margin-left: 12px; }
+
+/* SECTIONS */
+.section { padding: 32px 40px; }
+.section-alt { background: var(--light-bg); }
+.section h2 { font-size: 24px; font-weight: 700; color: var(--primary); margin-bottom: 16px; }
+.section h3 { font-size: 17px; font-weight: 700; margin: 20px 0 8px; color: var(--primary); }
+.section p { font-size: 14px; color: var(--text); line-height: 1.6; margin-bottom: 10px; max-width: 780px; }
+.section ul { padding-left: 22px; margin-bottom: 14px; }
+.section li { font-size: 14px; margin-bottom: 6px; line-height: 1.5; }
+
+/* CARD GRID */
+.card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0; }
+.card { background: linear-gradient(135deg, #EFF4F6 0%, #DAEAF6 100%);
+  border-radius: var(--radius-lg); padding: 24px 20px; display: flex; flex-direction: column; }
+.card h3 { font-size: 17px; font-weight: 700; color: var(--primary); margin: 0 0 10px; }
+.card p { font-size: 13px; color: var(--text); line-height: 1.5; }
+.card .suitable { font-size: 12px; color: var(--secondary); font-weight: 600; margin-top: 14px;
+  padding-top: 12px; border-top: 1px dashed var(--line); }
+.card .cta-link { color: var(--secondary); font-weight: 600; font-size: 12px;
+  text-decoration: none; margin-top: 10px; display: inline-block; }
+
+/* STEPS */
+.steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0; }
+.step { padding: 20px; border: 1px solid var(--line); border-radius: var(--radius-lg); }
+.step-num { display: flex; align-items: center; justify-content: center;
+  width: 32px; height: 32px; background: var(--secondary); color: var(--white);
+  border-radius: 50%; font-size: 14px; font-weight: 700; margin-bottom: 12px; }
+.step h3 { font-size: 15px; margin: 0 0 8px; }
+.step p { font-size: 13px; color: var(--text); }
+
+/* LOCATION CARDS */
+.location-card { border: 1px solid var(--line); border-radius: var(--radius-lg);
+  padding: 24px; margin: 14px 0; }
+.location-card h3 { font-size: 18px; color: var(--primary); margin-bottom: 4px; }
+.location-card .address { font-size: 13px; color: var(--text-gray); margin-bottom: 14px; }
+.location-card ul { padding-left: 20px; }
+.location-card li { font-size: 13px; margin-bottom: 5px; }
+
+/* TABLES */
+table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+th { background: var(--secondary); color: var(--white); padding: 10px 12px;
+  text-align: left; font-weight: 600; }
+td { padding: 10px 12px; border-bottom: 1px solid var(--line); }
+tr:nth-child(even) td { background: var(--light-bg); }
+
+/* PLACEHOLDER */
+.placeholder { background: var(--placeholder-bg); border: 1px dashed var(--placeholder-border);
+  border-radius: 6px; padding: 10px 14px; font-size: 12px; font-style: italic;
+  color: #856404; margin: 8px 0; }
+
+/* FAQ */
+details.faq { border-bottom: 1px solid var(--line); }
+details.faq summary { padding: 14px 0; font-weight: 700; font-size: 13px;
+  cursor: pointer; list-style: none; display: flex; justify-content: space-between;
+  align-items: center; color: var(--primary); }
+details.faq summary::-webkit-details-marker { display: none; }
+details.faq summary::after { content: '+'; display: flex; align-items: center;
+  justify-content: center; width: 24px; height: 24px; background: var(--light-bg);
+  border-radius: 50%; font-size: 14px; color: var(--secondary); flex-shrink: 0; }
+details.faq[open] summary::after { content: '\2212'; background: var(--secondary); color: var(--white); }
+details.faq .faq-a { padding: 0 0 14px; font-size: 13px; color: var(--text); line-height: 1.6; }
+
+/* CTA BANNER */
+.cta-banner { background: var(--secondary); color: var(--white); padding: 32px;
+  border-radius: var(--radius-lg); margin: 32px 40px; text-align: center; }
+.cta-banner h2 { font-size: 22px; color: var(--white); margin-bottom: 12px; }
+.cta-banner p { font-size: 14px; opacity: 0.92; max-width: 600px;
+  margin: 0 auto 20px; color: var(--white); }
+.cta-banner .btn { display: inline-flex; background: var(--white); color: var(--secondary);
+  padding: 10px 24px; border-radius: var(--radius-btn); font-weight: 700;
+  font-size: 14px; text-decoration: none; margin: 0 6px; }
+.cta-banner .btn-outline { background: transparent;
+  border: 1px solid rgba(255,255,255,0.5); color: var(--white); }
+
+/* FOOTER */
+.footer { background: linear-gradient(180deg, #ECF3F7 0%, #FFFFFF 100%);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0; padding: 28px 40px 16px;
+  margin-top: 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+.footer-label { font-size: 11px; color: var(--text-gray); margin-bottom: 2px; }
+.footer-value { font-size: 15px; font-weight: 500; color: var(--secondary); margin-bottom: 10px; }
+.footer-links { display: flex; gap: 16px; margin-top: 8px; }
+.footer-links a { font-size: 11px; color: var(--text-gray); text-decoration: none; }
+.footer-links a:hover { color: var(--secondary); }
+.footer-copyright { grid-column: 1/-1; font-size: 10px; color: var(--text-gray);
+  border-top: 1px dashed var(--line); padding-top: 10px; margin-top: 6px; }
+
+/* VERSION BADGE */
+.version-badge { position: fixed; bottom: 14px; right: 14px; background: var(--secondary);
+  color: var(--white); padding: 5px 12px; border-radius: var(--radius-btn);
+  font-size: 10px; font-weight: 700; z-index: 200; }
+
+/* FIGMA NOTES (dev only) */
+.figma-note { background: #f0f0f0; border-left: 3px solid #ccc; padding: 6px 12px;
+  margin: 4px 40px; font-size: 10px; color: #888; font-style: italic; }
+
+@media (max-width: 800px) {
+  .card-grid, .steps-grid { grid-template-columns: 1fr; }
+  .nav { flex-wrap: wrap; height: auto; padding: 8px 12px; }
+  .hero { padding: 40px 20px; }
+  .hero h1 { font-size: 24px; }
+  .section { padding: 24px 20px; }
+  .footer { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a href="index.html" class="nav-logo">MEDILUX</a>
+  <div class="nav-links">
+    <a href="startseite_v081.html">Startseite</a>
+    <span class="nav-dot"></span>
+    <a href="leistungen_v081.html">Leistungen</a>
+    <span class="nav-dot"></span>
+    <div class="nav-dropdown">
+      <button class="nav-dropdown-trigger active">F&uuml;r wen? &#9662;</button>
+      <div class="nav-dropdown-menu">
+        <a href="fuer_angehoerige_v09.html" class="dd-active">F&uuml;r Angeh&ouml;rige</a>
+        <a href="fuer_senioren_v09.html">F&uuml;r Senioren</a>
+        <a href="fuer_berufsbetreuer_v09.html">F&uuml;r Berufsbetreuer</a>
+        <a href="fuer_aerzte_v09.html">F&uuml;r &Auml;rzte</a>
+        <a href="fuer_sozialdienste_v09.html">F&uuml;r Sozialdienste</a>
+        <a href="fuer_pflegeberater_v09.html">F&uuml;r Pflegeberater</a>
+        <a href="fuer_sozialamter_v09.html">F&uuml;r Sozial&auml;mter</a>
+      </div>
+    </div>
+    <span class="nav-dot"></span>
+    <a href="standorte_v09.html">Standorte</a>
+    <span class="nav-dot"></span>
+    <a href="ueber_uns_v09.html">&Uuml;ber uns</a>
+    <span class="nav-dot"></span>
+    <a href="karriere_v09.html">Karriere</a>
+    <span class="nav-dot"></span>
+    <a href="kontakt_v09.html">Kontakt</a>
+    <a href="#kontakt" class="nav-cta">Kostenlose Beratung &rarr;</a>
+  </div>
+</nav>
+
+<div class="page">
+<div class="meta-bar">
+  <strong>FÜR ANGEHÖRIGE v0.9</strong> | Primary KW: Seniorenbetreuung Berlin (210 SV/mo, KD 21%) `[SEMrush 03.03.2026]` | Status: Draft
+</div>
+<section class="hero">
+  <h1>Seniorenbetreuung in Berlin — Entlastung für pflegende Angehörige</h1>
+  <p class="subline">Pflege ist keine Aufgabe, die Sie allein bewältigen müssen. Wir finden gemeinsam die richtige Betreuung für Ihren Angehörigen — ob zu Hause, in einer unserer Pflege-WGs oder im betreuten Wohnen.</p>
+  <div>
+    <a href="#kontakt" class="btn">Kostenlose Beratung anfragen</a>
+    <a href="#kontakt" class="btn btn-secondary">0391/6076062 anrufen</a>
+  </div>
+</section>
+<div class="section">
+<h2>Problem/Pain: Die Realität der Pflege</h2>
+<h4>H2: Wenn die Pflege zur Belastung wird</h4>
+<p>Sie haben sich entschieden, für Ihre Mutter, Ihren Vater oder Ihren Partner da zu sein. Dafür verdienen Sie Respekt. Aber vielleicht merken Sie auch: Die Pflege verändert Ihren Alltag grundlegend.</p>
+<p><strong>Drei Situationen, die viele Angehörige kennen:</strong></p>
+<p><strong>Zwischen Beruf und Pflege</strong></p>
+<p>Der Arbeitstag endet — die Pflege beginnt. Einkaufen, Medikamente, Arzttermine, nachts aufstehen. Freizeit wird zum Fremdwort. Dieser Spagat ist auf Dauer kaum durchzuhalten.</p>
+<p><strong>Schuldgefühle, egal wie man sich entscheidet</strong></p>
+<p>Wer professionelle Hilfe in Betracht zieht, fragt sich oft: Gebe ich auf? Die Antwort ist klar: Nein. Sie sorgen dafür, dass Ihr Angehöriger die bestmögliche Betreuung bekommt — von geschulten Pflegekräften, rund um die Uhr.</p>
+<p><strong>Allein mit der Verantwortung</strong></p>
+<p>Pflegegrade beantragen, Leistungen vergleichen, Formulare ausfüllen, Entscheidungen treffen. Das Pflegesystem ist komplex. Ohne Orientierung kostet das Kraft, die Sie für Ihren Angehörigen brauchen.</p>
+</div>
+<div class="section">
+<h2>Lösung: Zwei Wege, die entlasten</h2>
+<h4>H2: Welche Betreuung passt zu Ihrer Situation?</h4>
+<p>Jede Familie ist anders. Deshalb bieten wir nicht eine Lösung, sondern zwei — abgestimmt auf den Pflegebedarf Ihres Angehörigen und Ihre Lebenssituation als Familie.</p>
+<h4>H3: Pflege-Wohngemeinschaft — Ein neues Zuhause in Gemeinschaft</h4>
+<p>Wenn die Pflege zu Hause nicht mehr ausreicht, bieten unsere Pflege-WGs eine Alternative, die vielen Familien die größte Sorge nimmt: Ihr Angehöriger lebt in einer kleinen Wohngemeinschaft mit maximal 12 Bewohnern — mit Rund-um-die-Uhr-Betreuung durch liebevolle Pflegekräfte. <!-- IMPLEMENTS: D-FB-008 (liebevolle statt examinierte); D-FB-011 (max 12) --></p>
+<p>Was das für Sie als Familie bedeutet:</p>
+<ul>
+<li>Sie können jederzeit zu Besuch kommen</li>
+<li>Sie wissen, dass Ihr Angehöriger nie allein ist — auch nachts nicht</li>
+<li>Sie bleiben Teil des Lebens, ohne allein für alles verantwortlich zu sein</li>
+<li>Geeignet bei Demenz, körperlichen Einschränkungen oder Bettlägerigkeit <!-- IMPLEMENTS: D-FB-007 (versorgt, NICHT Intensiv/Palliativ-Spezialisierung) --></li>
+</ul>
+<p>Der Unterschied zwischen Pflege-WG und betreutem Wohnen liegt nur in der Wohnform — das Pflegekonzept mit Rund-um-die-Uhr-Versorgung ist identisch. <!-- IMPLEMENTS: D-FB-010 (Wohnform-USP) --></p>
+<p><strong>59 Pflegeplätze</strong> an zwei Standorten: Villa Civitas in Zehlendorf und Residenz Heerstraße in Spandau.</p>
+<p>→ <code>Besichtigungstermin vereinbaren</code></p>
+<h4>H3: Betreutes Wohnen — Eigenständig mit Sicherheitsnetz</h4>
+<p>Für Angehörige, die noch selbstständig leben, aber zunehmend Unterstützung brauchen: 42 barrierefreie Wohneinheiten (18 bis 48 m²) in der Residenz Heerstraße, Berlin-Spandau.</p>
+<p>Ihr Angehöriger behält seine Privatsphäre — mit der Gewissheit, dass bei Bedarf sofort Hilfe da ist. Das Notruf- und Sicherheitssystem funktioniert rund um die Uhr.</p>
+<p>Für Sie bedeutet das: weniger Sorgen, weniger nächtliche Anrufe, weniger "Was wäre, wenn".</p>
+<p>→ <code>Verfügbarkeit prüfen</code></p>
+</div>
+<div class="section">
+<h2>So funktioniert der Weg zu uns</h2>
+<h4>H2: In drei Schritten zur richtigen Betreuung</h4>
+<p><strong>Schritt 1: Erstgespräch — kostenlos und unverbindlich</strong></p>
+<p>Rufen Sie uns an oder schreiben Sie uns. Wir nehmen uns Zeit für Ihre Fragen und Ihre Situation. Kein Verkaufsgespräch — ein ehrliches Beratungsgespräch.</p>
+<p><strong>Schritt 2: Besichtigung vor Ort</strong></p>
+<p>Kommen Sie vorbei und sehen Sie sich unsere Räumlichkeiten an. Lernen Sie das Team kennen. Bringen Sie Ihren Angehörigen mit, wenn möglich — oder kommen Sie erst allein.</p>
+<p><strong>Schritt 3: Gemeinsam entscheiden</strong></p>
+<p>Wir prüfen die Verfügbarkeit, klären den Pflegebedarf und unterstützen Sie bei der Antragstellung. Erst wenn Sie und Ihr Angehöriger sich sicher fühlen, geht es weiter.</p>
+<p><strong>Kontakt:</strong> 0391/6076062 · Mo–Fr 8:00–16:30</p>
+</div>
+<div class="section">
+<h2>Unsere Standorte: Orte zum Besuchen</h2>
+<h4>H2: Zwei Standorte in Berlin — beide gut erreichbar</h4>
+<h4>H3: Villa Civitas — Berlin-Zehlendorf</h4>
+<p><strong>Lindenthaler Allee 20, 14163 Berlin</strong></p>
+<p>Eine historische Villa im grünen Herzen von Zehlendorf: alter Baumbestand, großzügige Außenfläche, barrierefreie Wege. S-Bahn Mexikoplatz in der Nähe, Einkaufsmöglichkeiten und Ärzte fußläufig.</p>
+<ul>
+<li>35 Pflegeplätze in 4 Wohngemeinschaften</li>
+<li>24-Stunden-Betreuung, Nachtbereitschaft</li>
+<li>Demenz und Bettlägerigkeit werden versorgt <!-- IMPLEMENTS: D-FB-007/011 — entfernt: „Spezialisierung Demenz/Palliativ/Intensiv/Junge" + 4-WG-Modelle --></li>
+<li>Einzelzimmer und 3 Doppelzimmer (12–20 m²), barrierefrei</li>
+<li>Gemeinschaftsküche, moderne Pflegebäder, große Terrasse</li>
+<li>Aktivitäten: Basteln, Musikkreise, Gedächtnistraining, Gymnastik, Gärtnern</li>
+<li>Haustiere erlaubt</li>
+</ul>
+<p><code></code></p>
+<h4>H3: Residenz Heerstraße — Berlin-Spandau</h4>
+<p><strong>Gärtnereiring 56, 13593 Berlin</strong></p>
+<p>Ein modernes Wohn- und Pflegehaus im grünen Spandau: ruhige Lage, gute ÖPNV-Anbindung, Besucherparkplatz vorhanden. Dachterrasse mit Panoramablick.</p>
+<ul>
+<li>2 Pflege-WGs (je 12 Plätze) + 42 betreute Wohneinheiten (18–48 m²)</li>
+<li>24-Stunden-Betreuung, Nachtbereitschaft</li>
+<li>WG-Zimmer: 15–22 m², überwiegend mit eigenem Bad <!-- IMPLEMENTS: D-FB-007 — entfernt: „Beschützter Demenzbereich" --></li>
+<li>Wohnungen: 18–48 m², teils mit Balkon, barrierefrei</li>
+<li>Notruf- und Sicherheitssystem rund um die Uhr</li>
+<li>Täglich frisch zubereitete Mahlzeiten, Sonderkost möglich</li>
+<li>Haustiere nach Absprache erlaubt</li>
+<li>Aufnahme ab Pflegegrad 2 (oder Antrag gestellt)</li>
+</ul>
+<p><code></code></p>
+</div>
+<div class="section">
+<h2>Kosten: Transparent und planbar</h2>
+<h4>H2: Was kostet die Betreuung — und wer zahlt was?</h4>
+<p>Über Geld zu sprechen, ist unangenehm. Aber für eine gute Entscheidung brauchen Sie klare Zahlen. Deshalb nennen wir Ihnen die Kosten offen — das tun nur wenige Anbieter in Berlin.</p>
+<h4>H3: Pflege-WG — Eigenanteil pro Monat</h4>
+<table><thead><tr><th>Standort</th><th>Eigenanteil (ca., nach Pflegekassen-Abzug)</th><th>Inklusivleistungen</th></tr></thead><tbody><tr><td>Villa Civitas (ab PG 2)</td><td>circa für kleines / mittleres / großes Zimmer <div class="placeholder">&#9998; PLACEHOLDER #23: konkrete Zahlen JES</div></td><td>Betreuung, Unterkunft, Verpflegung</td></tr><tr><td>Residenz Heerstraße (ab PG 2)</td><td>€2.800–3.200</td><td>Betriebskosten, Versorgung, alle Pflegemaßnahmen</td></tr></tbody></table>
+<p><code></code></p>
+<p><!-- IMPLEMENTS: D-FB-006 — alt Villa €3.450–3.850 / Residenz €2.200–2.600 ersetzt --></p>
+<p>Sie haben keinen Pflegegrad? Wir beraten Sie zur Antragstellung — das ist Teil unserer Unterstützung.</p>
+<p>→ <code>Persönliche Kostenberatung anfragen</code></p>
+</div>
+<div class="section">
+<h2>Stimmen von Angehörigen</h2>
+<h4>H2: Was andere Familien über uns sagen</h4>
+<p><div class="placeholder">&#9998; PLACEHOLDER #4: Testimonial — Angehörigen-Perspektive, z.B. Tochter/Sohn über Erfahrung mit Pflege-WG, konkrete Situation beschreiben</div></p>
+<p><div class="placeholder">&#9998; PLACEHOLDER #5: Testimonial — Angehörigen-Perspektive, z.B. Partner über betreutes Wohnen, Entlastung im Alltag</div></p>
+<p><div class="placeholder">&#9998; PLACEHOLDER #6: Testimonial — Angehörigen-Perspektive, z.B. Familie über Aufnahmeprozess, "Wir wurden von Anfang an mitgenommen"</div></p>
+<p><em>Hinweis: Alle Erfahrungsberichte werden mit schriftlicher Einwilligung (DSGVO) veröffentlicht.</em></p>
+</div>
+<div class="section">
+<h2>BLOCK 8 — FAQ für Angehörige</h2>
+<details class="faq" open>
+  <summary>Mein Angehöriger hat noch keinen Pflegegrad. Können wir trotzdem zu Ihnen?</summary>
+  <div class="faq-a">Ja, wir beraten Sie gerne zur Antragstellung und begleiten den Prozess der Pflegebegutachtung. Für beide Wohnformen — Pflege-WG und betreutes Wohnen — ist Pflegegrad 2 oder ein beantragter Pflegegrad 2 erforderlich.</div>
+</details>
+<details class="faq">
+  <summary>Kann ich meinen Angehörigen jederzeit besuchen?</summary>
+  <div class="faq-a">Bei Wohngemeinschaften und auch dem betreuten Wohnen handelt es sich um privaten Wohnraum. Entsprechend der Hausordnung sind Besuche jederzeit willkommen — es gibt keine festen Besuchszeiten. Ihr Angehöriger lebt dort, und Sie sind Teil seines Lebens.</div>
+</details>
+<details class="faq">
+  <summary>Mein Angehöriger hat Demenz. Sind Ihre Einrichtungen darauf eingestellt?</summary>
+  <div class="faq-a">Ja, beide Standorte haben Erfahrung mit Demenzbetreuung. Lassen Sie sich gerne individuell von uns beraten.</div>
+</details>
+<details class="faq">
+  <summary>Wie schnell ist ein Platz verfügbar?</summary>
+  <div class="faq-a">Das hängt von der aktuellen Belegung ab. Rufen Sie uns an (0391/6076062), und wir prüfen die Verfügbarkeit für beide Standorte. In dringenden Fällen finden wir gemeinsam eine Lösung. <div class="placeholder">&#9998; PLACEHOLDER #21: Aktuelle Verfügbarkeit / typische Wartezeiten</div></div>
+</details>
+<details class="faq">
+  <summary>Wer kümmert sich um die Abrechnung mit der Pflegekasse?</summary>
+  <div class="faq-a">Bei den Pflege-WGs und auch im betreuten Wohnen unterstützen wir Sie bei der Beantragung aller Leistungen, die Ihrem Angehörigen zustehen. Das Pflegegradbudget wird vollständig zur Refinanzierung eingesetzt und direkt durch uns mit der Pflegekasse abgerechnet. Bei privaten Krankenkassen und der Beihilfe sind die Leistungen zunächst durch den Versicherten zu verauslagen. Im Anschluss erfolgt die Abrechnung zwischen Versichertem und Krankenkasse.</div>
+</details>
+<details class="faq">
+  <summary>Kann mein Angehöriger persönliche Möbel und Erinnerungsstücke mitbringen?</summary>
+  <div class="faq-a">Ja. In allen Zimmern und Wohnungen ist Platz für persönliche Möbel und Gegenstände. Ein vertrautes Umfeld erleichtert den Übergang — das wissen wir aus Erfahrung. <!-- ENTFERNT (D-FB-009): Frage „Gibt es auch Kurzzeitpflege oder Verhinderungspflege?" — JES 22.06 „Verhinderungspflege komplett entfernen". PLACEHOLDER #19 obsolet. --></div>
+</details>
+</div>
+<div class="cta-banner" id="kontakt">
+  <h2>Sie müssen das nicht allein schaffen</h2>
+  <p>Der erste Schritt ist oft der schwerste. Aber er muss kein großer sein: Ein Anruf, eine Nachricht, ein Gespräch. Wir hören zu und beraten — ohne Druck, ohne Verpflichtung.</p>
+  <div>
+    <a href="#" class="btn">Jetzt Beratungsgespräch vereinbaren</a>
+    <a href="#" class="btn btn-outline">0391/6076062 anrufen</a>
+  </div>
+</div>
+
+<footer class="footer">
+  <div>
+    <div class="footer-label">Telefon</div>
+    <div class="footer-value">+49 173 8334531</div>
+    <div class="footer-label">E-Mail</div>
+    <div class="footer-value"><span class="placeholder">E-Mail beim Kunden anfragen</span></div>
+  </div>
+  <div>
+    <div class="footer-label">Standorte</div>
+    <div style="font-size:12px;color:var(--text);line-height:1.6">
+      Villa Civitas &mdash; Lindenthaler Allee 20, 14163 Berlin<br>
+      Residenz Heerstra&szlig;e &mdash; G&auml;rtnereiring 56, 13593 Berlin
+    </div>
+    <div class="footer-links">
+      <a href="kosten_v09.html">Kosten &amp; Finanzierung</a>
+      <a href="#">Mediatek</a>
+      <a href="#">Impressum</a>
+      <a href="#">Datenschutz</a>
+    </div>
+  </div>
+  <div class="footer-copyright">
+    &copy; 2026 MEDILUX GmbH &mdash; Preview v0.9 &middot; Nur zur internen Pr&uuml;fung
+  </div>
+</footer>
+
+</div>
+<div class="version-badge">v0.9</div>
+</body>
+</html>

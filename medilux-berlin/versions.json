@@ -1,0 +1,11 @@
+{
+  "project": "medilux-berlin_preview",
+  "versions": [
+    {
+      "version": "v1.0",
+      "date": "2026-09-02",
+      "summary": "Startseite v1.0 (Block K0): Re-Brief 22.06 eingearbeitet, Kosten-Teaser ohne Beträge, 7 Für-wen, Trust 5, Abschluss-CTA; Preview-Generator auf 2p-preview-Kanon (SEO-Head, JSON-LD, Seiten-Logik, Lint). Übrige 13 Seiten = Stand vor Re-Brief (pending K1–K4)."
+    }
+  ],
+  "latest": "v1.0"
+}
