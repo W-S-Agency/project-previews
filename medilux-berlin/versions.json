@@ -2,10 +2,15 @@
   "project": "medilux-berlin_preview",
   "versions": [
     {
+      "version": "v1.1",
+      "date": "2026-09-02",
+      "summary": "Für Senioren v1.0 (K0 2/2, D-PARCH-006): JES-Wortlaut 22.06, H1 mit Bezirk, FAQ freie Plätze; Startseite v1.0.1 unverändert"
+    },
+    {
       "version": "v1.0",
       "date": "2026-09-02",
       "summary": "Startseite v1.0.1 (Block K0): JES-Verbatim-Konsistenz-Check 02.09 abends (Trust-Wortlaute, Kosten-Sätze, FAQ Abrechnung inkl. privat/Beihilfe, Standorte-Fakten aus JES 17.03); Preview-Generator auf 2p-preview-Kanon. Übrige 13 Seiten = Stand vor Re-Brief (pending K1–K4)."
     }
   ],
-  "latest": "v1.0"
+  "latest": "v1.1"
 }
