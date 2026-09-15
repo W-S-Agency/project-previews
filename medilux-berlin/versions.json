@@ -4,12 +4,12 @@
     {
       "version": "v1.3",
       "date": "2026-09-15",
-      "summary": "--overwrite"
+      "summary": "Für Angehörige v1.0.1: Kosten-Block ohne Beträge → Kosten-Teaser mit CTA «Jetzt Kosten berechnen» (/kostenrechner/), wie Für Senioren · Kosten-Blöcke: Absätze getrennt (Renderer-Fix)"
     },
     {
       "version": "v1.2",
       "date": "2026-09-15",
-      "summary": "--overwrite"
+      "summary": "Hausname Villa Civitas → Villa Lindenthal (Texte, JSON-LD, Footer, Standort-Tabs, Anker); Inhalte unverändert: Startseite v1.0.2 · Für Senioren v1.0.1"
     },
     {
       "version": "v1.1",
