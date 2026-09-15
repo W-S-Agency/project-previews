@@ -2,6 +2,11 @@
   "project": "medilux-berlin_preview",
   "versions": [
     {
+      "version": "v1.2",
+      "date": "2026-09-15",
+      "summary": "Hausname Villa Civitas → Villa Lindenthal (Texte, JSON-LD, Standort-Tabs, Anker); Inhalte unverändert: Startseite v1.0.2 · Für Senioren v1.0.1"
+    },
+    {
       "version": "v1.1",
       "date": "2026-09-02",
       "summary": "Für Senioren v1.0.1 (Standorte + Anfahrt + FAQ Partner aus Kundenquellen, Bilder Shooting 18.08) · Startseite v1.0.2 (Schlachtensee/Forst zurück)"
@@ -12,5 +17,5 @@
       "summary": "Startseite v1.0.1 (Block K0): JES-Verbatim-Konsistenz-Check 02.09 abends (Trust-Wortlaute, Kosten-Sätze, FAQ Abrechnung inkl. privat/Beihilfe, Standorte-Fakten aus JES 17.03); Preview-Generator auf 2p-preview-Kanon. Übrige 13 Seiten = Stand vor Re-Brief (pending K1–K4)."
     }
   ],
-  "latest": "v1.1"
+  "latest": "v1.2"
 }
