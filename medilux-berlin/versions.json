@@ -2,6 +2,11 @@
   "project": "medilux-berlin_preview",
   "versions": [
     {
+      "version": "v1.9",
+      "date": "2026-09-18",
+      "summary": "Für Sozialdienste v1.0 — Intensiv- und Palliativ-Positionierung entfernt, neue Karte «Was wir nicht übernehmen», €-Tabellen durch Verweis auf /kosten/ ersetzt. Interne DVL-Notizen erscheinen nicht mehr im sichtbaren Text und nicht mehr im FAQ-Schema."
+    },
+    {
       "version": "v1.8",
       "date": "2026-09-18",
       "summary": "Für Angehörige v1.1: Kundenwortlaut JES 22.06 in den Blöcken 2-4, SEO-Anker auf GSC-Daten, FAQ nach Nachfrage-Matrix; Kritik- und Verify-Befunde behoben (barrierearm, Quellenangaben, Platzhalter). Stimmen-Block ohne echte Zitate wird nicht mehr mit Platzhaltern ausgespielt."
@@ -47,5 +52,5 @@
       "summary": "Startseite v1.0.1 (Block K0): JES-Verbatim-Konsistenz-Check 02.09 abends (Trust-Wortlaute, Kosten-Sätze, FAQ Abrechnung inkl. privat/Beihilfe, Standorte-Fakten aus JES 17.03); Preview-Generator auf 2p-preview-Kanon. Übrige 13 Seiten = Stand vor Re-Brief (pending K1–K4)."
     }
   ],
-  "latest": "v1.8"
+  "latest": "v1.9"
 }
