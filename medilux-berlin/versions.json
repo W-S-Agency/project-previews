@@ -2,6 +2,11 @@
   "project": "medilux-berlin_preview",
   "versions": [
     {
+      "version": "v1.5",
+      "date": "2026-09-18",
+      "summary": "Startseite: Standorte-Block ohne Überschrift, Hausnamen werden H2 (D-PARCH-011); Drehbuch 01 mit Längenbudgets nachgezogen"
+    },
+    {
       "version": "v1.4",
       "date": "2026-09-18",
       "summary": "Startseite v1.1.2: Texte auf die Längenbudgets des Figma-Layouts gekürzt (Hero, Snippet, Wohnformen, Standorte, FAQ, Abschluss-CTA); Kosten-Block bleibt im Kundenwortlaut"
@@ -27,5 +32,5 @@
       "summary": "Startseite v1.0.1 (Block K0): JES-Verbatim-Konsistenz-Check 02.09 abends (Trust-Wortlaute, Kosten-Sätze, FAQ Abrechnung inkl. privat/Beihilfe, Standorte-Fakten aus JES 17.03); Preview-Generator auf 2p-preview-Kanon. Übrige 13 Seiten = Stand vor Re-Brief (pending K1–K4)."
     }
   ],
-  "latest": "v1.4"
+  "latest": "v1.5"
 }
