@@ -274,6 +274,32 @@ details.faq summary::-webkit-details-marker{display:none}details.faq summary::af
 .fb-close{background:#eceef2;color:#333}
 @media(max-width:900px){.fb-btn{position:static;display:block;margin:10px 0 0}}
 </style></head><body>
+<style>.ver-note{background:#B45309;color:#fff;padding:12px 16px;font-size:15px;text-align:center;line-height:1.4}.ver-note a{color:#fff;text-decoration:underline;font-weight:800}</style>
+<div id="ver-note" class="ver-note" hidden></div>
+<script>
+(function(){
+  var m = location.pathname.match(/\/(v\d+(?:\.\d+)*)\//);
+  if (!m) return;
+  var cur = m[1], file = location.pathname.split('/').pop() || 'index.html';
+  fetch('../versions.json', {cache: 'no-store'}).then(function (r) { return r.json(); }).then(function (d) {
+    if (!d || !d.latest || d.latest === cur) return;
+    var mine = (d.versions || []).filter(function (v) { return v.version === cur; })[0];
+    var el = document.getElementById('ver-note');
+    var b = document.createElement('b');
+    b.textContent = 'Ältere Fassung.';
+    var a = document.createElement('a');
+    a.setAttribute('href', '../' + d.latest + '/' + file);
+    a.textContent = d.latest + ' — jetzt öffnen';
+    el.appendChild(b);
+    el.appendChild(document.createTextNode(' Sie sehen ' + cur
+      + (mine ? ' vom ' + mine.date.split('-').reverse().join('.') : '') + '. Aktuell ist '));
+    el.appendChild(a);
+    el.appendChild(document.createTextNode('.'));
+    el.hidden = false;
+  }).catch(function () {});
+})();
+</script>
+
 <nav class="topnav"><div class="wrap nav-inner"><a class="brand" href="index.html">MEDILUX <span>Berlin</span></a><button class="nav-toggle" aria-label="Menü" aria-expanded="false" onclick="navToggle(this)"><span></span><span></span><span></span></button><div class="nav-links"><a href="medilux_berlin_preview_startseite.html">Startseite</a><a href="medilux_berlin_preview_leistungen.html">Leistungen</a><div class="has-drop active"><a class="drop-top" href="#" onclick="return dropToggle(this)">Für wen? ▾</a><div class="drop-menu"><a href="medilux_berlin_preview_fuer_angehoerige.html">Für Angehörige</a><a href="medilux_berlin_preview_fuer_senioren.html">Für Senioren</a><a href="medilux_berlin_preview_fuer_berufsbetreuer.html">Für Berufsbetreuer</a><a href="medilux_berlin_preview_fuer_aerzte.html">Für Haus- &amp; Fachärzte</a><a href="medilux_berlin_preview_fuer_sozialdienste.html">Für Sozialdienste</a><a href="medilux_berlin_preview_fuer_pflegeberater.html" class=dd-act>Für Pflegeberater</a><a href="medilux_berlin_preview_fuer_sozialamter.html">Für Sozialämter</a></div></div><a href="medilux_berlin_preview_standorte.html">Standorte</a><a href="medilux_berlin_preview_kosten.html">Kosten</a><a href="medilux_berlin_preview_ueber_uns.html">Über uns</a><a href="medilux_berlin_preview_karriere.html">Karriere</a><a href="medilux_berlin_preview_kontakt.html">Kontakt</a><a class="nav-cta" href="medilux_berlin_preview_kontakt.html">Beratung →</a></div></div></nav>
 <div class="fb-topbar"><div class="wrap"><span class="brand">MEDILUX Berlin · Für Pflegeberater</span><button class="fb-count" onclick="fbOverlay(true)">📥 Feedback: <span id="fbCount">0</span> Kommentare</button></div></div>
 <div class="banner"><div class="wrap"><b>Content-Vorschau — Für Pflegeberater · v0.9.1</b><span>Struktur und Texte zur Prüfung. Jeden Block können Sie direkt kommentieren: „✏️ Vorschlag“ rechts am Block. Gelb markiert = Platzhalter.</span></div></div>

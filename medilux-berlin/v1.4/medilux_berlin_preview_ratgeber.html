@@ -241,6 +241,32 @@ details.faq[open] summary::after{content:'\2212';background:var(--blue);color:#f
 </style>
 </head>
 <body>
+<style>.ver-note{background:#B45309;color:#fff;padding:12px 16px;font-size:15px;text-align:center;line-height:1.4}.ver-note a{color:#fff;text-decoration:underline;font-weight:800}</style>
+<div id="ver-note" class="ver-note" hidden></div>
+<script>
+(function(){
+  var m = location.pathname.match(/\/(v\d+(?:\.\d+)*)\//);
+  if (!m) return;
+  var cur = m[1], file = location.pathname.split('/').pop() || 'index.html';
+  fetch('../versions.json', {cache: 'no-store'}).then(function (r) { return r.json(); }).then(function (d) {
+    if (!d || !d.latest || d.latest === cur) return;
+    var mine = (d.versions || []).filter(function (v) { return v.version === cur; })[0];
+    var el = document.getElementById('ver-note');
+    var b = document.createElement('b');
+    b.textContent = 'Ältere Fassung.';
+    var a = document.createElement('a');
+    a.setAttribute('href', '../' + d.latest + '/' + file);
+    a.textContent = d.latest + ' — jetzt öffnen';
+    el.appendChild(b);
+    el.appendChild(document.createTextNode(' Sie sehen ' + cur
+      + (mine ? ' vom ' + mine.date.split('-').reverse().join('.') : '') + '. Aktuell ist '));
+    el.appendChild(a);
+    el.appendChild(document.createTextNode('.'));
+    el.hidden = false;
+  }).catch(function () {});
+})();
+</script>
+
 <nav class="nav">
   <a href="medilux_berlin_preview_index.html" class="nav-logo">MEDILUX</a>
   <div class="nav-links">
