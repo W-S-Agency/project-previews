@@ -2,6 +2,11 @@
   "project": "medilux-berlin_preview",
   "versions": [
     {
+      "version": "v1.7",
+      "date": "2026-09-18",
+      "summary": "Statuskennzeichnung je Seite: aktuell / in Überarbeitung / veraltet (Stand vor dem Re-Brief 22.06) — Band auf der Seite, Badge und Legende in der Übersicht"
+    },
+    {
       "version": "v1.6",
       "date": "2026-09-18",
       "summary": "Für Senioren v1.1 auf die Längenbudgets des Zielseiten-Kanons gekürzt; Hero-Kicker auf beiden Seiten; Standorte-Block ohne Überschrift; dauerhafte Links je Seite + Hinweis auf älteren Fassungen"
@@ -37,5 +42,5 @@
       "summary": "Startseite v1.0.1 (Block K0): JES-Verbatim-Konsistenz-Check 02.09 abends (Trust-Wortlaute, Kosten-Sätze, FAQ Abrechnung inkl. privat/Beihilfe, Standorte-Fakten aus JES 17.03); Preview-Generator auf 2p-preview-Kanon. Übrige 13 Seiten = Stand vor Re-Brief (pending K1–K4)."
     }
   ],
-  "latest": "v1.6"
+  "latest": "v1.7"
 }
