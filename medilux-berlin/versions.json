@@ -2,6 +2,11 @@
   "project": "medilux-berlin_preview",
   "versions": [
     {
+      "version": "v1.11",
+      "date": "2026-09-19",
+      "summary": "Antworten des Kunden vom 19.09 eingearbeitet: Bürozeiten 8–15 Uhr mit Rufbereitschaft, «barrierearm» durchgängig, namentlicher Ansprechpartner auf den Zuweiser-Seiten, Versorgungsgrenzen, Einzelbäder in der Residenz, nächtliche Präsenz, Versorgung bis zum Lebensende. Für Sozialdienste v1.2 eingefroren. Generator: 25 verlorene Überschriften und alle Zwischenüberschriften wiederhergestellt, interne Quellenmarker aus dem sichtbaren Text entfernt, FAQ-Fragen auf Standorte und Kosten zurück."
+    },
+    {
       "version": "v1.10",
       "date": "2026-09-18",
       "summary": "Für Sozialdienste v1.1 nach Kritik und verify: unbelegte Zusagen raus, Quellenangaben richtiggestellt, Alt-Texte ergänzt, Längen auf §2b. Sitewide: abgeleitete Kapazitätsangaben ohne Kundenbeleg entfernt (66 Bewohner, 4-12 je WG, 3 Doppelzimmer)."
@@ -57,5 +62,5 @@
       "summary": "Startseite v1.0.1 (Block K0): JES-Verbatim-Konsistenz-Check 02.09 abends (Trust-Wortlaute, Kosten-Sätze, FAQ Abrechnung inkl. privat/Beihilfe, Standorte-Fakten aus JES 17.03); Preview-Generator auf 2p-preview-Kanon. Übrige 13 Seiten = Stand vor Re-Brief (pending K1–K4)."
     }
   ],
-  "latest": "v1.10"
+  "latest": "v1.11"
 }
