@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Kostenrechner Berlin – Varianten</title>
+<style>
+:root{
+  --bg:#f6f7f5; --card:#ffffff; --ink:#1f2a24; --muted:#5d6b63; --line:#dfe5e0;
+  --brand:#2f6f55; --brand-soft:#e5f0ea; --warn:#9a5b00; --warn-soft:#fff3dd;
+  --q:#6b3fa0; --q-soft:#f1eafa; --bad:#a3352b; --bad-soft:#fbe9e7; --ok:#2f6f55;
+  --radius:12px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121614; --card:#1b211e; --ink:#e7ece9; --muted:#a3b0a8; --line:#2c3531;
+    --brand:#6cc39c; --brand-soft:#1f3329; --warn:#f0b454; --warn-soft:#3a2c14;
+    --q:#c3a2ee; --q-soft:#2c2140; --bad:#f08a7e; --bad-soft:#3a1f1c; --ok:#6cc39c;
+  }
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{background:var(--card);border-bottom:1px solid var(--line);padding:18px 24px}
+header h1{margin:0;font-size:22px}
+header p{margin:4px 0 0;color:var(--muted);font-size:14px}
+nav{position:sticky;top:0;z-index:5;background:var(--card);border-bottom:1px solid var(--line);display:flex;gap:4px;flex-wrap:wrap;padding:8px 16px}
+nav button{border:1px solid var(--line);background:transparent;color:var(--ink);padding:8px 14px;border-radius:999px;cursor:pointer;font-size:14px}
+nav button.active{background:var(--brand);border-color:var(--brand);color:#fff}
+main{max-width:1100px;margin:0 auto;padding:24px 16px 80px}
+section{display:none}
+section.active{display:block}
+h2{font-size:24px;margin:0 0 6px}
+h3{font-size:18px;margin:22px 0 8px}
+.lead{color:var(--muted);margin:0 0 18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;margin:0 0 16px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.grid2>*,.grid3>*{min-width:0}
+@media (max-width:820px){.grid2,.grid3{grid-template-columns:1fr}}
+@media (max-width:520px){
+  th,td{padding:6px 5px;font-size:13px}
+  .card,.calc{padding:12px}
+  main{padding:16px 12px 60px}
+  .seg button{flex:1 1 70px;font-size:13px}
+}
+.tw{overflow-x:auto;max-width:100%}
+.tag{display:inline-block;font-size:12px;padding:2px 8px;border-radius:999px;background:var(--brand-soft);color:var(--brand);font-weight:600;margin-right:6px}
+.tag.warn{background:var(--warn-soft);color:var(--warn)}
+.tag.q{background:var(--q-soft);color:var(--q)}
+.tag.bad{background:var(--bad-soft);color:var(--bad)}
+.note{background:var(--warn-soft);border-left:4px solid var(--warn);padding:10px 14px;border-radius:8px;margin:12px 0;font-size:15px}
+.qbox{background:var(--q-soft);border-left:4px solid var(--q);padding:10px 14px;border-radius:8px;margin:12px 0;font-size:15px}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--brand-soft)}
+td.num,th.num{text-align:right;white-space:nowrap}
+td.miss{color:var(--q);font-weight:700;text-align:center}
+.flow{display:flex;align-items:stretch;gap:8px;flex-wrap:wrap;margin:10px 0}
+.flow .step{flex:1 1 150px;border:1px solid var(--line);border-radius:10px;padding:10px;background:var(--bg);font-size:14px}
+.flow .step b{display:block;font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.flow .arrow{align-self:center;color:var(--muted);font-size:20px}
+/* Rechner-Mockup */
+.calc{border:2px solid var(--brand);border-radius:14px;padding:16px;background:var(--card)}
+.calc label.fl{display:block;font-weight:600;margin:10px 0 4px;font-size:14px}
+.calc select{width:100%;padding:9px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font-size:15px}
+.seg{display:flex;gap:6px;flex-wrap:wrap}
+.seg button{flex:1 1 90px;padding:9px 6px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer;font-size:14px}
+.seg button.on{background:var(--brand);border-color:var(--brand);color:#fff}
+.result{margin-top:14px;padding:14px;border-radius:10px;background:var(--brand-soft)}
+.result .big{font-size:26px;font-weight:800;color:var(--brand)}
+.result.stop{background:var(--warn-soft)}
+.result.stop .big{color:var(--warn);font-size:19px}
+.result.open{background:var(--q-soft)}
+.result.open .big{color:var(--q);font-size:19px}
+.result small{display:block;color:var(--muted);margin-top:6px;font-size:13px}
+.fakebtn{display:inline-block;margin-top:10px;padding:8px 14px;border-radius:8px;background:var(--brand);color:#fff;font-size:14px}
+.demo{font-size:12px;color:var(--muted);margin:0 0 8px}
+ul.pc{margin:6px 0;padding-left:20px}
+ul.pc li{margin:3px 0}
+.plus{color:var(--ok)} .minus{color:var(--bad)}
+blockquote{margin:8px 0;padding:8px 12px;border-left:3px solid var(--line);color:var(--ink);background:var(--bg);border-radius:6px;font-size:15px}
+.who{font-size:13px;color:var(--muted)}
+/* Fragen */
+.frage{border:1px solid var(--line);border-radius:var(--radius);padding:16px;margin:0 0 14px;background:var(--card)}
+.frage h4{margin:0 0 6px;font-size:17px}
+.frage .why{color:var(--muted);font-size:14px;margin:4px 0 10px}
+.opts{display:flex;flex-direction:column;gap:6px}
+.opts button{text-align:left;padding:9px 12px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer;font-size:15px}
+.opts button.on{border-color:var(--q);background:var(--q-soft);font-weight:600}
+.opts button .n{display:inline-block;min-width:22px;font-weight:700;color:var(--q)}
+.frage textarea{width:100%;margin-top:8px;min-height:44px;padding:8px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:inherit;font-size:14px}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 18px}
+.toolbar button{padding:9px 14px;border-radius:8px;border:1px solid var(--brand);background:var(--brand);color:#fff;cursor:pointer;font-size:14px}
+.toolbar button.sec{background:transparent;color:var(--brand)}
+#out{white-space:pre-wrap;font-family:ui-monospace,Consolas,monospace;font-size:13px;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:10px;display:none}
+footer{color:var(--muted);font-size:13px;text-align:center;padding:20px}
+</style>
+</head>
+<body>
+<header>
+  <h1>Kostenrechner MEDILUX Berlin – wie bauen wir ihn?</h1>
+  <p>Arbeitsunterlage für das Gespräch am 30.09.2026 · 2Penguins · Alle Rechner auf dieser Seite sind <b>Skizzen zur Veranschaulichung</b>, keine fertige Website.</p>
+</header>
+<nav id="nav">
+  <button data-s="s1" class="active">1 · Überblick</button>
+  <button data-s="s7">2 · Wo und für wen</button>
+  <button data-s="s2">3 · So rechnet Magdeburg</button>
+  <button data-s="s3">4 · Was wir von euch wissen</button>
+  <button data-s="s4">5 · Varianten für Berlin</button>
+  <button data-s="s5">6 · Fragen an euch</button>
+  <button data-s="s6">7 · Wie es weitergeht</button>
+</nav>
+<main>
+
+<!-- 1 ÜBERBLICK -->
+<section id="s1" class="active">
+  <h2>Überblick</h2>
+  <p class="lead">Ziel für heute: Wir legen gemeinsam fest, <b>nach welcher Logik</b> der Rechner den Preis zeigt. Technisch ist das kein Problem – offen ist nur die Preislogik.</p>
+
+  <div class="card">
+    <h3 style="margin-top:0">Ist so ein Rechner machbar?</h3>
+    <p><b>Ja.</b> Der Rechner besteht aus wenigen Auswahlfeldern und einer kleinen Preistabelle. Die Preise pflegen wir an <b>einer</b> Stelle im Redaktionssystem – ändert ihr die Preise, ändert sich der Rechner automatisch. Danach folgt ein kurzes Anfrageformular, wie in Magdeburg.</p>
+    <div class="flow">
+      <div class="step"><b>Schritt 1</b>Besucher wählt Haus, Zimmer, Pflegegrad</div>
+      <div class="arrow">→</div>
+      <div class="step"><b>Ergebnis</b>«Eigenanteil ca. … € pro Monat»</div>
+      <div class="arrow">→</div>
+      <div class="step"><b>Schritt 2</b>Anfrage: Name, Telefon, E-Mail, Einzugsdatum</div>
+      <div class="arrow">→</div>
+      <div class="step"><b>Bei euch</b>Anfrage kommt per E-Mail an, ihr ruft zurück</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-top:0">Drei Fragen entscheiden fast alles</h3>
+    <ol>
+      <li><b>Pflegegrad:</b> Zahlt ein Bewohner mit Pflegegrad 2 im selben Zimmer genauso viel wie mit Pflegegrad 5? <span class="tag q">Frage K1</span></li>
+      <li><b>Residenz Heerstraße:</b> Gelten 2.800 / 3.000 / 3.200 € für die WG-Zimmer oder für die Wohnungen im Betreuten Wohnen? <span class="tag q">Frage K2</span></li>
+      <li><b>Betreutes Wohnen:</b> Soll es in den Rechner oder bleibt es bei «Preis auf Anfrage»? <span class="tag q">Frage K6</span></li>
+    </ol>
+    <p>Alle weiteren Punkte (was im Eigenanteil enthalten ist, «ca.» oder «ab», Pflegegrad beantragt) betreffen den Text unter dem Preis – nicht die Rechenlogik.</p>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-top:0">Wo der Rechner auf der Website steht</h3>
+    <p>Als Block auf der Seite <b>«Kosten»</b> (Hauptmenü) – dort stehen auch Pflegekasse, Sozialamt und die häufigen Fragen. Auf den anderen Seiten steht nur ein kurzer Hinweis mit Link, <b>ohne Beträge</b> – so gibt es die Preise nur an einer Stelle. Details: Reiter <b>«2 · Wo und für wen»</b>.</p>
+  </div>
+</section>
+
+<!-- 2 WO UND FÜR WEN -->
+<section id="s7">
+  <h2>Wo der Rechner steht – und wer ihn nutzt</h2>
+  <p class="lead">Damit klar ist, was wir bauen: auf welcher Seite der Rechner sitzt, von welchen Seiten man dorthin kommt und für wen er gedacht ist.</p>
+
+  <div class="grid2">
+    <div class="card">
+      <h3 style="margin-top:0">Aufbau der Seite «Kosten» <span class="tag warn">Vorschlag</span></h3>
+      <div class="flow" style="flex-direction:column">
+        <div class="step"><b>1 · Einstieg</b>Was kostet ein Platz in der Pflege-WG oder im Betreuten Wohnen?</div>
+        <div class="step" style="border:2px solid var(--brand);background:var(--brand-soft)"><b>2 · Kostenrechner</b>Haus, Zimmer, Pflegegrad → Eigenanteil → Anfrageformular</div>
+        <div class="step"><b>3 · Was ist im Eigenanteil enthalten</b>Miete, Versorgungs- und Serviceentgelt; was privat dazukommt (Friseur, Fußpflege)</div>
+        <div class="step"><b>4 · Was die Pflegekasse übernimmt</b>Leistungen der Pflegekasse, direkte Abrechnung durch MEDILUX</div>
+        <div class="step"><b>5 · Wenn das Geld nicht reicht</b>Sozialamt / Hilfe zur Pflege – wir helfen beim Antrag</div>
+        <div class="step"><b>6 · Häufige Fragen zu Kosten</b></div>
+      </div>
+      <p style="font-size:14px;color:var(--muted)">Der Rechner steht weit oben, weil die meisten Besucher genau dafür kommen. Wer mehr wissen will, liest darunter weiter. Adresse: <b>/kosten/</b>, der Rechner direkt unter <b>/kosten/#rechner</b>; die alte Adresse <b>/kostenrechner/</b> leitet dorthin weiter.</p>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-top:0">Von wo man zum Rechner kommt</h3>
+      <table>
+        <tr><th>Seite</th><th>Wo auf der Seite</th><th>Knopf / Link</th></tr>
+        <tr><td>Hauptmenü</td><td>Menüpunkt «Kosten»</td><td>→ Seite Kosten</td></tr>
+        <tr><td>Startseite</td><td>Block «Was kostet ein Pflegeplatz?» + häufige Fragen</td><td>«Jetzt Kosten berechnen»</td></tr>
+        <tr><td>Für Senioren</td><td>Block «Was kostet das?» + häufige Fragen</td><td>«Jetzt Kosten berechnen»</td></tr>
+        <tr><td>Für Angehörige</td><td>Block «Was kostet das?»</td><td>«Jetzt Kosten berechnen»</td></tr>
+        <tr><td>Pflege-WG</td><td>Block zu Kosten</td><td>«Kosten im Überblick»</td></tr>
+        <tr><td>Betreutes Wohnen</td><td>Block zu Kosten (Seite in Arbeit)</td><td>je nach Frage K6</td></tr>
+        <tr><td>Seiten für Fachleute (Sozialdienste, Betreuer, Ärzte, Pflegeberater, Sozialämter)</td><td>eine Zeile zu Kosten</td><td>«Kosten im Überblick»</td></tr>
+        <tr><td>Ratgeber-Artikel</td><td>im Text</td><td>Link zum Rechner</td></tr>
+        <tr><td>medilux.info, Seiten der Berliner Häuser</td><td>führen heute zum Rechner <b>Magdeburg</b></td><td>nach dem Start auf Berlin umstellen? <span class="tag q">K11</span></td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-top:0">Wer rechnet – und was braucht er?</h3>
+    <table>
+      <tr><th>Wer</th><th>Warum er rechnet</th><th>Was er braucht</th><th>Wie er kommt</th></tr>
+      <tr><td><b>Angehörige</b> (wichtigste Gruppe)</td><td>«Was bleibt für uns im Monat?» – Vergleich mit Pflegeheim und anderen WGs</td><td>eine klare Zahl, was enthalten ist, direkter Weg zur Anfrage</td><td>Startseite, Für Angehörige, Google</td></tr>
+      <tr><td><b>Senioren selbst</b></td><td>Können sie es sich leisten?</td><td>einfache Sprache, Hinweis auf Pflegegrad und Sozialamt</td><td>Für Senioren, Startseite</td></tr>
+      <tr><td><b>Sozialdienst Klinik, Pflegeberater</b></td><td>grobe Zahl für das Beratungsgespräch mit der Familie</td><td>schnell eine Größenordnung, Kontakt für freie Plätze</td><td>Seiten für Fachleute</td></tr>
+      <tr><td><b>Berufsbetreuer, Sozialamt</b></td><td>Finanzierung klären, Kostenzusage vorbereiten</td><td>was die Pflegekasse zahlt, was das Sozialamt trägt, schriftliche Aufstellung?</td><td>Seiten für Fachleute</td></tr>
+    </table>
+    <p><b>Was daraus folgt (unser Vorschlag):</b></p>
+    <ul class="pc">
+      <li>Ein Rechner für alle – keine eigene Fassung für Fachleute.</li>
+      <li>Im Anfrageformular ein Feld <b>«Ich frage an für: mich selbst · einen Angehörigen · beruflich (Klient / Patient)»</b> – so wisst ihr beim Rückruf sofort, wer anfragt.</li>
+      <li>Unter dem Ergebnis ein Satz zum Sozialamt – für Familien, bei denen das Geld nicht reicht, und für Betreuer.</li>
+    </ul>
+    <div class="qbox">Dazu zwei Fragen an euch: <b>K10</b> (sollen Fachleute Zahlen direkt im Rechner sehen?) und <b>K11</b> (Berliner Seiten auf medilux.info).</div>
+  </div>
+</section>
+
+<!-- 2 MAGDEBURG -->
+<section id="s2">
+  <h2>So rechnet der Kostenrechner in Magdeburg</h2>
+  <p class="lead">Nachbau der Logik von medilux.info/kostenrechner (Stand 30.09.2026) – Beschriftungen vereinfacht, Zahlen und Formel wie auf der Live-Seite.</p>
+  <div class="grid2">
+    <div class="calc" id="calcMD">
+      <p class="demo">Skizze · Logik Magdeburg</p>
+      <label class="fl">Standort</label>
+      <select data-k="ort">
+        <option>Einstein WG</option><option>Heide WG 1</option><option>Heide WG 2</option><option>Seniorenhof</option>
+        <option>Lessing WG</option><option>Hegel WG</option><option>Lessing Service Wohnen</option><option>unklar</option>
+      </select>
+      <label class="fl">Pflegegrad</label>
+      <div class="seg" data-k="pg">
+        <button data-v="5" class="on">5</button><button data-v="4">4</button><button data-v="3">3</button>
+        <button data-v="2">2</button><button data-v="1">1</button><button data-v="0">keiner</button>
+      </div>
+      <label class="fl">Zimmer</label>
+      <div class="seg" data-k="z">
+        <button data-v="k" class="on">klein</button><button data-v="m">mittel</button><button data-v="g">groß</button>
+      </div>
+      <div class="result" id="resMD"></div>
+    </div>
+    <div>
+      <div class="card">
+        <h3 style="margin-top:0">Die Formel</h3>
+        <p>Preis = <b>Grundpreis nach Zimmergröße</b> + <b>Zuschlag nach Pflegegrad</b>. Der Standort ändert den Preis nicht.</p>
+        <table>
+          <tr><th>€ pro Monat, «ab»</th><th class="num">klein</th><th class="num">mittel</th><th class="num">groß</th></tr>
+          <tr><td>Pflegegrad 5</td><td class="num">1.450</td><td class="num">1.550</td><td class="num">1.650</td></tr>
+          <tr><td>Pflegegrad 4</td><td class="num">1.500</td><td class="num">1.600</td><td class="num">1.700</td></tr>
+          <tr><td>Pflegegrad 3</td><td class="num">1.550</td><td class="num">1.650</td><td class="num">1.750</td></tr>
+          <tr><td>Pflegegrad 2</td><td class="num">1.600</td><td class="num">1.700</td><td class="num">1.800</td></tr>
+          <tr><td>Pflegegrad 1</td><td class="num">2.600</td><td class="num">2.700</td><td class="num">2.800</td></tr>
+          <tr><td>kein Pflegegrad</td><td class="num">2.700</td><td class="num">2.800</td><td class="num">2.900</td></tr>
+        </table>
+      </div>
+      <div class="card">
+        <h3 style="margin-top:0">Was uns auffällt</h3>
+        <ul class="pc">
+          <li>Voreingestellt sind Pflegegrad 5 und kleines Zimmer – die erste Zahl ist also der <b>niedrigste</b> Preis, daher «ab».</li>
+          <li>Ohne Pflegegrad ist es rund 1.000 € teurer – dann zahlt die Pflegekasse nichts.</li>
+          <li>«Lessing Service Wohnen» (Betreutes Wohnen) wird mit derselben WG-Tabelle berechnet.</li>
+          <li>Der Text auf der Seite sagt selbst: Der Hauptkostenfaktor ist «die individuelle Größe und Lage des gewählten Zimmers».</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 WAS WIR WISSEN -->
+<section id="s3">
+  <h2>Was ihr uns zu Berlin gesagt habt</h2>
+  <p class="lead">Chronologisch, im Wortlaut. Daraus haben wir die Varianten abgeleitet.</p>
+  <div class="card">
+    <p class="who">Juli 2025 · E-Mail · Vorschlag 2Penguins, von Kirill bestätigt</p>
+    <p>Tabelle für die Villa mit Staffelung nach Pflegegrad (z. B. Pflegegrad 2: 3.450 / 3.550 / 3.850 €). Kirill: «Bitte keine Zimmergrößen angeben» (gemeint: keine m²-Angaben) und «Option ‹kein Pflegegrad› muss dabei sein … Ist beantragt? Ja/Nein».</p>
+  </div>
+  <div class="card">
+    <p class="who">17.03.2026 · Rückmeldung zu den Texten</p>
+    <blockquote>«Der Eigenanteil ist individuell und setzt sich aus Miete sowie Versorgungs- und Serviceentgelt zusammen. In der Regel kostet Sie der Pflegeplatz zwischen 3.000 und 3.500 € Eigenanteil»</blockquote>
+  </div>
+  <div class="card">
+    <p class="who">15.06.2026 · Jos · WhatsApp</p>
+    <blockquote>«Wir zeigen einen circa Preis für kleines mittleres und großes Zimmer.»</blockquote>
+    <blockquote>«Ja, nach Abzug Pflegekasse. Die Leistungen sind Pflegesachleistungen nach SGB XI, Behandlungspflege nach SGB V, Betreuungsleistungen nach §45b, Beratungseinsätze, Verhinderungspflegebudget nach SGB XI»</blockquote>
+    <p>Residenz Heerstraße: «2.800-3.200€ Eigenanteil»</p>
+  </div>
+  <div class="card">
+    <p class="who">22.06.2026 · WhatsApp</p>
+    <blockquote>«Außerdem nehmen wir immer ab PG2 oder mit beantragtem PG2 auf.»</blockquote>
+    <blockquote>«Das Pflegegradbudget wird vollständig zur Refinanzierung eingesetzt und direkt durch uns mit der Pflegekasse abgerechnet.»</blockquote>
+  </div>
+  <div class="card" style="border-color:var(--brand)">
+    <p class="who">19.09.2026 · Jos · E-Mail (neueste Aussage)</p>
+    <blockquote>«Die Kosten bei uns stehen nicht direkt in Abhängigkeit zu dem Pflegegrad. Die Aufnahme erfolgt ab pg2 der Eigenanteil ist abhängig von der Wohnung. In der Residenz kleine WE 2.800, mittlere WE 3.000, große WE 3.200»</blockquote>
+    <blockquote>«In der Villa … kleines Zimmer 3.300, mittleres Zimmer 3.450 und großes Zimmer 3.600»</blockquote>
+    <p>Zusätzlich privat: Friseur, Fußpflege. Physio und Ergo über Rezept mit üblicher Zuzahlung. Die Hausärztin kommt kostenfrei.</p>
+  </div>
+  <div class="card">
+    <h3 style="margin-top:0">Stand in einer Tabelle</h3>
+    <table>
+      <tr><th>Eigenanteil € / Monat</th><th class="num">klein</th><th class="num">mittel</th><th class="num">groß</th><th>offen</th></tr>
+      <tr><td>Villa Lindenthal · Zimmer in der WG</td><td class="num">3.300</td><td class="num">3.450</td><td class="num">3.600</td><td>Stand 2026? <span class="tag q">K3</span></td></tr>
+      <tr><td>Residenz Heerstraße · «WE»</td><td class="num">2.800</td><td class="num">3.000</td><td class="num">3.200</td><td>WG-Zimmer oder Wohnung? <span class="tag q">K2</span></td></tr>
+      <tr><td>Residenz Heerstraße · das jeweils andere</td><td class="miss">?</td><td class="miss">?</td><td class="miss">?</td><td><span class="tag q">K2 / K6</span></td></tr>
+    </table>
+    <p class="who">WE = Wohneinheit.</p>
+  </div>
+</section>
+
+<!-- 4 VARIANTEN -->
+<section id="s4">
+  <h2>Varianten für Berlin</h2>
+  <p class="lead">Jede Variante als klickbare Skizze. Rechts steht, was wir dafür von euch brauchen.</p>
+
+  <!-- A -->
+  <div class="card">
+    <h3 style="margin-top:0"><span class="tag">Unser Vorschlag</span>Variante A · Haus × Zimmergröße, Pflegegrad nur als Aufnahmebedingung</h3>
+    <div class="flow">
+      <div class="step"><b>1</b>Haus wählen</div><div class="arrow">→</div>
+      <div class="step"><b>2</b>Zimmergröße</div><div class="arrow">→</div>
+      <div class="step"><b>3</b>Pflegegrad (nur: Aufnahme möglich?)</div><div class="arrow">→</div>
+      <div class="step"><b>Ergebnis</b>ca.-Preis oder Beratungshinweis</div>
+    </div>
+    <div class="grid2">
+      <div class="calc" id="calcA">
+        <p class="demo">Skizze · Variante A</p>
+        <label class="fl">Haus</label>
+        <div class="seg" data-k="haus"><button data-v="villa" class="on">Villa Lindenthal</button><button data-v="res">Residenz Heerstraße</button></div>
+        <label class="fl">Zimmergröße</label>
+        <div class="seg" data-k="z"><button data-v="k" class="on">klein</button><button data-v="m">mittel</button><button data-v="g">groß</button></div>
+        <label class="fl">Pflegegrad</label>
+        <select data-k="pg">
+          <option value="2">Pflegegrad 2</option><option value="3">Pflegegrad 3</option><option value="4">Pflegegrad 4</option><option value="5">Pflegegrad 5</option>
+          <option value="b">Pflegegrad 2 beantragt</option><option value="1">Pflegegrad 1</option><option value="0">kein Pflegegrad</option>
+        </select>
+        <div class="result" id="resA"></div>
+      </div>
+      <div>
+        <p><b>So entspricht es eurer Aussage vom 19.09:</b> Der Preis hängt von Haus und Zimmer ab, der Pflegegrad entscheidet nur, ob eine Aufnahme möglich ist.</p>
+        <ul class="pc">
+          <li class="plus">+ genau nach euren Angaben, nur 6 Preise</li>
+          <li class="plus">+ Pflegegrad 1 / kein Pflegegrad führt zur Beratung statt zu einem falschen Preis</li>
+          <li class="plus">+ Preise an einer Stelle änderbar</li>
+          <li class="minus">− sieht anders aus als Magdeburg (dort ändert der Pflegegrad den Preis)</li>
+        </ul>
+        <div class="qbox"><b>Wir brauchen von euch:</b> Bestätigung K1, Klärung K2 (Residenz), ob die Villa-Preise für 2026 gelten (K3).</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- A' -->
+  <div class="card">
+    <h3 style="margin-top:0">Variante A+ · wie A, in der Residenz zusätzlich «WG-Zimmer oder Wohnung»</h3>
+    <p>Falls die Residenz-Preise für die Wohnungen im Betreuten Wohnen gelten und WG-Zimmer dort anders kosten.</p>
+    <div class="grid2">
+      <div class="calc" id="calcAP">
+        <p class="demo">Skizze · Variante A+</p>
+        <label class="fl">Haus</label>
+        <div class="seg" data-k="haus"><button data-v="villa">Villa Lindenthal</button><button data-v="res" class="on">Residenz Heerstraße</button></div>
+        <div data-show="res">
+          <label class="fl">Wohnform</label>
+          <div class="seg" data-k="form"><button data-v="wg" class="on">Zimmer in der Pflege-WG</button><button data-v="bw">Wohnung (Betreutes Wohnen)</button></div>
+        </div>
+        <label class="fl">Größe</label>
+        <div class="seg" data-k="z"><button data-v="k" class="on">klein</button><button data-v="m">mittel</button><button data-v="g">groß</button></div>
+        <label class="fl">Pflegegrad</label>
+        <select data-k="pg">
+          <option value="2">Pflegegrad 2</option><option value="3">Pflegegrad 3</option><option value="4">Pflegegrad 4</option><option value="5">Pflegegrad 5</option>
+          <option value="b">Pflegegrad 2 beantragt</option><option value="1">Pflegegrad 1</option><option value="0">kein Pflegegrad</option>
+        </select>
+        <div class="result" id="resAP"></div>
+      </div>
+      <div>
+        <ul class="pc">
+          <li class="plus">+ beide Wohnformen in der Residenz abgebildet</li>
+          <li class="plus">+ Betreutes Wohnen kann auch «auf Anfrage» bleiben, ohne den Rechner umzubauen</li>
+          <li class="minus">− ein Auswahlfeld mehr</li>
+          <li class="minus">− braucht 3 weitere Preise (WG-Zimmer Residenz)</li>
+        </ul>
+        <div class="qbox"><b>Wir brauchen von euch:</b> 3 Preise für die WG-Zimmer in der Residenz; für die Wohnungen: gleiche Logik (alles inklusive) oder Miete + Servicepauschale + Pflege nach Bedarf?</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- B -->
+  <div class="card">
+    <h3 style="margin-top:0">Variante B · wie Magdeburg: Preis ändert sich mit dem Pflegegrad</h3>
+    <div class="grid2">
+      <div class="calc" id="calcB">
+        <p class="demo">Skizze · Variante B – ohne eure Werte</p>
+        <label class="fl">Haus</label>
+        <div class="seg" data-k="haus"><button data-v="villa" class="on">Villa Lindenthal</button><button data-v="res">Residenz Heerstraße</button></div>
+        <label class="fl">Pflegegrad</label>
+        <div class="seg" data-k="pg"><button data-v="5" class="on">5</button><button data-v="4">4</button><button data-v="3">3</button><button data-v="2">2</button></div>
+        <label class="fl">Zimmer</label>
+        <div class="seg" data-k="z"><button data-v="k" class="on">klein</button><button data-v="m">mittel</button><button data-v="g">groß</button></div>
+        <div class="result open" id="resB"></div>
+      </div>
+      <div>
+        <p>Dafür bräuchten wir eine Tabelle je Haus:</p>
+        <table>
+          <tr><th></th><th class="num">klein</th><th class="num">mittel</th><th class="num">groß</th></tr>
+          <tr><td>PG 2</td><td class="miss">?</td><td class="miss">?</td><td class="miss">?</td></tr>
+          <tr><td>PG 3</td><td class="miss">?</td><td class="miss">?</td><td class="miss">?</td></tr>
+          <tr><td>PG 4</td><td class="miss">?</td><td class="miss">?</td><td class="miss">?</td></tr>
+          <tr><td>PG 5</td><td class="miss">?</td><td class="miss">?</td><td class="miss">?</td></tr>
+        </table>
+        <ul class="pc">
+          <li class="plus">+ gleiches Bild wie Magdeburg</li>
+          <li class="minus">− passt nicht zu «nicht direkt vom Pflegegrad abhängig» (19.09)</li>
+          <li class="minus">− 24 Preise (2 Häuser × 4 Pflegegrade × 3 Größen), die ihr pflegen müsst</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- C -->
+  <div class="card">
+    <h3 style="margin-top:0">Variante C · kein Rechner, nur eine Preistabelle</h3>
+    <div class="grid2">
+      <div class="calc">
+        <p class="demo">Skizze · Variante C</p>
+        <table>
+          <tr><th>Eigenanteil ca. € / Monat</th><th class="num">klein</th><th class="num">mittel</th><th class="num">groß</th></tr>
+          <tr><td>Villa Lindenthal</td><td class="num">3.300</td><td class="num">3.450</td><td class="num">3.600</td></tr>
+          <tr><td>Residenz Heerstraße</td><td class="num">2.800</td><td class="num">3.000</td><td class="num">3.200</td></tr>
+        </table>
+        <p style="font-size:13px;color:var(--muted)">Aufnahme ab Pflegegrad 2 oder mit beantragtem Pflegegrad 2.</p>
+        <span class="fakebtn">Platz anfragen</span>
+      </div>
+      <div>
+        <ul class="pc">
+          <li class="plus">+ am einfachsten, sofort umsetzbar</li>
+          <li class="minus">− kein geführter Ablauf, weniger Anfragen über das Formular</li>
+          <li class="minus">− ihr habt zweimal einen Rechner «wie Magdeburg» gewünscht</li>
+        </ul>
+        <p>Möglich als <b>Übergang</b>: Tabelle zum Start, Rechner sobald alles geklärt ist.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-top:0">Vergleich auf einen Blick</h3>
+    <table>
+      <tr><th>Variante</th><th>Was der Besucher wählt</th><th>Preise von euch</th><th>Haben wir schon</th></tr>
+      <tr><td><b>A</b> (Vorschlag)</td><td>Haus, Größe, Pflegegrad (nur Aufnahme)</td><td class="num">6</td><td>6, wenn K2 = WG-Zimmer</td></tr>
+      <tr><td><b>A+</b></td><td>+ Wohnform in der Residenz</td><td class="num">9</td><td>6</td></tr>
+      <tr><td><b>B</b></td><td>Haus, Pflegegrad, Größe</td><td class="num">24</td><td>0</td></tr>
+      <tr><td><b>C</b></td><td>nichts – Tabelle</td><td class="num">6</td><td>6</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- 5 FRAGEN -->
+<section id="s5">
+  <h2>Fragen an euch</h2>
+  <p class="lead">Antwort anklicken oder notieren. Unten lässt sich alles als Protokoll kopieren – gern auch vorab ausfüllen und uns per WhatsApp oder E-Mail schicken.</p>
+  <div id="fragen"></div>
+  <div class="toolbar">
+    <button id="btnCopy">Protokoll kopieren</button>
+    <button id="btnShow" class="sec">Protokoll anzeigen</button>
+    <button id="btnReset" class="sec">Antworten zurücksetzen</button>
+  </div>
+  <div id="out"></div>
+</section>
+
+<!-- 6 WEITER -->
+<section id="s6">
+  <h2>Wie es weitergeht</h2>
+  <div class="card">
+    <ol>
+      <li>Wir fassen die Antworten von heute per E-Mail kurz zusammen – ihr bestätigt oder korrigiert.</li>
+      <li>Wir bauen den Rechner nach der gewählten Variante als Block auf der Seite «Kosten».</li>
+      <li>Ihr seht den Rechner vor dem Start in der Vorschau und prüft Preise und Texte.</li>
+      <li>Die Preise liegen an einer Stelle im Redaktionssystem – Änderungen später ohne Programmierung.</li>
+    </ol>
+    <p><b>Was wir von euch noch schriftlich brauchen</b> (falls heute nicht geklärt): fehlende Preise, Inhalt des Eigenanteils, E-Mail-Adresse für die Anfragen.</p>
+  </div>
+</section>
+
+</main>
+<footer>2Penguins · Arbeitsunterlage MEDILUX Berlin · 30.09.2026 · Skizzen, keine veröffentlichten Preise</footer>
+
+<script>
+(function(){
+  // Tabellen auf schmalen Bildschirmen seitlich scrollbar machen
+  document.querySelectorAll('table').forEach(function(t){var w=document.createElement('div');w.className='tw';t.parentNode.insertBefore(w,t);w.appendChild(t)});
+  // Tabs
+  var nav=document.getElementById('nav');
+  nav.addEventListener('click',function(e){
+    var b=e.target.closest('button'); if(!b) return;
+    nav.querySelectorAll('button').forEach(function(x){x.classList.toggle('active',x===b)});
+    document.querySelectorAll('main section').forEach(function(s){s.classList.toggle('active',s.id===b.dataset.s)});
+    window.scrollTo(0,0);
+  });
+
+  function fmt(n){return n.toLocaleString('de-DE')+' €'}
+  function state(calc){
+    var st={};
+    calc.querySelectorAll('.seg').forEach(function(seg){var on=seg.querySelector('.on'); st[seg.dataset.k]=on?on.dataset.v:null});
+    calc.querySelectorAll('select').forEach(function(s){st[s.dataset.k]=s.value});
+    return st;
+  }
+  function wire(calc,render){
+    calc.addEventListener('click',function(e){
+      var b=e.target.closest('.seg button'); if(!b) return;
+      b.parentNode.querySelectorAll('button').forEach(function(x){x.classList.toggle('on',x===b)});
+      render();
+    });
+    calc.addEventListener('change',render);
+    render();
+  }
+
+  // Magdeburg
+  var mdBase={k:1450,m:1550,g:1650}, mdPg={'5':0,'4':50,'3':100,'2':150,'1':1150,'0':1250};
+  var cMD=document.getElementById('calcMD');
+  wire(cMD,function(){
+    var s=state(cMD), p=mdBase[s.z]+mdPg[s.pg];
+    document.getElementById('resMD').innerHTML='<div>Kosten Eigenanteil</div><div class="big">ab '+fmt(p)+' pro Monat*</div><small>= Grundpreis '+fmt(mdBase[s.z])+' + Zuschlag Pflegegrad '+fmt(mdPg[s.pg])+'. Der Standort ändert nichts.<br>* Eigenanteil für Wohn-, Versorgungs- und Betreuungskosten in einer 24 Stunden betreuten Pflegewohngemeinschaft. Die übrigen Kosten rechnen wir bei festgestellter Pflegebedürftigkeit direkt mit den Kranken- und Pflegekassen ab.</small><span class="fakebtn">Weiter zur Anfrage</span>';
+  });
+
+  // Berlin Preise (Stand 19.09)
+  var P={villa:{k:3300,m:3450,g:3600}, res:{k:2800,m:3000,g:3200}};
+  var hausName={villa:'Villa Lindenthal',res:'Residenz Heerstraße'};
+  var foot='<small>Stand 2026, unverbindlich. Enthalten: Miete sowie Versorgungs- und Serviceentgelt. Die Leistungen der Pflegekasse rechnen wir direkt ab. <i>(Textvorschlag – Inhalt zu klären, Frage K4)</i></small>';
+  function berlinResult(el,price,pg,extra){
+    el.className='result';
+    if(pg==='1'||pg==='0'){
+      el.className='result stop';
+      el.innerHTML='<div class="big">Aufnahme ab Pflegegrad 2</div><small>Wir beraten Sie gern, wie Sie einen Pflegegrad beantragen – und was bis dahin möglich ist.</small><span class="fakebtn">Beratung anfragen</span>';
+      return;
+    }
+    if(price==null){
+      el.className='result open';
+      el.innerHTML='<div class="big">Preis noch offen</div><small>'+(extra||'')+'</small><span class="fakebtn">Preis anfragen</span>';
+      return;
+    }
+    var pre=(pg==='b')?'<div><b>Vorläufig</b> – bis der Bescheid da ist <span class="tag q">K5</span></div>':'';
+    el.innerHTML=pre+'<div>Ihr Eigenanteil</div><div class="big">ca. '+fmt(price)+' pro Monat</div>'+(extra?'<small>'+extra+'</small>':'')+foot+'<span class="fakebtn">Platz anfragen</span>';
+  }
+
+  var cA=document.getElementById('calcA');
+  wire(cA,function(){
+    var s=state(cA);
+    var extra=s.haus==='res'?'Residenz: Wert vom 19.09 («WE») – gilt er für WG-Zimmer? <span class="tag q">K2</span>':'Villa: Wert vom 19.09 – Stand 2026? <span class="tag q">K3</span>';
+    berlinResult(document.getElementById('resA'),P[s.haus][s.z],s.pg,extra);
+  });
+
+  var cAP=document.getElementById('calcAP');
+  wire(cAP,function(){
+    var s=state(cAP);
+    cAP.querySelector('[data-show="res"]').style.display=s.haus==='res'?'':'none';
+    var price,extra;
+    if(s.haus==='villa'){price=P.villa[s.z];extra='Villa: Wert vom 19.09.';}
+    else if(s.form==='bw'){price=P.res[s.z];extra='Annahme: «WE» = Wohnung im Betreuten Wohnen <span class="tag q">K2</span>';}
+    else{price=null;extra='WG-Zimmer in der Residenz: dafür bräuchten wir 3 Preise. <span class="tag q">K2</span>';}
+    berlinResult(document.getElementById('resAP'),price,s.pg,extra);
+  });
+
+  var cB=document.getElementById('calcB');
+  wire(cB,function(){
+    var s=state(cB);
+    document.getElementById('resB').innerHTML='<div class="big">? € pro Monat</div><small>'+hausName[s.haus]+', Pflegegrad '+s.pg+', Zimmer '+({k:'klein',m:'mittel',g:'groß'})[s.z]+' – für diese Variante fehlt uns eine Preistabelle je Pflegegrad.</small>';
+  });
+
+  // Fragen
+  var F=[
+    {id:'K1',t:'Hängt der Preis vom Pflegegrad ab?',q:'Du hast geschrieben, die Kosten hängen «nicht direkt» vom Pflegegrad ab. Heißt das: Bei Pflegegrad 2, 3, 4 und 5 zahlt der Bewohner im selben Zimmer denselben Betrag? Oder gibt es doch Unterschiede – und wenn ja, welche?',why:'Entscheidet zwischen Variante A (6 Preise) und B (24 Preise).',o:['Gleich für Pflegegrad 2–5 – Pflegegrad ist nur Aufnahmebedingung (→ Variante A)','Es gibt Stufen je Pflegegrad (→ Variante B, Tabelle nötig)','Gleich, aber bei sehr hohem Pflegebedarf individuelle Absprache']},
+    {id:'K2',t:'Residenz: wofür gelten 2.800 / 3.000 / 3.200 €?',q:'Die Preise 2.800 / 3.000 / 3.200 € in der Residenz: gelten sie für die Zimmer der Pflege-WG oder für die Wohnungen im Betreuten Wohnen? Was kostet dann das jeweils andere? Und gilt die Spanne 3.000–3.500 € aus dem März noch, oder ist sie überholt?',why:'Ohne das kann der Rechner für die Residenz keinen Preis zeigen.',o:['Für die Wohnungen im Betreuten Wohnen – WG-Zimmer kosten anders (→ Variante A+)','Für die WG-Zimmer – Betreutes Wohnen separat (→ Variante A)','Für beide Wohnformen gleich','März-Spanne 3.000–3.500 € ist überholt']},
+    {id:'K3',t:'Villa: Preise für 2026?',q:'Die Villa-Preise 3.300 / 3.450 / 3.600 € vom 19.09: sind das die aktuellen Preise für 2026 und ersetzen sie die Tabelle von Juli 2025? Wie oft ändern sich die Preise, und wer sagt uns Bescheid?',why:'Welche Zahl wir mit «Stand 2026» zeigen.',o:['Ja, aktuelle Preise 2026 – Tabelle 2025 gilt nicht mehr','Das sind Mindestpreise («ab»)','Preise ändern sich bald']},
+    {id:'K4',t:'Was ist im Eigenanteil enthalten?',q:'Im März habt ihr geschrieben: Der Eigenanteil setzt sich aus Miete sowie Versorgungs- und Serviceentgelt zusammen. Sind damit Essen, Nebenkosten und Investitionskosten abgedeckt – oder kommt noch etwas dazu, zum Beispiel Haushaltsgeld? Bekommen eure Bewohner den Wohngruppenzuschlag (heute § 45f SGB XI, 224 €)? Wenn ja: ist er im Betrag schon verrechnet?',why:'Text unter dem Preis und auf der Seite «Kosten».',o:['Alles in einer Summe, Wohngruppenzuschlag ist schon verrechnet','Alles in einer Summe, Wohngruppenzuschlag gibt es bei uns nicht','Es kommt noch etwas dazu (z. B. Haushaltsgeld)']},
+    {id:'K5',t:'Pflegegrad beantragt – was gilt bis zum Bescheid?',q:'Wer mit beantragtem Pflegegrad 2 einzieht: welchen Betrag zahlt er, bis der Bescheid da ist? Wird rückwirkend verrechnet? Und was passiert, wenn der Bescheid Pflegegrad 1 oder keinen Pflegegrad ergibt?',why:'Hinweis beim Ergebnis «Pflegegrad beantragt».',o:['Sofort der normale Eigenanteil, die Kasse zahlt rückwirkend ab Antragsmonat','Bis zum Bescheid der volle Preis, danach Verrechnung','Wird individuell besprochen']},
+    {id:'K6',t:'Betreutes Wohnen im Rechner?',q:'Soll das Betreute Wohnen in den Rechner – oder bleibt es bei «Preis auf Anfrage»? Wenn in den Rechner: ein Betrag inklusive Pflege, oder Miete + Servicepauschale + Pflege nach Bedarf? Wie hoch ist die Servicepauschale?',why:'Umfang des Rechners und Seite «Betreutes Wohnen».',o:['«Preis auf Anfrage» (wie Service Wohnen in Magdeburg)','In den Rechner, ein Betrag je Wohnungsgröße','In den Rechner als Miete + Servicepauschale, Pflege separat']},
+    {id:'K7',t:'Darstellung und Anfrageformular',q:'Zeigen wir «ca. … €» oder «ab … €»? Einverstanden mit «Stand 2026, unverbindlich»? Formular wie in Magdeburg: Vorname, Nachname, Telefon als Pflicht; E-Mail, Einzugsdatum, Nachricht freiwillig?',why:'Beschriftung und Formular.',o:['«ca.» + «Stand 2026, unverbindlich», Formular wie Magdeburg','«ab» wie Magdeburg','Andere Felder (notieren)']},
+    {id:'K8',t:'E-Mail für Anfragen',q:'An welche E-Mail-Adresse sollen die Anfragen aus dem Rechner gehen? Wer ruft zurück?',why:'Technik und Datenschutzerklärung.',o:['medilux@live.de','Andere Adresse (notieren)']},
+    {id:'K9',t:'Platz auf der Website',q:'Den Rechner bauen wir als Teil der Seite «Kosten» – dort stehen auch Pflegekasse und Sozialamt. Die Adresse /kostenrechner/ leitet dorthin weiter. Passt das?',why:'Im März war eine eigene Seite besprochen.',o:['Passt – Block auf der Seite «Kosten»','Lieber eine eigene Seite']},
+    {id:'K10',t:'Rechner auch für Fachleute?',q:'Sozialdienste, Betreuer und Sozialämter kommen über ihre eigenen Seiten zur Kostenseite. Sollen sie dort dieselben Zahlen im Rechner sehen – oder gebt ihr Fachleuten die Zahlen lieber persönlich? Und hilft euch im Formular ein Feld «Ich frage an für: mich selbst / einen Angehörigen / beruflich»?',why:'Bestimmt, ob Fachseiten direkt auf den Rechner verlinken und welche Felder das Formular hat.',o:['Derselbe Rechner für alle, mit Feld «Ich frage an für …»','Fachleute bekommen Zahlen persönlich – Fachseiten verlinken nur auf Kontakt','Für Fachleute zusätzlich eine kurze Preistabelle']},
+    {id:'K11',t:'Berliner Seiten auf medilux.info',q:'Die Seiten der Berliner Häuser auf medilux.info verlinken heute auf den Rechner und das Kontaktformular von Magdeburg. Sollen diese Links nach dem Start auf die neue Berliner Seite zeigen?',why:'Sonst landen Berliner Interessenten im Magdeburger Rechner.',o:['Ja, auf medilux-berlin.de umstellen','Die Berliner Seiten auf medilux.info leiten ganz auf die neue Seite weiter','So lassen']}
+  ];
+  var KEY='medilux-rechner-antworten-2026-09-30', ans={};
+  try{ans=JSON.parse(localStorage.getItem(KEY)||'{}')||{}}catch(e){ans={}}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(ans))}catch(e){}}
+  var box=document.getElementById('fragen');
+  F.forEach(function(f){
+    var a=ans[f.id]||{o:[],n:''};
+    var d=document.createElement('div'); d.className='frage';
+    var h='<h4><span class="tag q">'+f.id+'</span>'+f.t+'</h4><div>«'+f.q+'»</div><div class="why">Warum: '+f.why+'</div><div class="opts">';
+    f.o.forEach(function(o,i){h+='<button data-i="'+i+'"'+(a.o.indexOf(i)>-1?' class="on"':'')+'><span class="n">'+(i+1)+'</span> '+o+'</button>'});
+    h+='</div><textarea placeholder="Notiz / eigene Antwort">'+(a.n||'').replace(/</g,'&lt;')+'</textarea>';
+    d.innerHTML=h; box.appendChild(d);
+    d.querySelector('.opts').addEventListener('click',function(e){
+      var b=e.target.closest('button'); if(!b) return;
+      var i=+b.dataset.i; ans[f.id]=ans[f.id]||{o:[],n:''};
+      var k=ans[f.id].o.indexOf(i); if(k>-1) ans[f.id].o.splice(k,1); else ans[f.id].o.push(i);
+      b.classList.toggle('on'); save();
+    });
+    d.querySelector('textarea').addEventListener('input',function(e){ans[f.id]=ans[f.id]||{o:[],n:''};ans[f.id].n=e.target.value;save();});
+  });
+  function protokoll(){
+    var t='Kostenrechner Berlin – Gespräch 30.09.2026\n\n';
+    F.forEach(function(f){
+      var a=ans[f.id]||{o:[],n:''};
+      t+=f.id+' · '+f.t+'\n';
+      t+=a.o.length?a.o.map(function(i){return '  → '+f.o[i]}).join('\n')+'\n':'  → (offen)\n';
+      if(a.n) t+='  Notiz: '+a.n+'\n';
+      t+='\n';
+    });
+    return t;
+  }
+  document.getElementById('btnShow').onclick=function(){var o=document.getElementById('out');o.textContent=protokoll();o.style.display='block'};
+  document.getElementById('btnCopy').onclick=function(){
+    var t=protokoll(), o=document.getElementById('out'); o.textContent=t; o.style.display='block';
+    if(navigator.clipboard){navigator.clipboard.writeText(t).then(function(){alert('Protokoll kopiert')},function(){})}
+  };
+  document.getElementById('btnReset').onclick=function(){
+    if(!confirm('Alle Antworten zurücksetzen?')) return;
+    ans={}; save(); box.querySelectorAll('.opts button.on').forEach(function(b){b.classList.remove('on')});
+    box.querySelectorAll('textarea').forEach(function(t){t.value=''}); document.getElementById('out').style.display='none';
+  };
+})();
+</script>
+</body>
+</html>
