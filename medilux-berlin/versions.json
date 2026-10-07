@@ -2,6 +2,11 @@
   "project": "medilux-berlin_preview",
   "versions": [
     {
+      "version": "v1.14",
+      "date": "2026-10-07",
+      "summary": "Menü: Unterzeile Für Sozialdienste; Startseite: Ratgeber-Block ausgeblendet; Dauerlinks der entfallenen Seiten auf die neuen Ziele (D-PARCH-029)"
+    },
+    {
       "version": "v1.13",
       "date": "2026-10-07",
       "summary": "Texte Phase 3: Betreutes Wohnen v0.2, Villa Lindenthal und Residenz Heerstraße (neu), Übersicht Standorte v1.0.1; Vorschau ohne interne Hinweise"
@@ -72,5 +77,5 @@
       "summary": "Startseite v1.0.1 (Block K0): JES-Verbatim-Konsistenz-Check 02.09 abends (Trust-Wortlaute, Kosten-Sätze, FAQ Abrechnung inkl. privat/Beihilfe, Standorte-Fakten aus JES 17.03); Preview-Generator auf 2p-preview-Kanon. Übrige 13 Seiten = Stand vor Re-Brief (pending K1–K4)."
     }
   ],
-  "latest": "v1.13"
+  "latest": "v1.14"
 }
