@@ -2,6 +2,11 @@
   "project": "medilux-berlin_preview",
   "versions": [
     {
+      "version": "v1.17",
+      "date": "2026-10-07",
+      "summary": "Korrekturen nach den Gegenprüfungen Welle 1: Kosten (Datenschutz-Link, Telefon), Fachseite (Bäder Residenz nach D-FB-024), Porträt-Platzhalter mit Alt-Text"
+    },
+    {
       "version": "v1.16",
       "date": "2026-10-07",
       "summary": "Feinschliff Villa v0.1.2, Residenz v0.1.2, Standorte v1.0.2 (Kann-Befunde der Gegenprüfungen)"
@@ -87,5 +92,5 @@
       "summary": "Startseite v1.0.1 (Block K0): JES-Verbatim-Konsistenz-Check 02.09 abends (Trust-Wortlaute, Kosten-Sätze, FAQ Abrechnung inkl. privat/Beihilfe, Standorte-Fakten aus JES 17.03); Preview-Generator auf 2p-preview-Kanon. Übrige 13 Seiten = Stand vor Re-Brief (pending K1–K4)."
     }
   ],
-  "latest": "v1.16"
+  "latest": "v1.17"
 }
