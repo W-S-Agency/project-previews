@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Systemübersicht · Comy Onlineshop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  /* Layout: drei Systeme nebeneinander mit beschrifteten Verbindungen, darunter Begruendung und offene Fragen */
+  :root{
+    --bg:#f3f5f4; --card:#ffffff; --ink:#15201c; --muted:#5d6b66; --line:#dbe3df;
+    --shop:#1f6f5c; --shop-soft:#e2f1eb; --erp:#2b54b8; --erp-soft:#e8eefb; --store:#5b6773; --store-soft:#eef1f3;
+    --q:#6d3fc4; --q-soft:#f1ebfd; --q-ink:#45227f; --bar:#15201c; --bar-ink:#ffffff; --bar-hi:#9fe0c8;
+    --f-display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+    --f-body:"IBM Plex Sans","Segoe UI",system-ui,sans-serif;
+  }
+  @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+    --bg:#0f1513; --card:#17201d; --ink:#e7eeeb; --muted:#9aaba4; --line:#2a3632;
+    --shop:#5cc4a5; --shop-soft:#16332b; --erp:#8eaaf2; --erp-soft:#1a2440; --store:#a3afba; --store-soft:#1d2328;
+    --q:#b79cf5; --q-soft:#271c3d; --q-ink:#d9cbfb; --bar:#070b0a; --bar-ink:#e7eeeb; --bar-hi:#5cc4a5; color-scheme:dark}}
+  :root[data-theme="dark"]{
+    --bg:#0f1513; --card:#17201d; --ink:#e7eeeb; --muted:#9aaba4; --line:#2a3632;
+    --shop:#5cc4a5; --shop-soft:#16332b; --erp:#8eaaf2; --erp-soft:#1a2440; --store:#a3afba; --store-soft:#1d2328;
+    --q:#b79cf5; --q-soft:#271c3d; --q-ink:#d9cbfb; --bar:#070b0a; --bar-ink:#e7eeeb; --bar-hi:#5cc4a5; color-scheme:dark}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 var(--f-body)}
+  .bar{background:var(--bar);color:var(--bar-ink);font-size:13px;padding:8px 16px}
+  .bar b{color:var(--bar-hi)}
+  .wrap{max-width:1100px;margin:0 auto;padding:24px 16px 48px}
+  h1,h2,h3{font-family:var(--f-display);text-wrap:balance;letter-spacing:-.01em}
+  h1{font-size:30px;margin:0 0 4px}
+  .sub{color:var(--muted);margin:0 0 24px}
+  .flow{display:grid;grid-template-columns:1fr 120px 1fr 120px 1fr;align-items:stretch}
+  .node{border-radius:16px;padding:18px;border:2px solid}
+  .node h2{font-size:18px;margin:0 0 2px}
+  .node .who{font-size:13px;margin:0 0 10px;font-weight:600}
+  .node ul{margin:0;padding-left:18px;font-size:14px}
+  .node li{margin:3px 0}
+  .shop{background:var(--shop-soft);border-color:var(--shop)} .shop .who{color:var(--shop)}
+  .erp{background:var(--erp-soft);border-color:var(--erp)} .erp .who{color:var(--erp)}
+  .store{background:var(--store-soft);border-color:var(--store);border-style:dashed} .store .who{color:var(--store)}
+  .link{display:flex;flex-direction:column;justify-content:center;gap:14px;padding:0 6px;font-size:12px;text-align:center}
+  .arrow{position:relative;border-top:3px solid var(--ink);margin:0 4px}
+  .arrow.dash{border-top-style:dashed;border-color:var(--store)}
+  .arrow.r::after,.arrow.l::before{content:"";position:absolute;top:-8px;border:6px solid transparent}
+  .arrow.r::after{right:-4px;border-left:9px solid var(--ink)}
+  .arrow.l::before{left:-4px;border-right:9px solid var(--ink)}
+  .arrow.dash.r::after{border-left-color:var(--store)} .arrow.dash.l::before{border-right-color:var(--store)}
+  .lbl{color:var(--muted);line-height:1.3}
+  .qbadge{display:inline-block;font-size:12px;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--q-soft);color:var(--q)}
+  .legend{display:flex;gap:20px;flex-wrap:wrap;margin:24px 0 8px;font-size:14px;color:var(--muted)}
+  .legend span{display:flex;align-items:center;gap:8px}
+  .sw{width:34px;border-top:3px solid var(--ink)} .sw.dash{border-top-style:dashed;border-color:var(--store)}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+  .card h3{margin:0 0 6px;font-size:16px}
+  .card p{margin:0;font-size:14px;color:var(--muted)}
+  .q{border:1px dashed var(--q);background:var(--q-soft);color:var(--q-ink);border-radius:14px;padding:16px;margin-top:20px;font-size:15px}
+  .q ol{margin:8px 0 0;padding-left:20px}
+  footer{max-width:1100px;margin:0 auto;padding:0 16px 32px;color:var(--muted);font-size:13px}
+  .flow>*,.cards>*{min-width:0}
+  @media (max-width:900px){
+    .flow{grid-template-columns:1fr}
+    .link{flex-direction:row;justify-content:center;padding:10px 0}
+    .arrow{display:none}
+    .cards{grid-template-columns:1fr}
+  }
+</style>
+
+<style>
+:root{--hub-bg:#15201c;--hub-ink:#e7eeeb;--hub-muted:#9aaba4;--hub-active:#9fe0c8;
+  --fb-accent:#f59e0b;--fb-accent-border:#d97706;--fb-accent-hover:#d97706;
+  --fb-saved:#0369a1;--fb-saved-border:#075985;--fb-save:#be185d;--fb-save-border:#9d174d;--fb-save-hover:#9d174d;
+  --fb-panel-bg:#fef3c7;--fb-panel-border:#f59e0b;--fb-delete:#dc2626;--fb-delete-bg:#fef2f2;--fb-delete-border:#fca5a5;--success:#0369a1}
+.hub-bar{position:sticky;top:0;z-index:300;background:var(--hub-bg);color:var(--hub-ink);display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;padding:10px 16px;font:15px/1.4 "IBM Plex Sans","Segoe UI",system-ui,sans-serif}
+.hub-brand{color:var(--hub-ink);text-decoration:none;font-weight:700;font-family:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;min-height:44px;display:flex;align-items:center}
+.hub-tabs{display:flex;flex-wrap:wrap;gap:4px;flex:1}
+.hub-tab{color:var(--hub-muted);text-decoration:none;padding:10px 12px;border-radius:8px;min-height:44px;display:flex;align-items:center}
+.hub-tab:hover{color:var(--hub-ink)}
+.hub-tab.active{color:var(--hub-active);font-weight:600;background:rgba(255,255,255,.06)}
+.hub-tab:focus-visible,.hub-brand:focus-visible,.feedback-counter:focus-visible,.feedback-btn:focus-visible{outline:2px solid var(--fb-accent);outline-offset:2px}
+.block{position:relative}
+[data-fbid]{padding-top:56px}
+@media (max-width:768px){.hub-bar{position:static}}
+.block-label{display:none}
+.feedback-counter{background:var(--fb-accent);color:#1e293b;padding:10px 16px;border-radius:20px;font-weight:700;cursor:pointer;transition:transform .2s;border:0;font:inherit;font-weight:700;min-height:44px}
+.feedback-counter:hover{transform:scale(1.05)}
+.feedback-counter.has-feedback{animation:fb-pulse 2s infinite}
+@keyframes fb-pulse{0%,100%{box-shadow:0 0 0 0 color-mix(in srgb,var(--fb-accent) 40%,transparent)}50%{box-shadow:0 0 0 8px transparent}}
+.feedback-btn{position:absolute;top:12px;right:16px;background:var(--fb-accent);border:2px solid var(--fb-accent-border);padding:8px 14px;min-height:44px;border-radius:20px;cursor:pointer;font:600 13px/1 "IBM Plex Sans","Segoe UI",system-ui,sans-serif;color:#1e293b;transition:all .2s;z-index:10}
+.feedback-btn:hover{background:var(--fb-accent-hover);border-color:var(--fb-accent-border);color:#fff}
+.feedback-btn.has-comment{background:var(--fb-saved);border-color:var(--fb-saved-border);color:#fff}
+.feedback-panel{display:none;position:absolute;top:3.6rem;right:.75rem;width:320px;max-width:calc(100% - 1.5rem);z-index:200;background:var(--fb-panel-bg);border:2px solid var(--fb-panel-border);border-radius:10px;padding:20px;box-shadow:0 4px 16px rgba(0,0,0,.2);color:#1e293b;font:15px/1.5 "IBM Plex Sans","Segoe UI",system-ui,sans-serif;animation:fb-slideDown .3s ease}
+.feedback-panel.open{display:block}
+@keyframes fb-slideDown{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+.feedback-panel label{display:block;font-weight:600;margin-bottom:8px;color:#1e293b;font-size:14px}
+.feedback-panel textarea{width:100%;min-height:100px;padding:12px;border:1px solid #cbd5e1;border-radius:8px;font:inherit;font-size:15px;resize:vertical;background:#fff;color:#1e293b;box-sizing:border-box}
+.feedback-panel textarea:focus{outline:none;border-color:var(--fb-save);box-shadow:0 0 0 3px rgba(190,24,93,.15)}
+.feedback-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:12px;align-items:center}
+.btn-save{background:var(--fb-save);color:#fff;border:2px solid var(--fb-save-border);padding:10px 20px;border-radius:8px;cursor:pointer;font:600 14px/1 inherit;min-height:44px}
+.btn-save:hover{background:var(--fb-save-hover)}
+.btn-cancel{background:#fff;border:2px solid #94a3b8;padding:10px 20px;border-radius:8px;cursor:pointer;font-size:14px;color:#334155;min-height:44px}
+.btn-cancel:hover{background:#f1f5f9}
+.btn-delete{background:var(--fb-delete-bg);border:2px solid var(--fb-delete-border);padding:10px 16px;border-radius:8px;cursor:pointer;font-size:14px;color:var(--fb-delete);margin-left:auto;min-height:44px}
+.saved-indicator{display:none;color:var(--success);font-size:13px;align-items:center;gap:4px}
+.export-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:400;justify-content:center;align-items:center}
+.export-overlay.open{display:flex}
+.export-box{background:#fff;color:#1e293b;border-radius:12px;padding:32px;max-width:500px;width:90%;text-align:center;font:16px/1.5 "IBM Plex Sans","Segoe UI",system-ui,sans-serif}
+.export-box h2{margin:0 0 16px;font-size:22px;color:#1e293b}
+.export-box p{color:#64748b;margin:0 0 24px}
+.export-box .count{font-size:48px;font-weight:800;color:var(--fb-save)}
+.btn-export{display:inline-block;background:var(--fb-save);color:#fff;padding:14px 28px;border-radius:8px;border:none;font-size:16px;font-weight:600;cursor:pointer;margin:8px}
+.btn-export:hover{background:var(--fb-save-hover)}
+.btn-export.btn-copy{background:var(--fb-accent);color:#1e293b}
+.btn-close-overlay{display:inline-block;background:transparent;border:1px solid #cbd5e1;padding:14px 28px;border-radius:8px;font-size:16px;cursor:pointer;margin:8px;color:#64748b}
+@media (max-width:768px){.feedback-btn{top:8px;right:8px;font-size:12px}.feedback-panel{padding:16px}.hub-tabs{order:3;flex-basis:100%}}
+@media (prefers-reduced-motion:reduce){.feedback-counter.has-feedback{animation:none}.feedback-panel{animation:none}}
+</style>
+</head>
+<body>
+<!-- source: output\termin-2026-10-12\system-uebersicht.html sha256:9a1a6b3fdc5ae4f2 generated:2026-10-07 07:22 -->
+<header class="hub-bar"><a class="hub-brand" href="index.html">Comy Onlineshop</a><nav class="hub-tabs" aria-label="Seiten"><a class="hub-tab" href="index.html">Arbeitsbereich</a><a class="hub-tab" href="comyshop_preview_box-prototyp.html">Box-Prototyp</a><a class="hub-tab active" href="comyshop_preview_systemuebersicht.html" aria-current="page">Systemübersicht</a></nav><button class="feedback-counter" id="feedbackCounter" onclick="openExportOverlay()">📥 Feedback: 0 Kommentare</button></header><div class="bar"><b>Systemübersicht</b> · Entwurf zur Besprechung am 12.10.2026</div>
+<div class="wrap">
+  <h1>Wer übernimmt was?</h1>
+  <p class="sub">Grundprinzip: Artikel, Preise und Bestände werden an einer Stelle geführt. Der Shop holt sie von dort, verkauft die Boxen und gibt die Bestellungen zurück.</p>
+
+  <div class="flow block" data-fbid="1" data-fb="Schaubild: wer übernimmt was"><span class="block-label">Schaubild: wer übernimmt was</span><button class="feedback-btn" onclick="toggleFeedback(1)">✏️ Vorschlag</button><div class="feedback-panel" id="feedback-panel-1"><label for="feedback-text-1">Dein Vorschlag zu „Schaubild: wer übernimmt was“:</label><textarea id="feedback-text-1" placeholder="Schreib hier deinen Kommentar oder Änderungsvorschlag ..."></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(1)">Speichern</button><button class="btn-cancel" onclick="toggleFeedback(1)">Abbrechen</button><button class="btn-delete" onclick="deleteFeedback(1)" style="display:none" id="delete-btn-1">Löschen</button><span class="saved-indicator" id="saved-1">✓ Gespeichert</span></div></div>
+    <div class="node shop">
+      <h2>Onlineshop</h2>
+      <p class="who">WooCommerce · bauen wir</p>
+      <ul>
+        <li>Box-Übersicht und Auswahl je Kategorie</li>
+        <li>Preis der Box</li>
+        <li>Einmal kaufen oder Abo (14 / 21 / 28 Tage oder monatlich)</li>
+        <li>Warenkorb, Kasse, Zahlung</li>
+        <li>Pflichtangaben zu Lebensmitteln, Pfand, ggf. Altersprüfung</li>
+      </ul>
+    </div>
+
+    <div class="link">
+      <div class="lbl">Artikel, Preise, Bestände</div>
+      <div class="arrow l"></div>
+      <div class="arrow r"></div>
+      <div class="lbl">Bestellungen</div>
+    </div>
+
+    <div class="node erp">
+      <h2>Führendes System</h2>
+      <p class="who">JTL oder Corona? <span class="qbadge">Frage 1</span></p>
+      <ul>
+        <li>Artikelstamm: Name, EAN, Zutaten, Allergene</li>
+        <li>Einkaufs- und Verkaufspreise</li>
+        <li>Bestände und Lager</li>
+        <li>Aufträge, Lieferschein, Rechnung</li>
+      </ul>
+    </div>
+
+    <div class="link">
+      <div class="lbl">Abgleich mit den Stores</div>
+      <div class="arrow dash l"></div>
+      <div class="arrow dash r"></div>
+      <div class="lbl">klären</div>
+    </div>
+
+    <div class="node store">
+      <h2>24/7-Stores</h2>
+      <p class="who">Shop IQ · bestehend, dahinter bisher Corona</p>
+      <ul>
+        <li>Kasse und Selbstbedienung</li>
+        <li>Zutritt, Preisschilder</li>
+        <li>Abverkauf im Store</li>
+        <li>Ob Corona auch für den Onlineshop führend wird, klären wir in Frage 1.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="legend">
+    <span><i class="sw"></i> Anbindung Shop ↔ ein führendes System: Teil unseres Auftrags</span>
+    <span><i class="sw dash"></i> Abgleich zwischen euren Systemen: liegt bei euch bzw. eurem Systempartner</span>
+  </div>
+
+  <div class="cards block" data-fbid="2" data-fb="Begründungen"><span class="block-label">Begründungen</span><button class="feedback-btn" onclick="toggleFeedback(2)">✏️ Vorschlag</button><div class="feedback-panel" id="feedback-panel-2"><label for="feedback-text-2">Dein Vorschlag zu „Begründungen“:</label><textarea id="feedback-text-2" placeholder="Schreib hier deinen Kommentar oder Änderungsvorschlag ..."></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(2)">Speichern</button><button class="btn-cancel" onclick="toggleFeedback(2)">Abbrechen</button><button class="btn-delete" onclick="deleteFeedback(2)" style="display:none" id="delete-btn-2">Löschen</button><span class="saved-indicator" id="saved-2">✓ Gespeichert</span></div></div>
+    <div class="card">
+      <h3>Warum die Boxen im Shop liegen</h3>
+      <!-- DVL: 🔍 RESEARCH docs/research/research-jtl-2026-10-06.md (JTL-Connector WooCommerce v2.4.4: keine Bundles/Composite/Subscriptions) -->
+      <p>Nach unserem Stand überträgt die Standard-Anbindung von JTL an WooCommerce Artikel, Preise und Bestände, aber keine Auswahl-Boxen („1 aus 5“) und keine Abos. Deshalb bauen wir Auswahl, Boxpreis und Abo im Shop. Die einzelnen Artikel kommen aus dem führenden System.</p>
+    </div>
+    <div class="card">
+      <h3>Eine Stelle für die Daten</h3>
+      <p>Ein Produkt kann einzeln, in mehreren Boxen und im Store verkauft werden. Damit nichts doppelt gepflegt wird und es keine Überverkäufe gibt, führt nur ein System die Bestände.</p>
+    </div>
+    <div class="card">
+      <h3>Einrichtung der Systeme</h3>
+      <p>Einrichtung und Pflege in JTL bzw. Corona selbst liegen bei euch oder eurem Systempartner. Wenn ihr dabei Unterstützung braucht, machen wir gern ein separates Angebot.</p>
+    </div>
+  </div>
+
+  <div class="q block" data-fbid="3" data-fb="Zu klären am Montag"><span class="block-label">Zu klären am Montag</span><button class="feedback-btn" onclick="toggleFeedback(3)">✏️ Vorschlag</button><div class="feedback-panel" id="feedback-panel-3"><label for="feedback-text-3">Dein Vorschlag zu „Zu klären am Montag“:</label><textarea id="feedback-text-3" placeholder="Schreib hier deinen Kommentar oder Änderungsvorschlag ..."></textarea><div class="feedback-actions"><button class="btn-save" onclick="saveFeedback(3)">Speichern</button><button class="btn-cancel" onclick="toggleFeedback(3)">Abbrechen</button><button class="btn-delete" onclick="deleteFeedback(3)" style="display:none" id="delete-btn-3">Löschen</button><span class="saved-indicator" id="saved-3">✓ Gespeichert</span></div></div>
+    <b>Zu klären am Montag</b>
+    <ol>
+      <li><b>Frage 1:</b> Welches System führt Artikel, Preise und Bestände, und welche Rolle hat das andere?</li>
+      <li><b>Neu:</b> Wie werden die Bestände der Stores mit diesem System abgeglichen?</li>
+      <li><b>Frage 3:</b> Wer ist Ansprechpartner für JTL und für Corona?</li>
+      <li><b>Zum Rahmen:</b> Sollen beide Systeme an den Shop angebunden werden? Dann sprechen wir den Mehraufwand vorher ab.</li>
+    </ol>
+  </div>
+</div>
+<footer>Entwurf 2Penguins · Stand 07.10.2026 · vereinfachte Darstellung zur Besprechung, keine technische Spezifikation.</footer>
+<script>document.querySelectorAll('[data-fbid]').forEach(function(el){var n=el.getAttribute('data-fbid');var w=el.querySelector(':scope > .feedback-btn');if(!el.id){el.id='block-'+n;}else{var a=document.createElement('span');a.id='block-'+n;a.className='fb-anchor';el.insertBefore(a,el.firstChild);a.appendChild(el.querySelector(':scope > .block-label'));a.appendChild(w);a.appendChild(el.querySelector(':scope > .feedback-panel'));}});</script>
+<div class="export-overlay" id="exportOverlay">
+  <div class="export-box">
+    <div class="count" id="exportCount">0</div>
+    <h2>Kommentare bereit</h2>
+    <p>Alle deine Kommentare aus allen Seiten in einer Datei. Lade sie herunter oder kopiere sie und schick sie uns.</p>
+    <button class="btn-export" onclick="exportFeedback()">📥 Als Datei herunterladen</button>
+    <button class="btn-export btn-copy" onclick="copyFeedback()">📋 In Zwischenablage kopieren</button>
+    <button class="btn-close-overlay" onclick="closeExportOverlay()">Schließen</button>
+  </div>
+</div>
+
+<script>
+(function() {
+  var PROJECT = 'comyshop';
+  var PAGE = 'systemuebersicht';
+  var PAGE_TITLE = 'Systemübersicht';
+  var STORAGE_KEY = '2p-feedback-' + PROJECT;
+  function getAllFeedback() { try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch (e) { return {}; } }
+  function setAll(all) { try { localStorage.setItem(STORAGE_KEY, JSON.stringify(all)); } catch (e) {} }
+  function getPageFeedback() { var all = getAllFeedback(); return all[PAGE] || {}; }
+  function savePageFeedback(pageData) {
+    var all = getAllFeedback();
+    if (Object.keys(pageData).length === 1 && pageData._title) { delete all[PAGE]; } else { all[PAGE] = pageData; }
+    setAll(all);
+  }
+  function getTotalCount() {
+    var all = getAllFeedback(), count = 0;
+    for (var page in all) { for (var key in all[page]) { if (key !== '_title') count++; } }
+    return count;
+  }
+  function loadFeedback() {
+    var pageData = getPageFeedback();
+    for (var blockId in pageData) {
+      if (blockId === '_title') continue;
+      var entry = pageData[blockId];
+      var text = (typeof entry === 'object') ? entry.text : entry;
+      var textarea = document.getElementById('feedback-text-' + blockId);
+      var btn = document.querySelector('#block-' + blockId + ' > .feedback-btn');
+      var deleteBtn = document.getElementById('delete-btn-' + blockId);
+      if (textarea) textarea.value = text;
+      if (btn) { btn.classList.add('has-comment'); btn.textContent = '✏️ Kommentar bearbeiten'; }
+      if (deleteBtn) deleteBtn.style.display = 'inline-block';
+    }
+    updateCounter();
+  }
+  window.toggleFeedback = function(blockId) {
+    var panel = document.getElementById('feedback-panel-' + blockId);
+    panel.classList.toggle('open');
+    if (panel.classList.contains('open')) { document.getElementById('feedback-text-' + blockId).focus(); }
+  };
+  window.saveFeedback = function(blockId) {
+    var text = document.getElementById('feedback-text-' + blockId).value.trim();
+    if (!text) return;
+    var blockEl = document.getElementById('block-' + blockId);
+    var labelEl = blockEl ? blockEl.querySelector('.block-label') : null;
+    var label = labelEl ? labelEl.textContent : ('Block ' + blockId);
+    var pageData = getPageFeedback();
+    pageData._title = PAGE_TITLE;
+    pageData[blockId] = { text: text, label: label };
+    savePageFeedback(pageData);
+    var btn = document.querySelector('#block-' + blockId + ' > .feedback-btn');
+    btn.classList.add('has-comment'); btn.textContent = '✏️ Kommentar bearbeiten';
+    document.getElementById('delete-btn-' + blockId).style.display = 'inline-block';
+    var indicator = document.getElementById('saved-' + blockId);
+    indicator.style.display = 'flex';
+    setTimeout(function() { indicator.style.display = 'none'; }, 2000);
+    updateCounter();
+    setTimeout(function() { window.toggleFeedback(blockId); }, 1500);
+  };
+  window.deleteFeedback = function(blockId) {
+    var pageData = getPageFeedback();
+    delete pageData[blockId];
+    savePageFeedback(pageData);
+    document.getElementById('feedback-text-' + blockId).value = '';
+    var btn = document.querySelector('#block-' + blockId + ' > .feedback-btn');
+    btn.classList.remove('has-comment'); btn.textContent = '✏️ Vorschlag';
+    document.getElementById('delete-btn-' + blockId).style.display = 'none';
+    updateCounter();
+    window.toggleFeedback(blockId);
+  };
+  function updateCounter() {
+    var count = getTotalCount();
+    var counterEl = document.getElementById('feedbackCounter');
+    if (count > 0) { counterEl.classList.add('has-feedback'); counterEl.textContent = '📥 Feedback: ' + count + ' Kommentar' + (count > 1 ? 'e' : ''); }
+    else { counterEl.classList.remove('has-feedback'); counterEl.textContent = '📥 Feedback: 0 Kommentare'; }
+  }
+  window.openExportOverlay = function() {
+    var count = getTotalCount();
+    if (count === 0) return;
+    document.getElementById('exportCount').textContent = count;
+    document.getElementById('exportOverlay').classList.add('open');
+  };
+  window.closeExportOverlay = function() { document.getElementById('exportOverlay').classList.remove('open'); };
+  function buildFeedbackText() {
+    var all = getAllFeedback(), totalCount = getTotalCount();
+    var text = 'FEEDBACK — ' + PROJECT.toUpperCase() + '\n';
+    text += 'Datum: ' + new Date().toLocaleDateString('de-DE') + '\n';
+    text += totalCount + ' Kommentar(e) insgesamt\n';
+    text += '==================================================\n\n';
+    for (var page in all) {
+      var pageData = all[page];
+      text += '━━━ ' + (pageData._title || page) + ' ━━━\n\n';
+      for (var blockId in pageData) {
+        if (blockId === '_title') continue;
+        var entry = pageData[blockId];
+        var commentText = (typeof entry === 'object') ? entry.text : entry;
+        var label = (typeof entry === 'object' && entry.label) ? entry.label : ('Block ' + blockId);
+        text += '📌 ' + label + '\n----------------------------------------\n' + commentText + '\n\n';
+      }
+    }
+    text += '==================================================\n';
+    text += 'Erstellt am ' + new Date().toLocaleString('de-DE') + '\n';
+    return text;
+  }
+  window.exportFeedback = function() {
+    var blob = new Blob([buildFeedbackText()], { type: 'text/plain;charset=utf-8' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'feedback_' + PROJECT + '_' + new Date().toISOString().slice(0,10) + '.txt';
+    a.click();
+    URL.revokeObjectURL(url);
+    window.closeExportOverlay();
+  };
+  window.copyFeedback = function() {
+    var text = buildFeedbackText();
+    var btn = document.querySelector('.btn-copy');
+    var original = btn.textContent;
+    navigator.clipboard.writeText(text).then(function() {
+      btn.textContent = '✅ Kopiert!';
+      setTimeout(function() { btn.textContent = original; }, 2000);
+    }, function() { btn.textContent = 'Kopieren nicht möglich, bitte Datei herunterladen'; });
+  };
+  loadFeedback();
+})();
+</script>
+
+</body>
+</html>

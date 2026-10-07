@@ -1,7 +1,12 @@
 {
   "project": "comyshop_preview",
-  "latest": "v1.0",
+  "latest": "v1.1",
   "versions": [
+    {
+      "version": "v1.1",
+      "date": "2026-10-07",
+      "summary": "Kleinere Korrekturen gegenüber v1.0: Boxnamen wie in eurer Liste (COMY …), Fragen auf den Seiten mit denselben Nummern wie in der Mail, Rolle von Corona in den Stores klarer, Hinweis zur Produktauswahl präzisiert."
+    },
     {
       "version": "v1.0",
       "date": "2026-10-06",
