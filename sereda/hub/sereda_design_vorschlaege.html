@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>SEREDA · Design: правки к макетам · 12.10.2026</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<style>
+  :root{ --navy:#2e374f; --navy-900:#2c2e36; --slate:#515e82; --slate-lite:#6c757d; --accent:#e8b54a; --bg:#f4f5f7; --surface:#fff; --border:#e2e6ec; --maxw:1080px; }
+  *{box-sizing:border-box;margin:0}
+  body{font:15px/1.55 "Segoe UI",system-ui,sans-serif;color:#22252e;background:var(--bg)}
+  .hub-header{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-900) 100%);color:#fff;padding:26px 20px 0}
+  .hub-header .inner{max-width:var(--maxw);margin:0 auto}
+  .hub-header h1{font-size:1.35em}
+  .hub-header p{opacity:.75;font-size:.92em;margin-top:4px}
+  .hub-tabs{max-width:var(--maxw);margin:18px auto 0;display:flex;gap:4px;flex-wrap:wrap}
+  .hub-tab{padding:12px 20px;color:rgba(255,255,255,.65);text-decoration:none;font-size:.95em;font-weight:500;border-radius:10px 10px 0 0;border-bottom:3px solid transparent;white-space:nowrap}
+  .hub-tab:hover{color:#fff;background:rgba(255,255,255,.06)}
+  .hub-tab.active{color:var(--navy);background:var(--bg);border-bottom-color:var(--accent);font-weight:700}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:24px 20px 70px}
+  .lead{font-size:1.02em;color:var(--navy);background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--slate);border-radius:10px;padding:18px 20px;margin-bottom:20px}
+  .subnav{position:sticky;top:0;background:var(--bg);padding:10px 0;z-index:5;display:flex;gap:6px;flex-wrap:wrap;border-bottom:1px solid var(--border);margin-bottom:18px}
+  .subnav a{font-size:.85em;background:var(--surface);border:1px solid var(--border);border-radius:99px;padding:4px 12px;text-decoration:none;color:var(--navy)}
+  section.card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px 22px;margin-bottom:20px}
+  section.card h2{font-size:1.15em;color:var(--navy);margin-bottom:10px;padding-bottom:8px;border-bottom:2px solid var(--slate)}
+  .num{display:inline-block;background:var(--navy);color:#fff;border-radius:99px;width:28px;height:28px;text-align:center;line-height:28px;font-size:.85em;margin-right:8px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:10px 0}
+  @media (max-width:760px){.grid2{grid-template-columns:1fr}}
+  .lbl{font-size:.78em;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--slate-lite);margin:6px 0 4px}
+  figure{margin:6px 0 10px}
+  figure img{width:100%;height:auto;border:1px solid var(--border);border-radius:8px;display:block}
+  figcaption{font-size:.82em;color:var(--slate-lite);margin-top:4px}
+  .src{font-size:.86em;color:var(--slate-lite);margin-top:8px}
+  .ask{background:#e8f0e8;border-left:4px solid #2e5c2e;border-radius:8px;padding:10px 14px;margin-top:12px;font-size:.94em}
+  .note{background:#fdf6e3;border-left:4px solid #b07d1e;border-radius:8px;padding:12px 16px;margin:12px 0;font-size:.92em}
+  ul{margin:6px 0 6px 20px} li{margin:4px 0}
+  .sw{border:1px solid var(--border);border-radius:10px;padding:14px;background:#fff}
+  .chip{width:100%;height:56px;border-radius:8px;margin-bottom:10px}
+  .btns{display:flex;gap:10px;flex-wrap:wrap;margin:8px 0}
+  .btn{display:inline-block;padding:10px 18px;border-radius:99px;color:#fff;font-weight:600;font-size:.92em}
+  .dark{background:#262b3b;border-radius:10px;padding:14px;margin-top:8px}
+  .dark .btn{box-shadow:0 0 0 2px #fff}
+  .mini{font-size:.82em;color:var(--slate-lite)}
+  .hub-footer{background:var(--navy);color:rgba(255,255,255,.75);font-size:.85em;padding:16px 20px;text-align:center;margin-top:30px}
+</style>
+</head>
+<body>
+
+<header class="hub-header">
+  <div class="inner">
+    <h1>Дизайн: правки к макетам · на Ваше утверждение</h1>
+    <p>SEREDA GmbH · Website-Relaunch · 12.10.2026 · к созвону 13.10.2026, 16:00</p>
+  </div>
+  <nav class="hub-tabs">
+    <a href="index.html" class="hub-tab">📈 Arbeitsstand</a>
+    <a href="sereda_site_konzept.html" class="hub-tab">🗺 Site-Konzept</a>
+    <a href="sereda_seiten_weiterleitungen.html" class="hub-tab">📄 Seiten &amp; Weiterleitungen</a>
+    <a href="sereda_muster_startseite.html" class="hub-tab">👁 Muster-Startseite</a>
+    <a href="sereda_content_vorlagen.html" class="hub-tab">📝 Content-Vorlagen</a>
+    <a href="sereda_design_vorschlaege.html" class="hub-tab active">🎨 Design-Änderungen</a>
+    <a href="sereda_formulierungen_quellen.html" class="hub-tab">⚖️ Formulierungen &amp; Quellen</a>
+  </nav>
+</header>
+
+<div class="wrap">
+
+<div class="lead">
+  <b>Что это.</b> Список правок к макетам по Вашему письму от 05.10 («это не призыв к действию, это обсуждение, именно предложения на расмотрение профессионалов»). Дизайн целиком не перерисовываем, речь о точечных акцентах. По каждому пункту: что сейчас в макете, что предлагаем и что нужно от Вас.<br><br>
+  <b>Основа:</b> макеты главной, раздела Zoll- &amp; Steuerlager и страницы Steuerlager Alkohol в том виде, в каком мы прислали их Вам 02.09 (сверено с рабочим файлом дизайнера 12.10, изменений нет).<br><br>
+  <b>Как дальше:</b> на созвоне проходим пункты по порядку. После Вашего письменного «да» лист уходит дизайнеру. Без Вашего подтверждения в макетах ничего не меняем.
+</div>
+
+<nav class="subnav">
+  <a href="#p1">1 · Bio и EcoVadis</a>
+  <a href="#p2">2 · Акцентный цвет</a>
+  <a href="#p3">3 · Телефон на виду</a>
+  <a href="#p4">4 · Карточки и две колонки</a>
+  <a href="#p5">5 · Быстрый выбор</a>
+  <a href="#p6">6 · AEO-C</a>
+  <a href="#p7">7 · Синий блок</a>
+  <a href="#p8">8 · KI-Zollberater</a>
+  <a href="#p9">9 · Новые блоки разделов</a>
+  <a href="#p10">Договорились 01.09</a>
+  <a href="#ask">Что нужно от Вас</a>
+</nav>
+
+<section class="card" id="p1">
+  <h2><span class="num">1</span>Логотип Bio и EcoVadis убираем</h2>
+  <div class="lbl">Сейчас в макетах</div>
+  <figure><img src="img/design-1012/h_footer.jpg" alt="Подвал: три знака, справа зелёный знак Bio"><figcaption>Подвал, все три макета: справа в ряду знаков зелёный знак Bio.</figcaption></figure>
+  <figure><img src="img/design-1012/h_trust.jpg" alt="Полоса доверия с пунктом EcoVadis Silver"><figcaption>Полоса доверия под первым экраном, все три макета: пункт «EcoVadis Silver».</figcaption></figure>
+  <div class="lbl">Предлагаем</div>
+  <p>Знак Bio из подвала и пункт «EcoVadis Silver» из полосы доверия убираем на всех трёх макетах. Вы правы: в макетах они остались, потому что мы не меняли макеты до Ваших замечаний по дизайну.</p>
+  <p class="src">Ваше письмо от 05.10: «из вашего проекта нужно убрать!»</p>
+  <div class="ask"><b>Нужно от Вас:</b> ничего. Это Ваше требование, убираем первым пунктом в листе для дизайнера.</div>
+</section>
+
+<section class="card" id="p2">
+  <h2><span class="num">2</span>Тёплый акцентный цвет для главного действия</h2>
+  <div class="lbl">Предлагаем, два оттенка на выбор</div>
+  <div class="grid2">
+    <div class="sw">
+      <div class="chip" style="background:#B5532E"></div>
+      <b>Терракота #B5532E</b> · наш вариант
+      <div class="btns"><span class="btn" style="background:#B5532E">Anfrage stellen</span><span class="btn" style="background:#B5532E">☎ Anrufen</span></div>
+      <div class="dark"><span class="btn" style="background:#B5532E">Anfrage stellen</span></div>
+      <p class="mini">Белый текст на кнопке: контраст 4,95 : 1 (норма для текста от 4,5 : 1).</p>
+    </div>
+    <div class="sw">
+      <div class="chip" style="background:#A61C3C"></div>
+      <b>«Винный» красный #A61C3C</b> · ближе к Вашей визуализации
+      <div class="btns"><span class="btn" style="background:#A61C3C">Anfrage stellen</span><span class="btn" style="background:#A61C3C">☎ Anrufen</span></div>
+      <div class="dark"><span class="btn" style="background:#A61C3C">Anfrage stellen</span></div>
+      <p class="mini">Белый текст на кнопке: контраст 7,36 : 1.</p>
+    </div>
+  </div>
+  <ul>
+    <li>Акцент только на главных кнопках («Anfrage», звонок) и одной-двух ключевых метках, не как украшение. Основные цвета макета остаются.</li>
+    <li>Почему мы за терракоту: красный на таможенном сайте легко читается как «ошибка» или «стоп», а это та тревога, с которой к Вам приходит клиент. Кроме того, красный у одного из заметных конкурентов фирменный цвет.</li>
+    <li>На тёмно-синих блоках кнопка любого из двух оттенков сливается с фоном, поэтому там она получает белую обводку (на образцах выше, тёмная полоса).</li>
+  </ul>
+  <figure style="max-width:520px"><img src="img/design-1012/lovable_01_hero.jpg" alt="Первый экран Вашей визуализации с красным акцентом"><figcaption>Ваша визуализация: красный акцент на кнопке и плашке в шапке.</figcaption></figure>
+  <p class="src">Ваше письмо от 05.10: не хватает сочного контраста, «например, кармина или теплой терракоты», и Ваш ответ от 07.10, что тёплая терракота тоже была у Вас на рассмотрении.</p>
+  <div class="ask"><b>Нужно от Вас:</b> выбор оттенка. Дизайнер затем выставит его во все макеты.</div>
+</section>
+
+<section class="card" id="p3">
+  <h2><span class="num">3</span>Телефон сразу на виду</h2>
+  <div class="lbl">Сейчас в макетах</div>
+  <figure><img src="img/design-1012/h_header_hero.jpg" alt="Шапка и первый экран: справа маленькие значки WhatsApp и телефона"><figcaption>Компьютер: в шапке только «Kundenportal» и «Anfrage», телефон маленьким значком сбоку.</figcaption></figure>
+  <figure><img src="img/design-1012/h_cta_dark.jpg" alt="Тёмный блок с кнопкой телефона-заглушки"><figcaption>Тёмный блок с призывом: номер стоит, но это пока заглушка.</figcaption></figure>
+  <figure style="max-width:390px"><img src="img/design-1012/m_bottombar.jpg" alt="Мобильная нижняя панель: Kundenportal и Anfrage"><figcaption>Телефон: в нижней панели «Kundenportal» и «Anfrage», кнопки звонка нет.</figcaption></figure>
+  <div class="lbl">Предлагаем</div>
+  <ul>
+    <li><b>Компьютер:</b> номер цифрами в шапке рядом с «Anfrage» и в каждом тёмном блоке с призывом.</li>
+    <li><b>Телефон:</b> кнопка «Anrufen» в нижней панели рядом с «Anfrage», всегда под рукой.</li>
+    <li>Кнопка звонка в акцентном цвете из пункта 2.</li>
+    <li>Подпись без слов «дежурный» или «24 часа»: 22.08 Вы написали, что безусловное обещание «24 Stunden» не используем. Рядом с номером указываем реальные часы.</li>
+  </ul>
+  <p class="src">Ваше письмо от 05.10: в срочной ситуации клиенту нужен мгновенно заметный прямой номер.</p>
+  <div class="ask"><b>Нужно от Вас:</b> какой номер ставим как прямой для срочных случаев (центральный, отдельная линия таможенников или бюро Dreilinden), в какие часы по нему отвечают и нужна ли кнопка WhatsApp (с каким номером).</div>
+</section>
+
+<section class="card" id="p4">
+  <h2><span class="num">4</span>Карточки и две колонки вместо мелких списков</h2>
+  <div class="lbl">Сейчас в макетах</div>
+  <figure><img src="img/design-1012/s_vorteile.jpg" alt="Блок Gezielte Steuer- und Logistikvorteile списком"><figcaption>Steuerlager Alkohol: «Gezielte Steuer- und Logistikvorteile» списком с мелким текстом.</figcaption></figure>
+  <figure><img src="img/design-1012/hb_rahmen.jpg" alt="Блок Rahmenbedingungen & Vorgaben списком"><figcaption>Zoll- &amp; Steuerlager: «Rahmenbedingungen &amp; Vorgaben» списком.</figcaption></figure>
+  <div class="lbl">Предлагаем</div>
+  <ul>
+    <li><b>Преимущества:</b> карточки, в каждой иконка, заголовок в два-четыре слова и одна строка. Подробности уходят в вопросы и ответы и в описание процесса.</li>
+    <li><b>Рамки:</b> две колонки, как Вы предлагали на созвоне 01.09: что делаем мы и что идёт не через нас или только через партнёра. Подписи предлагаем такие: «✓ Das übernehmen wir» и «– Das läuft nicht über uns bzw. nur über Partner». Короткими метками; остаются только пункты, которых нет в других местах страницы.</li>
+    <li>Тексты в этих блоках сокращаем в драфтах после Вашего «да» на порядок блоков.</li>
+  </ul>
+  <p class="src">Ваше письмо от 05.10: «В B2B их будут «сканировать» по диагонали за 3–5 секунд».</p>
+  <div class="ask"><b>Нужно от Вас:</b> «да».</div>
+</section>
+
+<section class="card" id="p5">
+  <h2><span class="num">5</span>Быстрый выбор задачи в первом экране</h2>
+  <div class="lbl">Сейчас в макете главной</div>
+  <figure><img src="img/design-1012/h_quick.jpg" alt="Блок Einmalige Zollabfertigung oder Schnelleinstieg под первым экраном"><figcaption>В первом экране четыре мелкие карточки разделов, они читаются как навигация, а не как выбор задачи. Быстрые ссылки стоят под первым экраном, списком.</figcaption></figure>
+  <div class="lbl">Ваша визуализация</div>
+  <div class="grid2">
+    <figure><img src="img/design-1012/lovable_01_hero.jpg" alt="Блок Was möchten Sie erledigen в первом экране"><figcaption>«Was möchten Sie erledigen?» прямо в первом экране.</figcaption></figure>
+    <figure><img src="img/design-1012/lovable_02_hero_schnelleinstieg_klick-zwischenlagern.jpg" alt="После выбора: карточка услуги и следующий шаг"><figcaption>После нажатия: карточка с услугой и следующим шагом.</figcaption></figure>
+  </div>
+  <div class="lbl">Предлагаем</div>
+  <ul>
+    <li>Берём Вашу механику: в первом экране главной вопрос «Was möchten Sie erledigen?» и несколько кнопок; по нажатию человек сразу видит подходящую услугу и следующий шаг.</li>
+    <li>Набор кнопок согласуем с Вами. Основа: Ваше правило маршрутов из письма от 05.10 (общий складской запрос → Lagerlogistik, отраслевой Food → Food &amp; Beverage) и наше дополнение к нему: хранение без уплаты пошлин → Zolllager. В Вашей визуализации кнопка «Ware zwischenlagern» ведёт на Zolllager; по этому правилу обычное хранение ведёт на Lagerlogistik, а Zolllager остаётся для товара, по которому пошлины ещё не уплачены.</li>
+    <li>В карточке только сроки, которые Вы подтвердили (например, «In Standardfällen melden wir uns innerhalb von 3 Arbeitsstunden»), без «24 часов».</li>
+    <li>На разделах и страницах услуг по две-три кнопки перехода в первом экране.</li>
+  </ul>
+  <div class="ask"><b>Нужно от Вас:</b> «да» на механику и на набор кнопок (покажем на созвоне).</div>
+</section>
+
+<section class="card" id="p6">
+  <h2><span class="num">6</span>«AEO-F» исправляем на «AEO-C»</h2>
+  <figure><img src="img/design-1012/s_szenarien.jpg" alt="Полоса сценариев с пунктом AEO-F zertifiziert"><figcaption>Steuerlager Alkohol, полоса над сценариями: «AEO-F zertifiziert».</figcaption></figure>
+  <p>Это наша ошибка в макете: у Вас статус AEO-C. Исправляем.</p>
+  <p>Тексты сценариев на этой картинке рабочие, из макета дизайнера («verzollt» у водки из Польши, «aufgeschobene Verbrauchsteuer» у вина). В макет пойдут тексты из драфта страницы, где эти места уже сверены с источниками (см. вкладку «Formulierungen &amp; Quellen», № 10). Это касается всех текстов на картинках этой вкладки: в макетах они рабочие, финальные тексты берутся из драфтов.</p>
+</section>
+
+<section class="card" id="p7">
+  <h2><span class="num">7</span>Синий блок на главной</h2>
+  <p>Ваше предложение с созвона 01.09: синий блок переставить выше, после «Ablauf». Принимаем: ставим его сразу после «Ablauf». На макете покажем вместе с новым первым экраном (пункт 5), чтобы ритм главной был виден целиком.</p>
+  <div class="ask"><b>Нужно от Вас:</b> ничего, это Ваше предложение. Порядок блоков образцовой страницы утверждаем уже с этим изменением.</div>
+</section>
+
+<section class="card" id="p8">
+  <h2><span class="num">8</span>KI-Zollberater</h2>
+  <figure style="max-width:520px"><img src="img/design-1012/lovable_05_ki-zollberater.jpg" alt="Блок KI-Zollberater из Вашей визуализации"><figcaption>Ваша визуализация: «KI-Zollberater».</figcaption></figure>
+  <p>Наше предложение: к запуску не делать. Автоматический совет по таможне без проверки человеком может навредить клиенту и Вам. Вернуться к нему после запуска, как мы писали 07.10.</p>
+</section>
+
+<section class="card" id="p9">
+  <h2><span class="num">9</span>Разделы (хабы): новые блоки по схеме Content-Vorlagen</h2>
+  <p>В письме от 05.10 Вы просили, чтобы у каждого хаба были «собственные сценарии, содержание, карточки и переходы». Для макета раздела Zoll- &amp; Steuerlager предлагаем так:</p>
+  <ul>
+    <li>после витрины подразделов новый текстовый блок «Leistungen im Überblick» (какие услуги входят в раздел, со ссылками);</li>
+    <li>карточка «Warum beides bei uns» стоит отдельно, сразу перед блоком с допусками (сейчас она четвёртой карточкой в витрине);</li>
+    <li>новый блок «Szenarien»: две-три типичные ситуации клиентов раздела, тем же элементом, что сценарии на странице Steuerlager Alkohol, без нового дизайна.</li>
+  </ul>
+  <p>Порядок блоков такой же, как в <a href="sereda_content_vorlagen.html">Content-Vorlagen</a> (тип 2). Утверждаете его в пункте «порядок блоков» на созвоне.</p>
+</section>
+
+<section class="card" id="p10">
+  <h2>Договорились на созвоне 01.09 · войдёт в тот же лист дизайнеру</h2>
+  <p>Эти пункты мы обсудили с Вами 01.09. Дизайнер получит их одним пакетом вместе с пунктами выше, чтобы макеты правились один раз:</p>
+  <ul>
+    <li>Шаги блока «Ablauf» без ссылок на другие страницы.</li>
+    <li>Полоса доверия на каждой странице своя: состав и порядок пунктов Вы меняете сами; иконки из небольшого общего набора.</li>
+    <li>Google-отзывы: на карточке имя, текст, месяц и год.</li>
+    <li>Переключатель языков текстом, без флагов.</li>
+    <li>Карточки услуг кликабельны целиком и кнопкой; на телефоне раскрываются, как аккордеон.</li>
+    <li>Анимации по минимуму, приоритет скорости страницы.</li>
+  </ul>
+  <p style="margin-top:12px"><b>Наши правки к макету по утверждённой структуре страниц (не решения созвона, на Ваше «да»):</b></p>
+  <ul>
+    <li>Google-отзывы: три карточки вместо четырёх.</li>
+    <li>Steuerlager Alkohol: в первом экране одна строка доверия вместо полной полосы; блок «Grundlagenwissen Steuerlager» с пояснениями (что такое Steuerlager, акцизы, EMCS), переходы на другие услуги отдельным блоком.</li>
+  </ul>
+</section>
+
+<div class="note">
+  <b>Где оставлять замечания по дизайну:</b> ответом на письмо или на созвоне. Кнопка «✏️ Vorschlag» на образцовой странице относится только к текстам и порядку блоков.
+</div>
+
+<div class="note">
+  <b>Технически, без решения с Вашей стороны:</b> в полосе доверия макета стоит «320 Bewertungen», это заглушка. На сайте число и оценка подтягиваются из Вашего профиля Google автоматически (сейчас 134 отзыва, средняя оценка 4,7). Доступ к профилю у нас есть, спасибо за приглашение.
+</div>
+
+<section class="card" id="ask">
+  <h2>Что нужно от Вас на созвоне</h2>
+  <ol style="margin-left:20px">
+    <li>Пункты 4 и 9: «да» (пункт 9 вместе с порядком блоков). Пункты 1 и 6 исправляем без вопросов.</li>
+    <li>Наши правки к макету (отзывы, Steuerlager Alkohol): «да».</li>
+    <li>Пункт 2: выбор оттенка.</li>
+    <li>Пункт 3: прямой номер для срочных случаев, часы и кнопка WhatsApp.</li>
+    <li>Пункт 5: «да» на механику и набор кнопок.</li>
+    <li>Пункты 7 и 8: ничего. Синий блок ставим по Вашему предложению, KI-Zollberater после запуска.</li>
+  </ol>
+  <p style="margin-top:10px">После созвона пришлём протокол. Как только Вы его подтвердите письменно, лист уходит дизайнеру.</p>
+</section>
+
+</div>
+
+<footer class="hub-footer">SEREDA GmbH × 2Penguins · Projekt-Hub · Design: правки к макетам · 12.10.2026 · интерн, не индексируется</footer>
+
+</body>
+</html>
