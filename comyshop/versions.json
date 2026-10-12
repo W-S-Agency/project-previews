@@ -1,7 +1,12 @@
 {
   "project": "comyshop_preview",
-  "latest": "v1.2.1",
+  "latest": "v1.3",
   "versions": [
+    {
+      "version": "v1.3",
+      "date": "2026-10-12",
+      "summary": "Neue Seite «Design»: was schon da ist, was noch fehlt, Logo und Panther zur Abstimmung im Termin, Anforderungen an Produkt- und Box-Fotos."
+    },
     {
       "version": "v1.2.1",
       "date": "2026-10-12",
