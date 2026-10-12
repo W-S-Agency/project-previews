@@ -1,7 +1,12 @@
 {
   "project": "comyshop_preview",
-  "latest": "v1.3",
+  "latest": "v1.3.1",
   "versions": [
+    {
+      "version": "v1.3.1",
+      "date": "2026-10-12",
+      "summary": "Ergänzt: KI-Empfehlungen als Thema für den Termin, dein Zieltermin 15.12., Jahreskosten der Erweiterungen auf der Seite Technik, Logo mit Panther und Zuständigkeiten auf der Seite Design."
+    },
     {
       "version": "v1.3",
       "date": "2026-10-12",
