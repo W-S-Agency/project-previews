@@ -1,7 +1,12 @@
 {
   "project": "comyshop_preview",
-  "latest": "v1.2",
+  "latest": "v1.2.1",
   "versions": [
+    {
+      "version": "v1.2.1",
+      "date": "2026-10-12",
+      "summary": "Korrekturen nach Durchsicht: Zutaten und Allergene beim Shop statt bei Korona, Kasse im Store als offene Frage, Box-Inhalt offen formuliert. Neu: Seite «Technik» mit der vorläufigen Auswahl von Shopsystem, Theme und Erweiterungen samt Lizenzkosten."
+    },
     {
       "version": "v1.2",
       "date": "2026-10-12",
