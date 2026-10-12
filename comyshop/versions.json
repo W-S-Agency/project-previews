@@ -1,7 +1,12 @@
 {
   "project": "comyshop_preview",
-  "latest": "v1.1",
+  "latest": "v1.2",
   "versions": [
+    {
+      "version": "v1.2",
+      "date": "2026-10-12",
+      "summary": "Deine Antworten vom 08.10. eingearbeitet: Korona Studios als System für Artikel, Preise und Bestände; feste Boxen ohne Auswahl mit Festpreis; kein Alkohol und kein Tabak; offene Fragen zu Box-Inhalt, Mystery und Feldversuch."
+    },
     {
       "version": "v1.1",
       "date": "2026-10-07",
