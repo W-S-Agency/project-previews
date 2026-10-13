@@ -190,7 +190,7 @@
       <div class="rec"><strong>Eigene Einstiegsseite <code>/de/privatkunden</code></strong> für Einmal-Kunden — nimmt die Unsicherheit, erklärt den Ablauf und leitet gezielt weiter. <em>(Inzwischen weiterentwickelt: statt separater Seite — 5 direkte Einstiege auf der Startseite, s. Site-Konzept.)</em></div>
       <div class="rec"><strong>Ihre bestehenden Zoll-Adressen bleiben erhalten.</strong> Die Adressen unter <code>/de/zollservice/…</code> bleiben geschützt. <em>(Inzwischen weiterentwickelt: mit der finalen Struktur ziehen die Adressen um: jede alte Adresse mit gleichwertiger neuer Seite erhält eine dauerhafte 301-Weiterleitung dorthin; ohne gleichwertige Seite wird sie sauber entfernt (410), Ihre Regel. S. Tab „Seiten &amp; Weiterleitungen“.)</em></div>
       <div class="rec"><strong>Zollbüro Dreilinden als eigene Standort-Seite:</strong> die Seite zum <strong>Zollbüro Dreilinden</strong> (Abfertigung; gelagert wird in Wustermark) wird deutlich ausgebaut (Anfahrt, Ablauf, Dokumente, Kontakt). <em>(Inzwischen: eigene Standort-Seite <code>/zollbuero-dreilinden/</code>, alte Adresse leitet per 301 weiter.)</em></div>
-      <p class="note">Wichtig (Stand 02.08): Diese strategische Anpassung lief <strong>im vereinbarten Festpreis</strong>. Keine versteckten Zusatzkosten: was separat wäre, sagen wir vorher. Den aktualisierten Zeitplan stimmen wir mit Ihnen nach Ihrer Rückmeldung zur Musterseite ab.</p>
+      <p class="note">Wichtig (Stand 02.08): Diese strategische Anpassung lief <strong>im vereinbarten Festpreis</strong>. Keine versteckten Zusatzkosten: was separat wäre, sagen wir vorher. Den Zeitplan zeigen wir Ihnen im Termin am 13.10: wie viele Arbeitstage jeder unserer Schritte nach Ihrem „Ja“ braucht, und eine Orientierung für den Start.</p>
       <p class="note">Weiterentwicklung (02.08): Diese Richtung ist vollständig in die finale Seitenstruktur eingeflossen. Wie die Einstiege auf der Startseite konkret aussehen, sehen Sie im Tab <strong>„Site-Konzept“</strong>.</p>
     </section>
 
@@ -318,6 +318,7 @@
 
   <!-- ================= TAB 2: MIGRATION ================= -->
   <div class="tabpanel" id="panel-migration">
+    <p class="note"><strong>Stand 06.07.2026</strong> (Sitemap, 85 Adressen). Aktuell gilt: 110 Adressen aus der Search Console (16 Monate), Tab „Seiten &amp; Weiterleitungen“. Die Antwort auf Ihre Frage 4.7 (zwei defekte Seiten, 13 technische Zeilen) steht im Tab „Umzug &amp; Sicherheit“, Punkt 7.</p>
     <div class="lead">
       Damit beim Umzug <strong>möglichst keine Sichtbarkeit verloren geht</strong>, haben wir <strong>bereits vor dem Umbau</strong>
       Ihre komplette Seite vermessen und eine Grundlage für saubere Weiterleitungen (301) erstellt.
@@ -348,10 +349,10 @@
         <tr><th>Adresse</th><th>Status</th><th>Vorgehen bei Migration</th></tr>
         <tr><td><code>/de/logistik/logistik-fuer-bio-und-naturprodukte</code></td><td><span class="sev s-crit">404</span></td><td>entfernen (410): DE-ÖKO-Zertifikat gilt nicht mehr, Leistung wird nicht angeboten (Ihre Präzisierung vom 22.08)</td></tr>
         <tr><td><code>/en/logistics/…organic-and-natural-products</code></td><td><span class="sev s-crit">404</span></td><td>EN-Pendant, gleiche Behandlung</td></tr>
-        <tr><td><code>/en/warehouse/customs-warehouse</code></td><td><span class="sev s-crit">404</span></td><td>EN-Zolllager fehlt (DE/RU vorhanden)</td></tr>
+        <tr><td><code>/en/warehouse/customs-warehouse</code></td><td><span class="sev s-crit">404</span></td><td>EN-Zolllager fehlt (DE/RU vorhanden); 301 auf die neue englische Seite Zolllager</td></tr>
       </table>
       <h3>2. Ein doppelter Inhalt</h3>
-      <p><code>/ru/?Itemid=116</code> zeigt denselben Inhalt wie <code>/ru/</code> ohne Canonical → <span class="sev s-mid">wird bereinigt</span> (301 + Canonical).</p>
+      <p><code>/ru/?Itemid=116</code> zeigt denselben Inhalt wie <code>/ru/</code> ohne Canonical → <span class="sev s-mid">wird bereinigt</span>: auf der neuen Website hat jede Seite nur eine Adresse (Tab „Umzug &amp; Sicherheit“, Punkt 7).</p>
       <h3>3. Sprachlücken (Chance)</h3>
       <p>Einige Seiten existieren nur in einer Sprache (z.&nbsp;B. „Zoll Ukraine" bislang nur RU) — beim Neuaufbau entsteht hier zusätzliche Sichtbarkeit.</p>
     </section>
@@ -580,7 +581,7 @@
         <tr><td>2</td><td><strong>Margenstärkste Leistungen</strong>: Fokus der SEO-Strategie (lt. Vertrag bis 7 Tiefen-Seiten)</td><td><span class="sev s-ok">✅ erhalten &amp; eingearbeitet</span>: Struktur von Ihnen am 22.08 freigegeben; seit 05.10 neun Tiefen-Seiten nach Ihrer Liste, ohne Mehrkosten (unsere E-Mail vom 07.10, Tab <strong>Site-Konzept</strong>)</td></tr>
         <tr><td>3</td><td><strong>Zugänge</strong>: Google Analytics + Search Console + Joomla-Admin (auf <code>2penguins.eu@gmail.com</code>, wo möglich nur Ansichtsrecht)</td><td><span class="sev s-ok">✅ erhalten</span>: GA + Search Console + Google Tag Manager erhalten &amp; geprüft · Google Unternehmensprofil (Ihre Einladung vom 08.10, von uns am 12.10 angenommen) · Joomla-Admin: Zugangsdaten sind bei uns noch nicht angekommen (unsere Erinnerung vom 25.07); nötig erst vor der Migration</td></tr>
         <tr><td>4</td><td><strong>Materialien</strong>: Logo, Farben/Schriften, ggf. Styleguide + 2–3 Referenz-Websites, die Ihnen gefallen</td><td><span class="sev s-ok">erledigt</span>: Logo inkl. Vektordatei ✅ erhalten, danke. Farben und Schriften leiten wir daraus ab</td></tr>
-        <tr><td>5</td><td><strong>Wenige Fach-Angaben</strong>: Zertifikate, Lager-Details, „ab"-Preis-Beispiele, Freigabe der Referenzkunden</td><td><span class="sev s-ok">✅ Fragenkatalog beantwortet &amp; eingearbeitet</span>. Offen sind nur noch die Punkte unter „Neu (12.10)“ im Tab „Arbeitsstand“</td></tr>
+        <tr><td>5</td><td><strong>Wenige Fach-Angaben</strong>: Zertifikate, Lager-Details, „ab"-Preis-Beispiele, Freigabe der Referenzkunden</td><td><span class="sev s-ok">✅ Fragenkatalog beantwortet &amp; eingearbeitet</span>. Referenzkunden nennen wir nur mit Ihrer ausdrücklichen Erlaubnis (Ihre Regel vom 15.08); bis dahin anonymisiert oder als „Beispielhafter Ablauf“. Offen sind nur noch die Punkte unter „Neu (12.10)“ im Tab „Arbeitsstand“</td></tr>
       </table>
     </section>
 
@@ -603,11 +604,11 @@
       <table>
         <tr><th>Schritt</th><th>Status</th></tr>
         <tr><td>Website-Audit (9 Bereiche)</td><td><span class="sev s-ok">✅ fertig</span></td></tr>
-        <tr><td>Migrations- &amp; 301-Konzept (85 URLs geprüft; per GSC-Vollabgleich auf 110 erweitert — Tab „Seiten &amp; Weiterleitungen")</td><td><span class="sev s-ok">✅ fertig</span></td></tr>
+        <tr><td>Migrations- &amp; 301-Konzept: Inventur (110 Adressen, Search Console 16 Monate) und Entwurf der Weiterleitungstabelle v2.2, Tab „Seiten &amp; Weiterleitungen“</td><td><span class="sev s-mid">Entwurf fertig</span>. Die finale Tabelle „alte URL → Ziel-URL → Code“ für beide Domains und alle Sprachen schicken wir Ihnen vor dem Start zur Bestätigung (unsere E-Mail vom 12.10).</td></tr>
         <tr><td>Wettbewerbsanalyse (auf Basis Ihrer 4 Wettbewerber, 9 Anbieter live geprüft)</td><td><span class="sev s-ok">✅ fertig — Tab „Marktüberblick"</span></td></tr>
         <tr><td>Keyword-Basis (34 Suchbegriffe / 11 Themen-Cluster, DE/RU/EN)</td><td><span class="sev s-ok">✅ fertig</span></td></tr>
         <tr><td>Vorschlag 7 Flaggschiff-Seiten (Juli) → weiterentwickelt zur finalen Struktur</td><td><span class="sev s-ok">✅ fertig</span>: Tab „Site-Konzept“</td></tr>
-        <tr><td>Seitenkonzept (Blueprint) + interaktives Site-Konzept</td><td><span class="sev s-ok">✅ fertig (02.08), von Ihnen am 22.08 freigegeben</span></td></tr>
+        <tr><td>Seitenkonzept (Blueprint) + interaktives Site-Konzept</td><td><span class="sev s-ok">✅ verschickt (02.08, zuletzt v3.2 am 23.09)</span>. Die Karte der 20 Seitentypen haben Sie am 22.08 als Grundlage der Struktur angenommen.</td></tr>
         <tr><td>Faktenbasis mit Ihrer bestehenden Website abgeglichen (86 Seiten DE/RU/EN)</td><td><span class="sev s-ok">✅ fertig</span></td></tr>
         <tr><td>Ihre Strategie-Rückmeldung eingearbeitet (ein gemeinsamer Auftritt, Startseiten-Weiche)</td><td><span class="sev s-ok">✅ fertig — Tab „Arbeitsstand"</span></td></tr>
         <tr><td>Dieses Dashboard</td><td><span class="sev s-ok">✅ online — jetzt mit Tab „Arbeitsstand"</span></td></tr>
