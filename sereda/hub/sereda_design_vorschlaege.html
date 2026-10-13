@@ -42,6 +42,25 @@
   .dark .btn{box-shadow:0 0 0 2px #fff}
   .mini{font-size:.82em;color:var(--slate-lite)}
   .hub-footer{background:var(--navy);color:rgba(255,255,255,.75);font-size:.85em;padding:16px 20px;text-align:center;margin-top:30px}
+
+.wf{border:1px dashed var(--slate);border-radius:10px;padding:14px;margin:14px 0;background:#fafbfc}
+.wf-cap{font-size:.85em;color:var(--slate-lite);margin-bottom:8px}
+.wf-hero{background:var(--navy);color:#fff;border-radius:8px;padding:18px 16px}
+.wf-hero h3{font-size:1.05em;margin:0 0 10px;color:#fff}
+.wf-q{font-weight:600;margin:6px 0 8px}
+.wf-chips{display:flex;flex-wrap:wrap;gap:8px}
+.wf-chip{background:#fff;color:var(--navy);border-radius:99px;padding:6px 12px;font-size:.9em;border:2px solid #fff}
+.wf-chip.on{border-color:var(--accent)}
+.wf-card{background:#fff;color:#222;border-radius:8px;padding:10px 12px;margin-top:10px;font-size:.92em}
+.wf-tbl{width:100%;border-collapse:collapse;font-size:.9em;margin-top:10px}
+.wf-tbl td,.wf-tbl th{border:1px solid var(--border);padding:6px 8px;text-align:left;vertical-align:top}
+.wf-cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:700px){.wf-cols{grid-template-columns:1fr}}
+.wf-stack div{border:1px solid var(--border);background:#fff;border-radius:6px;padding:6px 10px;margin-bottom:5px;font-size:.9em}
+.wf-stack .blue{background:#2f5d9e;color:#fff;border-color:#2f5d9e}
+.wf-stack .new{border:2px solid #2e5c2e}
+.wf-tag{display:inline-block;font-size:.75em;border-radius:4px;padding:1px 6px;margin-left:6px;background:#e8f0e8;color:#2e5c2e}
+.wf-tag.mv{background:#fdf1d8;color:#8a5a00}
 </style>
 </head>
 <body>
@@ -173,7 +192,20 @@
     <li>В карточке только сроки, которые Вы подтвердили (например, «In Standardfällen melden wir uns innerhalb von 3 Arbeitsstunden»), без «24 часов».</li>
     <li>На разделах и страницах услуг по две-три кнопки перехода в первом экране.</li>
   </ul>
-  <div class="ask"><b>Нужно от Вас:</b> «да» на механику и на набор кнопок (покажем на созвоне).</div>
+  <div class="wf"><div class="wf-cap">Набросок первого экрана главной: наше предложение, на Ваше «да». Набор кнопок можно менять.</div>
+<div class="wf-hero"><h3>Zolllager, Steuerlager und eigene Zollabwicklung an einem Standort</h3>
+<div class="wf-q">Was möchten Sie erledigen?</div>
+<div class="wf-chips"><span class="wf-chip">Nach Deutschland/EU liefern</span><span class="wf-chip on">Ware unverzollt einlagern</span><span class="wf-chip">Alkohol unversteuert lagern</span><span class="wf-chip">Ware lagern und bearbeiten</span><span class="wf-chip">Lebensmittel an den Handel liefern</span><span class="wf-chip">Online-Handel und Marktplätze</span></div>
+<div class="wf-card"><b>Zolllager</b>: Ihre Ware bleibt unverzollt, bis Sie sie brauchen. <br>Nächster Schritt: <u>Anfrage stellen</u> · <u>Mehr zum Zolllager</u></div></div>
+<table class="wf-tbl"><tr><th>Кнопка</th><th>Ведёт на</th><th>Основание</th></tr>
+<tr><td>Nach Deutschland/EU liefern</td><td>Markteintritt DE/EU</td><td>Ваш список девяти страниц (05.10)</td></tr>
+<tr><td>Ware unverzollt einlagern</td><td>Zolllager</td><td>наше дополнение к Вашему правилу: хранение без уплаты пошлин</td></tr>
+<tr><td>Alkohol unversteuert lagern</td><td>Steuerlager Alkohol</td><td>Ваш список девяти страниц (05.10)</td></tr>
+<tr><td>Ware lagern und bearbeiten</td><td>Lagerlogistik</td><td>Ваше правило 05.10: общий складской запрос → Lagerlogistik</td></tr>
+<tr><td>Lebensmittel an den Handel liefern</td><td>Food &amp; Beverage</td><td>Ваше правило 05.10: отраслевой Food → Food &amp; Beverage</td></tr>
+<tr><td>Online-Handel und Marktplätze</td><td>Fulfillment DE + EU</td><td>Ваш список девяти страниц (05.10)</td></tr></table>
+<p style="font-size:.9em;margin-top:8px">Разовые оформления (KFZ, Sendung anmelden, Dreilinden, Fahrer, Umzugsgut) остаются отдельным блоком под первым экраном, как Вы решили 17.08, поэтому в этом наборе их нет. Кнопка «Dringend» из Вашей визуализации: только если будет прямой номер (пункт 3). Текст в карточке без сроков, кроме подтверждённых Вами.</p></div>
+<div class="ask"><b>Нужно от Вас:</b> «да» на механику и на набор кнопок (набросок выше; кнопки можно менять).</div>
 </section>
 
 <section class="card" id="p6">
@@ -186,14 +218,18 @@
 <section class="card" id="p7">
   <h2><span class="num">7</span>Синий блок на главной</h2>
   <p>Ваше предложение с созвона 01.09: синий блок переставить выше, после «Ablauf». Это блок 6 «Kontaktaufruf» с призывом связаться (на образцовой странице сейчас после кейса). Принимаем: ставим его сразу после «Ablauf», перед кейсом. На макете покажем вместе с новым первым экраном (пункт 5), чтобы ритм главной был виден целиком.</p>
-  <div class="ask"><b>Нужно от Вас:</b> «да» вместе с порядком блоков образцовой страницы. 01.09 Вы предложили поставить этот блок после «Ablauf» и оставили решение нам.</div>
+  <div class="wf"><div class="wf-cap">Порядок блоков главной: сейчас и с Вашим предложением 01.09</div><div class="wf-cols">
+<div class="wf-stack"><b>Сейчас (образцовая страница)</b><div>Titelbereich</div><div>Zulassungen &amp; Vertrauen</div><div>Schnellwege für Einmalkunden</div><div>Ablauf: alles aus einer Hand</div><div>Kundenfall</div><div class="blue">Kontaktaufruf (синий блок)</div><div>Leistungen</div><div>Google-Bewertungen</div><div>Häufige Fragen</div><div>Ansprechpartner &amp; Formular</div></div>
+<div class="wf-stack"><b>Предлагаем</b><div class="new">Titelbereich + быстрый выбор <span class="wf-tag">пункт 5</span></div><div>Zulassungen &amp; Vertrauen</div><div>Schnellwege für Einmalkunden</div><div>Ablauf: alles aus einer Hand</div><div class="blue">Kontaktaufruf (синий блок) <span class="wf-tag mv">выше, пункт 7</span></div><div>Kundenfall</div><div>Leistungen</div><div>Google-Bewertungen</div><div>Häufige Fragen</div><div>Ansprechpartner &amp; Formular</div></div>
+</div></div>
+<div class="ask"><b>Нужно от Вас:</b> «да» вместе с порядком блоков образцовой страницы. 01.09 Вы предложили поставить этот блок после «Ablauf» и оставили решение нам.</div>
 </section>
 
 <section class="card" id="p8">
   <h2><span class="num">8</span>KI-Zollberater</h2>
   <figure style="max-width:520px"><img src="img/design-1012/lovable_05_ki-zollberater.jpg" alt="Блок KI-Zollberater из Вашей визуализации"><figcaption>Ваша визуализация: «KI-Zollberater».</figcaption></figure>
-  <p>Наше предложение: к запуску не делать. Автоматический совет по таможне без проверки человеком может навредить клиенту и Вам. Вернуться к нему после запуска, как мы писали 07.10.</p>
-  <div class="ask"><b>Нужно от Вас:</b> «да» или «нет» на перенос KI-Zollberater после запуска. Это наше предложение, не Ваш список 80/20.</div>
+  <p>KI-Zollberater из Вашей визуализации в объём проекта не входит, к запуску его не делаем: автоматический совет по таможне без проверки человеком может навредить клиенту и Вам. Если захотите позже, посчитаем отдельно.</p>
+  <div class="ask"><b>Нужно от Вас:</b> ничего.</div>
 </section>
 
 <section class="card" id="p9">
@@ -205,6 +241,9 @@
     <li>новый блок «Szenarien»: две-три типичные ситуации клиентов раздела, тем же элементом, что сценарии на странице Steuerlager Alkohol, без нового дизайна.</li>
   </ul>
   <p>Порядок блоков такой же, как в <a href="sereda_content_vorlagen.html">Content-Vorlagen</a> (тип 2). Утверждаете его в пункте «порядок блоков» на созвоне.</p>
+<div class="wf"><div class="wf-cap">Раздел Zoll- &amp; Steuerlager: порядок блоков по Content-Vorlagen (тип 2). Зелёная рамка: новый блок; жёлтая метка: переставлен.</div><div class="wf-stack">
+<div>1 · Заголовок и прямой ответ: что входит в раздел и для кого</div><div>2 · Витрина подразделов (карточки со ссылками)</div><div class="new">3 · Leistungen im Überblick <span class="wf-tag">новое</span></div><div>4 · Warum beides bei uns <span class="wf-tag mv">отдельно, а не четвёртой карточкой витрины</span></div><div>5 · Допуски и доверие</div><div class="new">6 · Szenarien: 2–3 ситуации клиентов раздела <span class="wf-tag">новое, тем же элементом, что на Steuerlager Alkohol</span></div><div>7 · Промежуточное обращение</div><div>8 · Процесс</div><div>9 · Условия и рамки</div><div>10 · Смежные услуги</div><div>11 · Отзывы · 12 · Вопросы и ответы · 13 · Контакт</div></div>
+<p style="font-size:.9em;margin-top:8px">По этому же шаблону строятся Zollabwicklung, Food &amp; Beverage и Fulfillment, каждый со своими сценариями, карточками и переходами (Ваше требование 05.10).</p></div>
 </section>
 
 <section class="card" id="p10">
@@ -241,7 +280,7 @@
     <li>Пункт 2: выбор оттенка.</li>
     <li>Пункт 3: прямой номер для срочных случаев, часы и кнопка WhatsApp.</li>
     <li>Пункт 5: «да» на механику и набор кнопок.</li>
-    <li>Пункт 7: «да» вместе с порядком блоков (синий блок после «Ablauf», Ваше предложение 01.09). Пункт 8: Ваше «да» или «нет» на перенос KI-Zollberater после запуска.</li>
+    <li>Пункт 7: «да» вместе с порядком блоков (синий блок после «Ablauf», Ваше предложение 01.09). Пункт 8: ничего.</li>
   </ol>
   <p style="margin-top:10px">После созвона пришлём протокол. Как только Вы его подтвердите письменно, лист уходит дизайнеру.</p>
 </section>
