@@ -1,0 +1,92 @@
+/* Panacea Pflegekostenrechner — Widget styles, Figma-aligned (node 55:365).
+   Functional vanilla widget (rechner-core.js) restyled to match the design:
+   purple #73346e, step circles 42px, PG buttons h-64 rounded-12 border #8d9dc9,
+   slider #d0dcfd/#73346e, result on #d0dcfd, CTA pill. Fonts inherit Inter Tight. */
+
+.rechner-widget {
+  font-family: inherit;
+  color: #2b2e3f;
+  max-width: 100%;
+}
+.rechner-widget *, .rechner-widget *::before, .rechner-widget *::after { box-sizing: border-box; }
+.rechner-widget button { font-family: inherit; cursor: pointer; }
+
+/* ── Steps ── */
+.rechner-step { margin-bottom: clamp(1.5rem, 2.2vw, 2.5rem); padding: 0 clamp(1.25rem, 2.5vw, 3rem); transition: opacity .2s; }
+.rechner-step-2[data-active="false"] { opacity: .4; pointer-events: none; }
+.rechner-step-header { display: flex; align-items: center; gap: clamp(.6rem, 0.83vw, 1rem); margin-bottom: clamp(.85rem, 1.25vw, 1.5rem); }
+.rechner-step-num {
+  width: clamp(32px, 2.19vw, 42px); height: clamp(32px, 2.19vw, 42px); flex: none;
+  background: #73346e; color: #fff; border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-weight: 300; font-size: clamp(.85rem, 1.05vw, 1rem);
+}
+.rechner-step-title { font-weight: 400; font-size: clamp(1.05rem, 1.35vw, 1.6rem); color: #2b2e3f; line-height: 1.2; }
+
+/* ── Pflegegrad buttons ── */
+.rechner-pg { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(8px, .63vw, 12px); }
+.rechner-pg-btn {
+  height: clamp(48px, 3.33vw, 64px); border: 1px solid #8d9dc9; background: #f5f8fd;
+  color: #454b54; border-radius: 12px; font-weight: 300;
+  font-size: clamp(1rem, 1.15vw, 1.375rem); transition: all .15s;
+}
+.rechner-pg-btn:hover { border-color: #73346e; }
+.rechner-pg-btn.active { background: #73346e; color: #fff; border-color: #73346e; box-shadow: 0 2px 8px rgba(115,52,110,.25); }
+
+/* ── PG-specific hint + recommendation ── */
+.rechner-pg-hint { background: #fef3c7; border-left: 4px solid #f59e0b; padding: .75rem 1rem; border-radius: 8px; font-size: .88rem; color: #78350f; margin: .85rem clamp(1.25rem, 2.5vw, 3rem) .5rem; }
+.rechner-empfehlung { background: #f0f9e8; border-left: 4px solid #92D050; padding: .85rem 1rem; border-radius: 8px; font-size: .9rem; color: #5a7a2e; margin: 1rem clamp(1.25rem, 2.5vw, 3rem) 1.5rem; line-height: 1.45; }
+.rechner-empfehlung strong { color: #2d4418; }
+
+/* ── Visit sliders ── */
+.rechner-slider-row { margin-bottom: 1rem; }
+.rechner-slider-label { display: flex; justify-content: space-between; align-items: center; font-size: .95rem; margin-bottom: .45rem; gap: .5rem; }
+.rechner-slider-label > span:first-child { flex: 1; color: #454b54; }
+.rechner-slider-val { color: #73346e; font-weight: 500; min-width: 4em; text-align: right; }
+.rechner-remove { width: 26px; height: 26px; flex: none; padding: 0; border: 1px solid #c8d0df; background: #fff; color: #454b54; border-radius: 50%; font-size: .85rem; line-height: 1; transition: all .15s; }
+.rechner-remove:hover { background: #fee2e2; color: #b91c1c; border-color: #fca5a5; }
+/* The control is 44px tall so a finger hits it anywhere (the visible 4px band
+   alone left a ±6px target); the negative margin pulls those extra 40px back
+   out of the layout, so the row spacing stays exactly as designed. The track is
+   drawn by the pseudo-element instead of the input background. */
+.rechner-slider { -webkit-appearance: none; appearance: none; width: 100%; height: 44px; margin: -20px 0; background: transparent; outline: none; cursor: pointer; touch-action: pan-y; }
+.rechner-slider::-webkit-slider-runnable-track { height: 4px; background: #d0dcfd; border-radius: 3px; }
+.rechner-slider::-moz-range-track { height: 4px; background: #d0dcfd; border-radius: 3px; }
+/* margin-top centres the 18px thumb on the 4px track: (4 - 18) / 2 = -7 */
+.rechner-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 18px; height: 18px; margin-top: -7px; background: #73346e; border: 3px solid #fff; border-radius: 50%; box-shadow: 0 1px 4px rgba(0,0,0,.2); cursor: pointer; }
+.rechner-slider::-moz-range-thumb { width: 18px; height: 18px; background: #73346e; border: 3px solid #fff; border-radius: 50%; box-shadow: 0 1px 4px rgba(0,0,0,.2); cursor: pointer; }
+.rechner-slider:focus-visible { outline: 2px solid #73346e; outline-offset: 4px; }
+
+/* ── Add visit + hint ── */
+.rechner-add { width: 100%; text-align: left; background: #fff; border: 1px dashed #c072ba; color: #73346e; padding: .85rem 1rem; border-radius: 12px; font-size: .95rem; transition: background .15s; }
+.rechner-add:hover { background: #f5f8fd; }
+.rechner-hint { font-size: .82rem; color: #454b54; margin-top: .75rem; }
+
+/* ── Verordnung checkbox ── */
+.rechner-verordnung { display: flex; align-items: flex-start; gap: .65rem; margin-top: 1.1rem; padding: .8rem .9rem; background: #fff; border: 1px solid #c8d0df; border-radius: 12px; cursor: pointer; transition: background .15s; }
+.rechner-verordnung:hover { background: #f5f8fd; }
+.rechner-verordnung-checkbox { margin-top: .15rem; flex: none; width: 18px; height: 18px; accent-color: #73346e; cursor: pointer; }
+.rechner-verordnung-label { display: flex; flex-direction: column; gap: .2rem; flex: 1; font-size: .88rem; line-height: 1.4; }
+.rechner-verordnung-label strong { color: #2b2e3f; font-weight: 600; }
+.rechner-verordnung-hint { color: #454b54; font-size: .8rem; }
+
+/* ── Empty state ── */
+.rechner-empty { text-align: center; color: #73346e; font-size: .95rem; font-style: italic; padding: clamp(1.5rem, 2vw, 2.5rem) 1.25rem; background: #d0dcfd; border-radius: 12px; margin: 0 clamp(1.25rem, 2.5vw, 3rem); }
+
+/* ── Result ── */
+.rechner-result { background: #d0dcfd; border-radius: 12px; padding: clamp(1.25rem, 2vw, 2rem); margin: clamp(1rem, 1.5vw, 1.5rem) clamp(1.25rem, 2.5vw, 3rem) 0; animation: r-slide-down .25s ease-out; }
+.rechner-result-label { font-size: .78rem; color: #73346e; text-transform: uppercase; letter-spacing: .04em; margin-bottom: .6rem; font-weight: 600; }
+.rechner-row { display: flex; justify-content: space-between; font-size: .95rem; margin-bottom: .4rem; gap: 1rem; color: #2b2e3f; }
+.rechner-row-sub { font-size: .82rem; color: #454b54; padding-left: 1rem; }
+.rechner-row-final { padding-top: .7rem; margin-top: .5rem; border-top: 1px solid rgba(115,52,110,.25); font-size: 1.05rem; }
+.rechner-row-final strong:last-child { color: #73346e; font-size: 1.3rem; }
+.rechner-result-msg { margin-top: .85rem; padding: .65rem .85rem; border-radius: 8px; font-size: .88rem; }
+.rechner-msg-success { background: #f0f9e8; border-left: 3px solid #92D050; color: #5a7a2e; }
+.rechner-msg-warn { background: #fef3c7; border-left: 3px solid #f59e0b; color: #78350f; }
+.rechner-disclaimer { font-size: .75rem; color: #454b54; font-style: italic; margin-top: .7rem; }
+
+/* ── CTA pill (matches site buttons) ── */
+.rechner-cta { width: 100%; margin-top: 1rem; background: #73346e; color: #fff; border: none; padding: 1rem 1.5rem; border-radius: 34px; font-weight: 400; font-size: 1rem; transition: background .15s; }
+.rechner-cta:hover { background: #5c2958; }
+
+@keyframes r-slide-down { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
