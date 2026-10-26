@@ -24,7 +24,7 @@
       2: "Bei Pflegegrad 2 reicht das Budget ohne Zuzahlung für mindestens drei Besuche pro Woche.",   // «à 1 Stunde» gestrichen (TY chat3436 #299958/#299959, 26.10.2026)
       3: "Bei Pflegegrad 3 reicht das Budget ohne Zuzahlung für mindestens einen Besuch pro Tag.",
       4: "Bei Pflegegrad 4 sind zwei Besuche pro Tag möglich.",   // Zusatz gestrichen (TY chat3436 #299960/#299961, 26.10.2026)
-      5: "Bei Pflegegrad 5 sind zwei Besuche pro Tag möglich, plus Budget für zusätzliche Leistungen."
+      5: "Bei Pflegegrad 5 sind zwei Besuche pro Tag möglich."   // wie PG 4 (TY im Termin 26.10: «Пятое то же самое»; AW 26.10)
     },
     defaults: [30, 30, 30]              // jeder Besuch startet mit 30 min (TY 26.10.2026)
   };
