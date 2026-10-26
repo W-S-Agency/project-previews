@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ihre SAP-Transformation ist technisch fertig. Laufen Ihre Geschäftsprozesse auch? — SAP Change &amp; Transformation Assurance (Inhaltsentwurf)</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="Inhaltsentwurf der SAP-Landingpage für andagon People. Nicht öffentlich.">
+<style>
+  :root{
+    --navy:#0b2a45; --blue:#1763b8; --blue-d:#114a8a; --teal:#0a9c92;
+    --ink:#15212e; --muted:#56657a; --line:#e2e8f0; --bg:#ffffff; --bg-soft:#f4f7fb;
+    --red:#c62828; --amber:#b26a00; --green:#1f7a3d;
+    --radius:14px; --maxw:1080px;
+    --shadow:0 10px 30px rgba(11,42,69,.08);
+    font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;color:var(--ink);background:var(--bg);line-height:1.65;font-size:17px}
+  h1,h2,h3{line-height:1.2;color:var(--navy);margin:0 0 .4em}
+  h1{font-size:clamp(1.9rem,4.4vw,3rem);letter-spacing:-.5px}
+  h2{font-size:clamp(1.5rem,3vw,2.1rem)}
+  h3{font-size:1.15rem}
+  p{margin:0 0 1rem}
+  a{color:var(--blue)}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+  section{padding:64px 0;border-bottom:1px solid var(--line)}
+  .eyebrow{display:inline-block;font-size:.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--teal);background:rgba(10,156,146,.1);padding:6px 12px;border-radius:999px;margin-bottom:14px}
+  .lead{font-size:1.18rem;color:var(--muted);max-width:62ch}
+  .skip{position:absolute;left:-9999px;top:0;background:var(--navy);color:#fff;padding:10px 16px;z-index:100}
+  .skip:focus{left:8px;top:8px}
+  a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--teal);outline-offset:2px;border-radius:4px}
+  .draft{background:#fff8e6;border-bottom:1px solid #f0dca0;color:#7a5b00;font-size:.85rem;text-align:center;padding:9px 16px}
+  .draft strong{color:#5e4600}
+  header.top{position:sticky;top:0;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:50}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 22px;max-width:var(--maxw);margin:0 auto;gap:16px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--navy);letter-spacing:-.3px}
+  .logo .mark{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,var(--blue),var(--teal));display:grid;place-items:center;color:#fff;font-weight:800}
+  .btn{display:inline-block;background:var(--blue);color:#fff;font-weight:700;text-decoration:none;padding:13px 22px;border-radius:999px;border:0;cursor:pointer;font-size:1rem;transition:background .15s}
+  .btn:hover{background:var(--blue-d)}
+  .btn.ghost{background:transparent;color:var(--blue);border:2px solid var(--blue);padding:11px 20px}
+  .btn.ghost:hover{background:rgba(23,99,184,.07)}
+  .btn.lg{padding:15px 28px;font-size:1.05rem}
+  .nav .btn{padding:10px 18px;font-size:.95rem}
+  .hero{background:linear-gradient(180deg,var(--bg-soft),#fff);border-bottom:1px solid var(--line)}
+  .hero .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin:22px 0 14px}
+  .reassure{display:flex;gap:18px;flex-wrap:wrap;color:var(--navy);font-weight:600;font-size:.98rem;margin-top:8px}
+  .reassure span{display:flex;align-items:center;gap:7px}
+  .check{color:var(--green);font-weight:800}
+  .grid{display:grid;gap:18px}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+  .card h3{margin-top:0}
+  .stat{font-size:2.4rem;font-weight:800;color:var(--teal);line-height:1}
+  .soft{background:var(--bg-soft)}
+  ul.clean{list-style:none;padding:0;margin:0}
+  ul.clean li{padding:10px 0 10px 30px;border-bottom:1px solid var(--line);position:relative}
+  ul.clean li:last-child{border-bottom:0}
+  ul.clean li::before{content:"✓";position:absolute;left:0;color:var(--teal);font-weight:800}
+  ul.vs{list-style:none;padding:0;margin:0}
+  ul.vs li{padding:9px 0;border-bottom:1px solid var(--line)}
+  ul.vs li:last-child{border-bottom:0}
+  .box{background:var(--bg-soft);border:1px solid var(--line);border-radius:12px;padding:16px 18px;font-size:.95rem;color:var(--muted)}
+  .confirm{background:#fff8e6;border:1px solid #f0dca0;border-radius:12px;padding:16px 18px;font-size:.93rem;color:#6b5200;margin-top:22px}
+  .confirm .tag{display:inline-block;background:var(--amber);color:#fff;font-weight:800;font-size:.72rem;letter-spacing:.05em;text-transform:uppercase;padding:4px 10px;border-radius:999px;margin-bottom:8px}
+  .confirm p{margin:0 0 .6rem}
+  .confirm p:last-child{margin-bottom:0}
+  .kicker{font-size:.72rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--teal)}
+  fieldset{border:0;padding:0;margin:0 0 18px}
+  form .field{margin-bottom:14px}
+  label.fl{display:block;font-weight:600;margin-bottom:5px;color:var(--navy)}
+  input[type=text],input[type=email],textarea,select{width:100%;border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:1rem;font-family:inherit;background:#fff}
+  textarea{min-height:90px;resize:vertical}
+  .req{color:var(--red)}
+  .consent{display:flex;gap:10px;align-items:flex-start;font-size:.9rem;color:var(--muted)}
+  .logobar{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;align-items:center}
+  .logoph{height:54px;border:1px dashed var(--line);border-radius:10px;display:grid;place-items:center;color:var(--muted);font-size:.78rem;background:#fff}
+  details.faq{border:1px solid var(--line);border-radius:12px;margin-bottom:10px;background:#fff;overflow:hidden}
+  details.faq summary{cursor:pointer;padding:16px 18px;font-weight:700;color:var(--navy);list-style:none;display:flex;justify-content:space-between;gap:12px}
+  details.faq summary::-webkit-details-marker{display:none}
+  details.faq summary::after{content:"+";color:var(--teal);font-weight:800;font-size:1.3rem}
+  details.faq[open] summary::after{content:"–"}
+  details.faq .a{padding:0 18px 16px;color:var(--muted)}
+  footer{background:var(--navy);color:#cdd9e6;padding:46px 0 30px;border:0}
+  footer h3{color:#fff}
+  footer a{color:#cdd9e6}
+  .fnote{font-size:.82rem;color:#8aa0b8;margin-top:18px}
+  .ph-note{font-size:.78rem;color:var(--muted);border:1px dashed var(--line);border-radius:6px;padding:1px 7px;display:inline-block}
+  @media(max-width:860px){.g3,.g2,.logobar{grid-template-columns:1fr 1fr}}
+  @media(max-width:560px){.g3,.g2,.logobar{grid-template-columns:1fr}.nav .btn{display:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#inhalt">Zum Inhalt springen</a>
+
+<div class="draft">
+  <strong>Inhaltsentwurf zur Freigabe</strong> — es geht hier um die <strong>Texte</strong>, nicht um die Gestaltung.
+  Layout, Komponenten, Barrierefreiheit, Cookie-Banner und Formular werden von der Barrierefreiheit-Seite übernommen.
+  Das Design wird nach der Textfreigabe entwickelt. Die gelb markierten Kästen sind Fragen an andagon und erscheinen nicht auf der Seite.
+</div>
+
+<header class="top">
+  <div class="nav">
+    <div class="logo"><span class="mark">a</span> andagon <span class="ph-note">Logo</span></div>
+    <a class="btn" href="#kontakt">Erstgespräch vereinbaren</a>
+  </div>
+</header>
+
+<main id="inhalt">
+
+<!-- Block 1 -->
+<section class="hero">
+  <div class="wrap">
+    <h1>Ihre SAP-Transformation ist technisch fertig. Laufen Ihre Geschäftsprozesse auch?</h1>
+    <span class="eyebrow">SAP Change &amp; Transformation Assurance</span>
+    <p class="lead">andagon sichert SAP-Umstellungen und den laufenden SAP-Betrieb ab, über Systemgrenzen hinweg und zum festen Preis.</p>
+    <p>Viele Projekte scheitern nicht an der Implementierung, sondern an der Überführung in den produktiven Betrieb. Wir prüfen vorher, ob Ihre geschäftskritischen Prozesse über alle beteiligten Systeme hinweg tatsächlich durchlaufen — risikobasiert, also dort, wo der Schaden am größten wäre.</p>
+    <div class="cta-row">
+      <a class="btn lg" href="#kontakt">Erstgespräch vereinbaren</a>
+      <a class="btn ghost" href="#vor-go-live">Wir stehen kurz vor dem Go-live</a>
+      <a class="btn ghost" href="#betrieb">Wir sind im laufenden Betrieb</a>
+    </div>
+    <div class="reassure">
+      <span><span class="check">✓</span> Unabhängig von Ihrem Implementierungspartner</span>
+      <span><span class="check">✓</span> Über SAP-, Cloud- und Drittsysteme hinweg</span>
+      <span><span class="check">✓</span> Feste Preise statt Abrechnung nach Aufwand</span>
+    </div>
+
+    <div class="confirm">
+      <span class="tag">Bitte entscheiden</span>
+      <p>Ihr Konzept schlägt fünf mögliche Einstiege vor. Zwei Varianten daraus:</p>
+      <p><strong>A (oben eingesetzt):</strong> „Ihre SAP-Transformation ist technisch fertig. Laufen Ihre Geschäftsprozesse auch?" — abgeleitet aus Ihrer Frage „Funktionieren Ihre Geschäftsprozesse wirklich über alle Systeme hinweg?"</p>
+      <p><strong>B:</strong> „Warum scheitern SAP-Transformationen trotz erfolgreicher Implementierung?" — Ihre fünfte Einstiegsfrage <strong>wörtlich</strong>. Sie trifft genauer, wonach im Markt gesucht wird, wirkt im Erstkontakt über LinkedIn aber negativer.</p>
+      <p><strong>Wir empfehlen B</strong> — aus Ihrem eigenen Konzept: Im Abschnitt Marktpotenzial halten Sie fest, dass „besonders die gescheiterte SAP-Umstellung für uns ein Türöffner sein kann, da eine häufige Ursache für das Scheitern zu späte Qualitätssicherung ist". Variante B besetzt genau dieses Motiv. Variante A ist die vorsichtigere Wahl, falls der negative Ton im Erstkontakt unerwünscht ist. Die Entscheidung liegt bei Ihnen.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Block 2 -->
+<section>
+  <div class="wrap">
+    <h2>Ihre SAP-Beratung baut. Wer prüft?</h2>
+    <p class="lead">Die eigentliche Herausforderung liegt selten in der technischen Umsetzung, sondern in der sicheren Überführung in den produktiven Betrieb.</p>
+    <p>Dass Qualitätssicherung, Testmanagement und die Validierung geschäftskritischer Prozessketten nicht ausreichend berücksichtigt wurden, zeigt sich oft erst spät. SAP-Beratungshäuser sind auf Implementierung und Fachprozesse ausgerichtet. Was fehlt, ist eine unabhängige Instanz, die die Veränderung systematisch absichert.</p>
+    <p>Genau diese Rolle nimmt andagon ein: <strong>Qualitätssicherungspartner für SAP-nahe Veränderungsvorhaben</strong>.</p>
+    <div class="grid g2" style="margin-top:26px">
+      <div class="card">
+        <h3>Ihre SAP-Beratung</h3>
+        <ul class="vs">
+          <li>implementiert</li>
+          <li>verantwortet die Lösung</li>
+          <li>Fokus Fachkonzept</li>
+          <li>baut Prozesse</li>
+        </ul>
+      </div>
+      <div class="card" style="border-color:var(--teal)">
+        <h3>andagon</h3>
+        <ul class="vs">
+          <li>sichert ab</li>
+          <li>bewertet die Qualität</li>
+          <li>Fokus Risiko und Qualität</li>
+          <li>validiert Prozesse</li>
+        </ul>
+      </div>
+    </div>
+    <div class="confirm">
+      <span class="tag">Bitte entscheiden</span>
+      <p><strong>Tonalität der Überschrift.</strong> „Ihre SAP-Beratung baut. Wer prüft?" ist zugespitzter als die sachliche Abgrenzung in Ihrem Konzept. Wirkungsvoll, positioniert Sie aber sichtbar gegenüber den SAP-Beratungshäusern.</p>
+      <p>Falls Sie über solche Häuser Anfragen erhalten oder als Unterauftragnehmer für sie arbeiten, empfehlen wir die neutrale Variante: <strong>„Wer sichert die Qualität Ihrer Veränderung ab?"</strong> Die Gegenüberstellung darunter bleibt unverändert.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Block 3 -->
+<section class="soft">
+  <div class="wrap">
+    <h2>Jedes System funktioniert. Der Prozess trotzdem nicht.</h2>
+    <p>Geprüft wird in SAP-Projekten meist das einzelne System oder das einzelne Modul. Geschäftskritisch ist aber die Kette: ein Prozess, der über SAP, Cloud-Dienste und Drittsysteme hinweg läuft und an jedem Übergang scheitern kann.</p>
+    <p>Genau dort entstehen die Fehler, die spät auffallen. Eine geänderte Schnittstelle, ein Feld in anderem Format, ein Beleg, der nicht zurückläuft, ein Ereignis, das nicht ausgelöst wird. Jedes beteiligte System kann für sich korrekt arbeiten, und der Prozess fällt trotzdem aus.</p>
+    <p>Ein Beispiel aus dem Handel: Eine Bestellung läuft über Verfügbarkeitsprüfung, Kommissionierung, Versand und Faktura bis zur Retoure — über SAP und die angebundenen Systeme hinweg. Fällt an einem dieser Übergänge ein Beleg aus, bemerkt das kein Modultest.</p>
+    <p>Wir betrachten deshalb nicht einzelne SAP-Module, sondern die tatsächlichen Geschäftsprozesse und ihre fehlerfreie Ausführung entlang der gesamten Kette, einschließlich der Tests von APIs, OData-Services, IDocs und ereignisbasierten Integrationen.</p>
+
+    <div class="confirm">
+      <span class="tag">Bitte ergänzen</span>
+      <p>Dieser Abschnitt wird deutlich stärker mit einem <strong>realen Fall</strong>: welche Prozesskette, welche Systeme, welcher Fehler, wann gefunden, und was passiert wäre, wenn er erst im Produktivbetrieb aufgefallen wäre. Ein Kundenname ist nicht nötig, die Branche genügt, etwa „ein Energieversorger mit rund 2.000 Mitarbeitenden".</p>
+      <p><strong>Wir wissen, dass Geheimhaltungsvereinbarungen das oft verhindern.</strong> Deshalb gleich die Alternativen: ein <strong>anonymisierter Fall ohne Branche</strong> („ein Industrieunternehmen") oder eine <strong>typisierte Schilderung aus Ihrer Projekterfahrung</strong> ohne konkreten Kunden. Beides ist deutlich besser als der allgemeine Text oben. Bitte sagen Sie uns, was möglich ist — und wenn nichts möglich ist, auch das.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Block 4 -->
+<section id="vor-go-live">
+  <div class="wrap">
+    <span class="kicker">Leistungsbaustein A — Business Process Assurance</span>
+    <h2>Sind Ihre Integrationen produktionsreif?</h2>
+    <p class="lead">Vor der Produktivsetzung entscheidet sich, ob die Prozesse halten. Wir validieren geschäftskritische Abläufe über Bereichs- und Systemgrenzen hinweg und geben Ihnen eine belastbare Grundlage für die Freigabe.</p>
+    <ul class="clean" style="margin:22px 0">
+      <li>Validierung geschäftskritischer End-to-End-Prozesse über Bereichs- und Systemgrenzen hinweg</li>
+      <li>Prüfung der Daten- und Prozessflüsse zwischen SAP- und Drittsystemen</li>
+      <li>Tests von APIs, OData-Services, IDocs und ereignisbasierten Integrationen</li>
+      <li>Identifikation von Fehlern an System-, Schnittstellen- und Prozessübergängen</li>
+      <li>Unterstützung bei Integrations-, System- und Abnahmetests</li>
+      <li>Risikobasierte Bewertung der Prozessqualität vor der Produktivsetzung</li>
+      <li>Unterstützung von Go-Live- und Freigabeentscheidungen</li>
+    </ul>
+    <p>Sie erhalten Transparenz über die tatsächliche Stabilität Ihrer Prozesse und eine Entscheidungsgrundlage für Go-live und Freigabe.</p>
+    <p>Nach dem Go-live hört die Veränderung nicht auf. Was hier aufgebaut wird — Prozesswissen, Testfälle, Risikobewertung — ist die Grundlage für die laufende Absicherung im Betrieb.</p>
+    <div class="box" style="margin:22px 0"><strong>Besonders sinnvoll, wenn</strong><ul style="margin:8px 0 0 18px;padding:0"><li>die Umstellung geschäftskritische Prozesse über mehrere Systeme berührt</li><li>kein eigenes etabliertes QA-Team im Projekt verankert ist</li><li>der Go-live-Termin feststeht und nicht verschoben werden kann</li></ul></div>
+    <a class="btn" href="#kontakt">Risiken vor dem Go-live einschätzen lassen</a>
+  </div>
+</section>
+
+<!-- Block 5 -->
+<section id="betrieb" class="soft">
+  <div class="wrap">
+    <span class="kicker">Leistungsbaustein B — Continuous Change Assurance</span>
+    <h2>Wie stellen Sie sicher, dass Änderungen keine kritischen Prozesse beschädigen?</h2>
+    <p class="lead">Dieser Baustein setzt auf dem ersten auf: Was vor dem Go-live abgesichert wurde, wird hier dauerhaft überwacht und automatisiert. Der Einstieg ist auch direkt möglich, wenn Ihre Umstellung längst zurückliegt.</p>
+    <p>Mit zwei größeren Releases im Jahr und laufenden Updates der angebundenen Systeme wird aus dem Projekt ein Dauerzustand. Jede Änderung — Integrationen, Releases, Erweiterungen, Datenmigrationen — kann Prozesse treffen, die bisher stabil liefen, und Stabilität wie Compliance gefährden.</p>
+    <p>Clean Core verschärft das zusätzlich: Erweiterungen wandern aus dem SAP-Kern heraus auf Plattformen wie SAP BTP, und jede Verlagerung erzeugt eine neue Systemgrenze, die getestet werden muss.</p>
+    <ul class="clean" style="margin:22px 0">
+      <li>Aufbau und Weiterentwicklung automatisierter Testlösungen</li>
+      <li>Einsatz von Tricentis Tosca und weiteren Automatisierungswerkzeugen</li>
+      <li>Automatisierung geschäftskritischer End-to-End- und Regressionstests</li>
+      <li>Risikobasierte Validierung bestehender Prozesse nach Releases und Änderungen</li>
+      <li>Einbindung automatisierter Tests in Ihre bestehenden Delivery-Prozesse</li>
+      <li>Automatisierte Qualitätskennzahlen für Release- und Freigabeentscheidungen</li>
+      <li>Transparenz über Qualitätsrisiken nach Änderungen und Releases</li>
+    </ul>
+    <p>Sie setzen Änderungen schneller und mit geringerem Risiko um, ohne die Stabilität des Bestehenden zu gefährden.</p>
+    <div class="box" style="margin:22px 0"><strong>Besonders sinnvoll, wenn</strong><ul style="margin:8px 0 0 18px;padding:0"><li>Releases regelmäßig Nacharbeit erzeugen</li><li>Fachanwender das Testen zusätzlich zum Tagesgeschäft übernehmen</li><li>die Testabdeckung mit der Zahl der Änderungen nicht mehr Schritt hält</li></ul></div>
+    <a class="btn" href="#kontakt">Absicherung im Betrieb besprechen</a>
+  </div>
+</section>
+
+<!-- Block 6 -->
+<section>
+  <div class="wrap">
+    <h2>Sie setzen Tricentis Tosca ein oder führen es ein?</h2>
+    <p class="lead">Tricentis beantwortet auf den eigenen Seiten die Frage nach dem Werkzeug. Nicht beantwortet wird die Frage danach, wer die Automatisierung aufbaut, betreibt und über Releases hinweg wartbar hält. Genau das machen wir.</p>
+    <div class="grid g3" style="margin:22px 0">
+      <div class="card"><h3>Zertifizierte Berater</h3><p style="margin:0">Wir arbeiten als Partner mit Tricentis Tosca, nicht als Wiederverkäufer von Testkapazität.</p></div>
+      <div class="card"><h3>Lizenzen aus einer Hand</h3><p style="margin:0">Werkzeug und Umsetzung müssen nicht aus zwei Verträgen kommen.</p></div>
+      <div class="card"><h3>Über das Werkzeug hinaus</h3><p style="margin:0">Wo Standardfunktionen nicht ausreichen, ergänzen wir eigene Lösungen. Und wenn Lizenzkosten ein Hindernis sind, steht eine Alternative zur Verfügung.</p></div>
+      <div class="card"><h3>Anschluss an Ihre Landschaft</h3><p style="margin:0">Ist bei Ihnen bereits eine ALM-Umgebung etabliert, etwa SAP Solution Manager, SAP Cloud ALM oder Jira mit Xray, integrieren wir uns darin, statt eine neue vorauszusetzen.</p></div>
+    </div>
+    <p>Das Ergebnis ist eine wartbare Testarchitektur statt einer Sammlung automatisierter Einzelfälle, die beim nächsten Release bricht.</p>
+    <a class="btn" href="#kontakt">Tosca-Einsatz besprechen</a>
+
+    <div class="confirm">
+      <span class="tag">Bitte bestätigen</span>
+      <p><strong>Was dürfen wir nennen?</strong> Drei Angaben brauchen wir: die genaue Bezeichnung Ihres Partnerstatus bei Tricentis, die Zahl zertifizierter Berater, und ob Lizenzen tatsächlich über andagon bezogen werden können.</p>
+      <p><strong>Zur Alternative bei Lizenzkosten:</strong> Ihr Konzept legt fest, aqua eher nicht oder höchstens als optionales Werkzeug zu nennen und keine Positionierung darauf aufzubauen. Dem folgen wir — deshalb steht hier nur, dass eine Alternative verfügbar ist, ohne sie zu bewerben. Bitte bestätigen Sie, dass das so richtig ist.</p>
+      <p><strong>Warum dieser Abschnitt hier steht und nicht am Ende:</strong> In unserer Analyse tragen drei Bausteine die Positionierung, und zwei davon sind Tosca. Die Partnerschaft bleibt bewusst aus dem Aufmacher heraus — wer über Tosca sucht, sucht in der Regel das Werkzeug und nicht einen Dienstleister. Sie gehört aber direkt hinter die Leistungen.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Block 7 -->
+<section class="soft">
+  <div class="wrap">
+    <h2>Was am Ende auf dem Tisch liegt</h2>
+    <p class="lead">Je nach Weg erhalten Sie unterschiedliche Ergebnisse.</p>
+    <div class="grid g2" style="margin-top:22px">
+      <div class="card">
+        <span class="kicker">Vor dem Go-live</span>
+        <h3>Business Process Assurance</h3>
+        <ul class="clean">
+          <li>Teststrategie</li>
+          <li>Risikoanalyse</li>
+          <li>Testreport</li>
+          <li>Defect-Übersicht</li>
+          <li>Management Summary</li>
+          <li>Go-Live-Empfehlung</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="kicker">Im laufenden Betrieb</span>
+        <h3>Continuous Change Assurance</h3>
+        <ul class="clean">
+          <li>Automatisierte Testfälle</li>
+          <li>Automatisierte Regressionssuite</li>
+          <li>Tosca-Testarchitektur</li>
+          <li>Wartbare Testartefakte</li>
+          <li>Testausführungsreports</li>
+          <li>Qualitätskennzahlen</li>
+        </ul>
+      </div>
+    </div>
+    <p>Management und Projektverantwortliche verfügen damit über eine fundierte Entscheidungsgrundlage für Freigaben, Go-lives und weitere Veränderungen Ihrer SAP-nahen Systemlandschaft.</p>
+    <div class="confirm">
+      <span class="tag">Bitte ergänzen, falls möglich</span>
+      <p>Bei der Barrierefreiheit-Seite war „in 10 Werktagen" ein starkes Kaufargument. Falls für eines der Pakete eine vergleichbare Zeitzusage möglich ist, gehört sie in diesen Abschnitt. Falls nicht, bleibt es bei der Ergebnisliste.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Block 8 -->
+<section>
+  <div class="wrap">
+    <h2>Standardisierte Pakete, transparente Festpreise</h2>
+    <p>Wir erbringen diese Leistungen als standardisierte Pakete mit transparenten Festpreismodellen. Sie wissen vor dem Start, was die Absicherung kostet, und müssen nicht nach Aufwand abrechnen.</p>
+    <p>Welches Paket passt, hängt von der Größe Ihrer Prozesslandschaft und der Zahl der angebundenen Systeme ab. Das klären wir in einem kurzen Gespräch.</p>
+    <a class="btn" href="#kontakt">Paket und Preis klären</a>
+
+    <div class="confirm">
+      <span class="tag">Bitte entscheiden</span>
+      <p>Ihr Konzept nennt die standardisierten Pakete mit Festpreis als Grundsatz, definiert sie aber nicht. Dieser Abschnitt bleibt deshalb bewusst allgemein.</p>
+      <p>Falls Sie einen <strong>konkreten Einstieg</strong> auf der Seite anbieten wollen, also ein kleines Paket, mit dem ein Interessent ohne Projektbeauftragung anfangen kann, brauchen wir Name, Umfang, Ergebnis und Preis.</p>
+      <p><strong>Wir empfehlen es ausdrücklich, und es hat einen messbaren Grund:</strong> Der geplante Markttest soll unter anderem prüfen, ob der feste Preis das kaufentscheidende Argument ist. Ohne ein konkretes, bepreistes Angebot auf der Seite lässt sich das nicht beantworten. Hinzu kommt: Im gesamten untersuchten Wettbewerbsumfeld verspricht kein Anbieter überhaupt einen Festpreis, und ein bezahlter Einstieg hebt sich von der verbreiteten kostenlosen Erstberatung ab, weil er eine Leistung ist und kein Verkaufsgespräch.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Block 9 -->
+<section class="soft">
+  <div class="wrap">
+    <h2>Prüfliste: Ist Ihre Umstellung testseitig abgesichert?</h2>
+    <p class="lead">Eine kurze Übersicht der Punkte, die vor einem Go-live testseitig geklärt sein sollten. Wir schicken sie Ihnen zu, ohne Beratungsgespräch.</p>
+    <form style="max-width:460px;display:flex;gap:10px;flex-wrap:wrap" onsubmit="return false">
+      <label class="fl" for="pl" style="width:100%">E-Mail-Adresse</label>
+      <input id="pl" type="email" style="flex:1 1 220px" placeholder="name@unternehmen.de">
+      <button class="btn" type="submit">Prüfliste zuschicken lassen</button>
+    </form>
+    <div class="confirm">
+      <span class="tag">Bitte entscheiden</span>
+      <p>Den Entwurf der Prüfliste liefern wir, Sie brauchen ihn nur fachlich freizugeben.</p>
+      <p><strong>Geändert gegenüber dem ersten Entwurf:</strong> Wir hatten zunächst einen freien Download ohne E-Mail-Abfrage empfohlen. Das nehmen wir zurück. Der Markttest erwartet nach unserer eigenen Prognose eine überschaubare Zahl an Besuchern — in dieser Größenordnung ist ein Kontakt, den Ihr Vertrieb nachverfolgen kann, mehr wert als ein anonymer Download. Die Beschriftung ist entsprechend ehrlich: Es wird zugeschickt, nicht sofort heruntergeladen.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Block 10 -->
+<section>
+  <div class="wrap">
+    <h2>Unternehmen, die andagon vertrauen</h2>
+    <div class="logobar" style="margin:22px 0 28px">
+      <div class="logoph">Logo</div><div class="logoph">Logo</div><div class="logoph">Logo</div>
+      <div class="logoph">Logo</div><div class="logoph">Logo</div><div class="logoph">Logo</div>
+    </div>
+    <div class="grid g3">
+      <div class="card"><div class="stat">25</div><p style="margin:.5rem 0 0">Jahre Erfahrung in Softwarequalitätssicherung</p></div>
+      <div class="card"><div class="stat">9,8</div><p style="margin:.5rem 0 0">NPS, Zufriedenheit der Kunden</p></div>
+      <div class="card"><div class="stat">~100</div><p style="margin:.5rem 0 0">Mitarbeitende, Standorte Köln und Hamburg</p></div>
+    </div>
+    <div class="confirm">
+      <span class="tag">Bitte ergänzen</span>
+      <p><strong>Eine Kundenstimme — der wirksamste einzelne Baustein dieser Seite.</strong> Hier fehlt bisher das Stärkste, was eine solche Seite haben kann: ein Zitat eines Kunden, direkt über dem Kontaktbereich. Nach allem, was dazu belastbar gemessen wurde, wirkt es stärker als jedes weitere Argument von uns.</p>
+      <p>Damit es wirkt, braucht es vier Dinge: <strong>Name, Unternehmen, Funktion und ein konkretes Ergebnis</strong> („… vier kritische Schnittstellenfehler vor dem Go-live gefunden"). Allgemeine Formulierungen wie „hervorragende Zusammenarbeit" sind nachweislich schlechter als gar kein Zitat, weil sie wie Dekoration wirken.</p>
+      <p>Falls niemand namentlich zitiert werden darf: auch eine Funktion ohne Namen („IT-Leiter eines Energieversorgers") mit konkretem Ergebnis ist deutlich besser als nichts.</p>
+    </div>
+    <div class="confirm">
+      <span class="tag">Bitte bestätigen</span>
+      <p>Welche <strong>Referenzen</strong> dürfen auf dieser Seite stehen, und welche davon haben SAP- oder Transformationsbezug? <strong>Unsere Empfehlung: lieber fünf bis acht Logos mit erkennbarem Bezug zur Zielgruppe als eine volle Leiste ohne Bezug.</strong> Logos ohne Branchen- oder Themenpassung wirken erfahrungsgemäß schwächer als gar keine.</p>
+      <p>Die <strong>drei Kennzahlen</strong> bitte ebenfalls bestätigen. Sie stammen aus unseren Unterlagen und nicht aus einer von Ihnen freigegebenen Quelle, deshalb können sie ohne Ihr Signal nicht veröffentlicht werden.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Block 11 -->
+<section class="soft">
+  <div class="wrap">
+    <h2>Häufige Fragen</h2>
+
+    <details class="faq"><summary>Was kostet die Qualitätssicherung einer SAP-Umstellung?</summary>
+      <div class="a">Das hängt vom Umfang Ihrer Prozesslandschaft und der Zahl der angebundenen Systeme ab. Wir arbeiten mit standardisierten Paketen zu festen Preisen, nicht nach Aufwand. Welches Paket passt und was es kostet, klären wir in einem kurzen Gespräch.</div>
+    </details>
+
+    <details class="faq"><summary>Bis wann muss die Umstellung abgeschlossen sein?</summary>
+      <div class="a">
+        <p>Dazu kursieren mehrere Jahreszahlen, und sie bedeuten Unterschiedliches. Die reguläre Wartung für SAP ERP endet Ende 2027, die erweiterte Wartung lässt sich kostenpflichtig bis Ende 2030 verlängern. Die häufig genannte Zahl 2033 betrifft nicht das Ende der alten Welt, sondern die Wartungszusage für S/4HANA.</p>
+        <p>Für die Planung zählt nicht die Frist selbst, sondern der Vorlauf: Testkonzept, Testdaten und Automatisierung brauchen Zeit, bevor die Umstellung beginnt.</p>
+      </div>
+    </details>
+
+    <details class="faq"><summary>Für wen ist das gedacht?</summary>
+      <div class="a">Vor allem für Unternehmen in einer S/4HANA-Transformation, für Organisationen mit komplexen SAP-, Cloud- und Drittsystem-Integrationen und für Unternehmen ohne eigenes etabliertes QA-Team. Mit zunehmender regulatorischer Belastung — etwa in der Versorgungswirtschaft — steigt der Bedarf zusätzlich, weil Änderungen dort dauerhaft anfallen.</div>
+    </details>
+
+    <details class="faq"><summary>Woran scheitern Umstellungen am häufigsten?</summary>
+      <div class="a">Nicht an der Technik, sondern daran, dass die Qualitätssicherung zu spät einsetzt. Geprüft wird häufig das einzelne System, nicht die Prozesskette über alle beteiligten Systeme hinweg. Fehler an den Übergängen fallen dann erst im Produktivbetrieb auf.</div>
+    </details>
+
+    <details class="faq"><summary>Was ist, wenn bereits ein Implementierungspartner im Projekt ist?</summary>
+      <div class="a">Das ist der Normalfall. Wir ersetzen ihn nicht, sondern prüfen unabhängig von ihm. Der Partner verantwortet die Lösung, wir bewerten die Qualität.</div>
+    </details>
+
+    <details class="faq"><summary>Wie sieht ein Testkonzept für SAP aus?</summary>
+      <div class="a">Es beginnt bei den Prozessen, nicht bei den Modulen: welche Ketten geschäftskritisch sind, welche Systeme daran hängen, welche Risiken an den Übergängen entstehen, und was davon automatisiert abgesichert wird. Einen Einstieg dazu gibt die Prüfliste oben.</div>
+    </details>
+
+    <details class="faq"><summary>Welche Werkzeuge setzen Sie ein?</summary>
+      <div class="a">Wir arbeiten mit Tricentis Tosca und weiteren Automatisierungswerkzeugen und integrieren uns in Ihre bestehende Werkzeuglandschaft. Wenn dort noch nichts etabliert ist, bringen wir eine Lösung mit.</div>
+    </details>
+
+    <details class="faq"><summary>Warum steigt der Testbedarf durch Clean Core?</summary>
+      <div class="a">Weil kundenspezifische Erweiterungen aus dem SAP-Kern heraus verlagert werden, etwa auf SAP BTP. Dadurch entstehen zusätzliche Integrationen und mehr systemübergreifende Prozessketten, und genau an diesen Übergängen entstehen Fehler.</div>
+    </details>
+
+    <div class="confirm">
+      <span class="tag">Bitte bestätigen</span>
+      <p>Die <strong>drei Jahreszahlen</strong> in der zweiten Frage stammen aus unserer Recherche und sind nicht von Ihnen freigegeben. Bitte bestätigen oder korrigieren Sie sie, bevor die Seite online geht. Als SAP-Partner sind Sie hier die belastbare Quelle, und eine falsche Jahreszahl auf Ihrer Seite wäre ein unnötiges Risiko.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Block 12 -->
+<section id="kontakt">
+  <div class="wrap">
+    <h2>Erstgespräch vereinbaren</h2>
+    <p class="lead">Schildern Sie kurz Ihre Situation. Wir melden uns mit einer ersten Einschätzung, ob und wie wir helfen können.</p>
+    <form style="max-width:620px;margin-top:22px" onsubmit="return false">
+      <div class="field"><label class="fl" for="n">Name <span class="req">*</span></label><input id="n" type="text" required></div>
+      <div class="field"><label class="fl" for="e">E-Mail <span class="req">*</span></label><input id="e" type="email" required></div>
+      <div class="field"><label class="fl" for="u">Unternehmen</label><input id="u" type="text"></div>
+      <div class="field"><label class="fl" for="a">Worum geht es?</label>
+        <select id="a">
+          <option>Bitte auswählen</option>
+          <option>S/4HANA-Transformation</option>
+          <option>Probleme nach einer SAP-Umstellung</option>
+          <option>Integrations- und Schnittstellenrisiken</option>
+          <option>Go-live-Vorbereitung</option>
+          <option>Release- und Change-Management</option>
+          <option>Regulatorisch bedingte SAP-Anpassungen</option>
+          <option>Tosca-Einsatz</option>
+          <option>Anderes</option>
+        </select>
+      </div>
+      <div class="field"><label class="fl" for="m">Nachricht</label><textarea id="m"></textarea></div>
+      <div class="field consent"><input type="checkbox" id="c"><label for="c">Ich habe die Datenschutzerklärung gelesen und stimme der Verarbeitung meiner Angaben zu. <span class="ph-note">Text aus dem ersten Projekt</span></label></div>
+      <button class="btn lg" type="submit">Anfrage senden</button>
+      <p class="ph-note" style="margin-top:12px">Vorschau: Das Formular ist hier ohne Funktion.</p>
+    </form>
+
+    <div class="confirm">
+      <span class="tag">Bitte bestätigen</span>
+      <p>Die Auswahl „Worum geht es?" entspricht den sechs typischen Anlässen aus Ihrem Vermarktungsansatz, ergänzt um Tosca und eine Auffangoption. Sie hat zwei Zwecke: Ihr Vertrieb weiß vor dem ersten Anruf, worum es geht, und für den Markttest lässt sich ablesen, welcher Ihrer Anlässe die Anfragen bringt.</p>
+      <p>Empfänger wäre wie bei der Barrierefreiheit-Seite <strong>sales@andagon.com</strong>. Dieser Punkt ist technisch nötig, bevor die Seite online gehen kann.</p>
+      <p>Falls Sie eine <strong>verbindliche Reaktionszeit</strong> zusagen können („innerhalb eines Werktags"), nehmen wir sie gern auf — das senkt die Hürde spürbar. Wir haben sie bewusst nicht von uns aus hineingeschrieben.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <h3>andagon People GmbH</h3>
+    <p>Scheidtweilerstraße 4, 50933 Köln</p>
+    <p><a href="#">Impressum</a> &nbsp;·&nbsp; <a href="#">Datenschutz</a> &nbsp;·&nbsp; <a href="#">Cookie-Einstellungen</a></p>
+    <p class="fnote">
+      Inhaltsentwurf vom 18.10.2026, Fassung 2, erstellt von W&amp;S Agency für andagon People.
+      Grundlage: Produktkonzept „SAP Change &amp; Transformation Assurance" vom 06.10.2026.
+      Nicht öffentlich, nicht indexiert. Rechtstexte und Cookie-Banner werden aus dem ersten Projekt übernommen.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
