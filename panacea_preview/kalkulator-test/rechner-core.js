@@ -21,7 +21,7 @@
     // Feste Texte je Pflegegrad statt Berechnung (TY, Termin 26.10.2026). Das Budget
     // (Sachleistung + 424 €) bleibt Rechengrundlage, wird aber nicht mehr angezeigt.
     hints: {
-      2: "Bei Pflegegrad 2 reicht das Budget ohne Zuzahlung für mindestens drei Besuche pro Woche à 1 Stunde.",
+      2: "Bei Pflegegrad 2 reicht das Budget ohne Zuzahlung für mindestens drei Besuche pro Woche.",   // «à 1 Stunde» gestrichen (TY chat3436 #299958/#299959, 26.10.2026)
       3: "Bei Pflegegrad 3 reicht das Budget ohne Zuzahlung für mindestens einen Besuch pro Tag.",
       4: "Bei Pflegegrad 4 sind zwei Besuche pro Tag möglich, plus Budget für zusätzliche Leistungen.",
       5: "Bei Pflegegrad 5 sind zwei Besuche pro Tag möglich, plus Budget für zusätzliche Leistungen."
