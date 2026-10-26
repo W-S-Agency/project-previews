@@ -49,7 +49,8 @@
     const anfahrtMonat = tagAnfahrt * CONFIG.daysPerMonth;
     const budget = budgetPG(state.pg);
     const kasse = Math.min(gesamt, budget);
-    const zuzahlung = Math.max(0, gesamt - kasse);
+    // auf Cent runden: sonst wird z. B. 2012,4999999 statt 2012,50 → «2.012 €» statt «2.013 €» angezeigt
+    const zuzahlung = Math.round(Math.max(0, gesamt - kasse) * 100) / 100;
     return { totalMin, gesamt, zeitMonat, anfahrtMonat, kasse, zuzahlung, budget };
   }
 
@@ -160,6 +161,9 @@
       const hasPG = !!state.pg;
       $(".rechner-empty").hidden = hasPG;
       $(".rechner-step-2").dataset.active = hasPG ? "true" : "false";
+      // ohne Pflegegrad auch per Tastatur nicht bedienbar (vorher: Häkchen per Leertaste möglich)
+      $(".rechner-verordnung-checkbox").disabled = !hasPG;
+      $$(".rechner-slider").forEach(s => { s.disabled = !hasPG; });
 
       // PG-2-Hinweis steht jetzt im Empfehlungs-Block selbst (kein doppelter Kasten)
       $(".rechner-pg-hint").hidden = true;

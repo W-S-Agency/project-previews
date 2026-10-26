@@ -82,6 +82,9 @@
 .rechner-row-final strong:last-child { color: #73346e; font-size: 1.3rem; }
 /* 2.2: Zuzahlung ist die einzige Zeile → keine Trennlinie darüber */
 .rechner-row-final:first-child { border-top: 0; margin-top: 0; padding-top: 0; }
+/* schmale Bildschirme: «Ihre Zuzahlung» und Betrag nicht mitten im Wort umbrechen */
+.rechner-row-final { flex-wrap: wrap; align-items: baseline; row-gap: .2rem; }
+.rechner-row-final > * { white-space: nowrap; }
 .rechner-result-msg { margin-top: .85rem; padding: .65rem .85rem; border-radius: 8px; font-size: .88rem; }
 .rechner-msg-success { background: #f0f9e8; border-left: 3px solid #92D050; color: #5a7a2e; }
 .rechner-msg-warn { background: #fef3c7; border-left: 3px solid #f59e0b; color: #78350f; }
