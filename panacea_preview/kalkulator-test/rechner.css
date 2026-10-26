@@ -80,6 +80,8 @@
 .rechner-row-sub { font-size: .82rem; color: #454b54; padding-left: 1rem; }
 .rechner-row-final { padding-top: .7rem; margin-top: .5rem; border-top: 1px solid rgba(115,52,110,.25); font-size: 1.05rem; }
 .rechner-row-final strong:last-child { color: #73346e; font-size: 1.3rem; }
+/* 2.2: Zuzahlung ist die einzige Zeile → keine Trennlinie darüber */
+.rechner-row-final:first-child { border-top: 0; margin-top: 0; padding-top: 0; }
 .rechner-result-msg { margin-top: .85rem; padding: .65rem .85rem; border-radius: 8px; font-size: .88rem; }
 .rechner-msg-success { background: #f0f9e8; border-left: 3px solid #92D050; color: #5a7a2e; }
 .rechner-msg-warn { background: #fef3c7; border-left: 3px solid #f59e0b; color: #78350f; }

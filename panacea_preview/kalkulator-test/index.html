@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Panacea Pflege – Kostenrechner (Testversion 19.10.2026)</title>
+<title>Panacea Pflege – Kostenrechner (Testversion 26.10.2026)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="rechner.css?v=2.1b">
+<link rel="stylesheet" href="rechner.css?v=2.2a">
 <style>
   :root { --purple:#73346e; --ink:#2b2e3f; --muted:#5b6070; --line:#8d9dc9; --soft:#f5f8fd; --soft2:#d0dcfd; }
   * { box-sizing: border-box; }
@@ -26,17 +26,16 @@
   .info ul, .info ol { padding-left:20px; margin:8px 0; }
   .card { border:1px solid #e3e6ef; border-radius:16px; padding:16px 20px; margin:16px 0; background:#fff; }
   table { border-collapse:collapse; width:100%; font-size:15px; }
-  th, td { border-bottom:1px solid #e3e6ef; padding:6px 8px; text-align:left; }
+  th, td { border-bottom:1px solid #e3e6ef; padding:6px 8px; text-align:left; vertical-align:top; }
   th { font-weight:500; }
-  code { background:var(--soft); padding:1px 5px; border-radius:6px; font-size:14px; }
   .muted { color:var(--muted); font-size:14px; }
 </style>
 </head>
 <body>
 <div class="wrap">
-  <span class="badge">Тестовая версия · не боевой сайт · 19.10.2026</span>
+  <span class="badge">Тестовая версия · не боевой сайт · 26.10.2026</span>
   <h1>Kostenrechner Panacea Pflege</h1>
-  <p class="muted">Здесь тот же калькулятор, что на panacea-pflege.de, уже с исправлениями. На боевом сайте пока стоит старая версия.</p>
+  <p class="muted">Калькулятор с правками по нашему созвону 26.10. На боевом сайте пока стоит старая версия.</p>
 
   <div class="grid">
     <div class="calc">
@@ -46,54 +45,46 @@
 
     <div class="info">
       <div class="card">
-        <h3 style="margin-top:0">Что было неправильно</h3>
+        <h3 style="margin-top:0">Что изменили после созвона 26.10</h3>
         <ol>
-          <li><strong>Зелёная подсказка «Empfehlung» противоречила итогу.</strong> Например, при Pflegegrad 3 она обещала «2 визита по 30 минут без доплаты», а внизу при этих же визитах выходила доплата 670 €/мес. Причина: после перехода на Ваши тарифы (70,44 €/ч, Anfahrt 7,96 €) таблицу рекомендаций не пересчитали.</li>
-          <li><strong>При смене Pflegegrad визиты не обновлялись.</strong> Подставлялись только при первом выборе, дальше подсказка и ползунки показывали разное.</li>
+          <li><strong>Зелёный блок:</strong> суммы бюджета и разбивку (Pflegesachleistung + Zuschuss) убрали. Вместо расчёта стоит постоянный текст для каждого Pflegegrad (ниже в таблице).</li>
+          <li><strong>Визиты:</strong> каждый визит по умолчанию 30 минут, в том числе добавленный второй и третий. Двигать можно от 10 до 60 минут.</li>
+          <li><strong>Итог внизу:</strong> осталась только доплата в месяц. Блок «Zusammenfassung» с разбивкой убрали.</li>
         </ol>
       </div>
 
       <div class="card">
-        <h3 style="margin-top:0">Что изменили</h3>
-        <ul>
-          <li>Подсказка теперь считается той же формулой, что и итог: показывает самый длинный ежедневный визит, который бюджет покрывает без доплаты. С галочкой «Ärztliche Verordnung» пересчитывается.</li>
-          <li>При каждом выборе Pflegegrad ставится 1 визит рекомендованной длины. Дальше всё настраивается вручную, как раньше.</li>
-          <li>Pflegegrad 2: по Вашим словам, ежедневно без доплаты не получается, поэтому здесь вместо расчёта Ваш текст «3 Besuche pro Woche à 1 Stunde». Стартовое значение 1 × 40 мин.</li>
-          <li>Формула и Ваши тарифы не менялись.</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h3 style="margin-top:0">Как считает калькулятор</h3>
-        <p>В день: минуты всех визитов × 70,44 € / 60 + число визитов × 7,96 € (с галочкой Verordnung 3,98 €).<br>
-           В месяц: × 30 дней.<br>
-           Бюджет: Pflegesachleistung + 424 €.<br>
-           Доплата: месяц − бюджет (не меньше 0).</p>
+        <h3 style="margin-top:0">Тексты по Pflegegrad</h3>
         <div class="tbl"><table>
-          <tr><th>Pflegegrad</th><th>Sachleistung</th><th>+ 424 €</th><th>Бюджет</th><th>Без доплаты, 1 визит в день</th></tr>
-          <tr><td>2</td><td>796 €</td><td>424 €</td><td>1.220 €</td><td>Ваш текст: 3 раза в неделю по часу</td></tr>
-          <tr><td>3</td><td>1.497 €</td><td>424 €</td><td>1.921 €</td><td>до 45 мин (с Verordnung 50)</td></tr>
-          <tr><td>4</td><td>1.859 €</td><td>424 €</td><td>2.283 €</td><td>до 55 мин (с Verordnung 60)</td></tr>
-          <tr><td>5</td><td>2.299 €</td><td>424 €</td><td>2.723 €</td><td>60 мин</td></tr>
+          <tr><th>Pflegegrad</th><th>Текст на сайте</th></tr>
+          <tr><td>2</td><td>Bei Pflegegrad 2 reicht das Budget ohne Zuzahlung für mindestens drei Besuche pro Woche à 1 Stunde.</td></tr>
+          <tr><td>3</td><td>Bei Pflegegrad 3 reicht das Budget ohne Zuzahlung für mindestens einen Besuch pro Tag.</td></tr>
+          <tr><td>4</td><td>Bei Pflegegrad 4 sind zwei Besuche pro Tag möglich, plus Budget für zusätzliche Leistungen.</td></tr>
+          <tr><td>5</td><td>Bei Pflegegrad 5 sind zwei Besuche pro Tag möglich, plus Budget für zusätzliche Leistungen.</td></tr>
         </table></div>
-        <p class="muted">Пример: Pflegegrad 3, визиты 40 + 20 + 30 мин без Verordnung → 105,66 € + 23,88 € = 129,54 € в день → 3.886 € в месяц − 1.921 € = доплата 1.965 €.</p>
       </div>
 
       <div class="card">
-        <h3 style="margin-top:0">Что важно проверить</h3>
+        <h3 style="margin-top:0">Как считает (не менялось)</h3>
+        <p>В день: минуты всех визитов × 70,44 € / 60 + число визитов × 7,96 € дорога (с «Ärztliche Verordnung» 3,98 €).<br>
+           В месяц: × 30 дней.<br>
+           Доплата: месяц − бюджет Pflegegrad (не меньше 0).<br>
+           Бюджет уже включает 424 €: 1.220 / 1.921 / 2.283 / 2.723 € для Pflegegrad 2 / 3 / 4 / 5. На сайте эти суммы не показываются.</p>
+      </div>
+
+      <div class="card">
+        <h3 style="margin-top:0">Что проверить</h3>
         <ol>
-          <li>Тарифы на 2026 год: 70,44 €/ч и Anfahrt 7,96 € за визит всё ещё верны?</li>
-          <li>«К каждому Pflegegrad нужно добавить 424 €»: мы прибавляем их к бюджету Пфлегекассы. Так задумано?</li>
-          <li>Галочка Verordnung делит Anfahrt пополам. Верно?</li>
-          <li>Pflegegrad 2: по расчёту бюджет покрывает ежедневный визит до 25 минут. Это реально или ежедневно при PG2 Вы не выезжаете в принципе? Нужен ли выбор «визитов в неделю»?</li>
-          <li>Если что-то по-прежнему считается не так: какой Pflegegrad, какие визиты и какая сумма должна получиться?</li>
+          <li>Тексты для Pflegegrad 2–5 так?</li>
+          <li>Посчитайте пару своих примеров: сходится ли доплата?</li>
+          <li>Если всё так, переносим эту версию на боевой сайт.</li>
         </ol>
       </div>
     </div>
   </div>
 </div>
 <script type="module">
-  import { initRechner } from "./rechner-core.js?v=2.1b";
+  import { initRechner } from "./rechner-core.js?v=2.2";
   initRechner(document.getElementById("rechner"), { ctaHref: "https://panacea-pflege.de/kontakt" });
 </script>
 </body>

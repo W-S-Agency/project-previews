@@ -5,34 +5,34 @@
    Use: initRechner(element, { ctaHref }) */
 /* eslint-disable */
   const CONFIG = {
-    version: "2.1",
-    lastUpdated: "2026-10-19",          // 2.1: Empfehlung wird aus derselben Formel berechnet (statt V1-Tabelle)
+    version: "2.2",
+    lastUpdated: "2026-10-26",          // 2.2: feste Texte je Pflegegrad, Besuche immer 30 min, Ergebnis nur Zuzahlung (Termin TY 26.10.2026)
     hourlyRate: 70.44,                  // €/h (TY 01.05.2026)
     anfahrtPrice: 7.96,                 // € pro Besuch
     anfahrtPriceWithVerordnung: 3.98,   // € pro Besuch mit ärztlicher Verordnung (= /2)
-    pgZuschuss: 424,                    // € zu jedem PG-Budget
     daysPerMonth: 30,
     minVisitMinutes: 10,
     maxVisitMinutes: 60,                // V1: 120 → V2: 60 (TY)
     stepMinutes: 5,
     maxVisitsPerDay: 3,
-    sachleistungen: { 2: 796, 3: 1497, 4: 1859, 5: 2299 },
-    // Empfehlung «ohne Zuzahlung» wird in recommend() aus der Formel berechnet
-    // (1 Besuch täglich, längste Dauer ohne Zuzahlung). Ausnahme PG 2 laut TY 01.05.2026
-    // (#254441): keine täglichen Besuche ohne Zuzahlung → nur Hinweistext, Startwert 1 × 40 min.
-    recommendations: {
-      2: {
-        weeklyOnly: true, startMinutes: 40,
-        hint: "Bei Pflegegrad 2 reicht das Budget ohne Zuzahlung für ca. 3 Besuche pro Woche à 1 Stunde. Tägliche Besuche erfordern Zuzahlung."
-      }
+    // Monatsbudget je Pflegegrad, die 424 € Zusatzbudget sind bereits enthalten
+    // (z. B. PG 2: 796 € + 424 € = 1.220 €; TY, Termin 26.10.2026). Nicht noch einmal addieren.
+    budgets: { 2: 1220, 3: 1921, 4: 2283, 5: 2723 },
+    // Feste Texte je Pflegegrad statt Berechnung (TY, Termin 26.10.2026). Das Budget
+    // (Sachleistung + 424 €) bleibt Rechengrundlage, wird aber nicht mehr angezeigt.
+    hints: {
+      2: "Bei Pflegegrad 2 reicht das Budget ohne Zuzahlung für mindestens drei Besuche pro Woche à 1 Stunde.",
+      3: "Bei Pflegegrad 3 reicht das Budget ohne Zuzahlung für mindestens einen Besuch pro Tag.",
+      4: "Bei Pflegegrad 4 sind zwei Besuche pro Tag möglich, plus Budget für zusätzliche Leistungen.",
+      5: "Bei Pflegegrad 5 sind zwei Besuche pro Tag möglich, plus Budget für zusätzliche Leistungen."
     },
-    defaults: [40, 20, 30]              // V1: [40,20,10] → V2: [40,20,30] (TY)
+    defaults: [30, 30, 30]              // jeder Besuch startet mit 30 min (TY 26.10.2026)
   };
 
   const EUR = n => n.toLocaleString("de-DE", { maximumFractionDigits: 0 }) + " €";
   const minutePrice = () => CONFIG.hourlyRate / 60;
   const anfahrt = (verordnung) => verordnung ? CONFIG.anfahrtPriceWithVerordnung : CONFIG.anfahrtPrice;
-  const budgetPG = (pg) => pg ? (CONFIG.sachleistungen[pg] + CONFIG.pgZuschuss) : 0;
+  const budgetPG = (pg) => pg ? CONFIG.budgets[pg] : 0;
 
   function calc(state){
     if (!state.pg || state.visibleVisits === 0) {
@@ -51,19 +51,6 @@
     const kasse = Math.min(gesamt, budget);
     const zuzahlung = Math.max(0, gesamt - kasse);
     return { totalMin, gesamt, zeitMonat, anfahrtMonat, kasse, zuzahlung, budget };
-  }
-
-  // Längster täglicher Besuch (Schritt stepMinutes), den das Budget ohne Zuzahlung deckt.
-  // Rechnet mit calc() selbst — Empfehlung und Ergebnis können nicht mehr auseinanderlaufen.
-  function recommend(pg, verordnung){
-    const special = CONFIG.recommendations[pg];
-    if (special && special.weeklyOnly) return { weeklyOnly: true, hint: special.hint, startMinutes: special.startMinutes };
-    let best = null;
-    for (let m = CONFIG.minVisitMinutes; m <= CONFIG.maxVisitMinutes; m += CONFIG.stepMinutes){
-      const r = calc({ pg, visibleVisits: 1, visits: [m], verordnung });
-      if (r.zuzahlung === 0) best = m;
-    }
-    return best ? { visits: 1, minutesPerVisit: best } : null;
   }
 
   function render(root, opts){
@@ -105,11 +92,6 @@
         </div>
 
         <div class="rechner-result" hidden>
-          <div class="rechner-result-label">Zusammenfassung</div>
-          <div class="rechner-row"><span>Geschätzte Gesamtkosten / Monat</span><strong class="r-gesamt">0 €</strong></div>
-          <div class="rechner-row rechner-row-sub"><span>Davon Pflegezeit (${CONFIG.hourlyRate.toString().replace('.',',')} €/h × ${CONFIG.daysPerMonth} Tage)</span><span class="r-zeit">0 €</span></div>
-          <div class="rechner-row rechner-row-sub"><span>Davon Anfahrt (<span class="r-anfahrt-preis">7,96 €</span> × <span class="r-anfahrt-anzahl">0</span> Besuche × ${CONFIG.daysPerMonth} Tage)</span><span class="r-anfahrt">0 €</span></div>
-          <div class="rechner-row"><span>Davon Pflegekasse (Budget <span class="r-budget">0 €</span>)</span><strong class="r-kasse">−0 €</strong></div>
           <div class="rechner-row rechner-row-final"><span><strong>Ihre Zuzahlung</strong></span><strong class="r-zuzahlung">0 €/Monat</strong></div>
           <div class="rechner-result-msg" hidden></div>
           <div class="rechner-disclaimer">Alle Angaben unverbindlich · individuell im Beratungsgespräch</div>
@@ -157,7 +139,7 @@
             state.visits.push(CONFIG.defaults[state.visits.length] || CONFIG.minVisitMinutes);
           }
           state.visibleVisits = Math.max(1, state.visibleVisits - 1);
-          // ausgeblendete Plätze wieder auf ihre Standardwerte (Besuch 2 = 20, Besuch 3 = 30 min)
+          // ausgeblendete Plätze wieder auf ihren Standardwert (30 min)
           for (let j = state.visibleVisits; j < CONFIG.defaults.length; j++) state.visits[j] = CONFIG.defaults[j];
           renderVisits();
           update();
@@ -188,15 +170,8 @@
         return;
       }
 
-      const budget = budgetPG(state.pg);
-      const rec = recommend(state.pg, state.verordnung);
-      const budgetText = `Bei Pflegegrad <strong>${state.pg}</strong> stehen Ihnen monatlich bis zu <strong>${EUR(budget)}</strong> zur Verfügung (${EUR(CONFIG.sachleistungen[state.pg])} Pflegesachleistung + ${EUR(CONFIG.pgZuschuss)} Zuschuss).`;
-      let recText;
-      if (rec && rec.weeklyOnly) recText = rec.hint;
-      else if (rec) recText = `Das entspricht ca. <strong>1 Besuch täglich à ${rec.minutesPerVisit} Minuten</strong> ohne private Zuzahlung.`;
-      else recText = "Tägliche Besuche sind bei diesem Budget nur mit Zuzahlung möglich.";
       $(".rechner-empfehlung").hidden = false;
-      $(".rechner-empfehlung-text").innerHTML = budgetText + " " + recText;
+      $(".rechner-empfehlung-text").textContent = CONFIG.hints[state.pg] || "";
 
       const r = calc(state);
       const result = $(".rechner-result");
@@ -207,13 +182,6 @@
         return;
       }
       result.hidden = false;
-      $(".r-gesamt").textContent = EUR(r.gesamt);
-      $(".r-zeit").textContent = EUR(r.zeitMonat);
-      $(".r-anfahrt").textContent = EUR(r.anfahrtMonat);
-      $(".r-anfahrt-anzahl").textContent = state.visibleVisits;
-      $(".r-anfahrt-preis").textContent = anfahrt(state.verordnung).toLocaleString("de-DE", {minimumFractionDigits: 2, maximumFractionDigits: 2}) + " €";
-      $(".r-budget").textContent = EUR(r.budget);
-      $(".r-kasse").textContent = "−" + EUR(r.kasse);
       $(".r-zuzahlung").textContent = EUR(r.zuzahlung) + "/Monat";
 
       if (r.zuzahlung === 0){
@@ -237,13 +205,9 @@
           b.classList.toggle("active", active);
           b.setAttribute("aria-checked", active ? "true" : "false");
         });
-        // Bei JEDEM Wechsel des Pflegegrads Besuche auf die Empfehlung setzen
-        // (vorher nur beim ersten Klick → Schieberegler passten nicht mehr zum Text).
-        const rec = recommend(state.pg, state.verordnung);
+        // Bei jedem Wechsel des Pflegegrads: 1 Besuch à 30 min (TY 26.10.2026)
         state.visits = [...CONFIG.defaults];
         state.visibleVisits = 1;
-        if (rec && rec.weeklyOnly) state.visits[0] = rec.startMinutes;
-        else if (rec) state.visits[0] = rec.minutesPerVisit;
         renderVisits();
         update();
       });
@@ -277,4 +241,4 @@ export function initRechner(selector, opts) {
   render(root, opts || {});
 }
 
-export { CONFIG, calc, recommend };
+export { CONFIG, calc };
