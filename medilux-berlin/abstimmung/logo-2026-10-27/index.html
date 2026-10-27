@@ -58,6 +58,8 @@
   .knoepfe button{font:inherit;font-size:16px;border:1px solid var(--linie);background:#fff;border-radius:22px;padding:8px 16px;cursor:pointer;min-height:44px}
   .knoepfe button[aria-pressed="true"]{background:var(--text);color:#fff;border-color:var(--text)}
   .knoepfe button[hidden]{display:none}
+  .hinweis[hidden]{display:none}
+  .hinweis.gelb-oben{border-left-color:var(--gelb);background:#fffbea}
   .telefon{width:100%;max-width:380px;height:720px;border:10px solid #1d2433;border-radius:40px;overflow:hidden;position:relative;background:#fff;box-shadow:0 18px 40px rgba(20,30,60,.18)}
   .seite{position:absolute;inset:0;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
   .s-kopf{position:sticky;top:0;z-index:5;display:flex;justify-content:space-between;align-items:center;padding:10px 18px 8px;transition:background .25s,box-shadow .25s;min-height:64px}
@@ -177,6 +179,7 @@
         <div class="knoepfe" id="k-modus">
           <button data-m="signet" aria-pressed="true">nur Kranz mit M</button><button data-m="ganz">ganzes Logo</button>
         </div>
+        <div class="hinweis gelb-oben" id="hinweis-blau" hidden><b>Warum oben Gelb?</b> Oben auf dem Bild bleibt das Logo gelb, weil Blau auf dem dunklen Bild kaum zu sehen ist (Kontrast 1,9 : 1, Gelb 7,7 : 1). Beim Scrollen, im weißen Kopf, wird es blau.</div>
         <div class="hinweis"><b>Unser Vorschlag:</b> im weißen Kopf nur Kranz mit M. Das ganze Logo mit «Pflege» wäre dort so hoch, dass es einen großen Teil des Textes verdeckt. Schalten Sie zum Vergleich auf «ganzes Logo».</div>
       </div>
       <div class="telefon" aria-label="Vorschau der Startseite auf dem Handy">
@@ -237,6 +240,7 @@
     document.querySelectorAll('.farbe').forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.farbe===f ? 'true':'false'); });
     document.querySelectorAll('.gruppe').forEach(function(g){ g.hidden = g.dataset.gruppe!==f; });
     document.querySelectorAll('#k-variante button').forEach(function(b){ b.hidden = istBlau(b.dataset.v) !== (f==='blau'); });
+    document.getElementById('hinweis-blau').hidden = (f!=='blau');
     if(istBlau(v) !== (f==='blau')) setzeVariante(ersteVariante[f]); else zeichne();
   }
   document.querySelectorAll('.farbe').forEach(function(b){ b.addEventListener('click', function(){ setzeFarbe(b.dataset.farbe); }); });
