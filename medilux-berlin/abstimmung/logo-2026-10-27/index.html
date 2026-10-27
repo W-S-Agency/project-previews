@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>MEDILUX – Logo-Varianten zur Auswahl</title>
+<style>
+  :root{
+    --gelb:#E8C830; --blau:#2B55C0; --text:#1d2433; --grau:#5b6475; --linie:#e3e7ef; --flaeche:#f5f7fb; --weiss:#fff;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--text);background:var(--weiss);line-height:1.55;font-size:17px}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+  header.kopf{border-bottom:1px solid var(--linie);background:var(--weiss)}
+  header.kopf .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-top:14px;padding-bottom:14px}
+  .marke{font-weight:700;letter-spacing:.04em}
+  .stand{color:var(--grau);font-size:14px}
+  h1{font-size:clamp(26px,4vw,38px);line-height:1.2;margin:36px 0 12px}
+  h2{font-size:clamp(21px,3vw,27px);line-height:1.25;margin:0 0 8px}
+  p{margin:0 0 12px}
+  .lead{font-size:19px;color:var(--text);max-width:760px}
+  .schritte{display:grid;gap:12px;grid-template-columns:repeat(3,1fr);margin:24px 0 8px;padding:0;list-style:none;counter-reset:s}
+  .schritte li{background:var(--flaeche);border-radius:14px;padding:14px 16px;counter-increment:s}
+  .schritte li::before{content:counter(s);display:inline-flex;width:28px;height:28px;border-radius:50%;background:var(--blau);color:#fff;font-weight:700;align-items:center;justify-content:center;margin-right:8px;font-size:15px}
+  section{padding:40px 0;border-top:1px solid var(--linie)}
+  .hinweis{background:var(--flaeche);border-left:4px solid var(--blau);border-radius:10px;padding:14px 16px;margin:14px 0 22px;max-width:820px}
+  .hinweis.gelb{border-left-color:var(--gelb)}
+  .raster{display:grid;gap:16px;grid-template-columns:repeat(3,1fr)}
+  figure{margin:0;background:var(--weiss);border:1px solid var(--linie);border-radius:16px;overflow:hidden}
+  figure img{display:block;width:100%;height:auto}
+  figcaption{padding:12px 14px;font-size:15px;color:var(--grau);border-top:1px solid var(--linie)}
+  figcaption b{color:var(--text);font-size:17px;margin-right:6px}
+  .nr{display:inline-flex;min-width:34px;height:34px;padding:0 8px;border-radius:17px;background:var(--text);color:#fff;font-weight:700;align-items:center;justify-content:center;margin-right:8px}
+  .aktuell{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+  .aktuell .bild{width:160px;padding:16px;border:1px solid var(--linie);border-radius:16px;background:#fff}
+  .aktuell .bild img{width:100%;display:block}
+  /* Live-Vorschau */
+  .vorschau{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:32px;align-items:start}
+  .steuerung h3{font-size:18px;margin:18px 0 8px}
+  .knoepfe{display:flex;flex-wrap:wrap;gap:8px}
+  .knoepfe button{font:inherit;font-size:16px;border:1px solid var(--linie);background:#fff;border-radius:22px;padding:8px 16px;cursor:pointer;min-height:44px}
+  .knoepfe button[aria-pressed="true"]{background:var(--text);color:#fff;border-color:var(--text)}
+  .telefon{width:100%;max-width:380px;height:720px;border:10px solid #1d2433;border-radius:40px;overflow:hidden;position:relative;background:#fff;box-shadow:0 18px 40px rgba(20,30,60,.18)}
+  .seite{position:absolute;inset:0;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+  .s-kopf{position:sticky;top:0;z-index:5;display:flex;justify-content:space-between;align-items:center;padding:10px 18px 8px;transition:background .25s,box-shadow .25s;min-height:64px}
+  .s-kopf.weiss{background:rgba(255,255,255,.93);box-shadow:0 1px 0 var(--linie);backdrop-filter:blur(10px)}
+  .s-logo img{display:block;transition:height .25s}
+  .s-kopf .burger{width:36px;height:22px;display:flex;flex-direction:column;justify-content:space-between}
+  .s-kopf .burger span{display:block;height:3px;border-radius:2px;background:#fff;transition:background .25s}
+  .s-kopf.weiss .burger span{background:var(--text)}
+  .s-hero{margin-top:-180px;padding:200px 22px 34px;min-height:600px;color:#fff;background:linear-gradient(180deg,rgba(10,14,25,.55),rgba(10,14,25,.75)),url(img/hero.jpg) center/cover;border-radius:0 0 22px 22px}
+  .s-hero .kicker{font-size:15px;margin-bottom:10px}
+  .s-hero .h1{font-size:30px;line-height:1.15;font-weight:700;margin-bottom:14px}
+  .s-hero .h1 em{font-style:normal;color:var(--gelb)}
+  .s-hero .unter{font-size:16px;margin-bottom:22px}
+  .s-hero .btn{display:inline-block;background:#4A78DB;color:#fff;border-radius:30px;padding:14px 22px;font-size:16px}
+  .s-text{padding:26px 22px;font-size:16px;color:var(--text)}
+  .s-text h4{font-size:20px;margin:0 0 8px}
+  .s-text .karte{background:var(--flaeche);border-radius:16px;padding:16px;margin:14px 0}
+  .bitte{background:var(--text);color:#fff;border-radius:20px;padding:26px 22px;margin:8px 0 40px}
+  .bitte h2{color:#fff}
+  .bitte .muster{display:inline-block;background:#fff;color:var(--text);border-radius:10px;padding:8px 12px;font-weight:600;margin-top:4px}
+  footer{color:var(--grau);font-size:14px;padding:0 0 40px}
+  @media (max-width:860px){
+    .raster{grid-template-columns:1fr 1fr}
+    .vorschau{grid-template-columns:1fr}
+    .telefon{margin:0 auto}
+    .schritte{grid-template-columns:1fr}
+  }
+  @media (max-width:520px){
+    body{font-size:16px}
+    .raster{grid-template-columns:1fr}
+    .telefon{height:640px;border-width:8px;border-radius:32px}
+  }
+</style>
+</head>
+<body>
+<header class="kopf"><div class="wrap"><span class="marke">MEDILUX</span><span class="stand">Logo-Varianten · Stand 27.10.2026</span></div></header>
+
+<main class="wrap">
+  <h1>Ihr Logo mit «Pflege»: alle Varianten zur Auswahl</h1>
+  <p class="lead">Sie hatten sich gewünscht: eine etwas rundere Schrift, das Wort «Pflege» unter MEDILUX, Farbe und Kranz bleiben. Hier sind alle Varianten unseres Designers, jeweils mit unseren Hinweisen. Bitte nennen Sie uns am Ende einfach die Nummer Ihres Favoriten.</p>
+  <ol class="schritte">
+    <li>Varianten 1 bis 9 ansehen</li>
+    <li>In der Live-Vorschau auf dem Handy durchscrollen</li>
+    <li>Uns die Nummer nennen</li>
+  </ol>
+
+  <section>
+    <h2>Zum Vergleich: das Logo heute</h2>
+    <div class="aktuell">
+      <div class="bild"><img src="img/aktuell.svg" alt="Aktuelles MEDILUX-Logo: gelber Kranz mit M, darunter MEDILUX"></div>
+      <p style="max-width:560px">So steht das Logo im Moment im Kopf der neuen Website. Kranz und Gelb bleiben in den Varianten 1 bis 6 genau so.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Varianten 1 bis 3: «PFLEGE» in Großbuchstaben</h2>
+    <div class="hinweis gelb">Ihr Wunsch umgesetzt: rundere Schrift, Gelb und Kranz wie bisher. Die drei Varianten unterscheiden sich nur in der Schrift von MEDILUX. <b>Unsere Einschätzung:</b> In der kleinen Größe im Kopf der Website bleibt «PFLEGE» mit etwas Abstand zwischen den Buchstaben gut lesbar.</div>
+    <div class="raster">
+      <figure><img src="img/variante-1.jpg" alt="Variante 1: rundere Schrift, PFLEGE in Großbuchstaben, gelb" loading="lazy"><figcaption><span class="nr">1</span>runde Schrift, mittelkräftig</figcaption></figure>
+      <figure><img src="img/variante-2.jpg" alt="Variante 2: breite, kräftige Schrift, PFLEGE in Großbuchstaben, gelb" loading="lazy"><figcaption><span class="nr">2</span>breite, kräftige Schrift</figcaption></figure>
+      <figure><img src="img/variante-3.jpg" alt="Variante 3: leichte runde Schrift, PFLEGE in Großbuchstaben, gelb" loading="lazy"><figcaption><span class="nr">3</span>leichte, offene Schrift</figcaption></figure>
+    </div>
+  </section>
+
+  <section>
+    <h2>Varianten 4 bis 6: «Pflege» klein geschrieben</h2>
+    <div class="hinweis gelb">Dieselben drei Schriften, «Pflege» diesmal mit kleinen Buchstaben. <b>Unsere Einschätzung:</b> Es wirkt etwas persönlicher; in sehr kleiner Größe wird das Wort aber schneller unscharf als die Großbuchstaben-Variante.</div>
+    <div class="raster">
+      <figure><img src="img/variante-4.jpg" alt="Variante 4: runde Schrift, Pflege klein geschrieben, gelb" loading="lazy"><figcaption><span class="nr">4</span>wie 1, «Pflege» klein</figcaption></figure>
+      <figure><img src="img/variante-5.jpg" alt="Variante 5: breite Schrift, Pflege klein geschrieben, gelb" loading="lazy"><figcaption><span class="nr">5</span>wie 2, «Pflege» klein</figcaption></figure>
+      <figure><img src="img/variante-6.jpg" alt="Variante 6: leichte Schrift, Pflege klein geschrieben, gelb" loading="lazy"><figcaption><span class="nr">6</span>wie 3, «Pflege» klein</figcaption></figure>
+    </div>
+  </section>
+
+  <section>
+    <h2>Varianten 7 bis 9: Vorschlag in Blau</h2>
+    <div class="hinweis">Diese Varianten gehen über Ihren Wunsch hinaus, deshalb erklären wir kurz, warum wir sie trotzdem zeigen. Gelb auf weißem Grund ist schwer zu lesen: Der Kontrast liegt bei 1,65 : 1, für gut lesbaren Text gilt 4,5 : 1 als Richtwert. Das Blau Ihrer Website erreicht 6,6 : 1 und ist damit auch für ältere Menschen gut zu erkennen. Auf dunklen Flächen, etwa auf dem großen Bild oben auf der Website, bleibt Gelb gut sichtbar. Das Wappen hinter dem M ist eine zusätzliche Idee unseres Designers; das blaue Logo funktioniert auch ohne.</div>
+    <div class="raster">
+      <figure><img src="img/variante-7.jpg" alt="Variante 7: blaues Logo, gelb gefülltes Wappen hinter dem M" loading="lazy"><figcaption><span class="nr">7</span>Wappen gelb gefüllt</figcaption></figure>
+      <figure><img src="img/variante-8.jpg" alt="Variante 8: blaues Logo, hellblau umrandetes Wappen hinter dem M" loading="lazy"><figcaption><span class="nr">8</span>Wappen hellblau umrandet</figcaption></figure>
+      <figure><img src="img/variante-9.jpg" alt="Variante 9: blaues Logo, gelb umrandetes Wappen hinter dem M" loading="lazy"><figcaption><span class="nr">9</span>Wappen gelb umrandet</figcaption></figure>
+    </div>
+  </section>
+
+  <section>
+    <h2>Live-Vorschau: so wirkt das Logo auf dem Handy</h2>
+    <div class="vorschau">
+      <div class="steuerung">
+        <p>Scrollen Sie in der Handy-Vorschau nach unten. Oben steht das ganze Logo auf dem Bild. Sobald Sie scrollen, wird der Kopf weiß und bleibt stehen.</p>
+        <div class="hinweis"><b>Unser Vorschlag für den Kopf beim Scrollen:</b> nur Kranz mit M, ohne Schriftzug. Das ganze Logo mit «Pflege» wäre dort so hoch, dass es einen großen Teil des Textes verdeckt. Probieren Sie beides aus.</div>
+        <h3>Variante</h3>
+        <div class="knoepfe" id="k-variante">
+          <button data-v="1" aria-pressed="true">1</button><button data-v="2">2</button><button data-v="3">3</button>
+          <button data-v="4">4</button><button data-v="5">5</button><button data-v="6">6</button>
+          <button data-v="7">7</button><button data-v="8">8</button><button data-v="9">9</button>
+        </div>
+        <h3>Kopf beim Scrollen</h3>
+        <div class="knoepfe" id="k-modus">
+          <button data-m="signet" aria-pressed="true">nur Kranz mit M</button><button data-m="ganz">ganzes Logo</button>
+        </div>
+        <h3>Farbe im Kopf beim Scrollen</h3>
+        <div class="knoepfe" id="k-farbe">
+          <button data-f="gelb" aria-pressed="true">Gelb</button><button data-f="blau">Blau</button>
+        </div>
+        <p style="margin-top:16px;color:var(--grau);font-size:15px">Bei den Varianten 7 bis 9 steht oben auf dem dunklen Bild das gelbe Logo, beim Scrollen im weißen Kopf die blaue Fassung mit Wappen. So hat unser Designer es gedacht: Gelb wirkt auf dem Bild, Blau auf Weiß. Die Farbwahl gilt deshalb nur für die Varianten 1 bis 6.</p>
+      </div>
+      <div class="telefon" aria-label="Vorschau der Startseite auf dem Handy">
+        <div class="seite" id="seite">
+          <div class="s-kopf" id="skopf">
+            <span class="s-logo"><img id="slogo" src="img/logo-1-gelb.png" alt="MEDILUX Logo" style="height:110px"></span>
+            <span class="burger" aria-hidden="true"><span></span><span></span><span></span></span>
+          </div>
+          <div class="s-hero">
+            <div class="kicker">24h Pflegewohnkonzepte in Berlin</div>
+            <div class="h1"><em>Pflege-WG</em> und <em>betreutes Wohnen</em> in Berlin – ein Zuhause, das für Sie da ist.</div>
+            <div class="unter">Familiär leben – in einer kleinen Wohngemeinschaft oder der eigenen Wohnung. Mit liebevoller Pflege rund um die Uhr, in Zehlendorf und Spandau.</div>
+            <span class="btn">Pflegeplatz anfragen</span>
+          </div>
+          <div class="s-text">
+            <p>MEDILUX bietet Senioren ein Zuhause mit liebevoller Pflege rund um die Uhr und Angehörigen die Sicherheit einer verlässlichen Versorgung – als Alternative zum Pflegeheim, an zwei Standorten in Berlin.</p>
+            <div class="karte"><h4>Villa Lindenthal</h4>In der Villa Lindenthal in Zehlendorf leben bis zu 28 Bewohner in drei Pflege-Wohngemeinschaften: familiär, in einem stilvollen Haus mit Garten.</div>
+            <div class="karte"><h4>Residenz Heerstraße</h4>Die Residenz Heerstraße in Spandau bietet 24 Pflege-WG-Plätze in Einzelzimmern und 42 betreute Wohnungen in einem modernen Neubau.</div>
+            <div class="karte"><h4>Für wen?</h4>Für Senioren, für Angehörige und für Sozialdienste, Berufsbetreuer, Ärzte und Pflegeberater.</div>
+            <div class="karte"><h4>Kosten</h4>Was ein Platz kostet und wer die Kosten trägt, rechnen Sie mit dem Kostenrechner auf der Seite «Kosten» aus.</div>
+            <p style="color:var(--grau)">(Vorschau – Texte von der Startseite der neuen Website)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="bitte">
+    <h2>Ihre Auswahl</h2>
+    <p>Schreiben Sie uns einfach die Nummer Ihres Favoriten (1 bis 9) und, wenn Sie möchten, ob Ihnen im Kopf beim Scrollen Gelb oder Blau lieber ist. Per WhatsApp oder E-Mail, wie es Ihnen passt.</p>
+    <span class="muster">Beispiel: «Variante 1, beim Scrollen Blau»</span>
+  </div>
+</main>
+<footer class="wrap">2Penguins für MEDILUX · Arbeitsstand, nicht öffentlich</footer>
+
+<script>
+(function(){
+  var v='1', m='signet', f='gelb';
+  var seite=document.getElementById('seite'), kopf=document.getElementById('skopf'), logo=document.getElementById('slogo');
+  function gescrollt(){ return seite.scrollTop > 120; }
+  function zeichne(){
+    var weiss=gescrollt(), wappen=(+v>=7);
+    kopf.classList.toggle('weiss', weiss);
+    if(!weiss){ logo.src='img/logo-'+(wappen?'1':v)+'-gelb.png'; logo.style.height='110px'; }
+    else if(wappen){ logo.src='img/'+(m==='signet'?'signet-':'logo-')+v+'.png'; logo.style.height=(m==='signet'?'48px':'110px'); }
+    else if(m==='signet'){ logo.src='img/signet-'+v+'-'+f+'.png'; logo.style.height='48px'; }
+    else { logo.src='img/logo-'+v+'-'+f+'.png'; logo.style.height='110px'; }
+    document.querySelectorAll('#k-farbe button').forEach(function(b){ b.disabled=wappen; b.style.opacity=wappen?'.4':'1'; });
+  }
+  function gruppe(id, attr, setz){
+    var bs=document.querySelectorAll('#'+id+' button');
+    bs.forEach(function(b){ b.addEventListener('click', function(){
+      bs.forEach(function(x){ x.setAttribute('aria-pressed', x===b ? 'true':'false'); });
+      setz(b.getAttribute(attr)); zeichne();
+    });});
+  }
+  gruppe('k-variante','data-v',function(x){v=x;});
+  gruppe('k-modus','data-m',function(x){m=x;});
+  gruppe('k-farbe','data-f',function(x){f=x;});
+  seite.addEventListener('scroll', zeichne, {passive:true});
+  zeichne();
+})();
+</script>
+</body>
+</html>
