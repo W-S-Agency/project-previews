@@ -63,6 +63,14 @@ button.sec{background:transparent;color:var(--secondary)}
 @media (prefers-color-scheme:dark){button{color:#10131A}}
 #out{display:none;margin-top:12px}
 #msg{margin-top:10px;color:var(--ok);font-weight:560;min-height:24px}
+#toast{position:fixed;left:16px;right:16px;bottom:16px;z-index:50;max-width:520px;margin:0 auto;background:#1A1A1A;color:#fff;border:1px solid #3A4250;border-radius:12px;padding:12px 16px;font-weight:560;text-align:center;display:none;box-shadow:0 6px 24px rgba(0,0,0,.35)}
+.send{margin-top:12px;padding:14px;border:1.5px solid var(--ok);border-radius:12px;background:var(--ok-soft)}
+.send p{margin:0 0 10px;font-weight:560}
+.send .btns{margin-top:0}
+a.btn{display:inline-flex;align-items:center;min-height:48px;padding:12px 18px;border-radius:10px;border:1.5px solid var(--secondary);background:var(--secondary);color:#fff;font-weight:560;text-decoration:none}
+a.btn.sec{background:transparent;color:var(--secondary)}
+@media (prefers-color-scheme:dark){a.btn{color:#10131A}a.btn.sec{color:var(--secondary)}}
+@media print{#toast,.send{display:none!important}}
 footer{max-width:760px;margin:0 auto;padding:0 16px 36px;color:var(--gray);font-size:13.5px}
 @media (min-width:700px){body{font-size:18px}h1{font-size:34px}main{padding-top:28px}}
 @media print{header,.strip,.btns,nav.toc{display:none}section{break-inside:avoid}}
@@ -119,7 +127,7 @@ footer{max-width:760px;margin:0 auto;padding:0 16px 36px;color:var(--gray);font-
     </div>
     <div id="msg" role="status" aria-live="polite"></div>
     <textarea id="out" readonly aria-label="Eure Antworten als Text"></textarea>
-    <p class="muted">«Antworten teilen» öffnet das Teilen-Menü eures Telefons. Wählt dort die WhatsApp-Gruppe mit uns oder E-Mail. Eure Auswahl bleibt auf diesem Gerät gespeichert.</p>
+    <p class="muted">«Antworten teilen» öffnet das Teilen-Menü eures Telefons. Wählt dort die WhatsApp-Gruppe mit uns oder E-Mail. Öffnet sich kein Menü, erscheinen zwei Knöpfe: WhatsApp und E-Mail. Eure Auswahl bleibt auf diesem Gerät gespeichert.</p>
   </section>
 
   <section id="s3">
@@ -245,6 +253,7 @@ footer{max-width:760px;margin:0 auto;padding:0 16px 36px;color:var(--gray);font-
     </div>
   </section>
 </main>
+<div id="toast" aria-hidden="true"></div>
 <footer>
   Entwurf 2Penguins · Stand 10.11.2026. Übersicht zur Besprechung, kein Vertrag. Alle Preise netto, sofern nicht anders angegeben.
 </footer>
@@ -289,12 +298,21 @@ function text(){
   return t;
 }
 const msg=document.getElementById("msg"),out=document.getElementById("out");
-function show(m){msg.textContent=m;setTimeout(()=>{if(msg.textContent===m)msg.textContent=""},6000)}
+const toast=document.getElementById("toast");
+function show(m){msg.textContent=m;toast.textContent=m;toast.style.display="block";clearTimeout(show.t);show.t=setTimeout(()=>{toast.style.display="none";if(msg.textContent===m)msg.textContent=""},6000)}
+function sendbox(btn,t,copied){let b=document.getElementById("send");if(b)b.remove();const e=encodeURIComponent;
+  b=document.createElement("div");b.id="send";b.className="send";b.setAttribute("role","status");
+  b.innerHTML="<p>"+(copied?"Der Text ist kopiert. ":"")+"So schickt ihr uns eure Antworten:</p><div class=\"btns\"><a class=\"btn\" id=\"wa\" target=\"_blank\" rel=\"noopener\">Mit WhatsApp senden</a><a class=\"btn sec\" id=\"ml\">Mit E-Mail senden</a></div>";
+  btn.closest(".btns").after(b);
+  b.querySelector("#wa").href="https://wa.me/?text="+e(t);
+  b.querySelector("#ml").href="mailto:?subject="+e("MEDILUX Berlin, Antworten")+"&body="+e(t);
+  toast.style.display="none";b.scrollIntoView({block:"center"})}
 function fallback(t){out.style.display="block";out.value=t;out.style.height=Math.min(420,out.scrollHeight+4)+"px";out.focus();out.select();show("Text markiert. Bitte kopieren und an uns senden.")}
 async function copy(){const t=text();try{await navigator.clipboard.writeText(t);show("Text kopiert. Jetzt in WhatsApp oder E-Mail einfügen.")}catch(e){fallback(t)}}
-async function share(){const t=text();
-  if(navigator.share){try{await navigator.share({title:"MEDILUX Berlin, Antworten",text:t});show("Danke. Antworten geteilt.");return}catch(e){if(e&&e.name==="AbortError")return}}
-  copy();
+async function share(ev){const t=text(),btn=ev.currentTarget;
+  if(navigator.share){try{await navigator.share({title:"MEDILUX Berlin, Antworten",text:t});show("Danke. Antworten geteilt.");return}catch(e){if(e&&e.name==="AbortError"){sendbox(btn,t,false);return}}}
+  let ok=false;try{await navigator.clipboard.writeText(t);ok=true}catch(e){}
+  sendbox(btn,t,ok);
 }
 document.getElementById("share").addEventListener("click",share);
 document.getElementById("share2").addEventListener("click",share);
