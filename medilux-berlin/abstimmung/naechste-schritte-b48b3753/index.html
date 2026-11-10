@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>MEDILUX Berlin: Stand und nächste Schritte</title>
+<link href="fonts/fonts.css" rel="stylesheet">
+<style>
+:root{
+  --dark:#1A1A1A;--primary:#4C7CDA;--secondary:#2B55C0;--accent:#E8C830;
+  --line:#CACFD8;--gray:#6B717B;--text:#2F2F2F;--surface:#ECF3F7;--bg:#FFFFFF;--card:#FFFFFF;
+  --ok:#1F7A4D;--ok-soft:#E4F3EA;--pill:#FFFFFF;--strip:#1A1A1A;--strip-text:#FFFFFF;
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#14171C;--card:#1C2027;--surface:#232934;--text:#E6E9EE;--dark:#F3F5F8;--gray:#A3ABB8;
+  --line:#3A4250;--pill:#232934;--ok:#6FD3A0;--ok-soft:#1D3A2C;--secondary:#8FB0F2;--strip:#0C0E11;
+}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:400 17px/1.55 "TikTok Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:var(--secondary)}
+.strip{background:var(--strip);color:var(--strip-text);font-size:13px;padding:6px 16px;text-align:center}
+header{position:sticky;top:0;z-index:5;background:var(--card);border-bottom:1px solid var(--line);padding:10px 16px;display:flex;align-items:center;gap:12px}
+header .logo{flex:none;width:54px;height:40px;color:var(--secondary);display:block}header .logo svg{width:100%;height:100%;display:block}
+header .ttl{flex:1;min-width:0;font-weight:560;color:var(--dark);font-size:15px;line-height:1.25}
+header .prog{font-size:13px;color:var(--gray);white-space:nowrap}
+main{max-width:760px;margin:0 auto;padding:20px 16px 40px;display:grid;gap:18px}
+h1{font-size:28px;line-height:1.2;margin:8px 0 4px;color:var(--dark);font-weight:560}
+.lead{margin:0;color:var(--gray)}
+section{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 16px}
+section.soft{background:var(--surface);border-color:transparent}
+h2{font-size:21px;line-height:1.25;margin:0 0 10px;color:var(--dark);font-weight:560}
+h2 .num{color:var(--primary);margin-right:6px}
+h3{font-size:16px;margin:16px 0 6px;color:var(--dark);font-weight:560}
+p{margin:0 0 10px}
+ul,ol{margin:0 0 10px;padding-left:20px}
+li{margin:5px 0}
+.price{display:inline-block;background:var(--accent);color:#1A1A1A;border-radius:8px;padding:2px 10px;font-weight:560}
+.muted{color:var(--gray);font-size:15px}
+nav.toc{display:flex;flex-wrap:wrap;gap:8px}
+nav.toc a{border:1px solid var(--line);border-radius:999px;padding:9px 14px;min-height:44px;display:inline-flex;align-items:center;font-size:15px;text-decoration:none;color:var(--dark);background:var(--pill)}
+details{border-top:1px solid var(--line);margin-top:10px;padding-top:4px}
+details summary{cursor:pointer;min-height:44px;display:flex;align-items:center;color:var(--secondary);font-weight:560;list-style:none}
+details summary::-webkit-details-marker{display:none}
+details summary::after{content:"+";margin-left:8px;font-weight:400}
+details[open] summary::after{content:"–"}
+.q{border-top:1px solid var(--line);padding:14px 0 6px}
+.q:first-of-type{border-top:0;padding-top:4px}
+.q .t{font-weight:560;color:var(--dark)}
+.q .w{color:var(--gray);font-size:15px;margin-top:2px}
+.who{display:inline-block;margin-left:8px;border:1px solid var(--line);border-radius:999px;padding:0 9px;font-size:13px;font-weight:400;color:var(--gray);vertical-align:middle}
+.opts{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 4px}
+.opts label{border:1.5px solid var(--line);border-radius:999px;padding:10px 16px;min-height:44px;display:inline-flex;align-items:center;cursor:pointer;user-select:none;background:var(--pill);font-size:16px}
+.opts input{position:absolute;opacity:0;pointer-events:none}
+.opts label:has(input:checked){background:var(--ok-soft);border-color:var(--ok);color:var(--ok);font-weight:560}
+.opts label:has(input:focus-visible){outline:2px solid var(--primary);outline-offset:2px}
+.q.done .t::after{content:" ✓";color:var(--ok)}
+textarea{width:100%;min-height:76px;border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;font:inherit;background:var(--pill);color:var(--text);resize:vertical}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+button{font:inherit;font-weight:560;cursor:pointer;border-radius:10px;border:1.5px solid var(--secondary);background:var(--secondary);color:#fff;padding:12px 18px;min-height:48px}
+button.sec{background:transparent;color:var(--secondary)}
+@media (prefers-color-scheme:dark){button{color:#10131A}}
+#out{display:none;margin-top:12px}
+#msg{margin-top:10px;color:var(--ok);font-weight:560;min-height:24px}
+footer{max-width:760px;margin:0 auto;padding:0 16px 36px;color:var(--gray);font-size:13.5px}
+@media (min-width:700px){body{font-size:18px}h1{font-size:34px}main{padding-top:28px}}
+@media print{header,.strip,.btns,nav.toc{display:none}section{break-inside:avoid}}
+</style>
+</head>
+<body>
+<div class="strip">Entwurf zur Besprechung · 2Penguins für MEDILUX · Stand 10.11.2026</div>
+<header>
+  <span class="logo" role="img" aria-label="MEDILUX"><svg aria-hidden="true" focusable="false" viewBox="0 0 160 118" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_0_5)"><path d="M55.3542 62.0864C54.7641 65.6038 54.9815 68.8572 57.1168 71.4739C51.5961 68.469 46.7198 67.4363 42.457 68.4302C47.3566 76.8005 54.5389 78.897 63.5537 75.6591C63.4062 75.5504 63.2664 75.4495 63.1189 75.3485C63.2664 75.4029 63.3984 75.4572 63.5537 75.5116C64.7727 69.5328 62.7617 64.7885 55.3542 62.0942V62.0864Z" fill="currentColor"/><path d="M48.3662 50.4004C46.5027 54.011 46.13 57.2721 47.1161 60.2305C43.8782 57.2644 39.9959 55.595 35.2051 55.8046C36.9521 64.0507 42.4651 65.3785 52.4815 67.1255C53.8481 60.7197 52.6213 55.1058 48.374 50.4004H48.3662Z" fill="currentColor"/><path d="M45.8733 37.7363C42.4491 40.3763 40.9039 44.1732 41.9444 49.5541C39.6228 43.3657 36.2995 39.3669 31.4931 38.5593C31.2136 47.481 35.228 52.8774 43.5517 54.7487C46.9293 50.0433 48.2493 44.577 45.8811 37.7285L45.8733 37.7363Z" fill="currentColor"/><path d="M44.5308 18.9146C45.8818 15.1255 45.8352 11.3285 44.0649 7.5083C39.0722 13.6657 37.4727 19.4038 41.619 24.4276C47.3494 23.325 51.915 20.7316 53.2583 14.0073C50.0515 13.7123 47.1242 15.1876 44.5308 18.9146Z" fill="currentColor"/><path d="M40.066 32.5491C40.097 27.3933 39.0799 23.0529 36.0361 20.2964C32.8603 28.4493 31.7966 35.686 39.5923 39.0636C45.3615 37.5884 48.4751 32.9373 48.941 25.1183C44.2977 26.1354 41.2617 28.5503 40.0582 32.5568L40.066 32.5491Z" fill="currentColor"/><path d="M47.9156 12.1983C53.0092 12.8428 57.2177 9.41857 60.1139 0C52.885 2.01882 46.4559 4.55787 47.9156 12.1983Z" fill="currentColor"/><path d="M85.295 83.1365H88.96C79.7278 74.4633 63.7247 74.5099 62.2184 75.0302C61.7214 75.465 61.9389 75.7833 63.5539 75.6591C70.7595 75.3563 81.4748 79.5104 85.295 83.1443V83.1365Z" fill="currentColor"/><path d="M76.4354 83.1365H72.7705C82.0027 74.4633 98.0058 74.5099 99.5121 75.0302C100.009 75.465 99.7916 75.7833 98.1766 75.6591C90.9709 75.3563 80.2557 79.5104 76.4354 83.1443V83.1365Z" fill="currentColor"/><path d="M106.368 62.0864C106.958 65.6038 106.741 68.8572 104.606 71.4739C110.126 68.469 115.002 67.4363 119.265 68.4302C114.366 76.8005 107.183 78.897 98.1686 75.6591C98.3162 75.5504 98.4559 75.4495 98.6035 75.3485C98.4559 75.4029 98.3239 75.4572 98.1686 75.5116C96.9496 69.5328 98.9606 64.7885 106.368 62.0942V62.0864Z" fill="currentColor"/><path d="M113.357 50.4004C115.22 54.011 115.593 57.2721 114.607 60.2305C117.845 57.2644 121.727 55.595 126.518 55.8046C124.771 64.0507 119.258 65.3785 109.242 67.1255C107.875 60.7197 109.102 55.1058 113.349 50.4004H113.357Z" fill="currentColor"/><path d="M115.85 37.7363C119.274 40.3763 120.819 44.1732 119.778 49.5541C122.1 43.3657 125.423 39.3669 130.23 38.5593C130.509 47.481 126.495 52.8774 118.171 54.7487C114.794 50.0433 113.474 44.577 115.842 37.7285L115.85 37.7363Z" fill="currentColor"/><path d="M117.2 18.9146C115.849 15.1255 115.896 11.3285 117.666 7.5083C122.659 13.6657 124.258 19.4038 120.112 24.4276C114.382 23.325 109.816 20.7316 108.473 14.0073C111.679 13.7123 114.607 15.1876 117.2 18.9146Z" fill="currentColor"/><path d="M121.657 32.5491C121.626 27.3933 122.643 23.0529 125.687 20.2964C128.863 28.4493 129.927 35.686 122.131 39.0636C116.362 37.5884 113.248 32.9373 112.782 25.1183C117.426 26.1354 120.462 28.5503 121.665 32.5568L121.657 32.5491Z" fill="currentColor"/><path d="M113.815 12.1983C108.721 12.8428 104.512 9.41857 101.616 0C108.845 2.01882 115.274 4.55787 113.815 12.1983Z" fill="currentColor"/><path d="M102.82 55.8945H94.4226C94.4226 52.6485 94.2185 47.1826 93.8173 39.4828C93.4161 31.7831 93.1979 26.9873 93.1838 25.0746H92.7544C92.5644 26.2194 92.0505 28.3346 91.227 31.427C90.3964 34.5195 88.8478 39.0709 86.5672 45.0883C84.2866 51.1057 83.1462 54.7078 83.1462 55.8875H76.769C76.769 54.6659 75.6779 51.0359 73.4959 44.9836C71.3138 38.9383 69.8849 34.701 69.2091 32.2787C68.5334 29.8564 67.9984 27.455 67.5902 25.0676H67.1608C67.1397 27.455 66.9074 32.5649 66.4569 40.4043C66.0064 48.2436 65.7812 53.4024 65.7812 55.8805H58.165C58.165 55.3081 58.8619 49.5769 60.2556 38.687C61.6493 27.797 62.3462 21.1095 62.3462 18.6313H73.5099C73.5099 20.7675 74.6854 25.4794 77.0435 32.7673C79.4015 40.0552 80.577 44.7184 80.577 46.7567H81.0064C81.0064 44.6974 82.3508 40.0203 85.0327 32.7394C87.7145 25.4515 89.059 20.7535 89.059 18.6313H100.138C100.138 22.5824 100.589 29.626 101.483 39.762C102.377 49.8981 102.827 55.2732 102.827 55.8875L102.82 55.8945Z" fill="currentColor"/><path d="M28.1703 117.387H22.8748C22.8748 115.321 22.7505 111.843 22.4943 106.951C22.2381 102.059 22.1061 99 22.0905 97.7887H21.8188C21.6945 98.5186 21.3762 99.8618 20.856 101.826C20.3357 103.791 19.3574 106.687 17.9131 110.515C16.4689 114.343 15.7546 116.634 15.7546 117.387H11.7324C11.7324 116.61 11.0414 114.296 9.66704 110.453C8.29269 106.609 7.39198 103.915 6.96493 102.37C6.53787 100.825 6.20399 99.3028 5.94775 97.7809H5.67599C5.66046 99.295 5.51293 102.548 5.2334 107.533C4.95387 112.518 4.80634 115.803 4.80634 117.379H0C0 117.014 0.442587 113.372 1.32 106.439C2.19741 99.5047 2.63999 95.2574 2.63999 93.6812H9.68257C9.68257 95.04 10.428 98.0371 11.911 102.673C13.3941 107.308 14.1395 110.274 14.1395 111.571H14.4113C14.4113 110.259 15.2576 107.285 16.9503 102.657C18.643 98.0294 19.4894 95.0322 19.4894 93.6889H26.4776C26.4776 96.1969 26.7571 100.677 27.3239 107.13C27.8908 113.582 28.1703 116.999 28.1703 117.387Z" fill="currentColor"/><path d="M50.5092 113.38L50.3616 117.387H34.8711C35.0264 113.722 35.104 109.591 35.104 104.994C35.104 100.398 35.0264 96.8104 34.8711 93.6968H49.6473L49.4454 97.6801C45.8038 97.4859 42.5038 97.385 39.5454 97.385C39.6697 99.0699 39.724 101.058 39.724 103.356C42.2631 103.356 44.973 103.286 47.8614 103.154V106.959C45.0195 106.835 42.3097 106.78 39.724 106.78C39.724 109.242 39.7706 111.548 39.8716 113.699C43.1948 113.699 46.7355 113.598 50.5014 113.388L50.5092 113.38Z" fill="currentColor"/><path d="M76.4119 104.715C76.4119 108.162 75.3093 111.167 73.0964 113.737C70.8834 116.307 67.7931 117.596 63.8176 117.596C62.0239 117.596 59.547 117.526 56.3945 117.379C56.5498 113.714 56.6275 109.583 56.6275 104.986C56.6275 100.39 56.5498 96.8024 56.3945 93.6888H59.5781C60.0983 93.6888 60.8748 93.6733 61.9075 93.6344C62.9402 93.5956 63.6157 93.5801 63.9263 93.5801C68.3056 93.5801 71.4813 94.6749 73.4536 96.8568C75.4258 99.0387 76.4119 101.663 76.4119 104.715ZM71.4425 105.499C71.4425 103.169 70.7592 101.205 69.4082 99.6132C68.0571 98.0215 65.9762 97.2217 63.1809 97.2217C62.6606 97.2217 61.9463 97.2761 61.0301 97.3848C61.1543 99.8074 61.2086 102.346 61.2086 104.994C61.2086 107.89 61.2708 110.771 61.3872 113.621C62.1792 113.776 62.9635 113.854 63.7555 113.854C66.3644 113.854 68.2978 113.046 69.5479 111.423C70.798 109.801 71.4347 107.828 71.4347 105.499H71.4425Z" fill="currentColor"/><path d="M87.4458 117.387H82.2979C82.4531 113.629 82.5308 109.498 82.5308 104.994C82.5308 100.491 82.4531 96.8027 82.2979 93.6968H87.4458C87.2905 96.7561 87.2129 100.522 87.2129 104.994C87.2129 109.467 87.2905 113.699 87.4458 117.387Z" fill="currentColor"/><path d="M109.824 113.419L109.676 117.387H94.5508C94.6983 114.102 94.7682 109.972 94.7682 104.994C94.7682 100.429 94.6983 96.6629 94.5508 93.6968H99.6677C99.5202 96.4532 99.4503 100.219 99.4503 104.994C99.4503 108.644 99.3727 111.548 99.2174 113.691C102.564 113.691 106.105 113.598 109.824 113.419Z" fill="currentColor"/><path d="M134.174 93.6889C134.066 97.7654 134.011 101.842 134.011 105.918C134.011 113.978 130.711 118 124.111 118C120.85 118 118.389 117.107 116.743 115.321C115.096 113.535 114.266 110.336 114.266 105.709C114.266 101.632 114.211 97.6256 114.103 93.6812H119.251C119.095 97.7809 119.018 101.741 119.018 105.546C119.018 108.884 119.445 111.167 120.291 112.41C121.137 113.652 122.45 114.265 124.22 114.265C125.99 114.265 127.419 113.652 128.242 112.417C129.065 111.183 129.477 108.884 129.477 105.515C129.477 101.811 129.399 97.8741 129.244 93.6889H134.174Z" fill="currentColor"/><path d="M159.953 117.387H153.857C153.857 116.96 153.166 115.407 151.784 112.713C150.441 110.08 149.47 108.364 148.888 107.565H148.593C148.073 108.279 147.195 109.964 145.968 112.604C144.71 115.306 144.074 116.905 144.074 117.387H138.452C138.452 117.022 139.632 114.98 141.993 111.253C144.353 107.526 145.867 105.336 146.535 104.684V104.412C145.883 103.659 144.586 101.819 142.661 98.8836C140.673 95.8165 139.679 94.085 139.679 93.6968H145.541C145.541 94.085 146.108 95.3895 147.234 97.6102C148.36 99.8309 149.16 101.221 149.618 101.78H149.913C150.363 101.213 151.124 99.8231 152.196 97.6102C153.267 95.3972 153.803 94.1005 153.803 93.6968H159.192C159.192 94.0384 158.151 95.7234 156.07 98.7438C153.989 101.764 152.662 103.566 152.079 104.14V104.412C152.879 105.282 154.393 107.557 156.622 111.222C158.85 114.887 159.96 116.944 159.96 117.395L159.953 117.387Z" fill="currentColor"/></g><defs><clipPath id="clip0_0_5"><rect width="159.953" height="118" fill="currentColor"/></clipPath></defs></svg></span>
+  <div class="ttl">Website Berlin: Stand und nächste Schritte</div>
+  <div class="prog" id="prog"></div>
+</header>
+<main>
+  <div>
+    <h1>medilux-berlin.de ist online. So geht es weiter.</h1>
+    <p class="lead">Für Jos und Kirill. Lesezeit: zwei Minuten für das Wichtigste, zehn für alles.</p>
+  </div>
+
+  <section class="soft" id="kurz">
+    <h2>In 2 Minuten</h2>
+    <ol>
+      <li><b>medilux-berlin.de ist seit 09.11. online.</b> Formulare und Messung sind getestet.</li>
+      <li><b>Zum Abschluss fehlen noch eure Antworten</b> auf die Mail vom 08.11. und ein Blick auf die ganze Website. Das geht unten mit ein paar Klicks.</li>
+      <li><b>Die Berliner Seiten auf medilux.info</b> leiten wir auf die neue Website weiter, sobald die Google-Anzeige für Berlin dorthin führt.</li>
+      <li><b>Wie es weitergehen kann:</b> drei Vorschläge weiter unten. Jeder steht für sich, nichts davon ist Pflicht.</li>
+    </ol>
+    <nav class="toc" aria-label="Inhalt">
+      <a href="#s1">1 · Fertig</a><a href="#s2">2 · Eure Antworten</a><a href="#s3">3 · Weiterleitung</a><a href="#s4">4 · medilux.info</a><a href="#s5">5 · Laufende Arbeit</a><a href="#s6">6 · Assistent</a>
+    </nav>
+  </section>
+
+  <section id="s1">
+    <h2><span class="num">1</span>Was fertig ist</h2>
+    <ul>
+      <li>Website online seit 09.11.2026, 18 Seiten, darunter vier Ratgeber-Artikel.</li>
+      <li>Beide Anfrageformulare am 10.11. mit Testanfragen geprüft.</li>
+      <li>Google und Bing kennen die neue Website: Alle Seiten sind dort angemeldet.</li>
+      <li>Die beiden Google-Profile (Villa Lindenthal, Residenz Heerstraße) verlinken seit 10.11. auf die neue Website. Bei Google bestätigt sind sie noch nicht.</li>
+      <li>Messung für Google Analytics und Google Ads ist seit 10.11. eingebaut und getestet.</li>
+    </ul>
+    <p class="muted">Noch offen von unserer Seite: Den Zugang zur Besucherstatistik (Google Analytics) richten wir für euch ein.</p>
+    <p class="muted">Bisher beauftragt: Website 7.280 € netto, Foto- und Videoaufnahmen 1.800 € netto.</p>
+  </section>
+
+  <section id="s2">
+    <h2><span class="num">2</span>Was wir noch von euch brauchen</h2>
+    <p class="muted">Das meiste steht schon in der Mail vom 08.11. Hier könnt ihr es kurz beantworten: antippen, am Ende teilen. Fragen zum Inhalt sind mit «Jos» markiert.</p>
+    <div id="qs"></div>
+    <h3>Anmerkung dazu (optional)</h3>
+    <textarea id="note" placeholder="Zum Beispiel: Korrektur zu den Verträgen kommt bis Freitag."></textarea>
+    <div class="btns">
+      <button type="button" id="share">Antworten teilen</button>
+      <button type="button" class="sec" id="copy">Text kopieren</button>
+    </div>
+    <div id="msg" role="status" aria-live="polite"></div>
+    <textarea id="out" readonly aria-label="Eure Antworten als Text"></textarea>
+    <p class="muted">«Antworten teilen» öffnet das Teilen-Menü eures Telefons. Wählt dort die WhatsApp-Gruppe mit uns oder E-Mail. Eure Auswahl bleibt auf diesem Gerät gespeichert.</p>
+  </section>
+
+  <section id="s3">
+    <h2><span class="num">3</span>Berliner Seiten auf medilux.info</h2>
+    <ul>
+      <li>Auf medilux.info gibt es fünf Adressen zu den Berliner Häusern. Im Oktober kamen rund 30 % der Klicks aus der Google-Suche dort über diese Seiten.</li>
+      <li>Wir leiten sie auf die passenden Seiten von medilux-berlin.de weiter. Wer die alte Adresse aufruft, landet beim richtigen Haus auf der neuen Website. Nach der Umstellung prüfen wir die Adressen mehrfach nach.</li>
+      <li>Reihenfolge: Zuerst führt die Google-Anzeige für Berlin auf die neue Website, voraussichtlich bis Ende dieser Woche. Danach schalten wir die Weiterleitungen.</li>
+      <li>Für medilux.info heißt das: Die Klickzahlen dort sinken um diesen Anteil. Das ist gewollt, die Besucher kommen auf der Berliner Website an. Im Monatsbericht für medilux.info weisen wir das gesondert aus.</li>
+    </ul>
+    <div class="q" data-q="weiterleitung" data-t="Weiterleitung der Berliner Seiten">
+      <div class="t">Die Weiterleitung hatten wir am 30.09. mit Jos besprochen. Passt das so?</div>
+      <div class="opts" data-o="einverstanden|lieber erst besprechen"></div>
+    </div>
+  </section>
+
+  <section id="s4">
+    <h2><span class="num">4</span>medilux.info auf die neue Plattform bringen</h2>
+    <p><span class="price">3.700 € netto einmalig</span> <span class="muted">(4.403 € inkl. 19 % MwSt.)</span></p>
+    <p>Die Magdeburger Website zieht auf dieselbe Plattform wie medilux-berlin.de: gleiches Design, gleiche Technik, eure Inhalte bleiben. Das ist ein Angebot, keine Pflicht: medilux.info läuft auch so weiter.</p>
+    <details><summary>Worauf der Preis beruht</summary>
+      <ul>
+        <li>Design, Seitenbausteine und Technik sind mit medilux-berlin.de fertig und erprobt. Für Magdeburg bauen wir sie nicht neu, wir verwenden sie wieder.</li>
+        <li>Die Inhalte gibt es schon: Texte, Bilder und Beiträge von medilux.info werden übernommen.</li>
+        <li>Beim Berliner Auftritt haben wir Konzept, Texte, Design und Technik neu entwickelt. Das alles gibt es jetzt. Deshalb kostet der Umzug etwa die Hälfte.</li>
+        <li>Der Preis ist fest. Wird der Umzug aufwendiger als gedacht, ist das unser Risiko, solange der Umfang unten gleich bleibt.</li>
+      </ul>
+    </details>
+    <details><summary>Was enthalten ist</summary>
+      <ul>
+        <li>Alle heutigen Seiten im neuen Design: Startseite, die Seiten der Wohngemeinschaften mit Übersicht, Tagespflege, Leistungen, Betreuungsformen, Über uns, Kontakt und die übrigen Seiten (heute 34).</li>
+        <li>Alle Beiträge aus Blog und Ratgeber (heute 36), mit Bildern.</li>
+        <li>Stellenangebote mit Bewerbungsformular.</li>
+        <li>Kostenrechner auf Basis des Berliner Rechners.</li>
+        <li>Mediathek und 360°-Ansicht in einfacher Form (eingebettet), Glossar und Fragen &amp; Antworten als Seiten.</li>
+        <li>Kontaktformular, Impressum, Datenschutz, Cookie-Einwilligung.</li>
+        <li>Weiterleitungen von allen alten Adressen, damit Google-Platzierungen und Anzeigen weiterlaufen.</li>
+        <li>Messung für Google Analytics und Google Ads, getestet wie bei Berlin.</li>
+        <li>Prüfung vor dem Start und Umschaltung der Domain.</li>
+      </ul>
+    </details>
+    <details><summary>Was nicht enthalten ist</summary>
+      <ul>
+        <li>Neue Texte oder das Überarbeiten bestehender Texte.</li>
+        <li>Neue Fotos und Videos.</li>
+        <li>Neue Bereiche oder Funktionen, die es heute nicht gibt.</li>
+        <li>Ein eigener Kostenrechner mit anderer Logik als in Berlin.</li>
+        <li>Betreuung der Google-Anzeigen.</li>
+      </ul>
+      <p>Zusätzliches rechnen wir nach Aufwand ab und sagen den Betrag vorher an.</p>
+    </details>
+    <details><summary>Laufende Kosten und Zahlung</summary>
+      <ul>
+        <li><b>Hosting:</b> 15 € netto im Monat (17,85 € inkl. MwSt.), wie bei medilux-berlin.de. Weitere laufende Kosten entstehen durch den Umzug nicht.</li>
+        <li><b>Domain:</b> medilux.info bleibt bei eurem heutigen Anbieter. Wir ändern nur, wohin die Domain zeigt.</li>
+        <li><b>Zahlung:</b> wie beim Berliner Auftritt, 50 % zum Start und 50 % nach Abschluss.</li>
+      </ul>
+    </details>
+    <details><summary>Was ihr davon habt</summary>
+      <ul>
+        <li><b>Weniger Sicherheitsrisiken und weniger Pflege.</b> medilux.info läuft heute mit WordPress und 25 aktiven Erweiterungen, die laufend aktualisiert werden müssen. Die neue Plattform kommt ohne solche Erweiterungen aus.</li>
+        <li><b>Alte Technik fällt weg.</b> Die heutige PHP-Version von medilux.info bekommt nur noch bis 31.12.2026 Sicherheitsupdates. Das lässt sich auch ohne Umzug lösen: Für die Umstellung beim Hoster warten wir noch auf die Zugangsdaten (unsere Bitte vom 02.11.). Mit dem Umzug entfällt das Thema dauerhaft.</li>
+        <li><b>Ein Auftritt statt zwei.</b> Magdeburg und Berlin sehen gleich aus und funktionieren gleich. Was wir für einen Standort verbessern, steht auch dem anderen zur Verfügung.</li>
+        <li><b>Inhalte einfacher ändern.</b> Texte, Bilder und Beiträge lassen sich in einer übersichtlichen Oberfläche ändern, ohne etwas am Aufbau zu verstellen. Das machen wie bisher wir, oder ihr selbst.</li>
+        <li><b>Vorbereitet für später.</b> Auf dieser Plattform lassen sich Assistenten ergänzen, zum Beispiel ein Chat für erste Fragen von Angehörigen. Das ist eine Möglichkeit für später und nicht Teil dieses Angebots.</li>
+      </ul>
+    </details>
+    <details><summary>Wie es ablaufen würde</summary>
+      <ol>
+        <li>Ihr sagt Ja. Wir gehen die heutigen Seiten einmal gemeinsam durch: Was bleibt, was kann weg.</li>
+        <li>Wir bauen die neue Website auf einer Testadresse. medilux.info läuft unverändert weiter.</li>
+        <li>Ihr schaut euch alles an. Danach schalten wir um, an einem festen Tag.</li>
+      </ol>
+      <p><b>Dauer:</b> voraussichtlich etwa vier bis sechs Wochen ab eurem Ja, wenn eure Rückmeldungen jeweils innerhalb weniger Tage kommen.</p>
+    </details>
+    <div class="q" data-q="umzug" data-t="medilux.info auf die neue Plattform (3.700 €)">
+      <div class="t">Wie steht ihr dazu?</div>
+      <div class="opts" data-o="interessiert mich|später|nicht jetzt"></div>
+    </div>
+  </section>
+
+  <section id="s5">
+    <h2><span class="num">5</span>Laufende Arbeit für Berlin</h2>
+    <p><span class="price">600 € netto im Monat</span> <span class="muted">(714 € inkl. MwSt.)</span></p>
+    <p>Eine neue Website wird bei Google nicht von allein gefunden. Mit diesem Paket arbeiten wir jeden Monat daran, dass Angehörige und Sozialdienste in Berlin euch finden.</p>
+    <p>Die Betreuung von medilux.info gilt der Magdeburger Website und läuft unverändert weiter. Berlin ist eine eigene Website mit eigenem Markt, deshalb ein eigenes Paket.</p>
+    <h3>Was jeden Monat passiert</h3>
+    <ul>
+      <li><b>Google- und Bing-Profile beider Häuser:</b> Angaben aktuell halten, Fotos und Beiträge einstellen, Bewertungen beantworten, Veränderungen beobachten. Die Bing-Profile legen wir dafür neu an.</li>
+      <li><b>Zwei neue Ratgeber-Artikel</b> zu Fragen, die Angehörige tatsächlich bei Google stellen. Wir wählen die Themen nach Suchdaten aus, schreiben die Texte und stellen sie ein.</li>
+      <li><b>Eine neue Seite</b> zu einem Suchbegriff, bei dem ihr noch nicht gefunden werdet.</li>
+      <li><b>Mitbewerber im Blick:</b> Wer steht in Berlin vor euch, und womit.</li>
+      <li><b>Monatsbericht:</b> Wie oft wurde die Website gefunden, wie viele Anfragen kamen, was haben wir gemacht.</li>
+    </ul>
+    <p><b>Im ersten Monat zusätzlich:</b> Wir prüfen, wo die beiden Häuser in Pflege-Portalen und Verzeichnissen stehen, und korrigieren Name, Adresse, Telefon und Website.</p>
+    <details><summary>Wozu das gut ist</summary>
+      <ul>
+        <li><b>Im Umkreis gefunden werden.</b> Bei der Suche nach Pflege in der Nähe zeigt Google zuerst die Karte mit Profilen und Bewertungen. In der jährlichen Umfrage unter Fachleuten für lokale Suche (Whitespark, Ausgabe 2026) stehen Angaben aus dem Google-Profil auf den ersten Plätzen: Kategorie, Standort, Name, Öffnungszeiten und die Sternebewertung.</li>
+        <li><b>Fragen beantworten, bevor jemand anruft.</b> Wer «Pflege-WG oder Pflegeheim» sucht, steht am Anfang der Entscheidung. Ein guter Artikel bringt diese Menschen zu euch. Auch die KI-Antworten von Google greifen auf normale Webseiten zurück und verlinken sie.</li>
+        <li><b>Sehen, was wirkt.</b> Der Bericht zeigt, woher Anfragen kommen.</li>
+      </ul>
+    </details>
+    <details><summary>Was wir nicht versprechen und was wir von euch brauchen</summary>
+      <p><b>Nicht versprechen können wir</b> bestimmte Plätze bei Google oder eine bestimmte Zahl von Anfragen. Suchergebnisse entwickeln sich über Monate.</p>
+      <p><b>Von euch brauchen wir</b> eine Person, die Artikel und Seiten kurz freigibt, am besten innerhalb einer Woche.</p>
+      <p><b>Start und Laufzeit:</b> ab 1. Dezember 2026, monatlich kündbar.</p>
+    </details>
+    <div class="q" data-q="seo" data-t="Laufende Arbeit für Berlin (600 € im Monat)">
+      <div class="t">Wie steht ihr dazu?</div>
+      <div class="opts" data-o="interessiert mich|später|nicht jetzt"></div>
+    </div>
+  </section>
+
+  <section id="s6">
+    <h2><span class="num">6</span>Assistent auf der Website</h2>
+    <p>Ein Chat, der Angehörigen rund um die Uhr erste Fragen beantwortet und Anfragen an euch weitergibt. Wenn euch das interessiert, machen wir dazu ein eigenes Angebot.</p>
+    <div class="q" data-q="assistent" data-t="Assistent auf der Website">
+      <div class="t">Sollen wir ein Angebot vorbereiten?</div>
+      <div class="opts" data-o="ja, gern|später|nein"></div>
+    </div>
+    <div class="btns">
+      <button type="button" id="share2">Alle Antworten teilen</button>
+    </div>
+  </section>
+</main>
+<footer>
+  Entwurf 2Penguins · Stand 10.11.2026. Übersicht zur Besprechung, kein Vertrag. Alle Preise netto, sofern nicht anders angegeben.
+</footer>
+<script>
+const Q=[
+ {id:"vertraege",p:"Jos",t:"Betreutes Wohnen, «Verträge und Abrechnung»",w:"Text steht auf der Seite Betreutes Wohnen.",o:["passt so","Korrektur folgt"]},
+ {id:"medvia",t:"Datenschutz: Rückmeldung von medvia",o:["liegt vor","noch offen"]},
+ {id:"ratgeber",p:"Jos",t:"Ratgeber, vier Artikel",o:["passt so","Änderungen folgen"]},
+ {id:"test",t:"Testanfragen vom 10.11.",w:"09:53 und 12:04 Uhr, Absender «MEDILUX Website».",o:["angekommen","nicht angekommen","im Spam"]},
+ {id:"durchsicht",t:"Website einmal ganz durchsehen, auch auf dem Telefon",o:["erledigt, passt","erledigt, Anmerkungen folgen","noch nicht"]},
+ {id:"profile",t:"Google-Profile: Bestätigung bei Google",w:"Beide Profile sind angelegt, aber noch nicht bestätigt. Wie bestätigt wird, zeigt Google im Profil an. Wir sagen euch vorher, was nötig ist.",o:["macht Jos","macht Kirill","bitte gemeinsam mit euch"]},
+ {id:"baeder",p:"Jos",t:"Villa Lindenthal, Bäder",o:["ein Bad je Zimmer","ein Bad je Wohngemeinschaft"]},
+ {id:"rest",p:"Jos",t:"Die übrigen Punkte aus der Mail",w:"Porträt Jos, Team-Block, Kopie der Anfragen, Küche und Mahlzeiten im Betreuten Wohnen.",o:["Antwort kommt per Mail","lieber kurz telefonisch"]}
+];
+const KEY="medilux-gespraech-2026-11";
+let st={};try{st=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){};prog()};
+const esc=s=>s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+function opts(box,id,list){
+  box.innerHTML=list.map(o=>'<label><input type="radio" name="'+id+'" value="'+esc(o)+'"><span>'+esc(o)+'</span></label>').join("");
+  box.querySelectorAll("input").forEach(i=>{
+    i.checked=st[id]===i.value;
+    i.addEventListener("click",()=>{ if(st[id]===i.value){i.checked=false;delete st[id]} else {st[id]=i.value} mark(id);save()});
+  });
+}
+function mark(id){document.querySelectorAll('[data-q="'+id+'"]').forEach(d=>d.classList.toggle("done",!!st[id]))}
+const qs=document.getElementById("qs");
+Q.forEach((q,k)=>{const d=document.createElement("div");d.className="q";d.dataset.q=q.id;
+  d.innerHTML='<div class="t">'+(k+1)+'. '+esc(q.t)+(q.p?'<span class="who">'+esc(q.p)+'</span>':'')+'</div>'+(q.w?'<div class="w">'+esc(q.w)+'</div>':'')+'<div class="opts"></div>';
+  qs.appendChild(d);opts(d.querySelector(".opts"),q.id,q.o);mark(q.id)});
+const EXTRA=[...document.querySelectorAll("section > .q[data-q]")].map(d=>({id:d.dataset.q,t:d.dataset.t,o:d.querySelector(".opts").dataset.o.split("|"),el:d}));
+EXTRA.forEach(x=>{opts(x.el.querySelector(".opts"),x.id,x.o);mark(x.id)});
+const note=document.getElementById("note");note.value=st._note||"";note.addEventListener("input",()=>{st._note=note.value;save()});
+function prog(){const n=Q.filter(q=>st[q.id]).length;document.getElementById("prog").textContent=n+" von "+Q.length}
+prog();
+function text(){
+  let t="MEDILUX Berlin, Antworten vom "+new Date().toLocaleDateString("de-DE")+"\n\nZum Abschluss der Website:\n";
+  Q.forEach((q,k)=>{t+=(k+1)+". "+q.t+": "+(st[q.id]||"(noch offen)")+"\n"});
+  if((st._note||"").trim()) t+="\nAnmerkung: "+st._note.trim()+"\n";
+  t+="\nNächste Schritte:\n";
+  EXTRA.forEach(x=>{t+="- "+x.t+": "+(st[x.id]||"(noch offen)")+"\n"});
+  return t;
+}
+const msg=document.getElementById("msg"),out=document.getElementById("out");
+function show(m){msg.textContent=m;setTimeout(()=>{if(msg.textContent===m)msg.textContent=""},6000)}
+function fallback(t){out.style.display="block";out.value=t;out.style.height=Math.min(420,out.scrollHeight+4)+"px";out.focus();out.select();show("Text markiert. Bitte kopieren und an uns senden.")}
+async function copy(){const t=text();try{await navigator.clipboard.writeText(t);show("Text kopiert. Jetzt in WhatsApp oder E-Mail einfügen.")}catch(e){fallback(t)}}
+async function share(){const t=text();
+  if(navigator.share){try{await navigator.share({title:"MEDILUX Berlin, Antworten",text:t});show("Danke. Antworten geteilt.");return}catch(e){if(e&&e.name==="AbortError")return}}
+  copy();
+}
+document.getElementById("share").addEventListener("click",share);
+document.getElementById("share2").addEventListener("click",share);
+document.getElementById("copy").addEventListener("click",copy);
+</script>
+</body>
+</html>
