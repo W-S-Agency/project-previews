@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>S/4HANA-Migration und SAP-Betrieb absichern | andagon</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="Inhaltsentwurf der SAP-Landingpage für andagon People. Nicht öffentlich.">
+<style>
+  :root{
+    --navy:#0b2a45; --blue:#1763b8; --blue-d:#114a8a; --teal:#0a9c92;
+    --ink:#15212e; --muted:#56657a; --line:#e2e8f0; --bg:#ffffff; --bg-soft:#f4f7fb;
+    --red:#c62828; --amber:#b26a00; --green:#1f7a3d;
+    --radius:14px; --maxw:1080px;
+    --shadow:0 10px 30px rgba(11,42,69,.08);
+    font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;color:var(--ink);background:var(--bg);line-height:1.65;font-size:17px}
+  h1,h2,h3{line-height:1.2;color:var(--navy);margin:0 0 .4em}
+  h1{font-size:clamp(1.9rem,4.4vw,3rem);letter-spacing:-.5px}
+  h2{font-size:clamp(1.5rem,3vw,2.1rem)}
+  h3{font-size:1.15rem}
+  p{margin:0 0 1rem}
+  a{color:var(--blue)}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+  section{padding:64px 0;border-bottom:1px solid var(--line)}
+  .eyebrow{display:inline-block;font-size:.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--teal);background:rgba(10,156,146,.1);padding:6px 12px;border-radius:999px;margin-bottom:14px}
+  .lead{font-size:1.18rem;color:var(--muted);max-width:62ch}
+  .skip{position:absolute;left:-9999px;top:0;background:var(--navy);color:#fff;padding:10px 16px;z-index:100}
+  .skip:focus{left:8px;top:8px}
+  a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--teal);outline-offset:2px;border-radius:4px}
+  .draft{background:#fff8e6;border-bottom:1px solid #f0dca0;color:#7a5b00;font-size:.85rem;text-align:center;padding:9px 16px}
+  .draft strong{color:#5e4600}
+  header.top{position:sticky;top:0;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:50}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 22px;max-width:var(--maxw);margin:0 auto;gap:16px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--navy);letter-spacing:-.3px}
+  .logo .mark{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,var(--blue),var(--teal));display:grid;place-items:center;color:#fff;font-weight:800}
+  .btn{display:inline-block;background:var(--blue);color:#fff;font-weight:700;text-decoration:none;padding:13px 22px;border-radius:999px;border:0;cursor:pointer;font-size:1rem;transition:background .15s}
+  .btn:hover{background:var(--blue-d)}
+  .btn.ghost{background:transparent;color:var(--blue);border:2px solid var(--blue);padding:11px 20px}
+  .btn.ghost:hover{background:rgba(23,99,184,.07)}
+  .btn.lg{padding:15px 28px;font-size:1.05rem}
+  .nav .btn{padding:10px 18px;font-size:.95rem}
+  .hero{background:linear-gradient(180deg,var(--bg-soft),#fff);border-bottom:1px solid var(--line)}
+  .hero .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin:22px 0 14px}
+  .reassure{display:flex;gap:18px;flex-wrap:wrap;color:var(--navy);font-weight:600;font-size:.98rem;margin-top:8px}
+  .reassure span{display:flex;align-items:center;gap:7px}
+  .check{color:var(--green);font-weight:800}
+  .grid{display:grid;gap:18px}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+  .card h3{margin-top:0}
+  .stat{font-size:2.4rem;font-weight:800;color:var(--teal);line-height:1}
+  .soft{background:var(--bg-soft)}
+  ul.clean{list-style:none;padding:0;margin:0}
+  ul.clean li{padding:10px 0 10px 30px;border-bottom:1px solid var(--line);position:relative}
+  ul.clean li:last-child{border-bottom:0}
+  ul.clean li::before{content:"✓";position:absolute;left:0;color:var(--teal);font-weight:800}
+  ul.vs{list-style:none;padding:0;margin:0}
+  ul.vs li{padding:9px 0;border-bottom:1px solid var(--line)}
+  ul.vs li:last-child{border-bottom:0}
+  .box{background:var(--bg-soft);border:1px solid var(--line);border-radius:12px;padding:16px 18px;font-size:.95rem;color:var(--muted)}
+  .confirm{background:#fff8e6;border:1px solid #f0dca0;border-radius:12px;padding:16px 18px;font-size:.93rem;color:#6b5200;margin-top:22px}
+  .confirm .tag{display:inline-block;background:var(--amber);color:#fff;font-weight:800;font-size:.72rem;letter-spacing:.05em;text-transform:uppercase;padding:4px 10px;border-radius:999px;margin-bottom:8px}
+  .confirm p{margin:0 0 .6rem}
+  .confirm p:last-child{margin-bottom:0}
+  .kicker{font-size:.72rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--teal)}
+  fieldset{border:0;padding:0;margin:0 0 18px}
+  form .field{margin-bottom:14px}
+  label.fl{display:block;font-weight:600;margin-bottom:5px;color:var(--navy)}
+  input[type=text],input[type=email],textarea,select{width:100%;border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:1rem;font-family:inherit;background:#fff}
+  textarea{min-height:90px;resize:vertical}
+  .req{color:var(--red)}
+  .consent{display:flex;gap:10px;align-items:flex-start;font-size:.9rem;color:var(--muted)}
+  .logobar{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;align-items:center}
+  .logoph{height:54px;border:1px dashed var(--line);border-radius:10px;display:grid;place-items:center;color:var(--muted);font-size:.78rem;background:#fff}
+  details.faq{border:1px solid var(--line);border-radius:12px;margin-bottom:10px;background:#fff;overflow:hidden}
+  details.faq summary{cursor:pointer;padding:16px 18px;font-weight:700;color:var(--navy);list-style:none;display:flex;justify-content:space-between;gap:12px}
+  details.faq summary::-webkit-details-marker{display:none}
+  details.faq summary::after{content:"+";color:var(--teal);font-weight:800;font-size:1.3rem}
+  details.faq[open] summary::after{content:"–"}
+  details.faq .a{padding:0 18px 16px;color:var(--muted)}
+  footer{background:var(--navy);color:#cdd9e6;padding:46px 0 30px;border:0}
+  footer h3{color:#fff}
+  footer a{color:#cdd9e6}
+  .fnote{font-size:.82rem;color:#8aa0b8;margin-top:18px}
+  .ph-note{font-size:.78rem;color:var(--muted);border:1px dashed var(--line);border-radius:6px;padding:1px 7px;display:inline-block}
+  @media(max-width:860px){.g3,.g2,.logobar{grid-template-columns:1fr 1fr}}
+  @media(max-width:560px){.g3,.g2,.logobar{grid-template-columns:1fr}.nav .btn{display:none}}
+
+  blockquote.quote{margin:22px 0;padding:18px 20px;border-left:4px solid var(--teal);background:#f7fbfb;border-radius:0 8px 8px 0}
+  blockquote.quote p{margin:0 0 8px;font-size:1.02rem;line-height:1.6}
+  blockquote.quote cite{font-style:normal;font-weight:700;font-size:.88rem;color:#555}
+</style>
+</head>
+<body>
+<a class="skip" href="#inhalt">Zum Inhalt springen</a>
+
+<div class="draft">
+  <strong>Inhaltsentwurf zur Freigabe</strong> — es geht hier um die <strong>Texte</strong>, nicht um die Gestaltung.
+  Layout, Komponenten, Barrierefreiheit, Cookie-Banner und Formular werden von der Barrierefreiheit-Seite übernommen.
+  Das Design wird nach der Textfreigabe entwickelt. Die gelb markierten Kästen sind Fragen an andagon und erscheinen nicht auf der Seite.
+</div>
+
+<header class="top">
+  <div class="nav">
+    <div class="logo"><span class="mark">a</span> andagon <span class="ph-note">Logo</span></div>
+    <a class="btn" href="#kontakt">Erstgespräch vereinbaren</a>
+  </div>
+</header>
+
+<main id="inhalt">
+
+<!-- Block 1 -->
+<section class="hero">
+  <div class="wrap">
+    <h1>Ihre Prozesse müssen die S/4HANA-Umstellung überstehen. Und jedes Release danach.</h1>
+    <p class="lead">andagon sichert Ihre Geschäftsprozesse über Systemgrenzen hinweg ab, bei der S/4HANA-Umstellung und bei jeder anderen Änderung im laufenden Betrieb.</p>
+    <p>Viele Projekte scheitern nicht an der Implementierung, sondern am Übergang in den Produktivbetrieb. Wir prüfen vorher, ob Ihre geschäftskritischen Prozesse über alle beteiligten Systeme hinweg tatsächlich funktionieren &ndash; risikobasiert, also dort, wo ein Fehler am meisten kosten würde. Mit automatisierten Tests schaffen wir zugleich die Grundlage dafür, dass diese Prozesse auch bei zukünftigen Änderungen zuverlässig funktionieren.</p>
+    <div class="cta-row">
+      <a class="btn lg" href="#kontakt">Erstgespräch vereinbaren</a>
+      <a class="btn ghost" href="#vor-go-live">Wir stehen vor dem Go-Live</a>
+      <a class="btn ghost" href="#betrieb">Wir möchten laufende Änderungen absichern</a>
+    </div>
+  </div>
+</section>
+
+<!-- Block 2 -->
+<section class="soft">
+  <div class="wrap">
+    <h2>Ihre SAP-Beratung migriert. Wer prüft?</h2>
+    <p class="lead">Ob Ihre Prozesse auch nach der Migration noch zuverlässig funktionieren, zeigt sich oft erst im produktiven Betrieb.</p>
+    <p>In Migrationsprojekten wird häufig zu spät klar, dass Qualitätssicherung, Testmanagement und die Validierung geschäftskritischer Prozessketten nicht ausreichend berücksichtigt wurden. Ihre SAP-Beratung konzentriert sich auf die Umsetzung, und das soll sie auch. Eine unabhängige Prüfung schafft die notwendige zweite Perspektive: das Vier-Augen-Prinzip für Ihre Umstellung.</p>
+    <p>Genau diese Rolle nimmt andagon ein: <strong>Ihr unabhängiger Prüfpartner für SAP-Umstellungen und -Änderungen.</strong></p>
+    <div class="grid g2" style="margin-top:22px">
+      <div class="card">
+        <span class="kicker">Ihre SAP-Beratung</span>
+        <ul class="clean">
+          <li>Führt die SAP-Migration durch</li>
+          <li>Verantwortet die Projektumsetzung</li>
+          <li>Implementiert die Lösung</li>
+          <li>Konfiguriert Systeme und Integrationen</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="kicker">andagon</span>
+        <ul class="clean">
+          <li>Prüft die Qualität unabhängig</li>
+          <li>Bewertet Risiken und Auswirkungen</li>
+          <li>Validiert Prozesse, Integrationen und Schnittstellen</li>
+          <li>Liefert die Grundlage für Ihre Go-Live-Entscheidung</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Block 3 -->
+<section>
+  <div class="wrap">
+    <h2>Jedes System funktioniert. Der Prozess trotzdem nicht.</h2>
+    <p>In SAP-Projekten wird häufig auf Ebene einzelner Systeme, Module und Schnittstellen geprüft. Entscheidend ist jedoch, ob der gesamte Geschäftsprozess funktioniert — über SAP, Cloud-Dienste und Drittsysteme hinweg.</p>
+    <p>Die Probleme treten oft erst im Tagesgeschäft auf: Daten kommen nicht korrekt an, Belege fehlen im Folgesystem oder wichtige Prozessschritte werden nicht ausgelöst. Was zunächst wie ein kleines Schnittstellenproblem aussieht, kann Abläufe verzögern, manuelle Nacharbeit verursachen und im schlimmsten Fall den gesamten Geschäftsprozess zum Stillstand bringen.</p>
+    <div class="box" style="margin:24px 0">
+      <span class="kicker">Ein Fall aus der Praxis</span>
+      <p>Bei der Einführung einer neuen Kassenlösung in einem Handelsunternehmen mit über 13.000 Filialen wurden Verkäufe korrekt von der Kasse nach SAP übertragen, die Schnittstelle war getestet, abgenommen und funktionierte.</p>
+      <p>Was allerdings niemand geprüft hatte, war der umgekehrte Weg. Retouren und Rückerstattungen waren vom Integrationsumfang ausdrücklich ausgenommen.</p>
+      <p>Im Produktivbetrieb hätte das bedeutet: Ein Kunde gibt einen Artikel zurück, das Personal erfasst die Retoure an der Kasse und zahlt den Betrag aus. Für den Kunden und für das Kassensystem ist der Vorgang abgeschlossen. In SAP passiert jedoch nichts.</p>
+      <p><strong>Die Konsequenz:</strong> Das Geld ist ausgezahlt, aber die Gegenbuchung fehlt. Die Ware steht wieder im Regal, aber nicht im Bestand. Der Tagesabschluss zwischen Kasse und SAP geht nicht auf, und jede Filiale beginnt, Differenzen von Hand nachzuarbeiten.</p>
+      <p>andagon entdeckte die Lücke in der Testphase, weil wir nicht allein die Verkaufsschnittstelle geprüft haben, sondern den Geschäftsprozess „Retoure" &ndash; vom Kassenbon bis zur Buchhaltung. <strong>Hier hätte kein Modultest angeschlagen. Die Verkaufsschnittstelle war korrekt. Der Prozess war trotzdem unvollständig.</strong></p>
+    </div>
+    <p>Deshalb testen wir nicht nur einzelne Schnittstellen, sondern den gesamten Prozess, egal welche Technik dahintersteckt.</p>
+  </div>
+</section>
+
+<!-- Block 4 -->
+<section class="soft" id="vor-go-live">
+  <div class="wrap">
+    <h2>Vor dem Go-Live: eine belastbare Grundlage für Ihre Freigabe</h2>
+    <p class="lead">Der Go-Live ist nur so sicher wie die Grundlage, auf der er freigegeben wird.</p>
+    <p style="margin:18px 0 6px"><strong>Unsere Leistungen</strong></p>
+    <ul>
+      <li>Validierung geschäftskritischer End-to-End-Prozesse über Bereichs- und Systemgrenzen hinweg</li>
+      <li>Prüfung der Daten- und Prozessflüsse zwischen SAP- und Drittsystemen</li>
+      <li>Tests aller Schnittstellen, ob API, IDoc oder ereignisbasiert</li>
+      <li>Identifikation von Fehlern an System-, Schnittstellen- und Prozessübergängen</li>
+      <li>Durchführung oder Begleitung von Integrations-, System- und Abnahmetests</li>
+      <li>Risikobasierte Bewertung der Prozessqualität vor der Produktivsetzung</li>
+      <li>Klare Empfehlung für Ihre Go-Live-Entscheidung</li>
+    </ul>
+    <div class="box" style="margin:22px 0">
+      <strong>Sie erhalten</strong>
+      <ul style="margin:8px 0 0 18px;padding:0">
+        <li>Klarheit, welche Prozesse stabil laufen und wo noch Risiken liegen</li>
+        <li>Risikobewertung vor der Produktivsetzung</li>
+        <li>Eine eindeutige Go/No-Go-Empfehlung</li>
+      </ul>
+    </div>
+    <div class="box" style="margin:22px 0">
+      <strong>Besonders sinnvoll, wenn</strong>
+      <ul style="margin:8px 0 0 18px;padding:0">
+        <li>Geschäftskritische Prozesse über mehrere Systeme hinweg betroffen sind</li>
+        <li>Im Projekt kein eigenes QA-Team für systemübergreifende Tests zur Verfügung steht</li>
+        <li>Der Go-Live-Termin verbindlich ist und wenig Spielraum für zusätzliche manuelle Tests bleibt</li>
+      </ul>
+    </div>
+    <a class="btn" href="#kontakt">Gespräch zur Go-Live-Absicherung buchen</a>
+  </div>
+</section>
+
+<!-- Block 5 -->
+<section id="betrieb">
+  <div class="wrap">
+    <h2>Im laufenden Betrieb: Nach jedem Release wissen, dass alles noch läuft</h2>
+    <p class="lead">Was vor dem Go-Live geprüft wurde, wird dauerhaft durch automatisierte Tests abgesichert. Die SAP-Testautomatisierung lohnt sich aber nicht nur in Migrationsprojekten: Auch im laufenden SAP-Betrieb wird so jedes Release, jedes Update und jede Änderung abgesichert.</p>
+    <p style="margin:18px 0 6px"><strong>Unsere Leistungen</strong></p>
+    <ul>
+      <li>Aufbau automatisierter Regressionstests für geschäftskritische Prozesse</li>
+      <li>Integration automatisierter Tests in Release- und Delivery-Prozesse</li>
+      <li>Absicherung von Releases, Updates und Prozessänderungen</li>
+      <li>Pflege und Weiterentwicklung bestehender Testautomatisierung</li>
+      <li>Kontinuierliche Bewertung von Qualitätsrisiken nach Änderungen</li>
+    </ul>
+    <div class="box" style="margin:22px 0">
+      <strong>Sie erhalten</strong>
+      <ul style="margin:8px 0 0 18px;padding:0">
+        <li>Schnelle Rückmeldung zur Stabilität Ihrer Prozesse nach Änderungen</li>
+        <li>Eine Sammlung automatisierter Testfälle für Ihre geschäftskritischen Prozesse</li>
+        <li>Deutlich weniger Testaufwand nach jedem Release</li>
+      </ul>
+    </div>
+    <div class="box" style="margin:22px 0">
+      <strong>Besonders sinnvoll, wenn</strong>
+      <ul style="margin:8px 0 0 18px;padding:0">
+        <li>Keine oder nur teilweise Testautomatisierung vorhanden ist</li>
+        <li>Fachanwender das Testen neben dem Tagesgeschäft übernehmen</li>
+        <li>Der Testaufwand die verfügbaren Zeitfenster übersteigt</li>
+      </ul>
+    </div>
+    <p>SAP liefert alle zwei Jahre ein neues S/4HANA-Release und dazwischen drei Feature Package Stacks, dazu ein bis zwei Support Package Stacks pro Jahr. Für jeden Feature Package Stack verlangt SAP selbst Regressionstests der bestehenden Geschäftsprozesse, für Support Package Stacks empfiehlt SAP sie. Dazu kommen regelmäßige Updates aller angebundenen Systeme. Die Veränderung endet also nicht mit dem Go-Live, sie wird zur Daueraufgabe. Die Clean-Core-Strategie verstärkt das zusätzlich: Um den SAP-Kern möglichst unverändert zu halten, werden individuelle Erweiterungen zunehmend auf Plattformen wie SAP BTP umgesetzt. Die Zahl der Schnittstellen und Integrationen wächst und damit auch die Zahl möglicher Fehlerquellen.</p>
+    <p class="fnote" style="color:#6b7f95">Quelle der Release-Angaben: SAP Help Portal, „Release-Zyklen in SAP S/4HANA", Version 2025 FPS02 (Oktober 2026).</p>
+    <blockquote class="quote">
+      <p>„Dank der Automatisierung sparen wir pro Testphase eine sehr hohe Stundenzahl ein. Unsere Tester können die gewonnene Zeit jetzt nutzen, um sich intensiver mit Neuentwicklungen zu befassen."</p>
+      <cite>Trading Hub Europe (THE)</cite>
+    </blockquote>
+    <a class="btn" href="#kontakt">Gespräch zur Testautomatisierung buchen</a>
+  </div>
+</section>
+
+<!-- Block 6 -->
+<section class="soft">
+  <div class="wrap">
+    <h2>Testautomatisierung mit Tricentis Tosca</h2>
+    <p class="lead">Tricentis ist offizieller SAP-Partner für Testautomatisierung. Viele SAP-Kunden verfügen daher bereits im Rahmen des SAP Enterprise Support über eine Tricentis-Lizenz. Als zertifizierte Tosca-Experten unterstützen wir Sie dabei, dieses Potenzial für eine leistungsfähige Testautomatisierung zu nutzen.</p>
+    <div class="grid g3" style="margin:22px 0">
+      <div class="card"><h3>Zertifizierte Tosca-Experten</h3><p style="margin:0">Unsere zertifizierten Tosca-Experten bringen das notwendige Know-how in Ihre Projekte ein.</p></div>
+      <div class="card"><h3>Regional Premium Delivery Partner</h3><p style="margin:0">Als Regional Premium Delivery Partner von Tricentis unterstützen wir Unternehmen seit Jahren beim Aufbau und der Weiterentwicklung ihrer Testautomatisierung.</p></div>
+      <div class="card"><h3>Lizenzen aus einer Hand</h3><p style="margin:0">Falls Sie noch keine Tricentis-Lizenz haben oder zusätzliche benötigen, beziehen Sie sie ohne Mehrkosten über andagon.</p></div>
+    </div>
+    <blockquote class="quote">
+      <p>„Die eingebrachten Konzepte und Entwicklungen haben maßgeblich zur Verbesserung der Testabdeckung und zur nachhaltigen Wartbarkeit unserer Testinfrastruktur beigetragen."</p>
+      <cite>Körber</cite>
+    </blockquote>
+    <p>Neben Tricentis Tosca arbeiten wir mit allen gängigen Testautomatisierungslösungen und nutzen die Tools, die bereits bei Ihnen etabliert sind, statt neue Werkzeuge einzuführen.</p>
+  </div>
+</section>
+
+<!-- Block 7 -->
+<section>
+  <div class="wrap">
+    <h2>Prüfliste: Wie gut sind Ihre SAP-Prozesse abgesichert?</h2>
+    <p class="lead">Zwölf Fragen, die für die Absicherung Ihrer SAP-Prozesse entscheidend sind. Wo Sie heute zögern, entstehen morgen häufig Risiken im Betrieb. Die Prüfliste mit 12 praxisnahen Fragen erhalten Sie direkt per E-Mail, ohne Beratungsgespräch.</p>
+    <form style="max-width:460px;display:flex;gap:10px;flex-wrap:wrap" onsubmit="return false">
+      <label class="fl" for="pl" style="width:100%">E-Mail-Adresse</label>
+      <input id="pl" type="email" style="flex:1 1 220px" placeholder="name@unternehmen.de">
+      <button class="btn" type="submit">Prüfliste zuschicken lassen</button>
+    </form>
+  </div>
+</section>
+
+<!-- Block 8 -->
+<section class="soft">
+  <div class="wrap">
+    <h2>Unternehmen, die andagon vertrauen</h2>
+    <div class="logos" aria-label="Referenzen">
+      <span class="logo-ph">Logo</span><span class="logo-ph">Logo</span><span class="logo-ph">Logo</span>
+      <span class="logo-ph">Logo</span><span class="logo-ph">Logo</span><span class="logo-ph">Logo</span>
+    </div>
+    <div class="grid g3" style="margin:22px 0">
+      <div class="card"><h3>25 Jahre</h3><p style="margin:0">Erfahrung in Softwarequalitätssicherung</p></div>
+      <div class="card"><h3>9 von 10</h3><p style="margin:0">Kunden empfehlen uns weiter</p></div>
+      <div class="card"><h3>100 %</h3><p style="margin:0">Unserer Testexperten in der SAP-Automatisierung haben einen Hochschulabschluss und sind sowohl ISTQB- als auch Tosca-zertifiziert</p></div>
+    </div>
+    <blockquote class="quote">
+      <p>„Die Automatisierung von rund 80 SAP-ERP-Transaktionen ermöglichte die Identifikation kritischer Performanceprobleme vor dem Rollout und unterstützte deren erfolgreiche Behebung."</p>
+      <cite>Bernd Eberhardt · IBM SAP International Competency Center · IBM Deutschland GmbH</cite>
+    </blockquote>
+  </div>
+</section>
+
+<!-- Block 9 -->
+<section>
+  <div class="wrap">
+    <h2>Häufige Fragen</h2>
+
+    <details class="faq"><summary>Was kostet die Qualitätssicherung meiner SAP-Landschaft?</summary>
+      <div class="a">Das hängt vom Umfang Ihrer Prozesslandschaft und vom Automatisierungsaufwand Ihrer Testfälle ab. Für ein Festpreisangebot starten wir mit einem Proof of Concept: Wir automatisieren einige repräsentative Testfälle aus Ihrem System &ndash; einfache, mittlere und komplexe &ndash; und messen den tatsächlichen Aufwand. Auf dieser Grundlage kalkulieren wir den Festpreis für den Gesamtumfang. Alternativ arbeiten wir jederzeit nach Aufwand, zum Beispiel wenn sich der Umfang noch verändert oder Sie flexibel starten möchten.</div>
+    </details>
+
+    <details class="faq"><summary>Wann sollte das Testen bei einer SAP-Transformation beginnen?</summary>
+      <div class="a">Das Testen ist kein Projektschritt kurz vor dem Go-Live, sondern ein kontinuierlicher Prozess, der die S/4HANA-Umstellung von Beginn an begleiten sollte. Dabei reicht es nicht aus, einzelne Module zu prüfen. Auch Testdaten, Schnittstellen, Geschäftsprozesse und End-to-End-Workflows müssen frühzeitig berücksichtigt und abgesichert werden.</div>
+    </details>
+
+    <details class="faq"><summary>Wann lohnt sich der Aufbau einer Testautomatisierung?</summary>
+      <div class="a">Eine Testautomatisierung lohnt sich insbesondere dann, wenn geschäftskritische Prozesse regelmäßig von Releases, Updates oder neuen Integrationen betroffen sind. Da SAP-Systeme eng mit ihrer Systemlandschaft verzahnt sind, kann bereits eine kleine Änderung zu Fehlern in nachgelagerten Prozessen führen. Eine automatisierte Regressionssuite erkennt solche Auswirkungen früh und senkt den Aufwand für wiederkehrende Tests dauerhaft.</div>
+    </details>
+
+    <details class="faq"><summary>Wie viel Zeit kostet das unsere Fachabteilung?</summary>
+      <div class="a">Weniger als heute. Ihre Fachexperten brauchen wir für das, was nur sie wissen: welche Abläufe geschäftskritisch sind, wie ein Prozess richtig aussieht und ob ein Ergebnis fachlich stimmt. Das Schreiben, Durchführen und Dokumentieren der Testfälle übernehmen wir. Ihre Key User kommen also vor allem bei der Abstimmung der Testfälle und bei der Abnahme dazu, nicht beim Durchklicken jedes einzelnen Tests.</div>
+    </details>
+
+    <details class="faq"><summary>Wir haben über SAP schon Tricentis-Lizenzen. Brauchen wir Sie trotzdem?</summary>
+      <div class="a">Neue Lizenzen brauchen Sie nicht, wir arbeiten mit denen, die Sie bereits haben. Eine Lizenz ist allerdings noch keine Testautomatisierung: Jemand muss die Testfälle aufbauen, an Ihre Prozesse anpassen und nach jedem Release pflegen. Das übernehmen wir. Als Regional Premium Delivery Partner von Tricentis kennen wir sowohl die über SAP bereitgestellte Variante als auch den vollen Tosca-Umfang und sagen Ihnen ehrlich, ob Ihre vorhandene Lizenz für Ihr Vorhaben ausreicht.</div>
+    </details>
+
+    <details class="faq"><summary>Wie schnell können Sie starten?</summary>
+      <div class="a">In der Regel innerhalb von zwei Wochen nach dem Erstgespräch. Wir beginnen mit einer kurzen Bestandsaufnahme: Welche Prozesse sind geschäftskritisch, was ist bereits getestet, wo liegen die größten Lücken? Bei der Testautomatisierung folgt darauf der Proof of Concept mit repräsentativen Testfällen. Wenn Ihr Go-Live kurz bevorsteht, priorisieren wir die Prozesse, bei denen ein Fehler am meisten kosten würde.</div>
+    </details>
+
+    <details class="faq"><summary>Welche Risiken werden bei SAP-Transformationen häufig unterschätzt?</summary>
+      <div class="a">Ein häufiges Risiko besteht darin, dass Qualitätssicherung und Tests zu spät beginnen oder sich auf einzelne Systeme beschränken. Geschäftskritisch sind jedoch meist die Prozesse, die über mehrere Systeme hinweg laufen. Fehler an Schnittstellen und Prozessübergängen fallen deshalb häufig erst im Produktivbetrieb auf.</div>
+    </details>
+
+    <details class="faq"><summary>Brauchen wir andagon, wenn bereits eine SAP-Beratung im Projekt ist?</summary>
+      <div class="a">Gerade dann. Ihre SAP-Beratung wird daran gemessen, dass die Lösung umgesetzt ist. Wir prüfen unabhängig davon, ob Ihr Prozess über alle Systeme hinweg funktioniert. Wir ersetzen Ihre SAP-Beratung nicht, wir ergänzen sie.</div>
+    </details>
+
+    <details class="faq"><summary>Welche Werkzeuge setzt andagon ein?</summary>
+      <div class="a">Wir arbeiten mit Tricentis Tosca und weiteren Testautomatisierungswerkzeugen und integrieren uns in Ihre bestehende Werkzeuglandschaft. Falls dort noch keine Testautomatisierung etabliert ist, unterstützen wir Sie bei Auswahl, Einführung und Betrieb einer passenden Lösung.</div>
+    </details>
+
+    <details class="faq"><summary>Warum steigt der Testbedarf durch Clean Core?</summary>
+      <div class="a">Die Clean-Core-Strategie reduziert Anpassungen am SAP-Kern, verlagert individuelle Lösungen jedoch zunehmend in externe Erweiterungen und Schnittstellen. Dadurch steigt der Testbedarf, da nicht nur der SAP-Standard, sondern auch Eigenentwicklungen, Integrationen und deren Zusammenspiel in Geschäftsprozessen geprüft werden müssen. Um die Stabilität nach Änderungen und Updates sicherzustellen, werden insbesondere Integrations- und Regressionstests wichtiger.</div>
+    </details>
+  </div>
+</section>
+
+<!-- Block 10 -->
+<section class="soft" id="kontakt">
+  <div class="wrap">
+    <h2>30 Minuten mit Vera Kopistecki: Erstgespräch vereinbaren</h2>
+    <p class="lead">Sie bekommen eine ehrliche Einschätzung, wo Ihre größten Testrisiken liegen, auch wenn die Antwort lautet, dass Sie uns nicht brauchen. Per Teams oder Telefon &ndash; kein Verkaufsvortrag.</p>
+    <p style="margin:0 0 6px"><a class="btn lg" href="https://bookings.cloud.microsoft/bookwithme/user/bf810d17cd0940ffb215b9465ba90a28@andagon.com?anonymous&amp;ismsaljsauthenabled=true" target="_blank" rel="noopener">Termin direkt buchen</a></p>
+    <p style="margin:18px 0 10px"><strong>Lieber schriftlich?</strong> Wir antworten innerhalb eines Werktags.</p>
+    <form class="form" onsubmit="return false">
+      <div class="field"><label class="fl" for="n">Name</label><input id="n" type="text"></div>
+      <div class="field"><label class="fl" for="e">E-Mail</label><input id="e" type="email"></div>
+      <div class="field"><label class="fl" for="c">Unternehmen</label><input id="c" type="text"></div>
+      <div class="field" style="grid-column:1/-1"><label class="fl" for="w">Worum geht es bei Ihnen? (optional)</label><input id="w" type="text" placeholder="z. B. bevorstehender Go-Live, hoher manueller Testaufwand oder mehrere Themen"></div>
+      <div class="field" style="grid-column:1/-1"><label class="fl" for="m">Nachricht (optional)</label><textarea id="m" rows="4"></textarea></div>
+      <div class="field" style="grid-column:1/-1">
+        <label class="opt"><input id="dsgvo" type="checkbox"> Ich bin einverstanden, dass meine Angaben zur Kontaktaufnahme genutzt werden.</label>
+      </div>
+      <div style="grid-column:1/-1"><button class="btn lg" type="submit">Erstgespräch vereinbaren</button></div>
+    </form>
+    <div class="confirm">
+      <strong>Zur Messung, wie gewünscht:</strong> Wir weisen abgesendete Formulare, Klicks auf den Buchungslink und tatsächlich gebuchte Termine getrennt aus. Die ersten beiden erfassen wir selbst, der Buchungsklick wird dafür als eigenes Ereignis eingerichtet. Ob aus einem Klick ein Termin geworden ist, sehen wir nicht, das steht nur im Kalender. Dafür brauchen wir eine kurze Rückmeldung von Ihnen.
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><strong>andagon People GmbH</strong></p>
+    <p>Scheidtweilerstraße 4, 50933 Köln</p>
+    <p><a href="#">Impressum</a> &nbsp;·&nbsp; <a href="#">Datenschutz</a> &nbsp;·&nbsp; <a href="#">Cookie-Einstellungen</a></p>
+    <p class="fnote">
+      Inhaltsentwurf vom 11.11.2026, Fassung 5, erstellt von W&amp;S Agency für andagon People.
+      Grundlage: Produktkonzept vom 06.10.2026 sowie die Reviews von andagon vom 29.10., 05.11. und 11.11.2026.
+      Nicht öffentlich, nicht indexiert. Rechtstexte und Cookie-Banner werden aus dem ersten Projekt übernommen.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
