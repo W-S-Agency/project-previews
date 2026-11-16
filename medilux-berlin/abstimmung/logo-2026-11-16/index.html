@@ -73,6 +73,9 @@
   .d-nav{display:flex;align-items:center;gap:22px;font-size:15px;flex-wrap:wrap;justify-content:flex-end}
   .d-btn{border:1.5px solid currentColor;border-radius:24px;padding:8px 16px;white-space:nowrap}
   .d-hinweis{font-size:13px;color:var(--grau);padding:6px 28px;background:var(--flaeche);border-top:1px solid var(--linie);border-bottom:1px solid var(--linie)}
+  .empfehlung{background:#fffbea;border-left:4px solid var(--gelb);border-radius:14px;padding:22px 22px 10px;margin:8px 0 22px;max-width:860px}
+  .empfehlung h2{margin-bottom:12px}
+  .knoepfe button.heute{border-style:dashed}
   .bitte{background:var(--text);color:#fff;border-radius:20px;padding:26px 22px;margin:8px 0 40px}
   .bitte h2{color:#fff}
   .bitte .beispiel{display:inline-block;background:#fff;color:var(--text);border-radius:10px;padding:8px 12px;font-weight:600;margin-top:4px}
@@ -137,13 +140,13 @@
         <h3>Variante</h3>
         <div class="knoepfe" id="k-variante">
           <button data-v="1" aria-pressed="true">1</button><button data-v="2">2</button><button data-v="3">3</button>
-          <button data-v="4">4</button><button data-v="5">5</button><button data-v="6">6</button>
+          <button data-v="4">4</button><button data-v="5">5</button><button data-v="6">6</button><button data-v="heute" class="heute">Logo heute</button>
         </div>
         <h3>Im weißen Kopf beim Scrollen</h3>
         <div class="knoepfe" id="k-modus">
           <button data-m="ganz" aria-pressed="true">ganzes Logo</button><button data-m="zeichen">nur das Zeichen</button>
         </div>
-        <p style="margin-top:14px;color:var(--grau);font-size:15px">«Nur das Zeichen» heißt: Kranz mit Wappen und M, ohne den Schriftzug. Der Kopf wird dadurch kleiner und verdeckt weniger vom Text.</p>
+        <p style="margin-top:14px;color:var(--grau);font-size:15px">Mit «Logo heute» sehen Sie zum Vergleich das Logo, das jetzt auf der Website steht. «Nur das Zeichen» heißt: Kranz mit Wappen und M, ohne den Schriftzug. Der Kopf wird dadurch kleiner und verdeckt weniger vom Text.</p>
       </div>
       <div class="telefon" aria-label="Vorschau der Startseite auf dem Handy">
         <div class="seite" id="seite">
@@ -182,9 +185,15 @@
     </div>
   </section>
 
+  <div class="empfehlung">
+    <h2>Unsere Empfehlung</h2>
+    <p>Auf der Website liest sich das heutige Logo am besten: Es ist für das große Bild gemacht, mit dem jede Seite beginnt. Vergleichen Sie es in der Handy-Vorschau mit dem Knopf «Logo heute».</p>
+    <p>Wenn Ihnen das bisherige Logo wichtig ist, zum Beispiel damit Berlin und medilux.info gleich aussehen, empfehlen wir Variante 5 und beim Scrollen nur das Zeichen. Das Zeichen auf dem blauen Hintergrund bleibt auf dem Bild und auf Weiß gut zu erkennen, und die Schrift ist dieselbe wie auf medilux.info.</p>
+  </div>
+
   <div class="bitte">
     <h2>Ihre Auswahl</h2>
-    <p>Schreiben Sie uns einfach die Nummer Ihres Favoriten, per WhatsApp oder E-Mail. Wenn Sie mögen, sagen Sie uns dazu, ob im weißen Kopf beim Scrollen das ganze Logo stehen soll oder nur das Zeichen.</p>
+    <p>Schreiben Sie uns einfach die Nummer Ihres Favoriten, per WhatsApp oder E-Mail, oder «Logo heute», wenn alles so bleiben soll. Wenn Sie mögen, sagen Sie uns dazu, ob im weißen Kopf beim Scrollen das ganze Logo stehen soll oder nur das Zeichen.</p>
     <span class="beispiel">Beispiel: «Variante 3, beim Scrollen nur das Zeichen»</span>
   </div>
 </main>
@@ -197,9 +206,17 @@
   function zeichne(){
     var weiss=seite.scrollTop>120;
     kopf.classList.toggle('weiss', weiss);
+    var d1=document.getElementById('dlogo1'), d2=document.getElementById('dlogo2');
+    if(v==='heute'){
+      logo.src='img/aktuell.svg'; logo.style.maxHeight='none'; logo.style.height = weiss ? '64px' : '80px';
+      d1.src='img/aktuell.svg'; d2.src='img/aktuell.svg'; d1.style.height='76px'; d2.style.height='64px';
+      document.getElementById('d-nr').textContent='Logo heute';
+      return;
+    }
+    logo.style.maxHeight=''; logo.style.height=''; d1.style.height=''; d2.style.height='';
     logo.src = (weiss && m==='zeichen') ? 'img/zeichen-'+v+'.png' : 'img/logo-'+v+'.png';
-    document.getElementById('dlogo1').src='img/logo-'+v+'.png';
-    document.getElementById('dlogo2').src = (m==='zeichen') ? 'img/zeichen-'+v+'.png' : 'img/logo-'+v+'.png';
+    d1.src='img/logo-'+v+'.png';
+    d2.src = (m==='zeichen') ? 'img/zeichen-'+v+'.png' : 'img/logo-'+v+'.png';
     document.getElementById('d-nr').textContent='Variante '+v+(m==='zeichen'?', beim Scrollen nur das Zeichen':'');
   }
   function setzeVariante(x){
