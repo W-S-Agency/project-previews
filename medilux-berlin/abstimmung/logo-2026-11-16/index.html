@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>MEDILUX – bisheriges Logo: sechs Varianten</title>
+<style>
+  :root{--gelb:#E8C830;--blau:#2B55C0;--text:#1d2433;--grau:#5b6475;--linie:#e3e7ef;--flaeche:#f5f7fb;--weiss:#fff}
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--text);background:var(--weiss);line-height:1.55;font-size:17px}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+  header.kopf{border-bottom:1px solid var(--linie)}
+  header.kopf .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-top:14px;padding-bottom:14px}
+  .marke{font-weight:700;letter-spacing:.04em}
+  .stand{color:var(--grau);font-size:14px}
+  h1{font-size:clamp(26px,4vw,38px);line-height:1.2;margin:36px 0 12px}
+  h2{font-size:clamp(21px,3vw,27px);line-height:1.25;margin:0 0 10px}
+  h3{font-size:19px;margin:28px 0 12px}
+  p{margin:0 0 12px}
+  .lead{font-size:19px;max-width:780px}
+  .schritte{display:grid;gap:12px;grid-template-columns:repeat(3,1fr);margin:24px 0 8px;padding:0;list-style:none;counter-reset:s}
+  .schritte li{background:var(--flaeche);border-radius:14px;padding:14px 16px;counter-increment:s}
+  .schritte li::before{content:counter(s);display:inline-flex;width:28px;height:28px;border-radius:50%;background:var(--text);color:#fff;font-weight:700;align-items:center;justify-content:center;margin-right:8px;font-size:15px}
+  section{padding:40px 0;border-top:1px solid var(--linie)}
+  .schritt{display:inline-block;font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--grau);margin-bottom:6px}
+  /* Schritt 1 */
+  .zeile h3 .unter{display:block;font-size:15px;font-weight:400;color:var(--grau);margin-top:2px}
+  .raster{display:grid;gap:16px;grid-template-columns:1fr 1fr}
+  figure{margin:0;border:2px solid var(--linie);border-radius:16px;overflow:hidden;background:#fff}
+  figure.aktiv{border-color:var(--text);box-shadow:0 0 0 3px rgba(29,36,51,.12)}
+  .auf-weiss{background:#fff;padding:34px 28px;display:flex;align-items:center;justify-content:center;min-height:150px}
+  .auf-weiss img{display:block;width:100%;max-width:380px;height:auto}
+  .auf-bild{background:linear-gradient(rgba(10,14,25,.55),rgba(10,14,25,.7)),url(img/hero.jpg) center/cover;padding:18px 28px;display:flex;align-items:center;justify-content:center}
+  .auf-bild img{display:block;height:46px;width:auto;max-width:80%}
+  figcaption{padding:10px 12px;font-size:15px;color:var(--grau);border-top:1px solid var(--linie);display:flex;align-items:center;justify-content:space-between;gap:8px}
+  .nr{display:inline-flex;min-width:32px;height:32px;padding:0 8px;border-radius:16px;background:var(--text);color:#fff;font-weight:700;align-items:center;justify-content:center;margin-right:8px}
+  .zeigen{font:inherit;font-size:14px;border:1px solid var(--linie);background:#fff;border-radius:18px;padding:6px 12px;cursor:pointer;white-space:nowrap;min-height:40px}
+  .aktuell{display:flex;gap:16px;align-items:center;margin-top:26px;color:var(--grau);font-size:15px}
+  .aktuell img{width:90px;border:1px solid var(--linie);border-radius:12px;padding:8px;background:#fff}
+  /* Schritt 2 */
+  .vorschau{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:32px;align-items:start}
+  .knoepfe{display:flex;flex-wrap:wrap;gap:8px}
+  .knoepfe button{font:inherit;font-size:16px;border:1px solid var(--linie);background:#fff;border-radius:22px;padding:8px 16px;cursor:pointer;min-height:44px}
+  .knoepfe button[aria-pressed="true"]{background:var(--text);color:#fff;border-color:var(--text)}
+  .telefon{width:100%;max-width:380px;height:720px;border:10px solid #1d2433;border-radius:40px;overflow:hidden;position:relative;background:#fff;box-shadow:0 18px 40px rgba(20,30,60,.18)}
+  .seite{position:absolute;inset:0;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+  .s-kopf{position:sticky;top:0;z-index:5;display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 18px;transition:background .25s,box-shadow .25s;min-height:72px}
+  .s-kopf.weiss{background:rgba(255,255,255,.93);box-shadow:0 1px 0 var(--linie);backdrop-filter:blur(10px)}
+  .s-logo img{display:block;width:auto;height:auto;max-width:200px;max-height:58px}
+  .s-rechts{display:flex;align-items:center;gap:16px;flex-shrink:0}
+  .tel{width:24px;height:24px;border:2.5px solid #fff;border-radius:7px}
+  .s-kopf.weiss .tel{border-color:var(--text)}
+  .burger{width:34px;height:22px;display:flex;flex-direction:column;justify-content:space-between}
+  .burger span{display:block;height:3px;border-radius:2px;background:#fff}
+  .s-kopf.weiss .burger span{background:var(--text)}
+  .s-hero{margin-top:-96px;padding:120px 22px 34px;min-height:600px;color:#fff;background:linear-gradient(180deg,rgba(10,14,25,.55),rgba(10,14,25,.75)),url(img/hero.jpg) center/cover;border-radius:0 0 22px 22px}
+  .s-hero .kicker{font-size:15px;margin-bottom:10px}
+  .s-hero .h1{font-size:30px;line-height:1.15;font-weight:700;margin-bottom:14px}
+  .s-hero .h1 em{font-style:normal;color:var(--gelb)}
+  .s-hero .unter{font-size:16px;margin-bottom:22px}
+  .s-hero .btn{display:inline-block;background:#4A78DB;color:#fff;border-radius:30px;padding:14px 22px;font-size:16px}
+  .s-text{padding:26px 22px;font-size:16px}
+  .s-text h4{font-size:20px;margin:0 0 8px}
+  .s-text .karte{background:var(--flaeche);border-radius:16px;padding:16px;margin:14px 0}
+  /* Schritt 3 */
+  .desktop{border:1px solid var(--linie);border-radius:16px;overflow:hidden;margin-top:14px}
+  .d-leiste{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:16px 28px;min-height:92px}
+  .d-leiste.foto{background:linear-gradient(rgba(10,14,25,.55),rgba(10,14,25,.7)),url(img/hero.jpg) center 30%/cover;color:#fff}
+  .d-leiste.weiss{background:#fff;color:var(--text)}
+  .d-logo img{display:block;height:60px;width:auto}
+  .d-nav{display:flex;align-items:center;gap:22px;font-size:15px;flex-wrap:wrap;justify-content:flex-end}
+  .d-btn{border:1.5px solid currentColor;border-radius:24px;padding:8px 16px;white-space:nowrap}
+  .d-hinweis{font-size:13px;color:var(--grau);padding:6px 28px;background:var(--flaeche);border-top:1px solid var(--linie);border-bottom:1px solid var(--linie)}
+  .bitte{background:var(--text);color:#fff;border-radius:20px;padding:26px 22px;margin:8px 0 40px}
+  .bitte h2{color:#fff}
+  .bitte .beispiel{display:inline-block;background:#fff;color:var(--text);border-radius:10px;padding:8px 12px;font-weight:600;margin-top:4px}
+  footer{color:var(--grau);font-size:14px;padding:0 0 40px}
+  @media (max-width:860px){.vorschau{grid-template-columns:1fr}.telefon{margin:0 auto}.schritte{grid-template-columns:1fr}.d-nav .weg{display:none}}
+  @media (max-width:620px){.raster{grid-template-columns:1fr}.d-leiste{padding:14px 16px;gap:12px}.d-logo img{height:40px}.d-nav{font-size:14px}.d-btn{display:none}}
+  @media (max-width:520px){body{font-size:16px}.telefon{height:640px;border-width:8px;border-radius:32px}}
+</style>
+</head>
+<body>
+<header class="kopf"><div class="wrap"><span class="marke">MEDILUX</span><span class="stand">Logo-Varianten · Stand 16.11.2026</span></div></header>
+
+<main class="wrap">
+  <h1>Ihr bisheriges Logo auf der neuen Website: sechs Varianten</h1>
+  <p class="lead">Sie möchten das Logo von medilux.info auch auf der neuen Website. Unser Designer hat es dafür in drei Ausführungen vorbereitet, jede in zwei Schriften. Unten sehen Sie alle sechs auf Weiß und auf dem großen Bild, dann im Kopf der Website auf dem Handy und am Computer. Am Ende nennen Sie uns einfach eine Nummer.</p>
+  <ol class="schritte">
+    <li>Alle Varianten ansehen</li>
+    <li>Auf dem Handy</li>
+    <li>Am Computer</li>
+  </ol>
+
+  <!-- SCHRITT 1 -->
+  <section id="schritt1">
+    <span class="schritt">Schritt 1</span>
+    <h2>Alle sechs Varianten</h2>
+    <p style="max-width:780px">Jede Variante sehen Sie zweimal: groß auf Weiß und darunter auf dem großen Bild, mit dem jede Seite der Website beginnt. Links jeweils die Schrift wie bisher auf medilux.info, rechts eine weichere, runde Schrift.</p>
+
+    <div class="zeile">
+      <h3>Ohne Hintergrund, Kranz in Gelb wie bisher<span class="unter">Varianten 1 und 2</span></h3>
+      <div class="raster">
+        <figure data-v="1"><div class="auf-weiss"><img src="img/logo-1.png" alt="Variante 1: ohne Hintergrund, Kranz gelb, Schrift wie bisher"></div><div class="auf-bild"><img src="img/logo-1.png" alt="Variante 1 auf dem Bild"></div><figcaption><span><span class="nr">1</span>Schrift wie bisher</span><button class="zeigen" data-v="1">im Kopf ansehen</button></figcaption></figure>
+        <figure data-v="2"><div class="auf-weiss"><img src="img/logo-2.png" alt="Variante 2: ohne Hintergrund, Kranz gelb, runde Schrift"></div><div class="auf-bild"><img src="img/logo-2.png" alt="Variante 2 auf dem Bild"></div><figcaption><span><span class="nr">2</span>runde Schrift</span><button class="zeigen" data-v="2">im Kopf ansehen</button></figcaption></figure>
+      </div>
+    </div>
+
+    <div class="zeile">
+      <h3>Ohne Hintergrund, Kranz in Gold wie heute auf der neuen Website<span class="unter">Varianten 3 und 4</span></h3>
+      <div class="raster">
+        <figure data-v="3"><div class="auf-weiss"><img src="img/logo-3.png" alt="Variante 3: ohne Hintergrund, Kranz gold, Schrift wie bisher"></div><div class="auf-bild"><img src="img/logo-3.png" alt="Variante 3 auf dem Bild"></div><figcaption><span><span class="nr">3</span>Schrift wie bisher</span><button class="zeigen" data-v="3">im Kopf ansehen</button></figcaption></figure>
+        <figure data-v="4"><div class="auf-weiss"><img src="img/logo-4.png" alt="Variante 4: ohne Hintergrund, Kranz gold, runde Schrift"></div><div class="auf-bild"><img src="img/logo-4.png" alt="Variante 4 auf dem Bild"></div><figcaption><span><span class="nr">4</span>runde Schrift</span><button class="zeigen" data-v="4">im Kopf ansehen</button></figcaption></figure>
+      </div>
+    </div>
+
+    <div class="zeile">
+      <h3>Mit blauem Hintergrund, wie auf medilux.info<span class="unter">Varianten 5 und 6</span></h3>
+      <div class="raster">
+        <figure data-v="5"><div class="auf-weiss"><img src="img/logo-5.png" alt="Variante 5: mit blauem Hintergrund, Schrift wie bisher"></div><div class="auf-bild"><img src="img/logo-5.png" alt="Variante 5 auf dem Bild"></div><figcaption><span><span class="nr">5</span>Schrift wie bisher</span><button class="zeigen" data-v="5">im Kopf ansehen</button></figcaption></figure>
+        <figure data-v="6"><div class="auf-weiss"><img src="img/logo-6.png" alt="Variante 6: mit blauem Hintergrund, runde Schrift"></div><div class="auf-bild"><img src="img/logo-6.png" alt="Variante 6 auf dem Bild"></div><figcaption><span><span class="nr">6</span>runde Schrift</span><button class="zeigen" data-v="6">im Kopf ansehen</button></figcaption></figure>
+      </div>
+    </div>
+
+    <div class="aktuell"><img src="img/aktuell.svg" alt="MEDILUX-Logo heute auf der neuen Website"><span>Zum Vergleich: das Logo heute auf der neuen Website.</span></div>
+  </section>
+
+  <!-- SCHRITT 2 -->
+  <section id="schritt2">
+    <span class="schritt">Schritt 2</span>
+    <h2>So wirkt Ihre Variante auf dem Handy</h2>
+    <div class="vorschau">
+      <div>
+        <p>Scrollen Sie in der Handy-Vorschau nach unten. Oben steht das Logo auf dem großen Bild. Sobald Sie scrollen, wird der Kopf weiß und bleibt stehen.</p>
+        <h3>Variante</h3>
+        <div class="knoepfe" id="k-variante">
+          <button data-v="1" aria-pressed="true">1</button><button data-v="2">2</button><button data-v="3">3</button>
+          <button data-v="4">4</button><button data-v="5">5</button><button data-v="6">6</button>
+        </div>
+        <h3>Im weißen Kopf beim Scrollen</h3>
+        <div class="knoepfe" id="k-modus">
+          <button data-m="ganz" aria-pressed="true">ganzes Logo</button><button data-m="zeichen">nur das Zeichen</button>
+        </div>
+        <p style="margin-top:14px;color:var(--grau);font-size:15px">«Nur das Zeichen» heißt: Kranz mit Wappen und M, ohne den Schriftzug. Der Kopf wird dadurch kleiner und verdeckt weniger vom Text.</p>
+      </div>
+      <div class="telefon" aria-label="Vorschau der Startseite auf dem Handy">
+        <div class="seite" id="seite">
+          <div class="s-kopf" id="skopf">
+            <span class="s-logo"><img id="slogo" src="img/logo-1.png" alt="MEDILUX Logo"></span>
+            <span class="s-rechts" aria-hidden="true"><span class="tel"></span><span class="burger"><span></span><span></span><span></span></span></span>
+          </div>
+          <div class="s-hero">
+            <div class="kicker">24h Pflegewohnkonzepte in Berlin</div>
+            <div class="h1"><em>Pflege-WG</em> und <em>betreutes Wohnen</em> in Berlin – ein Zuhause, das für Sie da ist.</div>
+            <div class="unter">Familiär leben – in einer kleinen Wohngemeinschaft oder der eigenen Wohnung. Mit liebevoller Pflege rund um die Uhr, in Zehlendorf und Spandau.</div>
+            <span class="btn">Pflegeplatz anfragen</span>
+          </div>
+          <div class="s-text">
+            <p>MEDILUX bietet Senioren ein Zuhause mit liebevoller Pflege rund um die Uhr und Angehörigen die Sicherheit einer verlässlichen Versorgung – als Alternative zum Pflegeheim, an zwei Standorten in Berlin.</p>
+            <div class="karte"><h4>Villa Lindenthal</h4>Familiär leben in einem stilvollen Haus mit Garten in Zehlendorf.</div>
+            <div class="karte"><h4>Residenz Heerstraße</h4>Pflege-WG und betreute Wohnungen in einem modernen Neubau in Spandau.</div>
+            <div class="karte"><h4>Für wen?</h4>Für Senioren, für Angehörige und für Sozialdienste, Berufsbetreuer, Ärzte und Pflegeberater.</div>
+            <div class="karte"><h4>Kosten</h4>Was ein Platz kostet und wer die Kosten trägt, rechnen Sie mit dem Kostenrechner auf der Seite «Kosten» aus.</div>
+            <p style="color:var(--grau)">(Vorschau – Texte gekürzt von der Startseite)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCHRITT 3 -->
+  <section id="schritt3">
+    <span class="schritt">Schritt 3</span>
+    <h2>So wirkt Ihre Variante am Computer</h2>
+    <p style="max-width:780px">Am Computer ist im Kopf mehr Platz. Oben sehen Sie den Kopf auf dem großen Bild, darunter den weißen Kopf nach dem Scrollen. Gezeigt wird die Variante, die Sie in Schritt 2 gewählt haben: <b id="d-nr">Variante 1</b>.</p>
+    <div class="desktop" aria-label="Vorschau des Website-Kopfes am Computer">
+      <div class="d-leiste foto"><span class="d-logo"><img id="dlogo1" src="img/logo-1.png" alt="MEDILUX Logo auf dem Bild"></span><span class="d-nav"><span class="weg">Pflege-WG</span><span class="weg">Betreutes Wohnen</span><span class="weg">Standorte</span><span class="weg">Kosten</span><span class="d-btn">Pflegeplatz anfragen</span></span></div>
+      <div class="d-hinweis">nach dem Scrollen</div>
+      <div class="d-leiste weiss"><span class="d-logo"><img id="dlogo2" src="img/logo-1.png" alt="MEDILUX Logo im weißen Kopf"></span><span class="d-nav"><span class="weg">Pflege-WG</span><span class="weg">Betreutes Wohnen</span><span class="weg">Standorte</span><span class="weg">Kosten</span><span class="d-btn">Pflegeplatz anfragen</span></span></div>
+    </div>
+  </section>
+
+  <div class="bitte">
+    <h2>Ihre Auswahl</h2>
+    <p>Schreiben Sie uns einfach die Nummer Ihres Favoriten, per WhatsApp oder E-Mail. Wenn Sie mögen, sagen Sie uns dazu, ob im weißen Kopf beim Scrollen das ganze Logo stehen soll oder nur das Zeichen.</p>
+    <span class="beispiel">Beispiel: «Variante 3, beim Scrollen nur das Zeichen»</span>
+  </div>
+</main>
+<footer class="wrap">2Penguins für MEDILUX · Arbeitsstand, nicht öffentlich</footer>
+
+<script>
+(function(){
+  var v='1', m='ganz';
+  var seite=document.getElementById('seite'), kopf=document.getElementById('skopf'), logo=document.getElementById('slogo');
+  function zeichne(){
+    var weiss=seite.scrollTop>120;
+    kopf.classList.toggle('weiss', weiss);
+    logo.src = (weiss && m==='zeichen') ? 'img/zeichen-'+v+'.png' : 'img/logo-'+v+'.png';
+    document.getElementById('dlogo1').src='img/logo-'+v+'.png';
+    document.getElementById('dlogo2').src = (m==='zeichen') ? 'img/zeichen-'+v+'.png' : 'img/logo-'+v+'.png';
+    document.getElementById('d-nr').textContent='Variante '+v+(m==='zeichen'?', beim Scrollen nur das Zeichen':'');
+  }
+  function setzeVariante(x){
+    v=x;
+    document.querySelectorAll('#k-variante button').forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.v===v ? 'true':'false'); });
+    document.querySelectorAll('figure[data-v]').forEach(function(f){ f.classList.toggle('aktiv', f.dataset.v===v); });
+    zeichne();
+  }
+  document.querySelectorAll('#k-variante button').forEach(function(b){ b.addEventListener('click', function(){ setzeVariante(b.dataset.v); }); });
+  document.querySelectorAll('.zeigen').forEach(function(b){ b.addEventListener('click', function(){
+    setzeVariante(b.dataset.v); document.getElementById('schritt2').scrollIntoView({behavior:'smooth'});
+  }); });
+  document.querySelectorAll('#k-modus button').forEach(function(b){ b.addEventListener('click', function(){
+    m=b.dataset.m; document.querySelectorAll('#k-modus button').forEach(function(x){ x.setAttribute('aria-pressed', x===b ? 'true':'false'); }); zeichne();
+  }); });
+  seite.addEventListener('scroll', zeichne, {passive:true});
+  setzeVariante('1');
+})();
+</script>
+</body>
+</html>
