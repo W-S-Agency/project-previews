@@ -1,0 +1,888 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>S/4HANA-Migration und SAP-Betrieb absichern | andagon</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="Vorschau der SAP-Landingpage für andagon People (Fassung 8). Nicht öffentlich.">
+<style>
+  :root{
+    --navy:#0b2a45; --blue:#1763b8; --blue-d:#114a8a; --teal:#0a9c92;
+    --ink:#15212e; --muted:#56657a; --line:#e2e8f0; --bg:#ffffff; --bg-soft:#f4f7fb;
+    --red:#c62828; --amber:#b26a00; --green:#1f7a3d;
+    --radius:14px; --maxw:1080px;
+    --shadow:0 10px 30px rgba(11,42,69,.08);
+    font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;color:var(--ink);background:var(--bg);line-height:1.65;font-size:17px}
+  h1,h2,h3{line-height:1.2;color:var(--navy);margin:0 0 .4em}
+  h1{font-size:clamp(1.9rem,4.4vw,3rem);letter-spacing:-.5px}
+  h2{font-size:clamp(1.5rem,3vw,2.1rem)}
+  h3{font-size:1.15rem}
+  p{margin:0 0 1rem}
+  a{color:var(--blue)}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+  section{padding:64px 0;border-bottom:1px solid var(--line)}
+  .eyebrow{display:inline-block;font-size:.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--teal);background:rgba(10,156,146,.1);padding:6px 12px;border-radius:999px;margin-bottom:14px}
+  .lead{font-size:1.18rem;color:var(--muted);max-width:62ch}
+  .skip{position:absolute;left:-9999px;top:0;background:var(--navy);color:#fff;padding:10px 16px;z-index:100}
+  .skip:focus{left:8px;top:8px}
+  a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--teal);outline-offset:2px;border-radius:4px}
+  .draft{background:#fff8e6;border-bottom:1px solid #f0dca0;color:#6b5000;font-size:14px;line-height:1.5;text-align:center;padding:9px 16px}
+  .draft strong{color:#5e4600}
+  header.top{position:sticky;top:0;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:50}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 22px;max-width:var(--maxw);margin:0 auto;gap:16px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--navy);letter-spacing:-.3px}
+  .logo .mark{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,var(--blue),var(--teal));display:grid;place-items:center;color:#fff;font-weight:800}
+  .btn{display:inline-block;background:var(--blue);color:#fff;font-weight:700;text-decoration:none;padding:13px 22px;border-radius:999px;border:0;cursor:pointer;font-size:1rem;transition:background .15s}
+  .btn:hover{background:var(--blue-d)}
+  .btn.ghost{background:transparent;color:var(--blue);border:2px solid var(--blue);padding:11px 20px}
+  .btn.ghost:hover{background:rgba(23,99,184,.07)}
+  .btn.lg{padding:15px 28px;font-size:1.05rem}
+  .nav .btn{padding:10px 18px;font-size:.95rem}
+  .hero{background:linear-gradient(180deg,var(--bg-soft),#fff);border-bottom:1px solid var(--line)}
+  .hero .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin:22px 0 14px}
+  .reassure{display:flex;gap:18px;flex-wrap:wrap;color:var(--navy);font-weight:600;font-size:.98rem;margin-top:8px}
+  .reassure span{display:flex;align-items:center;gap:7px}
+  .check{color:var(--green);font-weight:800}
+  .grid{display:grid;gap:18px}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+  .card h3{margin-top:0}
+  .stat{font-size:2.4rem;font-weight:800;color:var(--teal);line-height:1}
+  .soft{background:var(--bg-soft)}
+  ul.clean{list-style:none;padding:0;margin:0}
+  ul.clean li{padding:10px 0 10px 30px;border-bottom:1px solid var(--line);position:relative}
+  ul.clean li:last-child{border-bottom:0}
+  ul.clean li::before{content:"✓";position:absolute;left:0;color:var(--teal);font-weight:800}
+  ul.vs{list-style:none;padding:0;margin:0}
+  ul.vs li{padding:9px 0;border-bottom:1px solid var(--line)}
+  ul.vs li:last-child{border-bottom:0}
+  .box{background:var(--bg-soft);border:1px solid var(--line);border-radius:12px;padding:16px 18px;font-size:.95rem;color:var(--muted)}
+  .confirm{background:#fff8e6;border:1px solid #f0dca0;border-radius:12px;padding:16px 18px;font-size:.93rem;color:#6b5200;margin-top:22px}
+  .confirm .tag{display:inline-block;background:var(--amber);color:#fff;font-weight:800;font-size:.72rem;letter-spacing:.05em;text-transform:uppercase;padding:4px 10px;border-radius:999px;margin-bottom:8px}
+  .confirm p{margin:0 0 .6rem}
+  .confirm p:last-child{margin-bottom:0}
+  .kicker{font-size:.72rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--teal)}
+  fieldset{border:0;padding:0;margin:0 0 18px}
+  form .field{margin-bottom:14px}
+  label.fl{display:block;font-weight:600;margin-bottom:5px;color:var(--navy)}
+  input[type=text],input[type=email],textarea,select{width:100%;border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:1rem;font-family:inherit;background:#fff}
+  textarea{min-height:90px;resize:vertical}
+  .req{color:var(--red)}
+  .consent{display:flex;gap:10px;align-items:flex-start;font-size:.9rem;color:var(--muted)}
+  .logobar{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;align-items:center}
+  .logoph{height:54px;border:1px dashed var(--line);border-radius:10px;display:grid;place-items:center;color:var(--muted);font-size:.78rem;background:#fff}
+  details.faq{border:1px solid var(--line);border-radius:12px;margin-bottom:10px;background:#fff;overflow:hidden}
+  details.faq summary{cursor:pointer;padding:16px 18px;font-weight:700;color:var(--navy);list-style:none;display:flex;justify-content:space-between;gap:12px}
+  details.faq summary::-webkit-details-marker{display:none}
+  details.faq summary::after{content:"+";color:var(--teal);font-weight:800;font-size:1.3rem}
+  details.faq[open] summary::after{content:"–"}
+  details.faq .a{padding:0 18px 16px;color:var(--muted)}
+  footer{background:var(--navy);color:#cdd9e6;padding:46px 0 30px;border:0}
+  footer h3{color:#fff}
+  footer a{color:#cdd9e6}
+  .fnote{font-size:.82rem;color:#8aa0b8;margin-top:18px}
+  .ph-note{font-size:.78rem;color:var(--muted);border:1px dashed var(--line);border-radius:6px;padding:1px 7px;display:inline-block}
+  @media(max-width:860px){.g3,.g2,.logobar{grid-template-columns:1fr 1fr}}
+  @media(max-width:560px){.g3,.g2,.logobar{grid-template-columns:1fr}.nav .btn{display:none}}
+
+  blockquote.quote{margin:22px 0;padding:18px 20px;border-left:4px solid var(--teal);background:#f7fbfb;border-radius:0 8px 8px 0}
+  blockquote.quote p{margin:0 0 8px;font-size:1.02rem;line-height:1.6}
+  blockquote.quote cite{font-style:normal;font-weight:700;font-size:.88rem;color:#555}
+
+  /* ===== Fassung 6: Gestaltung nach barrierefreiheit.andagon.com (live, gemessen 12.11.2026) ===== */
+  :root{--ink:#000;--txt:#363636;--muted:#54565a;--line:#d3d2d8;--bg-soft:#f5f7f7;--yellow:#f6d709;--yellow-d:#e0c300;--check:#b9a20c;--radius:0px;--shadow:none;
+    font-family:"Source Sans 3",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+  body{color:var(--txt);font-size:18px;line-height:1.55}
+  h1,h2,h3{color:var(--ink)}
+  h1{font-size:clamp(2rem,4.2vw,3rem);font-weight:900;letter-spacing:-.015em;line-height:1.05}
+  h2{font-size:clamp(1.6rem,3vw,2.125rem);font-weight:700;letter-spacing:-.01em}
+  a{color:var(--ink)}
+  .soft{background:var(--bg-soft)}
+  section{border-bottom:0}
+  .lead{color:var(--muted);font-size:1.125rem}
+  .eyebrow{display:inline-block;background:transparent;color:var(--ink);border:1.6px solid var(--line);border-radius:0;padding:8px 16px;font-size:14px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;margin-bottom:20px}
+  .btn{background:var(--yellow);color:#000;border:1.6px solid var(--yellow);border-radius:0;font-weight:600;letter-spacing:.03em;padding:9px 20px}
+  .btn:hover{background:var(--yellow-d);border-color:var(--yellow-d)}
+  .btn.ghost{background:#fff;color:#000;border:1.6px solid #000;padding:9px 20px}
+  .btn.ghost:hover{background:#f2f2f2}
+  .btn.lg{padding:9px 20px;font-size:1rem}
+  /* Buttons wie BFSG live (gemessen 12.11.: 17,67px / 600 / Zeilenhöhe 30px / Padding 8,8px 19,7px / Höhe ~49px) */
+  .btn,.btn.lg,.btn.ghost{font-size:17.67px;line-height:30px;padding:8.8px 19.7px}
+  .nav .btn{font-size:17.33px;line-height:29.5px;padding:8.8px 19.7px}
+  .btn .arr{margin-left:8px}
+  a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid #000;outline-offset:2px;border-radius:0}
+  header.top{background:#fff;border-bottom:1px solid var(--line)}
+  .nav{padding:14px 22px}
+  .nav .logo img{height:40px;width:auto;display:block}
+  .nav .menu{display:flex;gap:30px;font-weight:600;font-size:16px}
+  .nav .menu a{text-decoration:none;color:#000}
+  .nav .menu a:hover{text-decoration:underline}
+  .hero{background:#fff;border-bottom:0;padding:40px 0 48px}
+  /* Raster wie BFSG live: Inhalt bis 1760px, 16px Seitenrand; Hero 711 : 498 bei 24px Abstand (gemessen bei 1280px) */
+  :root{--maxw:1760px}
+  .wrap{padding:0 16px}
+  .nav{max-width:1760px;padding:14px 16px}
+  .hero-grid{display:grid;grid-template-columns:minmax(0,711fr) minmax(0,498fr);column-gap:24px;row-gap:8px;align-items:center}
+  .hero .lead{color:var(--muted);font-size:18px;max-width:none}
+  .hero p{color:var(--muted)}
+  .hero .eyebrow,.hero .s-t{color:#000}
+  .hero .cta-row{gap:12px;margin:24px 0 28px}
+  .hero-img{margin:0}
+  .hero-img img{width:100%;height:auto;display:block}
+  /* Platzhalter-Hinweise: Bild/Icon stammt von der Barrierefreiheit-Seite und wird im Design ersetzt. Hinweis UNTER dem Bild, nicht darüber */
+  .swap{display:block;margin-top:6px;background:#fff8e6;border:1px dashed #b26a00;color:#6b5200;font-size:12px;font-weight:600;line-height:1.35;padding:4px 8px}
+  .ico{display:inline-flex;align-items:center;gap:6px}
+  .ico svg{width:36px;height:36px;flex:0 0 auto}
+  .ico-note{display:inline-block;background:#fff8e6;border:1px dashed #b26a00;color:#6b5200;font-size:11px;font-weight:600;padding:1px 6px;margin-left:6px;vertical-align:middle}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;border-top:.8px solid var(--line);padding-top:24px}
+  .stats .s{display:flex;flex-direction:column;gap:4px;padding-right:12px;border-right:.8px solid var(--line)}
+  .stats .s:last-child{border-right:0}
+  .stats .s-t{font-size:20px;font-weight:700;color:#000;line-height:1.4;margin:0}
+  .stats .s-d{font-size:18px;color:var(--muted);line-height:1.55;margin:0}
+  /* Zwischentitel einheitlich 20px / 700 / 28px (gemessen BFSG: Stat-Titel 20px, Zeilenhöhe 28px) */
+  .kcard-t,.case-title,.wcard h3{line-height:28px}
+  /* Block-Raster wie BFSG «Was ist das BFSG?»: links Text, rechts weiße Karte; darunter Karten */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
+  .wcard{background:#fff;border:.8px solid var(--line);padding:16px 20px}
+  .wcard h3{font-size:20px;margin:0 0 6px}
+  .uline{display:inline-block;border-bottom:3px solid var(--yellow);padding-bottom:6px}
+  /* Gegenüberstellung: Paare bleiben Paare, keine Farbbewertung */
+  .vs-table{margin-top:28px;background:#fff;border:.8px solid var(--line)}
+  .vs-row{display:grid;grid-template-columns:1fr 1fr}
+  .vs-row>div{padding:14px 20px;border-top:.8px solid var(--line)}
+  .vs-row>div+div{border-left:.8px solid var(--line)}
+  .vs-head>div{border-top:0;font-weight:700;font-size:20px;color:#000;padding-top:18px}
+  .vs-lab{display:none;font-size:13px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+  /* Block 3: Praxisfall-Kasten (neu, aus BFSG-Bausteinen: weiße Karte, Rahmen, gelber Akzent, 40px-Icon) */
+  .intro{max-width:78ch}
+  .split-case{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px}
+  .case{max-width:none;margin:0;background:#fff;border:.8px solid var(--line);border-top:4px solid var(--yellow);padding:22px 26px}
+  .case-head{display:flex;align-items:center;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+  .case-head svg{width:40px;height:40px;flex:0 0 auto;color:#1f1f20}
+  .case-title{font-size:20px;font-weight:700;color:#000;margin:0}
+  .case p{color:var(--txt)}
+  .case-conclusion{margin:16px 0 0;font-size:18px;line-height:1.55;color:var(--txt);font-weight:400}
+  .case .punch{color:#000;font-weight:700}
+  /* Block 4/5: Karte wie BFSG «Card / Kern-Lieferung»: weiß, Rahmen, zwei Spalten mit Trennlinie; rechts graue Kästen mit Großbuchstaben-Label */
+  .kcard{display:grid;grid-template-columns:1fr 1fr;background:#fff;border:.8px solid var(--line);margin:28px 0}
+  .kcard>div{padding:22px 24px}
+  .kcard>div+div{border-left:.8px solid var(--line)}
+  .kcard-t{font-size:20px;font-weight:700;color:#000;margin:0 0 12px}
+  ul.chk{list-style:none;margin:0;padding:0}
+  ul.chk li{display:flex;gap:12px;align-items:flex-start;padding:7px 0;color:var(--txt)}
+  ul.chk li svg{width:20px;height:19px;flex:0 0 auto;margin-top:4px}
+  .gbox{background:var(--bg-soft);border:.8px solid var(--line);padding:16px 18px;margin-bottom:16px}
+  .gbox:last-child{margin-bottom:0}
+  .gbox-t{font-size:14px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:#000;margin:0 0 8px}
+  ul.dot{list-style:none;margin:0;padding:0}
+  ul.dot li{position:relative;padding:4px 0 4px 16px;color:var(--txt)}
+  ul.dot li::before{content:"";position:absolute;left:0;top:14px;width:6px;height:6px;border-radius:50%;background:var(--check)}
+  @media(max-width:860px){.kcard{grid-template-columns:1fr}.kcard>div+div{border-left:0;border-top:.8px solid var(--line)}}
+  /* Zitat wie BFSG «Quote Bar»: schwarzes Band, Zitat weiß 20px kursiv fett, Name gelb Versalien, Funktion hellgrau */
+  .qbar{background:#000;padding:24px;margin:28px 0}
+  .qbar p{color:#fff;font-size:20px;font-style:italic;font-weight:700;line-height:1.4;margin:0 0 12px}
+  .qbar .q-name{display:block;color:var(--yellow);font-size:16px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;font-style:normal}
+  .qbar .q-role{display:block;color:#d3d2d8;font-size:16px;font-weight:400;font-style:normal;margin-top:2px}
+  .src{font-size:14px;color:var(--muted);margin-top:-4px}
+  /* Block 6 (und später Warum andagon): Kacheln wie BFSG «Reasons Row»: gelbe Linie oben, Icon 35x40 + Titel 20px/700, Text 18px grau */
+  .reasons{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin:28px 0}
+  .reason{border-top:1.6px solid var(--yellow);padding-top:16px}
+  .reason-h{display:flex;align-items:center;gap:8px;margin:0 0 8px}
+  .reason-h svg{width:35px;height:40px;flex:0 0 auto}
+  .reason-h h3{font-size:20px;font-weight:700;line-height:28px;margin:0}
+  .reason p{color:var(--muted);font-size:18px;line-height:1.55;margin:0}
+  @media(max-width:860px){.reasons{grid-template-columns:1fr}}
+  /* Block 5: Kennzahl-Karten wie BFSG «13 Mio. / 20 Mio.»: weiße Karte, Rahmen, Zahl 38px/700 mit gelber Unterstreichung, Text 18px grau */
+  .relgrid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:24px;align-items:start;margin:8px 0 0}
+  .statcards{display:grid;gap:16px}
+  .statcard{background:#fff;border:.8px solid var(--line);padding:16px 20px}
+  .statcard .n{display:inline-block;font-size:38px;font-weight:700;line-height:40px;color:#000;padding-bottom:8px;border-bottom:3px solid var(--yellow);margin:0 0 10px}
+  .statcard .d{font-size:18px;line-height:1.5;color:var(--muted);margin:0}
+  @media(max-width:860px){.relgrid{grid-template-columns:1fr}}
+  /* Block 7: Prüfliste wie BFSG «2-Minuten-Check»: links Text, rechts weiße Karte; Feld wie BFSG-Formular (weiß, Rahmen #767676, Höhe 50px, Label 16px/600) */
+  .pl-card{background:#fff;border:.8px solid var(--line);padding:24px}
+  .pl-card label{display:block;font-size:16px;font-weight:600;color:#000;line-height:28px;margin:0 0 6px}
+  .pl-row{display:flex;gap:12px;align-items:stretch}
+  .pl-row input{flex:1 1 auto;height:51px;border:.8px solid #767676;border-radius:0;padding:4px 14px;font-size:18px;font-family:inherit;color:var(--txt);background:#fff}
+  .pl-row .btn{white-space:nowrap}
+  button,input,textarea,select{font-family:inherit}
+  /* Einwilligung wie BFSG-Formular; Checkbox 24px (WCAG 2.2, 2.5.8 Zielgröße) */
+  .consent2{display:flex;gap:10px;align-items:flex-start;margin-top:14px;font-size:16px;line-height:1.5;color:var(--txt)}
+  .consent2 input{width:24px;height:24px;flex:0 0 auto;margin:0;accent-color:#000}
+  .consent2 a{color:#000}
+  .pl-card label.consent2{display:flex;font-weight:400;font-size:16px;line-height:1.5;margin:14px 0 0;color:var(--txt)}
+
+  @media(max-width:560px){.pl-row{flex-direction:column}.pl-row .btn{text-align:center}}
+  /* Warum andagon: 4 Kacheln wie BFSG (2x2), Referenzen: Logo-Reihe wie BFSG (Zelle 80px hoch, contain), statisch statt Laufband (WCAG 2.2.2) */
+  .reasons.r4{grid-template-columns:repeat(2,1fr)}
+  .logowall{display:grid;grid-template-columns:repeat(6,1fr);gap:24px;align-items:center;margin:28px 0 20px}
+  .logowall img{width:100%;height:80px;object-fit:contain;display:block}
+  .more-link{color:#000;font-size:18px}
+  @media(max-width:860px){.logowall{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:560px){.logowall{grid-template-columns:repeat(2,1fr)}}
+  /* FAQ wie BFSG: Liste volle Breite, Trennlinien #D3D2D8, Frage 20px/700, Plus/Minus 24px rechts, Antwort 18px grau */
+  .faq6{border-top:.8px solid var(--line);margin-top:24px}
+  .faq6 details{border-bottom:.8px solid var(--line)}
+  .faq6 summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 0}
+  .faq6 summary::-webkit-details-marker{display:none}
+  .faq6 summary h3{font-size:20px;font-weight:700;line-height:30px;color:#000;margin:0}
+  .faq6 summary svg{width:24px;height:24px;flex:0 0 auto}
+  .faq6 summary .mi{display:none}
+  .faq6 details[open] summary .pl{display:none}
+  .faq6 details[open] summary .mi{display:block}
+  .faq6 .a{font-size:18px;line-height:26px;color:var(--muted);padding:0 40px 18px 0;margin:0}
+  /* Block 10 wie BFSG «Kontakt»: links Hauptweg (Buchung) + Formular 2-spaltig, rechts Bild 604x770; Felder wie BFSG (Rahmen #767676, Label 16px/600) */
+  .kontakt-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:start;margin-top:24px}
+  .book{background:#fff;border:.8px solid var(--line);padding:20px 24px;margin-bottom:24px}
+  .book-row{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .book-row>svg{width:40px;height:40px;flex:0 0 auto}
+  .book-h svg{width:40px;height:40px;flex:0 0 auto}
+  .book-h p{font-size:20px;font-weight:700;line-height:28px;color:#000;margin:0}
+  .book .btn svg{width:18px;height:18px;vertical-align:-3px;margin-left:8px}
+  .written{font-size:18px;margin:0 0 12px}
+  .form6{display:grid;grid-template-columns:1fr 1fr;gap:14px 16px}
+  .form6 .full{grid-column:1/-1}
+  .form6 label.fl{display:block;font-size:16px;font-weight:600;color:#000;line-height:28px;margin:0 0 4px}
+  .form6 input[type=text],.form6 input[type=email],.form6 textarea{width:100%;border:.8px solid #767676;border-radius:0;padding:10px 14px;font-size:18px;color:var(--txt);background:#fff}
+  .form6 input[type=text],.form6 input[type=email]{height:51px}
+  .form6 textarea{min-height:120px}
+  .form6 .btn{width:100%;text-align:center}
+  .req-note{font-size:14px;color:var(--muted);margin:8px 0 0}
+  .k-img img{width:100%;height:auto;display:block}
+  @media(max-width:860px){.kontakt-grid{grid-template-columns:1fr}.k-img,.hero-img{margin-left:0;margin-right:0;max-width:520px;width:100%}}
+  @media(max-width:560px){.form6{grid-template-columns:1fr}}
+  /* Footer wie BFSG: schwarz, Spaltenköpfe weiß 18px/600 Versalien, Links #909399 18px */
+  footer.f6{background:#000;color:#909399;padding:32px 0}
+  footer.f6 .fgrid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:24px}
+  footer.f6 .fh{color:#fff;font-size:18px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;margin:0 0 12px}
+  footer.f6 p,footer.f6 a{color:#909399;font-size:18px;line-height:28px;margin:0 0 8px;text-decoration:none}
+  footer.f6 a:hover{text-decoration:underline}
+  footer.f6 .flogo{height:32px;width:auto;display:block;margin:0 0 14px}
+  footer.f6 .fmeta{border-top:.8px solid #333;margin-top:24px;padding-top:14px;font-size:14px;line-height:1.5;color:#909399}
+  @media(max-width:860px){footer.f6 .fgrid{grid-template-columns:1fr}}
+  @media(max-width:860px){.split{grid-template-columns:1fr}}
+  @media(max-width:560px){.vs-head{display:none}.vs-row{grid-template-columns:1fr}.vs-row>div+div{border-left:0;border-top:.8px dashed var(--line)}.vs-lab{display:block}.vs-row+.vs-row{border-top:10px solid var(--bg-soft)}.vs-head+.vs-row{border-top:0}}
+  @media(max-width:860px){.hero-grid{grid-template-columns:1fr}.nav .menu{display:none}}
+  @media(max-width:1023px){.nav .menu{display:none}.nav .btn{white-space:nowrap}}
+
+  /* Hero-Grafik Variante A „Prozesstest".
+     Schrift: vorhandene Source Sans 3 (Google Fonts), eigenes @font-face entfällt.
+     Text skaliert mit der Grafikbreite (cqw); unter 1200 px Fensterbreite würde „Wird geprüft" < 12 px
+     → Grafik dort ausgeblendet, Textspalte nimmt die volle Breite (max. 760 px Zeilenlänge). */
+  .sap3-run-panel{position:relative;width:100%;aspect-ratio:856/686;container-type:inline-size;color:#262729;line-height:1.15}
+  .sap3-run-panel>.sap3-plate{position:absolute;inset:0;width:100%;height:100%}
+  .sap3-run-face{position:absolute;left:10.7%;right:10.7%;top:18.8%;bottom:25.1%;display:flex;flex-direction:column;justify-content:center}
+  .sap3-run-title{font-weight:700;font-size:5.6cqw;line-height:1.05;letter-spacing:-.035em;margin:0 0 2cqw;color:#171819}
+  .sap3-run-title:after{content:'';width:6.6cqw;height:.62cqw;background:#f6d709;display:block;margin-top:1.1cqw}
+  .sap3-run-table{width:100%;border-collapse:collapse;table-layout:fixed}
+  .sap3-run-table th,.sap3-run-table td{padding:0;border:0;text-align:center;vertical-align:middle}
+  .sap3-run-table .sap3-rlabel{width:22%;text-align:left;font-size:3.3cqw;font-weight:600;color:#585a5b}
+  .sap3-run-table .sap3-rstatus{width:9%}
+  .sap3-run-table thead th{font-weight:600;color:#505255;font-size:2.88cqw;height:5.7cqw}
+  .sap3-run-table tbody tr{border-top:1px solid #dcdddc;height:8.5cqw}
+  .sap3-run-table .sap3-trace{position:relative}
+  .sap3-run-table .sap3-trace:after{content:'';position:absolute;width:calc(100% - 7cqw);height:1px;background:#aaaead;left:calc(50% + 3.5cqw);top:50%}
+  .sap3-run-table .sap3-trace.sap3-end:after{display:none}
+  .sap3-rstep{box-sizing:border-box;width:6.1cqw;height:6.1cqw;display:inline-grid;place-items:center;vertical-align:middle;color:#6a6d6c}
+  .sap3-rstep svg{width:4.35cqw;height:4.35cqw}
+  .sap3-run-table .sap3-now th{color:#171819;font-weight:700}
+  .sap3-now .sap3-rstep{color:#252627}
+  .sap3-now .sap3-active{border:1.5px solid #c3a600;background:#fff2a0;border-radius:1.1cqw}
+  .sap3-now .sap3-waiting{color:#a9abaa}
+  .sap3-run-table tr.sap3-now{height:12cqw}
+  .sap3-run-table .sap3-now .sap3-trace,.sap3-run-table .sap3-now .sap3-rlabel{vertical-align:top;padding-top:1cqw}
+  .sap3-run-table .sap3-now .sap3-trace:after{top:4.05cqw}
+  .sap3-run-table .sap3-now .sap3-rlabel{padding-top:1.65cqw}
+  .sap3-run-state{display:table;background:#f6d709;color:#161616;font-size:2.72cqw;font-weight:600;padding:.32cqw 1.05cqw;margin-top:.5cqw;border-radius:.35cqw;white-space:nowrap}
+  .sap3-step-state{display:block;font-size:2.62cqw;font-weight:600;color:#333;line-height:1.15;margin-top:.2cqw;white-space:nowrap}
+  .sap3-finish{display:inline-flex;vertical-align:middle;width:3.65cqw;height:3.65cqw;color:#424545}
+  .sap3-finish svg{width:100%;height:100%}
+  @media(max-width:1199px){.hero-grid:has(.sap3-figure){grid-template-columns:1fr}.hero-grid:has(.sap3-figure)>div:first-child{max-width:760px}.hero-img.sap3-figure{display:none}}
+  @media(max-width:560px){.stats{grid-template-columns:1fr}.stats .s{border-right:0;border-bottom:.8px solid var(--line);padding:0 0 12px}.stats .s:last-child{border-bottom:0}}
+
+  /* ===== Abstands-System Fassung 6 (an BFSG live gemessen 12.11.2026 bei 1280px; fluid bis 1920px wie Figma) =====
+     Abschnitt: 32px @1280 → 64px @1920 · Eyebrow→Titel 24 · Titel→Lead 12 · Text→Inhalt 24 · Komponente→Komponente 24
+     Absatz 16 · Karten außen 24, Kacheln innen 16/20 · letzte Elemente ohne Außenabstand */
+  :root{--sec:clamp(32px,calc(5vw - 32px),64px);--g1:12px;--g2:16px;--g3:24px}
+  main>section,section.hero{padding:var(--sec) 0}
+  .eyebrow{margin:0 0 var(--g3)}
+  h1,h2{margin:0 0 var(--g1)}
+  p,.lead,.intro{margin:0 0 var(--g2)}
+  .lead{max-width:75ch}
+  .wrap>:is(.kcard,.relgrid,.qbar,.reasons,.logowall,.faq6,.kontakt-grid,.vs-table,.split,.statcards,.cta-row,.stats),
+  .wrap>.btn,.wrap>.more-link,.split+.vs-table{margin-top:var(--g3);margin-bottom:0}
+  .wrap>.btn,.wrap>.more-link{display:inline-block}
+  .wrap>:is(.kcard,.relgrid,.qbar,.reasons,.logowall,.faq6,.kontakt-grid,.vs-table,.split)+:is(.btn,.more-link,p){margin-top:var(--g3)}
+  .wrap>:last-child,.split>div>:last-child,.relgrid>div>:last-child,.case>:last-child,.gbox>:last-child,.kcard>div>:last-child,
+  .pl-card form>:last-child,.book>:last-child,.qbar figcaption>:last-child,.qbar blockquote p,.reason>:last-child,.statcard>:last-child,.k-img,.hero-grid>div>:last-child{margin-bottom:0}
+  .hero .cta-row{margin:var(--g3) 0 0}
+  .hero-grid>.stats{margin-top:var(--g3)}
+  .split{margin-top:0}
+  .wrap>.eyebrow+.split{margin-top:0}
+  .case-conclusion{margin-top:var(--g2)}
+  .src{margin-top:var(--g1)}
+  .qbar blockquote{margin:0}
+  .qbar p{margin-bottom:var(--g1)}
+  .qbar figure,figure.qbar{margin-left:0;margin-right:0}
+  .written{margin:0 0 var(--g2)}
+  /* Karten: Container 24px, innere Kacheln 16/20px */
+  .kcard>div,.case,.pl-card,.book,.qbar{padding:var(--g3)}
+  .gbox,.statcard,.wcard{padding:var(--g2) 20px}
+  .gbox+.gbox{margin-top:var(--g2)}
+  .statcards{gap:var(--g2)}
+  .kontakt-grid,.relgrid,.split,.reasons{gap:var(--g3)}
+  ul.chk li,ul.dot li{padding-top:6px;padding-bottom:6px}
+
+  /* ===== Listen & Formulare an BFSG live angeglichen (gemessen 12.11.2026, 1280px) =====
+     Häkchen-Liste: Icon 22x21, Abstand Icon→Text 8, Zeilenabstand 12 · Punkt-Liste: 18px/30,6px ohne Innenabstand, Label→erster Punkt 12
+     Kasten-Label 16px/600 Versalien, Kasten innen 16 · Formular: Label 18px/600, Label→Feld 5, Feld→nächstes Label 12, Spalten 12,
+     Textfeld 90px hoch, Senden-Button 18px/Padding 14,4 18, «* Pflichtfeld» 18px mit 24 Abstand */
+  ul.chk li{padding:0;gap:8px;margin:0 0 12px}
+  ul.chk li:last-child{margin-bottom:0}
+  ul.chk li svg{width:22px;height:21px;margin-top:3px}
+  ul.dot li{padding:0 0 0 16px;line-height:30.6px}
+  ul.dot li::before{top:12px}
+  .gbox{padding:16px}
+  .gbox-t{font-size:16px;font-weight:600;margin:0 0 12px}
+  .form6{gap:12px}
+  .form6 label.fl,.pl-card>form>label[for=pl]{font-size:18px;font-weight:600;line-height:28px;margin:0 0 5px}
+  .form6 textarea{min-height:90px;height:90px;display:block}
+  .form6 .btn{font-size:18px;line-height:21px;padding:14.4px 18px}
+  .req-note{font-size:18px;margin:24px 0 0;color:var(--muted)}
+  .form6 .consent2,.pl-card .consent2{margin-top:2px}
+
+  /* ===== Mobil (Responsive-Prüfung 12.11.): Header-Button wie BFSG auch mobil sichtbar; Paar-Labels min. 14px ===== */
+  @media(max-width:560px){
+    .nav{padding:12px 16px;gap:12px}
+    .nav .logo img{height:32px}
+    .nav .btn{display:inline-block;font-size:15px;line-height:22px;padding:7px 12px;white-space:nowrap}
+    .nav .btn .arr{display:none}
+    .vs-lab{font-size:14px}
+    .pl-row .btn{white-space:normal}
+  }
+  @media(max-width:860px){.reasons.r4{grid-template-columns:1fr}}
+  @media(max-width:380px){
+    .nav{gap:8px}
+    .nav .logo img{height:26px}
+    .nav .btn{font-size:14px;padding:6px 10px}
+  }
+  /* ===== Fassung 7 (23.11.2026, D-FB-261119-003): Breite wie barrierefreiheit.andagon.com live =====
+     Inhalt bis 1760px (Fassung 6: 1728px, weil der Seitenrand in den 1760px enthalten war), Fliesstext bis 856px */
+  :root{--maxw:1792px}
+  .nav{max-width:1792px}
+  /* Text wie Barrierefreiheit live (gemessen 23.11.2026): 16px bis 766, 18px ab 767, 20px ab 1379; Zeilenhoehe 24/28.
+     Dieselben Umbrueche wie dort: max-width 1650 / 1379 / 1250 / 1100 / 767. Textblock halbe Spalte, bis 1100 einspaltig.
+     Hero 1:1, bis 1650 5:3, bis 1379 711:498, bis 1250 2:1, bis 1100 einspaltig */
+  :root{--fs-body:20px;--lh-body:28px;--txt-gap:48px}
+  main :is(p,li,summary):not(.eyebrow,.src,.s-t,.n,.q-name,.q-role),.hero :is(p,li):not(.eyebrow,.src,.s-t),.vs-row>div{font-size:var(--fs-body);line-height:var(--lh-body)}
+  ul.dot li{font-size:var(--fs-body);line-height:30.6px}
+  .qbar blockquote p{font-size:20px;line-height:1.4}
+  .src{font-size:16px}
+  .faq6 .a{font-size:var(--fs-body);line-height:var(--lh-body);max-width:calc((100% - var(--txt-gap))/2)}
+  main .lead,.hero .lead,main .intro,.intro{max-width:none}
+  main p,main .lead,.hero p,.hero .lead,.qbar blockquote p{max-width:856px}
+  .split,.relgrid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--txt-gap)}
+  .wrap>:is(.lead,.intro),.wrap>p:not(.eyebrow,.src){max-width:calc((100% - var(--txt-gap))/2)}
+  .hero-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:48px}
+  .hero-grid>div:first-child>:is(p,.lead){max-width:90%}
+  @media(max-width:1650px){.hero-grid{grid-template-columns:minmax(0,5fr) minmax(0,3fr)}}
+  @media(max-width:1379px){
+    :root{--fs-body:18px;--txt-gap:24px}
+    .hero-grid{grid-template-columns:minmax(0,711fr) minmax(0,498fr);column-gap:24px}
+    .hero-grid>div:first-child>:is(p,.lead){max-width:100%}
+  }
+  @media(max-width:1250px){.hero-grid{grid-template-columns:minmax(0,2fr) minmax(0,1fr)}}
+  @media(max-width:1199px){.hero-grid:has(.sap3-figure)>div:first-child{max-width:calc((100% - 24px)*2/3)}}
+  @media(max-width:1100px){
+    .split,.relgrid,.hero-grid,.hero-grid:has(.sap3-figure){grid-template-columns:1fr}
+    .hero-grid:has(.sap3-figure)>div:first-child,.faq6 .a{max-width:none}
+    main p,main .lead,.hero p,.hero .lead,.qbar blockquote p,.wrap>:is(.lead,.intro),.wrap>p:not(.eyebrow,.src){max-width:none}
+  }
+  @media(max-width:767px){:root{--fs-body:16px;--lh-body:24px}.src{font-size:14px}}
+  /* Fassung 7, D-FB-261119-001: Abschnitts-Labels entfernt, erstes Element im Abschnitt ohne zusaetzlichen Abstand */
+  .wrap>:is(.kcard,.relgrid,.qbar,.reasons,.logowall,.faq6,.kontakt-grid,.vs-table,.split,.statcards,.cta-row,.stats):first-child{margin-top:0}
+  /* Fassung 7, D-FB-261119-004: Einleitung groesser und heller, Fliesstext dunkler (Verhaeltnis wie Demo Fassung 5) */
+  :root{--fs-lead:22px;--lh-lead:32px}
+  @media(max-width:1379px){:root{--fs-lead:20px;--lh-lead:29px}}
+  @media(max-width:767px){:root{--fs-lead:18px;--lh-lead:26px}}
+  .hero p.lead,.wrap .lead,.wrap div.intro>p:first-child{font-size:var(--fs-lead);line-height:var(--lh-lead);color:var(--muted)}
+  .hero-grid>div:first-child>p:not(.lead){color:var(--txt)}
+  /* Fassung 7, D-FB-261119-007/-008: Kennzahlen wie Barrierefreiheit: kurze fette Aussage, kurze Zeile darunter */
+  .stats .s-t{font-size:24px;line-height:28px}
+  .hero .stats .s-d{line-height:28px}
+  @media(max-width:1379px){.stats .s-t{font-size:20px}}
+  @media(max-width:767px){.stats{grid-template-columns:1fr}.stats .s{border-right:0;border-bottom:.8px solid var(--line);padding:0 0 12px}.stats .s:last-child{border-bottom:0}.stats .s-t{font-size:16px;line-height:22px}.hero .stats .s-d{line-height:22px}}
+  /* Fassung 7, D-FB-261119-009: Trennlinien geschlossen, senkrechte Linien setzen an der waagerechten an */
+  @media(min-width:767.01px){.hero-grid>.stats{padding-top:0;gap:0}.stats .s{padding:24px 12px 0 16px}.stats .s:first-child{padding-left:0}}
+  /* Fassung 7, D-FB-261119-010: Satz „Genau diese Rolle" ohne Kasten unter dem Text */
+  .split.one{grid-template-columns:minmax(0,1fr)}
+  .split.one>div{max-width:calc((100% - var(--txt-gap))/2)}
+  @media(max-width:1100px){.split.one>div{max-width:none}}
+  /* Fassung 7, D-FB-261119-011: gelber Strich entfernt, Marker nur auf „andagon" (Markerfarbe wie „alle" auf Barrierefreiheit) */
+  .uline{border-bottom:0;padding-bottom:0}
+  .vs-head>div:last-child .uline{position:relative;z-index:0}
+  .vs-head>div:last-child .uline::after{content:"";position:absolute;left:-.2em;right:-.2em;bottom:.1em;height:.75em;background:#ffd900;z-index:-1}
+  /* Fassung 7, D-FB-261119-012 bis -014: Praxisfall breit unter dem Text, ohne gelben Balken und Symbol, gelber Pfeil vor der Aussage */
+  .wrap>.case{margin-top:var(--g3);border-top:.8px solid var(--line)}
+  .case .case-title{margin:0 0 var(--g2)}
+  .case-cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--txt-gap)}
+  .case-cols>div>p:last-child{margin-bottom:0}
+  @media(max-width:1100px){.case-cols{grid-template-columns:1fr;gap:var(--g2)}}
+  .wrap>p.case-conclusion{display:flex;align-items:flex-start;gap:12px;max-width:none;margin-top:var(--g3);color:#000;font-weight:600}
+  .case-conclusion svg{flex:0 0 28px;width:28px;height:var(--lh-body);color:var(--yellow)}
+  /* Fassung 7, D-FB-261119-016 bis -018: Go-Live ohne Aussenrahmen, drei weisse Karten; Haekchen und Punkte einheitlich Gold dunkel aus dem Styleguide */
+  #vor-go-live .kcard{background:transparent;border:0;gap:24px}
+  #vor-go-live .kcard>div{padding:0;border:0}
+  #vor-go-live .kcard>div:first-child{background:#fff;border:.8px solid var(--line);padding:var(--g3)}
+  #vor-go-live .kcard>div+div{display:flex;flex-direction:column;gap:24px}
+  #vor-go-live .gbox{flex:1;margin:0;background:#fff;padding:var(--g3)}
+  /* Fassung 7, D-FB-261119-021: Betrieb ohne Aussenrahmen, drei hellgraue Karten auf weissem Abschnitt */
+  #betrieb .kcard{background:transparent;border:0;gap:24px}
+  #betrieb .kcard>div{padding:0;border:0}
+  #betrieb .kcard>div:first-child{background:var(--bg-soft);border:.8px solid var(--line);padding:var(--g3)}
+  #betrieb .kcard>div+div{display:flex;flex-direction:column;gap:24px}
+  #betrieb .gbox{flex:1;margin:0;background:var(--bg-soft);padding:var(--g3)}
+  /* Fassung 7, D-FB-261119-016/-021: Karten auf dem Spaltenraster der Seite (48 px, ab 1379 px abwaerts 24 px) */
+  #vor-go-live .kcard,#betrieb .kcard{column-gap:var(--txt-gap)}
+  /* Fassung 7, D-FB-261119-023: Button direkt unter den Leistungen, danach Abstand zum Text */
+  #betrieb .wrap>a.btn+.split{margin-top:48px}
+  /* Fassung 7, D-FB-261119-024/-030: Zitate ohne schwarzen Hintergrund, normale Schrift, gelbes Zitatzeichen, Text auf dem Spaltenraster */
+  .wrap>.qbar{position:relative;background:transparent;padding:0 0 0 64px;max-width:calc((100% - var(--txt-gap))/2)}
+  .qbar::before{content:"\201C";content:"\201C"/"";position:absolute;left:0;top:-10px;font-family:Georgia,"Times New Roman",serif;font-size:96px;line-height:1;font-weight:700;color:var(--yellow)}
+  .qbar p,.qbar blockquote p{color:#000;font-style:normal;font-weight:400;font-size:var(--fs-lead);line-height:var(--lh-lead);max-width:none}
+  .qbar figcaption{margin-top:12px}
+  .qbar .q-name{color:#000;font-size:16px;font-weight:700;letter-spacing:.03em;text-transform:none}
+  .qbar .q-role{color:var(--muted)}
+  @media(max-width:1100px){.wrap>.qbar{max-width:none}}
+  @media(max-width:767px){.wrap>.qbar{padding-left:44px}.qbar::before{font-size:68px;top:-6px}}
+  /* Fassung 7, D-FB-261119-030a: Satz unter dem Koerber-Zitat als Abschluss des Blocks */
+  .wrap>.qbar+p.case-conclusion{margin-top:32px}
+  /* Fassung 7, D-FB-261119-025/-028: Zahl im Fliesstext gelb unterstrichen */
+  .u-y{text-decoration:underline;text-decoration-color:var(--yellow);text-decoration-thickness:3px;text-underline-offset:4px}
+  /* Fassung 7, D-FB-261119-029: Tosca-Kacheln als geschlossene weisse Karten statt gelber Linie */
+  .reasons:not(.r4) .reason{border:.8px solid var(--line);background:#fff;padding:var(--g3)}
+  /* Fassung 7, D-FB-261119-031: Pruefliste untereinander, Formular in der Breite der Textspalte */
+  #pruefliste .split{grid-template-columns:minmax(0,1fr);row-gap:24px}
+  #pruefliste .split>div{max-width:calc((100% - var(--txt-gap))/2)}
+  @media(max-width:1100px){#pruefliste .split>div{max-width:none}}
+  /* Fassung 8, D-FB-261126-019 (Fehler): Ueberschrift wie gestapelte Abschnitte auf Barrierefreiheit ueber die volle Breite, Einleitung bleibt halbe Spalte */
+  #pruefliste .split>div:first-child{max-width:none}
+  #pruefliste .split>div:first-child .lead{max-width:calc((100% - var(--txt-gap))/2)}
+  @media(max-width:1100px){#pruefliste .split>div:first-child .lead{max-width:none}}
+  /* Fassung 7, D-FB-261119-032 bis -035: Warum andagon als drei schmale weisse Karten ohne Symbole */
+  .reasons.r4{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .reasons.r4 .reason{border:.8px solid var(--line);background:#fff;padding:var(--g3)}
+  @media(max-width:860px){.reasons.r4{grid-template-columns:1fr}}
+  /* Fassung 7, D-FB-261119-036 bis -043: Kontakt als zwei gleichwertige Wege mit eigener Ueberschrift */
+  #kontakt .kontakt-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--txt-gap);align-items:start}
+  #kontakt .kontakt-grid>div{min-width:0}
+  #kontakt .kontakt-grid h2{margin:0 0 12px}
+  #kontakt .kp{margin:0 0 20px}
+  #kontakt .kontakt-grid a.btn{display:inline-flex;align-items:center;gap:8px}
+  @media(max-width:1100px){#kontakt .kontakt-grid{grid-template-columns:minmax(0,1fr);row-gap:40px}}
+  /* Fassung 7, D-FB-261119-005/-006: Hero-Grafik B mit kurzen Bezeichnungen aus dem Seitentext, auf kleiner Grafik ohne Bezeichnungen */
+  .hero-b{position:relative;container-type:inline-size}
+  .hb{position:absolute;transform:translateX(-50%);font-size:2.57cqw;line-height:1.18;font-weight:600;color:#000;white-space:nowrap}
+  .hb::after{content:"";position:absolute;left:50%;top:1.32em;width:max(1px,.19cqw);height:var(--t);background:var(--check)}
+  .hb-1{left:28.97%;top:33.82%;--t:1.3em}
+  .hb-2{left:45.79%;top:21.28%;--t:1.09em}
+  .hb-3{left:52.34%;top:13.41%;--t:1.3em}
+  .hb-4{left:69.63%;top:6.12%;--t:1em}
+  .hb-ok{position:absolute;left:76.17%;top:42.57%;display:flex;align-items:center;gap:.36em;padding:.09em .36em .09em .18em;background:#fff;font-size:2.57cqw;line-height:1.18;font-weight:700;color:#000;white-space:nowrap}
+  .hb-ok svg{width:1.18em;height:1.18em;flex:0 0 auto}
+  @container (max-width:469px){.hb,.hb-ok{display:none}}
+  @media(max-width:1100px){.hero-b{max-width:520px}}
+  /* Fassung 7, Raster-Durchgang 23.11.: ein System: Ueberschrift zu Text 12 px, Block zu Block 24 px, Kartenabstand = Spaltenabstand */
+  :root{--sec:64px}@media(max-width:1379px){:root{--sec:32px}}@media(max-width:1100px){:root{--sec:24px}}
+  .hero-grid{row-gap:24px}
+  .hero-grid>.stats{margin-top:0}
+  #betrieb .wrap>a.btn+.split{margin-top:24px}
+  .wrap>.qbar+p.case-conclusion{margin-top:24px}
+  .case .case-title{margin-bottom:12px}
+  .reason-h{margin-bottom:12px}
+  .reasons{column-gap:var(--txt-gap)}
+  ul.dot li{line-height:var(--lh-body);padding-top:2px;padding-bottom:2px}
+  ul.dot li::before{top:calc(var(--lh-body)/2 - 1px)}
+  #kontakt .kp{margin-bottom:24px}
+  #kontakt .kontakt-grid>div:last-child>h2{margin-bottom:24px}
+  @media(max-width:1100px){#kontakt .kontakt-grid{row-gap:24px}}
+  /* Fassung 7, D-FB-261119-R02: Schriftsystem wie Barrierefreiheit, Ausnahme H1 ab 1380 px bleibt 48 px (langer Titel) */
+  :root{--fs-h2:40px;--lh-h2:46px;--fs-card:24px;--lh-card:28px;--fs-rt:24px;--lh-rt:28px;--fs-faq:24px;--lh-faq:30px;--fs-label:20px;--btn-fs:18px;--btn-lh:30.6px;--btn-py:9.1px;--sub-fs:20px;--sub-lh:23px;--sub-py:15.9px;--caps-lh:27.2px;--input-h:50px}
+  @media(max-width:1379px){:root{--fs-h2:34px;--lh-h2:38px;--fs-rt:20px;--fs-faq:20px;--fs-label:18px}}
+  @media(max-width:1250px){:root{--sub-fs:18px;--sub-lh:20.7px;--sub-py:14.55px}}
+  @media(max-width:1100px){:root{--fs-card:20px;--lh-card:24px;--fs-label:16px;--btn-fs:16px;--btn-lh:27.2px;--btn-py:7.8px}}
+  @media(max-width:1023px){:root{--sub-fs:16px;--sub-lh:18.4px;--sub-py:12.7px}}
+  @media(max-width:767px){:root{--fs-h2:28px;--lh-h2:34px;--fs-card:18px;--lh-card:22px;--fs-rt:18px;--lh-rt:24px;--fs-faq:18px;--lh-faq:24px;--caps-lh:20px}}
+  @media(max-width:600px){:root{--input-h:44px}}
+  
+  main h2{font-size:var(--fs-h2);line-height:var(--lh-h2)}
+  main .wrap p.kcard-t,main .wrap p.case-title{font-size:var(--fs-card);line-height:var(--lh-card)}
+  main .wrap p.gbox-t{font-size:16px;line-height:var(--caps-lh)}
+  .reason-h h3{font-size:var(--fs-rt);line-height:var(--lh-rt)}
+  .faq6 summary h3{font-size:var(--fs-faq);line-height:var(--lh-faq)}
+  main .form6 label.fl,main .pl-card label:not(.consent2){font-size:var(--fs-label);line-height:28px}
+  main .form6 input[type=text],main .form6 input[type=email],main .pl-row input{height:var(--input-h);font-size:var(--fs-label)}
+  main .form6 textarea{font-size:var(--fs-label)}
+  :is(main,.hero) :is(a,button).btn{font-size:var(--btn-fs);line-height:var(--btn-lh);padding-top:var(--btn-py);padding-bottom:var(--btn-py)}
+  main .form6 button.btn{font-size:var(--sub-fs);line-height:var(--sub-lh);padding-top:var(--sub-py);padding-bottom:var(--sub-py)}
+
+  /* Fassung 7, D-FB-261119-R03: Luft im Kopfbereich wie Barrierefreiheit, Zeilenlaenge begrenzt, Umbrueche ausgeglichen */
+  @media(min-width:1379px){.hero-grid{row-gap:32px}.hero .stats{padding-top:0}.hero .stats .s{padding-top:32px}}
+  .wrap>p.case-conclusion{max-width:calc((100% - var(--txt-gap))/2)}
+  @media(min-width:861px) and (max-width:1100px){.case-cols{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}}
+  @media(max-width:1100px){main .wrap p:not(.fmeta),.wrap>:is(.lead,.intro),.wrap>p:not(.eyebrow,.src),.wrap>p.case-conclusion,.hero-grid>div:first-child>:is(p,.lead){max-width:750px}}
+  main p,main li{text-wrap:pretty}
+  main h2,main h3{text-wrap:balance}
+  /* Fassung 7, D-FB-261119-R04: Abstaende im Kopfbereich wie Barrierefreiheit */
+  section.hero{padding-bottom:124px}.hero h1{margin-bottom:20px}.hero .cta-row{margin-top:32px}
+  @media(max-width:1378.98px){section.hero{padding-bottom:84px}.hero h1{margin-bottom:12px}.hero .cta-row{margin-top:24px}}
+  @media(max-width:1100px){section.hero{padding-bottom:68px}.hero .cta-row{margin-top:16px}}
+  @media(max-width:767px){section.hero{padding-bottom:var(--sec)}}
+  /* Fassung 7, D-FB-261119-005/-006: zwei Motive zur Auswahl, Standard Motiv 1, Motiv 2 ueber ?grafik=2 */
+  .hero-b[hidden]{display:none}
+  .hb-v1a{left:32.8%;top:6.4%;--t:.86em}
+  .hb-v1b{left:76.4%;top:50.8%;--t:1.6em}
+  .hb-free::after{display:none}
+  .hb-v2a{left:15.8%;top:14.9%}
+  .hb-v2b{left:75.5%;top:23.5%}
+  .hb-v2c{left:45.8%;top:81.5%}
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+<a class="skip" href="#inhalt">Zum Inhalt springen</a>
+
+<div class="draft">
+  <strong>Vorschau, Fassung 8</strong> — eure Textänderungen und Antworten vom 26.11.2026 sind eingearbeitet, Gestaltungsänderungen stehen in unserer Mail.
+  Zum Vergleich: <a href="fassung7.html">Fassung 7 ansehen</a>.
+</div>
+
+<header class="top">
+  <div class="nav">
+    <a class="logo" href="#inhalt"><img src="https://barrierefreiheit.andagon.com/wp-content/uploads/2026/07/Logo.png" alt="andagon"></a>
+    <nav class="menu" aria-label="Seitennavigation">
+      <a href="#vor-go-live">Vor dem Go-Live</a>
+      <a href="#betrieb">Im laufenden Betrieb</a>
+      <a href="#warum-andagon">Warum andagon</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="btn" href="#kontakt">Erstgespräch vereinbaren<span class="arr" aria-hidden="true">→</span></a>
+  </div>
+</header>
+
+<main id="inhalt">
+
+<!-- Block 1 -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <h1>Ihre Prozesse müssen die S/4HANA-Umstellung überstehen. Und jedes Release danach.</h1>
+      <p class="lead">andagon sichert Ihre Geschäftsprozesse über Systemgrenzen hinweg ab, bei der S/4HANA-Umstellung und bei jeder anderen Änderung im laufenden Betrieb.</p>
+      <p>Viele Projekte scheitern nicht an der Implementierung, sondern am Übergang in den Produktivbetrieb. Wir prüfen vorher, ob Ihre geschäftskritischen Prozesse über alle beteiligten Systeme hinweg tatsächlich funktionieren &ndash; risikobasiert, also dort, wo ein Fehler am meisten kosten würde. Die dabei aufgebauten automatisierten Tests bilden zugleich die Grundlage, um diese Prozesse auch bei zukünftigen Änderungen zuverlässig abzusichern.</p>
+      <div class="cta-row">
+        <a class="btn lg" href="#kontakt">Erstgespräch vereinbaren<span class="arr" aria-hidden="true">→</span></a>
+        <a class="btn ghost" href="#vor-go-live">Wir stehen vor dem Go-Live<span class="arr" aria-hidden="true">↓</span></a>
+        <a class="btn ghost" href="#betrieb">Wir möchten laufende Änderungen absichern<span class="arr" aria-hidden="true">↓</span></a>
+      </div>
+    </div>
+    <figure class="hero-img hero-b" id="hero-v2"><img src="img/hero-v2-systemkette.webp" alt="Ein Geschäftsvorgang läuft aus SAP durch einen gelben Prüfring zu einem Cloud-Dienst und kommt als geprüftes gelbes Dokument im Drittsystem an." width="856" height="686"><span class="hb hb-free hb-v2a" aria-hidden="true">SAP</span><span class="hb hb-free hb-v2b" aria-hidden="true">Cloud-Dienste</span><span class="hb hb-free hb-v2c" aria-hidden="true">Drittsysteme</span></figure>
+    <div class="stats" style="grid-column:1/-1">
+      <div class="s"><p class="s-t">25+ Jahre Erfahrung</p><p class="s-d">in der Softwarequalitätssicherung</p></div>
+      <div class="s"><p class="s-t">9 von 10 Kunden empfehlen uns weiter</p><p class="s-d">auf Basis ihrer Projekterfahrung</p></div>
+      <div class="s"><p class="s-t">100 % zertifizierte ISTQB Testexperten</p><p class="s-d">in der SAP-Automatisierung mit Tosca</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Block 2 -->
+<section class="soft">
+  <div class="wrap">
+    <div class="split one">
+      <div>
+        <h2>Ihre SAP-Beratung migriert. Wer prüft?</h2>
+        <p class="lead">Ob Ihre Prozesse auch nach der Migration noch zuverlässig funktionieren, zeigt sich oft erst im produktiven Betrieb.</p>
+        <p>Bei SAP-Migrationen liegt der Fokus häufig auf der technischen und fachlichen Umsetzung. Eine unabhängige Prüfung schafft zusätzliche Sicherheit für Qualität, Integrationen und geschäftskritische Prozessketten.</p>
+        <p>andagon ist <strong>Ihr unabhängiger Prüfpartner für SAP-Umstellungen und -Änderungen nach dem Vier-Augen-Prinzip.</strong></p>
+      </div>
+    </div>
+    <div class="vs-table" role="table" aria-label="Aufgabenteilung: Ihre SAP-Beratung und andagon">
+      <div class="vs-row vs-head" role="row"><div role="columnheader"><span class="uline">Ihre SAP-Beratung</span></div><div role="columnheader"><span class="uline">andagon</span></div></div>
+      <div class="vs-row" role="row"><div role="cell"><span class="vs-lab">Ihre SAP-Beratung</span>Führt die SAP-Migration durch</div><div role="cell"><span class="vs-lab">andagon</span>Prüft die Qualität unabhängig</div></div>
+      <div class="vs-row" role="row"><div role="cell"><span class="vs-lab">Ihre SAP-Beratung</span>Verantwortet die Projektumsetzung</div><div role="cell"><span class="vs-lab">andagon</span>Bewertet Risiken und Auswirkungen</div></div>
+      <div class="vs-row" role="row"><div role="cell"><span class="vs-lab">Ihre SAP-Beratung</span>Implementiert die Lösung</div><div role="cell"><span class="vs-lab">andagon</span>Validiert Prozesse, Integrationen und Schnittstellen</div></div>
+      <div class="vs-row" role="row"><div role="cell"><span class="vs-lab">Ihre SAP-Beratung</span>Konfiguriert Systeme und Integrationen</div><div role="cell"><span class="vs-lab">andagon</span>Liefert die Grundlage für Ihre Go-Live-Entscheidung</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Block 3 -->
+<section>
+  <div class="wrap">
+    <div class="split one">
+    <div>
+    <h2>Jedes System funktioniert. Der Prozess trotzdem nicht.</h2>
+    <div class="intro">
+      <p>In SAP-Projekten wird häufig auf Ebene einzelner Systeme, Module und Schnittstellen getestet. Entscheidend ist jedoch, ob der gesamte Geschäftsprozess funktioniert — über SAP, Cloud-Dienste und Drittsysteme hinweg.</p>
+    </div>
+    </div>
+    </div>
+    <div class="case">
+      <p class="case-title">Ein Fall aus der Praxis</p>
+      <div class="case-cols">
+        <div>
+          <p>Bei der Einführung einer neuen Kassenlösung in einem Handelsunternehmen mit über 13.000 Filialen wurden Verkäufe korrekt von der Kasse nach SAP übertragen, die Schnittstelle war getestet, abgenommen und funktionierte.</p>
+          <p>Was allerdings niemand geprüft hatte, war der umgekehrte Weg. Retouren und Rückerstattungen waren vom Integrationsumfang ausdrücklich ausgenommen.</p>
+          <p>Im Produktivbetrieb hätte das bedeutet: Ein Kunde gibt einen Artikel zurück, das Personal erfasst die Retoure an der Kasse und zahlt den Betrag aus. Für den Kunden und für das Kassensystem ist der Vorgang abgeschlossen. In SAP passiert jedoch nichts.</p>
+        </div>
+        <div>
+          <p><strong class="punch">Die Konsequenz:</strong> Das Geld ist ausgezahlt, aber die Gegenbuchung fehlt. Die Ware steht wieder im Regal, aber nicht im Bestand. Der Tagesabschluss zwischen Kasse und SAP geht nicht auf, und jede Filiale beginnt, Differenzen von Hand nachzuarbeiten.</p>
+          <p>andagon entdeckte die Lücke in der Testphase, weil wir nicht allein die Verkaufsschnittstelle geprüft haben, sondern den Geschäftsprozess „Retoure" &ndash; vom Kassenbon bis zur Buchhaltung.</p>
+          <p><strong class="punch">Hier hätte kein Modultest angeschlagen. Die Verkaufsschnittstelle war korrekt. Der Prozess war trotzdem unvollständig.</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Block 4 -->
+<section class="soft" id="vor-go-live">
+  <div class="wrap">
+    <h2>Vor dem Go-Live: eine belastbare Grundlage für Ihre Freigabe</h2>
+    <p class="lead">Der Go-Live ist nur so sicher wie die Grundlage, auf der er freigegeben wird.</p>
+    <div class="kcard">
+      <div>
+        <p class="kcard-t">Unsere Leistungen</p>
+        <ul class="chk">
+          <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="22" height="21" viewBox="0 0 22 21" fill="none"><path d="M0 12.0001L6.25 19.5001L20 1.50006" stroke="#B9A20C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Validierung geschäftskritischer End-to-End-Prozesse über Bereichs- und Systemgrenzen hinweg</span></li>
+          <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="22" height="21" viewBox="0 0 22 21" fill="none"><path d="M0 12.0001L6.25 19.5001L20 1.50006" stroke="#B9A20C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Prüfung der Daten- und Prozessflüsse zwischen SAP- und Drittsystemen</span></li>
+          <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="22" height="21" viewBox="0 0 22 21" fill="none"><path d="M0 12.0001L6.25 19.5001L20 1.50006" stroke="#B9A20C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Absicherung von Schnittstellen, ob API, IDoc oder ereignisbasiert</span></li>
+          <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="22" height="21" viewBox="0 0 22 21" fill="none"><path d="M0 12.0001L6.25 19.5001L20 1.50006" stroke="#B9A20C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Identifikation von Fehlern an System-, Schnittstellen- und Prozessübergängen</span></li>
+          <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="22" height="21" viewBox="0 0 22 21" fill="none"><path d="M0 12.0001L6.25 19.5001L20 1.50006" stroke="#B9A20C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Durchführung oder Begleitung von Integrations-, System- und Abnahmetests</span></li>
+          <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="22" height="21" viewBox="0 0 22 21" fill="none"><path d="M0 12.0001L6.25 19.5001L20 1.50006" stroke="#B9A20C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Risikobasierte Bewertung der Prozessqualität vor der Produktivsetzung</span></li>
+          <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="22" height="21" viewBox="0 0 22 21" fill="none"><path d="M0 12.0001L6.25 19.5001L20 1.50006" stroke="#B9A20C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Klare Empfehlung für Ihre Go-Live-Entscheidung</span></li>
+        </ul>
+      </div>
+      <div>
+        <div class="gbox">
+          <p class="gbox-t">Sie erhalten</p>
+          <ul class="dot">
+          <li>Klarheit, welche Prozesse stabil laufen und wo noch Risiken liegen</li>
+          <li>Risikobewertung vor der Produktivsetzung</li>
+          <li>Eine eindeutige Go/No-Go-Empfehlung</li>
+          </ul>
+        </div>
+        <div class="gbox">
+          <p class="gbox-t">Besonders sinnvoll, wenn</p>
+          <ul class="dot">
+          <li>Geschäftskritische Prozesse über mehrere Systeme hinweg betroffen sind</li>
+          <li>Im Projekt kein eigenes QA-Team für systemübergreifende Tests zur Verfügung steht</li>
+          <li>Der Go-Live-Termin verbindlich ist und wenig Spielraum für zusätzliche manuelle Tests bleibt</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <a class="btn" href="#kontakt">Gespräch zur Go-Live-Absicherung buchen<span class="arr" aria-hidden="true">→</span></a>
+  </div>
+</section>
+
+<!-- Block 5 -->
+<section id="betrieb">
+  <div class="wrap">
+    <h2>Im laufenden Betrieb: Nach jedem Release wissen, dass alles noch läuft</h2>
+    <p class="lead">Was vor dem Go-Live geprüft wurde, sollte dauerhaft durch automatisierte Tests abgesichert werden. Die SAP-Testautomatisierung lohnt sich nicht nur in Migrationsprojekten: Auch im laufenden Betrieb wird so jedes Release, jedes Update und jede Änderung abgesichert.</p>
+    <div class="kcard">
+      <div>
+        <p class="kcard-t">Unsere Leistungen</p>
+        <ul class="chk">
+          <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="22" height="21" viewBox="0 0 22 21" fill="none"><path d="M0 12.0001L6.25 19.5001L20 1.50006" stroke="#B9A20C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Aufbau automatisierter Regressionstests für geschäftskritische Prozesse</span></li>
+          <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="22" height="21" viewBox="0 0 22 21" fill="none"><path d="M0 12.0001L6.25 19.5001L20 1.50006" stroke="#B9A20C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Einsatz von Tricentis Tosca und weiteren Automatisierungswerkzeugen</span></li>
+          <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="22" height="21" viewBox="0 0 22 21" fill="none"><path d="M0 12.0001L6.25 19.5001L20 1.50006" stroke="#B9A20C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Integration automatisierter Tests in Release- und Delivery-Prozesse</span></li>
+          <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="22" height="21" viewBox="0 0 22 21" fill="none"><path d="M0 12.0001L6.25 19.5001L20 1.50006" stroke="#B9A20C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Absicherung von Releases, Updates und Prozessänderungen</span></li>
+          <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="22" height="21" viewBox="0 0 22 21" fill="none"><path d="M0 12.0001L6.25 19.5001L20 1.50006" stroke="#B9A20C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Pflege und Weiterentwicklung bestehender Testautomatisierung</span></li>
+          <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="22" height="21" viewBox="0 0 22 21" fill="none"><path d="M0 12.0001L6.25 19.5001L20 1.50006" stroke="#B9A20C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Kontinuierliche Bewertung von Qualitätsrisiken nach Änderungen</span></li>
+          <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="22" height="21" viewBox="0 0 22 21" fill="none"><path d="M0 12.0001L6.25 19.5001L20 1.50006" stroke="#B9A20C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Automatisierte Qualitätskennzahlen für Release-Entscheidungen</span></li>
+        </ul>
+      </div>
+      <div>
+        <div class="gbox">
+          <p class="gbox-t">Sie erhalten</p>
+          <ul class="dot">
+          <li>Schnelle Rückmeldung zur Stabilität Ihrer Prozesse nach Änderungen</li>
+          <li>Eine Sammlung automatisierter Testfälle für Ihre geschäftskritischen Prozesse</li>
+          <li>Deutlich weniger Testaufwand nach jedem Release</li>
+          </ul>
+        </div>
+        <div class="gbox">
+          <p class="gbox-t">Besonders sinnvoll, wenn</p>
+          <ul class="dot">
+          <li>Keine oder nur teilweise Testautomatisierung vorhanden ist</li>
+          <li>Fachanwender das Testen neben dem Tagesgeschäft übernehmen</li>
+          <li>Der Testaufwand die verfügbaren Zeitfenster übersteigt</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <a class="btn" href="#kontakt">Gespräch zur Testautomatisierung buchen<span class="arr" aria-hidden="true">→</span></a>
+    <div class="split one">
+      <div>
+        <p>SAP liefert <span class="u-y">mindestens drei Updates pro Jahr</span> und empfiehlt ausdrücklich, die bestehenden Geschäftsprozesse nach jedem Update zu testen. Dazu kommen regelmäßige Updates aller angebundenen Systeme. Die Veränderungen enden also nicht mit dem Go-Live, sondern werden zur Daueraufgabe.</p>
+        <p>Die Clean-Core-Strategie verstärkt diese Entwicklung zusätzlich: Um den SAP-Kern möglichst unverändert zu halten, werden individuelle Erweiterungen zunehmend auf Plattformen wie der SAP BTP umgesetzt. Die Zahl der Schnittstellen und Integrationen nimmt dadurch zu – und damit auch die Zahl möglicher Fehlerquellen.</p>
+        <p>Umso wichtiger ist eine gut abgestimmte Testautomatisierung. Sie ermöglicht es, geschäftskritische Prozesse nach Änderungen regelmäßig, zuverlässig und mit vertretbarem Aufwand zu überprüfen.</p>
+      </div>
+    </div>
+    <figure class="qbar">
+      <blockquote><p>Dank der Automatisierung sparen wir pro Testphase eine sehr hohe Stundenzahl ein. Unsere Tester können die gewonnene Zeit jetzt nutzen, um sich intensiver mit Neuentwicklungen zu befassen.</p></blockquote>
+      <figcaption><span class="q-name">Trading Hub Europe (THE)</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- Block 6 -->
+<section class="soft">
+  <div class="wrap">
+    <h2>Testautomatisierung mit Tricentis Tosca</h2>
+    <p class="lead">Tricentis ist offizieller SAP-Partner für Testautomatisierung. Viele SAP-Kunden verfügen daher bereits im Rahmen des SAP Enterprise Support über eine Tricentis-Lizenz. Als zertifizierte Tosca-Experten unterstützen wir Sie dabei, dieses Potenzial für eine leistungsfähige Testautomatisierung zu nutzen.</p>
+    <div class="reasons">
+      <div class="reason"><div class="reason-h"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 512 512"><circle cx="256" cy="160" r="128" fill="none" stroke="#1f1f20" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><path fill="none" stroke="#1f1f20" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M143.65 227.82L48 400l86.86-.42a16 16 0 0 1 13.82 7.8L192 480l88.33-194.32"/><path fill="none" stroke="#1f1f20" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M366.54 224L464 400l-86.86-.42a16 16 0 0 0-13.82 7.8L320 480l-64-140.8"/><circle cx="256" cy="160" r="64" fill="none" stroke="#1f1f20" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/></svg><h3>Zertifizierte Tosca-Experten</h3></div><p>Unsere zertifizierten Tosca-Experten bringen das notwendige Know-how in Ihre Projekte ein.</p></div>
+      <div class="reason"><div class="reason-h"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="#1f1f20" d="M11.875 20q.1 0 .2-.05t.15-.1l8.2-8.2q.3-.3.438-.675t.137-.75q0-.4-.137-.763t-.438-.637l-4.25-4.25q-.275-.3-.638-.437T14.776 4q-.375 0-.75.138t-.675.437l-.275.275l1.85 1.875q.375.35.55.8t.175.95q0 1.05-.712 1.763t-1.763.712q-.5 0-.962-.175t-.813-.525L9.525 8.4L5.15 12.775q-.075.075-.112.163T5 13.125q0 .2.15.363t.35.162q.1 0 .2-.05t.15-.1l3.4-3.4l1.4 1.4l-3.375 3.4q-.075.075-.112.163t-.038.187q0 .2.15.35t.35.15q.1 0 .2-.05t.15-.1l3.4-3.375l1.4 1.4l-3.375 3.4q-.075.05-.112.15t-.038.2q0 .2.15.35t.35.15q.1 0 .188-.038t.162-.112l3.4-3.375l1.4 1.4l-3.4 3.4q-.075.075-.112.162t-.038.188q0 .2.163.35t.362.15m-.025 2q-.925 0-1.637-.612t-.838-1.538q-.85-.125-1.425-.7t-.7-1.425q-.85-.125-1.412-.712T5.15 15.6q-.95-.125-1.55-.825t-.6-1.65q0-.5.188-.962t.537-.813l5.8-5.775L12.8 8.85q.05.075.15.113t.2.037q.225 0 .375-.137t.15-.363q0-.1-.038-.2t-.112-.15L9.95 4.575q-.275-.3-.637-.437T8.55 4q-.375 0-.75.138t-.675.437L3.6 8.125q-.225.225-.375.525t-.2.6t0 .613t.2.587l-1.45 1.45q-.425-.575-.625-1.262T1 9.25t.35-1.362t.825-1.188L5.7 3.175Q6.3 2.6 7.038 2.3T8.55 2t1.513.3t1.312.875l.275.275l.275-.275q.6-.575 1.338-.875t1.512-.3t1.513.3t1.312.875L21.825 7.4q.575.575.875 1.325t.3 1.525t-.3 1.513t-.875 1.312l-8.2 8.175q-.35.35-.812.55t-.963.2M9.375 8"/></svg><h3>Regional Premium Delivery Partner</h3></div><p>Als Regional Premium Delivery Partner von Tricentis unterstützen wir Unternehmen seit Jahren beim Aufbau und der Weiterentwicklung ihrer Testautomatisierung.</p></div>
+      <div class="reason"><div class="reason-h"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 512 512"><path fill="none" stroke="#1f1f20" stroke-linejoin="round" stroke-width="32" d="M218.1 167.17c0 13 0 25.6 4.1 37.4c-43.1 50.6-156.9 184.3-167.5 194.5a20.17 20.17 0 0 0-6.7 15c0 8.5 5.2 16.7 9.6 21.3c6.6 6.9 34.8 33 40 28c15.4-15 18.5-19 24.8-25.2c9.5-9.3-1-28.3 2.3-36s6.8-9.2 12.5-10.4s15.8 2.9 23.7 3c8.3.1 12.8-3.4 19-9.2c5-4.6 8.6-8.9 8.7-15.6c.2-9-12.8-20.9-3.1-30.4s23.7 6.2 34 5s22.8-15.5 24.1-21.6s-11.7-21.8-9.7-30.7c.7-3 6.8-10 11.4-11s25 6.9 29.6 5.9c5.6-1.2 12.1-7.1 17.4-10.4c15.5 6.7 29.6 9.4 47.7 9.4c68.5 0 124-53.4 124-119.2S408.5 48 340 48s-121.9 53.37-121.9 119.17ZM400 144a32 32 0 1 1-32-32a32 32 0 0 1 32 32Z"/></svg><h3>Lizenzen aus einer Hand</h3></div><p>Falls Sie noch keine Tricentis-Lizenz haben oder zusätzliche benötigen, beziehen Sie sie ohne Mehrkosten über andagon.</p></div>
+    </div>
+    <figure class="qbar">
+      <blockquote><p>Die eingebrachten Konzepte und Entwicklungen haben maßgeblich zur Verbesserung der Testabdeckung und zur nachhaltigen Wartbarkeit unserer Testinfrastruktur beigetragen.</p></blockquote>
+      <figcaption><span class="q-name">Körber</span></figcaption>
+    </figure>
+    <p class="case-conclusion"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28"><path fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M3 14h21m-7-7 7 7-7 7"/></svg><span>Neben Tricentis Tosca arbeiten wir mit allen gängigen Testautomatisierungslösungen und nutzen die Tools, die bereits bei Ihnen etabliert sind, statt neue Werkzeuge einzuführen.</span></p>
+  </div>
+</section>
+
+<!-- Block 7 -->
+<section id="pruefliste">
+  <div class="wrap">
+    <div class="split">
+      <div>
+        <h2>Prüfliste: Wie gut sind Ihre SAP-Prozesse abgesichert?</h2>
+        <p class="lead">Zwölf Fragen, die für die Absicherung Ihrer SAP-Prozesse entscheidend sind. Wo Sie heute zögern, entstehen morgen häufig Risiken im Betrieb. Die Prüfliste mit 12 praxisnahen Fragen erhalten Sie direkt per E-Mail, ohne Beratungsgespräch.</p>
+      </div>
+      <div class="pl-card">
+        <form onsubmit="return false" novalidate>
+          <label for="pl">E-Mail-Adresse</label>
+          <div class="pl-row">
+            <input id="pl" type="email" autocomplete="email" placeholder="name@unternehmen.de">
+            <button class="btn" type="submit">Prüfliste zuschicken lassen</button>
+          </div>
+          <label class="consent2" for="pl-ok"><input id="pl-ok" type="checkbox" required><span>Ich willige ein, dass meine Angaben zur Zusendung der Prüfliste und zur Kontaktaufnahme verarbeitet werden. Weitere Informationen in der <a href="#">Datenschutzerklärung</a>.</span></label>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Block 8 -->
+<section class="soft" id="warum-andagon">
+  <div class="wrap">
+    <h2>Warum andagon</h2>
+    <div class="reasons r4">
+      <div class="reason"><div class="reason-h"><h3>25+ Jahre Erfahrung</h3></div><p>Seit über 25 Jahren prüfen wir Software auf Qualität. Das ist unser Kerngeschäft.</p></div>
+      <div class="reason"><div class="reason-h"><h3>Wir sagen, was zu tun ist</h3></div><p>Wir liefern nicht nur eine Analyse, sondern konkrete, machbare Schritte.</p></div>
+      <div class="reason"><div class="reason-h"><h3>120+ Fachleute</h3></div><p>In Köln und Hamburg – genug Kapazität für Ihr Projekt.</p></div>
+    </div>
+    <figure class="qbar">
+      <blockquote><p>Die Automatisierung von rund 80 SAP-ERP-Transaktionen ermöglichte die Identifikation kritischer Performanceprobleme vor dem Rollout und unterstützte deren erfolgreiche Behebung.</p></blockquote>
+      <figcaption><span class="q-name">Bernd Eberhardt</span><span class="q-role">IBM SAP International Competency Center · IBM Deutschland GmbH</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- Block 8b -->
+<section id="referenzen">
+  <div class="wrap">
+    <h2>Unternehmen, die andagon vertrauen</h2>
+    <div class="logowall">
+      <img src="https://barrierefreiheit.andagon.com/wp-content/uploads/2026/07/Logo-Placeholder6.png" alt="Referenzkunde T-Mobile" loading="lazy">
+      <img src="https://barrierefreiheit.andagon.com/wp-content/uploads/2026/07/Logo-Placeholder5.png" alt="Referenzkunde Debeka" loading="lazy">
+      <img src="https://barrierefreiheit.andagon.com/wp-content/uploads/2026/07/Logo-Placeholder3.png" alt="Referenzkunde Commerzbank" loading="lazy">
+      <img src="https://barrierefreiheit.andagon.com/wp-content/uploads/2026/07/Logo-Placeholder4.png" alt="Referenzkunde DHL" loading="lazy">
+      <img src="https://barrierefreiheit.andagon.com/wp-content/uploads/2026/07/Logo-Placeholder1.png" alt="Referenzkunde DB Netze" loading="lazy">
+      <img src="https://barrierefreiheit.andagon.com/wp-content/uploads/2026/07/Logo-Placeholder2.png" alt="Referenzkunde IBM" loading="lazy">
+    </div>
+    <a class="more-link" href="https://www.andagon.com/referenzen" target="_blank" rel="noopener" aria-label="Alle Referenzen ansehen (öffnet in neuem Tab)">Alle Referenzen ansehen</a>
+  </div>
+</section>
+
+<!-- Block 9 -->
+<section class="soft" id="faq">
+  <div class="wrap">
+    <h2>Häufige Fragen</h2>
+    <div class="faq6">
+      <details><summary><h3>Was kostet die Qualitätssicherung meiner SAP-Landschaft?</h3><svg class="pl" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="#000" stroke-width="2" stroke-linecap="round" fill="none"/></svg><svg class="mi" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M5 12h14" stroke="#000" stroke-width="2" stroke-linecap="round" fill="none"/></svg></summary><p class="a">Das hängt vom Umfang Ihrer Prozesslandschaft und vom Automatisierungsaufwand Ihrer Testfälle ab. Für ein Festpreisangebot starten wir mit einem Proof of Concept: Wir automatisieren einige repräsentative Testfälle aus Ihrem System &ndash; einfache, mittlere und komplexe &ndash; und messen den tatsächlichen Aufwand. Auf dieser Grundlage kalkulieren wir den Festpreis für den Gesamtumfang. Alternativ arbeiten wir jederzeit nach Aufwand, zum Beispiel wenn sich der Umfang noch verändert oder Sie flexibel starten möchten.</p></details>
+      <details><summary><h3>Wann sollte das Testen bei einer SAP-Transformation beginnen?</h3><svg class="pl" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="#000" stroke-width="2" stroke-linecap="round" fill="none"/></svg><svg class="mi" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M5 12h14" stroke="#000" stroke-width="2" stroke-linecap="round" fill="none"/></svg></summary><p class="a">Das Testen ist kein Projektschritt kurz vor dem Go-Live, sondern ein kontinuierlicher Prozess, der die S/4HANA-Umstellung von Beginn an begleiten sollte. Dabei reicht es nicht aus, einzelne Module zu prüfen. Auch Testdaten, Schnittstellen, Geschäftsprozesse und End-to-End-Workflows müssen frühzeitig berücksichtigt und abgesichert werden.</p></details>
+      <details><summary><h3>Wann lohnt sich der Aufbau einer Testautomatisierung?</h3><svg class="pl" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="#000" stroke-width="2" stroke-linecap="round" fill="none"/></svg><svg class="mi" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M5 12h14" stroke="#000" stroke-width="2" stroke-linecap="round" fill="none"/></svg></summary><p class="a">Eine Testautomatisierung lohnt sich insbesondere dann, wenn geschäftskritische Prozesse regelmäßig von Releases, Updates oder neuen Integrationen betroffen sind. Da SAP-Systeme eng mit ihrer Systemlandschaft verzahnt sind, kann bereits eine kleine Änderung zu Fehlern in nachgelagerten Prozessen führen. Eine automatisierte Regressionssuite erkennt solche Auswirkungen früh und senkt den Aufwand für wiederkehrende Tests dauerhaft.</p></details>
+      <details><summary><h3>Wie viel Zeit kostet das unsere Fachabteilung?</h3><svg class="pl" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="#000" stroke-width="2" stroke-linecap="round" fill="none"/></svg><svg class="mi" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M5 12h14" stroke="#000" stroke-width="2" stroke-linecap="round" fill="none"/></svg></summary><p class="a">Weniger als heute. Ihre Fachexperten brauchen wir für das, was nur sie wissen: welche Abläufe geschäftskritisch sind, wie ein Prozess richtig aussieht und ob ein Ergebnis fachlich stimmt. Das Schreiben, Durchführen und Dokumentieren der Testfälle übernehmen wir. Ihre Key User kommen also vor allem bei der Abstimmung der Testfälle und bei der Abnahme dazu, nicht beim Durchklicken jedes einzelnen Tests.</p></details>
+      <details><summary><h3>Wir haben über SAP schon Tricentis-Lizenzen. Brauchen wir Sie trotzdem?</h3><svg class="pl" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="#000" stroke-width="2" stroke-linecap="round" fill="none"/></svg><svg class="mi" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M5 12h14" stroke="#000" stroke-width="2" stroke-linecap="round" fill="none"/></svg></summary><p class="a">Neue Lizenzen brauchen Sie nicht, wir arbeiten mit denen, die Sie bereits haben. Eine Lizenz ist allerdings noch keine Testautomatisierung: Jemand muss die Testfälle aufbauen, an Ihre Prozesse anpassen und nach jedem Release pflegen. Das übernehmen wir. Als Regional Premium Delivery Partner von Tricentis kennen wir sowohl die über SAP bereitgestellte Variante als auch den vollen Tosca-Umfang und sagen Ihnen ehrlich, ob Ihre vorhandene Lizenz für Ihr Vorhaben ausreicht.</p></details>
+      <details><summary><h3>Wie schnell können Sie starten?</h3><svg class="pl" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="#000" stroke-width="2" stroke-linecap="round" fill="none"/></svg><svg class="mi" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M5 12h14" stroke="#000" stroke-width="2" stroke-linecap="round" fill="none"/></svg></summary><p class="a">In der Regel innerhalb von zwei Wochen nach dem Erstgespräch. Wir beginnen mit einer kurzen Bestandsaufnahme: Welche Prozesse sind geschäftskritisch, was ist bereits getestet, wo liegen die größten Lücken? Bei der Testautomatisierung folgt darauf der Proof of Concept mit repräsentativen Testfällen. Wenn Ihr Go-Live kurz bevorsteht, priorisieren wir die Prozesse, bei denen ein Fehler am meisten kosten würde.</p></details>
+      <details><summary><h3>Welche Risiken werden bei SAP-Transformationen häufig unterschätzt?</h3><svg class="pl" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="#000" stroke-width="2" stroke-linecap="round" fill="none"/></svg><svg class="mi" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M5 12h14" stroke="#000" stroke-width="2" stroke-linecap="round" fill="none"/></svg></summary><p class="a">Ein häufiges Risiko besteht darin, dass Qualitätssicherung und Tests zu spät beginnen oder sich auf einzelne Systeme beschränken. Geschäftskritisch sind jedoch meist die Prozesse, die über mehrere Systeme hinweg laufen. Fehler an Schnittstellen und Prozessübergängen fallen deshalb häufig erst im Produktivbetrieb auf.</p></details>
+      <details><summary><h3>Brauchen wir andagon, wenn bereits eine SAP-Beratung im Projekt ist?</h3><svg class="pl" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="#000" stroke-width="2" stroke-linecap="round" fill="none"/></svg><svg class="mi" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M5 12h14" stroke="#000" stroke-width="2" stroke-linecap="round" fill="none"/></svg></summary><p class="a">Gerade dann. Ihre SAP-Beratung wird daran gemessen, dass die Lösung umgesetzt ist. Wir prüfen unabhängig davon, ob Ihr Prozess über alle Systeme hinweg funktioniert. Wir ersetzen Ihre SAP-Beratung nicht, wir ergänzen sie.</p></details>
+      <details><summary><h3>Welche Werkzeuge setzt andagon ein?</h3><svg class="pl" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="#000" stroke-width="2" stroke-linecap="round" fill="none"/></svg><svg class="mi" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M5 12h14" stroke="#000" stroke-width="2" stroke-linecap="round" fill="none"/></svg></summary><p class="a">Wir arbeiten mit Tricentis Tosca und weiteren Testautomatisierungswerkzeugen und integrieren uns in Ihre bestehende Werkzeuglandschaft. Falls dort noch keine Testautomatisierung etabliert ist, unterstützen wir Sie bei Auswahl, Einführung und Betrieb einer passenden Lösung.</p></details>
+      <details><summary><h3>Warum steigt der Testbedarf durch Clean Core?</h3><svg class="pl" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="#000" stroke-width="2" stroke-linecap="round" fill="none"/></svg><svg class="mi" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M5 12h14" stroke="#000" stroke-width="2" stroke-linecap="round" fill="none"/></svg></summary><p class="a">Die Clean-Core-Strategie reduziert Anpassungen am SAP-Kern, verlagert individuelle Lösungen jedoch zunehmend in externe Erweiterungen und Schnittstellen. Dadurch steigt der Testbedarf, da nicht nur der SAP-Standard, sondern auch Eigenentwicklungen, Integrationen und deren Zusammenspiel in Geschäftsprozessen geprüft werden müssen. Um die Stabilität nach Änderungen und Updates sicherzustellen, werden insbesondere Integrations- und Regressionstests wichtiger.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- Block 10 -->
+<section id="kontakt">
+  <div class="wrap">
+    <div class="kontakt-grid">
+      <div>
+        <h2>Ihr kostenloses Erstgespräch: 30 Minuten, konkrete Einschätzung für Ihren Fall</h2>
+        <p class="kp">Sie erhalten eine ehrliche Einschätzung, wo Ihre größten Testrisiken liegen – auch wenn die Antwort lautet, dass Sie uns nicht brauchen. Per Teams oder Telefon beraten wir Sie praxisnah, transparent und ohne Vertriebsdruck.</p>
+        <a class="btn" href="https://bookings.cloud.microsoft/book/G91edf851096e4bcbb361cbc36649cfeb@andagongmbh.onmicrosoft.com/?ismsaljsauthenabled" target="_blank" rel="noopener" aria-label="Termin direkt buchen – öffnet Microsoft Bookings in neuem Tab">Termin direkt buchen<svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 512 512"><path fill="none" stroke="#1f1f20" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M384 224v184a40 40 0 0 1-40 40H104a40 40 0 0 1-40-40V168a40 40 0 0 1 40-40h167.48M336 64h112v112M224 288L440 72"/></svg></a>
+      </div>
+      <div>
+        <h2>Lieber schriftlich Kontakt aufnehmen?</h2>
+        <form class="form6" onsubmit="return false">
+          <div><label class="fl" for="n">Name *</label><input id="n" type="text" autocomplete="name" required></div>
+          <div><label class="fl" for="e">E-Mail *</label><input id="e" type="email" autocomplete="email" required></div>
+          <div><label class="fl" for="c">Unternehmen *</label><input id="c" type="text" autocomplete="organization" required></div>
+          <div><label class="fl" for="w">Worum geht es bei Ihnen? (optional)</label><input id="w" type="text" placeholder="z. B. bevorstehender Go-Live, hoher manueller Testaufwand oder mehrere Themen"></div>
+          <div class="full"><label class="fl" for="m">Nachricht (optional)</label><textarea id="m" rows="4"></textarea></div>
+          <label class="consent2 full" for="dsgvo"><input id="dsgvo" type="checkbox" required><span>Ich willige ein, dass meine Angaben zur Bearbeitung meiner Anfrage verarbeitet werden. Weitere Informationen in der <a href="#">Datenschutzerklärung</a>.</span></label>
+          <div class="full"><button class="btn lg" type="submit">Anfrage senden</button><p class="req-note">* Pflichtfeld</p></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="f6">
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <img class="flogo" src="https://barrierefreiheit.andagon.com/wp-content/uploads/2026/07/Logo-white.png" alt="andagon">
+        <p>andagon People GmbH</p>
+        <p>Scheidtweilerstraße 4, 50933 Köln</p>
+      </div>
+      <div>
+        <p class="fh">Rechtliches</p>
+        <p><a href="#">Impressum</a></p>
+        <p><a href="#">Datenschutz</a></p>
+      </div>
+      <div>
+        <p class="fh">Kontakt</p>
+        <p><a href="https://www.andagon.com" target="_blank" rel="noopener">www.andagon.com</a></p>
+      </div>
+    </div>
+    <p class="fmeta">Vorschau vom 26.11.2026, Fassung 8 (Texte und Antworten von andagon vom 26.11.2026 eingearbeitet), erstellt von W&amp;S Agency für andagon People. Gestaltung nach der Barrierefreiheit-Seite. Nicht öffentlich, nicht indexiert.</p>
+  </div>
+</footer>
+
+</body>
+</html>
